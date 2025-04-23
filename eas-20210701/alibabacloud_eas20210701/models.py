@@ -2267,10 +2267,12 @@ class CreateGatewayResponse(TeaModel):
 class CreateGatewayIntranetLinkedVpcRequest(TeaModel):
     def __init__(
         self,
+        account_id: str = None,
         enable_authoritative_dns: bool = None,
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        self.account_id = account_id
         self.enable_authoritative_dns = enable_authoritative_dns
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
@@ -2286,6 +2288,8 @@ class CreateGatewayIntranetLinkedVpcRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
         if self.enable_authoritative_dns is not None:
             result['EnableAuthoritativeDns'] = self.enable_authoritative_dns
         if self.v_switch_id is not None:
@@ -2296,6 +2300,8 @@ class CreateGatewayIntranetLinkedVpcRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
         if m.get('EnableAuthoritativeDns') is not None:
             self.enable_authoritative_dns = m.get('EnableAuthoritativeDns')
         if m.get('VSwitchId') is not None:
@@ -6704,7 +6710,7 @@ class DescribeGroupEndpointsResponseBody(TeaModel):
     ):
         # The service token.
         self.access_token = access_token
-        # The endpoints of service groups.
+        # The endpoints of the service group.
         self.endpoints = endpoints
         # The response message.
         self.message = message
@@ -7099,7 +7105,9 @@ class DescribeRegionsResponseBodyRegions(TeaModel):
         region_id: str = None,
         region_name: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
+        # The region name.
         self.region_name = region_name
 
     def validate(self):
@@ -7132,7 +7140,9 @@ class DescribeRegionsResponseBody(TeaModel):
         regions: List[DescribeRegionsResponseBodyRegions] = None,
         request_id: str = None,
     ):
+        # The available regions.
         self.regions = regions
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10758,6 +10768,7 @@ class ListGatewayDomainsResponse(TeaModel):
 class ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList(TeaModel):
     def __init__(
         self,
+        account_id: str = None,
         authoritative_dns_enabled: bool = None,
         ip: str = None,
         security_group_id: str = None,
@@ -10765,6 +10776,7 @@ class ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        self.account_id = account_id
         self.authoritative_dns_enabled = authoritative_dns_enabled
         # The IP address.
         self.ip = ip
@@ -10812,6 +10824,8 @@ class ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList(TeaModel):
             return _map
 
         result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
         if self.authoritative_dns_enabled is not None:
             result['AuthoritativeDnsEnabled'] = self.authoritative_dns_enabled
         if self.ip is not None:
@@ -10828,6 +10842,8 @@ class ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
         if m.get('AuthoritativeDnsEnabled') is not None:
             self.authoritative_dns_enabled = m.get('AuthoritativeDnsEnabled')
         if m.get('Ip') is not None:

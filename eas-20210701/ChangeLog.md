@@ -1,3 +1,8 @@
+2025-04-23 Version: 6.7.3
+- Update API CreateGatewayIntranetLinkedVpc: add request parameters AccountId.
+- Update API ListGatewayIntranetLinkedVpc: add response parameters Body.IntranetLinkedVpcList.$.AccountId.
+
+
 2025-04-08 Version: 6.7.2
 - Update API ListServices: add request parameters IncludeNoWorkspace.
 

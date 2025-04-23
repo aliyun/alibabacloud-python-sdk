@@ -97,16 +97,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.AttachGatewayDomainResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.AttachGatewayDomainResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.AttachGatewayDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def attach_gateway_domain_with_options_async(
         self,
@@ -147,16 +141,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.AttachGatewayDomainResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.AttachGatewayDomainResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.AttachGatewayDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def attach_gateway_domain(
         self,
@@ -230,16 +218,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.CloneServiceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.CloneServiceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.CloneServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def clone_service_with_options_async(
         self,
@@ -281,16 +263,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.CloneServiceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.CloneServiceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.CloneServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def clone_service(
         self,
@@ -352,16 +328,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.CommitServiceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.CommitServiceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.CommitServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def commit_service_with_options_async(
         self,
@@ -391,16 +361,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.CommitServiceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.CommitServiceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.CommitServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def commit_service(
         self,
@@ -471,16 +435,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.CreateAclPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.CreateAclPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.CreateAclPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_acl_policy_with_options_async(
         self,
@@ -523,16 +481,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.CreateAclPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.CreateAclPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.CreateAclPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_acl_policy(
         self,
@@ -615,16 +567,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.CreateAppServiceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.CreateAppServiceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.CreateAppServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_app_service_with_options_async(
         self,
@@ -675,16 +621,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.CreateAppServiceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.CreateAppServiceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.CreateAppServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_app_service(
         self,
@@ -744,16 +684,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.CreateBenchmarkTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.CreateBenchmarkTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.CreateBenchmarkTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_benchmark_task_with_options_async(
         self,
@@ -785,16 +719,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.CreateBenchmarkTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.CreateBenchmarkTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.CreateBenchmarkTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_benchmark_task(
         self,
@@ -873,16 +801,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.CreateGatewayResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.CreateGatewayResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.CreateGatewayResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_gateway_with_options_async(
         self,
@@ -933,16 +855,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.CreateGatewayResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.CreateGatewayResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.CreateGatewayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_gateway(
         self,
@@ -990,6 +906,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
         if not UtilClient.is_unset(request.enable_authoritative_dns):
             query['EnableAuthoritativeDns'] = request.enable_authoritative_dns
         if not UtilClient.is_unset(request.v_switch_id):
@@ -1011,16 +929,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.CreateGatewayIntranetLinkedVpcResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.CreateGatewayIntranetLinkedVpcResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.CreateGatewayIntranetLinkedVpcResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_gateway_intranet_linked_vpc_with_options_async(
         self,
@@ -1040,6 +952,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
         if not UtilClient.is_unset(request.enable_authoritative_dns):
             query['EnableAuthoritativeDns'] = request.enable_authoritative_dns
         if not UtilClient.is_unset(request.v_switch_id):
@@ -1061,16 +975,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.CreateGatewayIntranetLinkedVpcResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.CreateGatewayIntranetLinkedVpcResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.CreateGatewayIntranetLinkedVpcResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_gateway_intranet_linked_vpc(
         self,
@@ -1145,16 +1053,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.CreateGatewayIntranetLinkedVpcPeerResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.CreateGatewayIntranetLinkedVpcPeerResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.CreateGatewayIntranetLinkedVpcPeerResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_gateway_intranet_linked_vpc_peer_with_options_async(
         self,
@@ -1197,16 +1099,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.CreateGatewayIntranetLinkedVpcPeerResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.CreateGatewayIntranetLinkedVpcPeerResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.CreateGatewayIntranetLinkedVpcPeerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_gateway_intranet_linked_vpc_peer(
         self,
@@ -1291,16 +1187,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.CreateResourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.CreateResourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.CreateResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_resource_with_options_async(
         self,
@@ -1353,16 +1243,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.CreateResourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.CreateResourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.CreateResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_resource(
         self,
@@ -1445,16 +1329,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.CreateResourceInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.CreateResourceInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.CreateResourceInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_resource_instances_with_options_async(
         self,
@@ -1505,16 +1383,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.CreateResourceInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.CreateResourceInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.CreateResourceInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_resource_instances(
         self,
@@ -1585,16 +1457,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.CreateResourceLogResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.CreateResourceLogResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.CreateResourceLogResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_resource_log_with_options_async(
         self,
@@ -1633,16 +1499,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.CreateResourceLogResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.CreateResourceLogResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.CreateResourceLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_resource_log(
         self,
@@ -1720,16 +1580,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.CreateServiceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.CreateServiceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.CreateServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_service_with_options_async(
         self,
@@ -1775,16 +1629,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.CreateServiceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.CreateServiceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.CreateServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_service(
         self,
@@ -1859,16 +1707,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.CreateServiceAutoScalerResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.CreateServiceAutoScalerResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.CreateServiceAutoScalerResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_service_auto_scaler_with_options_async(
         self,
@@ -1911,16 +1753,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.CreateServiceAutoScalerResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.CreateServiceAutoScalerResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.CreateServiceAutoScalerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_service_auto_scaler(
         self,
@@ -1991,16 +1827,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.CreateServiceCronScalerResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.CreateServiceCronScalerResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.CreateServiceCronScalerResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_service_cron_scaler_with_options_async(
         self,
@@ -2039,16 +1869,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.CreateServiceCronScalerResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.CreateServiceCronScalerResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.CreateServiceCronScalerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_service_cron_scaler(
         self,
@@ -2119,16 +1943,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.CreateServiceMirrorResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.CreateServiceMirrorResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.CreateServiceMirrorResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_service_mirror_with_options_async(
         self,
@@ -2167,16 +1985,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.CreateServiceMirrorResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.CreateServiceMirrorResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.CreateServiceMirrorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_service_mirror(
         self,
@@ -2247,16 +2059,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.CreateVirtualResourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.CreateVirtualResourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.CreateVirtualResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_virtual_resource_with_options_async(
         self,
@@ -2295,16 +2101,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.CreateVirtualResourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.CreateVirtualResourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.CreateVirtualResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_virtual_resource(
         self,
@@ -2375,16 +2175,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteAclPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteAclPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteAclPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_acl_policy_with_options_async(
         self,
@@ -2427,16 +2221,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteAclPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteAclPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteAclPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_acl_policy(
         self,
@@ -2498,16 +2286,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteBenchmarkTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteBenchmarkTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteBenchmarkTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_benchmark_task_with_options_async(
         self,
@@ -2537,16 +2319,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteBenchmarkTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteBenchmarkTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteBenchmarkTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_benchmark_task(
         self,
@@ -2604,16 +2380,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteGatewayResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteGatewayResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteGatewayResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_gateway_with_options_async(
         self,
@@ -2643,16 +2413,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteGatewayResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteGatewayResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteGatewayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_gateway(
         self,
@@ -2719,16 +2483,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteGatewayIntranetLinkedVpcResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteGatewayIntranetLinkedVpcResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteGatewayIntranetLinkedVpcResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_gateway_intranet_linked_vpc_with_options_async(
         self,
@@ -2767,16 +2525,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteGatewayIntranetLinkedVpcResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteGatewayIntranetLinkedVpcResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteGatewayIntranetLinkedVpcResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_gateway_intranet_linked_vpc(
         self,
@@ -2851,16 +2603,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteGatewayIntranetLinkedVpcPeerResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteGatewayIntranetLinkedVpcPeerResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteGatewayIntranetLinkedVpcPeerResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_gateway_intranet_linked_vpc_peer_with_options_async(
         self,
@@ -2903,16 +2649,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteGatewayIntranetLinkedVpcPeerResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteGatewayIntranetLinkedVpcPeerResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteGatewayIntranetLinkedVpcPeerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_gateway_intranet_linked_vpc_peer(
         self,
@@ -2974,16 +2714,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteResourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteResourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_resource_with_options_async(
         self,
@@ -3013,16 +2747,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteResourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteResourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_resource(
         self,
@@ -3080,16 +2808,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteResourceDLinkResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteResourceDLinkResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteResourceDLinkResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_resource_dlink_with_options_async(
         self,
@@ -3119,16 +2841,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteResourceDLinkResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteResourceDLinkResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteResourceDLinkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_resource_dlink(
         self,
@@ -3203,16 +2919,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteResourceInstanceLabelResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteResourceInstanceLabelResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteResourceInstanceLabelResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_resource_instance_label_with_options_async(
         self,
@@ -3259,16 +2969,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteResourceInstanceLabelResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteResourceInstanceLabelResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteResourceInstanceLabelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_resource_instance_label(
         self,
@@ -3339,16 +3043,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteResourceInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteResourceInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteResourceInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_resource_instances_with_options_async(
         self,
@@ -3387,16 +3085,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteResourceInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteResourceInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteResourceInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_resource_instances(
         self,
@@ -3458,16 +3150,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteResourceLogResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteResourceLogResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteResourceLogResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_resource_log_with_options_async(
         self,
@@ -3497,16 +3183,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteResourceLogResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteResourceLogResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteResourceLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_resource_log(
         self,
@@ -3564,16 +3244,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteServiceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteServiceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_service_with_options_async(
         self,
@@ -3603,16 +3277,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteServiceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteServiceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_service(
         self,
@@ -3670,16 +3338,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteServiceAutoScalerResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteServiceAutoScalerResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteServiceAutoScalerResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_service_auto_scaler_with_options_async(
         self,
@@ -3709,16 +3371,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteServiceAutoScalerResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteServiceAutoScalerResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteServiceAutoScalerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_service_auto_scaler(
         self,
@@ -3776,16 +3432,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteServiceCronScalerResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteServiceCronScalerResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteServiceCronScalerResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_service_cron_scaler_with_options_async(
         self,
@@ -3815,16 +3465,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteServiceCronScalerResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteServiceCronScalerResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteServiceCronScalerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_service_cron_scaler(
         self,
@@ -3893,16 +3537,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteServiceInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteServiceInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteServiceInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_service_instances_with_options_async(
         self,
@@ -3943,16 +3581,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteServiceInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteServiceInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteServiceInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_service_instances(
         self,
@@ -4025,16 +3657,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteServiceLabelResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteServiceLabelResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteServiceLabelResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_service_label_with_options_async(
         self,
@@ -4075,16 +3701,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteServiceLabelResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteServiceLabelResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteServiceLabelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_service_label(
         self,
@@ -4146,16 +3766,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteServiceMirrorResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteServiceMirrorResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteServiceMirrorResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_service_mirror_with_options_async(
         self,
@@ -4185,16 +3799,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteServiceMirrorResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteServiceMirrorResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteServiceMirrorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_service_mirror(
         self,
@@ -4252,16 +3860,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteVirtualResourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteVirtualResourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteVirtualResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_virtual_resource_with_options_async(
         self,
@@ -4291,16 +3893,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteVirtualResourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DeleteVirtualResourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteVirtualResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_virtual_resource(
         self,
@@ -4358,16 +3954,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeBenchmarkTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeBenchmarkTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeBenchmarkTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_benchmark_task_with_options_async(
         self,
@@ -4397,16 +3987,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeBenchmarkTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeBenchmarkTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeBenchmarkTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_benchmark_task(
         self,
@@ -4471,16 +4055,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeBenchmarkTaskReportResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeBenchmarkTaskReportResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeBenchmarkTaskReportResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_benchmark_task_report_with_options_async(
         self,
@@ -4517,16 +4095,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeBenchmarkTaskReportResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeBenchmarkTaskReportResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeBenchmarkTaskReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_benchmark_task_report(
         self,
@@ -4588,16 +4160,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeGatewayResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeGatewayResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeGatewayResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_gateway_with_options_async(
         self,
@@ -4627,16 +4193,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeGatewayResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeGatewayResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeGatewayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_gateway(
         self,
@@ -4694,16 +4254,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_group_with_options_async(
         self,
@@ -4733,16 +4287,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_group(
         self,
@@ -4800,16 +4348,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeGroupEndpointsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeGroupEndpointsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeGroupEndpointsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_group_endpoints_with_options_async(
         self,
@@ -4839,16 +4381,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeGroupEndpointsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeGroupEndpointsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeGroupEndpointsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_group_endpoints(
         self,
@@ -4915,16 +4451,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeMachineSpecResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeMachineSpecResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeMachineSpecResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_machine_spec_with_options_async(
         self,
@@ -4963,16 +4493,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeMachineSpecResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeMachineSpecResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeMachineSpecResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_machine_spec(
         self,
@@ -5008,7 +4532,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeRegionsResponse:
         """
-        @summary 查询可用的地域信息
+        @summary Queries available regions.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5028,16 +4552,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeRegionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeRegionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_regions_with_options_async(
         self,
@@ -5045,7 +4563,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeRegionsResponse:
         """
-        @summary 查询可用的地域信息
+        @summary Queries available regions.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5065,20 +4583,14 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeRegionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeRegionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_regions(self) -> eas_20210701_models.DescribeRegionsResponse:
         """
-        @summary 查询可用的地域信息
+        @summary Queries available regions.
         
         @return: DescribeRegionsResponse
         """
@@ -5088,7 +4600,7 @@ class Client(OpenApiClient):
 
     async def describe_regions_async(self) -> eas_20210701_models.DescribeRegionsResponse:
         """
-        @summary 查询可用的地域信息
+        @summary Queries available regions.
         
         @return: DescribeRegionsResponse
         """
@@ -5124,16 +4636,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeResourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeResourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_resource_with_options_async(
         self,
@@ -5163,16 +4669,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeResourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeResourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_resource(
         self,
@@ -5230,16 +4730,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeResourceDLinkResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeResourceDLinkResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeResourceDLinkResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_resource_dlink_with_options_async(
         self,
@@ -5269,16 +4763,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeResourceDLinkResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeResourceDLinkResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeResourceDLinkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_resource_dlink(
         self,
@@ -5336,16 +4824,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeResourceLogResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeResourceLogResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeResourceLogResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_resource_log_with_options_async(
         self,
@@ -5375,16 +4857,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeResourceLogResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeResourceLogResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeResourceLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_resource_log(
         self,
@@ -5442,16 +4918,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_service_with_options_async(
         self,
@@ -5481,16 +4951,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_service(
         self,
@@ -5548,16 +5012,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceAutoScalerResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceAutoScalerResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeServiceAutoScalerResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_service_auto_scaler_with_options_async(
         self,
@@ -5587,16 +5045,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceAutoScalerResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceAutoScalerResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeServiceAutoScalerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_service_auto_scaler(
         self,
@@ -5654,16 +5106,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceCronScalerResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceCronScalerResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeServiceCronScalerResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_service_cron_scaler_with_options_async(
         self,
@@ -5693,16 +5139,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceCronScalerResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceCronScalerResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeServiceCronScalerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_service_cron_scaler(
         self,
@@ -5760,16 +5200,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceDiagnosisResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceDiagnosisResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeServiceDiagnosisResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_service_diagnosis_with_options_async(
         self,
@@ -5799,16 +5233,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceDiagnosisResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceDiagnosisResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeServiceDiagnosisResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_service_diagnosis(
         self,
@@ -5866,16 +5294,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceEndpointsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceEndpointsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeServiceEndpointsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_service_endpoints_with_options_async(
         self,
@@ -5905,16 +5327,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceEndpointsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceEndpointsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeServiceEndpointsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_service_endpoints(
         self,
@@ -5989,16 +5405,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceEventResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceEventResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeServiceEventResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_service_event_with_options_async(
         self,
@@ -6045,16 +5455,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceEventResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceEventResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeServiceEventResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_service_event(
         self,
@@ -6117,16 +5521,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceInstanceDiagnosisResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceInstanceDiagnosisResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeServiceInstanceDiagnosisResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_service_instance_diagnosis_with_options_async(
         self,
@@ -6157,16 +5555,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceInstanceDiagnosisResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceInstanceDiagnosisResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeServiceInstanceDiagnosisResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_service_instance_diagnosis(
         self,
@@ -6249,16 +5641,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceLogResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceLogResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeServiceLogResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_service_log_with_options_async(
         self,
@@ -6311,16 +5697,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceLogResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceLogResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeServiceLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_service_log(
         self,
@@ -6382,16 +5762,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceMirrorResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceMirrorResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeServiceMirrorResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_service_mirror_with_options_async(
         self,
@@ -6421,16 +5795,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceMirrorResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceMirrorResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeServiceMirrorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_service_mirror(
         self,
@@ -6499,16 +5867,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceSignedUrlResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceSignedUrlResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeServiceSignedUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_service_signed_url_with_options_async(
         self,
@@ -6549,16 +5911,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceSignedUrlResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeServiceSignedUrlResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeServiceSignedUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_service_signed_url(
         self,
@@ -6627,16 +5983,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeSpotDiscountHistoryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeSpotDiscountHistoryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeSpotDiscountHistoryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_spot_discount_history_with_options_async(
         self,
@@ -6673,16 +6023,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeSpotDiscountHistoryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeSpotDiscountHistoryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeSpotDiscountHistoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_spot_discount_history(
         self,
@@ -6740,16 +6084,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeVirtualResourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeVirtualResourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeVirtualResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_virtual_resource_with_options_async(
         self,
@@ -6779,16 +6117,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeVirtualResourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DescribeVirtualResourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeVirtualResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_virtual_resource(
         self,
@@ -6857,16 +6189,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DetachGatewayDomainResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DetachGatewayDomainResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DetachGatewayDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def detach_gateway_domain_with_options_async(
         self,
@@ -6907,16 +6233,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DetachGatewayDomainResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DetachGatewayDomainResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DetachGatewayDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def detach_gateway_domain(
         self,
@@ -6985,16 +6305,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DevelopServiceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DevelopServiceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DevelopServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def develop_service_with_options_async(
         self,
@@ -7031,16 +6345,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.DevelopServiceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.DevelopServiceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.DevelopServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def develop_service(
         self,
@@ -7109,16 +6417,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ListAclPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ListAclPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ListAclPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_acl_policy_with_options_async(
         self,
@@ -7155,16 +6457,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ListAclPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ListAclPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ListAclPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_acl_policy(
         self,
@@ -7237,16 +6533,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ListBenchmarkTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ListBenchmarkTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ListBenchmarkTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_benchmark_task_with_options_async(
         self,
@@ -7287,16 +6577,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ListBenchmarkTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ListBenchmarkTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ListBenchmarkTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_benchmark_task(
         self,
@@ -7367,16 +6651,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ListGatewayResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ListGatewayResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ListGatewayResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_gateway_with_options_async(
         self,
@@ -7419,16 +6697,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ListGatewayResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ListGatewayResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ListGatewayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_gateway(
         self,
@@ -7486,16 +6758,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ListGatewayDomainsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ListGatewayDomainsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ListGatewayDomainsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_gateway_domains_with_options_async(
         self,
@@ -7525,16 +6791,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ListGatewayDomainsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ListGatewayDomainsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ListGatewayDomainsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_gateway_domains(
         self,
@@ -7592,16 +6852,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ListGatewayIntranetLinkedVpcResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ListGatewayIntranetLinkedVpcResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ListGatewayIntranetLinkedVpcResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_gateway_intranet_linked_vpc_with_options_async(
         self,
@@ -7631,16 +6885,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ListGatewayIntranetLinkedVpcResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ListGatewayIntranetLinkedVpcResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ListGatewayIntranetLinkedVpcResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_gateway_intranet_linked_vpc(
         self,
@@ -7705,16 +6953,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ListGatewayIntranetLinkedVpcPeerResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ListGatewayIntranetLinkedVpcPeerResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ListGatewayIntranetLinkedVpcPeerResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_gateway_intranet_linked_vpc_peer_with_options_async(
         self,
@@ -7751,16 +6993,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ListGatewayIntranetLinkedVpcPeerResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ListGatewayIntranetLinkedVpcPeerResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ListGatewayIntranetLinkedVpcPeerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_gateway_intranet_linked_vpc_peer(
         self,
@@ -7822,16 +7058,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ListGatewayIntranetSupportedZoneResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ListGatewayIntranetSupportedZoneResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ListGatewayIntranetSupportedZoneResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_gateway_intranet_supported_zone_with_options_async(
         self,
@@ -7861,16 +7091,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ListGatewayIntranetSupportedZoneResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ListGatewayIntranetSupportedZoneResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ListGatewayIntranetSupportedZoneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_gateway_intranet_supported_zone(
         self,
@@ -7939,16 +7163,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ListGroupsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ListGroupsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ListGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_groups_with_options_async(
         self,
@@ -7989,16 +7207,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ListGroupsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ListGroupsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ListGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_groups(
         self,
@@ -8068,16 +7280,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ListResourceInstanceWorkerResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ListResourceInstanceWorkerResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ListResourceInstanceWorkerResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_resource_instance_worker_with_options_async(
         self,
@@ -8119,16 +7325,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ListResourceInstanceWorkerResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ListResourceInstanceWorkerResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ListResourceInstanceWorkerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_resource_instance_worker(
         self,
@@ -8223,16 +7423,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ListResourceInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ListResourceInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ListResourceInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_resource_instances_with_options_async(
         self,
@@ -8293,16 +7487,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ListResourceInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ListResourceInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ListResourceInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_resource_instances(
         self,
@@ -8376,16 +7564,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ListResourceServicesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ListResourceServicesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ListResourceServicesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_resource_services_with_options_async(
         self,
@@ -8427,16 +7609,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ListResourceServicesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ListResourceServicesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ListResourceServicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_resource_services(
         self,
@@ -8523,16 +7699,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ListResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ListResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ListResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_resources_with_options_async(
         self,
@@ -8581,16 +7751,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ListResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ListResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ListResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_resources(
         self,
@@ -8649,16 +7813,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ListServiceContainersResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ListServiceContainersResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ListServiceContainersResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_service_containers_with_options_async(
         self,
@@ -8689,16 +7847,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ListServiceContainersResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ListServiceContainersResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ListServiceContainersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_service_containers(
         self,
@@ -8789,16 +7941,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ListServiceInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ListServiceInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ListServiceInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_service_instances_with_options_async(
         self,
@@ -8859,16 +8005,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ListServiceInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ListServiceInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ListServiceInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_service_instances(
         self,
@@ -8939,16 +8079,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ListServiceVersionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ListServiceVersionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ListServiceVersionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_service_versions_with_options_async(
         self,
@@ -8987,16 +8121,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ListServiceVersionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ListServiceVersionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ListServiceVersionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_service_versions(
         self,
@@ -9103,16 +8231,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ListServicesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ListServicesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ListServicesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_services_with_options_async(
         self,
@@ -9187,16 +8309,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ListServicesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ListServicesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ListServicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_services(
         self,
@@ -9252,16 +8368,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ListTenantAddonsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ListTenantAddonsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ListTenantAddonsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_tenant_addons_with_options_async(
         self,
@@ -9289,16 +8399,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ListTenantAddonsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ListTenantAddonsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ListTenantAddonsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_tenant_addons(self) -> eas_20210701_models.ListTenantAddonsResponse:
         """
@@ -9359,16 +8463,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ListVirtualResourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ListVirtualResourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ListVirtualResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_virtual_resource_with_options_async(
         self,
@@ -9409,16 +8507,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ListVirtualResourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ListVirtualResourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ListVirtualResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_virtual_resource(
         self,
@@ -9476,16 +8568,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ReinstallTenantAddonResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ReinstallTenantAddonResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ReinstallTenantAddonResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def reinstall_tenant_addon_with_options_async(
         self,
@@ -9515,16 +8601,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ReinstallTenantAddonResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ReinstallTenantAddonResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ReinstallTenantAddonResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def reinstall_tenant_addon(
         self,
@@ -9591,16 +8671,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ReleaseServiceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ReleaseServiceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ReleaseServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def release_service_with_options_async(
         self,
@@ -9639,16 +8713,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.ReleaseServiceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.ReleaseServiceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.ReleaseServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def release_service(
         self,
@@ -9710,16 +8778,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.RestartServiceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.RestartServiceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.RestartServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def restart_service_with_options_async(
         self,
@@ -9749,16 +8811,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.RestartServiceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.RestartServiceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.RestartServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def restart_service(
         self,
@@ -9816,16 +8872,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.StartBenchmarkTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.StartBenchmarkTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.StartBenchmarkTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def start_benchmark_task_with_options_async(
         self,
@@ -9855,16 +8905,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.StartBenchmarkTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.StartBenchmarkTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.StartBenchmarkTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def start_benchmark_task(
         self,
@@ -9922,16 +8966,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.StartServiceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.StartServiceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.StartServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def start_service_with_options_async(
         self,
@@ -9961,16 +8999,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.StartServiceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.StartServiceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.StartServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def start_service(
         self,
@@ -10028,16 +9060,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.StopBenchmarkTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.StopBenchmarkTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.StopBenchmarkTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def stop_benchmark_task_with_options_async(
         self,
@@ -10067,16 +9093,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.StopBenchmarkTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.StopBenchmarkTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.StopBenchmarkTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def stop_benchmark_task(
         self,
@@ -10134,16 +9154,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.StopServiceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.StopServiceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.StopServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def stop_service_with_options_async(
         self,
@@ -10173,16 +9187,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.StopServiceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.StopServiceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.StopServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def stop_service(
         self,
@@ -10261,16 +9269,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateAppServiceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateAppServiceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateAppServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_app_service_with_options_async(
         self,
@@ -10321,16 +9323,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateAppServiceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateAppServiceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateAppServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_app_service(
         self,
@@ -10396,16 +9392,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateBenchmarkTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateBenchmarkTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateBenchmarkTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_benchmark_task_with_options_async(
         self,
@@ -10439,16 +9429,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateBenchmarkTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateBenchmarkTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateBenchmarkTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_benchmark_task(
         self,
@@ -10529,16 +9513,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateGatewayResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateGatewayResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateGatewayResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_gateway_with_options_async(
         self,
@@ -10587,16 +9565,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateGatewayResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateGatewayResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateGatewayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_gateway(
         self,
@@ -10667,16 +9639,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateResourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateResourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_resource_with_options_async(
         self,
@@ -10715,16 +9681,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateResourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateResourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_resource(
         self,
@@ -10799,16 +9759,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateResourceDLinkResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateResourceDLinkResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateResourceDLinkResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_resource_dlink_with_options_async(
         self,
@@ -10851,16 +9805,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateResourceDLinkResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateResourceDLinkResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateResourceDLinkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_resource_dlink(
         self,
@@ -10930,16 +9878,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateResourceInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateResourceInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateResourceInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_resource_instance_with_options_async(
         self,
@@ -10977,16 +9919,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateResourceInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateResourceInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateResourceInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_resource_instance(
         self,
@@ -11067,16 +10003,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateResourceInstanceLabelResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateResourceInstanceLabelResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateResourceInstanceLabelResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_resource_instance_label_with_options_async(
         self,
@@ -11123,16 +10053,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateResourceInstanceLabelResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateResourceInstanceLabelResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateResourceInstanceLabelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_resource_instance_label(
         self,
@@ -11202,16 +10126,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateServiceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateServiceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_service_with_options_async(
         self,
@@ -11249,16 +10167,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateServiceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateServiceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_service(
         self,
@@ -11333,16 +10245,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateServiceAutoScalerResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateServiceAutoScalerResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateServiceAutoScalerResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_service_auto_scaler_with_options_async(
         self,
@@ -11385,16 +10291,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateServiceAutoScalerResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateServiceAutoScalerResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateServiceAutoScalerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_service_auto_scaler(
         self,
@@ -11465,16 +10365,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateServiceCronScalerResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateServiceCronScalerResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateServiceCronScalerResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_service_cron_scaler_with_options_async(
         self,
@@ -11513,16 +10407,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateServiceCronScalerResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateServiceCronScalerResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateServiceCronScalerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_service_cron_scaler(
         self,
@@ -11592,16 +10480,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateServiceInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateServiceInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateServiceInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_service_instance_with_options_async(
         self,
@@ -11639,16 +10521,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateServiceInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateServiceInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateServiceInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_service_instance(
         self,
@@ -11719,16 +10595,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateServiceLabelResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateServiceLabelResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateServiceLabelResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_service_label_with_options_async(
         self,
@@ -11765,16 +10635,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateServiceLabelResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateServiceLabelResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateServiceLabelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_service_label(
         self,
@@ -11845,16 +10709,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateServiceMirrorResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateServiceMirrorResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateServiceMirrorResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_service_mirror_with_options_async(
         self,
@@ -11893,16 +10751,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateServiceMirrorResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateServiceMirrorResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateServiceMirrorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_service_mirror(
         self,
@@ -11971,16 +10823,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateServiceSafetyLockResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateServiceSafetyLockResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateServiceSafetyLockResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_service_safety_lock_with_options_async(
         self,
@@ -12017,16 +10863,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateServiceSafetyLockResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateServiceSafetyLockResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateServiceSafetyLockResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_service_safety_lock(
         self,
@@ -12095,16 +10935,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateServiceVersionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateServiceVersionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateServiceVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_service_version_with_options_async(
         self,
@@ -12141,16 +10975,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateServiceVersionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateServiceVersionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateServiceVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_service_version(
         self,
@@ -12223,16 +11051,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateVirtualResourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateVirtualResourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateVirtualResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_virtual_resource_with_options_async(
         self,
@@ -12273,16 +11095,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateVirtualResourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eas_20210701_models.UpdateVirtualResourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateVirtualResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_virtual_resource(
         self,
