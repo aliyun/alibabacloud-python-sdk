@@ -1212,14 +1212,20 @@ class GetMcpResourceRequest(TeaModel):
         return self
 
 
-class GetMcpResourceResponseBodyData(TeaModel):
+class GetMcpResourceResponseBodyDataDesktopInfo(TeaModel):
     def __init__(
         self,
-        resource_url: str = None,
-        session_id: str = None,
+        app_id: str = None,
+        auth_code: str = None,
+        connection_properties: str = None,
+        resource_id: str = None,
+        resource_type: str = None,
     ):
-        self.resource_url = resource_url
-        self.session_id = session_id
+        self.app_id = app_id
+        self.auth_code = auth_code
+        self.connection_properties = connection_properties
+        self.resource_id = resource_id
+        self.resource_type = resource_type
 
     def validate(self):
         pass
@@ -1230,6 +1236,56 @@ class GetMcpResourceResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.auth_code is not None:
+            result['AuthCode'] = self.auth_code
+        if self.connection_properties is not None:
+            result['ConnectionProperties'] = self.connection_properties
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AuthCode') is not None:
+            self.auth_code = m.get('AuthCode')
+        if m.get('ConnectionProperties') is not None:
+            self.connection_properties = m.get('ConnectionProperties')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class GetMcpResourceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        desktop_info: GetMcpResourceResponseBodyDataDesktopInfo = None,
+        resource_url: str = None,
+        session_id: str = None,
+    ):
+        self.desktop_info = desktop_info
+        self.resource_url = resource_url
+        self.session_id = session_id
+
+    def validate(self):
+        if self.desktop_info:
+            self.desktop_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.desktop_info is not None:
+            result['DesktopInfo'] = self.desktop_info.to_map()
         if self.resource_url is not None:
             result['ResourceUrl'] = self.resource_url
         if self.session_id is not None:
@@ -1238,6 +1294,9 @@ class GetMcpResourceResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DesktopInfo') is not None:
+            temp_model = GetMcpResourceResponseBodyDataDesktopInfo()
+            self.desktop_info = temp_model.from_map(m['DesktopInfo'])
         if m.get('ResourceUrl') is not None:
             self.resource_url = m.get('ResourceUrl')
         if m.get('SessionId') is not None:

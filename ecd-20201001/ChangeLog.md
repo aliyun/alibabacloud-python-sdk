@@ -1,3 +1,7 @@
+2025-04-24 Version: 1.1.1
+- Update API GetMcpResource: add response parameters Body.Data.DesktopInfo.
+
+
 2025-04-16 Version: 1.1.0
 - Support API CalMcpTool.
 - Support API CreateMcpSession.
