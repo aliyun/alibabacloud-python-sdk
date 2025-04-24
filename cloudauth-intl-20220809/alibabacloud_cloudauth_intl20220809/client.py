@@ -10,6 +10,12 @@ from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_cloudauth_intl20220809 import models as cloudauth_intl_20220809_models
 from alibabacloud_tea_util import models as util_models
 from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
+from alibabacloud_openplatform20191219.client import Client as OpenPlatformClient
+from alibabacloud_openplatform20191219 import models as open_platform_models
+from alibabacloud_oss_sdk import models as oss_models
+from alibabacloud_oss_sdk.client import Client as OSSClient
+from alibabacloud_tea_fileform import models as file_form_models
+from alibabacloud_oss_util import models as ossutil_models
 
 
 class Client(OpenApiClient):
@@ -396,6 +402,266 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.check_verify_log_with_options_async(request, runtime)
+
+    def credential_verify_intl_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.CredentialVerifyIntlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.CredentialVerifyIntlResponse:
+        """
+        @summary 凭证核验
+        
+        @param request: CredentialVerifyIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CredentialVerifyIntlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cred_name):
+            query['CredName'] = request.cred_name
+        if not UtilClient.is_unset(request.cred_type):
+            query['CredType'] = request.cred_type
+        if not UtilClient.is_unset(request.image_url):
+            query['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        body = {}
+        if not UtilClient.is_unset(request.image_file):
+            body['ImageFile'] = request.image_file
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CredentialVerifyIntl',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.CredentialVerifyIntlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def credential_verify_intl_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.CredentialVerifyIntlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.CredentialVerifyIntlResponse:
+        """
+        @summary 凭证核验
+        
+        @param request: CredentialVerifyIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CredentialVerifyIntlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cred_name):
+            query['CredName'] = request.cred_name
+        if not UtilClient.is_unset(request.cred_type):
+            query['CredType'] = request.cred_type
+        if not UtilClient.is_unset(request.image_url):
+            query['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        body = {}
+        if not UtilClient.is_unset(request.image_file):
+            body['ImageFile'] = request.image_file
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CredentialVerifyIntl',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.CredentialVerifyIntlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def credential_verify_intl(
+        self,
+        request: cloudauth_intl_20220809_models.CredentialVerifyIntlRequest,
+    ) -> cloudauth_intl_20220809_models.CredentialVerifyIntlResponse:
+        """
+        @summary 凭证核验
+        
+        @param request: CredentialVerifyIntlRequest
+        @return: CredentialVerifyIntlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.credential_verify_intl_with_options(request, runtime)
+
+    async def credential_verify_intl_async(
+        self,
+        request: cloudauth_intl_20220809_models.CredentialVerifyIntlRequest,
+    ) -> cloudauth_intl_20220809_models.CredentialVerifyIntlResponse:
+        """
+        @summary 凭证核验
+        
+        @param request: CredentialVerifyIntlRequest
+        @return: CredentialVerifyIntlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.credential_verify_intl_with_options_async(request, runtime)
+
+    def credential_verify_intl_advance(
+        self,
+        request: cloudauth_intl_20220809_models.CredentialVerifyIntlAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.CredentialVerifyIntlResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.empty(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='Cloudauth-intl',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = OSSClient(oss_config)
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        credential_verify_intl_req = cloudauth_intl_20220809_models.CredentialVerifyIntlRequest()
+        OpenApiUtilClient.convert(request, credential_verify_intl_req)
+        if not UtilClient.is_unset(request.image_file_object):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.body.object_key,
+                content=request.image_file_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.body.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            credential_verify_intl_req.image_file = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+        credential_verify_intl_resp = self.credential_verify_intl_with_options(credential_verify_intl_req, runtime)
+        return credential_verify_intl_resp
+
+    async def credential_verify_intl_advance_async(
+        self,
+        request: cloudauth_intl_20220809_models.CredentialVerifyIntlAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.CredentialVerifyIntlResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.empty(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='Cloudauth-intl',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = OSSClient(oss_config)
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        credential_verify_intl_req = cloudauth_intl_20220809_models.CredentialVerifyIntlRequest()
+        OpenApiUtilClient.convert(request, credential_verify_intl_req)
+        if not UtilClient.is_unset(request.image_file_object):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.body.object_key,
+                content=request.image_file_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.body.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            credential_verify_intl_req.image_file = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+        credential_verify_intl_resp = await self.credential_verify_intl_with_options_async(credential_verify_intl_req, runtime)
+        return credential_verify_intl_resp
 
     def deepfake_detect_intl_with_options(
         self,

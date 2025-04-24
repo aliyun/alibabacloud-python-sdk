@@ -1,3 +1,7 @@
+2025-04-24 Version: 3.5.0
+- Support API CredentialVerifyIntl.
+
+
 2025-04-23 Version: 3.4.2
 - Update API Initialize: add request parameters DateOfBirth.
 - Update API Initialize: add request parameters DateOfExpiry.
