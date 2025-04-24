@@ -1946,6 +1946,7 @@ class CreateFunctionInput(TeaModel):
         description: str = None,
         disable_ondemand: bool = None,
         disk_size: int = None,
+        enable_long_living: bool = None,
         environment_variables: Dict[str, str] = None,
         function_name: str = None,
         gpu_config: GPUConfig = None,
@@ -1974,6 +1975,7 @@ class CreateFunctionInput(TeaModel):
         self.description = description
         self.disable_ondemand = disable_ondemand
         self.disk_size = disk_size
+        self.enable_long_living = enable_long_living
         self.environment_variables = environment_variables
         # This parameter is required.
         self.function_name = function_name
@@ -2047,6 +2049,8 @@ class CreateFunctionInput(TeaModel):
             result['disableOndemand'] = self.disable_ondemand
         if self.disk_size is not None:
             result['diskSize'] = self.disk_size
+        if self.enable_long_living is not None:
+            result['enableLongLiving'] = self.enable_long_living
         if self.environment_variables is not None:
             result['environmentVariables'] = self.environment_variables
         if self.function_name is not None:
@@ -2111,6 +2115,8 @@ class CreateFunctionInput(TeaModel):
             self.disable_ondemand = m.get('disableOndemand')
         if m.get('diskSize') is not None:
             self.disk_size = m.get('diskSize')
+        if m.get('enableLongLiving') is not None:
+            self.enable_long_living = m.get('enableLongLiving')
         if m.get('environmentVariables') is not None:
             self.environment_variables = m.get('environmentVariables')
         if m.get('functionName') is not None:
@@ -3432,6 +3438,7 @@ class Function(TeaModel):
         description: str = None,
         disable_ondemand: bool = None,
         disk_size: int = None,
+        enable_long_living: bool = None,
         environment_variables: Dict[str, str] = None,
         function_arn: str = None,
         function_id: str = None,
@@ -3472,6 +3479,7 @@ class Function(TeaModel):
         self.description = description
         self.disable_ondemand = disable_ondemand
         self.disk_size = disk_size
+        self.enable_long_living = enable_long_living
         self.environment_variables = environment_variables
         self.function_arn = function_arn
         self.function_id = function_id
@@ -3560,6 +3568,8 @@ class Function(TeaModel):
             result['disableOndemand'] = self.disable_ondemand
         if self.disk_size is not None:
             result['diskSize'] = self.disk_size
+        if self.enable_long_living is not None:
+            result['enableLongLiving'] = self.enable_long_living
         if self.environment_variables is not None:
             result['environmentVariables'] = self.environment_variables
         if self.function_arn is not None:
@@ -3649,6 +3659,8 @@ class Function(TeaModel):
             self.disable_ondemand = m.get('disableOndemand')
         if m.get('diskSize') is not None:
             self.disk_size = m.get('diskSize')
+        if m.get('enableLongLiving') is not None:
+            self.enable_long_living = m.get('enableLongLiving')
         if m.get('environmentVariables') is not None:
             self.environment_variables = m.get('environmentVariables')
         if m.get('functionArn') is not None:
@@ -5876,6 +5888,7 @@ class UpdateFunctionInput(TeaModel):
         description: str = None,
         disable_ondemand: bool = None,
         disk_size: int = None,
+        enable_long_living: bool = None,
         environment_variables: Dict[str, str] = None,
         gpu_config: GPUConfig = None,
         handler: str = None,
@@ -5902,6 +5915,7 @@ class UpdateFunctionInput(TeaModel):
         self.description = description
         self.disable_ondemand = disable_ondemand
         self.disk_size = disk_size
+        self.enable_long_living = enable_long_living
         self.environment_variables = environment_variables
         self.gpu_config = gpu_config
         self.handler = handler
@@ -5966,6 +5980,8 @@ class UpdateFunctionInput(TeaModel):
             result['disableOndemand'] = self.disable_ondemand
         if self.disk_size is not None:
             result['diskSize'] = self.disk_size
+        if self.enable_long_living is not None:
+            result['enableLongLiving'] = self.enable_long_living
         if self.environment_variables is not None:
             result['environmentVariables'] = self.environment_variables
         if self.gpu_config is not None:
@@ -6024,6 +6040,8 @@ class UpdateFunctionInput(TeaModel):
             self.disable_ondemand = m.get('disableOndemand')
         if m.get('diskSize') is not None:
             self.disk_size = m.get('diskSize')
+        if m.get('enableLongLiving') is not None:
+            self.enable_long_living = m.get('enableLongLiving')
         if m.get('environmentVariables') is not None:
             self.environment_variables = m.get('environmentVariables')
         if m.get('gpuConfig') is not None:
