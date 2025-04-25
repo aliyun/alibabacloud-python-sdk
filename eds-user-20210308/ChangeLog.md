@@ -1,3 +1,7 @@
+2025-04-25 Version: 1.4.1
+- Update API CreateUsers: add response parameters Body.AllSucceed.
+
+
 2025-04-23 Version: 1.4.0
 - Support API CreateOrg.
 - Support API DescribeOrgByLayer.

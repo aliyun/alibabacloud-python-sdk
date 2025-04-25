@@ -1494,9 +1494,11 @@ class CreateUsersResponseBodyCreateResult(TeaModel):
 class CreateUsersResponseBody(TeaModel):
     def __init__(
         self,
+        all_succeed: bool = None,
         create_result: CreateUsersResponseBodyCreateResult = None,
         request_id: str = None,
     ):
+        self.all_succeed = all_succeed
         # The result of user creation.
         self.create_result = create_result
         # The ID of the request.
@@ -1512,6 +1514,8 @@ class CreateUsersResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.all_succeed is not None:
+            result['AllSucceed'] = self.all_succeed
         if self.create_result is not None:
             result['CreateResult'] = self.create_result.to_map()
         if self.request_id is not None:
@@ -1520,6 +1524,8 @@ class CreateUsersResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AllSucceed') is not None:
+            self.all_succeed = m.get('AllSucceed')
         if m.get('CreateResult') is not None:
             temp_model = CreateUsersResponseBodyCreateResult()
             self.create_result = temp_model.from_map(m['CreateResult'])
