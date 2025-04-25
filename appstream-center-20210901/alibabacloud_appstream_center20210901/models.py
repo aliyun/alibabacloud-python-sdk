@@ -5457,6 +5457,39 @@ class ListAccessPagesResponse(TeaModel):
         return self
 
 
+class ListAppInstanceGroupRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListAppInstanceGroupRequest(TeaModel):
     def __init__(
         self,
@@ -5471,6 +5504,7 @@ class ListAppInstanceGroupRequest(TeaModel):
         product_type: str = None,
         region_id: str = None,
         status: List[str] = None,
+        tag: List[ListAppInstanceGroupRequestTag] = None,
     ):
         # The image ID of the app. You can obtain the ID from the Images page in the App Streaming console.
         self.app_center_image_id = app_center_image_id
@@ -5504,9 +5538,13 @@ class ListAppInstanceGroupRequest(TeaModel):
         self.region_id = region_id
         # The status of the delivery groups.
         self.status = status
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5536,6 +5574,10 @@ class ListAppInstanceGroupRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.status is not None:
             result['Status'] = self.status
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -5562,6 +5604,11 @@ class ListAppInstanceGroupRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListAppInstanceGroupRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -5977,6 +6024,45 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModelsResourceTags(TeaMode
         return self
 
 
+class ListAppInstanceGroupResponseBodyAppInstanceGroupModelsTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        scope: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.scope = scope
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.scope is not None:
+            result['Scope'] = self.scope
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Scope') is not None:
+            self.scope = m.get('Scope')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
     def __init__(
         self,
@@ -6013,6 +6099,7 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
         skip_user_auth_check: bool = None,
         spec_id: str = None,
         status: str = None,
+        tags: List[ListAppInstanceGroupResponseBodyAppInstanceGroupModelsTags] = None,
     ):
         # The number of subscription resources. Minimum value: 1.
         self.amount = amount
@@ -6120,6 +6207,7 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
         # *   EXPIRED_RECYCLING: The delivery group is expired and being recycled.
         # *   DEPLOYING: The delivery group is being published.
         self.status = status
+        self.tags = tags
 
     def validate(self):
         if self.apps:
@@ -6134,6 +6222,10 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
             self.ota_info.validate()
         if self.resource_tags:
             for k in self.resource_tags:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
                 if k:
                     k.validate()
 
@@ -6215,6 +6307,10 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
             result['SpecId'] = self.spec_id
         if self.status is not None:
             result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -6295,6 +6391,11 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
             self.spec_id = m.get('SpecId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListAppInstanceGroupResponseBodyAppInstanceGroupModelsTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 

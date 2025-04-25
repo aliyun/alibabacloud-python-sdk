@@ -1,3 +1,8 @@
+2025-04-25 Version: 3.2.3
+- Update API ListAppInstanceGroup: add request parameters Tag.
+- Update API ListAppInstanceGroup: add response parameters Body.AppInstanceGroupModels.$.Tags.
+
+
 2025-04-11 Version: 3.2.2
 - Generated python 2021-09-01 for appstream-center.
 
