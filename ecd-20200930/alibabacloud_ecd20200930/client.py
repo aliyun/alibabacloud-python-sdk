@@ -2064,6 +2064,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CloneCenterPolicyResponse:
         """
+        @summary Clones a policy based on an existing global policy.
+        
         @param request: CloneCenterPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CloneCenterPolicyResponse
@@ -2105,6 +2107,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CloneCenterPolicyResponse:
         """
+        @summary Clones a policy based on an existing global policy.
+        
         @param request: CloneCenterPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CloneCenterPolicyResponse
@@ -2145,6 +2149,8 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CloneCenterPolicyRequest,
     ) -> ecd_20200930_models.CloneCenterPolicyResponse:
         """
+        @summary Clones a policy based on an existing global policy.
+        
         @param request: CloneCenterPolicyRequest
         @return: CloneCenterPolicyResponse
         """
@@ -2156,6 +2162,8 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CloneCenterPolicyRequest,
     ) -> ecd_20200930_models.CloneCenterPolicyResponse:
         """
+        @summary Clones a policy based on an existing global policy.
+        
         @param request: CloneCenterPolicyRequest
         @return: CloneCenterPolicyResponse
         """
@@ -9544,7 +9552,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeCenterPolicyListResponse:
         """
-        @summary 查询中心化策略
+        @summary Queries center policies.
         
         @param request: DescribeCenterPolicyListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9589,7 +9597,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeCenterPolicyListResponse:
         """
-        @summary 查询中心化策略
+        @summary Queries center policies.
         
         @param request: DescribeCenterPolicyListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9633,7 +9641,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeCenterPolicyListRequest,
     ) -> ecd_20200930_models.DescribeCenterPolicyListResponse:
         """
-        @summary 查询中心化策略
+        @summary Queries center policies.
         
         @param request: DescribeCenterPolicyListRequest
         @return: DescribeCenterPolicyListResponse
@@ -9646,7 +9654,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeCenterPolicyListRequest,
     ) -> ecd_20200930_models.DescribeCenterPolicyListResponse:
         """
-        @summary 查询中心化策略
+        @summary Queries center policies.
         
         @param request: DescribeCenterPolicyListRequest
         @return: DescribeCenterPolicyListResponse
@@ -14348,6 +14356,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeRecordingsResponse:
         """
+        @summary Queries the details of screen recording files.
+        
         @param request: DescribeRecordingsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeRecordingsResponse
@@ -14401,6 +14411,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeRecordingsResponse:
         """
+        @summary Queries the details of screen recording files.
+        
         @param request: DescribeRecordingsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeRecordingsResponse
@@ -14453,6 +14465,8 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeRecordingsRequest,
     ) -> ecd_20200930_models.DescribeRecordingsResponse:
         """
+        @summary Queries the details of screen recording files.
+        
         @param request: DescribeRecordingsRequest
         @return: DescribeRecordingsResponse
         """
@@ -14464,6 +14478,8 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeRecordingsRequest,
     ) -> ecd_20200930_models.DescribeRecordingsResponse:
         """
+        @summary Queries the details of screen recording files.
+        
         @param request: DescribeRecordingsRequest
         @return: DescribeRecordingsResponse
         """
@@ -16612,7 +16628,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DownloadCdsFileResponse:
         """
-        @summary CDS文件下载
+        @summary Obtains the download link of the target file.
         
         @param request: DownloadCdsFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16655,7 +16671,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DownloadCdsFileResponse:
         """
-        @summary CDS文件下载
+        @summary Obtains the download link of the target file.
         
         @param request: DownloadCdsFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16697,7 +16713,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DownloadCdsFileRequest,
     ) -> ecd_20200930_models.DownloadCdsFileResponse:
         """
-        @summary CDS文件下载
+        @summary Obtains the download link of the target file.
         
         @param request: DownloadCdsFileRequest
         @return: DownloadCdsFileResponse
@@ -16710,7 +16726,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DownloadCdsFileRequest,
     ) -> ecd_20200930_models.DownloadCdsFileResponse:
         """
-        @summary CDS文件下载
+        @summary Obtains the download link of the target file.
         
         @param request: DownloadCdsFileRequest
         @return: DownloadCdsFileResponse
@@ -18500,7 +18516,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ListOfficeSiteUsersResponse:
         """
-        @summary Queries information about Active Directory (AD) users after an enterprise AD office network (formerly workspace) interconnects to an AD domain.
+        @summary Queries information about Active Directory (AD) accounts after an enterprise AD office network (formerly workspace) interconnects to an AD domain.
         
         @param request: ListOfficeSiteUsersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18551,7 +18567,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ListOfficeSiteUsersResponse:
         """
-        @summary Queries information about Active Directory (AD) users after an enterprise AD office network (formerly workspace) interconnects to an AD domain.
+        @summary Queries information about Active Directory (AD) accounts after an enterprise AD office network (formerly workspace) interconnects to an AD domain.
         
         @param request: ListOfficeSiteUsersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18601,7 +18617,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ListOfficeSiteUsersRequest,
     ) -> ecd_20200930_models.ListOfficeSiteUsersResponse:
         """
-        @summary Queries information about Active Directory (AD) users after an enterprise AD office network (formerly workspace) interconnects to an AD domain.
+        @summary Queries information about Active Directory (AD) accounts after an enterprise AD office network (formerly workspace) interconnects to an AD domain.
         
         @param request: ListOfficeSiteUsersRequest
         @return: ListOfficeSiteUsersResponse
@@ -18614,7 +18630,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ListOfficeSiteUsersRequest,
     ) -> ecd_20200930_models.ListOfficeSiteUsersResponse:
         """
-        @summary Queries information about Active Directory (AD) users after an enterprise AD office network (formerly workspace) interconnects to an AD domain.
+        @summary Queries information about Active Directory (AD) accounts after an enterprise AD office network (formerly workspace) interconnects to an AD domain.
         
         @param request: ListOfficeSiteUsersRequest
         @return: ListOfficeSiteUsersResponse
@@ -20120,6 +20136,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyCenterPolicyResponse:
         """
+        @summary Modifies a center policy.
+        
         @param request: ModifyCenterPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyCenterPolicyResponse
@@ -20355,6 +20373,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyCenterPolicyResponse:
         """
+        @summary Modifies a center policy.
+        
         @param request: ModifyCenterPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyCenterPolicyResponse
@@ -20589,6 +20609,8 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyCenterPolicyRequest,
     ) -> ecd_20200930_models.ModifyCenterPolicyResponse:
         """
+        @summary Modifies a center policy.
+        
         @param request: ModifyCenterPolicyRequest
         @return: ModifyCenterPolicyResponse
         """
@@ -20600,6 +20622,8 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyCenterPolicyRequest,
     ) -> ecd_20200930_models.ModifyCenterPolicyResponse:
         """
+        @summary Modifies a center policy.
+        
         @param request: ModifyCenterPolicyRequest
         @return: ModifyCenterPolicyResponse
         """
@@ -24780,14 +24804,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.RebuildDesktopsResponse:
         """
-        @summary Recreates cloud computers.
+        @summary Rebuilds images for one or more cloud computers.
         
-        @description Take note of the following limits when you change an image:
-        You can select an image whose OS is different from the OS of the original image. The image change feature is not supported in the following regions: China (Hong Kong), Singapore, and Japan (Tokyo).
-        GPU images and non-GPU images cannot be exchanged. Graphic-based cloud computers can only use GPU-accelerated images. The other cloud computers can only use non-GPU-accelerated images.
-        After the image of a cloud computer is changed, the system uses the new image to initialize the system disk of the cloud computer. This has the following impacts:
-        Data in the system disk of the original cloud computer is cleared. Snapshots that are created based on the system disk of the original cloud computer become unavailable. The system automatically deletes the snapshots.
-        If the OS of the image is changed, the data in the data disk of the original cloud computer is cleared, and the snapshots that are created based on the data disk of the original cloud computer can no longer be used. The system automatically deletes the snapshots. If the OS of the image is not changed, the data in the data disk of the original cloud computer is retained, and the snapshots that are created based on the data disk of the original cloud computer can still be used.
+        @description Before you proceed, take note of the following limits:
+        You cannot convert a cloud computer\\"s operating system image from one type to another (e.g., Windows to Linux or vice versa) in China (Hong Kong) or overseas regions.
+        GPU and non-GPU images are not interchangeable, as graphic-based cloud computers can only use GPU-accelerated images, while other cloud computers are limited to non-GPU-accelerated images.
+        When a cloud computer’s image is updated, the system initializes its system disk by using the new image, resulting in the following effects:
+        All data on the original system disk is erased. Snapshots created from the original system disk become unavailable and are automatically deleted.
+        If the OS changes, data on the original data disk is cleared, and snapshots created from the original data disk become unavailable and are automatically deleted. If the OS remains the same, data on the original data disk is retained, and snapshots from the original data disk remain available.
         
         @param request: RebuildDesktopsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24832,14 +24856,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.RebuildDesktopsResponse:
         """
-        @summary Recreates cloud computers.
+        @summary Rebuilds images for one or more cloud computers.
         
-        @description Take note of the following limits when you change an image:
-        You can select an image whose OS is different from the OS of the original image. The image change feature is not supported in the following regions: China (Hong Kong), Singapore, and Japan (Tokyo).
-        GPU images and non-GPU images cannot be exchanged. Graphic-based cloud computers can only use GPU-accelerated images. The other cloud computers can only use non-GPU-accelerated images.
-        After the image of a cloud computer is changed, the system uses the new image to initialize the system disk of the cloud computer. This has the following impacts:
-        Data in the system disk of the original cloud computer is cleared. Snapshots that are created based on the system disk of the original cloud computer become unavailable. The system automatically deletes the snapshots.
-        If the OS of the image is changed, the data in the data disk of the original cloud computer is cleared, and the snapshots that are created based on the data disk of the original cloud computer can no longer be used. The system automatically deletes the snapshots. If the OS of the image is not changed, the data in the data disk of the original cloud computer is retained, and the snapshots that are created based on the data disk of the original cloud computer can still be used.
+        @description Before you proceed, take note of the following limits:
+        You cannot convert a cloud computer\\"s operating system image from one type to another (e.g., Windows to Linux or vice versa) in China (Hong Kong) or overseas regions.
+        GPU and non-GPU images are not interchangeable, as graphic-based cloud computers can only use GPU-accelerated images, while other cloud computers are limited to non-GPU-accelerated images.
+        When a cloud computer’s image is updated, the system initializes its system disk by using the new image, resulting in the following effects:
+        All data on the original system disk is erased. Snapshots created from the original system disk become unavailable and are automatically deleted.
+        If the OS changes, data on the original data disk is cleared, and snapshots created from the original data disk become unavailable and are automatically deleted. If the OS remains the same, data on the original data disk is retained, and snapshots from the original data disk remain available.
         
         @param request: RebuildDesktopsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24883,14 +24907,14 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.RebuildDesktopsRequest,
     ) -> ecd_20200930_models.RebuildDesktopsResponse:
         """
-        @summary Recreates cloud computers.
+        @summary Rebuilds images for one or more cloud computers.
         
-        @description Take note of the following limits when you change an image:
-        You can select an image whose OS is different from the OS of the original image. The image change feature is not supported in the following regions: China (Hong Kong), Singapore, and Japan (Tokyo).
-        GPU images and non-GPU images cannot be exchanged. Graphic-based cloud computers can only use GPU-accelerated images. The other cloud computers can only use non-GPU-accelerated images.
-        After the image of a cloud computer is changed, the system uses the new image to initialize the system disk of the cloud computer. This has the following impacts:
-        Data in the system disk of the original cloud computer is cleared. Snapshots that are created based on the system disk of the original cloud computer become unavailable. The system automatically deletes the snapshots.
-        If the OS of the image is changed, the data in the data disk of the original cloud computer is cleared, and the snapshots that are created based on the data disk of the original cloud computer can no longer be used. The system automatically deletes the snapshots. If the OS of the image is not changed, the data in the data disk of the original cloud computer is retained, and the snapshots that are created based on the data disk of the original cloud computer can still be used.
+        @description Before you proceed, take note of the following limits:
+        You cannot convert a cloud computer\\"s operating system image from one type to another (e.g., Windows to Linux or vice versa) in China (Hong Kong) or overseas regions.
+        GPU and non-GPU images are not interchangeable, as graphic-based cloud computers can only use GPU-accelerated images, while other cloud computers are limited to non-GPU-accelerated images.
+        When a cloud computer’s image is updated, the system initializes its system disk by using the new image, resulting in the following effects:
+        All data on the original system disk is erased. Snapshots created from the original system disk become unavailable and are automatically deleted.
+        If the OS changes, data on the original data disk is cleared, and snapshots created from the original data disk become unavailable and are automatically deleted. If the OS remains the same, data on the original data disk is retained, and snapshots from the original data disk remain available.
         
         @param request: RebuildDesktopsRequest
         @return: RebuildDesktopsResponse
@@ -24903,14 +24927,14 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.RebuildDesktopsRequest,
     ) -> ecd_20200930_models.RebuildDesktopsResponse:
         """
-        @summary Recreates cloud computers.
+        @summary Rebuilds images for one or more cloud computers.
         
-        @description Take note of the following limits when you change an image:
-        You can select an image whose OS is different from the OS of the original image. The image change feature is not supported in the following regions: China (Hong Kong), Singapore, and Japan (Tokyo).
-        GPU images and non-GPU images cannot be exchanged. Graphic-based cloud computers can only use GPU-accelerated images. The other cloud computers can only use non-GPU-accelerated images.
-        After the image of a cloud computer is changed, the system uses the new image to initialize the system disk of the cloud computer. This has the following impacts:
-        Data in the system disk of the original cloud computer is cleared. Snapshots that are created based on the system disk of the original cloud computer become unavailable. The system automatically deletes the snapshots.
-        If the OS of the image is changed, the data in the data disk of the original cloud computer is cleared, and the snapshots that are created based on the data disk of the original cloud computer can no longer be used. The system automatically deletes the snapshots. If the OS of the image is not changed, the data in the data disk of the original cloud computer is retained, and the snapshots that are created based on the data disk of the original cloud computer can still be used.
+        @description Before you proceed, take note of the following limits:
+        You cannot convert a cloud computer\\"s operating system image from one type to another (e.g., Windows to Linux or vice versa) in China (Hong Kong) or overseas regions.
+        GPU and non-GPU images are not interchangeable, as graphic-based cloud computers can only use GPU-accelerated images, while other cloud computers are limited to non-GPU-accelerated images.
+        When a cloud computer’s image is updated, the system initializes its system disk by using the new image, resulting in the following effects:
+        All data on the original system disk is erased. Snapshots created from the original system disk become unavailable and are automatically deleted.
+        If the OS changes, data on the original data disk is cleared, and snapshots created from the original data disk become unavailable and are automatically deleted. If the OS remains the same, data on the original data disk is retained, and snapshots from the original data disk remain available.
         
         @param request: RebuildDesktopsRequest
         @return: RebuildDesktopsResponse

@@ -1,3 +1,6 @@
+2025-04-25 Version: 4.7.5
+- Generated python 2020-09-30 for ecd.
+
 2025-04-19 Version: 4.7.4
 - Update API DescribeClientEvents: add request parameters FillHardwareInfo.
 - Update API DescribeClientEvents: add request parameters Language.

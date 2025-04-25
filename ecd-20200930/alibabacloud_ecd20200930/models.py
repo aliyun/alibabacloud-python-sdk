@@ -3203,9 +3203,11 @@ class CloneCenterPolicyRequest(TeaModel):
         region_id: str = None,
         resource_type: str = None,
     ):
-        # The business type. Valid values:
+        # The business type.
         # 
-        # *   1: public cloud.
+        # Valid values:
+        # 
+        # *   1: public cloud
         # *   8: commercial edition.
         # 
         # This parameter is required.
@@ -3218,14 +3220,16 @@ class CloneCenterPolicyRequest(TeaModel):
         # 
         # This parameter is required.
         self.policy_group_id = policy_group_id
-        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+        # The region ID. Set the value to cn-shanghai.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource type. Valid values:
+        # The resource type.
         # 
-        # *   desktop: cloud computers.
+        # Valid values:
+        # 
         # *   app: cloud applications.
+        # *   desktop: cloud computers.
         # 
         # This parameter is required.
         self.resource_type = resource_type
@@ -6266,7 +6270,9 @@ class CreateCenterPolicyRequestAuthorizeAccessPolicyRule(TeaModel):
         cidr_ip: str = None,
         description: str = None,
     ):
+        # The client CIDR block from which end users can connect to cloud computers. Specify an IPv4 CIDR block.
         self.cidr_ip = cidr_ip
+        # The description of the client IP address whitelist.
         self.description = description
 
     def validate(self):
@@ -6304,12 +6310,46 @@ class CreateCenterPolicyRequestAuthorizeSecurityPolicyRule(TeaModel):
         priority: str = None,
         type: str = None,
     ):
+        # The object of the security group rule. Specify an IPv4 CIDR block.
         self.cidr_ip = cidr_ip
+        # The description of the security group rule.
         self.description = description
+        # The protocol type of the security group rule.
+        # 
+        # Valid values:
+        # 
+        # *   TCP: the Transmission Control Protocol (TCP) protocol.
+        # *   UDP: the User Datagram Protocol (UDP) protocol.
+        # *   ALL: any type of protocol.
+        # *   GRE: the Generic Routing Encapsulation (GRE) protocol.
+        # *   ICMP: the Internet Control Message Protocol (ICMP) for (IPv4).
         self.ip_protocol = ip_protocol
+        # The authorization policy of the security group rule.
+        # 
+        # Valid values:
+        # 
+        # *   drop: denies all access requests. If no \\"\\"access denied\\"\\" messages are returned, the requests either timed out or failed.
+        # *   accept (default): accepts all requests.
         self.policy = policy
+        # The port range of the security group rule. The value range of this parameter varies based on the value of IpProtocol.
+        # 
+        # *   If IpProtocol is set to TCP or UDP, the port range is 1 to 65535. Separate the start port number and the end port number with a forward slash (/). Example: 1/200.
+        # *   If IpProtocol is set to ICMP, set the value to -1/-1.
+        # *   If IpProtocol is set to GRE, set the value to -1/-1.
+        # *   If IpProtocol is set to ALL, set the value to -1/-1.
+        # 
+        # For more information about the common ports, see [Common ports](https://help.aliyun.com/document_detail/40724.html).
         self.port_range = port_range
+        # The priority of the security group rule. A smaller value specifies a higher priority.\\
+        # Valid values: 1 to 60.\\
+        # Default value: 1.
         self.priority = priority
+        # The direction of the security group rule.
+        # 
+        # Valid values:
+        # 
+        # *   outflow: outbound.
+        # *   inflow: inbound.
         self.type = type
 
     def validate(self):
@@ -6362,7 +6402,24 @@ class CreateCenterPolicyRequestClientType(TeaModel):
         client_type: str = None,
         status: str = None,
     ):
+        # The type of the Alibaba Cloud Workspace client that end users can use to connect to cloud computers.
+        # 
+        # Valid values:
+        # 
+        # *   html5: the web client.
+        # *   android: the Android client.
+        # *   ios: the iOS client.
+        # *   windows: the Windows client.
+        # *   macos: the macOS client.
         self.client_type = client_type
+        # Specifies whether end users can use the specified type of Alibaba Cloud Workspace client to connect to cloud computers.
+        # 
+        # >  If you don\\"t specify `ClientType`, any client can be used to connect to cloud computers.
+        # 
+        # Valid values:
+        # 
+        # *   off: End users cannot use the specified type of Alibaba Cloud Workspace client to connect to cloud computers.
+        # *   on: End users can use the specified type of Alibaba Cloud Workspace client to connect to cloud computers.
         self.status = status
 
     def validate(self):
@@ -6395,7 +6452,23 @@ class CreateCenterPolicyRequestDeviceRedirects(TeaModel):
         device_type: str = None,
         redirect_type: str = None,
     ):
+        # The peripheral type.
+        # 
+        # Valid values:
+        # 
+        # *   printer
+        # *   scanner
+        # *   serialport
+        # *   camera
+        # *   adb
         self.device_type = device_type
+        # The redirection type.
+        # 
+        # Valid values:
+        # 
+        # *   deviceRedirect: enables device redirection.
+        # *   usbRedirect: enables USB redirection.
+        # *   off: disables any type of redirection.
         self.redirect_type = redirect_type
 
     def validate(self):
@@ -6432,11 +6505,35 @@ class CreateCenterPolicyRequestDeviceRules(TeaModel):
         opt_command: str = None,
         redirect_type: str = None,
     ):
+        # The device name.
         self.device_name = device_name
+        # The product ID (PID).
         self.device_pid = device_pid
+        # The peripheral type.
+        # 
+        # Valid values:
+        # 
+        # *   usbKey: U keys.
+        # *   other: other peripheral devices.
+        # *   graphicsTablet: graphics tablets.
+        # *   cardReader: card readers.
+        # *   printer: printers.
+        # *   scanner: scanners.
+        # *   storage: storage devices.
+        # *   camera: cameras.
+        # *   networkInterfaceCard: NIC devices.
         self.device_type = device_type
+        # The vendor ID (VID). For more information, see [Valid USB VIDs](https://www.usb.org/sites/default/files/vendor_ids032322.pdf_1.pdf).
         self.device_vid = device_vid
+        # The link optimization command.
         self.opt_command = opt_command
+        # The redirection type.
+        # 
+        # Valid values:
+        # 
+        # *   deviceRedirect: enables device redirection.
+        # *   usbRedirect: enables USB redirection.
+        # *   off: disables any type of redirection.
         self.redirect_type = redirect_type
 
     def validate(self):
@@ -6486,8 +6583,16 @@ class CreateCenterPolicyRequestDomainResolveRule(TeaModel):
         domain: str = None,
         policy: str = None,
     ):
+        # The policy description.
         self.description = description
+        # The domain name.
         self.domain = domain
+        # Specifies whether to allow the domain resolution policy to take effect.
+        # 
+        # Valid values:
+        # 
+        # *   allow
+        # *   block
         self.policy = policy
 
     def validate(self):
@@ -6525,8 +6630,16 @@ class CreateCenterPolicyRequestNetRedirectRule(TeaModel):
         policy: str = None,
         rule_type: str = None,
     ):
+        # The domain name.
         self.domain = domain
+        # The redirection policy.
         self.policy = policy
+        # The rule type.
+        # 
+        # Valid values:
+        # 
+        # *   prc: process.
+        # *   domain: domain name.
         self.rule_type = rule_type
 
     def validate(self):
@@ -6566,10 +6679,24 @@ class CreateCenterPolicyRequestUsbSupplyRedirectRule(TeaModel):
         usb_rule_type: str = None,
         vendor_id: str = None,
     ):
+        # The rule description.
         self.description = description
+        # The product ID (PID).
         self.product_id = product_id
+        # Specifies whether to allow USB redirection.
+        # 
+        # Valid values:
+        # 
+        # *   1: allows USB redirection.
+        # *   2: forbids USB redirection.
         self.usb_redirect_type = usb_redirect_type
+        # The type of the USB redirection rule.
+        # 
+        # Valid values:
+        # 
+        # *   2: enables USB redirection based on products.
         self.usb_rule_type = usb_rule_type
+        # The vendor ID (VID). For more information, see [Valid USB Vendor IDs (VIDs)](https://www.usb.org/sites/default/files/vendor_ids032322.pdf_1.pdf).
         self.vendor_id = vendor_id
 
     def validate(self):
@@ -6711,108 +6838,488 @@ class CreateCenterPolicyRequest(TeaModel):
         wuying_keeper: str = None,
         wy_assistant: str = None,
     ):
+        # Specifies whether to grant the admin permissions to end users.
+        # 
+        # >  This parameter is in private preview and only available to specific users.
+        # 
+        # Valid values:
+        # 
+        # *   allow: forcibly grants admin permissions.
+        # *   deny: forcibly rejects granting admin permissions.
+        # *   inherited: inherits the admin permissions from the user dimension.
         self.admin_access = admin_access
+        # The anti-screenshot policy.
+        # 
+        # Valid values:
+        # 
+        # *   off (default): disables anti-screenshot.
+        # *   on: enables anti-screenshot.
         self.app_content_protection = app_content_protection
+        # The client IP address whitelists that you want to add. Once an IP address whitelist is configured, end users can only access cloud computers from the IP addresses listed in it.
         self.authorize_access_policy_rule = authorize_access_policy_rule
+        # The security group rule.
         self.authorize_security_policy_rule = authorize_security_policy_rule
+        # The business type.
+        # 
+        # Valid values:
+        # 
+        # *   1: public cloud.
+        # *   8: commercial edition.
+        # 
         # This parameter is required.
         self.business_type = business_type
+        # The on-premises camera redirection policy. This parameter only applies if DeviceRedirects does not include an on-premises camera redirection policy.
+        # 
+        # Valid values:
+        # 
+        # *   deviceRedirect: enables device redirection.
+        # *   off: disables device redirection.
         self.camera_redirect = camera_redirect
+        # The types of Alibaba Cloud Workspace clients that end users can use to connect to cloud computers.
         self.client_type = client_type
+        # The read/write permissions on the clipboard.
+        # 
+        # Valid values:
+        # 
+        # *   read: specifies one-way transfer You can copy files only from on-premises devices to cloud computers.
+        # *   readwrite: specifies two-way transfer. You can copy files between on-premises devices and cloud computers.
+        # *   write: specifies one-way transfer. You can only copy files from cloud computers to on-premises devices.
+        # *   off (default): disables all transfers, both one-way and two-way. Files cannot be copied directly between on-premises devices and cloud computers.
         self.clipboard = clipboard
+        # Specifies whether to enable color enhancement for design and 3D applications.
+        # 
+        # Valid values:
+        # 
+        # *   off: doesn\\"t enable color enhancement for design and 3D applications.
+        # *   on: enables color enhancement for design and 3D applications.
         self.color_enhancement = color_enhancement
+        # The CPU underclocking duration. Valid values: 30 to 120. Unit: seconds.
         self.cpu_down_grade_duration = cpu_down_grade_duration
+        # The CPU processors.
         self.cpu_processors = cpu_processors
+        # The CPU spike protection policy.
+        # 
+        # Valid values:
+        # 
+        # *   off: disables CPU spike protection.
+        # *   on: enables CPU spike protection.
         self.cpu_protected_mode = cpu_protected_mode
+        # The overall CPU usage. Valid values: 70 to 90. Unit: percentage (%).
         self.cpu_rate_limit = cpu_rate_limit
+        # The overall CPU sampling duration. Valid values: 10 to 60. Unit: seconds.
         self.cpu_sample_duration = cpu_sample_duration
+        # The single-CPU usage. Valid values: 70 to 100. Unit: %.
         self.cpu_single_rate_limit = cpu_single_rate_limit
+        # Specifies whether to display the peripheral connection prompt.
         self.device_connect_hint = device_connect_hint
+        # The device redirection rules.
         self.device_redirects = device_redirects
+        # The custom peripheral rules.
         self.device_rules = device_rules
+        # Specifies whether to retain the session upon disconnection.
+        # 
+        # >  This parameter applies only to cloud application policies.
+        # 
+        # Valid values:
+        # 
+        # *   customTime: retains the session for a specified time period.
+        # *   persistent: retains the session permanently.
         self.disconnect_keep_session = disconnect_keep_session
+        # The retention period of the session after disconnection. Valid values: 30 to 7200. Unit: seconds.
+        # 
+        # >  This parameter applies only to cloud application policies.
         self.disconnect_keep_session_time = disconnect_keep_session_time
+        # The display mode.
+        # 
+        # Valid values:
+        # 
+        # *   clientCustom: suitable for user-defined scenarios.
+        # *   adminOffice: suitable for daily office scenarios.
+        # *   adminDesign: suitable for design and 3D application scenarios.
+        # *   adminCustom: suitable for admin-customized scenarios.
         self.display_mode = display_mode
+        # The domain resolution policies.
         self.domain_resolve_rule = domain_resolve_rule
+        # Specifies whether to enforce the domain resolution policy.
+        # 
+        # Valid values:
+        # 
+        # *   off: disables the domain resolution policy.
+        # *   on: enables the domain resolution policy.
         self.domain_resolve_rule_type = domain_resolve_rule_type
+        # Specifies whether to enforce session bandwidth limit.
+        # 
+        # Valid values:
+        # 
+        # *   off: doesn\\"t enforce session bandwidth limit.
+        # *   on: enforces session bandwidth limit.
         self.enable_session_rate_limiting = enable_session_rate_limiting
+        # Specifies whether to enable end users to request administrator help.
+        # 
+        # Valid values:
+        # 
+        # *   off: disables end users to request administrator help.
+        # *   on: enables end users to request administrator help.
         self.end_user_apply_admin_coordinate = end_user_apply_admin_coordinate
+        # Specifies whether end users in the same workspace can share cloud computers.
+        # 
+        # Valid values:
+        # 
+        # *   off: End users in the same workspace cannot share cloud computers.
+        # *   on: End users in the same workspace can share cloud computers
         self.end_user_group_coordinate = end_user_group_coordinate
+        # Specifies whether to enable file transfer.
         self.file_migrate = file_migrate
+        # Specifies whether to enable image quality control. This feature is highly recommended for professional design scenarios where computer performance and user experience are critical.
+        # 
+        # Valid values:
+        # 
+        # *   off: doesn\\"t enable image quality control.
+        # *   on: enables image quality control.
         self.gpu_acceleration = gpu_acceleration
+        # The file transfer policy on the web client.
+        # 
+        # Valid values:
+        # 
+        # *   all: File upload and download are supported.
+        # *   download: Only file download is supported.
+        # *   upload: Only file upload is supported.
+        # *   off (default): File upload and download are not supported.
         self.html_5file_transfer = html_5file_transfer
+        # The network communication protocol.
+        # 
+        # Valid values:
+        # 
+        # *   tcp: TCP is used when UDP/AST is restricted.
+        # *   rtc: AST is used for high-frequency audio and video streaming.
+        # *   auto: UTO enables automatic switch between AST and UDP modes based on desktop content.
+        # *   both: UDP is ideal for office and HD graphic design use.
         self.internet_communication_protocol = internet_communication_protocol
+        # The read/write permissions on the on-premises drive.
+        # 
+        # Valid values:
+        # 
+        # *   read: read-only. Cloud computers support on-premises disk mapping, but only for reading (copying) files—not modifying them.
+        # *   readwrite: read and write. Cloud computers support on-premises disk mapping, allowing you to read (copy) and write (modify) on-premises files.
+        # *   off (default): none. Cloud computers don\\"t support on-premises disk mapping.
         self.local_drive = local_drive
+        # The maximum duration to retry reconnecting to cloud computers after an unexpected disconnection (non-human causes). Valid values: 30 to 7200. Unit: seconds.
         self.max_reconnect_time = max_reconnect_time
+        # The memory underclocking duration per process. Valid values: 30 to 120. Unit: seconds.
         self.memory_down_grade_duration = memory_down_grade_duration
+        # The memory processors.
         self.memory_processors = memory_processors
+        # The memory spike protection policy.
+        # 
+        # Valid values:
+        # 
+        # *   off: disables memory spike protection.
+        # *   on: enables memory spike protection.
         self.memory_protected_mode = memory_protected_mode
+        # The overall memory usage. Valid values: 70 to 90. Unit: %.
         self.memory_rate_limit = memory_rate_limit
+        # The overall memory sampling duration. Valid values: 30 to 60. Unit: seconds.
         self.memory_sample_duration = memory_sample_duration
+        # The memory usage per process. Valid values: 30 to 60. Unit: %.
         self.memory_single_rate_limit = memory_single_rate_limit
+        # Specifies whether to display the Restart button in the DesktopAssistant menu when end users connect to cloud computers from mobile clients (Android clients and iOS clients).
+        # 
+        # >  This feature applies to only mobile clients of version 7.4.0 or later.
+        # 
+        # Valid values:
+        # 
+        # *   off: doesn\\"t display the Restart button in the DesktopAssistant menu.
+        # *   on: displays the Restart button in the DesktopAssistant menu.
         self.mobile_restart = mobile_restart
+        # Specifies whether to display the Stop button in the DesktopAssistant menu when end users connect to cloud computers from mobile clients (Android clients and iOS clients).
+        # 
+        # >  This feature applies to only mobile clients of version 7.4.0 or later.
+        # 
+        # Valid values:
+        # 
+        # *   off: doesn\\"t display the Stop button in the DesktopAssistant menu.
+        # *   on: displays the Stop button in the DesktopAssistant menu.
         self.mobile_shutdown = mobile_shutdown
+        # The policy name.
+        # 
         # This parameter is required.
         self.name = name
+        # The network redirection policy.
+        # 
+        # >  This parameter is in private preview and only available to specific users.
+        # 
+        # Valid values:
+        # 
+        # *   all: enables network redirection globally.
+        # *   off (default): disables network redirection.
+        # *   on: enables the whitelist mode.
         self.net_redirect = net_redirect
+        # The network redirection policies.
+        # 
+        # >  This parameter is in private preview and only available to specific users.
         self.net_redirect_rule = net_redirect_rule
+        # Specifies whether to enforce a disconnection upon inactivity.
+        # 
+        # >  This parameter applies only to cloud application policies.
+        # 
+        # Valid values:
+        # 
+        # *   off: doesn\\"t enforce a disconnection upon inactivity.
+        # *   on: enforces a disconnection upon inactivity.
         self.no_operation_disconnect = no_operation_disconnect
+        # The duration of disconnection after inactivity. Valid values: 120 to 7200. Unit: seconds.
+        # 
+        # >  This parameter applies only to cloud application policies.
         self.no_operation_disconnect_time = no_operation_disconnect_time
+        # The printer redirection policy. This parameter only applies if DeviceRedirects does not include a printer redirection policy.
+        # 
+        # Valid values:
+        # 
+        # *   deviceRedirect (default):enables device redirection.
+        # *   usbRedirect: enables USB redirection.
+        # *   off: disables any type of redirection.
         self.printer_redirect = printer_redirect
+        # Specifies whether to enable image quality enhancement for design and 3D applications.
+        # 
+        # Valid values:
+        # 
+        # *   off: doesn\\"t enable image quality enhancement for design and 3D applications.
+        # *   on: enables image quality enhancement for design and 3D applications.
         self.quality_enhancement = quality_enhancement
+        # The duration of screen recording after the specified event is detected. Unit: minutes. Valid values: 10 to 60.
         self.record_event_duration = record_event_duration
+        # The absolute paths to screen recording files.
         self.record_event_file_paths = record_event_file_paths
+        # The absolute paths to screen recording registries.
         self.record_event_registers = record_event_registers
+        # The event that triggers screen recording.
         self.record_events = record_events
+        # The screen recording policy.
+        # 
+        # Valid values:
+        # 
+        # *   period: Screen recording occurs at set intervals.
+        # *   session: Screen recording is limited to sessions only.
+        # *   off: Screen recording is disabled.
+        # *   alltime: Screen recording is always enabled.
         self.recording = recording
+        # Specifies whether to record audio files generated on cloud computers.
+        # 
+        # Valid values:
+        # 
+        # *   off: doesn\\"t record audio files generated on cloud computers.
+        # *   on: records audio files generated on cloud computers.
         self.recording_audio = recording_audio
+        # The frame rate of screen recording. Screen recordings are split based on the specified duration and uploaded to Object Storage Service (OSS) buckets. If a file reaches 300 MB, the system prioritizes rolling updates for that file. Valid values: 10 to 60
         self.recording_duration = recording_duration
+        # The screen recording\\"s end time in HH:MM:SS format. The value is meaningful only if `Recording` is set to `PERIOD`.
         self.recording_end_time = recording_end_time
+        # The retention period of the screen recording file. Valid values: 1 to 180. Unit: days.
         self.recording_expires = recording_expires
+        # The frame rate of screen recording. Unit: fps.
         self.recording_fps = recording_fps
+        # The screen recording\\"s start time in HH:MM:SS format. The value is meaningful only if `Recording` is set to `PERIOD`.
         self.recording_start_time = recording_start_time
+        # Specifies whether to notify end users when screen recording is enabled.
+        # 
+        # Valid values:
+        # 
+        # *   off: doesn\\"t notify end users when screen recording is enabled.
+        # *   on: notifies end users when screen recording is enabled.
         self.recording_user_notify = recording_user_notify
+        # The notification sent to end users when screen recording is enabled.
         self.recording_user_notify_message = recording_user_notify_message
+        # The region ID. Set the value to cn-shanghai.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The keyboard and mouse control permissions during remote assistance.
+        # 
+        # Valid values:
+        # 
+        # *   optionalControl: By default, keyboard and mouse control is disabled during remote assistance. You can request permissions as needed.
+        # *   fullControl: Keyboard and mouse control is enabled during remote assistance.
+        # *   disableControl: Keyboard and mouse control is disabled during remote assistance.
         self.remote_coordinate = remote_coordinate
+        # The computer reset setting.
         self.reset_desktop = reset_desktop
+        # The height of the resolution. Unit: pixel. Valid values for cloud applications: 500 to 50000. Valid values for cloud computers: 480 to 4096.
         self.resolution_height = resolution_height
+        # The resolution type.
+        # 
+        # Valid values:
+        # 
+        # *   adaptive: adaptive resolution.
+        # *   customer: fixed resolution.
         self.resolution_model = resolution_model
+        # The width of the resolution. Unit: pixel. Valid values for cloud applications: 500 to 50000. Valid values for cloud computers: 480 to 4096.
         self.resolution_width = resolution_width
+        # The resource type.
+        # 
+        # Valid values:
+        # 
+        # *   app: cloud applications.
+        # *   Desktop: cloud computers.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The effective scope of the policy.
+        # 
+        # Valid values:
+        # 
+        # *   IP: The policy applies to specific IP addresses.
+        # *   GLOBAL: The policy applies globally.
         self.scope = scope
+        # The effective scopes. This parameter is required when `Scope` is set to `IP`. If `Scope` is set to `IP`, this parameter doesn\\"t take effect.
         self.scope_value = scope_value
+        # The bandwidth peak of the session. Valid values: 2000 to 100000.
         self.session_max_rate_kbps = session_max_rate_kbps
+        # Specifies whether to enable smoothness enhancement for daily office use.
+        # 
+        # Valid values:
+        # 
+        # *   off: doesn\\"t enable smoothness enhancement for daily office use.
+        # *   on: enables smoothness enhancement for daily office use.
         self.smooth_enhancement = smooth_enhancement
+        # Specifies whether to display the metric status entry in the DesktopAssistant menu.
+        # 
+        # Valid values:
+        # 
+        # *   off: doesn\\"t display the metric status entry in the DesktopAssistant menu.
+        # *   on: displays the metric status entry in the DesktopAssistant menu.
         self.status_monitor = status_monitor
+        # The streaming mode.
+        # 
+        # Valid values:
+        # 
+        # *   intelligent
+        # *   smooth
         self.streaming_mode = streaming_mode
+        # The target frame rate. Valid values: 10 to 60.
         self.target_fps = target_fps
+        # Specifies whether to display the application taskbar.
+        # 
+        # >  This parameter applies only to cloud application policies.
+        # 
+        # Valid values:
+        # 
+        # *   off: doesn\\"t display the application taskbar.
+        # *   on: displays the application taskbar.
         self.taskbar = taskbar
+        # Specifies whether to enable USB redirection.
+        # 
+        # Valid values:
+        # 
+        # *   off (default): doesn\\"t enable USB redirection.
+        # *   on: enables USB redirection.
         self.usb_redirect = usb_redirect
+        # The USB redirection rules.
         self.usb_supply_redirect_rule = usb_supply_redirect_rule
+        # The average bitrate for video encoding. Valid values: 1000 to 50000.
         self.video_enc_avg_kbps = video_enc_avg_kbps
+        # The maximum QP for video files. Higher QP values result in lower video quality. Valid values: 0 to 51.
         self.video_enc_max_qp = video_enc_max_qp
+        # The minimum quantizer parameter (QP) for video files. A lower QP means better video quality. Valid values: 0 to 51.
         self.video_enc_min_qp = video_enc_min_qp
+        # The peak bitrate for video encoding. Valid values: 1000 to 50000.
         self.video_enc_peak_kbps = video_enc_peak_kbps
+        # The video encoding policy.
+        # 
+        # Valid values:
+        # 
+        # *   qualityFirst: prioritizes image quality.
+        # *   bandwidthFirst: prioritizes bandwidth.
         self.video_enc_policy = video_enc_policy
+        # The multimedia redirection policy.
+        # 
+        # Valid values:
+        # 
+        # *   off: disables multimedia redirection.
+        # *   on: enables multimedia redirection.
         self.video_redirect = video_redirect
+        # The image display quality.
+        # 
+        # Valid values:
+        # 
+        # *   high: high-definition (HD).
+        # *   low: smoothness.
+        # *   lossless: no quality loss.
+        # *   medium (default): scenario-specific adaptation.
         self.visual_quality = visual_quality
+        # The watermark policy.
+        # 
+        # Valid values:
+        # 
+        # *   blind: displays invisible watermarks.
+        # *   off (default): displays no watermark.
+        # *   on: displays visible watermarks.
         self.watermark = watermark
+        # Specifies whether to enable anti-screen capture for invisible watermarks.
+        # 
+        # Valid values:
+        # 
+        # *   off: disables anti-screen capture for invisible watermarks.
+        # *   on: enables anti-screen capture for invisible watermarks.
         self.watermark_anti_cam = watermark_anti_cam
+        # The font color of the watermark. Valid values: 0 to 16777215.
         self.watermark_color = watermark_color
+        # The number of watermark columns. Valid values: 3 to 10.
         self.watermark_column_amount = watermark_column_amount
+        # If you set `WatermarkType` to `custom`, you must also specify `WatermarkCustomText`.
         self.watermark_custom_text = watermark_custom_text
+        # The watermark rotation. Valid values: -10 to -30.
         self.watermark_degree = watermark_degree
+        # The font size of the watermark. Valid values: 10 to 20.
         self.watermark_font_size = watermark_font_size
+        # The font style of the watermark.
+        # 
+        # Valid values:
+        # 
+        # *   plain
+        # *   bold
         self.watermark_font_style = watermark_font_style
+        # The enhancement level for invisible watermarks.
+        # 
+        # Valid values:
+        # 
+        # *   high
+        # *   low
+        # *   medium
         self.watermark_power = watermark_power
+        # The number of watermark rows. Valid values: 3 to 10.
         self.watermark_row_amount = watermark_row_amount
+        # Specifies whether to enable security priority for invisible watermarks.
+        # 
+        # Valid values:
+        # 
+        # *   off: disables security priority for invisible watermarks.
+        # *   on: enables security priority for invisible watermarks.
         self.watermark_security = watermark_security
+        # The watermark opacity. A higher value makes the watermark more opaque. Valid values: 10 to 100.
         self.watermark_transparency_value = watermark_transparency_value
+        # The watermark type. You can specify up to three types. Separate multiple values with commas (,).
+        # 
+        # >  If you provide `custom` as the value for this parameter, you must configure `WatermarkCustomText` to specify custom text.
+        # 
+        # Valid values:
+        # 
+        # *   EndUserId: the username.
+        # *   Custom: the custom text.
+        # *   DesktopIp: the IP address of the cloud computer.
+        # *   ClientIp: the IP address of the client.
+        # *   HostName: the rightmost 15 digits of the cloud computer ID.
+        # *   ClientTime: the current time displayed on the cloud computer.
         self.watermark_type = watermark_type
+        # Specifies whether to enable Cloud Computer Manager.
         self.wuying_keeper = wuying_keeper
+        # Specifies whether to display the Xiaoying AI Assistant option in the DesktopAssistant menu when end users connect to cloud computers via desktop clients (Windows and macOS).
+        # 
+        # >  This feature applies to only desktop clients of version 7.7.0 or later.
+        # 
+        # Valid values:
+        # 
+        # *   off: doesn\\"t display the Xiaoying AI Assistant option in the DesktopAssistant menu.
+        # *   on: displays the Xiaoying AI Assistant option in the DesktopAssistant menu.
         self.wy_assistant = wy_assistant
 
     def validate(self):
@@ -7304,7 +7811,9 @@ class CreateCenterPolicyResponseBody(TeaModel):
         policy_group_id: str = None,
         request_id: str = None,
     ):
+        # The cloud computer policy ID.
         self.policy_group_id = policy_group_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9795,8 +10304,6 @@ class CreateDesktopsRequest(TeaModel):
         # The unit of the subscription duration.
         self.period_unit = period_unit
         # The ID of the policy.
-        # 
-        # This parameter is required.
         self.policy_group_id = policy_group_id
         # The ID of the sales promotion.
         self.promotion_id = promotion_id
@@ -10560,8 +11067,6 @@ class CreateDesktopsShrinkRequest(TeaModel):
         # The unit of the subscription duration.
         self.period_unit = period_unit
         # The ID of the policy.
-        # 
-        # This parameter is required.
         self.policy_group_id = policy_group_id
         # The ID of the sales promotion.
         self.promotion_id = promotion_id
@@ -17669,13 +18174,37 @@ class DescribeCenterPolicyListRequest(TeaModel):
         resource_type: str = None,
         scope: str = None,
     ):
+        # The business type.
+        # 
+        # Valid values:
+        # 
+        # *   1: public cloud.
+        # *   8: commercial edition.
+        # 
         # This parameter is required.
         self.business_type = business_type
+        # The page number.\\
+        # Default value: 1.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The IDs of the cloud computer policies.
         self.policy_group_id = policy_group_id
+        # The resource type.
+        # 
+        # Valid values:
+        # 
+        # *   app: cloud applications.
+        # *   desktop: cloud computers.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The effective scope of the cloud computer policy.
+        # 
+        # Valid values:
+        # 
+        # *   IP: The policy applies to specific IP addresses.
+        # *   GLOBAL: The policy applies globally.
         self.scope = scope
 
     def validate(self):
@@ -17724,7 +18253,9 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeAccessPol
         cidr_ip: str = None,
         description: str = None,
     ):
+        # The client CIDR block from which end users can connect to cloud computers. The value is an IPv4 CIDR block.
         self.cidr_ip = cidr_ip
+        # The remarks on the client CIDR block.
         self.description = description
 
     def validate(self):
@@ -17762,12 +18293,19 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeSecurityP
         priority: str = None,
         type: str = None,
     ):
+        # The object to which the security group rule applies. The value is an IPv4 CIDR block.
         self.cidr_ip = cidr_ip
+        # The description of the security group rule.
         self.description = description
+        # The protocol type of the security group rule.
         self.ip_protocol = ip_protocol
+        # The authorization policy of the security group rule.
         self.policy = policy
+        # The port range of the security group rule.
         self.port_range = port_range
+        # The priority of the security group rule. A smaller value indicates a higher priority.
         self.priority = priority
+        # The direction of the security group rule.
         self.type = type
 
     def validate(self):
@@ -17820,7 +18358,9 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroupsClientTypes(TeaMod
         client_type: str = None,
         status: str = None,
     ):
+        # The client type.
         self.client_type = client_type
+        # Indicates whether a specific client type can connect to cloud computers.
         self.status = status
 
     def validate(self):
@@ -17853,7 +18393,9 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRedirects(Te
         device_type: str = None,
         redirect_type: str = None,
     ):
+        # The peripheral type.
         self.device_type = device_type
+        # The redirection type.
         self.redirect_type = redirect_type
 
     def validate(self):
@@ -17890,11 +18432,17 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRules(TeaMod
         opt_command: str = None,
         redirect_type: str = None,
     ):
+        # The device name.
         self.device_name = device_name
+        # The product ID (PID).
         self.device_pid = device_pid
+        # The peripheral type.
         self.device_type = device_type
+        # The vendor ID (VID). For more information, see [Valid USB VIDs](https://www.usb.org/sites/default/files/vendor_ids032322.pdf_1.pdf).
         self.device_vid = device_vid
+        # The link optimization command.
         self.opt_command = opt_command
+        # The redirection type.
         self.redirect_type = redirect_type
 
     def validate(self):
@@ -17944,8 +18492,11 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDomainResolveRule(
         domain: str = None,
         policy: str = None,
     ):
+        # The policy description.
         self.description = description
+        # The domain name.
         self.domain = domain
+        # The resolution policy.
         self.policy = policy
 
     def validate(self):
@@ -17983,8 +18534,11 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroupsNetRedirectRule(Te
         policy: str = None,
         rule_type: str = None,
     ):
+        # The domain name.
         self.domain = domain
+        # The redirection policy.
         self.policy = policy
+        # The rule type.
         self.rule_type = rule_type
 
     def validate(self):
@@ -18024,10 +18578,15 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroupsUsbSupplyRedirectR
         usb_rule_type: int = None,
         vendor_id: str = None,
     ):
+        # The rule description.
         self.description = description
+        # The product ID (PID).
         self.product_id = product_id
+        # Indicates whether USB redirection is allowed.
         self.usb_redirect_type = usb_redirect_type
+        # The type of the USB redirection rule.
         self.usb_rule_type = usb_rule_type
+        # The vendor ID (VID). For more information, see [Valid USB Vendor IDs (VIDs)](https://www.usb.org/sites/default/files/vendor_ids032322.pdf_1.pdf).
         self.vendor_id = vendor_id
 
     def validate(self):
@@ -18168,103 +18727,221 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(TeaModel):
         watermark_type: str = None,
         wy_assistant: str = None,
     ):
+        # Indicates whether the admin permissions are granted to end users.
+        # 
+        # >  This parameter is in private preview and only available to specific users.
         self.admin_access = admin_access
+        # Indicates whether anti-screenshot is enabled.
         self.app_content_protection = app_content_protection
+        # The client IP address whitelists.
         self.authorize_access_policy_rules = authorize_access_policy_rules
+        # The security group rules.
         self.authorize_security_policy_rules = authorize_security_policy_rules
+        # Indicates whether on-premises webcam redirection is enabled.
         self.camera_redirect = camera_redirect
+        # The logon method control rules.
         self.client_types = client_types
+        # The read/write permissions on the clipboard.
         self.clipboard = clipboard
+        # Indicates whether color enhancement is enabled for design and 3D applications.
         self.color_enhancement = color_enhancement
+        # The CPU underclocking duration. Valid values: 30 to 120. Unit: seconds.
         self.cpu_down_grade_duration = cpu_down_grade_duration
+        # The CPU processors.
         self.cpu_processors = cpu_processors
+        # The CPU spike protection policy.
         self.cpu_protected_mode = cpu_protected_mode
+        # The overall CPU usage. Valid values: 70 to 90. Unit: percentage (%).
         self.cpu_rate_limit = cpu_rate_limit
+        # The overall CPU sampling duration. Valid values: 10 to 60. Unit: seconds.
         self.cpu_sample_duration = cpu_sample_duration
+        # The single-CPU usage. Valid values: 70 to 100. Unit: %.
         self.cpu_single_rate_limit = cpu_single_rate_limit
+        # The number of cloud computers that are associated with the policy.
         self.desktop_count = desktop_count
+        # The number of cloud computer shares that are associated with the policy.
         self.desktop_group_count = desktop_group_count
+        # The device redirection rules.
         self.device_redirects = device_redirects
+        # The custom peripheral rules.
         self.device_rules = device_rules
+        # Indicates whether the session is retained after disconnection.
+        # 
+        # >  This parameter applies only to cloud application policies.
         self.disconnect_keep_session = disconnect_keep_session
+        # The retention period of the session after disconnection. Unit: seconds.
+        # 
+        # >  This parameter applies only to cloud application policies.
         self.disconnect_keep_session_time = disconnect_keep_session_time
+        # The display mode.
         self.display_mode = display_mode
+        # The field where the domain resolution policy is applied.
         self.domain_register_value = domain_register_value
+        # The domain resolution policies.
         self.domain_resolve_rule = domain_resolve_rule
+        # Indicates whether domain name resolution is allowed.
         self.domain_resolve_rule_type = domain_resolve_rule_type
+        # Indicates whether end users are allowed to request administrator help.
         self.end_user_apply_admin_coordinate = end_user_apply_admin_coordinate
+        # Indicates whether end users in the same workspace can share cloud computers.
         self.end_user_group_coordinate = end_user_group_coordinate
+        # Indicates whether image quality control is enabled. For optimal computer performance and user experience in professional design scenarios, we recommend enabling this feature.
         self.gpu_acceleration = gpu_acceleration
+        # The web client access policy.
         self.html_5access = html_5access
+        # The file transfer policy of the HTML5 client.
         self.html_5file_transfer = html_5file_transfer
+        # The network communication protocol.
         self.internet_communication_protocol = internet_communication_protocol
+        # The read/write permissions on the on-premises drive.
         self.local_drive = local_drive
+        # The maximum duration to retry reconnecting to cloud computers after an unexpected disconnection (non-human causes). Valid values: 30 to 7200. Unit: seconds.
         self.max_reconnect_time = max_reconnect_time
+        # The memory underclocking duration per process. Valid values: 30 to 120. Unit: seconds.
         self.memory_down_grade_duration = memory_down_grade_duration
+        # The memory processors.
         self.memory_processors = memory_processors
+        # The memory spike protection policy.
         self.memory_protected_mode = memory_protected_mode
+        # The overall memory usage. Valid values: 70 to 90. Unit: %.
         self.memory_rate_limit = memory_rate_limit
+        # The overall memory sampling duration. Valid values: 30 to 60. Unit: seconds.
         self.memory_sample_duration = memory_sample_duration
+        # The memory usage per process. Valid values: 30 to 60. Unit: %.
         self.memory_single_rate_limit = memory_single_rate_limit
+        # Indicates whether the Restart button is displayed in the DesktopAssistant menu when end users connect to cloud computers from mobile clients (Android clients and iOS clients).
+        # 
+        # >  This feature applies to only mobile clients of version 7.4.0 or later.
         self.mobile_restart = mobile_restart
+        # Indicates whether the Stop button is displayed in the DesktopAssistant menu when end users connect to cloud computers from mobile clients (Android clients and iOS clients).
+        # 
+        # >  This feature applies to only mobile clients of version 7.4.0 or later.
         self.mobile_shutdown = mobile_shutdown
+        # The policy name.
         self.name = name
+        # The network redirection policy.
+        # 
+        # >  This parameter is in private preview and only available to specific users.
         self.net_redirect = net_redirect
+        # The network redirection policies.
+        # 
+        # >  This parameter is in private preview and only available to specific users.
         self.net_redirect_rule = net_redirect_rule
+        # Indicates whether a disconnection is enforced upon inactivity.
+        # 
+        # >  This parameter applies only to cloud application policies.
         self.no_operation_disconnect = no_operation_disconnect
+        # The duration of disconnection after inactivity. Unit: seconds.
+        # 
+        # >  This parameter applies only to cloud application policies.
         self.no_operation_disconnect_time = no_operation_disconnect_time
+        # The policy ID.
         self.policy_group_id = policy_group_id
+        # The policy type.
         self.policy_group_type = policy_group_type
+        # The status of the cloud computer policy.
         self.policy_status = policy_status
+        # The printer redirection policy.
         self.printer_redirection = printer_redirection
+        # Indicates whether image quality enhancement is enabled for design and 3D applications.
         self.quality_enhancement = quality_enhancement
+        # Indicates whether custom screen recording is enabled.
         self.record_content = record_content
+        # The duration for which custom screen recordings are kept before they expire. Default value: 30 days.
         self.record_content_expires = record_content_expires
+        # The duration of screen recording after the specified event is detected. Unit: minutes. Valid values: 10 to 60.
         self.record_event_duration = record_event_duration
+        # The absolute paths to screen recording files.
         self.record_event_file_paths = record_event_file_paths
+        # The absolute paths to screen recording registries.
         self.record_event_registers = record_event_registers
+        # Indicates whether screen recording is enabled.
         self.recording = recording
+        # Indicates whether audio files generated on cloud computers are recorded.
         self.recording_audio = recording_audio
+        # The length of the screen recording file. Unit: minutes. Screen recording files are split by the specified length and uploaded to OSS buckets. Once a file reaches 300 MB, the system prioritizes rolling updates for that file.
         self.recording_duration = recording_duration
+        # The end time of screen recording. The value is in the HH:MM:SS format. The value is meaningful only when you set Recording to period.
         self.recording_end_time = recording_end_time
+        # The retention period of the screen recording file. Valid values: 1 to 180. Unit: days.
         self.recording_expires = recording_expires
+        # The frame rate of screen recording. Unit: fps.
         self.recording_fps = recording_fps
+        # The start time of screen recording. The value is in the HH:MM:SS format. The value is meaningful only when you set Recording to period.
         self.recording_start_time = recording_start_time
+        # Indicates whether to notify end users when screen recording is enabled.
         self.recording_user_notify = recording_user_notify
+        # The notification sent to end users when screen recording is enabled.
         self.recording_user_notify_message = recording_user_notify_message
+        # The keyboard and mouse control permissions during remote assistance.
         self.remote_coordinate = remote_coordinate
+        # The height of the resolution. Unit: pixel.
         self.resolution_height = resolution_height
+        # The resolution type.
         self.resolution_model = resolution_model
+        # The width of the resolution. Unit: pixel.
         self.resolution_width = resolution_width
+        # The number of resource groups that are associated with the policy.
         self.resource_group_count = resource_group_count
+        # The effective scope of the policy.
         self.scope = scope
+        # The effective scopes specified by CIDR blocks.
         self.scope_value = scope_value
+        # Indicates whether smoothness enhancement is enabled for daily office use.
         self.smooth_enhancement = smooth_enhancement
+        # Indicates whether the metric status entry is displayed in the DesktopAssistant menu.
         self.status_monitor = status_monitor
+        # The streaming mode.
         self.streaming_mode = streaming_mode
+        # The target frame rate. Valid values: 10 to 60. Unit: fps.
         self.target_fps = target_fps
+        # Indicates whether the application taskbar is displayed.
+        # 
+        # >  This parameter applies only to cloud application policies.
         self.taskbar = taskbar
+        # The USB redirection policy.
         self.usb_redirect = usb_redirect
+        # The USB redirection rules.
         self.usb_supply_redirect_rule = usb_supply_redirect_rule
+        # The average bitrate for video encoding. Valid values: 1000 to 50000.
         self.video_enc_avg_kbps = video_enc_avg_kbps
+        # The maximum QP for video files. Higher QP values result in lower video quality. Valid values: 0 to 51.
         self.video_enc_max_qp = video_enc_max_qp
+        # The minimum quantizer parameter (QP) for video files. A lower QP means better video quality. Valid values: 0 to 51.
         self.video_enc_min_qp = video_enc_min_qp
+        # The peak bitrate for video encoding. Valid values: 1000 to 50000.
         self.video_enc_peak_kbps = video_enc_peak_kbps
+        # The video encoding policy.
         self.video_enc_policy = video_enc_policy
+        # Indicates whether multimedia redirection is enabled.
         self.video_redirect = video_redirect
+        # The image quality policy.
         self.visual_quality = visual_quality
+        # The watermark policy.
         self.watermark = watermark
+        # Indicates whether anti-screen capture is enabled for invisible watermarks.
         self.watermark_anti_cam = watermark_anti_cam
+        # The font color of the watermark. Valid values: 0 to 16777215.
         self.watermark_color = watermark_color
+        # If you set `WatermarkType` to `custom`, you must also specify `WatermarkCustomText`.
         self.watermark_custom_text = watermark_custom_text
+        # The watermark rotation. Valid values: -10 to -30.
         self.watermark_degree = watermark_degree
+        # The font size of the watermark. Valid values: 10 to 20.
         self.watermark_font_size = watermark_font_size
+        # The font style of the watermark.
         self.watermark_font_style = watermark_font_style
+        # The enhancement level for invisible watermarks.
         self.watermark_power = watermark_power
+        # The number of watermark rows.
         self.watermark_row_amount = watermark_row_amount
+        # Indicates whether security priority is enabled for invisible watermarks.
         self.watermark_security = watermark_security
+        # The watermark transparency. A higher value means the watermark is less transparent. Valid values: 10 to 100.
         self.watermark_transparency_value = watermark_transparency_value
+        # The watermark type.
         self.watermark_type = watermark_type
+        # Indicates whether the Xiaoying AI Assistant entry is displayed in the DesktopAssistant menu.
         self.wy_assistant = wy_assistant
 
     def validate(self):
@@ -18753,8 +19430,11 @@ class DescribeCenterPolicyListResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The cloud computer policies.
         self.describe_policy_groups = describe_policy_groups
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -19293,7 +19973,7 @@ class DescribeClientEventsResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The information about the events of an end user.
+        # The user events.
         self.events = events
         # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
@@ -25202,7 +25882,7 @@ class DescribeDesktopsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about the cloud computers.
+        # The cloud computers.
         self.desktops = desktops
         # The token that is used for the next query. If this parameter is left empty, all results are returned.
         self.next_token = next_token
@@ -26527,11 +27207,10 @@ class DescribeDirectoriesRequest(TeaModel):
         self.directory_status = directory_status
         # The directory type.
         # 
-        # Valid values:
+        # Valid value:
         # 
-        # *   SIMPLE: a directory of the convenience account type
-        # *   AD_CONNECTOR: an AD directory
-        # *   RAM: a RAM directory
+        # *   SIMPLE: the convenience directory.
+        # *   AD_CONNECTOR: the Active Directory (AD) directory.
         self.directory_type = directory_type
         # The number of entries to return on each page.
         # 
@@ -28193,11 +28872,11 @@ class DescribeGuestApplicationsRequest(TeaModel):
         # 
         # This parameter is required.
         self.desktop_id = desktop_id
-        # The ID of the end user.
+        # The user ID.
         # 
         # This parameter is required.
         self.end_user_id = end_user_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -28248,11 +28927,11 @@ class DescribeGuestApplicationsResponseBodyApplicationsProcessData(TeaModel):
         self.application_version = application_version
         # The CPU utilization (%).
         self.cpu_percent = cpu_percent
-        # The GPU utilization (%).
+        # The GPU usage (%).
         self.gpu_percent = gpu_percent
-        # The I/O read and write performance.
+        # The I/O read and write performance. Unit: byte/s.
         self.iospeed = iospeed
-        # The memory utilization (%).
+        # The memory usage (%).
         self.mem_percent = mem_percent
         # The PID.
         self.pid = pid
@@ -28332,17 +29011,22 @@ class DescribeGuestApplicationsResponseBodyApplications(TeaModel):
         self.gpu_percent = gpu_percent
         # The icon URL of the application.
         self.icon_url = icon_url
-        # The I/O read and write performance.
+        # The I/O read and write performance. Unit: byte/s.
         self.io_speed = io_speed
         # The memory utilization (%).
         self.mem_percent = mem_percent
         # The process ID (PID).
         self.pid = pid
-        # The process information.
+        # The processes.
         self.process_data = process_data
         # The path to the process.
         self.process_path = process_path
-        # The application status.
+        # The status of the application.
+        # 
+        # Valid value:
+        # 
+        # *   Idle: The application is installed in the cloud computer but is not running.
+        # *   Running: The application has been installed in the cloud computer and is running.
         self.status = status
 
     def validate(self):
@@ -28419,7 +29103,7 @@ class DescribeGuestApplicationsResponseBody(TeaModel):
         applications: List[DescribeGuestApplicationsResponseBodyApplications] = None,
         request_id: str = None,
     ):
-        # The details of the applications.
+        # The applications.
         self.applications = applications
         # The request ID.
         self.request_id = request_id
@@ -34981,17 +35665,38 @@ class DescribeRecordingsRequest(TeaModel):
         standard_start_time: str = None,
         start_time: str = None,
     ):
+        # The cloud computer ID. If this parameter is not specified, the screen recording files on all cloud computers in the designated region will be queried.
         self.desktop_id = desktop_id
+        # The end time of the query. Specify the time in the `YYYYMMDDhhmmss` format. The time must be in UTC+8.
         self.end_time = end_time
+        # The maximum number of entries per page.
+        # 
+        # Maximum value: 100.
+        # 
+        # Default value: 10.
         self.max_results = max_results
+        # Specifies whether to return a URL.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false (default)
         self.need_signed_url = need_signed_url
+        # The pagination token that is used in the request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
         self.next_token = next_token
+        # The policy ID.
         self.policy_group_id = policy_group_id
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The validity period of the returned URL. Unit: minutes.
         self.signed_url_expire_minutes = signed_url_expire_minutes
+        # The end time of the query. Specify the time in the ISO 8601 standard in the `yyyy-mm-ddthh:mm:ssz` format. The time must be in UTC+0.
         self.standard_end_time = standard_end_time
+        # The start time of the query. Specify the time in the ISO 8601 standard in the `yyyy-mm-ddthh:mm:ssz` format. The time must be in UTC+0.
         self.standard_start_time = standard_start_time
+        # The start time of the query. Specify the time in the `YYYYMMDDhhmmss` format. The time must be in UTC+8.
         self.start_time = start_time
 
     def validate(self):
@@ -35068,15 +35773,34 @@ class DescribeRecordingsResponseBodyRecordings(TeaModel):
         signed_url: str = None,
         start_time: str = None,
     ):
+        # The cloud computer ID.
         self.desktop_id = desktop_id
+        # The cloud computer name.
         self.desktop_name = desktop_name
+        # The end time of the recording.
         self.end_time = end_time
+        # The end user IDs.
         self.end_user_ids = end_user_ids
+        # The file path.
         self.file_path = file_path
+        # The policy ID.
         self.policy_group_id = policy_group_id
+        # The size of the screen recording file. Unit: bytes.
         self.recording_size = recording_size
+        # The type of event that triggers the recording.
+        # 
+        # Valid values:
+        # 
+        # *   byaction_cmd_ft: triggered by copy-paste or file transfer events.
+        # *   period: triggered at scheduled intervals.
+        # *   session: triggered by session lifecycle monitoring.
+        # *   byaction_commands: triggered by copy-paste only.
+        # *   alltime: continuous recording.
+        # *   byaction_file_transfer: triggered by file transfer only.
         self.recording_type = recording_type
+        # The download URL of the screen recording file.
         self.signed_url = signed_url
+        # The start time of the recording.
         self.start_time = start_time
 
     def validate(self):
@@ -35142,8 +35866,11 @@ class DescribeRecordingsResponseBody(TeaModel):
         recordings: List[DescribeRecordingsResponseBodyRecordings] = None,
         request_id: str = None,
     ):
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The screen recording files.
         self.recordings = recordings
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -36494,10 +37221,10 @@ class DescribeSnapshotsRequest(TeaModel):
         self.desktop_name = desktop_name
         # The end of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
         self.end_time = end_time
-        # The maximum number of entries to return on each page.
+        # The number of entries per page.
         # 
-        # *   Valid values: 1 to 100
-        # *   Default value: 10
+        # *   Maximum value: 100.
+        # *   Default value: 10.
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
@@ -38594,7 +39321,7 @@ class DescribeUsersInGroupResponseBody(TeaModel):
         user_ou_path: str = None,
         users_count: int = None,
     ):
-        # The list of authorized users.
+        # The authorized users.
         self.end_users = end_users
         # The token that is used to start the next query.
         self.next_token = next_token
@@ -39953,10 +40680,16 @@ class DownloadCdsFileRequest(TeaModel):
         group_id: str = None,
         region_id: str = None,
     ):
+        # The enterprise drive ID.
         self.cds_id = cds_id
+        # The user ID.
         self.end_user_id = end_user_id
+        # The file ID.
         self.file_id = file_id
+        # The team ID.
         self.group_id = group_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -40007,12 +40740,19 @@ class DownloadCdsFileResponseBodyDownloadFileModel(TeaModel):
         size: int = None,
         stream_url: str = None,
     ):
+        # This parameter is deprecated.
         self.download_type = download_type
+        # The download URL.
         self.download_url = download_url
+        # This parameter is deprecated.
         self.expiration_second = expiration_second
+        # The validity period of the download URL.
         self.expiration_time = expiration_time
+        # The file ID.
         self.file_id = file_id
+        # The size of the file. Unit: bytes.
         self.size = size
+        # This parameter is deprecated.
         self.stream_url = stream_url
 
     def validate(self):
@@ -40067,9 +40807,13 @@ class DownloadCdsFileResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The download URL of the file.
         self.download_file_model = download_file_model
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -43601,7 +44345,7 @@ class ListDirectoryUsersResponseBody(TeaModel):
         self.next_token = next_token
         # The ID of the request.
         self.request_id = request_id
-        # The names of users corresponding to the AD directory. If the AD directory contains only Administrator and Guest, an empty Users array is returned.
+        # The usernames corresponding to the AD directory. If the AD directory contains only the Administrator and Guest accounts, the Users array will be empty.
         self.users = users
 
     def validate(self):
@@ -44214,7 +44958,7 @@ class ListOfficeSiteUsersRequest(TeaModel):
         # 
         # This parameter is required.
         self.office_site_id = office_site_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -44284,11 +45028,11 @@ class ListOfficeSiteUsersResponseBodyUsers(TeaModel):
         user_principal_name: str = None,
     ):
         self.assigned_desktop_number = assigned_desktop_number
-        # The display name of the user.
+        # The display name of the AD account.
         self.display_name = display_name
         self.display_name_new = display_name_new
         self.email = email
-        # The name of the AD user.
+        # The username of the AD account.
         self.end_user = end_user
         self.phone = phone
         self.user_principal_name = user_principal_name
@@ -44348,8 +45092,8 @@ class ListOfficeSiteUsersResponseBody(TeaModel):
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The usernames of AD users.\\
-        # If the only Administrator and Guest users exist in the enterprise AD, an empty User array is returned.
+        # The usernames of the AD accounts.\\
+        # If the only Administrator and Guest users exist in the enterprise AD directory, an empty User array is returned.
         self.users = users
 
     def validate(self):
@@ -46849,9 +47593,9 @@ class ModifyCenterPolicyRequestDeviceRedirects(TeaModel):
         # 
         # Valid values:
         # 
-        # *   deviceRedirect: enables device redirection.
-        # *   usbRedirect: enables USB redirection.
-        # *   off: disables any type of redirection.
+        # *   deviceRedirect: device redirection
+        # *   usbRedirect: USB redirection.
+        # *   off: any type of redirection.
         self.redirect_type = redirect_type
 
     def validate(self):
@@ -46896,14 +47640,14 @@ class ModifyCenterPolicyRequestDeviceRules(TeaModel):
         # 
         # Valid values:
         # 
-        # *   usbKey: U keys.
+        # *   usbKey: UKeys
         # *   other: other peripheral devices.
         # *   graphicsTablet: graphics tablets.
         # *   cardReader: card readers.
         # *   printer: printers.
         # *   scanner: scanners.
         # *   storage: storage devices.
-        # *   camera: cameras.
+        # *   camera: web cameras.
         # *   networkInterfaceCard: NIC devices.
         self.device_type = device_type
         # The vendor ID (VID). For more information, see [Valid USB VIDs](https://www.usb.org/sites/default/files/vendor_ids032322.pdf_1.pdf).
@@ -46914,9 +47658,9 @@ class ModifyCenterPolicyRequestDeviceRules(TeaModel):
         # 
         # Valid values:
         # 
-        # *   deviceRedirect: enables device redirection.
-        # *   usbRedirect: enables USB redirection.
-        # *   off: disables any type of redirection.
+        # *   deviceRedirect: device redirection
+        # *   usbRedirect: USB redirection.
+        # *   off: any type of redirection.
         self.redirect_type = redirect_type
 
     def validate(self):
@@ -47379,7 +48123,7 @@ class ModifyCenterPolicyRequest(TeaModel):
         # 
         # Valid values:
         # 
-        # *   1: public cloud.
+        # *   1: public cloud
         # *   8: commercial edition.
         # 
         # This parameter is required.
@@ -47468,12 +48212,12 @@ class ModifyCenterPolicyRequest(TeaModel):
         # *   off: disables the domain resolution policy.
         # *   on: enables the domain resolution policy.
         self.domain_resolve_rule_type = domain_resolve_rule_type
-        # Specifies whether to enforce session bandwidth limit.
+        # Specifies whether to enforce a bandwidth limit for sessions.
         # 
         # Valid values:
         # 
-        # *   off: doesn\\"t enforce session bandwidth limit.
-        # *   on: enforces session bandwidth limit.
+        # *   off: doesn\\"t enforce a bandwidth limit for sessions.
+        # *   on: enforces a bandwidth limit for sessions.
         self.enable_session_rate_limiting = enable_session_rate_limiting
         # Specifies whether to enable end users to request administrator help.
         # 
@@ -47482,12 +48226,12 @@ class ModifyCenterPolicyRequest(TeaModel):
         # *   off: disables end users to request administrator help.
         # *   on: enables end users to request administrator help.
         self.end_user_apply_admin_coordinate = end_user_apply_admin_coordinate
-        # Specifies whether end users in the same workspace can share cloud computers.
+        # Specifies whether to allow end users from the same office network to share cloud computers.
         # 
         # Valid values:
         # 
-        # *   off: End users in the same workspace cannot share cloud computers.
-        # *   on: End users in the same workspace can share cloud computers.
+        # *   off: doesn\\"t allow end users from the same office network to share cloud computers.
+        # *   on: allows end users from the same office network to share cloud computers.
         self.end_user_group_coordinate = end_user_group_coordinate
         # Specifies whether to enable file transfer.
         # 
@@ -47548,23 +48292,23 @@ class ModifyCenterPolicyRequest(TeaModel):
         self.memory_sample_duration = memory_sample_duration
         # The memory usage per process. Valid values: 30 to 60. Unit: %.
         self.memory_single_rate_limit = memory_single_rate_limit
-        # Specifies whether to display the Restart button in the DesktopAssistant menu when end users connect to cloud computers from mobile clients (Android clients and iOS clients).
+        # Specifies whether to display the Restart button in the DesktopAssistant menu when end users connect to cloud computers from Android clients.
         # 
         # >  This feature applies to only mobile clients of version 7.4.0 or later.
         # 
         # Valid values:
         # 
-        # *   off: doesn\\"t display the Restart button in the DesktopAssistant menu.
-        # *   on: displays the Restart button in the DesktopAssistant menu.
+        # *   off: doesn\\"t display the Restart button in the DesktopAssistant menu when end users connect to cloud computers from Android clients.
+        # *   on: displays the Restart button in the DesktopAssistant menu when end users connect to cloud computers from Android clients.
         self.mobile_restart = mobile_restart
-        # Specifies whether to display the Stop button in the DesktopAssistant menu when end users connect to cloud computers from mobile clients (Android clients and iOS clients).
+        # Specifies whether to display the Stop button in the DesktopAssistant menu when end users connect to cloud computers from Android clients.
         # 
         # >  This feature applies to only mobile clients of version 7.4.0 or later.
         # 
         # Valid values:
         # 
-        # *   off: doesn\\"t display the Stop button in the DesktopAssistant menu.
-        # *   on: displays the Stop button in the DesktopAssistant menu.
+        # *   off: doesn\\"t display the Stop button in the DesktopAssistant menu when end users connect to cloud computers from Android clients.
+        # *   on: displays the Stop button in the DesktopAssistant menu when end users connect to cloud computers from Android clients.
         self.mobile_shutdown = mobile_shutdown
         # The policy name.
         self.name = name
@@ -47578,7 +48322,7 @@ class ModifyCenterPolicyRequest(TeaModel):
         # *   off (default): disables network redirection.
         # *   on: enables the whitelist mode.
         self.net_redirect = net_redirect
-        # The network redirection policies.
+        # The network redirection rules.
         # 
         # >  This parameter is in private preview and only available to specific users.
         self.net_redirect_rule = net_redirect_rule
@@ -47709,7 +48453,7 @@ class ModifyCenterPolicyRequest(TeaModel):
         self.scope = scope
         # The effective scopes. This parameter is required when `Scope` is set to `IP`. If `Scope` is set to `IP`, this parameter doesn\\"t take effect.
         self.scope_value = scope_value
-        # The bandwidth peak of the session. Valid values: 2000 to 100000.
+        # The bandwidth peak allowed for sessions. Unit: Kbit/s. Valid values: 2000 to 100000.
         self.session_max_rate_kbps = session_max_rate_kbps
         # Specifies whether to enable smoothness enhancement for daily office use.
         # 
@@ -47752,13 +48496,13 @@ class ModifyCenterPolicyRequest(TeaModel):
         self.usb_redirect = usb_redirect
         # The USB redirection rules.
         self.usb_supply_redirect_rule = usb_supply_redirect_rule
-        # The average bitrate for video encoding. Valid values: 1000 to 50000.
+        # The average bitrate for video encoding. Unit: Kbit/s. Valid values: 1000 to 50000.
         self.video_enc_avg_kbps = video_enc_avg_kbps
         # The maximum QP for video files. Higher QP values result in lower video quality. Valid values: 0 to 51.
         self.video_enc_max_qp = video_enc_max_qp
         # The minimum quantizer parameter (QP) for video files. A lower QP means better video quality. Valid values: 0 to 51.
         self.video_enc_min_qp = video_enc_min_qp
-        # The peak bitrate for video encoding. Valid values: 1000 to 50000.
+        # The peak bitrate allowed for video encoding. Unit: Kbit/s. Valid values: 1000 to 50000.
         self.video_enc_peak_kbps = video_enc_peak_kbps
         # The video encoding policy.
         # 
@@ -54433,7 +55177,7 @@ class ModifyTimerGroupRequestConfigTimers(TeaModel):
         self.allow_client_setting = allow_client_setting
         # The cron expression specified in the scheduled task.
         # 
-        # >  The time must be in UTC. For example, for 24:00 (UTC+8), you must set the value to 0 0 16 ? \\* 1,2,3,4,5,6,7.
+        # >  The time must be in UTC. For example, if your local time is 24:00 (UTC+8), you must set the value to 0 0 16 ? \\* 1,2,3,4,5,6,7.
         self.cron_expression = cron_expression
         # Specifies whether to forcibly execute the scheduled task. A value of true specifies the scheduled task will run forcefully, ignoring the cloud computer and connection status.
         self.enforce = enforce
@@ -54447,7 +55191,7 @@ class ModifyTimerGroupRequestConfigTimers(TeaModel):
         # *   Hibernate: scheduled hibernation.
         # *   Shutdown: scheduled shutdown.
         self.operation_type = operation_type
-        # The process whitelist. If whitelisted processes are running, the scheduled task triggered by inactivity does not take effect.
+        # The process whitelist. If whitelisted processes are running, the scheduled task does not take effect upon inactivity.
         self.process_whitelist = process_whitelist
         # The reset option.
         # 
@@ -54459,7 +55203,7 @@ class ModifyTimerGroupRequestConfigTimers(TeaModel):
         self.reset_type = reset_type
         # The scheduled task type.
         # 
-        # Valid values:
+        # Valid value:
         # 
         # *   NoOperationDisconnect: scheduled disconnection upon inactivity.
         # *   NoConnect: scheduled disconnection upon specified operation (OperationType).
