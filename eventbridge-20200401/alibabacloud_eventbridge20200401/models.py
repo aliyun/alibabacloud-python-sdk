@@ -1,7 +1,544 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List, Any
+from typing import Any, Dict, List
+
+
+class SinkBaiLianParametersAfter(TeaModel):
+    def __init__(
+        self,
+        form: str = None,
+        template: str = None,
+        value: str = None,
+    ):
+        self.form = form
+        self.template = template
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.form is not None:
+            result['Form'] = self.form
+        if self.template is not None:
+            result['Template'] = self.template
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Form') is not None:
+            self.form = m.get('Form')
+        if m.get('Template') is not None:
+            self.template = m.get('Template')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class SinkBaiLianParametersBefore(TeaModel):
+    def __init__(
+        self,
+        form: str = None,
+        template: str = None,
+        value: str = None,
+    ):
+        self.form = form
+        self.template = template
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.form is not None:
+            result['Form'] = self.form
+        if self.template is not None:
+            result['Template'] = self.template
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Form') is not None:
+            self.form = m.get('Form')
+        if m.get('Template') is not None:
+            self.template = m.get('Template')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class SinkBaiLianParametersOffset(TeaModel):
+    def __init__(
+        self,
+        form: str = None,
+        template: str = None,
+        value: str = None,
+    ):
+        self.form = form
+        self.template = template
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.form is not None:
+            result['Form'] = self.form
+        if self.template is not None:
+            result['Template'] = self.template
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Form') is not None:
+            self.form = m.get('Form')
+        if m.get('Template') is not None:
+            self.template = m.get('Template')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class SinkBaiLianParametersOp(TeaModel):
+    def __init__(
+        self,
+        form: str = None,
+        template: str = None,
+        value: str = None,
+    ):
+        self.form = form
+        self.template = template
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.form is not None:
+            result['Form'] = self.form
+        if self.template is not None:
+            result['Template'] = self.template
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Form') is not None:
+            self.form = m.get('Form')
+        if m.get('Template') is not None:
+            self.template = m.get('Template')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class SinkBaiLianParametersPartition(TeaModel):
+    def __init__(
+        self,
+        form: str = None,
+        template: str = None,
+        value: str = None,
+    ):
+        self.form = form
+        self.template = template
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.form is not None:
+            result['Form'] = self.form
+        if self.template is not None:
+            result['Template'] = self.template
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Form') is not None:
+            self.form = m.get('Form')
+        if m.get('Template') is not None:
+            self.template = m.get('Template')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class SinkBaiLianParameters(TeaModel):
+    def __init__(
+        self,
+        after: SinkBaiLianParametersAfter = None,
+        application_type: str = None,
+        before: SinkBaiLianParametersBefore = None,
+        context: Any = None,
+        extend: Any = None,
+        offset: SinkBaiLianParametersOffset = None,
+        op: SinkBaiLianParametersOp = None,
+        partition: SinkBaiLianParametersPartition = None,
+        workspace_id: str = None,
+    ):
+        self.after = after
+        self.application_type = application_type
+        self.before = before
+        self.context = context
+        self.extend = extend
+        self.offset = offset
+        self.op = op
+        self.partition = partition
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        if self.after:
+            self.after.validate()
+        if self.before:
+            self.before.validate()
+        if self.offset:
+            self.offset.validate()
+        if self.op:
+            self.op.validate()
+        if self.partition:
+            self.partition.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.after is not None:
+            result['After'] = self.after.to_map()
+        if self.application_type is not None:
+            result['ApplicationType'] = self.application_type
+        if self.before is not None:
+            result['Before'] = self.before.to_map()
+        if self.context is not None:
+            result['Context'] = self.context
+        if self.extend is not None:
+            result['Extend'] = self.extend
+        if self.offset is not None:
+            result['Offset'] = self.offset.to_map()
+        if self.op is not None:
+            result['Op'] = self.op.to_map()
+        if self.partition is not None:
+            result['Partition'] = self.partition.to_map()
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('After') is not None:
+            temp_model = SinkBaiLianParametersAfter()
+            self.after = temp_model.from_map(m['After'])
+        if m.get('ApplicationType') is not None:
+            self.application_type = m.get('ApplicationType')
+        if m.get('Before') is not None:
+            temp_model = SinkBaiLianParametersBefore()
+            self.before = temp_model.from_map(m['Before'])
+        if m.get('Context') is not None:
+            self.context = m.get('Context')
+        if m.get('Extend') is not None:
+            self.extend = m.get('Extend')
+        if m.get('Offset') is not None:
+            temp_model = SinkBaiLianParametersOffset()
+            self.offset = temp_model.from_map(m['Offset'])
+        if m.get('Op') is not None:
+            temp_model = SinkBaiLianParametersOp()
+            self.op = temp_model.from_map(m['Op'])
+        if m.get('Partition') is not None:
+            temp_model = SinkBaiLianParametersPartition()
+            self.partition = temp_model.from_map(m['Partition'])
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class SourceMySQLParameters(TeaModel):
+    def __init__(
+        self,
+        database_name: str = None,
+        host_name: str = None,
+        include_schema_changes: str = None,
+        network_type: str = None,
+        password: str = None,
+        port: int = None,
+        region_id: str = None,
+        security_group_id: str = None,
+        snapshot_mode: str = None,
+        table_names: str = None,
+        user: str = None,
+        v_switch_ids: str = None,
+        vpc_id: str = None,
+    ):
+        self.database_name = database_name
+        self.host_name = host_name
+        self.include_schema_changes = include_schema_changes
+        self.network_type = network_type
+        self.password = password
+        self.port = port
+        self.region_id = region_id
+        self.security_group_id = security_group_id
+        self.snapshot_mode = snapshot_mode
+        self.table_names = table_names
+        self.user = user
+        self.v_switch_ids = v_switch_ids
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.database_name is not None:
+            result['DatabaseName'] = self.database_name
+        if self.host_name is not None:
+            result['HostName'] = self.host_name
+        if self.include_schema_changes is not None:
+            result['IncludeSchemaChanges'] = self.include_schema_changes
+        if self.network_type is not None:
+            result['NetworkType'] = self.network_type
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.snapshot_mode is not None:
+            result['SnapshotMode'] = self.snapshot_mode
+        if self.table_names is not None:
+            result['TableNames'] = self.table_names
+        if self.user is not None:
+            result['User'] = self.user
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatabaseName') is not None:
+            self.database_name = m.get('DatabaseName')
+        if m.get('HostName') is not None:
+            self.host_name = m.get('HostName')
+        if m.get('IncludeSchemaChanges') is not None:
+            self.include_schema_changes = m.get('IncludeSchemaChanges')
+        if m.get('NetworkType') is not None:
+            self.network_type = m.get('NetworkType')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('SnapshotMode') is not None:
+            self.snapshot_mode = m.get('SnapshotMode')
+        if m.get('TableNames') is not None:
+            self.table_names = m.get('TableNames')
+        if m.get('User') is not None:
+            self.user = m.get('User')
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class CheckServiceLinkedRoleForProductRequest(TeaModel):
+    def __init__(
+        self,
+        product_name: str = None,
+    ):
+        self.product_name = product_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.product_name is not None:
+            result['ProductName'] = self.product_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProductName') is not None:
+            self.product_name = m.get('ProductName')
+        return self
+
+
+class CheckServiceLinkedRoleForProductResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        check_pass: bool = None,
+        sts_role_name: str = None,
+    ):
+        self.check_pass = check_pass
+        self.sts_role_name = sts_role_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_pass is not None:
+            result['CheckPass'] = self.check_pass
+        if self.sts_role_name is not None:
+            result['StsRoleName'] = self.sts_role_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckPass') is not None:
+            self.check_pass = m.get('CheckPass')
+        if m.get('StsRoleName') is not None:
+            self.sts_role_name = m.get('StsRoleName')
+        return self
+
+
+class CheckServiceLinkedRoleForProductResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CheckServiceLinkedRoleForProductResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = CheckServiceLinkedRoleForProductResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CheckServiceLinkedRoleForProductResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CheckServiceLinkedRoleForProductResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CheckServiceLinkedRoleForProductResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
 
 
 class CreateApiDestinationRequestHttpApiParameters(TeaModel):
@@ -6945,6 +7482,7 @@ class CreateEventStreamingRequestSink(TeaModel):
     def __init__(
         self,
         sink_apache_rocket_mqcheckpoint_parameters: CreateEventStreamingRequestSinkSinkApacheRocketMQCheckpointParameters = None,
+        sink_bai_lian_parameters: SinkBaiLianParameters = None,
         sink_customized_kafka_connector_parameters: CreateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParameters = None,
         sink_customized_kafka_parameters: CreateEventStreamingRequestSinkSinkCustomizedKafkaParameters = None,
         sink_dash_vector_parameters: CreateEventStreamingRequestSinkSinkDashVectorParameters = None,
@@ -6961,6 +7499,7 @@ class CreateEventStreamingRequestSink(TeaModel):
         sink_slsparameters: CreateEventStreamingRequestSinkSinkSLSParameters = None,
     ):
         self.sink_apache_rocket_mqcheckpoint_parameters = sink_apache_rocket_mqcheckpoint_parameters
+        self.sink_bai_lian_parameters = sink_bai_lian_parameters
         self.sink_customized_kafka_connector_parameters = sink_customized_kafka_connector_parameters
         self.sink_customized_kafka_parameters = sink_customized_kafka_parameters
         self.sink_dash_vector_parameters = sink_dash_vector_parameters
@@ -6988,6 +7527,8 @@ class CreateEventStreamingRequestSink(TeaModel):
     def validate(self):
         if self.sink_apache_rocket_mqcheckpoint_parameters:
             self.sink_apache_rocket_mqcheckpoint_parameters.validate()
+        if self.sink_bai_lian_parameters:
+            self.sink_bai_lian_parameters.validate()
         if self.sink_customized_kafka_connector_parameters:
             self.sink_customized_kafka_connector_parameters.validate()
         if self.sink_customized_kafka_parameters:
@@ -7025,6 +7566,8 @@ class CreateEventStreamingRequestSink(TeaModel):
         result = dict()
         if self.sink_apache_rocket_mqcheckpoint_parameters is not None:
             result['SinkApacheRocketMQCheckpointParameters'] = self.sink_apache_rocket_mqcheckpoint_parameters.to_map()
+        if self.sink_bai_lian_parameters is not None:
+            result['SinkBaiLianParameters'] = self.sink_bai_lian_parameters.to_map()
         if self.sink_customized_kafka_connector_parameters is not None:
             result['SinkCustomizedKafkaConnectorParameters'] = self.sink_customized_kafka_connector_parameters.to_map()
         if self.sink_customized_kafka_parameters is not None:
@@ -7060,6 +7603,9 @@ class CreateEventStreamingRequestSink(TeaModel):
         if m.get('SinkApacheRocketMQCheckpointParameters') is not None:
             temp_model = CreateEventStreamingRequestSinkSinkApacheRocketMQCheckpointParameters()
             self.sink_apache_rocket_mqcheckpoint_parameters = temp_model.from_map(m['SinkApacheRocketMQCheckpointParameters'])
+        if m.get('SinkBaiLianParameters') is not None:
+            temp_model = SinkBaiLianParameters()
+            self.sink_bai_lian_parameters = temp_model.from_map(m['SinkBaiLianParameters'])
         if m.get('SinkCustomizedKafkaConnectorParameters') is not None:
             temp_model = CreateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParameters()
             self.sink_customized_kafka_connector_parameters = temp_model.from_map(m['SinkCustomizedKafkaConnectorParameters'])
@@ -8112,6 +8658,7 @@ class CreateEventStreamingRequestSource(TeaModel):
         source_kafka_parameters: CreateEventStreamingRequestSourceSourceKafkaParameters = None,
         source_mnsparameters: CreateEventStreamingRequestSourceSourceMNSParameters = None,
         source_mqttparameters: CreateEventStreamingRequestSourceSourceMQTTParameters = None,
+        source_my_sqlparameters: SourceMySQLParameters = None,
         source_ossparameters: CreateEventStreamingRequestSourceSourceOSSParameters = None,
         source_open_source_rabbit_mqparameters: CreateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters = None,
         source_prometheus_parameters: CreateEventStreamingRequestSourceSourcePrometheusParameters = None,
@@ -8132,6 +8679,7 @@ class CreateEventStreamingRequestSource(TeaModel):
         self.source_mnsparameters = source_mnsparameters
         # The parameters that are configured if you specify ApsaraMQ for MQTT as the event source.
         self.source_mqttparameters = source_mqttparameters
+        self.source_my_sqlparameters = source_my_sqlparameters
         self.source_ossparameters = source_ossparameters
         self.source_open_source_rabbit_mqparameters = source_open_source_rabbit_mqparameters
         # Parameters that are configured if you specify Managed Service for Prometheus as the event source.
@@ -8161,6 +8709,8 @@ class CreateEventStreamingRequestSource(TeaModel):
             self.source_mnsparameters.validate()
         if self.source_mqttparameters:
             self.source_mqttparameters.validate()
+        if self.source_my_sqlparameters:
+            self.source_my_sqlparameters.validate()
         if self.source_ossparameters:
             self.source_ossparameters.validate()
         if self.source_open_source_rabbit_mqparameters:
@@ -8198,6 +8748,8 @@ class CreateEventStreamingRequestSource(TeaModel):
             result['SourceMNSParameters'] = self.source_mnsparameters.to_map()
         if self.source_mqttparameters is not None:
             result['SourceMQTTParameters'] = self.source_mqttparameters.to_map()
+        if self.source_my_sqlparameters is not None:
+            result['SourceMySQLParameters'] = self.source_my_sqlparameters.to_map()
         if self.source_ossparameters is not None:
             result['SourceOSSParameters'] = self.source_ossparameters.to_map()
         if self.source_open_source_rabbit_mqparameters is not None:
@@ -8240,6 +8792,9 @@ class CreateEventStreamingRequestSource(TeaModel):
         if m.get('SourceMQTTParameters') is not None:
             temp_model = CreateEventStreamingRequestSourceSourceMQTTParameters()
             self.source_mqttparameters = temp_model.from_map(m['SourceMQTTParameters'])
+        if m.get('SourceMySQLParameters') is not None:
+            temp_model = SourceMySQLParameters()
+            self.source_my_sqlparameters = temp_model.from_map(m['SourceMySQLParameters'])
         if m.get('SourceOSSParameters') is not None:
             temp_model = CreateEventStreamingRequestSourceSourceOSSParameters()
             self.source_ossparameters = temp_model.from_map(m['SourceOSSParameters'])
@@ -16710,6 +17265,7 @@ class GetEventStreamingResponseBodyDataSink(TeaModel):
     def __init__(
         self,
         sink_apache_rocket_mqcheckpoint_parameters: GetEventStreamingResponseBodyDataSinkSinkApacheRocketMQCheckpointParameters = None,
+        sink_bai_lian_parameters: SinkBaiLianParameters = None,
         sink_customized_kafka_connector_parameters: GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaConnectorParameters = None,
         sink_customized_kafka_parameters: GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaParameters = None,
         sink_dash_vector_parameters: GetEventStreamingResponseBodyDataSinkSinkDashVectorParameters = None,
@@ -16725,6 +17281,7 @@ class GetEventStreamingResponseBodyDataSink(TeaModel):
         sink_slsparameters: GetEventStreamingResponseBodyDataSinkSinkSLSParameters = None,
     ):
         self.sink_apache_rocket_mqcheckpoint_parameters = sink_apache_rocket_mqcheckpoint_parameters
+        self.sink_bai_lian_parameters = sink_bai_lian_parameters
         self.sink_customized_kafka_connector_parameters = sink_customized_kafka_connector_parameters
         self.sink_customized_kafka_parameters = sink_customized_kafka_parameters
         self.sink_dash_vector_parameters = sink_dash_vector_parameters
@@ -16749,6 +17306,8 @@ class GetEventStreamingResponseBodyDataSink(TeaModel):
     def validate(self):
         if self.sink_apache_rocket_mqcheckpoint_parameters:
             self.sink_apache_rocket_mqcheckpoint_parameters.validate()
+        if self.sink_bai_lian_parameters:
+            self.sink_bai_lian_parameters.validate()
         if self.sink_customized_kafka_connector_parameters:
             self.sink_customized_kafka_connector_parameters.validate()
         if self.sink_customized_kafka_parameters:
@@ -16784,6 +17343,8 @@ class GetEventStreamingResponseBodyDataSink(TeaModel):
         result = dict()
         if self.sink_apache_rocket_mqcheckpoint_parameters is not None:
             result['SinkApacheRocketMQCheckpointParameters'] = self.sink_apache_rocket_mqcheckpoint_parameters.to_map()
+        if self.sink_bai_lian_parameters is not None:
+            result['SinkBaiLianParameters'] = self.sink_bai_lian_parameters.to_map()
         if self.sink_customized_kafka_connector_parameters is not None:
             result['SinkCustomizedKafkaConnectorParameters'] = self.sink_customized_kafka_connector_parameters.to_map()
         if self.sink_customized_kafka_parameters is not None:
@@ -16817,6 +17378,9 @@ class GetEventStreamingResponseBodyDataSink(TeaModel):
         if m.get('SinkApacheRocketMQCheckpointParameters') is not None:
             temp_model = GetEventStreamingResponseBodyDataSinkSinkApacheRocketMQCheckpointParameters()
             self.sink_apache_rocket_mqcheckpoint_parameters = temp_model.from_map(m['SinkApacheRocketMQCheckpointParameters'])
+        if m.get('SinkBaiLianParameters') is not None:
+            temp_model = SinkBaiLianParameters()
+            self.sink_bai_lian_parameters = temp_model.from_map(m['SinkBaiLianParameters'])
         if m.get('SinkCustomizedKafkaConnectorParameters') is not None:
             temp_model = GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaConnectorParameters()
             self.sink_customized_kafka_connector_parameters = temp_model.from_map(m['SinkCustomizedKafkaConnectorParameters'])
@@ -17853,6 +18417,7 @@ class GetEventStreamingResponseBodyDataSource(TeaModel):
         source_kafka_parameters: GetEventStreamingResponseBodyDataSourceSourceKafkaParameters = None,
         source_mnsparameters: GetEventStreamingResponseBodyDataSourceSourceMNSParameters = None,
         source_mqttparameters: GetEventStreamingResponseBodyDataSourceSourceMQTTParameters = None,
+        source_my_sqlparameters: SourceMySQLParameters = None,
         source_ossparameters: GetEventStreamingResponseBodyDataSourceSourceOSSParameters = None,
         source_open_source_rabbit_mqparameters: GetEventStreamingResponseBodyDataSourceSourceOpenSourceRabbitMQParameters = None,
         source_prometheus_parameters: GetEventStreamingResponseBodyDataSourceSourcePrometheusParameters = None,
@@ -17873,6 +18438,7 @@ class GetEventStreamingResponseBodyDataSource(TeaModel):
         self.source_mnsparameters = source_mnsparameters
         # The parameters that are returned if ApsaraMQ for MQTT is specified as the event source.
         self.source_mqttparameters = source_mqttparameters
+        self.source_my_sqlparameters = source_my_sqlparameters
         self.source_ossparameters = source_ossparameters
         self.source_open_source_rabbit_mqparameters = source_open_source_rabbit_mqparameters
         self.source_prometheus_parameters = source_prometheus_parameters
@@ -17901,6 +18467,8 @@ class GetEventStreamingResponseBodyDataSource(TeaModel):
             self.source_mnsparameters.validate()
         if self.source_mqttparameters:
             self.source_mqttparameters.validate()
+        if self.source_my_sqlparameters:
+            self.source_my_sqlparameters.validate()
         if self.source_ossparameters:
             self.source_ossparameters.validate()
         if self.source_open_source_rabbit_mqparameters:
@@ -17938,6 +18506,8 @@ class GetEventStreamingResponseBodyDataSource(TeaModel):
             result['SourceMNSParameters'] = self.source_mnsparameters.to_map()
         if self.source_mqttparameters is not None:
             result['SourceMQTTParameters'] = self.source_mqttparameters.to_map()
+        if self.source_my_sqlparameters is not None:
+            result['SourceMySQLParameters'] = self.source_my_sqlparameters.to_map()
         if self.source_ossparameters is not None:
             result['SourceOSSParameters'] = self.source_ossparameters.to_map()
         if self.source_open_source_rabbit_mqparameters is not None:
@@ -17980,6 +18550,9 @@ class GetEventStreamingResponseBodyDataSource(TeaModel):
         if m.get('SourceMQTTParameters') is not None:
             temp_model = GetEventStreamingResponseBodyDataSourceSourceMQTTParameters()
             self.source_mqttparameters = temp_model.from_map(m['SourceMQTTParameters'])
+        if m.get('SourceMySQLParameters') is not None:
+            temp_model = SourceMySQLParameters()
+            self.source_my_sqlparameters = temp_model.from_map(m['SourceMySQLParameters'])
         if m.get('SourceOSSParameters') is not None:
             temp_model = GetEventStreamingResponseBodyDataSourceSourceOSSParameters()
             self.source_ossparameters = temp_model.from_map(m['SourceOSSParameters'])
@@ -24598,6 +25171,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSink(TeaModel):
     def __init__(
         self,
         sink_apache_rocket_mqcheckpoint_parameters: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheRocketMQCheckpointParameters = None,
+        sink_bai_lian_parameters: SinkBaiLianParameters = None,
         sink_customized_kafka_connector_parameters: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaConnectorParameters = None,
         sink_customized_kafka_parameters: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaParameters = None,
         sink_dash_vector_parameters: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParameters = None,
@@ -24613,6 +25187,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSink(TeaModel):
         sink_slsparameters: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParameters = None,
     ):
         self.sink_apache_rocket_mqcheckpoint_parameters = sink_apache_rocket_mqcheckpoint_parameters
+        self.sink_bai_lian_parameters = sink_bai_lian_parameters
         self.sink_customized_kafka_connector_parameters = sink_customized_kafka_connector_parameters
         self.sink_customized_kafka_parameters = sink_customized_kafka_parameters
         self.sink_dash_vector_parameters = sink_dash_vector_parameters
@@ -24637,6 +25212,8 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSink(TeaModel):
     def validate(self):
         if self.sink_apache_rocket_mqcheckpoint_parameters:
             self.sink_apache_rocket_mqcheckpoint_parameters.validate()
+        if self.sink_bai_lian_parameters:
+            self.sink_bai_lian_parameters.validate()
         if self.sink_customized_kafka_connector_parameters:
             self.sink_customized_kafka_connector_parameters.validate()
         if self.sink_customized_kafka_parameters:
@@ -24672,6 +25249,8 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSink(TeaModel):
         result = dict()
         if self.sink_apache_rocket_mqcheckpoint_parameters is not None:
             result['SinkApacheRocketMQCheckpointParameters'] = self.sink_apache_rocket_mqcheckpoint_parameters.to_map()
+        if self.sink_bai_lian_parameters is not None:
+            result['SinkBaiLianParameters'] = self.sink_bai_lian_parameters.to_map()
         if self.sink_customized_kafka_connector_parameters is not None:
             result['SinkCustomizedKafkaConnectorParameters'] = self.sink_customized_kafka_connector_parameters.to_map()
         if self.sink_customized_kafka_parameters is not None:
@@ -24705,6 +25284,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSink(TeaModel):
         if m.get('SinkApacheRocketMQCheckpointParameters') is not None:
             temp_model = ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheRocketMQCheckpointParameters()
             self.sink_apache_rocket_mqcheckpoint_parameters = temp_model.from_map(m['SinkApacheRocketMQCheckpointParameters'])
+        if m.get('SinkBaiLianParameters') is not None:
+            temp_model = SinkBaiLianParameters()
+            self.sink_bai_lian_parameters = temp_model.from_map(m['SinkBaiLianParameters'])
         if m.get('SinkCustomizedKafkaConnectorParameters') is not None:
             temp_model = ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaConnectorParameters()
             self.sink_customized_kafka_connector_parameters = temp_model.from_map(m['SinkCustomizedKafkaConnectorParameters'])
@@ -25746,6 +26328,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSource(TeaModel):
         source_kafka_parameters: ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceKafkaParameters = None,
         source_mnsparameters: ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMNSParameters = None,
         source_mqttparameters: ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParameters = None,
+        source_my_sqlparameters: SourceMySQLParameters = None,
         source_ossparameters: ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceOSSParameters = None,
         source_open_source_rabbit_mqparameters: ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceOpenSourceRabbitMQParameters = None,
         source_prometheus_parameters: ListEventStreamingsResponseBodyDataEventStreamingsSourceSourcePrometheusParameters = None,
@@ -25766,6 +26349,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSource(TeaModel):
         self.source_mnsparameters = source_mnsparameters
         # The parameters that are returned if ApsaraMQ for MQTT is specified as the event source.
         self.source_mqttparameters = source_mqttparameters
+        self.source_my_sqlparameters = source_my_sqlparameters
         self.source_ossparameters = source_ossparameters
         self.source_open_source_rabbit_mqparameters = source_open_source_rabbit_mqparameters
         self.source_prometheus_parameters = source_prometheus_parameters
@@ -25794,6 +26378,8 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSource(TeaModel):
             self.source_mnsparameters.validate()
         if self.source_mqttparameters:
             self.source_mqttparameters.validate()
+        if self.source_my_sqlparameters:
+            self.source_my_sqlparameters.validate()
         if self.source_ossparameters:
             self.source_ossparameters.validate()
         if self.source_open_source_rabbit_mqparameters:
@@ -25831,6 +26417,8 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSource(TeaModel):
             result['SourceMNSParameters'] = self.source_mnsparameters.to_map()
         if self.source_mqttparameters is not None:
             result['SourceMQTTParameters'] = self.source_mqttparameters.to_map()
+        if self.source_my_sqlparameters is not None:
+            result['SourceMySQLParameters'] = self.source_my_sqlparameters.to_map()
         if self.source_ossparameters is not None:
             result['SourceOSSParameters'] = self.source_ossparameters.to_map()
         if self.source_open_source_rabbit_mqparameters is not None:
@@ -25873,6 +26461,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSource(TeaModel):
         if m.get('SourceMQTTParameters') is not None:
             temp_model = ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParameters()
             self.source_mqttparameters = temp_model.from_map(m['SourceMQTTParameters'])
+        if m.get('SourceMySQLParameters') is not None:
+            temp_model = SourceMySQLParameters()
+            self.source_my_sqlparameters = temp_model.from_map(m['SourceMySQLParameters'])
         if m.get('SourceOSSParameters') is not None:
             temp_model = ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceOSSParameters()
             self.source_ossparameters = temp_model.from_map(m['SourceOSSParameters'])
@@ -36424,6 +37015,7 @@ class UpdateEventStreamingRequestSink(TeaModel):
     def __init__(
         self,
         sink_apache_rocket_mqcheckpoint_parameters: UpdateEventStreamingRequestSinkSinkApacheRocketMQCheckpointParameters = None,
+        sink_bai_lian_parameters: SinkBaiLianParameters = None,
         sink_customized_kafka_connector_parameters: UpdateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParameters = None,
         sink_customized_kafka_parameters: UpdateEventStreamingRequestSinkSinkCustomizedKafkaParameters = None,
         sink_dash_vector_parameters: UpdateEventStreamingRequestSinkSinkDashVectorParameters = None,
@@ -36440,6 +37032,7 @@ class UpdateEventStreamingRequestSink(TeaModel):
         sink_slsparameters: UpdateEventStreamingRequestSinkSinkSLSParameters = None,
     ):
         self.sink_apache_rocket_mqcheckpoint_parameters = sink_apache_rocket_mqcheckpoint_parameters
+        self.sink_bai_lian_parameters = sink_bai_lian_parameters
         self.sink_customized_kafka_connector_parameters = sink_customized_kafka_connector_parameters
         self.sink_customized_kafka_parameters = sink_customized_kafka_parameters
         self.sink_dash_vector_parameters = sink_dash_vector_parameters
@@ -36466,6 +37059,8 @@ class UpdateEventStreamingRequestSink(TeaModel):
     def validate(self):
         if self.sink_apache_rocket_mqcheckpoint_parameters:
             self.sink_apache_rocket_mqcheckpoint_parameters.validate()
+        if self.sink_bai_lian_parameters:
+            self.sink_bai_lian_parameters.validate()
         if self.sink_customized_kafka_connector_parameters:
             self.sink_customized_kafka_connector_parameters.validate()
         if self.sink_customized_kafka_parameters:
@@ -36503,6 +37098,8 @@ class UpdateEventStreamingRequestSink(TeaModel):
         result = dict()
         if self.sink_apache_rocket_mqcheckpoint_parameters is not None:
             result['SinkApacheRocketMQCheckpointParameters'] = self.sink_apache_rocket_mqcheckpoint_parameters.to_map()
+        if self.sink_bai_lian_parameters is not None:
+            result['SinkBaiLianParameters'] = self.sink_bai_lian_parameters.to_map()
         if self.sink_customized_kafka_connector_parameters is not None:
             result['SinkCustomizedKafkaConnectorParameters'] = self.sink_customized_kafka_connector_parameters.to_map()
         if self.sink_customized_kafka_parameters is not None:
@@ -36538,6 +37135,9 @@ class UpdateEventStreamingRequestSink(TeaModel):
         if m.get('SinkApacheRocketMQCheckpointParameters') is not None:
             temp_model = UpdateEventStreamingRequestSinkSinkApacheRocketMQCheckpointParameters()
             self.sink_apache_rocket_mqcheckpoint_parameters = temp_model.from_map(m['SinkApacheRocketMQCheckpointParameters'])
+        if m.get('SinkBaiLianParameters') is not None:
+            temp_model = SinkBaiLianParameters()
+            self.sink_bai_lian_parameters = temp_model.from_map(m['SinkBaiLianParameters'])
         if m.get('SinkCustomizedKafkaConnectorParameters') is not None:
             temp_model = UpdateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParameters()
             self.sink_customized_kafka_connector_parameters = temp_model.from_map(m['SinkCustomizedKafkaConnectorParameters'])
@@ -37563,6 +38163,7 @@ class UpdateEventStreamingRequestSource(TeaModel):
         source_kafka_parameters: UpdateEventStreamingRequestSourceSourceKafkaParameters = None,
         source_mnsparameters: UpdateEventStreamingRequestSourceSourceMNSParameters = None,
         source_mqttparameters: UpdateEventStreamingRequestSourceSourceMQTTParameters = None,
+        source_my_sqlparameters: SourceMySQLParameters = None,
         source_ossparameters: UpdateEventStreamingRequestSourceSourceOSSParameters = None,
         source_open_source_rabbit_mqparameters: UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters = None,
         source_prometheus_parameters: UpdateEventStreamingRequestSourceSourcePrometheusParameters = None,
@@ -37583,6 +38184,7 @@ class UpdateEventStreamingRequestSource(TeaModel):
         self.source_mnsparameters = source_mnsparameters
         # The parameters that are configured if you specify ApsaraMQ for MQTT as the event source.
         self.source_mqttparameters = source_mqttparameters
+        self.source_my_sqlparameters = source_my_sqlparameters
         self.source_ossparameters = source_ossparameters
         self.source_open_source_rabbit_mqparameters = source_open_source_rabbit_mqparameters
         # The parameters that are configured if you specify Managed Service for Prometheus as the event source.
@@ -37612,6 +38214,8 @@ class UpdateEventStreamingRequestSource(TeaModel):
             self.source_mnsparameters.validate()
         if self.source_mqttparameters:
             self.source_mqttparameters.validate()
+        if self.source_my_sqlparameters:
+            self.source_my_sqlparameters.validate()
         if self.source_ossparameters:
             self.source_ossparameters.validate()
         if self.source_open_source_rabbit_mqparameters:
@@ -37649,6 +38253,8 @@ class UpdateEventStreamingRequestSource(TeaModel):
             result['SourceMNSParameters'] = self.source_mnsparameters.to_map()
         if self.source_mqttparameters is not None:
             result['SourceMQTTParameters'] = self.source_mqttparameters.to_map()
+        if self.source_my_sqlparameters is not None:
+            result['SourceMySQLParameters'] = self.source_my_sqlparameters.to_map()
         if self.source_ossparameters is not None:
             result['SourceOSSParameters'] = self.source_ossparameters.to_map()
         if self.source_open_source_rabbit_mqparameters is not None:
@@ -37691,6 +38297,9 @@ class UpdateEventStreamingRequestSource(TeaModel):
         if m.get('SourceMQTTParameters') is not None:
             temp_model = UpdateEventStreamingRequestSourceSourceMQTTParameters()
             self.source_mqttparameters = temp_model.from_map(m['SourceMQTTParameters'])
+        if m.get('SourceMySQLParameters') is not None:
+            temp_model = SourceMySQLParameters()
+            self.source_my_sqlparameters = temp_model.from_map(m['SourceMySQLParameters'])
         if m.get('SourceOSSParameters') is not None:
             temp_model = UpdateEventStreamingRequestSourceSourceOSSParameters()
             self.source_ossparameters = temp_model.from_map(m['SourceOSSParameters'])

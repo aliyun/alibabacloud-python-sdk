@@ -1,3 +1,15 @@
+2025-04-25 Version: 6.1.0
+- Support API CheckServiceLinkedRoleForProduct.
+- Update API CreateEventStreaming: add request parameters Sink.SinkBaiLianParameters.
+- Update API CreateEventStreaming: add request parameters Source.SourceMySQLParameters.
+- Update API GetEventStreaming: add response parameters Body.Data.Sink.SinkBaiLianParameters.
+- Update API GetEventStreaming: add response parameters Body.Data.Source.SourceMySQLParameters.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.Sink.SinkBaiLianParameters.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.Source.SourceMySQLParameters.
+- Update API UpdateEventStreaming: add request parameters Sink.SinkBaiLianParameters.
+- Update API UpdateEventStreaming: add request parameters Source.SourceMySQLParameters.
+
+
 2025-04-15 Version: 6.0.0
 - Update API CreateEventStreaming: add request parameters Tags.
 - Update API CreateEventStreaming: add request parameters RunOptions.DeadLetterQueue.Network.

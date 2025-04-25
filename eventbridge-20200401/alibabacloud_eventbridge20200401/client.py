@@ -41,6 +41,102 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def check_service_linked_role_for_product_with_options(
+        self,
+        request: eventbridge_20200401_models.CheckServiceLinkedRoleForProductRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eventbridge_20200401_models.CheckServiceLinkedRoleForProductResponse:
+        """
+        @summary 检查账号是否存在ServiceLinkedRole授权
+        
+        @param request: CheckServiceLinkedRoleForProductRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckServiceLinkedRoleForProductResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_name):
+            query['ProductName'] = request.product_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckServiceLinkedRoleForProduct',
+            version='2020-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.CheckServiceLinkedRoleForProductResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_service_linked_role_for_product_with_options_async(
+        self,
+        request: eventbridge_20200401_models.CheckServiceLinkedRoleForProductRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eventbridge_20200401_models.CheckServiceLinkedRoleForProductResponse:
+        """
+        @summary 检查账号是否存在ServiceLinkedRole授权
+        
+        @param request: CheckServiceLinkedRoleForProductRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckServiceLinkedRoleForProductResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_name):
+            query['ProductName'] = request.product_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckServiceLinkedRoleForProduct',
+            version='2020-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.CheckServiceLinkedRoleForProductResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_service_linked_role_for_product(
+        self,
+        request: eventbridge_20200401_models.CheckServiceLinkedRoleForProductRequest,
+    ) -> eventbridge_20200401_models.CheckServiceLinkedRoleForProductResponse:
+        """
+        @summary 检查账号是否存在ServiceLinkedRole授权
+        
+        @param request: CheckServiceLinkedRoleForProductRequest
+        @return: CheckServiceLinkedRoleForProductResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.check_service_linked_role_for_product_with_options(request, runtime)
+
+    async def check_service_linked_role_for_product_async(
+        self,
+        request: eventbridge_20200401_models.CheckServiceLinkedRoleForProductRequest,
+    ) -> eventbridge_20200401_models.CheckServiceLinkedRoleForProductResponse:
+        """
+        @summary 检查账号是否存在ServiceLinkedRole授权
+        
+        @param request: CheckServiceLinkedRoleForProductRequest
+        @return: CheckServiceLinkedRoleForProductResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.check_service_linked_role_for_product_with_options_async(request, runtime)
+
     def create_api_destination_with_options(
         self,
         tmp_req: eventbridge_20200401_models.CreateApiDestinationRequest,
@@ -83,16 +179,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.CreateApiDestinationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.CreateApiDestinationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.CreateApiDestinationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_api_destination_with_options_async(
         self,
@@ -136,16 +226,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.CreateApiDestinationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.CreateApiDestinationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.CreateApiDestinationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_api_destination(
         self,
@@ -221,16 +305,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.CreateConnectionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.CreateConnectionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.CreateConnectionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_connection_with_options_async(
         self,
@@ -276,16 +354,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.CreateConnectionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.CreateConnectionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.CreateConnectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_connection(
         self,
@@ -351,16 +423,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.CreateEventBusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.CreateEventBusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.CreateEventBusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_event_bus_with_options_async(
         self,
@@ -396,16 +462,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.CreateEventBusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.CreateEventBusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.CreateEventBusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_event_bus(
         self,
@@ -511,16 +571,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.CreateEventSourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.CreateEventSourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.CreateEventSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_event_source_with_options_async(
         self,
@@ -596,16 +650,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.CreateEventSourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.CreateEventSourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.CreateEventSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_event_source(
         self,
@@ -693,16 +741,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.CreateEventStreamingResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.CreateEventStreamingResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.CreateEventStreamingResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_event_streaming_with_options_async(
         self,
@@ -760,16 +802,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.CreateEventStreamingResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.CreateEventStreamingResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.CreateEventStreamingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_event_streaming(
         self,
@@ -847,16 +883,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.CreateRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.CreateRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.CreateRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_rule_with_options_async(
         self,
@@ -904,16 +934,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.CreateRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.CreateRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.CreateRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_rule(
         self,
@@ -977,16 +1001,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.CreateServiceLinkedRoleForProductResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.CreateServiceLinkedRoleForProductResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.CreateServiceLinkedRoleForProductResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_service_linked_role_for_product_with_options_async(
         self,
@@ -1020,16 +1038,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.CreateServiceLinkedRoleForProductResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.CreateServiceLinkedRoleForProductResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.CreateServiceLinkedRoleForProductResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_service_linked_role_for_product(
         self,
@@ -1093,16 +1105,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.DeleteApiDestinationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.DeleteApiDestinationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.DeleteApiDestinationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_api_destination_with_options_async(
         self,
@@ -1136,16 +1142,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.DeleteApiDestinationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.DeleteApiDestinationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.DeleteApiDestinationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_api_destination(
         self,
@@ -1209,16 +1209,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.DeleteConnectionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.DeleteConnectionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.DeleteConnectionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_connection_with_options_async(
         self,
@@ -1252,16 +1246,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.DeleteConnectionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.DeleteConnectionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.DeleteConnectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_connection(
         self,
@@ -1325,16 +1313,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.DeleteEventBusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.DeleteEventBusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.DeleteEventBusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_event_bus_with_options_async(
         self,
@@ -1368,16 +1350,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.DeleteEventBusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.DeleteEventBusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.DeleteEventBusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_event_bus(
         self,
@@ -1443,16 +1419,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.DeleteEventSourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.DeleteEventSourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.DeleteEventSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_event_source_with_options_async(
         self,
@@ -1488,16 +1458,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.DeleteEventSourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.DeleteEventSourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.DeleteEventSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_event_source(
         self,
@@ -1561,16 +1525,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.DeleteEventStreamingResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.DeleteEventStreamingResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.DeleteEventStreamingResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_event_streaming_with_options_async(
         self,
@@ -1604,16 +1562,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.DeleteEventStreamingResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.DeleteEventStreamingResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.DeleteEventStreamingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_event_streaming(
         self,
@@ -1679,16 +1631,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.DeleteRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.DeleteRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.DeleteRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_rule_with_options_async(
         self,
@@ -1724,16 +1670,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.DeleteRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.DeleteRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.DeleteRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_rule(
         self,
@@ -1805,16 +1745,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.DeleteTargetsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.DeleteTargetsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.DeleteTargetsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_targets_with_options_async(
         self,
@@ -1856,16 +1790,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.DeleteTargetsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.DeleteTargetsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.DeleteTargetsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_targets(
         self,
@@ -1931,16 +1859,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.DisableRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.DisableRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.DisableRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def disable_rule_with_options_async(
         self,
@@ -1976,16 +1898,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.DisableRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.DisableRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.DisableRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def disable_rule(
         self,
@@ -2051,16 +1967,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.EnableRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.EnableRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.EnableRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def enable_rule_with_options_async(
         self,
@@ -2096,16 +2006,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.EnableRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.EnableRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.EnableRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def enable_rule(
         self,
@@ -2179,16 +2083,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.EventCenterQueryEventsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.EventCenterQueryEventsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.EventCenterQueryEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def event_center_query_events_with_options_async(
         self,
@@ -2232,16 +2130,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.EventCenterQueryEventsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.EventCenterQueryEventsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.EventCenterQueryEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def event_center_query_events(
         self,
@@ -2301,16 +2193,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.GetApiDestinationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.GetApiDestinationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.GetApiDestinationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_api_destination_with_options_async(
         self,
@@ -2344,16 +2230,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.GetApiDestinationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.GetApiDestinationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.GetApiDestinationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_api_destination(
         self,
@@ -2417,16 +2297,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.GetConnectionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.GetConnectionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.GetConnectionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_connection_with_options_async(
         self,
@@ -2460,16 +2334,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.GetConnectionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.GetConnectionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.GetConnectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_connection(
         self,
@@ -2533,16 +2401,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.GetEventBusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.GetEventBusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.GetEventBusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_event_bus_with_options_async(
         self,
@@ -2576,16 +2438,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.GetEventBusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.GetEventBusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.GetEventBusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_event_bus(
         self,
@@ -2649,16 +2505,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.GetEventStreamingResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.GetEventStreamingResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.GetEventStreamingResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_event_streaming_with_options_async(
         self,
@@ -2692,16 +2542,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.GetEventStreamingResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.GetEventStreamingResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.GetEventStreamingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_event_streaming(
         self,
@@ -2767,16 +2611,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.GetRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.GetRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.GetRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_rule_with_options_async(
         self,
@@ -2812,16 +2650,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.GetRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.GetRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.GetRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_rule(
         self,
@@ -2878,16 +2710,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.ListAliyunOfficialEventSourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.ListAliyunOfficialEventSourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.ListAliyunOfficialEventSourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_aliyun_official_event_sources_with_options_async(
         self,
@@ -2914,16 +2740,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.ListAliyunOfficialEventSourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.ListAliyunOfficialEventSourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.ListAliyunOfficialEventSourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_aliyun_official_event_sources(self) -> eventbridge_20200401_models.ListAliyunOfficialEventSourcesResponse:
         """
@@ -2985,16 +2805,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.ListApiDestinationsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.ListApiDestinationsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.ListApiDestinationsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_api_destinations_with_options_async(
         self,
@@ -3034,16 +2848,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.ListApiDestinationsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.ListApiDestinationsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.ListApiDestinationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_api_destinations(
         self,
@@ -3111,16 +2919,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.ListConnectionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.ListConnectionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.ListConnectionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_connections_with_options_async(
         self,
@@ -3158,16 +2960,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.ListConnectionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.ListConnectionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.ListConnectionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_connections(
         self,
@@ -3235,16 +3031,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.ListEventBusesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.ListEventBusesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.ListEventBusesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_event_buses_with_options_async(
         self,
@@ -3282,16 +3072,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.ListEventBusesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.ListEventBusesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.ListEventBusesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_event_buses(
         self,
@@ -3365,16 +3149,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.ListEventStreamingsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.ListEventStreamingsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.ListEventStreamingsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_event_streamings_with_options_async(
         self,
@@ -3418,16 +3196,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.ListEventStreamingsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.ListEventStreamingsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.ListEventStreamingsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_event_streamings(
         self,
@@ -3497,16 +3269,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.ListRulesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.ListRulesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.ListRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_rules_with_options_async(
         self,
@@ -3546,16 +3312,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.ListRulesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.ListRulesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.ListRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_rules(
         self,
@@ -3625,16 +3385,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.ListTargetsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.ListTargetsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.ListTargetsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_targets_with_options_async(
         self,
@@ -3674,16 +3428,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.ListTargetsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.ListTargetsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.ListTargetsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_targets(
         self,
@@ -3749,16 +3497,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.ListUserDefinedEventSourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.ListUserDefinedEventSourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.ListUserDefinedEventSourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_user_defined_event_sources_with_options_async(
         self,
@@ -3798,16 +3540,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.ListUserDefinedEventSourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.ListUserDefinedEventSourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.ListUserDefinedEventSourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_user_defined_event_sources(
         self,
@@ -3871,16 +3607,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.PauseEventStreamingResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.PauseEventStreamingResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.PauseEventStreamingResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def pause_event_streaming_with_options_async(
         self,
@@ -3914,16 +3644,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.PauseEventStreamingResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.PauseEventStreamingResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.PauseEventStreamingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def pause_event_streaming(
         self,
@@ -3995,16 +3719,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.PutTargetsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.PutTargetsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.PutTargetsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def put_targets_with_options_async(
         self,
@@ -4046,16 +3764,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.PutTargetsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.PutTargetsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.PutTargetsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def put_targets(
         self,
@@ -4123,16 +3835,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.QueryEventResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.QueryEventResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.QueryEventResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def query_event_with_options_async(
         self,
@@ -4170,16 +3876,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.QueryEventResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.QueryEventResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.QueryEventResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def query_event(
         self,
@@ -4245,16 +3945,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.QueryEventTracesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.QueryEventTracesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.QueryEventTracesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def query_event_traces_with_options_async(
         self,
@@ -4290,16 +3984,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.QueryEventTracesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.QueryEventTracesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.QueryEventTracesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def query_event_traces(
         self,
@@ -4367,16 +4055,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.QueryTracedEventByEventIdResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.QueryTracedEventByEventIdResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.QueryTracedEventByEventIdResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def query_traced_event_by_event_id_with_options_async(
         self,
@@ -4414,16 +4096,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.QueryTracedEventByEventIdResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.QueryTracedEventByEventIdResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.QueryTracedEventByEventIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def query_traced_event_by_event_id(
         self,
@@ -4501,16 +4177,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.QueryTracedEventsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.QueryTracedEventsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.QueryTracedEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def query_traced_events_with_options_async(
         self,
@@ -4558,16 +4228,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.QueryTracedEventsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.QueryTracedEventsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.QueryTracedEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def query_traced_events(
         self,
@@ -4631,16 +4295,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.StartEventStreamingResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.StartEventStreamingResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.StartEventStreamingResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def start_event_streaming_with_options_async(
         self,
@@ -4674,16 +4332,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.StartEventStreamingResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.StartEventStreamingResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.StartEventStreamingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def start_event_streaming(
         self,
@@ -4749,16 +4401,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.TestEventPatternResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.TestEventPatternResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.TestEventPatternResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def test_event_pattern_with_options_async(
         self,
@@ -4794,16 +4440,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.TestEventPatternResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.TestEventPatternResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.TestEventPatternResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def test_event_pattern(
         self,
@@ -4877,16 +4517,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.UpdateApiDestinationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.UpdateApiDestinationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.UpdateApiDestinationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_api_destination_with_options_async(
         self,
@@ -4930,16 +4564,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.UpdateApiDestinationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.UpdateApiDestinationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.UpdateApiDestinationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_api_destination(
         self,
@@ -5015,16 +4643,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.UpdateConnectionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.UpdateConnectionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.UpdateConnectionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_connection_with_options_async(
         self,
@@ -5070,16 +4692,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.UpdateConnectionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.UpdateConnectionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.UpdateConnectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_connection(
         self,
@@ -5145,16 +4761,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.UpdateEventBusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.UpdateEventBusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.UpdateEventBusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_event_bus_with_options_async(
         self,
@@ -5190,16 +4800,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.UpdateEventBusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.UpdateEventBusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.UpdateEventBusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_event_bus(
         self,
@@ -5305,16 +4909,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.UpdateEventSourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.UpdateEventSourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.UpdateEventSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_event_source_with_options_async(
         self,
@@ -5390,16 +4988,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.UpdateEventSourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.UpdateEventSourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.UpdateEventSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_event_source(
         self,
@@ -5485,16 +5077,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.UpdateEventStreamingResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.UpdateEventStreamingResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.UpdateEventStreamingResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_event_streaming_with_options_async(
         self,
@@ -5550,16 +5136,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.UpdateEventStreamingResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.UpdateEventStreamingResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.UpdateEventStreamingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_event_streaming(
         self,
@@ -5631,16 +5211,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.UpdateRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.UpdateRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.UpdateRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_rule_with_options_async(
         self,
@@ -5682,16 +5256,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eventbridge_20200401_models.UpdateRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eventbridge_20200401_models.UpdateRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.UpdateRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_rule(
         self,
