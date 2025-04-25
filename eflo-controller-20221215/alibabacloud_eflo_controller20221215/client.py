@@ -1025,6 +1025,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_session_with_options_async(request, runtime)
 
+    def create_vsc_with_options(
+        self,
+        request: eflo_controller_20221215_models.CreateVscRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.CreateVscResponse:
+        """
+        @summary 创建Vsc
+        
+        @param request: CreateVscRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVscResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.node_id):
+            body['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
+        if not UtilClient.is_unset(request.vsc_name):
+            body['VscName'] = request.vsc_name
+        if not UtilClient.is_unset(request.vsc_type):
+            body['VscType'] = request.vsc_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateVsc',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.CreateVscResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_vsc_with_options_async(
+        self,
+        request: eflo_controller_20221215_models.CreateVscRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.CreateVscResponse:
+        """
+        @summary 创建Vsc
+        
+        @param request: CreateVscRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVscResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.node_id):
+            body['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
+        if not UtilClient.is_unset(request.vsc_name):
+            body['VscName'] = request.vsc_name
+        if not UtilClient.is_unset(request.vsc_type):
+            body['VscType'] = request.vsc_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateVsc',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.CreateVscResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_vsc(
+        self,
+        request: eflo_controller_20221215_models.CreateVscRequest,
+    ) -> eflo_controller_20221215_models.CreateVscResponse:
+        """
+        @summary 创建Vsc
+        
+        @param request: CreateVscRequest
+        @return: CreateVscResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_vsc_with_options(request, runtime)
+
+    async def create_vsc_async(
+        self,
+        request: eflo_controller_20221215_models.CreateVscRequest,
+    ) -> eflo_controller_20221215_models.CreateVscResponse:
+        """
+        @summary 创建Vsc
+        
+        @param request: CreateVscRequest
+        @return: CreateVscResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_vsc_with_options_async(request, runtime)
+
     def delete_cluster_with_options(
         self,
         request: eflo_controller_20221215_models.DeleteClusterRequest,
@@ -1228,6 +1348,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_node_group_with_options_async(request, runtime)
+
+    def delete_vsc_with_options(
+        self,
+        request: eflo_controller_20221215_models.DeleteVscRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.DeleteVscResponse:
+        """
+        @summary 删除Vsc
+        
+        @param request: DeleteVscRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVscResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.vsc_id):
+            body['VscId'] = request.vsc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteVsc',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.DeleteVscResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_vsc_with_options_async(
+        self,
+        request: eflo_controller_20221215_models.DeleteVscRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.DeleteVscResponse:
+        """
+        @summary 删除Vsc
+        
+        @param request: DeleteVscRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVscResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.vsc_id):
+            body['VscId'] = request.vsc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteVsc',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.DeleteVscResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_vsc(
+        self,
+        request: eflo_controller_20221215_models.DeleteVscRequest,
+    ) -> eflo_controller_20221215_models.DeleteVscResponse:
+        """
+        @summary 删除Vsc
+        
+        @param request: DeleteVscRequest
+        @return: DeleteVscResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_vsc_with_options(request, runtime)
+
+    async def delete_vsc_async(
+        self,
+        request: eflo_controller_20221215_models.DeleteVscRequest,
+    ) -> eflo_controller_20221215_models.DeleteVscResponse:
+        """
+        @summary 删除Vsc
+        
+        @param request: DeleteVscRequest
+        @return: DeleteVscResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_vsc_with_options_async(request, runtime)
 
     def describe_cluster_with_options(
         self,
@@ -2028,6 +2252,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_task_with_options_async(request, runtime)
+
+    def describe_vsc_with_options(
+        self,
+        request: eflo_controller_20221215_models.DescribeVscRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.DescribeVscResponse:
+        """
+        @summary 获取单个Vsc详情
+        
+        @param request: DescribeVscRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVscResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.vsc_id):
+            body['VscId'] = request.vsc_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeVsc',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.DescribeVscResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vsc_with_options_async(
+        self,
+        request: eflo_controller_20221215_models.DescribeVscRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.DescribeVscResponse:
+        """
+        @summary 获取单个Vsc详情
+        
+        @param request: DescribeVscRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVscResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.vsc_id):
+            body['VscId'] = request.vsc_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeVsc',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.DescribeVscResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vsc(
+        self,
+        request: eflo_controller_20221215_models.DescribeVscRequest,
+    ) -> eflo_controller_20221215_models.DescribeVscResponse:
+        """
+        @summary 获取单个Vsc详情
+        
+        @param request: DescribeVscRequest
+        @return: DescribeVscResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vsc_with_options(request, runtime)
+
+    async def describe_vsc_async(
+        self,
+        request: eflo_controller_20221215_models.DescribeVscRequest,
+    ) -> eflo_controller_20221215_models.DescribeVscResponse:
+        """
+        @summary 获取单个Vsc详情
+        
+        @param request: DescribeVscRequest
+        @return: DescribeVscResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vsc_with_options_async(request, runtime)
 
     def describe_zones_with_options(
         self,
@@ -3459,6 +3779,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_user_cluster_types_with_options_async(runtime)
 
+    def list_vscs_with_options(
+        self,
+        tmp_req: eflo_controller_20221215_models.ListVscsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.ListVscsResponse:
+        """
+        @summary 查询Vsc列表
+        
+        @param tmp_req: ListVscsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVscsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eflo_controller_20221215_models.ListVscsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.node_ids):
+            request.node_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.node_ids, 'NodeIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.node_ids_shrink):
+            body['NodeIds'] = request.node_ids_shrink
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.vsc_name):
+            body['VscName'] = request.vsc_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListVscs',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.ListVscsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_vscs_with_options_async(
+        self,
+        tmp_req: eflo_controller_20221215_models.ListVscsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.ListVscsResponse:
+        """
+        @summary 查询Vsc列表
+        
+        @param tmp_req: ListVscsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVscsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eflo_controller_20221215_models.ListVscsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.node_ids):
+            request.node_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.node_ids, 'NodeIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.node_ids_shrink):
+            body['NodeIds'] = request.node_ids_shrink
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.vsc_name):
+            body['VscName'] = request.vsc_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListVscs',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.ListVscsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_vscs(
+        self,
+        request: eflo_controller_20221215_models.ListVscsRequest,
+    ) -> eflo_controller_20221215_models.ListVscsResponse:
+        """
+        @summary 查询Vsc列表
+        
+        @param request: ListVscsRequest
+        @return: ListVscsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_vscs_with_options(request, runtime)
+
+    async def list_vscs_async(
+        self,
+        request: eflo_controller_20221215_models.ListVscsRequest,
+    ) -> eflo_controller_20221215_models.ListVscsResponse:
+        """
+        @summary 查询Vsc列表
+        
+        @param request: ListVscsRequest
+        @return: ListVscsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_vscs_with_options_async(request, runtime)
+
     def reboot_nodes_with_options(
         self,
         tmp_req: eflo_controller_20221215_models.RebootNodesRequest,
@@ -4563,6 +5011,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.file_system_mount_enabled):
+            body['FileSystemMountEnabled'] = request.file_system_mount_enabled
+        if not UtilClient.is_unset(request.key_pair_name):
+            body['KeyPairName'] = request.key_pair_name
         if not UtilClient.is_unset(request.new_node_group_name):
             body['NewNodeGroupName'] = request.new_node_group_name
         if not UtilClient.is_unset(request.node_group_id):
@@ -4604,6 +5056,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.file_system_mount_enabled):
+            body['FileSystemMountEnabled'] = request.file_system_mount_enabled
+        if not UtilClient.is_unset(request.key_pair_name):
+            body['KeyPairName'] = request.key_pair_name
         if not UtilClient.is_unset(request.new_node_group_name):
             body['NewNodeGroupName'] = request.new_node_group_name
         if not UtilClient.is_unset(request.node_group_id):

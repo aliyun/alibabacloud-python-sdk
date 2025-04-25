@@ -1034,8 +1034,19 @@ class CreateClusterRequestNodeGroupsSystemDisk(TeaModel):
         performance_level: str = None,
         size: int = None,
     ):
+        # The disk type. Valid values:
+        # 
+        # *   cloud_ssd: standard SSD
         self.category = category
+        # The performance level of the ESSD that is used as the system disk. Valid values:
+        # 
+        # *   PL0: A single ESSD can provide up to 10,000 random read/write IOPS.
+        # *   PL1: A single ESSD can provide up to 50,000 random read/write IOPS.
+        # 
+        # 
+        # Default value: PL1.
         self.performance_level = performance_level
+        # The size. Unit: GB.
         self.size = size
 
     def validate(self):
@@ -1069,7 +1080,9 @@ class CreateClusterRequestNodeGroupsSystemDisk(TeaModel):
 class CreateClusterRequestNodeGroups(TeaModel):
     def __init__(
         self,
+        file_system_mount_enabled: bool = None,
         image_id: str = None,
+        key_pair_name: str = None,
         machine_type: str = None,
         node_group_description: str = None,
         node_group_name: str = None,
@@ -1078,8 +1091,11 @@ class CreateClusterRequestNodeGroups(TeaModel):
         user_data: str = None,
         zone_id: str = None,
     ):
+        self.file_system_mount_enabled = file_system_mount_enabled
         # System image ID
         self.image_id = image_id
+        # The name of the key pair.
+        self.key_pair_name = key_pair_name
         # Machine type
         self.machine_type = machine_type
         # Node group description
@@ -1088,6 +1104,7 @@ class CreateClusterRequestNodeGroups(TeaModel):
         self.node_group_name = node_group_name
         # Node list
         self.nodes = nodes
+        # SystemDisk
         self.system_disk = system_disk
         # Instance custom data. It needs to be Base64 encoded, and the original data should not exceed 16 KB.
         self.user_data = user_data
@@ -1108,8 +1125,12 @@ class CreateClusterRequestNodeGroups(TeaModel):
             return _map
 
         result = dict()
+        if self.file_system_mount_enabled is not None:
+            result['FileSystemMountEnabled'] = self.file_system_mount_enabled
         if self.image_id is not None:
             result['ImageId'] = self.image_id
+        if self.key_pair_name is not None:
+            result['KeyPairName'] = self.key_pair_name
         if self.machine_type is not None:
             result['MachineType'] = self.machine_type
         if self.node_group_description is not None:
@@ -1130,8 +1151,12 @@ class CreateClusterRequestNodeGroups(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FileSystemMountEnabled') is not None:
+            self.file_system_mount_enabled = m.get('FileSystemMountEnabled')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
+        if m.get('KeyPairName') is not None:
+            self.key_pair_name = m.get('KeyPairName')
         if m.get('MachineType') is not None:
             self.machine_type = m.get('MachineType')
         if m.get('NodeGroupDescription') is not None:
@@ -2511,8 +2536,19 @@ class CreateNodeGroupRequestNodeGroupSystemDisk(TeaModel):
         performance_level: str = None,
         size: int = None,
     ):
+        # Disk performance level
         self.category = category
+        # The performance level of the disk if the disk is an ESSD. Valid values:
+        # 
+        # *   PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
+        # *   PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
+        # 
+        # 
+        # Default value: PL1.
+        # 
+        # For information about ESSD performance levels, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
         self.performance_level = performance_level
+        # System disk size
         self.size = size
 
     def validate(self):
@@ -2547,7 +2583,9 @@ class CreateNodeGroupRequestNodeGroup(TeaModel):
     def __init__(
         self,
         az: str = None,
+        file_system_mount_enabled: bool = None,
         image_id: str = None,
+        key_pair_name: str = None,
         machine_type: str = None,
         node_group_description: str = None,
         node_group_name: str = None,
@@ -2558,10 +2596,13 @@ class CreateNodeGroupRequestNodeGroup(TeaModel):
         # 
         # This parameter is required.
         self.az = az
+        self.file_system_mount_enabled = file_system_mount_enabled
         # Image ID.
         # 
         # This parameter is required.
         self.image_id = image_id
+        # The name of the key pair.
+        self.key_pair_name = key_pair_name
         # Machine type
         # 
         # This parameter is required.
@@ -2572,6 +2613,7 @@ class CreateNodeGroupRequestNodeGroup(TeaModel):
         # 
         # This parameter is required.
         self.node_group_name = node_group_name
+        # SystemDisk
         self.system_disk = system_disk
         # user data
         self.user_data = user_data
@@ -2588,8 +2630,12 @@ class CreateNodeGroupRequestNodeGroup(TeaModel):
         result = dict()
         if self.az is not None:
             result['Az'] = self.az
+        if self.file_system_mount_enabled is not None:
+            result['FileSystemMountEnabled'] = self.file_system_mount_enabled
         if self.image_id is not None:
             result['ImageId'] = self.image_id
+        if self.key_pair_name is not None:
+            result['KeyPairName'] = self.key_pair_name
         if self.machine_type is not None:
             result['MachineType'] = self.machine_type
         if self.node_group_description is not None:
@@ -2606,8 +2652,12 @@ class CreateNodeGroupRequestNodeGroup(TeaModel):
         m = m or dict()
         if m.get('Az') is not None:
             self.az = m.get('Az')
+        if m.get('FileSystemMountEnabled') is not None:
+            self.file_system_mount_enabled = m.get('FileSystemMountEnabled')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
+        if m.get('KeyPairName') is not None:
+            self.key_pair_name = m.get('KeyPairName')
         if m.get('MachineType') is not None:
             self.machine_type = m.get('MachineType')
         if m.get('NodeGroupDescription') is not None:
@@ -2938,6 +2988,180 @@ class CreateSessionResponse(TeaModel):
         return self
 
 
+class CreateVscRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateVscRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        node_id: str = None,
+        resource_group_id: str = None,
+        tag: List[CreateVscRequestTag] = None,
+        vsc_name: str = None,
+        vsc_type: str = None,
+    ):
+        self.client_token = client_token
+        # This parameter is required.
+        self.node_id = node_id
+        self.resource_group_id = resource_group_id
+        self.tag = tag
+        self.vsc_name = vsc_name
+        self.vsc_type = vsc_type
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        if self.vsc_name is not None:
+            result['VscName'] = self.vsc_name
+        if self.vsc_type is not None:
+            result['VscType'] = self.vsc_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateVscRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        if m.get('VscName') is not None:
+            self.vsc_name = m.get('VscName')
+        if m.get('VscType') is not None:
+            self.vsc_type = m.get('VscType')
+        return self
+
+
+class CreateVscResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        vsc_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.vsc_id = vsc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.vsc_id is not None:
+            result['VscId'] = self.vsc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('VscId') is not None:
+            self.vsc_id = m.get('VscId')
+        return self
+
+
+class CreateVscResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateVscResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateVscResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteClusterRequest(TeaModel):
     def __init__(
         self,
@@ -3137,6 +3361,109 @@ class DeleteNodeGroupResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteNodeGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteVscRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        vsc_id: str = None,
+    ):
+        self.client_token = client_token
+        # This parameter is required.
+        self.vsc_id = vsc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.vsc_id is not None:
+            result['VscId'] = self.vsc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('VscId') is not None:
+            self.vsc_id = m.get('VscId')
+        return self
+
+
+class DeleteVscResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteVscResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteVscResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteVscResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4746,10 +5073,22 @@ class DescribeNodeResponseBodyDisks(TeaModel):
         size: int = None,
         type: str = None,
     ):
+        # The category of the disk.
+        # 
+        # *   cloud_ssd: all-flash disk.
         self.category = category
+        # The ID of the disk.
         self.disk_id = disk_id
+        # The performance level of the ESSD. Valid values:
+        # 
+        # *   PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
+        # *   PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
         self.performance_level = performance_level
+        # The size of the disk. Unit: GiB.
         self.size = size
+        # The type of the disk. Valid values:
+        # 
+        # *   system: system disk
         self.type = type
 
     def validate(self):
@@ -4845,6 +5184,7 @@ class DescribeNodeResponseBody(TeaModel):
         create_time: str = None,
         disks: List[DescribeNodeResponseBodyDisks] = None,
         expired_time: str = None,
+        file_system_mount_enabled: bool = None,
         hostname: str = None,
         hpn_zone: str = None,
         image_id: str = None,
@@ -4867,9 +5207,12 @@ class DescribeNodeResponseBody(TeaModel):
         self.cluster_name = cluster_name
         # Creation time
         self.create_time = create_time
+        # Disk infos
         self.disks = disks
         # Expiration time
         self.expired_time = expired_time
+        # 是否支持文件存储挂载
+        self.file_system_mount_enabled = file_system_mount_enabled
         # Hostname
         self.hostname = hostname
         # Cluster number
@@ -4929,6 +5272,8 @@ class DescribeNodeResponseBody(TeaModel):
                 result['Disks'].append(k.to_map() if k else None)
         if self.expired_time is not None:
             result['ExpiredTime'] = self.expired_time
+        if self.file_system_mount_enabled is not None:
+            result['FileSystemMountEnabled'] = self.file_system_mount_enabled
         if self.hostname is not None:
             result['Hostname'] = self.hostname
         if self.hpn_zone is not None:
@@ -4978,6 +5323,8 @@ class DescribeNodeResponseBody(TeaModel):
                 self.disks.append(temp_model.from_map(k))
         if m.get('ExpiredTime') is not None:
             self.expired_time = m.get('ExpiredTime')
+        if m.get('FileSystemMountEnabled') is not None:
+            self.file_system_mount_enabled = m.get('FileSystemMountEnabled')
         if m.get('Hostname') is not None:
             self.hostname = m.get('Hostname')
         if m.get('HpnZone') is not None:
@@ -5970,6 +6317,140 @@ class DescribeTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeVscRequest(TeaModel):
+    def __init__(
+        self,
+        vsc_id: str = None,
+    ):
+        # This parameter is required.
+        self.vsc_id = vsc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.vsc_id is not None:
+            result['VscId'] = self.vsc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VscId') is not None:
+            self.vsc_id = m.get('VscId')
+        return self
+
+
+class DescribeVscResponseBody(TeaModel):
+    def __init__(
+        self,
+        node_id: str = None,
+        request_id: str = None,
+        resource_group_id: str = None,
+        status: str = None,
+        vsc_id: str = None,
+        vsc_name: str = None,
+        vsc_type: str = None,
+    ):
+        self.node_id = node_id
+        # Id of the request
+        self.request_id = request_id
+        self.resource_group_id = resource_group_id
+        self.status = status
+        # VscId
+        self.vsc_id = vsc_id
+        self.vsc_name = vsc_name
+        self.vsc_type = vsc_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.vsc_id is not None:
+            result['VscId'] = self.vsc_id
+        if self.vsc_name is not None:
+            result['VscName'] = self.vsc_name
+        if self.vsc_type is not None:
+            result['VscType'] = self.vsc_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('VscId') is not None:
+            self.vsc_id = m.get('VscId')
+        if m.get('VscName') is not None:
+            self.vsc_name = m.get('VscName')
+        if m.get('VscType') is not None:
+            self.vsc_type = m.get('VscType')
+        return self
+
+
+class DescribeVscResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVscResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVscResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7084,6 +7565,7 @@ class ListClusterNodesResponseBodyNodes(TeaModel):
         commodity_code: str = None,
         create_time: str = None,
         expired_time: str = None,
+        file_system_mount_enabled: bool = None,
         hostname: str = None,
         hpn_zone: str = None,
         image_id: str = None,
@@ -7107,6 +7589,8 @@ class ListClusterNodesResponseBodyNodes(TeaModel):
         self.create_time = create_time
         # Machine expiration time
         self.expired_time = expired_time
+        # whether or not support file system mount
+        self.file_system_mount_enabled = file_system_mount_enabled
         # Hostname
         self.hostname = hostname
         # Hpn Zone
@@ -7162,6 +7646,8 @@ class ListClusterNodesResponseBodyNodes(TeaModel):
             result['CreateTime'] = self.create_time
         if self.expired_time is not None:
             result['ExpiredTime'] = self.expired_time
+        if self.file_system_mount_enabled is not None:
+            result['FileSystemMountEnabled'] = self.file_system_mount_enabled
         if self.hostname is not None:
             result['Hostname'] = self.hostname
         if self.hpn_zone is not None:
@@ -7208,6 +7694,8 @@ class ListClusterNodesResponseBodyNodes(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('ExpiredTime') is not None:
             self.expired_time = m.get('ExpiredTime')
+        if m.get('FileSystemMountEnabled') is not None:
+            self.file_system_mount_enabled = m.get('FileSystemMountEnabled')
         if m.get('Hostname') is not None:
             self.hostname = m.get('Hostname')
         if m.get('HpnZone') is not None:
@@ -9692,6 +10180,7 @@ class ListNodeGroupsResponseBodyGroups(TeaModel):
         cluster_name: str = None,
         create_time: str = None,
         description: str = None,
+        file_system_mount_enabled: bool = None,
         group_id: str = None,
         group_name: str = None,
         image_id: str = None,
@@ -9709,6 +10198,7 @@ class ListNodeGroupsResponseBodyGroups(TeaModel):
         self.create_time = create_time
         # Description
         self.description = description
+        self.file_system_mount_enabled = file_system_mount_enabled
         # Group ID.
         self.group_id = group_id
         # Group name.
@@ -9743,6 +10233,8 @@ class ListNodeGroupsResponseBodyGroups(TeaModel):
             result['CreateTime'] = self.create_time
         if self.description is not None:
             result['Description'] = self.description
+        if self.file_system_mount_enabled is not None:
+            result['FileSystemMountEnabled'] = self.file_system_mount_enabled
         if self.group_id is not None:
             result['GroupId'] = self.group_id
         if self.group_name is not None:
@@ -9771,6 +10263,8 @@ class ListNodeGroupsResponseBodyGroups(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('FileSystemMountEnabled') is not None:
+            self.file_system_mount_enabled = m.get('FileSystemMountEnabled')
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
         if m.get('GroupName') is not None:
@@ -10275,6 +10769,409 @@ class ListUserClusterTypesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListUserClusterTypesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListVscsRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListVscsRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        node_ids: List[str] = None,
+        resource_group_id: str = None,
+        tag: List[ListVscsRequestTag] = None,
+        vsc_name: str = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.node_ids = node_ids
+        self.resource_group_id = resource_group_id
+        self.tag = tag
+        self.vsc_name = vsc_name
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.node_ids is not None:
+            result['NodeIds'] = self.node_ids
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        if self.vsc_name is not None:
+            result['VscName'] = self.vsc_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('NodeIds') is not None:
+            self.node_ids = m.get('NodeIds')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListVscsRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        if m.get('VscName') is not None:
+            self.vsc_name = m.get('VscName')
+        return self
+
+
+class ListVscsShrinkRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListVscsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        node_ids_shrink: str = None,
+        resource_group_id: str = None,
+        tag: List[ListVscsShrinkRequestTag] = None,
+        vsc_name: str = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.node_ids_shrink = node_ids_shrink
+        self.resource_group_id = resource_group_id
+        self.tag = tag
+        self.vsc_name = vsc_name
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.node_ids_shrink is not None:
+            result['NodeIds'] = self.node_ids_shrink
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        if self.vsc_name is not None:
+            result['VscName'] = self.vsc_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('NodeIds') is not None:
+            self.node_ids_shrink = m.get('NodeIds')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListVscsShrinkRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        if m.get('VscName') is not None:
+            self.vsc_name = m.get('VscName')
+        return self
+
+
+class ListVscsResponseBodyVscsTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
+class ListVscsResponseBodyVscs(TeaModel):
+    def __init__(
+        self,
+        node_id: str = None,
+        resource_group_id: str = None,
+        status: str = None,
+        tags: List[ListVscsResponseBodyVscsTags] = None,
+        vsc_id: str = None,
+        vsc_name: str = None,
+        vsc_type: str = None,
+    ):
+        self.node_id = node_id
+        self.resource_group_id = resource_group_id
+        self.status = status
+        self.tags = tags
+        # VscId
+        self.vsc_id = vsc_id
+        self.vsc_name = vsc_name
+        self.vsc_type = vsc_type
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.status is not None:
+            result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        if self.vsc_id is not None:
+            result['VscId'] = self.vsc_id
+        if self.vsc_name is not None:
+            result['VscName'] = self.vsc_name
+        if self.vsc_type is not None:
+            result['VscType'] = self.vsc_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListVscsResponseBodyVscsTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('VscId') is not None:
+            self.vsc_id = m.get('VscId')
+        if m.get('VscName') is not None:
+            self.vsc_name = m.get('VscName')
+        if m.get('VscType') is not None:
+            self.vsc_type = m.get('VscType')
+        return self
+
+
+class ListVscsResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+        vscs: List[ListVscsResponseBodyVscs] = None,
+    ):
+        self.max_results = max_results
+        # This parameter is required.
+        self.next_token = next_token
+        # Id of the request
+        self.request_id = request_id
+        self.total_count = total_count
+        self.vscs = vscs
+
+    def validate(self):
+        if self.vscs:
+            for k in self.vscs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        result['Vscs'] = []
+        if self.vscs is not None:
+            for k in self.vscs:
+                result['Vscs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        self.vscs = []
+        if m.get('Vscs') is not None:
+            for k in m.get('Vscs'):
+                temp_model = ListVscsResponseBodyVscs()
+                self.vscs.append(temp_model.from_map(k))
+        return self
+
+
+class ListVscsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListVscsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListVscsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12286,10 +13183,15 @@ class UntagResourcesResponse(TeaModel):
 class UpdateNodeGroupRequest(TeaModel):
     def __init__(
         self,
+        file_system_mount_enabled: bool = None,
+        key_pair_name: str = None,
         new_node_group_name: str = None,
         node_group_id: str = None,
         user_data: str = None,
     ):
+        self.file_system_mount_enabled = file_system_mount_enabled
+        # The name of the key pair.
+        self.key_pair_name = key_pair_name
         # Node group name
         self.new_node_group_name = new_node_group_name
         # Node group ID
@@ -12306,6 +13208,10 @@ class UpdateNodeGroupRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.file_system_mount_enabled is not None:
+            result['FileSystemMountEnabled'] = self.file_system_mount_enabled
+        if self.key_pair_name is not None:
+            result['KeyPairName'] = self.key_pair_name
         if self.new_node_group_name is not None:
             result['NewNodeGroupName'] = self.new_node_group_name
         if self.node_group_id is not None:
@@ -12316,6 +13222,10 @@ class UpdateNodeGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FileSystemMountEnabled') is not None:
+            self.file_system_mount_enabled = m.get('FileSystemMountEnabled')
+        if m.get('KeyPairName') is not None:
+            self.key_pair_name = m.get('KeyPairName')
         if m.get('NewNodeGroupName') is not None:
             self.new_node_group_name = m.get('NewNodeGroupName')
         if m.get('NodeGroupId') is not None:
@@ -12329,9 +13239,12 @@ class UpdateNodeGroupResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
+        task_id: str = None,
     ):
         # Id of the request
         self.request_id = request_id
+        # Task ID
+        self.task_id = task_id
 
     def validate(self):
         pass
@@ -12344,12 +13257,16 @@ class UpdateNodeGroupResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
         return self
 
 

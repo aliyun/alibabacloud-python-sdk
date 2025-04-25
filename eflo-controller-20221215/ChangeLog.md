@@ -1,3 +1,20 @@
+2025-04-25 Version: 2.5.0
+- Support API CreateVsc.
+- Support API DeleteVsc.
+- Support API DescribeVsc.
+- Support API ListVscs.
+- Update API CreateCluster: add request parameters NodeGroups.$.FileSystemMountEnabled.
+- Update API CreateCluster: add request parameters NodeGroups.$.KeyPairName.
+- Update API CreateNodeGroup: add request parameters NodeGroup.FileSystemMountEnabled.
+- Update API CreateNodeGroup: add request parameters NodeGroup.KeyPairName.
+- Update API DescribeNode: add response parameters Body.FileSystemMountEnabled.
+- Update API ListClusterNodes: add response parameters Body.Nodes.$.FileSystemMountEnabled.
+- Update API ListNodeGroups: add response parameters Body.Groups.$.FileSystemMountEnabled.
+- Update API UpdateNodeGroup: add request parameters FileSystemMountEnabled.
+- Update API UpdateNodeGroup: add request parameters KeyPairName.
+- Update API UpdateNodeGroup: add response parameters Body.TaskId.
+
+
 2025-04-16 Version: 2.4.6
 - Generated python 2022-12-15 for eflo-controller.
 
