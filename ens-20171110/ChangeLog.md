@@ -1,3 +1,15 @@
+2025-04-25 Version: 9.0.5
+- Update API DescribeEnsEipAddresses: add response parameters Body.EipAddresses.$.Tags.$.Key.
+- Update API DescribeEnsEipAddresses: add response parameters Body.EipAddresses.$.Tags.$.Value.
+- Update API DescribeNatGateways: add response parameters Body.NatGateways.$.Tags.$.Key.
+- Update API DescribeNatGateways: add response parameters Body.NatGateways.$.Tags.$.Value.
+- Update API DescribeNetworks: add response parameters Body.Networks.$.Tags.$.Key.
+- Update API DescribeNetworks: add response parameters Body.Networks.$.Tags.$.Value.
+- Update API DescribeVSwitches: add response parameters Body.VSwitches.$.Tags.$.Key.
+- Update API DescribeVSwitches: add response parameters Body.VSwitches.$.Tags.$.Value.
+- Update API ModifyInstanceChargeType: add request parameters BillingCycle.
+
+
 2025-04-10 Version: 9.0.4
 - Update API DescribeEnsEipAddresses: add response parameters Body.EipAddresses.$.Tags.
 - Update API DescribeNatGateways: add response parameters Body.NatGateways.$.Tags.

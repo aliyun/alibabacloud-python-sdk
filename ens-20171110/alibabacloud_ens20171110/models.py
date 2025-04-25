@@ -823,7 +823,7 @@ class AddBackendServersRequestBackendServers(TeaModel):
         self.ip = ip
         # The backend port that is used by the ELB instance.
         self.port = port
-        # The ID of the backend server.
+        # The ID of the ENS instance.
         # 
         # This parameter is required.
         self.server_id = server_id
@@ -1146,7 +1146,7 @@ class AddNetworkInterfaceToInstanceRequest(TeaModel):
         instance_id: str = None,
         networks: str = None,
     ):
-        # Specifies whether to specify the instance.
+        # Specifies whether to automatically restart the instance.
         self.auto_start = auto_start
         # The ID of the instance.
         # 
@@ -1532,11 +1532,11 @@ class AssociateEnsEipAddressRequest(TeaModel):
         self.instance_id = instance_id
         # The type of instance with which you want to associate the EIP. Valid values:
         # 
-        # *   **Nat**: a NAT gateway.
-        # *   **SlbInstance**: an ELB instance.
-        # *   **NetworkInterface**: a secondary elastic network interface (ENI).
-        # *   **NatSlbInstance**: If you want to associate multiple EIPs to an ELB instance, you need to set the parameter to this value.
-        # *   **EnsInstance** (default): an ENS instance.
+        # *   **Nat**: NAT gateway.
+        # *   **SlbInstance**: Edge Load Balancer (ELB) instance.
+        # *   **NetworkInterface**: secondary elastic network interface (ENI).
+        # *   **NatSlbInstance**: If you want to associate multiple EIPs with an ELB instance, you need to set the parameter to this value.
+        # *   **EnsInstance** (default): ENS instance.
         self.instance_type = instance_type
         # Specifies whether the EIP is a secondary EIP. Valid values:
         # 
@@ -1662,8 +1662,8 @@ class AssociateHaVipRequest(TeaModel):
         self.instance_id = instance_id
         # The type of the instance to be associated with the HAVIP. Valid values:
         # 
-        # *   EnsInstance (default): ENS instance.
-        # *   NetworkInterface: ENI. If you want to associate the HAVIP with an ENI, this parameter is required.
+        # *   EnsInstance (default): ENS instance
+        # *   NetworkInterface: elastic network interface (ENI)
         self.instance_type = instance_type
 
     def validate(self):
@@ -4078,7 +4078,7 @@ class CreateDiskRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N of the instance. Valid values of N: **1** to **20**.
+        # The key of the tag. Valid values of N: **1** to **20**.
         # 
         # *   The key cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
         # *   The key must be up to 64 characters in length.
@@ -4086,9 +4086,9 @@ class CreateDiskRequestTag(TeaModel):
         self.key = key
         # The value of a tag that is attached to the topics you want to query. This parameter is not required. If you configure this parameter, you must also configure the **Key** parameter.**** If you include the Key and Value parameters in a request, this operation queries only the topics that use the specified tags. If you do not include these parameters in a request, this operation queries all topics that you can access.
         # 
-        # *   Valid values of N: 1 to 20.
+        # *   Valid values: 1 to 20.
         # *   The value of this parameter can be an empty string.
-        # *   The tag key can be up to 128 characters in length and cannot contain http:// or https://. The tag key cannot start with acs: or aliyun.
+        # *   The tag value can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
         self.value = value
 
     def validate(self):
@@ -4163,9 +4163,7 @@ class CreateDiskRequest(TeaModel):
         # *   If the size of the snapshot specified by **SnapshotId** is greater than the specified **Size** value, the size of the created disk is equal to the specified snapshot size.
         # *   If the size of the snapshot specified by **SnapshotId** is smaller than the specified **Size** value, the size of the created disk is equal to the specified **Size** value.
         self.snapshot_id = snapshot_id
-        # The tags.
-        # 
-        # You can specify at most 20 tags.
+        # The tags of the instance. You can specify at most 20 tags in each call.
         self.tag = tag
 
     def validate(self):
@@ -4367,7 +4365,12 @@ class CreateEipInstanceRequest(TeaModel):
     ):
         # The maximum bandwidth of the EIP. Default value: 5. Valid values: 5 to 10000. Unit: Mbit/s.
         self.bandwidth = bandwidth
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. This prevents repeated operations caused by multiple retries.
+        # 
+        # *   You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
+        # *   If you use a ClientToken that has been used and other request parameters remain unchanged in a repeated request, the client will receive the same result as the first request. This does not affect the status of your server.
+        # *   You can initiate a retry when the operation times out or the error code is PROCESSING. The idempotence is valid. If HTTP status code 200 is returned, the client receives the same result as the last request. However, your server status is not affected. If HTTP status code 4xx is returned and error code is not PROCESSING, the idempotence is invalid.
+        # *   A client token is valid for 10 minutes.
         self.client_token = client_token
         # The description of the EIP.
         self.description = description
@@ -4567,7 +4570,7 @@ class CreateEnsRouteEntryRequest(TeaModel):
         # 
         # This parameter is required.
         self.route_table_id = route_table_id
-        # The new source CIDR block of the inbound or outbound traffic.
+        # The source CIDR block is available when you configure a route entry in the gateway route table, but is not unavailable when you configure a route entry in the vSwitch route table.
         self.source_cidr_block = source_cidr_block
 
     def validate(self):
@@ -5723,6 +5726,9 @@ class CreateHaVipRequest(TeaModel):
         name: str = None,
         v_switch_id: str = None,
     ):
+        # The number of HAVIPs that you want to create. Valid values: 1 to 10. The value can be only 1 if you specify an IP address.
+        # 
+        # Default value: 1.
         self.amount = amount
         self.description = description
         self.ip_address = ip_address
@@ -5863,8 +5869,9 @@ class CreateImageRequest(TeaModel):
         self.instance_id = instance_id
         # The ID of the snapshot.
         self.snapshot_id = snapshot_id
-        # The region of the target OSS where the image is to be stored.
+        # The region of the destination OSS bucket where the image is to be stored.
         self.target_ossregion_id = target_ossregion_id
+        # 创建镜像是否包含数据盘。
         self.with_data_disks = with_data_disks
 
     def validate(self):
@@ -6666,6 +6673,12 @@ class CreateLoadBalancerRequest(TeaModel):
         pay_type: str = None,
         v_switch_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. This prevents repeated operations caused by multiple retries.
+        # 
+        # *   You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
+        # *   If you retry an API request with the same client token and request parameters after it has completed successfully, the result of the original request is returned. The server status does not change.
+        # *   You can initiate a retry when the operation times out or the error code is PROCESSING. The idempotence is valid. If HTTP status code 200 is returned, the client receives the same result as the last request. However, your server status is not affected. If HTTP status code 4xx is returned and error code is not PROCESSING, the idempotence is invalid.
+        # *   A client token is valid for 10 minutes.
         self.client_token = client_token
         # The ID of the Edge Node Service (ENS) node.
         # 
@@ -6857,7 +6870,7 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
         unhealthy_threshold: int = None,
         xforwarded_for: str = None,
     ):
-        # The port used by the backend ELB server of the ELB instance. Valid values: **1** to **65535**.
+        # The port used by the backend server of the ELB instance. Valid values: **1** to **65535**.
         self.backend_server_port = backend_server_port
         # The name of the listener. The value must be **1** to **80** characters in length.
         # 
@@ -6893,12 +6906,12 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
         # 
         # >  This parameter takes effect only if you set HealthCheck to on.
         self.health_check_interval = health_check_interval
-        # The health check method used in HTTP health checks. Valid values:
+        # The HTTP request method for health checks. Valid values:
         # 
         # *   **head** (default)
         # *   **get**\
         # 
-        # >  This parameter takes effect only if you set HealthCheck to on.
+        # >  This parameter takes effect only if the HealthCheck parameter is set to on.
         self.health_check_method = health_check_method
         # The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the server fails the health check.
         # 
@@ -6928,7 +6941,7 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
         # 
         # >  If no request is received within the specified timeout period, ELB closes the connection. When a request is received, ELB creates a new connection.
         self.idle_timeout = idle_timeout
-        # Specifies whether to enable HTTP-to-HTTPS redirection. Valid values:
+        # Specifies whether to enable redirection from HTTP to HTTPS. Valid values:
         # 
         # *   **on**\
         # *   **off** (default)
@@ -6947,14 +6960,14 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
         # 
         # >  If no response is received from the backend server within the specified timeout period, ALB returns an HTTP 504 error code to the client.
         self.request_timeout = request_timeout
-        # The routing algorithm. Valid values:
+        # The scheduling algorithm. Valid values:
         # 
-        # *   **wrr**: Backend servers with higher weights receive more requests than backend servers with lower weights. This is the default value.
-        # *   **wlc**: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections on a backend server. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
+        # *   **wrr** (default): Backend servers with higher weights receive more requests than backend servers with lower weights.
+        # *   **wlc**: Requests are distributed based on the weights and number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
         # *   **rr**: Requests are distributed to backend servers in sequence.
-        # *   **sch**: consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
-        # *   **qch**: consistent hashing that is based on QUIC connection IDs. Requests that contain the same QUIC connection ID are distributed to the same backend server.
-        # *   **iqch**: consistent hashing that is based on specific three bytes of the iQUIC CIDs. Requests whose second to fourth bytes are the same are distributed to the same backend server.
+        # *   **sch**: consistent hashing based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
+        # *   **qch**: consistent hashing based on QUIC connection IDs (CIDs). Requests that contain the same QUIC CID are distributed to the same backend server.
+        # *   **iqch**: consistent hashing based on three specific bytes of iQUIC CIDs. Requests with the same second, third, and fourth bytes are distributed to the same backend server.
         self.scheduler = scheduler
         # The number of consecutive failed health checks that must occur before a healthy and accessible backend server is declared unhealthy and inaccessible. Valid values: **2** to **10**. Default value: **3**.
         # 
@@ -7158,7 +7171,7 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
         sticky_session_type: str = None,
         unhealthy_threshold: int = None,
     ):
-        # The listening port that is used by the backend instances. Valid values: 1 to 65535.
+        # The backend port that is used by the ELB instance. Valid values: **1** to **65535**.
         self.backend_server_port = backend_server_port
         # The cookie that is configured on the server. The cookie must be **1** to **200** characters in length and contain only ASCII characters and digits.
         # 
@@ -7174,7 +7187,7 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
         self.description = description
         # The listener port that is used to redirect HTTP requests to HTTPS.
         self.forward_port = forward_port
-        # Specifies whether to enable the health check feature. Valid values:
+        # Indicates whether the health check feature is enabled. Valid values:
         # 
         # *   **on**\
         # *   **off**\
@@ -7202,12 +7215,12 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
         # 
         # >  This parameter takes effect only if you set HealthCheck to on.
         self.health_check_interval = health_check_interval
-        # The health check method used by HTTP listeners. Valid values:
+        # The HTTP request method for health checks. Valid values:
         # 
         # *   **head** (default): requests the head of the page.
         # *   **get**: requests the specified part of the page and returns the entity body.
         # 
-        # >  This parameter takes effect only if you set HealthCheck to on.
+        # >  This parameter takes effect only if the HealthCheck parameter is set to on.
         self.health_check_method = health_check_method
         # The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the server fails to pass the health check.
         # 
@@ -7233,7 +7246,7 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
         # 
         # >  If no request is received within the specified timeout period, ELB closes the connection. When another request is received, ELB establishes a new connection.
         self.idle_timeout = idle_timeout
-        # Specifies whether to enable HTTP-to-HTTPS redirection. Valid values:
+        # Specifies whether to enable redirection from HTTP to HTTPS. Valid values:
         # 
         # *   **on**\
         # *   **off** (default)
@@ -7252,25 +7265,25 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
         # 
         # >  If no response is received from the backend server within the specified timeout period, ELB returns an HTTP 504 error code to the client.
         self.request_timeout = request_timeout
-        # The routing algorithm. Valid values:
+        # The scheduling algorithm. Valid values:
         # 
         # *   **wrr** (default): Backend servers with higher weights receive more requests than backend servers with lower weights.
         # *   **wlc**: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections on a backend server. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
         # *   **rr**: Requests are distributed to backend servers in sequence.
-        # *   **sch**: consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
-        # *   **qch**: consistent hashing that is based on QUIC connection IDs. Requests that contain the same QUIC connection ID are distributed to the same backend server.
-        # *   **iqch**: consistent hashing that is based on specific three bytes of the iQUIC CIDs. Requests whose second to fourth bytes are the same are distributed to the same backend server.
+        # *   **sch**: consistent hashing based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
+        # *   **qch**: consistent hashing based on QUIC connection IDs (CIDs). Requests that contain the same QUIC CID are distributed to the same backend server.
+        # *   **iqch**: consistent hashing based on three specific bytes of iQUIC CIDs. Requests with the same second, third, and fourth bytes are distributed to the same backend server.
         self.scheduler = scheduler
         # The ID of the server certificate.
         # 
         # This parameter is required.
         self.server_certificate_id = server_certificate_id
-        # The method that is used to handle a cookie. Valid values:
+        # The method that is used to handle cookies. Valid values:
         # 
         # *   **insert**: inserts a cookie. ELB inserts a session cookie (SERVERID) into the first HTTP or HTTPS response that is sent to a client. Subsequent requests to ELB carry this cookie, and ELB determines the destination servers of the requests based on the cookies.
-        # *   **server**: rewrites a cookie. When ELB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. The next request from the client carries the user-defined cookie, and the listener forwards this request to the recorded backend server.
+        # *   **server**: rewrites the original cookie. SLB rewrites the custom cookies in requests from a client. Subsequent requests from the client that carry the new cookie are forwarded to the same backend server as the first request.
         # 
-        # >  This parameter is required if you set StickySession to on.
+        # >  This parameter is required when the StickySession parameter is set to on.
         self.sticky_session_type = sticky_session_type
         # The number of consecutive failed health checks that must occur before a healthy and accessible backend server is declared unhealthy and inaccessible. Valid values: **2** to **10**. Default value: **3**.
         # 
@@ -7481,7 +7494,7 @@ class CreateLoadBalancerTCPListenerRequest(TeaModel):
         # 
         # >  The value cannot start with `http://` or `https://`.
         self.description = description
-        # Specifies whether to enable Elastic IP address (EIP) pass-through. Valid values:
+        # Specifies whether to enable elastic IP address (EIP) pass-through. Valid values:
         # 
         # *   **on**\
         # *   **off** (default)
@@ -7537,11 +7550,11 @@ class CreateLoadBalancerTCPListenerRequest(TeaModel):
         # The scheduling algorithm. Valid values:
         # 
         # *   **wrr** (default): Backend servers with higher weights receive more requests than backend servers with lower weights.
-        # *   **wlc**: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections on a backend server. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
+        # *   **wlc**: Requests are distributed based on the weights and number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
         # *   **rr**: Requests are distributed to backend servers in sequence.
-        # *   **sch**: consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
-        # *   **qch**: consistent hashing that is based on QUIC connection IDs. Requests that contain the same QUIC connection ID are distributed to the same backend server.
-        # *   **iqch**: consistent hashing that is based on specific three bytes of the iQUIC CIDs. Requests whose second to fourth bytes are the same are distributed to the same backend server.
+        # *   **sch**: consistent hashing based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
+        # *   **qch**: consistent hashing based on QUIC connection IDs (CIDs). Requests that contain the same QUIC CID are distributed to the same backend server.
+        # *   **iqch**: consistent hashing based on three specific bytes of iQUIC CIDs. Requests with the same second, third, and fourth bytes are distributed to the same backend server.
         self.scheduler = scheduler
         # The number of consecutive failed health checks that must occur before a healthy and accessible backend server is declared unhealthy and inaccessible. Valid values: **2** to **10**. Default value: **3**.
         self.unhealthy_threshold = unhealthy_threshold
@@ -8114,7 +8127,7 @@ class CreateNatGatewayRequest(TeaModel):
         self.network_id = network_id
         # The tags.
         self.tag = tag
-        # The ID of the vSwitch.
+        # The ID of the new vSwitch.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -8574,7 +8587,7 @@ class CreateNetworkAclEntryRequest(TeaModel):
         # 
         # The description must be 1 to 256 characters in length and cannot start with http:// or https://.
         self.description = description
-        # Specifies whether the ACL rule controls inbound or outbound access requests. Valid values:
+        # The direction in which the rule is applied. Valid values:
         # 
         # *   **ingress**\
         # *   **egress**\
@@ -8607,7 +8620,7 @@ class CreateNetworkAclEntryRequest(TeaModel):
         # 
         # This parameter is required.
         self.priority = priority
-        # The protocol. Valid values:
+        # The type of the protocol. Valid values:
         # 
         # *   **icmp**: ICMP
         # *   **tcp**: TCP
@@ -9069,35 +9082,30 @@ class CreateSecurityGroupRequestPermissions(TeaModel):
         source_cidr_ip: str = None,
         source_port_range: str = None,
     ):
-        # The description of the SDG.
-        # 
-        # >  We recommend that you specify this parameter in details for subsequent queries.
+        # The description. It must be 2 to 256 characters in length and cannot start with http:// or https://.
         self.description = description
         # The destination IPv4 CIDR block. IPv4 CIDR blocks and IPv4 addresses are supported.
-        # 
-        # This parameter is used to support quintuple rules. For more information, see [Security group quintuple rules](https://help.aliyun.com/document_detail/97439.html).
         self.dest_cidr_ip = dest_cidr_ip
         # The direction in which the security group rule is applied.
         # 
+        # *   egress
+        # *   ingress
+        # 
         # This parameter is required.
         self.direction = direction
-        # The protocol. The values of this parameter are case-insensitive. Valid values:
+        # The protocol type. Valid values:
         # 
-        # *   TCP.
-        # *   UDP.
-        # *   ICMP.
-        # *   ICMPv6.
-        # *   GRE.
+        # *   TCP
+        # *   UDP
+        # *   ICMP
         # *   ALL: All protocols are supported.
         # 
         # This parameter is required.
         self.ip_protocol = ip_protocol
         # The action of the security group rule. Valid values:
         # 
-        # *   accept: allows inbound access.
-        # *   drop: denies inbound access and returns no responses. In this case, the request times out or the connection cannot be established.
-        # 
-        # Default value: accept.
+        # *   Accept
+        # *   Drop
         # 
         # This parameter is required.
         self.policy = policy
@@ -9105,29 +9113,21 @@ class CreateSecurityGroupRequestPermissions(TeaModel):
         # 
         # *   If you set IpProtocol to TCP or UDP, the port number range is 1 to 65535. Specify a port range in the format of \\<Start port number>/\\<End port number>. Example: 1/200.
         # *   If you set IpProtocol to ICMP, the port number range is -1/-1.
-        # *   If you set IpProtocol to GRE, the port number range is -1/-1.
-        # *   If you set IpProtocol to ALL, the port number range is -1/-1, which indicates all port numbers.
+        # *   If you set IpProtocol to ALL, the port number range is -1/-1.
         # 
         # This parameter is required.
         self.port_range = port_range
         # The priority of the security group rule. A smaller value specifies a higher priority. Valid values: 1 to 100.
         # 
-        # Default value: 1.
-        # 
         # This parameter is required.
         self.priority = priority
         # The source IPv4 CIDR block. IPv4 CIDR blocks and IPv4 addresses are supported.
-        # 
-        # This parameter is used to support quintuple rules. For more information, see [Security group quintuple rules](https://help.aliyun.com/document_detail/97439.html).
         self.source_cidr_ip = source_cidr_ip
         # The range of source port numbers for the protocols specified in the security group rule. Valid values:
         # 
-        # *   If you set IpProtocol to TCP or UDP, the port number range is 1 to 65535. Specify a port number range in the format of \\<Start port number>/\\<End port number>. Example: 1/200.
+        # *   If you set IpProtocol to TCP or UDP, the port number range is 1 to 65535. Specify a port range in the format of \\<Start port number>/\\<End port number>. Example: 1/200.
         # *   If you set IpProtocol to ICMP, the port number range is -1/-1.
-        # *   If you set IpProtocol to GRE, the port number range is -1/-1.
         # *   If you set IpProtocol to ALL, the port number range is -1/-1, which indicates all port numbers.
-        # 
-        # This parameter is used to support quintuple rules. For more information, see [Security group quintuple rules](https://help.aliyun.com/document_detail/97439.html).
         self.source_port_range = source_port_range
 
     def validate(self):
@@ -9191,7 +9191,7 @@ class CreateSecurityGroupRequest(TeaModel):
     ):
         # The description. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
         self.description = description
-        # Schema of Response
+        # An array of security group rules. You can specify up to 200 IDs of security group rules.
         self.permissions = permissions
         # The name of the security group. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). By default, this parameter is empty.
         self.security_group_name = security_group_name
@@ -9241,7 +9241,7 @@ class CreateSecurityGroupShrinkRequest(TeaModel):
     ):
         # The description. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
         self.description = description
-        # Schema of Response
+        # An array of security group rules. You can specify up to 200 IDs of security group rules.
         self.permissions_shrink = permissions_shrink
         # The name of the security group. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). By default, this parameter is empty.
         self.security_group_name = security_group_name
@@ -9366,7 +9366,7 @@ class CreateSnapshotRequest(TeaModel):
         # 
         # This parameter is required.
         self.disk_id = disk_id
-        # The ID of the ENS node. You can query the node ID by calling the [DescribeEnsRegions](~~DescribeEnsRegions~~) operation.
+        # The ID of the edge node.
         # 
         # This parameter is required.
         self.ens_region_id = ens_region_id
@@ -9502,14 +9502,12 @@ class CreateSnatEntryRequest(TeaModel):
         source_vswitch_id: str = None,
         standby_snat_ip: str = None,
     ):
-        # Specifies whether to enable EIP affinity. Valid values:
+        # Specifies whether to enable IP affinity. If you do not specify this parameter, IP affinity is enabled by default. Valid values:
         # 
-        # *   **0**: no
-        # *   **1**: yes
+        # *   **false**\
+        # *   **true**\
         # 
-        # **\
-        # 
-        # **Description** After you enable EIP affinity, if multiple EIPs are associated with an SNAT entry, each client uses one EIP to access the Internet. If EIP affinity is disabled, each client uses a random EIP to access the Internet.
+        # >  After you enable IP affinity, if multiple EIPs are associated with an SNAT entry, one client uses the same EIP to for communication. If IP affinity is disabled, the client uses a random EIP for communication.
         self.eip_affinity = eip_affinity
         # The timeout period for idle connections. Valid values: **1** to **86400**. Unit: seconds.
         self.idle_timeout = idle_timeout
@@ -10017,13 +10015,13 @@ class CreateStorageVolumeRequest(TeaModel):
         self.gateway_id = gateway_id
         # Specifies whether to enable authentication. Valid values:
         # 
-        # *   **1**: enable authentication.
-        # *   **0** (default): disable authentication.
+        # *   **1**: Authentication is enabled.
+        # *   **0** (default): Authentication is disabled.
         self.is_auth = is_auth
-        # Specifies whether to enable the volume. Valid values:
+        # Indicates whether the volume is enabled. Valid values:
         # 
-        # *   **1** (default): enable the volume.
-        # *   **0**: disable the volume.
+        # *   **1** (default): The volume is enabled.
+        # *   **0**: The volume is disabled.
         self.is_enable = is_enable
         # The ID of the storage medium.
         # 
@@ -12099,13 +12097,6 @@ class DeleteLoadBalancerListenerRequest(TeaModel):
         # The frontend protocol that is used by the ELB instance.
         # 
         # >  This parameter is required if the same port is used by listeners that use different protocols.
-        # 
-        # Valid values:
-        # 
-        # *   tcp
-        # *   udp
-        # *   http
-        # *   https
         self.listener_protocol = listener_protocol
         # The ID of the ELB instance.
         # 
@@ -12332,15 +12323,7 @@ class DeleteNatGatewayRequest(TeaModel):
         force_delete: bool = None,
         nat_gateway_id: str = None,
     ):
-        # Specifies whether to forcefully delete the VPC. Valid values:
-        # 
-        # - **true**: yes
-        # - **false** (default): no
-        # 
-        # You can forcefully delete a VPC in the following scenarios:
-        # 
-        # - Only an IPv4 gateway and routes that point to the IPv4 gateway exist in the VPC.
-        # - Only an IPv6 gateway and routes that point to the IPv6 gateway exist in the VPC.
+        # Specifies whether to forcefully delete the NAT instance.
         self.force_delete = force_delete
         # The ID of the NAT gateway that you want to delete.
         # 
@@ -14882,7 +14865,7 @@ class DescribeARMServerInstancesRequest(TeaModel):
         # 
         # Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. The maximum value is **100**.
+        # The number of entries to return on each page. Maximum value: **100**.
         # 
         # Default value: **10**.
         self.page_size = page_size
@@ -15003,7 +14986,7 @@ class DescribeARMServerInstancesShrinkRequest(TeaModel):
         # 
         # Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. The maximum value is **100**.
+        # The number of entries to return on each page. Maximum value: **100**.
         # 
         # Default value: **10**.
         self.page_size = page_size
@@ -15534,7 +15517,7 @@ class DescribeApplicationRequest(TeaModel):
         self.level = level
         # Specifies whether to return other information about the application, such as statistics on resource instances and pods. The value must be a JSON string. By default, all information is returned.
         self.out_detail_stat_params = out_detail_stat_params
-        # The resource filter.
+        # The resource filtering condition.
         self.resource_selector = resource_selector
 
     def validate(self):
@@ -17577,7 +17560,7 @@ class DescribeDataDistResultRequest(TeaModel):
         self.max_date = max_date
         # The beginning of the time range to query. Specify the time in the 2006-01-02 format. By default, the time range to query is not restricted.
         self.min_date = min_date
-        # The page number. Pages start from page 1. This parameter is optional if you want to return the distribution status of all data files.
+        # The page number. Pages start from page 1. This parameter is optional if you want to return the push status of all data files.
         self.page_number = page_number
         # The number of entries per page. This parameter is optional if you want to return the distribution status of all data files.
         self.page_size = page_size
@@ -17663,7 +17646,7 @@ class DescribeDataDistResultShrinkRequest(TeaModel):
         self.max_date = max_date
         # The beginning of the time range to query. Specify the time in the 2006-01-02 format. By default, the time range to query is not restricted.
         self.min_date = min_date
-        # The page number. Pages start from page 1. This parameter is optional if you want to return the distribution status of all data files.
+        # The page number. Pages start from page 1. This parameter is optional if you want to return the push status of all data files.
         self.page_number = page_number
         # The number of entries per page. This parameter is optional if you want to return the distribution status of all data files.
         self.page_size = page_size
@@ -18330,7 +18313,6 @@ class DescribeDataPushResultRequest(TeaModel):
         self.max_date = max_date
         # The beginning of the time range to query. Specify the time in the 2006-01-02 format. By default, the time range to query is not restricted.
         self.min_date = min_date
-        # The page number. Pages start from page 1. This parameter is optional if you want to return the push status of all data files.
         self.page_number = page_number
         # The number of entries per page. This parameter is optional if you want to return the push status of all data files.
         self.page_size = page_size
@@ -19819,11 +19801,10 @@ class DescribeDisksResponseBodyDisksDisks(TeaModel):
         self.category = category
         # The time when the disk was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # Specifies whether the disk to be attached is released with the instance. Valid values:
+        # Indicates whether the disk is released when the instance to which the disk is attached is released. Valid values:
         # 
-        # *   true: The disk will be released when the ECS instance is released.
-        # *   false: The disk will be retained when the ECS instance is released.
-        # *   If you leave this parameter empty, the default value is used.
+        # *   true: The disk is released when the associated instance is released.
+        # *   false: The disk is retained when the associated instance is released.
         self.delete_with_instance = delete_with_instance
         # The namespace description.
         self.description = description
@@ -20619,10 +20600,10 @@ class DescribeEnsEipAddressesRequest(TeaModel):
         self.allocation_id = allocation_id
         # The ID of the instance with which you want to associate the EIP.
         self.associated_instance_id = associated_instance_id
-        # The type of the instance with which you want to associate the EIP. Valid values:
+        # The type of the instance that is associated with the EIP. Valid values:
         # 
         # *   **EnsInstance**: ENS instance in a VPC
-        # *   **SlbInstance**: Edge Load Balancer (ELB) instance
+        # *   **SlbInstance**: SLB instance
         self.associated_instance_type = associated_instance_type
         # The EIP that you want to query. You can specify up to 50 EIPs. Separate multiple EIPs with commas (,).
         self.eip_address = eip_address
@@ -20630,6 +20611,7 @@ class DescribeEnsEipAddressesRequest(TeaModel):
         self.eip_name = eip_name
         # The ID of the Edge Node Service (ENS) node.
         self.ens_region_id = ens_region_id
+        # ENS节点ID数组。数组长度：1~100。
         self.ens_region_ids = ens_region_ids
         # The page number. Default value: 1.
         self.page_number = page_number
@@ -20700,11 +20682,15 @@ class DescribeEnsEipAddressesRequest(TeaModel):
 class DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTagsTag(TeaModel):
     def __init__(
         self,
+        key: str = None,
         tag_key: str = None,
         tag_value: str = None,
+        value: str = None,
     ):
+        self.key = key
         self.tag_key = tag_key
         self.tag_value = tag_value
+        self.value = value
 
     def validate(self):
         pass
@@ -20715,18 +20701,26 @@ class DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTagsTag(TeaModel)
             return _map
 
         result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
         if self.tag_key is not None:
             result['TagKey'] = self.tag_key
         if self.tag_value is not None:
             result['TagValue'] = self.tag_value
+        if self.value is not None:
+            result['Value'] = self.value
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
         if m.get('TagKey') is not None:
             self.tag_key = m.get('TagKey')
         if m.get('TagValue') is not None:
             self.tag_value = m.get('TagValue')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -22697,7 +22691,7 @@ class DescribeEnsRouteEntryListResponseBodyRouteEntrys(TeaModel):
         status: str = None,
         type: str = None,
     ):
-        # The time when the entry was created. The time is displayed in UTC.
+        # The time when the IP address was created. The time is displayed in UTC.
         self.creation_time = creation_time
         # Enter a description for the route.
         self.description = description
@@ -22711,7 +22705,7 @@ class DescribeEnsRouteEntryListResponseBodyRouteEntrys(TeaModel):
         self.route_entry_name = route_entry_name
         # The ID of the route table.
         self.route_table_id = route_table_id
-        # The new source CIDR block of the inbound or outbound traffic.
+        # The source CIDR block. This field is used when you configure a route entry in the gateway route table. This field is not supported in the vSwitch route table.
         self.source_cidr_block = source_cidr_block
         # The status of the route entry. Valid values:
         self.status = status
@@ -22900,10 +22894,10 @@ class DescribeEnsRouteTablesRequest(TeaModel):
         route_table_name: str = None,
         type: str = None,
     ):
-        # The type of the route table. Valid values:
+        # The type of the resource with which the route table is associated. Valid values:
         # 
-        # *   **VSwitch** (default): vSwitch route table
-        # *   **Gateway**: gateway route table
+        # *   **VSwitch**\
+        # *   **Gateway**\
         self.associate_type = associate_type
         # The ID of the ENS node.
         self.ens_region_id = ens_region_id
@@ -22917,13 +22911,10 @@ class DescribeEnsRouteTablesRequest(TeaModel):
         self.page_size = page_size
         # The ID of the route table.
         self.route_table_id = route_table_id
-        # The name of the route table that you want to query.
-        # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+        # The name of the route table.
         self.route_table_name = route_table_name
-        # The type of the NAT.
+        # The SNAT type.
         # 
-        # *   Empty: symmetric NAT.
         # *   FullCone: full cone NAT.
         self.type = type
 
@@ -22994,20 +22985,18 @@ class DescribeEnsRouteTablesResponseBodyRouteTables(TeaModel):
         type: str = None,
         v_switch_ids: List[str] = None,
     ):
-        # The type of the route table. Valid values:
+        # The type of the resource with which the route table is associated. Valid values:
         # 
-        # *   **VSwitch** (default): vSwitch route table
-        # *   **Gateway**: gateway route table
+        # *   **VSwitch**\
+        # *   **Gateway**\
         self.associate_type = associate_type
         # The time when the route table was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The description of the network.
-        # 
-        # The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
+        # The description.
         self.description = description
         # The ID of the edge node.
         self.ens_region_id = ens_region_id
-        # Is the gateway routing table the default.
+        # Specifies whether it is the default gateway route table.
         self.is_default_gateway_route_table = is_default_gateway_route_table
         # The ID of the network.
         self.network_id = network_id
@@ -26993,6 +26982,7 @@ class DescribeHaVipsRequest(TeaModel):
     ):
         # The ID of the region.
         self.ens_region_id = ens_region_id
+        # The IDs of edge nodes. You can specify 1 to 100 IDs.
         self.ens_region_ids = ens_region_ids
         # The IP address of the HAVIP.
         self.ha_vip_address = ha_vip_address
@@ -27741,7 +27731,7 @@ class DescribeImageSharePermissionRequest(TeaModel):
         self.page_number = page_number
         # The number of entries to return on each page. Maximum value: **100**.
         # 
-        # Default value: **10**\
+        # Default value: **10**.
         self.page_size = page_size
 
     def validate(self):
@@ -27852,11 +27842,11 @@ class DescribeImageSharePermissionResponseBody(TeaModel):
         self.accounts = accounts
         # The ID of the image.
         self.image_id = image_id
-        # The page number.
+        # The page number of the returned page.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of Alibaba Cloud accounts with which you share the image.
         self.total_count = total_count
@@ -28146,7 +28136,7 @@ class DescribeImagesResponseBodyImagesImage(TeaModel):
         # *   Linux
         # *   Windows
         self.platform = platform
-        # The ID of the Edge Node Service (ENS) node.
+        # The region ID.
         self.region_id = region_id
         # The ID of the snapshot.
         self.snapshot_id = snapshot_id
@@ -28256,7 +28246,7 @@ class DescribeImagesResponseBody(TeaModel):
     ):
         # The returned service code. 0 indicates that the request was successful.
         self.code = code
-        # The information about images.
+        # The information about the images.
         self.images = images
         # The page number.
         self.page_number = page_number
@@ -28568,7 +28558,9 @@ class DescribeInstanceBandwidthDetailRequest(TeaModel):
         self.ens_region_id = ens_region_id
         self.instance_id = instance_id
         self.instance_type = instance_type
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 200.
         self.page_size = page_size
         self.service_type = service_type
         # This parameter is required.
@@ -28818,9 +28810,14 @@ class DescribeInstanceBootConfigurationRequest(TeaModel):
         disk_set: str = None,
         instance_id: str = None,
     ):
+        # The startup method.
         self.boot_set = boot_set
+        # The startup type.
         self.boot_type = boot_type
+        # Specifies whether the startup depends on the disk.
         self.disk_set = disk_set
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 
@@ -28864,9 +28861,13 @@ class DescribeInstanceBootConfigurationResponseBodyInstances(TeaModel):
         disk_set: str = None,
         instance_id: str = None,
     ):
+        # The startup method.
         self.boot_set = boot_set
+        # The startup type.
         self.boot_type = boot_type
+        # Specifies whether the startup depends on the disk.
         self.disk_set = disk_set
+        # The ID of the instance.
         self.instance_id = instance_id
 
     def validate(self):
@@ -29209,7 +29210,7 @@ class DescribeInstanceSDGStatusRequest(TeaModel):
         self.instance_id = instance_id
         # The number of the page to return. Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries returned on each page.
         self.page_size = page_size
         # The IDs of SDGs that you want to query. By default, all SDGs are queried.
         self.sdgids = sdgids
@@ -29267,7 +29268,7 @@ class DescribeInstanceSDGStatusShrinkRequest(TeaModel):
         self.instance_id = instance_id
         # The number of the page to return. Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries returned on each page.
         self.page_size = page_size
         # The IDs of SDGs that you want to query. By default, all SDGs are queried.
         self.sdgids_shrink = sdgids_shrink
@@ -30382,10 +30383,7 @@ class DescribeInstancesResponseBodyInstancesInstanceDataDiskDataDisk(TeaModel):
         self.disk_size = disk_size
         # The KMS key ID used by the cloud drive.
         self.encrypt_key_id = encrypt_key_id
-        # Specifies whether to encrypt the new system disk. Valid values:
-        # 
-        # *   **true**\
-        # *   **false** (default): no
+        # Specifies whether to encrypt the disk.
         self.encrypted = encrypted
         # The size of the disk. Unit: MiB.
         self.size = size
@@ -31661,12 +31659,12 @@ class DescribeKeyPairsRequest(TeaModel):
     ):
         # The ID of the key pair.
         self.key_pair_id = key_pair_id
-        # The name of the key pair. The name must be 2 to 128 characters in length. The name must start with a letter but cannot start with `http://` or `https://`. The name can contain the following characters:
+        # The name of the key pair that you want to bind to the simple application server. The name must be 2 to 128 characters in length. The name must start with a letter but cannot start with `http://` or `https://`. The name can contain the following characters:
         # 
-        # *   Digits
+        # *   Numbers.
         # *   :
         # *   _
-        # *   *\
+        # *   .
         # 
         # You can specify only one name. By default, all key pairs are queried.
         self.key_pair_name = key_pair_name
@@ -32309,7 +32307,7 @@ class DescribeLoadBalancerHTTPListenerAttributeResponseBody(TeaModel):
         unhealthy_threshold: int = None,
         xforwarded_for: str = None,
     ):
-        # The backend port that is used by the ELB instance. Valid values: **1** to **65535**.
+        # The port used by the backend server of the ELB instance. Valid values: **1** to **65535**.
         self.backend_server_port = backend_server_port
         # The peak bandwidth of the Edge Load Balancer (ELB) instance. The default value is -1, which indicates that the bandwidth is not limited.
         self.bandwidth = bandwidth
@@ -32636,7 +32634,7 @@ class DescribeLoadBalancerHTTPSListenerAttributeResponseBody(TeaModel):
         status: str = None,
         unhealthy_threshold: int = None,
     ):
-        # The backend port that is used by the ELB instance. Valid values: **1** to **65535**.
+        # The port used by the backend server of the ELB instance. Valid values: **1** to **65535**.
         self.backend_server_port = backend_server_port
         # The peak bandwidth of the Edge Load Balancer (ELB). The default value is -1, which indicates that the bandwidth is not limited.
         self.bandwidth = bandwidth
@@ -33011,7 +33009,7 @@ class DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData
         self.vport = vport
         # The number of available servers that are attached to the monitored ELB instance.
         self.valid_rs_num = valid_rs_num
-        # The VIP of the instance.
+        # The virtual IP address (VIP) of the instance.
         self.vip = vip
         # The ID of the tunnel.
         self.vni = vni
@@ -33661,7 +33659,7 @@ class DescribeLoadBalancerTCPListenerAttributeRequest(TeaModel):
         listener_port: int = None,
         load_balancer_id: str = None,
     ):
-        # The frontend port that is used by the Edge Load Balance (ELB) instance. Valid values: **1** to **65535**.
+        # The listening port that you want to query. Valid values: **1** to **65535**.
         # 
         # This parameter is required.
         self.listener_port = listener_port
@@ -33718,11 +33716,11 @@ class DescribeLoadBalancerTCPListenerAttributeResponseBody(TeaModel):
         status: str = None,
         unhealthy_threshold: int = None,
     ):
-        # The backend port that is used by the ELB instance. Valid values: **1** to **65535**.
+        # The port used by the backend server of the ELB instance. Valid values: **1** to **65535**.
         self.backend_server_port = backend_server_port
-        # The maximum bandwidth of the elastic IP address (EIP). Default value: 5. Valid values: **5** to **10000**. Unit: Mbit/s.
+        # The peak bandwidth of the Edge Load Balancer (ELB) instance. The default value is -1, which indicates that the bandwidth is not limited.
         self.bandwidth = bandwidth
-        # The description of the listener.
+        # The name of the listener.
         self.description = description
         # Indicates whether EIP pass-through is enabled. Valid values:
         # 
@@ -33740,7 +33738,7 @@ class DescribeLoadBalancerTCPListenerAttributeResponseBody(TeaModel):
         # 
         # >  This parameter is returned only if you set HealthCheck to on.
         self.health_check_connect_port = health_check_connect_port
-        # The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the server fails to pass the health check.
+        # The timeout period for a health check response. If a backend server does not respond within the specified timeout period, the server fails the health check.
         # 
         # *   Default value: 5.
         # *   Valid values: **1** to **300**.
@@ -33748,9 +33746,9 @@ class DescribeLoadBalancerTCPListenerAttributeResponseBody(TeaModel):
         # 
         # > 
         # 
-        # *   This parameter is returned only if you set HealthCheck to on.
+        # *   This parameter takes effect only if the HealthCheck parameter is set to on.
         # 
-        # *   If the value of the HealthCheckConnectTimeout parameter is smaller than that of the HealthCheckInterval parameter, the timeout period specified by the HealthCheckConnectTimeout parameter becomes invalid and the value of the HealthCheckInterval parameter is used as the timeout period.
+        # *   If the value of the HealthCheckTimeout property is smaller than the value of the HealthCheckInterval property, the timeout period specified by the HealthCheckTimeout property becomes invalid and the value of the HealthCheckInterval property is used as the timeout period.
         self.health_check_connect_timeout = health_check_connect_timeout
         # The domain name that is used for health checks.
         # 
@@ -33772,13 +33770,13 @@ class DescribeLoadBalancerTCPListenerAttributeResponseBody(TeaModel):
         # *   **tcp** (default)
         # *   **http**\
         self.health_check_type = health_check_type
-        # The Uniform Resource Identifier (URI) that is used for health checks. The URI must be **1** to **80** characters in length.
+        # The URI used for health checks. The URI must be **1** to **80** characters in length.
         # 
         # > 
         # 
-        # *   The URL must start with a forward slash (`/`) and contain characters other than forward slashes (`/`).
+        # *   A URL must start with a forward slash (`/`) but cannot contain only forward slashes (`/`).
         # 
-        # *   This parameter is returned only if you set HealthCheck to on.
+        # *   This parameter takes effect only if the HealthCheck parameter is set to on.
         self.health_check_uri = health_check_uri
         # The number of consecutive successful health checks that must occur before an unhealthy and inaccessible backend server is declared healthy and accessible. Valid values: **2** to **10**.
         # 
@@ -34999,9 +34997,9 @@ class DescribeMountTargetsRequest(TeaModel):
         self.file_system_id = file_system_id
         # The name of the mount target.
         self.mount_target_name = mount_target_name
-        # The page number. Pages start from page 1. Default value: 1.
+        # The number of the page to return. Pages start from page 1. Default value: 1
         self.page_number = page_number
-        # The number of entries per page. The maximum value is 100. Default value: 10.
+        # The number of entries returned per page. Maximum value: 100. Default value: 10.
         self.page_size = page_size
 
     def validate(self):
@@ -36119,13 +36117,13 @@ class DescribeNatGatewaysRequest(TeaModel):
     ):
         # The ID of the Edge Node Service (ENS) node.
         self.ens_region_id = ens_region_id
-        # The node information.
+        # The IDs of edge nodes. You can specify 1 to 100 IDs.
         self.ens_region_ids = ens_region_ids
         # The name of the NAT gateway.
         self.name = name
         # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
-        # The IDs of NAT Gateways.
+        # The IDs of the NAT gateways. You can specify 1 to 100 IDs.
         self.nat_gateway_ids = nat_gateway_ids
         # The ID of the network.
         self.network_id = network_id
@@ -36199,16 +36197,15 @@ class DescribeNatGatewaysResponseBodyNatGatewaysIpLists(TeaModel):
         ip_address: str = None,
         using_status: str = None,
     ):
-        # The ID of the instance.
+        # The ID of the EIP.
         self.allocation_id = allocation_id
-        # The IP address of the EIP associated with the NAT gateway.
+        # The EIP.
         self.ip_address = ip_address
         # The association between the EIP and the Internet NAT gateway. Valid values:
         # 
         # *   **UsedByForwardTable**: The EIP is specified in a DNAT entry.
         # *   **UsedBySnatTable**: The EIP is specified in an SNAT entry.
-        # *   **UsedByForwardSnatTable**: The EIP is specified in both an SNAT entry and a DNAT entry.
-        # *   **Idle**: The EIP is not specified in a DNAT or SNAT entry.
+        # *   **Idle**: The EIP is not specified in an SNAT entry or a DNAT entry.
         self.using_status = using_status
 
     def validate(self):
@@ -36242,11 +36239,15 @@ class DescribeNatGatewaysResponseBodyNatGatewaysIpLists(TeaModel):
 class DescribeNatGatewaysResponseBodyNatGatewaysTags(TeaModel):
     def __init__(
         self,
+        key: str = None,
         tag_key: str = None,
         tag_value: str = None,
+        value: str = None,
     ):
+        self.key = key
         self.tag_key = tag_key
         self.tag_value = tag_value
+        self.value = value
 
     def validate(self):
         pass
@@ -36257,18 +36258,26 @@ class DescribeNatGatewaysResponseBodyNatGatewaysTags(TeaModel):
             return _map
 
         result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
         if self.tag_key is not None:
             result['TagKey'] = self.tag_key
         if self.tag_value is not None:
             result['TagValue'] = self.tag_value
+        if self.value is not None:
+            result['Value'] = self.value
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
         if m.get('TagKey') is not None:
             self.tag_key = m.get('TagKey')
         if m.get('TagValue') is not None:
             self.tag_value = m.get('TagValue')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -36290,7 +36299,7 @@ class DescribeNatGatewaysResponseBodyNatGateways(TeaModel):
         self.creation_time = creation_time
         # The ID of the ENS node.
         self.ens_region_id = ens_region_id
-        # The list of elastic IP addresses (EIPs) that are associated with the Internet NAT gateway.
+        # The EIPs that are associated with the NAT gateway.
         self.ip_lists = ip_lists
         # The name of the NAT gateway.
         self.name = name
@@ -36300,11 +36309,11 @@ class DescribeNatGatewaysResponseBodyNatGateways(TeaModel):
         self.network_id = network_id
         # The type of the NAT gateway.
         self.spec = spec
-        # The status of the SNAT entry.
+        # The status of the NAT gateway. Valid values:
         # 
-        # *   Pending: The SNAT entry is being created or modified.
-        # *   Available: The SNAT entry is available.
-        # *   Deleting: The SNAT entry is being deleted.
+        # *   **Creating**: After you send a request to create a NAT gateway, the system creates the NAT gateway in the background. The NAT gateway remains in the Creating state until the operation is completed.
+        # *   **Available**: The NAT gateway is in the Available state after the creation is complete.
+        # *   **Deleting**: After you send a request to delete a NAT gateway, the system deletes the NAT gateway in the background. The NAT gateway remains in the Deleting state until the operation is completed.
         self.status = status
         self.tags = tags
         # The ID of the vSwitch.
@@ -37327,9 +37336,7 @@ class DescribeNetworkAttributeResponseBody(TeaModel):
         self.description = description
         # The ID of the edge node.
         self.ens_region_id = ens_region_id
-        # The ID of the gateway route table associated with the IPv6 gateway.
-        # 
-        # >  This parameter is available only when the IPv6 gateway is associated with a gateway route table.
+        # The ID of the gateway route table.
         self.gateway_route_table_id = gateway_route_table_id
         # List of HaVipIds.
         self.ha_vip_ids = ha_vip_ids
@@ -37349,7 +37356,7 @@ class DescribeNetworkAttributeResponseBody(TeaModel):
         self.network_name = network_name
         # The request ID.
         self.request_id = request_id
-        # The ID of the route table that you want to query.
+        # The ID of the route table.
         self.route_table_id = route_table_id
         # List of routing table IDs.
         self.route_table_ids = route_table_ids
@@ -37544,7 +37551,7 @@ class DescribeNetworkInterfacesRequest(TeaModel):
     ):
         # The region ID of the instance.
         self.ens_region_id = ens_region_id
-        # The node information.
+        # The IDs of edge nodes. N indicates the number of edge node IDs that you can specify at the same time. Valid values of N: 1 to 100.
         self.ens_region_ids = ens_region_ids
         # The ID of the instance.
         self.instance_id = instance_id
@@ -37554,7 +37561,7 @@ class DescribeNetworkInterfacesRequest(TeaModel):
         self.network_id = network_id
         # The ID of the ENI.
         self.network_interface_id = network_interface_id
-        # A list of multicast source IDs.
+        # The IDs of the elastic network interfaces (ENIs). N indicates the number of ENI IDs that you can specify at the same time. Valid values of N: 1 to 100.
         self.network_interface_ids = network_interface_ids
         # The name of the ENI.
         self.network_interface_name = network_interface_name
@@ -38212,11 +38219,15 @@ class DescribeNetworksResponseBodyNetworksNetworkRouteTableIds(TeaModel):
 class DescribeNetworksResponseBodyNetworksNetworkTagsTag(TeaModel):
     def __init__(
         self,
+        key: str = None,
         tag_key: str = None,
         tag_value: str = None,
+        value: str = None,
     ):
+        self.key = key
         self.tag_key = tag_key
         self.tag_value = tag_value
+        self.value = value
 
     def validate(self):
         pass
@@ -38227,18 +38238,26 @@ class DescribeNetworksResponseBodyNetworksNetworkTagsTag(TeaModel):
             return _map
 
         result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
         if self.tag_key is not None:
             result['TagKey'] = self.tag_key
         if self.tag_value is not None:
             result['TagValue'] = self.tag_value
+        if self.value is not None:
+            result['Value'] = self.value
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
         if m.get('TagKey') is not None:
             self.tag_key = m.get('TagKey')
         if m.get('TagValue') is not None:
             self.tag_value = m.get('TagValue')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -38330,9 +38349,7 @@ class DescribeNetworksResponseBodyNetworksNetwork(TeaModel):
         self.description = description
         # The ID of the edge node.
         self.ens_region_id = ens_region_id
-        # The ID of the gateway route table associated with the IPv6 gateway.
-        # 
-        # >  This parameter is available only when the IPv6 gateway is associated with a gateway route table.
+        # The ID of the gateway route table.
         self.gateway_route_table_id = gateway_route_table_id
         # The ID of the network access control list (ACL).
         self.network_acl_id = network_acl_id
@@ -41885,9 +41902,9 @@ class DescribeSDGRequest(TeaModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries to return on each page.
         # 
-        # Default value: 10
+        # Default value: 10.
         self.page_size = page_size
         # The IDs of SDGs that you want to query. By default, all SDGs are queried.
         self.sdgids = sdgids
@@ -41929,9 +41946,9 @@ class DescribeSDGShrinkRequest(TeaModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries to return on each page.
         # 
-        # Default value: 10
+        # Default value: 10.
         self.page_size = page_size
         # The IDs of SDGs that you want to query. By default, all SDGs are queried.
         self.sdgids_shrink = sdgids_shrink
@@ -43651,9 +43668,9 @@ class DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroup(TeaModel):
         self.description = description
         # The number of associated instances.
         self.instance_count = instance_count
-        # The list of instance IDs.
+        # The IDs of the instances that are associated with the security group.
         self.instance_ids = instance_ids
-        # The IDs of ENIs.
+        # The IDs of the ENIs that are associated with the security group.
         self.network_interface_ids = network_interface_ids
         # The ID of the security group.
         self.security_group_id = security_group_id
@@ -45110,7 +45127,7 @@ class DescribeSnapshotsRequest(TeaModel):
     ):
         # The ID of the disk.
         self.disk_id = disk_id
-        # The region ID of the disk. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent list of regions.
+        # The ID of the ENS node. You can query the node ID by calling the [DescribeEnsRegions](https://help.aliyun.com/document_detail/2637662.html) operation.
         self.ens_region_id = ens_region_id
         # The node information.
         self.ens_region_ids = ens_region_ids
@@ -45498,14 +45515,12 @@ class DescribeSnatAttributeResponseBody(TeaModel):
         self.creation_time = creation_time
         # The destination CIDR block. The rule takes effect only on requests that access the destination CIDR block.
         self.dest_cidr = dest_cidr
-        # Specifies whether to enable EIP affinity. Valid values:
+        # Specifies whether to enable IP affinity. Valid values:
         # 
-        # *   **0**: no
-        # *   **1**: yes
+        # *   **false**\
+        # *   **true**\
         # 
-        # **\
-        # 
-        # **Description** After you enable EIP affinity, if multiple EIPs are associated with an SNAT entry, each client uses one EIP to access the Internet. If EIP affinity is disabled, each client uses a random EIP to access the Internet.
+        # >  After you enable IP affinity, if multiple EIPs are associated with an SNAT entry, one client uses the same EIP to for communication. If IP affinity is disabled, the client uses a random EIP for communication.
         self.eip_affinity = eip_affinity
         # The timeout period. Unit: seconds.
         self.idle_timeout = idle_timeout
@@ -47157,7 +47172,7 @@ class DescribeVSwitchesRequest(TeaModel):
     ):
         # The ID of the ENS node.
         self.ens_region_id = ens_region_id
-        # The node information.
+        # The IDs of edge nodes. You can specify 1 to 100 IDs.
         self.ens_region_ids = ens_region_ids
         # The ID of the VPC to which the vSwitch belongs.
         self.network_id = network_id
@@ -47167,7 +47182,7 @@ class DescribeVSwitchesRequest(TeaModel):
         self.page_size = page_size
         # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
-        # The list of vSwitches in the network.
+        # The IDs of vSwitches. You can specify 1 to 100 IDs.
         self.v_switch_ids = v_switch_ids
         # The name of the vSwitch.
         self.v_switch_name = v_switch_name
@@ -47223,11 +47238,15 @@ class DescribeVSwitchesRequest(TeaModel):
 class DescribeVSwitchesResponseBodyVSwitchesVSwitchTagsTag(TeaModel):
     def __init__(
         self,
+        key: str = None,
         tag_key: str = None,
         tag_value: str = None,
+        value: str = None,
     ):
+        self.key = key
         self.tag_key = tag_key
         self.tag_value = tag_value
+        self.value = value
 
     def validate(self):
         pass
@@ -47238,18 +47257,26 @@ class DescribeVSwitchesResponseBodyVSwitchesVSwitchTagsTag(TeaModel):
             return _map
 
         result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
         if self.tag_key is not None:
             result['TagKey'] = self.tag_key
         if self.tag_value is not None:
             result['TagValue'] = self.tag_value
+        if self.value is not None:
+            result['Value'] = self.value
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
         if m.get('TagKey') is not None:
             self.tag_key = m.get('TagKey')
         if m.get('TagValue') is not None:
             self.tag_value = m.get('TagValue')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -50415,7 +50442,7 @@ class ListApplicationsRequest(TeaModel):
         self.min_date = min_date
         # Specifies whether to return other information about the application, such as statistics on resource instances and pods. The value must be a JSON string. By default, all information is returned.
         self.out_app_info_params = out_app_info_params
-        # The page number. Pages start from page 1. This parameter is optional if you want to return all information about the applications.
+        # The page number. Pages start from page 1. This parameter is optional if you want to return the push status of all data files.
         self.page_number = page_number
         # The number of entries per page. This parameter is optional if you want to return all information about the applications.
         self.page_size = page_size
@@ -51222,7 +51249,9 @@ class ListProductAbilitiesResponseBody(TeaModel):
         product_abilities: List[str] = None,
         request_id: str = None,
     ):
+        # Products supported by the edge node.
         self.product_abilities = product_abilities
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -51345,7 +51374,7 @@ class ListTagResourcesRequest(TeaModel):
         self.next_token = next_token
         # The IDs of resources. Valid values of N: 1 to 50.
         self.resource_id = resource_id
-        # The type of the resource. Set the value to instance.
+        # The resource type. Set the value to instance.
         # 
         # This parameter is required.
         self.resource_type = resource_type
@@ -52015,13 +52044,14 @@ class ModifyForwardEntryRequest(TeaModel):
         internal_port: str = None,
         ip_protocol: str = None,
     ):
-        # The elastic IP address (EIP) that is used to access the Internet.
+        # The EIP in the DNAT entry. The public IP address is used to access the Internet.
         self.external_ip = external_ip
         # The external port or port range that is used for port forwarding.
         # 
         # *   Valid values: 1 to 65535.
-        # *   To specify a port range, separate the first port and the last port with a forward slash (/), such as 10/20.
+        # *   To specify a port range, separate the first port and the last port with a forward slash (/), such as 10/20. The first port and the last port are included.
         # *   If you set ExternalPort to a port range, you must also set InternalPort to a port range. The number of ports in the port ranges must be the same. For example, if you set ExternalPort to 10/20, you can set InternalPort to 80/90.
+        # *   The maximum port range is 1000.
         self.external_port = external_port
         # The ID of the DNAT entry.
         # 
@@ -52033,10 +52063,12 @@ class ModifyForwardEntryRequest(TeaModel):
         self.health_check_port = health_check_port
         # The private IP address of the instance that uses the DNAT entry for Internet communication.
         self.internal_ip = internal_ip
-        # The internal port or port range that is used for port forwarding.
+        # The private port or port range that is used in port forwarding.
         # 
         # *   Valid values: 1 to 65535.
-        # *   To specify a port range, separate the first port and the last port with a forward slash (/), such as 10/20.
+        # *   To specify a port range, separate the first port and the last port with a forward slash (/), such as 10/20. The first port and the last port are included.
+        # *   If you set InternalPort to a port range, you must also set ExternalPort to a port range. The number of ports in the port ranges must be the same. For example, if you set ExternalPort to 10/20, you can set InternalPort to 80/90.
+        # *   The maximum port range is 1000.
         self.internal_port = internal_port
         # The protocol. Valid values:
         # 
@@ -52896,6 +52928,7 @@ class ModifyInstanceChargeTypeRequest(TeaModel):
         self,
         auto_pay: bool = None,
         auto_renew: bool = None,
+        billing_cycle: str = None,
         include_data_disks: bool = None,
         instance_charge_type: str = None,
         instance_ids: List[str] = None,
@@ -52914,6 +52947,7 @@ class ModifyInstanceChargeTypeRequest(TeaModel):
         # 
         # false
         self.auto_renew = auto_renew
+        self.billing_cycle = billing_cycle
         # Specifies whether to change the billing method of all data disks that are created with the instance to subscription when you change the billing method of the instance from pay-as-you-go to subscription. Valid values:
         # 
         # true
@@ -52958,6 +52992,8 @@ class ModifyInstanceChargeTypeRequest(TeaModel):
             result['AutoPay'] = self.auto_pay
         if self.auto_renew is not None:
             result['AutoRenew'] = self.auto_renew
+        if self.billing_cycle is not None:
+            result['BillingCycle'] = self.billing_cycle
         if self.include_data_disks is not None:
             result['IncludeDataDisks'] = self.include_data_disks
         if self.instance_charge_type is not None:
@@ -52976,6 +53012,8 @@ class ModifyInstanceChargeTypeRequest(TeaModel):
             self.auto_pay = m.get('AutoPay')
         if m.get('AutoRenew') is not None:
             self.auto_renew = m.get('AutoRenew')
+        if m.get('BillingCycle') is not None:
+            self.billing_cycle = m.get('BillingCycle')
         if m.get('IncludeDataDisks') is not None:
             self.include_data_disks = m.get('IncludeDataDisks')
         if m.get('InstanceChargeType') is not None:
@@ -52994,6 +53032,7 @@ class ModifyInstanceChargeTypeShrinkRequest(TeaModel):
         self,
         auto_pay: bool = None,
         auto_renew: bool = None,
+        billing_cycle: str = None,
         include_data_disks: bool = None,
         instance_charge_type: str = None,
         instance_ids_shrink: str = None,
@@ -53012,6 +53051,7 @@ class ModifyInstanceChargeTypeShrinkRequest(TeaModel):
         # 
         # false
         self.auto_renew = auto_renew
+        self.billing_cycle = billing_cycle
         # Specifies whether to change the billing method of all data disks that are created with the instance to subscription when you change the billing method of the instance from pay-as-you-go to subscription. Valid values:
         # 
         # true
@@ -53056,6 +53096,8 @@ class ModifyInstanceChargeTypeShrinkRequest(TeaModel):
             result['AutoPay'] = self.auto_pay
         if self.auto_renew is not None:
             result['AutoRenew'] = self.auto_renew
+        if self.billing_cycle is not None:
+            result['BillingCycle'] = self.billing_cycle
         if self.include_data_disks is not None:
             result['IncludeDataDisks'] = self.include_data_disks
         if self.instance_charge_type is not None:
@@ -53074,6 +53116,8 @@ class ModifyInstanceChargeTypeShrinkRequest(TeaModel):
             self.auto_pay = m.get('AutoPay')
         if m.get('AutoRenew') is not None:
             self.auto_renew = m.get('AutoRenew')
+        if m.get('BillingCycle') is not None:
+            self.billing_cycle = m.get('BillingCycle')
         if m.get('IncludeDataDisks') is not None:
             self.include_data_disks = m.get('IncludeDataDisks')
         if m.get('InstanceChargeType') is not None:
@@ -53857,11 +53901,18 @@ class ModifySnatEntryRequest(TeaModel):
         snat_entry_name: str = None,
         snat_ip: str = None,
     ):
+        # Specifies whether to enable IP affinity. Default value: true. Valid values:
+        # 
+        # *   **false**\
+        # *   **true**\
+        # 
+        # >  Description After you enable IP affinity, if multiple EIPs are associated with an SNAT entry, one client uses the same EIP to for communication. If IP affinity is disabled, the client uses a random EIP for communication.
         self.eip_affinity = eip_affinity
         self.isp_affinity = isp_affinity
         # This parameter is required.
         self.snat_entry_id = snat_entry_id
         self.snat_entry_name = snat_entry_name
+        # Separate multiple EIPs in the SNAT entry with commas (,).
         self.snat_ip = snat_ip
 
     def validate(self):
@@ -53975,10 +54026,10 @@ class ModifyVSwitchAttributeRequest(TeaModel):
         v_switch_id: str = None,
         v_switch_name: str = None,
     ):
-        # The description of the vSwitch.
+        # The description of the listener.
         # 
         # *   The description must be 2 to 256 characters in length.
-        # *   The description cannot start with http:// or https://.
+        # *   It must start with a letter but cannot start with http:// or https://.
         self.description = description
         # The ID of the vSwitch.
         # 
@@ -53986,8 +54037,8 @@ class ModifyVSwitchAttributeRequest(TeaModel):
         self.v_switch_id = v_switch_id
         # The name of the vSwitch.
         # 
-        # *   The name must be 2 to 128 characters in length.
-        # *   The name must start with a letter and cannot start with http:// or https://.
+        # *   The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        # *   It must start with a letter but cannot start with http:// or https://.
         self.v_switch_name = v_switch_name
 
     def validate(self):
@@ -54387,7 +54438,7 @@ class PreloadRegionSDGRequest(TeaModel):
         # 
         # This parameter is required.
         self.destination_region_ids = destination_region_ids
-        # The namespaces.
+        # An array that consists of queried namespaces.
         self.namespaces = namespaces
         # The number of redundant replicas to support rapid deployment.
         # 
@@ -54442,7 +54493,7 @@ class PreloadRegionSDGShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.destination_region_ids_shrink = destination_region_ids_shrink
-        # The namespaces.
+        # An array that consists of queried namespaces.
         self.namespaces_shrink = namespaces_shrink
         # The number of redundant replicas to support rapid deployment.
         # 
@@ -54529,7 +54580,7 @@ class PreloadRegionSDGResponseBodyDataResult(TeaModel):
     ):
         # The number of failed tasks.
         self.failed_count = failed_count
-        # Details about failed tasks.
+        # Details about the failed tasks.
         self.failed_items = failed_items
         # The number of successful tasks.
         self.success_count = success_count
@@ -55813,10 +55864,10 @@ class RebootInstanceRequest(TeaModel):
         force_stop: str = None,
         instance_id: str = None,
     ):
-        # Indicates whether to stop the instance forcibly before you reboot it. Default value: false. Valid values:
+        # Specifies whether to forcefully stop the instance before you restart it.
         # 
         # *   **true**\
-        # *   **false**\
+        # *   **false** (default)
         self.force_stop = force_stop
         # The ID of the instance that you want to reboot. You can specify only one instance ID.
         # 
@@ -58141,11 +58192,13 @@ class RescaleApplicationRequest(TeaModel):
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The level of resource scaling. The value must be of the enumerated data type. Valid values:
+        # The level of resource scaling. The value is of the enumeration type. Valid values:
         # 
         # *   AreaIspCode (default): scales resources based on the Internet service provider (ISP).
         # *   RegionId: scales resources based on the edge node.
         # *   InstanceId: scales resources based on the instance ID. Resource scale-out specifies resource hosting and scale-in specifies resource release.
+        # 
+        # Default value: AreaIspCode.
         self.rescale_level = rescale_level
         # The scaling operation. The value must be of the enumerated data type. Valid values:
         # 
@@ -59342,7 +59395,7 @@ class RunInstancesRequestDataDisk(TeaModel):
         kmskey_id: str = None,
         size: int = None,
     ):
-        # The category of the disk. Examples:
+        # The category of the disk. Valid values:
         # 
         # *   **cloud_efficiency**: ultra disk.
         # *   **cloud_ssd**: all-flash disk.
@@ -59518,7 +59571,7 @@ class RunInstancesRequest(TeaModel):
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.auto_release_time = auto_release_time
-        # Specifies whether to enable auto-renewal for the premium bandwidth plan. Examples:
+        # Specifies whether to enable auto-renewal for the premium bandwidth plan. Valid values:
         # 
         # *   **true**.
         # *   **false** (default).
@@ -59534,7 +59587,9 @@ class RunInstancesRequest(TeaModel):
         self.billing_cycle = billing_cycle
         # The Internet service provider (ISP).
         # 
-        # >  This parameter is not available if ScheduleAreaLevel is set to Region and is required if ScheduleAreaLevel is set to other values.
+        # >  This parameter required if ScheduleAreaLevel is set to Region.\\
+        # If you set ScheduleAreaLevel to Region, a node has multiple ISPs, and you do not specify an ISP, then the create instance uses the ISP of the node. If the node has two ISPs, such as China Mobile and China Unicom, the created instance has two ISPs.\\
+        # You can call the DescribeRegionIsps operation to query ISPs of the edge node.[](~~2637461~~)
         self.carrier = carrier
         # The specifications of data disks.
         self.data_disk = data_disk
@@ -59551,10 +59606,10 @@ class RunInstancesRequest(TeaModel):
         # *   **instance**: Bills are generated based on instances.
         # *   If you do not specify this parameter, bills are generated based on users.
         self.instance_charge_strategy = instance_charge_strategy
-        # The billing method of the instance. Examples:
+        # The billing method of the instance. Valid values:
         # 
         # *   **PrePaid**: subscription.
-        # *   **PostPaid**: pay-as-you-go.
+        # *   **PostPaid:** pay-as-you-go.
         # 
         # This parameter is required.
         self.instance_charge_type = instance_charge_type
@@ -59632,7 +59687,7 @@ class RunInstancesRequest(TeaModel):
         # 
         # This parameter is required.
         self.schedule_area_level = schedule_area_level
-        # The scheduling price policy. Examples:
+        # The scheduling price policy. Valid values:
         # 
         # *   **PriceHighPriority**: The high price prevails.
         # *   **PriceLowPriority**: The low price prevails.
@@ -59944,7 +59999,7 @@ class RunInstancesShrinkRequest(TeaModel):
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.auto_release_time = auto_release_time
-        # Specifies whether to enable auto-renewal for the premium bandwidth plan. Examples:
+        # Specifies whether to enable auto-renewal for the premium bandwidth plan. Valid values:
         # 
         # *   **true**.
         # *   **false** (default).
@@ -59960,7 +60015,9 @@ class RunInstancesShrinkRequest(TeaModel):
         self.billing_cycle = billing_cycle
         # The Internet service provider (ISP).
         # 
-        # >  This parameter is not available if ScheduleAreaLevel is set to Region and is required if ScheduleAreaLevel is set to other values.
+        # >  This parameter required if ScheduleAreaLevel is set to Region.\\
+        # If you set ScheduleAreaLevel to Region, a node has multiple ISPs, and you do not specify an ISP, then the create instance uses the ISP of the node. If the node has two ISPs, such as China Mobile and China Unicom, the created instance has two ISPs.\\
+        # You can call the DescribeRegionIsps operation to query ISPs of the edge node.[](~~2637461~~)
         self.carrier = carrier
         # The specifications of data disks.
         self.data_disk_shrink = data_disk_shrink
@@ -59977,10 +60034,10 @@ class RunInstancesShrinkRequest(TeaModel):
         # *   **instance**: Bills are generated based on instances.
         # *   If you do not specify this parameter, bills are generated based on users.
         self.instance_charge_strategy = instance_charge_strategy
-        # The billing method of the instance. Examples:
+        # The billing method of the instance. Valid values:
         # 
         # *   **PrePaid**: subscription.
-        # *   **PostPaid**: pay-as-you-go.
+        # *   **PostPaid:** pay-as-you-go.
         # 
         # This parameter is required.
         self.instance_charge_type = instance_charge_type
@@ -60058,7 +60115,7 @@ class RunInstancesShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.schedule_area_level = schedule_area_level
-        # The scheduling price policy. Examples:
+        # The scheduling price policy. Valid values:
         # 
         # *   **PriceHighPriority**: The high price prevails.
         # *   **PriceLowPriority**: The low price prevails.
@@ -60760,14 +60817,14 @@ class SetBackendServersRequestBackendServers(TeaModel):
         type: str = None,
         weight: int = None,
     ):
-        # The ID of the instance that you want to use as the backend server.
+        # The ID of the instance that you use as the backend server.
         # 
         # This parameter is required.
         self.server_id = server_id
         # The type of the backend server. Valid values:
         # 
-        # *   **ens**: ENS instance.
-        # *   **eni**: Elastic Network Interface (ENI) instance.
+        # *   **ens**: ENS instance
+        # *   **eni**: elastic network interface (ENI)
         self.type = type
         # The weight of the backend server. Default value: 100. Valid values: **0** to **100**.
         # 
@@ -60810,7 +60867,7 @@ class SetBackendServersRequest(TeaModel):
         backend_servers: List[SetBackendServersRequestBackendServers] = None,
         load_balancer_id: str = None,
     ):
-        # The list of backend servers that you want to add. You can modify at most 20 backend servers.
+        # The list of backend servers that you added. You can modify the weights of up to 20 backend servers in each request.
         # 
         # This parameter is required.
         self.backend_servers = backend_servers
@@ -60857,7 +60914,7 @@ class SetBackendServersShrinkRequest(TeaModel):
         backend_servers_shrink: str = None,
         load_balancer_id: str = None,
     ):
-        # The list of backend servers that you want to add. You can modify at most 20 backend servers.
+        # The list of backend servers that you added. You can modify the weights of up to 20 backend servers in each request.
         # 
         # This parameter is required.
         self.backend_servers_shrink = backend_servers_shrink
@@ -61165,11 +61222,11 @@ class SetLoadBalancerHTTPListenerAttributeRequest(TeaModel):
         # The scheduling algorithm. Valid values:
         # 
         # *   **wrr**: Backend servers with higher weights receive more requests than those with lower weights.
-        # *   **wlc**: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections on a backend server. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
+        # *   **wlc**: Requests are distributed based on the weights and number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
         # *   **rr**: Requests are distributed to backend servers in sequence.
-        # *   **sch**: Consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
-        # *   **qch**: Consistent hashing based on Quick UDP Internet Connection (QUIC) IDs. Requests that contain the same QUIC ID are scheduled to the same backend server.
-        # *   **iqch**: Consistent hashing based on three specific bytes of iQUIC CID. Requests with the same second, third, and forth bytes are scheduled to the same backend server.
+        # *   **sch**: consistent hashing based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
+        # *   **qch**: consistent hashing based on QUIC connection IDs (CIDs). Requests that contain the same QUIC CID are distributed to the same backend server.
+        # *   **iqch**: consistent hashing based on three specific bytes of iQUIC CIDs. Requests with the same second, third, and fourth bytes are distributed to the same backend server.
         self.scheduler = scheduler
         # The number of consecutive failed health checks that must occur before a healthy and accessible backend server is declared unhealthy and inaccessible. Valid values: **2** to **10**.
         # 
@@ -61385,12 +61442,12 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
         # 
         # >  This parameter takes effect only if you set HealthCheck to on.
         self.health_check_interval = health_check_interval
-        # The health check method used in HTTP health checks. Valid values:
+        # The HTTP request method for health checks. Valid values:
         # 
         # *   **head** (default): requests the head of the page.
         # *   **get**: requests the specified part of the page and returns the entity body.
         # 
-        # >  This parameter takes effect only if you set HealthCheck to on.
+        # >  This parameter takes effect only if the HealthCheck parameter is set to on.
         self.health_check_method = health_check_method
         # The timeout period of a health check response. If the backend ENS does not respond within the specified time, the health check fails.
         # 
@@ -61432,14 +61489,14 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
         # 
         # >  If no response is received from the backend server within the specified timeout period, ELB returns an HTTP 504 error code to the client.
         self.request_timeout = request_timeout
-        # The routing algorithm. Valid values:
+        # The scheduling algorithm. Valid values:
         # 
         # *   **wrr**: Backend servers with higher weights receive more requests than those with lower weights.
-        # *   **wlc**: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections to a backend server. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
+        # *   **wlc**: Requests are distributed based on the weights and number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
         # *   **rr**: Requests are distributed to backend servers in sequence.
-        # *   **sch**: consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
-        # *   **qch**: consistent hashing that is based on QUIC connection IDs. Requests that contain the same QUIC connection ID are distributed to the same backend server.
-        # *   **iqch**: consistent hashing that is based on specific three bytes of the iQUIC CIDs. Requests whose second to fourth bytes are the same are distributed to the same backend server.
+        # *   **sch**: consistent hashing based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
+        # *   **qch**: consistent hashing based on QUIC connection IDs (CIDs). Requests that contain the same QUIC CID are distributed to the same backend server.
+        # *   **iqch**: consistent hashing based on three specific bytes of iQUIC CIDs. Requests with the same second, third, and fourth bytes are distributed to the same backend server.
         self.scheduler = scheduler
         # The ID of the server certificate.
         self.server_certificate_id = server_certificate_id
@@ -61611,10 +61668,10 @@ class SetLoadBalancerStatusRequest(TeaModel):
         # 
         # This parameter is required.
         self.load_balancer_id = load_balancer_id
-        # The status of the listener after the modification. Valid values:
+        # The new instance status. Valid values:
         # 
-        # *   **Active**: The listener for the instance can forward the received traffic based on forwarding rules.
-        # *   **InActive**: The listener for the instance does not forward the received traffic.
+        # *   **Active**\
+        # *   **InActive**\
         # 
         # This parameter is required.
         self.load_balancer_status = load_balancer_status
@@ -61736,7 +61793,7 @@ class SetLoadBalancerTCPListenerAttributeRequest(TeaModel):
         # 
         # >  The value cannot start with `http://` or `https://`.
         self.description = description
-        # Specifies whether to enable Elastic IP address (EIP) pass-through. Valid values:
+        # Specifies whether to enable elastic IP address (EIP) pass-through. Valid values:
         # 
         # *   **on**\
         # *   **off** (default)
@@ -61789,14 +61846,14 @@ class SetLoadBalancerTCPListenerAttributeRequest(TeaModel):
         # *   Valid values: **0** to **3600**.
         # *   Unit: seconds.
         self.persistence_timeout = persistence_timeout
-        # The routing algorithm. Valid values:
+        # The scheduling algorithm. Valid values:
         # 
         # *   **wrr**: Backend servers with higher weights receive more requests than those with lower weights.
-        # *   **wlc**: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections to a backend server. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
+        # *   **wlc**: Requests are distributed based on the weights and number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
         # *   **rr**: Requests are distributed to backend servers in sequence.
-        # *   **sch**: consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
-        # *   **qch**: consistent hashing that is based on QUIC connection IDs. Requests that contain the same QUIC connection ID are distributed to the same backend server.
-        # *   **iqch**: consistent hashing that is based on specific three bytes of the iQUIC CIDs. Requests whose second to fourth bytes are the same are distributed to the same backend server.
+        # *   **sch**: consistent hashing based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
+        # *   **qch**: consistent hashing based on QUIC connection IDs (CIDs). Requests that contain the same QUIC CID are distributed to the same backend server.
+        # *   **iqch**: consistent hashing based on three specific bytes of iQUIC CIDs. Requests with the same second, third, and fourth bytes are distributed to the same backend server.
         self.scheduler = scheduler
         # The number of consecutive failed health checks that must occur before a healthy and accessible backend server is declared unhealthy and inaccessible. Valid values: **2** to **10**.
         self.unhealthy_threshold = unhealthy_threshold
@@ -61971,7 +62028,7 @@ class SetLoadBalancerUDPListenerAttributeRequest(TeaModel):
         # 
         # >  The value cannot start with `http://` or `https://`.
         self.description = description
-        # Specifies whether to enable Elastic IP address (EIP) pass-through. Valid values:
+        # Specifies whether to enable elastic IP address (EIP) pass-through. Valid values:
         # 
         # *   **on**\
         # *   **off** (default)
@@ -62004,14 +62061,14 @@ class SetLoadBalancerUDPListenerAttributeRequest(TeaModel):
         # 
         # This parameter is required.
         self.load_balancer_id = load_balancer_id
-        # The routing algorithm. Valid values:
+        # The scheduling algorithm. Valid values:
         # 
         # *   **wrr**: Backend servers with higher weights receive more requests than those with lower weights.
-        # *   **wlc**: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections on a backend server. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
+        # *   **wlc**: Requests are distributed based on the weights and number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
         # *   **rr**: Requests are distributed to backend servers in sequence.
-        # *   **sch**: consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
-        # *   **qch**: consistent hashing that is based on QUIC connection IDs. Requests that contain the same QUIC connection ID are distributed to the same backend server.
-        # *   **iqch**: consistent hashing that is based on specific three bytes of the iQUIC CIDs. Requests whose second to fourth bytes are the same are distributed to the same backend server.
+        # *   **sch**: consistent hashing based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
+        # *   **qch**: consistent hashing based on QUIC connection IDs (CIDs). Requests that contain the same QUIC CID are distributed to the same backend server.
+        # *   **iqch**: consistent hashing based on three specific bytes of iQUIC CIDs. Requests with the same second, third, and fourth bytes are distributed to the same backend server.
         self.scheduler = scheduler
         # The number of consecutive failed health checks that must occur before a healthy and accessible backend server is declared unhealthy and inaccessible. Valid values: **2** to **10**.
         self.unhealthy_threshold = unhealthy_threshold
@@ -62829,10 +62886,10 @@ class StopInstanceRequest(TeaModel):
         force_stop: str = None,
         instance_id: str = None,
     ):
-        # Specifies whether to forcibly stop the servers.
+        # Specifies whether to forcibly stop the instance.
         # 
-        # *   **true**: forcibly stops the instance.
-        # *   **false**: normally stops the servers. This is the default value.
+        # *   **true**\
+        # *   **false** (default)
         self.force_stop = force_stop
         # The ID of the instance that you want to stop. You can specify only one instance ID.
         # 
@@ -63474,10 +63531,10 @@ class UnAssociateEnsEipAddressRequest(TeaModel):
         # 
         # This parameter is required.
         self.allocation_id = allocation_id
-        # Specifies whether to forcefully release the instance if it is in the Running status. Valid values:
+        # Specifies whether to disassociate the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway. Valid values:
         # 
-        # *   true. If you set the Force parameter to true, temporary data in the memory and storage of the instance is erased and cannot be restored after you call the operation, which is similar to the effect of a power-off action.
-        # *   false (default)
+        # *   **false** (default): does not disassociate the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway.
+        # *   **true**: disassociates the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway.
         self.force = force
 
     def validate(self):
@@ -63957,7 +64014,7 @@ class UnloadRegionSDGRequest(TeaModel):
         # 
         # This parameter is required.
         self.destination_region_ids = destination_region_ids
-        # The namespaces.
+        # An array that consists of queried namespaces.
         self.namespaces = namespaces
         # Deletes the shared data group (SDG) ID of the preloaded data.
         # 
@@ -64003,7 +64060,7 @@ class UnloadRegionSDGShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.destination_region_ids_shrink = destination_region_ids_shrink
-        # The namespaces.
+        # An array that consists of queried namespaces.
         self.namespaces_shrink = namespaces_shrink
         # Deletes the shared data group (SDG) ID of the preloaded data.
         # 
@@ -64082,7 +64139,7 @@ class UnloadRegionSDGResponseBodyDataResult(TeaModel):
     ):
         # The number of failed tasks.
         self.failed_count = failed_count
-        # Details about failed tasks.
+        # Details about the failed tasks.
         self.failed_items = failed_items
         # The number of successful tasks.
         self.success_count = success_count
@@ -64554,15 +64611,6 @@ class UntagResourcesRequest(TeaModel):
         # This parameter is required.
         self.resource_id = resource_id
         # The type of the resource.
-        # 
-        # Valid values:
-        # 
-        # *   instance
-        # *   eip
-        # *   disk
-        # *   network
-        # *   natgateway
-        # *   vswitch
         # 
         # This parameter is required.
         self.resource_type = resource_type
