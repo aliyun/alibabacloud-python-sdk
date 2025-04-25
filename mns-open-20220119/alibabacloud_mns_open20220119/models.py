@@ -2829,7 +2829,9 @@ class GetTopicAttributesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -2862,6 +2864,7 @@ class GetTopicAttributesRequest(TeaModel):
         tag: List[GetTopicAttributesRequestTag] = None,
         topic_name: str = None,
     ):
+        # The tag.
         self.tag = tag
         # The name of the topic.
         # 
@@ -3611,11 +3614,15 @@ class ListQueueResponse(TeaModel):
 class ListSubscriptionByTopicRequest(TeaModel):
     def __init__(
         self,
+        endpoint_type: str = None,
+        endpoint_value: str = None,
         page_num: int = None,
         page_size: int = None,
         subscription_name: str = None,
         topic_name: str = None,
     ):
+        self.endpoint_type = endpoint_type
+        self.endpoint_value = endpoint_value
         # The page number. Valid values: 1 to 100000000. If you set this parameter to a value smaller than 1, the value of this parameter is 1 by default. If you set this parameter to a value greater than 100000000, the value of this parameter is 100000000 by default.
         self.page_num = page_num
         # The number of entries per page. Value values: 10 to 50. If you set this parameter to a value smaller than 10, the value of this parameter is 10 by default. If you set this parameter to a value greater than 50, the value of this parameter is 50 by default.
@@ -3634,6 +3641,10 @@ class ListSubscriptionByTopicRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.endpoint_type is not None:
+            result['EndpointType'] = self.endpoint_type
+        if self.endpoint_value is not None:
+            result['EndpointValue'] = self.endpoint_value
         if self.page_num is not None:
             result['PageNum'] = self.page_num
         if self.page_size is not None:
@@ -3646,6 +3657,10 @@ class ListSubscriptionByTopicRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EndpointType') is not None:
+            self.endpoint_type = m.get('EndpointType')
+        if m.get('EndpointValue') is not None:
+            self.endpoint_value = m.get('EndpointValue')
         if m.get('PageNum') is not None:
             self.page_num = m.get('PageNum')
         if m.get('PageSize') is not None:

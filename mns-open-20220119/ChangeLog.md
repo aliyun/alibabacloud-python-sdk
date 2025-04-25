@@ -1,3 +1,8 @@
+2025-04-25 Version: 1.2.1
+- Update API ListSubscriptionByTopic: add request parameters EndpointType.
+- Update API ListSubscriptionByTopic: add request parameters EndpointValue.
+
+
 2025-03-18 Version: 1.2.0
 - Support API CreateEventRule.
 - Support API DeleteEventRule.
