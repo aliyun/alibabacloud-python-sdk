@@ -2978,6 +2978,63 @@ class CreatePolicyGroupRequestNetRedirectPolicy(TeaModel):
         return self
 
 
+class CreatePolicyGroupRequestWatermark(TeaModel):
+    def __init__(
+        self,
+        watermark_color: int = None,
+        watermark_custom_text: str = None,
+        watermark_font_size: int = None,
+        watermark_switch: str = None,
+        watermark_transparency_value: int = None,
+        watermark_types: List[str] = None,
+    ):
+        self.watermark_color = watermark_color
+        self.watermark_custom_text = watermark_custom_text
+        self.watermark_font_size = watermark_font_size
+        self.watermark_switch = watermark_switch
+        self.watermark_transparency_value = watermark_transparency_value
+        self.watermark_types = watermark_types
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.watermark_color is not None:
+            result['WatermarkColor'] = self.watermark_color
+        if self.watermark_custom_text is not None:
+            result['WatermarkCustomText'] = self.watermark_custom_text
+        if self.watermark_font_size is not None:
+            result['WatermarkFontSize'] = self.watermark_font_size
+        if self.watermark_switch is not None:
+            result['WatermarkSwitch'] = self.watermark_switch
+        if self.watermark_transparency_value is not None:
+            result['WatermarkTransparencyValue'] = self.watermark_transparency_value
+        if self.watermark_types is not None:
+            result['WatermarkTypes'] = self.watermark_types
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('WatermarkColor') is not None:
+            self.watermark_color = m.get('WatermarkColor')
+        if m.get('WatermarkCustomText') is not None:
+            self.watermark_custom_text = m.get('WatermarkCustomText')
+        if m.get('WatermarkFontSize') is not None:
+            self.watermark_font_size = m.get('WatermarkFontSize')
+        if m.get('WatermarkSwitch') is not None:
+            self.watermark_switch = m.get('WatermarkSwitch')
+        if m.get('WatermarkTransparencyValue') is not None:
+            self.watermark_transparency_value = m.get('WatermarkTransparencyValue')
+        if m.get('WatermarkTypes') is not None:
+            self.watermark_types = m.get('WatermarkTypes')
+        return self
+
+
 class CreatePolicyGroupRequest(TeaModel):
     def __init__(
         self,
@@ -2991,6 +3048,7 @@ class CreatePolicyGroupRequest(TeaModel):
         policy_type: str = None,
         resolution_height: int = None,
         resolution_width: int = None,
+        watermark: CreatePolicyGroupRequestWatermark = None,
     ):
         # Specifies whether to enable the webcam redirection feature.
         # 
@@ -3040,10 +3098,13 @@ class CreatePolicyGroupRequest(TeaModel):
         self.resolution_height = resolution_height
         # The width of the resolution. Unit: pixels.
         self.resolution_width = resolution_width
+        self.watermark = watermark
 
     def validate(self):
         if self.net_redirect_policy:
             self.net_redirect_policy.validate()
+        if self.watermark:
+            self.watermark.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -3071,6 +3132,8 @@ class CreatePolicyGroupRequest(TeaModel):
             result['ResolutionHeight'] = self.resolution_height
         if self.resolution_width is not None:
             result['ResolutionWidth'] = self.resolution_width
+        if self.watermark is not None:
+            result['Watermark'] = self.watermark.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -3096,6 +3159,9 @@ class CreatePolicyGroupRequest(TeaModel):
             self.resolution_height = m.get('ResolutionHeight')
         if m.get('ResolutionWidth') is not None:
             self.resolution_width = m.get('ResolutionWidth')
+        if m.get('Watermark') is not None:
+            temp_model = CreatePolicyGroupRequestWatermark()
+            self.watermark = temp_model.from_map(m['Watermark'])
         return self
 
 
@@ -3112,6 +3178,7 @@ class CreatePolicyGroupShrinkRequest(TeaModel):
         policy_type: str = None,
         resolution_height: int = None,
         resolution_width: int = None,
+        watermark_shrink: str = None,
     ):
         # Specifies whether to enable the webcam redirection feature.
         # 
@@ -3161,6 +3228,7 @@ class CreatePolicyGroupShrinkRequest(TeaModel):
         self.resolution_height = resolution_height
         # The width of the resolution. Unit: pixels.
         self.resolution_width = resolution_width
+        self.watermark_shrink = watermark_shrink
 
     def validate(self):
         pass
@@ -3191,6 +3259,8 @@ class CreatePolicyGroupShrinkRequest(TeaModel):
             result['ResolutionHeight'] = self.resolution_height
         if self.resolution_width is not None:
             result['ResolutionWidth'] = self.resolution_width
+        if self.watermark_shrink is not None:
+            result['Watermark'] = self.watermark_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -3215,6 +3285,8 @@ class CreatePolicyGroupShrinkRequest(TeaModel):
             self.resolution_height = m.get('ResolutionHeight')
         if m.get('ResolutionWidth') is not None:
             self.resolution_width = m.get('ResolutionWidth')
+        if m.get('Watermark') is not None:
+            self.watermark_shrink = m.get('Watermark')
         return self
 
 
@@ -9491,6 +9563,63 @@ class ListPolicyGroupsResponseBodyPolicyGroupModelPolicyRelatedResources(TeaMode
         return self
 
 
+class ListPolicyGroupsResponseBodyPolicyGroupModelWatermark(TeaModel):
+    def __init__(
+        self,
+        watermark_color: int = None,
+        watermark_custom_text: str = None,
+        watermark_font_size: int = None,
+        watermark_switch: str = None,
+        watermark_transparency_value: int = None,
+        watermark_types: List[str] = None,
+    ):
+        self.watermark_color = watermark_color
+        self.watermark_custom_text = watermark_custom_text
+        self.watermark_font_size = watermark_font_size
+        self.watermark_switch = watermark_switch
+        self.watermark_transparency_value = watermark_transparency_value
+        self.watermark_types = watermark_types
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.watermark_color is not None:
+            result['WatermarkColor'] = self.watermark_color
+        if self.watermark_custom_text is not None:
+            result['WatermarkCustomText'] = self.watermark_custom_text
+        if self.watermark_font_size is not None:
+            result['WatermarkFontSize'] = self.watermark_font_size
+        if self.watermark_switch is not None:
+            result['WatermarkSwitch'] = self.watermark_switch
+        if self.watermark_transparency_value is not None:
+            result['WatermarkTransparencyValue'] = self.watermark_transparency_value
+        if self.watermark_types is not None:
+            result['WatermarkTypes'] = self.watermark_types
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('WatermarkColor') is not None:
+            self.watermark_color = m.get('WatermarkColor')
+        if m.get('WatermarkCustomText') is not None:
+            self.watermark_custom_text = m.get('WatermarkCustomText')
+        if m.get('WatermarkFontSize') is not None:
+            self.watermark_font_size = m.get('WatermarkFontSize')
+        if m.get('WatermarkSwitch') is not None:
+            self.watermark_switch = m.get('WatermarkSwitch')
+        if m.get('WatermarkTransparencyValue') is not None:
+            self.watermark_transparency_value = m.get('WatermarkTransparencyValue')
+        if m.get('WatermarkTypes') is not None:
+            self.watermark_types = m.get('WatermarkTypes')
+        return self
+
+
 class ListPolicyGroupsResponseBodyPolicyGroupModel(TeaModel):
     def __init__(
         self,
@@ -9506,6 +9635,7 @@ class ListPolicyGroupsResponseBodyPolicyGroupModel(TeaModel):
         policy_related_resources: ListPolicyGroupsResponseBodyPolicyGroupModelPolicyRelatedResources = None,
         session_resolution_height: int = None,
         session_resolution_width: int = None,
+        watermark: ListPolicyGroupsResponseBodyPolicyGroupModelWatermark = None,
     ):
         # Specifies whether to enable the webcam redirection feature.
         # 
@@ -9559,12 +9689,15 @@ class ListPolicyGroupsResponseBodyPolicyGroupModel(TeaModel):
         self.session_resolution_height = session_resolution_height
         # The width of the resolution.
         self.session_resolution_width = session_resolution_width
+        self.watermark = watermark
 
     def validate(self):
         if self.net_redirect_policy:
             self.net_redirect_policy.validate()
         if self.policy_related_resources:
             self.policy_related_resources.validate()
+        if self.watermark:
+            self.watermark.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -9596,6 +9729,8 @@ class ListPolicyGroupsResponseBodyPolicyGroupModel(TeaModel):
             result['SessionResolutionHeight'] = self.session_resolution_height
         if self.session_resolution_width is not None:
             result['SessionResolutionWidth'] = self.session_resolution_width
+        if self.watermark is not None:
+            result['Watermark'] = self.watermark.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -9626,6 +9761,9 @@ class ListPolicyGroupsResponseBodyPolicyGroupModel(TeaModel):
             self.session_resolution_height = m.get('SessionResolutionHeight')
         if m.get('SessionResolutionWidth') is not None:
             self.session_resolution_width = m.get('SessionResolutionWidth')
+        if m.get('Watermark') is not None:
+            temp_model = ListPolicyGroupsResponseBodyPolicyGroupModelWatermark()
+            self.watermark = temp_model.from_map(m['Watermark'])
         return self
 
 
@@ -10564,6 +10702,63 @@ class ModifyPolicyGroupRequestNetRedirectPolicy(TeaModel):
         return self
 
 
+class ModifyPolicyGroupRequestWatermark(TeaModel):
+    def __init__(
+        self,
+        watermark_color: int = None,
+        watermark_custom_text: str = None,
+        watermark_font_size: int = None,
+        watermark_switch: str = None,
+        watermark_transparency_value: int = None,
+        watermark_types: List[str] = None,
+    ):
+        self.watermark_color = watermark_color
+        self.watermark_custom_text = watermark_custom_text
+        self.watermark_font_size = watermark_font_size
+        self.watermark_switch = watermark_switch
+        self.watermark_transparency_value = watermark_transparency_value
+        self.watermark_types = watermark_types
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.watermark_color is not None:
+            result['WatermarkColor'] = self.watermark_color
+        if self.watermark_custom_text is not None:
+            result['WatermarkCustomText'] = self.watermark_custom_text
+        if self.watermark_font_size is not None:
+            result['WatermarkFontSize'] = self.watermark_font_size
+        if self.watermark_switch is not None:
+            result['WatermarkSwitch'] = self.watermark_switch
+        if self.watermark_transparency_value is not None:
+            result['WatermarkTransparencyValue'] = self.watermark_transparency_value
+        if self.watermark_types is not None:
+            result['WatermarkTypes'] = self.watermark_types
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('WatermarkColor') is not None:
+            self.watermark_color = m.get('WatermarkColor')
+        if m.get('WatermarkCustomText') is not None:
+            self.watermark_custom_text = m.get('WatermarkCustomText')
+        if m.get('WatermarkFontSize') is not None:
+            self.watermark_font_size = m.get('WatermarkFontSize')
+        if m.get('WatermarkSwitch') is not None:
+            self.watermark_switch = m.get('WatermarkSwitch')
+        if m.get('WatermarkTransparencyValue') is not None:
+            self.watermark_transparency_value = m.get('WatermarkTransparencyValue')
+        if m.get('WatermarkTypes') is not None:
+            self.watermark_types = m.get('WatermarkTypes')
+        return self
+
+
 class ModifyPolicyGroupRequest(TeaModel):
     def __init__(
         self,
@@ -10577,6 +10772,7 @@ class ModifyPolicyGroupRequest(TeaModel):
         policy_group_name: str = None,
         resolution_height: int = None,
         resolution_width: int = None,
+        watermark: ModifyPolicyGroupRequestWatermark = None,
     ):
         # Specifies whether to enable the webcam redirection feature.
         # 
@@ -10627,10 +10823,13 @@ class ModifyPolicyGroupRequest(TeaModel):
         self.resolution_height = resolution_height
         # The width of the resolution. Unit: pixels.
         self.resolution_width = resolution_width
+        self.watermark = watermark
 
     def validate(self):
         if self.net_redirect_policy:
             self.net_redirect_policy.validate()
+        if self.watermark:
+            self.watermark.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -10658,6 +10857,8 @@ class ModifyPolicyGroupRequest(TeaModel):
             result['ResolutionHeight'] = self.resolution_height
         if self.resolution_width is not None:
             result['ResolutionWidth'] = self.resolution_width
+        if self.watermark is not None:
+            result['Watermark'] = self.watermark.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -10683,6 +10884,9 @@ class ModifyPolicyGroupRequest(TeaModel):
             self.resolution_height = m.get('ResolutionHeight')
         if m.get('ResolutionWidth') is not None:
             self.resolution_width = m.get('ResolutionWidth')
+        if m.get('Watermark') is not None:
+            temp_model = ModifyPolicyGroupRequestWatermark()
+            self.watermark = temp_model.from_map(m['Watermark'])
         return self
 
 
@@ -10699,6 +10903,7 @@ class ModifyPolicyGroupShrinkRequest(TeaModel):
         policy_group_name: str = None,
         resolution_height: int = None,
         resolution_width: int = None,
+        watermark_shrink: str = None,
     ):
         # Specifies whether to enable the webcam redirection feature.
         # 
@@ -10749,6 +10954,7 @@ class ModifyPolicyGroupShrinkRequest(TeaModel):
         self.resolution_height = resolution_height
         # The width of the resolution. Unit: pixels.
         self.resolution_width = resolution_width
+        self.watermark_shrink = watermark_shrink
 
     def validate(self):
         pass
@@ -10779,6 +10985,8 @@ class ModifyPolicyGroupShrinkRequest(TeaModel):
             result['ResolutionHeight'] = self.resolution_height
         if self.resolution_width is not None:
             result['ResolutionWidth'] = self.resolution_width
+        if self.watermark_shrink is not None:
+            result['Watermark'] = self.watermark_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -10803,6 +11011,8 @@ class ModifyPolicyGroupShrinkRequest(TeaModel):
             self.resolution_height = m.get('ResolutionHeight')
         if m.get('ResolutionWidth') is not None:
             self.resolution_width = m.get('ResolutionWidth')
+        if m.get('Watermark') is not None:
+            self.watermark_shrink = m.get('Watermark')
         return self
 
 
@@ -11458,11 +11668,13 @@ class RenewAndroidInstanceGroupsResponse(TeaModel):
 class RenewCloudPhoneNodesRequest(TeaModel):
     def __init__(
         self,
+        auto_pay: bool = None,
         auto_renew: bool = None,
         node_ids: List[str] = None,
         period: int = None,
         period_unit: str = None,
     ):
+        self.auto_pay = auto_pay
         # Specifies whether to enable the auto-renewal feature.
         # 
         # Valid values:
@@ -11494,6 +11706,8 @@ class RenewCloudPhoneNodesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
         if self.auto_renew is not None:
             result['AutoRenew'] = self.auto_renew
         if self.node_ids is not None:
@@ -11506,6 +11720,8 @@ class RenewCloudPhoneNodesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
         if m.get('AutoRenew') is not None:
             self.auto_renew = m.get('AutoRenew')
         if m.get('NodeIds') is not None:
@@ -12732,6 +12948,113 @@ class UpdateInstanceGroupImageResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateInstanceGroupImageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateInstanceImageRequest(TeaModel):
+    def __init__(
+        self,
+        image_id: str = None,
+        instance_id_list: List[str] = None,
+    ):
+        self.image_id = image_id
+        self.instance_id_list = instance_id_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.instance_id_list is not None:
+            result['InstanceIdList'] = self.instance_id_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('InstanceIdList') is not None:
+            self.instance_id_list = m.get('InstanceIdList')
+        return self
+
+
+class UpdateInstanceImageResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class UpdateInstanceImageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateInstanceImageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateInstanceImageResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

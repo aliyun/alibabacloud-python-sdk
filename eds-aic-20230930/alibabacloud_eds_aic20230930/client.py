@@ -1519,6 +1519,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.net_redirect_policy):
             request.net_redirect_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.net_redirect_policy, 'NetRedirectPolicy', 'json')
+        if not UtilClient.is_unset(tmp_req.watermark):
+            request.watermark_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.watermark, 'Watermark', 'json')
         body = {}
         if not UtilClient.is_unset(request.camera_redirect):
             body['CameraRedirect'] = request.camera_redirect
@@ -1540,6 +1542,8 @@ class Client(OpenApiClient):
             body['ResolutionHeight'] = request.resolution_height
         if not UtilClient.is_unset(request.resolution_width):
             body['ResolutionWidth'] = request.resolution_width
+        if not UtilClient.is_unset(request.watermark_shrink):
+            body['Watermark'] = request.watermark_shrink
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1576,6 +1580,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.net_redirect_policy):
             request.net_redirect_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.net_redirect_policy, 'NetRedirectPolicy', 'json')
+        if not UtilClient.is_unset(tmp_req.watermark):
+            request.watermark_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.watermark, 'Watermark', 'json')
         body = {}
         if not UtilClient.is_unset(request.camera_redirect):
             body['CameraRedirect'] = request.camera_redirect
@@ -1597,6 +1603,8 @@ class Client(OpenApiClient):
             body['ResolutionHeight'] = request.resolution_height
         if not UtilClient.is_unset(request.resolution_width):
             body['ResolutionWidth'] = request.resolution_width
+        if not UtilClient.is_unset(request.watermark_shrink):
+            body['Watermark'] = request.watermark_shrink
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -4566,7 +4574,7 @@ class Client(OpenApiClient):
         """
         @summary Generates a collaboration code for the cloud phone being accessed by using the current convenience account, and shares this code with other convenience accounts to allow them to access the same cloud phone.
         
-        @description You can call this operation to generate a collaboration code for a cloud phone accessed by your current account and share this code with other convenience users to allow them to access the same cloud phone over the desktop, mobile, or web client. They can then call the [ApplyCoordinationWithCode](https://help.aliyun.com/zh/wuying-workspace/developer-reference/api-metaspace-2022-03-07-applycoordinationwithcode?spm=a2c4g.11174283.help-menu-68242.d_5_3_2_1.70e5e380fUFgOH\\&scm=20140722.H_2863194._.OR_help-T_cn~zh-V_1) operation to initiate a coordination request, which will provide them with a connection token.
+        @description You can call this operation to generate a collaboration code for a cloud phone accessed by your current account and share this code with other convenience users to allow them to access the same cloud phone over the desktop, mobile, or web client.
         
         @param request: GenerateCoordinationCodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4605,7 +4613,7 @@ class Client(OpenApiClient):
         """
         @summary Generates a collaboration code for the cloud phone being accessed by using the current convenience account, and shares this code with other convenience accounts to allow them to access the same cloud phone.
         
-        @description You can call this operation to generate a collaboration code for a cloud phone accessed by your current account and share this code with other convenience users to allow them to access the same cloud phone over the desktop, mobile, or web client. They can then call the [ApplyCoordinationWithCode](https://help.aliyun.com/zh/wuying-workspace/developer-reference/api-metaspace-2022-03-07-applycoordinationwithcode?spm=a2c4g.11174283.help-menu-68242.d_5_3_2_1.70e5e380fUFgOH\\&scm=20140722.H_2863194._.OR_help-T_cn~zh-V_1) operation to initiate a coordination request, which will provide them with a connection token.
+        @description You can call this operation to generate a collaboration code for a cloud phone accessed by your current account and share this code with other convenience users to allow them to access the same cloud phone over the desktop, mobile, or web client.
         
         @param request: GenerateCoordinationCodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4643,7 +4651,7 @@ class Client(OpenApiClient):
         """
         @summary Generates a collaboration code for the cloud phone being accessed by using the current convenience account, and shares this code with other convenience accounts to allow them to access the same cloud phone.
         
-        @description You can call this operation to generate a collaboration code for a cloud phone accessed by your current account and share this code with other convenience users to allow them to access the same cloud phone over the desktop, mobile, or web client. They can then call the [ApplyCoordinationWithCode](https://help.aliyun.com/zh/wuying-workspace/developer-reference/api-metaspace-2022-03-07-applycoordinationwithcode?spm=a2c4g.11174283.help-menu-68242.d_5_3_2_1.70e5e380fUFgOH\\&scm=20140722.H_2863194._.OR_help-T_cn~zh-V_1) operation to initiate a coordination request, which will provide them with a connection token.
+        @description You can call this operation to generate a collaboration code for a cloud phone accessed by your current account and share this code with other convenience users to allow them to access the same cloud phone over the desktop, mobile, or web client.
         
         @param request: GenerateCoordinationCodeRequest
         @return: GenerateCoordinationCodeResponse
@@ -4658,7 +4666,7 @@ class Client(OpenApiClient):
         """
         @summary Generates a collaboration code for the cloud phone being accessed by using the current convenience account, and shares this code with other convenience accounts to allow them to access the same cloud phone.
         
-        @description You can call this operation to generate a collaboration code for a cloud phone accessed by your current account and share this code with other convenience users to allow them to access the same cloud phone over the desktop, mobile, or web client. They can then call the [ApplyCoordinationWithCode](https://help.aliyun.com/zh/wuying-workspace/developer-reference/api-metaspace-2022-03-07-applycoordinationwithcode?spm=a2c4g.11174283.help-menu-68242.d_5_3_2_1.70e5e380fUFgOH\\&scm=20140722.H_2863194._.OR_help-T_cn~zh-V_1) operation to initiate a coordination request, which will provide them with a connection token.
+        @description You can call this operation to generate a collaboration code for a cloud phone accessed by your current account and share this code with other convenience users to allow them to access the same cloud phone over the desktop, mobile, or web client.
         
         @param request: GenerateCoordinationCodeRequest
         @return: GenerateCoordinationCodeResponse
@@ -5635,6 +5643,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.net_redirect_policy):
             request.net_redirect_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.net_redirect_policy, 'NetRedirectPolicy', 'json')
+        if not UtilClient.is_unset(tmp_req.watermark):
+            request.watermark_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.watermark, 'Watermark', 'json')
         body = {}
         if not UtilClient.is_unset(request.camera_redirect):
             body['CameraRedirect'] = request.camera_redirect
@@ -5656,6 +5666,8 @@ class Client(OpenApiClient):
             body['ResolutionHeight'] = request.resolution_height
         if not UtilClient.is_unset(request.resolution_width):
             body['ResolutionWidth'] = request.resolution_width
+        if not UtilClient.is_unset(request.watermark_shrink):
+            body['Watermark'] = request.watermark_shrink
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -5692,6 +5704,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.net_redirect_policy):
             request.net_redirect_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.net_redirect_policy, 'NetRedirectPolicy', 'json')
+        if not UtilClient.is_unset(tmp_req.watermark):
+            request.watermark_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.watermark, 'Watermark', 'json')
         body = {}
         if not UtilClient.is_unset(request.camera_redirect):
             body['CameraRedirect'] = request.camera_redirect
@@ -5713,6 +5727,8 @@ class Client(OpenApiClient):
             body['ResolutionHeight'] = request.resolution_height
         if not UtilClient.is_unset(request.resolution_width):
             body['ResolutionWidth'] = request.resolution_width
+        if not UtilClient.is_unset(request.watermark_shrink):
+            body['Watermark'] = request.watermark_shrink
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -6227,6 +6243,9 @@ class Client(OpenApiClient):
         @return: RenewCloudPhoneNodesResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
         body = {}
         if not UtilClient.is_unset(request.auto_renew):
             body['AutoRenew'] = request.auto_renew
@@ -6237,6 +6256,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.period_unit):
             body['PeriodUnit'] = request.period_unit
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -6268,6 +6288,9 @@ class Client(OpenApiClient):
         @return: RenewCloudPhoneNodesResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
         body = {}
         if not UtilClient.is_unset(request.auto_renew):
             body['AutoRenew'] = request.auto_renew
@@ -6278,6 +6301,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.period_unit):
             body['PeriodUnit'] = request.period_unit
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -7309,6 +7333,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_instance_group_image_with_options_async(request, runtime)
+
+    def update_instance_image_with_options(
+        self,
+        request: eds_aic_20230930_models.UpdateInstanceImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.UpdateInstanceImageResponse:
+        """
+        @summary 更新实例镜像
+        
+        @param request: UpdateInstanceImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateInstanceImageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.image_id):
+            query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.instance_id_list):
+            query['InstanceIdList'] = request.instance_id_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateInstanceImage',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.UpdateInstanceImageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_instance_image_with_options_async(
+        self,
+        request: eds_aic_20230930_models.UpdateInstanceImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.UpdateInstanceImageResponse:
+        """
+        @summary 更新实例镜像
+        
+        @param request: UpdateInstanceImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateInstanceImageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.image_id):
+            query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.instance_id_list):
+            query['InstanceIdList'] = request.instance_id_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateInstanceImage',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.UpdateInstanceImageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_instance_image(
+        self,
+        request: eds_aic_20230930_models.UpdateInstanceImageRequest,
+    ) -> eds_aic_20230930_models.UpdateInstanceImageResponse:
+        """
+        @summary 更新实例镜像
+        
+        @param request: UpdateInstanceImageRequest
+        @return: UpdateInstanceImageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_instance_image_with_options(request, runtime)
+
+    async def update_instance_image_async(
+        self,
+        request: eds_aic_20230930_models.UpdateInstanceImageRequest,
+    ) -> eds_aic_20230930_models.UpdateInstanceImageResponse:
+        """
+        @summary 更新实例镜像
+        
+        @param request: UpdateInstanceImageRequest
+        @return: UpdateInstanceImageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_instance_image_with_options_async(request, runtime)
 
     def upgrade_android_instance_group_with_options(
         self,

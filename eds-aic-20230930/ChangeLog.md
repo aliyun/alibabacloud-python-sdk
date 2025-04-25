@@ -1,3 +1,11 @@
+2025-04-25 Version: 4.6.0
+- Support API UpdateInstanceImage.
+- Update API CreatePolicyGroup: add request parameters Watermark.
+- Update API ListPolicyGroups: add response parameters Body.PolicyGroupModel.$.Watermark.
+- Update API ModifyPolicyGroup: add request parameters Watermark.
+- Update API RenewCloudPhoneNodes: add request parameters AutoPay.
+
+
 2025-04-17 Version: 4.5.4
 - Update API DescribeAndroidInstances: add request parameters AuthorizedUserId.
 - Update API ListPolicyGroups: add response parameters Body.PolicyGroupModel.$.PolicyRelatedResources.
