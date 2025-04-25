@@ -4004,6 +4004,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateCenterPolicyResponse:
         """
+        @summary 创建无地域策略
+        
         @param request: CreateCenterPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateCenterPolicyResponse
@@ -4070,6 +4072,8 @@ class Client(OpenApiClient):
             query['Html5FileTransfer'] = request.html_5file_transfer
         if not UtilClient.is_unset(request.internet_communication_protocol):
             query['InternetCommunicationProtocol'] = request.internet_communication_protocol
+        if not UtilClient.is_unset(request.internet_printer):
+            query['InternetPrinter'] = request.internet_printer
         if not UtilClient.is_unset(request.local_drive):
             query['LocalDrive'] = request.local_drive
         if not UtilClient.is_unset(request.max_reconnect_time):
@@ -4144,6 +4148,8 @@ class Client(OpenApiClient):
             query['ResolutionWidth'] = request.resolution_width
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.safe_menu):
+            query['SafeMenu'] = request.safe_menu
         if not UtilClient.is_unset(request.scope):
             query['Scope'] = request.scope
         if not UtilClient.is_unset(request.scope_value):
@@ -4233,6 +4239,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateCenterPolicyResponse:
         """
+        @summary 创建无地域策略
+        
         @param request: CreateCenterPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateCenterPolicyResponse
@@ -4299,6 +4307,8 @@ class Client(OpenApiClient):
             query['Html5FileTransfer'] = request.html_5file_transfer
         if not UtilClient.is_unset(request.internet_communication_protocol):
             query['InternetCommunicationProtocol'] = request.internet_communication_protocol
+        if not UtilClient.is_unset(request.internet_printer):
+            query['InternetPrinter'] = request.internet_printer
         if not UtilClient.is_unset(request.local_drive):
             query['LocalDrive'] = request.local_drive
         if not UtilClient.is_unset(request.max_reconnect_time):
@@ -4373,6 +4383,8 @@ class Client(OpenApiClient):
             query['ResolutionWidth'] = request.resolution_width
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.safe_menu):
+            query['SafeMenu'] = request.safe_menu
         if not UtilClient.is_unset(request.scope):
             query['Scope'] = request.scope
         if not UtilClient.is_unset(request.scope_value):
@@ -4461,6 +4473,8 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateCenterPolicyRequest,
     ) -> ecd_20200930_models.CreateCenterPolicyResponse:
         """
+        @summary 创建无地域策略
+        
         @param request: CreateCenterPolicyRequest
         @return: CreateCenterPolicyResponse
         """
@@ -4472,6 +4486,8 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateCenterPolicyRequest,
     ) -> ecd_20200930_models.CreateCenterPolicyResponse:
         """
+        @summary 创建无地域策略
+        
         @param request: CreateCenterPolicyRequest
         @return: CreateCenterPolicyResponse
         """
@@ -20204,6 +20220,8 @@ class Client(OpenApiClient):
             query['Html5FileTransfer'] = request.html_5file_transfer
         if not UtilClient.is_unset(request.internet_communication_protocol):
             query['InternetCommunicationProtocol'] = request.internet_communication_protocol
+        if not UtilClient.is_unset(request.internet_printer):
+            query['InternetPrinter'] = request.internet_printer
         if not UtilClient.is_unset(request.local_drive):
             query['LocalDrive'] = request.local_drive
         if not UtilClient.is_unset(request.max_reconnect_time):
@@ -20284,6 +20302,8 @@ class Client(OpenApiClient):
             query['RevokeAccessPolicyRule'] = request.revoke_access_policy_rule
         if not UtilClient.is_unset(request.revoke_security_policy_rule):
             query['RevokeSecurityPolicyRule'] = request.revoke_security_policy_rule
+        if not UtilClient.is_unset(request.safe_menu):
+            query['SafeMenu'] = request.safe_menu
         if not UtilClient.is_unset(request.scope):
             query['Scope'] = request.scope
         if not UtilClient.is_unset(request.scope_value):
@@ -20441,6 +20461,8 @@ class Client(OpenApiClient):
             query['Html5FileTransfer'] = request.html_5file_transfer
         if not UtilClient.is_unset(request.internet_communication_protocol):
             query['InternetCommunicationProtocol'] = request.internet_communication_protocol
+        if not UtilClient.is_unset(request.internet_printer):
+            query['InternetPrinter'] = request.internet_printer
         if not UtilClient.is_unset(request.local_drive):
             query['LocalDrive'] = request.local_drive
         if not UtilClient.is_unset(request.max_reconnect_time):
@@ -20521,6 +20543,8 @@ class Client(OpenApiClient):
             query['RevokeAccessPolicyRule'] = request.revoke_access_policy_rule
         if not UtilClient.is_unset(request.revoke_security_policy_rule):
             query['RevokeSecurityPolicyRule'] = request.revoke_security_policy_rule
+        if not UtilClient.is_unset(request.safe_menu):
+            query['SafeMenu'] = request.safe_menu
         if not UtilClient.is_unset(request.scope):
             query['Scope'] = request.scope
         if not UtilClient.is_unset(request.scope_value):

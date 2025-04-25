@@ -6503,6 +6503,7 @@ class CreateCenterPolicyRequestDeviceRules(TeaModel):
         device_type: str = None,
         device_vid: str = None,
         opt_command: str = None,
+        platforms: str = None,
         redirect_type: str = None,
     ):
         # The device name.
@@ -6527,6 +6528,7 @@ class CreateCenterPolicyRequestDeviceRules(TeaModel):
         self.device_vid = device_vid
         # The link optimization command.
         self.opt_command = opt_command
+        self.platforms = platforms
         # The redirection type.
         # 
         # Valid values:
@@ -6555,6 +6557,8 @@ class CreateCenterPolicyRequestDeviceRules(TeaModel):
             result['DeviceVid'] = self.device_vid
         if self.opt_command is not None:
             result['OptCommand'] = self.opt_command
+        if self.platforms is not None:
+            result['Platforms'] = self.platforms
         if self.redirect_type is not None:
             result['RedirectType'] = self.redirect_type
         return result
@@ -6571,6 +6575,8 @@ class CreateCenterPolicyRequestDeviceRules(TeaModel):
             self.device_vid = m.get('DeviceVid')
         if m.get('OptCommand') is not None:
             self.opt_command = m.get('OptCommand')
+        if m.get('Platforms') is not None:
+            self.platforms = m.get('Platforms')
         if m.get('RedirectType') is not None:
             self.redirect_type = m.get('RedirectType')
         return self
@@ -6768,6 +6774,7 @@ class CreateCenterPolicyRequest(TeaModel):
         gpu_acceleration: str = None,
         html_5file_transfer: str = None,
         internet_communication_protocol: str = None,
+        internet_printer: str = None,
         local_drive: str = None,
         max_reconnect_time: int = None,
         memory_down_grade_duration: int = None,
@@ -6805,6 +6812,7 @@ class CreateCenterPolicyRequest(TeaModel):
         resolution_model: str = None,
         resolution_width: int = None,
         resource_type: str = None,
+        safe_menu: str = None,
         scope: str = None,
         scope_value: List[str] = None,
         session_max_rate_kbps: int = None,
@@ -6995,6 +7003,7 @@ class CreateCenterPolicyRequest(TeaModel):
         # *   auto: UTO enables automatic switch between AST and UDP modes based on desktop content.
         # *   both: UDP is ideal for office and HD graphic design use.
         self.internet_communication_protocol = internet_communication_protocol
+        self.internet_printer = internet_printer
         # The read/write permissions on the on-premises drive.
         # 
         # Valid values:
@@ -7163,6 +7172,7 @@ class CreateCenterPolicyRequest(TeaModel):
         # 
         # This parameter is required.
         self.resource_type = resource_type
+        self.safe_menu = safe_menu
         # The effective scope of the policy.
         # 
         # Valid values:
@@ -7434,6 +7444,8 @@ class CreateCenterPolicyRequest(TeaModel):
             result['Html5FileTransfer'] = self.html_5file_transfer
         if self.internet_communication_protocol is not None:
             result['InternetCommunicationProtocol'] = self.internet_communication_protocol
+        if self.internet_printer is not None:
+            result['InternetPrinter'] = self.internet_printer
         if self.local_drive is not None:
             result['LocalDrive'] = self.local_drive
         if self.max_reconnect_time is not None:
@@ -7510,6 +7522,8 @@ class CreateCenterPolicyRequest(TeaModel):
             result['ResolutionWidth'] = self.resolution_width
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
+        if self.safe_menu is not None:
+            result['SafeMenu'] = self.safe_menu
         if self.scope is not None:
             result['Scope'] = self.scope
         if self.scope_value is not None:
@@ -7658,6 +7672,8 @@ class CreateCenterPolicyRequest(TeaModel):
             self.html_5file_transfer = m.get('Html5FileTransfer')
         if m.get('InternetCommunicationProtocol') is not None:
             self.internet_communication_protocol = m.get('InternetCommunicationProtocol')
+        if m.get('InternetPrinter') is not None:
+            self.internet_printer = m.get('InternetPrinter')
         if m.get('LocalDrive') is not None:
             self.local_drive = m.get('LocalDrive')
         if m.get('MaxReconnectTime') is not None:
@@ -7735,6 +7751,8 @@ class CreateCenterPolicyRequest(TeaModel):
             self.resolution_width = m.get('ResolutionWidth')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
+        if m.get('SafeMenu') is not None:
+            self.safe_menu = m.get('SafeMenu')
         if m.get('Scope') is not None:
             self.scope = m.get('Scope')
         if m.get('ScopeValue') is not None:
@@ -12368,6 +12386,7 @@ class CreatePolicyGroupRequestDeviceRules(TeaModel):
         device_type: str = None,
         device_vid: str = None,
         opt_command: str = None,
+        platforms: str = None,
         redirect_type: str = None,
     ):
         # The device name.
@@ -12393,6 +12412,7 @@ class CreatePolicyGroupRequestDeviceRules(TeaModel):
         self.device_vid = device_vid
         # The link optimization command.
         self.opt_command = opt_command
+        self.platforms = platforms
         # The redirection type.
         # 
         # Valid values:
@@ -12421,6 +12441,8 @@ class CreatePolicyGroupRequestDeviceRules(TeaModel):
             result['DeviceVid'] = self.device_vid
         if self.opt_command is not None:
             result['OptCommand'] = self.opt_command
+        if self.platforms is not None:
+            result['Platforms'] = self.platforms
         if self.redirect_type is not None:
             result['RedirectType'] = self.redirect_type
         return result
@@ -12437,6 +12459,8 @@ class CreatePolicyGroupRequestDeviceRules(TeaModel):
             self.device_vid = m.get('DeviceVid')
         if m.get('OptCommand') is not None:
             self.opt_command = m.get('OptCommand')
+        if m.get('Platforms') is not None:
+            self.platforms = m.get('Platforms')
         if m.get('RedirectType') is not None:
             self.redirect_type = m.get('RedirectType')
         return self
@@ -18430,6 +18454,7 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRules(TeaMod
         device_type: str = None,
         device_vid: str = None,
         opt_command: str = None,
+        platforms: str = None,
         redirect_type: str = None,
     ):
         # The device name.
@@ -18442,6 +18467,7 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRules(TeaMod
         self.device_vid = device_vid
         # The link optimization command.
         self.opt_command = opt_command
+        self.platforms = platforms
         # The redirection type.
         self.redirect_type = redirect_type
 
@@ -18464,6 +18490,8 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRules(TeaMod
             result['DeviceVid'] = self.device_vid
         if self.opt_command is not None:
             result['OptCommand'] = self.opt_command
+        if self.platforms is not None:
+            result['Platforms'] = self.platforms
         if self.redirect_type is not None:
             result['RedirectType'] = self.redirect_type
         return result
@@ -18480,6 +18508,8 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRules(TeaMod
             self.device_vid = m.get('DeviceVid')
         if m.get('OptCommand') is not None:
             self.opt_command = m.get('OptCommand')
+        if m.get('Platforms') is not None:
+            self.platforms = m.get('Platforms')
         if m.get('RedirectType') is not None:
             self.redirect_type = m.get('RedirectType')
         return self
@@ -18658,6 +18688,7 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(TeaModel):
         html_5access: str = None,
         html_5file_transfer: str = None,
         internet_communication_protocol: str = None,
+        internet_printer: str = None,
         local_drive: str = None,
         max_reconnect_time: int = None,
         memory_down_grade_duration: int = None,
@@ -18697,6 +18728,7 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(TeaModel):
         resolution_model: str = None,
         resolution_width: int = None,
         resource_group_count: int = None,
+        safe_menu: str = None,
         scope: str = None,
         scope_value: List[str] = None,
         smooth_enhancement: str = None,
@@ -18793,6 +18825,7 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(TeaModel):
         self.html_5file_transfer = html_5file_transfer
         # The network communication protocol.
         self.internet_communication_protocol = internet_communication_protocol
+        self.internet_printer = internet_printer
         # The read/write permissions on the on-premises drive.
         self.local_drive = local_drive
         # The maximum duration to retry reconnecting to cloud computers after an unexpected disconnection (non-human causes). Valid values: 30 to 7200. Unit: seconds.
@@ -18883,6 +18916,7 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(TeaModel):
         self.resolution_width = resolution_width
         # The number of resource groups that are associated with the policy.
         self.resource_group_count = resource_group_count
+        self.safe_menu = safe_menu
         # The effective scope of the policy.
         self.scope = scope
         # The effective scopes specified by CIDR blocks.
@@ -19056,6 +19090,8 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(TeaModel):
             result['Html5FileTransfer'] = self.html_5file_transfer
         if self.internet_communication_protocol is not None:
             result['InternetCommunicationProtocol'] = self.internet_communication_protocol
+        if self.internet_printer is not None:
+            result['InternetPrinter'] = self.internet_printer
         if self.local_drive is not None:
             result['LocalDrive'] = self.local_drive
         if self.max_reconnect_time is not None:
@@ -19136,6 +19172,8 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(TeaModel):
             result['ResolutionWidth'] = self.resolution_width
         if self.resource_group_count is not None:
             result['ResourceGroupCount'] = self.resource_group_count
+        if self.safe_menu is not None:
+            result['SafeMenu'] = self.safe_menu
         if self.scope is not None:
             result['Scope'] = self.scope
         if self.scope_value is not None:
@@ -19278,6 +19316,8 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(TeaModel):
             self.html_5file_transfer = m.get('Html5FileTransfer')
         if m.get('InternetCommunicationProtocol') is not None:
             self.internet_communication_protocol = m.get('InternetCommunicationProtocol')
+        if m.get('InternetPrinter') is not None:
+            self.internet_printer = m.get('InternetPrinter')
         if m.get('LocalDrive') is not None:
             self.local_drive = m.get('LocalDrive')
         if m.get('MaxReconnectTime') is not None:
@@ -19359,6 +19399,8 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(TeaModel):
             self.resolution_width = m.get('ResolutionWidth')
         if m.get('ResourceGroupCount') is not None:
             self.resource_group_count = m.get('ResourceGroupCount')
+        if m.get('SafeMenu') is not None:
+            self.safe_menu = m.get('SafeMenu')
         if m.get('Scope') is not None:
             self.scope = m.get('Scope')
         if m.get('ScopeValue') is not None:
@@ -29244,6 +29286,7 @@ class DescribeImageModifiedRecordsResponseBodyImageModifiedRecords(TeaModel):
         image_name: str = None,
         new_image_id: str = None,
         new_image_name: str = None,
+        reason: str = None,
         status: int = None,
         update_time: str = None,
     ):
@@ -29255,6 +29298,7 @@ class DescribeImageModifiedRecordsResponseBodyImageModifiedRecords(TeaModel):
         self.new_image_id = new_image_id
         # The name of the new image after the image was modified.
         self.new_image_name = new_image_name
+        self.reason = reason
         # The status of the image modification.
         # 
         # Valid values:
@@ -29285,6 +29329,8 @@ class DescribeImageModifiedRecordsResponseBodyImageModifiedRecords(TeaModel):
             result['NewImageId'] = self.new_image_id
         if self.new_image_name is not None:
             result['NewImageName'] = self.new_image_name
+        if self.reason is not None:
+            result['Reason'] = self.reason
         if self.status is not None:
             result['Status'] = self.status
         if self.update_time is not None:
@@ -29301,6 +29347,8 @@ class DescribeImageModifiedRecordsResponseBodyImageModifiedRecords(TeaModel):
             self.new_image_id = m.get('NewImageId')
         if m.get('NewImageName') is not None:
             self.new_image_name = m.get('NewImageName')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('UpdateTime') is not None:
@@ -33259,6 +33307,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules(TeaModel):
         device_type: str = None,
         device_vid: str = None,
         opt_command: str = None,
+        platforms: str = None,
         redirect_type: str = None,
     ):
         # The device name.
@@ -33284,6 +33333,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules(TeaModel):
         self.device_vid = device_vid
         # The link optimization command.
         self.opt_command = opt_command
+        self.platforms = platforms
         # The redirection type.
         # 
         # Valid values:
@@ -33312,6 +33362,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules(TeaModel):
             result['DeviceVid'] = self.device_vid
         if self.opt_command is not None:
             result['OptCommand'] = self.opt_command
+        if self.platforms is not None:
+            result['Platforms'] = self.platforms
         if self.redirect_type is not None:
             result['RedirectType'] = self.redirect_type
         return result
@@ -33328,6 +33380,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules(TeaModel):
             self.device_vid = m.get('DeviceVid')
         if m.get('OptCommand') is not None:
             self.opt_command = m.get('OptCommand')
+        if m.get('Platforms') is not None:
+            self.platforms = m.get('Platforms')
         if m.get('RedirectType') is not None:
             self.redirect_type = m.get('RedirectType')
         return self
@@ -33547,6 +33601,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         html_5access: str = None,
         html_5file_transfer: str = None,
         internet_communication_protocol: str = None,
+        internet_printer: str = None,
         local_drive: str = None,
         max_reconnect_time: int = None,
         memory_down_grade_duration: int = None,
@@ -33588,6 +33643,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         resolution_width: int = None,
         resource_group_count: int = None,
         resource_region_id: str = None,
+        safe_menu: str = None,
         scope: str = None,
         scope_value: List[str] = None,
         smooth_enhancement: str = None,
@@ -33759,6 +33815,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         # *   TCP (default): TCP.
         # *   BOTH: TCP and UDP.
         self.internet_communication_protocol = internet_communication_protocol
+        self.internet_printer = internet_printer
         # The permissions on local disk mapping.
         # 
         # Valid values:
@@ -33944,6 +34001,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         # 
         # > The value of a region-less policy is `center`.
         self.resource_region_id = resource_region_id
+        self.safe_menu = safe_menu
         # The effective scope of the policy.
         # 
         # Valid values:
@@ -34211,6 +34269,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             result['Html5FileTransfer'] = self.html_5file_transfer
         if self.internet_communication_protocol is not None:
             result['InternetCommunicationProtocol'] = self.internet_communication_protocol
+        if self.internet_printer is not None:
+            result['InternetPrinter'] = self.internet_printer
         if self.local_drive is not None:
             result['LocalDrive'] = self.local_drive
         if self.max_reconnect_time is not None:
@@ -34295,6 +34355,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             result['ResourceGroupCount'] = self.resource_group_count
         if self.resource_region_id is not None:
             result['ResourceRegionId'] = self.resource_region_id
+        if self.safe_menu is not None:
+            result['SafeMenu'] = self.safe_menu
         if self.scope is not None:
             result['Scope'] = self.scope
         if self.scope_value is not None:
@@ -34443,6 +34505,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             self.html_5file_transfer = m.get('Html5FileTransfer')
         if m.get('InternetCommunicationProtocol') is not None:
             self.internet_communication_protocol = m.get('InternetCommunicationProtocol')
+        if m.get('InternetPrinter') is not None:
+            self.internet_printer = m.get('InternetPrinter')
         if m.get('LocalDrive') is not None:
             self.local_drive = m.get('LocalDrive')
         if m.get('MaxReconnectTime') is not None:
@@ -34528,6 +34592,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             self.resource_group_count = m.get('ResourceGroupCount')
         if m.get('ResourceRegionId') is not None:
             self.resource_region_id = m.get('ResourceRegionId')
+        if m.get('SafeMenu') is not None:
+            self.safe_menu = m.get('SafeMenu')
         if m.get('Scope') is not None:
             self.scope = m.get('Scope')
         if m.get('ScopeValue') is not None:
@@ -47630,6 +47696,7 @@ class ModifyCenterPolicyRequestDeviceRules(TeaModel):
         device_type: str = None,
         device_vid: str = None,
         opt_command: str = None,
+        platforms: str = None,
         redirect_type: str = None,
     ):
         # The device name.
@@ -47654,6 +47721,7 @@ class ModifyCenterPolicyRequestDeviceRules(TeaModel):
         self.device_vid = device_vid
         # The link optimization command.
         self.opt_command = opt_command
+        self.platforms = platforms
         # The redirection type.
         # 
         # Valid values:
@@ -47682,6 +47750,8 @@ class ModifyCenterPolicyRequestDeviceRules(TeaModel):
             result['DeviceVid'] = self.device_vid
         if self.opt_command is not None:
             result['OptCommand'] = self.opt_command
+        if self.platforms is not None:
+            result['Platforms'] = self.platforms
         if self.redirect_type is not None:
             result['RedirectType'] = self.redirect_type
         return result
@@ -47698,6 +47768,8 @@ class ModifyCenterPolicyRequestDeviceRules(TeaModel):
             self.device_vid = m.get('DeviceVid')
         if m.get('OptCommand') is not None:
             self.opt_command = m.get('OptCommand')
+        if m.get('Platforms') is not None:
+            self.platforms = m.get('Platforms')
         if m.get('RedirectType') is not None:
             self.redirect_type = m.get('RedirectType')
         return self
@@ -48025,6 +48097,7 @@ class ModifyCenterPolicyRequest(TeaModel):
         gpu_acceleration: str = None,
         html_5file_transfer: str = None,
         internet_communication_protocol: str = None,
+        internet_printer: str = None,
         local_drive: str = None,
         max_reconnect_time: int = None,
         memory_down_grade_duration: int = None,
@@ -48065,6 +48138,7 @@ class ModifyCenterPolicyRequest(TeaModel):
         resource_type: str = None,
         revoke_access_policy_rule: List[ModifyCenterPolicyRequestRevokeAccessPolicyRule] = None,
         revoke_security_policy_rule: List[ModifyCenterPolicyRequestRevokeSecurityPolicyRule] = None,
+        safe_menu: str = None,
         scope: str = None,
         scope_value: List[str] = None,
         session_max_rate_kbps: int = None,
@@ -48265,6 +48339,7 @@ class ModifyCenterPolicyRequest(TeaModel):
         # *   auto: UTO enables automatic switch between AST and UDP modes based on desktop content.
         # *   both: UDP is ideal for office and HD graphic design use.
         self.internet_communication_protocol = internet_communication_protocol
+        self.internet_printer = internet_printer
         # The read/write permissions on the on-premises drive.
         # 
         # Valid values:
@@ -48444,6 +48519,7 @@ class ModifyCenterPolicyRequest(TeaModel):
         self.revoke_access_policy_rule = revoke_access_policy_rule
         # The security group rules that you want to delete.
         self.revoke_security_policy_rule = revoke_security_policy_rule
+        self.safe_menu = safe_menu
         # The effective scope of the policy.
         # 
         # Valid values:
@@ -48728,6 +48804,8 @@ class ModifyCenterPolicyRequest(TeaModel):
             result['Html5FileTransfer'] = self.html_5file_transfer
         if self.internet_communication_protocol is not None:
             result['InternetCommunicationProtocol'] = self.internet_communication_protocol
+        if self.internet_printer is not None:
+            result['InternetPrinter'] = self.internet_printer
         if self.local_drive is not None:
             result['LocalDrive'] = self.local_drive
         if self.max_reconnect_time is not None:
@@ -48814,6 +48892,8 @@ class ModifyCenterPolicyRequest(TeaModel):
         if self.revoke_security_policy_rule is not None:
             for k in self.revoke_security_policy_rule:
                 result['RevokeSecurityPolicyRule'].append(k.to_map() if k else None)
+        if self.safe_menu is not None:
+            result['SafeMenu'] = self.safe_menu
         if self.scope is not None:
             result['Scope'] = self.scope
         if self.scope_value is not None:
@@ -48962,6 +49042,8 @@ class ModifyCenterPolicyRequest(TeaModel):
             self.html_5file_transfer = m.get('Html5FileTransfer')
         if m.get('InternetCommunicationProtocol') is not None:
             self.internet_communication_protocol = m.get('InternetCommunicationProtocol')
+        if m.get('InternetPrinter') is not None:
+            self.internet_printer = m.get('InternetPrinter')
         if m.get('LocalDrive') is not None:
             self.local_drive = m.get('LocalDrive')
         if m.get('MaxReconnectTime') is not None:
@@ -49051,6 +49133,8 @@ class ModifyCenterPolicyRequest(TeaModel):
             for k in m.get('RevokeSecurityPolicyRule'):
                 temp_model = ModifyCenterPolicyRequestRevokeSecurityPolicyRule()
                 self.revoke_security_policy_rule.append(temp_model.from_map(k))
+        if m.get('SafeMenu') is not None:
+            self.safe_menu = m.get('SafeMenu')
         if m.get('Scope') is not None:
             self.scope = m.get('Scope')
         if m.get('ScopeValue') is not None:
@@ -53818,6 +53902,7 @@ class ModifyPolicyGroupRequestDeviceRules(TeaModel):
         device_type: str = None,
         device_vid: str = None,
         opt_command: str = None,
+        platforms: str = None,
         redirect_type: str = None,
     ):
         # The device name.
@@ -53843,6 +53928,7 @@ class ModifyPolicyGroupRequestDeviceRules(TeaModel):
         self.device_vid = device_vid
         # The link optimization command.
         self.opt_command = opt_command
+        self.platforms = platforms
         # The redirection type.
         # 
         # Valid values:
@@ -53871,6 +53957,8 @@ class ModifyPolicyGroupRequestDeviceRules(TeaModel):
             result['DeviceVid'] = self.device_vid
         if self.opt_command is not None:
             result['OptCommand'] = self.opt_command
+        if self.platforms is not None:
+            result['Platforms'] = self.platforms
         if self.redirect_type is not None:
             result['RedirectType'] = self.redirect_type
         return result
@@ -53887,6 +53975,8 @@ class ModifyPolicyGroupRequestDeviceRules(TeaModel):
             self.device_vid = m.get('DeviceVid')
         if m.get('OptCommand') is not None:
             self.opt_command = m.get('OptCommand')
+        if m.get('Platforms') is not None:
+            self.platforms = m.get('Platforms')
         if m.get('RedirectType') is not None:
             self.redirect_type = m.get('RedirectType')
         return self
