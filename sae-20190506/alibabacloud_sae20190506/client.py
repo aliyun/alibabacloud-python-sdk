@@ -708,6 +708,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = sae_20190506_models.CreateApplicationShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.init_containers_config):
+            request.init_containers_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.init_containers_config, 'InitContainersConfig', 'json')
         if not UtilClient.is_unset(tmp_req.sidecar_containers_config):
             request.sidecar_containers_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sidecar_containers_config, 'SidecarContainersConfig', 'json')
         query = {}
@@ -842,6 +844,8 @@ class Client(OpenApiClient):
             body['ConfigMapMountDesc'] = request.config_map_mount_desc
         if not UtilClient.is_unset(request.enable_sidecar_resource_isolated):
             body['EnableSidecarResourceIsolated'] = request.enable_sidecar_resource_isolated
+        if not UtilClient.is_unset(request.init_containers_config_shrink):
+            body['InitContainersConfig'] = request.init_containers_config_shrink
         if not UtilClient.is_unset(request.micro_registration_config):
             body['MicroRegistrationConfig'] = request.micro_registration_config
         if not UtilClient.is_unset(request.oss_ak_id):
@@ -894,6 +898,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = sae_20190506_models.CreateApplicationShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.init_containers_config):
+            request.init_containers_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.init_containers_config, 'InitContainersConfig', 'json')
         if not UtilClient.is_unset(tmp_req.sidecar_containers_config):
             request.sidecar_containers_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sidecar_containers_config, 'SidecarContainersConfig', 'json')
         query = {}
@@ -1028,6 +1034,8 @@ class Client(OpenApiClient):
             body['ConfigMapMountDesc'] = request.config_map_mount_desc
         if not UtilClient.is_unset(request.enable_sidecar_resource_isolated):
             body['EnableSidecarResourceIsolated'] = request.enable_sidecar_resource_isolated
+        if not UtilClient.is_unset(request.init_containers_config_shrink):
+            body['InitContainersConfig'] = request.init_containers_config_shrink
         if not UtilClient.is_unset(request.micro_registration_config):
             body['MicroRegistrationConfig'] = request.micro_registration_config
         if not UtilClient.is_unset(request.oss_ak_id):
@@ -3806,6 +3814,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = sae_20190506_models.DeployApplicationShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.init_containers_config):
+            request.init_containers_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.init_containers_config, 'InitContainersConfig', 'json')
         if not UtilClient.is_unset(tmp_req.sidecar_containers_config):
             request.sidecar_containers_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sidecar_containers_config, 'SidecarContainersConfig', 'json')
         query = {}
@@ -3934,6 +3944,8 @@ class Client(OpenApiClient):
             body['ConfigMapMountDesc'] = request.config_map_mount_desc
         if not UtilClient.is_unset(request.enable_sidecar_resource_isolated):
             body['EnableSidecarResourceIsolated'] = request.enable_sidecar_resource_isolated
+        if not UtilClient.is_unset(request.init_containers_config_shrink):
+            body['InitContainersConfig'] = request.init_containers_config_shrink
         if not UtilClient.is_unset(request.micro_registration_config):
             body['MicroRegistrationConfig'] = request.micro_registration_config
         if not UtilClient.is_unset(request.oss_ak_id):
@@ -3990,6 +4002,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = sae_20190506_models.DeployApplicationShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.init_containers_config):
+            request.init_containers_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.init_containers_config, 'InitContainersConfig', 'json')
         if not UtilClient.is_unset(tmp_req.sidecar_containers_config):
             request.sidecar_containers_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sidecar_containers_config, 'SidecarContainersConfig', 'json')
         query = {}
@@ -4118,6 +4132,8 @@ class Client(OpenApiClient):
             body['ConfigMapMountDesc'] = request.config_map_mount_desc
         if not UtilClient.is_unset(request.enable_sidecar_resource_isolated):
             body['EnableSidecarResourceIsolated'] = request.enable_sidecar_resource_isolated
+        if not UtilClient.is_unset(request.init_containers_config_shrink):
+            body['InitContainersConfig'] = request.init_containers_config_shrink
         if not UtilClient.is_unset(request.micro_registration_config):
             body['MicroRegistrationConfig'] = request.micro_registration_config
         if not UtilClient.is_unset(request.oss_ak_id):

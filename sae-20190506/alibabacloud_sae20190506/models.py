@@ -6811,6 +6811,63 @@ class HttpApiRoute(TeaModel):
         return self
 
 
+class InitContainerConfig(TeaModel):
+    def __init__(
+        self,
+        command: str = None,
+        command_args: str = None,
+        config_map_mount_desc: str = None,
+        envs: str = None,
+        image_url: str = None,
+        name: str = None,
+    ):
+        self.command = command
+        self.command_args = command_args
+        self.config_map_mount_desc = config_map_mount_desc
+        self.envs = envs
+        self.image_url = image_url
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.command is not None:
+            result['Command'] = self.command
+        if self.command_args is not None:
+            result['CommandArgs'] = self.command_args
+        if self.config_map_mount_desc is not None:
+            result['ConfigMapMountDesc'] = self.config_map_mount_desc
+        if self.envs is not None:
+            result['Envs'] = self.envs
+        if self.image_url is not None:
+            result['ImageUrl'] = self.image_url
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Command') is not None:
+            self.command = m.get('Command')
+        if m.get('CommandArgs') is not None:
+            self.command_args = m.get('CommandArgs')
+        if m.get('ConfigMapMountDesc') is not None:
+            self.config_map_mount_desc = m.get('ConfigMapMountDesc')
+        if m.get('Envs') is not None:
+            self.envs = m.get('Envs')
+        if m.get('ImageUrl') is not None:
+            self.image_url = m.get('ImageUrl')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
 class InstanceExecAuthorizationInputOptions(TeaModel):
     def __init__(
         self,
@@ -11957,6 +12014,7 @@ class CreateApplicationRequest(TeaModel):
         envs: str = None,
         image_pull_secrets: str = None,
         image_url: str = None,
+        init_containers_config: List[InitContainerConfig] = None,
         jar_start_args: str = None,
         jar_start_options: str = None,
         jdk: str = None,
@@ -12048,6 +12106,7 @@ class CreateApplicationRequest(TeaModel):
         self.image_pull_secrets = image_pull_secrets
         # registry.cn-hangzhou.aliyuncs.com/sae_test/ali_sae_test:0.0.1
         self.image_url = image_url
+        self.init_containers_config = init_containers_config
         # custom-args
         self.jar_start_args = jar_start_args
         # \\-Xms4G -Xmx4G
@@ -12133,6 +12192,10 @@ class CreateApplicationRequest(TeaModel):
         self.web_container = web_container
 
     def validate(self):
+        if self.init_containers_config:
+            for k in self.init_containers_config:
+                if k:
+                    k.validate()
         if self.sidecar_containers_config:
             for k in self.sidecar_containers_config:
                 if k:
@@ -12194,6 +12257,10 @@ class CreateApplicationRequest(TeaModel):
             result['ImagePullSecrets'] = self.image_pull_secrets
         if self.image_url is not None:
             result['ImageUrl'] = self.image_url
+        result['InitContainersConfig'] = []
+        if self.init_containers_config is not None:
+            for k in self.init_containers_config:
+                result['InitContainersConfig'].append(k.to_map() if k else None)
         if self.jar_start_args is not None:
             result['JarStartArgs'] = self.jar_start_args
         if self.jar_start_options is not None:
@@ -12346,6 +12413,11 @@ class CreateApplicationRequest(TeaModel):
             self.image_pull_secrets = m.get('ImagePullSecrets')
         if m.get('ImageUrl') is not None:
             self.image_url = m.get('ImageUrl')
+        self.init_containers_config = []
+        if m.get('InitContainersConfig') is not None:
+            for k in m.get('InitContainersConfig'):
+                temp_model = InitContainerConfig()
+                self.init_containers_config.append(temp_model.from_map(k))
         if m.get('JarStartArgs') is not None:
             self.jar_start_args = m.get('JarStartArgs')
         if m.get('JarStartOptions') is not None:
@@ -12476,6 +12548,7 @@ class CreateApplicationShrinkRequest(TeaModel):
         envs: str = None,
         image_pull_secrets: str = None,
         image_url: str = None,
+        init_containers_config_shrink: str = None,
         jar_start_args: str = None,
         jar_start_options: str = None,
         jdk: str = None,
@@ -12567,6 +12640,7 @@ class CreateApplicationShrinkRequest(TeaModel):
         self.image_pull_secrets = image_pull_secrets
         # registry.cn-hangzhou.aliyuncs.com/sae_test/ali_sae_test:0.0.1
         self.image_url = image_url
+        self.init_containers_config_shrink = init_containers_config_shrink
         # custom-args
         self.jar_start_args = jar_start_args
         # \\-Xms4G -Xmx4G
@@ -12710,6 +12784,8 @@ class CreateApplicationShrinkRequest(TeaModel):
             result['ImagePullSecrets'] = self.image_pull_secrets
         if self.image_url is not None:
             result['ImageUrl'] = self.image_url
+        if self.init_containers_config_shrink is not None:
+            result['InitContainersConfig'] = self.init_containers_config_shrink
         if self.jar_start_args is not None:
             result['JarStartArgs'] = self.jar_start_args
         if self.jar_start_options is not None:
@@ -12860,6 +12936,8 @@ class CreateApplicationShrinkRequest(TeaModel):
             self.image_pull_secrets = m.get('ImagePullSecrets')
         if m.get('ImageUrl') is not None:
             self.image_url = m.get('ImageUrl')
+        if m.get('InitContainersConfig') is not None:
+            self.init_containers_config_shrink = m.get('InitContainersConfig')
         if m.get('JarStartArgs') is not None:
             self.jar_start_args = m.get('JarStartArgs')
         if m.get('JarStartOptions') is not None:
@@ -17502,6 +17580,7 @@ class DeployApplicationRequest(TeaModel):
         envs: str = None,
         image_pull_secrets: str = None,
         image_url: str = None,
+        init_containers_config: List[InitContainerConfig] = None,
         jar_start_args: str = None,
         jar_start_options: str = None,
         jdk: str = None,
@@ -17643,6 +17722,7 @@ class DeployApplicationRequest(TeaModel):
         self.image_pull_secrets = image_pull_secrets
         # The URL of the image. This parameter is returned only if the **PackageType** parameter is set to **Image**.
         self.image_url = image_url
+        self.init_containers_config = init_containers_config
         # The arguments in the JAR package. The arguments are used to start the application container. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
         self.jar_start_args = jar_start_args
         # The option settings in the JAR package. The settings are used to start the application container. The default startup command for application deployment is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
@@ -17840,6 +17920,10 @@ class DeployApplicationRequest(TeaModel):
         self.web_container = web_container
 
     def validate(self):
+        if self.init_containers_config:
+            for k in self.init_containers_config:
+                if k:
+                    k.validate()
         if self.sidecar_containers_config:
             for k in self.sidecar_containers_config:
                 if k:
@@ -17899,6 +17983,10 @@ class DeployApplicationRequest(TeaModel):
             result['ImagePullSecrets'] = self.image_pull_secrets
         if self.image_url is not None:
             result['ImageUrl'] = self.image_url
+        result['InitContainersConfig'] = []
+        if self.init_containers_config is not None:
+            for k in self.init_containers_config:
+                result['InitContainersConfig'].append(k.to_map() if k else None)
         if self.jar_start_args is not None:
             result['JarStartArgs'] = self.jar_start_args
         if self.jar_start_options is not None:
@@ -18047,6 +18135,11 @@ class DeployApplicationRequest(TeaModel):
             self.image_pull_secrets = m.get('ImagePullSecrets')
         if m.get('ImageUrl') is not None:
             self.image_url = m.get('ImageUrl')
+        self.init_containers_config = []
+        if m.get('InitContainersConfig') is not None:
+            for k in m.get('InitContainersConfig'):
+                temp_model = InitContainerConfig()
+                self.init_containers_config.append(temp_model.from_map(k))
         if m.get('JarStartArgs') is not None:
             self.jar_start_args = m.get('JarStartArgs')
         if m.get('JarStartOptions') is not None:
@@ -18174,6 +18267,7 @@ class DeployApplicationShrinkRequest(TeaModel):
         envs: str = None,
         image_pull_secrets: str = None,
         image_url: str = None,
+        init_containers_config_shrink: str = None,
         jar_start_args: str = None,
         jar_start_options: str = None,
         jdk: str = None,
@@ -18315,6 +18409,7 @@ class DeployApplicationShrinkRequest(TeaModel):
         self.image_pull_secrets = image_pull_secrets
         # The URL of the image. This parameter is returned only if the **PackageType** parameter is set to **Image**.
         self.image_url = image_url
+        self.init_containers_config_shrink = init_containers_config_shrink
         # The arguments in the JAR package. The arguments are used to start the application container. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
         self.jar_start_args = jar_start_args
         # The option settings in the JAR package. The settings are used to start the application container. The default startup command for application deployment is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
@@ -18568,6 +18663,8 @@ class DeployApplicationShrinkRequest(TeaModel):
             result['ImagePullSecrets'] = self.image_pull_secrets
         if self.image_url is not None:
             result['ImageUrl'] = self.image_url
+        if self.init_containers_config_shrink is not None:
+            result['InitContainersConfig'] = self.init_containers_config_shrink
         if self.jar_start_args is not None:
             result['JarStartArgs'] = self.jar_start_args
         if self.jar_start_options is not None:
@@ -18714,6 +18811,8 @@ class DeployApplicationShrinkRequest(TeaModel):
             self.image_pull_secrets = m.get('ImagePullSecrets')
         if m.get('ImageUrl') is not None:
             self.image_url = m.get('ImageUrl')
+        if m.get('InitContainersConfig') is not None:
+            self.init_containers_config_shrink = m.get('InitContainersConfig')
         if m.get('JarStartArgs') is not None:
             self.jar_start_args = m.get('JarStartArgs')
         if m.get('JarStartOptions') is not None:
@@ -19527,6 +19626,116 @@ class DescribeApplicationConfigResponseBodyDataConfigMapMountDesc(TeaModel):
         return self
 
 
+class DescribeApplicationConfigResponseBodyDataInitContainersConfigConfigMapMountDesc(TeaModel):
+    def __init__(
+        self,
+        config_map_id: int = None,
+        config_map_name: str = None,
+        key: str = None,
+        mount_path: str = None,
+    ):
+        self.config_map_id = config_map_id
+        self.config_map_name = config_map_name
+        self.key = key
+        self.mount_path = mount_path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_map_id is not None:
+            result['ConfigMapId'] = self.config_map_id
+        if self.config_map_name is not None:
+            result['ConfigMapName'] = self.config_map_name
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.mount_path is not None:
+            result['MountPath'] = self.mount_path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigMapId') is not None:
+            self.config_map_id = m.get('ConfigMapId')
+        if m.get('ConfigMapName') is not None:
+            self.config_map_name = m.get('ConfigMapName')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('MountPath') is not None:
+            self.mount_path = m.get('MountPath')
+        return self
+
+
+class DescribeApplicationConfigResponseBodyDataInitContainersConfig(TeaModel):
+    def __init__(
+        self,
+        command: str = None,
+        command_args: str = None,
+        config_map_mount_desc: List[DescribeApplicationConfigResponseBodyDataInitContainersConfigConfigMapMountDesc] = None,
+        envs: str = None,
+        image_url: str = None,
+        name: str = None,
+    ):
+        self.command = command
+        self.command_args = command_args
+        self.config_map_mount_desc = config_map_mount_desc
+        self.envs = envs
+        self.image_url = image_url
+        self.name = name
+
+    def validate(self):
+        if self.config_map_mount_desc:
+            for k in self.config_map_mount_desc:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.command is not None:
+            result['Command'] = self.command
+        if self.command_args is not None:
+            result['CommandArgs'] = self.command_args
+        result['ConfigMapMountDesc'] = []
+        if self.config_map_mount_desc is not None:
+            for k in self.config_map_mount_desc:
+                result['ConfigMapMountDesc'].append(k.to_map() if k else None)
+        if self.envs is not None:
+            result['Envs'] = self.envs
+        if self.image_url is not None:
+            result['ImageUrl'] = self.image_url
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Command') is not None:
+            self.command = m.get('Command')
+        if m.get('CommandArgs') is not None:
+            self.command_args = m.get('CommandArgs')
+        self.config_map_mount_desc = []
+        if m.get('ConfigMapMountDesc') is not None:
+            for k in m.get('ConfigMapMountDesc'):
+                temp_model = DescribeApplicationConfigResponseBodyDataInitContainersConfigConfigMapMountDesc()
+                self.config_map_mount_desc.append(temp_model.from_map(k))
+        if m.get('Envs') is not None:
+            self.envs = m.get('Envs')
+        if m.get('ImageUrl') is not None:
+            self.image_url = m.get('ImageUrl')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
 class DescribeApplicationConfigResponseBodyDataMountDesc(TeaModel):
     def __init__(
         self,
@@ -19900,6 +20109,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         envs: str = None,
         image_pull_secrets: str = None,
         image_url: str = None,
+        init_containers_config: List[DescribeApplicationConfigResponseBodyDataInitContainersConfig] = None,
         jar_start_args: str = None,
         jar_start_options: str = None,
         jdk: str = None,
@@ -20043,6 +20253,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         self.image_pull_secrets = image_pull_secrets
         # The URL of the image. This parameter is returned only if the **PackageType** parameter is set to **Image**.
         self.image_url = image_url
+        self.init_containers_config = init_containers_config
         # The arguments in the JAR package. The arguments are used to start the application container. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
         self.jar_start_args = jar_start_args
         # The option settings in the JAR package. The settings are used to start the application container. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
@@ -20279,6 +20490,10 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             for k in self.config_map_mount_desc:
                 if k:
                     k.validate()
+        if self.init_containers_config:
+            for k in self.init_containers_config:
+                if k:
+                    k.validate()
         if self.mount_desc:
             for k in self.mount_desc:
                 if k:
@@ -20362,6 +20577,10 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             result['ImagePullSecrets'] = self.image_pull_secrets
         if self.image_url is not None:
             result['ImageUrl'] = self.image_url
+        result['InitContainersConfig'] = []
+        if self.init_containers_config is not None:
+            for k in self.init_containers_config:
+                result['InitContainersConfig'].append(k.to_map() if k else None)
         if self.jar_start_args is not None:
             result['JarStartArgs'] = self.jar_start_args
         if self.jar_start_options is not None:
@@ -20543,6 +20762,11 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             self.image_pull_secrets = m.get('ImagePullSecrets')
         if m.get('ImageUrl') is not None:
             self.image_url = m.get('ImageUrl')
+        self.init_containers_config = []
+        if m.get('InitContainersConfig') is not None:
+            for k in m.get('InitContainersConfig'):
+                temp_model = DescribeApplicationConfigResponseBodyDataInitContainersConfig()
+                self.init_containers_config.append(temp_model.from_map(k))
         if m.get('JarStartArgs') is not None:
             self.jar_start_args = m.get('JarStartArgs')
         if m.get('JarStartOptions') is not None:

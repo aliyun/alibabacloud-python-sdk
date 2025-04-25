@@ -1,3 +1,9 @@
+2025-04-25 Version: 2.0.4
+- Update API CreateApplication: add request parameters InitContainersConfig.
+- Update API DeployApplication: add request parameters InitContainersConfig.
+- Update API DescribeApplicationConfig: add response parameters Body.Data.InitContainersConfig.
+
+
 2025-04-23 Version: 2.0.3
 - Update API DescribeConfigurationPrice: add request parameters NewSaeVersion.
 - Update API QueryResourceStatics: add response parameters Body.Data.RealTimeRes.EphemeralStorage.
