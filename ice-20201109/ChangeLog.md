@@ -1,3 +1,20 @@
+2025-04-25 Version: 5.0.6
+- Update API DeleteMediaConnectFlowInput: add request parameters InputName.
+- Update API GetMediaConnectFlow: add response parameters Body.Content.FlowFailover.
+- Update API GetMediaConnectFlowInput: add response parameters Body.Content.BackupCidrs.
+- Update API GetMediaConnectFlowInput: add response parameters Body.Content.BackupCreateTime.
+- Update API GetMediaConnectFlowInput: add response parameters Body.Content.BackupInputName.
+- Update API GetMediaConnectFlowInput: add response parameters Body.Content.BackupInputStatus.
+- Update API GetMediaConnectFlowInput: add response parameters Body.Content.BackupInputUrl.
+- Update API GetMediaConnectFlowInput: add response parameters Body.Content.BackupMaxBitrate.
+- Update API GetMediaConnectFlowInput: add response parameters Body.Content.BackupSrtLatency.
+- Update API GetMediaConnectFlowInput: add response parameters Body.Content.BackupSrtPassphrase.
+- Update API GetMediaConnectFlowInput: add response parameters Body.Content.BackupSrtPbkeyLen.
+- Update API GetMediaConnectFlowInput: add response parameters Body.Content.InputStatus.
+- Update API GetMediaConnectFlowOutput: add response parameters Body.Content.Forbid.
+- Update API UpdateMediaConnectFlowInput: add request parameters InputName.
+
+
 2025-04-23 Version: 5.0.5
 - Update API BatchGetMediaInfos: add response parameters Body.MediaInfos.$.MediaBasicInfo.Biz.
 

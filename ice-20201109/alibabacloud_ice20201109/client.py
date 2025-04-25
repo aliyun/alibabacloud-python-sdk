@@ -7316,6 +7316,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.flow_id):
             query['FlowId'] = request.flow_id
+        if not UtilClient.is_unset(request.input_name):
+            query['InputName'] = request.input_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7355,6 +7357,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.flow_id):
             query['FlowId'] = request.flow_id
+        if not UtilClient.is_unset(request.input_name):
+            query['InputName'] = request.input_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -35155,6 +35159,8 @@ class Client(OpenApiClient):
             query['FlowId'] = request.flow_id
         if not UtilClient.is_unset(request.input_from_url):
             query['InputFromUrl'] = request.input_from_url
+        if not UtilClient.is_unset(request.input_name):
+            query['InputName'] = request.input_name
         if not UtilClient.is_unset(request.max_bitrate):
             query['MaxBitrate'] = request.max_bitrate
         if not UtilClient.is_unset(request.srt_latency):
@@ -35205,6 +35211,8 @@ class Client(OpenApiClient):
             query['FlowId'] = request.flow_id
         if not UtilClient.is_unset(request.input_from_url):
             query['InputFromUrl'] = request.input_from_url
+        if not UtilClient.is_unset(request.input_name):
+            query['InputName'] = request.input_name
         if not UtilClient.is_unset(request.max_bitrate):
             query['MaxBitrate'] = request.max_bitrate
         if not UtilClient.is_unset(request.srt_latency):

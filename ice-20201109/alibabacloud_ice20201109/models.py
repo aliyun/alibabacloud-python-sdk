@@ -16051,11 +16051,13 @@ class DeleteMediaConnectFlowInputRequest(TeaModel):
     def __init__(
         self,
         flow_id: str = None,
+        input_name: str = None,
     ):
         # The flow ID.
         # 
         # This parameter is required.
         self.flow_id = flow_id
+        self.input_name = input_name
 
     def validate(self):
         pass
@@ -16068,12 +16070,16 @@ class DeleteMediaConnectFlowInputRequest(TeaModel):
         result = dict()
         if self.flow_id is not None:
             result['FlowId'] = self.flow_id
+        if self.input_name is not None:
+            result['InputName'] = self.input_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('FlowId') is not None:
             self.flow_id = m.get('FlowId')
+        if m.get('InputName') is not None:
+            self.input_name = m.get('InputName')
         return self
 
 
@@ -27661,6 +27667,7 @@ class GetMediaConnectFlowResponseBodyContent(TeaModel):
     def __init__(
         self,
         create_time: str = None,
+        flow_failover: str = None,
         flow_id: str = None,
         flow_name: str = None,
         flow_status: str = None,
@@ -27668,6 +27675,7 @@ class GetMediaConnectFlowResponseBodyContent(TeaModel):
     ):
         # The time when the flow was created.
         self.create_time = create_time
+        self.flow_failover = flow_failover
         # The flow ID.
         self.flow_id = flow_id
         # The flow name.
@@ -27688,6 +27696,8 @@ class GetMediaConnectFlowResponseBodyContent(TeaModel):
         result = dict()
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.flow_failover is not None:
+            result['FlowFailover'] = self.flow_failover
         if self.flow_id is not None:
             result['FlowId'] = self.flow_id
         if self.flow_name is not None:
@@ -27702,6 +27712,8 @@ class GetMediaConnectFlowResponseBodyContent(TeaModel):
         m = m or dict()
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('FlowFailover') is not None:
+            self.flow_failover = m.get('FlowFailover')
         if m.get('FlowId') is not None:
             self.flow_id = m.get('FlowId')
         if m.get('FlowName') is not None:
@@ -27838,10 +27850,20 @@ class GetMediaConnectFlowInputRequest(TeaModel):
 class GetMediaConnectFlowInputResponseBodyContent(TeaModel):
     def __init__(
         self,
+        backup_cidrs: str = None,
+        backup_create_time: str = None,
+        backup_input_name: str = None,
+        backup_input_status: str = None,
+        backup_input_url: str = None,
+        backup_max_bitrate: int = None,
+        backup_srt_latency: int = None,
+        backup_srt_passphrase: str = None,
+        backup_srt_pbkey_len: int = None,
         cidrs: str = None,
         create_time: str = None,
         input_name: str = None,
         input_protocol: str = None,
+        input_status: str = None,
         input_url: str = None,
         max_bitrate: int = None,
         pair_flow_id: str = None,
@@ -27850,6 +27872,15 @@ class GetMediaConnectFlowInputResponseBodyContent(TeaModel):
         srt_passphrase: str = None,
         srt_pbkey_len: int = None,
     ):
+        self.backup_cidrs = backup_cidrs
+        self.backup_create_time = backup_create_time
+        self.backup_input_name = backup_input_name
+        self.backup_input_status = backup_input_status
+        self.backup_input_url = backup_input_url
+        self.backup_max_bitrate = backup_max_bitrate
+        self.backup_srt_latency = backup_srt_latency
+        self.backup_srt_passphrase = backup_srt_passphrase
+        self.backup_srt_pbkey_len = backup_srt_pbkey_len
         # The IP address whitelist in CIDR format. CIDR blocks are separated with commas (,).
         self.cidrs = cidrs
         # The time when the flow was created.
@@ -27866,6 +27897,7 @@ class GetMediaConnectFlowInputResponseBodyContent(TeaModel):
         # *   SRT-Listener
         # *   Flow
         self.input_protocol = input_protocol
+        self.input_status = input_status
         # The source URL.
         self.input_url = input_url
         # The maximum bitrate. Unit: bit/s.
@@ -27897,6 +27929,24 @@ class GetMediaConnectFlowInputResponseBodyContent(TeaModel):
             return _map
 
         result = dict()
+        if self.backup_cidrs is not None:
+            result['BackupCidrs'] = self.backup_cidrs
+        if self.backup_create_time is not None:
+            result['BackupCreateTime'] = self.backup_create_time
+        if self.backup_input_name is not None:
+            result['BackupInputName'] = self.backup_input_name
+        if self.backup_input_status is not None:
+            result['BackupInputStatus'] = self.backup_input_status
+        if self.backup_input_url is not None:
+            result['BackupInputUrl'] = self.backup_input_url
+        if self.backup_max_bitrate is not None:
+            result['BackupMaxBitrate'] = self.backup_max_bitrate
+        if self.backup_srt_latency is not None:
+            result['BackupSrtLatency'] = self.backup_srt_latency
+        if self.backup_srt_passphrase is not None:
+            result['BackupSrtPassphrase'] = self.backup_srt_passphrase
+        if self.backup_srt_pbkey_len is not None:
+            result['BackupSrtPbkeyLen'] = self.backup_srt_pbkey_len
         if self.cidrs is not None:
             result['Cidrs'] = self.cidrs
         if self.create_time is not None:
@@ -27905,6 +27955,8 @@ class GetMediaConnectFlowInputResponseBodyContent(TeaModel):
             result['InputName'] = self.input_name
         if self.input_protocol is not None:
             result['InputProtocol'] = self.input_protocol
+        if self.input_status is not None:
+            result['InputStatus'] = self.input_status
         if self.input_url is not None:
             result['InputUrl'] = self.input_url
         if self.max_bitrate is not None:
@@ -27923,6 +27975,24 @@ class GetMediaConnectFlowInputResponseBodyContent(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BackupCidrs') is not None:
+            self.backup_cidrs = m.get('BackupCidrs')
+        if m.get('BackupCreateTime') is not None:
+            self.backup_create_time = m.get('BackupCreateTime')
+        if m.get('BackupInputName') is not None:
+            self.backup_input_name = m.get('BackupInputName')
+        if m.get('BackupInputStatus') is not None:
+            self.backup_input_status = m.get('BackupInputStatus')
+        if m.get('BackupInputUrl') is not None:
+            self.backup_input_url = m.get('BackupInputUrl')
+        if m.get('BackupMaxBitrate') is not None:
+            self.backup_max_bitrate = m.get('BackupMaxBitrate')
+        if m.get('BackupSrtLatency') is not None:
+            self.backup_srt_latency = m.get('BackupSrtLatency')
+        if m.get('BackupSrtPassphrase') is not None:
+            self.backup_srt_passphrase = m.get('BackupSrtPassphrase')
+        if m.get('BackupSrtPbkeyLen') is not None:
+            self.backup_srt_pbkey_len = m.get('BackupSrtPbkeyLen')
         if m.get('Cidrs') is not None:
             self.cidrs = m.get('Cidrs')
         if m.get('CreateTime') is not None:
@@ -27931,6 +28001,8 @@ class GetMediaConnectFlowInputResponseBodyContent(TeaModel):
             self.input_name = m.get('InputName')
         if m.get('InputProtocol') is not None:
             self.input_protocol = m.get('InputProtocol')
+        if m.get('InputStatus') is not None:
+            self.input_status = m.get('InputStatus')
         if m.get('InputUrl') is not None:
             self.input_url = m.get('InputUrl')
         if m.get('MaxBitrate') is not None:
@@ -28084,6 +28156,7 @@ class GetMediaConnectFlowOutputResponseBodyContent(TeaModel):
         self,
         cidrs: str = None,
         create_time: str = None,
+        forbid: str = None,
         output_name: str = None,
         output_protocol: str = None,
         output_url: str = None,
@@ -28098,6 +28171,7 @@ class GetMediaConnectFlowOutputResponseBodyContent(TeaModel):
         self.cidrs = cidrs
         # The time when the flow was created.
         self.create_time = create_time
+        self.forbid = forbid
         # The output name.
         self.output_name = output_name
         # The output type.
@@ -28145,6 +28219,8 @@ class GetMediaConnectFlowOutputResponseBodyContent(TeaModel):
             result['Cidrs'] = self.cidrs
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.forbid is not None:
+            result['Forbid'] = self.forbid
         if self.output_name is not None:
             result['OutputName'] = self.output_name
         if self.output_protocol is not None:
@@ -28171,6 +28247,8 @@ class GetMediaConnectFlowOutputResponseBodyContent(TeaModel):
             self.cidrs = m.get('Cidrs')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('Forbid') is not None:
+            self.forbid = m.get('Forbid')
         if m.get('OutputName') is not None:
             self.output_name = m.get('OutputName')
         if m.get('OutputProtocol') is not None:
@@ -91183,6 +91261,7 @@ class UpdateMediaConnectFlowInputRequest(TeaModel):
         cidrs: str = None,
         flow_id: str = None,
         input_from_url: str = None,
+        input_name: str = None,
         max_bitrate: int = None,
         srt_latency: int = None,
         srt_passphrase: str = None,
@@ -91196,6 +91275,7 @@ class UpdateMediaConnectFlowInputRequest(TeaModel):
         self.flow_id = flow_id
         # The source URL. You can modify this parameter only when the source type is RTMP-PULL or SRT-Listener.
         self.input_from_url = input_from_url
+        self.input_name = input_name
         # The maximum bitrate. Unit: bit/s.
         self.max_bitrate = max_bitrate
         # The latency for the SRT stream. You can modify this parameter only when the source type is SRT-Listener or SRT-Caller.
@@ -91220,6 +91300,8 @@ class UpdateMediaConnectFlowInputRequest(TeaModel):
             result['FlowId'] = self.flow_id
         if self.input_from_url is not None:
             result['InputFromUrl'] = self.input_from_url
+        if self.input_name is not None:
+            result['InputName'] = self.input_name
         if self.max_bitrate is not None:
             result['MaxBitrate'] = self.max_bitrate
         if self.srt_latency is not None:
@@ -91238,6 +91320,8 @@ class UpdateMediaConnectFlowInputRequest(TeaModel):
             self.flow_id = m.get('FlowId')
         if m.get('InputFromUrl') is not None:
             self.input_from_url = m.get('InputFromUrl')
+        if m.get('InputName') is not None:
+            self.input_name = m.get('InputName')
         if m.get('MaxBitrate') is not None:
             self.max_bitrate = m.get('MaxBitrate')
         if m.get('SrtLatency') is not None:
