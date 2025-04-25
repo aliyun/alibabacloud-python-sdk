@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List
+from typing import Dict, List, Any
 
 
 class ApplyNumberDistrictInfoParsingResultRequest(TeaModel):
@@ -1950,6 +1950,680 @@ class CreateBatchRepeatJobResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateBatchRepeatJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateBeebotIntentRequestIntentDefinition(TeaModel):
+    def __init__(
+        self,
+        alias_name: str = None,
+        intent_name: str = None,
+    ):
+        self.alias_name = alias_name
+        # This parameter is required.
+        self.intent_name = intent_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias_name is not None:
+            result['AliasName'] = self.alias_name
+        if self.intent_name is not None:
+            result['IntentName'] = self.intent_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliasName') is not None:
+            self.alias_name = m.get('AliasName')
+        if m.get('IntentName') is not None:
+            self.intent_name = m.get('IntentName')
+        return self
+
+
+class CreateBeebotIntentRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        intent_definition: CreateBeebotIntentRequestIntentDefinition = None,
+        script_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.intent_definition = intent_definition
+        # This parameter is required.
+        self.script_id = script_id
+
+    def validate(self):
+        if self.intent_definition:
+            self.intent_definition.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.intent_definition is not None:
+            result['IntentDefinition'] = self.intent_definition.to_map()
+        if self.script_id is not None:
+            result['ScriptId'] = self.script_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('IntentDefinition') is not None:
+            temp_model = CreateBeebotIntentRequestIntentDefinition()
+            self.intent_definition = temp_model.from_map(m['IntentDefinition'])
+        if m.get('ScriptId') is not None:
+            self.script_id = m.get('ScriptId')
+        return self
+
+
+class CreateBeebotIntentShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        intent_definition_shrink: str = None,
+        script_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.intent_definition_shrink = intent_definition_shrink
+        # This parameter is required.
+        self.script_id = script_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.intent_definition_shrink is not None:
+            result['IntentDefinition'] = self.intent_definition_shrink
+        if self.script_id is not None:
+            result['ScriptId'] = self.script_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('IntentDefinition') is not None:
+            self.intent_definition_shrink = m.get('IntentDefinition')
+        if m.get('ScriptId') is not None:
+            self.script_id = m.get('ScriptId')
+        return self
+
+
+class CreateBeebotIntentResponseBody(TeaModel):
+    def __init__(
+        self,
+        beebot_request_id: str = None,
+        code: str = None,
+        http_status_code: int = None,
+        intent_id: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.beebot_request_id = beebot_request_id
+        self.code = code
+        self.http_status_code = http_status_code
+        self.intent_id = intent_id
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.beebot_request_id is not None:
+            result['BeebotRequestId'] = self.beebot_request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.intent_id is not None:
+            result['IntentId'] = self.intent_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BeebotRequestId') is not None:
+            self.beebot_request_id = m.get('BeebotRequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('IntentId') is not None:
+            self.intent_id = m.get('IntentId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateBeebotIntentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateBeebotIntentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateBeebotIntentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateBeebotIntentLgfRequestLgfDefinition(TeaModel):
+    def __init__(
+        self,
+        intent_id: int = None,
+        rule_text: str = None,
+    ):
+        # This parameter is required.
+        self.intent_id = intent_id
+        # This parameter is required.
+        self.rule_text = rule_text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.intent_id is not None:
+            result['IntentId'] = self.intent_id
+        if self.rule_text is not None:
+            result['RuleText'] = self.rule_text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IntentId') is not None:
+            self.intent_id = m.get('IntentId')
+        if m.get('RuleText') is not None:
+            self.rule_text = m.get('RuleText')
+        return self
+
+
+class CreateBeebotIntentLgfRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        lgf_definition: CreateBeebotIntentLgfRequestLgfDefinition = None,
+        script_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.lgf_definition = lgf_definition
+        # This parameter is required.
+        self.script_id = script_id
+
+    def validate(self):
+        if self.lgf_definition:
+            self.lgf_definition.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.lgf_definition is not None:
+            result['LgfDefinition'] = self.lgf_definition.to_map()
+        if self.script_id is not None:
+            result['ScriptId'] = self.script_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('LgfDefinition') is not None:
+            temp_model = CreateBeebotIntentLgfRequestLgfDefinition()
+            self.lgf_definition = temp_model.from_map(m['LgfDefinition'])
+        if m.get('ScriptId') is not None:
+            self.script_id = m.get('ScriptId')
+        return self
+
+
+class CreateBeebotIntentLgfShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        lgf_definition_shrink: str = None,
+        script_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.lgf_definition_shrink = lgf_definition_shrink
+        # This parameter is required.
+        self.script_id = script_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.lgf_definition_shrink is not None:
+            result['LgfDefinition'] = self.lgf_definition_shrink
+        if self.script_id is not None:
+            result['ScriptId'] = self.script_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('LgfDefinition') is not None:
+            self.lgf_definition_shrink = m.get('LgfDefinition')
+        if m.get('ScriptId') is not None:
+            self.script_id = m.get('ScriptId')
+        return self
+
+
+class CreateBeebotIntentLgfResponseBody(TeaModel):
+    def __init__(
+        self,
+        beebot_request_id: str = None,
+        code: str = None,
+        http_status_code: int = None,
+        lgf_id: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.beebot_request_id = beebot_request_id
+        self.code = code
+        self.http_status_code = http_status_code
+        self.lgf_id = lgf_id
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.beebot_request_id is not None:
+            result['BeebotRequestId'] = self.beebot_request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.lgf_id is not None:
+            result['LgfId'] = self.lgf_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BeebotRequestId') is not None:
+            self.beebot_request_id = m.get('BeebotRequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('LgfId') is not None:
+            self.lgf_id = m.get('LgfId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateBeebotIntentLgfResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateBeebotIntentLgfResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateBeebotIntentLgfResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateBeebotIntentUserSayRequestUserSayDefinition(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        intent_id: int = None,
+    ):
+        # This parameter is required.
+        self.content = content
+        # This parameter is required.
+        self.intent_id = intent_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.intent_id is not None:
+            result['IntentId'] = self.intent_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('IntentId') is not None:
+            self.intent_id = m.get('IntentId')
+        return self
+
+
+class CreateBeebotIntentUserSayRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        script_id: str = None,
+        user_say_definition: CreateBeebotIntentUserSayRequestUserSayDefinition = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.script_id = script_id
+        # This parameter is required.
+        self.user_say_definition = user_say_definition
+
+    def validate(self):
+        if self.user_say_definition:
+            self.user_say_definition.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.script_id is not None:
+            result['ScriptId'] = self.script_id
+        if self.user_say_definition is not None:
+            result['UserSayDefinition'] = self.user_say_definition.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ScriptId') is not None:
+            self.script_id = m.get('ScriptId')
+        if m.get('UserSayDefinition') is not None:
+            temp_model = CreateBeebotIntentUserSayRequestUserSayDefinition()
+            self.user_say_definition = temp_model.from_map(m['UserSayDefinition'])
+        return self
+
+
+class CreateBeebotIntentUserSayShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        script_id: str = None,
+        user_say_definition_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.script_id = script_id
+        # This parameter is required.
+        self.user_say_definition_shrink = user_say_definition_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.script_id is not None:
+            result['ScriptId'] = self.script_id
+        if self.user_say_definition_shrink is not None:
+            result['UserSayDefinition'] = self.user_say_definition_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ScriptId') is not None:
+            self.script_id = m.get('ScriptId')
+        if m.get('UserSayDefinition') is not None:
+            self.user_say_definition_shrink = m.get('UserSayDefinition')
+        return self
+
+
+class CreateBeebotIntentUserSayResponseBody(TeaModel):
+    def __init__(
+        self,
+        beebot_request_id: str = None,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        user_say_id: int = None,
+    ):
+        self.beebot_request_id = beebot_request_id
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.user_say_id = user_say_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.beebot_request_id is not None:
+            result['BeebotRequestId'] = self.beebot_request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.user_say_id is not None:
+            result['UserSayId'] = self.user_say_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BeebotRequestId') is not None:
+            self.beebot_request_id = m.get('BeebotRequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('UserSayId') is not None:
+            self.user_say_id = m.get('UserSayId')
+        return self
+
+
+class CreateBeebotIntentUserSayResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateBeebotIntentUserSayResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateBeebotIntentUserSayResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4251,6 +4925,7 @@ class CreateScriptRequest(TeaModel):
         script_content: List[str] = None,
         script_description: str = None,
         script_name: str = None,
+        script_nlu_profile_json_string: str = None,
         script_waveform: List[str] = None,
         tts_config: str = None,
     ):
@@ -4275,6 +4950,7 @@ class CreateScriptRequest(TeaModel):
         self.script_description = script_description
         # This parameter is required.
         self.script_name = script_name
+        self.script_nlu_profile_json_string = script_nlu_profile_json_string
         self.script_waveform = script_waveform
         self.tts_config = tts_config
 
@@ -4321,6 +4997,8 @@ class CreateScriptRequest(TeaModel):
             result['ScriptDescription'] = self.script_description
         if self.script_name is not None:
             result['ScriptName'] = self.script_name
+        if self.script_nlu_profile_json_string is not None:
+            result['ScriptNluProfileJsonString'] = self.script_nlu_profile_json_string
         if self.script_waveform is not None:
             result['ScriptWaveform'] = self.script_waveform
         if self.tts_config is not None:
@@ -4363,6 +5041,8 @@ class CreateScriptRequest(TeaModel):
             self.script_description = m.get('ScriptDescription')
         if m.get('ScriptName') is not None:
             self.script_name = m.get('ScriptName')
+        if m.get('ScriptNluProfileJsonString') is not None:
+            self.script_nlu_profile_json_string = m.get('ScriptNluProfileJsonString')
         if m.get('ScriptWaveform') is not None:
             self.script_waveform = m.get('ScriptWaveform')
         if m.get('TtsConfig') is not None:
@@ -5392,6 +6072,458 @@ class DeleteAllNumberDistrictInfoResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteAllNumberDistrictInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteBeebotIntentRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        intent_id: int = None,
+        script_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.intent_id = intent_id
+        # This parameter is required.
+        self.script_id = script_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.intent_id is not None:
+            result['IntentId'] = self.intent_id
+        if self.script_id is not None:
+            result['ScriptId'] = self.script_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('IntentId') is not None:
+            self.intent_id = m.get('IntentId')
+        if m.get('ScriptId') is not None:
+            self.script_id = m.get('ScriptId')
+        return self
+
+
+class DeleteBeebotIntentResponseBody(TeaModel):
+    def __init__(
+        self,
+        beebot_request_id: str = None,
+        code: str = None,
+        http_status_code: int = None,
+        intent_id: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.beebot_request_id = beebot_request_id
+        self.code = code
+        self.http_status_code = http_status_code
+        self.intent_id = intent_id
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.beebot_request_id is not None:
+            result['BeebotRequestId'] = self.beebot_request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.intent_id is not None:
+            result['IntentId'] = self.intent_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BeebotRequestId') is not None:
+            self.beebot_request_id = m.get('BeebotRequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('IntentId') is not None:
+            self.intent_id = m.get('IntentId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteBeebotIntentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteBeebotIntentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteBeebotIntentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteBeebotIntentLgfRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        intent_id: int = None,
+        lgf_id: int = None,
+        script_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.intent_id = intent_id
+        # This parameter is required.
+        self.lgf_id = lgf_id
+        # This parameter is required.
+        self.script_id = script_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.intent_id is not None:
+            result['IntentId'] = self.intent_id
+        if self.lgf_id is not None:
+            result['LgfId'] = self.lgf_id
+        if self.script_id is not None:
+            result['ScriptId'] = self.script_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('IntentId') is not None:
+            self.intent_id = m.get('IntentId')
+        if m.get('LgfId') is not None:
+            self.lgf_id = m.get('LgfId')
+        if m.get('ScriptId') is not None:
+            self.script_id = m.get('ScriptId')
+        return self
+
+
+class DeleteBeebotIntentLgfResponseBody(TeaModel):
+    def __init__(
+        self,
+        beebot_request_id: str = None,
+        code: str = None,
+        http_status_code: int = None,
+        lgf_id: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.beebot_request_id = beebot_request_id
+        self.code = code
+        self.http_status_code = http_status_code
+        self.lgf_id = lgf_id
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.beebot_request_id is not None:
+            result['BeebotRequestId'] = self.beebot_request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.lgf_id is not None:
+            result['LgfId'] = self.lgf_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BeebotRequestId') is not None:
+            self.beebot_request_id = m.get('BeebotRequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('LgfId') is not None:
+            self.lgf_id = m.get('LgfId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteBeebotIntentLgfResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteBeebotIntentLgfResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteBeebotIntentLgfResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteBeebotIntentUserSayRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        intent_id: str = None,
+        script_id: str = None,
+        user_say_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.intent_id = intent_id
+        # This parameter is required.
+        self.script_id = script_id
+        # This parameter is required.
+        self.user_say_id = user_say_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.intent_id is not None:
+            result['IntentId'] = self.intent_id
+        if self.script_id is not None:
+            result['ScriptId'] = self.script_id
+        if self.user_say_id is not None:
+            result['UserSayId'] = self.user_say_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('IntentId') is not None:
+            self.intent_id = m.get('IntentId')
+        if m.get('ScriptId') is not None:
+            self.script_id = m.get('ScriptId')
+        if m.get('UserSayId') is not None:
+            self.user_say_id = m.get('UserSayId')
+        return self
+
+
+class DeleteBeebotIntentUserSayResponseBody(TeaModel):
+    def __init__(
+        self,
+        beebot_request_id: str = None,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        user_say_id: int = None,
+    ):
+        self.beebot_request_id = beebot_request_id
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.user_say_id = user_say_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.beebot_request_id is not None:
+            result['BeebotRequestId'] = self.beebot_request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.user_say_id is not None:
+            result['UserSayId'] = self.user_say_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BeebotRequestId') is not None:
+            self.beebot_request_id = m.get('BeebotRequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('UserSayId') is not None:
+            self.user_say_id = m.get('UserSayId')
+        return self
+
+
+class DeleteBeebotIntentUserSayResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteBeebotIntentUserSayResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteBeebotIntentUserSayResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6840,6 +7972,235 @@ class DeleteScriptWaveformResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteScriptWaveformResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeBeebotIntentRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        intent_id: int = None,
+        script_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.intent_id = intent_id
+        # This parameter is required.
+        self.script_id = script_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.intent_id is not None:
+            result['IntentId'] = self.intent_id
+        if self.script_id is not None:
+            result['ScriptId'] = self.script_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('IntentId') is not None:
+            self.intent_id = m.get('IntentId')
+        if m.get('ScriptId') is not None:
+            self.script_id = m.get('ScriptId')
+        return self
+
+
+class DescribeBeebotIntentResponseBodyIntent(TeaModel):
+    def __init__(
+        self,
+        alias_name: str = None,
+        create_time: str = None,
+        create_user_id: str = None,
+        create_user_name: str = None,
+        intent_id: int = None,
+        intent_name: str = None,
+        modify_time: str = None,
+        modify_user_id: str = None,
+        modify_user_name: str = None,
+    ):
+        self.alias_name = alias_name
+        self.create_time = create_time
+        self.create_user_id = create_user_id
+        self.create_user_name = create_user_name
+        self.intent_id = intent_id
+        self.intent_name = intent_name
+        self.modify_time = modify_time
+        self.modify_user_id = modify_user_id
+        self.modify_user_name = modify_user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias_name is not None:
+            result['AliasName'] = self.alias_name
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_user_id is not None:
+            result['CreateUserId'] = self.create_user_id
+        if self.create_user_name is not None:
+            result['CreateUserName'] = self.create_user_name
+        if self.intent_id is not None:
+            result['IntentId'] = self.intent_id
+        if self.intent_name is not None:
+            result['IntentName'] = self.intent_name
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.modify_user_id is not None:
+            result['ModifyUserId'] = self.modify_user_id
+        if self.modify_user_name is not None:
+            result['ModifyUserName'] = self.modify_user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliasName') is not None:
+            self.alias_name = m.get('AliasName')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateUserId') is not None:
+            self.create_user_id = m.get('CreateUserId')
+        if m.get('CreateUserName') is not None:
+            self.create_user_name = m.get('CreateUserName')
+        if m.get('IntentId') is not None:
+            self.intent_id = m.get('IntentId')
+        if m.get('IntentName') is not None:
+            self.intent_name = m.get('IntentName')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('ModifyUserId') is not None:
+            self.modify_user_id = m.get('ModifyUserId')
+        if m.get('ModifyUserName') is not None:
+            self.modify_user_name = m.get('ModifyUserName')
+        return self
+
+
+class DescribeBeebotIntentResponseBody(TeaModel):
+    def __init__(
+        self,
+        beebot_request_id: str = None,
+        code: str = None,
+        http_status_code: int = None,
+        intent: DescribeBeebotIntentResponseBodyIntent = None,
+        intent_id: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.beebot_request_id = beebot_request_id
+        self.code = code
+        self.http_status_code = http_status_code
+        self.intent = intent
+        self.intent_id = intent_id
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.intent:
+            self.intent.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.beebot_request_id is not None:
+            result['BeebotRequestId'] = self.beebot_request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.intent is not None:
+            result['Intent'] = self.intent.to_map()
+        if self.intent_id is not None:
+            result['IntentId'] = self.intent_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BeebotRequestId') is not None:
+            self.beebot_request_id = m.get('BeebotRequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Intent') is not None:
+            temp_model = DescribeBeebotIntentResponseBodyIntent()
+            self.intent = temp_model.from_map(m['Intent'])
+        if m.get('IntentId') is not None:
+            self.intent_id = m.get('IntentId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DescribeBeebotIntentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeBeebotIntentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeBeebotIntentResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10866,6 +12227,45 @@ class DescribeScriptRequest(TeaModel):
         return self
 
 
+class DescribeScriptResponseBodyScriptNluProfile(TeaModel):
+    def __init__(
+        self,
+        fc_function: str = None,
+        fc_http_trigger_url: str = None,
+        fc_region: str = None,
+    ):
+        self.fc_function = fc_function
+        self.fc_http_trigger_url = fc_http_trigger_url
+        self.fc_region = fc_region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.fc_function is not None:
+            result['FcFunction'] = self.fc_function
+        if self.fc_http_trigger_url is not None:
+            result['FcHttpTriggerUrl'] = self.fc_http_trigger_url
+        if self.fc_region is not None:
+            result['FcRegion'] = self.fc_region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FcFunction') is not None:
+            self.fc_function = m.get('FcFunction')
+        if m.get('FcHttpTriggerUrl') is not None:
+            self.fc_http_trigger_url = m.get('FcHttpTriggerUrl')
+        if m.get('FcRegion') is not None:
+            self.fc_region = m.get('FcRegion')
+        return self
+
+
 class DescribeScriptResponseBodyScript(TeaModel):
     def __init__(
         self,
@@ -10883,6 +12283,8 @@ class DescribeScriptResponseBodyScript(TeaModel):
         long_wait_enable: bool = None,
         mini_playback_enable: bool = None,
         new_barge_in_enable: bool = None,
+        nlu_engine: str = None,
+        nlu_profile: DescribeScriptResponseBodyScriptNluProfile = None,
         scene: str = None,
         script_description: str = None,
         script_id: str = None,
@@ -10905,6 +12307,8 @@ class DescribeScriptResponseBodyScript(TeaModel):
         self.long_wait_enable = long_wait_enable
         self.mini_playback_enable = mini_playback_enable
         self.new_barge_in_enable = new_barge_in_enable
+        self.nlu_engine = nlu_engine
+        self.nlu_profile = nlu_profile
         self.scene = scene
         self.script_description = script_description
         self.script_id = script_id
@@ -10914,7 +12318,8 @@ class DescribeScriptResponseBodyScript(TeaModel):
         self.update_time = update_time
 
     def validate(self):
-        pass
+        if self.nlu_profile:
+            self.nlu_profile.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -10950,6 +12355,10 @@ class DescribeScriptResponseBodyScript(TeaModel):
             result['MiniPlaybackEnable'] = self.mini_playback_enable
         if self.new_barge_in_enable is not None:
             result['NewBargeInEnable'] = self.new_barge_in_enable
+        if self.nlu_engine is not None:
+            result['NluEngine'] = self.nlu_engine
+        if self.nlu_profile is not None:
+            result['NluProfile'] = self.nlu_profile.to_map()
         if self.scene is not None:
             result['Scene'] = self.scene
         if self.script_description is not None:
@@ -10996,6 +12405,11 @@ class DescribeScriptResponseBodyScript(TeaModel):
             self.mini_playback_enable = m.get('MiniPlaybackEnable')
         if m.get('NewBargeInEnable') is not None:
             self.new_barge_in_enable = m.get('NewBargeInEnable')
+        if m.get('NluEngine') is not None:
+            self.nlu_engine = m.get('NluEngine')
+        if m.get('NluProfile') is not None:
+            temp_model = DescribeScriptResponseBodyScriptNluProfile()
+            self.nlu_profile = temp_model.from_map(m['NluProfile'])
         if m.get('Scene') is not None:
             self.scene = m.get('Scene')
         if m.get('ScriptDescription') is not None:
@@ -19550,6 +20964,752 @@ class ListApiPluginsResponse(TeaModel):
         return self
 
 
+class ListBeebotIntentRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        intent_name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        script_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.intent_name = intent_name
+        # This parameter is required.
+        self.page_number = page_number
+        # This parameter is required.
+        self.page_size = page_size
+        # This parameter is required.
+        self.script_id = script_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.intent_name is not None:
+            result['IntentName'] = self.intent_name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.script_id is not None:
+            result['ScriptId'] = self.script_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('IntentName') is not None:
+            self.intent_name = m.get('IntentName')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ScriptId') is not None:
+            self.script_id = m.get('ScriptId')
+        return self
+
+
+class ListBeebotIntentResponseBodyIntents(TeaModel):
+    def __init__(
+        self,
+        alias_name: str = None,
+        create_time: str = None,
+        create_user_id: str = None,
+        create_user_name: str = None,
+        intent_id: int = None,
+        intent_name: str = None,
+        modify_time: str = None,
+        modify_user_id: str = None,
+        modify_user_name: str = None,
+    ):
+        self.alias_name = alias_name
+        self.create_time = create_time
+        self.create_user_id = create_user_id
+        self.create_user_name = create_user_name
+        self.intent_id = intent_id
+        self.intent_name = intent_name
+        self.modify_time = modify_time
+        self.modify_user_id = modify_user_id
+        self.modify_user_name = modify_user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias_name is not None:
+            result['AliasName'] = self.alias_name
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_user_id is not None:
+            result['CreateUserId'] = self.create_user_id
+        if self.create_user_name is not None:
+            result['CreateUserName'] = self.create_user_name
+        if self.intent_id is not None:
+            result['IntentId'] = self.intent_id
+        if self.intent_name is not None:
+            result['IntentName'] = self.intent_name
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.modify_user_id is not None:
+            result['ModifyUserId'] = self.modify_user_id
+        if self.modify_user_name is not None:
+            result['ModifyUserName'] = self.modify_user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliasName') is not None:
+            self.alias_name = m.get('AliasName')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateUserId') is not None:
+            self.create_user_id = m.get('CreateUserId')
+        if m.get('CreateUserName') is not None:
+            self.create_user_name = m.get('CreateUserName')
+        if m.get('IntentId') is not None:
+            self.intent_id = m.get('IntentId')
+        if m.get('IntentName') is not None:
+            self.intent_name = m.get('IntentName')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('ModifyUserId') is not None:
+            self.modify_user_id = m.get('ModifyUserId')
+        if m.get('ModifyUserName') is not None:
+            self.modify_user_name = m.get('ModifyUserName')
+        return self
+
+
+class ListBeebotIntentResponseBody(TeaModel):
+    def __init__(
+        self,
+        beebot_request_id: str = None,
+        code: str = None,
+        http_status_code: int = None,
+        intents: List[ListBeebotIntentResponseBodyIntents] = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.beebot_request_id = beebot_request_id
+        self.code = code
+        self.http_status_code = http_status_code
+        self.intents = intents
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.intents:
+            for k in self.intents:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.beebot_request_id is not None:
+            result['BeebotRequestId'] = self.beebot_request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        result['Intents'] = []
+        if self.intents is not None:
+            for k in self.intents:
+                result['Intents'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BeebotRequestId') is not None:
+            self.beebot_request_id = m.get('BeebotRequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        self.intents = []
+        if m.get('Intents') is not None:
+            for k in m.get('Intents'):
+                temp_model = ListBeebotIntentResponseBodyIntents()
+                self.intents.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListBeebotIntentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListBeebotIntentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListBeebotIntentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListBeebotIntentLgfRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        intent_id: str = None,
+        lgf_text: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        script_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.intent_id = intent_id
+        self.lgf_text = lgf_text
+        # This parameter is required.
+        self.page_number = page_number
+        # This parameter is required.
+        self.page_size = page_size
+        # This parameter is required.
+        self.script_id = script_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.intent_id is not None:
+            result['IntentId'] = self.intent_id
+        if self.lgf_text is not None:
+            result['LgfText'] = self.lgf_text
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.script_id is not None:
+            result['ScriptId'] = self.script_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('IntentId') is not None:
+            self.intent_id = m.get('IntentId')
+        if m.get('LgfText') is not None:
+            self.lgf_text = m.get('LgfText')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ScriptId') is not None:
+            self.script_id = m.get('ScriptId')
+        return self
+
+
+class ListBeebotIntentLgfResponseBodyLgfs(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        intent_id: int = None,
+        lgf_id: int = None,
+        modify_time: str = None,
+        rule_text: str = None,
+    ):
+        self.create_time = create_time
+        self.intent_id = intent_id
+        self.lgf_id = lgf_id
+        self.modify_time = modify_time
+        self.rule_text = rule_text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.intent_id is not None:
+            result['IntentId'] = self.intent_id
+        if self.lgf_id is not None:
+            result['LgfId'] = self.lgf_id
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.rule_text is not None:
+            result['RuleText'] = self.rule_text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('IntentId') is not None:
+            self.intent_id = m.get('IntentId')
+        if m.get('LgfId') is not None:
+            self.lgf_id = m.get('LgfId')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('RuleText') is not None:
+            self.rule_text = m.get('RuleText')
+        return self
+
+
+class ListBeebotIntentLgfResponseBody(TeaModel):
+    def __init__(
+        self,
+        beebot_request_id: str = None,
+        code: str = None,
+        http_status_code: int = None,
+        lgfs: List[ListBeebotIntentLgfResponseBodyLgfs] = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.beebot_request_id = beebot_request_id
+        self.code = code
+        self.http_status_code = http_status_code
+        self.lgfs = lgfs
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.lgfs:
+            for k in self.lgfs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.beebot_request_id is not None:
+            result['BeebotRequestId'] = self.beebot_request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        result['Lgfs'] = []
+        if self.lgfs is not None:
+            for k in self.lgfs:
+                result['Lgfs'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BeebotRequestId') is not None:
+            self.beebot_request_id = m.get('BeebotRequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        self.lgfs = []
+        if m.get('Lgfs') is not None:
+            for k in m.get('Lgfs'):
+                temp_model = ListBeebotIntentLgfResponseBodyLgfs()
+                self.lgfs.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListBeebotIntentLgfResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListBeebotIntentLgfResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListBeebotIntentLgfResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListBeebotIntentUserSayRequest(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        instance_id: str = None,
+        intent_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        script_id: str = None,
+    ):
+        self.content = content
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.intent_id = intent_id
+        # This parameter is required.
+        self.page_number = page_number
+        # This parameter is required.
+        self.page_size = page_size
+        # This parameter is required.
+        self.script_id = script_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.intent_id is not None:
+            result['IntentId'] = self.intent_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.script_id is not None:
+            result['ScriptId'] = self.script_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('IntentId') is not None:
+            self.intent_id = m.get('IntentId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ScriptId') is not None:
+            self.script_id = m.get('ScriptId')
+        return self
+
+
+class ListBeebotIntentUserSayResponseBodyUserSays(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        create_time: str = None,
+        intent_id: int = None,
+        modify_time: str = None,
+        user_say_id: str = None,
+    ):
+        self.content = content
+        self.create_time = create_time
+        self.intent_id = intent_id
+        self.modify_time = modify_time
+        self.user_say_id = user_say_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.intent_id is not None:
+            result['IntentId'] = self.intent_id
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.user_say_id is not None:
+            result['UserSayId'] = self.user_say_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('IntentId') is not None:
+            self.intent_id = m.get('IntentId')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('UserSayId') is not None:
+            self.user_say_id = m.get('UserSayId')
+        return self
+
+
+class ListBeebotIntentUserSayResponseBody(TeaModel):
+    def __init__(
+        self,
+        beebot_request_id: str = None,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+        user_says: List[ListBeebotIntentUserSayResponseBodyUserSays] = None,
+    ):
+        self.beebot_request_id = beebot_request_id
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+        self.user_says = user_says
+
+    def validate(self):
+        if self.user_says:
+            for k in self.user_says:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.beebot_request_id is not None:
+            result['BeebotRequestId'] = self.beebot_request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        result['UserSays'] = []
+        if self.user_says is not None:
+            for k in self.user_says:
+                result['UserSays'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BeebotRequestId') is not None:
+            self.beebot_request_id = m.get('BeebotRequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        self.user_says = []
+        if m.get('UserSays') is not None:
+            for k in m.get('UserSays'):
+                temp_model = ListBeebotIntentUserSayResponseBodyUserSays()
+                self.user_says.append(temp_model.from_map(k))
+        return self
+
+
+class ListBeebotIntentUserSayResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListBeebotIntentUserSayResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListBeebotIntentUserSayResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListChatbotInstancesRequest(TeaModel):
     def __init__(
         self,
@@ -21060,6 +23220,767 @@ class ListInstancesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListIntentionsRequest(TeaModel):
+    def __init__(
+        self,
+        annotation_mission_data_source_type: int = None,
+        bot_id: str = None,
+        environment: int = None,
+        instance_id: str = None,
+        intent_id: int = None,
+        page_index: int = None,
+        page_size: int = None,
+        script_id: str = None,
+        user_nick: str = None,
+    ):
+        self.annotation_mission_data_source_type = annotation_mission_data_source_type
+        self.bot_id = bot_id
+        self.environment = environment
+        self.instance_id = instance_id
+        self.intent_id = intent_id
+        self.page_index = page_index
+        self.page_size = page_size
+        self.script_id = script_id
+        self.user_nick = user_nick
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.annotation_mission_data_source_type is not None:
+            result['AnnotationMissionDataSourceType'] = self.annotation_mission_data_source_type
+        if self.bot_id is not None:
+            result['BotId'] = self.bot_id
+        if self.environment is not None:
+            result['Environment'] = self.environment
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.intent_id is not None:
+            result['IntentId'] = self.intent_id
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.script_id is not None:
+            result['ScriptId'] = self.script_id
+        if self.user_nick is not None:
+            result['UserNick'] = self.user_nick
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AnnotationMissionDataSourceType') is not None:
+            self.annotation_mission_data_source_type = m.get('AnnotationMissionDataSourceType')
+        if m.get('BotId') is not None:
+            self.bot_id = m.get('BotId')
+        if m.get('Environment') is not None:
+            self.environment = m.get('Environment')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('IntentId') is not None:
+            self.intent_id = m.get('IntentId')
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ScriptId') is not None:
+            self.script_id = m.get('ScriptId')
+        if m.get('UserNick') is not None:
+            self.user_nick = m.get('UserNick')
+        return self
+
+
+class ListIntentionsResponseBodyDataIntentListRuleCheck(TeaModel):
+    def __init__(
+        self,
+        error: List[str] = None,
+        strict: bool = None,
+        text: str = None,
+        warning: List[str] = None,
+    ):
+        self.error = error
+        self.strict = strict
+        self.text = text
+        self.warning = warning
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error is not None:
+            result['Error'] = self.error
+        if self.strict is not None:
+            result['Strict'] = self.strict
+        if self.text is not None:
+            result['Text'] = self.text
+        if self.warning is not None:
+            result['Warning'] = self.warning
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Error') is not None:
+            self.error = m.get('Error')
+        if m.get('Strict') is not None:
+            self.strict = m.get('Strict')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        if m.get('Warning') is not None:
+            self.warning = m.get('Warning')
+        return self
+
+
+class ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctionsSwitch(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        label: str = None,
+        name: str = None,
+        type: str = None,
+        value: str = None,
+    ):
+        self.id = id
+        self.label = label
+        self.name = name
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.label is not None:
+            result['Label'] = self.label
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctions(TeaModel):
+    def __init__(
+        self,
+        aliyun_function: str = None,
+        aliyun_service: str = None,
+        code: str = None,
+        description: str = None,
+        end_point: str = None,
+        function: str = None,
+        name: str = None,
+        params: Dict[str, Any] = None,
+        switch: List[ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctionsSwitch] = None,
+        type: str = None,
+    ):
+        self.aliyun_function = aliyun_function
+        self.aliyun_service = aliyun_service
+        self.code = code
+        self.description = description
+        self.end_point = end_point
+        self.function = function
+        self.name = name
+        self.params = params
+        self.switch = switch
+        self.type = type
+
+    def validate(self):
+        if self.switch:
+            for k in self.switch:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_function is not None:
+            result['AliyunFunction'] = self.aliyun_function
+        if self.aliyun_service is not None:
+            result['AliyunService'] = self.aliyun_service
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.end_point is not None:
+            result['EndPoint'] = self.end_point
+        if self.function is not None:
+            result['Function'] = self.function
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.params is not None:
+            result['Params'] = self.params
+        result['Switch'] = []
+        if self.switch is not None:
+            for k in self.switch:
+                result['Switch'].append(k.to_map() if k else None)
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliyunFunction') is not None:
+            self.aliyun_function = m.get('AliyunFunction')
+        if m.get('AliyunService') is not None:
+            self.aliyun_service = m.get('AliyunService')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EndPoint') is not None:
+            self.end_point = m.get('EndPoint')
+        if m.get('Function') is not None:
+            self.function = m.get('Function')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        self.switch = []
+        if m.get('Switch') is not None:
+            for k in m.get('Switch'):
+                temp_model = ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctionsSwitch()
+                self.switch.append(temp_model.from_map(k))
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListIntentionsResponseBodyDataIntentListSlotTags(TeaModel):
+    def __init__(
+        self,
+        user_say_id: str = None,
+        value: str = None,
+    ):
+        self.user_say_id = user_say_id
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.user_say_id is not None:
+            result['UserSayId'] = self.user_say_id
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UserSayId') is not None:
+            self.user_say_id = m.get('UserSayId')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListIntentionsResponseBodyDataIntentListSlot(TeaModel):
+    def __init__(
+        self,
+        feedback_functions: List[ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctions] = None,
+        feedback_type: str = None,
+        id: str = None,
+        is_array: bool = None,
+        is_encrypt: bool = None,
+        is_interactive: bool = None,
+        is_necessary: bool = None,
+        life_span: int = None,
+        name: str = None,
+        question: List[str] = None,
+        tags: List[ListIntentionsResponseBodyDataIntentListSlotTags] = None,
+        value: str = None,
+    ):
+        self.feedback_functions = feedback_functions
+        self.feedback_type = feedback_type
+        self.id = id
+        self.is_array = is_array
+        self.is_encrypt = is_encrypt
+        self.is_interactive = is_interactive
+        self.is_necessary = is_necessary
+        self.life_span = life_span
+        self.name = name
+        self.question = question
+        self.tags = tags
+        self.value = value
+
+    def validate(self):
+        if self.feedback_functions:
+            for k in self.feedback_functions:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['FeedbackFunctions'] = []
+        if self.feedback_functions is not None:
+            for k in self.feedback_functions:
+                result['FeedbackFunctions'].append(k.to_map() if k else None)
+        if self.feedback_type is not None:
+            result['FeedbackType'] = self.feedback_type
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.is_array is not None:
+            result['IsArray'] = self.is_array
+        if self.is_encrypt is not None:
+            result['IsEncrypt'] = self.is_encrypt
+        if self.is_interactive is not None:
+            result['IsInteractive'] = self.is_interactive
+        if self.is_necessary is not None:
+            result['IsNecessary'] = self.is_necessary
+        if self.life_span is not None:
+            result['LifeSpan'] = self.life_span
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.question is not None:
+            result['Question'] = self.question
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.feedback_functions = []
+        if m.get('FeedbackFunctions') is not None:
+            for k in m.get('FeedbackFunctions'):
+                temp_model = ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctions()
+                self.feedback_functions.append(temp_model.from_map(k))
+        if m.get('FeedbackType') is not None:
+            self.feedback_type = m.get('FeedbackType')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('IsArray') is not None:
+            self.is_array = m.get('IsArray')
+        if m.get('IsEncrypt') is not None:
+            self.is_encrypt = m.get('IsEncrypt')
+        if m.get('IsInteractive') is not None:
+            self.is_interactive = m.get('IsInteractive')
+        if m.get('IsNecessary') is not None:
+            self.is_necessary = m.get('IsNecessary')
+        if m.get('LifeSpan') is not None:
+            self.life_span = m.get('LifeSpan')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Question') is not None:
+            self.question = m.get('Question')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListIntentionsResponseBodyDataIntentListSlotTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListIntentionsResponseBodyDataIntentListUserSayUserSayData(TeaModel):
+    def __init__(
+        self,
+        slot_id: str = None,
+        text: str = None,
+    ):
+        self.slot_id = slot_id
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.slot_id is not None:
+            result['SlotId'] = self.slot_id
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SlotId') is not None:
+            self.slot_id = m.get('SlotId')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class ListIntentionsResponseBodyDataIntentListUserSay(TeaModel):
+    def __init__(
+        self,
+        from_id: str = None,
+        id: str = None,
+        strict: bool = None,
+        user_say_data: List[ListIntentionsResponseBodyDataIntentListUserSayUserSayData] = None,
+    ):
+        self.from_id = from_id
+        self.id = id
+        self.strict = strict
+        self.user_say_data = user_say_data
+
+    def validate(self):
+        if self.user_say_data:
+            for k in self.user_say_data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.from_id is not None:
+            result['FromId'] = self.from_id
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.strict is not None:
+            result['Strict'] = self.strict
+        result['UserSayData'] = []
+        if self.user_say_data is not None:
+            for k in self.user_say_data:
+                result['UserSayData'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FromId') is not None:
+            self.from_id = m.get('FromId')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Strict') is not None:
+            self.strict = m.get('Strict')
+        self.user_say_data = []
+        if m.get('UserSayData') is not None:
+            for k in m.get('UserSayData'):
+                temp_model = ListIntentionsResponseBodyDataIntentListUserSayUserSayData()
+                self.user_say_data.append(temp_model.from_map(k))
+        return self
+
+
+class ListIntentionsResponseBodyDataIntentList(TeaModel):
+    def __init__(
+        self,
+        alias: List[str] = None,
+        bot_id: int = None,
+        bot_name: str = None,
+        dialog_id: str = None,
+        id: int = None,
+        language: str = None,
+        name: str = None,
+        rule_check: List[ListIntentionsResponseBodyDataIntentListRuleCheck] = None,
+        slot: List[ListIntentionsResponseBodyDataIntentListSlot] = None,
+        table_id: int = None,
+        type: int = None,
+        user_say: List[ListIntentionsResponseBodyDataIntentListUserSay] = None,
+    ):
+        self.alias = alias
+        self.bot_id = bot_id
+        self.bot_name = bot_name
+        self.dialog_id = dialog_id
+        self.id = id
+        self.language = language
+        self.name = name
+        self.rule_check = rule_check
+        self.slot = slot
+        self.table_id = table_id
+        self.type = type
+        self.user_say = user_say
+
+    def validate(self):
+        if self.rule_check:
+            for k in self.rule_check:
+                if k:
+                    k.validate()
+        if self.slot:
+            for k in self.slot:
+                if k:
+                    k.validate()
+        if self.user_say:
+            for k in self.user_say:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias is not None:
+            result['Alias'] = self.alias
+        if self.bot_id is not None:
+            result['BotId'] = self.bot_id
+        if self.bot_name is not None:
+            result['BotName'] = self.bot_name
+        if self.dialog_id is not None:
+            result['DialogId'] = self.dialog_id
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.name is not None:
+            result['Name'] = self.name
+        result['RuleCheck'] = []
+        if self.rule_check is not None:
+            for k in self.rule_check:
+                result['RuleCheck'].append(k.to_map() if k else None)
+        result['Slot'] = []
+        if self.slot is not None:
+            for k in self.slot:
+                result['Slot'].append(k.to_map() if k else None)
+        if self.table_id is not None:
+            result['TableId'] = self.table_id
+        if self.type is not None:
+            result['Type'] = self.type
+        result['UserSay'] = []
+        if self.user_say is not None:
+            for k in self.user_say:
+                result['UserSay'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alias') is not None:
+            self.alias = m.get('Alias')
+        if m.get('BotId') is not None:
+            self.bot_id = m.get('BotId')
+        if m.get('BotName') is not None:
+            self.bot_name = m.get('BotName')
+        if m.get('DialogId') is not None:
+            self.dialog_id = m.get('DialogId')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.rule_check = []
+        if m.get('RuleCheck') is not None:
+            for k in m.get('RuleCheck'):
+                temp_model = ListIntentionsResponseBodyDataIntentListRuleCheck()
+                self.rule_check.append(temp_model.from_map(k))
+        self.slot = []
+        if m.get('Slot') is not None:
+            for k in m.get('Slot'):
+                temp_model = ListIntentionsResponseBodyDataIntentListSlot()
+                self.slot.append(temp_model.from_map(k))
+        if m.get('TableId') is not None:
+            self.table_id = m.get('TableId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        self.user_say = []
+        if m.get('UserSay') is not None:
+            for k in m.get('UserSay'):
+                temp_model = ListIntentionsResponseBodyDataIntentListUserSay()
+                self.user_say.append(temp_model.from_map(k))
+        return self
+
+
+class ListIntentionsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        bot_id: str = None,
+        intent_list: List[ListIntentionsResponseBodyDataIntentList] = None,
+        message: str = None,
+        success: bool = None,
+    ):
+        self.bot_id = bot_id
+        self.intent_list = intent_list
+        self.message = message
+        self.success = success
+
+    def validate(self):
+        if self.intent_list:
+            for k in self.intent_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bot_id is not None:
+            result['BotId'] = self.bot_id
+        result['IntentList'] = []
+        if self.intent_list is not None:
+            for k in self.intent_list:
+                result['IntentList'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BotId') is not None:
+            self.bot_id = m.get('BotId')
+        self.intent_list = []
+        if m.get('IntentList') is not None:
+            for k in m.get('IntentList'):
+                temp_model = ListIntentionsResponseBodyDataIntentList()
+                self.intent_list.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListIntentionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ListIntentionsResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ListIntentionsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListIntentionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListIntentionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListIntentionsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -25033,6 +27954,45 @@ class ListScriptsRequest(TeaModel):
         return self
 
 
+class ListScriptsResponseBodyScriptsListNluProfile(TeaModel):
+    def __init__(
+        self,
+        fc_function: str = None,
+        fc_http_trigger_url: str = None,
+        fc_region: str = None,
+    ):
+        self.fc_function = fc_function
+        self.fc_http_trigger_url = fc_http_trigger_url
+        self.fc_region = fc_region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.fc_function is not None:
+            result['FcFunction'] = self.fc_function
+        if self.fc_http_trigger_url is not None:
+            result['FcHttpTriggerUrl'] = self.fc_http_trigger_url
+        if self.fc_region is not None:
+            result['FcRegion'] = self.fc_region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FcFunction') is not None:
+            self.fc_function = m.get('FcFunction')
+        if m.get('FcHttpTriggerUrl') is not None:
+            self.fc_http_trigger_url = m.get('FcHttpTriggerUrl')
+        if m.get('FcRegion') is not None:
+            self.fc_region = m.get('FcRegion')
+        return self
+
+
 class ListScriptsResponseBodyScriptsList(TeaModel):
     def __init__(
         self,
@@ -25050,6 +28010,7 @@ class ListScriptsResponseBodyScriptsList(TeaModel):
         new_barge_in_enable: bool = None,
         nlu_access_type: str = None,
         nlu_engine: str = None,
+        nlu_profile: ListScriptsResponseBodyScriptsListNluProfile = None,
         reject_reason: str = None,
         scene: str = None,
         script_description: str = None,
@@ -25073,6 +28034,7 @@ class ListScriptsResponseBodyScriptsList(TeaModel):
         self.new_barge_in_enable = new_barge_in_enable
         self.nlu_access_type = nlu_access_type
         self.nlu_engine = nlu_engine
+        self.nlu_profile = nlu_profile
         self.reject_reason = reject_reason
         self.scene = scene
         self.script_description = script_description
@@ -25083,7 +28045,8 @@ class ListScriptsResponseBodyScriptsList(TeaModel):
         self.agent_id = agent_id
 
     def validate(self):
-        pass
+        if self.nlu_profile:
+            self.nlu_profile.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -25119,6 +28082,8 @@ class ListScriptsResponseBodyScriptsList(TeaModel):
             result['NluAccessType'] = self.nlu_access_type
         if self.nlu_engine is not None:
             result['NluEngine'] = self.nlu_engine
+        if self.nlu_profile is not None:
+            result['NluProfile'] = self.nlu_profile.to_map()
         if self.reject_reason is not None:
             result['RejectReason'] = self.reject_reason
         if self.scene is not None:
@@ -25167,6 +28132,9 @@ class ListScriptsResponseBodyScriptsList(TeaModel):
             self.nlu_access_type = m.get('NluAccessType')
         if m.get('NluEngine') is not None:
             self.nlu_engine = m.get('NluEngine')
+        if m.get('NluProfile') is not None:
+            temp_model = ListScriptsResponseBodyScriptsListNluProfile()
+            self.nlu_profile = temp_model.from_map(m['NluProfile'])
         if m.get('RejectReason') is not None:
             self.reject_reason = m.get('RejectReason')
         if m.get('Scene') is not None:
@@ -26863,6 +29831,722 @@ class ModifyBatchJobsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyBatchJobsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyBeebotIntentRequestIntentDefinition(TeaModel):
+    def __init__(
+        self,
+        alias_name: str = None,
+        intent_name: str = None,
+    ):
+        self.alias_name = alias_name
+        # This parameter is required.
+        self.intent_name = intent_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias_name is not None:
+            result['AliasName'] = self.alias_name
+        if self.intent_name is not None:
+            result['IntentName'] = self.intent_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliasName') is not None:
+            self.alias_name = m.get('AliasName')
+        if m.get('IntentName') is not None:
+            self.intent_name = m.get('IntentName')
+        return self
+
+
+class ModifyBeebotIntentRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        intent_definition: ModifyBeebotIntentRequestIntentDefinition = None,
+        intent_id: int = None,
+        script_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.intent_definition = intent_definition
+        # This parameter is required.
+        self.intent_id = intent_id
+        # This parameter is required.
+        self.script_id = script_id
+
+    def validate(self):
+        if self.intent_definition:
+            self.intent_definition.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.intent_definition is not None:
+            result['IntentDefinition'] = self.intent_definition.to_map()
+        if self.intent_id is not None:
+            result['IntentId'] = self.intent_id
+        if self.script_id is not None:
+            result['ScriptId'] = self.script_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('IntentDefinition') is not None:
+            temp_model = ModifyBeebotIntentRequestIntentDefinition()
+            self.intent_definition = temp_model.from_map(m['IntentDefinition'])
+        if m.get('IntentId') is not None:
+            self.intent_id = m.get('IntentId')
+        if m.get('ScriptId') is not None:
+            self.script_id = m.get('ScriptId')
+        return self
+
+
+class ModifyBeebotIntentShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        intent_definition_shrink: str = None,
+        intent_id: int = None,
+        script_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.intent_definition_shrink = intent_definition_shrink
+        # This parameter is required.
+        self.intent_id = intent_id
+        # This parameter is required.
+        self.script_id = script_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.intent_definition_shrink is not None:
+            result['IntentDefinition'] = self.intent_definition_shrink
+        if self.intent_id is not None:
+            result['IntentId'] = self.intent_id
+        if self.script_id is not None:
+            result['ScriptId'] = self.script_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('IntentDefinition') is not None:
+            self.intent_definition_shrink = m.get('IntentDefinition')
+        if m.get('IntentId') is not None:
+            self.intent_id = m.get('IntentId')
+        if m.get('ScriptId') is not None:
+            self.script_id = m.get('ScriptId')
+        return self
+
+
+class ModifyBeebotIntentResponseBody(TeaModel):
+    def __init__(
+        self,
+        beebot_request_id: str = None,
+        code: str = None,
+        http_status_code: int = None,
+        intent_id: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.beebot_request_id = beebot_request_id
+        self.code = code
+        self.http_status_code = http_status_code
+        self.intent_id = intent_id
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.beebot_request_id is not None:
+            result['BeebotRequestId'] = self.beebot_request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.intent_id is not None:
+            result['IntentId'] = self.intent_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BeebotRequestId') is not None:
+            self.beebot_request_id = m.get('BeebotRequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('IntentId') is not None:
+            self.intent_id = m.get('IntentId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyBeebotIntentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyBeebotIntentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyBeebotIntentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyBeebotIntentLgfRequestLgfDefinition(TeaModel):
+    def __init__(
+        self,
+        intent_id: int = None,
+        rule_text: str = None,
+    ):
+        # This parameter is required.
+        self.intent_id = intent_id
+        # This parameter is required.
+        self.rule_text = rule_text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.intent_id is not None:
+            result['IntentId'] = self.intent_id
+        if self.rule_text is not None:
+            result['RuleText'] = self.rule_text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IntentId') is not None:
+            self.intent_id = m.get('IntentId')
+        if m.get('RuleText') is not None:
+            self.rule_text = m.get('RuleText')
+        return self
+
+
+class ModifyBeebotIntentLgfRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        lgf_definition: ModifyBeebotIntentLgfRequestLgfDefinition = None,
+        lgf_id: int = None,
+        script_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.lgf_definition = lgf_definition
+        # This parameter is required.
+        self.lgf_id = lgf_id
+        # This parameter is required.
+        self.script_id = script_id
+
+    def validate(self):
+        if self.lgf_definition:
+            self.lgf_definition.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.lgf_definition is not None:
+            result['LgfDefinition'] = self.lgf_definition.to_map()
+        if self.lgf_id is not None:
+            result['LgfId'] = self.lgf_id
+        if self.script_id is not None:
+            result['ScriptId'] = self.script_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('LgfDefinition') is not None:
+            temp_model = ModifyBeebotIntentLgfRequestLgfDefinition()
+            self.lgf_definition = temp_model.from_map(m['LgfDefinition'])
+        if m.get('LgfId') is not None:
+            self.lgf_id = m.get('LgfId')
+        if m.get('ScriptId') is not None:
+            self.script_id = m.get('ScriptId')
+        return self
+
+
+class ModifyBeebotIntentLgfShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        lgf_definition_shrink: str = None,
+        lgf_id: int = None,
+        script_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.lgf_definition_shrink = lgf_definition_shrink
+        # This parameter is required.
+        self.lgf_id = lgf_id
+        # This parameter is required.
+        self.script_id = script_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.lgf_definition_shrink is not None:
+            result['LgfDefinition'] = self.lgf_definition_shrink
+        if self.lgf_id is not None:
+            result['LgfId'] = self.lgf_id
+        if self.script_id is not None:
+            result['ScriptId'] = self.script_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('LgfDefinition') is not None:
+            self.lgf_definition_shrink = m.get('LgfDefinition')
+        if m.get('LgfId') is not None:
+            self.lgf_id = m.get('LgfId')
+        if m.get('ScriptId') is not None:
+            self.script_id = m.get('ScriptId')
+        return self
+
+
+class ModifyBeebotIntentLgfResponseBody(TeaModel):
+    def __init__(
+        self,
+        beebot_request_id: str = None,
+        code: str = None,
+        http_status_code: int = None,
+        lgf_id: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.beebot_request_id = beebot_request_id
+        self.code = code
+        self.http_status_code = http_status_code
+        self.lgf_id = lgf_id
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.beebot_request_id is not None:
+            result['BeebotRequestId'] = self.beebot_request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.lgf_id is not None:
+            result['LgfId'] = self.lgf_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BeebotRequestId') is not None:
+            self.beebot_request_id = m.get('BeebotRequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('LgfId') is not None:
+            self.lgf_id = m.get('LgfId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyBeebotIntentLgfResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyBeebotIntentLgfResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyBeebotIntentLgfResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyBeebotIntentUserSayRequestUserSayDefinition(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        intent_id: int = None,
+    ):
+        # This parameter is required.
+        self.content = content
+        # This parameter is required.
+        self.intent_id = intent_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.intent_id is not None:
+            result['IntentId'] = self.intent_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('IntentId') is not None:
+            self.intent_id = m.get('IntentId')
+        return self
+
+
+class ModifyBeebotIntentUserSayRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        script_id: str = None,
+        user_say_definition: ModifyBeebotIntentUserSayRequestUserSayDefinition = None,
+        user_say_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.script_id = script_id
+        # This parameter is required.
+        self.user_say_definition = user_say_definition
+        # This parameter is required.
+        self.user_say_id = user_say_id
+
+    def validate(self):
+        if self.user_say_definition:
+            self.user_say_definition.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.script_id is not None:
+            result['ScriptId'] = self.script_id
+        if self.user_say_definition is not None:
+            result['UserSayDefinition'] = self.user_say_definition.to_map()
+        if self.user_say_id is not None:
+            result['UserSayId'] = self.user_say_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ScriptId') is not None:
+            self.script_id = m.get('ScriptId')
+        if m.get('UserSayDefinition') is not None:
+            temp_model = ModifyBeebotIntentUserSayRequestUserSayDefinition()
+            self.user_say_definition = temp_model.from_map(m['UserSayDefinition'])
+        if m.get('UserSayId') is not None:
+            self.user_say_id = m.get('UserSayId')
+        return self
+
+
+class ModifyBeebotIntentUserSayShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        script_id: str = None,
+        user_say_definition_shrink: str = None,
+        user_say_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.script_id = script_id
+        # This parameter is required.
+        self.user_say_definition_shrink = user_say_definition_shrink
+        # This parameter is required.
+        self.user_say_id = user_say_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.script_id is not None:
+            result['ScriptId'] = self.script_id
+        if self.user_say_definition_shrink is not None:
+            result['UserSayDefinition'] = self.user_say_definition_shrink
+        if self.user_say_id is not None:
+            result['UserSayId'] = self.user_say_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ScriptId') is not None:
+            self.script_id = m.get('ScriptId')
+        if m.get('UserSayDefinition') is not None:
+            self.user_say_definition_shrink = m.get('UserSayDefinition')
+        if m.get('UserSayId') is not None:
+            self.user_say_id = m.get('UserSayId')
+        return self
+
+
+class ModifyBeebotIntentUserSayResponseBody(TeaModel):
+    def __init__(
+        self,
+        beebot_request_id: str = None,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        user_say_id: int = None,
+    ):
+        self.beebot_request_id = beebot_request_id
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.user_say_id = user_say_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.beebot_request_id is not None:
+            result['BeebotRequestId'] = self.beebot_request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.user_say_id is not None:
+            result['UserSayId'] = self.user_say_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BeebotRequestId') is not None:
+            self.beebot_request_id = m.get('BeebotRequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('UserSayId') is not None:
+            self.user_say_id = m.get('UserSayId')
+        return self
+
+
+class ModifyBeebotIntentUserSayResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyBeebotIntentUserSayResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyBeebotIntentUserSayResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

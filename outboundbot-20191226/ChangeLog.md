@@ -1,3 +1,24 @@
+2025-04-25 Version: 1.2.0
+- Support API CreateBeebotIntent.
+- Support API CreateBeebotIntentLgf.
+- Support API CreateBeebotIntentUserSay.
+- Support API DeleteBeebotIntent.
+- Support API DeleteBeebotIntentLgf.
+- Support API DeleteBeebotIntentUserSay.
+- Support API DescribeBeebotIntent.
+- Support API ListBeebotIntent.
+- Support API ListBeebotIntentLgf.
+- Support API ListBeebotIntentUserSay.
+- Support API ListIntentions.
+- Support API ModifyBeebotIntent.
+- Support API ModifyBeebotIntentLgf.
+- Support API ModifyBeebotIntentUserSay.
+- Update API CreateScript: add request parameters ScriptNluProfileJsonString.
+- Update API DescribeScript: add response parameters Body.Script.NluEngine.
+- Update API DescribeScript: add response parameters Body.Script.NluProfile.
+- Update API ListScripts: add response parameters Body.Scripts.List.$.NluProfile.
+
+
 2025-04-09 Version: 1.1.0
 - Support API CreateAgentProfile.
 - Support API CreateAnnotationMission.
