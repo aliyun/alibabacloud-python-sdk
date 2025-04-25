@@ -1,3 +1,11 @@
+2025-04-25 Version: 1.2.0
+- Support API DescribeUserSpnSummaryInfo.
+- Support API GetSavingPlanDeductableCommodity.
+- Support API GetSavingPlanShareAccounts.
+- Support API GetSavingPlanUserDeductRule.
+- Update API DescribeCoupon: add response parameters Body.Data.$.CertainAmount.
+
+
 2025-04-14 Version: 1.1.0
 - Support API AddCouponDeductTag.
 - Support API DeleteCouponDeductTag.

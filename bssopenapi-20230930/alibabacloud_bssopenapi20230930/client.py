@@ -143,16 +143,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.AddCouponDeductTagResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.AddCouponDeductTagResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.AddCouponDeductTagResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def add_coupon_deduct_tag_with_options_async(
         self,
@@ -196,16 +190,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.AddCouponDeductTagResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.AddCouponDeductTagResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.AddCouponDeductTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def add_coupon_deduct_tag(
         self,
@@ -263,16 +251,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.CancelFundAccountLowAvailableAmountAlarmResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.CancelFundAccountLowAvailableAmountAlarmResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.CancelFundAccountLowAvailableAmountAlarmResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def cancel_fund_account_low_available_amount_alarm_with_options_async(
         self,
@@ -304,16 +286,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.CancelFundAccountLowAvailableAmountAlarmResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.CancelFundAccountLowAvailableAmountAlarmResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.CancelFundAccountLowAvailableAmountAlarmResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def cancel_fund_account_low_available_amount_alarm(
         self,
@@ -383,16 +359,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.CreateFundAccountTransferResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.CreateFundAccountTransferResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.CreateFundAccountTransferResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_fund_account_transfer_with_options_async(
         self,
@@ -436,16 +406,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.CreateFundAccountTransferResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.CreateFundAccountTransferResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.CreateFundAccountTransferResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_fund_account_transfer(
         self,
@@ -515,16 +479,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.DeleteCouponDeductTagResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.DeleteCouponDeductTagResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.DeleteCouponDeductTagResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_coupon_deduct_tag_with_options_async(
         self,
@@ -568,16 +526,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.DeleteCouponDeductTagResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.DeleteCouponDeductTagResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.DeleteCouponDeductTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_coupon_deduct_tag(
         self,
@@ -637,16 +589,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.DescribeCouponResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.DescribeCouponResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.DescribeCouponResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_coupon_with_options_async(
         self,
@@ -680,16 +626,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.DescribeCouponResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.DescribeCouponResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.DescribeCouponResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_coupon(
         self,
@@ -749,16 +689,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.DescribeCouponItemListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.DescribeCouponItemListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.DescribeCouponItemListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_coupon_item_list_with_options_async(
         self,
@@ -792,16 +726,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.DescribeCouponItemListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.DescribeCouponItemListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.DescribeCouponItemListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_coupon_item_list(
         self,
@@ -828,6 +756,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_coupon_item_list_with_options_async(request, runtime)
+
+    def describe_user_spn_summary_info_with_options(
+        self,
+        tmp_req: bss_open_api_20230930_models.DescribeUserSpnSummaryInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.DescribeUserSpnSummaryInfoResponse:
+        """
+        @summary 获取客户使用SPN的概述信息
+        
+        @param tmp_req: DescribeUserSpnSummaryInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserSpnSummaryInfoResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bss_open_api_20230930_models.DescribeUserSpnSummaryInfoShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserSpnSummaryInfo',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.DescribeUserSpnSummaryInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_user_spn_summary_info_with_options_async(
+        self,
+        tmp_req: bss_open_api_20230930_models.DescribeUserSpnSummaryInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.DescribeUserSpnSummaryInfoResponse:
+        """
+        @summary 获取客户使用SPN的概述信息
+        
+        @param tmp_req: DescribeUserSpnSummaryInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserSpnSummaryInfoResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bss_open_api_20230930_models.DescribeUserSpnSummaryInfoShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserSpnSummaryInfo',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.DescribeUserSpnSummaryInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_user_spn_summary_info(
+        self,
+        request: bss_open_api_20230930_models.DescribeUserSpnSummaryInfoRequest,
+    ) -> bss_open_api_20230930_models.DescribeUserSpnSummaryInfoResponse:
+        """
+        @summary 获取客户使用SPN的概述信息
+        
+        @param request: DescribeUserSpnSummaryInfoRequest
+        @return: DescribeUserSpnSummaryInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_user_spn_summary_info_with_options(request, runtime)
+
+    async def describe_user_spn_summary_info_async(
+        self,
+        request: bss_open_api_20230930_models.DescribeUserSpnSummaryInfoRequest,
+    ) -> bss_open_api_20230930_models.DescribeUserSpnSummaryInfoResponse:
+        """
+        @summary 获取客户使用SPN的概述信息
+        
+        @param request: DescribeUserSpnSummaryInfoRequest
+        @return: DescribeUserSpnSummaryInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_user_spn_summary_info_with_options_async(request, runtime)
 
     def get_fund_account_available_amount_with_options(
         self,
@@ -859,16 +895,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.GetFundAccountAvailableAmountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.GetFundAccountAvailableAmountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.GetFundAccountAvailableAmountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_fund_account_available_amount_with_options_async(
         self,
@@ -900,16 +930,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.GetFundAccountAvailableAmountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.GetFundAccountAvailableAmountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.GetFundAccountAvailableAmountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_fund_account_available_amount(
         self,
@@ -967,16 +991,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.GetFundAccountCanAllocateCreditAmountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.GetFundAccountCanAllocateCreditAmountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.GetFundAccountCanAllocateCreditAmountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_fund_account_can_allocate_credit_amount_with_options_async(
         self,
@@ -1008,16 +1026,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.GetFundAccountCanAllocateCreditAmountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.GetFundAccountCanAllocateCreditAmountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.GetFundAccountCanAllocateCreditAmountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_fund_account_can_allocate_credit_amount(
         self,
@@ -1077,16 +1089,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.GetFundAccountCanRecycleAmountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.GetFundAccountCanRecycleAmountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.GetFundAccountCanRecycleAmountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_fund_account_can_recycle_amount_with_options_async(
         self,
@@ -1120,16 +1126,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.GetFundAccountCanRecycleAmountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.GetFundAccountCanRecycleAmountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.GetFundAccountCanRecycleAmountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_fund_account_can_recycle_amount(
         self,
@@ -1189,16 +1189,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.GetFundAccountCanTransferAmountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.GetFundAccountCanTransferAmountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.GetFundAccountCanTransferAmountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_fund_account_can_transfer_amount_with_options_async(
         self,
@@ -1232,16 +1226,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.GetFundAccountCanTransferAmountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.GetFundAccountCanTransferAmountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.GetFundAccountCanTransferAmountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_fund_account_can_transfer_amount(
         self,
@@ -1299,16 +1287,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.GetFundAccountCanWithdrawAmountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.GetFundAccountCanWithdrawAmountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.GetFundAccountCanWithdrawAmountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_fund_account_can_withdraw_amount_with_options_async(
         self,
@@ -1340,16 +1322,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.GetFundAccountCanWithdrawAmountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.GetFundAccountCanWithdrawAmountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.GetFundAccountCanWithdrawAmountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_fund_account_can_withdraw_amount(
         self,
@@ -1407,16 +1383,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.GetFundAccountLowAvailableAmountAlarmResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.GetFundAccountLowAvailableAmountAlarmResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.GetFundAccountLowAvailableAmountAlarmResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_fund_account_low_available_amount_alarm_with_options_async(
         self,
@@ -1448,16 +1418,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.GetFundAccountLowAvailableAmountAlarmResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.GetFundAccountLowAvailableAmountAlarmResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.GetFundAccountLowAvailableAmountAlarmResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_fund_account_low_available_amount_alarm(
         self,
@@ -1545,16 +1509,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.GetFundAccountTransactionDetailsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.GetFundAccountTransactionDetailsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.GetFundAccountTransactionDetailsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_fund_account_transaction_details_with_options_async(
         self,
@@ -1616,16 +1574,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.GetFundAccountTransactionDetailsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.GetFundAccountTransactionDetailsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.GetFundAccountTransactionDetailsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_fund_account_transaction_details(
         self,
@@ -1652,6 +1604,354 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_fund_account_transaction_details_with_options_async(request, runtime)
+
+    def get_saving_plan_deductable_commodity_with_options(
+        self,
+        tmp_req: bss_open_api_20230930_models.GetSavingPlanDeductableCommodityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.GetSavingPlanDeductableCommodityResponse:
+        """
+        @summary 获取节省计划及可抵扣商品信息
+        
+        @param tmp_req: GetSavingPlanDeductableCommodityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSavingPlanDeductableCommodityResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bss_open_api_20230930_models.GetSavingPlanDeductableCommodityShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSavingPlanDeductableCommodity',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.GetSavingPlanDeductableCommodityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_saving_plan_deductable_commodity_with_options_async(
+        self,
+        tmp_req: bss_open_api_20230930_models.GetSavingPlanDeductableCommodityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.GetSavingPlanDeductableCommodityResponse:
+        """
+        @summary 获取节省计划及可抵扣商品信息
+        
+        @param tmp_req: GetSavingPlanDeductableCommodityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSavingPlanDeductableCommodityResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bss_open_api_20230930_models.GetSavingPlanDeductableCommodityShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSavingPlanDeductableCommodity',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.GetSavingPlanDeductableCommodityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_saving_plan_deductable_commodity(
+        self,
+        request: bss_open_api_20230930_models.GetSavingPlanDeductableCommodityRequest,
+    ) -> bss_open_api_20230930_models.GetSavingPlanDeductableCommodityResponse:
+        """
+        @summary 获取节省计划及可抵扣商品信息
+        
+        @param request: GetSavingPlanDeductableCommodityRequest
+        @return: GetSavingPlanDeductableCommodityResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_saving_plan_deductable_commodity_with_options(request, runtime)
+
+    async def get_saving_plan_deductable_commodity_async(
+        self,
+        request: bss_open_api_20230930_models.GetSavingPlanDeductableCommodityRequest,
+    ) -> bss_open_api_20230930_models.GetSavingPlanDeductableCommodityResponse:
+        """
+        @summary 获取节省计划及可抵扣商品信息
+        
+        @param request: GetSavingPlanDeductableCommodityRequest
+        @return: GetSavingPlanDeductableCommodityResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_saving_plan_deductable_commodity_with_options_async(request, runtime)
+
+    def get_saving_plan_share_accounts_with_options(
+        self,
+        tmp_req: bss_open_api_20230930_models.GetSavingPlanShareAccountsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.GetSavingPlanShareAccountsResponse:
+        """
+        @summary 获取节省计划实例共享账号信息
+        
+        @param tmp_req: GetSavingPlanShareAccountsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSavingPlanShareAccountsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bss_open_api_20230930_models.GetSavingPlanShareAccountsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.spn_instance_code):
+            query['SpnInstanceCode'] = request.spn_instance_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSavingPlanShareAccounts',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.GetSavingPlanShareAccountsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_saving_plan_share_accounts_with_options_async(
+        self,
+        tmp_req: bss_open_api_20230930_models.GetSavingPlanShareAccountsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.GetSavingPlanShareAccountsResponse:
+        """
+        @summary 获取节省计划实例共享账号信息
+        
+        @param tmp_req: GetSavingPlanShareAccountsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSavingPlanShareAccountsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bss_open_api_20230930_models.GetSavingPlanShareAccountsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.spn_instance_code):
+            query['SpnInstanceCode'] = request.spn_instance_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSavingPlanShareAccounts',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.GetSavingPlanShareAccountsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_saving_plan_share_accounts(
+        self,
+        request: bss_open_api_20230930_models.GetSavingPlanShareAccountsRequest,
+    ) -> bss_open_api_20230930_models.GetSavingPlanShareAccountsResponse:
+        """
+        @summary 获取节省计划实例共享账号信息
+        
+        @param request: GetSavingPlanShareAccountsRequest
+        @return: GetSavingPlanShareAccountsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_saving_plan_share_accounts_with_options(request, runtime)
+
+    async def get_saving_plan_share_accounts_async(
+        self,
+        request: bss_open_api_20230930_models.GetSavingPlanShareAccountsRequest,
+    ) -> bss_open_api_20230930_models.GetSavingPlanShareAccountsResponse:
+        """
+        @summary 获取节省计划实例共享账号信息
+        
+        @param request: GetSavingPlanShareAccountsRequest
+        @return: GetSavingPlanShareAccountsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_saving_plan_share_accounts_with_options_async(request, runtime)
+
+    def get_saving_plan_user_deduct_rule_with_options(
+        self,
+        tmp_req: bss_open_api_20230930_models.GetSavingPlanUserDeductRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.GetSavingPlanUserDeductRuleResponse:
+        """
+        @summary 获取节省计划实例客户自定义规则
+        
+        @param tmp_req: GetSavingPlanUserDeductRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSavingPlanUserDeductRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bss_open_api_20230930_models.GetSavingPlanUserDeductRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.spn_instance_code):
+            query['SpnInstanceCode'] = request.spn_instance_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSavingPlanUserDeductRule',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.GetSavingPlanUserDeductRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_saving_plan_user_deduct_rule_with_options_async(
+        self,
+        tmp_req: bss_open_api_20230930_models.GetSavingPlanUserDeductRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.GetSavingPlanUserDeductRuleResponse:
+        """
+        @summary 获取节省计划实例客户自定义规则
+        
+        @param tmp_req: GetSavingPlanUserDeductRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSavingPlanUserDeductRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bss_open_api_20230930_models.GetSavingPlanUserDeductRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.spn_instance_code):
+            query['SpnInstanceCode'] = request.spn_instance_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSavingPlanUserDeductRule',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.GetSavingPlanUserDeductRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_saving_plan_user_deduct_rule(
+        self,
+        request: bss_open_api_20230930_models.GetSavingPlanUserDeductRuleRequest,
+    ) -> bss_open_api_20230930_models.GetSavingPlanUserDeductRuleResponse:
+        """
+        @summary 获取节省计划实例客户自定义规则
+        
+        @param request: GetSavingPlanUserDeductRuleRequest
+        @return: GetSavingPlanUserDeductRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_saving_plan_user_deduct_rule_with_options(request, runtime)
+
+    async def get_saving_plan_user_deduct_rule_async(
+        self,
+        request: bss_open_api_20230930_models.GetSavingPlanUserDeductRuleRequest,
+    ) -> bss_open_api_20230930_models.GetSavingPlanUserDeductRuleResponse:
+        """
+        @summary 获取节省计划实例客户自定义规则
+        
+        @param request: GetSavingPlanUserDeductRuleRequest
+        @return: GetSavingPlanUserDeductRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_saving_plan_user_deduct_rule_with_options_async(request, runtime)
 
     def list_coupon_deduct_tag_with_options(
         self,
@@ -1691,16 +1991,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.ListCouponDeductTagResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.ListCouponDeductTagResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.ListCouponDeductTagResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_coupon_deduct_tag_with_options_async(
         self,
@@ -1740,16 +2034,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.ListCouponDeductTagResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.ListCouponDeductTagResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.ListCouponDeductTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_coupon_deduct_tag(
         self,
@@ -1813,16 +2101,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.ListFundAccountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.ListFundAccountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.ListFundAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_fund_account_with_options_async(
         self,
@@ -1860,16 +2142,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.ListFundAccountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.ListFundAccountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.ListFundAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_fund_account(
         self,
@@ -1937,16 +2213,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.ListFundAccountPayRelationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.ListFundAccountPayRelationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.ListFundAccountPayRelationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_fund_account_pay_relation_with_options_async(
         self,
@@ -1988,16 +2258,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.ListFundAccountPayRelationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.ListFundAccountPayRelationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.ListFundAccountPayRelationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_fund_account_pay_relation(
         self,
@@ -2059,16 +2323,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.SetFundAccountCreditAmountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.SetFundAccountCreditAmountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.SetFundAccountCreditAmountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def set_fund_account_credit_amount_with_options_async(
         self,
@@ -2104,16 +2362,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.SetFundAccountCreditAmountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.SetFundAccountCreditAmountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.SetFundAccountCreditAmountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def set_fund_account_credit_amount(
         self,
@@ -2173,16 +2425,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.SetFundAccountLowAvailableAmountAlarmResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.SetFundAccountLowAvailableAmountAlarmResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.SetFundAccountLowAvailableAmountAlarmResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def set_fund_account_low_available_amount_alarm_with_options_async(
         self,
@@ -2216,16 +2462,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.SetFundAccountLowAvailableAmountAlarmResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.SetFundAccountLowAvailableAmountAlarmResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.SetFundAccountLowAvailableAmountAlarmResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def set_fund_account_low_available_amount_alarm(
         self,
@@ -2297,16 +2537,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.SetSavingPlanUserDeductRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.SetSavingPlanUserDeductRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.SetSavingPlanUserDeductRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def set_saving_plan_user_deduct_rule_with_options_async(
         self,
@@ -2352,16 +2586,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.SetSavingPlanUserDeductRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bss_open_api_20230930_models.SetSavingPlanUserDeductRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.SetSavingPlanUserDeductRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def set_saving_plan_user_deduct_rule(
         self,
