@@ -1177,6 +1177,119 @@ class CreatePropertyResponse(TeaModel):
         return self
 
 
+class CreateResourceGroupRequest(TeaModel):
+    def __init__(
+        self,
+        is_resource_group_with_office_site: int = None,
+        platform: str = None,
+        resource_group_name: str = None,
+    ):
+        self.is_resource_group_with_office_site = is_resource_group_with_office_site
+        self.platform = platform
+        self.resource_group_name = resource_group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_resource_group_with_office_site is not None:
+            result['IsResourceGroupWithOfficeSite'] = self.is_resource_group_with_office_site
+        if self.platform is not None:
+            result['Platform'] = self.platform
+        if self.resource_group_name is not None:
+            result['ResourceGroupName'] = self.resource_group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsResourceGroupWithOfficeSite') is not None:
+            self.is_resource_group_with_office_site = m.get('IsResourceGroupWithOfficeSite')
+        if m.get('Platform') is not None:
+            self.platform = m.get('Platform')
+        if m.get('ResourceGroupName') is not None:
+            self.resource_group_name = m.get('ResourceGroupName')
+        return self
+
+
+class CreateResourceGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        resource_group_id: str = None,
+    ):
+        self.request_id = request_id
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        return self
+
+
+class CreateResourceGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateResourceGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateResourceGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateUsersRequestUsers(TeaModel):
     def __init__(
         self,
@@ -1571,6 +1684,107 @@ class CreateUsersResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateUsersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteResourceGroupRequest(TeaModel):
+    def __init__(
+        self,
+        resource_group_id: str = None,
+        resource_group_ids: List[str] = None,
+    ):
+        self.resource_group_id = resource_group_id
+        self.resource_group_ids = resource_group_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_group_ids is not None:
+            result['ResourceGroupIds'] = self.resource_group_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceGroupIds') is not None:
+            self.resource_group_ids = m.get('ResourceGroupIds')
+        return self
+
+
+class DeleteResourceGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteResourceGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteResourceGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteResourceGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2283,6 +2497,303 @@ class DescribeOrgsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeOrgsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeResourceGroupsRequest(TeaModel):
+    def __init__(
+        self,
+        need_contain_resource_group_with_office_site: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        platform: str = None,
+        resource_group_ids: List[str] = None,
+        resource_group_name: str = None,
+    ):
+        self.need_contain_resource_group_with_office_site = need_contain_resource_group_with_office_site
+        self.page_number = page_number
+        self.page_size = page_size
+        self.platform = platform
+        self.resource_group_ids = resource_group_ids
+        self.resource_group_name = resource_group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.need_contain_resource_group_with_office_site is not None:
+            result['NeedContainResourceGroupWithOfficeSite'] = self.need_contain_resource_group_with_office_site
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.platform is not None:
+            result['Platform'] = self.platform
+        if self.resource_group_ids is not None:
+            result['ResourceGroupIds'] = self.resource_group_ids
+        if self.resource_group_name is not None:
+            result['ResourceGroupName'] = self.resource_group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NeedContainResourceGroupWithOfficeSite') is not None:
+            self.need_contain_resource_group_with_office_site = m.get('NeedContainResourceGroupWithOfficeSite')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Platform') is not None:
+            self.platform = m.get('Platform')
+        if m.get('ResourceGroupIds') is not None:
+            self.resource_group_ids = m.get('ResourceGroupIds')
+        if m.get('ResourceGroupName') is not None:
+            self.resource_group_name = m.get('ResourceGroupName')
+        return self
+
+
+class DescribeResourceGroupsResponseBodyResourceGroupPolicies(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        is_default: bool = None,
+        name: str = None,
+    ):
+        self.id = id
+        self.is_default = is_default
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.is_default is not None:
+            result['IsDefault'] = self.is_default
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('IsDefault') is not None:
+            self.is_default = m.get('IsDefault')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class DescribeResourceGroupsResponseBodyResourceGroupTimers(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        name: str = None,
+    ):
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class DescribeResourceGroupsResponseBodyResourceGroup(TeaModel):
+    def __init__(
+        self,
+        auth_count: str = None,
+        create_time: str = None,
+        policies: List[DescribeResourceGroupsResponseBodyResourceGroupPolicies] = None,
+        resource_count: str = None,
+        resource_group_id: str = None,
+        resource_group_name: str = None,
+        timers: List[DescribeResourceGroupsResponseBodyResourceGroupTimers] = None,
+    ):
+        self.auth_count = auth_count
+        self.create_time = create_time
+        self.policies = policies
+        self.resource_count = resource_count
+        self.resource_group_id = resource_group_id
+        self.resource_group_name = resource_group_name
+        self.timers = timers
+
+    def validate(self):
+        if self.policies:
+            for k in self.policies:
+                if k:
+                    k.validate()
+        if self.timers:
+            for k in self.timers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_count is not None:
+            result['AuthCount'] = self.auth_count
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        result['Policies'] = []
+        if self.policies is not None:
+            for k in self.policies:
+                result['Policies'].append(k.to_map() if k else None)
+        if self.resource_count is not None:
+            result['ResourceCount'] = self.resource_count
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_group_name is not None:
+            result['ResourceGroupName'] = self.resource_group_name
+        result['Timers'] = []
+        if self.timers is not None:
+            for k in self.timers:
+                result['Timers'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthCount') is not None:
+            self.auth_count = m.get('AuthCount')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        self.policies = []
+        if m.get('Policies') is not None:
+            for k in m.get('Policies'):
+                temp_model = DescribeResourceGroupsResponseBodyResourceGroupPolicies()
+                self.policies.append(temp_model.from_map(k))
+        if m.get('ResourceCount') is not None:
+            self.resource_count = m.get('ResourceCount')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceGroupName') is not None:
+            self.resource_group_name = m.get('ResourceGroupName')
+        self.timers = []
+        if m.get('Timers') is not None:
+            for k in m.get('Timers'):
+                temp_model = DescribeResourceGroupsResponseBodyResourceGroupTimers()
+                self.timers.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeResourceGroupsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        resource_group: List[DescribeResourceGroupsResponseBodyResourceGroup] = None,
+        total_count: str = None,
+    ):
+        self.request_id = request_id
+        self.resource_group = resource_group
+        self.total_count = total_count
+
+    def validate(self):
+        if self.resource_group:
+            for k in self.resource_group:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['ResourceGroup'] = []
+        if self.resource_group is not None:
+            for k in self.resource_group:
+                result['ResourceGroup'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.resource_group = []
+        if m.get('ResourceGroup') is not None:
+            for k in m.get('ResourceGroup'):
+                temp_model = DescribeResourceGroupsResponseBodyResourceGroup()
+                self.resource_group.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeResourceGroupsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeResourceGroupsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeResourceGroupsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

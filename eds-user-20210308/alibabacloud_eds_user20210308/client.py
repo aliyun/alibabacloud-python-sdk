@@ -646,6 +646,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_property_with_options_async(request, runtime)
 
+    def create_resource_group_with_options(
+        self,
+        request: eds_user_20210308_models.CreateResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_user_20210308_models.CreateResourceGroupResponse:
+        """
+        @summary 创建资源组
+        
+        @param request: CreateResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.is_resource_group_with_office_site):
+            query['IsResourceGroupWithOfficeSite'] = request.is_resource_group_with_office_site
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.resource_group_name):
+            query['ResourceGroupName'] = request.resource_group_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateResourceGroup',
+            version='2021-03-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_user_20210308_models.CreateResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_resource_group_with_options_async(
+        self,
+        request: eds_user_20210308_models.CreateResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_user_20210308_models.CreateResourceGroupResponse:
+        """
+        @summary 创建资源组
+        
+        @param request: CreateResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.is_resource_group_with_office_site):
+            query['IsResourceGroupWithOfficeSite'] = request.is_resource_group_with_office_site
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.resource_group_name):
+            query['ResourceGroupName'] = request.resource_group_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateResourceGroup',
+            version='2021-03-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_user_20210308_models.CreateResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_resource_group(
+        self,
+        request: eds_user_20210308_models.CreateResourceGroupRequest,
+    ) -> eds_user_20210308_models.CreateResourceGroupResponse:
+        """
+        @summary 创建资源组
+        
+        @param request: CreateResourceGroupRequest
+        @return: CreateResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_resource_group_with_options(request, runtime)
+
+    async def create_resource_group_async(
+        self,
+        request: eds_user_20210308_models.CreateResourceGroupRequest,
+    ) -> eds_user_20210308_models.CreateResourceGroupResponse:
+        """
+        @summary 创建资源组
+        
+        @param request: CreateResourceGroupRequest
+        @return: CreateResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_resource_group_with_options_async(request, runtime)
+
     def create_users_with_options(
         self,
         request: eds_user_20210308_models.CreateUsersRequest,
@@ -769,6 +873,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_users_with_options_async(request, runtime)
+
+    def delete_resource_group_with_options(
+        self,
+        request: eds_user_20210308_models.DeleteResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_user_20210308_models.DeleteResourceGroupResponse:
+        """
+        @summary 删除资源组
+        
+        @param request: DeleteResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_group_ids):
+            query['ResourceGroupIds'] = request.resource_group_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteResourceGroup',
+            version='2021-03-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_user_20210308_models.DeleteResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_resource_group_with_options_async(
+        self,
+        request: eds_user_20210308_models.DeleteResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_user_20210308_models.DeleteResourceGroupResponse:
+        """
+        @summary 删除资源组
+        
+        @param request: DeleteResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_group_ids):
+            query['ResourceGroupIds'] = request.resource_group_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteResourceGroup',
+            version='2021-03-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_user_20210308_models.DeleteResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_resource_group(
+        self,
+        request: eds_user_20210308_models.DeleteResourceGroupRequest,
+    ) -> eds_user_20210308_models.DeleteResourceGroupResponse:
+        """
+        @summary 删除资源组
+        
+        @param request: DeleteResourceGroupRequest
+        @return: DeleteResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_resource_group_with_options(request, runtime)
+
+    async def delete_resource_group_async(
+        self,
+        request: eds_user_20210308_models.DeleteResourceGroupRequest,
+    ) -> eds_user_20210308_models.DeleteResourceGroupResponse:
+        """
+        @summary 删除资源组
+        
+        @param request: DeleteResourceGroupRequest
+        @return: DeleteResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_resource_group_with_options_async(request, runtime)
 
     def delete_user_property_value_with_options(
         self,
@@ -1209,6 +1413,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_orgs_with_options_async(request, runtime)
+
+    def describe_resource_groups_with_options(
+        self,
+        request: eds_user_20210308_models.DescribeResourceGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_user_20210308_models.DescribeResourceGroupsResponse:
+        """
+        @summary 查看资源组
+        
+        @param request: DescribeResourceGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeResourceGroupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.need_contain_resource_group_with_office_site):
+            query['NeedContainResourceGroupWithOfficeSite'] = request.need_contain_resource_group_with_office_site
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.resource_group_ids):
+            query['ResourceGroupIds'] = request.resource_group_ids
+        if not UtilClient.is_unset(request.resource_group_name):
+            query['ResourceGroupName'] = request.resource_group_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeResourceGroups',
+            version='2021-03-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_user_20210308_models.DescribeResourceGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_resource_groups_with_options_async(
+        self,
+        request: eds_user_20210308_models.DescribeResourceGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_user_20210308_models.DescribeResourceGroupsResponse:
+        """
+        @summary 查看资源组
+        
+        @param request: DescribeResourceGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeResourceGroupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.need_contain_resource_group_with_office_site):
+            query['NeedContainResourceGroupWithOfficeSite'] = request.need_contain_resource_group_with_office_site
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.resource_group_ids):
+            query['ResourceGroupIds'] = request.resource_group_ids
+        if not UtilClient.is_unset(request.resource_group_name):
+            query['ResourceGroupName'] = request.resource_group_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeResourceGroups',
+            version='2021-03-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_user_20210308_models.DescribeResourceGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_resource_groups(
+        self,
+        request: eds_user_20210308_models.DescribeResourceGroupsRequest,
+    ) -> eds_user_20210308_models.DescribeResourceGroupsResponse:
+        """
+        @summary 查看资源组
+        
+        @param request: DescribeResourceGroupsRequest
+        @return: DescribeResourceGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_resource_groups_with_options(request, runtime)
+
+    async def describe_resource_groups_async(
+        self,
+        request: eds_user_20210308_models.DescribeResourceGroupsRequest,
+    ) -> eds_user_20210308_models.DescribeResourceGroupsResponse:
+        """
+        @summary 查看资源组
+        
+        @param request: DescribeResourceGroupsRequest
+        @return: DescribeResourceGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_resource_groups_with_options_async(request, runtime)
 
     def describe_users_with_options(
         self,

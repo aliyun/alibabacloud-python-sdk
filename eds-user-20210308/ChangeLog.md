@@ -1,3 +1,9 @@
+2025-04-27 Version: 1.5.0
+- Support API CreateResourceGroup.
+- Support API DeleteResourceGroup.
+- Support API DescribeResourceGroups.
+
+
 2025-04-25 Version: 1.4.1
 - Update API CreateUsers: add response parameters Body.AllSucceed.
 
