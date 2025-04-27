@@ -13175,6 +13175,8 @@ class ListServicesRequest(TeaModel):
         page_size: int = None,
         parent_service_uid: str = None,
         quota_id: str = None,
+        resource_alias_name: str = None,
+        resource_id: str = None,
         resource_name: str = None,
         resource_type: str = None,
         role: str = None,
@@ -13207,6 +13209,8 @@ class ListServicesRequest(TeaModel):
         self.parent_service_uid = parent_service_uid
         # The quota ID.
         self.quota_id = quota_id
+        self.resource_alias_name = resource_alias_name
+        self.resource_id = resource_id
         # The name or ID of the resource group to which the service belongs.
         self.resource_name = resource_name
         self.resource_type = resource_type
@@ -13451,6 +13455,10 @@ class ListServicesRequest(TeaModel):
             result['ParentServiceUid'] = self.parent_service_uid
         if self.quota_id is not None:
             result['QuotaId'] = self.quota_id
+        if self.resource_alias_name is not None:
+            result['ResourceAliasName'] = self.resource_alias_name
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
         if self.resource_name is not None:
             result['ResourceName'] = self.resource_name
         if self.resource_type is not None:
@@ -13493,6 +13501,10 @@ class ListServicesRequest(TeaModel):
             self.parent_service_uid = m.get('ParentServiceUid')
         if m.get('QuotaId') is not None:
             self.quota_id = m.get('QuotaId')
+        if m.get('ResourceAliasName') is not None:
+            self.resource_alias_name = m.get('ResourceAliasName')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
         if m.get('ResourceName') is not None:
             self.resource_name = m.get('ResourceName')
         if m.get('ResourceType') is not None:
@@ -13527,6 +13539,8 @@ class ListServicesShrinkRequest(TeaModel):
         page_size: int = None,
         parent_service_uid: str = None,
         quota_id: str = None,
+        resource_alias_name: str = None,
+        resource_id: str = None,
         resource_name: str = None,
         resource_type: str = None,
         role: str = None,
@@ -13559,6 +13573,8 @@ class ListServicesShrinkRequest(TeaModel):
         self.parent_service_uid = parent_service_uid
         # The quota ID.
         self.quota_id = quota_id
+        self.resource_alias_name = resource_alias_name
+        self.resource_id = resource_id
         # The name or ID of the resource group to which the service belongs.
         self.resource_name = resource_name
         self.resource_type = resource_type
@@ -13803,6 +13819,10 @@ class ListServicesShrinkRequest(TeaModel):
             result['ParentServiceUid'] = self.parent_service_uid
         if self.quota_id is not None:
             result['QuotaId'] = self.quota_id
+        if self.resource_alias_name is not None:
+            result['ResourceAliasName'] = self.resource_alias_name
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
         if self.resource_name is not None:
             result['ResourceName'] = self.resource_name
         if self.resource_type is not None:
@@ -13845,6 +13865,10 @@ class ListServicesShrinkRequest(TeaModel):
             self.parent_service_uid = m.get('ParentServiceUid')
         if m.get('QuotaId') is not None:
             self.quota_id = m.get('QuotaId')
+        if m.get('ResourceAliasName') is not None:
+            self.resource_alias_name = m.get('ResourceAliasName')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
         if m.get('ResourceName') is not None:
             self.resource_name = m.get('ResourceName')
         if m.get('ResourceType') is not None:

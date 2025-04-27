@@ -1,3 +1,8 @@
+2025-04-27 Version: 6.7.5
+- Update API ListServices: add request parameters ResourceAliasName.
+- Update API ListServices: add request parameters ResourceId.
+
+
 2025-04-23 Version: 6.7.4
 - Update API CreateResource: add request parameters body.ResourceName.
 

@@ -8202,6 +8202,10 @@ class Client(OpenApiClient):
             query['ParentServiceUid'] = request.parent_service_uid
         if not UtilClient.is_unset(request.quota_id):
             query['QuotaId'] = request.quota_id
+        if not UtilClient.is_unset(request.resource_alias_name):
+            query['ResourceAliasName'] = request.resource_alias_name
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.resource_name):
             query['ResourceName'] = request.resource_name
         if not UtilClient.is_unset(request.resource_type):
@@ -8280,6 +8284,10 @@ class Client(OpenApiClient):
             query['ParentServiceUid'] = request.parent_service_uid
         if not UtilClient.is_unset(request.quota_id):
             query['QuotaId'] = request.quota_id
+        if not UtilClient.is_unset(request.resource_alias_name):
+            query['ResourceAliasName'] = request.resource_alias_name
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.resource_name):
             query['ResourceName'] = request.resource_name
         if not UtilClient.is_unset(request.resource_type):
