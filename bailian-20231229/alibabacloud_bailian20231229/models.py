@@ -7817,18 +7817,26 @@ class SubmitIndexAddDocumentsJobRequest(TeaModel):
     def __init__(
         self,
         category_ids: List[str] = None,
+        chunk_mode: str = None,
+        chunk_size: int = None,
         document_ids: List[str] = None,
         index_id: str = None,
+        overlap_size: int = None,
+        separator: str = None,
         source_type: str = None,
     ):
         # The list of primary key IDs of the category.
         self.category_ids = category_ids
+        self.chunk_mode = chunk_mode
+        self.chunk_size = chunk_size
         # The list of the primary key IDs of the documents.
         self.document_ids = document_ids
         # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
         # 
         # This parameter is required.
         self.index_id = index_id
+        self.overlap_size = overlap_size
+        self.separator = separator
         # The data type of [Data Management](https://bailian.console.aliyun.com/#/data-center). For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values:
         # 
         # *   DATA_CENTER_CATEGORY: The category type. Import all documents from one or more categories in Data Center.
@@ -7850,10 +7858,18 @@ class SubmitIndexAddDocumentsJobRequest(TeaModel):
         result = dict()
         if self.category_ids is not None:
             result['CategoryIds'] = self.category_ids
+        if self.chunk_mode is not None:
+            result['ChunkMode'] = self.chunk_mode
+        if self.chunk_size is not None:
+            result['ChunkSize'] = self.chunk_size
         if self.document_ids is not None:
             result['DocumentIds'] = self.document_ids
         if self.index_id is not None:
             result['IndexId'] = self.index_id
+        if self.overlap_size is not None:
+            result['OverlapSize'] = self.overlap_size
+        if self.separator is not None:
+            result['Separator'] = self.separator
         if self.source_type is not None:
             result['SourceType'] = self.source_type
         return result
@@ -7862,10 +7878,18 @@ class SubmitIndexAddDocumentsJobRequest(TeaModel):
         m = m or dict()
         if m.get('CategoryIds') is not None:
             self.category_ids = m.get('CategoryIds')
+        if m.get('ChunkMode') is not None:
+            self.chunk_mode = m.get('ChunkMode')
+        if m.get('ChunkSize') is not None:
+            self.chunk_size = m.get('ChunkSize')
         if m.get('DocumentIds') is not None:
             self.document_ids = m.get('DocumentIds')
         if m.get('IndexId') is not None:
             self.index_id = m.get('IndexId')
+        if m.get('OverlapSize') is not None:
+            self.overlap_size = m.get('OverlapSize')
+        if m.get('Separator') is not None:
+            self.separator = m.get('Separator')
         if m.get('SourceType') is not None:
             self.source_type = m.get('SourceType')
         return self
@@ -7875,18 +7899,26 @@ class SubmitIndexAddDocumentsJobShrinkRequest(TeaModel):
     def __init__(
         self,
         category_ids_shrink: str = None,
+        chunk_mode: str = None,
+        chunk_size: int = None,
         document_ids_shrink: str = None,
         index_id: str = None,
+        overlap_size: int = None,
+        separator: str = None,
         source_type: str = None,
     ):
         # The list of primary key IDs of the category.
         self.category_ids_shrink = category_ids_shrink
+        self.chunk_mode = chunk_mode
+        self.chunk_size = chunk_size
         # The list of the primary key IDs of the documents.
         self.document_ids_shrink = document_ids_shrink
         # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
         # 
         # This parameter is required.
         self.index_id = index_id
+        self.overlap_size = overlap_size
+        self.separator = separator
         # The data type of [Data Management](https://bailian.console.aliyun.com/#/data-center). For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values:
         # 
         # *   DATA_CENTER_CATEGORY: The category type. Import all documents from one or more categories in Data Center.
@@ -7908,10 +7940,18 @@ class SubmitIndexAddDocumentsJobShrinkRequest(TeaModel):
         result = dict()
         if self.category_ids_shrink is not None:
             result['CategoryIds'] = self.category_ids_shrink
+        if self.chunk_mode is not None:
+            result['ChunkMode'] = self.chunk_mode
+        if self.chunk_size is not None:
+            result['ChunkSize'] = self.chunk_size
         if self.document_ids_shrink is not None:
             result['DocumentIds'] = self.document_ids_shrink
         if self.index_id is not None:
             result['IndexId'] = self.index_id
+        if self.overlap_size is not None:
+            result['OverlapSize'] = self.overlap_size
+        if self.separator is not None:
+            result['Separator'] = self.separator
         if self.source_type is not None:
             result['SourceType'] = self.source_type
         return result
@@ -7920,10 +7960,18 @@ class SubmitIndexAddDocumentsJobShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('CategoryIds') is not None:
             self.category_ids_shrink = m.get('CategoryIds')
+        if m.get('ChunkMode') is not None:
+            self.chunk_mode = m.get('ChunkMode')
+        if m.get('ChunkSize') is not None:
+            self.chunk_size = m.get('ChunkSize')
         if m.get('DocumentIds') is not None:
             self.document_ids_shrink = m.get('DocumentIds')
         if m.get('IndexId') is not None:
             self.index_id = m.get('IndexId')
+        if m.get('OverlapSize') is not None:
+            self.overlap_size = m.get('OverlapSize')
+        if m.get('Separator') is not None:
+            self.separator = m.get('Separator')
         if m.get('SourceType') is not None:
             self.source_type = m.get('SourceType')
         return self

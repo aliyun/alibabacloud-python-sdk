@@ -3957,10 +3957,18 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.category_ids_shrink):
             query['CategoryIds'] = request.category_ids_shrink
+        if not UtilClient.is_unset(request.chunk_mode):
+            query['ChunkMode'] = request.chunk_mode
+        if not UtilClient.is_unset(request.chunk_size):
+            query['ChunkSize'] = request.chunk_size
         if not UtilClient.is_unset(request.document_ids_shrink):
             query['DocumentIds'] = request.document_ids_shrink
         if not UtilClient.is_unset(request.index_id):
             query['IndexId'] = request.index_id
+        if not UtilClient.is_unset(request.overlap_size):
+            query['OverlapSize'] = request.overlap_size
+        if not UtilClient.is_unset(request.separator):
+            query['Separator'] = request.separator
         if not UtilClient.is_unset(request.source_type):
             query['SourceType'] = request.source_type
         req = open_api_models.OpenApiRequest(
@@ -4013,10 +4021,18 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.category_ids_shrink):
             query['CategoryIds'] = request.category_ids_shrink
+        if not UtilClient.is_unset(request.chunk_mode):
+            query['ChunkMode'] = request.chunk_mode
+        if not UtilClient.is_unset(request.chunk_size):
+            query['ChunkSize'] = request.chunk_size
         if not UtilClient.is_unset(request.document_ids_shrink):
             query['DocumentIds'] = request.document_ids_shrink
         if not UtilClient.is_unset(request.index_id):
             query['IndexId'] = request.index_id
+        if not UtilClient.is_unset(request.overlap_size):
+            query['OverlapSize'] = request.overlap_size
+        if not UtilClient.is_unset(request.separator):
+            query['Separator'] = request.separator
         if not UtilClient.is_unset(request.source_type):
             query['SourceType'] = request.source_type
         req = open_api_models.OpenApiRequest(

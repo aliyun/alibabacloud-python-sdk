@@ -1,3 +1,10 @@
+2025-04-27 Version: 2.0.5
+- Update API SubmitIndexAddDocumentsJob: add request parameters ChunkMode.
+- Update API SubmitIndexAddDocumentsJob: add request parameters ChunkSize.
+- Update API SubmitIndexAddDocumentsJob: add request parameters OverlapSize.
+- Update API SubmitIndexAddDocumentsJob: add request parameters Separator.
+
+
 2025-04-21 Version: 2.0.4
 - Update API CreateIndex: add request parameters chunkMode.
 
