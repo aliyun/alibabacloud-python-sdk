@@ -1,3 +1,6 @@
+2025-04-27 Version: 4.6.1
+- Generated python 2023-09-30 for eds-aic.
+
 2025-04-25 Version: 4.6.0
 - Support API UpdateInstanceImage.
 - Update API CreatePolicyGroup: add request parameters Watermark.
