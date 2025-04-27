@@ -695,8 +695,10 @@ class RecognizeAllTextRequestAdvancedConfig(TeaModel):
 class RecognizeAllTextRequestIdCardConfig(TeaModel):
     def __init__(
         self,
+        llm_rec: bool = None,
         output_id_card_quality: bool = None,
     ):
+        self.llm_rec = llm_rec
         self.output_id_card_quality = output_id_card_quality
 
     def validate(self):
@@ -708,12 +710,16 @@ class RecognizeAllTextRequestIdCardConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.llm_rec is not None:
+            result['Llm_rec'] = self.llm_rec
         if self.output_id_card_quality is not None:
             result['OutputIdCardQuality'] = self.output_id_card_quality
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Llm_rec') is not None:
+            self.llm_rec = m.get('Llm_rec')
         if m.get('OutputIdCardQuality') is not None:
             self.output_id_card_quality = m.get('OutputIdCardQuality')
         return self
@@ -7862,11 +7868,13 @@ class RecognizeHouseholdResponse(TeaModel):
 class RecognizeIdcardRequest(TeaModel):
     def __init__(
         self,
+        llm_rec: bool = None,
         output_figure: bool = None,
         output_quality_info: bool = None,
         url: str = None,
         body: BinaryIO = None,
     ):
+        self.llm_rec = llm_rec
         self.output_figure = output_figure
         self.output_quality_info = output_quality_info
         self.url = url
@@ -7881,6 +7889,8 @@ class RecognizeIdcardRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.llm_rec is not None:
+            result['Llm_rec'] = self.llm_rec
         if self.output_figure is not None:
             result['OutputFigure'] = self.output_figure
         if self.output_quality_info is not None:
@@ -7893,6 +7903,8 @@ class RecognizeIdcardRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Llm_rec') is not None:
+            self.llm_rec = m.get('Llm_rec')
         if m.get('OutputFigure') is not None:
             self.output_figure = m.get('OutputFigure')
         if m.get('OutputQualityInfo') is not None:

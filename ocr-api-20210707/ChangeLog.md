@@ -1,3 +1,8 @@
+2025-04-27 Version: 3.1.3
+- Update API RecognizeAllText: add request parameters IdCardConfig.Llm_rec.
+- Update API RecognizeIdcard: add request parameters Llm_rec.
+
+
 2024-11-15 Version: 3.1.2
 - Update API RecognizeEduPaperStructed: add param OutputOricoord.
 

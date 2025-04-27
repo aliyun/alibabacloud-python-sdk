@@ -4219,6 +4219,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.llm_rec):
+            query['Llm_rec'] = request.llm_rec
         if not UtilClient.is_unset(request.output_figure):
             query['OutputFigure'] = request.output_figure
         if not UtilClient.is_unset(request.output_quality_info):
@@ -4260,6 +4262,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.llm_rec):
+            query['Llm_rec'] = request.llm_rec
         if not UtilClient.is_unset(request.output_figure):
             query['OutputFigure'] = request.output_figure
         if not UtilClient.is_unset(request.output_quality_info):
