@@ -57089,7 +57089,6 @@ class ListFileVersionsResponse(TeaModel):
 class ListFilesRequest(TeaModel):
     def __init__(
         self,
-        commit_status: int = None,
         exact_file_name: str = None,
         file_folder_path: str = None,
         file_id_in: str = None,
@@ -57106,7 +57105,6 @@ class ListFilesRequest(TeaModel):
         project_identifier: str = None,
         use_type: str = None,
     ):
-        self.commit_status = commit_status
         # The exact matching file name. The file name of the query result is exactly the same as this parameter.
         self.exact_file_name = exact_file_name
         # The path of the folder to which files belong.
@@ -57160,8 +57158,6 @@ class ListFilesRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.commit_status is not None:
-            result['CommitStatus'] = self.commit_status
         if self.exact_file_name is not None:
             result['ExactFileName'] = self.exact_file_name
         if self.file_folder_path is not None:
@@ -57196,8 +57192,6 @@ class ListFilesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('CommitStatus') is not None:
-            self.commit_status = m.get('CommitStatus')
         if m.get('ExactFileName') is not None:
             self.exact_file_name = m.get('ExactFileName')
         if m.get('FileFolderPath') is not None:
