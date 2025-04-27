@@ -1,3 +1,18 @@
+2025-04-27 Version: 1.8.6
+- Update API CreateApprovalProcess: add request parameters MatchSchemas.EndpointHardeningSchemaId.
+- Update API CreateApprovalProcess: add request parameters MatchSchemas.SoftwareHardeningSchemaId.
+- Update API CreateApprovalProcess: add response parameters Body.Process.EndpointHardeningPolicies.
+- Update API CreateApprovalProcess: add response parameters Body.Process.SoftwareHardeningPolicies.
+- Update API GetApprovalProcess: add response parameters Body.Process.EndpointHardeningPolicies.
+- Update API GetApprovalProcess: add response parameters Body.Process.SoftwareHardeningPolicies.
+- Update API ListApprovalProcesses: add response parameters Body.Processes.$.EndpointHardeningPolicies.
+- Update API ListApprovalProcesses: add response parameters Body.Processes.$.SoftwareHardeningPolicies.
+- Update API UpdateApprovalProcess: add request parameters MatchSchemas.EndpointHardeningSchemaId.
+- Update API UpdateApprovalProcess: add request parameters MatchSchemas.SoftwareHardeningSchemaId.
+- Update API UpdateApprovalProcess: add response parameters Body.Process.EndpointHardeningPolicies.
+- Update API UpdateApprovalProcess: add response parameters Body.Process.SoftwareHardeningPolicies.
+
+
 2025-04-23 Version: 1.8.5
 - Update API GetUserDevice: add response parameters Body.Device.Workshop.
 - Update API ListUserDevices: add request parameters Workshop.

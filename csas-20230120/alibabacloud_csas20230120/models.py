@@ -1027,16 +1027,20 @@ class CreateApprovalProcessRequestMatchSchemas(TeaModel):
         dlp_send_schema_id: str = None,
         domain_blacklist_schema_id: str = None,
         domain_whitelist_schema_id: str = None,
+        endpoint_hardening_schema_id: str = None,
         peripheral_block_schema_id: str = None,
         software_block_schema_id: str = None,
+        software_hardening_schema_id: str = None,
     ):
         self.app_uninstall_schema_id = app_uninstall_schema_id
         self.device_registration_schema_id = device_registration_schema_id
         self.dlp_send_schema_id = dlp_send_schema_id
         self.domain_blacklist_schema_id = domain_blacklist_schema_id
         self.domain_whitelist_schema_id = domain_whitelist_schema_id
+        self.endpoint_hardening_schema_id = endpoint_hardening_schema_id
         self.peripheral_block_schema_id = peripheral_block_schema_id
         self.software_block_schema_id = software_block_schema_id
+        self.software_hardening_schema_id = software_hardening_schema_id
 
     def validate(self):
         pass
@@ -1057,10 +1061,14 @@ class CreateApprovalProcessRequestMatchSchemas(TeaModel):
             result['DomainBlacklistSchemaId'] = self.domain_blacklist_schema_id
         if self.domain_whitelist_schema_id is not None:
             result['DomainWhitelistSchemaId'] = self.domain_whitelist_schema_id
+        if self.endpoint_hardening_schema_id is not None:
+            result['EndpointHardeningSchemaId'] = self.endpoint_hardening_schema_id
         if self.peripheral_block_schema_id is not None:
             result['PeripheralBlockSchemaId'] = self.peripheral_block_schema_id
         if self.software_block_schema_id is not None:
             result['SoftwareBlockSchemaId'] = self.software_block_schema_id
+        if self.software_hardening_schema_id is not None:
+            result['SoftwareHardeningSchemaId'] = self.software_hardening_schema_id
         return result
 
     def from_map(self, m: dict = None):
@@ -1075,10 +1083,14 @@ class CreateApprovalProcessRequestMatchSchemas(TeaModel):
             self.domain_blacklist_schema_id = m.get('DomainBlacklistSchemaId')
         if m.get('DomainWhitelistSchemaId') is not None:
             self.domain_whitelist_schema_id = m.get('DomainWhitelistSchemaId')
+        if m.get('EndpointHardeningSchemaId') is not None:
+            self.endpoint_hardening_schema_id = m.get('EndpointHardeningSchemaId')
         if m.get('PeripheralBlockSchemaId') is not None:
             self.peripheral_block_schema_id = m.get('PeripheralBlockSchemaId')
         if m.get('SoftwareBlockSchemaId') is not None:
             self.software_block_schema_id = m.get('SoftwareBlockSchemaId')
+        if m.get('SoftwareHardeningSchemaId') is not None:
+            self.software_hardening_schema_id = m.get('SoftwareHardeningSchemaId')
         return self
 
 
@@ -1343,6 +1355,39 @@ class CreateApprovalProcessResponseBodyProcessDomainWhitelistPolicies(TeaModel):
         return self
 
 
+class CreateApprovalProcessResponseBodyProcessEndpointHardeningPolicies(TeaModel):
+    def __init__(
+        self,
+        policy_ids: List[str] = None,
+        schema_id: str = None,
+    ):
+        self.policy_ids = policy_ids
+        self.schema_id = schema_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.policy_ids is not None:
+            result['PolicyIds'] = self.policy_ids
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PolicyIds') is not None:
+            self.policy_ids = m.get('PolicyIds')
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
 class CreateApprovalProcessResponseBodyProcessPeripheralBlockPolicies(TeaModel):
     def __init__(
         self,
@@ -1442,6 +1487,39 @@ class CreateApprovalProcessResponseBodyProcessSoftwareBlockPolicies(TeaModel):
         return self
 
 
+class CreateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies(TeaModel):
+    def __init__(
+        self,
+        policy_ids: List[str] = None,
+        schema_id: str = None,
+    ):
+        self.policy_ids = policy_ids
+        self.schema_id = schema_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.policy_ids is not None:
+            result['PolicyIds'] = self.policy_ids
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PolicyIds') is not None:
+            self.policy_ids = m.get('PolicyIds')
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
 class CreateApprovalProcessResponseBodyProcess(TeaModel):
     def __init__(
         self,
@@ -1452,11 +1530,13 @@ class CreateApprovalProcessResponseBodyProcess(TeaModel):
         dlp_send_policies: CreateApprovalProcessResponseBodyProcessDlpSendPolicies = None,
         domain_blacklist_policies: CreateApprovalProcessResponseBodyProcessDomainBlacklistPolicies = None,
         domain_whitelist_policies: CreateApprovalProcessResponseBodyProcessDomainWhitelistPolicies = None,
+        endpoint_hardening_policies: CreateApprovalProcessResponseBodyProcessEndpointHardeningPolicies = None,
         peripheral_block_policies: CreateApprovalProcessResponseBodyProcessPeripheralBlockPolicies = None,
         process_id: str = None,
         process_name: str = None,
         process_nodes: List[List[CreateApprovalProcessResponseBodyProcessProcessNodes]] = None,
         software_block_policies: CreateApprovalProcessResponseBodyProcessSoftwareBlockPolicies = None,
+        software_hardening_policies: CreateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies = None,
     ):
         self.app_uninstall_policies = app_uninstall_policies
         self.create_time = create_time
@@ -1465,11 +1545,13 @@ class CreateApprovalProcessResponseBodyProcess(TeaModel):
         self.dlp_send_policies = dlp_send_policies
         self.domain_blacklist_policies = domain_blacklist_policies
         self.domain_whitelist_policies = domain_whitelist_policies
+        self.endpoint_hardening_policies = endpoint_hardening_policies
         self.peripheral_block_policies = peripheral_block_policies
         self.process_id = process_id
         self.process_name = process_name
         self.process_nodes = process_nodes
         self.software_block_policies = software_block_policies
+        self.software_hardening_policies = software_hardening_policies
 
     def validate(self):
         if self.app_uninstall_policies:
@@ -1482,6 +1564,8 @@ class CreateApprovalProcessResponseBodyProcess(TeaModel):
             self.domain_blacklist_policies.validate()
         if self.domain_whitelist_policies:
             self.domain_whitelist_policies.validate()
+        if self.endpoint_hardening_policies:
+            self.endpoint_hardening_policies.validate()
         if self.peripheral_block_policies:
             self.peripheral_block_policies.validate()
         if self.process_nodes:
@@ -1491,6 +1575,8 @@ class CreateApprovalProcessResponseBodyProcess(TeaModel):
                         k1.validate()
         if self.software_block_policies:
             self.software_block_policies.validate()
+        if self.software_hardening_policies:
+            self.software_hardening_policies.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1512,6 +1598,8 @@ class CreateApprovalProcessResponseBodyProcess(TeaModel):
             result['DomainBlacklistPolicies'] = self.domain_blacklist_policies.to_map()
         if self.domain_whitelist_policies is not None:
             result['DomainWhitelistPolicies'] = self.domain_whitelist_policies.to_map()
+        if self.endpoint_hardening_policies is not None:
+            result['EndpointHardeningPolicies'] = self.endpoint_hardening_policies.to_map()
         if self.peripheral_block_policies is not None:
             result['PeripheralBlockPolicies'] = self.peripheral_block_policies.to_map()
         if self.process_id is not None:
@@ -1527,6 +1615,8 @@ class CreateApprovalProcessResponseBodyProcess(TeaModel):
                 result['ProcessNodes'].append(l1)
         if self.software_block_policies is not None:
             result['SoftwareBlockPolicies'] = self.software_block_policies.to_map()
+        if self.software_hardening_policies is not None:
+            result['SoftwareHardeningPolicies'] = self.software_hardening_policies.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -1550,6 +1640,9 @@ class CreateApprovalProcessResponseBodyProcess(TeaModel):
         if m.get('DomainWhitelistPolicies') is not None:
             temp_model = CreateApprovalProcessResponseBodyProcessDomainWhitelistPolicies()
             self.domain_whitelist_policies = temp_model.from_map(m['DomainWhitelistPolicies'])
+        if m.get('EndpointHardeningPolicies') is not None:
+            temp_model = CreateApprovalProcessResponseBodyProcessEndpointHardeningPolicies()
+            self.endpoint_hardening_policies = temp_model.from_map(m['EndpointHardeningPolicies'])
         if m.get('PeripheralBlockPolicies') is not None:
             temp_model = CreateApprovalProcessResponseBodyProcessPeripheralBlockPolicies()
             self.peripheral_block_policies = temp_model.from_map(m['PeripheralBlockPolicies'])
@@ -1568,6 +1661,9 @@ class CreateApprovalProcessResponseBodyProcess(TeaModel):
         if m.get('SoftwareBlockPolicies') is not None:
             temp_model = CreateApprovalProcessResponseBodyProcessSoftwareBlockPolicies()
             self.software_block_policies = temp_model.from_map(m['SoftwareBlockPolicies'])
+        if m.get('SoftwareHardeningPolicies') is not None:
+            temp_model = CreateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies()
+            self.software_hardening_policies = temp_model.from_map(m['SoftwareHardeningPolicies'])
         return self
 
 
@@ -6696,6 +6792,39 @@ class GetApprovalProcessResponseBodyProcessDomainWhitelistPolicies(TeaModel):
         return self
 
 
+class GetApprovalProcessResponseBodyProcessEndpointHardeningPolicies(TeaModel):
+    def __init__(
+        self,
+        policy_ids: List[str] = None,
+        schema_id: str = None,
+    ):
+        self.policy_ids = policy_ids
+        self.schema_id = schema_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.policy_ids is not None:
+            result['PolicyIds'] = self.policy_ids
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PolicyIds') is not None:
+            self.policy_ids = m.get('PolicyIds')
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
 class GetApprovalProcessResponseBodyProcessPeripheralBlockPolicies(TeaModel):
     def __init__(
         self,
@@ -6795,6 +6924,39 @@ class GetApprovalProcessResponseBodyProcessSoftwareBlockPolicies(TeaModel):
         return self
 
 
+class GetApprovalProcessResponseBodyProcessSoftwareHardeningPolicies(TeaModel):
+    def __init__(
+        self,
+        policy_ids: List[str] = None,
+        schema_id: str = None,
+    ):
+        self.policy_ids = policy_ids
+        self.schema_id = schema_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.policy_ids is not None:
+            result['PolicyIds'] = self.policy_ids
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PolicyIds') is not None:
+            self.policy_ids = m.get('PolicyIds')
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
 class GetApprovalProcessResponseBodyProcess(TeaModel):
     def __init__(
         self,
@@ -6805,11 +6967,13 @@ class GetApprovalProcessResponseBodyProcess(TeaModel):
         dlp_send_policies: GetApprovalProcessResponseBodyProcessDlpSendPolicies = None,
         domain_blacklist_policies: GetApprovalProcessResponseBodyProcessDomainBlacklistPolicies = None,
         domain_whitelist_policies: GetApprovalProcessResponseBodyProcessDomainWhitelistPolicies = None,
+        endpoint_hardening_policies: GetApprovalProcessResponseBodyProcessEndpointHardeningPolicies = None,
         peripheral_block_policies: GetApprovalProcessResponseBodyProcessPeripheralBlockPolicies = None,
         process_id: str = None,
         process_name: str = None,
         process_nodes: List[List[GetApprovalProcessResponseBodyProcessProcessNodes]] = None,
         software_block_policies: GetApprovalProcessResponseBodyProcessSoftwareBlockPolicies = None,
+        software_hardening_policies: GetApprovalProcessResponseBodyProcessSoftwareHardeningPolicies = None,
     ):
         self.app_uninstall_policies = app_uninstall_policies
         self.create_time = create_time
@@ -6818,11 +6982,13 @@ class GetApprovalProcessResponseBodyProcess(TeaModel):
         self.dlp_send_policies = dlp_send_policies
         self.domain_blacklist_policies = domain_blacklist_policies
         self.domain_whitelist_policies = domain_whitelist_policies
+        self.endpoint_hardening_policies = endpoint_hardening_policies
         self.peripheral_block_policies = peripheral_block_policies
         self.process_id = process_id
         self.process_name = process_name
         self.process_nodes = process_nodes
         self.software_block_policies = software_block_policies
+        self.software_hardening_policies = software_hardening_policies
 
     def validate(self):
         if self.app_uninstall_policies:
@@ -6835,6 +7001,8 @@ class GetApprovalProcessResponseBodyProcess(TeaModel):
             self.domain_blacklist_policies.validate()
         if self.domain_whitelist_policies:
             self.domain_whitelist_policies.validate()
+        if self.endpoint_hardening_policies:
+            self.endpoint_hardening_policies.validate()
         if self.peripheral_block_policies:
             self.peripheral_block_policies.validate()
         if self.process_nodes:
@@ -6844,6 +7012,8 @@ class GetApprovalProcessResponseBodyProcess(TeaModel):
                         k1.validate()
         if self.software_block_policies:
             self.software_block_policies.validate()
+        if self.software_hardening_policies:
+            self.software_hardening_policies.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6865,6 +7035,8 @@ class GetApprovalProcessResponseBodyProcess(TeaModel):
             result['DomainBlacklistPolicies'] = self.domain_blacklist_policies.to_map()
         if self.domain_whitelist_policies is not None:
             result['DomainWhitelistPolicies'] = self.domain_whitelist_policies.to_map()
+        if self.endpoint_hardening_policies is not None:
+            result['EndpointHardeningPolicies'] = self.endpoint_hardening_policies.to_map()
         if self.peripheral_block_policies is not None:
             result['PeripheralBlockPolicies'] = self.peripheral_block_policies.to_map()
         if self.process_id is not None:
@@ -6880,6 +7052,8 @@ class GetApprovalProcessResponseBodyProcess(TeaModel):
                 result['ProcessNodes'].append(l1)
         if self.software_block_policies is not None:
             result['SoftwareBlockPolicies'] = self.software_block_policies.to_map()
+        if self.software_hardening_policies is not None:
+            result['SoftwareHardeningPolicies'] = self.software_hardening_policies.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -6903,6 +7077,9 @@ class GetApprovalProcessResponseBodyProcess(TeaModel):
         if m.get('DomainWhitelistPolicies') is not None:
             temp_model = GetApprovalProcessResponseBodyProcessDomainWhitelistPolicies()
             self.domain_whitelist_policies = temp_model.from_map(m['DomainWhitelistPolicies'])
+        if m.get('EndpointHardeningPolicies') is not None:
+            temp_model = GetApprovalProcessResponseBodyProcessEndpointHardeningPolicies()
+            self.endpoint_hardening_policies = temp_model.from_map(m['EndpointHardeningPolicies'])
         if m.get('PeripheralBlockPolicies') is not None:
             temp_model = GetApprovalProcessResponseBodyProcessPeripheralBlockPolicies()
             self.peripheral_block_policies = temp_model.from_map(m['PeripheralBlockPolicies'])
@@ -6921,6 +7098,9 @@ class GetApprovalProcessResponseBodyProcess(TeaModel):
         if m.get('SoftwareBlockPolicies') is not None:
             temp_model = GetApprovalProcessResponseBodyProcessSoftwareBlockPolicies()
             self.software_block_policies = temp_model.from_map(m['SoftwareBlockPolicies'])
+        if m.get('SoftwareHardeningPolicies') is not None:
+            temp_model = GetApprovalProcessResponseBodyProcessSoftwareHardeningPolicies()
+            self.software_hardening_policies = temp_model.from_map(m['SoftwareHardeningPolicies'])
         return self
 
 
@@ -10585,6 +10765,39 @@ class ListApprovalProcessesResponseBodyProcessesDomainWhitelistPolicies(TeaModel
         return self
 
 
+class ListApprovalProcessesResponseBodyProcessesEndpointHardeningPolicies(TeaModel):
+    def __init__(
+        self,
+        policy_ids: List[str] = None,
+        schema_id: str = None,
+    ):
+        self.policy_ids = policy_ids
+        self.schema_id = schema_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.policy_ids is not None:
+            result['PolicyIds'] = self.policy_ids
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PolicyIds') is not None:
+            self.policy_ids = m.get('PolicyIds')
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
 class ListApprovalProcessesResponseBodyProcessesPeripheralBlockPolicies(TeaModel):
     def __init__(
         self,
@@ -10684,6 +10897,39 @@ class ListApprovalProcessesResponseBodyProcessesSoftwareBlockPolicies(TeaModel):
         return self
 
 
+class ListApprovalProcessesResponseBodyProcessesSoftwareHardeningPolicies(TeaModel):
+    def __init__(
+        self,
+        policy_ids: List[str] = None,
+        schema_id: str = None,
+    ):
+        self.policy_ids = policy_ids
+        self.schema_id = schema_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.policy_ids is not None:
+            result['PolicyIds'] = self.policy_ids
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PolicyIds') is not None:
+            self.policy_ids = m.get('PolicyIds')
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
 class ListApprovalProcessesResponseBodyProcesses(TeaModel):
     def __init__(
         self,
@@ -10694,11 +10940,13 @@ class ListApprovalProcessesResponseBodyProcesses(TeaModel):
         dlp_send_policies: ListApprovalProcessesResponseBodyProcessesDlpSendPolicies = None,
         domain_blacklist_policies: ListApprovalProcessesResponseBodyProcessesDomainBlacklistPolicies = None,
         domain_whitelist_policies: ListApprovalProcessesResponseBodyProcessesDomainWhitelistPolicies = None,
+        endpoint_hardening_policies: ListApprovalProcessesResponseBodyProcessesEndpointHardeningPolicies = None,
         peripheral_block_policies: ListApprovalProcessesResponseBodyProcessesPeripheralBlockPolicies = None,
         process_id: str = None,
         process_name: str = None,
         process_nodes: List[List[ListApprovalProcessesResponseBodyProcessesProcessNodes]] = None,
         software_block_policies: ListApprovalProcessesResponseBodyProcessesSoftwareBlockPolicies = None,
+        software_hardening_policies: ListApprovalProcessesResponseBodyProcessesSoftwareHardeningPolicies = None,
     ):
         self.app_uninstall_policies = app_uninstall_policies
         self.create_time = create_time
@@ -10707,11 +10955,13 @@ class ListApprovalProcessesResponseBodyProcesses(TeaModel):
         self.dlp_send_policies = dlp_send_policies
         self.domain_blacklist_policies = domain_blacklist_policies
         self.domain_whitelist_policies = domain_whitelist_policies
+        self.endpoint_hardening_policies = endpoint_hardening_policies
         self.peripheral_block_policies = peripheral_block_policies
         self.process_id = process_id
         self.process_name = process_name
         self.process_nodes = process_nodes
         self.software_block_policies = software_block_policies
+        self.software_hardening_policies = software_hardening_policies
 
     def validate(self):
         if self.app_uninstall_policies:
@@ -10724,6 +10974,8 @@ class ListApprovalProcessesResponseBodyProcesses(TeaModel):
             self.domain_blacklist_policies.validate()
         if self.domain_whitelist_policies:
             self.domain_whitelist_policies.validate()
+        if self.endpoint_hardening_policies:
+            self.endpoint_hardening_policies.validate()
         if self.peripheral_block_policies:
             self.peripheral_block_policies.validate()
         if self.process_nodes:
@@ -10733,6 +10985,8 @@ class ListApprovalProcessesResponseBodyProcesses(TeaModel):
                         k1.validate()
         if self.software_block_policies:
             self.software_block_policies.validate()
+        if self.software_hardening_policies:
+            self.software_hardening_policies.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -10754,6 +11008,8 @@ class ListApprovalProcessesResponseBodyProcesses(TeaModel):
             result['DomainBlacklistPolicies'] = self.domain_blacklist_policies.to_map()
         if self.domain_whitelist_policies is not None:
             result['DomainWhitelistPolicies'] = self.domain_whitelist_policies.to_map()
+        if self.endpoint_hardening_policies is not None:
+            result['EndpointHardeningPolicies'] = self.endpoint_hardening_policies.to_map()
         if self.peripheral_block_policies is not None:
             result['PeripheralBlockPolicies'] = self.peripheral_block_policies.to_map()
         if self.process_id is not None:
@@ -10769,6 +11025,8 @@ class ListApprovalProcessesResponseBodyProcesses(TeaModel):
                 result['ProcessNodes'].append(l1)
         if self.software_block_policies is not None:
             result['SoftwareBlockPolicies'] = self.software_block_policies.to_map()
+        if self.software_hardening_policies is not None:
+            result['SoftwareHardeningPolicies'] = self.software_hardening_policies.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -10792,6 +11050,9 @@ class ListApprovalProcessesResponseBodyProcesses(TeaModel):
         if m.get('DomainWhitelistPolicies') is not None:
             temp_model = ListApprovalProcessesResponseBodyProcessesDomainWhitelistPolicies()
             self.domain_whitelist_policies = temp_model.from_map(m['DomainWhitelistPolicies'])
+        if m.get('EndpointHardeningPolicies') is not None:
+            temp_model = ListApprovalProcessesResponseBodyProcessesEndpointHardeningPolicies()
+            self.endpoint_hardening_policies = temp_model.from_map(m['EndpointHardeningPolicies'])
         if m.get('PeripheralBlockPolicies') is not None:
             temp_model = ListApprovalProcessesResponseBodyProcessesPeripheralBlockPolicies()
             self.peripheral_block_policies = temp_model.from_map(m['PeripheralBlockPolicies'])
@@ -10810,6 +11071,9 @@ class ListApprovalProcessesResponseBodyProcesses(TeaModel):
         if m.get('SoftwareBlockPolicies') is not None:
             temp_model = ListApprovalProcessesResponseBodyProcessesSoftwareBlockPolicies()
             self.software_block_policies = temp_model.from_map(m['SoftwareBlockPolicies'])
+        if m.get('SoftwareHardeningPolicies') is not None:
+            temp_model = ListApprovalProcessesResponseBodyProcessesSoftwareHardeningPolicies()
+            self.software_hardening_policies = temp_model.from_map(m['SoftwareHardeningPolicies'])
         return self
 
 
@@ -20469,16 +20733,20 @@ class UpdateApprovalProcessRequestMatchSchemas(TeaModel):
         dlp_send_schema_id: str = None,
         domain_blacklist_schema_id: str = None,
         domain_whitelist_schema_id: str = None,
+        endpoint_hardening_schema_id: str = None,
         peripheral_block_schema_id: str = None,
         software_block_schema_id: str = None,
+        software_hardening_schema_id: str = None,
     ):
         self.app_uninstall_schema_id = app_uninstall_schema_id
         self.device_registration_schema_id = device_registration_schema_id
         self.dlp_send_schema_id = dlp_send_schema_id
         self.domain_blacklist_schema_id = domain_blacklist_schema_id
         self.domain_whitelist_schema_id = domain_whitelist_schema_id
+        self.endpoint_hardening_schema_id = endpoint_hardening_schema_id
         self.peripheral_block_schema_id = peripheral_block_schema_id
         self.software_block_schema_id = software_block_schema_id
+        self.software_hardening_schema_id = software_hardening_schema_id
 
     def validate(self):
         pass
@@ -20499,10 +20767,14 @@ class UpdateApprovalProcessRequestMatchSchemas(TeaModel):
             result['DomainBlacklistSchemaId'] = self.domain_blacklist_schema_id
         if self.domain_whitelist_schema_id is not None:
             result['DomainWhitelistSchemaId'] = self.domain_whitelist_schema_id
+        if self.endpoint_hardening_schema_id is not None:
+            result['EndpointHardeningSchemaId'] = self.endpoint_hardening_schema_id
         if self.peripheral_block_schema_id is not None:
             result['PeripheralBlockSchemaId'] = self.peripheral_block_schema_id
         if self.software_block_schema_id is not None:
             result['SoftwareBlockSchemaId'] = self.software_block_schema_id
+        if self.software_hardening_schema_id is not None:
+            result['SoftwareHardeningSchemaId'] = self.software_hardening_schema_id
         return result
 
     def from_map(self, m: dict = None):
@@ -20517,10 +20789,14 @@ class UpdateApprovalProcessRequestMatchSchemas(TeaModel):
             self.domain_blacklist_schema_id = m.get('DomainBlacklistSchemaId')
         if m.get('DomainWhitelistSchemaId') is not None:
             self.domain_whitelist_schema_id = m.get('DomainWhitelistSchemaId')
+        if m.get('EndpointHardeningSchemaId') is not None:
+            self.endpoint_hardening_schema_id = m.get('EndpointHardeningSchemaId')
         if m.get('PeripheralBlockSchemaId') is not None:
             self.peripheral_block_schema_id = m.get('PeripheralBlockSchemaId')
         if m.get('SoftwareBlockSchemaId') is not None:
             self.software_block_schema_id = m.get('SoftwareBlockSchemaId')
+        if m.get('SoftwareHardeningSchemaId') is not None:
+            self.software_hardening_schema_id = m.get('SoftwareHardeningSchemaId')
         return self
 
 
@@ -20795,6 +21071,39 @@ class UpdateApprovalProcessResponseBodyProcessDomainWhitelistPolicies(TeaModel):
         return self
 
 
+class UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies(TeaModel):
+    def __init__(
+        self,
+        policy_ids: List[str] = None,
+        schema_id: str = None,
+    ):
+        self.policy_ids = policy_ids
+        self.schema_id = schema_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.policy_ids is not None:
+            result['PolicyIds'] = self.policy_ids
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PolicyIds') is not None:
+            self.policy_ids = m.get('PolicyIds')
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
 class UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies(TeaModel):
     def __init__(
         self,
@@ -20894,6 +21203,39 @@ class UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies(TeaModel):
         return self
 
 
+class UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies(TeaModel):
+    def __init__(
+        self,
+        policy_ids: List[str] = None,
+        schema_id: str = None,
+    ):
+        self.policy_ids = policy_ids
+        self.schema_id = schema_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.policy_ids is not None:
+            result['PolicyIds'] = self.policy_ids
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PolicyIds') is not None:
+            self.policy_ids = m.get('PolicyIds')
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
 class UpdateApprovalProcessResponseBodyProcess(TeaModel):
     def __init__(
         self,
@@ -20904,11 +21246,13 @@ class UpdateApprovalProcessResponseBodyProcess(TeaModel):
         dlp_send_policies: UpdateApprovalProcessResponseBodyProcessDlpSendPolicies = None,
         domain_blacklist_policies: UpdateApprovalProcessResponseBodyProcessDomainBlacklistPolicies = None,
         domain_whitelist_policies: UpdateApprovalProcessResponseBodyProcessDomainWhitelistPolicies = None,
+        endpoint_hardening_policies: UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies = None,
         periphera_block_policies: UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies = None,
         process_id: str = None,
         process_name: str = None,
         process_nodes: List[List[UpdateApprovalProcessResponseBodyProcessProcessNodes]] = None,
         software_block_policies: UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies = None,
+        software_hardening_policies: UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies = None,
     ):
         self.app_uninstall_policies = app_uninstall_policies
         self.create_time = create_time
@@ -20917,11 +21261,13 @@ class UpdateApprovalProcessResponseBodyProcess(TeaModel):
         self.dlp_send_policies = dlp_send_policies
         self.domain_blacklist_policies = domain_blacklist_policies
         self.domain_whitelist_policies = domain_whitelist_policies
+        self.endpoint_hardening_policies = endpoint_hardening_policies
         self.periphera_block_policies = periphera_block_policies
         self.process_id = process_id
         self.process_name = process_name
         self.process_nodes = process_nodes
         self.software_block_policies = software_block_policies
+        self.software_hardening_policies = software_hardening_policies
 
     def validate(self):
         if self.app_uninstall_policies:
@@ -20934,6 +21280,8 @@ class UpdateApprovalProcessResponseBodyProcess(TeaModel):
             self.domain_blacklist_policies.validate()
         if self.domain_whitelist_policies:
             self.domain_whitelist_policies.validate()
+        if self.endpoint_hardening_policies:
+            self.endpoint_hardening_policies.validate()
         if self.periphera_block_policies:
             self.periphera_block_policies.validate()
         if self.process_nodes:
@@ -20943,6 +21291,8 @@ class UpdateApprovalProcessResponseBodyProcess(TeaModel):
                         k1.validate()
         if self.software_block_policies:
             self.software_block_policies.validate()
+        if self.software_hardening_policies:
+            self.software_hardening_policies.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -20964,6 +21314,8 @@ class UpdateApprovalProcessResponseBodyProcess(TeaModel):
             result['DomainBlacklistPolicies'] = self.domain_blacklist_policies.to_map()
         if self.domain_whitelist_policies is not None:
             result['DomainWhitelistPolicies'] = self.domain_whitelist_policies.to_map()
+        if self.endpoint_hardening_policies is not None:
+            result['EndpointHardeningPolicies'] = self.endpoint_hardening_policies.to_map()
         if self.periphera_block_policies is not None:
             result['PeripheraBlockPolicies'] = self.periphera_block_policies.to_map()
         if self.process_id is not None:
@@ -20979,6 +21331,8 @@ class UpdateApprovalProcessResponseBodyProcess(TeaModel):
                 result['ProcessNodes'].append(l1)
         if self.software_block_policies is not None:
             result['SoftwareBlockPolicies'] = self.software_block_policies.to_map()
+        if self.software_hardening_policies is not None:
+            result['SoftwareHardeningPolicies'] = self.software_hardening_policies.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -21002,6 +21356,9 @@ class UpdateApprovalProcessResponseBodyProcess(TeaModel):
         if m.get('DomainWhitelistPolicies') is not None:
             temp_model = UpdateApprovalProcessResponseBodyProcessDomainWhitelistPolicies()
             self.domain_whitelist_policies = temp_model.from_map(m['DomainWhitelistPolicies'])
+        if m.get('EndpointHardeningPolicies') is not None:
+            temp_model = UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies()
+            self.endpoint_hardening_policies = temp_model.from_map(m['EndpointHardeningPolicies'])
         if m.get('PeripheraBlockPolicies') is not None:
             temp_model = UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies()
             self.periphera_block_policies = temp_model.from_map(m['PeripheraBlockPolicies'])
@@ -21020,6 +21377,9 @@ class UpdateApprovalProcessResponseBodyProcess(TeaModel):
         if m.get('SoftwareBlockPolicies') is not None:
             temp_model = UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies()
             self.software_block_policies = temp_model.from_map(m['SoftwareBlockPolicies'])
+        if m.get('SoftwareHardeningPolicies') is not None:
+            temp_model = UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies()
+            self.software_hardening_policies = temp_model.from_map(m['SoftwareHardeningPolicies'])
         return self
 
 
