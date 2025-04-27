@@ -1,3 +1,7 @@
+2025-04-27 Version: 2.14.1
+- Update API GetAICoachScript: add response parameters Body.scoreConfig.
+
+
 2025-04-17 Version: 2.14.0
 - Support API CreateProductImage.
 - Support API GetAICoachAssessmentPoint.

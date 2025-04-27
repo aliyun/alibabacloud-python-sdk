@@ -6380,6 +6380,39 @@ class GetAICoachScriptResponseBodySampleDialogueList(TeaModel):
         return self
 
 
+class GetAICoachScriptResponseBodyScoreConfig(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        pass_score: str = None,
+    ):
+        self.enabled = enabled
+        self.pass_score = pass_score
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+        if self.pass_score is not None:
+            result['passScore'] = self.pass_score
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+        if m.get('passScore') is not None:
+            self.pass_score = m.get('passScore')
+        return self
+
+
 class GetAICoachScriptResponseBodyWeights(TeaModel):
     def __init__(
         self,
@@ -6492,6 +6525,7 @@ class GetAICoachScriptResponseBody(TeaModel):
         points: List[GetAICoachScriptResponseBodyPoints] = None,
         request_id: str = None,
         sample_dialogue_list: List[GetAICoachScriptResponseBodySampleDialogueList] = None,
+        score_config: GetAICoachScriptResponseBodyScoreConfig = None,
         script_record_id: str = None,
         sparring_tip_content: str = None,
         sparring_tip_title: str = None,
@@ -6529,6 +6563,7 @@ class GetAICoachScriptResponseBody(TeaModel):
         self.points = points
         self.request_id = request_id
         self.sample_dialogue_list = sample_dialogue_list
+        self.score_config = score_config
         self.script_record_id = script_record_id
         self.sparring_tip_content = sparring_tip_content
         self.sparring_tip_title = sparring_tip_title
@@ -6559,6 +6594,8 @@ class GetAICoachScriptResponseBody(TeaModel):
             for k in self.sample_dialogue_list:
                 if k:
                     k.validate()
+        if self.score_config:
+            self.score_config.validate()
         if self.weights:
             self.weights.validate()
 
@@ -6632,6 +6669,8 @@ class GetAICoachScriptResponseBody(TeaModel):
         if self.sample_dialogue_list is not None:
             for k in self.sample_dialogue_list:
                 result['sampleDialogueList'].append(k.to_map() if k else None)
+        if self.score_config is not None:
+            result['scoreConfig'] = self.score_config.to_map()
         if self.script_record_id is not None:
             result['scriptRecordId'] = self.script_record_id
         if self.sparring_tip_content is not None:
@@ -6722,6 +6761,9 @@ class GetAICoachScriptResponseBody(TeaModel):
             for k in m.get('sampleDialogueList'):
                 temp_model = GetAICoachScriptResponseBodySampleDialogueList()
                 self.sample_dialogue_list.append(temp_model.from_map(k))
+        if m.get('scoreConfig') is not None:
+            temp_model = GetAICoachScriptResponseBodyScoreConfig()
+            self.score_config = temp_model.from_map(m['scoreConfig'])
         if m.get('scriptRecordId') is not None:
             self.script_record_id = m.get('scriptRecordId')
         if m.get('sparringTipContent') is not None:
