@@ -1,3 +1,10 @@
+2025-04-27 Version: 11.3.0
+- Support API AcceptRCInquiredSystemEvent.
+- Support API DescribeRCInstanceDdosCount.
+- Support API DescribeRCInstanceHistoryEvents.
+- Support API DescribeRCInstanceIpAddress.
+
+
 2025-04-17 Version: 11.2.0
 - Support API SwitchOverMajorVersionUpgrade.
 - Update API DescribeUpgradeMajorVersionPrecheckTask: add response parameters Body.Items.$.UpgradeMode.

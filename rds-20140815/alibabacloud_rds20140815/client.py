@@ -88,6 +88,106 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def accept_rcinquired_system_event_with_options(
+        self,
+        request: rds_20140815_models.AcceptRCInquiredSystemEventRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.AcceptRCInquiredSystemEventResponse:
+        """
+        @summary 接受并授权执行系统事件操作
+        
+        @param request: AcceptRCInquiredSystemEventRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AcceptRCInquiredSystemEventResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.event_id):
+            query['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AcceptRCInquiredSystemEvent',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.AcceptRCInquiredSystemEventResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def accept_rcinquired_system_event_with_options_async(
+        self,
+        request: rds_20140815_models.AcceptRCInquiredSystemEventRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.AcceptRCInquiredSystemEventResponse:
+        """
+        @summary 接受并授权执行系统事件操作
+        
+        @param request: AcceptRCInquiredSystemEventRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AcceptRCInquiredSystemEventResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.event_id):
+            query['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AcceptRCInquiredSystemEvent',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.AcceptRCInquiredSystemEventResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def accept_rcinquired_system_event(
+        self,
+        request: rds_20140815_models.AcceptRCInquiredSystemEventRequest,
+    ) -> rds_20140815_models.AcceptRCInquiredSystemEventResponse:
+        """
+        @summary 接受并授权执行系统事件操作
+        
+        @param request: AcceptRCInquiredSystemEventRequest
+        @return: AcceptRCInquiredSystemEventResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.accept_rcinquired_system_event_with_options(request, runtime)
+
+    async def accept_rcinquired_system_event_async(
+        self,
+        request: rds_20140815_models.AcceptRCInquiredSystemEventRequest,
+    ) -> rds_20140815_models.AcceptRCInquiredSystemEventResponse:
+        """
+        @summary 接受并授权执行系统事件操作
+        
+        @param request: AcceptRCInquiredSystemEventRequest
+        @return: AcceptRCInquiredSystemEventResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.accept_rcinquired_system_event_with_options_async(request, runtime)
+
     def activate_migration_target_instance_with_options(
         self,
         request: rds_20140815_models.ActivateMigrationTargetInstanceRequest,
@@ -5984,12 +6084,8 @@ class Client(OpenApiClient):
         """
         @summary Creates an ApsaraDB RDS global active database cluster.
         
-        @description ### [](#)Supported database engine
+        @description ### [](#)Supported database engines
         MySQL
-        <props="china">
-        ### [](#)References
-        > : Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
-        [Create and release an ApsaraDB RDS global active database cluster](https://help.aliyun.com/document_detail/328592.html)
         
         @param request: CreateGADInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6042,12 +6138,8 @@ class Client(OpenApiClient):
         """
         @summary Creates an ApsaraDB RDS global active database cluster.
         
-        @description ### [](#)Supported database engine
+        @description ### [](#)Supported database engines
         MySQL
-        <props="china">
-        ### [](#)References
-        > : Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
-        [Create and release an ApsaraDB RDS global active database cluster](https://help.aliyun.com/document_detail/328592.html)
         
         @param request: CreateGADInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6099,12 +6191,8 @@ class Client(OpenApiClient):
         """
         @summary Creates an ApsaraDB RDS global active database cluster.
         
-        @description ### [](#)Supported database engine
+        @description ### [](#)Supported database engines
         MySQL
-        <props="china">
-        ### [](#)References
-        > : Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
-        [Create and release an ApsaraDB RDS global active database cluster](https://help.aliyun.com/document_detail/328592.html)
         
         @param request: CreateGADInstanceRequest
         @return: CreateGADInstanceResponse
@@ -6119,12 +6207,8 @@ class Client(OpenApiClient):
         """
         @summary Creates an ApsaraDB RDS global active database cluster.
         
-        @description ### [](#)Supported database engine
+        @description ### [](#)Supported database engines
         MySQL
-        <props="china">
-        ### [](#)References
-        > : Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
-        [Create and release an ApsaraDB RDS global active database cluster](https://help.aliyun.com/document_detail/328592.html)
         
         @param request: CreateGADInstanceRequest
         @return: CreateGADInstanceResponse
@@ -27311,6 +27395,398 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_rcinstance_attribute_with_options_async(request, runtime)
+
+    def describe_rcinstance_ddos_count_with_options(
+        self,
+        request: rds_20140815_models.DescribeRCInstanceDdosCountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeRCInstanceDdosCountResponse:
+        """
+        @summary 查询RDS Custom实例被DDos攻击的数量
+        
+        @param request: DescribeRCInstanceDdosCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRCInstanceDdosCountResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ddos_region_id):
+            query['DdosRegionId'] = request.ddos_region_id
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRCInstanceDdosCount',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeRCInstanceDdosCountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_rcinstance_ddos_count_with_options_async(
+        self,
+        request: rds_20140815_models.DescribeRCInstanceDdosCountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeRCInstanceDdosCountResponse:
+        """
+        @summary 查询RDS Custom实例被DDos攻击的数量
+        
+        @param request: DescribeRCInstanceDdosCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRCInstanceDdosCountResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ddos_region_id):
+            query['DdosRegionId'] = request.ddos_region_id
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRCInstanceDdosCount',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeRCInstanceDdosCountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_rcinstance_ddos_count(
+        self,
+        request: rds_20140815_models.DescribeRCInstanceDdosCountRequest,
+    ) -> rds_20140815_models.DescribeRCInstanceDdosCountResponse:
+        """
+        @summary 查询RDS Custom实例被DDos攻击的数量
+        
+        @param request: DescribeRCInstanceDdosCountRequest
+        @return: DescribeRCInstanceDdosCountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_rcinstance_ddos_count_with_options(request, runtime)
+
+    async def describe_rcinstance_ddos_count_async(
+        self,
+        request: rds_20140815_models.DescribeRCInstanceDdosCountRequest,
+    ) -> rds_20140815_models.DescribeRCInstanceDdosCountResponse:
+        """
+        @summary 查询RDS Custom实例被DDos攻击的数量
+        
+        @param request: DescribeRCInstanceDdosCountRequest
+        @return: DescribeRCInstanceDdosCountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_rcinstance_ddos_count_with_options_async(request, runtime)
+
+    def describe_rcinstance_history_events_with_options(
+        self,
+        request: rds_20140815_models.DescribeRCInstanceHistoryEventsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeRCInstanceHistoryEventsResponse:
+        """
+        @summary 查询指定实例系统事件信息
+        
+        @param request: DescribeRCInstanceHistoryEventsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRCInstanceHistoryEventsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.event_cycle_status):
+            query['EventCycleStatus'] = request.event_cycle_status
+        if not UtilClient.is_unset(request.event_id):
+            query['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
+        if not UtilClient.is_unset(request.impact_level):
+            query['ImpactLevel'] = request.impact_level
+        if not UtilClient.is_unset(request.instance_event_cycle_status):
+            query['InstanceEventCycleStatus'] = request.instance_event_cycle_status
+        if not UtilClient.is_unset(request.instance_event_type):
+            query['InstanceEventType'] = request.instance_event_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.event_publish_time):
+            query['EventPublishTime'] = request.event_publish_time
+        if not UtilClient.is_unset(request.not_before):
+            query['NotBefore'] = request.not_before
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRCInstanceHistoryEvents',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeRCInstanceHistoryEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_rcinstance_history_events_with_options_async(
+        self,
+        request: rds_20140815_models.DescribeRCInstanceHistoryEventsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeRCInstanceHistoryEventsResponse:
+        """
+        @summary 查询指定实例系统事件信息
+        
+        @param request: DescribeRCInstanceHistoryEventsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRCInstanceHistoryEventsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.event_cycle_status):
+            query['EventCycleStatus'] = request.event_cycle_status
+        if not UtilClient.is_unset(request.event_id):
+            query['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
+        if not UtilClient.is_unset(request.impact_level):
+            query['ImpactLevel'] = request.impact_level
+        if not UtilClient.is_unset(request.instance_event_cycle_status):
+            query['InstanceEventCycleStatus'] = request.instance_event_cycle_status
+        if not UtilClient.is_unset(request.instance_event_type):
+            query['InstanceEventType'] = request.instance_event_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.event_publish_time):
+            query['EventPublishTime'] = request.event_publish_time
+        if not UtilClient.is_unset(request.not_before):
+            query['NotBefore'] = request.not_before
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRCInstanceHistoryEvents',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeRCInstanceHistoryEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_rcinstance_history_events(
+        self,
+        request: rds_20140815_models.DescribeRCInstanceHistoryEventsRequest,
+    ) -> rds_20140815_models.DescribeRCInstanceHistoryEventsResponse:
+        """
+        @summary 查询指定实例系统事件信息
+        
+        @param request: DescribeRCInstanceHistoryEventsRequest
+        @return: DescribeRCInstanceHistoryEventsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_rcinstance_history_events_with_options(request, runtime)
+
+    async def describe_rcinstance_history_events_async(
+        self,
+        request: rds_20140815_models.DescribeRCInstanceHistoryEventsRequest,
+    ) -> rds_20140815_models.DescribeRCInstanceHistoryEventsResponse:
+        """
+        @summary 查询指定实例系统事件信息
+        
+        @param request: DescribeRCInstanceHistoryEventsRequest
+        @return: DescribeRCInstanceHistoryEventsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_rcinstance_history_events_with_options_async(request, runtime)
+
+    def describe_rcinstance_ip_address_with_options(
+        self,
+        request: rds_20140815_models.DescribeRCInstanceIpAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeRCInstanceIpAddressResponse:
+        """
+        @summary 查询RDS Custom实例的公网IP
+        
+        @param request: DescribeRCInstanceIpAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRCInstanceIpAddressResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.ddos_region_id):
+            query['DdosRegionId'] = request.ddos_region_id
+        if not UtilClient.is_unset(request.ddos_status):
+            query['DdosStatus'] = request.ddos_status
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_ip):
+            query['InstanceIp'] = request.instance_ip
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRCInstanceIpAddress',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeRCInstanceIpAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_rcinstance_ip_address_with_options_async(
+        self,
+        request: rds_20140815_models.DescribeRCInstanceIpAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeRCInstanceIpAddressResponse:
+        """
+        @summary 查询RDS Custom实例的公网IP
+        
+        @param request: DescribeRCInstanceIpAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRCInstanceIpAddressResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.ddos_region_id):
+            query['DdosRegionId'] = request.ddos_region_id
+        if not UtilClient.is_unset(request.ddos_status):
+            query['DdosStatus'] = request.ddos_status
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_ip):
+            query['InstanceIp'] = request.instance_ip
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRCInstanceIpAddress',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeRCInstanceIpAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_rcinstance_ip_address(
+        self,
+        request: rds_20140815_models.DescribeRCInstanceIpAddressRequest,
+    ) -> rds_20140815_models.DescribeRCInstanceIpAddressResponse:
+        """
+        @summary 查询RDS Custom实例的公网IP
+        
+        @param request: DescribeRCInstanceIpAddressRequest
+        @return: DescribeRCInstanceIpAddressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_rcinstance_ip_address_with_options(request, runtime)
+
+    async def describe_rcinstance_ip_address_async(
+        self,
+        request: rds_20140815_models.DescribeRCInstanceIpAddressRequest,
+    ) -> rds_20140815_models.DescribeRCInstanceIpAddressResponse:
+        """
+        @summary 查询RDS Custom实例的公网IP
+        
+        @param request: DescribeRCInstanceIpAddressRequest
+        @return: DescribeRCInstanceIpAddressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_rcinstance_ip_address_with_options_async(request, runtime)
 
     def describe_rcinstance_type_families_with_options(
         self,
@@ -50530,7 +51006,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.SwitchOverMajorVersionUpgradeResponse:
         """
-        @summary 流量切换
+        @summary Performs a zero-downtime workload switchover after the major engine version upgrade of an ApsaraDB RDS for PostgreSQL instance.
+        
+        @description Supported database engine
+        PostgreSQL
         
         @param request: SwitchOverMajorVersionUpgradeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -50573,7 +51052,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.SwitchOverMajorVersionUpgradeResponse:
         """
-        @summary 流量切换
+        @summary Performs a zero-downtime workload switchover after the major engine version upgrade of an ApsaraDB RDS for PostgreSQL instance.
+        
+        @description Supported database engine
+        PostgreSQL
         
         @param request: SwitchOverMajorVersionUpgradeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -50615,7 +51097,10 @@ class Client(OpenApiClient):
         request: rds_20140815_models.SwitchOverMajorVersionUpgradeRequest,
     ) -> rds_20140815_models.SwitchOverMajorVersionUpgradeResponse:
         """
-        @summary 流量切换
+        @summary Performs a zero-downtime workload switchover after the major engine version upgrade of an ApsaraDB RDS for PostgreSQL instance.
+        
+        @description Supported database engine
+        PostgreSQL
         
         @param request: SwitchOverMajorVersionUpgradeRequest
         @return: SwitchOverMajorVersionUpgradeResponse
@@ -50628,7 +51113,10 @@ class Client(OpenApiClient):
         request: rds_20140815_models.SwitchOverMajorVersionUpgradeRequest,
     ) -> rds_20140815_models.SwitchOverMajorVersionUpgradeResponse:
         """
-        @summary 流量切换
+        @summary Performs a zero-downtime workload switchover after the major engine version upgrade of an ApsaraDB RDS for PostgreSQL instance.
+        
+        @description Supported database engine
+        PostgreSQL
         
         @param request: SwitchOverMajorVersionUpgradeRequest
         @return: SwitchOverMajorVersionUpgradeResponse

@@ -4,6 +4,115 @@ from Tea.model import TeaModel
 from typing import Dict, List, Any
 
 
+class AcceptRCInquiredSystemEventRequest(TeaModel):
+    def __init__(
+        self,
+        event_id: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.event_id = event_id
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class AcceptRCInquiredSystemEventResponseBody(TeaModel):
+    def __init__(
+        self,
+        order_id: str = None,
+        request_id: str = None,
+    ):
+        self.order_id = order_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AcceptRCInquiredSystemEventResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AcceptRCInquiredSystemEventResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AcceptRCInquiredSystemEventResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ActivateMigrationTargetInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -11705,16 +11814,12 @@ class CreateRCDiskRequest(TeaModel):
         self.description = description
         # The category of the data disk. Valid values:
         # 
-        # *   **cloud** (default): basic disk
         # *   **cloud_efficiency**: ultra disk.
         # *   **cloud_ssd**: standard SSD.
-        # *   **cloud_essd**: Enterprise ESSD (ESSD).
-        # *   **cloud_auto**: ESSD AutoPL disk
-        # *   **cloud_essd_entry**: ESSD Entry disk
-        # *   **elastic_ephemeral_disk_standard**: standard elastic ephemeral disk
-        # *   **elastic_ephemeral_disk_premium**: premium elastic ephemeral disk
+        # *   **cloud_essd**: ESSD.
+        # *   **cloud_auto**: ESSD AutoPL disk.
         self.disk_category = disk_category
-        # The disk name. The name must be 2 to 128 characters in length and can contain letters and digits. The name can contain colons (:), underscores (_), periods (.), and hyphens (-).
+        # The name of the data disk. The name must be 2 to 128 characters in length and can contain letters and digits. The name can contain colons (:), underscores (_), periods (.), and hyphens (-).
         # 
         # By default, this parameter is left empty.
         self.disk_name = disk_name
@@ -11729,7 +11834,7 @@ class CreateRCDiskRequest(TeaModel):
         # *   **PL2**: A single ESSD delivers up to 100,000 random read/write IOPS.
         # *   **PL3**: A single ESSD delivers up to 1,000,000 random read/write IOPS.
         # 
-        # For information about ESSD PLs, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
+        # For information about ESSD PLs, see [ESSDs](https://help.aliyun.com/document_detail/2859916.html).
         self.performance_level = performance_level
         # A reserved parameter. You do not need to specify this parameter.
         self.period = period
@@ -11739,11 +11844,9 @@ class CreateRCDiskRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The disk size. Unit: GiB. This parameter is required.
+        # The disk size. Unit: GiB. This parameter is required. Valid values:
         # 
-        # *   Valid values if you set DiskCategory to **cloud**: 5 to 2000.
-        # 
-        # *   Valid values if you set DiskCategory to **cloud_efficiency**: 20 to 32768.
+        # *   Valid values if you set DiskCategory to **cloud_essd_entry**: 10 to 32768.
         # 
         # *   Valid values if you set DiskCategory to **cloud_ssd**: 20 to 32768.
         # 
@@ -11755,12 +11858,6 @@ class CreateRCDiskRequest(TeaModel):
         #     *   Valid values if PerformanceLevel is set to PL3: 1261 to 65536
         # 
         # *   Valid values if you set DiskCategory to **cloud_auto**: 1 to 65536.
-        # 
-        # *   Valid values if you set DiskCategory to **cloud_essd_entry**: 10 to 32768.
-        # 
-        # *   Valid values if you set DiskCategory to **elastic_ephemeral_disk_standard**: 64 to 8192.
-        # 
-        # *   Valid values if you set DiskCategory to **elastic_ephemeral_disk_premium**: 64 to 8192.
         # 
         # If `SnapshotId` is specified, the following limits apply to `SnapshotId` and `Size`:
         # 
@@ -11774,6 +11871,8 @@ class CreateRCDiskRequest(TeaModel):
         # *   You cannot create elastic ephemeral disks from snapshots.
         self.snapshot_id = snapshot_id
         # The zone ID.
+        # 
+        # This parameter is required if you do not specify **InstanceId**.
         self.zone_id = zone_id
 
     def validate(self):
@@ -11855,7 +11954,7 @@ class CreateRCDiskResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The disk ID.
+        # The cloud disk ID.
         self.disk_id = disk_id
         # The order ID.
         self.order_id = order_id
@@ -49538,13 +49637,13 @@ class DescribePriceRequest(TeaModel):
         # The commodity code of the instance. Valid values:
         # 
         # *   **bards**: The instance is a pay-as-you-go primary instance. This value is available at the China site (aliyun.com).
-        # *   **rds** (default): The instance is a subscription primary instance. This value is available on the China site (aliyun.com).
+        # *   **rds** (default): The instance is a subscription primary instance. This value is available at the China site (aliyun.com).
         # *   **rords**: The instance is a pay-as-you-go read-only instance. This value is available at the China site (aliyun.com).
         # *   **rds_rordspre_public_cn**: The instance is a subscription read-only instance. This value is available at the China site (aliyun.com).
         # *   **bards_intl**: The instance is a pay-as-you-go primary instance. This value is available at the international site (alibabacloud.com).
         # *   **rds_intl**: The instance is a subscription primary instance. This value is available at the international site (alibabacloud.com).
         # *   **rords_intl**: The instance is a pay-as-you-go read-only instance. This value is available at the international site (alibabacloud.com).
-        # *   **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the international site (alibabacloud.com).
+        # *   **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available at the international site (alibabacloud.com).
         # 
         # >  If you want to query the price of a read-only instance, you must specify this parameter.
         self.commodity_code = commodity_code
@@ -49787,13 +49886,13 @@ class DescribePriceShrinkRequest(TeaModel):
         # The commodity code of the instance. Valid values:
         # 
         # *   **bards**: The instance is a pay-as-you-go primary instance. This value is available at the China site (aliyun.com).
-        # *   **rds** (default): The instance is a subscription primary instance. This value is available on the China site (aliyun.com).
+        # *   **rds** (default): The instance is a subscription primary instance. This value is available at the China site (aliyun.com).
         # *   **rords**: The instance is a pay-as-you-go read-only instance. This value is available at the China site (aliyun.com).
         # *   **rds_rordspre_public_cn**: The instance is a subscription read-only instance. This value is available at the China site (aliyun.com).
         # *   **bards_intl**: The instance is a pay-as-you-go primary instance. This value is available at the international site (alibabacloud.com).
         # *   **rds_intl**: The instance is a subscription primary instance. This value is available at the international site (alibabacloud.com).
         # *   **rords_intl**: The instance is a pay-as-you-go read-only instance. This value is available at the international site (alibabacloud.com).
-        # *   **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the international site (alibabacloud.com).
+        # *   **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available at the international site (alibabacloud.com).
         # 
         # >  If you want to query the price of a read-only instance, you must specify this parameter.
         self.commodity_code = commodity_code
@@ -53643,6 +53742,1137 @@ class DescribeRCInstanceAttributeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeRCInstanceAttributeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeRCInstanceDdosCountRequest(TeaModel):
+    def __init__(
+        self,
+        ddos_region_id: str = None,
+        instance_type: str = None,
+        region_id: str = None,
+    ):
+        self.ddos_region_id = ddos_region_id
+        self.instance_type = instance_type
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ddos_region_id is not None:
+            result['DdosRegionId'] = self.ddos_region_id
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DdosRegionId') is not None:
+            self.ddos_region_id = m.get('DdosRegionId')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeRCInstanceDdosCountResponseBodyDdosCount(TeaModel):
+    def __init__(
+        self,
+        blackhole_count: str = None,
+        defense_count: str = None,
+        instacen_count: str = None,
+    ):
+        self.blackhole_count = blackhole_count
+        self.defense_count = defense_count
+        self.instacen_count = instacen_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.blackhole_count is not None:
+            result['BlackholeCount'] = self.blackhole_count
+        if self.defense_count is not None:
+            result['DefenseCount'] = self.defense_count
+        if self.instacen_count is not None:
+            result['InstacenCount'] = self.instacen_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BlackholeCount') is not None:
+            self.blackhole_count = m.get('BlackholeCount')
+        if m.get('DefenseCount') is not None:
+            self.defense_count = m.get('DefenseCount')
+        if m.get('InstacenCount') is not None:
+            self.instacen_count = m.get('InstacenCount')
+        return self
+
+
+class DescribeRCInstanceDdosCountResponseBody(TeaModel):
+    def __init__(
+        self,
+        ddos_count: DescribeRCInstanceDdosCountResponseBodyDdosCount = None,
+        request_id: str = None,
+    ):
+        self.ddos_count = ddos_count
+        self.request_id = request_id
+
+    def validate(self):
+        if self.ddos_count:
+            self.ddos_count.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ddos_count is not None:
+            result['DdosCount'] = self.ddos_count.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DdosCount') is not None:
+            temp_model = DescribeRCInstanceDdosCountResponseBodyDdosCount()
+            self.ddos_count = temp_model.from_map(m['DdosCount'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeRCInstanceDdosCountResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeRCInstanceDdosCountResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeRCInstanceDdosCountResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeRCInstanceHistoryEventsRequestEventPublishTime(TeaModel):
+    def __init__(
+        self,
+        end: str = None,
+        start: str = None,
+    ):
+        self.end = end
+        self.start = start
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end is not None:
+            result['End'] = self.end
+        if self.start is not None:
+            result['Start'] = self.start
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('End') is not None:
+            self.end = m.get('End')
+        if m.get('Start') is not None:
+            self.start = m.get('Start')
+        return self
+
+
+class DescribeRCInstanceHistoryEventsRequestNotBefore(TeaModel):
+    def __init__(
+        self,
+        end: str = None,
+        start: str = None,
+    ):
+        self.end = end
+        self.start = start
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end is not None:
+            result['End'] = self.end
+        if self.start is not None:
+            result['Start'] = self.start
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('End') is not None:
+            self.end = m.get('End')
+        if m.get('Start') is not None:
+            self.start = m.get('Start')
+        return self
+
+
+class DescribeRCInstanceHistoryEventsRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeRCInstanceHistoryEventsRequest(TeaModel):
+    def __init__(
+        self,
+        event_publish_time: DescribeRCInstanceHistoryEventsRequestEventPublishTime = None,
+        not_before: DescribeRCInstanceHistoryEventsRequestNotBefore = None,
+        event_cycle_status: str = None,
+        event_id: List[str] = None,
+        event_type: str = None,
+        impact_level: str = None,
+        instance_event_cycle_status: List[str] = None,
+        instance_event_type: List[str] = None,
+        instance_id: str = None,
+        max_results: str = None,
+        page_number: str = None,
+        page_size: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        resource_id: List[str] = None,
+        tag: List[DescribeRCInstanceHistoryEventsRequestTag] = None,
+    ):
+        self.event_publish_time = event_publish_time
+        self.not_before = not_before
+        self.event_cycle_status = event_cycle_status
+        self.event_id = event_id
+        self.event_type = event_type
+        self.impact_level = impact_level
+        self.instance_event_cycle_status = instance_event_cycle_status
+        self.instance_event_type = instance_event_type
+        self.instance_id = instance_id
+        self.max_results = max_results
+        self.page_number = page_number
+        self.page_size = page_size
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.resource_id = resource_id
+        self.tag = tag
+
+    def validate(self):
+        if self.event_publish_time:
+            self.event_publish_time.validate()
+        if self.not_before:
+            self.not_before.validate()
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_publish_time is not None:
+            result['EventPublishTime'] = self.event_publish_time.to_map()
+        if self.not_before is not None:
+            result['NotBefore'] = self.not_before.to_map()
+        if self.event_cycle_status is not None:
+            result['EventCycleStatus'] = self.event_cycle_status
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.event_type is not None:
+            result['EventType'] = self.event_type
+        if self.impact_level is not None:
+            result['ImpactLevel'] = self.impact_level
+        if self.instance_event_cycle_status is not None:
+            result['InstanceEventCycleStatus'] = self.instance_event_cycle_status
+        if self.instance_event_type is not None:
+            result['InstanceEventType'] = self.instance_event_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventPublishTime') is not None:
+            temp_model = DescribeRCInstanceHistoryEventsRequestEventPublishTime()
+            self.event_publish_time = temp_model.from_map(m['EventPublishTime'])
+        if m.get('NotBefore') is not None:
+            temp_model = DescribeRCInstanceHistoryEventsRequestNotBefore()
+            self.not_before = temp_model.from_map(m['NotBefore'])
+        if m.get('EventCycleStatus') is not None:
+            self.event_cycle_status = m.get('EventCycleStatus')
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('EventType') is not None:
+            self.event_type = m.get('EventType')
+        if m.get('ImpactLevel') is not None:
+            self.impact_level = m.get('ImpactLevel')
+        if m.get('InstanceEventCycleStatus') is not None:
+            self.instance_event_cycle_status = m.get('InstanceEventCycleStatus')
+        if m.get('InstanceEventType') is not None:
+            self.instance_event_type = m.get('InstanceEventType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeRCInstanceHistoryEventsRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeRCInstanceHistoryEventsResponseBodyInstanceSystemEventSetEventCycleStatus(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        name: str = None,
+    ):
+        self.code = code
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class DescribeRCInstanceHistoryEventsResponseBodyInstanceSystemEventSetEventType(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        name: str = None,
+    ):
+        self.code = code
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class DescribeRCInstanceHistoryEventsResponseBodyInstanceSystemEventSetExtendedAttributeInactiveDisks(TeaModel):
+    def __init__(
+        self,
+        creation_time: str = None,
+        device_category: str = None,
+        device_size: str = None,
+        device_type: str = None,
+        release_time: str = None,
+    ):
+        self.creation_time = creation_time
+        self.device_category = device_category
+        self.device_size = device_size
+        self.device_type = device_type
+        self.release_time = release_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.device_category is not None:
+            result['DeviceCategory'] = self.device_category
+        if self.device_size is not None:
+            result['DeviceSize'] = self.device_size
+        if self.device_type is not None:
+            result['DeviceType'] = self.device_type
+        if self.release_time is not None:
+            result['ReleaseTime'] = self.release_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('DeviceCategory') is not None:
+            self.device_category = m.get('DeviceCategory')
+        if m.get('DeviceSize') is not None:
+            self.device_size = m.get('DeviceSize')
+        if m.get('DeviceType') is not None:
+            self.device_type = m.get('DeviceType')
+        if m.get('ReleaseTime') is not None:
+            self.release_time = m.get('ReleaseTime')
+        return self
+
+
+class DescribeRCInstanceHistoryEventsResponseBodyInstanceSystemEventSetExtendedAttribute(TeaModel):
+    def __init__(
+        self,
+        can_accept: str = None,
+        code: str = None,
+        device: str = None,
+        disk_id: str = None,
+        host_id: str = None,
+        host_type: str = None,
+        inactive_disks: List[DescribeRCInstanceHistoryEventsResponseBodyInstanceSystemEventSetExtendedAttributeInactiveDisks] = None,
+        migration_options: List[str] = None,
+        online_repair_policy: str = None,
+        punish_domain: str = None,
+        punish_type: str = None,
+        punish_url: str = None,
+        rack: str = None,
+        response_result: str = None,
+    ):
+        self.can_accept = can_accept
+        self.code = code
+        self.device = device
+        self.disk_id = disk_id
+        self.host_id = host_id
+        self.host_type = host_type
+        self.inactive_disks = inactive_disks
+        self.migration_options = migration_options
+        self.online_repair_policy = online_repair_policy
+        self.punish_domain = punish_domain
+        self.punish_type = punish_type
+        self.punish_url = punish_url
+        self.rack = rack
+        self.response_result = response_result
+
+    def validate(self):
+        if self.inactive_disks:
+            for k in self.inactive_disks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.can_accept is not None:
+            result['CanAccept'] = self.can_accept
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.device is not None:
+            result['Device'] = self.device
+        if self.disk_id is not None:
+            result['DiskId'] = self.disk_id
+        if self.host_id is not None:
+            result['HostId'] = self.host_id
+        if self.host_type is not None:
+            result['HostType'] = self.host_type
+        result['InactiveDisks'] = []
+        if self.inactive_disks is not None:
+            for k in self.inactive_disks:
+                result['InactiveDisks'].append(k.to_map() if k else None)
+        if self.migration_options is not None:
+            result['MigrationOptions'] = self.migration_options
+        if self.online_repair_policy is not None:
+            result['OnlineRepairPolicy'] = self.online_repair_policy
+        if self.punish_domain is not None:
+            result['PunishDomain'] = self.punish_domain
+        if self.punish_type is not None:
+            result['PunishType'] = self.punish_type
+        if self.punish_url is not None:
+            result['PunishUrl'] = self.punish_url
+        if self.rack is not None:
+            result['Rack'] = self.rack
+        if self.response_result is not None:
+            result['ResponseResult'] = self.response_result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CanAccept') is not None:
+            self.can_accept = m.get('CanAccept')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Device') is not None:
+            self.device = m.get('Device')
+        if m.get('DiskId') is not None:
+            self.disk_id = m.get('DiskId')
+        if m.get('HostId') is not None:
+            self.host_id = m.get('HostId')
+        if m.get('HostType') is not None:
+            self.host_type = m.get('HostType')
+        self.inactive_disks = []
+        if m.get('InactiveDisks') is not None:
+            for k in m.get('InactiveDisks'):
+                temp_model = DescribeRCInstanceHistoryEventsResponseBodyInstanceSystemEventSetExtendedAttributeInactiveDisks()
+                self.inactive_disks.append(temp_model.from_map(k))
+        if m.get('MigrationOptions') is not None:
+            self.migration_options = m.get('MigrationOptions')
+        if m.get('OnlineRepairPolicy') is not None:
+            self.online_repair_policy = m.get('OnlineRepairPolicy')
+        if m.get('PunishDomain') is not None:
+            self.punish_domain = m.get('PunishDomain')
+        if m.get('PunishType') is not None:
+            self.punish_type = m.get('PunishType')
+        if m.get('PunishUrl') is not None:
+            self.punish_url = m.get('PunishUrl')
+        if m.get('Rack') is not None:
+            self.rack = m.get('Rack')
+        if m.get('ResponseResult') is not None:
+            self.response_result = m.get('ResponseResult')
+        return self
+
+
+class DescribeRCInstanceHistoryEventsResponseBodyInstanceSystemEventSet(TeaModel):
+    def __init__(
+        self,
+        event_cycle_status: DescribeRCInstanceHistoryEventsResponseBodyInstanceSystemEventSetEventCycleStatus = None,
+        event_finish_time: str = None,
+        event_id: str = None,
+        event_publish_time: str = None,
+        event_type: DescribeRCInstanceHistoryEventsResponseBodyInstanceSystemEventSetEventType = None,
+        extended_attribute: DescribeRCInstanceHistoryEventsResponseBodyInstanceSystemEventSetExtendedAttribute = None,
+        impact_level: str = None,
+        instance_id: str = None,
+        not_before: str = None,
+        reason: str = None,
+        reason_code: str = None,
+        resource_type: str = None,
+    ):
+        self.event_cycle_status = event_cycle_status
+        self.event_finish_time = event_finish_time
+        self.event_id = event_id
+        self.event_publish_time = event_publish_time
+        self.event_type = event_type
+        self.extended_attribute = extended_attribute
+        self.impact_level = impact_level
+        self.instance_id = instance_id
+        self.not_before = not_before
+        self.reason = reason
+        self.reason_code = reason_code
+        self.resource_type = resource_type
+
+    def validate(self):
+        if self.event_cycle_status:
+            self.event_cycle_status.validate()
+        if self.event_type:
+            self.event_type.validate()
+        if self.extended_attribute:
+            self.extended_attribute.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_cycle_status is not None:
+            result['EventCycleStatus'] = self.event_cycle_status.to_map()
+        if self.event_finish_time is not None:
+            result['EventFinishTime'] = self.event_finish_time
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.event_publish_time is not None:
+            result['EventPublishTime'] = self.event_publish_time
+        if self.event_type is not None:
+            result['EventType'] = self.event_type.to_map()
+        if self.extended_attribute is not None:
+            result['ExtendedAttribute'] = self.extended_attribute.to_map()
+        if self.impact_level is not None:
+            result['ImpactLevel'] = self.impact_level
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.not_before is not None:
+            result['NotBefore'] = self.not_before
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.reason_code is not None:
+            result['ReasonCode'] = self.reason_code
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventCycleStatus') is not None:
+            temp_model = DescribeRCInstanceHistoryEventsResponseBodyInstanceSystemEventSetEventCycleStatus()
+            self.event_cycle_status = temp_model.from_map(m['EventCycleStatus'])
+        if m.get('EventFinishTime') is not None:
+            self.event_finish_time = m.get('EventFinishTime')
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('EventPublishTime') is not None:
+            self.event_publish_time = m.get('EventPublishTime')
+        if m.get('EventType') is not None:
+            temp_model = DescribeRCInstanceHistoryEventsResponseBodyInstanceSystemEventSetEventType()
+            self.event_type = temp_model.from_map(m['EventType'])
+        if m.get('ExtendedAttribute') is not None:
+            temp_model = DescribeRCInstanceHistoryEventsResponseBodyInstanceSystemEventSetExtendedAttribute()
+            self.extended_attribute = temp_model.from_map(m['ExtendedAttribute'])
+        if m.get('ImpactLevel') is not None:
+            self.impact_level = m.get('ImpactLevel')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NotBefore') is not None:
+            self.not_before = m.get('NotBefore')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('ReasonCode') is not None:
+            self.reason_code = m.get('ReasonCode')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class DescribeRCInstanceHistoryEventsResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_system_event_set: List[DescribeRCInstanceHistoryEventsResponseBodyInstanceSystemEventSet] = None,
+        next_token: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.instance_system_event_set = instance_system_event_set
+        self.next_token = next_token
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.instance_system_event_set:
+            for k in self.instance_system_event_set:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['InstanceSystemEventSet'] = []
+        if self.instance_system_event_set is not None:
+            for k in self.instance_system_event_set:
+                result['InstanceSystemEventSet'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.instance_system_event_set = []
+        if m.get('InstanceSystemEventSet') is not None:
+            for k in m.get('InstanceSystemEventSet'):
+                temp_model = DescribeRCInstanceHistoryEventsResponseBodyInstanceSystemEventSet()
+                self.instance_system_event_set.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeRCInstanceHistoryEventsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeRCInstanceHistoryEventsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeRCInstanceHistoryEventsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeRCInstanceIpAddressRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        ddos_region_id: str = None,
+        ddos_status: str = None,
+        instance_id: str = None,
+        instance_ip: str = None,
+        instance_name: str = None,
+        instance_type: str = None,
+        page_size: int = None,
+        region_id: str = None,
+        resource_type: str = None,
+    ):
+        self.current_page = current_page
+        self.ddos_region_id = ddos_region_id
+        self.ddos_status = ddos_status
+        self.instance_id = instance_id
+        self.instance_ip = instance_ip
+        self.instance_name = instance_name
+        self.instance_type = instance_type
+        self.page_size = page_size
+        self.region_id = region_id
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.ddos_region_id is not None:
+            result['DdosRegionId'] = self.ddos_region_id
+        if self.ddos_status is not None:
+            result['DdosStatus'] = self.ddos_status
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_ip is not None:
+            result['InstanceIp'] = self.instance_ip
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('DdosRegionId') is not None:
+            self.ddos_region_id = m.get('DdosRegionId')
+        if m.get('DdosStatus') is not None:
+            self.ddos_status = m.get('DdosStatus')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceIp') is not None:
+            self.instance_ip = m.get('InstanceIp')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class DescribeRCInstanceIpAddressResponseBodyRCInstanceListIpAddressConfig(TeaModel):
+    def __init__(
+        self,
+        blackhole_threshold: int = None,
+        defense_bps_threshold: int = None,
+        defense_pps_threshold: int = None,
+        elastic_threshold: int = None,
+        instance_ip: str = None,
+        ip_status: str = None,
+        ip_version: str = None,
+        is_bgppack: bool = None,
+        is_full_protection: int = None,
+        region_id: str = None,
+    ):
+        self.blackhole_threshold = blackhole_threshold
+        self.defense_bps_threshold = defense_bps_threshold
+        self.defense_pps_threshold = defense_pps_threshold
+        self.elastic_threshold = elastic_threshold
+        self.instance_ip = instance_ip
+        self.ip_status = ip_status
+        self.ip_version = ip_version
+        self.is_bgppack = is_bgppack
+        self.is_full_protection = is_full_protection
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.blackhole_threshold is not None:
+            result['BlackholeThreshold'] = self.blackhole_threshold
+        if self.defense_bps_threshold is not None:
+            result['DefenseBpsThreshold'] = self.defense_bps_threshold
+        if self.defense_pps_threshold is not None:
+            result['DefensePpsThreshold'] = self.defense_pps_threshold
+        if self.elastic_threshold is not None:
+            result['ElasticThreshold'] = self.elastic_threshold
+        if self.instance_ip is not None:
+            result['InstanceIp'] = self.instance_ip
+        if self.ip_status is not None:
+            result['IpStatus'] = self.ip_status
+        if self.ip_version is not None:
+            result['IpVersion'] = self.ip_version
+        if self.is_bgppack is not None:
+            result['IsBgppack'] = self.is_bgppack
+        if self.is_full_protection is not None:
+            result['IsFullProtection'] = self.is_full_protection
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BlackholeThreshold') is not None:
+            self.blackhole_threshold = m.get('BlackholeThreshold')
+        if m.get('DefenseBpsThreshold') is not None:
+            self.defense_bps_threshold = m.get('DefenseBpsThreshold')
+        if m.get('DefensePpsThreshold') is not None:
+            self.defense_pps_threshold = m.get('DefensePpsThreshold')
+        if m.get('ElasticThreshold') is not None:
+            self.elastic_threshold = m.get('ElasticThreshold')
+        if m.get('InstanceIp') is not None:
+            self.instance_ip = m.get('InstanceIp')
+        if m.get('IpStatus') is not None:
+            self.ip_status = m.get('IpStatus')
+        if m.get('IpVersion') is not None:
+            self.ip_version = m.get('IpVersion')
+        if m.get('IsBgppack') is not None:
+            self.is_bgppack = m.get('IsBgppack')
+        if m.get('IsFullProtection') is not None:
+            self.is_full_protection = m.get('IsFullProtection')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeRCInstanceIpAddressResponseBodyRCInstanceList(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        instance_name: str = None,
+        instance_status: str = None,
+        instance_type: str = None,
+        ip_address_config: List[DescribeRCInstanceIpAddressResponseBodyRCInstanceListIpAddressConfig] = None,
+    ):
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.instance_status = instance_status
+        self.instance_type = instance_type
+        self.ip_address_config = ip_address_config
+
+    def validate(self):
+        if self.ip_address_config:
+            for k in self.ip_address_config:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.instance_status is not None:
+            result['InstanceStatus'] = self.instance_status
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        result['IpAddressConfig'] = []
+        if self.ip_address_config is not None:
+            for k in self.ip_address_config:
+                result['IpAddressConfig'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('InstanceStatus') is not None:
+            self.instance_status = m.get('InstanceStatus')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        self.ip_address_config = []
+        if m.get('IpAddressConfig') is not None:
+            for k in m.get('IpAddressConfig'):
+                temp_model = DescribeRCInstanceIpAddressResponseBodyRCInstanceListIpAddressConfig()
+                self.ip_address_config.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeRCInstanceIpAddressResponseBody(TeaModel):
+    def __init__(
+        self,
+        rcinstance_list: List[DescribeRCInstanceIpAddressResponseBodyRCInstanceList] = None,
+        request_id: str = None,
+        total: str = None,
+    ):
+        self.rcinstance_list = rcinstance_list
+        self.request_id = request_id
+        self.total = total
+
+    def validate(self):
+        if self.rcinstance_list:
+            for k in self.rcinstance_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['RCInstanceList'] = []
+        if self.rcinstance_list is not None:
+            for k in self.rcinstance_list:
+                result['RCInstanceList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.rcinstance_list = []
+        if m.get('RCInstanceList') is not None:
+            for k in m.get('RCInstanceList'):
+                temp_model = DescribeRCInstanceIpAddressResponseBodyRCInstanceList()
+                self.rcinstance_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class DescribeRCInstanceIpAddressResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeRCInstanceIpAddressResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeRCInstanceIpAddressResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
