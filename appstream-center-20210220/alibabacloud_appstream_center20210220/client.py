@@ -206,6 +206,8 @@ class Client(OpenApiClient):
             query['AvailableFeatures'] = request.available_features_shrink
         if not UtilClient.is_unset(request.client_id):
             query['ClientId'] = request.client_id
+        if not UtilClient.is_unset(request.client_name):
+            query['ClientName'] = request.client_name
         if not UtilClient.is_unset(request.client_os):
             query['ClientOS'] = request.client_os
         if not UtilClient.is_unset(request.client_type):
@@ -254,6 +256,8 @@ class Client(OpenApiClient):
             query['Phone'] = request.phone
         if not UtilClient.is_unset(request.phone_verify_code):
             query['PhoneVerifyCode'] = request.phone_verify_code
+        if not UtilClient.is_unset(request.profile_region):
+            query['ProfileRegion'] = request.profile_region
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.session_id):
@@ -311,6 +315,8 @@ class Client(OpenApiClient):
             query['AvailableFeatures'] = request.available_features_shrink
         if not UtilClient.is_unset(request.client_id):
             query['ClientId'] = request.client_id
+        if not UtilClient.is_unset(request.client_name):
+            query['ClientName'] = request.client_name
         if not UtilClient.is_unset(request.client_os):
             query['ClientOS'] = request.client_os
         if not UtilClient.is_unset(request.client_type):
@@ -359,6 +365,8 @@ class Client(OpenApiClient):
             query['Phone'] = request.phone
         if not UtilClient.is_unset(request.phone_verify_code):
             query['PhoneVerifyCode'] = request.phone_verify_code
+        if not UtilClient.is_unset(request.profile_region):
+            query['ProfileRegion'] = request.profile_region
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.session_id):

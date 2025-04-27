@@ -433,6 +433,7 @@ class GetLoginTokenRequest(TeaModel):
         authentication_code: str = None,
         available_features: Dict[str, str] = None,
         client_id: str = None,
+        client_name: str = None,
         client_os: str = None,
         client_type: str = None,
         client_version: str = None,
@@ -457,6 +458,7 @@ class GetLoginTokenRequest(TeaModel):
         password: str = None,
         phone: str = None,
         phone_verify_code: str = None,
+        profile_region: str = None,
         region_id: str = None,
         session_id: str = None,
         sso_extends_cookies: str = None,
@@ -469,6 +471,7 @@ class GetLoginTokenRequest(TeaModel):
         self.available_features = available_features
         # This parameter is required.
         self.client_id = client_id
+        self.client_name = client_name
         self.client_os = client_os
         self.client_type = client_type
         self.client_version = client_version
@@ -493,6 +496,7 @@ class GetLoginTokenRequest(TeaModel):
         self.password = password
         self.phone = phone
         self.phone_verify_code = phone_verify_code
+        self.profile_region = profile_region
         self.region_id = region_id
         self.session_id = session_id
         self.sso_extends_cookies = sso_extends_cookies
@@ -516,6 +520,8 @@ class GetLoginTokenRequest(TeaModel):
             result['AvailableFeatures'] = self.available_features
         if self.client_id is not None:
             result['ClientId'] = self.client_id
+        if self.client_name is not None:
+            result['ClientName'] = self.client_name
         if self.client_os is not None:
             result['ClientOS'] = self.client_os
         if self.client_type is not None:
@@ -564,6 +570,8 @@ class GetLoginTokenRequest(TeaModel):
             result['Phone'] = self.phone
         if self.phone_verify_code is not None:
             result['PhoneVerifyCode'] = self.phone_verify_code
+        if self.profile_region is not None:
+            result['ProfileRegion'] = self.profile_region
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.session_id is not None:
@@ -588,6 +596,8 @@ class GetLoginTokenRequest(TeaModel):
             self.available_features = m.get('AvailableFeatures')
         if m.get('ClientId') is not None:
             self.client_id = m.get('ClientId')
+        if m.get('ClientName') is not None:
+            self.client_name = m.get('ClientName')
         if m.get('ClientOS') is not None:
             self.client_os = m.get('ClientOS')
         if m.get('ClientType') is not None:
@@ -636,6 +646,8 @@ class GetLoginTokenRequest(TeaModel):
             self.phone = m.get('Phone')
         if m.get('PhoneVerifyCode') is not None:
             self.phone_verify_code = m.get('PhoneVerifyCode')
+        if m.get('ProfileRegion') is not None:
+            self.profile_region = m.get('ProfileRegion')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('SessionId') is not None:
@@ -659,6 +671,7 @@ class GetLoginTokenShrinkRequest(TeaModel):
         authentication_code: str = None,
         available_features_shrink: str = None,
         client_id: str = None,
+        client_name: str = None,
         client_os: str = None,
         client_type: str = None,
         client_version: str = None,
@@ -683,6 +696,7 @@ class GetLoginTokenShrinkRequest(TeaModel):
         password: str = None,
         phone: str = None,
         phone_verify_code: str = None,
+        profile_region: str = None,
         region_id: str = None,
         session_id: str = None,
         sso_extends_cookies: str = None,
@@ -695,6 +709,7 @@ class GetLoginTokenShrinkRequest(TeaModel):
         self.available_features_shrink = available_features_shrink
         # This parameter is required.
         self.client_id = client_id
+        self.client_name = client_name
         self.client_os = client_os
         self.client_type = client_type
         self.client_version = client_version
@@ -719,6 +734,7 @@ class GetLoginTokenShrinkRequest(TeaModel):
         self.password = password
         self.phone = phone
         self.phone_verify_code = phone_verify_code
+        self.profile_region = profile_region
         self.region_id = region_id
         self.session_id = session_id
         self.sso_extends_cookies = sso_extends_cookies
@@ -742,6 +758,8 @@ class GetLoginTokenShrinkRequest(TeaModel):
             result['AvailableFeatures'] = self.available_features_shrink
         if self.client_id is not None:
             result['ClientId'] = self.client_id
+        if self.client_name is not None:
+            result['ClientName'] = self.client_name
         if self.client_os is not None:
             result['ClientOS'] = self.client_os
         if self.client_type is not None:
@@ -790,6 +808,8 @@ class GetLoginTokenShrinkRequest(TeaModel):
             result['Phone'] = self.phone
         if self.phone_verify_code is not None:
             result['PhoneVerifyCode'] = self.phone_verify_code
+        if self.profile_region is not None:
+            result['ProfileRegion'] = self.profile_region
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.session_id is not None:
@@ -814,6 +834,8 @@ class GetLoginTokenShrinkRequest(TeaModel):
             self.available_features_shrink = m.get('AvailableFeatures')
         if m.get('ClientId') is not None:
             self.client_id = m.get('ClientId')
+        if m.get('ClientName') is not None:
+            self.client_name = m.get('ClientName')
         if m.get('ClientOS') is not None:
             self.client_os = m.get('ClientOS')
         if m.get('ClientType') is not None:
@@ -862,6 +884,8 @@ class GetLoginTokenShrinkRequest(TeaModel):
             self.phone = m.get('Phone')
         if m.get('PhoneVerifyCode') is not None:
             self.phone_verify_code = m.get('PhoneVerifyCode')
+        if m.get('ProfileRegion') is not None:
+            self.profile_region = m.get('ProfileRegion')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('SessionId') is not None:
@@ -1038,6 +1062,7 @@ class GetLoginTokenResponseBody(TeaModel):
         login_token: str = None,
         mfa_type_list: List[GetLoginTokenResponseBodyMfaTypeList] = None,
         next_stage: str = None,
+        nick_name: str = None,
         office_sites: List[str] = None,
         password_strategy: GetLoginTokenResponseBodyPasswordStrategy = None,
         phone: str = None,
@@ -1067,6 +1092,7 @@ class GetLoginTokenResponseBody(TeaModel):
         self.login_token = login_token
         self.mfa_type_list = mfa_type_list
         self.next_stage = next_stage
+        self.nick_name = nick_name
         self.office_sites = office_sites
         self.password_strategy = password_strategy
         self.phone = phone
@@ -1130,6 +1156,8 @@ class GetLoginTokenResponseBody(TeaModel):
                 result['MfaTypeList'].append(k.to_map() if k else None)
         if self.next_stage is not None:
             result['NextStage'] = self.next_stage
+        if self.nick_name is not None:
+            result['NickName'] = self.nick_name
         if self.office_sites is not None:
             result['OfficeSites'] = self.office_sites
         if self.password_strategy is not None:
@@ -1195,6 +1223,8 @@ class GetLoginTokenResponseBody(TeaModel):
                 self.mfa_type_list.append(temp_model.from_map(k))
         if m.get('NextStage') is not None:
             self.next_stage = m.get('NextStage')
+        if m.get('NickName') is not None:
+            self.nick_name = m.get('NickName')
         if m.get('OfficeSites') is not None:
             self.office_sites = m.get('OfficeSites')
         if m.get('PasswordStrategy') is not None:

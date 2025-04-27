@@ -1,3 +1,9 @@
+2025-04-27 Version: 1.2.2
+- Update API GetLoginToken: add request parameters ClientName.
+- Update API GetLoginToken: add request parameters ProfileRegion.
+- Update API GetLoginToken: add response parameters Body.NickName.
+
+
 2024-12-13 Version: 1.2.1
 - Update API FindIdpListByLoginIdentifier: update param ClientIp.
 - Update API FindIdpListByLoginIdentifier: update param ClientIp.
