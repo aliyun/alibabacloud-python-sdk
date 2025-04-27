@@ -423,6 +423,8 @@ class Client(OpenApiClient):
             query['AutoRenewPeriod'] = request.auto_renew_period
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.edition):
+            query['Edition'] = request.edition
         if not UtilClient.is_unset(request.encrypted_instance):
             query['EncryptedInstance'] = request.encrypted_instance
         if not UtilClient.is_unset(request.instance_name):
@@ -443,6 +445,8 @@ class Client(OpenApiClient):
             query['Period'] = request.period
         if not UtilClient.is_unset(request.period_cycle):
             query['PeriodCycle'] = request.period_cycle
+        if not UtilClient.is_unset(request.provisioned_capacity):
+            query['ProvisionedCapacity'] = request.provisioned_capacity
         if not UtilClient.is_unset(request.queue_capacity):
             query['QueueCapacity'] = request.queue_capacity
         if not UtilClient.is_unset(request.renew_status):
@@ -502,6 +506,8 @@ class Client(OpenApiClient):
             query['AutoRenewPeriod'] = request.auto_renew_period
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.edition):
+            query['Edition'] = request.edition
         if not UtilClient.is_unset(request.encrypted_instance):
             query['EncryptedInstance'] = request.encrypted_instance
         if not UtilClient.is_unset(request.instance_name):
@@ -522,6 +528,8 @@ class Client(OpenApiClient):
             query['Period'] = request.period
         if not UtilClient.is_unset(request.period_cycle):
             query['PeriodCycle'] = request.period_cycle
+        if not UtilClient.is_unset(request.provisioned_capacity):
+            query['ProvisionedCapacity'] = request.provisioned_capacity
         if not UtilClient.is_unset(request.queue_capacity):
             query['QueueCapacity'] = request.queue_capacity
         if not UtilClient.is_unset(request.renew_status):
@@ -2495,7 +2503,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.UpdateInstanceResponse:
         """
-        @summary 变更实例，升降配
+        @summary Upgrades or downgrades the configurations of an ApsaraMQ for RabbitMQ instance.
         
         @param request: UpdateInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2558,7 +2566,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.UpdateInstanceResponse:
         """
-        @summary 变更实例，升降配
+        @summary Upgrades or downgrades the configurations of an ApsaraMQ for RabbitMQ instance.
         
         @param request: UpdateInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2620,7 +2628,7 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.UpdateInstanceRequest,
     ) -> amqp_open_20191212_models.UpdateInstanceResponse:
         """
-        @summary 变更实例，升降配
+        @summary Upgrades or downgrades the configurations of an ApsaraMQ for RabbitMQ instance.
         
         @param request: UpdateInstanceRequest
         @return: UpdateInstanceResponse
@@ -2633,7 +2641,7 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.UpdateInstanceRequest,
     ) -> amqp_open_20191212_models.UpdateInstanceResponse:
         """
-        @summary 变更实例，升降配
+        @summary Upgrades or downgrades the configurations of an ApsaraMQ for RabbitMQ instance.
         
         @param request: UpdateInstanceRequest
         @return: UpdateInstanceResponse

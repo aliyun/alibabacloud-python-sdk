@@ -1,3 +1,8 @@
+2025-04-27 Version: 1.4.1
+- Update API CreateInstance: add request parameters Edition.
+- Update API CreateInstance: add request parameters ProvisionedCapacity.
+
+
 2025-01-07 Version: 1.4.0
 - Support API GetInstance.
 - Update API CreateBinding: update param Argument.

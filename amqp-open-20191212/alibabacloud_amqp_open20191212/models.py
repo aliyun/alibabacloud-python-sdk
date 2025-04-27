@@ -667,6 +667,7 @@ class CreateInstanceRequest(TeaModel):
         auto_renew: bool = None,
         auto_renew_period: int = None,
         client_token: str = None,
+        edition: str = None,
         encrypted_instance: bool = None,
         instance_name: str = None,
         instance_type: str = None,
@@ -677,6 +678,7 @@ class CreateInstanceRequest(TeaModel):
         payment_type: str = None,
         period: int = None,
         period_cycle: str = None,
+        provisioned_capacity: int = None,
         queue_capacity: int = None,
         renew_status: str = None,
         renewal_duration_unit: str = None,
@@ -692,33 +694,49 @@ class CreateInstanceRequest(TeaModel):
         # *   true: enables auto-renewal.
         # *   false: disables auto-renewal. If you select this value, you must manually renew the instance.
         self.auto_renew = auto_renew
-        # The auto-renewal duration. Unit: months.
+        # The auto-renewal period. The unit of the auto-renewal period is specified by RenewalDurationUnit. Default value: Month.
         # 
         # >  This parameter takes effect only if you set AutoRenew to true. Default value: 1.
         self.auto_renew_period = auto_renew_period
         # The client token.
         self.client_token = client_token
+        self.edition = edition
+        # Specifies whether to enable storage encryption for the instance. This parameter is available only for exclusive instances.
         self.encrypted_instance = encrypted_instance
-        # The instance name. We recommend that you specify a name that does not exceed 64 characters in length.
+        # The name of the instance. We recommend that you specify a name that does not exceed 64 characters in length.
         self.instance_name = instance_name
-        # The instance edition. Valid values:
+        # The instance edition. Valid values if you create a subscription instance:
         # 
-        # *   professional: Professional Edition
+        # *   professional: Professional Edition.
         # *   enterprise: Enterprise Edition
         # *   vip: Enterprise Platinum Edition
+        # 
+        # If you create a serverless instance, you do not need to specify this parameter.
         self.instance_type = instance_type
+        # The ID of the Key Management Service (KMS)-managed key used for storage encryption. This parameter is available only for exclusive instances and required only if you set EncryptedInstance to true. The key must meet the following conditions:
+        # 
+        # *   The key cannot be a service key.
+        # *   The key must be in the Enabled state.
+        # *   The key must be a symmetric key.
+        # *   The key must be used for encryption and decryption.
+        # *   After the key is expired or deleted, you cannot read or write data and exceptions can occur in the ApsaraMQ for RabbitMQ instance.
         self.kms_key_id = kms_key_id
-        # The maximum number of connections that can be established to the instance. Configure this parameter based on the values provided on the [ApsaraMQ for RocketMQ buy page](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre).
+        # The maximum number of connections that can be established to the instance.
+        # 
+        # Configure this parameter based on the values provided on the [ApsaraMQ for RocketMQ buy page](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre).
         self.max_connections = max_connections
-        # The maximum number of EIP-based TPS on the instance. Configure this parameter based on the values provided on the [ApsaraMQ for RocketMQ buy page](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre).
+        # The maximum number of Internet-based TPS on the instance.
+        # 
+        # Configure this parameter based on the values provided on the [ApsaraMQ for RocketMQ buy page](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre).
         self.max_eip_tps = max_eip_tps
-        # The maximum number of virtual private cloud (VPC)-based transactions per second (TPS) on the instance. Configure this parameter based on the values provided on the [ApsaraMQ for RocketMQ buy page](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre).
+        # The maximum number of virtual private cloud (VPC)-based transactions per second (TPS) on the instance.
+        # 
+        # Configure this parameter based on the values provided on the [ApsaraMQ for RocketMQ buy page](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre).
         self.max_private_tps = max_private_tps
-        # The billing method. Valid value:
+        # The billing method of the instance. Valid values:
         # 
-        # *   Subscription
-        # 
-        # >  API operations provided by ApsaraMQ for RabbitMQ are supported only by subscription instances. You can set this parameter only to Subscription.
+        # *   Subscription: subscription instance
+        # *   PayAsYouGo: serverless instance
         # 
         # This parameter is required.
         self.payment_type = payment_type
@@ -731,34 +749,37 @@ class CreateInstanceRequest(TeaModel):
         # *   Month
         # *   Year
         # 
-        # >  This parameter takes effect only if you set PaymentType to Subscription. Default value: Month.
+        # This parameter is valid only if you set PaymentType to Subscription. Default value: Month.
         self.period_cycle = period_cycle
-        # The number of queues. Valid values:
+        self.provisioned_capacity = provisioned_capacity
+        # The number of queues on the instance.
         # 
-        # *   Professional Edition: 50 to 1000. The number of queues must increase in increments of 5.
-        # *   Enterprise Edition: 200 to 6000. The number of queues must increase in increments of 100.
-        # *   Enterprise Platinum Edition: 10000 to 80000. The number of queues must increase in increments of 100.
+        # Configure this parameter based on the values provided on the [ApsaraMQ for RocketMQ buy page](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre).
         self.queue_capacity = queue_capacity
         # The renewal status. This parameter is the same as AutoRenew. You can configure one of these parameters. Valid value:
-        # - AutoRenewal
         # 
-        # > If you configure both this parameter and AutoRenew, the value of this parameter is used.
+        # *   AutoRenewal
+        # 
+        # >  If you configure both this parameter and AutoRenew, the value of this parameter is used.
         self.renew_status = renew_status
         # The unit of the auto-renewal period. Valid values:
-        # - Month
-        # - Year
+        # 
+        # *   Month
+        # *   Year
         self.renewal_duration_unit = renewal_duration_unit
+        # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
-        # The billing method of the pay-as-you-go instance. Valid values:
-        # - onDemand: You are charged based on your actual usage
+        # The billing method of the serverless instance. Valid value:
+        # 
+        # *   onDemand: You are charged based on your actual usage.
         self.serverless_charge_type = serverless_charge_type
         # The storage capacity. Unit: GB. Valid values:
         # 
-        # *   Professional Edition and Enterprise Edition instances: Set this parameter to 0.
+        # *   Professional Edition and Enterprise Edition instances: Set the value to 0.
         # 
         # >  The value 0 specifies that storage space is available for Professional Edition and Enterprise Edition instances, but no storage fees are generated.
         # 
-        # *   Platinum Edition instances: Set the value to m × 100, where m ranges from 7 to 28.
+        # *   Enterprise Platinum Edition instances: Set the value to m × 100, where m is an integer that ranges from 7 to 28.
         self.storage_size = storage_size
         # Specifies whether elastic IP addresses (EIPs) are supported. Valid values:
         # 
@@ -772,7 +793,7 @@ class CreateInstanceRequest(TeaModel):
         # 
         # > 
         # 
-        # *   Enterprise Platinum Edition instances allow you to retain message traces for 15 days free of charge. If you use an Enterprise Platinum Edition instance, you can set this parameter only to true and TracingStorageTime only to 15.
+        # *   Enterprise Platinum Edition instances allow you to retain message traces for 15 days free of charge. If you create an Enterprise Platinum Edition instance, you can set this parameter only to true and TracingStorageTime only to 15.
         # 
         # *   For instances of other editions, you can set this parameter to true or false.
         self.support_tracing = support_tracing
@@ -782,7 +803,7 @@ class CreateInstanceRequest(TeaModel):
         # *   7
         # *   15
         # 
-        # >  This parameter takes effect only if you set SupportTracing to true.
+        # This parameter is valid only if you set SupportTracing to true.
         self.tracing_storage_time = tracing_storage_time
 
     def validate(self):
@@ -800,6 +821,8 @@ class CreateInstanceRequest(TeaModel):
             result['AutoRenewPeriod'] = self.auto_renew_period
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.edition is not None:
+            result['Edition'] = self.edition
         if self.encrypted_instance is not None:
             result['EncryptedInstance'] = self.encrypted_instance
         if self.instance_name is not None:
@@ -820,6 +843,8 @@ class CreateInstanceRequest(TeaModel):
             result['Period'] = self.period
         if self.period_cycle is not None:
             result['PeriodCycle'] = self.period_cycle
+        if self.provisioned_capacity is not None:
+            result['ProvisionedCapacity'] = self.provisioned_capacity
         if self.queue_capacity is not None:
             result['QueueCapacity'] = self.queue_capacity
         if self.renew_status is not None:
@@ -848,6 +873,8 @@ class CreateInstanceRequest(TeaModel):
             self.auto_renew_period = m.get('AutoRenewPeriod')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('Edition') is not None:
+            self.edition = m.get('Edition')
         if m.get('EncryptedInstance') is not None:
             self.encrypted_instance = m.get('EncryptedInstance')
         if m.get('InstanceName') is not None:
@@ -868,6 +895,8 @@ class CreateInstanceRequest(TeaModel):
             self.period = m.get('Period')
         if m.get('PeriodCycle') is not None:
             self.period_cycle = m.get('PeriodCycle')
+        if m.get('ProvisionedCapacity') is not None:
+            self.provisioned_capacity = m.get('ProvisionedCapacity')
         if m.get('QueueCapacity') is not None:
             self.queue_capacity = m.get('QueueCapacity')
         if m.get('RenewStatus') is not None:
@@ -1300,8 +1329,6 @@ class DeleteAccountRequest(TeaModel):
         # The timestamp that indicates when the pair of static username and password that you want to delete was created. Unit: milliseconds.
         # 
         # You can call the [ListAccounts](https://help.aliyun.com/document_detail/472730.html) operation to view the timestamp.
-        # 
-        # This parameter is required.
         self.create_timestamp = create_timestamp
         # The pair of username and password that you want to delete.
         # 
@@ -3630,6 +3657,7 @@ class ListInstancesRequest(TeaModel):
         self.max_results = max_results
         # The token that marks the end position of the previous returned page. To obtain the next batch of data, call the operation again by using the value of NextToken returned by the previous request. If you call this operation for the first time or want to query all results, set NextToken to an empty string.
         self.next_token = next_token
+        # The ID of the resource group to which the instances belong.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -3666,9 +3694,9 @@ class ListInstancesResponseBodyDataInstancesTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # 标签键。
+        # The tag key.
         self.key = key
-        # 标签值。
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -3724,6 +3752,7 @@ class ListInstancesResponseBodyDataInstances(TeaModel):
         self.auto_renew_instance = auto_renew_instance
         # The endpoint that is used to access the instance over the classic network. This parameter is no longer available.
         self.classic_endpoint = classic_endpoint
+        # Indicates whether the encryption at rest feature is enabled for the instance.
         self.encrypted_instance = encrypted_instance
         # The timestamp that indicates when the instance expires. Unit: milliseconds.
         self.expire_time = expire_time
@@ -3737,6 +3766,7 @@ class ListInstancesResponseBodyDataInstances(TeaModel):
         # *   ENTERPRISE: Enterprise Edition
         # *   VIP: Enterprise Platinum Edition
         self.instance_type = instance_type
+        # The ID of the Key Management Service (KMS) key used for the data disk.
         self.kms_key_id = kms_key_id
         # The maximum number of Internet-based transactions per second (TPS) for the instance.
         self.max_eip_tps = max_eip_tps
@@ -3757,6 +3787,7 @@ class ListInstancesResponseBodyDataInstances(TeaModel):
         self.private_endpoint = private_endpoint
         # The public endpoint of the instance.
         self.public_endpoint = public_endpoint
+        # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
         # The instance status. Valid values:
         # 
@@ -3771,7 +3802,7 @@ class ListInstancesResponseBodyDataInstances(TeaModel):
         self.storage_size = storage_size
         # Indicates whether the instance supports elastic IP addresses (EIPs).
         self.support_eip = support_eip
-        # 标签列表。
+        # The tags that are added to the instance.
         self.tags = tags
 
     def validate(self):
@@ -3938,7 +3969,7 @@ class ListInstancesResponseBody(TeaModel):
         data: ListInstancesResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned data.
+        # The data returned.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -4976,22 +5007,56 @@ class UpdateInstanceRequest(TeaModel):
         support_tracing: bool = None,
         tracing_storage_time: int = None,
     ):
+        # The client token.
         self.client_token = client_token
+        # 实例是否开通数据存储加密功能
         self.encrypted_instance = encrypted_instance
+        # The ID of the ApsaraMQ for RabbitMQ instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The instance edition. Valid values for subscription instances:
+        # 
+        # *   professional: Professional Edition
+        # *   enterprise: Enterprise Edition
+        # *   vip: Enterprise Platinum Edition.
+        # 
+        # If your instance is a pay-as-you-go instance, you do not need to configure this parameter.
         self.instance_type = instance_type
+        # 使用同地域下KMS密钥ID
         self.kms_key_id = kms_key_id
+        # The maximum number of connections that can be created on the instance.
         self.max_connections = max_connections
+        # The peak TPS for accessing the instance over the Internet.
         self.max_eip_tps = max_eip_tps
+        # The peak transactions per second (TPS) for accessing the instance in a virtual private cloud (VPC).
         self.max_private_tps = max_private_tps
+        # The type of the configuration change. Valid values:
+        # 
+        # *   UPGRADE
+        # *   DOWNGRADE
+        # 
         # This parameter is required.
         self.modify_type = modify_type
+        # The maximum number of queues that can be created on the instance.
         self.queue_capacity = queue_capacity
+        # The billing method of the serverless instance. Valid values:
+        # 
+        # *   onDemand: You are charged based on your actual usage.
         self.serverless_charge_type = serverless_charge_type
+        # The size of the storage space that can be used to store messages.
         self.storage_size = storage_size
+        # Specifies whether elastic IP addresses (EIPs) are supported.
         self.support_eip = support_eip
+        # Specifies whether to enable the message trace feature.
         self.support_tracing = support_tracing
+        # The retention period of message traces.
+        # 
+        # Valid values:
+        # 
+        # *   3
+        # *   7
+        # *   15
         self.tracing_storage_time = tracing_storage_time
 
     def validate(self):
@@ -5080,11 +5145,24 @@ class UpdateInstanceResponseBody(TeaModel):
         status_code: str = None,
         success: str = None,
     ):
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
+        # The returned data, which includes orderId and instanceId. Sample returned data:
+        # 
+        # ```json
+        # "Data": {
+        #     "instanceId": "amqp-cn-xxxxx",
+        #     "orderId": 22222
+        #   }
+        # ```
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The response code.
         self.status_code = status_code
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
