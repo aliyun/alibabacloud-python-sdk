@@ -5616,6 +5616,217 @@ class Id2MetaVerifyResponse(TeaModel):
         return self
 
 
+class Id2MetaVerifyWithOCRRequest(TeaModel):
+    def __init__(
+        self,
+        cert_file: str = None,
+        cert_national_file: str = None,
+        cert_national_url: str = None,
+        cert_url: str = None,
+    ):
+        self.cert_file = cert_file
+        self.cert_national_file = cert_national_file
+        self.cert_national_url = cert_national_url
+        self.cert_url = cert_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cert_file is not None:
+            result['CertFile'] = self.cert_file
+        if self.cert_national_file is not None:
+            result['CertNationalFile'] = self.cert_national_file
+        if self.cert_national_url is not None:
+            result['CertNationalUrl'] = self.cert_national_url
+        if self.cert_url is not None:
+            result['CertUrl'] = self.cert_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertFile') is not None:
+            self.cert_file = m.get('CertFile')
+        if m.get('CertNationalFile') is not None:
+            self.cert_national_file = m.get('CertNationalFile')
+        if m.get('CertNationalUrl') is not None:
+            self.cert_national_url = m.get('CertNationalUrl')
+        if m.get('CertUrl') is not None:
+            self.cert_url = m.get('CertUrl')
+        return self
+
+
+class Id2MetaVerifyWithOCRAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        cert_file_object: BinaryIO = None,
+        cert_national_file_object: BinaryIO = None,
+        cert_national_url: str = None,
+        cert_url: str = None,
+    ):
+        self.cert_file_object = cert_file_object
+        self.cert_national_file_object = cert_national_file_object
+        self.cert_national_url = cert_national_url
+        self.cert_url = cert_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cert_file_object is not None:
+            result['CertFile'] = self.cert_file_object
+        if self.cert_national_file_object is not None:
+            result['CertNationalFile'] = self.cert_national_file_object
+        if self.cert_national_url is not None:
+            result['CertNationalUrl'] = self.cert_national_url
+        if self.cert_url is not None:
+            result['CertUrl'] = self.cert_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertFile') is not None:
+            self.cert_file_object = m.get('CertFile')
+        if m.get('CertNationalFile') is not None:
+            self.cert_national_file_object = m.get('CertNationalFile')
+        if m.get('CertNationalUrl') is not None:
+            self.cert_national_url = m.get('CertNationalUrl')
+        if m.get('CertUrl') is not None:
+            self.cert_url = m.get('CertUrl')
+        return self
+
+
+class Id2MetaVerifyWithOCRResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        card_info: str = None,
+    ):
+        self.biz_code = biz_code
+        self.card_info = card_info
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.card_info is not None:
+            result['CardInfo'] = self.card_info
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('CardInfo') is not None:
+            self.card_info = m.get('CardInfo')
+        return self
+
+
+class Id2MetaVerifyWithOCRResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result_object: Id2MetaVerifyWithOCRResponseBodyResultObject = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.result_object = result_object
+
+    def validate(self):
+        if self.result_object:
+            self.result_object.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            temp_model = Id2MetaVerifyWithOCRResponseBodyResultObject()
+            self.result_object = temp_model.from_map(m['ResultObject'])
+        return self
+
+
+class Id2MetaVerifyWithOCRResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: Id2MetaVerifyWithOCRResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = Id2MetaVerifyWithOCRResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class InitFaceVerifyRequest(TeaModel):
     def __init__(
         self,

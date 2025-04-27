@@ -1,3 +1,7 @@
+2025-04-27 Version: 3.6.0
+- Support API Id2MetaVerifyWithOCR.
+
+
 2025-04-21 Version: 3.5.0
 - Support API CredentialVerifyV2.
 
