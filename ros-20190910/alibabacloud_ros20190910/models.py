@@ -1327,6 +1327,8 @@ class CreateDiagnosticRequest(TeaModel):
         # The keyword in the diagnosis.
         # 
         # You can specify the ID of the stack that you want to diagnose.
+        # 
+        # This parameter is required.
         self.diagnostic_key = diagnostic_key
         # The type of the item that is diagnosed. Set the value to Stack, which specifies that the stack is diagnosed.
         self.diagnostic_type = diagnostic_type
