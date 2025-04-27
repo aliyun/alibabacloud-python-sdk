@@ -18966,6 +18966,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.update_strategy):
+            query['updateStrategy'] = request.update_strategy
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
@@ -19009,6 +19011,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.update_strategy):
+            query['updateStrategy'] = request.update_strategy
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),

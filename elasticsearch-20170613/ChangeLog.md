@@ -1,3 +1,45 @@
+2025-04-27 Version: 3.0.0
+- Update API ListActionRecords: add response parameters Body.Result.$.actionName.
+- Update API ListActionRecords: add response parameters Body.Result.$.actionParams.
+- Update API ListActionRecords: add response parameters Body.Result.$.actionResultAccessList.
+- Update API ListActionRecords: add response parameters Body.Result.$.endTime.
+- Update API ListActionRecords: add response parameters Body.Result.$.instanceId.
+- Update API ListActionRecords: add response parameters Body.Result.$.metaNow.
+- Update API ListActionRecords: add response parameters Body.Result.$.metaOld.
+- Update API ListActionRecords: add response parameters Body.Result.$.ownerId.
+- Update API ListActionRecords: add response parameters Body.Result.$.process.
+- Update API ListActionRecords: add response parameters Body.Result.$.recordDiff.
+- Update API ListActionRecords: add response parameters Body.Result.$.recordIds.
+- Update API ListActionRecords: add response parameters Body.Result.$.requestId.
+- Update API ListActionRecords: add response parameters Body.Result.$.startTime.
+- Update API ListActionRecords: add response parameters Body.Result.$.stateType.
+- Update API ListActionRecords: add response parameters Body.Result.$.statusInfo.
+- Update API ListActionRecords: add response parameters Body.Result.$.userId.
+- Update API ListActionRecords: add response parameters Body.Result.$.userInfo.
+- Update API ListActionRecords: add response parameters Body.Result.$.userType.
+- Update API ListActionRecords: delete response parameters Body.Result.$.ActionName.
+- Update API ListActionRecords: delete response parameters Body.Result.$.ActionParams.
+- Update API ListActionRecords: delete response parameters Body.Result.$.ActionResultAccessList.
+- Update API ListActionRecords: delete response parameters Body.Result.$.EndTime.
+- Update API ListActionRecords: delete response parameters Body.Result.$.InstanceId.
+- Update API ListActionRecords: delete response parameters Body.Result.$.MetaNow.
+- Update API ListActionRecords: delete response parameters Body.Result.$.MetaOld.
+- Update API ListActionRecords: delete response parameters Body.Result.$.OwnerId.
+- Update API ListActionRecords: delete response parameters Body.Result.$.Process.
+- Update API ListActionRecords: delete response parameters Body.Result.$.RecordDiff.
+- Update API ListActionRecords: delete response parameters Body.Result.$.RecordIds.
+- Update API ListActionRecords: delete response parameters Body.Result.$.RequestId.
+- Update API ListActionRecords: delete response parameters Body.Result.$.StartTime.
+- Update API ListActionRecords: delete response parameters Body.Result.$.StateType.
+- Update API ListActionRecords: delete response parameters Body.Result.$.StatusInfo.
+- Update API ListActionRecords: delete response parameters Body.Result.$.UserId.
+- Update API ListActionRecords: delete response parameters Body.Result.$.UserInfo.
+- Update API ListActionRecords: delete response parameters Body.Result.$.UserType.
+- Update API ListInstance: add response parameters Body.Result.$.port.
+- Update API ListInstance: add response parameters Body.Result.$.protocol.
+- Update API UpdateInstanceSettings: add request parameters updateStrategy.
+
+
 2025-01-02 Version: 2.0.11
 - Update API UpgradeEngineVersion: add param updateStrategy.
 

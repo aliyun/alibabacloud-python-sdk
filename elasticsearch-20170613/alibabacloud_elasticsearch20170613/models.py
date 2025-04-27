@@ -627,12 +627,14 @@ class NodeSpec(TeaModel):
         self,
         disk: int = None,
         disk_encryption: bool = None,
+        disk_preference: str = None,
         disk_type: str = None,
         performance_level: str = None,
         spec: str = None,
     ):
         self.disk = disk
         self.disk_encryption = disk_encryption
+        self.disk_preference = disk_preference
         self.disk_type = disk_type
         self.performance_level = performance_level
         # This parameter is required.
@@ -651,6 +653,8 @@ class NodeSpec(TeaModel):
             result['disk'] = self.disk
         if self.disk_encryption is not None:
             result['diskEncryption'] = self.disk_encryption
+        if self.disk_preference is not None:
+            result['diskPreference'] = self.disk_preference
         if self.disk_type is not None:
             result['diskType'] = self.disk_type
         if self.performance_level is not None:
@@ -665,6 +669,8 @@ class NodeSpec(TeaModel):
             self.disk = m.get('disk')
         if m.get('diskEncryption') is not None:
             self.disk_encryption = m.get('diskEncryption')
+        if m.get('diskPreference') is not None:
+            self.disk_preference = m.get('diskPreference')
         if m.get('diskType') is not None:
             self.disk_type = m.get('diskType')
         if m.get('performanceLevel') is not None:
@@ -16392,86 +16398,86 @@ class ListActionRecordsResponseBodyResult(TeaModel):
 
         result = dict()
         if self.action_name is not None:
-            result['ActionName'] = self.action_name
+            result['actionName'] = self.action_name
         if self.action_params is not None:
-            result['ActionParams'] = self.action_params
+            result['actionParams'] = self.action_params
         if self.action_result_access_list is not None:
-            result['ActionResultAccessList'] = self.action_result_access_list
+            result['actionResultAccessList'] = self.action_result_access_list
         if self.end_time is not None:
-            result['EndTime'] = self.end_time
+            result['endTime'] = self.end_time
         if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
+            result['instanceId'] = self.instance_id
         if self.meta_now is not None:
-            result['MetaNow'] = self.meta_now
+            result['metaNow'] = self.meta_now
         if self.meta_old is not None:
-            result['MetaOld'] = self.meta_old
+            result['metaOld'] = self.meta_old
         if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
+            result['ownerId'] = self.owner_id
         if self.process is not None:
-            result['Process'] = self.process
+            result['process'] = self.process
         if self.record_diff is not None:
-            result['RecordDiff'] = self.record_diff
+            result['recordDiff'] = self.record_diff
         if self.record_ids is not None:
-            result['RecordIds'] = self.record_ids
+            result['recordIds'] = self.record_ids
         if self.request_id is not None:
-            result['RequestId'] = self.request_id
+            result['requestId'] = self.request_id
         if self.start_time is not None:
-            result['StartTime'] = self.start_time
+            result['startTime'] = self.start_time
         if self.state_type is not None:
-            result['StateType'] = self.state_type
-        result['StatusInfo'] = []
+            result['stateType'] = self.state_type
+        result['statusInfo'] = []
         if self.status_info is not None:
             for k in self.status_info:
-                result['StatusInfo'].append(k.to_map() if k else None)
+                result['statusInfo'].append(k.to_map() if k else None)
         if self.user_id is not None:
-            result['UserId'] = self.user_id
+            result['userId'] = self.user_id
         if self.user_info is not None:
-            result['UserInfo'] = self.user_info
+            result['userInfo'] = self.user_info
         if self.user_type is not None:
-            result['UserType'] = self.user_type
+            result['userType'] = self.user_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ActionName') is not None:
-            self.action_name = m.get('ActionName')
-        if m.get('ActionParams') is not None:
-            self.action_params = m.get('ActionParams')
-        if m.get('ActionResultAccessList') is not None:
-            self.action_result_access_list = m.get('ActionResultAccessList')
-        if m.get('EndTime') is not None:
-            self.end_time = m.get('EndTime')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        if m.get('MetaNow') is not None:
-            self.meta_now = m.get('MetaNow')
-        if m.get('MetaOld') is not None:
-            self.meta_old = m.get('MetaOld')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('Process') is not None:
-            self.process = m.get('Process')
-        if m.get('RecordDiff') is not None:
-            self.record_diff = m.get('RecordDiff')
-        if m.get('RecordIds') is not None:
-            self.record_ids = m.get('RecordIds')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
-        if m.get('StateType') is not None:
-            self.state_type = m.get('StateType')
+        if m.get('actionName') is not None:
+            self.action_name = m.get('actionName')
+        if m.get('actionParams') is not None:
+            self.action_params = m.get('actionParams')
+        if m.get('actionResultAccessList') is not None:
+            self.action_result_access_list = m.get('actionResultAccessList')
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('metaNow') is not None:
+            self.meta_now = m.get('metaNow')
+        if m.get('metaOld') is not None:
+            self.meta_old = m.get('metaOld')
+        if m.get('ownerId') is not None:
+            self.owner_id = m.get('ownerId')
+        if m.get('process') is not None:
+            self.process = m.get('process')
+        if m.get('recordDiff') is not None:
+            self.record_diff = m.get('recordDiff')
+        if m.get('recordIds') is not None:
+            self.record_ids = m.get('recordIds')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        if m.get('stateType') is not None:
+            self.state_type = m.get('stateType')
         self.status_info = []
-        if m.get('StatusInfo') is not None:
-            for k in m.get('StatusInfo'):
+        if m.get('statusInfo') is not None:
+            for k in m.get('statusInfo'):
                 temp_model = ListActionRecordsResponseBodyResultStatusInfo()
                 self.status_info.append(temp_model.from_map(k))
-        if m.get('UserId') is not None:
-            self.user_id = m.get('UserId')
-        if m.get('UserInfo') is not None:
-            self.user_info = m.get('UserInfo')
-        if m.get('UserType') is not None:
-            self.user_type = m.get('UserType')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        if m.get('userInfo') is not None:
+            self.user_info = m.get('userInfo')
+        if m.get('userType') is not None:
+            self.user_type = m.get('userType')
         return self
 
 
@@ -22325,8 +22331,10 @@ class ListInstanceResponseBodyResult(TeaModel):
         node_amount: int = None,
         node_spec: ListInstanceResponseBodyResultNodeSpec = None,
         payment_type: str = None,
+        port: str = None,
         postpaid_service_status: str = None,
         private_network_ip_white_list: List[str] = None,
+        protocol: str = None,
         public_ip_whitelist: List[str] = None,
         resource_group_id: str = None,
         service_vpc: bool = None,
@@ -22379,9 +22387,11 @@ class ListInstanceResponseBodyResult(TeaModel):
         self.node_spec = node_spec
         # The time when the instance was last updated.
         self.payment_type = payment_type
+        self.port = port
         # The tags of the instance. Each tag is a key-value pair.
         self.postpaid_service_status = postpaid_service_status
         self.private_network_ip_white_list = private_network_ip_white_list
+        self.protocol = protocol
         self.public_ip_whitelist = public_ip_whitelist
         # The ID of the instance.
         self.resource_group_id = resource_group_id
@@ -22461,10 +22471,14 @@ class ListInstanceResponseBodyResult(TeaModel):
             result['nodeSpec'] = self.node_spec.to_map()
         if self.payment_type is not None:
             result['paymentType'] = self.payment_type
+        if self.port is not None:
+            result['port'] = self.port
         if self.postpaid_service_status is not None:
             result['postpaidServiceStatus'] = self.postpaid_service_status
         if self.private_network_ip_white_list is not None:
             result['privateNetworkIpWhiteList'] = self.private_network_ip_white_list
+        if self.protocol is not None:
+            result['protocol'] = self.protocol
         if self.public_ip_whitelist is not None:
             result['publicIpWhitelist'] = self.public_ip_whitelist
         if self.resource_group_id is not None:
@@ -22533,10 +22547,14 @@ class ListInstanceResponseBodyResult(TeaModel):
             self.node_spec = temp_model.from_map(m['nodeSpec'])
         if m.get('paymentType') is not None:
             self.payment_type = m.get('paymentType')
+        if m.get('port') is not None:
+            self.port = m.get('port')
         if m.get('postpaidServiceStatus') is not None:
             self.postpaid_service_status = m.get('postpaidServiceStatus')
         if m.get('privateNetworkIpWhiteList') is not None:
             self.private_network_ip_white_list = m.get('privateNetworkIpWhiteList')
+        if m.get('protocol') is not None:
+            self.protocol = m.get('protocol')
         if m.get('publicIpWhitelist') is not None:
             self.public_ip_whitelist = m.get('publicIpWhitelist')
         if m.get('resourceGroupId') is not None:
@@ -35545,10 +35563,12 @@ class UpdateInstanceSettingsRequest(TeaModel):
         self,
         body: str = None,
         client_token: str = None,
+        update_strategy: str = None,
     ):
         self.body = body
         # A unique token generated by the client to guarantee the idempotency of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        self.update_strategy = update_strategy
 
     def validate(self):
         pass
@@ -35563,6 +35583,8 @@ class UpdateInstanceSettingsRequest(TeaModel):
             result['body'] = self.body
         if self.client_token is not None:
             result['clientToken'] = self.client_token
+        if self.update_strategy is not None:
+            result['updateStrategy'] = self.update_strategy
         return result
 
     def from_map(self, m: dict = None):
@@ -35571,6 +35593,8 @@ class UpdateInstanceSettingsRequest(TeaModel):
             self.body = m.get('body')
         if m.get('clientToken') is not None:
             self.client_token = m.get('clientToken')
+        if m.get('updateStrategy') is not None:
+            self.update_strategy = m.get('updateStrategy')
         return self
 
 
