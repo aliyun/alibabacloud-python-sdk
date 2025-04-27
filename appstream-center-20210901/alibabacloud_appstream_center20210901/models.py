@@ -3297,6 +3297,45 @@ class GetAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo(TeaModel):
         return self
 
 
+class GetAppInstanceGroupResponseBodyAppInstanceGroupModelsTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        scope: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.scope = scope
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.scope is not None:
+            result['Scope'] = self.scope
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Scope') is not None:
+            self.scope = m.get('Scope')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class GetAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
     def __init__(
         self,
@@ -3333,6 +3372,7 @@ class GetAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
         skip_user_auth_check: bool = None,
         spec_id: str = None,
         status: str = None,
+        tags: List[GetAppInstanceGroupResponseBodyAppInstanceGroupModelsTags] = None,
     ):
         self.amount = amount
         self.app_center_image_id = app_center_image_id
@@ -3367,6 +3407,7 @@ class GetAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
         self.skip_user_auth_check = skip_user_auth_check
         self.spec_id = spec_id
         self.status = status
+        self.tags = tags
 
     def validate(self):
         if self.apps:
@@ -3379,6 +3420,10 @@ class GetAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
                     k.validate()
         if self.ota_info:
             self.ota_info.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -3456,6 +3501,10 @@ class GetAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
             result['SpecId'] = self.spec_id
         if self.status is not None:
             result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -3533,6 +3582,11 @@ class GetAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
             self.spec_id = m.get('SpecId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = GetAppInstanceGroupResponseBodyAppInstanceGroupModelsTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 

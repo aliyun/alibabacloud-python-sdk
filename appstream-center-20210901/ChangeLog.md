@@ -1,3 +1,7 @@
+2025-04-27 Version: 3.2.4
+- Update API GetAppInstanceGroup: add response parameters Body.AppInstanceGroupModels.Tags.
+
+
 2025-04-25 Version: 3.2.3
 - Update API ListAppInstanceGroup: add request parameters Tag.
 - Update API ListAppInstanceGroup: add response parameters Body.AppInstanceGroupModels.$.Tags.

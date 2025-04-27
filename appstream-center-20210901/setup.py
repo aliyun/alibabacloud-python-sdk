@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_appstream-center20210901.
 
-Created on 24/04/2025
+Created on 27/04/2025
 
 @author: Alibaba Cloud SDK
 """
