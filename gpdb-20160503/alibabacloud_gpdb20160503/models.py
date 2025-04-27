@@ -37244,7 +37244,7 @@ class ModifyStreamingJobRequest(TeaModel):
     ):
         # Account name.
         self.account = account
-        # Delivery guarantee.
+        # The delivery guarantee setting.
         self.consistency = consistency
         # Instance ID
         # 
@@ -37260,9 +37260,13 @@ class ModifyStreamingJobRequest(TeaModel):
         self.dest_table = dest_table
         # When the data in Kafka does not match the ADBPG target table, it will cause a write failure. This value is the number of error rows allowed; exceeding this will cause the task to fail.
         self.error_limit_count = error_limit_count
-        # FallbackOffset rollback position, offset rollback
+        # The fallback offset for data consumption.
         # 
-        # - The FallbackOffset parameter defines the behavior when the consumer does not request a specific consumption point or the requested consumption point exceeds the current Kafka cluster\\"s recorded points. You can choose to start consuming from the earliest (newest) or latest (oldest) point.
+        # *   This parameter specifies the starting offset from which data consumption resumes when a consumer does not request a consumption offset or requests a consumption offset that is beyond the range of the offset information recorded in the current Kafka cluster. You can choose to start data consumption from the earliest or latest offset.
+        # 
+        # Valid values:
+        # *   EARLIEST
+        # *   LATEST
         self.fallback_offset = fallback_offset
         # Kafka group name
         self.group_name = group_name
@@ -37284,16 +37288,22 @@ class ModifyStreamingJobRequest(TeaModel):
         self.region_id = region_id
         # Source data field list.
         self.src_columns = src_columns
-        # Whether to test the real-time task, values:
+        # Specifies whether to test the real-time job. Valid values:
         # 
-        # -  true
-        # - false
+        # *   true
+        # *   false
         # 
         # Default value: false.
         self.try_run = try_run
         # Update columns, usually all non-primary key columns of the target table. When data duplication is determined through MatchColumns, updating the UpdateColumns column values will result in new data overwriting old data.
         self.update_columns = update_columns
-        # Write mode.
+        # The write mode.
+        # 
+        # Valid values:
+        # 
+        # *   MERGE
+        # *   INSERT
+        # *   UPDATE
         self.write_mode = write_mode
 
     def validate(self):
@@ -37418,7 +37428,7 @@ class ModifyStreamingJobShrinkRequest(TeaModel):
     ):
         # Account name.
         self.account = account
-        # Delivery guarantee.
+        # The delivery guarantee setting.
         self.consistency = consistency
         # Instance ID
         # 
@@ -37434,9 +37444,13 @@ class ModifyStreamingJobShrinkRequest(TeaModel):
         self.dest_table = dest_table
         # When the data in Kafka does not match the ADBPG target table, it will cause a write failure. This value is the number of error rows allowed; exceeding this will cause the task to fail.
         self.error_limit_count = error_limit_count
-        # FallbackOffset rollback position, offset rollback
+        # The fallback offset for data consumption.
         # 
-        # - The FallbackOffset parameter defines the behavior when the consumer does not request a specific consumption point or the requested consumption point exceeds the current Kafka cluster\\"s recorded points. You can choose to start consuming from the earliest (newest) or latest (oldest) point.
+        # *   This parameter specifies the starting offset from which data consumption resumes when a consumer does not request a consumption offset or requests a consumption offset that is beyond the range of the offset information recorded in the current Kafka cluster. You can choose to start data consumption from the earliest or latest offset.
+        # 
+        # Valid values:
+        # *   EARLIEST
+        # *   LATEST
         self.fallback_offset = fallback_offset
         # Kafka group name
         self.group_name = group_name
@@ -37458,16 +37472,22 @@ class ModifyStreamingJobShrinkRequest(TeaModel):
         self.region_id = region_id
         # Source data field list.
         self.src_columns_shrink = src_columns_shrink
-        # Whether to test the real-time task, values:
+        # Specifies whether to test the real-time job. Valid values:
         # 
-        # -  true
-        # - false
+        # *   true
+        # *   false
         # 
         # Default value: false.
         self.try_run = try_run
         # Update columns, usually all non-primary key columns of the target table. When data duplication is determined through MatchColumns, updating the UpdateColumns column values will result in new data overwriting old data.
         self.update_columns_shrink = update_columns_shrink
-        # Write mode.
+        # The write mode.
+        # 
+        # Valid values:
+        # 
+        # *   MERGE
+        # *   INSERT
+        # *   UPDATE
         self.write_mode = write_mode
 
     def validate(self):
@@ -38139,10 +38159,6 @@ class QueryCollectionDataRequest(TeaModel):
         # 
         # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) API to view details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
         self.dbinstance_id = dbinstance_id
-        # Filter conditions for the data to be queried, in SQL WHERE format. It is an expression that returns a boolean value (true or false). Conditions can be simple comparison operators such as equal (=), not equal (<> or !=), greater than (>), less than (<), greater than or equal to (>=), less than or equal to (<=), or more complex expressions combined with logical operators (AND, OR, NOT), as well as conditions using keywords like IN, BETWEEN, and LIKE.
-        # 
-        # > 
-        # > - For detailed syntax, refer to: https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-where/\
         self.filter = filter
         # Dual-path recall algorithm, default is empty (i.e., directly compare and sort the scores of vectors and full-text).
         # 
@@ -38368,10 +38384,6 @@ class QueryCollectionDataShrinkRequest(TeaModel):
         # 
         # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) API to view details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
         self.dbinstance_id = dbinstance_id
-        # Filter conditions for the data to be queried, in SQL WHERE format. It is an expression that returns a boolean value (true or false). Conditions can be simple comparison operators such as equal (=), not equal (<> or !=), greater than (>), less than (<), greater than or equal to (>=), less than or equal to (<=), or more complex expressions combined with logical operators (AND, OR, NOT), as well as conditions using keywords like IN, BETWEEN, and LIKE.
-        # 
-        # > 
-        # > - For detailed syntax, refer to: https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-where/\
         self.filter = filter
         # Dual-path recall algorithm, default is empty (i.e., directly compare and sort the scores of vectors and full-text).
         # 
