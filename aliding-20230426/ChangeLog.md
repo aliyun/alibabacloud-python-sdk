@@ -1,3 +1,8 @@
+2025-04-28 Version: 2.36.1
+- Update API CreateRun: add response parameters Body.data.
+- Update API GetRange: add response parameters Body.hyperlinks.
+
+
 2025-04-22 Version: 2.36.0
 - Support API SwitchMainOrg.
 
