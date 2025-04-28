@@ -1,3 +1,9 @@
+2025-04-28 Version: 5.0.1
+- Update API DescribeDBClusterAttribute: add response parameters Body.Items.$.ProductForm.
+- Update API DescribeDBClusterAttribute: add response parameters Body.Items.$.ReservedNodeCount.
+- Update API DescribeDBClusterAttribute: add response parameters Body.Items.$.ReservedNodeSize.
+
+
 2025-04-28 Version: 5.0.0
 - Support API DescribeAbnormalPatternDetection.
 - Support API DescribeBadSqlDetection.

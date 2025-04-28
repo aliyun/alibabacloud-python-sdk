@@ -10247,9 +10247,12 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         mode: str = None,
         pay_type: str = None,
         port: int = None,
+        product_form: str = None,
         product_version: str = None,
         rds_instance_id: str = None,
         region_id: str = None,
+        reserved_node_count: int = None,
+        reserved_node_size: str = None,
         resource_group_id: str = None,
         secondary_vswitch_id: str = None,
         secondary_zone_id: str = None,
@@ -10398,6 +10401,7 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         self.pay_type = pay_type
         # The port number that is used to connect to the cluster.
         self.port = port
+        self.product_form = product_form
         # The edition of the cluster. Valid values:
         # 
         # *   **BasicVersion**: Basic Edition.
@@ -10407,6 +10411,8 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         self.rds_instance_id = rds_instance_id
         # The region ID of the cluster.
         self.region_id = region_id
+        self.reserved_node_count = reserved_node_count
+        self.reserved_node_size = reserved_node_size
         # The resource group ID.
         self.resource_group_id = resource_group_id
         # The ID of the secondary vSwitch.
@@ -10521,12 +10527,18 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
             result['PayType'] = self.pay_type
         if self.port is not None:
             result['Port'] = self.port
+        if self.product_form is not None:
+            result['ProductForm'] = self.product_form
         if self.product_version is not None:
             result['ProductVersion'] = self.product_version
         if self.rds_instance_id is not None:
             result['RdsInstanceId'] = self.rds_instance_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.reserved_node_count is not None:
+            result['ReservedNodeCount'] = self.reserved_node_count
+        if self.reserved_node_size is not None:
+            result['ReservedNodeSize'] = self.reserved_node_size
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.secondary_vswitch_id is not None:
@@ -10625,12 +10637,18 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
             self.pay_type = m.get('PayType')
         if m.get('Port') is not None:
             self.port = m.get('Port')
+        if m.get('ProductForm') is not None:
+            self.product_form = m.get('ProductForm')
         if m.get('ProductVersion') is not None:
             self.product_version = m.get('ProductVersion')
         if m.get('RdsInstanceId') is not None:
             self.rds_instance_id = m.get('RdsInstanceId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ReservedNodeCount') is not None:
+            self.reserved_node_count = m.get('ReservedNodeCount')
+        if m.get('ReservedNodeSize') is not None:
+            self.reserved_node_size = m.get('ReservedNodeSize')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SecondaryVSwitchId') is not None:
