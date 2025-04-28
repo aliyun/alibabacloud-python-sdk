@@ -1427,6 +1427,227 @@ class DocOcrResponse(TeaModel):
         return self
 
 
+class DocOcrMaxRequest(TeaModel):
+    def __init__(
+        self,
+        doc_type: str = None,
+        id_ocr_picture_base_64: str = None,
+        id_ocr_picture_url: str = None,
+        id_threshold: str = None,
+        merchant_biz_id: str = None,
+        merchant_user_id: str = None,
+        ocr_model: str = None,
+        product_code: str = None,
+        prompt: str = None,
+        scene_code: str = None,
+        spoof: str = None,
+    ):
+        self.doc_type = doc_type
+        self.id_ocr_picture_base_64 = id_ocr_picture_base_64
+        self.id_ocr_picture_url = id_ocr_picture_url
+        self.id_threshold = id_threshold
+        self.merchant_biz_id = merchant_biz_id
+        self.merchant_user_id = merchant_user_id
+        self.ocr_model = ocr_model
+        self.product_code = product_code
+        self.prompt = prompt
+        self.scene_code = scene_code
+        self.spoof = spoof
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.doc_type is not None:
+            result['DocType'] = self.doc_type
+        if self.id_ocr_picture_base_64 is not None:
+            result['IdOcrPictureBase64'] = self.id_ocr_picture_base_64
+        if self.id_ocr_picture_url is not None:
+            result['IdOcrPictureUrl'] = self.id_ocr_picture_url
+        if self.id_threshold is not None:
+            result['IdThreshold'] = self.id_threshold
+        if self.merchant_biz_id is not None:
+            result['MerchantBizId'] = self.merchant_biz_id
+        if self.merchant_user_id is not None:
+            result['MerchantUserId'] = self.merchant_user_id
+        if self.ocr_model is not None:
+            result['OcrModel'] = self.ocr_model
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.prompt is not None:
+            result['Prompt'] = self.prompt
+        if self.scene_code is not None:
+            result['SceneCode'] = self.scene_code
+        if self.spoof is not None:
+            result['Spoof'] = self.spoof
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DocType') is not None:
+            self.doc_type = m.get('DocType')
+        if m.get('IdOcrPictureBase64') is not None:
+            self.id_ocr_picture_base_64 = m.get('IdOcrPictureBase64')
+        if m.get('IdOcrPictureUrl') is not None:
+            self.id_ocr_picture_url = m.get('IdOcrPictureUrl')
+        if m.get('IdThreshold') is not None:
+            self.id_threshold = m.get('IdThreshold')
+        if m.get('MerchantBizId') is not None:
+            self.merchant_biz_id = m.get('MerchantBizId')
+        if m.get('MerchantUserId') is not None:
+            self.merchant_user_id = m.get('MerchantUserId')
+        if m.get('OcrModel') is not None:
+            self.ocr_model = m.get('OcrModel')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('Prompt') is not None:
+            self.prompt = m.get('Prompt')
+        if m.get('SceneCode') is not None:
+            self.scene_code = m.get('SceneCode')
+        if m.get('Spoof') is not None:
+            self.spoof = m.get('Spoof')
+        return self
+
+
+class DocOcrMaxResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        ext_id_info: str = None,
+        passed: str = None,
+        sub_code: str = None,
+        transaction_id: str = None,
+    ):
+        self.ext_id_info = ext_id_info
+        self.passed = passed
+        self.sub_code = sub_code
+        self.transaction_id = transaction_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ext_id_info is not None:
+            result['ExtIdInfo'] = self.ext_id_info
+        if self.passed is not None:
+            result['Passed'] = self.passed
+        if self.sub_code is not None:
+            result['SubCode'] = self.sub_code
+        if self.transaction_id is not None:
+            result['TransactionId'] = self.transaction_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExtIdInfo') is not None:
+            self.ext_id_info = m.get('ExtIdInfo')
+        if m.get('Passed') is not None:
+            self.passed = m.get('Passed')
+        if m.get('SubCode') is not None:
+            self.sub_code = m.get('SubCode')
+        if m.get('TransactionId') is not None:
+            self.transaction_id = m.get('TransactionId')
+        return self
+
+
+class DocOcrMaxResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result: DocOcrMaxResponseBodyResult = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = DocOcrMaxResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class DocOcrMaxResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DocOcrMaxResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DocOcrMaxResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class EkycVerifyRequest(TeaModel):
     def __init__(
         self,

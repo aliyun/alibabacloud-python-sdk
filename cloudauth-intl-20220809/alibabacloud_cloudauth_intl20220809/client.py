@@ -1027,6 +1027,142 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.doc_ocr_with_options_async(request, runtime)
 
+    def doc_ocr_max_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.DocOcrMaxRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.DocOcrMaxResponse:
+        """
+        @summary 全球证件ocr识别接口
+        
+        @param request: DocOcrMaxRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DocOcrMaxResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.doc_type):
+            body['DocType'] = request.doc_type
+        if not UtilClient.is_unset(request.id_ocr_picture_base_64):
+            body['IdOcrPictureBase64'] = request.id_ocr_picture_base_64
+        if not UtilClient.is_unset(request.id_ocr_picture_url):
+            body['IdOcrPictureUrl'] = request.id_ocr_picture_url
+        if not UtilClient.is_unset(request.id_threshold):
+            body['IdThreshold'] = request.id_threshold
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            body['MerchantBizId'] = request.merchant_biz_id
+        if not UtilClient.is_unset(request.merchant_user_id):
+            body['MerchantUserId'] = request.merchant_user_id
+        if not UtilClient.is_unset(request.ocr_model):
+            body['OcrModel'] = request.ocr_model
+        if not UtilClient.is_unset(request.product_code):
+            body['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.scene_code):
+            body['SceneCode'] = request.scene_code
+        if not UtilClient.is_unset(request.spoof):
+            body['Spoof'] = request.spoof
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DocOcrMax',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.DocOcrMaxResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def doc_ocr_max_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.DocOcrMaxRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.DocOcrMaxResponse:
+        """
+        @summary 全球证件ocr识别接口
+        
+        @param request: DocOcrMaxRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DocOcrMaxResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.doc_type):
+            body['DocType'] = request.doc_type
+        if not UtilClient.is_unset(request.id_ocr_picture_base_64):
+            body['IdOcrPictureBase64'] = request.id_ocr_picture_base_64
+        if not UtilClient.is_unset(request.id_ocr_picture_url):
+            body['IdOcrPictureUrl'] = request.id_ocr_picture_url
+        if not UtilClient.is_unset(request.id_threshold):
+            body['IdThreshold'] = request.id_threshold
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            body['MerchantBizId'] = request.merchant_biz_id
+        if not UtilClient.is_unset(request.merchant_user_id):
+            body['MerchantUserId'] = request.merchant_user_id
+        if not UtilClient.is_unset(request.ocr_model):
+            body['OcrModel'] = request.ocr_model
+        if not UtilClient.is_unset(request.product_code):
+            body['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.scene_code):
+            body['SceneCode'] = request.scene_code
+        if not UtilClient.is_unset(request.spoof):
+            body['Spoof'] = request.spoof
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DocOcrMax',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.DocOcrMaxResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def doc_ocr_max(
+        self,
+        request: cloudauth_intl_20220809_models.DocOcrMaxRequest,
+    ) -> cloudauth_intl_20220809_models.DocOcrMaxResponse:
+        """
+        @summary 全球证件ocr识别接口
+        
+        @param request: DocOcrMaxRequest
+        @return: DocOcrMaxResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.doc_ocr_max_with_options(request, runtime)
+
+    async def doc_ocr_max_async(
+        self,
+        request: cloudauth_intl_20220809_models.DocOcrMaxRequest,
+    ) -> cloudauth_intl_20220809_models.DocOcrMaxResponse:
+        """
+        @summary 全球证件ocr识别接口
+        
+        @param request: DocOcrMaxRequest
+        @return: DocOcrMaxResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.doc_ocr_max_with_options_async(request, runtime)
+
     def ekyc_verify_with_options(
         self,
         request: cloudauth_intl_20220809_models.EkycVerifyRequest,
