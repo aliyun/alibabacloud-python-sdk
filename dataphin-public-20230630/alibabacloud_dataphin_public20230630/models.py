@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict
+from typing import List, Dict, Any
 
 
 class AddTenantMembersRequestAddCommandUserList(TeaModel):
@@ -2845,6 +2845,513 @@ class CreateDataDomainResponse(TeaModel):
         return self
 
 
+class CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParameters(TeaModel):
+    def __init__(
+        self,
+        example_value: str = None,
+        is_required_parameter: bool = None,
+        parameter_data_type: str = None,
+        parameter_description: str = None,
+        parameter_name: str = None,
+        parameter_value_type: str = None,
+    ):
+        self.example_value = example_value
+        # This parameter is required.
+        self.is_required_parameter = is_required_parameter
+        # This parameter is required.
+        self.parameter_data_type = parameter_data_type
+        self.parameter_description = parameter_description
+        # This parameter is required.
+        self.parameter_name = parameter_name
+        # This parameter is required.
+        self.parameter_value_type = parameter_value_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.example_value is not None:
+            result['ExampleValue'] = self.example_value
+        if self.is_required_parameter is not None:
+            result['IsRequiredParameter'] = self.is_required_parameter
+        if self.parameter_data_type is not None:
+            result['ParameterDataType'] = self.parameter_data_type
+        if self.parameter_description is not None:
+            result['ParameterDescription'] = self.parameter_description
+        if self.parameter_name is not None:
+            result['ParameterName'] = self.parameter_name
+        if self.parameter_value_type is not None:
+            result['ParameterValueType'] = self.parameter_value_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExampleValue') is not None:
+            self.example_value = m.get('ExampleValue')
+        if m.get('IsRequiredParameter') is not None:
+            self.is_required_parameter = m.get('IsRequiredParameter')
+        if m.get('ParameterDataType') is not None:
+            self.parameter_data_type = m.get('ParameterDataType')
+        if m.get('ParameterDescription') is not None:
+            self.parameter_description = m.get('ParameterDescription')
+        if m.get('ParameterName') is not None:
+            self.parameter_name = m.get('ParameterName')
+        if m.get('ParameterValueType') is not None:
+            self.parameter_value_type = m.get('ParameterValueType')
+        return self
+
+
+class CreateDataServiceApiRequestCreateCommandScriptDetailsScriptResponseParameters(TeaModel):
+    def __init__(
+        self,
+        example_value: str = None,
+        parameter_data_type: str = None,
+        parameter_description: str = None,
+        parameter_name: str = None,
+    ):
+        self.example_value = example_value
+        # This parameter is required.
+        self.parameter_data_type = parameter_data_type
+        self.parameter_description = parameter_description
+        # This parameter is required.
+        self.parameter_name = parameter_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.example_value is not None:
+            result['ExampleValue'] = self.example_value
+        if self.parameter_data_type is not None:
+            result['ParameterDataType'] = self.parameter_data_type
+        if self.parameter_description is not None:
+            result['ParameterDescription'] = self.parameter_description
+        if self.parameter_name is not None:
+            result['ParameterName'] = self.parameter_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExampleValue') is not None:
+            self.example_value = m.get('ExampleValue')
+        if m.get('ParameterDataType') is not None:
+            self.parameter_data_type = m.get('ParameterDataType')
+        if m.get('ParameterDescription') is not None:
+            self.parameter_description = m.get('ParameterDescription')
+        if m.get('ParameterName') is not None:
+            self.parameter_name = m.get('ParameterName')
+        return self
+
+
+class CreateDataServiceApiRequestCreateCommandScriptDetails(TeaModel):
+    def __init__(
+        self,
+        datasource_id: int = None,
+        datasource_type: int = None,
+        is_paginated: bool = None,
+        script: str = None,
+        script_request_parameters: List[CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParameters] = None,
+        script_response_parameters: List[CreateDataServiceApiRequestCreateCommandScriptDetailsScriptResponseParameters] = None,
+        sort_priority: int = None,
+        sql_mode: int = None,
+    ):
+        self.datasource_id = datasource_id
+        # This parameter is required.
+        self.datasource_type = datasource_type
+        self.is_paginated = is_paginated
+        # This parameter is required.
+        self.script = script
+        # This parameter is required.
+        self.script_request_parameters = script_request_parameters
+        # This parameter is required.
+        self.script_response_parameters = script_response_parameters
+        self.sort_priority = sort_priority
+        # This parameter is required.
+        self.sql_mode = sql_mode
+
+    def validate(self):
+        if self.script_request_parameters:
+            for k in self.script_request_parameters:
+                if k:
+                    k.validate()
+        if self.script_response_parameters:
+            for k in self.script_response_parameters:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.datasource_id is not None:
+            result['DatasourceID'] = self.datasource_id
+        if self.datasource_type is not None:
+            result['DatasourceType'] = self.datasource_type
+        if self.is_paginated is not None:
+            result['IsPaginated'] = self.is_paginated
+        if self.script is not None:
+            result['Script'] = self.script
+        result['ScriptRequestParameters'] = []
+        if self.script_request_parameters is not None:
+            for k in self.script_request_parameters:
+                result['ScriptRequestParameters'].append(k.to_map() if k else None)
+        result['ScriptResponseParameters'] = []
+        if self.script_response_parameters is not None:
+            for k in self.script_response_parameters:
+                result['ScriptResponseParameters'].append(k.to_map() if k else None)
+        if self.sort_priority is not None:
+            result['SortPriority'] = self.sort_priority
+        if self.sql_mode is not None:
+            result['SqlMode'] = self.sql_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasourceID') is not None:
+            self.datasource_id = m.get('DatasourceID')
+        if m.get('DatasourceType') is not None:
+            self.datasource_type = m.get('DatasourceType')
+        if m.get('IsPaginated') is not None:
+            self.is_paginated = m.get('IsPaginated')
+        if m.get('Script') is not None:
+            self.script = m.get('Script')
+        self.script_request_parameters = []
+        if m.get('ScriptRequestParameters') is not None:
+            for k in m.get('ScriptRequestParameters'):
+                temp_model = CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParameters()
+                self.script_request_parameters.append(temp_model.from_map(k))
+        self.script_response_parameters = []
+        if m.get('ScriptResponseParameters') is not None:
+            for k in m.get('ScriptResponseParameters'):
+                temp_model = CreateDataServiceApiRequestCreateCommandScriptDetailsScriptResponseParameters()
+                self.script_response_parameters.append(temp_model.from_map(k))
+        if m.get('SortPriority') is not None:
+            self.sort_priority = m.get('SortPriority')
+        if m.get('SqlMode') is not None:
+            self.sql_mode = m.get('SqlMode')
+        return self
+
+
+class CreateDataServiceApiRequestCreateCommand(TeaModel):
+    def __init__(
+        self,
+        api_group_id: int = None,
+        api_group_name: str = None,
+        api_name: str = None,
+        api_type: int = None,
+        biz_protocol: List[int] = None,
+        cache_timeout: int = None,
+        call_mode: int = None,
+        custom_update_rate: str = None,
+        description: str = None,
+        execution_timeout: int = None,
+        mode: int = None,
+        project_id: int = None,
+        request_type: int = None,
+        script_details: CreateDataServiceApiRequestCreateCommandScriptDetails = None,
+        timeout: int = None,
+        update_rate: int = None,
+        version: str = None,
+    ):
+        # This parameter is required.
+        self.api_group_id = api_group_id
+        # This parameter is required.
+        self.api_group_name = api_group_name
+        # This parameter is required.
+        self.api_name = api_name
+        # This parameter is required.
+        self.api_type = api_type
+        # This parameter is required.
+        self.biz_protocol = biz_protocol
+        # This parameter is required.
+        self.cache_timeout = cache_timeout
+        self.call_mode = call_mode
+        self.custom_update_rate = custom_update_rate
+        self.description = description
+        self.execution_timeout = execution_timeout
+        # This parameter is required.
+        self.mode = mode
+        # This parameter is required.
+        self.project_id = project_id
+        # This parameter is required.
+        self.request_type = request_type
+        # This parameter is required.
+        self.script_details = script_details
+        # This parameter is required.
+        self.timeout = timeout
+        self.update_rate = update_rate
+        # This parameter is required.
+        self.version = version
+
+    def validate(self):
+        if self.script_details:
+            self.script_details.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_group_id is not None:
+            result['ApiGroupId'] = self.api_group_id
+        if self.api_group_name is not None:
+            result['ApiGroupName'] = self.api_group_name
+        if self.api_name is not None:
+            result['ApiName'] = self.api_name
+        if self.api_type is not None:
+            result['ApiType'] = self.api_type
+        if self.biz_protocol is not None:
+            result['BizProtocol'] = self.biz_protocol
+        if self.cache_timeout is not None:
+            result['CacheTimeout'] = self.cache_timeout
+        if self.call_mode is not None:
+            result['CallMode'] = self.call_mode
+        if self.custom_update_rate is not None:
+            result['CustomUpdateRate'] = self.custom_update_rate
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.execution_timeout is not None:
+            result['ExecutionTimeout'] = self.execution_timeout
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.request_type is not None:
+            result['RequestType'] = self.request_type
+        if self.script_details is not None:
+            result['ScriptDetails'] = self.script_details.to_map()
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        if self.update_rate is not None:
+            result['UpdateRate'] = self.update_rate
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiGroupId') is not None:
+            self.api_group_id = m.get('ApiGroupId')
+        if m.get('ApiGroupName') is not None:
+            self.api_group_name = m.get('ApiGroupName')
+        if m.get('ApiName') is not None:
+            self.api_name = m.get('ApiName')
+        if m.get('ApiType') is not None:
+            self.api_type = m.get('ApiType')
+        if m.get('BizProtocol') is not None:
+            self.biz_protocol = m.get('BizProtocol')
+        if m.get('CacheTimeout') is not None:
+            self.cache_timeout = m.get('CacheTimeout')
+        if m.get('CallMode') is not None:
+            self.call_mode = m.get('CallMode')
+        if m.get('CustomUpdateRate') is not None:
+            self.custom_update_rate = m.get('CustomUpdateRate')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ExecutionTimeout') is not None:
+            self.execution_timeout = m.get('ExecutionTimeout')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RequestType') is not None:
+            self.request_type = m.get('RequestType')
+        if m.get('ScriptDetails') is not None:
+            temp_model = CreateDataServiceApiRequestCreateCommandScriptDetails()
+            self.script_details = temp_model.from_map(m['ScriptDetails'])
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        if m.get('UpdateRate') is not None:
+            self.update_rate = m.get('UpdateRate')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class CreateDataServiceApiRequest(TeaModel):
+    def __init__(
+        self,
+        create_command: CreateDataServiceApiRequestCreateCommand = None,
+        op_tenant_id: int = None,
+    ):
+        # This parameter is required.
+        self.create_command = create_command
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+
+    def validate(self):
+        if self.create_command:
+            self.create_command.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_command is not None:
+            result['CreateCommand'] = self.create_command.to_map()
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateCommand') is not None:
+            temp_model = CreateDataServiceApiRequestCreateCommand()
+            self.create_command = temp_model.from_map(m['CreateCommand'])
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        return self
+
+
+class CreateDataServiceApiShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        create_command_shrink: str = None,
+        op_tenant_id: int = None,
+    ):
+        # This parameter is required.
+        self.create_command_shrink = create_command_shrink
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_command_shrink is not None:
+            result['CreateCommand'] = self.create_command_shrink
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateCommand') is not None:
+            self.create_command_shrink = m.get('CreateCommand')
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        return self
+
+
+class CreateDataServiceApiResponseBody(TeaModel):
+    def __init__(
+        self,
+        api_id: int = None,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.api_id = api_id
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_id is not None:
+            result['ApiId'] = self.api_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiId') is not None:
+            self.api_id = m.get('ApiId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateDataServiceApiResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDataServiceApiResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDataServiceApiResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateDataSourceRequestCreateCommandDevDataSourceCreateDataSourceCreateConfigItemList(TeaModel):
     def __init__(
         self,
@@ -4383,6 +4890,543 @@ class CreatePipelineNodeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreatePipelineNodeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateRowPermissionRequestCreateRowPermissionCommandMappingColumns(TeaModel):
+    def __init__(
+        self,
+        column_desc: str = None,
+        column_name: str = None,
+        column_type: str = None,
+    ):
+        self.column_desc = column_desc
+        # This parameter is required.
+        self.column_name = column_name
+        # This parameter is required.
+        self.column_type = column_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.column_desc is not None:
+            result['ColumnDesc'] = self.column_desc
+        if self.column_name is not None:
+            result['ColumnName'] = self.column_name
+        if self.column_type is not None:
+            result['ColumnType'] = self.column_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ColumnDesc') is not None:
+            self.column_desc = m.get('ColumnDesc')
+        if m.get('ColumnName') is not None:
+            self.column_name = m.get('ColumnName')
+        if m.get('ColumnType') is not None:
+            self.column_type = m.get('ColumnType')
+        return self
+
+
+class CreateRowPermissionRequestCreateRowPermissionCommandRulesExpressions(TeaModel):
+    def __init__(
+        self,
+        mapping_column_name: str = None,
+        operator: str = None,
+        sub_conditions: List[Any] = None,
+        type: str = None,
+        values: List[str] = None,
+    ):
+        # This parameter is required.
+        self.mapping_column_name = mapping_column_name
+        # This parameter is required.
+        self.operator = operator
+        # This parameter is required.
+        self.sub_conditions = sub_conditions
+        # This parameter is required.
+        self.type = type
+        # This parameter is required.
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mapping_column_name is not None:
+            result['MappingColumnName'] = self.mapping_column_name
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.sub_conditions is not None:
+            result['SubConditions'] = self.sub_conditions
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MappingColumnName') is not None:
+            self.mapping_column_name = m.get('MappingColumnName')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('SubConditions') is not None:
+            self.sub_conditions = m.get('SubConditions')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
+class CreateRowPermissionRequestCreateRowPermissionCommandRulesUserMappingListAccounts(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        return self
+
+
+class CreateRowPermissionRequestCreateRowPermissionCommandRulesUserMappingList(TeaModel):
+    def __init__(
+        self,
+        account_type: str = None,
+        accounts: List[CreateRowPermissionRequestCreateRowPermissionCommandRulesUserMappingListAccounts] = None,
+    ):
+        # This parameter is required.
+        self.account_type = account_type
+        # This parameter is required.
+        self.accounts = accounts
+
+    def validate(self):
+        if self.accounts:
+            for k in self.accounts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_type is not None:
+            result['AccountType'] = self.account_type
+        result['Accounts'] = []
+        if self.accounts is not None:
+            for k in self.accounts:
+                result['Accounts'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountType') is not None:
+            self.account_type = m.get('AccountType')
+        self.accounts = []
+        if m.get('Accounts') is not None:
+            for k in m.get('Accounts'):
+                temp_model = CreateRowPermissionRequestCreateRowPermissionCommandRulesUserMappingListAccounts()
+                self.accounts.append(temp_model.from_map(k))
+        return self
+
+
+class CreateRowPermissionRequestCreateRowPermissionCommandRules(TeaModel):
+    def __init__(
+        self,
+        expressions: List[CreateRowPermissionRequestCreateRowPermissionCommandRulesExpressions] = None,
+        is_delete: bool = None,
+        rule_name: str = None,
+        scope_type: str = None,
+        status: int = None,
+        user_mapping_list: List[CreateRowPermissionRequestCreateRowPermissionCommandRulesUserMappingList] = None,
+    ):
+        # This parameter is required.
+        self.expressions = expressions
+        self.is_delete = is_delete
+        # This parameter is required.
+        self.rule_name = rule_name
+        # This parameter is required.
+        self.scope_type = scope_type
+        # This parameter is required.
+        self.status = status
+        self.user_mapping_list = user_mapping_list
+
+    def validate(self):
+        if self.expressions:
+            for k in self.expressions:
+                if k:
+                    k.validate()
+        if self.user_mapping_list:
+            for k in self.user_mapping_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Expressions'] = []
+        if self.expressions is not None:
+            for k in self.expressions:
+                result['Expressions'].append(k.to_map() if k else None)
+        if self.is_delete is not None:
+            result['IsDelete'] = self.is_delete
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.scope_type is not None:
+            result['ScopeType'] = self.scope_type
+        if self.status is not None:
+            result['Status'] = self.status
+        result['UserMappingList'] = []
+        if self.user_mapping_list is not None:
+            for k in self.user_mapping_list:
+                result['UserMappingList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.expressions = []
+        if m.get('Expressions') is not None:
+            for k in m.get('Expressions'):
+                temp_model = CreateRowPermissionRequestCreateRowPermissionCommandRulesExpressions()
+                self.expressions.append(temp_model.from_map(k))
+        if m.get('IsDelete') is not None:
+            self.is_delete = m.get('IsDelete')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('ScopeType') is not None:
+            self.scope_type = m.get('ScopeType')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.user_mapping_list = []
+        if m.get('UserMappingList') is not None:
+            for k in m.get('UserMappingList'):
+                temp_model = CreateRowPermissionRequestCreateRowPermissionCommandRulesUserMappingList()
+                self.user_mapping_list.append(temp_model.from_map(k))
+        return self
+
+
+class CreateRowPermissionRequestCreateRowPermissionCommandTables(TeaModel):
+    def __init__(
+        self,
+        column_name: str = None,
+        mapping_column_name: str = None,
+        resource_id: str = None,
+    ):
+        # This parameter is required.
+        self.column_name = column_name
+        # This parameter is required.
+        self.mapping_column_name = mapping_column_name
+        # This parameter is required.
+        self.resource_id = resource_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.column_name is not None:
+            result['ColumnName'] = self.column_name
+        if self.mapping_column_name is not None:
+            result['MappingColumnName'] = self.mapping_column_name
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ColumnName') is not None:
+            self.column_name = m.get('ColumnName')
+        if m.get('MappingColumnName') is not None:
+            self.mapping_column_name = m.get('MappingColumnName')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        return self
+
+
+class CreateRowPermissionRequestCreateRowPermissionCommand(TeaModel):
+    def __init__(
+        self,
+        mapping_columns: List[CreateRowPermissionRequestCreateRowPermissionCommandMappingColumns] = None,
+        row_permission_desc: str = None,
+        row_permission_name: str = None,
+        rules: List[CreateRowPermissionRequestCreateRowPermissionCommandRules] = None,
+        tables: List[CreateRowPermissionRequestCreateRowPermissionCommandTables] = None,
+    ):
+        # This parameter is required.
+        self.mapping_columns = mapping_columns
+        self.row_permission_desc = row_permission_desc
+        # This parameter is required.
+        self.row_permission_name = row_permission_name
+        self.rules = rules
+        self.tables = tables
+
+    def validate(self):
+        if self.mapping_columns:
+            for k in self.mapping_columns:
+                if k:
+                    k.validate()
+        if self.rules:
+            for k in self.rules:
+                if k:
+                    k.validate()
+        if self.tables:
+            for k in self.tables:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['MappingColumns'] = []
+        if self.mapping_columns is not None:
+            for k in self.mapping_columns:
+                result['MappingColumns'].append(k.to_map() if k else None)
+        if self.row_permission_desc is not None:
+            result['RowPermissionDesc'] = self.row_permission_desc
+        if self.row_permission_name is not None:
+            result['RowPermissionName'] = self.row_permission_name
+        result['Rules'] = []
+        if self.rules is not None:
+            for k in self.rules:
+                result['Rules'].append(k.to_map() if k else None)
+        result['Tables'] = []
+        if self.tables is not None:
+            for k in self.tables:
+                result['Tables'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.mapping_columns = []
+        if m.get('MappingColumns') is not None:
+            for k in m.get('MappingColumns'):
+                temp_model = CreateRowPermissionRequestCreateRowPermissionCommandMappingColumns()
+                self.mapping_columns.append(temp_model.from_map(k))
+        if m.get('RowPermissionDesc') is not None:
+            self.row_permission_desc = m.get('RowPermissionDesc')
+        if m.get('RowPermissionName') is not None:
+            self.row_permission_name = m.get('RowPermissionName')
+        self.rules = []
+        if m.get('Rules') is not None:
+            for k in m.get('Rules'):
+                temp_model = CreateRowPermissionRequestCreateRowPermissionCommandRules()
+                self.rules.append(temp_model.from_map(k))
+        self.tables = []
+        if m.get('Tables') is not None:
+            for k in m.get('Tables'):
+                temp_model = CreateRowPermissionRequestCreateRowPermissionCommandTables()
+                self.tables.append(temp_model.from_map(k))
+        return self
+
+
+class CreateRowPermissionRequest(TeaModel):
+    def __init__(
+        self,
+        create_row_permission_command: CreateRowPermissionRequestCreateRowPermissionCommand = None,
+        op_tenant_id: int = None,
+    ):
+        # This parameter is required.
+        self.create_row_permission_command = create_row_permission_command
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+
+    def validate(self):
+        if self.create_row_permission_command:
+            self.create_row_permission_command.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_row_permission_command is not None:
+            result['CreateRowPermissionCommand'] = self.create_row_permission_command.to_map()
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateRowPermissionCommand') is not None:
+            temp_model = CreateRowPermissionRequestCreateRowPermissionCommand()
+            self.create_row_permission_command = temp_model.from_map(m['CreateRowPermissionCommand'])
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        return self
+
+
+class CreateRowPermissionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        create_row_permission_command_shrink: str = None,
+        op_tenant_id: int = None,
+    ):
+        # This parameter is required.
+        self.create_row_permission_command_shrink = create_row_permission_command_shrink
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_row_permission_command_shrink is not None:
+            result['CreateRowPermissionCommand'] = self.create_row_permission_command_shrink
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateRowPermissionCommand') is not None:
+            self.create_row_permission_command_shrink = m.get('CreateRowPermissionCommand')
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        return self
+
+
+class CreateRowPermissionResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: int = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateRowPermissionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateRowPermissionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateRowPermissionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5976,6 +7020,204 @@ class DeleteDirectoryResponse(TeaModel):
         return self
 
 
+class DeleteRowPermissionRequestDeleteRowPermissionCommand(TeaModel):
+    def __init__(
+        self,
+        row_permission_id: int = None,
+    ):
+        # This parameter is required.
+        self.row_permission_id = row_permission_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.row_permission_id is not None:
+            result['RowPermissionId'] = self.row_permission_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RowPermissionId') is not None:
+            self.row_permission_id = m.get('RowPermissionId')
+        return self
+
+
+class DeleteRowPermissionRequest(TeaModel):
+    def __init__(
+        self,
+        delete_row_permission_command: DeleteRowPermissionRequestDeleteRowPermissionCommand = None,
+        op_tenant_id: int = None,
+    ):
+        # This parameter is required.
+        self.delete_row_permission_command = delete_row_permission_command
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+
+    def validate(self):
+        if self.delete_row_permission_command:
+            self.delete_row_permission_command.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delete_row_permission_command is not None:
+            result['DeleteRowPermissionCommand'] = self.delete_row_permission_command.to_map()
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeleteRowPermissionCommand') is not None:
+            temp_model = DeleteRowPermissionRequestDeleteRowPermissionCommand()
+            self.delete_row_permission_command = temp_model.from_map(m['DeleteRowPermissionCommand'])
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        return self
+
+
+class DeleteRowPermissionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        delete_row_permission_command_shrink: str = None,
+        op_tenant_id: int = None,
+    ):
+        # This parameter is required.
+        self.delete_row_permission_command_shrink = delete_row_permission_command_shrink
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delete_row_permission_command_shrink is not None:
+            result['DeleteRowPermissionCommand'] = self.delete_row_permission_command_shrink
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeleteRowPermissionCommand') is not None:
+            self.delete_row_permission_command_shrink = m.get('DeleteRowPermissionCommand')
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        return self
+
+
+class DeleteRowPermissionResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: bool = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteRowPermissionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteRowPermissionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteRowPermissionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteUserGroupRequest(TeaModel):
     def __init__(
         self,
@@ -7022,6 +8264,334 @@ class FixDataResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = FixDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAccountByRowPermissionIdRequestGetAccountByRowPermissionIdQuery(TeaModel):
+    def __init__(
+        self,
+        row_permission_id: int = None,
+        rule_ids: List[int] = None,
+    ):
+        # This parameter is required.
+        self.row_permission_id = row_permission_id
+        # This parameter is required.
+        self.rule_ids = rule_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.row_permission_id is not None:
+            result['RowPermissionId'] = self.row_permission_id
+        if self.rule_ids is not None:
+            result['RuleIds'] = self.rule_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RowPermissionId') is not None:
+            self.row_permission_id = m.get('RowPermissionId')
+        if m.get('RuleIds') is not None:
+            self.rule_ids = m.get('RuleIds')
+        return self
+
+
+class GetAccountByRowPermissionIdRequest(TeaModel):
+    def __init__(
+        self,
+        get_account_by_row_permission_id_query: GetAccountByRowPermissionIdRequestGetAccountByRowPermissionIdQuery = None,
+        op_tenant_id: int = None,
+    ):
+        # This parameter is required.
+        self.get_account_by_row_permission_id_query = get_account_by_row_permission_id_query
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+
+    def validate(self):
+        if self.get_account_by_row_permission_id_query:
+            self.get_account_by_row_permission_id_query.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.get_account_by_row_permission_id_query is not None:
+            result['GetAccountByRowPermissionIdQuery'] = self.get_account_by_row_permission_id_query.to_map()
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GetAccountByRowPermissionIdQuery') is not None:
+            temp_model = GetAccountByRowPermissionIdRequestGetAccountByRowPermissionIdQuery()
+            self.get_account_by_row_permission_id_query = temp_model.from_map(m['GetAccountByRowPermissionIdQuery'])
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        return self
+
+
+class GetAccountByRowPermissionIdShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        get_account_by_row_permission_id_query_shrink: str = None,
+        op_tenant_id: int = None,
+    ):
+        # This parameter is required.
+        self.get_account_by_row_permission_id_query_shrink = get_account_by_row_permission_id_query_shrink
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.get_account_by_row_permission_id_query_shrink is not None:
+            result['GetAccountByRowPermissionIdQuery'] = self.get_account_by_row_permission_id_query_shrink
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GetAccountByRowPermissionIdQuery') is not None:
+            self.get_account_by_row_permission_id_query_shrink = m.get('GetAccountByRowPermissionIdQuery')
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        return self
+
+
+class GetAccountByRowPermissionIdResponseBodyDataUserMappingListAccounts(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+        account_name: str = None,
+    ):
+        self.account_id = account_id
+        self.account_name = account_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        if self.account_name is not None:
+            result['AccountName'] = self.account_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        if m.get('AccountName') is not None:
+            self.account_name = m.get('AccountName')
+        return self
+
+
+class GetAccountByRowPermissionIdResponseBodyDataUserMappingList(TeaModel):
+    def __init__(
+        self,
+        account_type: str = None,
+        accounts: List[GetAccountByRowPermissionIdResponseBodyDataUserMappingListAccounts] = None,
+    ):
+        self.account_type = account_type
+        self.accounts = accounts
+
+    def validate(self):
+        if self.accounts:
+            for k in self.accounts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_type is not None:
+            result['AccountType'] = self.account_type
+        result['Accounts'] = []
+        if self.accounts is not None:
+            for k in self.accounts:
+                result['Accounts'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountType') is not None:
+            self.account_type = m.get('AccountType')
+        self.accounts = []
+        if m.get('Accounts') is not None:
+            for k in m.get('Accounts'):
+                temp_model = GetAccountByRowPermissionIdResponseBodyDataUserMappingListAccounts()
+                self.accounts.append(temp_model.from_map(k))
+        return self
+
+
+class GetAccountByRowPermissionIdResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        user_mapping_list: List[GetAccountByRowPermissionIdResponseBodyDataUserMappingList] = None,
+    ):
+        self.id = id
+        self.user_mapping_list = user_mapping_list
+
+    def validate(self):
+        if self.user_mapping_list:
+            for k in self.user_mapping_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        result['UserMappingList'] = []
+        if self.user_mapping_list is not None:
+            for k in self.user_mapping_list:
+                result['UserMappingList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        self.user_mapping_list = []
+        if m.get('UserMappingList') is not None:
+            for k in m.get('UserMappingList'):
+                temp_model = GetAccountByRowPermissionIdResponseBodyDataUserMappingList()
+                self.user_mapping_list.append(temp_model.from_map(k))
+        return self
+
+
+class GetAccountByRowPermissionIdResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[GetAccountByRowPermissionIdResponseBodyData] = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = GetAccountByRowPermissionIdResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetAccountByRowPermissionIdResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAccountByRowPermissionIdResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAccountByRowPermissionIdResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -18415,6 +19985,784 @@ class GetSupplementDagrunInstanceResponse(TeaModel):
         return self
 
 
+class GetTableColumnLineageByTaskIdRequestTableColumnLineageByTaskIdQuery(TeaModel):
+    def __init__(
+        self,
+        need_not_exist_object: bool = None,
+        task_env: str = None,
+        task_id: str = None,
+    ):
+        self.need_not_exist_object = need_not_exist_object
+        self.task_env = task_env
+        # This parameter is required.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.need_not_exist_object is not None:
+            result['NeedNotExistObject'] = self.need_not_exist_object
+        if self.task_env is not None:
+            result['TaskEnv'] = self.task_env
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NeedNotExistObject') is not None:
+            self.need_not_exist_object = m.get('NeedNotExistObject')
+        if m.get('TaskEnv') is not None:
+            self.task_env = m.get('TaskEnv')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class GetTableColumnLineageByTaskIdRequest(TeaModel):
+    def __init__(
+        self,
+        op_tenant_id: int = None,
+        table_column_lineage_by_task_id_query: GetTableColumnLineageByTaskIdRequestTableColumnLineageByTaskIdQuery = None,
+    ):
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+        # This parameter is required.
+        self.table_column_lineage_by_task_id_query = table_column_lineage_by_task_id_query
+
+    def validate(self):
+        if self.table_column_lineage_by_task_id_query:
+            self.table_column_lineage_by_task_id_query.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        if self.table_column_lineage_by_task_id_query is not None:
+            result['TableColumnLineageByTaskIdQuery'] = self.table_column_lineage_by_task_id_query.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        if m.get('TableColumnLineageByTaskIdQuery') is not None:
+            temp_model = GetTableColumnLineageByTaskIdRequestTableColumnLineageByTaskIdQuery()
+            self.table_column_lineage_by_task_id_query = temp_model.from_map(m['TableColumnLineageByTaskIdQuery'])
+        return self
+
+
+class GetTableColumnLineageByTaskIdShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        op_tenant_id: int = None,
+        table_column_lineage_by_task_id_query_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+        # This parameter is required.
+        self.table_column_lineage_by_task_id_query_shrink = table_column_lineage_by_task_id_query_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        if self.table_column_lineage_by_task_id_query_shrink is not None:
+            result['TableColumnLineageByTaskIdQuery'] = self.table_column_lineage_by_task_id_query_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        if m.get('TableColumnLineageByTaskIdQuery') is not None:
+            self.table_column_lineage_by_task_id_query_shrink = m.get('TableColumnLineageByTaskIdQuery')
+        return self
+
+
+class GetTableColumnLineageByTaskIdResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        input_biz_unit_id: int = None,
+        input_column_id: str = None,
+        input_column_name: str = None,
+        input_data_source_id: int = None,
+        input_data_source_type: str = None,
+        input_db_type: str = None,
+        input_env: str = None,
+        input_project_id: int = None,
+        input_table_deleted: bool = None,
+        input_table_id: str = None,
+        input_table_name: str = None,
+        input_table_type: str = None,
+        output_biz_unit_id: int = None,
+        output_column_id: str = None,
+        output_column_name: str = None,
+        output_data_source_id: int = None,
+        output_data_source_type: str = None,
+        output_db_type: str = None,
+        output_env: str = None,
+        output_project_id: int = None,
+        output_table_deleted: bool = None,
+        output_table_id: str = None,
+        output_table_name: str = None,
+        output_table_type: str = None,
+        task_env: str = None,
+        task_id: str = None,
+        tenant_id: int = None,
+    ):
+        self.input_biz_unit_id = input_biz_unit_id
+        self.input_column_id = input_column_id
+        self.input_column_name = input_column_name
+        self.input_data_source_id = input_data_source_id
+        self.input_data_source_type = input_data_source_type
+        self.input_db_type = input_db_type
+        self.input_env = input_env
+        self.input_project_id = input_project_id
+        self.input_table_deleted = input_table_deleted
+        self.input_table_id = input_table_id
+        self.input_table_name = input_table_name
+        self.input_table_type = input_table_type
+        self.output_biz_unit_id = output_biz_unit_id
+        self.output_column_id = output_column_id
+        self.output_column_name = output_column_name
+        self.output_data_source_id = output_data_source_id
+        self.output_data_source_type = output_data_source_type
+        self.output_db_type = output_db_type
+        self.output_env = output_env
+        self.output_project_id = output_project_id
+        self.output_table_deleted = output_table_deleted
+        self.output_table_id = output_table_id
+        self.output_table_name = output_table_name
+        self.output_table_type = output_table_type
+        self.task_env = task_env
+        self.task_id = task_id
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_biz_unit_id is not None:
+            result['InputBizUnitId'] = self.input_biz_unit_id
+        if self.input_column_id is not None:
+            result['InputColumnId'] = self.input_column_id
+        if self.input_column_name is not None:
+            result['InputColumnName'] = self.input_column_name
+        if self.input_data_source_id is not None:
+            result['InputDataSourceId'] = self.input_data_source_id
+        if self.input_data_source_type is not None:
+            result['InputDataSourceType'] = self.input_data_source_type
+        if self.input_db_type is not None:
+            result['InputDbType'] = self.input_db_type
+        if self.input_env is not None:
+            result['InputEnv'] = self.input_env
+        if self.input_project_id is not None:
+            result['InputProjectId'] = self.input_project_id
+        if self.input_table_deleted is not None:
+            result['InputTableDeleted'] = self.input_table_deleted
+        if self.input_table_id is not None:
+            result['InputTableId'] = self.input_table_id
+        if self.input_table_name is not None:
+            result['InputTableName'] = self.input_table_name
+        if self.input_table_type is not None:
+            result['InputTableType'] = self.input_table_type
+        if self.output_biz_unit_id is not None:
+            result['OutputBizUnitId'] = self.output_biz_unit_id
+        if self.output_column_id is not None:
+            result['OutputColumnId'] = self.output_column_id
+        if self.output_column_name is not None:
+            result['OutputColumnName'] = self.output_column_name
+        if self.output_data_source_id is not None:
+            result['OutputDataSourceId'] = self.output_data_source_id
+        if self.output_data_source_type is not None:
+            result['OutputDataSourceType'] = self.output_data_source_type
+        if self.output_db_type is not None:
+            result['OutputDbType'] = self.output_db_type
+        if self.output_env is not None:
+            result['OutputEnv'] = self.output_env
+        if self.output_project_id is not None:
+            result['OutputProjectId'] = self.output_project_id
+        if self.output_table_deleted is not None:
+            result['OutputTableDeleted'] = self.output_table_deleted
+        if self.output_table_id is not None:
+            result['OutputTableId'] = self.output_table_id
+        if self.output_table_name is not None:
+            result['OutputTableName'] = self.output_table_name
+        if self.output_table_type is not None:
+            result['OutputTableType'] = self.output_table_type
+        if self.task_env is not None:
+            result['TaskEnv'] = self.task_env
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InputBizUnitId') is not None:
+            self.input_biz_unit_id = m.get('InputBizUnitId')
+        if m.get('InputColumnId') is not None:
+            self.input_column_id = m.get('InputColumnId')
+        if m.get('InputColumnName') is not None:
+            self.input_column_name = m.get('InputColumnName')
+        if m.get('InputDataSourceId') is not None:
+            self.input_data_source_id = m.get('InputDataSourceId')
+        if m.get('InputDataSourceType') is not None:
+            self.input_data_source_type = m.get('InputDataSourceType')
+        if m.get('InputDbType') is not None:
+            self.input_db_type = m.get('InputDbType')
+        if m.get('InputEnv') is not None:
+            self.input_env = m.get('InputEnv')
+        if m.get('InputProjectId') is not None:
+            self.input_project_id = m.get('InputProjectId')
+        if m.get('InputTableDeleted') is not None:
+            self.input_table_deleted = m.get('InputTableDeleted')
+        if m.get('InputTableId') is not None:
+            self.input_table_id = m.get('InputTableId')
+        if m.get('InputTableName') is not None:
+            self.input_table_name = m.get('InputTableName')
+        if m.get('InputTableType') is not None:
+            self.input_table_type = m.get('InputTableType')
+        if m.get('OutputBizUnitId') is not None:
+            self.output_biz_unit_id = m.get('OutputBizUnitId')
+        if m.get('OutputColumnId') is not None:
+            self.output_column_id = m.get('OutputColumnId')
+        if m.get('OutputColumnName') is not None:
+            self.output_column_name = m.get('OutputColumnName')
+        if m.get('OutputDataSourceId') is not None:
+            self.output_data_source_id = m.get('OutputDataSourceId')
+        if m.get('OutputDataSourceType') is not None:
+            self.output_data_source_type = m.get('OutputDataSourceType')
+        if m.get('OutputDbType') is not None:
+            self.output_db_type = m.get('OutputDbType')
+        if m.get('OutputEnv') is not None:
+            self.output_env = m.get('OutputEnv')
+        if m.get('OutputProjectId') is not None:
+            self.output_project_id = m.get('OutputProjectId')
+        if m.get('OutputTableDeleted') is not None:
+            self.output_table_deleted = m.get('OutputTableDeleted')
+        if m.get('OutputTableId') is not None:
+            self.output_table_id = m.get('OutputTableId')
+        if m.get('OutputTableName') is not None:
+            self.output_table_name = m.get('OutputTableName')
+        if m.get('OutputTableType') is not None:
+            self.output_table_type = m.get('OutputTableType')
+        if m.get('TaskEnv') is not None:
+            self.task_env = m.get('TaskEnv')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        return self
+
+
+class GetTableColumnLineageByTaskIdResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[GetTableColumnLineageByTaskIdResponseBodyData] = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = GetTableColumnLineageByTaskIdResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetTableColumnLineageByTaskIdResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetTableColumnLineageByTaskIdResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetTableColumnLineageByTaskIdResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetTableLineageByTaskIdRequestTableLineageByTaskIdQuery(TeaModel):
+    def __init__(
+        self,
+        need_not_exist_object: bool = None,
+        task_env: str = None,
+        task_id: str = None,
+    ):
+        self.need_not_exist_object = need_not_exist_object
+        self.task_env = task_env
+        # This parameter is required.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.need_not_exist_object is not None:
+            result['NeedNotExistObject'] = self.need_not_exist_object
+        if self.task_env is not None:
+            result['TaskEnv'] = self.task_env
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NeedNotExistObject') is not None:
+            self.need_not_exist_object = m.get('NeedNotExistObject')
+        if m.get('TaskEnv') is not None:
+            self.task_env = m.get('TaskEnv')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class GetTableLineageByTaskIdRequest(TeaModel):
+    def __init__(
+        self,
+        op_tenant_id: int = None,
+        table_lineage_by_task_id_query: GetTableLineageByTaskIdRequestTableLineageByTaskIdQuery = None,
+    ):
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+        # This parameter is required.
+        self.table_lineage_by_task_id_query = table_lineage_by_task_id_query
+
+    def validate(self):
+        if self.table_lineage_by_task_id_query:
+            self.table_lineage_by_task_id_query.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        if self.table_lineage_by_task_id_query is not None:
+            result['TableLineageByTaskIdQuery'] = self.table_lineage_by_task_id_query.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        if m.get('TableLineageByTaskIdQuery') is not None:
+            temp_model = GetTableLineageByTaskIdRequestTableLineageByTaskIdQuery()
+            self.table_lineage_by_task_id_query = temp_model.from_map(m['TableLineageByTaskIdQuery'])
+        return self
+
+
+class GetTableLineageByTaskIdShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        op_tenant_id: int = None,
+        table_lineage_by_task_id_query_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+        # This parameter is required.
+        self.table_lineage_by_task_id_query_shrink = table_lineage_by_task_id_query_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        if self.table_lineage_by_task_id_query_shrink is not None:
+            result['TableLineageByTaskIdQuery'] = self.table_lineage_by_task_id_query_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        if m.get('TableLineageByTaskIdQuery') is not None:
+            self.table_lineage_by_task_id_query_shrink = m.get('TableLineageByTaskIdQuery')
+        return self
+
+
+class GetTableLineageByTaskIdResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        input_biz_unit_id: int = None,
+        input_data_source_id: int = None,
+        input_data_source_type: str = None,
+        input_db_type: str = None,
+        input_env: str = None,
+        input_project_id: int = None,
+        input_table_deleted: bool = None,
+        input_table_id: str = None,
+        input_table_name: str = None,
+        input_table_type: str = None,
+        output_biz_unit_id: int = None,
+        output_data_source_id: int = None,
+        output_data_source_type: str = None,
+        output_db_type: str = None,
+        output_env: str = None,
+        output_project_id: int = None,
+        output_table_deleted: bool = None,
+        output_table_id: str = None,
+        output_table_name: str = None,
+        output_table_type: str = None,
+        task_env: str = None,
+        task_id: str = None,
+        tenant_id: int = None,
+    ):
+        self.input_biz_unit_id = input_biz_unit_id
+        self.input_data_source_id = input_data_source_id
+        self.input_data_source_type = input_data_source_type
+        self.input_db_type = input_db_type
+        self.input_env = input_env
+        self.input_project_id = input_project_id
+        self.input_table_deleted = input_table_deleted
+        self.input_table_id = input_table_id
+        self.input_table_name = input_table_name
+        self.input_table_type = input_table_type
+        self.output_biz_unit_id = output_biz_unit_id
+        self.output_data_source_id = output_data_source_id
+        self.output_data_source_type = output_data_source_type
+        self.output_db_type = output_db_type
+        self.output_env = output_env
+        self.output_project_id = output_project_id
+        self.output_table_deleted = output_table_deleted
+        self.output_table_id = output_table_id
+        self.output_table_name = output_table_name
+        self.output_table_type = output_table_type
+        self.task_env = task_env
+        self.task_id = task_id
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_biz_unit_id is not None:
+            result['InputBizUnitId'] = self.input_biz_unit_id
+        if self.input_data_source_id is not None:
+            result['InputDataSourceId'] = self.input_data_source_id
+        if self.input_data_source_type is not None:
+            result['InputDataSourceType'] = self.input_data_source_type
+        if self.input_db_type is not None:
+            result['InputDbType'] = self.input_db_type
+        if self.input_env is not None:
+            result['InputEnv'] = self.input_env
+        if self.input_project_id is not None:
+            result['InputProjectId'] = self.input_project_id
+        if self.input_table_deleted is not None:
+            result['InputTableDeleted'] = self.input_table_deleted
+        if self.input_table_id is not None:
+            result['InputTableId'] = self.input_table_id
+        if self.input_table_name is not None:
+            result['InputTableName'] = self.input_table_name
+        if self.input_table_type is not None:
+            result['InputTableType'] = self.input_table_type
+        if self.output_biz_unit_id is not None:
+            result['OutputBizUnitId'] = self.output_biz_unit_id
+        if self.output_data_source_id is not None:
+            result['OutputDataSourceId'] = self.output_data_source_id
+        if self.output_data_source_type is not None:
+            result['OutputDataSourceType'] = self.output_data_source_type
+        if self.output_db_type is not None:
+            result['OutputDbType'] = self.output_db_type
+        if self.output_env is not None:
+            result['OutputEnv'] = self.output_env
+        if self.output_project_id is not None:
+            result['OutputProjectId'] = self.output_project_id
+        if self.output_table_deleted is not None:
+            result['OutputTableDeleted'] = self.output_table_deleted
+        if self.output_table_id is not None:
+            result['OutputTableId'] = self.output_table_id
+        if self.output_table_name is not None:
+            result['OutputTableName'] = self.output_table_name
+        if self.output_table_type is not None:
+            result['OutputTableType'] = self.output_table_type
+        if self.task_env is not None:
+            result['TaskEnv'] = self.task_env
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InputBizUnitId') is not None:
+            self.input_biz_unit_id = m.get('InputBizUnitId')
+        if m.get('InputDataSourceId') is not None:
+            self.input_data_source_id = m.get('InputDataSourceId')
+        if m.get('InputDataSourceType') is not None:
+            self.input_data_source_type = m.get('InputDataSourceType')
+        if m.get('InputDbType') is not None:
+            self.input_db_type = m.get('InputDbType')
+        if m.get('InputEnv') is not None:
+            self.input_env = m.get('InputEnv')
+        if m.get('InputProjectId') is not None:
+            self.input_project_id = m.get('InputProjectId')
+        if m.get('InputTableDeleted') is not None:
+            self.input_table_deleted = m.get('InputTableDeleted')
+        if m.get('InputTableId') is not None:
+            self.input_table_id = m.get('InputTableId')
+        if m.get('InputTableName') is not None:
+            self.input_table_name = m.get('InputTableName')
+        if m.get('InputTableType') is not None:
+            self.input_table_type = m.get('InputTableType')
+        if m.get('OutputBizUnitId') is not None:
+            self.output_biz_unit_id = m.get('OutputBizUnitId')
+        if m.get('OutputDataSourceId') is not None:
+            self.output_data_source_id = m.get('OutputDataSourceId')
+        if m.get('OutputDataSourceType') is not None:
+            self.output_data_source_type = m.get('OutputDataSourceType')
+        if m.get('OutputDbType') is not None:
+            self.output_db_type = m.get('OutputDbType')
+        if m.get('OutputEnv') is not None:
+            self.output_env = m.get('OutputEnv')
+        if m.get('OutputProjectId') is not None:
+            self.output_project_id = m.get('OutputProjectId')
+        if m.get('OutputTableDeleted') is not None:
+            self.output_table_deleted = m.get('OutputTableDeleted')
+        if m.get('OutputTableId') is not None:
+            self.output_table_id = m.get('OutputTableId')
+        if m.get('OutputTableName') is not None:
+            self.output_table_name = m.get('OutputTableName')
+        if m.get('OutputTableType') is not None:
+            self.output_table_type = m.get('OutputTableType')
+        if m.get('TaskEnv') is not None:
+            self.task_env = m.get('TaskEnv')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        return self
+
+
+class GetTableLineageByTaskIdResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[GetTableLineageByTaskIdResponseBodyData] = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = GetTableLineageByTaskIdResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetTableLineageByTaskIdResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetTableLineageByTaskIdResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetTableLineageByTaskIdResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetUserBySourceIdRequest(TeaModel):
     def __init__(
         self,
@@ -28357,6 +30705,1211 @@ class ListResourcePermissionsResponse(TeaModel):
         return self
 
 
+class ListRowPermissionRequestPageRowPermissionQuery(TeaModel):
+    def __init__(
+        self,
+        keyword: str = None,
+        page_num: int = None,
+        page_size: int = None,
+    ):
+        self.keyword = keyword
+        # This parameter is required.
+        self.page_num = page_num
+        # This parameter is required.
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListRowPermissionRequest(TeaModel):
+    def __init__(
+        self,
+        op_tenant_id: int = None,
+        page_row_permission_query: ListRowPermissionRequestPageRowPermissionQuery = None,
+    ):
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+        # This parameter is required.
+        self.page_row_permission_query = page_row_permission_query
+
+    def validate(self):
+        if self.page_row_permission_query:
+            self.page_row_permission_query.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        if self.page_row_permission_query is not None:
+            result['PageRowPermissionQuery'] = self.page_row_permission_query.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        if m.get('PageRowPermissionQuery') is not None:
+            temp_model = ListRowPermissionRequestPageRowPermissionQuery()
+            self.page_row_permission_query = temp_model.from_map(m['PageRowPermissionQuery'])
+        return self
+
+
+class ListRowPermissionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        op_tenant_id: int = None,
+        page_row_permission_query_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+        # This parameter is required.
+        self.page_row_permission_query_shrink = page_row_permission_query_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        if self.page_row_permission_query_shrink is not None:
+            result['PageRowPermissionQuery'] = self.page_row_permission_query_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        if m.get('PageRowPermissionQuery') is not None:
+            self.page_row_permission_query_shrink = m.get('PageRowPermissionQuery')
+        return self
+
+
+class ListRowPermissionResponseBodyPageResultDataMappingColumns(TeaModel):
+    def __init__(
+        self,
+        column_desc: str = None,
+        column_name: str = None,
+        column_type: str = None,
+    ):
+        self.column_desc = column_desc
+        self.column_name = column_name
+        self.column_type = column_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.column_desc is not None:
+            result['ColumnDesc'] = self.column_desc
+        if self.column_name is not None:
+            result['ColumnName'] = self.column_name
+        if self.column_type is not None:
+            result['ColumnType'] = self.column_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ColumnDesc') is not None:
+            self.column_desc = m.get('ColumnDesc')
+        if m.get('ColumnName') is not None:
+            self.column_name = m.get('ColumnName')
+        if m.get('ColumnType') is not None:
+            self.column_type = m.get('ColumnType')
+        return self
+
+
+class ListRowPermissionResponseBodyPageResultDataRulesExpressions(TeaModel):
+    def __init__(
+        self,
+        mapping_column_name: str = None,
+        operator: str = None,
+        sub_conditions: List[Any] = None,
+        type: str = None,
+        values: List[str] = None,
+    ):
+        self.mapping_column_name = mapping_column_name
+        self.operator = operator
+        self.sub_conditions = sub_conditions
+        self.type = type
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mapping_column_name is not None:
+            result['MappingColumnName'] = self.mapping_column_name
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.sub_conditions is not None:
+            result['SubConditions'] = self.sub_conditions
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MappingColumnName') is not None:
+            self.mapping_column_name = m.get('MappingColumnName')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('SubConditions') is not None:
+            self.sub_conditions = m.get('SubConditions')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
+class ListRowPermissionResponseBodyPageResultDataRulesUserMappingListAccounts(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        return self
+
+
+class ListRowPermissionResponseBodyPageResultDataRulesUserMappingList(TeaModel):
+    def __init__(
+        self,
+        account_type: str = None,
+        accounts: List[ListRowPermissionResponseBodyPageResultDataRulesUserMappingListAccounts] = None,
+    ):
+        self.account_type = account_type
+        self.accounts = accounts
+
+    def validate(self):
+        if self.accounts:
+            for k in self.accounts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_type is not None:
+            result['AccountType'] = self.account_type
+        result['Accounts'] = []
+        if self.accounts is not None:
+            for k in self.accounts:
+                result['Accounts'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountType') is not None:
+            self.account_type = m.get('AccountType')
+        self.accounts = []
+        if m.get('Accounts') is not None:
+            for k in m.get('Accounts'):
+                temp_model = ListRowPermissionResponseBodyPageResultDataRulesUserMappingListAccounts()
+                self.accounts.append(temp_model.from_map(k))
+        return self
+
+
+class ListRowPermissionResponseBodyPageResultDataRules(TeaModel):
+    def __init__(
+        self,
+        expressions: List[ListRowPermissionResponseBodyPageResultDataRulesExpressions] = None,
+        is_delete: bool = None,
+        rule_name: str = None,
+        scope_type: str = None,
+        status: int = None,
+        user_mapping_list: List[ListRowPermissionResponseBodyPageResultDataRulesUserMappingList] = None,
+    ):
+        self.expressions = expressions
+        self.is_delete = is_delete
+        self.rule_name = rule_name
+        self.scope_type = scope_type
+        self.status = status
+        self.user_mapping_list = user_mapping_list
+
+    def validate(self):
+        if self.expressions:
+            for k in self.expressions:
+                if k:
+                    k.validate()
+        if self.user_mapping_list:
+            for k in self.user_mapping_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Expressions'] = []
+        if self.expressions is not None:
+            for k in self.expressions:
+                result['Expressions'].append(k.to_map() if k else None)
+        if self.is_delete is not None:
+            result['IsDelete'] = self.is_delete
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.scope_type is not None:
+            result['ScopeType'] = self.scope_type
+        if self.status is not None:
+            result['Status'] = self.status
+        result['UserMappingList'] = []
+        if self.user_mapping_list is not None:
+            for k in self.user_mapping_list:
+                result['UserMappingList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.expressions = []
+        if m.get('Expressions') is not None:
+            for k in m.get('Expressions'):
+                temp_model = ListRowPermissionResponseBodyPageResultDataRulesExpressions()
+                self.expressions.append(temp_model.from_map(k))
+        if m.get('IsDelete') is not None:
+            self.is_delete = m.get('IsDelete')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('ScopeType') is not None:
+            self.scope_type = m.get('ScopeType')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.user_mapping_list = []
+        if m.get('UserMappingList') is not None:
+            for k in m.get('UserMappingList'):
+                temp_model = ListRowPermissionResponseBodyPageResultDataRulesUserMappingList()
+                self.user_mapping_list.append(temp_model.from_map(k))
+        return self
+
+
+class ListRowPermissionResponseBodyPageResultDataTables(TeaModel):
+    def __init__(
+        self,
+        column_name: str = None,
+        mapping_column_name: str = None,
+        resource_id: str = None,
+    ):
+        self.column_name = column_name
+        self.mapping_column_name = mapping_column_name
+        self.resource_id = resource_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.column_name is not None:
+            result['ColumnName'] = self.column_name
+        if self.mapping_column_name is not None:
+            result['MappingColumnName'] = self.mapping_column_name
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ColumnName') is not None:
+            self.column_name = m.get('ColumnName')
+        if m.get('MappingColumnName') is not None:
+            self.mapping_column_name = m.get('MappingColumnName')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        return self
+
+
+class ListRowPermissionResponseBodyPageResultData(TeaModel):
+    def __init__(
+        self,
+        creator: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        mapping_columns: List[ListRowPermissionResponseBodyPageResultDataMappingColumns] = None,
+        modifier: str = None,
+        row_permission_desc: str = None,
+        row_permission_id: int = None,
+        row_permission_name: str = None,
+        rules: List[ListRowPermissionResponseBodyPageResultDataRules] = None,
+        tables: List[ListRowPermissionResponseBodyPageResultDataTables] = None,
+        tenant_id: int = None,
+    ):
+        self.creator = creator
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.mapping_columns = mapping_columns
+        self.modifier = modifier
+        self.row_permission_desc = row_permission_desc
+        self.row_permission_id = row_permission_id
+        self.row_permission_name = row_permission_name
+        self.rules = rules
+        self.tables = tables
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        if self.mapping_columns:
+            for k in self.mapping_columns:
+                if k:
+                    k.validate()
+        if self.rules:
+            for k in self.rules:
+                if k:
+                    k.validate()
+        if self.tables:
+            for k in self.tables:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        result['MappingColumns'] = []
+        if self.mapping_columns is not None:
+            for k in self.mapping_columns:
+                result['MappingColumns'].append(k.to_map() if k else None)
+        if self.modifier is not None:
+            result['Modifier'] = self.modifier
+        if self.row_permission_desc is not None:
+            result['RowPermissionDesc'] = self.row_permission_desc
+        if self.row_permission_id is not None:
+            result['RowPermissionId'] = self.row_permission_id
+        if self.row_permission_name is not None:
+            result['RowPermissionName'] = self.row_permission_name
+        result['Rules'] = []
+        if self.rules is not None:
+            for k in self.rules:
+                result['Rules'].append(k.to_map() if k else None)
+        result['Tables'] = []
+        if self.tables is not None:
+            for k in self.tables:
+                result['Tables'].append(k.to_map() if k else None)
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        self.mapping_columns = []
+        if m.get('MappingColumns') is not None:
+            for k in m.get('MappingColumns'):
+                temp_model = ListRowPermissionResponseBodyPageResultDataMappingColumns()
+                self.mapping_columns.append(temp_model.from_map(k))
+        if m.get('Modifier') is not None:
+            self.modifier = m.get('Modifier')
+        if m.get('RowPermissionDesc') is not None:
+            self.row_permission_desc = m.get('RowPermissionDesc')
+        if m.get('RowPermissionId') is not None:
+            self.row_permission_id = m.get('RowPermissionId')
+        if m.get('RowPermissionName') is not None:
+            self.row_permission_name = m.get('RowPermissionName')
+        self.rules = []
+        if m.get('Rules') is not None:
+            for k in m.get('Rules'):
+                temp_model = ListRowPermissionResponseBodyPageResultDataRules()
+                self.rules.append(temp_model.from_map(k))
+        self.tables = []
+        if m.get('Tables') is not None:
+            for k in m.get('Tables'):
+                temp_model = ListRowPermissionResponseBodyPageResultDataTables()
+                self.tables.append(temp_model.from_map(k))
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        return self
+
+
+class ListRowPermissionResponseBodyPageResult(TeaModel):
+    def __init__(
+        self,
+        data: List[ListRowPermissionResponseBodyPageResultData] = None,
+        total_count: int = None,
+    ):
+        self.data = data
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListRowPermissionResponseBodyPageResultData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListRowPermissionResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        page_result: ListRowPermissionResponseBodyPageResult = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.page_result = page_result
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.page_result:
+            self.page_result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_result is not None:
+            result['PageResult'] = self.page_result.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageResult') is not None:
+            temp_model = ListRowPermissionResponseBodyPageResult()
+            self.page_result = temp_model.from_map(m['PageResult'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListRowPermissionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListRowPermissionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListRowPermissionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListRowPermissionByUserIdRequestListRowPermissionByUserIdQuery(TeaModel):
+    def __init__(
+        self,
+        operator: str = None,
+        page_num: int = None,
+        page_size: int = None,
+    ):
+        # This parameter is required.
+        self.operator = operator
+        # This parameter is required.
+        self.page_num = page_num
+        # This parameter is required.
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListRowPermissionByUserIdRequest(TeaModel):
+    def __init__(
+        self,
+        list_row_permission_by_user_id_query: ListRowPermissionByUserIdRequestListRowPermissionByUserIdQuery = None,
+        op_tenant_id: int = None,
+    ):
+        # This parameter is required.
+        self.list_row_permission_by_user_id_query = list_row_permission_by_user_id_query
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+
+    def validate(self):
+        if self.list_row_permission_by_user_id_query:
+            self.list_row_permission_by_user_id_query.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.list_row_permission_by_user_id_query is not None:
+            result['ListRowPermissionByUserIdQuery'] = self.list_row_permission_by_user_id_query.to_map()
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ListRowPermissionByUserIdQuery') is not None:
+            temp_model = ListRowPermissionByUserIdRequestListRowPermissionByUserIdQuery()
+            self.list_row_permission_by_user_id_query = temp_model.from_map(m['ListRowPermissionByUserIdQuery'])
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        return self
+
+
+class ListRowPermissionByUserIdShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        list_row_permission_by_user_id_query_shrink: str = None,
+        op_tenant_id: int = None,
+    ):
+        # This parameter is required.
+        self.list_row_permission_by_user_id_query_shrink = list_row_permission_by_user_id_query_shrink
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.list_row_permission_by_user_id_query_shrink is not None:
+            result['ListRowPermissionByUserIdQuery'] = self.list_row_permission_by_user_id_query_shrink
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ListRowPermissionByUserIdQuery') is not None:
+            self.list_row_permission_by_user_id_query_shrink = m.get('ListRowPermissionByUserIdQuery')
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        return self
+
+
+class ListRowPermissionByUserIdResponseBodyPageResultDataRulesExpressions(TeaModel):
+    def __init__(
+        self,
+        mapping_column_name: str = None,
+        operator: str = None,
+        sub_conditions: List[Any] = None,
+        type: str = None,
+        values: List[str] = None,
+    ):
+        self.mapping_column_name = mapping_column_name
+        self.operator = operator
+        self.sub_conditions = sub_conditions
+        self.type = type
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mapping_column_name is not None:
+            result['MappingColumnName'] = self.mapping_column_name
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.sub_conditions is not None:
+            result['SubConditions'] = self.sub_conditions
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MappingColumnName') is not None:
+            self.mapping_column_name = m.get('MappingColumnName')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('SubConditions') is not None:
+            self.sub_conditions = m.get('SubConditions')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
+class ListRowPermissionByUserIdResponseBodyPageResultDataRulesUserMappingListAccounts(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        return self
+
+
+class ListRowPermissionByUserIdResponseBodyPageResultDataRulesUserMappingList(TeaModel):
+    def __init__(
+        self,
+        account_type: str = None,
+        accounts: List[ListRowPermissionByUserIdResponseBodyPageResultDataRulesUserMappingListAccounts] = None,
+    ):
+        self.account_type = account_type
+        self.accounts = accounts
+
+    def validate(self):
+        if self.accounts:
+            for k in self.accounts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_type is not None:
+            result['AccountType'] = self.account_type
+        result['Accounts'] = []
+        if self.accounts is not None:
+            for k in self.accounts:
+                result['Accounts'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountType') is not None:
+            self.account_type = m.get('AccountType')
+        self.accounts = []
+        if m.get('Accounts') is not None:
+            for k in m.get('Accounts'):
+                temp_model = ListRowPermissionByUserIdResponseBodyPageResultDataRulesUserMappingListAccounts()
+                self.accounts.append(temp_model.from_map(k))
+        return self
+
+
+class ListRowPermissionByUserIdResponseBodyPageResultDataRules(TeaModel):
+    def __init__(
+        self,
+        expressions: List[ListRowPermissionByUserIdResponseBodyPageResultDataRulesExpressions] = None,
+        is_delete: bool = None,
+        rule_name: str = None,
+        scope_type: str = None,
+        status: int = None,
+        user_mapping_list: List[ListRowPermissionByUserIdResponseBodyPageResultDataRulesUserMappingList] = None,
+    ):
+        self.expressions = expressions
+        self.is_delete = is_delete
+        self.rule_name = rule_name
+        self.scope_type = scope_type
+        self.status = status
+        self.user_mapping_list = user_mapping_list
+
+    def validate(self):
+        if self.expressions:
+            for k in self.expressions:
+                if k:
+                    k.validate()
+        if self.user_mapping_list:
+            for k in self.user_mapping_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Expressions'] = []
+        if self.expressions is not None:
+            for k in self.expressions:
+                result['Expressions'].append(k.to_map() if k else None)
+        if self.is_delete is not None:
+            result['IsDelete'] = self.is_delete
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.scope_type is not None:
+            result['ScopeType'] = self.scope_type
+        if self.status is not None:
+            result['Status'] = self.status
+        result['UserMappingList'] = []
+        if self.user_mapping_list is not None:
+            for k in self.user_mapping_list:
+                result['UserMappingList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.expressions = []
+        if m.get('Expressions') is not None:
+            for k in m.get('Expressions'):
+                temp_model = ListRowPermissionByUserIdResponseBodyPageResultDataRulesExpressions()
+                self.expressions.append(temp_model.from_map(k))
+        if m.get('IsDelete') is not None:
+            self.is_delete = m.get('IsDelete')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('ScopeType') is not None:
+            self.scope_type = m.get('ScopeType')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.user_mapping_list = []
+        if m.get('UserMappingList') is not None:
+            for k in m.get('UserMappingList'):
+                temp_model = ListRowPermissionByUserIdResponseBodyPageResultDataRulesUserMappingList()
+                self.user_mapping_list.append(temp_model.from_map(k))
+        return self
+
+
+class ListRowPermissionByUserIdResponseBodyPageResultDataTables(TeaModel):
+    def __init__(
+        self,
+        column_name: str = None,
+        mapping_column_name: str = None,
+        resource_id: str = None,
+    ):
+        self.column_name = column_name
+        self.mapping_column_name = mapping_column_name
+        self.resource_id = resource_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.column_name is not None:
+            result['ColumnName'] = self.column_name
+        if self.mapping_column_name is not None:
+            result['MappingColumnName'] = self.mapping_column_name
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ColumnName') is not None:
+            self.column_name = m.get('ColumnName')
+        if m.get('MappingColumnName') is not None:
+            self.mapping_column_name = m.get('MappingColumnName')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        return self
+
+
+class ListRowPermissionByUserIdResponseBodyPageResultData(TeaModel):
+    def __init__(
+        self,
+        creator: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        modifier: str = None,
+        rules: List[ListRowPermissionByUserIdResponseBodyPageResultDataRules] = None,
+        tables: List[ListRowPermissionByUserIdResponseBodyPageResultDataTables] = None,
+        tenant_id: int = None,
+    ):
+        self.creator = creator
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.modifier = modifier
+        self.rules = rules
+        self.tables = tables
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        if self.rules:
+            for k in self.rules:
+                if k:
+                    k.validate()
+        if self.tables:
+            for k in self.tables:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.modifier is not None:
+            result['Modifier'] = self.modifier
+        result['Rules'] = []
+        if self.rules is not None:
+            for k in self.rules:
+                result['Rules'].append(k.to_map() if k else None)
+        result['Tables'] = []
+        if self.tables is not None:
+            for k in self.tables:
+                result['Tables'].append(k.to_map() if k else None)
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('Modifier') is not None:
+            self.modifier = m.get('Modifier')
+        self.rules = []
+        if m.get('Rules') is not None:
+            for k in m.get('Rules'):
+                temp_model = ListRowPermissionByUserIdResponseBodyPageResultDataRules()
+                self.rules.append(temp_model.from_map(k))
+        self.tables = []
+        if m.get('Tables') is not None:
+            for k in m.get('Tables'):
+                temp_model = ListRowPermissionByUserIdResponseBodyPageResultDataTables()
+                self.tables.append(temp_model.from_map(k))
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        return self
+
+
+class ListRowPermissionByUserIdResponseBodyPageResult(TeaModel):
+    def __init__(
+        self,
+        data: List[ListRowPermissionByUserIdResponseBodyPageResultData] = None,
+        total_count: int = None,
+    ):
+        self.data = data
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListRowPermissionByUserIdResponseBodyPageResultData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListRowPermissionByUserIdResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        page_result: ListRowPermissionByUserIdResponseBodyPageResult = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.page_result = page_result
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.page_result:
+            self.page_result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_result is not None:
+            result['PageResult'] = self.page_result.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageResult') is not None:
+            temp_model = ListRowPermissionByUserIdResponseBodyPageResult()
+            self.page_result = temp_model.from_map(m['PageResult'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListRowPermissionByUserIdResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListRowPermissionByUserIdResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListRowPermissionByUserIdResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListSubmitRecordsRequestListQuerySearchFilter(TeaModel):
     def __init__(
         self,
@@ -33464,6 +37017,493 @@ class SubmitBatchTaskResponse(TeaModel):
         return self
 
 
+class SyncDepartmentRequestSyncDepartmentCommandDepartmentList(TeaModel):
+    def __init__(
+        self,
+        department_id: str = None,
+        department_name: str = None,
+        parent_department_id: str = None,
+    ):
+        # This parameter is required.
+        self.department_id = department_id
+        # This parameter is required.
+        self.department_name = department_name
+        self.parent_department_id = parent_department_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.department_id is not None:
+            result['DepartmentId'] = self.department_id
+        if self.department_name is not None:
+            result['DepartmentName'] = self.department_name
+        if self.parent_department_id is not None:
+            result['ParentDepartmentId'] = self.parent_department_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DepartmentId') is not None:
+            self.department_id = m.get('DepartmentId')
+        if m.get('DepartmentName') is not None:
+            self.department_name = m.get('DepartmentName')
+        if m.get('ParentDepartmentId') is not None:
+            self.parent_department_id = m.get('ParentDepartmentId')
+        return self
+
+
+class SyncDepartmentRequestSyncDepartmentCommand(TeaModel):
+    def __init__(
+        self,
+        department_list: List[SyncDepartmentRequestSyncDepartmentCommandDepartmentList] = None,
+    ):
+        # This parameter is required.
+        self.department_list = department_list
+
+    def validate(self):
+        if self.department_list:
+            for k in self.department_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DepartmentList'] = []
+        if self.department_list is not None:
+            for k in self.department_list:
+                result['DepartmentList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.department_list = []
+        if m.get('DepartmentList') is not None:
+            for k in m.get('DepartmentList'):
+                temp_model = SyncDepartmentRequestSyncDepartmentCommandDepartmentList()
+                self.department_list.append(temp_model.from_map(k))
+        return self
+
+
+class SyncDepartmentRequest(TeaModel):
+    def __init__(
+        self,
+        op_tenant_id: int = None,
+        sync_department_command: SyncDepartmentRequestSyncDepartmentCommand = None,
+    ):
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+        # This parameter is required.
+        self.sync_department_command = sync_department_command
+
+    def validate(self):
+        if self.sync_department_command:
+            self.sync_department_command.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        if self.sync_department_command is not None:
+            result['SyncDepartmentCommand'] = self.sync_department_command.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        if m.get('SyncDepartmentCommand') is not None:
+            temp_model = SyncDepartmentRequestSyncDepartmentCommand()
+            self.sync_department_command = temp_model.from_map(m['SyncDepartmentCommand'])
+        return self
+
+
+class SyncDepartmentShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        op_tenant_id: int = None,
+        sync_department_command_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+        # This parameter is required.
+        self.sync_department_command_shrink = sync_department_command_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        if self.sync_department_command_shrink is not None:
+            result['SyncDepartmentCommand'] = self.sync_department_command_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        if m.get('SyncDepartmentCommand') is not None:
+            self.sync_department_command_shrink = m.get('SyncDepartmentCommand')
+        return self
+
+
+class SyncDepartmentResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: bool = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SyncDepartmentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SyncDepartmentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SyncDepartmentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SyncDepartmentUserRequestSyncDepartmentUserCommandDeptUserMapping(TeaModel):
+    def __init__(
+        self,
+        department_id_list: List[str] = None,
+        source_user_id: str = None,
+    ):
+        self.department_id_list = department_id_list
+        # This parameter is required.
+        self.source_user_id = source_user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.department_id_list is not None:
+            result['DepartmentIdList'] = self.department_id_list
+        if self.source_user_id is not None:
+            result['SourceUserId'] = self.source_user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DepartmentIdList') is not None:
+            self.department_id_list = m.get('DepartmentIdList')
+        if m.get('SourceUserId') is not None:
+            self.source_user_id = m.get('SourceUserId')
+        return self
+
+
+class SyncDepartmentUserRequestSyncDepartmentUserCommand(TeaModel):
+    def __init__(
+        self,
+        dept_user_mapping: List[SyncDepartmentUserRequestSyncDepartmentUserCommandDeptUserMapping] = None,
+    ):
+        # This parameter is required.
+        self.dept_user_mapping = dept_user_mapping
+
+    def validate(self):
+        if self.dept_user_mapping:
+            for k in self.dept_user_mapping:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DeptUserMapping'] = []
+        if self.dept_user_mapping is not None:
+            for k in self.dept_user_mapping:
+                result['DeptUserMapping'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.dept_user_mapping = []
+        if m.get('DeptUserMapping') is not None:
+            for k in m.get('DeptUserMapping'):
+                temp_model = SyncDepartmentUserRequestSyncDepartmentUserCommandDeptUserMapping()
+                self.dept_user_mapping.append(temp_model.from_map(k))
+        return self
+
+
+class SyncDepartmentUserRequest(TeaModel):
+    def __init__(
+        self,
+        op_tenant_id: int = None,
+        sync_department_user_command: SyncDepartmentUserRequestSyncDepartmentUserCommand = None,
+    ):
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+        # This parameter is required.
+        self.sync_department_user_command = sync_department_user_command
+
+    def validate(self):
+        if self.sync_department_user_command:
+            self.sync_department_user_command.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        if self.sync_department_user_command is not None:
+            result['SyncDepartmentUserCommand'] = self.sync_department_user_command.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        if m.get('SyncDepartmentUserCommand') is not None:
+            temp_model = SyncDepartmentUserRequestSyncDepartmentUserCommand()
+            self.sync_department_user_command = temp_model.from_map(m['SyncDepartmentUserCommand'])
+        return self
+
+
+class SyncDepartmentUserShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        op_tenant_id: int = None,
+        sync_department_user_command_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+        # This parameter is required.
+        self.sync_department_user_command_shrink = sync_department_user_command_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        if self.sync_department_user_command_shrink is not None:
+            result['SyncDepartmentUserCommand'] = self.sync_department_user_command_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        if m.get('SyncDepartmentUserCommand') is not None:
+            self.sync_department_user_command_shrink = m.get('SyncDepartmentUserCommand')
+        return self
+
+
+class SyncDepartmentUserResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: bool = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SyncDepartmentUserResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SyncDepartmentUserResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SyncDepartmentUserResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateAdHocFileRequestUpdateCommand(TeaModel):
     def __init__(
         self,
@@ -36222,6 +40262,550 @@ class UpdateFileNameResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateFileNameResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateRowPermissionRequestUpdateRowPermissionCommandMappingColumns(TeaModel):
+    def __init__(
+        self,
+        column_desc: str = None,
+        column_name: str = None,
+        column_type: str = None,
+    ):
+        self.column_desc = column_desc
+        # This parameter is required.
+        self.column_name = column_name
+        # This parameter is required.
+        self.column_type = column_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.column_desc is not None:
+            result['ColumnDesc'] = self.column_desc
+        if self.column_name is not None:
+            result['ColumnName'] = self.column_name
+        if self.column_type is not None:
+            result['ColumnType'] = self.column_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ColumnDesc') is not None:
+            self.column_desc = m.get('ColumnDesc')
+        if m.get('ColumnName') is not None:
+            self.column_name = m.get('ColumnName')
+        if m.get('ColumnType') is not None:
+            self.column_type = m.get('ColumnType')
+        return self
+
+
+class UpdateRowPermissionRequestUpdateRowPermissionCommandRulesExpressions(TeaModel):
+    def __init__(
+        self,
+        mapping_column_name: str = None,
+        operator: str = None,
+        sub_conditions: List[Any] = None,
+        type: str = None,
+        values: List[str] = None,
+    ):
+        # This parameter is required.
+        self.mapping_column_name = mapping_column_name
+        # This parameter is required.
+        self.operator = operator
+        # This parameter is required.
+        self.sub_conditions = sub_conditions
+        # This parameter is required.
+        self.type = type
+        # This parameter is required.
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mapping_column_name is not None:
+            result['MappingColumnName'] = self.mapping_column_name
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.sub_conditions is not None:
+            result['SubConditions'] = self.sub_conditions
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MappingColumnName') is not None:
+            self.mapping_column_name = m.get('MappingColumnName')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('SubConditions') is not None:
+            self.sub_conditions = m.get('SubConditions')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
+class UpdateRowPermissionRequestUpdateRowPermissionCommandRulesUserMappingListAccounts(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        return self
+
+
+class UpdateRowPermissionRequestUpdateRowPermissionCommandRulesUserMappingList(TeaModel):
+    def __init__(
+        self,
+        account_type: str = None,
+        accounts: List[UpdateRowPermissionRequestUpdateRowPermissionCommandRulesUserMappingListAccounts] = None,
+    ):
+        # This parameter is required.
+        self.account_type = account_type
+        # This parameter is required.
+        self.accounts = accounts
+
+    def validate(self):
+        if self.accounts:
+            for k in self.accounts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_type is not None:
+            result['AccountType'] = self.account_type
+        result['Accounts'] = []
+        if self.accounts is not None:
+            for k in self.accounts:
+                result['Accounts'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountType') is not None:
+            self.account_type = m.get('AccountType')
+        self.accounts = []
+        if m.get('Accounts') is not None:
+            for k in m.get('Accounts'):
+                temp_model = UpdateRowPermissionRequestUpdateRowPermissionCommandRulesUserMappingListAccounts()
+                self.accounts.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateRowPermissionRequestUpdateRowPermissionCommandRules(TeaModel):
+    def __init__(
+        self,
+        expressions: List[UpdateRowPermissionRequestUpdateRowPermissionCommandRulesExpressions] = None,
+        is_delete: bool = None,
+        rule_name: str = None,
+        scope_type: str = None,
+        status: int = None,
+        user_mapping_list: List[UpdateRowPermissionRequestUpdateRowPermissionCommandRulesUserMappingList] = None,
+    ):
+        # This parameter is required.
+        self.expressions = expressions
+        self.is_delete = is_delete
+        # This parameter is required.
+        self.rule_name = rule_name
+        # This parameter is required.
+        self.scope_type = scope_type
+        # This parameter is required.
+        self.status = status
+        self.user_mapping_list = user_mapping_list
+
+    def validate(self):
+        if self.expressions:
+            for k in self.expressions:
+                if k:
+                    k.validate()
+        if self.user_mapping_list:
+            for k in self.user_mapping_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Expressions'] = []
+        if self.expressions is not None:
+            for k in self.expressions:
+                result['Expressions'].append(k.to_map() if k else None)
+        if self.is_delete is not None:
+            result['IsDelete'] = self.is_delete
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.scope_type is not None:
+            result['ScopeType'] = self.scope_type
+        if self.status is not None:
+            result['Status'] = self.status
+        result['UserMappingList'] = []
+        if self.user_mapping_list is not None:
+            for k in self.user_mapping_list:
+                result['UserMappingList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.expressions = []
+        if m.get('Expressions') is not None:
+            for k in m.get('Expressions'):
+                temp_model = UpdateRowPermissionRequestUpdateRowPermissionCommandRulesExpressions()
+                self.expressions.append(temp_model.from_map(k))
+        if m.get('IsDelete') is not None:
+            self.is_delete = m.get('IsDelete')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('ScopeType') is not None:
+            self.scope_type = m.get('ScopeType')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.user_mapping_list = []
+        if m.get('UserMappingList') is not None:
+            for k in m.get('UserMappingList'):
+                temp_model = UpdateRowPermissionRequestUpdateRowPermissionCommandRulesUserMappingList()
+                self.user_mapping_list.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateRowPermissionRequestUpdateRowPermissionCommandTables(TeaModel):
+    def __init__(
+        self,
+        column_name: str = None,
+        mapping_column_name: str = None,
+        resource_id: str = None,
+    ):
+        # This parameter is required.
+        self.column_name = column_name
+        # This parameter is required.
+        self.mapping_column_name = mapping_column_name
+        # This parameter is required.
+        self.resource_id = resource_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.column_name is not None:
+            result['ColumnName'] = self.column_name
+        if self.mapping_column_name is not None:
+            result['MappingColumnName'] = self.mapping_column_name
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ColumnName') is not None:
+            self.column_name = m.get('ColumnName')
+        if m.get('MappingColumnName') is not None:
+            self.mapping_column_name = m.get('MappingColumnName')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        return self
+
+
+class UpdateRowPermissionRequestUpdateRowPermissionCommand(TeaModel):
+    def __init__(
+        self,
+        mapping_columns: List[UpdateRowPermissionRequestUpdateRowPermissionCommandMappingColumns] = None,
+        row_permission_desc: str = None,
+        row_permission_id: int = None,
+        row_permission_name: str = None,
+        rules: List[UpdateRowPermissionRequestUpdateRowPermissionCommandRules] = None,
+        tables: List[UpdateRowPermissionRequestUpdateRowPermissionCommandTables] = None,
+    ):
+        # This parameter is required.
+        self.mapping_columns = mapping_columns
+        self.row_permission_desc = row_permission_desc
+        # This parameter is required.
+        self.row_permission_id = row_permission_id
+        # This parameter is required.
+        self.row_permission_name = row_permission_name
+        self.rules = rules
+        self.tables = tables
+
+    def validate(self):
+        if self.mapping_columns:
+            for k in self.mapping_columns:
+                if k:
+                    k.validate()
+        if self.rules:
+            for k in self.rules:
+                if k:
+                    k.validate()
+        if self.tables:
+            for k in self.tables:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['MappingColumns'] = []
+        if self.mapping_columns is not None:
+            for k in self.mapping_columns:
+                result['MappingColumns'].append(k.to_map() if k else None)
+        if self.row_permission_desc is not None:
+            result['RowPermissionDesc'] = self.row_permission_desc
+        if self.row_permission_id is not None:
+            result['RowPermissionId'] = self.row_permission_id
+        if self.row_permission_name is not None:
+            result['RowPermissionName'] = self.row_permission_name
+        result['Rules'] = []
+        if self.rules is not None:
+            for k in self.rules:
+                result['Rules'].append(k.to_map() if k else None)
+        result['Tables'] = []
+        if self.tables is not None:
+            for k in self.tables:
+                result['Tables'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.mapping_columns = []
+        if m.get('MappingColumns') is not None:
+            for k in m.get('MappingColumns'):
+                temp_model = UpdateRowPermissionRequestUpdateRowPermissionCommandMappingColumns()
+                self.mapping_columns.append(temp_model.from_map(k))
+        if m.get('RowPermissionDesc') is not None:
+            self.row_permission_desc = m.get('RowPermissionDesc')
+        if m.get('RowPermissionId') is not None:
+            self.row_permission_id = m.get('RowPermissionId')
+        if m.get('RowPermissionName') is not None:
+            self.row_permission_name = m.get('RowPermissionName')
+        self.rules = []
+        if m.get('Rules') is not None:
+            for k in m.get('Rules'):
+                temp_model = UpdateRowPermissionRequestUpdateRowPermissionCommandRules()
+                self.rules.append(temp_model.from_map(k))
+        self.tables = []
+        if m.get('Tables') is not None:
+            for k in m.get('Tables'):
+                temp_model = UpdateRowPermissionRequestUpdateRowPermissionCommandTables()
+                self.tables.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateRowPermissionRequest(TeaModel):
+    def __init__(
+        self,
+        op_tenant_id: int = None,
+        update_row_permission_command: UpdateRowPermissionRequestUpdateRowPermissionCommand = None,
+    ):
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+        # This parameter is required.
+        self.update_row_permission_command = update_row_permission_command
+
+    def validate(self):
+        if self.update_row_permission_command:
+            self.update_row_permission_command.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        if self.update_row_permission_command is not None:
+            result['UpdateRowPermissionCommand'] = self.update_row_permission_command.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        if m.get('UpdateRowPermissionCommand') is not None:
+            temp_model = UpdateRowPermissionRequestUpdateRowPermissionCommand()
+            self.update_row_permission_command = temp_model.from_map(m['UpdateRowPermissionCommand'])
+        return self
+
+
+class UpdateRowPermissionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        op_tenant_id: int = None,
+        update_row_permission_command_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+        # This parameter is required.
+        self.update_row_permission_command_shrink = update_row_permission_command_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        if self.update_row_permission_command_shrink is not None:
+            result['UpdateRowPermissionCommand'] = self.update_row_permission_command_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        if m.get('UpdateRowPermissionCommand') is not None:
+            self.update_row_permission_command_shrink = m.get('UpdateRowPermissionCommand')
+        return self
+
+
+class UpdateRowPermissionResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: bool = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateRowPermissionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateRowPermissionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateRowPermissionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

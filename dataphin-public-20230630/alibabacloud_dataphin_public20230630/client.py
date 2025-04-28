@@ -1261,6 +1261,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_data_domain_with_options_async(request, runtime)
 
+    def create_data_service_api_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.CreateDataServiceApiRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.CreateDataServiceApiResponse:
+        """
+        @summary 创建新的数据服务API并提交。
+        
+        @param tmp_req: CreateDataServiceApiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataServiceApiResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.CreateDataServiceApiShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.create_command):
+            request.create_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.create_command, 'CreateCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.create_command_shrink):
+            body['CreateCommand'] = request.create_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDataServiceApi',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.CreateDataServiceApiResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_data_service_api_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.CreateDataServiceApiRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.CreateDataServiceApiResponse:
+        """
+        @summary 创建新的数据服务API并提交。
+        
+        @param tmp_req: CreateDataServiceApiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataServiceApiResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.CreateDataServiceApiShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.create_command):
+            request.create_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.create_command, 'CreateCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.create_command_shrink):
+            body['CreateCommand'] = request.create_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDataServiceApi',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.CreateDataServiceApiResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_data_service_api(
+        self,
+        request: dataphin_public_20230630_models.CreateDataServiceApiRequest,
+    ) -> dataphin_public_20230630_models.CreateDataServiceApiResponse:
+        """
+        @summary 创建新的数据服务API并提交。
+        
+        @param request: CreateDataServiceApiRequest
+        @return: CreateDataServiceApiResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_data_service_api_with_options(request, runtime)
+
+    async def create_data_service_api_async(
+        self,
+        request: dataphin_public_20230630_models.CreateDataServiceApiRequest,
+    ) -> dataphin_public_20230630_models.CreateDataServiceApiResponse:
+        """
+        @summary 创建新的数据服务API并提交。
+        
+        @param request: CreateDataServiceApiRequest
+        @return: CreateDataServiceApiResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_data_service_api_with_options_async(request, runtime)
+
     def create_data_source_with_options(
         self,
         tmp_req: dataphin_public_20230630_models.CreateDataSourceRequest,
@@ -1712,6 +1824,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_pipeline_node_with_options_async(request, runtime)
+
+    def create_row_permission_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.CreateRowPermissionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.CreateRowPermissionResponse:
+        """
+        @summary 创建行级权限
+        
+        @param tmp_req: CreateRowPermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRowPermissionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.CreateRowPermissionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.create_row_permission_command):
+            request.create_row_permission_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.create_row_permission_command, 'CreateRowPermissionCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.create_row_permission_command_shrink):
+            body['CreateRowPermissionCommand'] = request.create_row_permission_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateRowPermission',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.CreateRowPermissionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_row_permission_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.CreateRowPermissionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.CreateRowPermissionResponse:
+        """
+        @summary 创建行级权限
+        
+        @param tmp_req: CreateRowPermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRowPermissionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.CreateRowPermissionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.create_row_permission_command):
+            request.create_row_permission_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.create_row_permission_command, 'CreateRowPermissionCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.create_row_permission_command_shrink):
+            body['CreateRowPermissionCommand'] = request.create_row_permission_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateRowPermission',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.CreateRowPermissionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_row_permission(
+        self,
+        request: dataphin_public_20230630_models.CreateRowPermissionRequest,
+    ) -> dataphin_public_20230630_models.CreateRowPermissionResponse:
+        """
+        @summary 创建行级权限
+        
+        @param request: CreateRowPermissionRequest
+        @return: CreateRowPermissionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_row_permission_with_options(request, runtime)
+
+    async def create_row_permission_async(
+        self,
+        request: dataphin_public_20230630_models.CreateRowPermissionRequest,
+    ) -> dataphin_public_20230630_models.CreateRowPermissionResponse:
+        """
+        @summary 创建行级权限
+        
+        @param request: CreateRowPermissionRequest
+        @return: CreateRowPermissionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_row_permission_with_options_async(request, runtime)
 
     def create_stream_batch_job_mapping_with_options(
         self,
@@ -2681,6 +2905,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_directory_with_options_async(request, runtime)
 
+    def delete_row_permission_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.DeleteRowPermissionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.DeleteRowPermissionResponse:
+        """
+        @summary 删除行级权限
+        
+        @param tmp_req: DeleteRowPermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRowPermissionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.DeleteRowPermissionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.delete_row_permission_command):
+            request.delete_row_permission_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.delete_row_permission_command, 'DeleteRowPermissionCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.delete_row_permission_command_shrink):
+            body['DeleteRowPermissionCommand'] = request.delete_row_permission_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteRowPermission',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.DeleteRowPermissionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_row_permission_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.DeleteRowPermissionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.DeleteRowPermissionResponse:
+        """
+        @summary 删除行级权限
+        
+        @param tmp_req: DeleteRowPermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRowPermissionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.DeleteRowPermissionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.delete_row_permission_command):
+            request.delete_row_permission_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.delete_row_permission_command, 'DeleteRowPermissionCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.delete_row_permission_command_shrink):
+            body['DeleteRowPermissionCommand'] = request.delete_row_permission_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteRowPermission',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.DeleteRowPermissionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_row_permission(
+        self,
+        request: dataphin_public_20230630_models.DeleteRowPermissionRequest,
+    ) -> dataphin_public_20230630_models.DeleteRowPermissionResponse:
+        """
+        @summary 删除行级权限
+        
+        @param request: DeleteRowPermissionRequest
+        @return: DeleteRowPermissionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_row_permission_with_options(request, runtime)
+
+    async def delete_row_permission_async(
+        self,
+        request: dataphin_public_20230630_models.DeleteRowPermissionRequest,
+    ) -> dataphin_public_20230630_models.DeleteRowPermissionResponse:
+        """
+        @summary 删除行级权限
+        
+        @param request: DeleteRowPermissionRequest
+        @return: DeleteRowPermissionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_row_permission_with_options_async(request, runtime)
+
     def delete_user_group_with_options(
         self,
         request: dataphin_public_20230630_models.DeleteUserGroupRequest,
@@ -3124,6 +3460,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.fix_data_with_options_async(request, runtime)
+
+    def get_account_by_row_permission_id_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.GetAccountByRowPermissionIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetAccountByRowPermissionIdResponse:
+        """
+        @summary 根据行级权限ID获取某一行级权限下的所有授权账号
+        
+        @param tmp_req: GetAccountByRowPermissionIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccountByRowPermissionIdResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.GetAccountByRowPermissionIdShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.get_account_by_row_permission_id_query):
+            request.get_account_by_row_permission_id_query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.get_account_by_row_permission_id_query, 'GetAccountByRowPermissionIdQuery', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.get_account_by_row_permission_id_query_shrink):
+            body['GetAccountByRowPermissionIdQuery'] = request.get_account_by_row_permission_id_query_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetAccountByRowPermissionId',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetAccountByRowPermissionIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_account_by_row_permission_id_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.GetAccountByRowPermissionIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetAccountByRowPermissionIdResponse:
+        """
+        @summary 根据行级权限ID获取某一行级权限下的所有授权账号
+        
+        @param tmp_req: GetAccountByRowPermissionIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccountByRowPermissionIdResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.GetAccountByRowPermissionIdShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.get_account_by_row_permission_id_query):
+            request.get_account_by_row_permission_id_query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.get_account_by_row_permission_id_query, 'GetAccountByRowPermissionIdQuery', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.get_account_by_row_permission_id_query_shrink):
+            body['GetAccountByRowPermissionIdQuery'] = request.get_account_by_row_permission_id_query_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetAccountByRowPermissionId',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetAccountByRowPermissionIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_account_by_row_permission_id(
+        self,
+        request: dataphin_public_20230630_models.GetAccountByRowPermissionIdRequest,
+    ) -> dataphin_public_20230630_models.GetAccountByRowPermissionIdResponse:
+        """
+        @summary 根据行级权限ID获取某一行级权限下的所有授权账号
+        
+        @param request: GetAccountByRowPermissionIdRequest
+        @return: GetAccountByRowPermissionIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_account_by_row_permission_id_with_options(request, runtime)
+
+    async def get_account_by_row_permission_id_async(
+        self,
+        request: dataphin_public_20230630_models.GetAccountByRowPermissionIdRequest,
+    ) -> dataphin_public_20230630_models.GetAccountByRowPermissionIdResponse:
+        """
+        @summary 根据行级权限ID获取某一行级权限下的所有授权账号
+        
+        @param request: GetAccountByRowPermissionIdRequest
+        @return: GetAccountByRowPermissionIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_account_by_row_permission_id_with_options_async(request, runtime)
 
     def get_ad_hoc_file_with_options(
         self,
@@ -6677,6 +7125,230 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_supplement_dagrun_instance_with_options_async(request, runtime)
 
+    def get_table_column_lineage_by_task_id_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.GetTableColumnLineageByTaskIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetTableColumnLineageByTaskIdResponse:
+        """
+        @summary 查询表字段血缘信息
+        
+        @param tmp_req: GetTableColumnLineageByTaskIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTableColumnLineageByTaskIdResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.GetTableColumnLineageByTaskIdShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.table_column_lineage_by_task_id_query):
+            request.table_column_lineage_by_task_id_query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.table_column_lineage_by_task_id_query, 'TableColumnLineageByTaskIdQuery', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.table_column_lineage_by_task_id_query_shrink):
+            body['TableColumnLineageByTaskIdQuery'] = request.table_column_lineage_by_task_id_query_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTableColumnLineageByTaskId',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetTableColumnLineageByTaskIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_table_column_lineage_by_task_id_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.GetTableColumnLineageByTaskIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetTableColumnLineageByTaskIdResponse:
+        """
+        @summary 查询表字段血缘信息
+        
+        @param tmp_req: GetTableColumnLineageByTaskIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTableColumnLineageByTaskIdResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.GetTableColumnLineageByTaskIdShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.table_column_lineage_by_task_id_query):
+            request.table_column_lineage_by_task_id_query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.table_column_lineage_by_task_id_query, 'TableColumnLineageByTaskIdQuery', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.table_column_lineage_by_task_id_query_shrink):
+            body['TableColumnLineageByTaskIdQuery'] = request.table_column_lineage_by_task_id_query_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTableColumnLineageByTaskId',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetTableColumnLineageByTaskIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_table_column_lineage_by_task_id(
+        self,
+        request: dataphin_public_20230630_models.GetTableColumnLineageByTaskIdRequest,
+    ) -> dataphin_public_20230630_models.GetTableColumnLineageByTaskIdResponse:
+        """
+        @summary 查询表字段血缘信息
+        
+        @param request: GetTableColumnLineageByTaskIdRequest
+        @return: GetTableColumnLineageByTaskIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_table_column_lineage_by_task_id_with_options(request, runtime)
+
+    async def get_table_column_lineage_by_task_id_async(
+        self,
+        request: dataphin_public_20230630_models.GetTableColumnLineageByTaskIdRequest,
+    ) -> dataphin_public_20230630_models.GetTableColumnLineageByTaskIdResponse:
+        """
+        @summary 查询表字段血缘信息
+        
+        @param request: GetTableColumnLineageByTaskIdRequest
+        @return: GetTableColumnLineageByTaskIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_table_column_lineage_by_task_id_with_options_async(request, runtime)
+
+    def get_table_lineage_by_task_id_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.GetTableLineageByTaskIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetTableLineageByTaskIdResponse:
+        """
+        @summary 查询表血缘信息
+        
+        @param tmp_req: GetTableLineageByTaskIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTableLineageByTaskIdResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.GetTableLineageByTaskIdShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.table_lineage_by_task_id_query):
+            request.table_lineage_by_task_id_query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.table_lineage_by_task_id_query, 'TableLineageByTaskIdQuery', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.table_lineage_by_task_id_query_shrink):
+            body['TableLineageByTaskIdQuery'] = request.table_lineage_by_task_id_query_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTableLineageByTaskId',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetTableLineageByTaskIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_table_lineage_by_task_id_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.GetTableLineageByTaskIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetTableLineageByTaskIdResponse:
+        """
+        @summary 查询表血缘信息
+        
+        @param tmp_req: GetTableLineageByTaskIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTableLineageByTaskIdResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.GetTableLineageByTaskIdShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.table_lineage_by_task_id_query):
+            request.table_lineage_by_task_id_query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.table_lineage_by_task_id_query, 'TableLineageByTaskIdQuery', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.table_lineage_by_task_id_query_shrink):
+            body['TableLineageByTaskIdQuery'] = request.table_lineage_by_task_id_query_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTableLineageByTaskId',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetTableLineageByTaskIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_table_lineage_by_task_id(
+        self,
+        request: dataphin_public_20230630_models.GetTableLineageByTaskIdRequest,
+    ) -> dataphin_public_20230630_models.GetTableLineageByTaskIdResponse:
+        """
+        @summary 查询表血缘信息
+        
+        @param request: GetTableLineageByTaskIdRequest
+        @return: GetTableLineageByTaskIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_table_lineage_by_task_id_with_options(request, runtime)
+
+    async def get_table_lineage_by_task_id_async(
+        self,
+        request: dataphin_public_20230630_models.GetTableLineageByTaskIdRequest,
+    ) -> dataphin_public_20230630_models.GetTableLineageByTaskIdResponse:
+        """
+        @summary 查询表血缘信息
+        
+        @param request: GetTableLineageByTaskIdRequest
+        @return: GetTableLineageByTaskIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_table_lineage_by_task_id_with_options_async(request, runtime)
+
     def get_user_by_source_id_with_options(
         self,
         request: dataphin_public_20230630_models.GetUserBySourceIdRequest,
@@ -8985,6 +9657,230 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_resource_permissions_with_options_async(request, runtime)
 
+    def list_row_permission_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.ListRowPermissionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.ListRowPermissionResponse:
+        """
+        @summary 分页查询行级权限
+        
+        @param tmp_req: ListRowPermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRowPermissionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.ListRowPermissionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.page_row_permission_query):
+            request.page_row_permission_query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.page_row_permission_query, 'PageRowPermissionQuery', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.page_row_permission_query_shrink):
+            body['PageRowPermissionQuery'] = request.page_row_permission_query_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListRowPermission',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.ListRowPermissionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_row_permission_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.ListRowPermissionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.ListRowPermissionResponse:
+        """
+        @summary 分页查询行级权限
+        
+        @param tmp_req: ListRowPermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRowPermissionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.ListRowPermissionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.page_row_permission_query):
+            request.page_row_permission_query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.page_row_permission_query, 'PageRowPermissionQuery', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.page_row_permission_query_shrink):
+            body['PageRowPermissionQuery'] = request.page_row_permission_query_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListRowPermission',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.ListRowPermissionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_row_permission(
+        self,
+        request: dataphin_public_20230630_models.ListRowPermissionRequest,
+    ) -> dataphin_public_20230630_models.ListRowPermissionResponse:
+        """
+        @summary 分页查询行级权限
+        
+        @param request: ListRowPermissionRequest
+        @return: ListRowPermissionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_row_permission_with_options(request, runtime)
+
+    async def list_row_permission_async(
+        self,
+        request: dataphin_public_20230630_models.ListRowPermissionRequest,
+    ) -> dataphin_public_20230630_models.ListRowPermissionResponse:
+        """
+        @summary 分页查询行级权限
+        
+        @param request: ListRowPermissionRequest
+        @return: ListRowPermissionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_row_permission_with_options_async(request, runtime)
+
+    def list_row_permission_by_user_id_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.ListRowPermissionByUserIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.ListRowPermissionByUserIdResponse:
+        """
+        @summary 分页查询指定用户行级权限
+        
+        @param tmp_req: ListRowPermissionByUserIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRowPermissionByUserIdResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.ListRowPermissionByUserIdShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.list_row_permission_by_user_id_query):
+            request.list_row_permission_by_user_id_query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.list_row_permission_by_user_id_query, 'ListRowPermissionByUserIdQuery', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.list_row_permission_by_user_id_query_shrink):
+            body['ListRowPermissionByUserIdQuery'] = request.list_row_permission_by_user_id_query_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListRowPermissionByUserId',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.ListRowPermissionByUserIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_row_permission_by_user_id_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.ListRowPermissionByUserIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.ListRowPermissionByUserIdResponse:
+        """
+        @summary 分页查询指定用户行级权限
+        
+        @param tmp_req: ListRowPermissionByUserIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRowPermissionByUserIdResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.ListRowPermissionByUserIdShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.list_row_permission_by_user_id_query):
+            request.list_row_permission_by_user_id_query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.list_row_permission_by_user_id_query, 'ListRowPermissionByUserIdQuery', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.list_row_permission_by_user_id_query_shrink):
+            body['ListRowPermissionByUserIdQuery'] = request.list_row_permission_by_user_id_query_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListRowPermissionByUserId',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.ListRowPermissionByUserIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_row_permission_by_user_id(
+        self,
+        request: dataphin_public_20230630_models.ListRowPermissionByUserIdRequest,
+    ) -> dataphin_public_20230630_models.ListRowPermissionByUserIdResponse:
+        """
+        @summary 分页查询指定用户行级权限
+        
+        @param request: ListRowPermissionByUserIdRequest
+        @return: ListRowPermissionByUserIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_row_permission_by_user_id_with_options(request, runtime)
+
+    async def list_row_permission_by_user_id_async(
+        self,
+        request: dataphin_public_20230630_models.ListRowPermissionByUserIdRequest,
+    ) -> dataphin_public_20230630_models.ListRowPermissionByUserIdResponse:
+        """
+        @summary 分页查询指定用户行级权限
+        
+        @param request: ListRowPermissionByUserIdRequest
+        @return: ListRowPermissionByUserIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_row_permission_by_user_id_with_options_async(request, runtime)
+
     def list_submit_records_with_options(
         self,
         tmp_req: dataphin_public_20230630_models.ListSubmitRecordsRequest,
@@ -10889,6 +11785,230 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.submit_batch_task_with_options_async(request, runtime)
 
+    def sync_department_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.SyncDepartmentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.SyncDepartmentResponse:
+        """
+        @summary 同步部门信息
+        
+        @param tmp_req: SyncDepartmentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncDepartmentResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.SyncDepartmentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sync_department_command):
+            request.sync_department_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sync_department_command, 'SyncDepartmentCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.sync_department_command_shrink):
+            body['SyncDepartmentCommand'] = request.sync_department_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SyncDepartment',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.SyncDepartmentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def sync_department_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.SyncDepartmentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.SyncDepartmentResponse:
+        """
+        @summary 同步部门信息
+        
+        @param tmp_req: SyncDepartmentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncDepartmentResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.SyncDepartmentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sync_department_command):
+            request.sync_department_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sync_department_command, 'SyncDepartmentCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.sync_department_command_shrink):
+            body['SyncDepartmentCommand'] = request.sync_department_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SyncDepartment',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.SyncDepartmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def sync_department(
+        self,
+        request: dataphin_public_20230630_models.SyncDepartmentRequest,
+    ) -> dataphin_public_20230630_models.SyncDepartmentResponse:
+        """
+        @summary 同步部门信息
+        
+        @param request: SyncDepartmentRequest
+        @return: SyncDepartmentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.sync_department_with_options(request, runtime)
+
+    async def sync_department_async(
+        self,
+        request: dataphin_public_20230630_models.SyncDepartmentRequest,
+    ) -> dataphin_public_20230630_models.SyncDepartmentResponse:
+        """
+        @summary 同步部门信息
+        
+        @param request: SyncDepartmentRequest
+        @return: SyncDepartmentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.sync_department_with_options_async(request, runtime)
+
+    def sync_department_user_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.SyncDepartmentUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.SyncDepartmentUserResponse:
+        """
+        @summary 同步部门成员信息
+        
+        @param tmp_req: SyncDepartmentUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncDepartmentUserResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.SyncDepartmentUserShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sync_department_user_command):
+            request.sync_department_user_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sync_department_user_command, 'SyncDepartmentUserCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.sync_department_user_command_shrink):
+            body['SyncDepartmentUserCommand'] = request.sync_department_user_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SyncDepartmentUser',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.SyncDepartmentUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def sync_department_user_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.SyncDepartmentUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.SyncDepartmentUserResponse:
+        """
+        @summary 同步部门成员信息
+        
+        @param tmp_req: SyncDepartmentUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncDepartmentUserResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.SyncDepartmentUserShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sync_department_user_command):
+            request.sync_department_user_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sync_department_user_command, 'SyncDepartmentUserCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.sync_department_user_command_shrink):
+            body['SyncDepartmentUserCommand'] = request.sync_department_user_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SyncDepartmentUser',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.SyncDepartmentUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def sync_department_user(
+        self,
+        request: dataphin_public_20230630_models.SyncDepartmentUserRequest,
+    ) -> dataphin_public_20230630_models.SyncDepartmentUserResponse:
+        """
+        @summary 同步部门成员信息
+        
+        @param request: SyncDepartmentUserRequest
+        @return: SyncDepartmentUserResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.sync_department_user_with_options(request, runtime)
+
+    async def sync_department_user_async(
+        self,
+        request: dataphin_public_20230630_models.SyncDepartmentUserRequest,
+    ) -> dataphin_public_20230630_models.SyncDepartmentUserResponse:
+        """
+        @summary 同步部门成员信息
+        
+        @param request: SyncDepartmentUserRequest
+        @return: SyncDepartmentUserResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.sync_department_user_with_options_async(request, runtime)
+
     def update_ad_hoc_file_with_options(
         self,
         tmp_req: dataphin_public_20230630_models.UpdateAdHocFileRequest,
@@ -12000,6 +13120,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_file_name_with_options_async(request, runtime)
+
+    def update_row_permission_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.UpdateRowPermissionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.UpdateRowPermissionResponse:
+        """
+        @summary 更新行级权限
+        
+        @param tmp_req: UpdateRowPermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRowPermissionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.UpdateRowPermissionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.update_row_permission_command):
+            request.update_row_permission_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.update_row_permission_command, 'UpdateRowPermissionCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.update_row_permission_command_shrink):
+            body['UpdateRowPermissionCommand'] = request.update_row_permission_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateRowPermission',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.UpdateRowPermissionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_row_permission_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.UpdateRowPermissionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.UpdateRowPermissionResponse:
+        """
+        @summary 更新行级权限
+        
+        @param tmp_req: UpdateRowPermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRowPermissionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.UpdateRowPermissionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.update_row_permission_command):
+            request.update_row_permission_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.update_row_permission_command, 'UpdateRowPermissionCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.update_row_permission_command_shrink):
+            body['UpdateRowPermissionCommand'] = request.update_row_permission_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateRowPermission',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.UpdateRowPermissionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_row_permission(
+        self,
+        request: dataphin_public_20230630_models.UpdateRowPermissionRequest,
+    ) -> dataphin_public_20230630_models.UpdateRowPermissionResponse:
+        """
+        @summary 更新行级权限
+        
+        @param request: UpdateRowPermissionRequest
+        @return: UpdateRowPermissionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_row_permission_with_options(request, runtime)
+
+    async def update_row_permission_async(
+        self,
+        request: dataphin_public_20230630_models.UpdateRowPermissionRequest,
+    ) -> dataphin_public_20230630_models.UpdateRowPermissionResponse:
+        """
+        @summary 更新行级权限
+        
+        @param request: UpdateRowPermissionRequest
+        @return: UpdateRowPermissionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_row_permission_with_options_async(request, runtime)
 
     def update_tenant_member_with_options(
         self,

@@ -1,3 +1,17 @@
+2025-04-28 Version: 1.4.0
+- Support API CreateDataServiceApi.
+- Support API CreateRowPermission.
+- Support API DeleteRowPermission.
+- Support API GetAccountByRowPermissionId.
+- Support API GetTableColumnLineageByTaskId.
+- Support API GetTableLineageByTaskId.
+- Support API ListRowPermission.
+- Support API ListRowPermissionByUserId.
+- Support API SyncDepartment.
+- Support API SyncDepartmentUser.
+- Support API UpdateRowPermission.
+
+
 2025-04-17 Version: 1.3.0
 - Support API ListApiByApp.
 
