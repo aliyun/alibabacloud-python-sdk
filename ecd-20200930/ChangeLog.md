@@ -1,3 +1,23 @@
+2025-04-28 Version: 4.7.7
+- Update API CreateCloudDriveService: add request parameters ResellerOwnerUid.
+- Update API CreateDesktopGroup: add request parameters ResellerOwnerUid.
+- Update API CreateDesktops: add request parameters ResellerOwnerUid.
+- Update API CreateNetworkPackage: add request parameters ResellerOwnerUid.
+- Update API DeleteDesktopGroup: add request parameters ResellerOwnerUid.
+- Update API DeleteDesktops: add request parameters ResellerOwnerUid.
+- Update API DeleteNetworkPackages: add request parameters ResellerOwnerUid.
+- Update API DescribeModificationPrice: add request parameters ResellerOwnerUid.
+- Update API DescribePrice: add request parameters ResellerOwnerUid.
+- Update API DescribeRefundPrice: add request parameters ResellerOwnerUid.
+- Update API DescribeRenewalPrice: add request parameters ResellerOwnerUid.
+- Update API ModifyDesktopChargeType: add request parameters ResellerOwnerUid.
+- Update API ModifyDesktopSpec: add request parameters ResellerOwnerUid.
+- Update API ModifyNetworkPackageBandwidth: add request parameters ResellerOwnerUid.
+- Update API RenewDesktopGroup: add request parameters ResellerOwnerUid.
+- Update API RenewDesktops: add request parameters ResellerOwnerUid.
+- Update API RenewNetworkPackages: add request parameters ResellerOwnerUid.
+
+
 2025-04-25 Version: 4.7.6
 - Update API CreateCenterPolicy: add request parameters InternetPrinter.
 - Update API CreateCenterPolicy: add request parameters SafeMenu.

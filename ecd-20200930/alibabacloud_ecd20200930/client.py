@@ -4538,6 +4538,8 @@ class Client(OpenApiClient):
             query['PeriodUnit'] = request.period_unit
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
         if not UtilClient.is_unset(request.solution_id):
             query['SolutionId'] = request.solution_id
         if not UtilClient.is_unset(request.user_count):
@@ -4607,6 +4609,8 @@ class Client(OpenApiClient):
             query['PeriodUnit'] = request.period_unit
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
         if not UtilClient.is_unset(request.solution_id):
             query['SolutionId'] = request.solution_id
         if not UtilClient.is_unset(request.user_count):
@@ -4989,6 +4993,8 @@ class Client(OpenApiClient):
             query['RatioThreshold'] = request.ratio_threshold
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
         if not UtilClient.is_unset(request.reset_type):
             query['ResetType'] = request.reset_type
         if not UtilClient.is_unset(request.scale_strategy_id):
@@ -5139,6 +5145,8 @@ class Client(OpenApiClient):
             query['RatioThreshold'] = request.ratio_threshold
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
         if not UtilClient.is_unset(request.reset_type):
             query['ResetType'] = request.reset_type
         if not UtilClient.is_unset(request.scale_strategy_id):
@@ -5446,6 +5454,8 @@ class Client(OpenApiClient):
             query['PromotionId'] = request.promotion_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.saving_plan_id):
@@ -5559,6 +5569,8 @@ class Client(OpenApiClient):
             query['PromotionId'] = request.promotion_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.saving_plan_id):
@@ -6064,6 +6076,8 @@ class Client(OpenApiClient):
             query['PromotionId'] = request.promotion_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6117,6 +6131,8 @@ class Client(OpenApiClient):
             query['PromotionId'] = request.promotion_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7640,6 +7656,8 @@ class Client(OpenApiClient):
             query['DesktopGroupId'] = request.desktop_group_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7681,6 +7699,8 @@ class Client(OpenApiClient):
             query['DesktopGroupId'] = request.desktop_group_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7752,6 +7772,8 @@ class Client(OpenApiClient):
             query['DesktopId'] = request.desktop_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7789,6 +7811,8 @@ class Client(OpenApiClient):
             query['DesktopId'] = request.desktop_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8396,6 +8420,8 @@ class Client(OpenApiClient):
             query['NetworkPackageId'] = request.network_package_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8433,6 +8459,8 @@ class Client(OpenApiClient):
             query['NetworkPackageId'] = request.network_package_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -13284,6 +13312,8 @@ class Client(OpenApiClient):
             query['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.root_disk_size_gib):
@@ -13331,6 +13361,8 @@ class Client(OpenApiClient):
             query['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.root_disk_size_gib):
@@ -13897,6 +13929,8 @@ class Client(OpenApiClient):
             query['PromotionId'] = request.promotion_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.root_disk_category):
@@ -13969,6 +14003,8 @@ class Client(OpenApiClient):
             query['PromotionId'] = request.promotion_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.root_disk_category):
@@ -14522,6 +14558,8 @@ class Client(OpenApiClient):
             query['RefundType'] = request.refund_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -14561,6 +14599,8 @@ class Client(OpenApiClient):
             query['RefundType'] = request.refund_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -14730,6 +14770,8 @@ class Client(OpenApiClient):
             query['PeriodUnit'] = request.period_unit
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
@@ -14775,6 +14817,8 @@ class Client(OpenApiClient):
             query['PeriodUnit'] = request.period_unit
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
@@ -21234,6 +21278,8 @@ class Client(OpenApiClient):
             query['PromotionId'] = request.promotion_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
         if not UtilClient.is_unset(request.use_duration):
             query['UseDuration'] = request.use_duration
         req = open_api_models.OpenApiRequest(
@@ -21287,6 +21333,8 @@ class Client(OpenApiClient):
             query['PromotionId'] = request.promotion_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
         if not UtilClient.is_unset(request.use_duration):
             query['UseDuration'] = request.use_duration
         req = open_api_models.OpenApiRequest(
@@ -22149,6 +22197,8 @@ class Client(OpenApiClient):
             query['PromotionId'] = request.promotion_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
         if not UtilClient.is_unset(request.resource_specs):
             query['ResourceSpecs'] = request.resource_specs
         if not UtilClient.is_unset(request.resource_type):
@@ -22213,6 +22263,8 @@ class Client(OpenApiClient):
             query['PromotionId'] = request.promotion_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
         if not UtilClient.is_unset(request.resource_specs):
             query['ResourceSpecs'] = request.resource_specs
         if not UtilClient.is_unset(request.resource_type):
@@ -23182,6 +23234,8 @@ class Client(OpenApiClient):
             query['PromotionId'] = request.promotion_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -23225,6 +23279,8 @@ class Client(OpenApiClient):
             query['PromotionId'] = request.promotion_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -25336,6 +25392,8 @@ class Client(OpenApiClient):
             query['PeriodUnit'] = request.period_unit
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -25381,6 +25439,8 @@ class Client(OpenApiClient):
             query['PeriodUnit'] = request.period_unit
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -25558,6 +25618,8 @@ class Client(OpenApiClient):
             query['PromotionId'] = request.promotion_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
@@ -25607,6 +25669,8 @@ class Client(OpenApiClient):
             query['PromotionId'] = request.promotion_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
@@ -25682,6 +25746,8 @@ class Client(OpenApiClient):
             query['PromotionId'] = request.promotion_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -25729,6 +25795,8 @@ class Client(OpenApiClient):
             query['PromotionId'] = request.promotion_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

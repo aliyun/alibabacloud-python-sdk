@@ -7916,6 +7916,7 @@ class CreateCloudDriveServiceRequest(TeaModel):
         period: int = None,
         period_unit: str = None,
         region_id: str = None,
+        reseller_owner_uid: int = None,
         solution_id: str = None,
         user_count: int = None,
         user_max_size: int = None,
@@ -7985,6 +7986,7 @@ class CreateCloudDriveServiceRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.reseller_owner_uid = reseller_owner_uid
         # >  This parameter is not publicly available.
         self.solution_id = solution_id
         # Required. The maximum number of users allowed on the enterprise drive. This parameter takes effect only if you set `CdsChargeType` to `PrePaid`.
@@ -8035,6 +8037,8 @@ class CreateCloudDriveServiceRequest(TeaModel):
             result['PeriodUnit'] = self.period_unit
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.reseller_owner_uid is not None:
+            result['ResellerOwnerUid'] = self.reseller_owner_uid
         if self.solution_id is not None:
             result['SolutionId'] = self.solution_id
         if self.user_count is not None:
@@ -8073,6 +8077,8 @@ class CreateCloudDriveServiceRequest(TeaModel):
             self.period_unit = m.get('PeriodUnit')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResellerOwnerUid') is not None:
+            self.reseller_owner_uid = m.get('ResellerOwnerUid')
         if m.get('SolutionId') is not None:
             self.solution_id = m.get('SolutionId')
         if m.get('UserCount') is not None:
@@ -8853,6 +8859,7 @@ class CreateDesktopGroupRequest(TeaModel):
         promotion_id: str = None,
         ratio_threshold: float = None,
         region_id: str = None,
+        reseller_owner_uid: int = None,
         reset_type: int = None,
         scale_strategy_id: str = None,
         session_type: str = None,
@@ -9079,6 +9086,7 @@ class CreateDesktopGroupRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.reseller_owner_uid = reseller_owner_uid
         # The reset option of the shared group.
         # 
         # Valid values:
@@ -9233,6 +9241,8 @@ class CreateDesktopGroupRequest(TeaModel):
             result['RatioThreshold'] = self.ratio_threshold
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.reseller_owner_uid is not None:
+            result['ResellerOwnerUid'] = self.reseller_owner_uid
         if self.reset_type is not None:
             result['ResetType'] = self.reset_type
         if self.scale_strategy_id is not None:
@@ -9353,6 +9363,8 @@ class CreateDesktopGroupRequest(TeaModel):
             self.ratio_threshold = m.get('RatioThreshold')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResellerOwnerUid') is not None:
+            self.reseller_owner_uid = m.get('ResellerOwnerUid')
         if m.get('ResetType') is not None:
             self.reset_type = m.get('ResetType')
         if m.get('ScaleStrategyId') is not None:
@@ -10204,6 +10216,7 @@ class CreateDesktopsRequest(TeaModel):
         policy_group_id: str = None,
         promotion_id: str = None,
         region_id: str = None,
+        reseller_owner_uid: int = None,
         resource_group_id: str = None,
         saving_plan_id: str = None,
         snapshot_policy_id: str = None,
@@ -10329,6 +10342,7 @@ class CreateDesktopsRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.reseller_owner_uid = reseller_owner_uid
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The ID of the saving plan.
@@ -10452,6 +10466,8 @@ class CreateDesktopsRequest(TeaModel):
             result['PromotionId'] = self.promotion_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.reseller_owner_uid is not None:
+            result['ResellerOwnerUid'] = self.reseller_owner_uid
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.saving_plan_id is not None:
@@ -10536,6 +10552,8 @@ class CreateDesktopsRequest(TeaModel):
             self.promotion_id = m.get('PromotionId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResellerOwnerUid') is not None:
+            self.reseller_owner_uid = m.get('ResellerOwnerUid')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SavingPlanId') is not None:
@@ -10967,6 +10985,7 @@ class CreateDesktopsShrinkRequest(TeaModel):
         policy_group_id: str = None,
         promotion_id: str = None,
         region_id: str = None,
+        reseller_owner_uid: int = None,
         resource_group_id: str = None,
         saving_plan_id: str = None,
         snapshot_policy_id: str = None,
@@ -11092,6 +11111,7 @@ class CreateDesktopsShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.reseller_owner_uid = reseller_owner_uid
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The ID of the saving plan.
@@ -11213,6 +11233,8 @@ class CreateDesktopsShrinkRequest(TeaModel):
             result['PromotionId'] = self.promotion_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.reseller_owner_uid is not None:
+            result['ResellerOwnerUid'] = self.reseller_owner_uid
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.saving_plan_id is not None:
@@ -11296,6 +11318,8 @@ class CreateDesktopsShrinkRequest(TeaModel):
             self.promotion_id = m.get('PromotionId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResellerOwnerUid') is not None:
+            self.reseller_owner_uid = m.get('ResellerOwnerUid')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SavingPlanId') is not None:
@@ -11889,6 +11913,7 @@ class CreateNetworkPackageRequest(TeaModel):
         period_unit: str = None,
         promotion_id: str = None,
         region_id: str = None,
+        reseller_owner_uid: int = None,
     ):
         # Specifies whether to enable the automatic payment feature.
         # 
@@ -12006,6 +12031,7 @@ class CreateNetworkPackageRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.reseller_owner_uid = reseller_owner_uid
 
     def validate(self):
         pass
@@ -12036,6 +12062,8 @@ class CreateNetworkPackageRequest(TeaModel):
             result['PromotionId'] = self.promotion_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.reseller_owner_uid is not None:
+            result['ResellerOwnerUid'] = self.reseller_owner_uid
         return result
 
     def from_map(self, m: dict = None):
@@ -12060,6 +12088,8 @@ class CreateNetworkPackageRequest(TeaModel):
             self.promotion_id = m.get('PromotionId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResellerOwnerUid') is not None:
+            self.reseller_owner_uid = m.get('ResellerOwnerUid')
         return self
 
 
@@ -15069,6 +15099,7 @@ class DeleteDesktopGroupRequest(TeaModel):
         self,
         desktop_group_id: str = None,
         region_id: str = None,
+        reseller_owner_uid: int = None,
     ):
         # The ID of the cloud computer share.
         # 
@@ -15078,6 +15109,7 @@ class DeleteDesktopGroupRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.reseller_owner_uid = reseller_owner_uid
 
     def validate(self):
         pass
@@ -15092,6 +15124,8 @@ class DeleteDesktopGroupRequest(TeaModel):
             result['DesktopGroupId'] = self.desktop_group_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.reseller_owner_uid is not None:
+            result['ResellerOwnerUid'] = self.reseller_owner_uid
         return result
 
     def from_map(self, m: dict = None):
@@ -15100,6 +15134,8 @@ class DeleteDesktopGroupRequest(TeaModel):
             self.desktop_group_id = m.get('DesktopGroupId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResellerOwnerUid') is not None:
+            self.reseller_owner_uid = m.get('ResellerOwnerUid')
         return self
 
 
@@ -15177,6 +15213,7 @@ class DeleteDesktopsRequest(TeaModel):
         self,
         desktop_id: List[str] = None,
         region_id: str = None,
+        reseller_owner_uid: int = None,
     ):
         # The IDs of the cloud computers. You can specify 1 to 100 IDs.
         # 
@@ -15186,6 +15223,7 @@ class DeleteDesktopsRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.reseller_owner_uid = reseller_owner_uid
 
     def validate(self):
         pass
@@ -15200,6 +15238,8 @@ class DeleteDesktopsRequest(TeaModel):
             result['DesktopId'] = self.desktop_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.reseller_owner_uid is not None:
+            result['ResellerOwnerUid'] = self.reseller_owner_uid
         return result
 
     def from_map(self, m: dict = None):
@@ -15208,6 +15248,8 @@ class DeleteDesktopsRequest(TeaModel):
             self.desktop_id = m.get('DesktopId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResellerOwnerUid') is not None:
+            self.reseller_owner_uid = m.get('ResellerOwnerUid')
         return self
 
 
@@ -15853,6 +15895,7 @@ class DeleteNetworkPackagesRequest(TeaModel):
         self,
         network_package_id: List[str] = None,
         region_id: str = None,
+        reseller_owner_uid: int = None,
     ):
         # The IDs of premium bandwidth plans. You can specify one or more IDs.
         # 
@@ -15862,6 +15905,7 @@ class DeleteNetworkPackagesRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.reseller_owner_uid = reseller_owner_uid
 
     def validate(self):
         pass
@@ -15876,6 +15920,8 @@ class DeleteNetworkPackagesRequest(TeaModel):
             result['NetworkPackageId'] = self.network_package_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.reseller_owner_uid is not None:
+            result['ResellerOwnerUid'] = self.reseller_owner_uid
         return result
 
     def from_map(self, m: dict = None):
@@ -15884,6 +15930,8 @@ class DeleteNetworkPackagesRequest(TeaModel):
             self.network_package_id = m.get('NetworkPackageId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResellerOwnerUid') is not None:
+            self.reseller_owner_uid = m.get('ResellerOwnerUid')
         return self
 
 
@@ -30789,6 +30837,7 @@ class DescribeModificationPriceRequest(TeaModel):
         instance_id: str = None,
         instance_type: str = None,
         region_id: str = None,
+        reseller_owner_uid: int = None,
         resource_type: str = None,
         root_disk_size_gib: int = None,
         user_disk_size_gib: int = None,
@@ -30828,6 +30877,7 @@ class DescribeModificationPriceRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.reseller_owner_uid = reseller_owner_uid
         # The resource type. The required parameters depend on the resource type.
         # 
         # *   When `ResourceType` is set to `Desktop`, the required parameters are `InstanceType`, `RootDiskSizeGib`, and `UserDiskSizeGib`.
@@ -30860,6 +30910,8 @@ class DescribeModificationPriceRequest(TeaModel):
             result['InstanceType'] = self.instance_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.reseller_owner_uid is not None:
+            result['ResellerOwnerUid'] = self.reseller_owner_uid
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
         if self.root_disk_size_gib is not None:
@@ -30878,6 +30930,8 @@ class DescribeModificationPriceRequest(TeaModel):
             self.instance_type = m.get('InstanceType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResellerOwnerUid') is not None:
+            self.reseller_owner_uid = m.get('ResellerOwnerUid')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
         if m.get('RootDiskSizeGib') is not None:
@@ -34783,6 +34837,7 @@ class DescribePriceRequest(TeaModel):
         period_unit: str = None,
         promotion_id: str = None,
         region_id: str = None,
+        reseller_owner_uid: int = None,
         resource_type: str = None,
         root_disk_category: str = None,
         root_disk_size_gib: int = None,
@@ -34849,6 +34904,7 @@ class DescribePriceRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.reseller_owner_uid = reseller_owner_uid
         # The type of the resource.
         # 
         # Valid values:
@@ -34910,6 +34966,8 @@ class DescribePriceRequest(TeaModel):
             result['PromotionId'] = self.promotion_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.reseller_owner_uid is not None:
+            result['ResellerOwnerUid'] = self.reseller_owner_uid
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
         if self.root_disk_category is not None:
@@ -34946,6 +35004,8 @@ class DescribePriceRequest(TeaModel):
             self.promotion_id = m.get('PromotionId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResellerOwnerUid') is not None:
+            self.reseller_owner_uid = m.get('ResellerOwnerUid')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
         if m.get('RootDiskCategory') is not None:
@@ -36022,6 +36082,7 @@ class DescribeRefundPriceRequest(TeaModel):
         desktop_id: List[str] = None,
         refund_type: str = None,
         region_id: str = None,
+        reseller_owner_uid: int = None,
     ):
         # ID of cloud computer N. Valid values of N: 1 to 20.
         # 
@@ -36038,6 +36099,7 @@ class DescribeRefundPriceRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.reseller_owner_uid = reseller_owner_uid
 
     def validate(self):
         pass
@@ -36054,6 +36116,8 @@ class DescribeRefundPriceRequest(TeaModel):
             result['RefundType'] = self.refund_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.reseller_owner_uid is not None:
+            result['ResellerOwnerUid'] = self.reseller_owner_uid
         return result
 
     def from_map(self, m: dict = None):
@@ -36064,6 +36128,8 @@ class DescribeRefundPriceRequest(TeaModel):
             self.refund_type = m.get('RefundType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResellerOwnerUid') is not None:
+            self.reseller_owner_uid = m.get('ResellerOwnerUid')
         return self
 
 
@@ -36351,6 +36417,7 @@ class DescribeRenewalPriceRequest(TeaModel):
         period: int = None,
         period_unit: str = None,
         region_id: str = None,
+        reseller_owner_uid: int = None,
         resource_type: str = None,
     ):
         # The instance ID. The value you specify depends on the resource type (ResourceType) you\\"re querying the renewal price for.
@@ -36379,6 +36446,7 @@ class DescribeRenewalPriceRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.reseller_owner_uid = reseller_owner_uid
         # The resource type.
         # 
         # Valid values:
@@ -36407,6 +36475,8 @@ class DescribeRenewalPriceRequest(TeaModel):
             result['PeriodUnit'] = self.period_unit
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.reseller_owner_uid is not None:
+            result['ResellerOwnerUid'] = self.reseller_owner_uid
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
         return result
@@ -36423,6 +36493,8 @@ class DescribeRenewalPriceRequest(TeaModel):
             self.period_unit = m.get('PeriodUnit')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResellerOwnerUid') is not None:
+            self.reseller_owner_uid = m.get('ResellerOwnerUid')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
         return self
@@ -50143,6 +50215,7 @@ class ModifyDesktopChargeTypeRequest(TeaModel):
         period_unit: str = None,
         promotion_id: str = None,
         region_id: str = None,
+        reseller_owner_uid: int = None,
         use_duration: int = None,
     ):
         # Specifies whether to enable automatic payment if you specify subscription as the new billing method for the cloud desktop.
@@ -50185,6 +50258,7 @@ class ModifyDesktopChargeTypeRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.reseller_owner_uid = reseller_owner_uid
         # >  This parameter is in invitational preview and not publicly available.
         self.use_duration = use_duration
 
@@ -50211,6 +50285,8 @@ class ModifyDesktopChargeTypeRequest(TeaModel):
             result['PromotionId'] = self.promotion_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.reseller_owner_uid is not None:
+            result['ResellerOwnerUid'] = self.reseller_owner_uid
         if self.use_duration is not None:
             result['UseDuration'] = self.use_duration
         return result
@@ -50231,6 +50307,8 @@ class ModifyDesktopChargeTypeRequest(TeaModel):
             self.promotion_id = m.get('PromotionId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResellerOwnerUid') is not None:
+            self.reseller_owner_uid = m.get('ResellerOwnerUid')
         if m.get('UseDuration') is not None:
             self.use_duration = m.get('UseDuration')
         return self
@@ -51433,6 +51511,7 @@ class ModifyDesktopSpecRequest(TeaModel):
         desktop_type: str = None,
         promotion_id: str = None,
         region_id: str = None,
+        reseller_owner_uid: int = None,
         resource_specs: List[ModifyDesktopSpecRequestResourceSpecs] = None,
         resource_type: str = None,
         root_disk_size_gib: int = None,
@@ -51475,6 +51554,7 @@ class ModifyDesktopSpecRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.reseller_owner_uid = reseller_owner_uid
         # The array of resource specification templates.
         self.resource_specs = resource_specs
         # The resource type.
@@ -51547,6 +51627,8 @@ class ModifyDesktopSpecRequest(TeaModel):
             result['PromotionId'] = self.promotion_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.reseller_owner_uid is not None:
+            result['ResellerOwnerUid'] = self.reseller_owner_uid
         result['ResourceSpecs'] = []
         if self.resource_specs is not None:
             for k in self.resource_specs:
@@ -51573,6 +51655,8 @@ class ModifyDesktopSpecRequest(TeaModel):
             self.promotion_id = m.get('PromotionId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResellerOwnerUid') is not None:
+            self.reseller_owner_uid = m.get('ResellerOwnerUid')
         self.resource_specs = []
         if m.get('ResourceSpecs') is not None:
             for k in m.get('ResourceSpecs'):
@@ -52855,6 +52939,7 @@ class ModifyNetworkPackageBandwidthRequest(TeaModel):
         network_package_id: str = None,
         promotion_id: str = None,
         region_id: str = None,
+        reseller_owner_uid: int = None,
     ):
         # Specifies whether to enable the automatic payment feature.
         # 
@@ -52898,6 +52983,7 @@ class ModifyNetworkPackageBandwidthRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.reseller_owner_uid = reseller_owner_uid
 
     def validate(self):
         pass
@@ -52918,6 +53004,8 @@ class ModifyNetworkPackageBandwidthRequest(TeaModel):
             result['PromotionId'] = self.promotion_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.reseller_owner_uid is not None:
+            result['ResellerOwnerUid'] = self.reseller_owner_uid
         return result
 
     def from_map(self, m: dict = None):
@@ -52932,6 +53020,8 @@ class ModifyNetworkPackageBandwidthRequest(TeaModel):
             self.promotion_id = m.get('PromotionId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResellerOwnerUid') is not None:
+            self.reseller_owner_uid = m.get('ResellerOwnerUid')
         return self
 
 
@@ -57109,6 +57199,7 @@ class RenewDesktopGroupRequest(TeaModel):
         period: int = None,
         period_unit: str = None,
         region_id: str = None,
+        reseller_owner_uid: int = None,
     ):
         # Specifies whether to enable the auto-payment feature.
         # 
@@ -57146,6 +57237,7 @@ class RenewDesktopGroupRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.reseller_owner_uid = reseller_owner_uid
 
     def validate(self):
         pass
@@ -57168,6 +57260,8 @@ class RenewDesktopGroupRequest(TeaModel):
             result['PeriodUnit'] = self.period_unit
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.reseller_owner_uid is not None:
+            result['ResellerOwnerUid'] = self.reseller_owner_uid
         return result
 
     def from_map(self, m: dict = None):
@@ -57184,6 +57278,8 @@ class RenewDesktopGroupRequest(TeaModel):
             self.period_unit = m.get('PeriodUnit')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResellerOwnerUid') is not None:
+            self.reseller_owner_uid = m.get('ResellerOwnerUid')
         return self
 
 
@@ -57421,6 +57517,7 @@ class RenewDesktopsRequest(TeaModel):
         period_unit: str = None,
         promotion_id: str = None,
         region_id: str = None,
+        reseller_owner_uid: int = None,
         resource_type: str = None,
     ):
         # Specifies whether to enable the auto-payment feature.
@@ -57469,6 +57566,7 @@ class RenewDesktopsRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.reseller_owner_uid = reseller_owner_uid
         # >  This field is not available for public use.
         self.resource_type = resource_type
 
@@ -57495,6 +57593,8 @@ class RenewDesktopsRequest(TeaModel):
             result['PromotionId'] = self.promotion_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.reseller_owner_uid is not None:
+            result['ResellerOwnerUid'] = self.reseller_owner_uid
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
         return result
@@ -57515,6 +57615,8 @@ class RenewDesktopsRequest(TeaModel):
             self.promotion_id = m.get('PromotionId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResellerOwnerUid') is not None:
+            self.reseller_owner_uid = m.get('ResellerOwnerUid')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
         return self
@@ -57606,6 +57708,7 @@ class RenewNetworkPackagesRequest(TeaModel):
         period_unit: str = None,
         promotion_id: str = None,
         region_id: str = None,
+        reseller_owner_uid: int = None,
     ):
         # Specifies whether to enable the automatic payment feature.
         # 
@@ -57655,6 +57758,7 @@ class RenewNetworkPackagesRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.reseller_owner_uid = reseller_owner_uid
 
     def validate(self):
         pass
@@ -57679,6 +57783,8 @@ class RenewNetworkPackagesRequest(TeaModel):
             result['PromotionId'] = self.promotion_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.reseller_owner_uid is not None:
+            result['ResellerOwnerUid'] = self.reseller_owner_uid
         return result
 
     def from_map(self, m: dict = None):
@@ -57697,6 +57803,8 @@ class RenewNetworkPackagesRequest(TeaModel):
             self.promotion_id = m.get('PromotionId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResellerOwnerUid') is not None:
+            self.reseller_owner_uid = m.get('ResellerOwnerUid')
         return self
 
 
