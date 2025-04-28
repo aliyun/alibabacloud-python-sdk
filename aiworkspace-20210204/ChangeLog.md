@@ -1,3 +1,11 @@
+2025-04-28 Version: 6.3.0
+- Support API DeleteConfig.
+- Support API GetConfig.
+- Support API ListConfigs.
+- Support API UpdateConfig.
+- Support API UpdateConfigs.
+
+
 2025-04-23 Version: 6.2.0
 - Support API GetDatasetFileMetasStatistics.
 - Update API CreateModel: add request parameters body.Tag.

@@ -3013,6 +3013,122 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_code_source_with_options_async(code_source_id, headers, runtime)
 
+    def delete_config_with_options(
+        self,
+        workspace_id: str,
+        config_key: str,
+        request: aiwork_space_20210204_models.DeleteConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.DeleteConfigResponse:
+        """
+        @summary Deletes workspace configurations.
+        
+        @param request: DeleteConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category_name):
+            query['CategoryName'] = request.category_name
+        if not UtilClient.is_unset(request.labels):
+            query['Labels'] = request.labels
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteConfig',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/configs/{OpenApiUtilClient.get_encode_param(config_key)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.DeleteConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_config_with_options_async(
+        self,
+        workspace_id: str,
+        config_key: str,
+        request: aiwork_space_20210204_models.DeleteConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.DeleteConfigResponse:
+        """
+        @summary Deletes workspace configurations.
+        
+        @param request: DeleteConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category_name):
+            query['CategoryName'] = request.category_name
+        if not UtilClient.is_unset(request.labels):
+            query['Labels'] = request.labels
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteConfig',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/configs/{OpenApiUtilClient.get_encode_param(config_key)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.DeleteConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_config(
+        self,
+        workspace_id: str,
+        config_key: str,
+        request: aiwork_space_20210204_models.DeleteConfigRequest,
+    ) -> aiwork_space_20210204_models.DeleteConfigResponse:
+        """
+        @summary Deletes workspace configurations.
+        
+        @param request: DeleteConfigRequest
+        @return: DeleteConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_config_with_options(workspace_id, config_key, request, headers, runtime)
+
+    async def delete_config_async(
+        self,
+        workspace_id: str,
+        config_key: str,
+        request: aiwork_space_20210204_models.DeleteConfigRequest,
+    ) -> aiwork_space_20210204_models.DeleteConfigResponse:
+        """
+        @summary Deletes workspace configurations.
+        
+        @param request: DeleteConfigRequest
+        @return: DeleteConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_config_with_options_async(workspace_id, config_key, request, headers, runtime)
+
     def delete_dataset_with_options(
         self,
         dataset_id: str,
@@ -5035,6 +5151,122 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_code_source_with_options_async(code_source_id, headers, runtime)
 
+    def get_config_with_options(
+        self,
+        workspace_id: str,
+        request: aiwork_space_20210204_models.GetConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.GetConfigResponse:
+        """
+        @summary 获取配置
+        
+        @param request: GetConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category_name):
+            query['CategoryName'] = request.category_name
+        if not UtilClient.is_unset(request.config_key):
+            query['ConfigKey'] = request.config_key
+        if not UtilClient.is_unset(request.verbose):
+            query['Verbose'] = request.verbose
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetConfig',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/config',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.GetConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_config_with_options_async(
+        self,
+        workspace_id: str,
+        request: aiwork_space_20210204_models.GetConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.GetConfigResponse:
+        """
+        @summary 获取配置
+        
+        @param request: GetConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category_name):
+            query['CategoryName'] = request.category_name
+        if not UtilClient.is_unset(request.config_key):
+            query['ConfigKey'] = request.config_key
+        if not UtilClient.is_unset(request.verbose):
+            query['Verbose'] = request.verbose
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetConfig',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/config',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.GetConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_config(
+        self,
+        workspace_id: str,
+        request: aiwork_space_20210204_models.GetConfigRequest,
+    ) -> aiwork_space_20210204_models.GetConfigResponse:
+        """
+        @summary 获取配置
+        
+        @param request: GetConfigRequest
+        @return: GetConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_config_with_options(workspace_id, request, headers, runtime)
+
+    async def get_config_async(
+        self,
+        workspace_id: str,
+        request: aiwork_space_20210204_models.GetConfigRequest,
+    ) -> aiwork_space_20210204_models.GetConfigResponse:
+        """
+        @summary 获取配置
+        
+        @param request: GetConfigRequest
+        @return: GetConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_config_with_options_async(workspace_id, request, headers, runtime)
+
     def get_dataset_with_options(
         self,
         dataset_id: str,
@@ -5249,7 +5481,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetDatasetFileMetasStatisticsResponse:
         """
-        @summary 获取数据集下元数据的统计信息。
+        @summary Obtains metadata statistics of a dataset.
         
         @param request: GetDatasetFileMetasStatisticsRequest
         @param headers: map
@@ -5294,7 +5526,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetDatasetFileMetasStatisticsResponse:
         """
-        @summary 获取数据集下元数据的统计信息。
+        @summary Obtains metadata statistics of a dataset.
         
         @param request: GetDatasetFileMetasStatisticsRequest
         @param headers: map
@@ -5337,7 +5569,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.GetDatasetFileMetasStatisticsRequest,
     ) -> aiwork_space_20210204_models.GetDatasetFileMetasStatisticsResponse:
         """
-        @summary 获取数据集下元数据的统计信息。
+        @summary Obtains metadata statistics of a dataset.
         
         @param request: GetDatasetFileMetasStatisticsRequest
         @return: GetDatasetFileMetasStatisticsResponse
@@ -5352,7 +5584,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.GetDatasetFileMetasStatisticsRequest,
     ) -> aiwork_space_20210204_models.GetDatasetFileMetasStatisticsResponse:
         """
-        @summary 获取数据集下元数据的统计信息。
+        @summary Obtains metadata statistics of a dataset.
         
         @param request: GetDatasetFileMetasStatisticsRequest
         @return: GetDatasetFileMetasStatisticsResponse
@@ -6774,6 +7006,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_code_sources_with_options_async(request, headers, runtime)
+
+    def list_configs_with_options(
+        self,
+        workspace_id: str,
+        request: aiwork_space_20210204_models.ListConfigsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.ListConfigsResponse:
+        """
+        @summary 获取配置
+        
+        @param request: ListConfigsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConfigsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category_name):
+            query['CategoryName'] = request.category_name
+        if not UtilClient.is_unset(request.config_keys):
+            query['ConfigKeys'] = request.config_keys
+        if not UtilClient.is_unset(request.labels):
+            query['Labels'] = request.labels
+        if not UtilClient.is_unset(request.verbose):
+            query['Verbose'] = request.verbose
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListConfigs',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/configs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.ListConfigsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_configs_with_options_async(
+        self,
+        workspace_id: str,
+        request: aiwork_space_20210204_models.ListConfigsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.ListConfigsResponse:
+        """
+        @summary 获取配置
+        
+        @param request: ListConfigsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConfigsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category_name):
+            query['CategoryName'] = request.category_name
+        if not UtilClient.is_unset(request.config_keys):
+            query['ConfigKeys'] = request.config_keys
+        if not UtilClient.is_unset(request.labels):
+            query['Labels'] = request.labels
+        if not UtilClient.is_unset(request.verbose):
+            query['Verbose'] = request.verbose
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListConfigs',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/configs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.ListConfigsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_configs(
+        self,
+        workspace_id: str,
+        request: aiwork_space_20210204_models.ListConfigsRequest,
+    ) -> aiwork_space_20210204_models.ListConfigsResponse:
+        """
+        @summary 获取配置
+        
+        @param request: ListConfigsRequest
+        @return: ListConfigsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_configs_with_options(workspace_id, request, headers, runtime)
+
+    async def list_configs_async(
+        self,
+        workspace_id: str,
+        request: aiwork_space_20210204_models.ListConfigsRequest,
+    ) -> aiwork_space_20210204_models.ListConfigsResponse:
+        """
+        @summary 获取配置
+        
+        @param request: ListConfigsRequest
+        @return: ListConfigsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_configs_with_options_async(workspace_id, request, headers, runtime)
 
     def list_dataset_file_metas_with_options(
         self,
@@ -9124,7 +9476,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListUserConfigsResponse:
         """
-        @summary Obtains the user configurations.
+        @summary Queries user information.
         
         @param request: ListUserConfigsRequest
         @param headers: map
@@ -9164,7 +9516,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListUserConfigsResponse:
         """
-        @summary Obtains the user configurations.
+        @summary Queries user information.
         
         @param request: ListUserConfigsRequest
         @param headers: map
@@ -9202,7 +9554,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.ListUserConfigsRequest,
     ) -> aiwork_space_20210204_models.ListUserConfigsResponse:
         """
-        @summary Obtains the user configurations.
+        @summary Queries user information.
         
         @param request: ListUserConfigsRequest
         @return: ListUserConfigsResponse
@@ -9216,7 +9568,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.ListUserConfigsRequest,
     ) -> aiwork_space_20210204_models.ListUserConfigsResponse:
         """
-        @summary Obtains the user configurations.
+        @summary Queries user information.
         
         @param request: ListUserConfigsRequest
         @return: ListUserConfigsResponse
@@ -10612,6 +10964,234 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_code_source_with_options_async(code_source_id, request, headers, runtime)
+
+    def update_config_with_options(
+        self,
+        workspace_id: str,
+        request: aiwork_space_20210204_models.UpdateConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.UpdateConfigResponse:
+        """
+        @summary 更新配置
+        
+        @param request: UpdateConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.category_name):
+            body['CategoryName'] = request.category_name
+        if not UtilClient.is_unset(request.config_key):
+            body['ConfigKey'] = request.config_key
+        if not UtilClient.is_unset(request.config_value):
+            body['ConfigValue'] = request.config_value
+        if not UtilClient.is_unset(request.labels):
+            body['Labels'] = request.labels
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateConfig',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/config',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.UpdateConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_config_with_options_async(
+        self,
+        workspace_id: str,
+        request: aiwork_space_20210204_models.UpdateConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.UpdateConfigResponse:
+        """
+        @summary 更新配置
+        
+        @param request: UpdateConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.category_name):
+            body['CategoryName'] = request.category_name
+        if not UtilClient.is_unset(request.config_key):
+            body['ConfigKey'] = request.config_key
+        if not UtilClient.is_unset(request.config_value):
+            body['ConfigValue'] = request.config_value
+        if not UtilClient.is_unset(request.labels):
+            body['Labels'] = request.labels
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateConfig',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/config',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.UpdateConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_config(
+        self,
+        workspace_id: str,
+        request: aiwork_space_20210204_models.UpdateConfigRequest,
+    ) -> aiwork_space_20210204_models.UpdateConfigResponse:
+        """
+        @summary 更新配置
+        
+        @param request: UpdateConfigRequest
+        @return: UpdateConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_config_with_options(workspace_id, request, headers, runtime)
+
+    async def update_config_async(
+        self,
+        workspace_id: str,
+        request: aiwork_space_20210204_models.UpdateConfigRequest,
+    ) -> aiwork_space_20210204_models.UpdateConfigResponse:
+        """
+        @summary 更新配置
+        
+        @param request: UpdateConfigRequest
+        @return: UpdateConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_config_with_options_async(workspace_id, request, headers, runtime)
+
+    def update_configs_with_options(
+        self,
+        workspace_id: str,
+        request: aiwork_space_20210204_models.UpdateConfigsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.UpdateConfigsResponse:
+        """
+        @summary 更新配置
+        
+        @param request: UpdateConfigsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateConfigsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.configs):
+            body['Configs'] = request.configs
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateConfigs',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/configs',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.UpdateConfigsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_configs_with_options_async(
+        self,
+        workspace_id: str,
+        request: aiwork_space_20210204_models.UpdateConfigsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.UpdateConfigsResponse:
+        """
+        @summary 更新配置
+        
+        @param request: UpdateConfigsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateConfigsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.configs):
+            body['Configs'] = request.configs
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateConfigs',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/configs',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.UpdateConfigsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_configs(
+        self,
+        workspace_id: str,
+        request: aiwork_space_20210204_models.UpdateConfigsRequest,
+    ) -> aiwork_space_20210204_models.UpdateConfigsResponse:
+        """
+        @summary 更新配置
+        
+        @param request: UpdateConfigsRequest
+        @return: UpdateConfigsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_configs_with_options(workspace_id, request, headers, runtime)
+
+    async def update_configs_async(
+        self,
+        workspace_id: str,
+        request: aiwork_space_20210204_models.UpdateConfigsRequest,
+    ) -> aiwork_space_20210204_models.UpdateConfigsResponse:
+        """
+        @summary 更新配置
+        
+        @param request: UpdateConfigsRequest
+        @return: UpdateConfigsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_configs_with_options_async(workspace_id, request, headers, runtime)
 
     def update_dataset_with_options(
         self,

@@ -497,12 +497,14 @@ class Dataset(TeaModel):
 class DatasetFileMeta(TeaModel):
     def __init__(
         self,
+        content_type: str = None,
         data_size: int = None,
         dataset_file_meta_id: str = None,
         download_url: str = None,
         file_create_time: str = None,
         file_finger_print: str = None,
         file_name: str = None,
+        file_type: str = None,
         file_update_time: str = None,
         meta_attributes: str = None,
         score: float = None,
@@ -512,6 +514,7 @@ class DatasetFileMeta(TeaModel):
         thumbnail_url: str = None,
         uri: str = None,
     ):
+        self.content_type = content_type
         self.data_size = data_size
         self.dataset_file_meta_id = dataset_file_meta_id
         self.download_url = download_url
@@ -519,6 +522,7 @@ class DatasetFileMeta(TeaModel):
         self.file_create_time = file_create_time
         self.file_finger_print = file_finger_print
         self.file_name = file_name
+        self.file_type = file_type
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.file_update_time = file_update_time
         self.meta_attributes = meta_attributes
@@ -539,6 +543,8 @@ class DatasetFileMeta(TeaModel):
             return _map
 
         result = dict()
+        if self.content_type is not None:
+            result['ContentType'] = self.content_type
         if self.data_size is not None:
             result['DataSize'] = self.data_size
         if self.dataset_file_meta_id is not None:
@@ -551,6 +557,8 @@ class DatasetFileMeta(TeaModel):
             result['FileFingerPrint'] = self.file_finger_print
         if self.file_name is not None:
             result['FileName'] = self.file_name
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
         if self.file_update_time is not None:
             result['FileUpdateTime'] = self.file_update_time
         if self.meta_attributes is not None:
@@ -571,6 +579,8 @@ class DatasetFileMeta(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ContentType') is not None:
+            self.content_type = m.get('ContentType')
         if m.get('DataSize') is not None:
             self.data_size = m.get('DataSize')
         if m.get('DatasetFileMetaId') is not None:
@@ -583,6 +593,8 @@ class DatasetFileMeta(TeaModel):
             self.file_finger_print = m.get('FileFingerPrint')
         if m.get('FileName') is not None:
             self.file_name = m.get('FileName')
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
         if m.get('FileUpdateTime') is not None:
             self.file_update_time = m.get('FileUpdateTime')
         if m.get('MetaAttributes') is not None:
@@ -4794,15 +4806,15 @@ class CreateModelRequest(TeaModel):
         # The visibility of the model in the workspace. Valid values:
         # 
         # *   PRIVATE (default): Visible only to you and the administrator of the workspace.
-        # *   PUBLIC: Visible to all users in the workspace.
+        # *   PUBLIC: Vvisible to all users in the workspace.
         self.accessibility = accessibility
-        # The domain of the model. Describes the domain in which the model is for. Example: nlp (Natural Language Processing), cv (computer vision), and others.
+        # The domain of the model. Describes the domain in which the model is for. Example: nlp (natural language processing), cv (computer vision), and others.
         self.domain = domain
         # Other information about the model.
         self.extra_info = extra_info
-        # The tags.
+        # The tags. This parameter will be deprecated and replaced by Tag.
         self.labels = labels
-        # The model description, which is used to distinguish different models.
+        # The model description, used to distinguish different models.
         self.model_description = model_description
         # The documentation of the model.
         self.model_doc = model_doc
@@ -4816,10 +4828,11 @@ class CreateModelRequest(TeaModel):
         self.order_number = order_number
         # The source of the model. The community or organization to which the source model belongs, such as ModelScope or HuggingFace.
         self.origin = origin
+        # The tags.
         self.tag = tag
         # The task of the model. Describes the specific problem that the model solves. Example: text-classification.
         self.task = task
-        # The workspace ID. To obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+        # The workspace ID. Call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -6042,9 +6055,9 @@ class CreateWorkspaceResourceRequestResourcesLabels(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The label key.
         self.key = key
-        # The tag value.
+        # The label value.
         self.value = value
 
     def validate(self):
@@ -6122,27 +6135,27 @@ class CreateWorkspaceResourceRequestResources(TeaModel):
         # 
         # This parameter is required.
         self.env_type = env_type
-        # The name of the resource group, which is unique within your Alibaba Cloud account.
+        # The name of the resource group, which is unique within your Alibaba Cloud account. This parameter is required for MaxCompute, Elastic Compute Service (ECS), Lingjun, Alibaba Cloud Container Compute Service (ACS), and Realtime Compute for Apache Flink resources.
         self.group_name = group_name
         # Specifies whether the resource is the default resource. Each type of resources has a default resource. Valid values:
         # 
         # *   false (default)
         # *   true
         self.is_default = is_default
-        # The tags added to the resource.
+        # The labels added to the resource.
         self.labels = labels
-        # The resource name. Format:
+        # The resource name. The name must meet the following requirements:
         # 
         # *   The name must be 3 to 28 characters in length, and can contain only letters, digits, and underscores (_). The name must start with a letter.
-        # *   The name is unique in the region.
+        # *   The name must be unique in the region.
         # 
         # This parameter is required.
         self.name = name
-        # **This field is no longer used and will be removed. Use the ResourceType field instead.
+        # **This parameter is no longer used and will be removed. Use the ResourceType parameter instead.
         self.product_type = product_type
-        # The list of quotas. Only MaxCompute quotas are available.
+        # The quotas. Only MaxCompute quotas are available.
         self.quotas = quotas
-        # The resource type. Valid values:
+        # The resource types. Valid values:
         # 
         # *   MaxCompute
         # *   ECS
@@ -6471,6 +6484,115 @@ class DeleteCodeSourceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteCodeSourceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteConfigRequest(TeaModel):
+    def __init__(
+        self,
+        category_name: str = None,
+        labels: str = None,
+    ):
+        # The category of the configuration item. Supported categories:
+        # 
+        # *   CommonResourceConfig
+        # *   DLCAutoRecycle - DLCPriorityConfig
+        # *   DSWPriorityConfig
+        # *   QuotaMaximumDuration
+        self.category_name = category_name
+        # The filter conditions. Separate multiple conditions with commas (,). The conditions have an AND relationship.
+        self.labels = labels
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category_name is not None:
+            result['CategoryName'] = self.category_name
+        if self.labels is not None:
+            result['Labels'] = self.labels
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CategoryName') is not None:
+            self.category_name = m.get('CategoryName')
+        if m.get('Labels') is not None:
+            self.labels = m.get('Labels')
+        return self
+
+
+class DeleteConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7864,7 +7986,7 @@ class DeleteUserConfigResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8311,6 +8433,184 @@ class GetCodeSourceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetCodeSourceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetConfigRequest(TeaModel):
+    def __init__(
+        self,
+        category_name: str = None,
+        config_key: str = None,
+        verbose: str = None,
+    ):
+        self.category_name = category_name
+        self.config_key = config_key
+        self.verbose = verbose
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category_name is not None:
+            result['CategoryName'] = self.category_name
+        if self.config_key is not None:
+            result['ConfigKey'] = self.config_key
+        if self.verbose is not None:
+            result['Verbose'] = self.verbose
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CategoryName') is not None:
+            self.category_name = m.get('CategoryName')
+        if m.get('ConfigKey') is not None:
+            self.config_key = m.get('ConfigKey')
+        if m.get('Verbose') is not None:
+            self.verbose = m.get('Verbose')
+        return self
+
+
+class GetConfigResponseBodyLabels(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        category_name: str = None,
+        config_key: str = None,
+        config_value: str = None,
+        labels: List[GetConfigResponseBodyLabels] = None,
+        request_id: str = None,
+        workspace_id: str = None,
+    ):
+        self.category_name = category_name
+        self.config_key = config_key
+        self.config_value = config_value
+        self.labels = labels
+        self.request_id = request_id
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        if self.labels:
+            for k in self.labels:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category_name is not None:
+            result['CategoryName'] = self.category_name
+        if self.config_key is not None:
+            result['ConfigKey'] = self.config_key
+        if self.config_value is not None:
+            result['ConfigValue'] = self.config_value
+        result['Labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['Labels'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CategoryName') is not None:
+            self.category_name = m.get('CategoryName')
+        if m.get('ConfigKey') is not None:
+            self.config_key = m.get('ConfigKey')
+        if m.get('ConfigValue') is not None:
+            self.config_value = m.get('ConfigValue')
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k in m.get('Labels'):
+                temp_model = GetConfigResponseBodyLabels()
+                self.labels.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class GetConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8791,10 +9091,23 @@ class GetDatasetFileMetasStatisticsRequest(TeaModel):
         max_results: int = None,
         workspace_id: str = None,
     ):
+        # Aggregates statistics based on the specified metadata field. The value is not case-sensitive. If not specified, the total number of dataset file metadata will be returned, instead of aggregation lists. Valid values:
+        # 
+        # *   filedir: the directory path of the file
+        # *   file_type: the file type
+        # *   tags.user: user-defined tag
+        # *   tags.user-delete-ai-tags: algorithm tags deleted by the user
+        # *   tags.ai: algorithm tags (aggregated by all tagging tasks)
+        # *   tags.all: algorithm tags and user-defined tags (excluding alogorithm tags deleted by the user)
         self.aggregate_by = aggregate_by
+        # The dataset version.
+        # 
         # This parameter is required.
         self.dataset_version = dataset_version
+        # The maximum number of results to be returned from a single query when the NextToken parameter is used in the query. Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
+        # The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -8837,8 +9150,11 @@ class GetDatasetFileMetasStatisticsResponseBody(TeaModel):
         total_count: int = None,
         request_id: str = None,
     ):
+        # The details of the returned aggregation list, including the number of each aggregate item. The list is by default sorted in descending order based on the count number.
         self.dataset_file_metas_stats = dataset_file_metas_stats
+        # The returned number. Example: the number of metadata records or the number of user-defined tags.
         self.total_count = total_count
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -11293,12 +11609,10 @@ class ListCodeSourcesRequest(TeaModel):
     ):
         # The display name of the code source. Fuzzy match is supported.
         self.display_name = display_name
-        # The order in which the entries are sorted by the specific field on the returned page.
+        # The order in which the entries are sorted by the specific field on the returned page. Valid values:
         # 
-        # Valid values:
-        # 
-        # *   asc: ascending order. This is the default value.
-        # *   desc: descending order.
+        # *   ASC (default)
+        # *   DESC
         self.order = order
         # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
@@ -11306,10 +11620,10 @@ class ListCodeSourcesRequest(TeaModel):
         self.page_size = page_size
         # The field used for sorting. Valid values:
         # 
-        # *   GmtModifyTime: the time when the source code is modified.
+        # *   GmtModifyTime: the time when the code source was modified.
         # *   DisplayName: the display name.
-        # *   CodeSourceId: the ID of the code source.
-        # *   GmtCreateTime: the time when the code source is created. This is the default value.
+        # *   CodeSourceId: the code source ID.
+        # *   GmtCreateTime: the time when the code source was created. This is the default value.
         self.sort_by = sort_by
         # The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
         self.workspace_id = workspace_id
@@ -11445,6 +11759,219 @@ class ListCodeSourcesResponse(TeaModel):
         return self
 
 
+class ListConfigsRequest(TeaModel):
+    def __init__(
+        self,
+        category_name: str = None,
+        config_keys: str = None,
+        labels: str = None,
+        verbose: str = None,
+    ):
+        self.category_name = category_name
+        self.config_keys = config_keys
+        self.labels = labels
+        self.verbose = verbose
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category_name is not None:
+            result['CategoryName'] = self.category_name
+        if self.config_keys is not None:
+            result['ConfigKeys'] = self.config_keys
+        if self.labels is not None:
+            result['Labels'] = self.labels
+        if self.verbose is not None:
+            result['Verbose'] = self.verbose
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CategoryName') is not None:
+            self.category_name = m.get('CategoryName')
+        if m.get('ConfigKeys') is not None:
+            self.config_keys = m.get('ConfigKeys')
+        if m.get('Labels') is not None:
+            self.labels = m.get('Labels')
+        if m.get('Verbose') is not None:
+            self.verbose = m.get('Verbose')
+        return self
+
+
+class ListConfigsResponseBodyConfigsLabels(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListConfigsResponseBodyConfigs(TeaModel):
+    def __init__(
+        self,
+        config_key: str = None,
+        config_value: str = None,
+        labels: List[ListConfigsResponseBodyConfigsLabels] = None,
+    ):
+        self.config_key = config_key
+        self.config_value = config_value
+        self.labels = labels
+
+    def validate(self):
+        if self.labels:
+            for k in self.labels:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_key is not None:
+            result['ConfigKey'] = self.config_key
+        if self.config_value is not None:
+            result['ConfigValue'] = self.config_value
+        result['Labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['Labels'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigKey') is not None:
+            self.config_key = m.get('ConfigKey')
+        if m.get('ConfigValue') is not None:
+            self.config_value = m.get('ConfigValue')
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k in m.get('Labels'):
+                temp_model = ListConfigsResponseBodyConfigsLabels()
+                self.labels.append(temp_model.from_map(k))
+        return self
+
+
+class ListConfigsResponseBody(TeaModel):
+    def __init__(
+        self,
+        configs: List[ListConfigsResponseBodyConfigs] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.configs = configs
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.configs:
+            for k in self.configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Configs'] = []
+        if self.configs is not None:
+            for k in self.configs:
+                result['Configs'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.configs = []
+        if m.get('Configs') is not None:
+            for k in m.get('Configs'):
+                temp_model = ListConfigsResponseBodyConfigs()
+                self.configs.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListConfigsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListConfigsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListConfigsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListDatasetFileMetasRequest(TeaModel):
     def __init__(
         self,
@@ -11476,7 +12003,7 @@ class ListDatasetFileMetasRequest(TeaModel):
         # 
         # This parameter is required.
         self.dataset_version = dataset_version
-        # The end time when the file is updated. This parameter is used when you want to query file metadata during a period of time. The time follows the ISO 8601 standard. This parameter is valid only when QueryType is set to TAG.
+        # The update time range to query. The end time. The time follows the ISO 8601 standard. This parameter is valid only when QueryType is set to TAG.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.end_file_update_time = end_file_update_time
@@ -11515,7 +12042,7 @@ class ListDatasetFileMetasRequest(TeaModel):
         # *   FileCreateTime (default): The results are sorted by the time when the file is created.
         # *   FileUpdateTime: The results are sorted by the time when the file is last modified.
         self.sort_by = sort_by
-        # The start time when the file is updated. This parameter is used when you want to query file metadata during a period of time. The time follows the ISO 8601 standard. This parameter is valid only when QueryType is set to TAG.
+        # The update time range to query. The start time. The time follows the ISO 8601 standard. This parameter is valid only when QueryType is set to TAG.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.start_file_update_time = start_file_update_time
@@ -11668,7 +12195,7 @@ class ListDatasetFileMetasShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.dataset_version = dataset_version
-        # The end time when the file is updated. This parameter is used when you want to query file metadata during a period of time. The time follows the ISO 8601 standard. This parameter is valid only when QueryType is set to TAG.
+        # The update time range to query. The end time. The time follows the ISO 8601 standard. This parameter is valid only when QueryType is set to TAG.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.end_file_update_time = end_file_update_time
@@ -11707,7 +12234,7 @@ class ListDatasetFileMetasShrinkRequest(TeaModel):
         # *   FileCreateTime (default): The results are sorted by the time when the file is created.
         # *   FileUpdateTime: The results are sorted by the time when the file is last modified.
         self.sort_by = sort_by
-        # The start time when the file is updated. This parameter is used when you want to query file metadata during a period of time. The time follows the ISO 8601 standard. This parameter is valid only when QueryType is set to TAG.
+        # The update time range to query. The start time. The time follows the ISO 8601 standard. This parameter is valid only when QueryType is set to TAG.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.start_file_update_time = start_file_update_time
@@ -11850,7 +12377,7 @@ class ListDatasetFileMetasResponseBody(TeaModel):
         self.max_results = max_results
         # The pagination token. If the number of results exceeds the maximum number of entries allowed per page, a pagination token is returned. This token can be used as an input parameter to obtain the next page of results. If all results are obtained, no token is returned.
         self.next_token = next_token
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The total number of entries returned.
         self.total_count = total_count
@@ -12280,15 +12807,6 @@ class ListDatasetVersionsRequest(TeaModel):
         # *   FILE
         self.properties = properties
         # The field used to sort the results in queries by page. Default value: GmtCreateTime.
-        # 
-        # *\
-        # *\
-        # *\
-        # *\
-        # *\
-        # *\
-        # *\
-        # 
         # Valid values:
         # 
         # *   SourceType
@@ -12311,12 +12829,6 @@ class ListDatasetVersionsRequest(TeaModel):
         # *   PAI-PUBLIC-DATASET: a public dataset of Platform for AI (PAI).
         # *   ITAG: a dataset generated from a labeling job of iTAG.
         # *   USER: a dataset registered by a user.
-        # 
-        # <!---->
-        # 
-        # *\
-        # *\
-        # *\
         self.source_types = source_types
 
     def validate(self):
@@ -12542,12 +13054,6 @@ class ListDatasetsRequest(TeaModel):
         # *   PAI-PUBLIC-DATASET: a public dataset of Platform for AI (PAI).
         # *   ITAG: a dataset generated from a labeling job of iTAG.
         # *   USER: a dataset registered by a user.
-        # 
-        # <!---->
-        # 
-        # *\
-        # *\
-        # *\
         self.source_types = source_types
         # The ID of the workspace to which the dataset belongs. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID. If you do not specify this parameter, the default workspace is used. If the default workspace does not exist, an error is reported.
         self.workspace_id = workspace_id
@@ -14081,7 +14587,9 @@ class ListModelsRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -14154,6 +14662,7 @@ class ListModelsRequest(TeaModel):
         self.query = query
         # The field used to sort the results. The GmtCreateTime field is used for sorting.
         self.sort_by = sort_by
+        # The tags of the model.
         self.tag = tag
         # The task used to filter the models that belong to the task type. Example: text-classification.
         self.task = task
@@ -14290,6 +14799,7 @@ class ListModelsShrinkRequest(TeaModel):
         self.query = query
         # The field used to sort the results. The GmtCreateTime field is used for sorting.
         self.sort_by = sort_by
+        # The tags of the model.
         self.tag_shrink = tag_shrink
         # The task used to filter the models that belong to the task type. Example: text-classification.
         self.task = task
@@ -17494,7 +18004,7 @@ class SetUserConfigsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -17815,6 +18325,349 @@ class UpdateCodeSourceResponse(TeaModel):
         return self
 
 
+class UpdateConfigRequestLabels(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class UpdateConfigRequest(TeaModel):
+    def __init__(
+        self,
+        category_name: str = None,
+        config_key: str = None,
+        config_value: str = None,
+        labels: List[UpdateConfigRequestLabels] = None,
+    ):
+        self.category_name = category_name
+        self.config_key = config_key
+        self.config_value = config_value
+        self.labels = labels
+
+    def validate(self):
+        if self.labels:
+            for k in self.labels:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category_name is not None:
+            result['CategoryName'] = self.category_name
+        if self.config_key is not None:
+            result['ConfigKey'] = self.config_key
+        if self.config_value is not None:
+            result['ConfigValue'] = self.config_value
+        result['Labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['Labels'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CategoryName') is not None:
+            self.category_name = m.get('CategoryName')
+        if m.get('ConfigKey') is not None:
+            self.config_key = m.get('ConfigKey')
+        if m.get('ConfigValue') is not None:
+            self.config_value = m.get('ConfigValue')
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k in m.get('Labels'):
+                temp_model = UpdateConfigRequestLabels()
+                self.labels.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateConfigsRequestConfigsLabels(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class UpdateConfigsRequestConfigs(TeaModel):
+    def __init__(
+        self,
+        category_name: str = None,
+        config_key: str = None,
+        config_value: str = None,
+        labels: List[UpdateConfigsRequestConfigsLabels] = None,
+    ):
+        self.category_name = category_name
+        self.config_key = config_key
+        self.config_value = config_value
+        self.labels = labels
+
+    def validate(self):
+        if self.labels:
+            for k in self.labels:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category_name is not None:
+            result['CategoryName'] = self.category_name
+        if self.config_key is not None:
+            result['ConfigKey'] = self.config_key
+        if self.config_value is not None:
+            result['ConfigValue'] = self.config_value
+        result['Labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['Labels'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CategoryName') is not None:
+            self.category_name = m.get('CategoryName')
+        if m.get('ConfigKey') is not None:
+            self.config_key = m.get('ConfigKey')
+        if m.get('ConfigValue') is not None:
+            self.config_value = m.get('ConfigValue')
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k in m.get('Labels'):
+                temp_model = UpdateConfigsRequestConfigsLabels()
+                self.labels.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateConfigsRequest(TeaModel):
+    def __init__(
+        self,
+        configs: List[UpdateConfigsRequestConfigs] = None,
+    ):
+        self.configs = configs
+
+    def validate(self):
+        if self.configs:
+            for k in self.configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Configs'] = []
+        if self.configs is not None:
+            for k in self.configs:
+                result['Configs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.configs = []
+        if m.get('Configs') is not None:
+            for k in m.get('Configs'):
+                temp_model = UpdateConfigsRequestConfigs()
+                self.configs.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateConfigsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateConfigsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateConfigsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateConfigsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateDatasetRequest(TeaModel):
     def __init__(
         self,
@@ -17953,7 +18806,7 @@ class UpdateDatasetFileMetasRequest(TeaModel):
         self.dataset_version = dataset_version
         # The ID of the tagging job that is associated with the metadata tag of the dataset file.
         self.tag_job_id = tag_job_id
-        # The ID of the workspace to which the dataset belongs. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+        # The ID of the workspace to which the dataset belongs. To obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
         self.workspace_id = workspace_id
 
     def validate(self):
