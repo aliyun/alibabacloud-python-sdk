@@ -327,8 +327,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.access_key_id_copy):
-            query['AccessKeyId-copy'] = request.access_key_id_copy
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.owner_account):
@@ -374,8 +372,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.access_key_id_copy):
-            query['AccessKeyId-copy'] = request.access_key_id_copy
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.owner_account):
@@ -561,6 +557,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.group_name):
@@ -612,6 +610,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.group_name):
@@ -685,6 +685,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.BindDBResourcePoolWithUserResponse:
         """
+        @summary 绑定资源组用户
+        
         @description    This operation is available only for AnalyticDB for MySQL clusters in elastic mode for Cluster Edition that have 32 cores or more.
         The default resource group USER_DEFAULT cannot be associated with a database account.
         
@@ -694,6 +696,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.owner_account):
@@ -733,6 +737,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.BindDBResourcePoolWithUserResponse:
         """
+        @summary 绑定资源组用户
+        
         @description    This operation is available only for AnalyticDB for MySQL clusters in elastic mode for Cluster Edition that have 32 cores or more.
         The default resource group USER_DEFAULT cannot be associated with a database account.
         
@@ -742,6 +748,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.owner_account):
@@ -780,6 +788,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.BindDBResourcePoolWithUserRequest,
     ) -> adb_20190315_models.BindDBResourcePoolWithUserResponse:
         """
+        @summary 绑定资源组用户
+        
         @description    This operation is available only for AnalyticDB for MySQL clusters in elastic mode for Cluster Edition that have 32 cores or more.
         The default resource group USER_DEFAULT cannot be associated with a database account.
         
@@ -794,6 +804,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.BindDBResourcePoolWithUserRequest,
     ) -> adb_20190315_models.BindDBResourcePoolWithUserResponse:
         """
+        @summary 绑定资源组用户
+        
         @description    This operation is available only for AnalyticDB for MySQL clusters in elastic mode for Cluster Edition that have 32 cores or more.
         The default resource group USER_DEFAULT cannot be associated with a database account.
         
@@ -809,7 +821,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.CancelActiveOperationTasksResponse:
         """
-        @summary CancelActiveOperationTasks
+        @summary Cancels O\\&M events.
         
         @param request: CancelActiveOperationTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -856,7 +868,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.CancelActiveOperationTasksResponse:
         """
-        @summary CancelActiveOperationTasks
+        @summary Cancels O\\&M events.
         
         @param request: CancelActiveOperationTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -902,7 +914,7 @@ class Client(OpenApiClient):
         request: adb_20190315_models.CancelActiveOperationTasksRequest,
     ) -> adb_20190315_models.CancelActiveOperationTasksResponse:
         """
-        @summary CancelActiveOperationTasks
+        @summary Cancels O\\&M events.
         
         @param request: CancelActiveOperationTasksRequest
         @return: CancelActiveOperationTasksResponse
@@ -915,7 +927,7 @@ class Client(OpenApiClient):
         request: adb_20190315_models.CancelActiveOperationTasksRequest,
     ) -> adb_20190315_models.CancelActiveOperationTasksResponse:
         """
-        @summary CancelActiveOperationTasks
+        @summary Cancels O\\&M events.
         
         @param request: CancelActiveOperationTasksRequest
         @return: CancelActiveOperationTasksResponse
@@ -929,6 +941,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.CheckServiceLinkedRoleResponse:
         """
+        @summary Checks whether a service-linked role is created.
+        
         @param request: CheckServiceLinkedRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CheckServiceLinkedRoleResponse
@@ -972,6 +986,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.CheckServiceLinkedRoleResponse:
         """
+        @summary Checks whether a service-linked role is created.
+        
         @param request: CheckServiceLinkedRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CheckServiceLinkedRoleResponse
@@ -1014,6 +1030,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.CheckServiceLinkedRoleRequest,
     ) -> adb_20190315_models.CheckServiceLinkedRoleResponse:
         """
+        @summary Checks whether a service-linked role is created.
+        
         @param request: CheckServiceLinkedRoleRequest
         @return: CheckServiceLinkedRoleResponse
         """
@@ -1025,6 +1043,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.CheckServiceLinkedRoleRequest,
     ) -> adb_20190315_models.CheckServiceLinkedRoleResponse:
         """
+        @summary Checks whether a service-linked role is created.
+        
         @param request: CheckServiceLinkedRoleRequest
         @return: CheckServiceLinkedRoleResponse
         """
@@ -1033,17 +1053,21 @@ class Client(OpenApiClient):
 
     def create_account_with_options(
         self,
-        request: adb_20190315_models.CreateAccountRequest,
+        tmp_req: adb_20190315_models.CreateAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.CreateAccountResponse:
         """
         @summary Creates a database account for an AnalyticDB for MySQL cluster.
         
-        @param request: CreateAccountRequest
+        @param tmp_req: CreateAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateAccountResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = adb_20190315_models.CreateAccountShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.account_description):
             query['AccountDescription'] = request.account_description
@@ -1063,6 +1087,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1084,17 +1110,21 @@ class Client(OpenApiClient):
 
     async def create_account_with_options_async(
         self,
-        request: adb_20190315_models.CreateAccountRequest,
+        tmp_req: adb_20190315_models.CreateAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.CreateAccountResponse:
         """
         @summary Creates a database account for an AnalyticDB for MySQL cluster.
         
-        @param request: CreateAccountRequest
+        @param tmp_req: CreateAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateAccountResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = adb_20190315_models.CreateAccountShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.account_description):
             query['AccountDescription'] = request.account_description
@@ -1114,6 +1144,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1165,9 +1197,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.CreateDBClusterResponse:
         """
-        @summary Creates an AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+        @summary Creates an AnalyticDB for MySQL Data Warehouse Edition cluster.
         
-        @description After you create a cluster, you are billed for the cluster specifications that you select. For more information about the billable items and pricing for Data Warehouse Edition (V3.0) clusters, see [Billable items of Data Warehouse Edition (V3.0)](https://help.aliyun.com/document_detail/303131.html) and [Pricing for Data Warehouse Edition (V3.0)](https://help.aliyun.com/document_detail/135229.html).
+        @description After you create a cluster, you are billed for the cluster specifications that you select. For more information about the billable items and pricing for Data Warehouse Edition  clusters, see [Billable items of Data Warehouse Edition](https://help.aliyun.com/document_detail/303131.html) and [Pricing for Data Warehouse Edition](https://help.aliyun.com/document_detail/135229.html).
         
         @param request: CreateDBClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1268,9 +1300,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.CreateDBClusterResponse:
         """
-        @summary Creates an AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+        @summary Creates an AnalyticDB for MySQL Data Warehouse Edition cluster.
         
-        @description After you create a cluster, you are billed for the cluster specifications that you select. For more information about the billable items and pricing for Data Warehouse Edition (V3.0) clusters, see [Billable items of Data Warehouse Edition (V3.0)](https://help.aliyun.com/document_detail/303131.html) and [Pricing for Data Warehouse Edition (V3.0)](https://help.aliyun.com/document_detail/135229.html).
+        @description After you create a cluster, you are billed for the cluster specifications that you select. For more information about the billable items and pricing for Data Warehouse Edition  clusters, see [Billable items of Data Warehouse Edition](https://help.aliyun.com/document_detail/303131.html) and [Pricing for Data Warehouse Edition](https://help.aliyun.com/document_detail/135229.html).
         
         @param request: CreateDBClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1370,9 +1402,9 @@ class Client(OpenApiClient):
         request: adb_20190315_models.CreateDBClusterRequest,
     ) -> adb_20190315_models.CreateDBClusterResponse:
         """
-        @summary Creates an AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+        @summary Creates an AnalyticDB for MySQL Data Warehouse Edition cluster.
         
-        @description After you create a cluster, you are billed for the cluster specifications that you select. For more information about the billable items and pricing for Data Warehouse Edition (V3.0) clusters, see [Billable items of Data Warehouse Edition (V3.0)](https://help.aliyun.com/document_detail/303131.html) and [Pricing for Data Warehouse Edition (V3.0)](https://help.aliyun.com/document_detail/135229.html).
+        @description After you create a cluster, you are billed for the cluster specifications that you select. For more information about the billable items and pricing for Data Warehouse Edition  clusters, see [Billable items of Data Warehouse Edition](https://help.aliyun.com/document_detail/303131.html) and [Pricing for Data Warehouse Edition](https://help.aliyun.com/document_detail/135229.html).
         
         @param request: CreateDBClusterRequest
         @return: CreateDBClusterResponse
@@ -1385,9 +1417,9 @@ class Client(OpenApiClient):
         request: adb_20190315_models.CreateDBClusterRequest,
     ) -> adb_20190315_models.CreateDBClusterResponse:
         """
-        @summary Creates an AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+        @summary Creates an AnalyticDB for MySQL Data Warehouse Edition cluster.
         
-        @description After you create a cluster, you are billed for the cluster specifications that you select. For more information about the billable items and pricing for Data Warehouse Edition (V3.0) clusters, see [Billable items of Data Warehouse Edition (V3.0)](https://help.aliyun.com/document_detail/303131.html) and [Pricing for Data Warehouse Edition (V3.0)](https://help.aliyun.com/document_detail/135229.html).
+        @description After you create a cluster, you are billed for the cluster specifications that you select. For more information about the billable items and pricing for Data Warehouse Edition  clusters, see [Billable items of Data Warehouse Edition](https://help.aliyun.com/document_detail/303131.html) and [Pricing for Data Warehouse Edition](https://help.aliyun.com/document_detail/135229.html).
         
         @param request: CreateDBClusterRequest
         @return: CreateDBClusterResponse
@@ -1412,6 +1444,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.group_name):
@@ -1464,6 +1498,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.group_name):
@@ -1537,6 +1573,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.CreateDBResourcePoolResponse:
         """
+        @summary 创建资源组
+        
         @description This operation is applicable only for elastic clusters of 32 cores or more.
         
         @param request: CreateDBResourcePoolRequest
@@ -1586,6 +1624,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.CreateDBResourcePoolResponse:
         """
+        @summary 创建资源组
+        
         @description This operation is applicable only for elastic clusters of 32 cores or more.
         
         @param request: CreateDBResourcePoolRequest
@@ -1634,6 +1674,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.CreateDBResourcePoolRequest,
     ) -> adb_20190315_models.CreateDBResourcePoolResponse:
         """
+        @summary 创建资源组
+        
         @description This operation is applicable only for elastic clusters of 32 cores or more.
         
         @param request: CreateDBResourcePoolRequest
@@ -1647,6 +1689,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.CreateDBResourcePoolRequest,
     ) -> adb_20190315_models.CreateDBResourcePoolResponse:
         """
+        @summary 创建资源组
+        
         @description This operation is applicable only for elastic clusters of 32 cores or more.
         
         @param request: CreateDBResourcePoolRequest
@@ -1833,6 +1877,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.CreateServiceLinkedRoleResponse:
         """
+        @summary Creates a service-linked role.
+        
         @param request: CreateServiceLinkedRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateServiceLinkedRoleResponse
@@ -1876,6 +1922,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.CreateServiceLinkedRoleResponse:
         """
+        @summary Creates a service-linked role.
+        
         @param request: CreateServiceLinkedRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateServiceLinkedRoleResponse
@@ -1918,6 +1966,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.CreateServiceLinkedRoleRequest,
     ) -> adb_20190315_models.CreateServiceLinkedRoleResponse:
         """
+        @summary Creates a service-linked role.
+        
         @param request: CreateServiceLinkedRoleRequest
         @return: CreateServiceLinkedRoleResponse
         """
@@ -1929,6 +1979,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.CreateServiceLinkedRoleRequest,
     ) -> adb_20190315_models.CreateServiceLinkedRoleResponse:
         """
+        @summary Creates a service-linked role.
+        
         @param request: CreateServiceLinkedRoleRequest
         @return: CreateServiceLinkedRoleResponse
         """
@@ -1941,6 +1993,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DeleteAccountResponse:
         """
+        @summary 删除高权限帐号
+        
         @param request: DeleteAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteAccountResponse
@@ -1986,6 +2040,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DeleteAccountResponse:
         """
+        @summary 删除高权限帐号
+        
         @param request: DeleteAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteAccountResponse
@@ -2030,6 +2086,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DeleteAccountRequest,
     ) -> adb_20190315_models.DeleteAccountResponse:
         """
+        @summary 删除高权限帐号
+        
         @param request: DeleteAccountRequest
         @return: DeleteAccountResponse
         """
@@ -2041,6 +2099,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DeleteAccountRequest,
     ) -> adb_20190315_models.DeleteAccountResponse:
         """
+        @summary 删除高权限帐号
+        
         @param request: DeleteAccountRequest
         @return: DeleteAccountResponse
         """
@@ -2163,8 +2223,9 @@ class Client(OpenApiClient):
         """
         @summary Deletes an AnalyticDB for MySQL cluster.
         
-        @description    Subscription clusters cannot be deleted by using API operations. After expiration, subscription clusters are automatically released. If you no longer need a cluster, you can submit a request to unsubscribe from the cluster in the Billing Management console. For more information about cluster refunds, see [Refund policy](https://help.aliyun.com/document_detail/471477.html).
-        After you delete a cluster, resources of the cluster are immediately released, and data of the cluster is no longer retained and cannot be recovered. Proceed with caution.
+        @description    You cannot delete subscription clusters by calling API operations. After expiration, subscription clusters are automatically released. If you no longer need a cluster, you can unsubscribe from the cluster in the Expenses and Costs console. For information about cluster refunds, see [Refund policy](https://help.aliyun.com/document_detail/471477.html).
+        After you delete a cluster, resources of the cluster are immediately released, and data of the cluster is no longer retained and cannot be restored. Proceed with caution.
+        The cluster that you want to delete must be in the Running state.
         
         @param request: DeleteDBClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2209,8 +2270,9 @@ class Client(OpenApiClient):
         """
         @summary Deletes an AnalyticDB for MySQL cluster.
         
-        @description    Subscription clusters cannot be deleted by using API operations. After expiration, subscription clusters are automatically released. If you no longer need a cluster, you can submit a request to unsubscribe from the cluster in the Billing Management console. For more information about cluster refunds, see [Refund policy](https://help.aliyun.com/document_detail/471477.html).
-        After you delete a cluster, resources of the cluster are immediately released, and data of the cluster is no longer retained and cannot be recovered. Proceed with caution.
+        @description    You cannot delete subscription clusters by calling API operations. After expiration, subscription clusters are automatically released. If you no longer need a cluster, you can unsubscribe from the cluster in the Expenses and Costs console. For information about cluster refunds, see [Refund policy](https://help.aliyun.com/document_detail/471477.html).
+        After you delete a cluster, resources of the cluster are immediately released, and data of the cluster is no longer retained and cannot be restored. Proceed with caution.
+        The cluster that you want to delete must be in the Running state.
         
         @param request: DeleteDBClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2254,8 +2316,9 @@ class Client(OpenApiClient):
         """
         @summary Deletes an AnalyticDB for MySQL cluster.
         
-        @description    Subscription clusters cannot be deleted by using API operations. After expiration, subscription clusters are automatically released. If you no longer need a cluster, you can submit a request to unsubscribe from the cluster in the Billing Management console. For more information about cluster refunds, see [Refund policy](https://help.aliyun.com/document_detail/471477.html).
-        After you delete a cluster, resources of the cluster are immediately released, and data of the cluster is no longer retained and cannot be recovered. Proceed with caution.
+        @description    You cannot delete subscription clusters by calling API operations. After expiration, subscription clusters are automatically released. If you no longer need a cluster, you can unsubscribe from the cluster in the Expenses and Costs console. For information about cluster refunds, see [Refund policy](https://help.aliyun.com/document_detail/471477.html).
+        After you delete a cluster, resources of the cluster are immediately released, and data of the cluster is no longer retained and cannot be restored. Proceed with caution.
+        The cluster that you want to delete must be in the Running state.
         
         @param request: DeleteDBClusterRequest
         @return: DeleteDBClusterResponse
@@ -2270,8 +2333,9 @@ class Client(OpenApiClient):
         """
         @summary Deletes an AnalyticDB for MySQL cluster.
         
-        @description    Subscription clusters cannot be deleted by using API operations. After expiration, subscription clusters are automatically released. If you no longer need a cluster, you can submit a request to unsubscribe from the cluster in the Billing Management console. For more information about cluster refunds, see [Refund policy](https://help.aliyun.com/document_detail/471477.html).
-        After you delete a cluster, resources of the cluster are immediately released, and data of the cluster is no longer retained and cannot be recovered. Proceed with caution.
+        @description    You cannot delete subscription clusters by calling API operations. After expiration, subscription clusters are automatically released. If you no longer need a cluster, you can unsubscribe from the cluster in the Expenses and Costs console. For information about cluster refunds, see [Refund policy](https://help.aliyun.com/document_detail/471477.html).
+        After you delete a cluster, resources of the cluster are immediately released, and data of the cluster is no longer retained and cannot be restored. Proceed with caution.
+        The cluster that you want to delete must be in the Running state.
         
         @param request: DeleteDBClusterRequest
         @return: DeleteDBClusterResponse
@@ -2417,6 +2481,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DeleteDBResourcePoolResponse:
         """
+        @summary 删除资源组
+        
         @description *Precautions**\
         This operation is available only for AnalyticDB for MySQL clusters in elastic mode for Cluster Edition that have 32 cores or more.
         The default resource group USER_DEFAULT cannot be deleted.
@@ -2464,6 +2530,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DeleteDBResourcePoolResponse:
         """
+        @summary 删除资源组
+        
         @description *Precautions**\
         This operation is available only for AnalyticDB for MySQL clusters in elastic mode for Cluster Edition that have 32 cores or more.
         The default resource group USER_DEFAULT cannot be deleted.
@@ -2510,6 +2578,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DeleteDBResourcePoolRequest,
     ) -> adb_20190315_models.DeleteDBResourcePoolResponse:
         """
+        @summary 删除资源组
+        
         @description *Precautions**\
         This operation is available only for AnalyticDB for MySQL clusters in elastic mode for Cluster Edition that have 32 cores or more.
         The default resource group USER_DEFAULT cannot be deleted.
@@ -2525,6 +2595,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DeleteDBResourcePoolRequest,
     ) -> adb_20190315_models.DeleteDBResourcePoolResponse:
         """
+        @summary 删除资源组
+        
         @description *Precautions**\
         This operation is available only for AnalyticDB for MySQL clusters in elastic mode for Cluster Edition that have 32 cores or more.
         The default resource group USER_DEFAULT cannot be deleted.
@@ -2541,7 +2613,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DeleteElasticPlanResponse:
         """
-        @summary Deletes a scheduled scaling plan. This operation can be used only for AnalyticDB for MySQL clusters in elastic mode for Cluster Edition.
+        @summary Deletes a scheduled scaling plan. You can call this operation only for AnalyticDB for MySQL Data Warehouse Edition clusters in elastic mode for Cluster Edition.
         
         @param request: DeleteElasticPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2586,7 +2658,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DeleteElasticPlanResponse:
         """
-        @summary Deletes a scheduled scaling plan. This operation can be used only for AnalyticDB for MySQL clusters in elastic mode for Cluster Edition.
+        @summary Deletes a scheduled scaling plan. You can call this operation only for AnalyticDB for MySQL Data Warehouse Edition clusters in elastic mode for Cluster Edition.
         
         @param request: DeleteElasticPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2630,7 +2702,7 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DeleteElasticPlanRequest,
     ) -> adb_20190315_models.DeleteElasticPlanResponse:
         """
-        @summary Deletes a scheduled scaling plan. This operation can be used only for AnalyticDB for MySQL clusters in elastic mode for Cluster Edition.
+        @summary Deletes a scheduled scaling plan. You can call this operation only for AnalyticDB for MySQL Data Warehouse Edition clusters in elastic mode for Cluster Edition.
         
         @param request: DeleteElasticPlanRequest
         @return: DeleteElasticPlanResponse
@@ -2643,13 +2715,141 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DeleteElasticPlanRequest,
     ) -> adb_20190315_models.DeleteElasticPlanResponse:
         """
-        @summary Deletes a scheduled scaling plan. This operation can be used only for AnalyticDB for MySQL clusters in elastic mode for Cluster Edition.
+        @summary Deletes a scheduled scaling plan. You can call this operation only for AnalyticDB for MySQL Data Warehouse Edition clusters in elastic mode for Cluster Edition.
         
         @param request: DeleteElasticPlanRequest
         @return: DeleteElasticPlanResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_elastic_plan_with_options_async(request, runtime)
+
+    def describe_abnormal_pattern_detection_with_options(
+        self,
+        request: adb_20190315_models.DescribeAbnormalPatternDetectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeAbnormalPatternDetectionResponse:
+        """
+        @summary Queries abnormal SQL patterns within a time range.
+        
+        @param request: DescribeAbnormalPatternDetectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAbnormalPatternDetectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAbnormalPatternDetection',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeAbnormalPatternDetectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_abnormal_pattern_detection_with_options_async(
+        self,
+        request: adb_20190315_models.DescribeAbnormalPatternDetectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeAbnormalPatternDetectionResponse:
+        """
+        @summary Queries abnormal SQL patterns within a time range.
+        
+        @param request: DescribeAbnormalPatternDetectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAbnormalPatternDetectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAbnormalPatternDetection',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeAbnormalPatternDetectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_abnormal_pattern_detection(
+        self,
+        request: adb_20190315_models.DescribeAbnormalPatternDetectionRequest,
+    ) -> adb_20190315_models.DescribeAbnormalPatternDetectionResponse:
+        """
+        @summary Queries abnormal SQL patterns within a time range.
+        
+        @param request: DescribeAbnormalPatternDetectionRequest
+        @return: DescribeAbnormalPatternDetectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_abnormal_pattern_detection_with_options(request, runtime)
+
+    async def describe_abnormal_pattern_detection_async(
+        self,
+        request: adb_20190315_models.DescribeAbnormalPatternDetectionRequest,
+    ) -> adb_20190315_models.DescribeAbnormalPatternDetectionResponse:
+        """
+        @summary Queries abnormal SQL patterns within a time range.
+        
+        @param request: DescribeAbnormalPatternDetectionRequest
+        @return: DescribeAbnormalPatternDetectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_abnormal_pattern_detection_with_options_async(request, runtime)
 
     def describe_accounts_with_options(
         self,
@@ -2679,6 +2879,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2726,6 +2928,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2777,7 +2981,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeActiveOperationMaintainConfResponse:
         """
-        @summary DescribeActiveOperationMaintainConf
+        @summary Queries the configuration information about O\\&M tasks.
         
         @param request: DescribeActiveOperationMaintainConfRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2826,7 +3030,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeActiveOperationMaintainConfResponse:
         """
-        @summary DescribeActiveOperationMaintainConf
+        @summary Queries the configuration information about O\\&M tasks.
         
         @param request: DescribeActiveOperationMaintainConfRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2874,7 +3078,7 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeActiveOperationMaintainConfRequest,
     ) -> adb_20190315_models.DescribeActiveOperationMaintainConfResponse:
         """
-        @summary DescribeActiveOperationMaintainConf
+        @summary Queries the configuration information about O\\&M tasks.
         
         @param request: DescribeActiveOperationMaintainConfRequest
         @return: DescribeActiveOperationMaintainConfResponse
@@ -2887,7 +3091,7 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeActiveOperationMaintainConfRequest,
     ) -> adb_20190315_models.DescribeActiveOperationMaintainConfResponse:
         """
-        @summary DescribeActiveOperationMaintainConf
+        @summary Queries the configuration information about O\\&M tasks.
         
         @param request: DescribeActiveOperationMaintainConfRequest
         @return: DescribeActiveOperationMaintainConfResponse
@@ -2901,7 +3105,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeActiveOperationTasksResponse:
         """
-        @summary DescribeActiveOperationTasks
+        @summary Queries the information about O\\&M tasks.
         
         @param request: DescribeActiveOperationTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2968,7 +3172,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeActiveOperationTasksResponse:
         """
-        @summary DescribeActiveOperationTasks
+        @summary Queries the information about O\\&M tasks.
         
         @param request: DescribeActiveOperationTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3034,7 +3238,7 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeActiveOperationTasksRequest,
     ) -> adb_20190315_models.DescribeActiveOperationTasksResponse:
         """
-        @summary DescribeActiveOperationTasks
+        @summary Queries the information about O\\&M tasks.
         
         @param request: DescribeActiveOperationTasksRequest
         @return: DescribeActiveOperationTasksResponse
@@ -3047,7 +3251,7 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeActiveOperationTasksRequest,
     ) -> adb_20190315_models.DescribeActiveOperationTasksResponse:
         """
-        @summary DescribeActiveOperationTasks
+        @summary Queries the information about O\\&M tasks.
         
         @param request: DescribeActiveOperationTasksRequest
         @return: DescribeActiveOperationTasksResponse
@@ -4209,6 +4413,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeBackupPolicyResponse:
         """
+        @summary 查看备份策略
+        
         @param request: DescribeBackupPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeBackupPolicyResponse
@@ -4250,6 +4456,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeBackupPolicyResponse:
         """
+        @summary 查看备份策略
+        
         @param request: DescribeBackupPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeBackupPolicyResponse
@@ -4290,6 +4498,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeBackupPolicyRequest,
     ) -> adb_20190315_models.DescribeBackupPolicyResponse:
         """
+        @summary 查看备份策略
+        
         @param request: DescribeBackupPolicyRequest
         @return: DescribeBackupPolicyResponse
         """
@@ -4301,6 +4511,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeBackupPolicyRequest,
     ) -> adb_20190315_models.DescribeBackupPolicyResponse:
         """
+        @summary 查看备份策略
+        
         @param request: DescribeBackupPolicyRequest
         @return: DescribeBackupPolicyResponse
         """
@@ -4451,12 +4663,142 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_backups_with_options_async(request, runtime)
 
+    def describe_bad_sql_detection_with_options(
+        self,
+        request: adb_20190315_models.DescribeBadSqlDetectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeBadSqlDetectionResponse:
+        """
+        @summary Queries the bad SQL statements that affect cluster stability within a time range.
+        
+        @param request: DescribeBadSqlDetectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBadSqlDetectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBadSqlDetection',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeBadSqlDetectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_bad_sql_detection_with_options_async(
+        self,
+        request: adb_20190315_models.DescribeBadSqlDetectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeBadSqlDetectionResponse:
+        """
+        @summary Queries the bad SQL statements that affect cluster stability within a time range.
+        
+        @param request: DescribeBadSqlDetectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBadSqlDetectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBadSqlDetection',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeBadSqlDetectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_bad_sql_detection(
+        self,
+        request: adb_20190315_models.DescribeBadSqlDetectionRequest,
+    ) -> adb_20190315_models.DescribeBadSqlDetectionResponse:
+        """
+        @summary Queries the bad SQL statements that affect cluster stability within a time range.
+        
+        @param request: DescribeBadSqlDetectionRequest
+        @return: DescribeBadSqlDetectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_bad_sql_detection_with_options(request, runtime)
+
+    async def describe_bad_sql_detection_async(
+        self,
+        request: adb_20190315_models.DescribeBadSqlDetectionRequest,
+    ) -> adb_20190315_models.DescribeBadSqlDetectionResponse:
+        """
+        @summary Queries the bad SQL statements that affect cluster stability within a time range.
+        
+        @param request: DescribeBadSqlDetectionRequest
+        @return: DescribeBadSqlDetectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_bad_sql_detection_with_options_async(request, runtime)
+
     def describe_columns_with_options(
         self,
         request: adb_20190315_models.DescribeColumnsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeColumnsResponse:
         """
+        @summary Queries a list of columns in a table within an AnalyticDB for MySQL cluster.
+        
         @param request: DescribeColumnsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeColumnsResponse
@@ -4502,6 +4844,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeColumnsResponse:
         """
+        @summary Queries a list of columns in a table within an AnalyticDB for MySQL cluster.
+        
         @param request: DescribeColumnsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeColumnsResponse
@@ -4546,6 +4890,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeColumnsRequest,
     ) -> adb_20190315_models.DescribeColumnsResponse:
         """
+        @summary Queries a list of columns in a table within an AnalyticDB for MySQL cluster.
+        
         @param request: DescribeColumnsRequest
         @return: DescribeColumnsResponse
         """
@@ -4557,6 +4903,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeColumnsRequest,
     ) -> adb_20190315_models.DescribeColumnsResponse:
         """
+        @summary Queries a list of columns in a table within an AnalyticDB for MySQL cluster.
+        
         @param request: DescribeColumnsRequest
         @return: DescribeColumnsResponse
         """
@@ -4569,7 +4917,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeComputeResourceResponse:
         """
-        @summary Queries the specifications of computing resources for AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        @summary Queries the specifications of computing resources for AnalyticDB for MySQL Data Warehouse Edition clusters within a region.
         
         @param request: DescribeComputeResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4620,7 +4968,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeComputeResourceResponse:
         """
-        @summary Queries the specifications of computing resources for AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        @summary Queries the specifications of computing resources for AnalyticDB for MySQL Data Warehouse Edition clusters within a region.
         
         @param request: DescribeComputeResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4670,7 +5018,7 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeComputeResourceRequest,
     ) -> adb_20190315_models.DescribeComputeResourceResponse:
         """
-        @summary Queries the specifications of computing resources for AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        @summary Queries the specifications of computing resources for AnalyticDB for MySQL Data Warehouse Edition clusters within a region.
         
         @param request: DescribeComputeResourceRequest
         @return: DescribeComputeResourceResponse
@@ -4683,7 +5031,7 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeComputeResourceRequest,
     ) -> adb_20190315_models.DescribeComputeResourceResponse:
         """
-        @summary Queries the specifications of computing resources for AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        @summary Queries the specifications of computing resources for AnalyticDB for MySQL Data Warehouse Edition clusters within a region.
         
         @param request: DescribeComputeResourceRequest
         @return: DescribeComputeResourceResponse
@@ -4802,6 +5150,134 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_connection_count_records_with_options_async(request, runtime)
+
+    def describe_controller_detection_with_options(
+        self,
+        request: adb_20190315_models.DescribeControllerDetectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeControllerDetectionResponse:
+        """
+        @summary Queries the diagnostic results of the access layer.
+        
+        @param request: DescribeControllerDetectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeControllerDetectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeControllerDetection',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeControllerDetectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_controller_detection_with_options_async(
+        self,
+        request: adb_20190315_models.DescribeControllerDetectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeControllerDetectionResponse:
+        """
+        @summary Queries the diagnostic results of the access layer.
+        
+        @param request: DescribeControllerDetectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeControllerDetectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeControllerDetection',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeControllerDetectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_controller_detection(
+        self,
+        request: adb_20190315_models.DescribeControllerDetectionRequest,
+    ) -> adb_20190315_models.DescribeControllerDetectionResponse:
+        """
+        @summary Queries the diagnostic results of the access layer.
+        
+        @param request: DescribeControllerDetectionRequest
+        @return: DescribeControllerDetectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_controller_detection_with_options(request, runtime)
+
+    async def describe_controller_detection_async(
+        self,
+        request: adb_20190315_models.DescribeControllerDetectionRequest,
+    ) -> adb_20190315_models.DescribeControllerDetectionResponse:
+        """
+        @summary Queries the diagnostic results of the access layer.
+        
+        @param request: DescribeControllerDetectionRequest
+        @return: DescribeControllerDetectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_controller_detection_with_options_async(request, runtime)
 
     def describe_dbcluster_access_white_list_with_options(
         self,
@@ -5041,6 +5517,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeDBClusterHealthStatusResponse:
         """
+        @summary 查询集群健康检查状态
+        
         @param request: DescribeDBClusterHealthStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeDBClusterHealthStatusResponse
@@ -5076,6 +5554,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeDBClusterHealthStatusResponse:
         """
+        @summary 查询集群健康检查状态
+        
         @param request: DescribeDBClusterHealthStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeDBClusterHealthStatusResponse
@@ -5110,6 +5590,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeDBClusterHealthStatusRequest,
     ) -> adb_20190315_models.DescribeDBClusterHealthStatusResponse:
         """
+        @summary 查询集群健康检查状态
+        
         @param request: DescribeDBClusterHealthStatusRequest
         @return: DescribeDBClusterHealthStatusResponse
         """
@@ -5121,6 +5603,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeDBClusterHealthStatusRequest,
     ) -> adb_20190315_models.DescribeDBClusterHealthStatusResponse:
         """
+        @summary 查询集群健康检查状态
+        
         @param request: DescribeDBClusterHealthStatusRequest
         @return: DescribeDBClusterHealthStatusResponse
         """
@@ -5641,7 +6125,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeDBClusterShardNumberResponse:
         """
-        @summary 获取实例分片(Shard)数目
+        @summary Queries the number of shards in an AnalyticDB for MySQL cluster.
         
         @param request: DescribeDBClusterShardNumberRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5686,7 +6170,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeDBClusterShardNumberResponse:
         """
-        @summary 获取实例分片(Shard)数目
+        @summary Queries the number of shards in an AnalyticDB for MySQL cluster.
         
         @param request: DescribeDBClusterShardNumberRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5730,7 +6214,7 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeDBClusterShardNumberRequest,
     ) -> adb_20190315_models.DescribeDBClusterShardNumberResponse:
         """
-        @summary 获取实例分片(Shard)数目
+        @summary Queries the number of shards in an AnalyticDB for MySQL cluster.
         
         @param request: DescribeDBClusterShardNumberRequest
         @return: DescribeDBClusterShardNumberResponse
@@ -5743,7 +6227,7 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeDBClusterShardNumberRequest,
     ) -> adb_20190315_models.DescribeDBClusterShardNumberResponse:
         """
-        @summary 获取实例分片(Shard)数目
+        @summary Queries the number of shards in an AnalyticDB for MySQL cluster.
         
         @param request: DescribeDBClusterShardNumberRequest
         @return: DescribeDBClusterShardNumberResponse
@@ -5767,16 +6251,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5812,16 +6288,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5873,7 +6341,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeDBClusterStatusResponse:
         """
-        @summary Queries the status of AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        @summary Queries the status of AnalyticDB for MySQL Data Warehouse Edition clusters within a region.
         
         @param request: DescribeDBClusterStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5916,7 +6384,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeDBClusterStatusResponse:
         """
-        @summary Queries the status of AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        @summary Queries the status of AnalyticDB for MySQL Data Warehouse Edition clusters within a region.
         
         @param request: DescribeDBClusterStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5958,7 +6426,7 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeDBClusterStatusRequest,
     ) -> adb_20190315_models.DescribeDBClusterStatusResponse:
         """
-        @summary Queries the status of AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        @summary Queries the status of AnalyticDB for MySQL Data Warehouse Edition clusters within a region.
         
         @param request: DescribeDBClusterStatusRequest
         @return: DescribeDBClusterStatusResponse
@@ -5971,7 +6439,7 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeDBClusterStatusRequest,
     ) -> adb_20190315_models.DescribeDBClusterStatusResponse:
         """
-        @summary Queries the status of AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        @summary Queries the status of AnalyticDB for MySQL Data Warehouse Edition clusters within a region.
         
         @param request: DescribeDBClusterStatusRequest
         @return: DescribeDBClusterStatusResponse
@@ -6257,7 +6725,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeDBResourcePoolResponse:
         """
-        @summary 查询资源池
+        @summary 查询资源组详情
         
         @description This operation is applicable only for elastic clusters of 32 cores or more.
         
@@ -6304,7 +6772,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeDBResourcePoolResponse:
         """
-        @summary 查询资源池
+        @summary 查询资源组详情
         
         @description This operation is applicable only for elastic clusters of 32 cores or more.
         
@@ -6350,7 +6818,7 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeDBResourcePoolRequest,
     ) -> adb_20190315_models.DescribeDBResourcePoolResponse:
         """
-        @summary 查询资源池
+        @summary 查询资源组详情
         
         @description This operation is applicable only for elastic clusters of 32 cores or more.
         
@@ -6365,7 +6833,7 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeDBResourcePoolRequest,
     ) -> adb_20190315_models.DescribeDBResourcePoolResponse:
         """
-        @summary 查询资源池
+        @summary 查询资源组详情
         
         @description This operation is applicable only for elastic clusters of 32 cores or more.
         
@@ -6965,6 +7433,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeDownloadRecordsResponse:
         """
+        @summary Queries a list of download tasks for the last five SQL queries of an AnalyticDB for MySQL cluster.
+        
         @param request: DescribeDownloadRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeDownloadRecordsResponse
@@ -7002,6 +7472,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeDownloadRecordsResponse:
         """
+        @summary Queries a list of download tasks for the last five SQL queries of an AnalyticDB for MySQL cluster.
+        
         @param request: DescribeDownloadRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeDownloadRecordsResponse
@@ -7038,6 +7510,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeDownloadRecordsRequest,
     ) -> adb_20190315_models.DescribeDownloadRecordsResponse:
         """
+        @summary Queries a list of download tasks for the last five SQL queries of an AnalyticDB for MySQL cluster.
+        
         @param request: DescribeDownloadRecordsRequest
         @return: DescribeDownloadRecordsResponse
         """
@@ -7049,6 +7523,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeDownloadRecordsRequest,
     ) -> adb_20190315_models.DescribeDownloadRecordsResponse:
         """
+        @summary Queries a list of download tasks for the last five SQL queries of an AnalyticDB for MySQL cluster.
+        
         @param request: DescribeDownloadRecordsRequest
         @return: DescribeDownloadRecordsResponse
         """
@@ -7081,6 +7557,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.product_version):
+            query['ProductVersion'] = request.product_version
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -7140,6 +7618,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.product_version):
+            query['ProductVersion'] = request.product_version
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -7205,6 +7685,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeElasticDailyPlanResponse:
         """
+        @summary 查看日资源弹性
+        
         @description This operation is available only for AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters in elastic mode for Cluster Edition that have 32 cores or more.
         
         @param request: DescribeElasticDailyPlanRequest
@@ -7256,6 +7738,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeElasticDailyPlanResponse:
         """
+        @summary 查看日资源弹性
+        
         @description This operation is available only for AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters in elastic mode for Cluster Edition that have 32 cores or more.
         
         @param request: DescribeElasticDailyPlanRequest
@@ -7306,6 +7790,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeElasticDailyPlanRequest,
     ) -> adb_20190315_models.DescribeElasticDailyPlanResponse:
         """
+        @summary 查看日资源弹性
+        
         @description This operation is available only for AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters in elastic mode for Cluster Edition that have 32 cores or more.
         
         @param request: DescribeElasticDailyPlanRequest
@@ -7319,6 +7805,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeElasticDailyPlanRequest,
     ) -> adb_20190315_models.DescribeElasticDailyPlanResponse:
         """
+        @summary 查看日资源弹性
+        
         @description This operation is available only for AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters in elastic mode for Cluster Edition that have 32 cores or more.
         
         @param request: DescribeElasticDailyPlanRequest
@@ -7603,13 +8091,141 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_excessive_primary_keys_with_options_async(request, runtime)
 
+    def describe_executor_detection_with_options(
+        self,
+        request: adb_20190315_models.DescribeExecutorDetectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeExecutorDetectionResponse:
+        """
+        @summary Queries the diagnostic results of the compute layer.
+        
+        @param request: DescribeExecutorDetectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeExecutorDetectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeExecutorDetection',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeExecutorDetectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_executor_detection_with_options_async(
+        self,
+        request: adb_20190315_models.DescribeExecutorDetectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeExecutorDetectionResponse:
+        """
+        @summary Queries the diagnostic results of the compute layer.
+        
+        @param request: DescribeExecutorDetectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeExecutorDetectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeExecutorDetection',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeExecutorDetectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_executor_detection(
+        self,
+        request: adb_20190315_models.DescribeExecutorDetectionRequest,
+    ) -> adb_20190315_models.DescribeExecutorDetectionResponse:
+        """
+        @summary Queries the diagnostic results of the compute layer.
+        
+        @param request: DescribeExecutorDetectionRequest
+        @return: DescribeExecutorDetectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_executor_detection_with_options(request, runtime)
+
+    async def describe_executor_detection_async(
+        self,
+        request: adb_20190315_models.DescribeExecutorDetectionRequest,
+    ) -> adb_20190315_models.DescribeExecutorDetectionResponse:
+        """
+        @summary Queries the diagnostic results of the compute layer.
+        
+        @param request: DescribeExecutorDetectionRequest
+        @return: DescribeExecutorDetectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_executor_detection_with_options_async(request, runtime)
+
     def describe_history_events_stat_with_options(
         self,
         request: adb_20190315_models.DescribeHistoryEventsStatRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeHistoryEventsStatResponse:
         """
-        @summary DescribeHistoryEventsStat
+        @summary Queries the information about historical events in the event center.
         
         @param request: DescribeHistoryEventsStatRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7662,7 +8278,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeHistoryEventsStatResponse:
         """
-        @summary DescribeHistoryEventsStat
+        @summary Queries the information about historical events in the event center.
         
         @param request: DescribeHistoryEventsStatRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7714,7 +8330,7 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeHistoryEventsStatRequest,
     ) -> adb_20190315_models.DescribeHistoryEventsStatResponse:
         """
-        @summary DescribeHistoryEventsStat
+        @summary Queries the information about historical events in the event center.
         
         @param request: DescribeHistoryEventsStatRequest
         @return: DescribeHistoryEventsStatResponse
@@ -7727,13 +8343,141 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeHistoryEventsStatRequest,
     ) -> adb_20190315_models.DescribeHistoryEventsStatResponse:
         """
-        @summary DescribeHistoryEventsStat
+        @summary Queries the information about historical events in the event center.
         
         @param request: DescribeHistoryEventsStatRequest
         @return: DescribeHistoryEventsStatResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_history_events_stat_with_options_async(request, runtime)
+
+    def describe_inclined_nodes_with_options(
+        self,
+        request: adb_20190315_models.DescribeInclinedNodesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeInclinedNodesResponse:
+        """
+        @summary Queries the disk usage of all storage nodes.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
+        @param request: DescribeInclinedNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInclinedNodesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInclinedNodes',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeInclinedNodesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_inclined_nodes_with_options_async(
+        self,
+        request: adb_20190315_models.DescribeInclinedNodesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeInclinedNodesResponse:
+        """
+        @summary Queries the disk usage of all storage nodes.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
+        @param request: DescribeInclinedNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInclinedNodesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInclinedNodes',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeInclinedNodesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_inclined_nodes(
+        self,
+        request: adb_20190315_models.DescribeInclinedNodesRequest,
+    ) -> adb_20190315_models.DescribeInclinedNodesResponse:
+        """
+        @summary Queries the disk usage of all storage nodes.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
+        @param request: DescribeInclinedNodesRequest
+        @return: DescribeInclinedNodesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_inclined_nodes_with_options(request, runtime)
+
+    async def describe_inclined_nodes_async(
+        self,
+        request: adb_20190315_models.DescribeInclinedNodesRequest,
+    ) -> adb_20190315_models.DescribeInclinedNodesResponse:
+        """
+        @summary Queries the disk usage of all storage nodes.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
+        @param request: DescribeInclinedNodesRequest
+        @return: DescribeInclinedNodesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_inclined_nodes_with_options_async(request, runtime)
 
     def describe_inclined_tables_with_options(
         self,
@@ -7993,7 +8737,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeKmsKeysResponse:
         """
-        @summary 枚举当前账号kms服务key
+        @summary Queries a list of Key Management Service (KMS) keys.
         
         @param request: DescribeKmsKeysRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8038,7 +8782,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeKmsKeysResponse:
         """
-        @summary 枚举当前账号kms服务key
+        @summary Queries a list of Key Management Service (KMS) keys.
         
         @param request: DescribeKmsKeysRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8082,7 +8826,7 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeKmsKeysRequest,
     ) -> adb_20190315_models.DescribeKmsKeysResponse:
         """
-        @summary 枚举当前账号kms服务key
+        @summary Queries a list of Key Management Service (KMS) keys.
         
         @param request: DescribeKmsKeysRequest
         @return: DescribeKmsKeysResponse
@@ -8095,7 +8839,7 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeKmsKeysRequest,
     ) -> adb_20190315_models.DescribeKmsKeysResponse:
         """
-        @summary 枚举当前账号kms服务key
+        @summary Queries a list of Key Management Service (KMS) keys.
         
         @param request: DescribeKmsKeysRequest
         @return: DescribeKmsKeysResponse
@@ -8261,6 +9005,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeLogHubAttributeResponse:
         """
+        @summary Queries the information about a log shipping job.
+        
         @param request: DescribeLogHubAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeLogHubAttributeResponse
@@ -8310,6 +9056,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeLogHubAttributeResponse:
         """
+        @summary Queries the information about a log shipping job.
+        
         @param request: DescribeLogHubAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeLogHubAttributeResponse
@@ -8358,6 +9106,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeLogHubAttributeRequest,
     ) -> adb_20190315_models.DescribeLogHubAttributeResponse:
         """
+        @summary Queries the information about a log shipping job.
+        
         @param request: DescribeLogHubAttributeRequest
         @return: DescribeLogHubAttributeResponse
         """
@@ -8369,6 +9119,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeLogHubAttributeRequest,
     ) -> adb_20190315_models.DescribeLogHubAttributeResponse:
         """
+        @summary Queries the information about a log shipping job.
+        
         @param request: DescribeLogHubAttributeRequest
         @return: DescribeLogHubAttributeResponse
         """
@@ -8381,6 +9133,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeLogStoreKeysResponse:
         """
+        @summary Queries a list of log keywords in a Logstore.
+        
         @param request: DescribeLogStoreKeysRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeLogStoreKeysResponse
@@ -8426,6 +9180,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeLogStoreKeysResponse:
         """
+        @summary Queries a list of log keywords in a Logstore.
+        
         @param request: DescribeLogStoreKeysRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeLogStoreKeysResponse
@@ -8470,6 +9226,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeLogStoreKeysRequest,
     ) -> adb_20190315_models.DescribeLogStoreKeysResponse:
         """
+        @summary Queries a list of log keywords in a Logstore.
+        
         @param request: DescribeLogStoreKeysRequest
         @return: DescribeLogStoreKeysResponse
         """
@@ -8481,6 +9239,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeLogStoreKeysRequest,
     ) -> adb_20190315_models.DescribeLogStoreKeysResponse:
         """
+        @summary Queries a list of log keywords in a Logstore.
+        
         @param request: DescribeLogStoreKeysRequest
         @return: DescribeLogStoreKeysResponse
         """
@@ -8493,6 +9253,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeLoghubDetailResponse:
         """
+        @summary Queries the log collection information.
+        
         @param request: DescribeLoghubDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeLoghubDetailResponse
@@ -8540,6 +9302,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeLoghubDetailResponse:
         """
+        @summary Queries the log collection information.
+        
         @param request: DescribeLoghubDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeLoghubDetailResponse
@@ -8586,6 +9350,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeLoghubDetailRequest,
     ) -> adb_20190315_models.DescribeLoghubDetailResponse:
         """
+        @summary Queries the log collection information.
+        
         @param request: DescribeLoghubDetailRequest
         @return: DescribeLoghubDetailResponse
         """
@@ -8597,6 +9363,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeLoghubDetailRequest,
     ) -> adb_20190315_models.DescribeLoghubDetailResponse:
         """
+        @summary Queries the log collection information.
+        
         @param request: DescribeLoghubDetailRequest
         @return: DescribeLoghubDetailResponse
         """
@@ -8741,6 +9509,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeOperatorPermissionResponse:
         """
+        @summary Queries the details of the permissions granted to the service account of an AnalyticDB for MySQL cluster.
+        
         @param request: DescribeOperatorPermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeOperatorPermissionResponse
@@ -8782,6 +9552,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeOperatorPermissionResponse:
         """
+        @summary Queries the details of the permissions granted to the service account of an AnalyticDB for MySQL cluster.
+        
         @param request: DescribeOperatorPermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeOperatorPermissionResponse
@@ -8822,6 +9594,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeOperatorPermissionRequest,
     ) -> adb_20190315_models.DescribeOperatorPermissionResponse:
         """
+        @summary Queries the details of the permissions granted to the service account of an AnalyticDB for MySQL cluster.
+        
         @param request: DescribeOperatorPermissionRequest
         @return: DescribeOperatorPermissionResponse
         """
@@ -8833,11 +9607,153 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeOperatorPermissionRequest,
     ) -> adb_20190315_models.DescribeOperatorPermissionResponse:
         """
+        @summary Queries the details of the permissions granted to the service account of an AnalyticDB for MySQL cluster.
+        
         @param request: DescribeOperatorPermissionRequest
         @return: DescribeOperatorPermissionResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_operator_permission_with_options_async(request, runtime)
+
+    def describe_oversize_non_partition_table_infos_with_options(
+        self,
+        request: adb_20190315_models.DescribeOversizeNonPartitionTableInfosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeOversizeNonPartitionTableInfosResponse:
+        """
+        @summary Queries the information about oversized non-partitioned tables in an AnalyticDB for MySQL cluster.
+        
+        @param request: DescribeOversizeNonPartitionTableInfosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOversizeNonPartitionTableInfosResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeOversizeNonPartitionTableInfos',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeOversizeNonPartitionTableInfosResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_oversize_non_partition_table_infos_with_options_async(
+        self,
+        request: adb_20190315_models.DescribeOversizeNonPartitionTableInfosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeOversizeNonPartitionTableInfosResponse:
+        """
+        @summary Queries the information about oversized non-partitioned tables in an AnalyticDB for MySQL cluster.
+        
+        @param request: DescribeOversizeNonPartitionTableInfosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOversizeNonPartitionTableInfosResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeOversizeNonPartitionTableInfos',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeOversizeNonPartitionTableInfosResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_oversize_non_partition_table_infos(
+        self,
+        request: adb_20190315_models.DescribeOversizeNonPartitionTableInfosRequest,
+    ) -> adb_20190315_models.DescribeOversizeNonPartitionTableInfosResponse:
+        """
+        @summary Queries the information about oversized non-partitioned tables in an AnalyticDB for MySQL cluster.
+        
+        @param request: DescribeOversizeNonPartitionTableInfosRequest
+        @return: DescribeOversizeNonPartitionTableInfosResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_oversize_non_partition_table_infos_with_options(request, runtime)
+
+    async def describe_oversize_non_partition_table_infos_async(
+        self,
+        request: adb_20190315_models.DescribeOversizeNonPartitionTableInfosRequest,
+    ) -> adb_20190315_models.DescribeOversizeNonPartitionTableInfosResponse:
+        """
+        @summary Queries the information about oversized non-partitioned tables in an AnalyticDB for MySQL cluster.
+        
+        @param request: DescribeOversizeNonPartitionTableInfosRequest
+        @return: DescribeOversizeNonPartitionTableInfosResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_oversize_non_partition_table_infos_with_options_async(request, runtime)
 
     def describe_pattern_performance_with_options(
         self,
@@ -9097,6 +10013,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeRdsAnalysisResourceQuotasResponse:
         """
+        @summary Queries the information about specifications of MySQL analytic instances.
+        
         @param request: DescribeRdsAnalysisResourceQuotasRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeRdsAnalysisResourceQuotasResponse
@@ -9152,6 +10070,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeRdsAnalysisResourceQuotasResponse:
         """
+        @summary Queries the information about specifications of MySQL analytic instances.
+        
         @param request: DescribeRdsAnalysisResourceQuotasRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeRdsAnalysisResourceQuotasResponse
@@ -9206,6 +10126,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeRdsAnalysisResourceQuotasRequest,
     ) -> adb_20190315_models.DescribeRdsAnalysisResourceQuotasResponse:
         """
+        @summary Queries the information about specifications of MySQL analytic instances.
+        
         @param request: DescribeRdsAnalysisResourceQuotasRequest
         @return: DescribeRdsAnalysisResourceQuotasResponse
         """
@@ -9217,6 +10139,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeRdsAnalysisResourceQuotasRequest,
     ) -> adb_20190315_models.DescribeRdsAnalysisResourceQuotasResponse:
         """
+        @summary Queries the information about specifications of MySQL analytic instances.
+        
         @param request: DescribeRdsAnalysisResourceQuotasRequest
         @return: DescribeRdsAnalysisResourceQuotasResponse
         """
@@ -9345,6 +10269,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeRegionsMixedResponse:
         """
+        @summary Queries information about regions.
+        
         @param request: DescribeRegionsMixedRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeRegionsMixedResponse
@@ -9386,6 +10312,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeRegionsMixedResponse:
         """
+        @summary Queries information about regions.
+        
         @param request: DescribeRegionsMixedRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeRegionsMixedResponse
@@ -9426,6 +10354,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeRegionsMixedRequest,
     ) -> adb_20190315_models.DescribeRegionsMixedResponse:
         """
+        @summary Queries information about regions.
+        
         @param request: DescribeRegionsMixedRequest
         @return: DescribeRegionsMixedResponse
         """
@@ -9437,6 +10367,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeRegionsMixedRequest,
     ) -> adb_20190315_models.DescribeRegionsMixedResponse:
         """
+        @summary Queries information about regions.
+        
         @param request: DescribeRegionsMixedRequest
         @return: DescribeRegionsMixedResponse
         """
@@ -9937,6 +10869,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeSQLPlanTaskResponse:
         """
+        @summary Queries the information about a task.
+        
         @param request: DescribeSQLPlanTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSQLPlanTaskResponse
@@ -9982,6 +10916,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeSQLPlanTaskResponse:
         """
+        @summary Queries the information about a task.
+        
         @param request: DescribeSQLPlanTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSQLPlanTaskResponse
@@ -10026,6 +10962,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeSQLPlanTaskRequest,
     ) -> adb_20190315_models.DescribeSQLPlanTaskResponse:
         """
+        @summary Queries the information about a task.
+        
         @param request: DescribeSQLPlanTaskRequest
         @return: DescribeSQLPlanTaskResponse
         """
@@ -10037,6 +10975,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeSQLPlanTaskRequest,
     ) -> adb_20190315_models.DescribeSQLPlanTaskResponse:
         """
+        @summary Queries the information about a task.
+        
         @param request: DescribeSQLPlanTaskRequest
         @return: DescribeSQLPlanTaskResponse
         """
@@ -10049,6 +10989,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeSchemasResponse:
         """
+        @summary Queries a list of databases in an AnalyticDB for MySQL cluster.
+        
         @param request: DescribeSchemasRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSchemasResponse
@@ -10090,6 +11032,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeSchemasResponse:
         """
+        @summary Queries a list of databases in an AnalyticDB for MySQL cluster.
+        
         @param request: DescribeSchemasRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSchemasResponse
@@ -10130,6 +11074,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeSchemasRequest,
     ) -> adb_20190315_models.DescribeSchemasResponse:
         """
+        @summary Queries a list of databases in an AnalyticDB for MySQL cluster.
+        
         @param request: DescribeSchemasRequest
         @return: DescribeSchemasResponse
         """
@@ -10141,6 +11087,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeSchemasRequest,
     ) -> adb_20190315_models.DescribeSchemasResponse:
         """
+        @summary Queries a list of databases in an AnalyticDB for MySQL cluster.
+        
         @param request: DescribeSchemasRequest
         @return: DescribeSchemasResponse
         """
@@ -10153,6 +11101,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeSlowLogRecordsResponse:
         """
+        @summary 查看慢日志
+        
         @param request: DescribeSlowLogRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSlowLogRecordsResponse
@@ -10212,6 +11162,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeSlowLogRecordsResponse:
         """
+        @summary 查看慢日志
+        
         @param request: DescribeSlowLogRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSlowLogRecordsResponse
@@ -10270,6 +11222,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeSlowLogRecordsRequest,
     ) -> adb_20190315_models.DescribeSlowLogRecordsResponse:
         """
+        @summary 查看慢日志
+        
         @param request: DescribeSlowLogRecordsRequest
         @return: DescribeSlowLogRecordsResponse
         """
@@ -10281,6 +11235,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeSlowLogRecordsRequest,
     ) -> adb_20190315_models.DescribeSlowLogRecordsResponse:
         """
+        @summary 查看慢日志
+        
         @param request: DescribeSlowLogRecordsRequest
         @return: DescribeSlowLogRecordsResponse
         """
@@ -10417,6 +11373,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeSyncAvailableDBClusterListResponse:
         """
+        @summary Queries a list of instances or clusters that are available for data synchronization.
+        
         @param request: DescribeSyncAvailableDBClusterListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSyncAvailableDBClusterListResponse
@@ -10466,6 +11424,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeSyncAvailableDBClusterListResponse:
         """
+        @summary Queries a list of instances or clusters that are available for data synchronization.
+        
         @param request: DescribeSyncAvailableDBClusterListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSyncAvailableDBClusterListResponse
@@ -10514,6 +11474,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeSyncAvailableDBClusterListRequest,
     ) -> adb_20190315_models.DescribeSyncAvailableDBClusterListResponse:
         """
+        @summary Queries a list of instances or clusters that are available for data synchronization.
+        
         @param request: DescribeSyncAvailableDBClusterListRequest
         @return: DescribeSyncAvailableDBClusterListResponse
         """
@@ -10525,6 +11487,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeSyncAvailableDBClusterListRequest,
     ) -> adb_20190315_models.DescribeSyncAvailableDBClusterListResponse:
         """
+        @summary Queries a list of instances or clusters that are available for data synchronization.
+        
         @param request: DescribeSyncAvailableDBClusterListRequest
         @return: DescribeSyncAvailableDBClusterListResponse
         """
@@ -10537,6 +11501,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeSyncJobListResponse:
         """
+        @summary Queries a list of synchronization jobs in an AnalyticDB for MySQL cluster.
+        
         @param request: DescribeSyncJobListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSyncJobListResponse
@@ -10592,6 +11558,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeSyncJobListResponse:
         """
+        @summary Queries a list of synchronization jobs in an AnalyticDB for MySQL cluster.
+        
         @param request: DescribeSyncJobListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSyncJobListResponse
@@ -10646,6 +11614,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeSyncJobListRequest,
     ) -> adb_20190315_models.DescribeSyncJobListResponse:
         """
+        @summary Queries a list of synchronization jobs in an AnalyticDB for MySQL cluster.
+        
         @param request: DescribeSyncJobListRequest
         @return: DescribeSyncJobListResponse
         """
@@ -10657,6 +11627,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeSyncJobListRequest,
     ) -> adb_20190315_models.DescribeSyncJobListResponse:
         """
+        @summary Queries a list of synchronization jobs in an AnalyticDB for MySQL cluster.
+        
         @param request: DescribeSyncJobListRequest
         @return: DescribeSyncJobListResponse
         """
@@ -10669,6 +11641,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeTableAccessCountResponse:
         """
+        @summary 查询表访问统计信息
+        
         @param request: DescribeTableAccessCountRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeTableAccessCountResponse
@@ -10714,6 +11688,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeTableAccessCountResponse:
         """
+        @summary 查询表访问统计信息
+        
         @param request: DescribeTableAccessCountRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeTableAccessCountResponse
@@ -10758,6 +11734,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeTableAccessCountRequest,
     ) -> adb_20190315_models.DescribeTableAccessCountResponse:
         """
+        @summary 查询表访问统计信息
+        
         @param request: DescribeTableAccessCountRequest
         @return: DescribeTableAccessCountResponse
         """
@@ -10769,6 +11747,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeTableAccessCountRequest,
     ) -> adb_20190315_models.DescribeTableAccessCountResponse:
         """
+        @summary 查询表访问统计信息
+        
         @param request: DescribeTableAccessCountRequest
         @return: DescribeTableAccessCountResponse
         """
@@ -10781,6 +11761,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeTableDetailResponse:
         """
+        @summary 查询表详情
+        
         @param request: DescribeTableDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeTableDetailResponse
@@ -10828,6 +11810,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeTableDetailResponse:
         """
+        @summary 查询表详情
+        
         @param request: DescribeTableDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeTableDetailResponse
@@ -10874,6 +11858,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeTableDetailRequest,
     ) -> adb_20190315_models.DescribeTableDetailResponse:
         """
+        @summary 查询表详情
+        
         @param request: DescribeTableDetailRequest
         @return: DescribeTableDetailResponse
         """
@@ -10885,6 +11871,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeTableDetailRequest,
     ) -> adb_20190315_models.DescribeTableDetailResponse:
         """
+        @summary 查询表详情
+        
         @param request: DescribeTableDetailRequest
         @return: DescribeTableDetailResponse
         """
@@ -11057,6 +12045,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11110,6 +12100,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11529,6 +12521,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeVSwitchsResponse:
         """
+        @summary Queries a list of available vSwitches.
+        
         @param request: DescribeVSwitchsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeVSwitchsResponse
@@ -11576,6 +12570,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeVSwitchsResponse:
         """
+        @summary Queries a list of available vSwitches.
+        
         @param request: DescribeVSwitchsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeVSwitchsResponse
@@ -11622,6 +12618,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeVSwitchsRequest,
     ) -> adb_20190315_models.DescribeVSwitchsResponse:
         """
+        @summary Queries a list of available vSwitches.
+        
         @param request: DescribeVSwitchsRequest
         @return: DescribeVSwitchsResponse
         """
@@ -11633,6 +12631,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeVSwitchsRequest,
     ) -> adb_20190315_models.DescribeVSwitchsResponse:
         """
+        @summary Queries a list of available vSwitches.
+        
         @param request: DescribeVSwitchsRequest
         @return: DescribeVSwitchsResponse
         """
@@ -11645,6 +12645,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeVpcsResponse:
         """
+        @summary Queries a list of available virtual private clouds (VPCs).
+        
         @param request: DescribeVpcsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeVpcsResponse
@@ -11692,6 +12694,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeVpcsResponse:
         """
+        @summary Queries a list of available virtual private clouds (VPCs).
+        
         @param request: DescribeVpcsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeVpcsResponse
@@ -11738,6 +12742,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeVpcsRequest,
     ) -> adb_20190315_models.DescribeVpcsResponse:
         """
+        @summary Queries a list of available virtual private clouds (VPCs).
+        
         @param request: DescribeVpcsRequest
         @return: DescribeVpcsResponse
         """
@@ -11749,11 +12755,141 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeVpcsRequest,
     ) -> adb_20190315_models.DescribeVpcsResponse:
         """
+        @summary Queries a list of available virtual private clouds (VPCs).
+        
         @param request: DescribeVpcsRequest
         @return: DescribeVpcsResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vpcs_with_options_async(request, runtime)
+
+    def describe_worker_detection_with_options(
+        self,
+        request: adb_20190315_models.DescribeWorkerDetectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeWorkerDetectionResponse:
+        """
+        @summary Queries the diagnostic results of the storage layer.
+        
+        @param request: DescribeWorkerDetectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWorkerDetectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWorkerDetection',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeWorkerDetectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_worker_detection_with_options_async(
+        self,
+        request: adb_20190315_models.DescribeWorkerDetectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeWorkerDetectionResponse:
+        """
+        @summary Queries the diagnostic results of the storage layer.
+        
+        @param request: DescribeWorkerDetectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWorkerDetectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWorkerDetection',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeWorkerDetectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_worker_detection(
+        self,
+        request: adb_20190315_models.DescribeWorkerDetectionRequest,
+    ) -> adb_20190315_models.DescribeWorkerDetectionResponse:
+        """
+        @summary Queries the diagnostic results of the storage layer.
+        
+        @param request: DescribeWorkerDetectionRequest
+        @return: DescribeWorkerDetectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_worker_detection_with_options(request, runtime)
+
+    async def describe_worker_detection_async(
+        self,
+        request: adb_20190315_models.DescribeWorkerDetectionRequest,
+    ) -> adb_20190315_models.DescribeWorkerDetectionResponse:
+        """
+        @summary Queries the diagnostic results of the storage layer.
+        
+        @param request: DescribeWorkerDetectionRequest
+        @return: DescribeWorkerDetectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_worker_detection_with_options_async(request, runtime)
 
     def detach_user_eniwith_options(
         self,
@@ -11761,6 +12897,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DetachUserENIResponse:
         """
+        @summary 关闭用户ENI
+        
         @description You can call this operation only for AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters in elastic mode for Cluster Edition.
         
         @param request: DetachUserENIRequest
@@ -11804,6 +12942,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DetachUserENIResponse:
         """
+        @summary 关闭用户ENI
+        
         @description You can call this operation only for AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters in elastic mode for Cluster Edition.
         
         @param request: DetachUserENIRequest
@@ -11846,6 +12986,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DetachUserENIRequest,
     ) -> adb_20190315_models.DetachUserENIResponse:
         """
+        @summary 关闭用户ENI
+        
         @description You can call this operation only for AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters in elastic mode for Cluster Edition.
         
         @param request: DetachUserENIRequest
@@ -11859,6 +13001,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DetachUserENIRequest,
     ) -> adb_20190315_models.DetachUserENIResponse:
         """
+        @summary 关闭用户ENI
+        
         @description You can call this operation only for AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters in elastic mode for Cluster Edition.
         
         @param request: DetachUserENIRequest
@@ -11873,6 +13017,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DisableAdviceServiceResponse:
         """
+        @summary Disables the suggestion feature.
+        
         @param request: DisableAdviceServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DisableAdviceServiceResponse
@@ -11908,6 +13054,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DisableAdviceServiceResponse:
         """
+        @summary Disables the suggestion feature.
+        
         @param request: DisableAdviceServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DisableAdviceServiceResponse
@@ -11942,6 +13090,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DisableAdviceServiceRequest,
     ) -> adb_20190315_models.DisableAdviceServiceResponse:
         """
+        @summary Disables the suggestion feature.
+        
         @param request: DisableAdviceServiceRequest
         @return: DisableAdviceServiceResponse
         """
@@ -11953,6 +13103,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DisableAdviceServiceRequest,
     ) -> adb_20190315_models.DisableAdviceServiceResponse:
         """
+        @summary Disables the suggestion feature.
+        
         @param request: DisableAdviceServiceRequest
         @return: DisableAdviceServiceResponse
         """
@@ -12117,6 +13269,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.EnableAdviceServiceResponse:
         """
+        @summary 开通建议服务
+        
         @param request: EnableAdviceServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: EnableAdviceServiceResponse
@@ -12152,6 +13306,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.EnableAdviceServiceResponse:
         """
+        @summary 开通建议服务
+        
         @param request: EnableAdviceServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: EnableAdviceServiceResponse
@@ -12186,6 +13342,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.EnableAdviceServiceRequest,
     ) -> adb_20190315_models.EnableAdviceServiceResponse:
         """
+        @summary 开通建议服务
+        
         @param request: EnableAdviceServiceRequest
         @return: EnableAdviceServiceResponse
         """
@@ -12197,11 +13355,145 @@ class Client(OpenApiClient):
         request: adb_20190315_models.EnableAdviceServiceRequest,
     ) -> adb_20190315_models.EnableAdviceServiceResponse:
         """
+        @summary 开通建议服务
+        
         @param request: EnableAdviceServiceRequest
         @return: EnableAdviceServiceResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.enable_advice_service_with_options_async(request, runtime)
+
+    def get_create_table_sqlwith_options(
+        self,
+        request: adb_20190315_models.GetCreateTableSQLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.GetCreateTableSQLResponse:
+        """
+        @summary Queries the table creation statement for tables.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
+        @param request: GetCreateTableSQLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCreateTableSQLResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCreateTableSQL',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.GetCreateTableSQLResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_create_table_sqlwith_options_async(
+        self,
+        request: adb_20190315_models.GetCreateTableSQLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.GetCreateTableSQLResponse:
+        """
+        @summary Queries the table creation statement for tables.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
+        @param request: GetCreateTableSQLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCreateTableSQLResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCreateTableSQL',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.GetCreateTableSQLResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_create_table_sql(
+        self,
+        request: adb_20190315_models.GetCreateTableSQLRequest,
+    ) -> adb_20190315_models.GetCreateTableSQLResponse:
+        """
+        @summary Queries the table creation statement for tables.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
+        @param request: GetCreateTableSQLRequest
+        @return: GetCreateTableSQLResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_create_table_sqlwith_options(request, runtime)
+
+    async def get_create_table_sql_async(
+        self,
+        request: adb_20190315_models.GetCreateTableSQLRequest,
+    ) -> adb_20190315_models.GetCreateTableSQLResponse:
+        """
+        @summary Queries the table creation statement for tables.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
+        @param request: GetCreateTableSQLRequest
+        @return: GetCreateTableSQLResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_create_table_sqlwith_options_async(request, runtime)
 
     def grant_operator_permission_with_options(
         self,
@@ -12585,7 +13877,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.MigrateDBClusterResponse:
         """
-        @summary Migrates data from a Data Warehouse Edition (V3.0) cluster to a Data Lakehouse Edition (V3.0) cluster in AnalyticDB for MySQL.
+        @summary Migrates data from a Data Warehouse Edition cluster to a Data Lakehouse Edition cluster in AnalyticDB for MySQL.
         
         @param request: MigrateDBClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12601,10 +13893,22 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.product_form):
+            query['ProductForm'] = request.product_form
+        if not UtilClient.is_unset(request.product_version):
+            query['ProductVersion'] = request.product_version
+        if not UtilClient.is_unset(request.reserved_node_count):
+            query['ReservedNodeCount'] = request.reserved_node_count
+        if not UtilClient.is_unset(request.reserved_node_size):
+            query['ReservedNodeSize'] = request.reserved_node_size
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.secondary_vswitch_id):
+            query['SecondaryVSwitchId'] = request.secondary_vswitch_id
+        if not UtilClient.is_unset(request.secondary_zone_id):
+            query['SecondaryZoneId'] = request.secondary_zone_id
         if not UtilClient.is_unset(request.shard_number):
             query['ShardNumber'] = request.shard_number
         if not UtilClient.is_unset(request.storage_resource):
@@ -12636,7 +13940,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.MigrateDBClusterResponse:
         """
-        @summary Migrates data from a Data Warehouse Edition (V3.0) cluster to a Data Lakehouse Edition (V3.0) cluster in AnalyticDB for MySQL.
+        @summary Migrates data from a Data Warehouse Edition cluster to a Data Lakehouse Edition cluster in AnalyticDB for MySQL.
         
         @param request: MigrateDBClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12652,10 +13956,22 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.product_form):
+            query['ProductForm'] = request.product_form
+        if not UtilClient.is_unset(request.product_version):
+            query['ProductVersion'] = request.product_version
+        if not UtilClient.is_unset(request.reserved_node_count):
+            query['ReservedNodeCount'] = request.reserved_node_count
+        if not UtilClient.is_unset(request.reserved_node_size):
+            query['ReservedNodeSize'] = request.reserved_node_size
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.secondary_vswitch_id):
+            query['SecondaryVSwitchId'] = request.secondary_vswitch_id
+        if not UtilClient.is_unset(request.secondary_zone_id):
+            query['SecondaryZoneId'] = request.secondary_zone_id
         if not UtilClient.is_unset(request.shard_number):
             query['ShardNumber'] = request.shard_number
         if not UtilClient.is_unset(request.storage_resource):
@@ -12686,7 +14002,7 @@ class Client(OpenApiClient):
         request: adb_20190315_models.MigrateDBClusterRequest,
     ) -> adb_20190315_models.MigrateDBClusterResponse:
         """
-        @summary Migrates data from a Data Warehouse Edition (V3.0) cluster to a Data Lakehouse Edition (V3.0) cluster in AnalyticDB for MySQL.
+        @summary Migrates data from a Data Warehouse Edition cluster to a Data Lakehouse Edition cluster in AnalyticDB for MySQL.
         
         @param request: MigrateDBClusterRequest
         @return: MigrateDBClusterResponse
@@ -12699,7 +14015,7 @@ class Client(OpenApiClient):
         request: adb_20190315_models.MigrateDBClusterRequest,
     ) -> adb_20190315_models.MigrateDBClusterResponse:
         """
-        @summary Migrates data from a Data Warehouse Edition (V3.0) cluster to a Data Lakehouse Edition (V3.0) cluster in AnalyticDB for MySQL.
+        @summary Migrates data from a Data Warehouse Edition cluster to a Data Lakehouse Edition cluster in AnalyticDB for MySQL.
         
         @param request: MigrateDBClusterRequest
         @return: MigrateDBClusterResponse
@@ -12833,7 +14149,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.ModifyActiveOperationMaintainConfResponse:
         """
-        @summary ModifyActiveOperationMaintainConf
+        @summary Changes the time configuration of O\\&M events.
         
         @param request: ModifyActiveOperationMaintainConfRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12888,7 +14204,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.ModifyActiveOperationMaintainConfResponse:
         """
-        @summary ModifyActiveOperationMaintainConf
+        @summary Changes the time configuration of O\\&M events.
         
         @param request: ModifyActiveOperationMaintainConfRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12942,7 +14258,7 @@ class Client(OpenApiClient):
         request: adb_20190315_models.ModifyActiveOperationMaintainConfRequest,
     ) -> adb_20190315_models.ModifyActiveOperationMaintainConfResponse:
         """
-        @summary ModifyActiveOperationMaintainConf
+        @summary Changes the time configuration of O\\&M events.
         
         @param request: ModifyActiveOperationMaintainConfRequest
         @return: ModifyActiveOperationMaintainConfResponse
@@ -12955,7 +14271,7 @@ class Client(OpenApiClient):
         request: adb_20190315_models.ModifyActiveOperationMaintainConfRequest,
     ) -> adb_20190315_models.ModifyActiveOperationMaintainConfResponse:
         """
-        @summary ModifyActiveOperationMaintainConf
+        @summary Changes the time configuration of O\\&M events.
         
         @param request: ModifyActiveOperationMaintainConfRequest
         @return: ModifyActiveOperationMaintainConfResponse
@@ -12969,7 +14285,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.ModifyActiveOperationTasksResponse:
         """
-        @summary ModifyActiveOperationTasks
+        @summary Changes the execution time of O&M events.
         
         @param request: ModifyActiveOperationTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13020,7 +14336,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.ModifyActiveOperationTasksResponse:
         """
-        @summary ModifyActiveOperationTasks
+        @summary Changes the execution time of O&M events.
         
         @param request: ModifyActiveOperationTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13070,7 +14386,7 @@ class Client(OpenApiClient):
         request: adb_20190315_models.ModifyActiveOperationTasksRequest,
     ) -> adb_20190315_models.ModifyActiveOperationTasksResponse:
         """
-        @summary ModifyActiveOperationTasks
+        @summary Changes the execution time of O&M events.
         
         @param request: ModifyActiveOperationTasksRequest
         @return: ModifyActiveOperationTasksResponse
@@ -13083,7 +14399,7 @@ class Client(OpenApiClient):
         request: adb_20190315_models.ModifyActiveOperationTasksRequest,
     ) -> adb_20190315_models.ModifyActiveOperationTasksResponse:
         """
-        @summary ModifyActiveOperationTasks
+        @summary Changes the execution time of O&M events.
         
         @param request: ModifyActiveOperationTasksRequest
         @return: ModifyActiveOperationTasksResponse
@@ -13097,6 +14413,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.ModifyAuditLogConfigResponse:
         """
+        @summary 修改审计日志设置
+        
         @param request: ModifyAuditLogConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyAuditLogConfigResponse
@@ -13142,6 +14460,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.ModifyAuditLogConfigResponse:
         """
+        @summary 修改审计日志设置
+        
         @param request: ModifyAuditLogConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyAuditLogConfigResponse
@@ -13186,6 +14506,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.ModifyAuditLogConfigRequest,
     ) -> adb_20190315_models.ModifyAuditLogConfigResponse:
         """
+        @summary 修改审计日志设置
+        
         @param request: ModifyAuditLogConfigRequest
         @return: ModifyAuditLogConfigResponse
         """
@@ -13197,6 +14519,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.ModifyAuditLogConfigRequest,
     ) -> adb_20190315_models.ModifyAuditLogConfigResponse:
         """
+        @summary 修改审计日志设置
+        
         @param request: ModifyAuditLogConfigRequest
         @return: ModifyAuditLogConfigResponse
         """
@@ -13337,6 +14661,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.ModifyBackupPolicyResponse:
         """
+        @summary 修改全量备份策略
+        
         @param request: ModifyBackupPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyBackupPolicyResponse
@@ -13388,6 +14714,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.ModifyBackupPolicyResponse:
         """
+        @summary 修改全量备份策略
+        
         @param request: ModifyBackupPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyBackupPolicyResponse
@@ -13438,6 +14766,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.ModifyBackupPolicyRequest,
     ) -> adb_20190315_models.ModifyBackupPolicyResponse:
         """
+        @summary 修改全量备份策略
+        
         @param request: ModifyBackupPolicyRequest
         @return: ModifyBackupPolicyResponse
         """
@@ -13449,6 +14779,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.ModifyBackupPolicyRequest,
     ) -> adb_20190315_models.ModifyBackupPolicyResponse:
         """
+        @summary 修改全量备份策略
+        
         @param request: ModifyBackupPolicyRequest
         @return: ModifyBackupPolicyResponse
         """
@@ -13877,6 +15209,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.ModifyDBClusterDescriptionResponse:
         """
+        @summary 修改备注
+        
         @param request: ModifyDBClusterDescriptionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyDBClusterDescriptionResponse
@@ -13920,6 +15254,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.ModifyDBClusterDescriptionResponse:
         """
+        @summary 修改备注
+        
         @param request: ModifyDBClusterDescriptionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyDBClusterDescriptionResponse
@@ -13962,6 +15298,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.ModifyDBClusterDescriptionRequest,
     ) -> adb_20190315_models.ModifyDBClusterDescriptionResponse:
         """
+        @summary 修改备注
+        
         @param request: ModifyDBClusterDescriptionRequest
         @return: ModifyDBClusterDescriptionResponse
         """
@@ -13973,6 +15311,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.ModifyDBClusterDescriptionRequest,
     ) -> adb_20190315_models.ModifyDBClusterDescriptionResponse:
         """
+        @summary 修改备注
+        
         @param request: ModifyDBClusterDescriptionRequest
         @return: ModifyDBClusterDescriptionResponse
         """
@@ -14451,13 +15791,145 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbcluster_sslwith_options_async(request, runtime)
 
+    def modify_dbcluster_shard_number_with_options(
+        self,
+        request: adb_20190315_models.ModifyDBClusterShardNumberRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.ModifyDBClusterShardNumberResponse:
+        """
+        @summary 修改实例分片数目
+        
+        @param request: ModifyDBClusterShardNumberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBClusterShardNumberResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.new_shard_number):
+            query['NewShardNumber'] = request.new_shard_number
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.switch_time):
+            query['SwitchTime'] = request.switch_time
+        if not UtilClient.is_unset(request.switch_time_mode):
+            query['SwitchTimeMode'] = request.switch_time_mode
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterShardNumber',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.ModifyDBClusterShardNumberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_dbcluster_shard_number_with_options_async(
+        self,
+        request: adb_20190315_models.ModifyDBClusterShardNumberRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.ModifyDBClusterShardNumberResponse:
+        """
+        @summary 修改实例分片数目
+        
+        @param request: ModifyDBClusterShardNumberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBClusterShardNumberResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.new_shard_number):
+            query['NewShardNumber'] = request.new_shard_number
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.switch_time):
+            query['SwitchTime'] = request.switch_time
+        if not UtilClient.is_unset(request.switch_time_mode):
+            query['SwitchTimeMode'] = request.switch_time_mode
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterShardNumber',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.ModifyDBClusterShardNumberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_dbcluster_shard_number(
+        self,
+        request: adb_20190315_models.ModifyDBClusterShardNumberRequest,
+    ) -> adb_20190315_models.ModifyDBClusterShardNumberResponse:
+        """
+        @summary 修改实例分片数目
+        
+        @param request: ModifyDBClusterShardNumberRequest
+        @return: ModifyDBClusterShardNumberResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_dbcluster_shard_number_with_options(request, runtime)
+
+    async def modify_dbcluster_shard_number_async(
+        self,
+        request: adb_20190315_models.ModifyDBClusterShardNumberRequest,
+    ) -> adb_20190315_models.ModifyDBClusterShardNumberResponse:
+        """
+        @summary 修改实例分片数目
+        
+        @param request: ModifyDBClusterShardNumberRequest
+        @return: ModifyDBClusterShardNumberResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_dbcluster_shard_number_with_options_async(request, runtime)
+
     def modify_dbcluster_vip_with_options(
         self,
         request: adb_20190315_models.ModifyDBClusterVipRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.ModifyDBClusterVipResponse:
         """
-        @summary 修改访问VIP
+        @summary Changes the virtual IP address (VIP) that is used to connect to an AnalyticDB for MySQL cluster.
         
         @param request: ModifyDBClusterVipRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14508,7 +15980,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.ModifyDBClusterVipResponse:
         """
-        @summary 修改访问VIP
+        @summary Changes the virtual IP address (VIP) that is used to connect to an AnalyticDB for MySQL cluster.
         
         @param request: ModifyDBClusterVipRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14558,7 +16030,7 @@ class Client(OpenApiClient):
         request: adb_20190315_models.ModifyDBClusterVipRequest,
     ) -> adb_20190315_models.ModifyDBClusterVipResponse:
         """
-        @summary 修改访问VIP
+        @summary Changes the virtual IP address (VIP) that is used to connect to an AnalyticDB for MySQL cluster.
         
         @param request: ModifyDBClusterVipRequest
         @return: ModifyDBClusterVipResponse
@@ -14571,7 +16043,7 @@ class Client(OpenApiClient):
         request: adb_20190315_models.ModifyDBClusterVipRequest,
     ) -> adb_20190315_models.ModifyDBClusterVipResponse:
         """
-        @summary 修改访问VIP
+        @summary Changes the virtual IP address (VIP) that is used to connect to an AnalyticDB for MySQL cluster.
         
         @param request: ModifyDBClusterVipRequest
         @return: ModifyDBClusterVipResponse
@@ -14601,6 +16073,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.pool_user_list):
             request.pool_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.pool_user_list, 'PoolUserList', 'json')
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.group_name):
@@ -14660,6 +16134,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.pool_user_list):
             request.pool_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.pool_user_list, 'PoolUserList', 'json')
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.group_name):
@@ -15169,6 +16645,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.ModifyLogHubStatusResponse:
         """
+        @summary Changes the status of a log shipping job.
+        
         @param request: ModifyLogHubStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyLogHubStatusResponse
@@ -15218,6 +16696,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.ModifyLogHubStatusResponse:
         """
+        @summary Changes the status of a log shipping job.
+        
         @param request: ModifyLogHubStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyLogHubStatusResponse
@@ -15266,6 +16746,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.ModifyLogHubStatusRequest,
     ) -> adb_20190315_models.ModifyLogHubStatusResponse:
         """
+        @summary Changes the status of a log shipping job.
+        
         @param request: ModifyLogHubStatusRequest
         @return: ModifyLogHubStatusResponse
         """
@@ -15277,6 +16759,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.ModifyLogHubStatusRequest,
     ) -> adb_20190315_models.ModifyLogHubStatusResponse:
         """
+        @summary Changes the status of a log shipping job.
+        
         @param request: ModifyLogHubStatusRequest
         @return: ModifyLogHubStatusResponse
         """
@@ -15789,6 +17273,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.OperateLogHubResponse:
         """
+        @summary 修改LogHub投递规则
+        
         @param request: OperateLogHubRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: OperateLogHubResponse
@@ -15856,6 +17342,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.OperateLogHubResponse:
         """
+        @summary 修改LogHub投递规则
+        
         @param request: OperateLogHubRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: OperateLogHubResponse
@@ -15922,6 +17410,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.OperateLogHubRequest,
     ) -> adb_20190315_models.OperateLogHubResponse:
         """
+        @summary 修改LogHub投递规则
+        
         @param request: OperateLogHubRequest
         @return: OperateLogHubResponse
         """
@@ -15933,6 +17423,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.OperateLogHubRequest,
     ) -> adb_20190315_models.OperateLogHubResponse:
         """
+        @summary 修改LogHub投递规则
+        
         @param request: OperateLogHubRequest
         @return: OperateLogHubResponse
         """
@@ -16181,6 +17673,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.RevokeOperatorPermissionResponse:
         """
+        @summary 取消服务帐号授权
+        
         @param request: RevokeOperatorPermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RevokeOperatorPermissionResponse
@@ -16222,6 +17716,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.RevokeOperatorPermissionResponse:
         """
+        @summary 取消服务帐号授权
+        
         @param request: RevokeOperatorPermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RevokeOperatorPermissionResponse
@@ -16262,6 +17758,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.RevokeOperatorPermissionRequest,
     ) -> adb_20190315_models.RevokeOperatorPermissionResponse:
         """
+        @summary 取消服务帐号授权
+        
         @param request: RevokeOperatorPermissionRequest
         @return: RevokeOperatorPermissionResponse
         """
@@ -16273,6 +17771,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.RevokeOperatorPermissionRequest,
     ) -> adb_20190315_models.RevokeOperatorPermissionResponse:
         """
+        @summary 取消服务帐号授权
+        
         @param request: RevokeOperatorPermissionRequest
         @return: RevokeOperatorPermissionResponse
         """
@@ -16417,6 +17917,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.group_name):
@@ -16464,6 +17966,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.group_name):
@@ -16537,6 +18041,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.owner_account):
@@ -16584,6 +18090,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.owner_account):

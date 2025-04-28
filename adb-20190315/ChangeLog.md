@@ -1,3 +1,43 @@
+2025-04-28 Version: 5.0.0
+- Support API DescribeAbnormalPatternDetection.
+- Support API DescribeBadSqlDetection.
+- Support API DescribeControllerDetection.
+- Support API DescribeExecutorDetection.
+- Support API DescribeInclinedNodes.
+- Support API DescribeOversizeNonPartitionTableInfos.
+- Support API DescribeWorkerDetection.
+- Support API GetCreateTableSQL.
+- Support API ModifyDBClusterShardNumber.
+- Update API AttachUserENI: delete request parameters AccessKeyId-copy.
+- Update API BindDBResourceGroupWithUser: add request parameters ClientToken.
+- Update API BindDBResourcePoolWithUser: add request parameters ClientToken.
+- Update API CreateAccount: add request parameters Tag.
+- Update API CreateDBResourceGroup: add request parameters ClientToken.
+- Update API DescribeAccounts: add request parameters Tags.
+- Update API DescribeAccounts: add response parameters Body.AccountList.$.Tags.
+- Update API DescribeAvailableResource: add response parameters Body.AvailableZoneList.$.ZoneName.
+- Update API DescribeDBClusterAttribute: add response parameters Body.Items.$.SecondaryVSwitchId.
+- Update API DescribeDBClusterAttribute: add response parameters Body.Items.$.SecondaryZoneId.
+- Update API DescribeDBClusterPerformance: add response parameters Body.Performances.$.Series.$.TranslateKey.
+- Update API DescribeDBClusterShardNumber: add response parameters Body.AvailableShardNumberList.
+- Update API DescribeDBClusterSpaceSummary: delete request parameters OwnerAccount.
+- Update API DescribeDBClusterSpaceSummary: delete request parameters OwnerId.
+- Update API DescribeDBClusterSpaceSummary: delete request parameters ResourceOwnerAccount.
+- Update API DescribeDBClusterSpaceSummary: delete request parameters ResourceOwnerId.
+- Update API DescribeEIURange: add request parameters ProductVersion.
+- Update API DescribeTableStatistics: add request parameters SchemaName.
+- Update API DescribeTableStatistics: add response parameters Body.SchemaNames.
+- Update API MigrateDBCluster: add request parameters ProductForm.
+- Update API MigrateDBCluster: add request parameters ProductVersion.
+- Update API MigrateDBCluster: add request parameters ReservedNodeCount.
+- Update API MigrateDBCluster: add request parameters ReservedNodeSize.
+- Update API MigrateDBCluster: add request parameters SecondaryVSwitchId.
+- Update API MigrateDBCluster: add request parameters SecondaryZoneId.
+- Update API ModifyDBResourceGroup: add request parameters ClientToken.
+- Update API UnbindDBResourceGroupWithUser: add request parameters ClientToken.
+- Update API UnbindDBResourcePoolWithUser: add request parameters ClientToken.
+
+
 2024-12-10 Version: 4.4.0
 - Support API DescribeLogHubAttribute.
 - Support API DescribeLogStoreKeys.
