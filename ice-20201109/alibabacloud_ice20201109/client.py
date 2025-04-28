@@ -5156,6 +5156,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dialogue_id):
             query['DialogueId'] = request.dialogue_id
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
         if not UtilClient.is_unset(request.session_id):
             query['SessionId'] = request.session_id
         req = open_api_models.OpenApiRequest(
@@ -5193,6 +5195,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dialogue_id):
             query['DialogueId'] = request.dialogue_id
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
         if not UtilClient.is_unset(request.session_id):
             query['SessionId'] = request.session_id
         req = open_api_models.OpenApiRequest(
@@ -17094,6 +17098,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.round_limit):
+            query['RoundLimit'] = request.round_limit
         if not UtilClient.is_unset(request.session_id):
             query['SessionId'] = request.session_id
         if not UtilClient.is_unset(request.start_time):
@@ -17139,6 +17145,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.round_limit):
+            query['RoundLimit'] = request.round_limit
         if not UtilClient.is_unset(request.session_id):
             query['SessionId'] = request.session_id
         if not UtilClient.is_unset(request.start_time):

@@ -13571,10 +13571,12 @@ class DeleteAIAgentDialogueRequest(TeaModel):
     def __init__(
         self,
         dialogue_id: str = None,
+        node_id: str = None,
         session_id: str = None,
     ):
         # This parameter is required.
         self.dialogue_id = dialogue_id
+        self.node_id = node_id
         # This parameter is required.
         self.session_id = session_id
 
@@ -13589,6 +13591,8 @@ class DeleteAIAgentDialogueRequest(TeaModel):
         result = dict()
         if self.dialogue_id is not None:
             result['DialogueId'] = self.dialogue_id
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
         if self.session_id is not None:
             result['SessionId'] = self.session_id
         return result
@@ -13597,6 +13601,8 @@ class DeleteAIAgentDialogueRequest(TeaModel):
         m = m or dict()
         if m.get('DialogueId') is not None:
             self.dialogue_id = m.get('DialogueId')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
         if m.get('SessionId') is not None:
             self.session_id = m.get('SessionId')
         return self
@@ -42025,6 +42031,7 @@ class ListAIAgentDialoguesRequest(TeaModel):
         order: str = None,
         page_number: int = None,
         page_size: int = None,
+        round_limit: str = None,
         session_id: str = None,
         start_time: int = None,
     ):
@@ -42033,6 +42040,7 @@ class ListAIAgentDialoguesRequest(TeaModel):
         self.order = order
         self.page_number = page_number
         self.page_size = page_size
+        self.round_limit = round_limit
         # This parameter is required.
         self.session_id = session_id
         # This parameter is required.
@@ -42055,6 +42063,8 @@ class ListAIAgentDialoguesRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.round_limit is not None:
+            result['RoundLimit'] = self.round_limit
         if self.session_id is not None:
             result['SessionId'] = self.session_id
         if self.start_time is not None:
@@ -42071,6 +42081,8 @@ class ListAIAgentDialoguesRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RoundLimit') is not None:
+            self.round_limit = m.get('RoundLimit')
         if m.get('SessionId') is not None:
             self.session_id = m.get('SessionId')
         if m.get('StartTime') is not None:
@@ -42134,6 +42146,8 @@ class ListAIAgentDialoguesResponseBodyDialogues(TeaModel):
         self,
         attached_file_list: List[ListAIAgentDialoguesResponseBodyDialoguesAttachedFileList] = None,
         dialogue_id: str = None,
+        extend: str = None,
+        node_id: str = None,
         producer: str = None,
         reasoning_text: str = None,
         round_id: str = None,
@@ -42144,6 +42158,8 @@ class ListAIAgentDialoguesResponseBodyDialogues(TeaModel):
     ):
         self.attached_file_list = attached_file_list
         self.dialogue_id = dialogue_id
+        self.extend = extend
+        self.node_id = node_id
         self.producer = producer
         self.reasoning_text = reasoning_text
         self.round_id = round_id
@@ -42170,6 +42186,10 @@ class ListAIAgentDialoguesResponseBodyDialogues(TeaModel):
                 result['AttachedFileList'].append(k.to_map() if k else None)
         if self.dialogue_id is not None:
             result['DialogueId'] = self.dialogue_id
+        if self.extend is not None:
+            result['Extend'] = self.extend
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
         if self.producer is not None:
             result['Producer'] = self.producer
         if self.reasoning_text is not None:
@@ -42195,6 +42215,10 @@ class ListAIAgentDialoguesResponseBodyDialogues(TeaModel):
                 self.attached_file_list.append(temp_model.from_map(k))
         if m.get('DialogueId') is not None:
             self.dialogue_id = m.get('DialogueId')
+        if m.get('Extend') is not None:
+            self.extend = m.get('Extend')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
         if m.get('Producer') is not None:
             self.producer = m.get('Producer')
         if m.get('ReasoningText') is not None:

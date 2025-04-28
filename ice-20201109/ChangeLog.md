@@ -1,3 +1,10 @@
+2025-04-28 Version: 5.0.7
+- Update API DeleteAIAgentDialogue: add request parameters NodeId.
+- Update API ListAIAgentDialogues: add request parameters RoundLimit.
+- Update API ListAIAgentDialogues: add response parameters Body.Dialogues.$.Extend.
+- Update API ListAIAgentDialogues: add response parameters Body.Dialogues.$.NodeId.
+
+
 2025-04-25 Version: 5.0.6
 - Update API DeleteMediaConnectFlowInput: add request parameters InputName.
 - Update API GetMediaConnectFlow: add response parameters Body.Content.FlowFailover.
