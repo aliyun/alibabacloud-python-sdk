@@ -1,3 +1,6 @@
+2025-04-29 Version: 2.7.2
+- Generated python 2024-08-01 for QuanMiaoLightApp.
+
 2025-04-17 Version: 2.7.1
 - Update API RunEnterpriseVocAnalysis: add request parameters akProxy.
 - Update API RunEnterpriseVocAnalysis: add request parameters apiKey.
