@@ -1,3 +1,9 @@
+2025-04-29 Version: 3.0.0
+- Delete API PhoneNumberStatusForVirtual.
+- Update API PhoneNumberEncrypt: add request parameters OutId.
+- Update API PhoneNumberEncrypt: add response parameters Body.Data.$.OutId.
+
+
 2025-01-19 Version: 2.11.0
 - Support API DescribePhoneNumberAnalysisPai.
 - Support API DescribePhoneNumberOperatorAttributeAnnual.

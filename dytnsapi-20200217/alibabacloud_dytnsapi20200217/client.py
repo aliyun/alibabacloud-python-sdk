@@ -2885,6 +2885,8 @@ class Client(OpenApiClient):
             query['InputNumber'] = request.input_number
         if not UtilClient.is_unset(request.mask):
             query['Mask'] = request.mask
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -2934,6 +2936,8 @@ class Client(OpenApiClient):
             query['InputNumber'] = request.input_number
         if not UtilClient.is_unset(request.mask):
             query['Mask'] = request.mask
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -3552,150 +3556,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.phone_number_status_for_sms_with_options_async(request, runtime)
-
-    def phone_number_status_for_virtual_with_options(
-        self,
-        request: dytnsapi_20200217_models.PhoneNumberStatusForVirtualRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dytnsapi_20200217_models.PhoneNumberStatusForVirtualResponse:
-        """
-        @summary Queries the status of a virtual phone number. You can choose an encryption method for your phone number query, including plaintext, MD5, and SHA256.
-        
-        @description    Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
-        You are charged only if the value of Code is OK and the value of IsPrivacyNumber is true or false.
-        By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](https://help.aliyun.com/document_detail/154006.html).
-        Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
-        ### [](#qps)QPS limits
-        You can call this operation up to 300 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: PhoneNumberStatusForVirtualRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: PhoneNumberStatusForVirtualResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.auth_code):
-            query['AuthCode'] = request.auth_code
-        if not UtilClient.is_unset(request.input_number):
-            query['InputNumber'] = request.input_number
-        if not UtilClient.is_unset(request.mask):
-            query['Mask'] = request.mask
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='PhoneNumberStatusForVirtual',
-            version='2020-02-17',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dytnsapi_20200217_models.PhoneNumberStatusForVirtualResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def phone_number_status_for_virtual_with_options_async(
-        self,
-        request: dytnsapi_20200217_models.PhoneNumberStatusForVirtualRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dytnsapi_20200217_models.PhoneNumberStatusForVirtualResponse:
-        """
-        @summary Queries the status of a virtual phone number. You can choose an encryption method for your phone number query, including plaintext, MD5, and SHA256.
-        
-        @description    Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
-        You are charged only if the value of Code is OK and the value of IsPrivacyNumber is true or false.
-        By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](https://help.aliyun.com/document_detail/154006.html).
-        Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
-        ### [](#qps)QPS limits
-        You can call this operation up to 300 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: PhoneNumberStatusForVirtualRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: PhoneNumberStatusForVirtualResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.auth_code):
-            query['AuthCode'] = request.auth_code
-        if not UtilClient.is_unset(request.input_number):
-            query['InputNumber'] = request.input_number
-        if not UtilClient.is_unset(request.mask):
-            query['Mask'] = request.mask
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='PhoneNumberStatusForVirtual',
-            version='2020-02-17',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dytnsapi_20200217_models.PhoneNumberStatusForVirtualResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def phone_number_status_for_virtual(
-        self,
-        request: dytnsapi_20200217_models.PhoneNumberStatusForVirtualRequest,
-    ) -> dytnsapi_20200217_models.PhoneNumberStatusForVirtualResponse:
-        """
-        @summary Queries the status of a virtual phone number. You can choose an encryption method for your phone number query, including plaintext, MD5, and SHA256.
-        
-        @description    Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
-        You are charged only if the value of Code is OK and the value of IsPrivacyNumber is true or false.
-        By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](https://help.aliyun.com/document_detail/154006.html).
-        Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
-        ### [](#qps)QPS limits
-        You can call this operation up to 300 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: PhoneNumberStatusForVirtualRequest
-        @return: PhoneNumberStatusForVirtualResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.phone_number_status_for_virtual_with_options(request, runtime)
-
-    async def phone_number_status_for_virtual_async(
-        self,
-        request: dytnsapi_20200217_models.PhoneNumberStatusForVirtualRequest,
-    ) -> dytnsapi_20200217_models.PhoneNumberStatusForVirtualResponse:
-        """
-        @summary Queries the status of a virtual phone number. You can choose an encryption method for your phone number query, including plaintext, MD5, and SHA256.
-        
-        @description    Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
-        You are charged only if the value of Code is OK and the value of IsPrivacyNumber is true or false.
-        By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](https://help.aliyun.com/document_detail/154006.html).
-        Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
-        ### [](#qps)QPS limits
-        You can call this operation up to 300 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: PhoneNumberStatusForVirtualRequest
-        @return: PhoneNumberStatusForVirtualResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.phone_number_status_for_virtual_with_options_async(request, runtime)
 
     def phone_number_status_for_voice_with_options(
         self,
