@@ -1,3 +1,6 @@
+2025-04-29 Version: 5.0.5
+- Generated python 2018-01-11 for rtc.
+
 2025-04-15 Version: 5.0.4
 - Update API StartCloudNote: add request parameters RealtimeSubtitle.
 - Update API StartCloudNote: add request parameters Transcription.
