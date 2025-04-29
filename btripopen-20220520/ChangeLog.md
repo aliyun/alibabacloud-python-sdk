@@ -1,3 +1,45 @@
+2025-04-29 Version: 4.7.0
+- Support API MealApplyAdd.
+- Support API MealApplyApprove.
+- Support API MealApplyQuery.
+- Update API AddEmployee: add request parameters base_location_list.
+- Update API AddressGet: add request parameters session_parameters.
+- Update API ApplyAdd: add request parameters meal_budget.
+- Update API ApplyModify: add request parameters meal_budget.
+- Update API ApplyQuery: add response parameters Body.module.meal_budget.
+- Update API CarBillSettlementQuery: add response parameters Body.module.data_list.$.traveler_member_type.
+- Update API CooperatorFlightBillSettlementQuery: add response parameters Body.module.items.$.book_channel.
+- Update API CooperatorFlightBillSettlementQuery: add response parameters Body.module.items.$.flight_trip_type.
+- Update API CooperatorFlightBillSettlementQuery: add response parameters Body.module.items.$.order_ticket_no.
+- Update API CooperatorHotelBillSettlementQuery: add response parameters Body.module.items.$.book_channel.
+- Update API FlightBillSettlementQuery: add response parameters Body.module.data_list.$.book_channel.
+- Update API FlightBillSettlementQuery: add response parameters Body.module.data_list.$.flight_trip_type.
+- Update API FlightBillSettlementQuery: add response parameters Body.module.data_list.$.order_ticket_no.
+- Update API FlightBillSettlementQuery: add response parameters Body.module.data_list.$.traveler_member_type.
+- Update API FlightItineraryScanQuery: add response parameters Body.module.items.$.pdf_oss_url.
+- Update API FlightItineraryScanQuery: add response parameters Body.module.items.$.purchaser_tax_no.
+- Update API FlightModifyOrderDetailV2: add response parameters Body.module.traveler_info_d_t_o_s.$.ticket_no_segment_map.
+- Update API FlightOrderQuery: add response parameters Body.module.flight_info_list.$.arr_airport_city_county.
+- Update API FlightOrderQuery: add response parameters Body.module.flight_info_list.$.dep_airport_city_county.
+- Update API FlightOrderQuery: add response parameters Body.module.flight_info_list.$.stop_city_info_list.
+- Update API HotelBillSettlementQuery: add response parameters Body.module.data_list.$.book_channel.
+- Update API HotelBillSettlementQuery: add response parameters Body.module.data_list.$.traveler_member_type.
+- Update API HotelOrderPreValidate: add response parameters Body.module.item_invoice.
+- Update API HotelSearch: add response parameters Body.module.count.
+- Update API IeFlightBillSettlementQuery: add response parameters Body.module.data_list.$.traveler_member_type_name.
+- Update API MealBillSettlementQuery: add response parameters Body.module.items.$.traveler_member_type.
+- Update API QueryCorpDetailInfo: add request parameters account_id.
+- Update API QueryCorpDetailInfo: add request parameters target_third_corp_id.
+- Update API QueryEmployeeDetail: add response parameters Body.module.email.
+- Update API QueryEmployeeDetail: add response parameters Body.module.phone_no.
+- Update API TrainBillSettlementQuery: add response parameters Body.module.data_list.$.arr_station_location.
+- Update API TrainBillSettlementQuery: add response parameters Body.module.data_list.$.arr_station_location_code.
+- Update API TrainBillSettlementQuery: add response parameters Body.module.data_list.$.dep_station_location.
+- Update API TrainBillSettlementQuery: add response parameters Body.module.data_list.$.dep_station_location_code.
+- Update API TrainBillSettlementQuery: add response parameters Body.module.data_list.$.traveler_member_type.
+- Update API UpdateEmployee: add request parameters base_location_list.
+
+
 2025-01-07 Version: 4.6.0
 - Support API FuPointBillSettlementQuery.
 - Support API OrderRefundDetailQuery.

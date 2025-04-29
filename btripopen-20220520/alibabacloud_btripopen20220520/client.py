@@ -298,6 +298,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.base_city_code_list):
             request.base_city_code_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.base_city_code_list, 'base_city_code_list', 'json')
+        if not UtilClient.is_unset(tmp_req.base_location_list):
+            request.base_location_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.base_location_list, 'base_location_list', 'json')
         if not UtilClient.is_unset(tmp_req.cert_list):
             request.cert_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cert_list, 'cert_list', 'json')
         if not UtilClient.is_unset(tmp_req.custom_role_code_list):
@@ -311,6 +313,8 @@ class Client(OpenApiClient):
             body['avatar'] = request.avatar
         if not UtilClient.is_unset(request.base_city_code_list_shrink):
             body['base_city_code_list'] = request.base_city_code_list_shrink
+        if not UtilClient.is_unset(request.base_location_list_shrink):
+            body['base_location_list'] = request.base_location_list_shrink
         if not UtilClient.is_unset(request.birthday):
             body['birthday'] = request.birthday
         if not UtilClient.is_unset(request.cert_list_shrink):
@@ -391,6 +395,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.base_city_code_list):
             request.base_city_code_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.base_city_code_list, 'base_city_code_list', 'json')
+        if not UtilClient.is_unset(tmp_req.base_location_list):
+            request.base_location_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.base_location_list, 'base_location_list', 'json')
         if not UtilClient.is_unset(tmp_req.cert_list):
             request.cert_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cert_list, 'cert_list', 'json')
         if not UtilClient.is_unset(tmp_req.custom_role_code_list):
@@ -404,6 +410,8 @@ class Client(OpenApiClient):
             body['avatar'] = request.avatar
         if not UtilClient.is_unset(request.base_city_code_list_shrink):
             body['base_city_code_list'] = request.base_city_code_list_shrink
+        if not UtilClient.is_unset(request.base_location_list_shrink):
+            body['base_location_list'] = request.base_location_list_shrink
         if not UtilClient.is_unset(request.birthday):
             body['birthday'] = request.birthday
         if not UtilClient.is_unset(request.cert_list_shrink):
@@ -783,6 +791,8 @@ class Client(OpenApiClient):
             query['order_Id'] = request.order_id
         if not UtilClient.is_unset(request.phone):
             query['phone'] = request.phone
+        if not UtilClient.is_unset(request.session_parameters):
+            query['session_parameters'] = request.session_parameters
         if not UtilClient.is_unset(request.sub_corp_id):
             query['sub_corp_id'] = request.sub_corp_id
         if not UtilClient.is_unset(request.taobao_callback_url):
@@ -860,6 +870,8 @@ class Client(OpenApiClient):
             query['order_Id'] = request.order_id
         if not UtilClient.is_unset(request.phone):
             query['phone'] = request.phone
+        if not UtilClient.is_unset(request.session_parameters):
+            query['session_parameters'] = request.session_parameters
         if not UtilClient.is_unset(request.sub_corp_id):
             query['sub_corp_id'] = request.sub_corp_id
         if not UtilClient.is_unset(request.taobao_callback_url):
@@ -1213,6 +1225,8 @@ class Client(OpenApiClient):
             body['itinerary_set_list'] = request.itinerary_set_list_shrink
         if not UtilClient.is_unset(request.limit_traveler):
             body['limit_traveler'] = request.limit_traveler
+        if not UtilClient.is_unset(request.meal_budget):
+            body['meal_budget'] = request.meal_budget
         if not UtilClient.is_unset(request.payment_department_id):
             body['payment_department_id'] = request.payment_department_id
         if not UtilClient.is_unset(request.payment_department_name):
@@ -1352,6 +1366,8 @@ class Client(OpenApiClient):
             body['itinerary_set_list'] = request.itinerary_set_list_shrink
         if not UtilClient.is_unset(request.limit_traveler):
             body['limit_traveler'] = request.limit_traveler
+        if not UtilClient.is_unset(request.meal_budget):
+            body['meal_budget'] = request.meal_budget
         if not UtilClient.is_unset(request.payment_department_id):
             body['payment_department_id'] = request.payment_department_id
         if not UtilClient.is_unset(request.payment_department_name):
@@ -2069,6 +2085,8 @@ class Client(OpenApiClient):
             body['itinerary_set_list'] = request.itinerary_set_list_shrink
         if not UtilClient.is_unset(request.limit_traveler):
             body['limit_traveler'] = request.limit_traveler
+        if not UtilClient.is_unset(request.meal_budget):
+            body['meal_budget'] = request.meal_budget
         if not UtilClient.is_unset(request.payment_department_id):
             body['payment_department_id'] = request.payment_department_id
         if not UtilClient.is_unset(request.payment_department_name):
@@ -2204,6 +2222,8 @@ class Client(OpenApiClient):
             body['itinerary_set_list'] = request.itinerary_set_list_shrink
         if not UtilClient.is_unset(request.limit_traveler):
             body['limit_traveler'] = request.limit_traveler
+        if not UtilClient.is_unset(request.meal_budget):
+            body['meal_budget'] = request.meal_budget
         if not UtilClient.is_unset(request.payment_department_id):
             body['payment_department_id'] = request.payment_department_id
         if not UtilClient.is_unset(request.payment_department_name):
@@ -20331,6 +20351,420 @@ class Client(OpenApiClient):
         headers = btrip_open_20220520_models.IsvUserSaveHeaders()
         return await self.isv_user_save_with_options_async(request, headers, runtime)
 
+    def meal_apply_add_with_options(
+        self,
+        tmp_req: btrip_open_20220520_models.MealApplyAddRequest,
+        headers: btrip_open_20220520_models.MealApplyAddHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.MealApplyAddResponse:
+        """
+        @summary 新增用餐申请单
+        
+        @param tmp_req: MealApplyAddRequest
+        @param headers: MealApplyAddHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MealApplyAddResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.MealApplyAddShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.apply_user):
+            request.apply_user_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.apply_user, 'apply_user', 'json')
+        if not UtilClient.is_unset(tmp_req.itinerary_list):
+            request.itinerary_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.itinerary_list, 'itinerary_list', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.apply_user_shrink):
+            body['apply_user'] = request.apply_user_shrink
+        if not UtilClient.is_unset(request.cost_center_id):
+            body['cost_center_id'] = request.cost_center_id
+        if not UtilClient.is_unset(request.invoice_id):
+            body['invoice_id'] = request.invoice_id
+        if not UtilClient.is_unset(request.itinerary_list_shrink):
+            body['itinerary_list'] = request.itinerary_list_shrink
+        if not UtilClient.is_unset(request.meal_amount):
+            body['meal_amount'] = request.meal_amount
+        if not UtilClient.is_unset(request.meal_cause):
+            body['meal_cause'] = request.meal_cause
+        if not UtilClient.is_unset(request.project_code):
+            body['project_code'] = request.project_code
+        if not UtilClient.is_unset(request.project_title):
+            body['project_title'] = request.project_title
+        if not UtilClient.is_unset(request.status):
+            body['status'] = request.status
+        if not UtilClient.is_unset(request.third_part_apply_id):
+            body['third_part_apply_id'] = request.third_part_apply_id
+        if not UtilClient.is_unset(request.third_part_cost_center_id):
+            body['third_part_cost_center_id'] = request.third_part_cost_center_id
+        if not UtilClient.is_unset(request.third_part_invoice_id):
+            body['third_part_invoice_id'] = request.third_part_invoice_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='MealApplyAdd',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/apply/v1/meal',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.MealApplyAddResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def meal_apply_add_with_options_async(
+        self,
+        tmp_req: btrip_open_20220520_models.MealApplyAddRequest,
+        headers: btrip_open_20220520_models.MealApplyAddHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.MealApplyAddResponse:
+        """
+        @summary 新增用餐申请单
+        
+        @param tmp_req: MealApplyAddRequest
+        @param headers: MealApplyAddHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MealApplyAddResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.MealApplyAddShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.apply_user):
+            request.apply_user_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.apply_user, 'apply_user', 'json')
+        if not UtilClient.is_unset(tmp_req.itinerary_list):
+            request.itinerary_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.itinerary_list, 'itinerary_list', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.apply_user_shrink):
+            body['apply_user'] = request.apply_user_shrink
+        if not UtilClient.is_unset(request.cost_center_id):
+            body['cost_center_id'] = request.cost_center_id
+        if not UtilClient.is_unset(request.invoice_id):
+            body['invoice_id'] = request.invoice_id
+        if not UtilClient.is_unset(request.itinerary_list_shrink):
+            body['itinerary_list'] = request.itinerary_list_shrink
+        if not UtilClient.is_unset(request.meal_amount):
+            body['meal_amount'] = request.meal_amount
+        if not UtilClient.is_unset(request.meal_cause):
+            body['meal_cause'] = request.meal_cause
+        if not UtilClient.is_unset(request.project_code):
+            body['project_code'] = request.project_code
+        if not UtilClient.is_unset(request.project_title):
+            body['project_title'] = request.project_title
+        if not UtilClient.is_unset(request.status):
+            body['status'] = request.status
+        if not UtilClient.is_unset(request.third_part_apply_id):
+            body['third_part_apply_id'] = request.third_part_apply_id
+        if not UtilClient.is_unset(request.third_part_cost_center_id):
+            body['third_part_cost_center_id'] = request.third_part_cost_center_id
+        if not UtilClient.is_unset(request.third_part_invoice_id):
+            body['third_part_invoice_id'] = request.third_part_invoice_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='MealApplyAdd',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/apply/v1/meal',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.MealApplyAddResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def meal_apply_add(
+        self,
+        request: btrip_open_20220520_models.MealApplyAddRequest,
+    ) -> btrip_open_20220520_models.MealApplyAddResponse:
+        """
+        @summary 新增用餐申请单
+        
+        @param request: MealApplyAddRequest
+        @return: MealApplyAddResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.MealApplyAddHeaders()
+        return self.meal_apply_add_with_options(request, headers, runtime)
+
+    async def meal_apply_add_async(
+        self,
+        request: btrip_open_20220520_models.MealApplyAddRequest,
+    ) -> btrip_open_20220520_models.MealApplyAddResponse:
+        """
+        @summary 新增用餐申请单
+        
+        @param request: MealApplyAddRequest
+        @return: MealApplyAddResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.MealApplyAddHeaders()
+        return await self.meal_apply_add_with_options_async(request, headers, runtime)
+
+    def meal_apply_approve_with_options(
+        self,
+        request: btrip_open_20220520_models.MealApplyApproveRequest,
+        headers: btrip_open_20220520_models.MealApplyApproveHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.MealApplyApproveResponse:
+        """
+        @summary 更新用餐申请单状态
+        
+        @param request: MealApplyApproveRequest
+        @param headers: MealApplyApproveHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MealApplyApproveResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.operate_time):
+            body['operate_time'] = request.operate_time
+        if not UtilClient.is_unset(request.remark):
+            body['remark'] = request.remark
+        if not UtilClient.is_unset(request.status):
+            body['status'] = request.status
+        if not UtilClient.is_unset(request.third_part_apply_id):
+            body['third_part_apply_id'] = request.third_part_apply_id
+        if not UtilClient.is_unset(request.user_id):
+            body['user_id'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='MealApplyApprove',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/apply/v1/meal',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.MealApplyApproveResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def meal_apply_approve_with_options_async(
+        self,
+        request: btrip_open_20220520_models.MealApplyApproveRequest,
+        headers: btrip_open_20220520_models.MealApplyApproveHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.MealApplyApproveResponse:
+        """
+        @summary 更新用餐申请单状态
+        
+        @param request: MealApplyApproveRequest
+        @param headers: MealApplyApproveHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MealApplyApproveResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.operate_time):
+            body['operate_time'] = request.operate_time
+        if not UtilClient.is_unset(request.remark):
+            body['remark'] = request.remark
+        if not UtilClient.is_unset(request.status):
+            body['status'] = request.status
+        if not UtilClient.is_unset(request.third_part_apply_id):
+            body['third_part_apply_id'] = request.third_part_apply_id
+        if not UtilClient.is_unset(request.user_id):
+            body['user_id'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='MealApplyApprove',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/apply/v1/meal',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.MealApplyApproveResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def meal_apply_approve(
+        self,
+        request: btrip_open_20220520_models.MealApplyApproveRequest,
+    ) -> btrip_open_20220520_models.MealApplyApproveResponse:
+        """
+        @summary 更新用餐申请单状态
+        
+        @param request: MealApplyApproveRequest
+        @return: MealApplyApproveResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.MealApplyApproveHeaders()
+        return self.meal_apply_approve_with_options(request, headers, runtime)
+
+    async def meal_apply_approve_async(
+        self,
+        request: btrip_open_20220520_models.MealApplyApproveRequest,
+    ) -> btrip_open_20220520_models.MealApplyApproveResponse:
+        """
+        @summary 更新用餐申请单状态
+        
+        @param request: MealApplyApproveRequest
+        @return: MealApplyApproveResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.MealApplyApproveHeaders()
+        return await self.meal_apply_approve_with_options_async(request, headers, runtime)
+
+    def meal_apply_query_with_options(
+        self,
+        request: btrip_open_20220520_models.MealApplyQueryRequest,
+        headers: btrip_open_20220520_models.MealApplyQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.MealApplyQueryResponse:
+        """
+        @summary 查询用餐申请单
+        
+        @param request: MealApplyQueryRequest
+        @param headers: MealApplyQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MealApplyQueryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.third_part_apply_id):
+            query['third_part_apply_id'] = request.third_part_apply_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MealApplyQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/apply/v1/meal',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.MealApplyQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def meal_apply_query_with_options_async(
+        self,
+        request: btrip_open_20220520_models.MealApplyQueryRequest,
+        headers: btrip_open_20220520_models.MealApplyQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.MealApplyQueryResponse:
+        """
+        @summary 查询用餐申请单
+        
+        @param request: MealApplyQueryRequest
+        @param headers: MealApplyQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MealApplyQueryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.third_part_apply_id):
+            query['third_part_apply_id'] = request.third_part_apply_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MealApplyQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/apply/v1/meal',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.MealApplyQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def meal_apply_query(
+        self,
+        request: btrip_open_20220520_models.MealApplyQueryRequest,
+    ) -> btrip_open_20220520_models.MealApplyQueryResponse:
+        """
+        @summary 查询用餐申请单
+        
+        @param request: MealApplyQueryRequest
+        @return: MealApplyQueryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.MealApplyQueryHeaders()
+        return self.meal_apply_query_with_options(request, headers, runtime)
+
+    async def meal_apply_query_async(
+        self,
+        request: btrip_open_20220520_models.MealApplyQueryRequest,
+    ) -> btrip_open_20220520_models.MealApplyQueryResponse:
+        """
+        @summary 查询用餐申请单
+        
+        @param request: MealApplyQueryRequest
+        @return: MealApplyQueryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.MealApplyQueryHeaders()
+        return await self.meal_apply_query_with_options_async(request, headers, runtime)
+
     def meal_bill_settlement_query_with_options(
         self,
         request: btrip_open_20220520_models.MealBillSettlementQueryRequest,
@@ -21445,8 +21879,12 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['account_id'] = request.account_id
         if not UtilClient.is_unset(request.target_corp_id):
             query['target_corp_id'] = request.target_corp_id
+        if not UtilClient.is_unset(request.target_third_corp_id):
+            query['target_third_corp_id'] = request.target_third_corp_id
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -21488,8 +21926,12 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['account_id'] = request.account_id
         if not UtilClient.is_unset(request.target_corp_id):
             query['target_corp_id'] = request.target_corp_id
+        if not UtilClient.is_unset(request.target_third_corp_id):
+            query['target_third_corp_id'] = request.target_third_corp_id
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -26600,6 +27042,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.base_city_code_list):
             request.base_city_code_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.base_city_code_list, 'base_city_code_list', 'json')
+        if not UtilClient.is_unset(tmp_req.base_location_list):
+            request.base_location_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.base_location_list, 'base_location_list', 'json')
         if not UtilClient.is_unset(tmp_req.cert_list):
             request.cert_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cert_list, 'cert_list', 'json')
         if not UtilClient.is_unset(tmp_req.custom_role_code_list):
@@ -26613,6 +27057,8 @@ class Client(OpenApiClient):
             body['avatar'] = request.avatar
         if not UtilClient.is_unset(request.base_city_code_list_shrink):
             body['base_city_code_list'] = request.base_city_code_list_shrink
+        if not UtilClient.is_unset(request.base_location_list_shrink):
+            body['base_location_list'] = request.base_location_list_shrink
         if not UtilClient.is_unset(request.birthday):
             body['birthday'] = request.birthday
         if not UtilClient.is_unset(request.cert_list_shrink):
@@ -26691,6 +27137,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.base_city_code_list):
             request.base_city_code_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.base_city_code_list, 'base_city_code_list', 'json')
+        if not UtilClient.is_unset(tmp_req.base_location_list):
+            request.base_location_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.base_location_list, 'base_location_list', 'json')
         if not UtilClient.is_unset(tmp_req.cert_list):
             request.cert_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cert_list, 'cert_list', 'json')
         if not UtilClient.is_unset(tmp_req.custom_role_code_list):
@@ -26704,6 +27152,8 @@ class Client(OpenApiClient):
             body['avatar'] = request.avatar
         if not UtilClient.is_unset(request.base_city_code_list_shrink):
             body['base_city_code_list'] = request.base_city_code_list_shrink
+        if not UtilClient.is_unset(request.base_location_list_shrink):
+            body['base_location_list'] = request.base_location_list_shrink
         if not UtilClient.is_unset(request.birthday):
             body['birthday'] = request.birthday
         if not UtilClient.is_unset(request.cert_list_shrink):
