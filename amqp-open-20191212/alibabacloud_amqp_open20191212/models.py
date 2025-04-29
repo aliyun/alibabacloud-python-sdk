@@ -4992,6 +4992,7 @@ class UpdateInstanceRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
+        edition: str = None,
         encrypted_instance: bool = None,
         instance_id: str = None,
         instance_type: str = None,
@@ -5000,6 +5001,7 @@ class UpdateInstanceRequest(TeaModel):
         max_eip_tps: int = None,
         max_private_tps: int = None,
         modify_type: str = None,
+        provisioned_capacity: int = None,
         queue_capacity: int = None,
         serverless_charge_type: str = None,
         storage_size: int = None,
@@ -5009,6 +5011,7 @@ class UpdateInstanceRequest(TeaModel):
     ):
         # The client token.
         self.client_token = client_token
+        self.edition = edition
         # 实例是否开通数据存储加密功能
         self.encrypted_instance = encrypted_instance
         # The ID of the ApsaraMQ for RabbitMQ instance.
@@ -5038,6 +5041,7 @@ class UpdateInstanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.modify_type = modify_type
+        self.provisioned_capacity = provisioned_capacity
         # The maximum number of queues that can be created on the instance.
         self.queue_capacity = queue_capacity
         # The billing method of the serverless instance. Valid values:
@@ -5070,6 +5074,8 @@ class UpdateInstanceRequest(TeaModel):
         result = dict()
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.edition is not None:
+            result['Edition'] = self.edition
         if self.encrypted_instance is not None:
             result['EncryptedInstance'] = self.encrypted_instance
         if self.instance_id is not None:
@@ -5086,6 +5092,8 @@ class UpdateInstanceRequest(TeaModel):
             result['MaxPrivateTps'] = self.max_private_tps
         if self.modify_type is not None:
             result['ModifyType'] = self.modify_type
+        if self.provisioned_capacity is not None:
+            result['ProvisionedCapacity'] = self.provisioned_capacity
         if self.queue_capacity is not None:
             result['QueueCapacity'] = self.queue_capacity
         if self.serverless_charge_type is not None:
@@ -5104,6 +5112,8 @@ class UpdateInstanceRequest(TeaModel):
         m = m or dict()
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('Edition') is not None:
+            self.edition = m.get('Edition')
         if m.get('EncryptedInstance') is not None:
             self.encrypted_instance = m.get('EncryptedInstance')
         if m.get('InstanceId') is not None:
@@ -5120,6 +5130,8 @@ class UpdateInstanceRequest(TeaModel):
             self.max_private_tps = m.get('MaxPrivateTps')
         if m.get('ModifyType') is not None:
             self.modify_type = m.get('ModifyType')
+        if m.get('ProvisionedCapacity') is not None:
+            self.provisioned_capacity = m.get('ProvisionedCapacity')
         if m.get('QueueCapacity') is not None:
             self.queue_capacity = m.get('QueueCapacity')
         if m.get('ServerlessChargeType') is not None:

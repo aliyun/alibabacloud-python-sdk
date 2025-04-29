@@ -2513,6 +2513,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.edition):
+            query['Edition'] = request.edition
         if not UtilClient.is_unset(request.encrypted_instance):
             query['EncryptedInstance'] = request.encrypted_instance
         if not UtilClient.is_unset(request.instance_id):
@@ -2529,6 +2531,8 @@ class Client(OpenApiClient):
             query['MaxPrivateTps'] = request.max_private_tps
         if not UtilClient.is_unset(request.modify_type):
             query['ModifyType'] = request.modify_type
+        if not UtilClient.is_unset(request.provisioned_capacity):
+            query['ProvisionedCapacity'] = request.provisioned_capacity
         if not UtilClient.is_unset(request.queue_capacity):
             query['QueueCapacity'] = request.queue_capacity
         if not UtilClient.is_unset(request.serverless_charge_type):
@@ -2576,6 +2580,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.edition):
+            query['Edition'] = request.edition
         if not UtilClient.is_unset(request.encrypted_instance):
             query['EncryptedInstance'] = request.encrypted_instance
         if not UtilClient.is_unset(request.instance_id):
@@ -2592,6 +2598,8 @@ class Client(OpenApiClient):
             query['MaxPrivateTps'] = request.max_private_tps
         if not UtilClient.is_unset(request.modify_type):
             query['ModifyType'] = request.modify_type
+        if not UtilClient.is_unset(request.provisioned_capacity):
+            query['ProvisionedCapacity'] = request.provisioned_capacity
         if not UtilClient.is_unset(request.queue_capacity):
             query['QueueCapacity'] = request.queue_capacity
         if not UtilClient.is_unset(request.serverless_charge_type):

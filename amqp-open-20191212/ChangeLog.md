@@ -1,3 +1,8 @@
+2025-04-29 Version: 1.4.2
+- Update API UpdateInstance: add request parameters Edition.
+- Update API UpdateInstance: add request parameters ProvisionedCapacity.
+
+
 2025-04-27 Version: 1.4.1
 - Update API CreateInstance: add request parameters Edition.
 - Update API CreateInstance: add request parameters ProvisionedCapacity.
