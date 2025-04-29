@@ -1658,6 +1658,7 @@ class GetClusterResponseBodyData(TeaModel):
         spm: int = None,
         status: int = None,
         v_switches: List[GetClusterResponseBodyDataVSwitches] = None,
+        version_lifecycle: str = None,
         vpc_id: str = None,
         worker_num: int = None,
         zones: List[str] = None,
@@ -1679,6 +1680,7 @@ class GetClusterResponseBodyData(TeaModel):
         self.spm = spm
         self.status = status
         self.v_switches = v_switches
+        self.version_lifecycle = version_lifecycle
         # VPC ID
         self.vpc_id = vpc_id
         self.worker_num = worker_num
@@ -1732,6 +1734,8 @@ class GetClusterResponseBodyData(TeaModel):
         if self.v_switches is not None:
             for k in self.v_switches:
                 result['VSwitches'].append(k.to_map() if k else None)
+        if self.version_lifecycle is not None:
+            result['VersionLifecycle'] = self.version_lifecycle
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         if self.worker_num is not None:
@@ -1779,6 +1783,8 @@ class GetClusterResponseBodyData(TeaModel):
             for k in m.get('VSwitches'):
                 temp_model = GetClusterResponseBodyDataVSwitches()
                 self.v_switches.append(temp_model.from_map(k))
+        if m.get('VersionLifecycle') is not None:
+            self.version_lifecycle = m.get('VersionLifecycle')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         if m.get('WorkerNum') is not None:
@@ -4029,6 +4035,7 @@ class ListClustersResponseBodyDataRecords(TeaModel):
         sp_instance_id: str = None,
         status: int = None,
         v_switches: List[ListClustersResponseBodyDataRecordsVSwitches] = None,
+        version_lifecycle: str = None,
         vpc_id: str = None,
     ):
         self.charge_type = charge_type
@@ -4045,6 +4052,7 @@ class ListClustersResponseBodyDataRecords(TeaModel):
         self.sp_instance_id = sp_instance_id
         self.status = status
         self.v_switches = v_switches
+        self.version_lifecycle = version_lifecycle
         # VPC ID
         self.vpc_id = vpc_id
 
@@ -4090,6 +4098,8 @@ class ListClustersResponseBodyDataRecords(TeaModel):
         if self.v_switches is not None:
             for k in self.v_switches:
                 result['VSwitches'].append(k.to_map() if k else None)
+        if self.version_lifecycle is not None:
+            result['VersionLifecycle'] = self.version_lifecycle
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         return result
@@ -4127,6 +4137,8 @@ class ListClustersResponseBodyDataRecords(TeaModel):
             for k in m.get('VSwitches'):
                 temp_model = ListClustersResponseBodyDataRecordsVSwitches()
                 self.v_switches.append(temp_model.from_map(k))
+        if m.get('VersionLifecycle') is not None:
+            self.version_lifecycle = m.get('VersionLifecycle')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         return self

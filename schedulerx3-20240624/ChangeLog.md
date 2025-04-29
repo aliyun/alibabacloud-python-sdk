@@ -1,3 +1,8 @@
+2025-04-29 Version: 1.0.3
+- Update API GetCluster: add response parameters Body.Data.VersionLifecycle.
+- Update API ListClusters: add response parameters Body.Data.Records.$.VersionLifecycle.
+
+
 2025-03-25 Version: 1.0.2
 - Update API CreateJob: add param ChildJobId.
 - Update API CreateJob: update param NoticeContacts.
