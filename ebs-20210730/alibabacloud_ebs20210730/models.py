@@ -6839,6 +6839,7 @@ class DescribeLensMonitorDisksResponseBodyDiskInfos(TeaModel):
         performance_level: str = None,
         provisioned_iops: int = None,
         region_id: str = None,
+        sharing_enabled: str = None,
         size: int = None,
         tags: List[DescribeLensMonitorDisksResponseBodyDiskInfosTags] = None,
         zone_id: str = None,
@@ -6892,6 +6893,7 @@ class DescribeLensMonitorDisksResponseBodyDiskInfos(TeaModel):
         self.provisioned_iops = provisioned_iops
         # The region ID of the disk.
         self.region_id = region_id
+        self.sharing_enabled = sharing_enabled
         # The size of the disk. Unit: GiB.
         self.size = size
         # Tags of the disk.
@@ -6935,6 +6937,8 @@ class DescribeLensMonitorDisksResponseBodyDiskInfos(TeaModel):
             result['ProvisionedIops'] = self.provisioned_iops
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.sharing_enabled is not None:
+            result['SharingEnabled'] = self.sharing_enabled
         if self.size is not None:
             result['Size'] = self.size
         result['Tags'] = []
@@ -6971,6 +6975,8 @@ class DescribeLensMonitorDisksResponseBodyDiskInfos(TeaModel):
             self.provisioned_iops = m.get('ProvisionedIops')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('SharingEnabled') is not None:
+            self.sharing_enabled = m.get('SharingEnabled')
         if m.get('Size') is not None:
             self.size = m.get('Size')
         self.tags = []
@@ -7165,6 +7171,7 @@ class DescribeMetricDataRequest(TeaModel):
     def __init__(
         self,
         aggre_ops: str = None,
+        aggre_over_line_ops: str = None,
         dimensions: str = None,
         end_time: str = None,
         metric_name: str = None,
@@ -7180,6 +7187,7 @@ class DescribeMetricDataRequest(TeaModel):
         # - MAX
         # - MIN
         self.aggre_ops = aggre_ops
+        self.aggre_over_line_ops = aggre_over_line_ops
         # The dimension map in the JSON format. A dimension is a key-value pair. Valid dimension key: diskId.
         self.dimensions = dimensions
         # The end of the time range to query. The specified time must be later than the current time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -7217,6 +7225,8 @@ class DescribeMetricDataRequest(TeaModel):
         result = dict()
         if self.aggre_ops is not None:
             result['AggreOps'] = self.aggre_ops
+        if self.aggre_over_line_ops is not None:
+            result['AggreOverLineOps'] = self.aggre_over_line_ops
         if self.dimensions is not None:
             result['Dimensions'] = self.dimensions
         if self.end_time is not None:
@@ -7235,6 +7245,8 @@ class DescribeMetricDataRequest(TeaModel):
         m = m or dict()
         if m.get('AggreOps') is not None:
             self.aggre_ops = m.get('AggreOps')
+        if m.get('AggreOverLineOps') is not None:
+            self.aggre_over_line_ops = m.get('AggreOverLineOps')
         if m.get('Dimensions') is not None:
             self.dimensions = m.get('Dimensions')
         if m.get('EndTime') is not None:
@@ -7291,6 +7303,7 @@ class DescribeMetricDataResponseBody(TeaModel):
         data_list: List[DescribeMetricDataResponseBodyDataList] = None,
         request_id: str = None,
         total_count: int = None,
+        warnings: List[str] = None,
     ):
         # The disk monitoring data.
         self.data_list = data_list
@@ -7298,6 +7311,7 @@ class DescribeMetricDataResponseBody(TeaModel):
         self.request_id = request_id
         # The total number of data entries queried.
         self.total_count = total_count
+        self.warnings = warnings
 
     def validate(self):
         if self.data_list:
@@ -7319,6 +7333,8 @@ class DescribeMetricDataResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
+        if self.warnings is not None:
+            result['Warnings'] = self.warnings
         return result
 
     def from_map(self, m: dict = None):
@@ -7332,6 +7348,8 @@ class DescribeMetricDataResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
+        if m.get('Warnings') is not None:
+            self.warnings = m.get('Warnings')
         return self
 
 

@@ -84,16 +84,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.AddDiskReplicaPairResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.AddDiskReplicaPairResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.AddDiskReplicaPairResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def add_disk_replica_pair_with_options_async(
         self,
@@ -138,16 +132,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.AddDiskReplicaPairResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.AddDiskReplicaPairResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.AddDiskReplicaPairResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def add_disk_replica_pair(
         self,
@@ -215,16 +203,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.ApplyLensServiceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.ApplyLensServiceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.ApplyLensServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def apply_lens_service_with_options_async(
         self,
@@ -252,16 +234,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.ApplyLensServiceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.ApplyLensServiceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.ApplyLensServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def apply_lens_service(self) -> ebs_20210730_models.ApplyLensServiceResponse:
         """
@@ -323,16 +299,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.BindEnterpriseSnapshotPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.BindEnterpriseSnapshotPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.BindEnterpriseSnapshotPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def bind_enterprise_snapshot_policy_with_options_async(
         self,
@@ -370,16 +340,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.BindEnterpriseSnapshotPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.BindEnterpriseSnapshotPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.BindEnterpriseSnapshotPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def bind_enterprise_snapshot_policy(
         self,
@@ -433,16 +397,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.CancelLensServiceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.CancelLensServiceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.CancelLensServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def cancel_lens_service_with_options_async(
         self,
@@ -470,16 +428,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.CancelLensServiceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.CancelLensServiceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.CancelLensServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def cancel_lens_service(self) -> ebs_20210730_models.CancelLensServiceResponse:
         """
@@ -543,16 +495,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.ChangeResourceGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.ChangeResourceGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.ChangeResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def change_resource_group_with_options_async(
         self,
@@ -592,16 +538,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.ChangeResourceGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.ChangeResourceGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.ChangeResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def change_resource_group(
         self,
@@ -663,16 +603,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.ClearPairDrillResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.ClearPairDrillResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.ClearPairDrillResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def clear_pair_drill_with_options_async(
         self,
@@ -708,16 +642,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.ClearPairDrillResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.ClearPairDrillResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.ClearPairDrillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def clear_pair_drill(
         self,
@@ -779,16 +707,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.ClearReplicaGroupDrillResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.ClearReplicaGroupDrillResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.ClearReplicaGroupDrillResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def clear_replica_group_drill_with_options_async(
         self,
@@ -824,16 +746,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.ClearReplicaGroupDrillResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.ClearReplicaGroupDrillResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.ClearReplicaGroupDrillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def clear_replica_group_drill(
         self,
@@ -915,16 +831,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.CreateDedicatedBlockStorageClusterResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.CreateDedicatedBlockStorageClusterResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.CreateDedicatedBlockStorageClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_dedicated_block_storage_cluster_with_options_async(
         self,
@@ -980,16 +890,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.CreateDedicatedBlockStorageClusterResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.CreateDedicatedBlockStorageClusterResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.CreateDedicatedBlockStorageClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_dedicated_block_storage_cluster(
         self,
@@ -1087,16 +991,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.CreateDiskReplicaGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.CreateDiskReplicaGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.CreateDiskReplicaGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_disk_replica_group_with_options_async(
         self,
@@ -1156,16 +1054,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.CreateDiskReplicaGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.CreateDiskReplicaGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.CreateDiskReplicaGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_disk_replica_group(
         self,
@@ -1276,16 +1168,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.CreateDiskReplicaPairResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.CreateDiskReplicaPairResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.CreateDiskReplicaPairResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_disk_replica_pair_with_options_async(
         self,
@@ -1354,16 +1240,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.CreateDiskReplicaPairResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.CreateDiskReplicaPairResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.CreateDiskReplicaPairResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_disk_replica_pair(
         self,
@@ -1471,16 +1351,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.CreateEnterpriseSnapshotPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.CreateEnterpriseSnapshotPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.CreateEnterpriseSnapshotPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_enterprise_snapshot_policy_with_options_async(
         self,
@@ -1548,16 +1422,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.CreateEnterpriseSnapshotPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.CreateEnterpriseSnapshotPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.CreateEnterpriseSnapshotPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_enterprise_snapshot_policy(
         self,
@@ -1624,16 +1492,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DeleteDiskReplicaGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DeleteDiskReplicaGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DeleteDiskReplicaGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_disk_replica_group_with_options_async(
         self,
@@ -1674,16 +1536,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DeleteDiskReplicaGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DeleteDiskReplicaGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DeleteDiskReplicaGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_disk_replica_group(
         self,
@@ -1760,16 +1616,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DeleteDiskReplicaPairResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DeleteDiskReplicaPairResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DeleteDiskReplicaPairResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_disk_replica_pair_with_options_async(
         self,
@@ -1810,16 +1660,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DeleteDiskReplicaPairResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DeleteDiskReplicaPairResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DeleteDiskReplicaPairResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_disk_replica_pair(
         self,
@@ -1891,16 +1735,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DeleteEnterpriseSnapshotPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DeleteEnterpriseSnapshotPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DeleteEnterpriseSnapshotPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_enterprise_snapshot_policy_with_options_async(
         self,
@@ -1936,16 +1774,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DeleteEnterpriseSnapshotPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DeleteEnterpriseSnapshotPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DeleteEnterpriseSnapshotPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_enterprise_snapshot_policy(
         self,
@@ -2016,16 +1848,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeDedicatedBlockStorageClusterDisksResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeDedicatedBlockStorageClusterDisksResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeDedicatedBlockStorageClusterDisksResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_dedicated_block_storage_cluster_disks_with_options_async(
         self,
@@ -2070,16 +1896,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeDedicatedBlockStorageClusterDisksResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeDedicatedBlockStorageClusterDisksResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeDedicatedBlockStorageClusterDisksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_dedicated_block_storage_cluster_disks(
         self,
@@ -2180,16 +2000,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeDedicatedBlockStorageClustersResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeDedicatedBlockStorageClustersResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeDedicatedBlockStorageClustersResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_dedicated_block_storage_clusters_with_options_async(
         self,
@@ -2250,16 +2064,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeDedicatedBlockStorageClustersResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeDedicatedBlockStorageClustersResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeDedicatedBlockStorageClustersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_dedicated_block_storage_clusters(
         self,
@@ -2344,16 +2152,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeDiskEventsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeDiskEventsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeDiskEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_disk_events_with_options_async(
         self,
@@ -2402,16 +2204,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeDiskEventsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeDiskEventsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeDiskEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_disk_events(
         self,
@@ -2490,16 +2286,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeDiskMonitorDataResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeDiskMonitorDataResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeDiskMonitorDataResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_disk_monitor_data_with_options_async(
         self,
@@ -2546,16 +2336,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeDiskMonitorDataResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeDiskMonitorDataResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeDiskMonitorDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_disk_monitor_data(
         self,
@@ -2638,16 +2422,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeDiskMonitorDataListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeDiskMonitorDataListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeDiskMonitorDataListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_disk_monitor_data_list_with_options_async(
         self,
@@ -2694,16 +2472,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeDiskMonitorDataListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeDiskMonitorDataListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeDiskMonitorDataListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_disk_monitor_data_list(
         self,
@@ -2789,16 +2561,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeDiskReplicaGroupsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeDiskReplicaGroupsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeDiskReplicaGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_disk_replica_groups_with_options_async(
         self,
@@ -2852,16 +2618,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeDiskReplicaGroupsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeDiskReplicaGroupsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeDiskReplicaGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_disk_replica_groups(
         self,
@@ -2929,16 +2689,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeDiskReplicaPairProgressResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeDiskReplicaPairProgressResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeDiskReplicaPairProgressResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_disk_replica_pair_progress_with_options_async(
         self,
@@ -2972,16 +2726,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeDiskReplicaPairProgressResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeDiskReplicaPairProgressResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeDiskReplicaPairProgressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_disk_replica_pair_progress(
         self,
@@ -3064,16 +2812,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeDiskReplicaPairsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeDiskReplicaPairsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeDiskReplicaPairsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_disk_replica_pairs_with_options_async(
         self,
@@ -3130,16 +2872,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeDiskReplicaPairsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeDiskReplicaPairsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeDiskReplicaPairsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_disk_replica_pairs(
         self,
@@ -3225,16 +2961,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeEnterpriseSnapshotPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeEnterpriseSnapshotPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeEnterpriseSnapshotPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_enterprise_snapshot_policy_with_options_async(
         self,
@@ -3284,16 +3014,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeEnterpriseSnapshotPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeEnterpriseSnapshotPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeEnterpriseSnapshotPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_enterprise_snapshot_policy(
         self,
@@ -3369,16 +3093,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeEventsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeEventsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_events_with_options_async(
         self,
@@ -3428,16 +3146,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeEventsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeEventsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_events(
         self,
@@ -3507,16 +3219,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeLensMonitorDisksResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeLensMonitorDisksResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeLensMonitorDisksResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_lens_monitor_disks_with_options_async(
         self,
@@ -3560,16 +3266,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeLensMonitorDisksResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeLensMonitorDisksResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeLensMonitorDisksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_lens_monitor_disks(
         self,
@@ -3623,16 +3323,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeLensServiceStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeLensServiceStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeLensServiceStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_lens_service_status_with_options_async(
         self,
@@ -3660,16 +3354,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeLensServiceStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeLensServiceStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeLensServiceStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_lens_service_status(self) -> ebs_20210730_models.DescribeLensServiceStatusResponse:
         """
@@ -3711,6 +3399,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.aggre_ops):
             query['AggreOps'] = request.aggre_ops
+        if not UtilClient.is_unset(request.aggre_over_line_ops):
+            query['AggreOverLineOps'] = request.aggre_over_line_ops
         if not UtilClient.is_unset(request.dimensions):
             query['Dimensions'] = request.dimensions
         if not UtilClient.is_unset(request.end_time):
@@ -3737,16 +3427,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeMetricDataResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeMetricDataResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeMetricDataResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_metric_data_with_options_async(
         self,
@@ -3764,6 +3448,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.aggre_ops):
             query['AggreOps'] = request.aggre_ops
+        if not UtilClient.is_unset(request.aggre_over_line_ops):
+            query['AggreOverLineOps'] = request.aggre_over_line_ops
         if not UtilClient.is_unset(request.dimensions):
             query['Dimensions'] = request.dimensions
         if not UtilClient.is_unset(request.end_time):
@@ -3790,16 +3476,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeMetricDataResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeMetricDataResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeMetricDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_metric_data(
         self,
@@ -3869,16 +3549,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribePairDrillsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribePairDrillsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribePairDrillsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_pair_drills_with_options_async(
         self,
@@ -3922,16 +3596,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribePairDrillsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribePairDrillsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribePairDrillsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_pair_drills(
         self,
@@ -3993,16 +3661,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeRegionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeRegionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_regions_with_options_async(
         self,
@@ -4038,16 +3700,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeRegionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeRegionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_regions(
         self,
@@ -4117,16 +3773,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeReplicaGroupDrillsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeReplicaGroupDrillsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeReplicaGroupDrillsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_replica_group_drills_with_options_async(
         self,
@@ -4170,16 +3820,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeReplicaGroupDrillsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeReplicaGroupDrillsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeReplicaGroupDrillsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_replica_group_drills(
         self,
@@ -4243,16 +3887,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeSolutionInstanceConfigurationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeSolutionInstanceConfigurationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeSolutionInstanceConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_solution_instance_configuration_with_options_async(
         self,
@@ -4290,16 +3928,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeSolutionInstanceConfigurationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeSolutionInstanceConfigurationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeSolutionInstanceConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_solution_instance_configuration(
         self,
@@ -4366,16 +3998,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeUserTagKeysResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeUserTagKeysResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeUserTagKeysResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_user_tag_keys_with_options_async(
         self,
@@ -4416,16 +4042,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeUserTagKeysResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeUserTagKeysResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeUserTagKeysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_user_tag_keys(
         self,
@@ -4502,16 +4122,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeUserTagValuesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeUserTagValuesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeUserTagValuesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_user_tag_values_with_options_async(
         self,
@@ -4556,16 +4170,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeUserTagValuesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.DescribeUserTagValuesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeUserTagValuesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_user_tag_values(
         self,
@@ -4643,16 +4251,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.FailoverDiskReplicaGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.FailoverDiskReplicaGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.FailoverDiskReplicaGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def failover_disk_replica_group_with_options_async(
         self,
@@ -4694,16 +4296,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.FailoverDiskReplicaGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.FailoverDiskReplicaGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.FailoverDiskReplicaGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def failover_disk_replica_group(
         self,
@@ -4782,16 +4378,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.FailoverDiskReplicaPairResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.FailoverDiskReplicaPairResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.FailoverDiskReplicaPairResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def failover_disk_replica_pair_with_options_async(
         self,
@@ -4832,16 +4422,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.FailoverDiskReplicaPairResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.FailoverDiskReplicaPairResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.FailoverDiskReplicaPairResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def failover_disk_replica_pair(
         self,
@@ -4917,16 +4501,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.GetReportResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.GetReportResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.GetReportResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_report_with_options_async(
         self,
@@ -4966,16 +4544,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.GetReportResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.GetReportResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.GetReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_report(
         self,
@@ -5045,16 +4617,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.ListReportsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.ListReportsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.ListReportsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_reports_with_options_async(
         self,
@@ -5098,16 +4664,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.ListReportsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.ListReportsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.ListReportsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_reports(
         self,
@@ -5180,16 +4740,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.ListTagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.ListTagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_tag_resources_with_options_async(
         self,
@@ -5236,16 +4790,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.ListTagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.ListTagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_tag_resources(
         self,
@@ -5323,16 +4871,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.ModifyDedicatedBlockStorageClusterAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.ModifyDedicatedBlockStorageClusterAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.ModifyDedicatedBlockStorageClusterAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_dedicated_block_storage_cluster_attribute_with_options_async(
         self,
@@ -5374,16 +4916,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.ModifyDedicatedBlockStorageClusterAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.ModifyDedicatedBlockStorageClusterAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.ModifyDedicatedBlockStorageClusterAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_dedicated_block_storage_cluster_attribute(
         self,
@@ -5461,16 +4997,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.ModifyDiskReplicaGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.ModifyDiskReplicaGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.ModifyDiskReplicaGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_disk_replica_group_with_options_async(
         self,
@@ -5518,16 +5048,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.ModifyDiskReplicaGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.ModifyDiskReplicaGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.ModifyDiskReplicaGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_disk_replica_group(
         self,
@@ -5609,16 +5133,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.ModifyDiskReplicaPairResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.ModifyDiskReplicaPairResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.ModifyDiskReplicaPairResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_disk_replica_pair_with_options_async(
         self,
@@ -5666,16 +5184,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.ModifyDiskReplicaPairResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.ModifyDiskReplicaPairResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.ModifyDiskReplicaPairResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_disk_replica_pair(
         self,
@@ -5747,16 +5259,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.QueryDedicatedBlockStorageClusterDiskThroughputStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.QueryDedicatedBlockStorageClusterDiskThroughputStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.QueryDedicatedBlockStorageClusterDiskThroughputStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def query_dedicated_block_storage_cluster_disk_throughput_status_with_options_async(
         self,
@@ -5794,16 +5300,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.QueryDedicatedBlockStorageClusterDiskThroughputStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.QueryDedicatedBlockStorageClusterDiskThroughputStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.QueryDedicatedBlockStorageClusterDiskThroughputStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def query_dedicated_block_storage_cluster_disk_throughput_status(
         self,
@@ -5875,16 +5375,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.QueryDedicatedBlockStorageClusterInventoryDataResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.QueryDedicatedBlockStorageClusterInventoryDataResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.QueryDedicatedBlockStorageClusterInventoryDataResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def query_dedicated_block_storage_cluster_inventory_data_with_options_async(
         self,
@@ -5930,16 +5424,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.QueryDedicatedBlockStorageClusterInventoryDataResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.QueryDedicatedBlockStorageClusterInventoryDataResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.QueryDedicatedBlockStorageClusterInventoryDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def query_dedicated_block_storage_cluster_inventory_data(
         self,
@@ -6011,16 +5499,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.RemoveDiskReplicaPairResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.RemoveDiskReplicaPairResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.RemoveDiskReplicaPairResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def remove_disk_replica_pair_with_options_async(
         self,
@@ -6062,16 +5544,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.RemoveDiskReplicaPairResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.RemoveDiskReplicaPairResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.RemoveDiskReplicaPairResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def remove_disk_replica_pair(
         self,
@@ -6150,16 +5626,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.ReprotectDiskReplicaGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.ReprotectDiskReplicaGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.ReprotectDiskReplicaGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def reprotect_disk_replica_group_with_options_async(
         self,
@@ -6204,16 +5674,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.ReprotectDiskReplicaGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.ReprotectDiskReplicaGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.ReprotectDiskReplicaGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def reprotect_disk_replica_group(
         self,
@@ -6298,16 +5762,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.ReprotectDiskReplicaPairResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.ReprotectDiskReplicaPairResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.ReprotectDiskReplicaPairResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def reprotect_disk_replica_pair_with_options_async(
         self,
@@ -6352,16 +5810,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.ReprotectDiskReplicaPairResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.ReprotectDiskReplicaPairResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.ReprotectDiskReplicaPairResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def reprotect_disk_replica_pair(
         self,
@@ -6441,16 +5893,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.SetDedicatedBlockStorageClusterDiskThroughputResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.SetDedicatedBlockStorageClusterDiskThroughputResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.SetDedicatedBlockStorageClusterDiskThroughputResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def set_dedicated_block_storage_cluster_disk_throughput_with_options_async(
         self,
@@ -6490,16 +5936,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.SetDedicatedBlockStorageClusterDiskThroughputResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.SetDedicatedBlockStorageClusterDiskThroughputResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.SetDedicatedBlockStorageClusterDiskThroughputResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def set_dedicated_block_storage_cluster_disk_throughput(
         self,
@@ -6569,16 +6009,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.StartDiskReplicaGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.StartDiskReplicaGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.StartDiskReplicaGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def start_disk_replica_group_with_options_async(
         self,
@@ -6622,16 +6056,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.StartDiskReplicaGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.StartDiskReplicaGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.StartDiskReplicaGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def start_disk_replica_group(
         self,
@@ -6712,16 +6140,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.StartDiskReplicaPairResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.StartDiskReplicaPairResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.StartDiskReplicaPairResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def start_disk_replica_pair_with_options_async(
         self,
@@ -6764,16 +6186,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.StartDiskReplicaPairResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.StartDiskReplicaPairResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.StartDiskReplicaPairResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def start_disk_replica_pair(
         self,
@@ -6847,16 +6263,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.StartPairDrillResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.StartPairDrillResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.StartPairDrillResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def start_pair_drill_with_options_async(
         self,
@@ -6894,16 +6304,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.StartPairDrillResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.StartPairDrillResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.StartPairDrillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def start_pair_drill(
         self,
@@ -6971,16 +6375,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.StartReplicaGroupDrillResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.StartReplicaGroupDrillResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.StartReplicaGroupDrillResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def start_replica_group_drill_with_options_async(
         self,
@@ -7018,16 +6416,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.StartReplicaGroupDrillResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.StartReplicaGroupDrillResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.StartReplicaGroupDrillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def start_replica_group_drill(
         self,
@@ -7098,16 +6490,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.StopDiskReplicaGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.StopDiskReplicaGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.StopDiskReplicaGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def stop_disk_replica_group_with_options_async(
         self,
@@ -7148,16 +6534,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.StopDiskReplicaGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.StopDiskReplicaGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.StopDiskReplicaGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def stop_disk_replica_group(
         self,
@@ -7233,16 +6613,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.StopDiskReplicaPairResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.StopDiskReplicaPairResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.StopDiskReplicaPairResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def stop_disk_replica_pair_with_options_async(
         self,
@@ -7282,16 +6656,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.StopDiskReplicaPairResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.StopDiskReplicaPairResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.StopDiskReplicaPairResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def stop_disk_replica_pair(
         self,
@@ -7367,16 +6735,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.TagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.TagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def tag_resources_with_options_async(
         self,
@@ -7418,16 +6780,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.TagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.TagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def tag_resources(
         self,
@@ -7495,16 +6851,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.UnbindEnterpriseSnapshotPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.UnbindEnterpriseSnapshotPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.UnbindEnterpriseSnapshotPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def unbind_enterprise_snapshot_policy_with_options_async(
         self,
@@ -7542,16 +6892,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.UnbindEnterpriseSnapshotPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.UnbindEnterpriseSnapshotPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.UnbindEnterpriseSnapshotPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def unbind_enterprise_snapshot_policy(
         self,
@@ -7622,16 +6966,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.UntagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.UntagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def untag_resources_with_options_async(
         self,
@@ -7676,16 +7014,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.UntagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.UntagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.UntagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def untag_resources(
         self,
@@ -7781,16 +7113,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.UpdateEnterpriseSnapshotPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.UpdateEnterpriseSnapshotPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.UpdateEnterpriseSnapshotPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_enterprise_snapshot_policy_with_options_async(
         self,
@@ -7854,16 +7180,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.UpdateEnterpriseSnapshotPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.UpdateEnterpriseSnapshotPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.UpdateEnterpriseSnapshotPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_enterprise_snapshot_policy(
         self,
@@ -7929,16 +7249,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.UpdateSolutionInstanceAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.UpdateSolutionInstanceAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.UpdateSolutionInstanceAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_solution_instance_attribute_with_options_async(
         self,
@@ -7978,16 +7292,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ebs_20210730_models.UpdateSolutionInstanceAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ebs_20210730_models.UpdateSolutionInstanceAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ebs_20210730_models.UpdateSolutionInstanceAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_solution_instance_attribute(
         self,

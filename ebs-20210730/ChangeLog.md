@@ -1,3 +1,9 @@
+2025-04-29 Version: 3.1.1
+- Update API DescribeLensMonitorDisks: add response parameters Body.DiskInfos.$.SharingEnabled.
+- Update API DescribeMetricData: add request parameters AggreOverLineOps.
+- Update API DescribeMetricData: add response parameters Body.Warnings.
+
+
 2025-02-21 Version: 3.1.0
 - Support API DescribeUserTagKeys.
 - Support API DescribeUserTagValues.
