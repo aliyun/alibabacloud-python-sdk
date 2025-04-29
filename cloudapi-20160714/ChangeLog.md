@@ -1,3 +1,7 @@
+2025-04-29 Version: 4.8.3
+- Update API DescribeApi: add response parameters Body.ServiceConfig.FunctionComputeConfig.FcVersion.
+
+
 2025-04-11 Version: 4.8.2
 - Update API SetDomainCertificate: add request parameters SslOcspCacheEnable.
 

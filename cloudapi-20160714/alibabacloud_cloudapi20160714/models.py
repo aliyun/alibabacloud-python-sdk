@@ -9782,6 +9782,7 @@ class DescribeApiResponseBodyServiceConfigFunctionComputeConfig(TeaModel):
         content_type_value: str = None,
         fc_base_url: str = None,
         fc_type: str = None,
+        fc_version: str = None,
         function_name: str = None,
         method: str = None,
         only_business_path: bool = None,
@@ -9804,6 +9805,7 @@ class DescribeApiResponseBodyServiceConfigFunctionComputeConfig(TeaModel):
         self.fc_base_url = fc_base_url
         # The type of the Function Compute instance.
         self.fc_type = fc_type
+        self.fc_version = fc_version
         # The function name defined in Function Compute.
         self.function_name = function_name
         # The request method.
@@ -9842,6 +9844,8 @@ class DescribeApiResponseBodyServiceConfigFunctionComputeConfig(TeaModel):
             result['FcBaseUrl'] = self.fc_base_url
         if self.fc_type is not None:
             result['FcType'] = self.fc_type
+        if self.fc_version is not None:
+            result['FcVersion'] = self.fc_version
         if self.function_name is not None:
             result['FunctionName'] = self.function_name
         if self.method is not None:
@@ -9872,6 +9876,8 @@ class DescribeApiResponseBodyServiceConfigFunctionComputeConfig(TeaModel):
             self.fc_base_url = m.get('FcBaseUrl')
         if m.get('FcType') is not None:
             self.fc_type = m.get('FcType')
+        if m.get('FcVersion') is not None:
+            self.fc_version = m.get('FcVersion')
         if m.get('FunctionName') is not None:
             self.function_name = m.get('FunctionName')
         if m.get('Method') is not None:
