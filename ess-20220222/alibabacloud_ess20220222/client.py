@@ -3444,6 +3444,8 @@ class Client(OpenApiClient):
             query['AdjustmentValue'] = request.adjustment_value
         if not UtilClient.is_unset(request.alarm_dimensions):
             query['AlarmDimensions'] = request.alarm_dimensions
+        if not UtilClient.is_unset(request.alarm_options):
+            query['AlarmOptions'] = request.alarm_options
         if not UtilClient.is_unset(request.cooldown):
             query['Cooldown'] = request.cooldown
         if not UtilClient.is_unset(request.disable_scale_in):
@@ -3544,6 +3546,8 @@ class Client(OpenApiClient):
             query['AdjustmentValue'] = request.adjustment_value
         if not UtilClient.is_unset(request.alarm_dimensions):
             query['AlarmDimensions'] = request.alarm_dimensions
+        if not UtilClient.is_unset(request.alarm_options):
+            query['AlarmOptions'] = request.alarm_options
         if not UtilClient.is_unset(request.cooldown):
             query['Cooldown'] = request.cooldown
         if not UtilClient.is_unset(request.disable_scale_in):
@@ -7073,7 +7077,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeScalingGroupDiagnoseDetailsResponse:
         """
-        @summary Queries the latest diagnosis details for a scaling group. Diagnosis details are only returned in the presence of exceptions.
+        @summary DescribeScalingGroupDiagnoseDetails
         
         @param request: DescribeScalingGroupDiagnoseDetailsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7106,7 +7110,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeScalingGroupDiagnoseDetailsResponse:
         """
-        @summary Queries the latest diagnosis details for a scaling group. Diagnosis details are only returned in the presence of exceptions.
+        @summary DescribeScalingGroupDiagnoseDetails
         
         @param request: DescribeScalingGroupDiagnoseDetailsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7138,7 +7142,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeScalingGroupDiagnoseDetailsRequest,
     ) -> ess_20220222_models.DescribeScalingGroupDiagnoseDetailsResponse:
         """
-        @summary Queries the latest diagnosis details for a scaling group. Diagnosis details are only returned in the presence of exceptions.
+        @summary DescribeScalingGroupDiagnoseDetails
         
         @param request: DescribeScalingGroupDiagnoseDetailsRequest
         @return: DescribeScalingGroupDiagnoseDetailsResponse
@@ -7151,7 +7155,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeScalingGroupDiagnoseDetailsRequest,
     ) -> ess_20220222_models.DescribeScalingGroupDiagnoseDetailsResponse:
         """
-        @summary Queries the latest diagnosis details for a scaling group. Diagnosis details are only returned in the presence of exceptions.
+        @summary DescribeScalingGroupDiagnoseDetails
         
         @param request: DescribeScalingGroupDiagnoseDetailsRequest
         @return: DescribeScalingGroupDiagnoseDetailsResponse
@@ -11595,6 +11599,8 @@ class Client(OpenApiClient):
             query['AdjustmentValue'] = request.adjustment_value
         if not UtilClient.is_unset(request.alarm_dimensions):
             query['AlarmDimensions'] = request.alarm_dimensions
+        if not UtilClient.is_unset(request.alarm_options):
+            query['AlarmOptions'] = request.alarm_options
         if not UtilClient.is_unset(request.cooldown):
             query['Cooldown'] = request.cooldown
         if not UtilClient.is_unset(request.disable_scale_in):
@@ -11680,6 +11686,8 @@ class Client(OpenApiClient):
             query['AdjustmentValue'] = request.adjustment_value
         if not UtilClient.is_unset(request.alarm_dimensions):
             query['AlarmDimensions'] = request.alarm_dimensions
+        if not UtilClient.is_unset(request.alarm_options):
+            query['AlarmOptions'] = request.alarm_options
         if not UtilClient.is_unset(request.cooldown):
             query['Cooldown'] = request.cooldown
         if not UtilClient.is_unset(request.disable_scale_in):

@@ -9582,6 +9582,33 @@ class CreateScalingRuleRequestAlarmDimensions(TeaModel):
         return self
 
 
+class CreateScalingRuleRequestAlarmOptions(TeaModel):
+    def __init__(
+        self,
+        period: int = None,
+    ):
+        self.period = period
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.period is not None:
+            result['Period'] = self.period
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        return self
+
+
 class CreateScalingRuleRequestHybridMetricsDimensions(TeaModel):
     def __init__(
         self,
@@ -9735,6 +9762,7 @@ class CreateScalingRuleRequest(TeaModel):
         adjustment_type: str = None,
         adjustment_value: int = None,
         alarm_dimensions: List[CreateScalingRuleRequestAlarmDimensions] = None,
+        alarm_options: CreateScalingRuleRequestAlarmOptions = None,
         cooldown: int = None,
         disable_scale_in: bool = None,
         estimated_instance_warmup: int = None,
@@ -9774,6 +9802,7 @@ class CreateScalingRuleRequest(TeaModel):
         self.adjustment_value = adjustment_value
         # The metric dimensions. This parameter is applicable to target tracking scaling rules. If your predefined metric requires extra dimensions, you must specify this parameter. For example, if you use LoadBalancerRealServerAverageQps as your predefined metric, you must use this parameter to specify the rulePool dimension.
         self.alarm_dimensions = alarm_dimensions
+        self.alarm_options = alarm_options
         # The cooldown time of the scaling rule. This parameter is available only if you set the ScalingRuleType parameter to SimpleScalingRule. Valid values: 0 to 86400. Unit: seconds.
         # 
         # By default, this parameter is left empty.
@@ -9894,6 +9923,8 @@ class CreateScalingRuleRequest(TeaModel):
             for k in self.alarm_dimensions:
                 if k:
                     k.validate()
+        if self.alarm_options:
+            self.alarm_options.validate()
         if self.hybrid_metrics:
             for k in self.hybrid_metrics:
                 if k:
@@ -9917,6 +9948,8 @@ class CreateScalingRuleRequest(TeaModel):
         if self.alarm_dimensions is not None:
             for k in self.alarm_dimensions:
                 result['AlarmDimensions'].append(k.to_map() if k else None)
+        if self.alarm_options is not None:
+            result['AlarmOptions'] = self.alarm_options.to_map()
         if self.cooldown is not None:
             result['Cooldown'] = self.cooldown
         if self.disable_scale_in is not None:
@@ -9982,6 +10015,9 @@ class CreateScalingRuleRequest(TeaModel):
             for k in m.get('AlarmDimensions'):
                 temp_model = CreateScalingRuleRequestAlarmDimensions()
                 self.alarm_dimensions.append(temp_model.from_map(k))
+        if m.get('AlarmOptions') is not None:
+            temp_model = CreateScalingRuleRequestAlarmOptions()
+            self.alarm_options = temp_model.from_map(m['AlarmOptions'])
         if m.get('Cooldown') is not None:
             self.cooldown = m.get('Cooldown')
         if m.get('DisableScaleIn') is not None:
@@ -10153,10 +10189,10 @@ class CreateScheduledTaskRequest(TeaModel):
         # 
         # Default value: 600.
         self.launch_expiration_time = launch_expiration_time
-        # The point in time at which the scheduled task is triggered. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. The time must be in UTC. You cannot enter a point in time that is later than 90 days from the point in time at which the scheduled task is created.
+        # The point in time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard. The time must be in UTC. You cannot trigger a scheduled task more than 90 days after its creation.
         # 
-        # *   If you specify the `RecurrenceType` parameter, the scheduled task is repeatedly executed at the point in time that is specified by the LaunchTime parameter.
-        # *   If you do not specify the `RecurrenceType` parameter, the task is executed only once at the point in time that is specified by the LaunchTime parameter.
+        # *   If you specify `RecurrenceType`, the scheduled task is repeatedly triggered at the point in time that is specified by LaunchTime.
+        # *   If you do not specify `RecurrenceType`, the scheduled task is triggered only once at the time point that is specified by LaunchTime.
         self.launch_time = launch_time
         # The maximum number of instances in the scaling group if you specify the ScalingGroupId parameter.
         self.max_value = max_value
@@ -17067,9 +17103,25 @@ class DescribeElasticStrengthResponseBodyResourcePoolsInventoryHealth(TeaModel):
         hot_score: int = None,
         supply_score: int = None,
     ):
+        # The adequacy score.
+        # 
+        # Valid values: 0 to 3.
         self.adequacy_score = adequacy_score
+        # The inventory health score.
+        # 
+        # *   A score between 5 and 6 indicates a sufficient inventory.
+        # *   A score between 1 and 4 indicates that there is no guarantee of a sufficient inventory. Select a reservation as necessary.
+        # *   A score between -3 and 0 indicates that the inventory is sufficient, and an alert is triggered. Select another instance type.
+        # 
+        # Calculation formula: `HealthScore` = `AdequacyScore` + `SupplyScore` - `HotScore`.
         self.health_score = health_score
+        # The popularity score.
+        # 
+        # Valid values: 0 to 3.
         self.hot_score = hot_score
+        # The replenishment capability score.
+        # 
+        # Valid values: 0 to 3.
         self.supply_score = supply_score
 
     def validate(self):
@@ -17120,9 +17172,14 @@ class DescribeElasticStrengthResponseBodyResourcePools(TeaModel):
         self.code = code
         # The instance type of the resource pool.
         self.instance_type = instance_type
+        # The inventory health.
         self.inventory_health = inventory_health
         # The error message returned when the scaling strength is the weakest.
         self.msg = msg
+        # Indicates whether the resource pool is available. Valid values:
+        # 
+        # *   Available
+        # *   Unavailable (If a constraint is not provided, the instance type is not deployed, or the instance type is out of stock, the resource pool becomes unavailable.)
         self.status = status
         # The scaling strength of the resource pool.
         self.strength = strength
@@ -17190,6 +17247,11 @@ class DescribeElasticStrengthResponseBody(TeaModel):
         resource_pools: List[DescribeElasticStrengthResponseBodyResourcePools] = None,
         total_strength: float = None,
     ):
+        # The scaling strength level of the scaling group. Valid values:
+        # 
+        # *   Strong
+        # *   Medium
+        # *   Weak
         self.elastic_strength = elastic_strength
         # The scaling strength models.
         self.elastic_strength_models = elastic_strength_models
@@ -22540,8 +22602,12 @@ class DescribeScalingGroupDiagnoseDetailsRequest(TeaModel):
         region_id: str = None,
         scaling_group_id: str = None,
     ):
+        # The ID of the region to which the scaling group belongs.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the scaling group.
+        # 
         # This parameter is required.
         self.scaling_group_id = scaling_group_id
 
@@ -22577,9 +22643,46 @@ class DescribeScalingGroupDiagnoseDetailsResponseBodyDetails(TeaModel):
         resource_id: str = None,
         status: str = None,
     ):
+        # Item type for diagnostics. Possible values:
+        # - AccountArrearage: Checks if the user\\"s account is in arrears.
+        # - AccountNotEnoughBalance: Checks the account balance.
+        # - ElasticStrength: Checks the inventory health of instance types corresponding to the scaling group configuration.
+        # - VSwitch: Checks if the switch is available, for example, whether it has been deleted.
+        # - SecurityGroup: Checks if the security group is available, for example, whether it has been deleted.
+        # - KeyPair: Checks if the key pair is available, for example, whether it has been deleted.
+        # - SlbBackendServerQuota: Checks if the number of ECS instances mounted to the default SLB group and virtual server group exceeds the quota.
+        # - AlbBackendServerQuota: Checks if the number of ECS instances mounted to the ALB group exceeds the quota.
+        # - NlbBackendServerQuota: Checks if the number of ECS instances mounted to the NLB group exceeds the quota.
         self.diagnose_type = diagnose_type
+        # Error code of the diagnostic item. Possible values:
+        # 
+        # - VSwitchIdNotFound: The VSwitch does not exist.
+        # 
+        # - SecurityGroupNotFound: The security group does not exist.
+        # 
+        # - KeyPairNotFound: The key pair does not exist.
+        # 
+        # - SlbBackendServerQuotaExceeded: The number of ECS instances mounted on the backend of the SLB default group and virtual server group exceeds the quota.
+        # 
+        # - AlbBackendServerQuotaExceeded: The number of ECS instances mounted on the backend of the ALB group exceeds the quota.
+        # 
+        # - NlbBackendServerQuotaExceeded: The number of ECS instances mounted on the backend of the NLB group exceeds the quota.
+        # 
+        # - AccountArrearage: The account is in arrears.
+        # 
+        # - AccountNotEnoughBalance: The account balance is insufficient.
+        # 
+        # - ElasticStrengthAlert: The inventory health is poor.
         self.error_code = error_code
+        # The resource ID corresponding to the diagnostic result.
         self.resource_id = resource_id
+        # Status of the diagnostic item. Possible values:
+        # 
+        # - Normal: The diagnostic result is normal.
+        # 
+        # - Warn: The diagnostic result is a warning.
+        # 
+        # - Critical: The diagnostic result is critical.
         self.status = status
 
     def validate(self):
@@ -22620,8 +22723,9 @@ class DescribeScalingGroupDiagnoseDetailsResponseBody(TeaModel):
         details: List[DescribeScalingGroupDiagnoseDetailsResponseBodyDetails] = None,
         request_id: str = None,
     ):
+        # Details of the diagnostic report.
         self.details = details
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -24648,6 +24752,7 @@ class DescribeScalingRulesResponseBodyScalingRulesAlarms(TeaModel):
         evaluation_count: int = None,
         metric_name: str = None,
         metric_type: str = None,
+        period: int = None,
         statistics: str = None,
         threshold: float = None,
     ):
@@ -24673,6 +24778,7 @@ class DescribeScalingRulesResponseBodyScalingRulesAlarms(TeaModel):
         # *   system: system metrics
         # *   custom: custom metrics
         self.metric_type = metric_type
+        self.period = period
         # The statistical method of the event-triggered task that is associated with the scaling rule. Valid values:
         # 
         # *   Average
@@ -24710,6 +24816,8 @@ class DescribeScalingRulesResponseBodyScalingRulesAlarms(TeaModel):
             result['MetricName'] = self.metric_name
         if self.metric_type is not None:
             result['MetricType'] = self.metric_type
+        if self.period is not None:
+            result['Period'] = self.period
         if self.statistics is not None:
             result['Statistics'] = self.statistics
         if self.threshold is not None:
@@ -24735,6 +24843,8 @@ class DescribeScalingRulesResponseBodyScalingRulesAlarms(TeaModel):
             self.metric_name = m.get('MetricName')
         if m.get('MetricType') is not None:
             self.metric_type = m.get('MetricType')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
         if m.get('Statistics') is not None:
             self.statistics = m.get('Statistics')
         if m.get('Threshold') is not None:
@@ -35647,6 +35757,33 @@ class ModifyScalingRuleRequestAlarmDimensions(TeaModel):
         return self
 
 
+class ModifyScalingRuleRequestAlarmOptions(TeaModel):
+    def __init__(
+        self,
+        period: int = None,
+    ):
+        self.period = period
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.period is not None:
+            result['Period'] = self.period
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        return self
+
+
 class ModifyScalingRuleRequestHybridMetricsDimensions(TeaModel):
     def __init__(
         self,
@@ -35800,6 +35937,7 @@ class ModifyScalingRuleRequest(TeaModel):
         adjustment_type: str = None,
         adjustment_value: int = None,
         alarm_dimensions: List[ModifyScalingRuleRequestAlarmDimensions] = None,
+        alarm_options: ModifyScalingRuleRequestAlarmOptions = None,
         cooldown: int = None,
         disable_scale_in: bool = None,
         estimated_instance_warmup: int = None,
@@ -35838,6 +35976,7 @@ class ModifyScalingRuleRequest(TeaModel):
         self.adjustment_value = adjustment_value
         # The dimensions. This parameter is applicable to target tracking scaling rules. You can specify this parameter if your predefined metric requires extra dimensions. For example, if you predefine the LoadBalancerRealServerAverageQps metric, you must use this parameter to specify the rulePool dimension.
         self.alarm_dimensions = alarm_dimensions
+        self.alarm_options = alarm_options
         # The cooldown time of the scaling rule. This parameter is available only if you set the ScalingRuleType parameter to SimpleScalingRule.
         # 
         # Valid values: 0 to 86400. Unit: seconds.
@@ -35928,6 +36067,8 @@ class ModifyScalingRuleRequest(TeaModel):
             for k in self.alarm_dimensions:
                 if k:
                     k.validate()
+        if self.alarm_options:
+            self.alarm_options.validate()
         if self.hybrid_metrics:
             for k in self.hybrid_metrics:
                 if k:
@@ -35951,6 +36092,8 @@ class ModifyScalingRuleRequest(TeaModel):
         if self.alarm_dimensions is not None:
             for k in self.alarm_dimensions:
                 result['AlarmDimensions'].append(k.to_map() if k else None)
+        if self.alarm_options is not None:
+            result['AlarmOptions'] = self.alarm_options.to_map()
         if self.cooldown is not None:
             result['Cooldown'] = self.cooldown
         if self.disable_scale_in is not None:
@@ -36014,6 +36157,9 @@ class ModifyScalingRuleRequest(TeaModel):
             for k in m.get('AlarmDimensions'):
                 temp_model = ModifyScalingRuleRequestAlarmDimensions()
                 self.alarm_dimensions.append(temp_model.from_map(k))
+        if m.get('AlarmOptions') is not None:
+            temp_model = ModifyScalingRuleRequestAlarmOptions()
+            self.alarm_options = temp_model.from_map(m['AlarmOptions'])
         if m.get('Cooldown') is not None:
             self.cooldown = m.get('Cooldown')
         if m.get('DisableScaleIn') is not None:
@@ -36680,7 +36826,12 @@ class RemoveInstancesRequestLifecycleHookContext(TeaModel):
         disable_lifecycle_hook: bool = None,
         ignored_lifecycle_hook_ids: List[str] = None,
     ):
+        # Specifies whether to disable the lifecycle hook. Valid Values:
+        # 
+        # *   true
+        # *   false
         self.disable_lifecycle_hook = disable_lifecycle_hook
+        # The IDs of the lifecycle hooks that you want to disable.
         self.ignored_lifecycle_hook_ids = ignored_lifecycle_hook_ids
 
     def validate(self):
@@ -36744,6 +36895,7 @@ class RemoveInstancesRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_ids = instance_ids
+        # The context of the lifecycle hook.
         self.lifecycle_hook_context = lifecycle_hook_context
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -36894,6 +37046,7 @@ class RemoveInstancesShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_ids = instance_ids
+        # The context of the lifecycle hook.
         self.lifecycle_hook_context_shrink = lifecycle_hook_context_shrink
         self.owner_account = owner_account
         self.owner_id = owner_id
