@@ -1,3 +1,13 @@
+2025-04-29 Version: 7.0.2
+- Update API CopyImage: add request parameters ClientToken.
+- Update API CopyImage: add request parameters DryRun.
+- Update API CreateImage: add request parameters DryRun.
+- Update API DeleteImage: add request parameters DryRun.
+- Update API ExportImage: add request parameters DryRun.
+- Update API ModifyImageAttribute: add request parameters DryRun.
+- Update API ModifyImageSharePermission: add request parameters DryRun.
+
+
 2025-04-21 Version: 7.0.1
 - Update API CreatePrefixList: add request parameters ResourceGroupId.
 - Update API CreatePrefixList: add request parameters Tag.

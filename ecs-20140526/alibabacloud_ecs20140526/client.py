@@ -4413,12 +4413,16 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.destination_description):
             query['DestinationDescription'] = request.destination_description
         if not UtilClient.is_unset(request.destination_image_name):
             query['DestinationImageName'] = request.destination_image_name
         if not UtilClient.is_unset(request.destination_region_id):
             query['DestinationRegionId'] = request.destination_region_id
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.encrypt_algorithm):
             query['EncryptAlgorithm'] = request.encrypt_algorithm
         if not UtilClient.is_unset(request.encrypted):
@@ -4483,12 +4487,16 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.destination_description):
             query['DestinationDescription'] = request.destination_description
         if not UtilClient.is_unset(request.destination_image_name):
             query['DestinationImageName'] = request.destination_image_name
         if not UtilClient.is_unset(request.destination_region_id):
             query['DestinationRegionId'] = request.destination_region_id
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.encrypt_algorithm):
             query['EncryptAlgorithm'] = request.encrypt_algorithm
         if not UtilClient.is_unset(request.encrypted):
@@ -5944,7 +5952,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateDeploymentSetResponse:
         """
-        @summary Creates a deployment set in a region. Before you call this operation, you can specify parameters, such as OnUnableToRedeployFailedInstance, DeploymentSetName, and Strategy, in the request.
+        @summary Creates a deployment set in a region.
         
         @param request: CreateDeploymentSetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6003,7 +6011,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateDeploymentSetResponse:
         """
-        @summary Creates a deployment set in a region. Before you call this operation, you can specify parameters, such as OnUnableToRedeployFailedInstance, DeploymentSetName, and Strategy, in the request.
+        @summary Creates a deployment set in a region.
         
         @param request: CreateDeploymentSetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6061,7 +6069,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateDeploymentSetRequest,
     ) -> ecs_20140526_models.CreateDeploymentSetResponse:
         """
-        @summary Creates a deployment set in a region. Before you call this operation, you can specify parameters, such as OnUnableToRedeployFailedInstance, DeploymentSetName, and Strategy, in the request.
+        @summary Creates a deployment set in a region.
         
         @param request: CreateDeploymentSetRequest
         @return: CreateDeploymentSetResponse
@@ -6074,7 +6082,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateDeploymentSetRequest,
     ) -> ecs_20140526_models.CreateDeploymentSetResponse:
         """
-        @summary Creates a deployment set in a region. Before you call this operation, you can specify parameters, such as OnUnableToRedeployFailedInstance, DeploymentSetName, and Strategy, in the request.
+        @summary Creates a deployment set in a region.
         
         @param request: CreateDeploymentSetRequest
         @return: CreateDeploymentSetResponse
@@ -7146,19 +7154,22 @@ class Client(OpenApiClient):
         """
         @summary Creates a custom image. After you call this operation to create a custom image, you can call the RunInstances operation to create Elastic Compute Service (ECS) instances from the custom image or call the ReplaceSystemDisk operation to replace system disks by using the custom image.
         
-        @description Before you call this operation, read [Overview](https://help.aliyun.com/document_detail/172789.html).
-        Take note of the following items:
-        If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query information about an ECS instance, the instance is locked for security reasons, and you cannot create a custom image from the instance.
-        To optimize the image, we recommend that you specify `DetectionStrategy` when you create a custom image. For more information, see [Overview](https://help.aliyun.com/document_detail/439819.html).
-        You can use the created custom image only if the image is in the Available (`Available`) state.
-        You can call the CreateImage operation to create a custom image by using one of the following methods. The following request parameters are sorted by priority from high to low: `InstanceId` > `DiskDeviceMapping` > `SnapshotId`. If your request contains two or more of the preceding parameters, the custom image is created based on the parameter that has a higher priority.
-        **Create a custom image from an ECS instance**. You need to only specify the instance ID by using `InstanceId`. The instance must be in the Running (`Running`) or Stopped (`Stopped`) state. After you call the CreateImage operation, a snapshot is created for each disk of the instance. When you create a custom image from a running ECS instance, cache data may not be written to disks. In this case, the data of the custom image may be slightly different from the data of the instance. Before you create a custom image from the instance, we recommend that you stop the instance by calling the [StopInstances](https://help.aliyun.com/document_detail/155372.html) operation.
-        **Create a custom image from a system disk snapshot of an ECS instance**. You need to only specify the ID of the system disk snapshot by using `SnapshotId`. The specified system disk snapshot must be created after July 15, 2013.
-        **Create a custom image from multiple snapshots**. You must specify data mappings between the snapshots and the disks to be created by using the parameters that start with `DiskDeviceMapping`. Take note of the following items:
-        You can specify only one snapshot to create the system disk in the custom image. The device name of the system disk must be /dev/xvda.
-        You can specify up to 16 snapshots to create data disks in the custom image. The device names of the data disks must be unique and range from /dev/xvdb to /dev/xvdz in alphabetical order.
-        You can leave `SnapshotId` empty. In this case, an empty data disk with the specified size is created.
-        The specified snapshot must be created after July 15, 2013.
+        @description ### [](#)Considerations
+        This operation is an asynchronous operation. After a request to create a custom image is sent, an image ID is returned but the creation of the custom image is in progress. You can call the [DescribeImage](https://help.aliyun.com/document_detail/2679797.html) operation to query the status of the custom image. When the status of the custom image is `Available` in the response, the image is created and available. For more information, see [Overview of custom images](https://help.aliyun.com/document_detail/172789.html).
+        If the response contains {"OperationLocks": {"LockReason" : "security"}} when you query information about an ECS instance, the instance is locked for security reasons, and you cannot create a custom image from the instance.
+        To optimize the image, we recommend that you specify `DetectionStrategy` when you create a custom image. For information about the image check feature, see [Overview](https://help.aliyun.com/document_detail/439819.html).
+        You can call the CreateImage operation to create a custom image by using one of the following methods. The following request parameters are prioritized in descending order: InstanceId, DiskDeviceMapping, and SnapshotId. If your request contains two or more of these parameters, the custom image is created based on the parameter that has a higher priority.
+        **Create a custom image from an instance**. Specify an instance ID (`InstanceId`).
+        The ECS instance must be in the Running (`Running`) or Stopped (`Stopped`) state.
+        After the CreateImage operation is called, a snapshot is created for each cloud disk of the instance.
+        *\
+        *Note** When you create a custom image from a running ECS instance, cache data may not be written to disks. In this case, the data of the custom image may be slightly different from the data of the instance. Before you create a custom image from the instance, we recommend that you stop the instance by calling the StopInstancesoperation.
+        **Create a custom image from a snapshot. The specified snapshot must be created after July 15, 2013.**\
+        **Create a custom image from a system disk snapshot of an ECS instance**. You need to only specify the ID of the system disk snapshot by using `SnapshotId`.
+        **Create a custom image from a system disk snapshot and data disk snapshots of an ECS instance**. You need to establish data association between the disks by specifying `DiskDeviceMapping`.
+        You can specify only one snapshot to create the system disk in the custom image.
+        You can specify up to 16 snapshots to use to create data disks in the custom image. If you do not specify `DiskDeviceMapping.N.SnapshotId`, an empty data disk with the default capacity is created.
+        >  When an ECS instance is released, the system disk of the instance is converted to a pay-as-you-go data disk. You cannot create a custom image from the snapshot of this disk. You must create a custom image from the snapshot of this disk before the instance is released.
         
         @param request: CreateImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7178,6 +7189,8 @@ class Client(OpenApiClient):
             query['DetectionStrategy'] = request.detection_strategy
         if not UtilClient.is_unset(request.disk_device_mapping):
             query['DiskDeviceMapping'] = request.disk_device_mapping
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.features):
             query['Features'] = request.features
         if not UtilClient.is_unset(request.image_family):
@@ -7233,19 +7246,22 @@ class Client(OpenApiClient):
         """
         @summary Creates a custom image. After you call this operation to create a custom image, you can call the RunInstances operation to create Elastic Compute Service (ECS) instances from the custom image or call the ReplaceSystemDisk operation to replace system disks by using the custom image.
         
-        @description Before you call this operation, read [Overview](https://help.aliyun.com/document_detail/172789.html).
-        Take note of the following items:
-        If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query information about an ECS instance, the instance is locked for security reasons, and you cannot create a custom image from the instance.
-        To optimize the image, we recommend that you specify `DetectionStrategy` when you create a custom image. For more information, see [Overview](https://help.aliyun.com/document_detail/439819.html).
-        You can use the created custom image only if the image is in the Available (`Available`) state.
-        You can call the CreateImage operation to create a custom image by using one of the following methods. The following request parameters are sorted by priority from high to low: `InstanceId` > `DiskDeviceMapping` > `SnapshotId`. If your request contains two or more of the preceding parameters, the custom image is created based on the parameter that has a higher priority.
-        **Create a custom image from an ECS instance**. You need to only specify the instance ID by using `InstanceId`. The instance must be in the Running (`Running`) or Stopped (`Stopped`) state. After you call the CreateImage operation, a snapshot is created for each disk of the instance. When you create a custom image from a running ECS instance, cache data may not be written to disks. In this case, the data of the custom image may be slightly different from the data of the instance. Before you create a custom image from the instance, we recommend that you stop the instance by calling the [StopInstances](https://help.aliyun.com/document_detail/155372.html) operation.
-        **Create a custom image from a system disk snapshot of an ECS instance**. You need to only specify the ID of the system disk snapshot by using `SnapshotId`. The specified system disk snapshot must be created after July 15, 2013.
-        **Create a custom image from multiple snapshots**. You must specify data mappings between the snapshots and the disks to be created by using the parameters that start with `DiskDeviceMapping`. Take note of the following items:
-        You can specify only one snapshot to create the system disk in the custom image. The device name of the system disk must be /dev/xvda.
-        You can specify up to 16 snapshots to create data disks in the custom image. The device names of the data disks must be unique and range from /dev/xvdb to /dev/xvdz in alphabetical order.
-        You can leave `SnapshotId` empty. In this case, an empty data disk with the specified size is created.
-        The specified snapshot must be created after July 15, 2013.
+        @description ### [](#)Considerations
+        This operation is an asynchronous operation. After a request to create a custom image is sent, an image ID is returned but the creation of the custom image is in progress. You can call the [DescribeImage](https://help.aliyun.com/document_detail/2679797.html) operation to query the status of the custom image. When the status of the custom image is `Available` in the response, the image is created and available. For more information, see [Overview of custom images](https://help.aliyun.com/document_detail/172789.html).
+        If the response contains {"OperationLocks": {"LockReason" : "security"}} when you query information about an ECS instance, the instance is locked for security reasons, and you cannot create a custom image from the instance.
+        To optimize the image, we recommend that you specify `DetectionStrategy` when you create a custom image. For information about the image check feature, see [Overview](https://help.aliyun.com/document_detail/439819.html).
+        You can call the CreateImage operation to create a custom image by using one of the following methods. The following request parameters are prioritized in descending order: InstanceId, DiskDeviceMapping, and SnapshotId. If your request contains two or more of these parameters, the custom image is created based on the parameter that has a higher priority.
+        **Create a custom image from an instance**. Specify an instance ID (`InstanceId`).
+        The ECS instance must be in the Running (`Running`) or Stopped (`Stopped`) state.
+        After the CreateImage operation is called, a snapshot is created for each cloud disk of the instance.
+        *\
+        *Note** When you create a custom image from a running ECS instance, cache data may not be written to disks. In this case, the data of the custom image may be slightly different from the data of the instance. Before you create a custom image from the instance, we recommend that you stop the instance by calling the StopInstancesoperation.
+        **Create a custom image from a snapshot. The specified snapshot must be created after July 15, 2013.**\
+        **Create a custom image from a system disk snapshot of an ECS instance**. You need to only specify the ID of the system disk snapshot by using `SnapshotId`.
+        **Create a custom image from a system disk snapshot and data disk snapshots of an ECS instance**. You need to establish data association between the disks by specifying `DiskDeviceMapping`.
+        You can specify only one snapshot to create the system disk in the custom image.
+        You can specify up to 16 snapshots to use to create data disks in the custom image. If you do not specify `DiskDeviceMapping.N.SnapshotId`, an empty data disk with the default capacity is created.
+        >  When an ECS instance is released, the system disk of the instance is converted to a pay-as-you-go data disk. You cannot create a custom image from the snapshot of this disk. You must create a custom image from the snapshot of this disk before the instance is released.
         
         @param request: CreateImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7265,6 +7281,8 @@ class Client(OpenApiClient):
             query['DetectionStrategy'] = request.detection_strategy
         if not UtilClient.is_unset(request.disk_device_mapping):
             query['DiskDeviceMapping'] = request.disk_device_mapping
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.features):
             query['Features'] = request.features
         if not UtilClient.is_unset(request.image_family):
@@ -7319,19 +7337,22 @@ class Client(OpenApiClient):
         """
         @summary Creates a custom image. After you call this operation to create a custom image, you can call the RunInstances operation to create Elastic Compute Service (ECS) instances from the custom image or call the ReplaceSystemDisk operation to replace system disks by using the custom image.
         
-        @description Before you call this operation, read [Overview](https://help.aliyun.com/document_detail/172789.html).
-        Take note of the following items:
-        If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query information about an ECS instance, the instance is locked for security reasons, and you cannot create a custom image from the instance.
-        To optimize the image, we recommend that you specify `DetectionStrategy` when you create a custom image. For more information, see [Overview](https://help.aliyun.com/document_detail/439819.html).
-        You can use the created custom image only if the image is in the Available (`Available`) state.
-        You can call the CreateImage operation to create a custom image by using one of the following methods. The following request parameters are sorted by priority from high to low: `InstanceId` > `DiskDeviceMapping` > `SnapshotId`. If your request contains two or more of the preceding parameters, the custom image is created based on the parameter that has a higher priority.
-        **Create a custom image from an ECS instance**. You need to only specify the instance ID by using `InstanceId`. The instance must be in the Running (`Running`) or Stopped (`Stopped`) state. After you call the CreateImage operation, a snapshot is created for each disk of the instance. When you create a custom image from a running ECS instance, cache data may not be written to disks. In this case, the data of the custom image may be slightly different from the data of the instance. Before you create a custom image from the instance, we recommend that you stop the instance by calling the [StopInstances](https://help.aliyun.com/document_detail/155372.html) operation.
-        **Create a custom image from a system disk snapshot of an ECS instance**. You need to only specify the ID of the system disk snapshot by using `SnapshotId`. The specified system disk snapshot must be created after July 15, 2013.
-        **Create a custom image from multiple snapshots**. You must specify data mappings between the snapshots and the disks to be created by using the parameters that start with `DiskDeviceMapping`. Take note of the following items:
-        You can specify only one snapshot to create the system disk in the custom image. The device name of the system disk must be /dev/xvda.
-        You can specify up to 16 snapshots to create data disks in the custom image. The device names of the data disks must be unique and range from /dev/xvdb to /dev/xvdz in alphabetical order.
-        You can leave `SnapshotId` empty. In this case, an empty data disk with the specified size is created.
-        The specified snapshot must be created after July 15, 2013.
+        @description ### [](#)Considerations
+        This operation is an asynchronous operation. After a request to create a custom image is sent, an image ID is returned but the creation of the custom image is in progress. You can call the [DescribeImage](https://help.aliyun.com/document_detail/2679797.html) operation to query the status of the custom image. When the status of the custom image is `Available` in the response, the image is created and available. For more information, see [Overview of custom images](https://help.aliyun.com/document_detail/172789.html).
+        If the response contains {"OperationLocks": {"LockReason" : "security"}} when you query information about an ECS instance, the instance is locked for security reasons, and you cannot create a custom image from the instance.
+        To optimize the image, we recommend that you specify `DetectionStrategy` when you create a custom image. For information about the image check feature, see [Overview](https://help.aliyun.com/document_detail/439819.html).
+        You can call the CreateImage operation to create a custom image by using one of the following methods. The following request parameters are prioritized in descending order: InstanceId, DiskDeviceMapping, and SnapshotId. If your request contains two or more of these parameters, the custom image is created based on the parameter that has a higher priority.
+        **Create a custom image from an instance**. Specify an instance ID (`InstanceId`).
+        The ECS instance must be in the Running (`Running`) or Stopped (`Stopped`) state.
+        After the CreateImage operation is called, a snapshot is created for each cloud disk of the instance.
+        *\
+        *Note** When you create a custom image from a running ECS instance, cache data may not be written to disks. In this case, the data of the custom image may be slightly different from the data of the instance. Before you create a custom image from the instance, we recommend that you stop the instance by calling the StopInstancesoperation.
+        **Create a custom image from a snapshot. The specified snapshot must be created after July 15, 2013.**\
+        **Create a custom image from a system disk snapshot of an ECS instance**. You need to only specify the ID of the system disk snapshot by using `SnapshotId`.
+        **Create a custom image from a system disk snapshot and data disk snapshots of an ECS instance**. You need to establish data association between the disks by specifying `DiskDeviceMapping`.
+        You can specify only one snapshot to create the system disk in the custom image.
+        You can specify up to 16 snapshots to use to create data disks in the custom image. If you do not specify `DiskDeviceMapping.N.SnapshotId`, an empty data disk with the default capacity is created.
+        >  When an ECS instance is released, the system disk of the instance is converted to a pay-as-you-go data disk. You cannot create a custom image from the snapshot of this disk. You must create a custom image from the snapshot of this disk before the instance is released.
         
         @param request: CreateImageRequest
         @return: CreateImageResponse
@@ -7346,19 +7367,22 @@ class Client(OpenApiClient):
         """
         @summary Creates a custom image. After you call this operation to create a custom image, you can call the RunInstances operation to create Elastic Compute Service (ECS) instances from the custom image or call the ReplaceSystemDisk operation to replace system disks by using the custom image.
         
-        @description Before you call this operation, read [Overview](https://help.aliyun.com/document_detail/172789.html).
-        Take note of the following items:
-        If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query information about an ECS instance, the instance is locked for security reasons, and you cannot create a custom image from the instance.
-        To optimize the image, we recommend that you specify `DetectionStrategy` when you create a custom image. For more information, see [Overview](https://help.aliyun.com/document_detail/439819.html).
-        You can use the created custom image only if the image is in the Available (`Available`) state.
-        You can call the CreateImage operation to create a custom image by using one of the following methods. The following request parameters are sorted by priority from high to low: `InstanceId` > `DiskDeviceMapping` > `SnapshotId`. If your request contains two or more of the preceding parameters, the custom image is created based on the parameter that has a higher priority.
-        **Create a custom image from an ECS instance**. You need to only specify the instance ID by using `InstanceId`. The instance must be in the Running (`Running`) or Stopped (`Stopped`) state. After you call the CreateImage operation, a snapshot is created for each disk of the instance. When you create a custom image from a running ECS instance, cache data may not be written to disks. In this case, the data of the custom image may be slightly different from the data of the instance. Before you create a custom image from the instance, we recommend that you stop the instance by calling the [StopInstances](https://help.aliyun.com/document_detail/155372.html) operation.
-        **Create a custom image from a system disk snapshot of an ECS instance**. You need to only specify the ID of the system disk snapshot by using `SnapshotId`. The specified system disk snapshot must be created after July 15, 2013.
-        **Create a custom image from multiple snapshots**. You must specify data mappings between the snapshots and the disks to be created by using the parameters that start with `DiskDeviceMapping`. Take note of the following items:
-        You can specify only one snapshot to create the system disk in the custom image. The device name of the system disk must be /dev/xvda.
-        You can specify up to 16 snapshots to create data disks in the custom image. The device names of the data disks must be unique and range from /dev/xvdb to /dev/xvdz in alphabetical order.
-        You can leave `SnapshotId` empty. In this case, an empty data disk with the specified size is created.
-        The specified snapshot must be created after July 15, 2013.
+        @description ### [](#)Considerations
+        This operation is an asynchronous operation. After a request to create a custom image is sent, an image ID is returned but the creation of the custom image is in progress. You can call the [DescribeImage](https://help.aliyun.com/document_detail/2679797.html) operation to query the status of the custom image. When the status of the custom image is `Available` in the response, the image is created and available. For more information, see [Overview of custom images](https://help.aliyun.com/document_detail/172789.html).
+        If the response contains {"OperationLocks": {"LockReason" : "security"}} when you query information about an ECS instance, the instance is locked for security reasons, and you cannot create a custom image from the instance.
+        To optimize the image, we recommend that you specify `DetectionStrategy` when you create a custom image. For information about the image check feature, see [Overview](https://help.aliyun.com/document_detail/439819.html).
+        You can call the CreateImage operation to create a custom image by using one of the following methods. The following request parameters are prioritized in descending order: InstanceId, DiskDeviceMapping, and SnapshotId. If your request contains two or more of these parameters, the custom image is created based on the parameter that has a higher priority.
+        **Create a custom image from an instance**. Specify an instance ID (`InstanceId`).
+        The ECS instance must be in the Running (`Running`) or Stopped (`Stopped`) state.
+        After the CreateImage operation is called, a snapshot is created for each cloud disk of the instance.
+        *\
+        *Note** When you create a custom image from a running ECS instance, cache data may not be written to disks. In this case, the data of the custom image may be slightly different from the data of the instance. Before you create a custom image from the instance, we recommend that you stop the instance by calling the StopInstancesoperation.
+        **Create a custom image from a snapshot. The specified snapshot must be created after July 15, 2013.**\
+        **Create a custom image from a system disk snapshot of an ECS instance**. You need to only specify the ID of the system disk snapshot by using `SnapshotId`.
+        **Create a custom image from a system disk snapshot and data disk snapshots of an ECS instance**. You need to establish data association between the disks by specifying `DiskDeviceMapping`.
+        You can specify only one snapshot to create the system disk in the custom image.
+        You can specify up to 16 snapshots to use to create data disks in the custom image. If you do not specify `DiskDeviceMapping.N.SnapshotId`, an empty data disk with the default capacity is created.
+        >  When an ECS instance is released, the system disk of the instance is converted to a pay-as-you-go data disk. You cannot create a custom image from the snapshot of this disk. You must create a custom image from the snapshot of this disk before the instance is released.
         
         @param request: CreateImageRequest
         @return: CreateImageResponse
@@ -9728,7 +9752,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreatePortRangeListResponse:
         """
-        @summary 创建端口列表
+        @summary Creates a port list. You can associate a port list with resources, such as security groups.
         
         @param request: CreatePortRangeListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9787,7 +9811,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreatePortRangeListResponse:
         """
-        @summary 创建端口列表
+        @summary Creates a port list. You can associate a port list with resources, such as security groups.
         
         @param request: CreatePortRangeListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9845,7 +9869,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreatePortRangeListRequest,
     ) -> ecs_20140526_models.CreatePortRangeListResponse:
         """
-        @summary 创建端口列表
+        @summary Creates a port list. You can associate a port list with resources, such as security groups.
         
         @param request: CreatePortRangeListRequest
         @return: CreatePortRangeListResponse
@@ -9858,7 +9882,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreatePortRangeListRequest,
     ) -> ecs_20140526_models.CreatePortRangeListResponse:
         """
-        @summary 创建端口列表
+        @summary Creates a port list. You can associate a port list with resources, such as security groups.
         
         @param request: CreatePortRangeListRequest
         @return: CreatePortRangeListResponse
@@ -13570,6 +13594,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.force):
             query['Force'] = request.force
         if not UtilClient.is_unset(request.image_id):
@@ -13619,6 +13645,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.force):
             query['Force'] = request.force
         if not UtilClient.is_unset(request.image_id):
@@ -15240,7 +15268,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeletePortRangeListResponse:
         """
-        @summary 删除端口列表
+        @summary Deletes a port list and all entries in the port list.
         
         @param request: DeletePortRangeListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15287,7 +15315,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeletePortRangeListResponse:
         """
-        @summary 删除端口列表
+        @summary Deletes a port list and all entries in the port list.
         
         @param request: DeletePortRangeListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15333,7 +15361,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeletePortRangeListRequest,
     ) -> ecs_20140526_models.DeletePortRangeListResponse:
         """
-        @summary 删除端口列表
+        @summary Deletes a port list and all entries in the port list.
         
         @param request: DeletePortRangeListRequest
         @return: DeletePortRangeListResponse
@@ -15346,7 +15374,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeletePortRangeListRequest,
     ) -> ecs_20140526_models.DeletePortRangeListResponse:
         """
-        @summary 删除端口列表
+        @summary Deletes a port list and all entries in the port list.
         
         @param request: DeletePortRangeListRequest
         @return: DeletePortRangeListResponse
@@ -16020,10 +16048,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteSnapshotGroupResponse:
         """
-        @summary Deletes a snapshot-consistent group.
+        @summary Deletes snapshot-consistent groups.
         
-        @description ## [](#)Usage notes
-        If a disk snapshot that is contained in a snapshot-consistent group has been used to create a custom image, the disk snapshot is retained after the snapshot-consistent group is deleted. Before you can delete the disk snapshot, you must call the [DeleteImage](https://help.aliyun.com/document_detail/25537.html) operation to delete the custom image. Then, you can call the [DeleteSnapshot](https://help.aliyun.com/document_detail/25525.html) operation to delete the disk snapshot.
+        @description If a disk snapshot that is contained in a snapshot-consistent group has been used to create a custom image, the disk snapshot is retained after the snapshot-consistent group is deleted. Before you can delete the disk snapshot, you must call the [DeleteImage](https://help.aliyun.com/document_detail/25537.html) operation to delete the custom image. Then, you can call the [DeleteSnapshot](https://help.aliyun.com/document_detail/25525.html) operation to delete the disk snapshot.
         
         @param request: DeleteSnapshotGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16068,10 +16095,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteSnapshotGroupResponse:
         """
-        @summary Deletes a snapshot-consistent group.
+        @summary Deletes snapshot-consistent groups.
         
-        @description ## [](#)Usage notes
-        If a disk snapshot that is contained in a snapshot-consistent group has been used to create a custom image, the disk snapshot is retained after the snapshot-consistent group is deleted. Before you can delete the disk snapshot, you must call the [DeleteImage](https://help.aliyun.com/document_detail/25537.html) operation to delete the custom image. Then, you can call the [DeleteSnapshot](https://help.aliyun.com/document_detail/25525.html) operation to delete the disk snapshot.
+        @description If a disk snapshot that is contained in a snapshot-consistent group has been used to create a custom image, the disk snapshot is retained after the snapshot-consistent group is deleted. Before you can delete the disk snapshot, you must call the [DeleteImage](https://help.aliyun.com/document_detail/25537.html) operation to delete the custom image. Then, you can call the [DeleteSnapshot](https://help.aliyun.com/document_detail/25525.html) operation to delete the disk snapshot.
         
         @param request: DeleteSnapshotGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16115,10 +16141,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteSnapshotGroupRequest,
     ) -> ecs_20140526_models.DeleteSnapshotGroupResponse:
         """
-        @summary Deletes a snapshot-consistent group.
+        @summary Deletes snapshot-consistent groups.
         
-        @description ## [](#)Usage notes
-        If a disk snapshot that is contained in a snapshot-consistent group has been used to create a custom image, the disk snapshot is retained after the snapshot-consistent group is deleted. Before you can delete the disk snapshot, you must call the [DeleteImage](https://help.aliyun.com/document_detail/25537.html) operation to delete the custom image. Then, you can call the [DeleteSnapshot](https://help.aliyun.com/document_detail/25525.html) operation to delete the disk snapshot.
+        @description If a disk snapshot that is contained in a snapshot-consistent group has been used to create a custom image, the disk snapshot is retained after the snapshot-consistent group is deleted. Before you can delete the disk snapshot, you must call the [DeleteImage](https://help.aliyun.com/document_detail/25537.html) operation to delete the custom image. Then, you can call the [DeleteSnapshot](https://help.aliyun.com/document_detail/25525.html) operation to delete the disk snapshot.
         
         @param request: DeleteSnapshotGroupRequest
         @return: DeleteSnapshotGroupResponse
@@ -16131,10 +16156,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteSnapshotGroupRequest,
     ) -> ecs_20140526_models.DeleteSnapshotGroupResponse:
         """
-        @summary Deletes a snapshot-consistent group.
+        @summary Deletes snapshot-consistent groups.
         
-        @description ## [](#)Usage notes
-        If a disk snapshot that is contained in a snapshot-consistent group has been used to create a custom image, the disk snapshot is retained after the snapshot-consistent group is deleted. Before you can delete the disk snapshot, you must call the [DeleteImage](https://help.aliyun.com/document_detail/25537.html) operation to delete the custom image. Then, you can call the [DeleteSnapshot](https://help.aliyun.com/document_detail/25525.html) operation to delete the disk snapshot.
+        @description If a disk snapshot that is contained in a snapshot-consistent group has been used to create a custom image, the disk snapshot is retained after the snapshot-consistent group is deleted. Before you can delete the disk snapshot, you must call the [DeleteImage](https://help.aliyun.com/document_detail/25537.html) operation to delete the custom image. Then, you can call the [DeleteSnapshot](https://help.aliyun.com/document_detail/25525.html) operation to delete the disk snapshot.
         
         @param request: DeleteSnapshotGroupRequest
         @return: DeleteSnapshotGroupResponse
@@ -16892,7 +16916,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeAccountAttributesResponse:
         """
-        @summary Queries the quotas of Elastic Compute Service (ECS) resources that you can create in an Alibaba Cloud region. For a specific region, you can query the maximum numbers of security groups, elastic network interfaces (ENIs), vCPUs for pay-as-you-go instances, vCPUs for preemptible instances, the capacity quotas for pay-as-you-go disks that you can create and the number of dedicated hosts that you can create. You can also query information such as network types or whether an account has completed real-name verification.
+        @summary Queries the quotas of Elastic Compute Service (ECS) resources that you can create in an Alibaba Cloud region. For a specific region, you can query the maximum numbers of security groups, elastic network interfaces (ENIs), vCPUs for pay-as-you-go instances, vCPUs for preemptible instances, and dedicated hosts that you can create and the capacity quotas for pay-as-you-go disks that you can create. You can also query information such as network types or whether an account has completed real-name verification.
         
         @description After you [create](https://account.alibabacloud.com/register/intl_register.htm) an Alibaba Cloud account, you can create a specific number of ECS instances in different regions within the account. For more information, see [Limits](https://help.aliyun.com/document_detail/25412.html).
         You can apply for a quota increase in the [Quota Center console](https://quotas.console.aliyun.com/products).
@@ -16940,7 +16964,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeAccountAttributesResponse:
         """
-        @summary Queries the quotas of Elastic Compute Service (ECS) resources that you can create in an Alibaba Cloud region. For a specific region, you can query the maximum numbers of security groups, elastic network interfaces (ENIs), vCPUs for pay-as-you-go instances, vCPUs for preemptible instances, the capacity quotas for pay-as-you-go disks that you can create and the number of dedicated hosts that you can create. You can also query information such as network types or whether an account has completed real-name verification.
+        @summary Queries the quotas of Elastic Compute Service (ECS) resources that you can create in an Alibaba Cloud region. For a specific region, you can query the maximum numbers of security groups, elastic network interfaces (ENIs), vCPUs for pay-as-you-go instances, vCPUs for preemptible instances, and dedicated hosts that you can create and the capacity quotas for pay-as-you-go disks that you can create. You can also query information such as network types or whether an account has completed real-name verification.
         
         @description After you [create](https://account.alibabacloud.com/register/intl_register.htm) an Alibaba Cloud account, you can create a specific number of ECS instances in different regions within the account. For more information, see [Limits](https://help.aliyun.com/document_detail/25412.html).
         You can apply for a quota increase in the [Quota Center console](https://quotas.console.aliyun.com/products).
@@ -16987,7 +17011,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeAccountAttributesRequest,
     ) -> ecs_20140526_models.DescribeAccountAttributesResponse:
         """
-        @summary Queries the quotas of Elastic Compute Service (ECS) resources that you can create in an Alibaba Cloud region. For a specific region, you can query the maximum numbers of security groups, elastic network interfaces (ENIs), vCPUs for pay-as-you-go instances, vCPUs for preemptible instances, the capacity quotas for pay-as-you-go disks that you can create and the number of dedicated hosts that you can create. You can also query information such as network types or whether an account has completed real-name verification.
+        @summary Queries the quotas of Elastic Compute Service (ECS) resources that you can create in an Alibaba Cloud region. For a specific region, you can query the maximum numbers of security groups, elastic network interfaces (ENIs), vCPUs for pay-as-you-go instances, vCPUs for preemptible instances, and dedicated hosts that you can create and the capacity quotas for pay-as-you-go disks that you can create. You can also query information such as network types or whether an account has completed real-name verification.
         
         @description After you [create](https://account.alibabacloud.com/register/intl_register.htm) an Alibaba Cloud account, you can create a specific number of ECS instances in different regions within the account. For more information, see [Limits](https://help.aliyun.com/document_detail/25412.html).
         You can apply for a quota increase in the [Quota Center console](https://quotas.console.aliyun.com/products).
@@ -17003,7 +17027,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeAccountAttributesRequest,
     ) -> ecs_20140526_models.DescribeAccountAttributesResponse:
         """
-        @summary Queries the quotas of Elastic Compute Service (ECS) resources that you can create in an Alibaba Cloud region. For a specific region, you can query the maximum numbers of security groups, elastic network interfaces (ENIs), vCPUs for pay-as-you-go instances, vCPUs for preemptible instances, the capacity quotas for pay-as-you-go disks that you can create and the number of dedicated hosts that you can create. You can also query information such as network types or whether an account has completed real-name verification.
+        @summary Queries the quotas of Elastic Compute Service (ECS) resources that you can create in an Alibaba Cloud region. For a specific region, you can query the maximum numbers of security groups, elastic network interfaces (ENIs), vCPUs for pay-as-you-go instances, vCPUs for preemptible instances, and dedicated hosts that you can create and the capacity quotas for pay-as-you-go disks that you can create. You can also query information such as network types or whether an account has completed real-name verification.
         
         @description After you [create](https://account.alibabacloud.com/register/intl_register.htm) an Alibaba Cloud account, you can create a specific number of ECS instances in different regions within the account. For more information, see [Limits](https://help.aliyun.com/document_detail/25412.html).
         You can apply for a quota increase in the [Quota Center console](https://quotas.console.aliyun.com/products).
@@ -17320,7 +17344,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeAutoProvisioningGroupInstancesResponse:
         """
-        @summary Queries instances in an auto provisioning group.
+        @summary Queries information about Elastic Compute Service (ECS) instances in an auto provisioning group.
         
         @param request: DescribeAutoProvisioningGroupInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17369,7 +17393,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeAutoProvisioningGroupInstancesResponse:
         """
-        @summary Queries instances in an auto provisioning group.
+        @summary Queries information about Elastic Compute Service (ECS) instances in an auto provisioning group.
         
         @param request: DescribeAutoProvisioningGroupInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17417,7 +17441,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeAutoProvisioningGroupInstancesRequest,
     ) -> ecs_20140526_models.DescribeAutoProvisioningGroupInstancesResponse:
         """
-        @summary Queries instances in an auto provisioning group.
+        @summary Queries information about Elastic Compute Service (ECS) instances in an auto provisioning group.
         
         @param request: DescribeAutoProvisioningGroupInstancesRequest
         @return: DescribeAutoProvisioningGroupInstancesResponse
@@ -17430,7 +17454,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeAutoProvisioningGroupInstancesRequest,
     ) -> ecs_20140526_models.DescribeAutoProvisioningGroupInstancesResponse:
         """
-        @summary Queries instances in an auto provisioning group.
+        @summary Queries information about Elastic Compute Service (ECS) instances in an auto provisioning group.
         
         @param request: DescribeAutoProvisioningGroupInstancesRequest
         @return: DescribeAutoProvisioningGroupInstancesResponse
@@ -28228,7 +28252,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribePortRangeListAssociationsResponse:
         """
-        @summary 查询指定端口列表已关联的资源信息
+        @summary Queries the resources that are associated with a port list, such as security groups.
         
         @param request: DescribePortRangeListAssociationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28279,7 +28303,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribePortRangeListAssociationsResponse:
         """
-        @summary 查询指定端口列表已关联的资源信息
+        @summary Queries the resources that are associated with a port list, such as security groups.
         
         @param request: DescribePortRangeListAssociationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28329,7 +28353,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribePortRangeListAssociationsRequest,
     ) -> ecs_20140526_models.DescribePortRangeListAssociationsResponse:
         """
-        @summary 查询指定端口列表已关联的资源信息
+        @summary Queries the resources that are associated with a port list, such as security groups.
         
         @param request: DescribePortRangeListAssociationsRequest
         @return: DescribePortRangeListAssociationsResponse
@@ -28342,7 +28366,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribePortRangeListAssociationsRequest,
     ) -> ecs_20140526_models.DescribePortRangeListAssociationsResponse:
         """
-        @summary 查询指定端口列表已关联的资源信息
+        @summary Queries the resources that are associated with a port list, such as security groups.
         
         @param request: DescribePortRangeListAssociationsRequest
         @return: DescribePortRangeListAssociationsResponse
@@ -28356,7 +28380,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribePortRangeListEntriesResponse:
         """
-        @summary 查询指定端口列表的条目
+        @summary Queries the entries of a specified port list.
         
         @param request: DescribePortRangeListEntriesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28403,7 +28427,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribePortRangeListEntriesResponse:
         """
-        @summary 查询指定端口列表的条目
+        @summary Queries the entries of a specified port list.
         
         @param request: DescribePortRangeListEntriesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28449,7 +28473,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribePortRangeListEntriesRequest,
     ) -> ecs_20140526_models.DescribePortRangeListEntriesResponse:
         """
-        @summary 查询指定端口列表的条目
+        @summary Queries the entries of a specified port list.
         
         @param request: DescribePortRangeListEntriesRequest
         @return: DescribePortRangeListEntriesResponse
@@ -28462,7 +28486,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribePortRangeListEntriesRequest,
     ) -> ecs_20140526_models.DescribePortRangeListEntriesResponse:
         """
-        @summary 查询指定端口列表的条目
+        @summary Queries the entries of a specified port list.
         
         @param request: DescribePortRangeListEntriesRequest
         @return: DescribePortRangeListEntriesResponse
@@ -28476,7 +28500,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribePortRangeListsResponse:
         """
-        @summary 查询端口列表
+        @summary Queries the port lists.
         
         @param request: DescribePortRangeListsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28533,7 +28557,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribePortRangeListsResponse:
         """
-        @summary 查询端口列表
+        @summary Queries the port lists.
         
         @param request: DescribePortRangeListsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28589,7 +28613,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribePortRangeListsRequest,
     ) -> ecs_20140526_models.DescribePortRangeListsResponse:
         """
-        @summary 查询端口列表
+        @summary Queries the port lists.
         
         @param request: DescribePortRangeListsRequest
         @return: DescribePortRangeListsResponse
@@ -28602,7 +28626,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribePortRangeListsRequest,
     ) -> ecs_20140526_models.DescribePortRangeListsResponse:
         """
-        @summary 查询端口列表
+        @summary Queries the port lists.
         
         @param request: DescribePortRangeListsRequest
         @return: DescribePortRangeListsResponse
@@ -28616,7 +28640,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribePrefixListAssociationsResponse:
         """
-        @summary Queries the information of resources that are associated with a specific prefix list.
+        @summary Queries information about resources that are associated with a prefix list, such as the resource IDs and types.
         
         @param request: DescribePrefixListAssociationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28667,7 +28691,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribePrefixListAssociationsResponse:
         """
-        @summary Queries the information of resources that are associated with a specific prefix list.
+        @summary Queries information about resources that are associated with a prefix list, such as the resource IDs and types.
         
         @param request: DescribePrefixListAssociationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28717,7 +28741,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribePrefixListAssociationsRequest,
     ) -> ecs_20140526_models.DescribePrefixListAssociationsResponse:
         """
-        @summary Queries the information of resources that are associated with a specific prefix list.
+        @summary Queries information about resources that are associated with a prefix list, such as the resource IDs and types.
         
         @param request: DescribePrefixListAssociationsRequest
         @return: DescribePrefixListAssociationsResponse
@@ -28730,7 +28754,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribePrefixListAssociationsRequest,
     ) -> ecs_20140526_models.DescribePrefixListAssociationsResponse:
         """
-        @summary Queries the information of resources that are associated with a specific prefix list.
+        @summary Queries information about resources that are associated with a prefix list, such as the resource IDs and types.
         
         @param request: DescribePrefixListAssociationsRequest
         @return: DescribePrefixListAssociationsResponse
@@ -36318,6 +36342,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.image_format):
             query['ImageFormat'] = request.image_format
         if not UtilClient.is_unset(request.image_id):
@@ -36411,6 +36437,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.image_format):
             query['ImageFormat'] = request.image_format
         if not UtilClient.is_unset(request.image_id):
@@ -38868,7 +38896,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyAutoProvisioningGroupResponse:
         """
-        @summary Modifies the configurations of an auto-provisioning group.
+        @summary Modifies the configurations of an auto provisioning group.
         
         @description Before you call this operation, take note of the following items:
         If you modify the capacity or capacity-related settings of an auto-provisioning group, the group executes a scheduling task after the group is modified.
@@ -38935,7 +38963,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyAutoProvisioningGroupResponse:
         """
-        @summary Modifies the configurations of an auto-provisioning group.
+        @summary Modifies the configurations of an auto provisioning group.
         
         @description Before you call this operation, take note of the following items:
         If you modify the capacity or capacity-related settings of an auto-provisioning group, the group executes a scheduling task after the group is modified.
@@ -39001,7 +39029,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyAutoProvisioningGroupRequest,
     ) -> ecs_20140526_models.ModifyAutoProvisioningGroupResponse:
         """
-        @summary Modifies the configurations of an auto-provisioning group.
+        @summary Modifies the configurations of an auto provisioning group.
         
         @description Before you call this operation, take note of the following items:
         If you modify the capacity or capacity-related settings of an auto-provisioning group, the group executes a scheduling task after the group is modified.
@@ -39018,7 +39046,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyAutoProvisioningGroupRequest,
     ) -> ecs_20140526_models.ModifyAutoProvisioningGroupResponse:
         """
-        @summary Modifies the configurations of an auto-provisioning group.
+        @summary Modifies the configurations of an auto provisioning group.
         
         @description Before you call this operation, take note of the following items:
         If you modify the capacity or capacity-related settings of an auto-provisioning group, the group executes a scheduling task after the group is modified.
@@ -40472,7 +40500,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyDeploymentSetAttributeResponse:
         """
-        @summary Modifies the name and description of a deployment set. When you call this operation, you can specify parameters, such as DeploymentSetId and DeploymentSetName, in the request.
+        @summary Modifies the name and description of a deployment set.
         
         @param request: ModifyDeploymentSetAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -40521,7 +40549,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyDeploymentSetAttributeResponse:
         """
-        @summary Modifies the name and description of a deployment set. When you call this operation, you can specify parameters, such as DeploymentSetId and DeploymentSetName, in the request.
+        @summary Modifies the name and description of a deployment set.
         
         @param request: ModifyDeploymentSetAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -40569,7 +40597,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyDeploymentSetAttributeRequest,
     ) -> ecs_20140526_models.ModifyDeploymentSetAttributeResponse:
         """
-        @summary Modifies the name and description of a deployment set. When you call this operation, you can specify parameters, such as DeploymentSetId and DeploymentSetName, in the request.
+        @summary Modifies the name and description of a deployment set.
         
         @param request: ModifyDeploymentSetAttributeRequest
         @return: ModifyDeploymentSetAttributeResponse
@@ -40582,7 +40610,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyDeploymentSetAttributeRequest,
     ) -> ecs_20140526_models.ModifyDeploymentSetAttributeResponse:
         """
-        @summary Modifies the name and description of a deployment set. When you call this operation, you can specify parameters, such as DeploymentSetId and DeploymentSetName, in the request.
+        @summary Modifies the name and description of a deployment set.
         
         @param request: ModifyDeploymentSetAttributeRequest
         @return: ModifyDeploymentSetAttributeResponse
@@ -42324,6 +42352,8 @@ class Client(OpenApiClient):
             query['BootMode'] = request.boot_mode
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.features):
             query['Features'] = request.features
         if not UtilClient.is_unset(request.image_family):
@@ -42383,6 +42413,8 @@ class Client(OpenApiClient):
             query['BootMode'] = request.boot_mode
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.features):
             query['Features'] = request.features
         if not UtilClient.is_unset(request.image_family):
@@ -42614,6 +42646,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.add_account):
             query['AddAccount'] = request.add_account
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.is_public):
@@ -42679,6 +42713,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.add_account):
             query['AddAccount'] = request.add_account
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.is_public):
@@ -43384,19 +43420,19 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInstanceChargeTypeResponse:
         """
-        @summary Changes the billing method of one or more Elastic Compute Service (ECS) instances. You can call this operation to change the billing methods of ECS instances between pay-as-you-go and subscription or change the billing method of all disks that are attached to an ECS instance from pay-as-you-go to subscription.
+        @summary Changes the billing method of Elastic Compute Service (ECS) instances in batches.
         
-        @description Before you call this operation, make sure that you are familiar with the billing methods and pricing of Elastic Compute Service (ECS). For more information, see the [Elastic Compute Service](https://www.alibabacloud.com/product/ecs#pricing) product page.
-        Take note of the following items:
-        The instances must be in the **Running** (`Running`) or **Stopped** (`Stopped`) state, and you cannot have overdue payments for them.
-        After you change the billing method, outstanding payments are automatically completed. Make sure that your account balance is sufficient. Otherwise, your order becomes invalid and is canceled. If your account balance is insufficient, you can set `AutoPay` to `false` to generate an unpaid order. Then, you can log on to the [ECS console](https://ecs.console.aliyun.com/) to pay for the order.
+        @description ### [](#)Precautions
+        Before you call this operation, make sure that you are familiar with the [subscription](https://help.aliyun.com/document_detail/56220.html) and [pay-as-you-go](https://help.aliyun.com/document_detail/40653.html) billing methods and [pricing](https://www.alibabacloud.com/product/ecs#pricing) of ECS.
+        The instances must be in the **Running** (`Running`) or **Stopped** (`Stopped`) state, and you have no overdue payments for the instances.
+        After you change the billing method, the payment is automatically completed. Make sure that the balance in your account is sufficient. Otherwise, your order becomes invalid and is canceled. If your account balance is insufficient, you can set `AutoPay` to `false` to generate an unpaid order. Then, you can log on to the [ECS console](https://ecs.console.aliyun.com/) to pay for the order.
+        ### [](#)Considerations
         **Change the billing method from subscription to pay-as-you-go**:
-        Your ECS usage determines whether the billing method of an instance can be changed from subscription to pay-as-you-go.
         After you change the billing method of an instance from subscription to pay-as-you-go, the new billing method remains in effect for the remaining lifecycle of the instance. The price difference is refunded to the payment account that you used. Vouchers that have been redeemed are not refundable.
-        **Refund rule**: You have a quota for the total refund amount each month, and unused balance of this quota is not carried forward into the next month. After you use up the refund quota of the current month, you can change the billing method only in the next month. The refund amount incurred when you change the billing method is calculated based on the following formula: **Number of vCPUs × (Number of remaining days × 24 ± Number of remaining or elapsed hours)**.
+        **Refund rule**: You have a quota for the total refund amount each month, and unused balance of this quota is not carried forward into the next month. After you use up the refund quota of the current month, you can change the billing method only in the next month. The refund amount incurred when you change the billing method is calculated based on the following formula: **Number of vCPUs × (Number of remaining days × 24 ± Number of remaining or elapsed hours)**. For more information, see [Change the billing method of an instance from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/85517.html).
         **Change the billing method from pay-as-you-go to subscription**:
-        You can change the billing method of all data disks that are attached to an instance from pay-as-you-go to subscription.
-        This operation cannot be called for a pay-as-you-go instance that has an automatic release time set.
+        You can change the billing method of all data disks attached to an instance from pay-as-you-go to subscription.
+        This operation cannot be called for a pay-as-you-go instance that has an automatic release time set. For more information, see [Change the billing method of an instance from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/49884.html).
         
         @param request: ModifyInstanceChargeTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -43457,19 +43493,19 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInstanceChargeTypeResponse:
         """
-        @summary Changes the billing method of one or more Elastic Compute Service (ECS) instances. You can call this operation to change the billing methods of ECS instances between pay-as-you-go and subscription or change the billing method of all disks that are attached to an ECS instance from pay-as-you-go to subscription.
+        @summary Changes the billing method of Elastic Compute Service (ECS) instances in batches.
         
-        @description Before you call this operation, make sure that you are familiar with the billing methods and pricing of Elastic Compute Service (ECS). For more information, see the [Elastic Compute Service](https://www.alibabacloud.com/product/ecs#pricing) product page.
-        Take note of the following items:
-        The instances must be in the **Running** (`Running`) or **Stopped** (`Stopped`) state, and you cannot have overdue payments for them.
-        After you change the billing method, outstanding payments are automatically completed. Make sure that your account balance is sufficient. Otherwise, your order becomes invalid and is canceled. If your account balance is insufficient, you can set `AutoPay` to `false` to generate an unpaid order. Then, you can log on to the [ECS console](https://ecs.console.aliyun.com/) to pay for the order.
+        @description ### [](#)Precautions
+        Before you call this operation, make sure that you are familiar with the [subscription](https://help.aliyun.com/document_detail/56220.html) and [pay-as-you-go](https://help.aliyun.com/document_detail/40653.html) billing methods and [pricing](https://www.alibabacloud.com/product/ecs#pricing) of ECS.
+        The instances must be in the **Running** (`Running`) or **Stopped** (`Stopped`) state, and you have no overdue payments for the instances.
+        After you change the billing method, the payment is automatically completed. Make sure that the balance in your account is sufficient. Otherwise, your order becomes invalid and is canceled. If your account balance is insufficient, you can set `AutoPay` to `false` to generate an unpaid order. Then, you can log on to the [ECS console](https://ecs.console.aliyun.com/) to pay for the order.
+        ### [](#)Considerations
         **Change the billing method from subscription to pay-as-you-go**:
-        Your ECS usage determines whether the billing method of an instance can be changed from subscription to pay-as-you-go.
         After you change the billing method of an instance from subscription to pay-as-you-go, the new billing method remains in effect for the remaining lifecycle of the instance. The price difference is refunded to the payment account that you used. Vouchers that have been redeemed are not refundable.
-        **Refund rule**: You have a quota for the total refund amount each month, and unused balance of this quota is not carried forward into the next month. After you use up the refund quota of the current month, you can change the billing method only in the next month. The refund amount incurred when you change the billing method is calculated based on the following formula: **Number of vCPUs × (Number of remaining days × 24 ± Number of remaining or elapsed hours)**.
+        **Refund rule**: You have a quota for the total refund amount each month, and unused balance of this quota is not carried forward into the next month. After you use up the refund quota of the current month, you can change the billing method only in the next month. The refund amount incurred when you change the billing method is calculated based on the following formula: **Number of vCPUs × (Number of remaining days × 24 ± Number of remaining or elapsed hours)**. For more information, see [Change the billing method of an instance from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/85517.html).
         **Change the billing method from pay-as-you-go to subscription**:
-        You can change the billing method of all data disks that are attached to an instance from pay-as-you-go to subscription.
-        This operation cannot be called for a pay-as-you-go instance that has an automatic release time set.
+        You can change the billing method of all data disks attached to an instance from pay-as-you-go to subscription.
+        This operation cannot be called for a pay-as-you-go instance that has an automatic release time set. For more information, see [Change the billing method of an instance from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/49884.html).
         
         @param request: ModifyInstanceChargeTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -43529,19 +43565,19 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyInstanceChargeTypeRequest,
     ) -> ecs_20140526_models.ModifyInstanceChargeTypeResponse:
         """
-        @summary Changes the billing method of one or more Elastic Compute Service (ECS) instances. You can call this operation to change the billing methods of ECS instances between pay-as-you-go and subscription or change the billing method of all disks that are attached to an ECS instance from pay-as-you-go to subscription.
+        @summary Changes the billing method of Elastic Compute Service (ECS) instances in batches.
         
-        @description Before you call this operation, make sure that you are familiar with the billing methods and pricing of Elastic Compute Service (ECS). For more information, see the [Elastic Compute Service](https://www.alibabacloud.com/product/ecs#pricing) product page.
-        Take note of the following items:
-        The instances must be in the **Running** (`Running`) or **Stopped** (`Stopped`) state, and you cannot have overdue payments for them.
-        After you change the billing method, outstanding payments are automatically completed. Make sure that your account balance is sufficient. Otherwise, your order becomes invalid and is canceled. If your account balance is insufficient, you can set `AutoPay` to `false` to generate an unpaid order. Then, you can log on to the [ECS console](https://ecs.console.aliyun.com/) to pay for the order.
+        @description ### [](#)Precautions
+        Before you call this operation, make sure that you are familiar with the [subscription](https://help.aliyun.com/document_detail/56220.html) and [pay-as-you-go](https://help.aliyun.com/document_detail/40653.html) billing methods and [pricing](https://www.alibabacloud.com/product/ecs#pricing) of ECS.
+        The instances must be in the **Running** (`Running`) or **Stopped** (`Stopped`) state, and you have no overdue payments for the instances.
+        After you change the billing method, the payment is automatically completed. Make sure that the balance in your account is sufficient. Otherwise, your order becomes invalid and is canceled. If your account balance is insufficient, you can set `AutoPay` to `false` to generate an unpaid order. Then, you can log on to the [ECS console](https://ecs.console.aliyun.com/) to pay for the order.
+        ### [](#)Considerations
         **Change the billing method from subscription to pay-as-you-go**:
-        Your ECS usage determines whether the billing method of an instance can be changed from subscription to pay-as-you-go.
         After you change the billing method of an instance from subscription to pay-as-you-go, the new billing method remains in effect for the remaining lifecycle of the instance. The price difference is refunded to the payment account that you used. Vouchers that have been redeemed are not refundable.
-        **Refund rule**: You have a quota for the total refund amount each month, and unused balance of this quota is not carried forward into the next month. After you use up the refund quota of the current month, you can change the billing method only in the next month. The refund amount incurred when you change the billing method is calculated based on the following formula: **Number of vCPUs × (Number of remaining days × 24 ± Number of remaining or elapsed hours)**.
+        **Refund rule**: You have a quota for the total refund amount each month, and unused balance of this quota is not carried forward into the next month. After you use up the refund quota of the current month, you can change the billing method only in the next month. The refund amount incurred when you change the billing method is calculated based on the following formula: **Number of vCPUs × (Number of remaining days × 24 ± Number of remaining or elapsed hours)**. For more information, see [Change the billing method of an instance from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/85517.html).
         **Change the billing method from pay-as-you-go to subscription**:
-        You can change the billing method of all data disks that are attached to an instance from pay-as-you-go to subscription.
-        This operation cannot be called for a pay-as-you-go instance that has an automatic release time set.
+        You can change the billing method of all data disks attached to an instance from pay-as-you-go to subscription.
+        This operation cannot be called for a pay-as-you-go instance that has an automatic release time set. For more information, see [Change the billing method of an instance from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/49884.html).
         
         @param request: ModifyInstanceChargeTypeRequest
         @return: ModifyInstanceChargeTypeResponse
@@ -43554,19 +43590,19 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyInstanceChargeTypeRequest,
     ) -> ecs_20140526_models.ModifyInstanceChargeTypeResponse:
         """
-        @summary Changes the billing method of one or more Elastic Compute Service (ECS) instances. You can call this operation to change the billing methods of ECS instances between pay-as-you-go and subscription or change the billing method of all disks that are attached to an ECS instance from pay-as-you-go to subscription.
+        @summary Changes the billing method of Elastic Compute Service (ECS) instances in batches.
         
-        @description Before you call this operation, make sure that you are familiar with the billing methods and pricing of Elastic Compute Service (ECS). For more information, see the [Elastic Compute Service](https://www.alibabacloud.com/product/ecs#pricing) product page.
-        Take note of the following items:
-        The instances must be in the **Running** (`Running`) or **Stopped** (`Stopped`) state, and you cannot have overdue payments for them.
-        After you change the billing method, outstanding payments are automatically completed. Make sure that your account balance is sufficient. Otherwise, your order becomes invalid and is canceled. If your account balance is insufficient, you can set `AutoPay` to `false` to generate an unpaid order. Then, you can log on to the [ECS console](https://ecs.console.aliyun.com/) to pay for the order.
+        @description ### [](#)Precautions
+        Before you call this operation, make sure that you are familiar with the [subscription](https://help.aliyun.com/document_detail/56220.html) and [pay-as-you-go](https://help.aliyun.com/document_detail/40653.html) billing methods and [pricing](https://www.alibabacloud.com/product/ecs#pricing) of ECS.
+        The instances must be in the **Running** (`Running`) or **Stopped** (`Stopped`) state, and you have no overdue payments for the instances.
+        After you change the billing method, the payment is automatically completed. Make sure that the balance in your account is sufficient. Otherwise, your order becomes invalid and is canceled. If your account balance is insufficient, you can set `AutoPay` to `false` to generate an unpaid order. Then, you can log on to the [ECS console](https://ecs.console.aliyun.com/) to pay for the order.
+        ### [](#)Considerations
         **Change the billing method from subscription to pay-as-you-go**:
-        Your ECS usage determines whether the billing method of an instance can be changed from subscription to pay-as-you-go.
         After you change the billing method of an instance from subscription to pay-as-you-go, the new billing method remains in effect for the remaining lifecycle of the instance. The price difference is refunded to the payment account that you used. Vouchers that have been redeemed are not refundable.
-        **Refund rule**: You have a quota for the total refund amount each month, and unused balance of this quota is not carried forward into the next month. After you use up the refund quota of the current month, you can change the billing method only in the next month. The refund amount incurred when you change the billing method is calculated based on the following formula: **Number of vCPUs × (Number of remaining days × 24 ± Number of remaining or elapsed hours)**.
+        **Refund rule**: You have a quota for the total refund amount each month, and unused balance of this quota is not carried forward into the next month. After you use up the refund quota of the current month, you can change the billing method only in the next month. The refund amount incurred when you change the billing method is calculated based on the following formula: **Number of vCPUs × (Number of remaining days × 24 ± Number of remaining or elapsed hours)**. For more information, see [Change the billing method of an instance from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/85517.html).
         **Change the billing method from pay-as-you-go to subscription**:
-        You can change the billing method of all data disks that are attached to an instance from pay-as-you-go to subscription.
-        This operation cannot be called for a pay-as-you-go instance that has an automatic release time set.
+        You can change the billing method of all data disks attached to an instance from pay-as-you-go to subscription.
+        This operation cannot be called for a pay-as-you-go instance that has an automatic release time set. For more information, see [Change the billing method of an instance from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/49884.html).
         
         @param request: ModifyInstanceChargeTypeRequest
         @return: ModifyInstanceChargeTypeResponse
@@ -45588,7 +45624,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyPortRangeListResponse:
         """
-        @summary 修改指定端口列表的名称和条目等
+        @summary Modifies the name and entries of a port list. You can call this operation to add, modify, and remove entries for a port list.
         
         @param request: ModifyPortRangeListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -45645,7 +45681,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyPortRangeListResponse:
         """
-        @summary 修改指定端口列表的名称和条目等
+        @summary Modifies the name and entries of a port list. You can call this operation to add, modify, and remove entries for a port list.
         
         @param request: ModifyPortRangeListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -45701,7 +45737,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyPortRangeListRequest,
     ) -> ecs_20140526_models.ModifyPortRangeListResponse:
         """
-        @summary 修改指定端口列表的名称和条目等
+        @summary Modifies the name and entries of a port list. You can call this operation to add, modify, and remove entries for a port list.
         
         @param request: ModifyPortRangeListRequest
         @return: ModifyPortRangeListResponse
@@ -45714,7 +45750,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyPortRangeListRequest,
     ) -> ecs_20140526_models.ModifyPortRangeListResponse:
         """
-        @summary 修改指定端口列表的名称和条目等
+        @summary Modifies the name and entries of a port list. You can call this operation to add, modify, and remove entries for a port list.
         
         @param request: ModifyPortRangeListRequest
         @return: ModifyPortRangeListResponse
@@ -45728,7 +45764,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyPrefixListResponse:
         """
-        @summary Modifies the name, description, or entries of a specific prefix list.
+        @summary Modifies the name, description, or entries of a prefix list. You can add, modify, and delete entries in the prefix list.
         
         @description ## [](#)Usage notes
         The specified CIDR block must be valid. For example, 10.0.0.0/8 is a valid CIDR block while 10.0.0.1/8 is not. For more information, see the [What is CIDR?](~~40637#section-jua-0tj-q5m~~) section in the "Network FAQ" topic.
@@ -45791,7 +45827,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyPrefixListResponse:
         """
-        @summary Modifies the name, description, or entries of a specific prefix list.
+        @summary Modifies the name, description, or entries of a prefix list. You can add, modify, and delete entries in the prefix list.
         
         @description ## [](#)Usage notes
         The specified CIDR block must be valid. For example, 10.0.0.0/8 is a valid CIDR block while 10.0.0.1/8 is not. For more information, see the [What is CIDR?](~~40637#section-jua-0tj-q5m~~) section in the "Network FAQ" topic.
@@ -45853,7 +45889,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyPrefixListRequest,
     ) -> ecs_20140526_models.ModifyPrefixListResponse:
         """
-        @summary Modifies the name, description, or entries of a specific prefix list.
+        @summary Modifies the name, description, or entries of a prefix list. You can add, modify, and delete entries in the prefix list.
         
         @description ## [](#)Usage notes
         The specified CIDR block must be valid. For example, 10.0.0.0/8 is a valid CIDR block while 10.0.0.1/8 is not. For more information, see the [What is CIDR?](~~40637#section-jua-0tj-q5m~~) section in the "Network FAQ" topic.
@@ -45874,7 +45910,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyPrefixListRequest,
     ) -> ecs_20140526_models.ModifyPrefixListResponse:
         """
-        @summary Modifies the name, description, or entries of a specific prefix list.
+        @summary Modifies the name, description, or entries of a prefix list. You can add, modify, and delete entries in the prefix list.
         
         @description ## [](#)Usage notes
         The specified CIDR block must be valid. For example, 10.0.0.0/8 is a valid CIDR block while 10.0.0.1/8 is not. For more information, see the [What is CIDR?](~~40637#section-jua-0tj-q5m~~) section in the "Network FAQ" topic.
@@ -49514,10 +49550,9 @@ class Client(OpenApiClient):
         """
         @summary Reactivates a pay-as-you-go Elastic Compute Service (ECS) instance that has expired or has been reclaimed due to overdue payments.
         
-        @description    You cannot call this operation to start ECS instances that are locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
-        The instance must be in the **Stopped** `(Stopped)` state.
-        You must pay the bills and reactivate the instance within 15 days after the instance is suspended due to overdue payments. Otherwise, the instance is released and the data cannot be restored. If you cannot restart an instance of the Virtual Private Cloud (VPC) type, try again later.
-        After the operation is called, the instance enters the **Starting** `(Starting)` state.
+        @description After you complete the overdue payment for a pay-as-you-go ECS instance, you do not need to call this operation to reactivate the instance. The system automatically reactivates the instance to restore the instance to the status before the payment became overdue. Automatic reactivation occasionally fails. Take note of the status of automatic reactivation. If the automatic reactivation fails, call this operation to manually reactivate the instance.
+        The instance must be in the **Expired** `(Stopped)` state.
+        You cannot call this operation to start ECS instances that are locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
         
         @param request: ReActivateInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -49564,10 +49599,9 @@ class Client(OpenApiClient):
         """
         @summary Reactivates a pay-as-you-go Elastic Compute Service (ECS) instance that has expired or has been reclaimed due to overdue payments.
         
-        @description    You cannot call this operation to start ECS instances that are locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
-        The instance must be in the **Stopped** `(Stopped)` state.
-        You must pay the bills and reactivate the instance within 15 days after the instance is suspended due to overdue payments. Otherwise, the instance is released and the data cannot be restored. If you cannot restart an instance of the Virtual Private Cloud (VPC) type, try again later.
-        After the operation is called, the instance enters the **Starting** `(Starting)` state.
+        @description After you complete the overdue payment for a pay-as-you-go ECS instance, you do not need to call this operation to reactivate the instance. The system automatically reactivates the instance to restore the instance to the status before the payment became overdue. Automatic reactivation occasionally fails. Take note of the status of automatic reactivation. If the automatic reactivation fails, call this operation to manually reactivate the instance.
+        The instance must be in the **Expired** `(Stopped)` state.
+        You cannot call this operation to start ECS instances that are locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
         
         @param request: ReActivateInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -49613,10 +49647,9 @@ class Client(OpenApiClient):
         """
         @summary Reactivates a pay-as-you-go Elastic Compute Service (ECS) instance that has expired or has been reclaimed due to overdue payments.
         
-        @description    You cannot call this operation to start ECS instances that are locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
-        The instance must be in the **Stopped** `(Stopped)` state.
-        You must pay the bills and reactivate the instance within 15 days after the instance is suspended due to overdue payments. Otherwise, the instance is released and the data cannot be restored. If you cannot restart an instance of the Virtual Private Cloud (VPC) type, try again later.
-        After the operation is called, the instance enters the **Starting** `(Starting)` state.
+        @description After you complete the overdue payment for a pay-as-you-go ECS instance, you do not need to call this operation to reactivate the instance. The system automatically reactivates the instance to restore the instance to the status before the payment became overdue. Automatic reactivation occasionally fails. Take note of the status of automatic reactivation. If the automatic reactivation fails, call this operation to manually reactivate the instance.
+        The instance must be in the **Expired** `(Stopped)` state.
+        You cannot call this operation to start ECS instances that are locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
         
         @param request: ReActivateInstancesRequest
         @return: ReActivateInstancesResponse
@@ -49631,10 +49664,9 @@ class Client(OpenApiClient):
         """
         @summary Reactivates a pay-as-you-go Elastic Compute Service (ECS) instance that has expired or has been reclaimed due to overdue payments.
         
-        @description    You cannot call this operation to start ECS instances that are locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
-        The instance must be in the **Stopped** `(Stopped)` state.
-        You must pay the bills and reactivate the instance within 15 days after the instance is suspended due to overdue payments. Otherwise, the instance is released and the data cannot be restored. If you cannot restart an instance of the Virtual Private Cloud (VPC) type, try again later.
-        After the operation is called, the instance enters the **Starting** `(Starting)` state.
+        @description After you complete the overdue payment for a pay-as-you-go ECS instance, you do not need to call this operation to reactivate the instance. The system automatically reactivates the instance to restore the instance to the status before the payment became overdue. Automatic reactivation occasionally fails. Take note of the status of automatic reactivation. If the automatic reactivation fails, call this operation to manually reactivate the instance.
+        The instance must be in the **Expired** `(Stopped)` state.
+        You cannot call this operation to start ECS instances that are locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
         
         @param request: ReActivateInstancesRequest
         @return: ReActivateInstancesResponse
@@ -51904,7 +51936,7 @@ class Client(OpenApiClient):
         The category of the system disk cannot be changed.
         Make sure that no unpaid orders are associated with the instance.
         The instance must be in the `Stopped` state.
-        *\
+        
         *Note** The operation is applicable only to instances of the Virtual Private Cloud (VPC) type. If the instance is a pay-as-you-go instance and default economical mode is enabled, enable standard mode when you stop the instance. This prevents the instance from being unable to restart due to insufficient ECS resources after the system disk is replaced. For more information, see [StopInstance](https://help.aliyun.com/document_detail/25501.html).
         The instance cannot be locked for security reasons. If the value of `OperationLocks` in the DescribeInstances response contains `"LockReason": "security"` for an instance, the instance is locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
         You can configure `SystemDisk.Size` to specify the capacity of the new system disk.
@@ -51991,7 +52023,7 @@ class Client(OpenApiClient):
         The category of the system disk cannot be changed.
         Make sure that no unpaid orders are associated with the instance.
         The instance must be in the `Stopped` state.
-        *\
+        
         *Note** The operation is applicable only to instances of the Virtual Private Cloud (VPC) type. If the instance is a pay-as-you-go instance and default economical mode is enabled, enable standard mode when you stop the instance. This prevents the instance from being unable to restart due to insufficient ECS resources after the system disk is replaced. For more information, see [StopInstance](https://help.aliyun.com/document_detail/25501.html).
         The instance cannot be locked for security reasons. If the value of `OperationLocks` in the DescribeInstances response contains `"LockReason": "security"` for an instance, the instance is locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
         You can configure `SystemDisk.Size` to specify the capacity of the new system disk.
@@ -52077,7 +52109,7 @@ class Client(OpenApiClient):
         The category of the system disk cannot be changed.
         Make sure that no unpaid orders are associated with the instance.
         The instance must be in the `Stopped` state.
-        *\
+        
         *Note** The operation is applicable only to instances of the Virtual Private Cloud (VPC) type. If the instance is a pay-as-you-go instance and default economical mode is enabled, enable standard mode when you stop the instance. This prevents the instance from being unable to restart due to insufficient ECS resources after the system disk is replaced. For more information, see [StopInstance](https://help.aliyun.com/document_detail/25501.html).
         The instance cannot be locked for security reasons. If the value of `OperationLocks` in the DescribeInstances response contains `"LockReason": "security"` for an instance, the instance is locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
         You can configure `SystemDisk.Size` to specify the capacity of the new system disk.
@@ -52104,7 +52136,7 @@ class Client(OpenApiClient):
         The category of the system disk cannot be changed.
         Make sure that no unpaid orders are associated with the instance.
         The instance must be in the `Stopped` state.
-        *\
+        
         *Note** The operation is applicable only to instances of the Virtual Private Cloud (VPC) type. If the instance is a pay-as-you-go instance and default economical mode is enabled, enable standard mode when you stop the instance. This prevents the instance from being unable to restart due to insufficient ECS resources after the system disk is replaced. For more information, see [StopInstance](https://help.aliyun.com/document_detail/25501.html).
         The instance cannot be locked for security reasons. If the value of `OperationLocks` in the DescribeInstances response contains `"LockReason": "security"` for an instance, the instance is locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
         You can configure `SystemDisk.Size` to specify the capacity of the new system disk.
@@ -52834,48 +52866,52 @@ class Client(OpenApiClient):
         """
         @summary Deletes inbound security group rules from a specific security group.
         
-        @description >  Alibaba Cloud modified verification rules for the RevokeSecurityGroup operation on July 8, 2024. When you use the RevokeSecurityGroup operation to delete a security group rule that does not exist, the "InvalidSecurityGroupRule.RuleNotExist" error code is returned instead of a success response. Update the RevokeSecurityGroup operation to use the new verification rules with the new error code based on your business requirements.
-        When you call this operation, you can use one of the following groups of parameters to specify the security group rules that you want to delete:
+        @description >  Alibaba Cloud modified verification rules for the RevokeSecurityGroup operation on July 8, 2024. When you call the RevokeSecurityGroup operation to delete a security group rule that does not exist, the "InvalidParam.SecurityGroupRuleId" error code is returned instead of a success response. Update the RevokeSecurityGroup operation to use the new verification rules with the new error code based on your business requirements.
+        You can use one of the following groups of parameters to specify the security group rules that you want to delete:
         Parameters used to specify the IDs of security group rules. We recommend that you specify the IDs of security group rules to delete the rules.
-        If a security group rule ID that you specify does not exist, an error is reported.
+        If a specified security group rule ID does not exist, the call to RevokeSecurityGroup fails.
         Parameters that start with Permissions.
         If no security group rule matches the specified parameters, the call to RevokeSecurityGroup is successful but no security group rules are deleted.
         Define an inbound security group rule by configuring the following parameters together:
-        Source: You can specify one parameter from SourceCidrIp (IPv4 address), Ipv6SourceCidrIp (IPv6 address), SourcePrefixListId (prefix list ID), and SourceGroupId (source security group ID).
-        PortRange: specifies the range of destination port numbers.
+        Source: You can specify one parameter from SourceCidrIp (IPv4 address), Ipv6SourceCidrIp (IPv6 address), SourcetPrefixListId (prefix list ID), and SourceGroupId (source security group ID).
+        PortRange: specifies the destination port range.
         IpProtocol: specifies the protocol.
         Policy: specifies the action.
-        >  You cannot specify the security group rule IDs and the parameters that start with Permissions in the same request.
+        >  You cannot specify the IDs of security group rules and the parameters that start with Permissions in the same request.
         ### [](#)Sample requests
-        Delete security group rules by specifying their IDs.
+        Delete a security group rule based on the rule ID:
         <!---->
-        "SecurityGroupId":"sg-bp67acfmxazb4p***", // The security group ID.
-        "SecurityGroupRuleId":["sgr-bpdfmk***","sgr-bpdfmg****"] // The IDs of the security group rules.
-        Delete security group rules by specifying a CIDR block.
+        "SecurityGroupId":"sg-bp67acfmxazb4p***", //Specify the ID of the security group.
+        "SecurityGroupRuleId":["sgr-bpdfmk***","sgr-bpdfmg****"] //Specify the ID of the security group rule.
+        Delete a security group rule based on an IPv4 CIDR block:
         <!---->
         "SecurityGroupId":"sg-bp67acfmxazb4p***",
         "Permissions":[
         {
-        "SourceCidrIp":"10.0.0.0/8", // The source IPv4 CIDR block.
-        "IpProtocol":"TCP", // The protocol.
-        "PortRange":"80/80", // The range of destination port numbers.    "Policy":"accept" // The action.  }
+        "SourceCidrIp":"10.0.0.0/8", //Specify the source IPv4 CIDR block.
+        "IpProtocol":"TCP", //Specify the protocol.
+        "PortRange":"80/80", //Specify the destination port range.
+        "Policy":"accept" //Specify the action.
+        }
         ]
-        Delete security group rules in which a security group is specified.
+        Delete a security group rule in which a security group is referenced:
         <!---->
         "SecurityGroupId":"sg-bp67acfmxazb4p***",
         "Permissions":[
         {
-        "SourceGroupId":"sg-bp67acfmxa123b***", // The ID of the source security group.    "IpProtocol":"TCP,"
+        "SourceGroupId":"sg-bp67acfmxa123b***", //Specify the ID of the source security group.
+        "IpProtocol":"TCP,"
         "PortRange":"80/80",
         "Policy":"accept"
         ]
         }
-        Delete security group rules in which a prefix list is specified.
+        Delete a security group rule in which a prefix list is referenced:
         <!---->
         "SecurityGroupId":"sg-bp67acfmxazb4p***",
         "Permissions":[
         {
-        "SourcePrefixListId":"pl-x1j1k5ykzqlixdcy***", // The ID of the source prefix list.    "IpProtocol":"TCP",
+        "SourcePrefixListId":pl-x1j1k5ykzqlixdcy***", //Specify the ID of the source prefix list.
+        "IpProtocol":"TCP",
         "PortRange":"80/80",
         "Policy":"accept"
         }
@@ -52968,48 +53004,52 @@ class Client(OpenApiClient):
         """
         @summary Deletes inbound security group rules from a specific security group.
         
-        @description >  Alibaba Cloud modified verification rules for the RevokeSecurityGroup operation on July 8, 2024. When you use the RevokeSecurityGroup operation to delete a security group rule that does not exist, the "InvalidSecurityGroupRule.RuleNotExist" error code is returned instead of a success response. Update the RevokeSecurityGroup operation to use the new verification rules with the new error code based on your business requirements.
-        When you call this operation, you can use one of the following groups of parameters to specify the security group rules that you want to delete:
+        @description >  Alibaba Cloud modified verification rules for the RevokeSecurityGroup operation on July 8, 2024. When you call the RevokeSecurityGroup operation to delete a security group rule that does not exist, the "InvalidParam.SecurityGroupRuleId" error code is returned instead of a success response. Update the RevokeSecurityGroup operation to use the new verification rules with the new error code based on your business requirements.
+        You can use one of the following groups of parameters to specify the security group rules that you want to delete:
         Parameters used to specify the IDs of security group rules. We recommend that you specify the IDs of security group rules to delete the rules.
-        If a security group rule ID that you specify does not exist, an error is reported.
+        If a specified security group rule ID does not exist, the call to RevokeSecurityGroup fails.
         Parameters that start with Permissions.
         If no security group rule matches the specified parameters, the call to RevokeSecurityGroup is successful but no security group rules are deleted.
         Define an inbound security group rule by configuring the following parameters together:
-        Source: You can specify one parameter from SourceCidrIp (IPv4 address), Ipv6SourceCidrIp (IPv6 address), SourcePrefixListId (prefix list ID), and SourceGroupId (source security group ID).
-        PortRange: specifies the range of destination port numbers.
+        Source: You can specify one parameter from SourceCidrIp (IPv4 address), Ipv6SourceCidrIp (IPv6 address), SourcetPrefixListId (prefix list ID), and SourceGroupId (source security group ID).
+        PortRange: specifies the destination port range.
         IpProtocol: specifies the protocol.
         Policy: specifies the action.
-        >  You cannot specify the security group rule IDs and the parameters that start with Permissions in the same request.
+        >  You cannot specify the IDs of security group rules and the parameters that start with Permissions in the same request.
         ### [](#)Sample requests
-        Delete security group rules by specifying their IDs.
+        Delete a security group rule based on the rule ID:
         <!---->
-        "SecurityGroupId":"sg-bp67acfmxazb4p***", // The security group ID.
-        "SecurityGroupRuleId":["sgr-bpdfmk***","sgr-bpdfmg****"] // The IDs of the security group rules.
-        Delete security group rules by specifying a CIDR block.
+        "SecurityGroupId":"sg-bp67acfmxazb4p***", //Specify the ID of the security group.
+        "SecurityGroupRuleId":["sgr-bpdfmk***","sgr-bpdfmg****"] //Specify the ID of the security group rule.
+        Delete a security group rule based on an IPv4 CIDR block:
         <!---->
         "SecurityGroupId":"sg-bp67acfmxazb4p***",
         "Permissions":[
         {
-        "SourceCidrIp":"10.0.0.0/8", // The source IPv4 CIDR block.
-        "IpProtocol":"TCP", // The protocol.
-        "PortRange":"80/80", // The range of destination port numbers.    "Policy":"accept" // The action.  }
+        "SourceCidrIp":"10.0.0.0/8", //Specify the source IPv4 CIDR block.
+        "IpProtocol":"TCP", //Specify the protocol.
+        "PortRange":"80/80", //Specify the destination port range.
+        "Policy":"accept" //Specify the action.
+        }
         ]
-        Delete security group rules in which a security group is specified.
+        Delete a security group rule in which a security group is referenced:
         <!---->
         "SecurityGroupId":"sg-bp67acfmxazb4p***",
         "Permissions":[
         {
-        "SourceGroupId":"sg-bp67acfmxa123b***", // The ID of the source security group.    "IpProtocol":"TCP,"
+        "SourceGroupId":"sg-bp67acfmxa123b***", //Specify the ID of the source security group.
+        "IpProtocol":"TCP,"
         "PortRange":"80/80",
         "Policy":"accept"
         ]
         }
-        Delete security group rules in which a prefix list is specified.
+        Delete a security group rule in which a prefix list is referenced:
         <!---->
         "SecurityGroupId":"sg-bp67acfmxazb4p***",
         "Permissions":[
         {
-        "SourcePrefixListId":"pl-x1j1k5ykzqlixdcy***", // The ID of the source prefix list.    "IpProtocol":"TCP",
+        "SourcePrefixListId":pl-x1j1k5ykzqlixdcy***", //Specify the ID of the source prefix list.
+        "IpProtocol":"TCP",
         "PortRange":"80/80",
         "Policy":"accept"
         }
@@ -53101,48 +53141,52 @@ class Client(OpenApiClient):
         """
         @summary Deletes inbound security group rules from a specific security group.
         
-        @description >  Alibaba Cloud modified verification rules for the RevokeSecurityGroup operation on July 8, 2024. When you use the RevokeSecurityGroup operation to delete a security group rule that does not exist, the "InvalidSecurityGroupRule.RuleNotExist" error code is returned instead of a success response. Update the RevokeSecurityGroup operation to use the new verification rules with the new error code based on your business requirements.
-        When you call this operation, you can use one of the following groups of parameters to specify the security group rules that you want to delete:
+        @description >  Alibaba Cloud modified verification rules for the RevokeSecurityGroup operation on July 8, 2024. When you call the RevokeSecurityGroup operation to delete a security group rule that does not exist, the "InvalidParam.SecurityGroupRuleId" error code is returned instead of a success response. Update the RevokeSecurityGroup operation to use the new verification rules with the new error code based on your business requirements.
+        You can use one of the following groups of parameters to specify the security group rules that you want to delete:
         Parameters used to specify the IDs of security group rules. We recommend that you specify the IDs of security group rules to delete the rules.
-        If a security group rule ID that you specify does not exist, an error is reported.
+        If a specified security group rule ID does not exist, the call to RevokeSecurityGroup fails.
         Parameters that start with Permissions.
         If no security group rule matches the specified parameters, the call to RevokeSecurityGroup is successful but no security group rules are deleted.
         Define an inbound security group rule by configuring the following parameters together:
-        Source: You can specify one parameter from SourceCidrIp (IPv4 address), Ipv6SourceCidrIp (IPv6 address), SourcePrefixListId (prefix list ID), and SourceGroupId (source security group ID).
-        PortRange: specifies the range of destination port numbers.
+        Source: You can specify one parameter from SourceCidrIp (IPv4 address), Ipv6SourceCidrIp (IPv6 address), SourcetPrefixListId (prefix list ID), and SourceGroupId (source security group ID).
+        PortRange: specifies the destination port range.
         IpProtocol: specifies the protocol.
         Policy: specifies the action.
-        >  You cannot specify the security group rule IDs and the parameters that start with Permissions in the same request.
+        >  You cannot specify the IDs of security group rules and the parameters that start with Permissions in the same request.
         ### [](#)Sample requests
-        Delete security group rules by specifying their IDs.
+        Delete a security group rule based on the rule ID:
         <!---->
-        "SecurityGroupId":"sg-bp67acfmxazb4p***", // The security group ID.
-        "SecurityGroupRuleId":["sgr-bpdfmk***","sgr-bpdfmg****"] // The IDs of the security group rules.
-        Delete security group rules by specifying a CIDR block.
+        "SecurityGroupId":"sg-bp67acfmxazb4p***", //Specify the ID of the security group.
+        "SecurityGroupRuleId":["sgr-bpdfmk***","sgr-bpdfmg****"] //Specify the ID of the security group rule.
+        Delete a security group rule based on an IPv4 CIDR block:
         <!---->
         "SecurityGroupId":"sg-bp67acfmxazb4p***",
         "Permissions":[
         {
-        "SourceCidrIp":"10.0.0.0/8", // The source IPv4 CIDR block.
-        "IpProtocol":"TCP", // The protocol.
-        "PortRange":"80/80", // The range of destination port numbers.    "Policy":"accept" // The action.  }
+        "SourceCidrIp":"10.0.0.0/8", //Specify the source IPv4 CIDR block.
+        "IpProtocol":"TCP", //Specify the protocol.
+        "PortRange":"80/80", //Specify the destination port range.
+        "Policy":"accept" //Specify the action.
+        }
         ]
-        Delete security group rules in which a security group is specified.
+        Delete a security group rule in which a security group is referenced:
         <!---->
         "SecurityGroupId":"sg-bp67acfmxazb4p***",
         "Permissions":[
         {
-        "SourceGroupId":"sg-bp67acfmxa123b***", // The ID of the source security group.    "IpProtocol":"TCP,"
+        "SourceGroupId":"sg-bp67acfmxa123b***", //Specify the ID of the source security group.
+        "IpProtocol":"TCP,"
         "PortRange":"80/80",
         "Policy":"accept"
         ]
         }
-        Delete security group rules in which a prefix list is specified.
+        Delete a security group rule in which a prefix list is referenced:
         <!---->
         "SecurityGroupId":"sg-bp67acfmxazb4p***",
         "Permissions":[
         {
-        "SourcePrefixListId":"pl-x1j1k5ykzqlixdcy***", // The ID of the source prefix list.    "IpProtocol":"TCP",
+        "SourcePrefixListId":pl-x1j1k5ykzqlixdcy***", //Specify the ID of the source prefix list.
+        "IpProtocol":"TCP",
         "PortRange":"80/80",
         "Policy":"accept"
         }
@@ -53161,48 +53205,52 @@ class Client(OpenApiClient):
         """
         @summary Deletes inbound security group rules from a specific security group.
         
-        @description >  Alibaba Cloud modified verification rules for the RevokeSecurityGroup operation on July 8, 2024. When you use the RevokeSecurityGroup operation to delete a security group rule that does not exist, the "InvalidSecurityGroupRule.RuleNotExist" error code is returned instead of a success response. Update the RevokeSecurityGroup operation to use the new verification rules with the new error code based on your business requirements.
-        When you call this operation, you can use one of the following groups of parameters to specify the security group rules that you want to delete:
+        @description >  Alibaba Cloud modified verification rules for the RevokeSecurityGroup operation on July 8, 2024. When you call the RevokeSecurityGroup operation to delete a security group rule that does not exist, the "InvalidParam.SecurityGroupRuleId" error code is returned instead of a success response. Update the RevokeSecurityGroup operation to use the new verification rules with the new error code based on your business requirements.
+        You can use one of the following groups of parameters to specify the security group rules that you want to delete:
         Parameters used to specify the IDs of security group rules. We recommend that you specify the IDs of security group rules to delete the rules.
-        If a security group rule ID that you specify does not exist, an error is reported.
+        If a specified security group rule ID does not exist, the call to RevokeSecurityGroup fails.
         Parameters that start with Permissions.
         If no security group rule matches the specified parameters, the call to RevokeSecurityGroup is successful but no security group rules are deleted.
         Define an inbound security group rule by configuring the following parameters together:
-        Source: You can specify one parameter from SourceCidrIp (IPv4 address), Ipv6SourceCidrIp (IPv6 address), SourcePrefixListId (prefix list ID), and SourceGroupId (source security group ID).
-        PortRange: specifies the range of destination port numbers.
+        Source: You can specify one parameter from SourceCidrIp (IPv4 address), Ipv6SourceCidrIp (IPv6 address), SourcetPrefixListId (prefix list ID), and SourceGroupId (source security group ID).
+        PortRange: specifies the destination port range.
         IpProtocol: specifies the protocol.
         Policy: specifies the action.
-        >  You cannot specify the security group rule IDs and the parameters that start with Permissions in the same request.
+        >  You cannot specify the IDs of security group rules and the parameters that start with Permissions in the same request.
         ### [](#)Sample requests
-        Delete security group rules by specifying their IDs.
+        Delete a security group rule based on the rule ID:
         <!---->
-        "SecurityGroupId":"sg-bp67acfmxazb4p***", // The security group ID.
-        "SecurityGroupRuleId":["sgr-bpdfmk***","sgr-bpdfmg****"] // The IDs of the security group rules.
-        Delete security group rules by specifying a CIDR block.
+        "SecurityGroupId":"sg-bp67acfmxazb4p***", //Specify the ID of the security group.
+        "SecurityGroupRuleId":["sgr-bpdfmk***","sgr-bpdfmg****"] //Specify the ID of the security group rule.
+        Delete a security group rule based on an IPv4 CIDR block:
         <!---->
         "SecurityGroupId":"sg-bp67acfmxazb4p***",
         "Permissions":[
         {
-        "SourceCidrIp":"10.0.0.0/8", // The source IPv4 CIDR block.
-        "IpProtocol":"TCP", // The protocol.
-        "PortRange":"80/80", // The range of destination port numbers.    "Policy":"accept" // The action.  }
+        "SourceCidrIp":"10.0.0.0/8", //Specify the source IPv4 CIDR block.
+        "IpProtocol":"TCP", //Specify the protocol.
+        "PortRange":"80/80", //Specify the destination port range.
+        "Policy":"accept" //Specify the action.
+        }
         ]
-        Delete security group rules in which a security group is specified.
+        Delete a security group rule in which a security group is referenced:
         <!---->
         "SecurityGroupId":"sg-bp67acfmxazb4p***",
         "Permissions":[
         {
-        "SourceGroupId":"sg-bp67acfmxa123b***", // The ID of the source security group.    "IpProtocol":"TCP,"
+        "SourceGroupId":"sg-bp67acfmxa123b***", //Specify the ID of the source security group.
+        "IpProtocol":"TCP,"
         "PortRange":"80/80",
         "Policy":"accept"
         ]
         }
-        Delete security group rules in which a prefix list is specified.
+        Delete a security group rule in which a prefix list is referenced:
         <!---->
         "SecurityGroupId":"sg-bp67acfmxazb4p***",
         "Permissions":[
         {
-        "SourcePrefixListId":"pl-x1j1k5ykzqlixdcy***", // The ID of the source prefix list.    "IpProtocol":"TCP",
+        "SourcePrefixListId":pl-x1j1k5ykzqlixdcy***", //Specify the ID of the source prefix list.
+        "IpProtocol":"TCP",
         "PortRange":"80/80",
         "Policy":"accept"
         }
@@ -53922,8 +53970,7 @@ class Client(OpenApiClient):
         """
         @summary Creates Elastic Compute Service (ECS) instances. This operation helps simplify the procedure to create and manage ECS instances. When you call this operation, you can choose to create multiple ECS instances at a time, automatically start the instances, and assign public IP addresses to the instances based on outbound bandwidth parameters. You can also use the features provided by the operation, such as configuring an automatic release time for instances, using a launch template, and configuring custom CPU options, to customize instance configurations for better management of instances.
         
-        @description \\\\* When you create an ECS instance, you are charged for ECS resources, including the [instance type](https://help.aliyun.com/document_detail/25398.html), [image](https://help.aliyun.com/document_detail/179021.html), [block storage](https://help.aliyun.com/document_detail/179022.html), and [public bandwidth](https://help.aliyun.com/document_detail/25411.html). Before you call this operation, familiarize yourself with the billing rules and
-        [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of ECS resources. \\\\*\
+        @description When you create an ECS instance, you are charged for ECS resources, including the [instance type](https://help.aliyun.com/document_detail/25398.html), [image](https://help.aliyun.com/document_detail/179021.html), [block storage](https://help.aliyun.com/document_detail/179022.html), and [public bandwidth](https://help.aliyun.com/document_detail/25411.html). Before you call this operation, familiarize yourself with the billing rules and [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of ECS resources.
         This operation is an asynchronous operation. After a request to create ECS instances is sent, ECS instance IDs are returned but the creation and startup of the instances may be incomplete. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the instances. When the status of an instance is `Running` in the DescribeInstanceStatus response, the instance is created and started.
         ### [](#)Considerations
         If the resource inventory is insufficient to complete instance creation, Alibaba Cloud immediately sends an instance creation failure event (SystemFailure.Delete). You can call the [DescribeInstanceHistoryEvents](https://help.aliyun.com/document_detail/2679897.html) operation to check whether an instance creation failure event exists. For more information, see [System events related to instance creation failures](https://help.aliyun.com/document_detail/2545990.html).
@@ -54174,8 +54221,7 @@ class Client(OpenApiClient):
         """
         @summary Creates Elastic Compute Service (ECS) instances. This operation helps simplify the procedure to create and manage ECS instances. When you call this operation, you can choose to create multiple ECS instances at a time, automatically start the instances, and assign public IP addresses to the instances based on outbound bandwidth parameters. You can also use the features provided by the operation, such as configuring an automatic release time for instances, using a launch template, and configuring custom CPU options, to customize instance configurations for better management of instances.
         
-        @description \\\\* When you create an ECS instance, you are charged for ECS resources, including the [instance type](https://help.aliyun.com/document_detail/25398.html), [image](https://help.aliyun.com/document_detail/179021.html), [block storage](https://help.aliyun.com/document_detail/179022.html), and [public bandwidth](https://help.aliyun.com/document_detail/25411.html). Before you call this operation, familiarize yourself with the billing rules and
-        [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of ECS resources. \\\\*\
+        @description When you create an ECS instance, you are charged for ECS resources, including the [instance type](https://help.aliyun.com/document_detail/25398.html), [image](https://help.aliyun.com/document_detail/179021.html), [block storage](https://help.aliyun.com/document_detail/179022.html), and [public bandwidth](https://help.aliyun.com/document_detail/25411.html). Before you call this operation, familiarize yourself with the billing rules and [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of ECS resources.
         This operation is an asynchronous operation. After a request to create ECS instances is sent, ECS instance IDs are returned but the creation and startup of the instances may be incomplete. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the instances. When the status of an instance is `Running` in the DescribeInstanceStatus response, the instance is created and started.
         ### [](#)Considerations
         If the resource inventory is insufficient to complete instance creation, Alibaba Cloud immediately sends an instance creation failure event (SystemFailure.Delete). You can call the [DescribeInstanceHistoryEvents](https://help.aliyun.com/document_detail/2679897.html) operation to check whether an instance creation failure event exists. For more information, see [System events related to instance creation failures](https://help.aliyun.com/document_detail/2545990.html).
@@ -54425,8 +54471,7 @@ class Client(OpenApiClient):
         """
         @summary Creates Elastic Compute Service (ECS) instances. This operation helps simplify the procedure to create and manage ECS instances. When you call this operation, you can choose to create multiple ECS instances at a time, automatically start the instances, and assign public IP addresses to the instances based on outbound bandwidth parameters. You can also use the features provided by the operation, such as configuring an automatic release time for instances, using a launch template, and configuring custom CPU options, to customize instance configurations for better management of instances.
         
-        @description \\\\* When you create an ECS instance, you are charged for ECS resources, including the [instance type](https://help.aliyun.com/document_detail/25398.html), [image](https://help.aliyun.com/document_detail/179021.html), [block storage](https://help.aliyun.com/document_detail/179022.html), and [public bandwidth](https://help.aliyun.com/document_detail/25411.html). Before you call this operation, familiarize yourself with the billing rules and
-        [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of ECS resources. \\\\*\
+        @description When you create an ECS instance, you are charged for ECS resources, including the [instance type](https://help.aliyun.com/document_detail/25398.html), [image](https://help.aliyun.com/document_detail/179021.html), [block storage](https://help.aliyun.com/document_detail/179022.html), and [public bandwidth](https://help.aliyun.com/document_detail/25411.html). Before you call this operation, familiarize yourself with the billing rules and [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of ECS resources.
         This operation is an asynchronous operation. After a request to create ECS instances is sent, ECS instance IDs are returned but the creation and startup of the instances may be incomplete. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the instances. When the status of an instance is `Running` in the DescribeInstanceStatus response, the instance is created and started.
         ### [](#)Considerations
         If the resource inventory is insufficient to complete instance creation, Alibaba Cloud immediately sends an instance creation failure event (SystemFailure.Delete). You can call the [DescribeInstanceHistoryEvents](https://help.aliyun.com/document_detail/2679897.html) operation to check whether an instance creation failure event exists. For more information, see [System events related to instance creation failures](https://help.aliyun.com/document_detail/2545990.html).
@@ -54501,8 +54546,7 @@ class Client(OpenApiClient):
         """
         @summary Creates Elastic Compute Service (ECS) instances. This operation helps simplify the procedure to create and manage ECS instances. When you call this operation, you can choose to create multiple ECS instances at a time, automatically start the instances, and assign public IP addresses to the instances based on outbound bandwidth parameters. You can also use the features provided by the operation, such as configuring an automatic release time for instances, using a launch template, and configuring custom CPU options, to customize instance configurations for better management of instances.
         
-        @description \\\\* When you create an ECS instance, you are charged for ECS resources, including the [instance type](https://help.aliyun.com/document_detail/25398.html), [image](https://help.aliyun.com/document_detail/179021.html), [block storage](https://help.aliyun.com/document_detail/179022.html), and [public bandwidth](https://help.aliyun.com/document_detail/25411.html). Before you call this operation, familiarize yourself with the billing rules and
-        [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of ECS resources. \\\\*\
+        @description When you create an ECS instance, you are charged for ECS resources, including the [instance type](https://help.aliyun.com/document_detail/25398.html), [image](https://help.aliyun.com/document_detail/179021.html), [block storage](https://help.aliyun.com/document_detail/179022.html), and [public bandwidth](https://help.aliyun.com/document_detail/25411.html). Before you call this operation, familiarize yourself with the billing rules and [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of ECS resources.
         This operation is an asynchronous operation. After a request to create ECS instances is sent, ECS instance IDs are returned but the creation and startup of the instances may be incomplete. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the instances. When the status of an instance is `Running` in the DescribeInstanceStatus response, the instance is created and started.
         ### [](#)Considerations
         If the resource inventory is insufficient to complete instance creation, Alibaba Cloud immediately sends an instance creation failure event (SystemFailure.Delete). You can call the [DescribeInstanceHistoryEvents](https://help.aliyun.com/document_detail/2679897.html) operation to check whether an instance creation failure event exists. For more information, see [System events related to instance creation failures](https://help.aliyun.com/document_detail/2545990.html).
@@ -54780,7 +54824,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.StartImagePipelineExecutionResponse:
         """
-        @summary Executes an image creation task by using an image template.
+        @summary Executes an image creation task (image building task) by using an image template.
         
         @description    After you create an image template, you can call the StartImagePipelineExecution operation to create a pipeline task. The system creates, copies, and shares images based on the parameters configured in the image template.
         You can execute only one pipeline task for each image template.
@@ -54836,7 +54880,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.StartImagePipelineExecutionResponse:
         """
-        @summary Executes an image creation task by using an image template.
+        @summary Executes an image creation task (image building task) by using an image template.
         
         @description    After you create an image template, you can call the StartImagePipelineExecution operation to create a pipeline task. The system creates, copies, and shares images based on the parameters configured in the image template.
         You can execute only one pipeline task for each image template.
@@ -54891,7 +54935,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.StartImagePipelineExecutionRequest,
     ) -> ecs_20140526_models.StartImagePipelineExecutionResponse:
         """
-        @summary Executes an image creation task by using an image template.
+        @summary Executes an image creation task (image building task) by using an image template.
         
         @description    After you create an image template, you can call the StartImagePipelineExecution operation to create a pipeline task. The system creates, copies, and shares images based on the parameters configured in the image template.
         You can execute only one pipeline task for each image template.
@@ -54907,7 +54951,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.StartImagePipelineExecutionRequest,
     ) -> ecs_20140526_models.StartImagePipelineExecutionResponse:
         """
-        @summary Executes an image creation task by using an image template.
+        @summary Executes an image creation task (image building task) by using an image template.
         
         @description    After you create an image template, you can call the StartImagePipelineExecution operation to create a pipeline task. The system creates, copies, and shares images based on the parameters configured in the image template.
         You can execute only one pipeline task for each image template.
@@ -55860,9 +55904,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.TagResourcesResponse:
         """
-        @summary Creates and adds tags to specified Elastic Compute Service (ECS) resources.
+        @summary Creates and adds tags to Elastic Compute Service (ECS) resources.
         
-        @description Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. If the maximum number of tags is reached, an error message is returned. For more information, see the "Tag limits" section in [Limits](https://help.aliyun.com/document_detail/25412.html).
+        @description ## [](#)Usage notes
+        Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. If the maximum number of tags is reached, an error message is returned. For more information, see [Tag limits](https://help.aliyun.com/document_detail/25412.html).
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -55911,9 +55956,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.TagResourcesResponse:
         """
-        @summary Creates and adds tags to specified Elastic Compute Service (ECS) resources.
+        @summary Creates and adds tags to Elastic Compute Service (ECS) resources.
         
-        @description Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. If the maximum number of tags is reached, an error message is returned. For more information, see the "Tag limits" section in [Limits](https://help.aliyun.com/document_detail/25412.html).
+        @description ## [](#)Usage notes
+        Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. If the maximum number of tags is reached, an error message is returned. For more information, see [Tag limits](https://help.aliyun.com/document_detail/25412.html).
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -55961,9 +56007,10 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.TagResourcesRequest,
     ) -> ecs_20140526_models.TagResourcesResponse:
         """
-        @summary Creates and adds tags to specified Elastic Compute Service (ECS) resources.
+        @summary Creates and adds tags to Elastic Compute Service (ECS) resources.
         
-        @description Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. If the maximum number of tags is reached, an error message is returned. For more information, see the "Tag limits" section in [Limits](https://help.aliyun.com/document_detail/25412.html).
+        @description ## [](#)Usage notes
+        Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. If the maximum number of tags is reached, an error message is returned. For more information, see [Tag limits](https://help.aliyun.com/document_detail/25412.html).
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -55976,9 +56023,10 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.TagResourcesRequest,
     ) -> ecs_20140526_models.TagResourcesResponse:
         """
-        @summary Creates and adds tags to specified Elastic Compute Service (ECS) resources.
+        @summary Creates and adds tags to Elastic Compute Service (ECS) resources.
         
-        @description Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. If the maximum number of tags is reached, an error message is returned. For more information, see the "Tag limits" section in [Limits](https://help.aliyun.com/document_detail/25412.html).
+        @description ## [](#)Usage notes
+        Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. If the maximum number of tags is reached, an error message is returned. For more information, see [Tag limits](https://help.aliyun.com/document_detail/25412.html).
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
