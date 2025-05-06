@@ -41,6 +41,110 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def delete_prompt_with_options(
+        self,
+        request: dash_device_console_20250408_models.DeletePromptRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dash_device_console_20250408_models.DeletePromptResponse:
+        """
+        @summary delete prompt
+        
+        @param request: DeletePromptRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePromptResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['groupId'] = request.group_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeletePrompt',
+            version='2025-04-08',
+            protocol='HTTPS',
+            pathname=f'/prompt/delete',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dash_device_console_20250408_models.DeletePromptResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_prompt_with_options_async(
+        self,
+        request: dash_device_console_20250408_models.DeletePromptRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dash_device_console_20250408_models.DeletePromptResponse:
+        """
+        @summary delete prompt
+        
+        @param request: DeletePromptRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePromptResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['groupId'] = request.group_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeletePrompt',
+            version='2025-04-08',
+            protocol='HTTPS',
+            pathname=f'/prompt/delete',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dash_device_console_20250408_models.DeletePromptResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_prompt(
+        self,
+        request: dash_device_console_20250408_models.DeletePromptRequest,
+    ) -> dash_device_console_20250408_models.DeletePromptResponse:
+        """
+        @summary delete prompt
+        
+        @param request: DeletePromptRequest
+        @return: DeletePromptResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_prompt_with_options(request, headers, runtime)
+
+    async def delete_prompt_async(
+        self,
+        request: dash_device_console_20250408_models.DeletePromptRequest,
+    ) -> dash_device_console_20250408_models.DeletePromptResponse:
+        """
+        @summary delete prompt
+        
+        @param request: DeletePromptRequest
+        @return: DeletePromptResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_prompt_with_options_async(request, headers, runtime)
+
     def get_prompt_with_options(
         self,
         request: dash_device_console_20250408_models.GetPromptRequest,
@@ -74,16 +178,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dash_device_console_20250408_models.GetPromptResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dash_device_console_20250408_models.GetPromptResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dash_device_console_20250408_models.GetPromptResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_prompt_with_options_async(
         self,
@@ -118,16 +216,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dash_device_console_20250408_models.GetPromptResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dash_device_console_20250408_models.GetPromptResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dash_device_console_20250408_models.GetPromptResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_prompt(
         self,
@@ -194,16 +286,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dash_device_console_20250408_models.PushPromptResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dash_device_console_20250408_models.PushPromptResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dash_device_console_20250408_models.PushPromptResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def push_prompt_with_options_async(
         self,
@@ -242,16 +328,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dash_device_console_20250408_models.PushPromptResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dash_device_console_20250408_models.PushPromptResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dash_device_console_20250408_models.PushPromptResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def push_prompt(
         self,
