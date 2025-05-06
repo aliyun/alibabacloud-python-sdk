@@ -1,3 +1,8 @@
+2025-05-06 Version: 2.1.1
+- Update API DescribeInstances: add response parameters Body.Instances.$.Storage.SupportCreateFullyManagedStorage.
+- Update API DescribeInstances: add response parameters Body.Instances.$.Storage.SupportMigrationProgressDetection.
+
+
 2025-03-06 Version: 2.1.0
 - Support API ConvertHybridInstance.
 - Support API ConvertPrepayInstance.

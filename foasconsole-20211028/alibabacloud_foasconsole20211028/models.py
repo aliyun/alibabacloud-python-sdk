@@ -2564,10 +2564,14 @@ class DescribeInstancesResponseBodyInstancesStorage(TeaModel):
         fully_managed: bool = None,
         order_state: str = None,
         oss: DescribeInstancesResponseBodyInstancesStorageOss = None,
+        support_create_fully_managed_storage: bool = None,
+        support_migration_progress_detection: bool = None,
     ):
         self.fully_managed = fully_managed
         self.order_state = order_state
         self.oss = oss
+        self.support_create_fully_managed_storage = support_create_fully_managed_storage
+        self.support_migration_progress_detection = support_migration_progress_detection
 
     def validate(self):
         if self.oss:
@@ -2585,6 +2589,10 @@ class DescribeInstancesResponseBodyInstancesStorage(TeaModel):
             result['OrderState'] = self.order_state
         if self.oss is not None:
             result['Oss'] = self.oss.to_map()
+        if self.support_create_fully_managed_storage is not None:
+            result['SupportCreateFullyManagedStorage'] = self.support_create_fully_managed_storage
+        if self.support_migration_progress_detection is not None:
+            result['SupportMigrationProgressDetection'] = self.support_migration_progress_detection
         return result
 
     def from_map(self, m: dict = None):
@@ -2596,6 +2604,10 @@ class DescribeInstancesResponseBodyInstancesStorage(TeaModel):
         if m.get('Oss') is not None:
             temp_model = DescribeInstancesResponseBodyInstancesStorageOss()
             self.oss = temp_model.from_map(m['Oss'])
+        if m.get('SupportCreateFullyManagedStorage') is not None:
+            self.support_create_fully_managed_storage = m.get('SupportCreateFullyManagedStorage')
+        if m.get('SupportMigrationProgressDetection') is not None:
+            self.support_migration_progress_detection = m.get('SupportMigrationProgressDetection')
         return self
 
 
