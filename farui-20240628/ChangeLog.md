@@ -1,3 +1,13 @@
+2025-05-06 Version: 1.2.1
+- Update API RunSearchCaseFullText: add request parameters referLevel.
+- Update API RunSearchCaseFullText: add response parameters Body.data.caseLevel.
+- Update API RunSearchCaseFullText: add response parameters Body.data.caseResult.$.mode.
+- Update API RunSearchCaseFullText: add response parameters Body.data.caseResult.$.caseDomain.basicCase.
+- Update API RunSearchCaseFullText: add response parameters Body.data.caseResult.$.caseDomain.caseCause.
+- Update API RunSearchCaseFullText: add response parameters Body.data.caseResult.$.caseDomain.judgReason.
+- Update API RunSearchCaseFullText: add response parameters Body.data.caseResult.$.caseDomain.refereeGist.
+
+
 2024-12-26 Version: 1.2.0
 - Support API RunSearchCaseFullText.
 - Support API RunSearchLawQuery.

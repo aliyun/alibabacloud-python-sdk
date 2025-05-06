@@ -1730,6 +1730,7 @@ class RunSearchCaseFullTextRequest(TeaModel):
         page_param: RunSearchCaseFullTextRequestPageParam = None,
         query: str = None,
         query_keywords: List[str] = None,
+        refer_level: str = None,
         sort_key_and_direction: Dict[str, str] = None,
         thread: RunSearchCaseFullTextRequestThread = None,
     ):
@@ -1740,6 +1741,7 @@ class RunSearchCaseFullTextRequest(TeaModel):
         # This parameter is required.
         self.query = query
         self.query_keywords = query_keywords
+        self.refer_level = refer_level
         self.sort_key_and_direction = sort_key_and_direction
         self.thread = thread
 
@@ -1767,6 +1769,8 @@ class RunSearchCaseFullTextRequest(TeaModel):
             result['query'] = self.query
         if self.query_keywords is not None:
             result['queryKeywords'] = self.query_keywords
+        if self.refer_level is not None:
+            result['referLevel'] = self.refer_level
         if self.sort_key_and_direction is not None:
             result['sortKeyAndDirection'] = self.sort_key_and_direction
         if self.thread is not None:
@@ -1787,6 +1791,8 @@ class RunSearchCaseFullTextRequest(TeaModel):
             self.query = m.get('query')
         if m.get('queryKeywords') is not None:
             self.query_keywords = m.get('queryKeywords')
+        if m.get('referLevel') is not None:
+            self.refer_level = m.get('referLevel')
         if m.get('sortKeyAndDirection') is not None:
             self.sort_key_and_direction = m.get('sortKeyAndDirection')
         if m.get('thread') is not None:
@@ -1803,6 +1809,7 @@ class RunSearchCaseFullTextShrinkRequest(TeaModel):
         page_param_shrink: str = None,
         query: str = None,
         query_keywords_shrink: str = None,
+        refer_level: str = None,
         sort_key_and_direction_shrink: str = None,
         thread_shrink: str = None,
     ):
@@ -1813,6 +1820,7 @@ class RunSearchCaseFullTextShrinkRequest(TeaModel):
         # This parameter is required.
         self.query = query
         self.query_keywords_shrink = query_keywords_shrink
+        self.refer_level = refer_level
         self.sort_key_and_direction_shrink = sort_key_and_direction_shrink
         self.thread_shrink = thread_shrink
 
@@ -1835,6 +1843,8 @@ class RunSearchCaseFullTextShrinkRequest(TeaModel):
             result['query'] = self.query
         if self.query_keywords_shrink is not None:
             result['queryKeywords'] = self.query_keywords_shrink
+        if self.refer_level is not None:
+            result['referLevel'] = self.refer_level
         if self.sort_key_and_direction_shrink is not None:
             result['sortKeyAndDirection'] = self.sort_key_and_direction_shrink
         if self.thread_shrink is not None:
@@ -1853,6 +1863,8 @@ class RunSearchCaseFullTextShrinkRequest(TeaModel):
             self.query = m.get('query')
         if m.get('queryKeywords') is not None:
             self.query_keywords_shrink = m.get('queryKeywords')
+        if m.get('referLevel') is not None:
+            self.refer_level = m.get('referLevel')
         if m.get('sortKeyAndDirection') is not None:
             self.sort_key_and_direction_shrink = m.get('sortKeyAndDirection')
         if m.get('thread') is not None:
@@ -1934,7 +1946,9 @@ class RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain(TeaModel):
         self,
         abstract_obj: str = None,
         applied_laws: str = None,
+        basic_case: str = None,
         case_basic: str = None,
+        case_cause: str = None,
         case_feature: str = None,
         case_id: str = None,
         case_no: str = None,
@@ -1949,6 +1963,7 @@ class RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain(TeaModel):
         dispute_focus_tag: List[str] = None,
         disputedpoints: str = None,
         document_type: str = None,
+        judg_reason: str = None,
         keyfacts: str = None,
         legal_basis: str = None,
         litigants: str = None,
@@ -1956,6 +1971,7 @@ class RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain(TeaModel):
         open_case_cause: str = None,
         pre_trial_process: str = None,
         refer_level: str = None,
+        referee_gist: str = None,
         source_content: str = None,
         trial_court: RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomainTrialCourt = None,
         trial_date: str = None,
@@ -1966,7 +1982,9 @@ class RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain(TeaModel):
     ):
         self.abstract_obj = abstract_obj
         self.applied_laws = applied_laws
+        self.basic_case = basic_case
         self.case_basic = case_basic
+        self.case_cause = case_cause
         self.case_feature = case_feature
         self.case_id = case_id
         self.case_no = case_no
@@ -1981,6 +1999,7 @@ class RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain(TeaModel):
         self.dispute_focus_tag = dispute_focus_tag
         self.disputedpoints = disputedpoints
         self.document_type = document_type
+        self.judg_reason = judg_reason
         self.keyfacts = keyfacts
         self.legal_basis = legal_basis
         self.litigants = litigants
@@ -1988,6 +2007,7 @@ class RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain(TeaModel):
         self.open_case_cause = open_case_cause
         self.pre_trial_process = pre_trial_process
         self.refer_level = refer_level
+        self.referee_gist = referee_gist
         self.source_content = source_content
         self.trial_court = trial_court
         self.trial_date = trial_date
@@ -2010,8 +2030,12 @@ class RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain(TeaModel):
             result['abstractObj'] = self.abstract_obj
         if self.applied_laws is not None:
             result['appliedLaws'] = self.applied_laws
+        if self.basic_case is not None:
+            result['basicCase'] = self.basic_case
         if self.case_basic is not None:
             result['caseBasic'] = self.case_basic
+        if self.case_cause is not None:
+            result['caseCause'] = self.case_cause
         if self.case_feature is not None:
             result['caseFeature'] = self.case_feature
         if self.case_id is not None:
@@ -2040,6 +2064,8 @@ class RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain(TeaModel):
             result['disputedpoints'] = self.disputedpoints
         if self.document_type is not None:
             result['documentType'] = self.document_type
+        if self.judg_reason is not None:
+            result['judgReason'] = self.judg_reason
         if self.keyfacts is not None:
             result['keyfacts'] = self.keyfacts
         if self.legal_basis is not None:
@@ -2054,6 +2080,8 @@ class RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain(TeaModel):
             result['preTrialProcess'] = self.pre_trial_process
         if self.refer_level is not None:
             result['referLevel'] = self.refer_level
+        if self.referee_gist is not None:
+            result['refereeGist'] = self.referee_gist
         if self.source_content is not None:
             result['sourceContent'] = self.source_content
         if self.trial_court is not None:
@@ -2076,8 +2104,12 @@ class RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain(TeaModel):
             self.abstract_obj = m.get('abstractObj')
         if m.get('appliedLaws') is not None:
             self.applied_laws = m.get('appliedLaws')
+        if m.get('basicCase') is not None:
+            self.basic_case = m.get('basicCase')
         if m.get('caseBasic') is not None:
             self.case_basic = m.get('caseBasic')
+        if m.get('caseCause') is not None:
+            self.case_cause = m.get('caseCause')
         if m.get('caseFeature') is not None:
             self.case_feature = m.get('caseFeature')
         if m.get('caseId') is not None:
@@ -2106,6 +2138,8 @@ class RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain(TeaModel):
             self.disputedpoints = m.get('disputedpoints')
         if m.get('documentType') is not None:
             self.document_type = m.get('documentType')
+        if m.get('judgReason') is not None:
+            self.judg_reason = m.get('judgReason')
         if m.get('keyfacts') is not None:
             self.keyfacts = m.get('keyfacts')
         if m.get('legalBasis') is not None:
@@ -2120,6 +2154,8 @@ class RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain(TeaModel):
             self.pre_trial_process = m.get('preTrialProcess')
         if m.get('referLevel') is not None:
             self.refer_level = m.get('referLevel')
+        if m.get('refereeGist') is not None:
+            self.referee_gist = m.get('refereeGist')
         if m.get('sourceContent') is not None:
             self.source_content = m.get('sourceContent')
         if m.get('trialCourt') is not None:
@@ -2142,9 +2178,11 @@ class RunSearchCaseFullTextResponseBodyDataCaseResult(TeaModel):
     def __init__(
         self,
         case_domain: RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain = None,
+        mode: str = None,
         similarity: str = None,
     ):
         self.case_domain = case_domain
+        self.mode = mode
         self.similarity = similarity
 
     def validate(self):
@@ -2159,6 +2197,8 @@ class RunSearchCaseFullTextResponseBodyDataCaseResult(TeaModel):
         result = dict()
         if self.case_domain is not None:
             result['caseDomain'] = self.case_domain.to_map()
+        if self.mode is not None:
+            result['mode'] = self.mode
         if self.similarity is not None:
             result['similarity'] = self.similarity
         return result
@@ -2168,6 +2208,8 @@ class RunSearchCaseFullTextResponseBodyDataCaseResult(TeaModel):
         if m.get('caseDomain') is not None:
             temp_model = RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain()
             self.case_domain = temp_model.from_map(m['caseDomain'])
+        if m.get('mode') is not None:
+            self.mode = m.get('mode')
         if m.get('similarity') is not None:
             self.similarity = m.get('similarity')
         return self
@@ -2176,6 +2218,7 @@ class RunSearchCaseFullTextResponseBodyDataCaseResult(TeaModel):
 class RunSearchCaseFullTextResponseBodyData(TeaModel):
     def __init__(
         self,
+        case_level: str = None,
         case_result: List[RunSearchCaseFullTextResponseBodyDataCaseResult] = None,
         current_page: int = None,
         page_size: int = None,
@@ -2183,6 +2226,7 @@ class RunSearchCaseFullTextResponseBodyData(TeaModel):
         query_keywords: List[str] = None,
         total_count: int = None,
     ):
+        self.case_level = case_level
         self.case_result = case_result
         self.current_page = current_page
         self.page_size = page_size
@@ -2202,6 +2246,8 @@ class RunSearchCaseFullTextResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.case_level is not None:
+            result['caseLevel'] = self.case_level
         result['caseResult'] = []
         if self.case_result is not None:
             for k in self.case_result:
@@ -2220,6 +2266,8 @@ class RunSearchCaseFullTextResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('caseLevel') is not None:
+            self.case_level = m.get('caseLevel')
         self.case_result = []
         if m.get('caseResult') is not None:
             for k in m.get('caseResult'):

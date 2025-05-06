@@ -734,6 +734,8 @@ class Client(OpenApiClient):
             body['query'] = request.query
         if not UtilClient.is_unset(request.query_keywords_shrink):
             body['queryKeywords'] = request.query_keywords_shrink
+        if not UtilClient.is_unset(request.refer_level):
+            body['referLevel'] = request.refer_level
         if not UtilClient.is_unset(request.sort_key_and_direction_shrink):
             body['sortKeyAndDirection'] = request.sort_key_and_direction_shrink
         if not UtilClient.is_unset(request.thread_shrink):
@@ -797,6 +799,8 @@ class Client(OpenApiClient):
             body['query'] = request.query
         if not UtilClient.is_unset(request.query_keywords_shrink):
             body['queryKeywords'] = request.query_keywords_shrink
+        if not UtilClient.is_unset(request.refer_level):
+            body['referLevel'] = request.refer_level
         if not UtilClient.is_unset(request.sort_key_and_direction_shrink):
             body['sortKeyAndDirection'] = request.sort_key_and_direction_shrink
         if not UtilClient.is_unset(request.thread_shrink):
