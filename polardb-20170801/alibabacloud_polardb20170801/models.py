@@ -2137,12 +2137,13 @@ class CreateDBClusterRequest(TeaModel):
         # 
         # > This parameter is required when **CreationOption** is **CreateGdnStandby**.
         self.gdnid = gdnid
-        # Whether to enable the hot standby cluster. Values are as follows:
+        # Specifies whether to enable the hot standby storage cluster feature. Valid values:
         # 
-        # - **ON** (default): Enables the hot standby cluster.
-        # - **OFF**: Disables the hot standby cluster.
-        # - **STANDBY**: Enables the hot standby cluster for the standard edition.
-        # > The default value for standard edition clusters is **STANDBY**.
+        # *   **ON** (default): enables the hot standby storage cluster feature.
+        # *   **OFF**: disables the hot standby storage cluster feature.
+        # *   **STANDBY**: enables the hot standby storage cluster feature for Standard Edition clusters.
+        # 
+        # >  The default value for Standard Edition clusters is **STANDBY**.
         self.hot_standby_cluster = hot_standby_cluster
         # Enable Binlog feature, valid values are as follows:
         # - **ON**: Cluster enables the Binlog feature. - **OFF**: Cluster disables the Binlog feature. > This parameter takes effect only when the **DBType** parameter is set to **MySQL**.
@@ -3705,15 +3706,19 @@ class CreateDatabaseRequest(TeaModel):
         # 
         # *   **ReadWrite**: read and write permissions.
         # *   **ReadOnly**: read-only permissions.
-        # *   **DMLOnly**: the permissions to execute only DML statements.
-        # *   **DDLOnly**: the permissions to execute only DDL statements.
-        # *   **ReadIndex**: the read-only and index permissions.
+        # *   **DMLOnly**: permissions only to execute DML statements on the database.
+        # *   **DDLOnly**: permissions only to execute DDL statements on the database.
+        # *   **ReadIndex**: read-only and index permissions.
         # 
-        # If you leave this parameter empty, the default value **ReadWrite** is used.
+        # The default value is **ReadWrite**.
         # 
-        # >- This parameter is valid only if you specify **AccountName**.
-        # >- This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters.
-        # >- This parameter is optional for PolarDB for MySQL clusters.
+        # > 
+        # 
+        # *   This parameter is valid only when the **AccountName** parameter is specified.
+        # 
+        # *   For a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster, this parameter is optional. If **AccountName** is specified, it is the account of the database owner.
+        # 
+        # *   For a PolarDB for MySQL cluster, this parameter is optional.
         self.account_privilege = account_privilege
         # The character set that is used by the cluster. For more information, see [Character set tables](https://help.aliyun.com/document_detail/99716.html).
         # 
@@ -6927,6 +6932,9 @@ class DescribeAccountsRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The node type. This parameter is required when you query the PolarDB search node account.
+        # 
+        # *   Search
         self.node_type = node_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -10913,6 +10921,10 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
         # - **X86**\
         # - **ARM**\
         self.architecture = architecture
+        # The minor version upgrade method.
+        # 
+        # *   Auto
+        # *   Manual
         self.auto_upgrade_minor_version = auto_upgrade_minor_version
         # Maximum number of blktags in the file system.
         self.blktag_total = blktag_total
@@ -12191,6 +12203,10 @@ class DescribeDBClusterEndpointsResponseBodyItemsAddressItems(TeaModel):
     ):
         # The endpoint.
         self.connection_string = connection_string
+        # Whether it is the dashboard endpoint of the PolarDB search node.
+        # 
+        # *   Ture
+        # *   False
         self.dashboard_used = dashboard_used
         # The IP address.
         self.ipaddress = ipaddress
@@ -12320,9 +12336,9 @@ class DescribeDBClusterEndpointsResponseBodyItems(TeaModel):
         # *   **Primary**: the primary endpoint.
         # *   **Custom**: a custom cluster endpoint.
         self.endpoint_type = endpoint_type
-        # The role name of each node in the endpoint. The role name of the primary node is **Writer**. Multiple read-only nodes can be associated with an endpoint. Therefore, the role name of each read-only node is suffixed with a number, such as **Reader1** and **Reader2**.
+        # The role name of each node in the endpoint. The role name of the primary node is **Writer**. Multiple read-only nodes can be associated with an endpoint. Therefore, the role name of each read-only node is suffixed with a number. For example, you can use **Reader1** and **Reader2** as the role names.
         # 
-        # > This parameter is valid only for PolarDB for PostgreSQL clusters and PolarDB for PostgreSQL (Compatible with Oracle)) clusters.
+        # >  This parameter is valid only for PolarDB for PostgreSQL clusters and PolarDB for PostgreSQL (Compatible with Oracle)) clusters.
         self.node_with_roles = node_with_roles
         # The nodes in the endpoint.
         self.nodes = nodes
@@ -21242,6 +21258,9 @@ class DescribeMaskingRulesRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # Queries data masking rules or encryption rules. Valid values:
+        # 
+        # v1: queries data masking rules. v2: queries data encryption rules.
         self.interface_version = interface_version
         # The name of the masking rule.
         self.rule_name_list = rule_name_list
@@ -28046,7 +28065,7 @@ class ModifyDBClusterRequest(TeaModel):
         # 
         # *   0: `Crash SQL`-based fault injection.
         # 
-        # Valid values:
+        # Enumerated values:
         # 
         # *   CrashSQLInjection: CrashSQLInjection.
         self.fault_injection_type = fault_injection_type
@@ -28060,6 +28079,14 @@ class ModifyDBClusterRequest(TeaModel):
         # *   In **primary zone-level disaster recovery drill** scenarios, all compute nodes in the primary zone are unavailable. Data loss occurs during failovers in the scenarios.
         # 
         # *   In **node-level disaster recovery drill** scenarios, you can specify only one compute node for the disaster recovery drill. You can use the `DBNodeCrashList` parameter to specify the name of the compute node that you want to use for the drill.
+        # 
+        # Enumerated values:
+        # 
+        # *   FaultInjectToPrimaryAz
+        # *   FaultInjectToDbNode
+        # *   FaultInjection
+        # *   0
+        # *   1
         self.fault_simulate_mode = fault_simulate_mode
         # Specifies whether to enable automatic IMCI-based query acceleration. IMCI is short for In-Memory Column Index. Valid values:
         # 
@@ -28082,7 +28109,7 @@ class ModifyDBClusterRequest(TeaModel):
         # *   **ON**: enables cross-zone automatic switchover.
         # *   **OFF**: disables cross-zone automatic switchover.
         self.standby_hamode = standby_hamode
-        # Specifies whether to enable automatic storage scaling. This parameter is available only for Standard Edition clusters. Valid values:
+        # Specifies whether to enable automatic storage scaling for the Standard Edition cluster. Valid values:
         # 
         # *   Enable
         # *   Disable
@@ -33516,8 +33543,10 @@ class ModifyMaskingRulesRequest(TeaModel):
     def __init__(
         self,
         dbcluster_id: str = None,
+        default_algo: str = None,
         enable: str = None,
         interface_version: str = None,
+        masking_algo: str = None,
         rule_config: str = None,
         rule_name: str = None,
         rule_name_list: str = None,
@@ -33529,6 +33558,7 @@ class ModifyMaskingRulesRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        self.default_algo = default_algo
         # Specifies whether to enable the specified masking rule. Valid values:
         # 
         # *   **true**\
@@ -33537,6 +33567,7 @@ class ModifyMaskingRulesRequest(TeaModel):
         # > This parameter is valid only when the `RuleNameList` parameter is specfied.
         self.enable = enable
         self.interface_version = interface_version
+        self.masking_algo = masking_algo
         # The parameter that is used to specify the masking rule that you want to modify and the value in the JSON format. All parameter values are of the string type. Example: `{"auto": {"databases": ["db1"], "tables": ["tb1"], "columns": ["c1,c2"] }, "description": "This rule will be applied to the columns c1 and c2 in table t1", "enabled": true, "applies_to": ["user"]}`. Where,
         # 
         # *   `"auto"`: specifies that the dynamic masking algorithm is supported. This parameter is required.
@@ -33583,10 +33614,14 @@ class ModifyMaskingRulesRequest(TeaModel):
         result = dict()
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
+        if self.default_algo is not None:
+            result['DefaultAlgo'] = self.default_algo
         if self.enable is not None:
             result['Enable'] = self.enable
         if self.interface_version is not None:
             result['InterfaceVersion'] = self.interface_version
+        if self.masking_algo is not None:
+            result['MaskingAlgo'] = self.masking_algo
         if self.rule_config is not None:
             result['RuleConfig'] = self.rule_config
         if self.rule_name is not None:
@@ -33601,10 +33636,14 @@ class ModifyMaskingRulesRequest(TeaModel):
         m = m or dict()
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DefaultAlgo') is not None:
+            self.default_algo = m.get('DefaultAlgo')
         if m.get('Enable') is not None:
             self.enable = m.get('Enable')
         if m.get('InterfaceVersion') is not None:
             self.interface_version = m.get('InterfaceVersion')
+        if m.get('MaskingAlgo') is not None:
+            self.masking_algo = m.get('MaskingAlgo')
         if m.get('RuleConfig') is not None:
             self.rule_config = m.get('RuleConfig')
         if m.get('RuleName') is not None:
@@ -35535,11 +35574,15 @@ class TempModifyDBNodeRequestDBNode(TeaModel):
         target_class: str = None,
         zone_id: str = None,
     ):
-        # The instance type of the added node. The instance type of the added node must be the same as the instance type of the original node.
+        # The specifications of the scaled/added node.
         # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to view the instance types of original nodes.
+        # > 
+        # 
+        # *   The specification of the new node must be consistent with the specifications of the original nodes.
+        # 
+        # *   You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to view the specifications of the original nodes.
         self.target_class = target_class
-        # The ID of the zone in which the added node is deployed. The instance type of the added node must be the same as the instance type of the original node.
+        # The ID of the zone in which the added node is deployed. It must be the same zone as the original nodes.
         self.zone_id = zone_id
 
     def validate(self):
@@ -35586,7 +35629,7 @@ class TempModifyDBNodeRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The information of the added node.
+        # The information about the scaled/added node.
         # 
         # This parameter is required.
         self.dbnode = dbnode

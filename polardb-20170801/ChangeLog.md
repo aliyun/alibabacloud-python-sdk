@@ -1,3 +1,8 @@
+2025-05-06 Version: 5.6.1
+- Update API ModifyMaskingRules: add request parameters DefaultAlgo.
+- Update API ModifyMaskingRules: add request parameters MaskingAlgo.
+
+
 2025-03-25 Version: 5.6.0
 - Support API DescribeHistoryTasks.
 - Update API DescribeDBClusterAttribute: add response parameters Body.DBNodes.$.SubGroupDescription.
