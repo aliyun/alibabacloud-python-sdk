@@ -1,3 +1,7 @@
+2025-05-06 Version: 3.6.2
+- Update API CreateTask: add request parameters body.transcription.roleIdentification.
+
+
 2025-04-16 Version: 3.6.1
 - Generated python 2024-06-03 for ContactCenterAI.
 

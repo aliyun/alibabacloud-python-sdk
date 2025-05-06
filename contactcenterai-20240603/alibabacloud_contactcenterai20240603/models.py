@@ -1723,6 +1723,7 @@ class CreateTaskRequestTranscription(TeaModel):
         client_channel: int = None,
         file_name: str = None,
         level: str = None,
+        role_identification: bool = None,
         service_channel: int = None,
         service_channel_keywords: List[str] = None,
         vocabulary_id: str = None,
@@ -1734,6 +1735,7 @@ class CreateTaskRequestTranscription(TeaModel):
         # This parameter is required.
         self.file_name = file_name
         self.level = level
+        self.role_identification = role_identification
         self.service_channel = service_channel
         self.service_channel_keywords = service_channel_keywords
         self.vocabulary_id = vocabulary_id
@@ -1759,6 +1761,8 @@ class CreateTaskRequestTranscription(TeaModel):
             result['fileName'] = self.file_name
         if self.level is not None:
             result['level'] = self.level
+        if self.role_identification is not None:
+            result['roleIdentification'] = self.role_identification
         if self.service_channel is not None:
             result['serviceChannel'] = self.service_channel
         if self.service_channel_keywords is not None:
@@ -1781,6 +1785,8 @@ class CreateTaskRequestTranscription(TeaModel):
             self.file_name = m.get('fileName')
         if m.get('level') is not None:
             self.level = m.get('level')
+        if m.get('roleIdentification') is not None:
+            self.role_identification = m.get('roleIdentification')
         if m.get('serviceChannel') is not None:
             self.service_channel = m.get('serviceChannel')
         if m.get('serviceChannelKeywords') is not None:
