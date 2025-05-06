@@ -1,3 +1,30 @@
+2025-05-06 Version: 1.10.0
+- Support API CreateSessionCluster.
+- Support API CreateWorkspace.
+- Support API EditWorkspaceQueue.
+- Support API GetCuHours.
+- Support API GetDoctorApplication.
+- Support API ListKyuubiSparkApplications.
+- Update API CreateProcessDefinitionWithSchedule: add request parameters globalParams.
+- Update API CreateProcessDefinitionWithSchedule: add request parameters taskDefinitionJson.$.taskParams.localParams.
+- Update API GetSessionCluster: add response parameters Body.sessionCluster.extra.
+- Update API GetSqlStatement: add response parameters Body.data.sqlOutputs.$.rowsFilePath.
+- Update API ListJobRuns: add request parameters minDuration.
+- Update API ListReleaseVersions: add request parameters serviceFilter.
+- Update API ListSessionClusters: add response parameters Body.sessionClusters.$.extra.
+- Update API ListWorkspaceQueues: add response parameters Body.queues.$.createTime.
+- Update API ListWorkspaceQueues: add response parameters Body.queues.$.paymentType.
+- Update API ListWorkspaces: add request parameters tag.
+- Update API ListWorkspaces: add response parameters Body.workspaces.$.prePaidQuota.
+- Update API ListWorkspaces: add response parameters Body.workspaces.$.tags.
+- Update API StartProcessInstance: add request parameters action.
+- Update API StartProcessInstance: add request parameters comments.
+- Update API StartProcessInstance: add request parameters email.
+- Update API StartProcessInstance: add request parameters interval.
+- Update API UpdateProcessDefinitionWithSchedule: add request parameters globalParams.
+- Update API UpdateProcessDefinitionWithSchedule: add request parameters taskDefinitionJson.$.taskParams.localParams.
+
+
 2024-12-24 Version: 1.9.0
 - Support API CreateProcessDefinitionWithSchedule.
 - Support API StartProcessInstance.

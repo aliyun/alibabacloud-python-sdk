@@ -86,6 +86,7 @@ class Artifact(TeaModel):
         gmt_modified: str = None,
         location: str = None,
         modifier: int = None,
+        modifier_name: str = None,
         name: str = None,
     ):
         # This parameter is required.
@@ -103,6 +104,7 @@ class Artifact(TeaModel):
         self.location = location
         # This parameter is required.
         self.modifier = modifier
+        self.modifier_name = modifier_name
         # This parameter is required.
         self.name = name
 
@@ -134,6 +136,8 @@ class Artifact(TeaModel):
             result['location'] = self.location
         if self.modifier is not None:
             result['modifier'] = self.modifier
+        if self.modifier_name is not None:
+            result['modifierName'] = self.modifier_name
         if self.name is not None:
             result['name'] = self.name
         return result
@@ -159,6 +163,8 @@ class Artifact(TeaModel):
             self.location = m.get('location')
         if m.get('modifier') is not None:
             self.modifier = m.get('modifier')
+        if m.get('modifierName') is not None:
+            self.modifier_name = m.get('modifierName')
         if m.get('name') is not None:
             self.name = m.get('name')
         return self
@@ -929,10 +935,13 @@ class Task(TeaModel):
         has_commited: bool = None,
         is_streaming: bool = None,
         jars: List[str] = None,
+        kernel_id: str = None,
         last_run_resource_queue_id: str = None,
         modifier: int = None,
         name: str = None,
+        params: Dict[str, str] = None,
         py_files: List[str] = None,
+        session_cluster_id: str = None,
         spark_args: str = None,
         spark_conf: List[SparkConf] = None,
         spark_driver_cores: int = None,
@@ -976,12 +985,15 @@ class Task(TeaModel):
         self.has_commited = has_commited
         self.is_streaming = is_streaming
         self.jars = jars
+        self.kernel_id = kernel_id
         self.last_run_resource_queue_id = last_run_resource_queue_id
         # This parameter is required.
         self.modifier = modifier
         # This parameter is required.
         self.name = name
+        self.params = params
         self.py_files = py_files
+        self.session_cluster_id = session_cluster_id
         self.spark_args = spark_args
         self.spark_conf = spark_conf
         # This parameter is required.
@@ -1065,14 +1077,20 @@ class Task(TeaModel):
             result['isStreaming'] = self.is_streaming
         if self.jars is not None:
             result['jars'] = self.jars
+        if self.kernel_id is not None:
+            result['kernelId'] = self.kernel_id
         if self.last_run_resource_queue_id is not None:
             result['lastRunResourceQueueId'] = self.last_run_resource_queue_id
         if self.modifier is not None:
             result['modifier'] = self.modifier
         if self.name is not None:
             result['name'] = self.name
+        if self.params is not None:
+            result['params'] = self.params
         if self.py_files is not None:
             result['pyFiles'] = self.py_files
+        if self.session_cluster_id is not None:
+            result['sessionClusterId'] = self.session_cluster_id
         if self.spark_args is not None:
             result['sparkArgs'] = self.spark_args
         result['sparkConf'] = []
@@ -1154,14 +1172,20 @@ class Task(TeaModel):
             self.is_streaming = m.get('isStreaming')
         if m.get('jars') is not None:
             self.jars = m.get('jars')
+        if m.get('kernelId') is not None:
+            self.kernel_id = m.get('kernelId')
         if m.get('lastRunResourceQueueId') is not None:
             self.last_run_resource_queue_id = m.get('lastRunResourceQueueId')
         if m.get('modifier') is not None:
             self.modifier = m.get('modifier')
         if m.get('name') is not None:
             self.name = m.get('name')
+        if m.get('params') is not None:
+            self.params = m.get('params')
         if m.get('pyFiles') is not None:
             self.py_files = m.get('pyFiles')
+        if m.get('sessionClusterId') is not None:
+            self.session_cluster_id = m.get('sessionClusterId')
         if m.get('sparkArgs') is not None:
             self.spark_args = m.get('sparkArgs')
         self.spark_conf = []
@@ -1714,6 +1738,51 @@ class CancelJobRunResponse(TeaModel):
         return self
 
 
+class CreateProcessDefinitionWithScheduleRequestGlobalParams(TeaModel):
+    def __init__(
+        self,
+        direct: str = None,
+        prop: str = None,
+        type: str = None,
+        value: str = None,
+    ):
+        self.direct = direct
+        self.prop = prop
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.direct is not None:
+            result['direct'] = self.direct
+        if self.prop is not None:
+            result['prop'] = self.prop
+        if self.type is not None:
+            result['type'] = self.type
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('direct') is not None:
+            self.direct = m.get('direct')
+        if m.get('prop') is not None:
+            self.prop = m.get('prop')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
 class CreateProcessDefinitionWithScheduleRequestSchedule(TeaModel):
     def __init__(
         self,
@@ -1722,9 +1791,13 @@ class CreateProcessDefinitionWithScheduleRequestSchedule(TeaModel):
         start_time: str = None,
         timezone_id: str = None,
     ):
+        # The CRON expression that is used for scheduling.
         self.crontab = crontab
+        # The end time of the scheduling.
         self.end_time = end_time
+        # The start time of the scheduling.
         self.start_time = start_time
+        # The ID of the time zone.
         self.timezone_id = timezone_id
 
     def validate(self):
@@ -1759,13 +1832,60 @@ class CreateProcessDefinitionWithScheduleRequestSchedule(TeaModel):
         return self
 
 
+class CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsLocalParams(TeaModel):
+    def __init__(
+        self,
+        direct: str = None,
+        prop: str = None,
+        type: str = None,
+        value: str = None,
+    ):
+        self.direct = direct
+        self.prop = prop
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.direct is not None:
+            result['direct'] = self.direct
+        if self.prop is not None:
+            result['prop'] = self.prop
+        if self.type is not None:
+            result['type'] = self.type
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('direct') is not None:
+            self.direct = m.get('direct')
+        if m.get('prop') is not None:
+            self.prop = m.get('prop')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
 class CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsSparkConf(TeaModel):
     def __init__(
         self,
         key: str = None,
         value: str = None,
     ):
+        # The key of the SparkConf object.
         self.key = key
+        # The value of the SparkConf object.
         self.value = value
 
     def validate(self):
@@ -1798,6 +1918,7 @@ class CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams(Tea
         display_spark_version: str = None,
         environment_id: str = None,
         fusion: bool = None,
+        local_params: List[CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsLocalParams] = None,
         resource_queue_id: str = None,
         spark_conf: List[CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsSparkConf] = None,
         spark_driver_cores: int = None,
@@ -1811,26 +1932,49 @@ class CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams(Tea
         type: str = None,
         workspace_biz_id: str = None,
     ):
+        # The displayed version of the Spark engine.
         self.display_spark_version = display_spark_version
+        # The environment ID.
         self.environment_id = environment_id
+        # Specifies whether to enable Fusion engine for acceleration.
         self.fusion = fusion
+        self.local_params = local_params
+        # The name of the resource queue on which the job runs.
+        # 
         # This parameter is required.
         self.resource_queue_id = resource_queue_id
+        # The configurations of the Spark job.
         self.spark_conf = spark_conf
+        # The number of driver cores of the Spark job.
         self.spark_driver_cores = spark_driver_cores
+        # The size of driver memory of the Spark job.
         self.spark_driver_memory = spark_driver_memory
+        # The number of executor cores of the Spark job.
         self.spark_executor_cores = spark_executor_cores
+        # The size of executor memory of the Spark job.
         self.spark_executor_memory = spark_executor_memory
+        # The level of the Spark log.
         self.spark_log_level = spark_log_level
+        # The path where the operational logs of the Spark job are stored.
         self.spark_log_path = spark_log_path
+        # The version of the Spark engine.
         self.spark_version = spark_version
+        # The ID of the data development job.
+        # 
         # This parameter is required.
         self.task_biz_id = task_biz_id
+        # The type of the Spark job.
         self.type = type
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace_biz_id = workspace_biz_id
 
     def validate(self):
+        if self.local_params:
+            for k in self.local_params:
+                if k:
+                    k.validate()
         if self.spark_conf:
             for k in self.spark_conf:
                 if k:
@@ -1848,6 +1992,10 @@ class CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams(Tea
             result['environmentId'] = self.environment_id
         if self.fusion is not None:
             result['fusion'] = self.fusion
+        result['localParams'] = []
+        if self.local_params is not None:
+            for k in self.local_params:
+                result['localParams'].append(k.to_map() if k else None)
         if self.resource_queue_id is not None:
             result['resourceQueueId'] = self.resource_queue_id
         result['sparkConf'] = []
@@ -1884,6 +2032,11 @@ class CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams(Tea
             self.environment_id = m.get('environmentId')
         if m.get('fusion') is not None:
             self.fusion = m.get('fusion')
+        self.local_params = []
+        if m.get('localParams') is not None:
+            for k in m.get('localParams'):
+                temp_model = CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsLocalParams()
+                self.local_params.append(temp_model.from_map(k))
         if m.get('resourceQueueId') is not None:
             self.resource_queue_id = m.get('resourceQueueId')
         self.spark_conf = []
@@ -1929,20 +2082,35 @@ class CreateProcessDefinitionWithScheduleRequestTaskDefinitionJson(TeaModel):
         task_type: str = None,
         timeout: int = None,
     ):
+        # The email address to receive alerts.
         self.alert_email_address = alert_email_address
+        # The node ID.
+        # 
         # This parameter is required.
         self.code = code
+        # The node description.
         self.description = description
+        # Specifies whether to send alerts when the node fails.
         self.fail_alert_enable = fail_alert_enable
+        # The number of retries when the node fails.
         self.fail_retry_times = fail_retry_times
+        # The name of the node.
+        # 
         # This parameter is required.
         self.name = name
+        # Specifies whether to send alerts when the node is started.
         self.start_alert_enable = start_alert_enable
+        # The tags.
         self.tags = tags
+        # The job parameters.
+        # 
         # This parameter is required.
         self.task_params = task_params
+        # The type of the node.
+        # 
         # This parameter is required.
         self.task_type = task_type
+        # The timeout period of the callback. Unit: seconds.
         self.timeout = timeout
 
     def validate(self):
@@ -2016,14 +2184,24 @@ class CreateProcessDefinitionWithScheduleRequestTaskRelationJson(TeaModel):
         pre_task_code: int = None,
         pre_task_version: int = None,
     ):
+        # The name of the node topology. You can enter a workflow name.
+        # 
         # This parameter is required.
         self.name = name
+        # The ID of the downstream node.
+        # 
         # This parameter is required.
         self.post_task_code = post_task_code
+        # The version of the downstream node.
+        # 
         # This parameter is required.
         self.post_task_version = post_task_version
+        # The ID of the upstream node.
+        # 
         # This parameter is required.
         self.pre_task_code = pre_task_code
+        # The version of the upstream node.
+        # 
         # This parameter is required.
         self.pre_task_version = pre_task_version
 
@@ -2069,6 +2247,7 @@ class CreateProcessDefinitionWithScheduleRequest(TeaModel):
         alert_email_address: str = None,
         description: str = None,
         execution_type: str = None,
+        global_params: List[CreateProcessDefinitionWithScheduleRequestGlobalParams] = None,
         name: str = None,
         product_namespace: str = None,
         publish: bool = None,
@@ -2083,30 +2262,57 @@ class CreateProcessDefinitionWithScheduleRequest(TeaModel):
         task_relation_json: List[CreateProcessDefinitionWithScheduleRequestTaskRelationJson] = None,
         timeout: int = None,
     ):
+        # The email address to receive alerts.
         self.alert_email_address = alert_email_address
+        # The description of the workflow.
+        # 
         # This parameter is required.
         self.description = description
+        # The execution policy
+        # 
         # This parameter is required.
         self.execution_type = execution_type
+        self.global_params = global_params
+        # The name of the workflow.
+        # 
         # This parameter is required.
         self.name = name
+        # The code of the service.
+        # 
         # This parameter is required.
         self.product_namespace = product_namespace
+        # Specifies whether to publish the workflow.
         self.publish = publish
+        # The region ID.
         self.region_id = region_id
+        # The resource queue.
         self.resource_queue = resource_queue
+        # The number of retries.
         self.retry_times = retry_times
+        # The ID of the Alibaba Cloud account used by the user who creates the workflow.
         self.run_as = run_as
+        # The scheduling settings.
         self.schedule = schedule
+        # The tags.
         self.tags = tags
+        # The descriptions of all nodes in the workflow.
+        # 
         # This parameter is required.
         self.task_definition_json = task_definition_json
+        # The node parallelism.
         self.task_parallelism = task_parallelism
+        # The dependencies of all nodes in the workflow. preTaskCode specifies the ID of an upstream node, and postTaskCode specifies the ID of a downstream node. The ID of each node is unique. If a node does not have an upstream node, set preTaskCode to 0.
+        # 
         # This parameter is required.
         self.task_relation_json = task_relation_json
+        # The default timeout period of the workflow.
         self.timeout = timeout
 
     def validate(self):
+        if self.global_params:
+            for k in self.global_params:
+                if k:
+                    k.validate()
         if self.schedule:
             self.schedule.validate()
         if self.task_definition_json:
@@ -2130,6 +2336,10 @@ class CreateProcessDefinitionWithScheduleRequest(TeaModel):
             result['description'] = self.description
         if self.execution_type is not None:
             result['executionType'] = self.execution_type
+        result['globalParams'] = []
+        if self.global_params is not None:
+            for k in self.global_params:
+                result['globalParams'].append(k.to_map() if k else None)
         if self.name is not None:
             result['name'] = self.name
         if self.product_namespace is not None:
@@ -2170,6 +2380,11 @@ class CreateProcessDefinitionWithScheduleRequest(TeaModel):
             self.description = m.get('description')
         if m.get('executionType') is not None:
             self.execution_type = m.get('executionType')
+        self.global_params = []
+        if m.get('globalParams') is not None:
+            for k in m.get('globalParams'):
+                temp_model = CreateProcessDefinitionWithScheduleRequestGlobalParams()
+                self.global_params.append(temp_model.from_map(k))
         if m.get('name') is not None:
             self.name = m.get('name')
         if m.get('productNamespace') is not None:
@@ -2212,6 +2427,7 @@ class CreateProcessDefinitionWithScheduleShrinkRequest(TeaModel):
         alert_email_address: str = None,
         description: str = None,
         execution_type: str = None,
+        global_params_shrink: str = None,
         name: str = None,
         product_namespace: str = None,
         publish: bool = None,
@@ -2226,27 +2442,50 @@ class CreateProcessDefinitionWithScheduleShrinkRequest(TeaModel):
         task_relation_json_shrink: str = None,
         timeout: int = None,
     ):
+        # The email address to receive alerts.
         self.alert_email_address = alert_email_address
+        # The description of the workflow.
+        # 
         # This parameter is required.
         self.description = description
+        # The execution policy
+        # 
         # This parameter is required.
         self.execution_type = execution_type
+        self.global_params_shrink = global_params_shrink
+        # The name of the workflow.
+        # 
         # This parameter is required.
         self.name = name
+        # The code of the service.
+        # 
         # This parameter is required.
         self.product_namespace = product_namespace
+        # Specifies whether to publish the workflow.
         self.publish = publish
+        # The region ID.
         self.region_id = region_id
+        # The resource queue.
         self.resource_queue = resource_queue
+        # The number of retries.
         self.retry_times = retry_times
+        # The ID of the Alibaba Cloud account used by the user who creates the workflow.
         self.run_as = run_as
+        # The scheduling settings.
         self.schedule_shrink = schedule_shrink
+        # The tags.
         self.tags_shrink = tags_shrink
+        # The descriptions of all nodes in the workflow.
+        # 
         # This parameter is required.
         self.task_definition_json_shrink = task_definition_json_shrink
+        # The node parallelism.
         self.task_parallelism = task_parallelism
+        # The dependencies of all nodes in the workflow. preTaskCode specifies the ID of an upstream node, and postTaskCode specifies the ID of a downstream node. The ID of each node is unique. If a node does not have an upstream node, set preTaskCode to 0.
+        # 
         # This parameter is required.
         self.task_relation_json_shrink = task_relation_json_shrink
+        # The default timeout period of the workflow.
         self.timeout = timeout
 
     def validate(self):
@@ -2264,6 +2503,8 @@ class CreateProcessDefinitionWithScheduleShrinkRequest(TeaModel):
             result['description'] = self.description
         if self.execution_type is not None:
             result['executionType'] = self.execution_type
+        if self.global_params_shrink is not None:
+            result['globalParams'] = self.global_params_shrink
         if self.name is not None:
             result['name'] = self.name
         if self.product_namespace is not None:
@@ -2300,6 +2541,8 @@ class CreateProcessDefinitionWithScheduleShrinkRequest(TeaModel):
             self.description = m.get('description')
         if m.get('executionType') is not None:
             self.execution_type = m.get('executionType')
+        if m.get('globalParams') is not None:
+            self.global_params_shrink = m.get('globalParams')
         if m.get('name') is not None:
             self.name = m.get('name')
         if m.get('productNamespace') is not None:
@@ -2335,7 +2578,9 @@ class CreateProcessDefinitionWithScheduleResponseBodyData(TeaModel):
         code: int = None,
         id: int = None,
     ):
+        # The workflow ID.
         self.code = code
+        # The serial number of the workflow.
         self.id = id
 
     def validate(self):
@@ -2373,12 +2618,19 @@ class CreateProcessDefinitionWithScheduleResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The code that is returned by the backend server.
         self.code = code
+        # The returned data.
         self.data = data
+        # Indicates whether the request failed.
         self.failed = failed
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The description of the returned code.
         self.msg = msg
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -2468,6 +2720,308 @@ class CreateProcessDefinitionWithScheduleResponse(TeaModel):
         return self
 
 
+class CreateSessionClusterRequestApplicationConfigs(TeaModel):
+    def __init__(
+        self,
+        config_file_name: str = None,
+        config_item_key: str = None,
+        config_item_value: str = None,
+    ):
+        # The name of the configuration file.
+        self.config_file_name = config_file_name
+        # The key of SparkConf.
+        self.config_item_key = config_item_key
+        # The value of SparkConf.
+        self.config_item_value = config_item_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_file_name is not None:
+            result['configFileName'] = self.config_file_name
+        if self.config_item_key is not None:
+            result['configItemKey'] = self.config_item_key
+        if self.config_item_value is not None:
+            result['configItemValue'] = self.config_item_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('configFileName') is not None:
+            self.config_file_name = m.get('configFileName')
+        if m.get('configItemKey') is not None:
+            self.config_item_key = m.get('configItemKey')
+        if m.get('configItemValue') is not None:
+            self.config_item_value = m.get('configItemValue')
+        return self
+
+
+class CreateSessionClusterRequestAutoStartConfiguration(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+    ):
+        # Specifies whether to enable automatic startup.
+        # 
+        # *   true
+        # *   false
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        return self
+
+
+class CreateSessionClusterRequestAutoStopConfiguration(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+        idle_timeout_minutes: int = None,
+    ):
+        # Specifies whether to enable automatic termination.
+        # 
+        # *   true
+        # *   false
+        self.enable = enable
+        # The idle timeout period. The session is automatically terminated when the idle timeout period is exceeded.
+        self.idle_timeout_minutes = idle_timeout_minutes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['enable'] = self.enable
+        if self.idle_timeout_minutes is not None:
+            result['idleTimeoutMinutes'] = self.idle_timeout_minutes
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('idleTimeoutMinutes') is not None:
+            self.idle_timeout_minutes = m.get('idleTimeoutMinutes')
+        return self
+
+
+class CreateSessionClusterRequest(TeaModel):
+    def __init__(
+        self,
+        application_configs: List[CreateSessionClusterRequestApplicationConfigs] = None,
+        auto_start_configuration: CreateSessionClusterRequestAutoStartConfiguration = None,
+        auto_stop_configuration: CreateSessionClusterRequestAutoStopConfiguration = None,
+        display_release_version: str = None,
+        env_id: str = None,
+        fusion: bool = None,
+        kind: str = None,
+        name: str = None,
+        queue_name: str = None,
+        release_version: str = None,
+        region_id: str = None,
+    ):
+        # The Spark configurations.
+        self.application_configs = application_configs
+        # The automatic startup configuration.
+        self.auto_start_configuration = auto_start_configuration
+        # The automatic termination configuration.
+        self.auto_stop_configuration = auto_stop_configuration
+        # The version of the Spark engine.
+        self.display_release_version = display_release_version
+        # The ID of the Python environment. This parameter takes effect only for notebook sessions.
+        self.env_id = env_id
+        # Specifies whether to enable Fusion engine for acceleration.
+        self.fusion = fusion
+        # The session type.
+        # 
+        # *   SQL
+        # *   NOTEBOOK
+        self.kind = kind
+        # The name of the job.
+        self.name = name
+        # The queue name.
+        self.queue_name = queue_name
+        # The version number of Spark.
+        self.release_version = release_version
+        # The region ID.
+        self.region_id = region_id
+
+    def validate(self):
+        if self.application_configs:
+            for k in self.application_configs:
+                if k:
+                    k.validate()
+        if self.auto_start_configuration:
+            self.auto_start_configuration.validate()
+        if self.auto_stop_configuration:
+            self.auto_stop_configuration.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['applicationConfigs'] = []
+        if self.application_configs is not None:
+            for k in self.application_configs:
+                result['applicationConfigs'].append(k.to_map() if k else None)
+        if self.auto_start_configuration is not None:
+            result['autoStartConfiguration'] = self.auto_start_configuration.to_map()
+        if self.auto_stop_configuration is not None:
+            result['autoStopConfiguration'] = self.auto_stop_configuration.to_map()
+        if self.display_release_version is not None:
+            result['displayReleaseVersion'] = self.display_release_version
+        if self.env_id is not None:
+            result['envId'] = self.env_id
+        if self.fusion is not None:
+            result['fusion'] = self.fusion
+        if self.kind is not None:
+            result['kind'] = self.kind
+        if self.name is not None:
+            result['name'] = self.name
+        if self.queue_name is not None:
+            result['queueName'] = self.queue_name
+        if self.release_version is not None:
+            result['releaseVersion'] = self.release_version
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.application_configs = []
+        if m.get('applicationConfigs') is not None:
+            for k in m.get('applicationConfigs'):
+                temp_model = CreateSessionClusterRequestApplicationConfigs()
+                self.application_configs.append(temp_model.from_map(k))
+        if m.get('autoStartConfiguration') is not None:
+            temp_model = CreateSessionClusterRequestAutoStartConfiguration()
+            self.auto_start_configuration = temp_model.from_map(m['autoStartConfiguration'])
+        if m.get('autoStopConfiguration') is not None:
+            temp_model = CreateSessionClusterRequestAutoStopConfiguration()
+            self.auto_stop_configuration = temp_model.from_map(m['autoStopConfiguration'])
+        if m.get('displayReleaseVersion') is not None:
+            self.display_release_version = m.get('displayReleaseVersion')
+        if m.get('envId') is not None:
+            self.env_id = m.get('envId')
+        if m.get('fusion') is not None:
+            self.fusion = m.get('fusion')
+        if m.get('kind') is not None:
+            self.kind = m.get('kind')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('queueName') is not None:
+            self.queue_name = m.get('queueName')
+        if m.get('releaseVersion') is not None:
+            self.release_version = m.get('releaseVersion')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        return self
+
+
+class CreateSessionClusterResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        session_cluster_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+        # The session ID.
+        self.session_cluster_id = session_cluster_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.session_cluster_id is not None:
+            result['sessionClusterId'] = self.session_cluster_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('sessionClusterId') is not None:
+            self.session_cluster_id = m.get('sessionClusterId')
+        return self
+
+
+class CreateSessionClusterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateSessionClusterResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateSessionClusterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateSqlStatementRequest(TeaModel):
     def __init__(
         self,
@@ -2536,7 +3090,7 @@ class CreateSqlStatementResponseBodyData(TeaModel):
         self,
         statement_id: str = None,
     ):
-        # The ID of the SQL query.
+        # The interactive query ID.
         self.statement_id = statement_id
 
     def validate(self):
@@ -2633,6 +3187,738 @@ class CreateSqlStatementResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateSqlStatementResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateWorkspaceRequestResourceSpec(TeaModel):
+    def __init__(
+        self,
+        cu: str = None,
+    ):
+        # The maximum resource quota for a workspace.
+        self.cu = cu
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cu is not None:
+            result['cu'] = self.cu
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cu') is not None:
+            self.cu = m.get('cu')
+        return self
+
+
+class CreateWorkspaceRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class CreateWorkspaceRequest(TeaModel):
+    def __init__(
+        self,
+        auto_renew: str = None,
+        auto_renew_period: str = None,
+        auto_renew_period_unit: str = None,
+        auto_start_session_cluster: bool = None,
+        client_token: str = None,
+        dlf_catalog_id: str = None,
+        dlf_type: str = None,
+        duration: str = None,
+        oss_bucket: str = None,
+        payment_duration_unit: str = None,
+        payment_type: str = None,
+        ram_role_name: str = None,
+        release_type: str = None,
+        resource_spec: CreateWorkspaceRequestResourceSpec = None,
+        tag: List[CreateWorkspaceRequestTag] = None,
+        workspace_name: str = None,
+        region_id: str = None,
+    ):
+        # Specifies whether to enable auto-renewal. This parameter is required only if the paymentType parameter is set to Pre.
+        self.auto_renew = auto_renew
+        # The auto-renewal duration. This parameter is required only if the paymentType parameter is set to Pre.
+        self.auto_renew_period = auto_renew_period
+        # The unit of the auto-renewal duration. This parameter is required only if the paymentType parameter is set to Pre.
+        self.auto_renew_period_unit = auto_renew_period_unit
+        # Specifies whether to automatically start a session.
+        self.auto_start_session_cluster = auto_start_session_cluster
+        # The client token that is used to ensure the idempotence of the request.
+        self.client_token = client_token
+        # The information of the Data Lake Formation (DLF) catalog.
+        self.dlf_catalog_id = dlf_catalog_id
+        # The version of DLF.
+        self.dlf_type = dlf_type
+        # The subscription period. This parameter is required only if the paymentType parameter is set to Pre.
+        self.duration = duration
+        # The name of the Object Storage Service (OSS) bucket.
+        self.oss_bucket = oss_bucket
+        # The unit of the subscription duration.
+        self.payment_duration_unit = payment_duration_unit
+        # The billing method. Valid values:
+        # 
+        # *   PayAsYouGo
+        # *   Pre
+        self.payment_type = payment_type
+        # The name of the role used to run Spark jobs.
+        self.ram_role_name = ram_role_name
+        # The type of the version.
+        self.release_type = release_type
+        # The resource specifications.
+        self.resource_spec = resource_spec
+        self.tag = tag
+        # The name of the workspace.
+        self.workspace_name = workspace_name
+        # The region ID.
+        self.region_id = region_id
+
+    def validate(self):
+        if self.resource_spec:
+            self.resource_spec.validate()
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_renew is not None:
+            result['autoRenew'] = self.auto_renew
+        if self.auto_renew_period is not None:
+            result['autoRenewPeriod'] = self.auto_renew_period
+        if self.auto_renew_period_unit is not None:
+            result['autoRenewPeriodUnit'] = self.auto_renew_period_unit
+        if self.auto_start_session_cluster is not None:
+            result['autoStartSessionCluster'] = self.auto_start_session_cluster
+        if self.client_token is not None:
+            result['clientToken'] = self.client_token
+        if self.dlf_catalog_id is not None:
+            result['dlfCatalogId'] = self.dlf_catalog_id
+        if self.dlf_type is not None:
+            result['dlfType'] = self.dlf_type
+        if self.duration is not None:
+            result['duration'] = self.duration
+        if self.oss_bucket is not None:
+            result['ossBucket'] = self.oss_bucket
+        if self.payment_duration_unit is not None:
+            result['paymentDurationUnit'] = self.payment_duration_unit
+        if self.payment_type is not None:
+            result['paymentType'] = self.payment_type
+        if self.ram_role_name is not None:
+            result['ramRoleName'] = self.ram_role_name
+        if self.release_type is not None:
+            result['releaseType'] = self.release_type
+        if self.resource_spec is not None:
+            result['resourceSpec'] = self.resource_spec.to_map()
+        result['tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['tag'].append(k.to_map() if k else None)
+        if self.workspace_name is not None:
+            result['workspaceName'] = self.workspace_name
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('autoRenew') is not None:
+            self.auto_renew = m.get('autoRenew')
+        if m.get('autoRenewPeriod') is not None:
+            self.auto_renew_period = m.get('autoRenewPeriod')
+        if m.get('autoRenewPeriodUnit') is not None:
+            self.auto_renew_period_unit = m.get('autoRenewPeriodUnit')
+        if m.get('autoStartSessionCluster') is not None:
+            self.auto_start_session_cluster = m.get('autoStartSessionCluster')
+        if m.get('clientToken') is not None:
+            self.client_token = m.get('clientToken')
+        if m.get('dlfCatalogId') is not None:
+            self.dlf_catalog_id = m.get('dlfCatalogId')
+        if m.get('dlfType') is not None:
+            self.dlf_type = m.get('dlfType')
+        if m.get('duration') is not None:
+            self.duration = m.get('duration')
+        if m.get('ossBucket') is not None:
+            self.oss_bucket = m.get('ossBucket')
+        if m.get('paymentDurationUnit') is not None:
+            self.payment_duration_unit = m.get('paymentDurationUnit')
+        if m.get('paymentType') is not None:
+            self.payment_type = m.get('paymentType')
+        if m.get('ramRoleName') is not None:
+            self.ram_role_name = m.get('ramRoleName')
+        if m.get('releaseType') is not None:
+            self.release_type = m.get('releaseType')
+        if m.get('resourceSpec') is not None:
+            temp_model = CreateWorkspaceRequestResourceSpec()
+            self.resource_spec = temp_model.from_map(m['resourceSpec'])
+        self.tag = []
+        if m.get('tag') is not None:
+            for k in m.get('tag'):
+                temp_model = CreateWorkspaceRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        if m.get('workspaceName') is not None:
+            self.workspace_name = m.get('workspaceName')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        return self
+
+
+class CreateWorkspaceResponseBody(TeaModel):
+    def __init__(
+        self,
+        operation_id: str = None,
+        request_id: str = None,
+        workspace_id: str = None,
+    ):
+        # The operation ID.
+        self.operation_id = operation_id
+        # The request ID.
+        self.request_id = request_id
+        # The workspace ID.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.operation_id is not None:
+            result['operationId'] = self.operation_id
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('operationId') is not None:
+            self.operation_id = m.get('operationId')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
+        return self
+
+
+class CreateWorkspaceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateWorkspaceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateWorkspaceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EditWorkspaceQueueRequestResourceSpec(TeaModel):
+    def __init__(
+        self,
+        cu: int = None,
+    ):
+        self.cu = cu
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cu is not None:
+            result['cu'] = self.cu
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cu') is not None:
+            self.cu = m.get('cu')
+        return self
+
+
+class EditWorkspaceQueueRequest(TeaModel):
+    def __init__(
+        self,
+        environments: List[str] = None,
+        resource_spec: EditWorkspaceQueueRequestResourceSpec = None,
+        workspace_id: str = None,
+        workspace_queue_name: str = None,
+        region_id: str = None,
+    ):
+        self.environments = environments
+        self.resource_spec = resource_spec
+        self.workspace_id = workspace_id
+        self.workspace_queue_name = workspace_queue_name
+        self.region_id = region_id
+
+    def validate(self):
+        if self.resource_spec:
+            self.resource_spec.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.environments is not None:
+            result['environments'] = self.environments
+        if self.resource_spec is not None:
+            result['resourceSpec'] = self.resource_spec.to_map()
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+        if self.workspace_queue_name is not None:
+            result['workspaceQueueName'] = self.workspace_queue_name
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('environments') is not None:
+            self.environments = m.get('environments')
+        if m.get('resourceSpec') is not None:
+            temp_model = EditWorkspaceQueueRequestResourceSpec()
+            self.resource_spec = temp_model.from_map(m['resourceSpec'])
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
+        if m.get('workspaceQueueName') is not None:
+            self.workspace_queue_name = m.get('workspaceQueueName')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        return self
+
+
+class EditWorkspaceQueueResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # 请求ID。
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class EditWorkspaceQueueResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EditWorkspaceQueueResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EditWorkspaceQueueResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetCuHoursRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        start_time: str = None,
+    ):
+        # The end time of the query time range.
+        # 
+        # This parameter is required.
+        self.end_time = end_time
+        # The start time of the query time range.
+        # 
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        return self
+
+
+class GetCuHoursResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        cu_hours: str = None,
+    ):
+        # The number of CU-hours consumed by a queue during a specified cycle. The value is an estimated value. Refer to your Alibaba Cloud bill for the actual number of consumed CU-hours.
+        self.cu_hours = cu_hours
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cu_hours is not None:
+            result['cuHours'] = self.cu_hours
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cuHours') is not None:
+            self.cu_hours = m.get('cuHours')
+        return self
+
+
+class GetCuHoursResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetCuHoursResponseBodyData = None,
+        request_id: str = None,
+    ):
+        # The returned data.
+        self.data = data
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = GetCuHoursResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetCuHoursResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetCuHoursResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetCuHoursResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDoctorApplicationRequest(TeaModel):
+    def __init__(
+        self,
+        locale: str = None,
+        query_time: str = None,
+        region_id: str = None,
+    ):
+        # The language of diagnostic information.
+        self.locale = locale
+        # The query time.
+        self.query_time = query_time
+        # The region ID.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.locale is not None:
+            result['locale'] = self.locale
+        if self.query_time is not None:
+            result['queryTime'] = self.query_time
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('locale') is not None:
+            self.locale = m.get('locale')
+        if m.get('queryTime') is not None:
+            self.query_time = m.get('queryTime')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        return self
+
+
+class GetDoctorApplicationResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        suggestions: List[str] = None,
+    ):
+        # The diagnostics list.
+        self.suggestions = suggestions
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.suggestions is not None:
+            result['suggestions'] = self.suggestions
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('suggestions') is not None:
+            self.suggestions = m.get('suggestions')
+        return self
+
+
+class GetDoctorApplicationResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetDoctorApplicationResponseBodyData = None,
+    ):
+        # The data returned.
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = GetDoctorApplicationResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        return self
+
+
+class GetDoctorApplicationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDoctorApplicationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDoctorApplicationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2766,14 +4052,17 @@ class GetJobRunResponseBodyJobRun(TeaModel):
         # *   JAR
         # *   PYTHON
         self.code_type = code_type
-        # The job configurations of Spark.
+        # The configurations of the Spark jobs.
         self.configuration_overrides = configuration_overrides
+        # The version of the Spark engine.
         self.display_release_version = display_release_version
         # The end time of the job.
         self.end_time = end_time
+        # The environment ID.
         self.environment_id = environment_id
         # The timeout period of the job.
         self.execution_timeout_seconds = execution_timeout_seconds
+        # Indicates whether the Fusion engine is used for acceleration.
         self.fusion = fusion
         # The information about Spark Driver.
         self.job_driver = job_driver
@@ -2795,7 +4084,7 @@ class GetJobRunResponseBodyJobRun(TeaModel):
         self.state_change_reason = state_change_reason
         # The time when the job was submitted.
         self.submit_time = submit_time
-        # The tags.
+        # The tags of the job.
         self.tags = tags
         # The web UI of the job.
         self.web_ui = web_ui
@@ -3072,6 +4361,9 @@ class GetSessionClusterResponseBodySessionClusterAutoStartConfiguration(TeaModel
         enable: bool = None,
     ):
         # Indicates whether automatic startup is enabled.
+        # 
+        # *   true
+        # *   false
         self.enable = enable
 
     def validate(self):
@@ -3101,6 +4393,9 @@ class GetSessionClusterResponseBodySessionClusterAutoStopConfiguration(TeaModel)
         idle_timeout_minutes: int = None,
     ):
         # Indicates whether automatic termination is enabled.
+        # 
+        # *   true
+        # *   false
         self.enable = enable
         # The idle timeout period. The session is automatically terminated when the idle timeout period is exceeded.
         self.idle_timeout_minutes = idle_timeout_minutes
@@ -3175,6 +4470,7 @@ class GetSessionClusterResponseBodySessionCluster(TeaModel):
         domain_inner: str = None,
         draft_id: str = None,
         env_id: str = None,
+        extra: str = None,
         fusion: bool = None,
         gmt_create: int = None,
         kind: str = None,
@@ -3192,9 +4488,9 @@ class GetSessionClusterResponseBodySessionCluster(TeaModel):
     ):
         # The Spark configurations.
         self.application_configs = application_configs
-        # The automatic startup configurations.
+        # Indicates whether automatic startup is enabled.
         self.auto_start_configuration = auto_start_configuration
-        # The automatic termination configurations.
+        # Indicates whether automatic termination is enabled.
         self.auto_stop_configuration = auto_stop_configuration
         # The version of the Spark engine.
         self.display_release_version = display_release_version
@@ -3206,6 +4502,8 @@ class GetSessionClusterResponseBodySessionCluster(TeaModel):
         self.draft_id = draft_id
         # The environment ID.
         self.env_id = env_id
+        # The additional metadata of the session.
+        self.extra = extra
         # Indicates whether the Fusion engine is used for acceleration.
         self.fusion = fusion
         # The creation time.
@@ -3220,13 +4518,19 @@ class GetSessionClusterResponseBodySessionCluster(TeaModel):
         self.name = name
         # The queue name.
         self.queue_name = queue_name
-        # The version of E-MapReduce (EMR) Serverless Spark.
+        # The version of Serverless Spark.
         self.release_version = release_version
         # The session ID.
         self.session_cluster_id = session_cluster_id
         # The start time.
         self.start_time = start_time
         # The job status.
+        # 
+        # *   Starting
+        # *   Running
+        # *   Stopping
+        # *   Stopped
+        # *   Error
         self.state = state
         # The reason of the job status change.
         self.state_change_reason = state_change_reason
@@ -3275,6 +4579,8 @@ class GetSessionClusterResponseBodySessionCluster(TeaModel):
             result['draftId'] = self.draft_id
         if self.env_id is not None:
             result['envId'] = self.env_id
+        if self.extra is not None:
+            result['extra'] = self.extra
         if self.fusion is not None:
             result['fusion'] = self.fusion
         if self.gmt_create is not None:
@@ -3328,6 +4634,8 @@ class GetSessionClusterResponseBodySessionCluster(TeaModel):
             self.draft_id = m.get('draftId')
         if m.get('envId') is not None:
             self.env_id = m.get('envId')
+        if m.get('extra') is not None:
+            self.extra = m.get('extra')
         if m.get('fusion') is not None:
             self.fusion = m.get('fusion')
         if m.get('gmtCreate') is not None:
@@ -3470,10 +4778,12 @@ class GetSqlStatementResponseBodyDataSqlOutputs(TeaModel):
     def __init__(
         self,
         rows: str = None,
+        rows_file_path: str = None,
         schema: str = None,
     ):
         # The queried data, which is a string in the JSON format.
         self.rows = rows
+        self.rows_file_path = rows_file_path
         # The information about the schema, which is a string in the JSON format.
         self.schema = schema
 
@@ -3488,6 +4798,8 @@ class GetSqlStatementResponseBodyDataSqlOutputs(TeaModel):
         result = dict()
         if self.rows is not None:
             result['rows'] = self.rows
+        if self.rows_file_path is not None:
+            result['rowsFilePath'] = self.rows_file_path
         if self.schema is not None:
             result['schema'] = self.schema
         return result
@@ -3496,6 +4808,8 @@ class GetSqlStatementResponseBodyDataSqlOutputs(TeaModel):
         m = m or dict()
         if m.get('rows') is not None:
             self.rows = m.get('rows')
+        if m.get('rowsFilePath') is not None:
+            self.rows_file_path = m.get('rowsFilePath')
         if m.get('schema') is not None:
             self.schema = m.get('schema')
         return self
@@ -3667,6 +4981,8 @@ class GetTemplateRequest(TeaModel):
         # The region ID.
         self.region_id = region_id
         # The template type.
+        # 
+        # Valid values:
         # 
         # *   TASK
         # *   SESSION
@@ -4028,6 +5344,7 @@ class ListJobRunsRequest(TeaModel):
         job_run_deployment_id: str = None,
         job_run_id: str = None,
         max_results: int = None,
+        min_duration: int = None,
         name: str = None,
         next_token: str = None,
         region_id: str = None,
@@ -4040,11 +5357,14 @@ class ListJobRunsRequest(TeaModel):
         self.creator = creator
         # The range of end time.
         self.end_time = end_time
+        # The job run ID.
         self.job_run_deployment_id = job_run_deployment_id
         # The job ID.
         self.job_run_id = job_run_id
         # The maximum number of entries to return.
         self.max_results = max_results
+        # The minimum running duration of the job. Unit: ms.
+        self.min_duration = min_duration
         # The job name.
         self.name = name
         # The pagination token that is used in the request to retrieve a new page of results.
@@ -4086,6 +5406,8 @@ class ListJobRunsRequest(TeaModel):
             result['jobRunId'] = self.job_run_id
         if self.max_results is not None:
             result['maxResults'] = self.max_results
+        if self.min_duration is not None:
+            result['minDuration'] = self.min_duration
         if self.name is not None:
             result['name'] = self.name
         if self.next_token is not None:
@@ -4117,6 +5439,8 @@ class ListJobRunsRequest(TeaModel):
             self.job_run_id = m.get('jobRunId')
         if m.get('maxResults') is not None:
             self.max_results = m.get('maxResults')
+        if m.get('minDuration') is not None:
+            self.min_duration = m.get('minDuration')
         if m.get('name') is not None:
             self.name = m.get('name')
         if m.get('nextToken') is not None:
@@ -4146,6 +5470,7 @@ class ListJobRunsShrinkRequest(TeaModel):
         job_run_deployment_id: str = None,
         job_run_id: str = None,
         max_results: int = None,
+        min_duration: int = None,
         name: str = None,
         next_token: str = None,
         region_id: str = None,
@@ -4158,11 +5483,14 @@ class ListJobRunsShrinkRequest(TeaModel):
         self.creator = creator
         # The range of end time.
         self.end_time_shrink = end_time_shrink
+        # The job run ID.
         self.job_run_deployment_id = job_run_deployment_id
         # The job ID.
         self.job_run_id = job_run_id
         # The maximum number of entries to return.
         self.max_results = max_results
+        # The minimum running duration of the job. Unit: ms.
+        self.min_duration = min_duration
         # The job name.
         self.name = name
         # The pagination token that is used in the request to retrieve a new page of results.
@@ -4197,6 +5525,8 @@ class ListJobRunsShrinkRequest(TeaModel):
             result['jobRunId'] = self.job_run_id
         if self.max_results is not None:
             result['maxResults'] = self.max_results
+        if self.min_duration is not None:
+            result['minDuration'] = self.min_duration
         if self.name is not None:
             result['name'] = self.name
         if self.next_token is not None:
@@ -4225,6 +5555,8 @@ class ListJobRunsShrinkRequest(TeaModel):
             self.job_run_id = m.get('jobRunId')
         if m.get('maxResults') is not None:
             self.max_results = m.get('maxResults')
+        if m.get('minDuration') is not None:
+            self.min_duration = m.get('minDuration')
         if m.get('name') is not None:
             self.name = m.get('name')
         if m.get('nextToken') is not None:
@@ -4319,7 +5651,7 @@ class ListJobRunsResponseBodyJobRuns(TeaModel):
         code_type: str = None,
         configuration_overrides: ListJobRunsResponseBodyJobRunsConfigurationOverrides = None,
         creator: str = None,
-        cu_hours: int = None,
+        cu_hours: float = None,
         display_release_version: str = None,
         end_time: int = None,
         execution_timeout_seconds: int = None,
@@ -4350,12 +5682,15 @@ class ListJobRunsResponseBodyJobRuns(TeaModel):
         self.configuration_overrides = configuration_overrides
         # The ID of the user who created the job.
         self.creator = creator
+        # The number of CUs consumed during a specified cycle of a task. The value is an estimated value. Refer to your Alibaba Cloud bill for the actual number of consumed CUs.
         self.cu_hours = cu_hours
+        # The version of Spark on which the jobs run.
         self.display_release_version = display_release_version
         # The end time of the job.
         self.end_time = end_time
         # The timeout period of the job.
         self.execution_timeout_seconds = execution_timeout_seconds
+        # Indicates whether the Fusion engine is used for acceleration.
         self.fusion = fusion
         # The information about Spark Driver.
         self.job_driver = job_driver
@@ -4363,6 +5698,7 @@ class ListJobRunsResponseBodyJobRuns(TeaModel):
         self.job_run_id = job_run_id
         # The path where the operational logs are stored.
         self.log = log
+        # The total amount of memory allocated to the job multiplied by the running duration (seconds).
         self.mb_seconds = mb_seconds
         # The job name.
         self.name = name
@@ -4376,6 +5712,7 @@ class ListJobRunsResponseBodyJobRuns(TeaModel):
         self.submit_time = submit_time
         # The tags.
         self.tags = tags
+        # The total number of CPU cores allocated to the job multiplied by the running duration (seconds).
         self.vcore_seconds = vcore_seconds
         # The web UI of the job.
         self.web_ui = web_ui
@@ -4515,7 +5852,7 @@ class ListJobRunsResponseBody(TeaModel):
         self.job_runs = job_runs
         # The maximum number of entries returned.
         self.max_results = max_results
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # A pagination token.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -4607,6 +5944,355 @@ class ListJobRunsResponse(TeaModel):
         return self
 
 
+class ListKyuubiSparkApplicationsRequestStartTime(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        start_time: int = None,
+    ):
+        # The end of the start time range.
+        self.end_time = end_time
+        # The beginning of the start time range.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        return self
+
+
+class ListKyuubiSparkApplicationsRequest(TeaModel):
+    def __init__(
+        self,
+        application_id: str = None,
+        application_name: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        start_time: ListKyuubiSparkApplicationsRequestStartTime = None,
+    ):
+        # The ID of the application that is submitted by using a Kyuubi gateway.
+        self.application_id = application_id
+        # The name of the Spark application that is submitted by using a Kyuubi gateway.
+        self.application_name = application_name
+        # The maximum number of entries to return.
+        self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results.
+        self.next_token = next_token
+        # The range of start time.
+        self.start_time = start_time
+
+    def validate(self):
+        if self.start_time:
+            self.start_time.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['applicationId'] = self.application_id
+        if self.application_name is not None:
+            result['applicationName'] = self.application_name
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.start_time is not None:
+            result['startTime'] = self.start_time.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('applicationId') is not None:
+            self.application_id = m.get('applicationId')
+        if m.get('applicationName') is not None:
+            self.application_name = m.get('applicationName')
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('startTime') is not None:
+            temp_model = ListKyuubiSparkApplicationsRequestStartTime()
+            self.start_time = temp_model.from_map(m['startTime'])
+        return self
+
+
+class ListKyuubiSparkApplicationsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        application_id: str = None,
+        application_name: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        start_time_shrink: str = None,
+    ):
+        # The ID of the application that is submitted by using a Kyuubi gateway.
+        self.application_id = application_id
+        # The name of the Spark application that is submitted by using a Kyuubi gateway.
+        self.application_name = application_name
+        # The maximum number of entries to return.
+        self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results.
+        self.next_token = next_token
+        # The range of start time.
+        self.start_time_shrink = start_time_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['applicationId'] = self.application_id
+        if self.application_name is not None:
+            result['applicationName'] = self.application_name
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.start_time_shrink is not None:
+            result['startTime'] = self.start_time_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('applicationId') is not None:
+            self.application_id = m.get('applicationId')
+        if m.get('applicationName') is not None:
+            self.application_name = m.get('applicationName')
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('startTime') is not None:
+            self.start_time_shrink = m.get('startTime')
+        return self
+
+
+class ListKyuubiSparkApplicationsResponseBodyApplications(TeaModel):
+    def __init__(
+        self,
+        application_id: str = None,
+        application_name: str = None,
+        cu_hours: float = None,
+        end_time: str = None,
+        mb_seconds: int = None,
+        resource_queue_id: str = None,
+        start_time: str = None,
+        state: str = None,
+        vcore_seconds: int = None,
+        web_ui: str = None,
+    ):
+        # The ID of the application that is submitted by using a Kyuubi gateway.
+        self.application_id = application_id
+        # The name of the Spark application that is submitted by using a Kyuubi gateway.
+        self.application_name = application_name
+        # The number of CUs consumed during a specified cycle of a task. The value is an estimated value. Refer to your Alibaba Cloud bill for the actual number of consumed CUs.
+        self.cu_hours = cu_hours
+        # The time when the task ended.
+        self.end_time = end_time
+        # The total amount of memory allocated to the job multiplied by the running duration (seconds).
+        self.mb_seconds = mb_seconds
+        # The name of the resource queue on which the Spark jobs run.
+        self.resource_queue_id = resource_queue_id
+        # The time when the task started.
+        self.start_time = start_time
+        # The status of the Spark application.
+        # 
+        # *   STARTING
+        # *   RUNNING
+        # *   TERMINATED
+        self.state = state
+        # The total number of CPU cores allocated to the job multiplied by the running duration (seconds).
+        self.vcore_seconds = vcore_seconds
+        # The URL of the web UI for the Spark application.
+        self.web_ui = web_ui
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['applicationId'] = self.application_id
+        if self.application_name is not None:
+            result['applicationName'] = self.application_name
+        if self.cu_hours is not None:
+            result['cuHours'] = self.cu_hours
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.mb_seconds is not None:
+            result['mbSeconds'] = self.mb_seconds
+        if self.resource_queue_id is not None:
+            result['resourceQueueId'] = self.resource_queue_id
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        if self.state is not None:
+            result['state'] = self.state
+        if self.vcore_seconds is not None:
+            result['vcoreSeconds'] = self.vcore_seconds
+        if self.web_ui is not None:
+            result['webUI'] = self.web_ui
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('applicationId') is not None:
+            self.application_id = m.get('applicationId')
+        if m.get('applicationName') is not None:
+            self.application_name = m.get('applicationName')
+        if m.get('cuHours') is not None:
+            self.cu_hours = m.get('cuHours')
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('mbSeconds') is not None:
+            self.mb_seconds = m.get('mbSeconds')
+        if m.get('resourceQueueId') is not None:
+            self.resource_queue_id = m.get('resourceQueueId')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('vcoreSeconds') is not None:
+            self.vcore_seconds = m.get('vcoreSeconds')
+        if m.get('webUI') is not None:
+            self.web_ui = m.get('webUI')
+        return self
+
+
+class ListKyuubiSparkApplicationsResponseBody(TeaModel):
+    def __init__(
+        self,
+        applications: List[ListKyuubiSparkApplicationsResponseBodyApplications] = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        # The details of the applications.
+        self.applications = applications
+        # The maximum number of entries returned.
+        self.max_results = max_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        self.next_token = next_token
+        # The request ID.
+        self.request_id = request_id
+        # The total number of entries returned.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.applications:
+            for k in self.applications:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['applications'] = []
+        if self.applications is not None:
+            for k in self.applications:
+                result['applications'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.applications = []
+        if m.get('applications') is not None:
+            for k in m.get('applications'):
+                temp_model = ListKyuubiSparkApplicationsResponseBodyApplications()
+                self.applications.append(temp_model.from_map(k))
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ListKyuubiSparkApplicationsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListKyuubiSparkApplicationsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListKyuubiSparkApplicationsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListLogContentsRequest(TeaModel):
     def __init__(
         self,
@@ -4615,9 +6301,13 @@ class ListLogContentsRequest(TeaModel):
         offset: int = None,
         region_id: str = None,
     ):
+        # Full path of the file.
         self.file_name = file_name
+        # Length of the log.
         self.length = length
+        # Start line for query.
         self.offset = offset
+        # Region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -4657,6 +6347,7 @@ class ListLogContentsResponseBodyListLogContentContents(TeaModel):
         self,
         line_content: str = None,
     ):
+        # Log line content.
         self.line_content = line_content
 
     def validate(self):
@@ -4685,7 +6376,9 @@ class ListLogContentsResponseBodyListLogContent(TeaModel):
         contents: List[ListLogContentsResponseBodyListLogContentContents] = None,
         total_length: int = None,
     ):
+        # List of log line contents.
         self.contents = contents
+        # Total number of log lines.
         self.total_length = total_length
 
     def validate(self):
@@ -4726,8 +6419,9 @@ class ListLogContentsResponseBody(TeaModel):
         list_log_content: ListLogContentsResponseBodyListLogContent = None,
         request_id: str = None,
     ):
+        # Log content.
         self.list_log_content = list_log_content
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4804,6 +6498,7 @@ class ListReleaseVersionsRequest(TeaModel):
         release_type: str = None,
         release_version: str = None,
         release_version_status: str = None,
+        service_filter: str = None,
         workspace_id: str = None,
     ):
         # The region ID.
@@ -4824,6 +6519,7 @@ class ListReleaseVersionsRequest(TeaModel):
         # *   ONLINE
         # *   OFFLINE
         self.release_version_status = release_version_status
+        self.service_filter = service_filter
         # The workspace ID.
         self.workspace_id = workspace_id
 
@@ -4844,6 +6540,8 @@ class ListReleaseVersionsRequest(TeaModel):
             result['releaseVersion'] = self.release_version
         if self.release_version_status is not None:
             result['releaseVersionStatus'] = self.release_version_status
+        if self.service_filter is not None:
+            result['serviceFilter'] = self.service_filter
         if self.workspace_id is not None:
             result['workspaceId'] = self.workspace_id
         return result
@@ -4858,6 +6556,8 @@ class ListReleaseVersionsRequest(TeaModel):
             self.release_version = m.get('releaseVersion')
         if m.get('releaseVersionStatus') is not None:
             self.release_version_status = m.get('releaseVersionStatus')
+        if m.get('serviceFilter') is not None:
+            self.service_filter = m.get('serviceFilter')
         if m.get('workspaceId') is not None:
             self.workspace_id = m.get('workspaceId')
         return self
@@ -5278,6 +6978,7 @@ class ListSessionClustersResponseBodySessionClusters(TeaModel):
         domain: str = None,
         domain_inner: str = None,
         draft_id: str = None,
+        extra: str = None,
         fusion: bool = None,
         gmt_create: int = None,
         kind: str = None,
@@ -5307,6 +7008,8 @@ class ListSessionClustersResponseBodySessionClusters(TeaModel):
         self.domain_inner = domain_inner
         # The ID of the job that is associated with the session.
         self.draft_id = draft_id
+        # The additional metadata of the session.
+        self.extra = extra
         # Indicates whether the Fusion engine is used for acceleration.
         self.fusion = fusion
         # The creation time.
@@ -5382,6 +7085,8 @@ class ListSessionClustersResponseBodySessionClusters(TeaModel):
             result['domainInner'] = self.domain_inner
         if self.draft_id is not None:
             result['draftId'] = self.draft_id
+        if self.extra is not None:
+            result['extra'] = self.extra
         if self.fusion is not None:
             result['fusion'] = self.fusion
         if self.gmt_create is not None:
@@ -5433,6 +7138,8 @@ class ListSessionClustersResponseBodySessionClusters(TeaModel):
             self.domain_inner = m.get('domainInner')
         if m.get('draftId') is not None:
             self.draft_id = m.get('draftId')
+        if m.get('extra') is not None:
+            self.extra = m.get('extra')
         if m.get('fusion') is not None:
             self.fusion = m.get('fusion')
         if m.get('gmtCreate') is not None:
@@ -5670,10 +7377,12 @@ class ListWorkspaceQueuesResponseBodyQueues(TeaModel):
     def __init__(
         self,
         allow_actions: List[ListWorkspaceQueuesResponseBodyQueuesAllowActions] = None,
+        create_time: int = None,
         creator: str = None,
         environments: List[str] = None,
         max_resource: str = None,
         min_resource: str = None,
+        payment_type: str = None,
         properties: str = None,
         queue_name: str = None,
         queue_scope: str = None,
@@ -5685,6 +7394,8 @@ class ListWorkspaceQueuesResponseBodyQueues(TeaModel):
     ):
         # The operations allowed for the queue.
         self.allow_actions = allow_actions
+        # The time when the workspace was created.
+        self.create_time = create_time
         # The ID of the user who created the queue.
         self.creator = creator
         # The environment types of the queue.
@@ -5693,6 +7404,11 @@ class ListWorkspaceQueuesResponseBodyQueues(TeaModel):
         self.max_resource = max_resource
         # The minimum capacity of resources that can be used in the queue.
         self.min_resource = min_resource
+        # The billing method. Valid values:
+        # 
+        # *   PayAsYouGo
+        # *   Pre
+        self.payment_type = payment_type
         # The queue label.
         self.properties = properties
         # The name of the queue.
@@ -5701,7 +7417,10 @@ class ListWorkspaceQueuesResponseBodyQueues(TeaModel):
         self.queue_scope = queue_scope
         # The status of the queue.
         self.queue_status = queue_status
-        # The queue type.
+        # The type of the queue. Valid values:
+        # 
+        # *   instance
+        # *   instanceChildren
         self.queue_type = queue_type
         # The region ID.
         self.region_id = region_id
@@ -5726,6 +7445,8 @@ class ListWorkspaceQueuesResponseBodyQueues(TeaModel):
         if self.allow_actions is not None:
             for k in self.allow_actions:
                 result['allowActions'].append(k.to_map() if k else None)
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
         if self.creator is not None:
             result['creator'] = self.creator
         if self.environments is not None:
@@ -5734,6 +7455,8 @@ class ListWorkspaceQueuesResponseBodyQueues(TeaModel):
             result['maxResource'] = self.max_resource
         if self.min_resource is not None:
             result['minResource'] = self.min_resource
+        if self.payment_type is not None:
+            result['paymentType'] = self.payment_type
         if self.properties is not None:
             result['properties'] = self.properties
         if self.queue_name is not None:
@@ -5759,6 +7482,8 @@ class ListWorkspaceQueuesResponseBodyQueues(TeaModel):
             for k in m.get('allowActions'):
                 temp_model = ListWorkspaceQueuesResponseBodyQueuesAllowActions()
                 self.allow_actions.append(temp_model.from_map(k))
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
         if m.get('creator') is not None:
             self.creator = m.get('creator')
         if m.get('environments') is not None:
@@ -5767,6 +7492,8 @@ class ListWorkspaceQueuesResponseBodyQueues(TeaModel):
             self.max_resource = m.get('maxResource')
         if m.get('minResource') is not None:
             self.min_resource = m.get('minResource')
+        if m.get('paymentType') is not None:
+            self.payment_type = m.get('paymentType')
         if m.get('properties') is not None:
             self.properties = m.get('properties')
         if m.get('queueName') is not None:
@@ -5891,6 +7618,39 @@ class ListWorkspaceQueuesResponse(TeaModel):
         return self
 
 
+class ListWorkspacesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
 class ListWorkspacesRequest(TeaModel):
     def __init__(
         self,
@@ -5899,17 +7659,89 @@ class ListWorkspacesRequest(TeaModel):
         next_token: str = None,
         region_id: str = None,
         state: str = None,
+        tag: List[ListWorkspacesRequestTag] = None,
     ):
-        # The maximum number of entries to return.
+        # The maximum number of entries returned.
         self.max_results = max_results
-        # Fuzzy match is supported.
+        # The name of the workspace. Fuzzy match is supported.
         self.name = name
-        # The pagination token that is used in the next request to retrieve a new page of results.
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
         # The region ID.
         self.region_id = region_id
-        # The workspace status.
+        # The state of the workspace.
         self.state = state
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.name is not None:
+            result['name'] = self.name
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.state is not None:
+            result['state'] = self.state
+        result['tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        self.tag = []
+        if m.get('tag') is not None:
+            for k in m.get('tag'):
+                temp_model = ListWorkspacesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListWorkspacesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        name: str = None,
+        next_token: str = None,
+        region_id: str = None,
+        state: str = None,
+        tag_shrink: str = None,
+    ):
+        # The maximum number of entries returned.
+        self.max_results = max_results
+        # The name of the workspace. Fuzzy match is supported.
+        self.name = name
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        self.next_token = next_token
+        # The region ID.
+        self.region_id = region_id
+        # The state of the workspace.
+        self.state = state
+        self.tag_shrink = tag_shrink
 
     def validate(self):
         pass
@@ -5930,6 +7762,8 @@ class ListWorkspacesRequest(TeaModel):
             result['regionId'] = self.region_id
         if self.state is not None:
             result['state'] = self.state
+        if self.tag_shrink is not None:
+            result['tag'] = self.tag_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -5944,6 +7778,92 @@ class ListWorkspacesRequest(TeaModel):
             self.region_id = m.get('regionId')
         if m.get('state') is not None:
             self.state = m.get('state')
+        if m.get('tag') is not None:
+            self.tag_shrink = m.get('tag')
+        return self
+
+
+class ListWorkspacesResponseBodyWorkspacesPrePaidQuota(TeaModel):
+    def __init__(
+        self,
+        allocated_resource: str = None,
+        auto_renewal: bool = None,
+        create_time: int = None,
+        expire_time: int = None,
+        instance_id: str = None,
+        max_resource: str = None,
+        payment_status: str = None,
+        used_resource: str = None,
+    ):
+        # The amount of resources that are allocated by a subscription quota.
+        self.allocated_resource = allocated_resource
+        # Indicates whether auto-renewal is enabled for the subscription quota.
+        # 
+        # *   true
+        # *   false
+        self.auto_renewal = auto_renewal
+        # The creation time of the subscription quota.
+        self.create_time = create_time
+        # The expiration time of the subscription quota.
+        self.expire_time = expire_time
+        # The ID of the instance that is generated when you purchase the subscription quota.
+        self.instance_id = instance_id
+        # The maximum amount of resources that can be used in a subscription quota.
+        self.max_resource = max_resource
+        # The status of the subscription quota. Valid values:
+        # 
+        # *   NORMAL
+        # *   WAIT_FOR_EXPIRE
+        # *   EXPIRED
+        self.payment_status = payment_status
+        # The amount of resources that are used.
+        self.used_resource = used_resource
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allocated_resource is not None:
+            result['allocatedResource'] = self.allocated_resource
+        if self.auto_renewal is not None:
+            result['autoRenewal'] = self.auto_renewal
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.expire_time is not None:
+            result['expireTime'] = self.expire_time
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.max_resource is not None:
+            result['maxResource'] = self.max_resource
+        if self.payment_status is not None:
+            result['paymentStatus'] = self.payment_status
+        if self.used_resource is not None:
+            result['usedResource'] = self.used_resource
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('allocatedResource') is not None:
+            self.allocated_resource = m.get('allocatedResource')
+        if m.get('autoRenewal') is not None:
+            self.auto_renewal = m.get('autoRenewal')
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('expireTime') is not None:
+            self.expire_time = m.get('expireTime')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('maxResource') is not None:
+            self.max_resource = m.get('maxResource')
+        if m.get('paymentStatus') is not None:
+            self.payment_status = m.get('paymentStatus')
+        if m.get('usedResource') is not None:
+            self.used_resource = m.get('usedResource')
         return self
 
 
@@ -5982,6 +7902,39 @@ class ListWorkspacesResponseBodyWorkspacesStateChangeReason(TeaModel):
         return self
 
 
+class ListWorkspacesResponseBodyWorkspacesTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['tagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['tagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tagKey') is not None:
+            self.tag_key = m.get('tagKey')
+        if m.get('tagValue') is not None:
+            self.tag_value = m.get('tagValue')
+        return self
+
+
 class ListWorkspacesResponseBodyWorkspaces(TeaModel):
     def __init__(
         self,
@@ -5997,48 +7950,57 @@ class ListWorkspacesResponseBodyWorkspaces(TeaModel):
         payment_duration_unit: str = None,
         payment_status: str = None,
         payment_type: str = None,
+        pre_paid_quota: ListWorkspacesResponseBodyWorkspacesPrePaidQuota = None,
         region_id: str = None,
         release_type: str = None,
         resource_spec: str = None,
         state_change_reason: ListWorkspacesResponseBodyWorkspacesStateChangeReason = None,
         storage: str = None,
+        tags: List[ListWorkspacesResponseBodyWorkspacesTags] = None,
         workspace_id: str = None,
         workspace_name: str = None,
         workspace_status: str = None,
     ):
-        # Indicates whether auto-renewal is enabled. This parameter is required only if the paymentType parameter is set to Subscription.
+        # Specifies whether to enable auto-renewal. This parameter is required only if the paymentType parameter is set to Pre.
         self.auto_renew = auto_renew
-        # The auto-renewal duration. This parameter is required only if the paymentType parameter is set to Subscription.
+        # The auto-renewal duration. This parameter is required only if the paymentType parameter is set to Pre.
         self.auto_renew_period = auto_renew_period
-        # The unit of the auto-renewal duration. This parameter is required only if the paymentType parameter is set to Subscription.
+        # The unit of the auto-renewal duration. This parameter is required only if the paymentType parameter is set to Pre.
         self.auto_renew_period_unit = auto_renew_period_unit
-        # The time when the workspace was created.
+        # The time when the workflow was created.
         self.create_time = create_time
         # The information of the Data Lake Formation (DLF) catalog.
         self.dlf_catalog_id = dlf_catalog_id
+        # The version of DLF.
         self.dlf_type = dlf_type
-        # The subscription period. This parameter is required only if the paymentType parameter is set to Subscription.
+        # The subscription period. This parameter is required only if the paymentType parameter is set to Pre.
         self.duration = duration
-        # The time when the workspace was released.
+        # The end of the end time range.
         self.end_time = end_time
-        # The reason for the failure.
+        # The failure reason.
         self.fail_reason = fail_reason
-        # The unit of the subscription duration. This parameter is required only if the paymentType parameter is set to Subscription.
+        # The unit of the subscription duration.
         self.payment_duration_unit = payment_duration_unit
         # The status of the payment.
         self.payment_status = payment_status
-        # The payment type.
+        # The billing method. Valid values:
+        # 
+        # - PayAsYouGo
+        # - Pre
         self.payment_type = payment_type
+        # The information about the subscription quota.
+        self.pre_paid_quota = pre_paid_quota
         # The region ID.
         self.region_id = region_id
         # The reason why the workspace is released.
         self.release_type = release_type
         # The resource specifications.
         self.resource_spec = resource_spec
-        # The information about the workspace status change.
+        # The reason of the job status change.
         self.state_change_reason = state_change_reason
-        # The Object Storage Service (OSS) path.
+        # The OSS path.
         self.storage = storage
+        self.tags = tags
         # The workspace ID.
         self.workspace_id = workspace_id
         # The name of the workspace.
@@ -6047,8 +8009,14 @@ class ListWorkspacesResponseBodyWorkspaces(TeaModel):
         self.workspace_status = workspace_status
 
     def validate(self):
+        if self.pre_paid_quota:
+            self.pre_paid_quota.validate()
         if self.state_change_reason:
             self.state_change_reason.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6080,6 +8048,8 @@ class ListWorkspacesResponseBodyWorkspaces(TeaModel):
             result['paymentStatus'] = self.payment_status
         if self.payment_type is not None:
             result['paymentType'] = self.payment_type
+        if self.pre_paid_quota is not None:
+            result['prePaidQuota'] = self.pre_paid_quota.to_map()
         if self.region_id is not None:
             result['regionId'] = self.region_id
         if self.release_type is not None:
@@ -6090,6 +8060,10 @@ class ListWorkspacesResponseBodyWorkspaces(TeaModel):
             result['stateChangeReason'] = self.state_change_reason.to_map()
         if self.storage is not None:
             result['storage'] = self.storage
+        result['tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['tags'].append(k.to_map() if k else None)
         if self.workspace_id is not None:
             result['workspaceId'] = self.workspace_id
         if self.workspace_name is not None:
@@ -6124,6 +8098,9 @@ class ListWorkspacesResponseBodyWorkspaces(TeaModel):
             self.payment_status = m.get('paymentStatus')
         if m.get('paymentType') is not None:
             self.payment_type = m.get('paymentType')
+        if m.get('prePaidQuota') is not None:
+            temp_model = ListWorkspacesResponseBodyWorkspacesPrePaidQuota()
+            self.pre_paid_quota = temp_model.from_map(m['prePaidQuota'])
         if m.get('regionId') is not None:
             self.region_id = m.get('regionId')
         if m.get('releaseType') is not None:
@@ -6135,6 +8112,11 @@ class ListWorkspacesResponseBodyWorkspaces(TeaModel):
             self.state_change_reason = temp_model.from_map(m['stateChangeReason'])
         if m.get('storage') is not None:
             self.storage = m.get('storage')
+        self.tags = []
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = ListWorkspacesResponseBodyWorkspacesTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('workspaceId') is not None:
             self.workspace_id = m.get('workspaceId')
         if m.get('workspaceName') is not None:
@@ -6161,7 +8143,7 @@ class ListWorkspacesResponseBody(TeaModel):
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
-        # The workspaces.
+        # The queried workspaces.
         self.workspaces = workspaces
 
     def validate(self):
@@ -6354,21 +8336,23 @@ class StartJobRunRequest(TeaModel):
         self.code_type = code_type
         # The advanced configurations of Spark.
         self.configuration_overrides = configuration_overrides
+        # The version of the Spark engine.
         self.display_release_version = display_release_version
         # The timeout period of the job.
         self.execution_timeout_seconds = execution_timeout_seconds
+        # Specifies whether to enable Fusion engine for acceleration.
         self.fusion = fusion
         # The information about Spark Driver.
         self.job_driver = job_driver
         # The job ID.
         self.job_id = job_id
-        # The job name.
+        # The name of the job.
         self.name = name
         # The version number of Spark.
         self.release_version = release_version
         # The name of the resource queue on which the Spark job runs.
         self.resource_queue_id = resource_queue_id
-        # The tags.
+        # The tags of the job.
         self.tags = tags
         # The region ID.
         self.region_id = region_id
@@ -6534,6 +8518,10 @@ class StartJobRunResponse(TeaModel):
 class StartProcessInstanceRequest(TeaModel):
     def __init__(
         self,
+        action: str = None,
+        comments: str = None,
+        email: str = None,
+        interval: str = None,
         is_prod: bool = None,
         process_definition_code: int = None,
         product_namespace: str = None,
@@ -6542,14 +8530,27 @@ class StartProcessInstanceRequest(TeaModel):
         version_hash_code: str = None,
         version_number: int = None,
     ):
+        self.action = action
+        self.comments = comments
+        self.email = email
+        self.interval = interval
+        # Specifies whether to run the workflow in the production environment.
         self.is_prod = is_prod
+        # The workflow ID.
+        # 
         # This parameter is required.
         self.process_definition_code = process_definition_code
+        # The code of the service.
+        # 
         # This parameter is required.
         self.product_namespace = product_namespace
+        # The region ID.
         self.region_id = region_id
+        # The queue on which the workflow runs.
         self.runtime_queue = runtime_queue
+        # The hash code of the version.
         self.version_hash_code = version_hash_code
+        # The version number of the workflow.
         self.version_number = version_number
 
     def validate(self):
@@ -6561,6 +8562,14 @@ class StartProcessInstanceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.action is not None:
+            result['action'] = self.action
+        if self.comments is not None:
+            result['comments'] = self.comments
+        if self.email is not None:
+            result['email'] = self.email
+        if self.interval is not None:
+            result['interval'] = self.interval
         if self.is_prod is not None:
             result['isProd'] = self.is_prod
         if self.process_definition_code is not None:
@@ -6579,6 +8588,14 @@ class StartProcessInstanceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('action') is not None:
+            self.action = m.get('action')
+        if m.get('comments') is not None:
+            self.comments = m.get('comments')
+        if m.get('email') is not None:
+            self.email = m.get('email')
+        if m.get('interval') is not None:
+            self.interval = m.get('interval')
         if m.get('isProd') is not None:
             self.is_prod = m.get('isProd')
         if m.get('processDefinitionCode') is not None:
@@ -6607,13 +8624,19 @@ class StartProcessInstanceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The code that is returned by the backend server.
         self.code = code
+        # The data returned.
         self.data = data
+        # Indicates whether the workflow fails to be run manually.
         self.failed = failed
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The description of the returned code.
         self.msg = msg
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -6869,7 +8892,7 @@ class StopSessionClusterResponseBody(TeaModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The workspace ID.
+        # The session ID.
         self.session_cluster_id = session_cluster_id
 
     def validate(self):
@@ -7034,6 +9057,51 @@ class TerminateSqlStatementResponse(TeaModel):
         return self
 
 
+class UpdateProcessDefinitionWithScheduleRequestGlobalParams(TeaModel):
+    def __init__(
+        self,
+        direct: str = None,
+        prop: str = None,
+        type: str = None,
+        value: str = None,
+    ):
+        self.direct = direct
+        self.prop = prop
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.direct is not None:
+            result['direct'] = self.direct
+        if self.prop is not None:
+            result['prop'] = self.prop
+        if self.type is not None:
+            result['type'] = self.type
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('direct') is not None:
+            self.direct = m.get('direct')
+        if m.get('prop') is not None:
+            self.prop = m.get('prop')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
 class UpdateProcessDefinitionWithScheduleRequestSchedule(TeaModel):
     def __init__(
         self,
@@ -7042,9 +9110,13 @@ class UpdateProcessDefinitionWithScheduleRequestSchedule(TeaModel):
         start_time: str = None,
         timezone_id: str = None,
     ):
+        # The CRON expression that is used for scheduling.
         self.crontab = crontab
+        # The end time of the scheduling.
         self.end_time = end_time
+        # The start time of the scheduling.
         self.start_time = start_time
+        # The ID of the time zone.
         self.timezone_id = timezone_id
 
     def validate(self):
@@ -7079,13 +9151,60 @@ class UpdateProcessDefinitionWithScheduleRequestSchedule(TeaModel):
         return self
 
 
+class UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsLocalParams(TeaModel):
+    def __init__(
+        self,
+        direct: str = None,
+        prop: str = None,
+        type: str = None,
+        value: str = None,
+    ):
+        self.direct = direct
+        self.prop = prop
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.direct is not None:
+            result['direct'] = self.direct
+        if self.prop is not None:
+            result['prop'] = self.prop
+        if self.type is not None:
+            result['type'] = self.type
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('direct') is not None:
+            self.direct = m.get('direct')
+        if m.get('prop') is not None:
+            self.prop = m.get('prop')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
 class UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsSparkConf(TeaModel):
     def __init__(
         self,
         key: str = None,
         value: str = None,
     ):
+        # The key of the SparkConf object.
         self.key = key
+        # The value of the SparkConf object.
         self.value = value
 
     def validate(self):
@@ -7118,6 +9237,7 @@ class UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams(Tea
         display_spark_version: str = None,
         environment_id: str = None,
         fusion: bool = None,
+        local_params: List[UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsLocalParams] = None,
         resource_queue_id: str = None,
         spark_conf: List[UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsSparkConf] = None,
         spark_driver_cores: int = None,
@@ -7131,26 +9251,49 @@ class UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams(Tea
         type: str = None,
         workspace_biz_id: str = None,
     ):
+        # The displayed version of the Spark engine.
         self.display_spark_version = display_spark_version
+        # The environment ID.
         self.environment_id = environment_id
+        # Specifies whether to enable Fusion engine for acceleration.
         self.fusion = fusion
+        self.local_params = local_params
+        # The name of the queue on which the job runs.
+        # 
         # This parameter is required.
         self.resource_queue_id = resource_queue_id
+        # The configurations of the Spark jobs.
         self.spark_conf = spark_conf
+        # The number of driver cores of the Spark job.
         self.spark_driver_cores = spark_driver_cores
+        # The size of driver memory of the Spark job.
         self.spark_driver_memory = spark_driver_memory
+        # The number of executor cores of the Spark job.
         self.spark_executor_cores = spark_executor_cores
+        # The size of executor memory of the Spark job.
         self.spark_executor_memory = spark_executor_memory
+        # The level of the Spark log.
         self.spark_log_level = spark_log_level
+        # The path where the operational logs of the Spark job are stored.
         self.spark_log_path = spark_log_path
+        # The version of the Spark engine.
         self.spark_version = spark_version
+        # The ID of the data development job.
+        # 
         # This parameter is required.
         self.task_biz_id = task_biz_id
+        # The type of the Spark job.
         self.type = type
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace_biz_id = workspace_biz_id
 
     def validate(self):
+        if self.local_params:
+            for k in self.local_params:
+                if k:
+                    k.validate()
         if self.spark_conf:
             for k in self.spark_conf:
                 if k:
@@ -7168,6 +9311,10 @@ class UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams(Tea
             result['environmentId'] = self.environment_id
         if self.fusion is not None:
             result['fusion'] = self.fusion
+        result['localParams'] = []
+        if self.local_params is not None:
+            for k in self.local_params:
+                result['localParams'].append(k.to_map() if k else None)
         if self.resource_queue_id is not None:
             result['resourceQueueId'] = self.resource_queue_id
         result['sparkConf'] = []
@@ -7204,6 +9351,11 @@ class UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams(Tea
             self.environment_id = m.get('environmentId')
         if m.get('fusion') is not None:
             self.fusion = m.get('fusion')
+        self.local_params = []
+        if m.get('localParams') is not None:
+            for k in m.get('localParams'):
+                temp_model = UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsLocalParams()
+                self.local_params.append(temp_model.from_map(k))
         if m.get('resourceQueueId') is not None:
             self.resource_queue_id = m.get('resourceQueueId')
         self.spark_conf = []
@@ -7249,20 +9401,35 @@ class UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson(TeaModel):
         task_type: str = None,
         timeout: int = None,
     ):
+        # The email address to receive alerts.
         self.alert_email_address = alert_email_address
+        # The node ID.
+        # 
         # This parameter is required.
         self.code = code
+        # The node description.
         self.description = description
+        # Specifies whether to send alerts when the node fails.
         self.fail_alert_enable = fail_alert_enable
+        # The number of retries when the node fails.
         self.fail_retry_times = fail_retry_times
+        # The name of the job.
+        # 
         # This parameter is required.
         self.name = name
+        # Specifies whether to send alerts when the node is started.
         self.start_alert_enable = start_alert_enable
+        # The tags of the job.
         self.tags = tags
+        # The job parameters.
+        # 
         # This parameter is required.
         self.task_params = task_params
+        # The type of the node.
+        # 
         # This parameter is required.
         self.task_type = task_type
+        # The default timeout period of the node.
         self.timeout = timeout
 
     def validate(self):
@@ -7336,14 +9503,24 @@ class UpdateProcessDefinitionWithScheduleRequestTaskRelationJson(TeaModel):
         pre_task_code: int = None,
         pre_task_version: int = None,
     ):
+        # The name of the node topology. You can enter a workflow name.
+        # 
         # This parameter is required.
         self.name = name
+        # The ID of the downstream node.
+        # 
         # This parameter is required.
         self.post_task_code = post_task_code
+        # The version of the downstream node.
+        # 
         # This parameter is required.
         self.post_task_version = post_task_version
+        # The ID of the upstream node.
+        # 
         # This parameter is required.
         self.pre_task_code = pre_task_code
+        # The version of the upstream node.
+        # 
         # This parameter is required.
         self.pre_task_version = pre_task_version
 
@@ -7389,6 +9566,7 @@ class UpdateProcessDefinitionWithScheduleRequest(TeaModel):
         alert_email_address: str = None,
         description: str = None,
         execution_type: str = None,
+        global_params: List[UpdateProcessDefinitionWithScheduleRequestGlobalParams] = None,
         name: str = None,
         product_namespace: str = None,
         publish: bool = None,
@@ -7404,30 +9582,57 @@ class UpdateProcessDefinitionWithScheduleRequest(TeaModel):
         task_relation_json: List[UpdateProcessDefinitionWithScheduleRequestTaskRelationJson] = None,
         timeout: int = None,
     ):
+        # The email address to receive alerts.
         self.alert_email_address = alert_email_address
+        # The description of the workflow.
         self.description = description
+        # The execution policy.
+        # 
         # This parameter is required.
         self.execution_type = execution_type
+        self.global_params = global_params
+        # The name of the workflow.
+        # 
         # This parameter is required.
         self.name = name
+        # The code of the service.
+        # 
         # This parameter is required.
         self.product_namespace = product_namespace
+        # Specifies whether to publish the workflow.
         self.publish = publish
+        # The region ID.
         self.region_id = region_id
+        # The status of the workflow.
         self.release_state = release_state
+        # The resource queue.
         self.resource_queue = resource_queue
+        # The number of retries.
         self.retry_times = retry_times
+        # The execution user.
         self.run_as = run_as
+        # The scheduling settings.
         self.schedule = schedule
+        # The tags.
         self.tags = tags
+        # The descriptions of all nodes in the workflow.
+        # 
         # This parameter is required.
         self.task_definition_json = task_definition_json
+        # The node parallelism.
         self.task_parallelism = task_parallelism
+        # The dependencies of all nodes in the workflow. preTaskCode specifies the ID of an upstream node, and postTaskCode specifies the ID of a downstream node. The ID of each node is unique. If a node does not have an upstream node, set preTaskCode to 0.
+        # 
         # This parameter is required.
         self.task_relation_json = task_relation_json
+        # The default timeout period of the workflow.
         self.timeout = timeout
 
     def validate(self):
+        if self.global_params:
+            for k in self.global_params:
+                if k:
+                    k.validate()
         if self.schedule:
             self.schedule.validate()
         if self.task_definition_json:
@@ -7451,6 +9656,10 @@ class UpdateProcessDefinitionWithScheduleRequest(TeaModel):
             result['description'] = self.description
         if self.execution_type is not None:
             result['executionType'] = self.execution_type
+        result['globalParams'] = []
+        if self.global_params is not None:
+            for k in self.global_params:
+                result['globalParams'].append(k.to_map() if k else None)
         if self.name is not None:
             result['name'] = self.name
         if self.product_namespace is not None:
@@ -7493,6 +9702,11 @@ class UpdateProcessDefinitionWithScheduleRequest(TeaModel):
             self.description = m.get('description')
         if m.get('executionType') is not None:
             self.execution_type = m.get('executionType')
+        self.global_params = []
+        if m.get('globalParams') is not None:
+            for k in m.get('globalParams'):
+                temp_model = UpdateProcessDefinitionWithScheduleRequestGlobalParams()
+                self.global_params.append(temp_model.from_map(k))
         if m.get('name') is not None:
             self.name = m.get('name')
         if m.get('productNamespace') is not None:
@@ -7537,6 +9751,7 @@ class UpdateProcessDefinitionWithScheduleShrinkRequest(TeaModel):
         alert_email_address: str = None,
         description: str = None,
         execution_type: str = None,
+        global_params_shrink: str = None,
         name: str = None,
         product_namespace: str = None,
         publish: bool = None,
@@ -7552,27 +9767,50 @@ class UpdateProcessDefinitionWithScheduleShrinkRequest(TeaModel):
         task_relation_json_shrink: str = None,
         timeout: int = None,
     ):
+        # The email address to receive alerts.
         self.alert_email_address = alert_email_address
+        # The description of the workflow.
         self.description = description
+        # The execution policy.
+        # 
         # This parameter is required.
         self.execution_type = execution_type
+        self.global_params_shrink = global_params_shrink
+        # The name of the workflow.
+        # 
         # This parameter is required.
         self.name = name
+        # The code of the service.
+        # 
         # This parameter is required.
         self.product_namespace = product_namespace
+        # Specifies whether to publish the workflow.
         self.publish = publish
+        # The region ID.
         self.region_id = region_id
+        # The status of the workflow.
         self.release_state = release_state
+        # The resource queue.
         self.resource_queue = resource_queue
+        # The number of retries.
         self.retry_times = retry_times
+        # The execution user.
         self.run_as = run_as
+        # The scheduling settings.
         self.schedule_shrink = schedule_shrink
+        # The tags.
         self.tags_shrink = tags_shrink
+        # The descriptions of all nodes in the workflow.
+        # 
         # This parameter is required.
         self.task_definition_json_shrink = task_definition_json_shrink
+        # The node parallelism.
         self.task_parallelism = task_parallelism
+        # The dependencies of all nodes in the workflow. preTaskCode specifies the ID of an upstream node, and postTaskCode specifies the ID of a downstream node. The ID of each node is unique. If a node does not have an upstream node, set preTaskCode to 0.
+        # 
         # This parameter is required.
         self.task_relation_json_shrink = task_relation_json_shrink
+        # The default timeout period of the workflow.
         self.timeout = timeout
 
     def validate(self):
@@ -7590,6 +9828,8 @@ class UpdateProcessDefinitionWithScheduleShrinkRequest(TeaModel):
             result['description'] = self.description
         if self.execution_type is not None:
             result['executionType'] = self.execution_type
+        if self.global_params_shrink is not None:
+            result['globalParams'] = self.global_params_shrink
         if self.name is not None:
             result['name'] = self.name
         if self.product_namespace is not None:
@@ -7628,6 +9868,8 @@ class UpdateProcessDefinitionWithScheduleShrinkRequest(TeaModel):
             self.description = m.get('description')
         if m.get('executionType') is not None:
             self.execution_type = m.get('executionType')
+        if m.get('globalParams') is not None:
+            self.global_params_shrink = m.get('globalParams')
         if m.get('name') is not None:
             self.name = m.get('name')
         if m.get('productNamespace') is not None:
@@ -7682,24 +9924,43 @@ class UpdateProcessDefinitionWithScheduleResponseBodyData(TeaModel):
         version: int = None,
         version_hash_code: str = None,
     ):
+        # The email address to receive alerts.
         self.alert_email_address = alert_email_address
+        # The workspace ID.
         self.biz_id = biz_id
+        # The workflow ID.
         self.code = code
+        # The time when the workflow was created.
         self.create_time = create_time
+        # The CRON expression that is used for scheduling.
         self.crontab = crontab
+        # The node description.
         self.description = description
+        # The end of the end time range.
         self.end_time = end_time
+        # The execution policy.
         self.execution_type = execution_type
+        # The serial number of the workflow.
         self.id = id
+        # The name of the workflow.
         self.name = name
+        # The name of the project to which the workflow belongs.
         self.project_name = project_name
+        # The status of the workflow.
         self.release_state = release_state
+        # The start time of the scheduling.
         self.start_time = start_time
+        # The ID of the time zone.
         self.timezone_id = timezone_id
+        # The time when the workflow was updated.
         self.update_time = update_time
+        # The ID of the user that is used to initiate a scheduling.
         self.user_id = user_id
+        # The name of the user that is used to initiate a scheduling.
         self.user_name = user_name
+        # The version number.
         self.version = version
+        # The hash code of the version.
         self.version_hash_code = version_hash_code
 
     def validate(self):
@@ -7805,13 +10066,19 @@ class UpdateProcessDefinitionWithScheduleResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The code that is returned by the backend server.
         self.code = code
+        # The data returned.
         self.data = data
+        # Indicates whether the request failed.
         self.failed = failed
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The description of the returned code.
         self.msg = msg
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

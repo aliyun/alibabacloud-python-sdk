@@ -277,7 +277,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.CreateProcessDefinitionWithScheduleResponse:
         """
-        @summary 创建工作流定义
+        @summary Creates a workflow.
         
         @param tmp_req: CreateProcessDefinitionWithScheduleRequest
         @param headers: map
@@ -287,6 +287,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = emr_serverless_spark_20230808_models.CreateProcessDefinitionWithScheduleShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.global_params):
+            request.global_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.global_params, 'globalParams', 'json')
         if not UtilClient.is_unset(tmp_req.schedule):
             request.schedule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule, 'schedule', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
@@ -302,6 +304,8 @@ class Client(OpenApiClient):
             query['description'] = request.description
         if not UtilClient.is_unset(request.execution_type):
             query['executionType'] = request.execution_type
+        if not UtilClient.is_unset(request.global_params_shrink):
+            query['globalParams'] = request.global_params_shrink
         if not UtilClient.is_unset(request.name):
             query['name'] = request.name
         if not UtilClient.is_unset(request.product_namespace):
@@ -356,7 +360,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.CreateProcessDefinitionWithScheduleResponse:
         """
-        @summary 创建工作流定义
+        @summary Creates a workflow.
         
         @param tmp_req: CreateProcessDefinitionWithScheduleRequest
         @param headers: map
@@ -366,6 +370,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = emr_serverless_spark_20230808_models.CreateProcessDefinitionWithScheduleShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.global_params):
+            request.global_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.global_params, 'globalParams', 'json')
         if not UtilClient.is_unset(tmp_req.schedule):
             request.schedule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule, 'schedule', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
@@ -381,6 +387,8 @@ class Client(OpenApiClient):
             query['description'] = request.description
         if not UtilClient.is_unset(request.execution_type):
             query['executionType'] = request.execution_type
+        if not UtilClient.is_unset(request.global_params_shrink):
+            query['globalParams'] = request.global_params_shrink
         if not UtilClient.is_unset(request.name):
             query['name'] = request.name
         if not UtilClient.is_unset(request.product_namespace):
@@ -433,7 +441,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.CreateProcessDefinitionWithScheduleRequest,
     ) -> emr_serverless_spark_20230808_models.CreateProcessDefinitionWithScheduleResponse:
         """
-        @summary 创建工作流定义
+        @summary Creates a workflow.
         
         @param request: CreateProcessDefinitionWithScheduleRequest
         @return: CreateProcessDefinitionWithScheduleResponse
@@ -448,7 +456,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.CreateProcessDefinitionWithScheduleRequest,
     ) -> emr_serverless_spark_20230808_models.CreateProcessDefinitionWithScheduleResponse:
         """
-        @summary 创建工作流定义
+        @summary Creates a workflow.
         
         @param request: CreateProcessDefinitionWithScheduleRequest
         @return: CreateProcessDefinitionWithScheduleResponse
@@ -456,6 +464,158 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_process_definition_with_schedule_with_options_async(biz_id, request, headers, runtime)
+
+    def create_session_cluster_with_options(
+        self,
+        workspace_id: str,
+        request: emr_serverless_spark_20230808_models.CreateSessionClusterRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.CreateSessionClusterResponse:
+        """
+        @summary Creates a session.
+        
+        @param request: CreateSessionClusterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSessionClusterResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.application_configs):
+            body['applicationConfigs'] = request.application_configs
+        if not UtilClient.is_unset(request.auto_start_configuration):
+            body['autoStartConfiguration'] = request.auto_start_configuration
+        if not UtilClient.is_unset(request.auto_stop_configuration):
+            body['autoStopConfiguration'] = request.auto_stop_configuration
+        if not UtilClient.is_unset(request.display_release_version):
+            body['displayReleaseVersion'] = request.display_release_version
+        if not UtilClient.is_unset(request.env_id):
+            body['envId'] = request.env_id
+        if not UtilClient.is_unset(request.fusion):
+            body['fusion'] = request.fusion
+        if not UtilClient.is_unset(request.kind):
+            body['kind'] = request.kind
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.queue_name):
+            body['queueName'] = request.queue_name
+        if not UtilClient.is_unset(request.release_version):
+            body['releaseVersion'] = request.release_version
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSessionCluster',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/sessionClusters',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.CreateSessionClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_session_cluster_with_options_async(
+        self,
+        workspace_id: str,
+        request: emr_serverless_spark_20230808_models.CreateSessionClusterRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.CreateSessionClusterResponse:
+        """
+        @summary Creates a session.
+        
+        @param request: CreateSessionClusterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSessionClusterResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.application_configs):
+            body['applicationConfigs'] = request.application_configs
+        if not UtilClient.is_unset(request.auto_start_configuration):
+            body['autoStartConfiguration'] = request.auto_start_configuration
+        if not UtilClient.is_unset(request.auto_stop_configuration):
+            body['autoStopConfiguration'] = request.auto_stop_configuration
+        if not UtilClient.is_unset(request.display_release_version):
+            body['displayReleaseVersion'] = request.display_release_version
+        if not UtilClient.is_unset(request.env_id):
+            body['envId'] = request.env_id
+        if not UtilClient.is_unset(request.fusion):
+            body['fusion'] = request.fusion
+        if not UtilClient.is_unset(request.kind):
+            body['kind'] = request.kind
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.queue_name):
+            body['queueName'] = request.queue_name
+        if not UtilClient.is_unset(request.release_version):
+            body['releaseVersion'] = request.release_version
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSessionCluster',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/sessionClusters',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.CreateSessionClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_session_cluster(
+        self,
+        workspace_id: str,
+        request: emr_serverless_spark_20230808_models.CreateSessionClusterRequest,
+    ) -> emr_serverless_spark_20230808_models.CreateSessionClusterResponse:
+        """
+        @summary Creates a session.
+        
+        @param request: CreateSessionClusterRequest
+        @return: CreateSessionClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_session_cluster_with_options(workspace_id, request, headers, runtime)
+
+    async def create_session_cluster_async(
+        self,
+        workspace_id: str,
+        request: emr_serverless_spark_20230808_models.CreateSessionClusterRequest,
+    ) -> emr_serverless_spark_20230808_models.CreateSessionClusterResponse:
+        """
+        @summary Creates a session.
+        
+        @param request: CreateSessionClusterRequest
+        @return: CreateSessionClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_session_cluster_with_options_async(workspace_id, request, headers, runtime)
 
     def create_sql_statement_with_options(
         self,
@@ -589,6 +749,538 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_sql_statement_with_options_async(workspace_id, request, headers, runtime)
 
+    def create_workspace_with_options(
+        self,
+        request: emr_serverless_spark_20230808_models.CreateWorkspaceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.CreateWorkspaceResponse:
+        """
+        @summary Creates a workspace.
+        
+        @param request: CreateWorkspaceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWorkspaceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.auto_renew):
+            body['autoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.auto_renew_period):
+            body['autoRenewPeriod'] = request.auto_renew_period
+        if not UtilClient.is_unset(request.auto_renew_period_unit):
+            body['autoRenewPeriodUnit'] = request.auto_renew_period_unit
+        if not UtilClient.is_unset(request.auto_start_session_cluster):
+            body['autoStartSessionCluster'] = request.auto_start_session_cluster
+        if not UtilClient.is_unset(request.client_token):
+            body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dlf_catalog_id):
+            body['dlfCatalogId'] = request.dlf_catalog_id
+        if not UtilClient.is_unset(request.dlf_type):
+            body['dlfType'] = request.dlf_type
+        if not UtilClient.is_unset(request.duration):
+            body['duration'] = request.duration
+        if not UtilClient.is_unset(request.oss_bucket):
+            body['ossBucket'] = request.oss_bucket
+        if not UtilClient.is_unset(request.payment_duration_unit):
+            body['paymentDurationUnit'] = request.payment_duration_unit
+        if not UtilClient.is_unset(request.payment_type):
+            body['paymentType'] = request.payment_type
+        if not UtilClient.is_unset(request.ram_role_name):
+            body['ramRoleName'] = request.ram_role_name
+        if not UtilClient.is_unset(request.release_type):
+            body['releaseType'] = request.release_type
+        if not UtilClient.is_unset(request.resource_spec):
+            body['resourceSpec'] = request.resource_spec
+        if not UtilClient.is_unset(request.tag):
+            body['tag'] = request.tag
+        if not UtilClient.is_unset(request.workspace_name):
+            body['workspaceName'] = request.workspace_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateWorkspace',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.CreateWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_workspace_with_options_async(
+        self,
+        request: emr_serverless_spark_20230808_models.CreateWorkspaceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.CreateWorkspaceResponse:
+        """
+        @summary Creates a workspace.
+        
+        @param request: CreateWorkspaceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWorkspaceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.auto_renew):
+            body['autoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.auto_renew_period):
+            body['autoRenewPeriod'] = request.auto_renew_period
+        if not UtilClient.is_unset(request.auto_renew_period_unit):
+            body['autoRenewPeriodUnit'] = request.auto_renew_period_unit
+        if not UtilClient.is_unset(request.auto_start_session_cluster):
+            body['autoStartSessionCluster'] = request.auto_start_session_cluster
+        if not UtilClient.is_unset(request.client_token):
+            body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dlf_catalog_id):
+            body['dlfCatalogId'] = request.dlf_catalog_id
+        if not UtilClient.is_unset(request.dlf_type):
+            body['dlfType'] = request.dlf_type
+        if not UtilClient.is_unset(request.duration):
+            body['duration'] = request.duration
+        if not UtilClient.is_unset(request.oss_bucket):
+            body['ossBucket'] = request.oss_bucket
+        if not UtilClient.is_unset(request.payment_duration_unit):
+            body['paymentDurationUnit'] = request.payment_duration_unit
+        if not UtilClient.is_unset(request.payment_type):
+            body['paymentType'] = request.payment_type
+        if not UtilClient.is_unset(request.ram_role_name):
+            body['ramRoleName'] = request.ram_role_name
+        if not UtilClient.is_unset(request.release_type):
+            body['releaseType'] = request.release_type
+        if not UtilClient.is_unset(request.resource_spec):
+            body['resourceSpec'] = request.resource_spec
+        if not UtilClient.is_unset(request.tag):
+            body['tag'] = request.tag
+        if not UtilClient.is_unset(request.workspace_name):
+            body['workspaceName'] = request.workspace_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateWorkspace',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.CreateWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_workspace(
+        self,
+        request: emr_serverless_spark_20230808_models.CreateWorkspaceRequest,
+    ) -> emr_serverless_spark_20230808_models.CreateWorkspaceResponse:
+        """
+        @summary Creates a workspace.
+        
+        @param request: CreateWorkspaceRequest
+        @return: CreateWorkspaceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_workspace_with_options(request, headers, runtime)
+
+    async def create_workspace_async(
+        self,
+        request: emr_serverless_spark_20230808_models.CreateWorkspaceRequest,
+    ) -> emr_serverless_spark_20230808_models.CreateWorkspaceResponse:
+        """
+        @summary Creates a workspace.
+        
+        @param request: CreateWorkspaceRequest
+        @return: CreateWorkspaceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_workspace_with_options_async(request, headers, runtime)
+
+    def edit_workspace_queue_with_options(
+        self,
+        request: emr_serverless_spark_20230808_models.EditWorkspaceQueueRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.EditWorkspaceQueueResponse:
+        """
+        @summary Modifies the queue of a workspace.
+        
+        @param request: EditWorkspaceQueueRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EditWorkspaceQueueResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.environments):
+            body['environments'] = request.environments
+        if not UtilClient.is_unset(request.resource_spec):
+            body['resourceSpec'] = request.resource_spec
+        if not UtilClient.is_unset(request.workspace_id):
+            body['workspaceId'] = request.workspace_id
+        if not UtilClient.is_unset(request.workspace_queue_name):
+            body['workspaceQueueName'] = request.workspace_queue_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='EditWorkspaceQueue',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/queues/action/edit',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.EditWorkspaceQueueResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def edit_workspace_queue_with_options_async(
+        self,
+        request: emr_serverless_spark_20230808_models.EditWorkspaceQueueRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.EditWorkspaceQueueResponse:
+        """
+        @summary Modifies the queue of a workspace.
+        
+        @param request: EditWorkspaceQueueRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EditWorkspaceQueueResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.environments):
+            body['environments'] = request.environments
+        if not UtilClient.is_unset(request.resource_spec):
+            body['resourceSpec'] = request.resource_spec
+        if not UtilClient.is_unset(request.workspace_id):
+            body['workspaceId'] = request.workspace_id
+        if not UtilClient.is_unset(request.workspace_queue_name):
+            body['workspaceQueueName'] = request.workspace_queue_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='EditWorkspaceQueue',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/queues/action/edit',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.EditWorkspaceQueueResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def edit_workspace_queue(
+        self,
+        request: emr_serverless_spark_20230808_models.EditWorkspaceQueueRequest,
+    ) -> emr_serverless_spark_20230808_models.EditWorkspaceQueueResponse:
+        """
+        @summary Modifies the queue of a workspace.
+        
+        @param request: EditWorkspaceQueueRequest
+        @return: EditWorkspaceQueueResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.edit_workspace_queue_with_options(request, headers, runtime)
+
+    async def edit_workspace_queue_async(
+        self,
+        request: emr_serverless_spark_20230808_models.EditWorkspaceQueueRequest,
+    ) -> emr_serverless_spark_20230808_models.EditWorkspaceQueueResponse:
+        """
+        @summary Modifies the queue of a workspace.
+        
+        @param request: EditWorkspaceQueueRequest
+        @return: EditWorkspaceQueueResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.edit_workspace_queue_with_options_async(request, headers, runtime)
+
+    def get_cu_hours_with_options(
+        self,
+        workspace_id: str,
+        queue: str,
+        request: emr_serverless_spark_20230808_models.GetCuHoursRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.GetCuHoursResponse:
+        """
+        @summary Queries the number of CU-hours consumed by a queue during a specified cycle.
+        
+        @param request: GetCuHoursRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCuHoursResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCuHours',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/metric/cuHours/{OpenApiUtilClient.get_encode_param(queue)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.GetCuHoursResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_cu_hours_with_options_async(
+        self,
+        workspace_id: str,
+        queue: str,
+        request: emr_serverless_spark_20230808_models.GetCuHoursRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.GetCuHoursResponse:
+        """
+        @summary Queries the number of CU-hours consumed by a queue during a specified cycle.
+        
+        @param request: GetCuHoursRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCuHoursResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCuHours',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/metric/cuHours/{OpenApiUtilClient.get_encode_param(queue)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.GetCuHoursResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_cu_hours(
+        self,
+        workspace_id: str,
+        queue: str,
+        request: emr_serverless_spark_20230808_models.GetCuHoursRequest,
+    ) -> emr_serverless_spark_20230808_models.GetCuHoursResponse:
+        """
+        @summary Queries the number of CU-hours consumed by a queue during a specified cycle.
+        
+        @param request: GetCuHoursRequest
+        @return: GetCuHoursResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_cu_hours_with_options(workspace_id, queue, request, headers, runtime)
+
+    async def get_cu_hours_async(
+        self,
+        workspace_id: str,
+        queue: str,
+        request: emr_serverless_spark_20230808_models.GetCuHoursRequest,
+    ) -> emr_serverless_spark_20230808_models.GetCuHoursResponse:
+        """
+        @summary Queries the number of CU-hours consumed by a queue during a specified cycle.
+        
+        @param request: GetCuHoursRequest
+        @return: GetCuHoursResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_cu_hours_with_options_async(workspace_id, queue, request, headers, runtime)
+
+    def get_doctor_application_with_options(
+        self,
+        workspace_id: str,
+        run_id: str,
+        request: emr_serverless_spark_20230808_models.GetDoctorApplicationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.GetDoctorApplicationResponse:
+        """
+        @summary Obtains job analysis information on E-MapReduce (EMR) Doctor.
+        
+        @param request: GetDoctorApplicationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDoctorApplicationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.locale):
+            query['locale'] = request.locale
+        if not UtilClient.is_unset(request.query_time):
+            query['queryTime'] = request.query_time
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDoctorApplication',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/runs/{OpenApiUtilClient.get_encode_param(run_id)}/action/getDoctorApplication',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.GetDoctorApplicationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_doctor_application_with_options_async(
+        self,
+        workspace_id: str,
+        run_id: str,
+        request: emr_serverless_spark_20230808_models.GetDoctorApplicationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.GetDoctorApplicationResponse:
+        """
+        @summary Obtains job analysis information on E-MapReduce (EMR) Doctor.
+        
+        @param request: GetDoctorApplicationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDoctorApplicationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.locale):
+            query['locale'] = request.locale
+        if not UtilClient.is_unset(request.query_time):
+            query['queryTime'] = request.query_time
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDoctorApplication',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/runs/{OpenApiUtilClient.get_encode_param(run_id)}/action/getDoctorApplication',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.GetDoctorApplicationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_doctor_application(
+        self,
+        workspace_id: str,
+        run_id: str,
+        request: emr_serverless_spark_20230808_models.GetDoctorApplicationRequest,
+    ) -> emr_serverless_spark_20230808_models.GetDoctorApplicationResponse:
+        """
+        @summary Obtains job analysis information on E-MapReduce (EMR) Doctor.
+        
+        @param request: GetDoctorApplicationRequest
+        @return: GetDoctorApplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_doctor_application_with_options(workspace_id, run_id, request, headers, runtime)
+
+    async def get_doctor_application_async(
+        self,
+        workspace_id: str,
+        run_id: str,
+        request: emr_serverless_spark_20230808_models.GetDoctorApplicationRequest,
+    ) -> emr_serverless_spark_20230808_models.GetDoctorApplicationResponse:
+        """
+        @summary Obtains job analysis information on E-MapReduce (EMR) Doctor.
+        
+        @param request: GetDoctorApplicationRequest
+        @return: GetDoctorApplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_doctor_application_with_options_async(workspace_id, run_id, request, headers, runtime)
+
     def get_job_run_with_options(
         self,
         workspace_id: str,
@@ -710,7 +1402,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.GetSessionClusterResponse:
         """
-        @summary Queries a list of sessions.
+        @summary Queries the information about a session.
         
         @param request: GetSessionClusterRequest
         @param headers: map
@@ -750,7 +1442,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.GetSessionClusterResponse:
         """
-        @summary Queries a list of sessions.
+        @summary Queries the information about a session.
         
         @param request: GetSessionClusterRequest
         @param headers: map
@@ -788,7 +1480,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.GetSessionClusterRequest,
     ) -> emr_serverless_spark_20230808_models.GetSessionClusterResponse:
         """
-        @summary Queries a list of sessions.
+        @summary Queries the information about a session.
         
         @param request: GetSessionClusterRequest
         @return: GetSessionClusterResponse
@@ -804,7 +1496,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.GetSessionClusterRequest,
     ) -> emr_serverless_spark_20230808_models.GetSessionClusterResponse:
         """
-        @summary Queries a list of sessions.
+        @summary Queries the information about a session.
         
         @param request: GetSessionClusterRequest
         @return: GetSessionClusterResponse
@@ -1190,6 +1882,8 @@ class Client(OpenApiClient):
             query['jobRunId'] = request.job_run_id
         if not UtilClient.is_unset(request.max_results):
             query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.min_duration):
+            query['minDuration'] = request.min_duration
         if not UtilClient.is_unset(request.name):
             query['name'] = request.name
         if not UtilClient.is_unset(request.next_token):
@@ -1261,6 +1955,8 @@ class Client(OpenApiClient):
             query['jobRunId'] = request.job_run_id
         if not UtilClient.is_unset(request.max_results):
             query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.min_duration):
+            query['minDuration'] = request.min_duration
         if not UtilClient.is_unset(request.name):
             query['name'] = request.name
         if not UtilClient.is_unset(request.next_token):
@@ -1325,6 +2021,142 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_job_runs_with_options_async(workspace_id, request, headers, runtime)
 
+    def list_kyuubi_spark_applications_with_options(
+        self,
+        workspace_id: str,
+        kyuubi_service_id: str,
+        tmp_req: emr_serverless_spark_20230808_models.ListKyuubiSparkApplicationsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.ListKyuubiSparkApplicationsResponse:
+        """
+        @summary Queries the applications that are submitted by using a Kyuubi gateway.
+        
+        @param tmp_req: ListKyuubiSparkApplicationsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListKyuubiSparkApplicationsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = emr_serverless_spark_20230808_models.ListKyuubiSparkApplicationsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.start_time):
+            request.start_time_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.start_time, 'startTime', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['applicationId'] = request.application_id
+        if not UtilClient.is_unset(request.application_name):
+            query['applicationName'] = request.application_name
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.start_time_shrink):
+            query['startTime'] = request.start_time_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListKyuubiSparkApplications',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/kyuubi/{OpenApiUtilClient.get_encode_param(workspace_id)}/{OpenApiUtilClient.get_encode_param(kyuubi_service_id)}/applications',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.ListKyuubiSparkApplicationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_kyuubi_spark_applications_with_options_async(
+        self,
+        workspace_id: str,
+        kyuubi_service_id: str,
+        tmp_req: emr_serverless_spark_20230808_models.ListKyuubiSparkApplicationsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.ListKyuubiSparkApplicationsResponse:
+        """
+        @summary Queries the applications that are submitted by using a Kyuubi gateway.
+        
+        @param tmp_req: ListKyuubiSparkApplicationsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListKyuubiSparkApplicationsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = emr_serverless_spark_20230808_models.ListKyuubiSparkApplicationsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.start_time):
+            request.start_time_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.start_time, 'startTime', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['applicationId'] = request.application_id
+        if not UtilClient.is_unset(request.application_name):
+            query['applicationName'] = request.application_name
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.start_time_shrink):
+            query['startTime'] = request.start_time_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListKyuubiSparkApplications',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/kyuubi/{OpenApiUtilClient.get_encode_param(workspace_id)}/{OpenApiUtilClient.get_encode_param(kyuubi_service_id)}/applications',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.ListKyuubiSparkApplicationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_kyuubi_spark_applications(
+        self,
+        workspace_id: str,
+        kyuubi_service_id: str,
+        request: emr_serverless_spark_20230808_models.ListKyuubiSparkApplicationsRequest,
+    ) -> emr_serverless_spark_20230808_models.ListKyuubiSparkApplicationsResponse:
+        """
+        @summary Queries the applications that are submitted by using a Kyuubi gateway.
+        
+        @param request: ListKyuubiSparkApplicationsRequest
+        @return: ListKyuubiSparkApplicationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_kyuubi_spark_applications_with_options(workspace_id, kyuubi_service_id, request, headers, runtime)
+
+    async def list_kyuubi_spark_applications_async(
+        self,
+        workspace_id: str,
+        kyuubi_service_id: str,
+        request: emr_serverless_spark_20230808_models.ListKyuubiSparkApplicationsRequest,
+    ) -> emr_serverless_spark_20230808_models.ListKyuubiSparkApplicationsResponse:
+        """
+        @summary Queries the applications that are submitted by using a Kyuubi gateway.
+        
+        @param request: ListKyuubiSparkApplicationsRequest
+        @return: ListKyuubiSparkApplicationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_kyuubi_spark_applications_with_options_async(workspace_id, kyuubi_service_id, request, headers, runtime)
+
     def list_log_contents_with_options(
         self,
         workspace_id: str,
@@ -1333,7 +2165,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.ListLogContentsResponse:
         """
-        @summary Obtains the log content.
+        @summary Get Log Content
         
         @param request: ListLogContentsRequest
         @param headers: map
@@ -1378,7 +2210,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.ListLogContentsResponse:
         """
-        @summary Obtains the log content.
+        @summary Get Log Content
         
         @param request: ListLogContentsRequest
         @param headers: map
@@ -1421,7 +2253,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.ListLogContentsRequest,
     ) -> emr_serverless_spark_20230808_models.ListLogContentsResponse:
         """
-        @summary Obtains the log content.
+        @summary Get Log Content
         
         @param request: ListLogContentsRequest
         @return: ListLogContentsResponse
@@ -1436,7 +2268,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.ListLogContentsRequest,
     ) -> emr_serverless_spark_20230808_models.ListLogContentsResponse:
         """
-        @summary Obtains the log content.
+        @summary Get Log Content
         
         @param request: ListLogContentsRequest
         @return: ListLogContentsResponse
@@ -1469,6 +2301,8 @@ class Client(OpenApiClient):
             query['releaseVersion'] = request.release_version
         if not UtilClient.is_unset(request.release_version_status):
             query['releaseVersionStatus'] = request.release_version_status
+        if not UtilClient.is_unset(request.service_filter):
+            query['serviceFilter'] = request.service_filter
         if not UtilClient.is_unset(request.workspace_id):
             query['workspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -1515,6 +2349,8 @@ class Client(OpenApiClient):
             query['releaseVersion'] = request.release_version
         if not UtilClient.is_unset(request.release_version_status):
             query['releaseVersionStatus'] = request.release_version_status
+        if not UtilClient.is_unset(request.service_filter):
+            query['serviceFilter'] = request.service_filter
         if not UtilClient.is_unset(request.workspace_id):
             query['workspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -1807,19 +2643,23 @@ class Client(OpenApiClient):
 
     def list_workspaces_with_options(
         self,
-        request: emr_serverless_spark_20230808_models.ListWorkspacesRequest,
+        tmp_req: emr_serverless_spark_20230808_models.ListWorkspacesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.ListWorkspacesResponse:
         """
         @summary Queries a list of workspaces.
         
-        @param request: ListWorkspacesRequest
+        @param tmp_req: ListWorkspacesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListWorkspacesResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = emr_serverless_spark_20230808_models.ListWorkspacesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.max_results):
             query['maxResults'] = request.max_results
@@ -1831,6 +2671,8 @@ class Client(OpenApiClient):
             query['regionId'] = request.region_id
         if not UtilClient.is_unset(request.state):
             query['state'] = request.state
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['tag'] = request.tag_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1853,19 +2695,23 @@ class Client(OpenApiClient):
 
     async def list_workspaces_with_options_async(
         self,
-        request: emr_serverless_spark_20230808_models.ListWorkspacesRequest,
+        tmp_req: emr_serverless_spark_20230808_models.ListWorkspacesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.ListWorkspacesResponse:
         """
         @summary Queries a list of workspaces.
         
-        @param request: ListWorkspacesRequest
+        @param tmp_req: ListWorkspacesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListWorkspacesResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = emr_serverless_spark_20230808_models.ListWorkspacesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.max_results):
             query['maxResults'] = request.max_results
@@ -1877,6 +2723,8 @@ class Client(OpenApiClient):
             query['regionId'] = request.region_id
         if not UtilClient.is_unset(request.state):
             query['state'] = request.state
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['tag'] = request.tag_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2093,7 +2941,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.StartProcessInstanceResponse:
         """
-        @summary 启动工作流实例
+        @summary Manually runs a workflow.
         
         @param request: StartProcessInstanceRequest
         @param headers: map
@@ -2102,6 +2950,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.action):
+            query['action'] = request.action
+        if not UtilClient.is_unset(request.comments):
+            query['comments'] = request.comments
+        if not UtilClient.is_unset(request.email):
+            query['email'] = request.email
+        if not UtilClient.is_unset(request.interval):
+            query['interval'] = request.interval
         if not UtilClient.is_unset(request.is_prod):
             query['isProd'] = request.is_prod
         if not UtilClient.is_unset(request.process_definition_code):
@@ -2144,7 +3000,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.StartProcessInstanceResponse:
         """
-        @summary 启动工作流实例
+        @summary Manually runs a workflow.
         
         @param request: StartProcessInstanceRequest
         @param headers: map
@@ -2153,6 +3009,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.action):
+            query['action'] = request.action
+        if not UtilClient.is_unset(request.comments):
+            query['comments'] = request.comments
+        if not UtilClient.is_unset(request.email):
+            query['email'] = request.email
+        if not UtilClient.is_unset(request.interval):
+            query['interval'] = request.interval
         if not UtilClient.is_unset(request.is_prod):
             query['isProd'] = request.is_prod
         if not UtilClient.is_unset(request.process_definition_code):
@@ -2193,7 +3057,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.StartProcessInstanceRequest,
     ) -> emr_serverless_spark_20230808_models.StartProcessInstanceResponse:
         """
-        @summary 启动工作流实例
+        @summary Manually runs a workflow.
         
         @param request: StartProcessInstanceRequest
         @return: StartProcessInstanceResponse
@@ -2208,7 +3072,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.StartProcessInstanceRequest,
     ) -> emr_serverless_spark_20230808_models.StartProcessInstanceResponse:
         """
-        @summary 启动工作流实例
+        @summary Manually runs a workflow.
         
         @param request: StartProcessInstanceRequest
         @return: StartProcessInstanceResponse
@@ -2578,7 +3442,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.UpdateProcessDefinitionWithScheduleResponse:
         """
-        @summary 更新工作流定义和定时调度
+        @summary Updates the workflow and time-based scheduling configurations.
         
         @param tmp_req: UpdateProcessDefinitionWithScheduleRequest
         @param headers: map
@@ -2588,6 +3452,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = emr_serverless_spark_20230808_models.UpdateProcessDefinitionWithScheduleShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.global_params):
+            request.global_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.global_params, 'globalParams', 'json')
         if not UtilClient.is_unset(tmp_req.schedule):
             request.schedule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule, 'schedule', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
@@ -2603,6 +3469,8 @@ class Client(OpenApiClient):
             query['description'] = request.description
         if not UtilClient.is_unset(request.execution_type):
             query['executionType'] = request.execution_type
+        if not UtilClient.is_unset(request.global_params_shrink):
+            query['globalParams'] = request.global_params_shrink
         if not UtilClient.is_unset(request.name):
             query['name'] = request.name
         if not UtilClient.is_unset(request.product_namespace):
@@ -2660,7 +3528,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.UpdateProcessDefinitionWithScheduleResponse:
         """
-        @summary 更新工作流定义和定时调度
+        @summary Updates the workflow and time-based scheduling configurations.
         
         @param tmp_req: UpdateProcessDefinitionWithScheduleRequest
         @param headers: map
@@ -2670,6 +3538,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = emr_serverless_spark_20230808_models.UpdateProcessDefinitionWithScheduleShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.global_params):
+            request.global_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.global_params, 'globalParams', 'json')
         if not UtilClient.is_unset(tmp_req.schedule):
             request.schedule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule, 'schedule', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
@@ -2685,6 +3555,8 @@ class Client(OpenApiClient):
             query['description'] = request.description
         if not UtilClient.is_unset(request.execution_type):
             query['executionType'] = request.execution_type
+        if not UtilClient.is_unset(request.global_params_shrink):
+            query['globalParams'] = request.global_params_shrink
         if not UtilClient.is_unset(request.name):
             query['name'] = request.name
         if not UtilClient.is_unset(request.product_namespace):
@@ -2740,7 +3612,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.UpdateProcessDefinitionWithScheduleRequest,
     ) -> emr_serverless_spark_20230808_models.UpdateProcessDefinitionWithScheduleResponse:
         """
-        @summary 更新工作流定义和定时调度
+        @summary Updates the workflow and time-based scheduling configurations.
         
         @param request: UpdateProcessDefinitionWithScheduleRequest
         @return: UpdateProcessDefinitionWithScheduleResponse
@@ -2756,7 +3628,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.UpdateProcessDefinitionWithScheduleRequest,
     ) -> emr_serverless_spark_20230808_models.UpdateProcessDefinitionWithScheduleResponse:
         """
-        @summary 更新工作流定义和定时调度
+        @summary Updates the workflow and time-based scheduling configurations.
         
         @param request: UpdateProcessDefinitionWithScheduleRequest
         @return: UpdateProcessDefinitionWithScheduleResponse
