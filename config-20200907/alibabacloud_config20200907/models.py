@@ -9104,6 +9104,7 @@ class GenerateAggregateCompliancePackReportRequest(TeaModel):
         aggregator_id: str = None,
         client_token: str = None,
         compliance_pack_id: str = None,
+        multi_files: bool = None,
     ):
         # The ID of the account group.
         # 
@@ -9119,6 +9120,7 @@ class GenerateAggregateCompliancePackReportRequest(TeaModel):
         # 
         # This parameter is required.
         self.compliance_pack_id = compliance_pack_id
+        self.multi_files = multi_files
 
     def validate(self):
         pass
@@ -9135,6 +9137,8 @@ class GenerateAggregateCompliancePackReportRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.compliance_pack_id is not None:
             result['CompliancePackId'] = self.compliance_pack_id
+        if self.multi_files is not None:
+            result['MultiFiles'] = self.multi_files
         return result
 
     def from_map(self, m: dict = None):
@@ -9145,6 +9149,8 @@ class GenerateAggregateCompliancePackReportRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('CompliancePackId') is not None:
             self.compliance_pack_id = m.get('CompliancePackId')
+        if m.get('MultiFiles') is not None:
+            self.multi_files = m.get('MultiFiles')
         return self
 
 
@@ -25293,7 +25299,7 @@ class ListAggregateRemediationExecutionsRequest(TeaModel):
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
-        # The ID of the member account in the account group.
+        # The ID of the member account in the account group. When left unfilled, this rule queries the remediation result for the account that created the rule. If the account is not in the account group, the result will be empty.
         self.resource_account_id = resource_account_id
 
     def validate(self):

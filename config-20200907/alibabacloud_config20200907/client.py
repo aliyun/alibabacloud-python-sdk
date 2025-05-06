@@ -4384,6 +4384,8 @@ class Client(OpenApiClient):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.compliance_pack_id):
             body['CompliancePackId'] = request.compliance_pack_id
+        if not UtilClient.is_unset(request.multi_files):
+            body['MultiFiles'] = request.multi_files
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -4426,6 +4428,8 @@ class Client(OpenApiClient):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.compliance_pack_id):
             body['CompliancePackId'] = request.compliance_pack_id
+        if not UtilClient.is_unset(request.multi_files):
+            body['MultiFiles'] = request.multi_files
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
