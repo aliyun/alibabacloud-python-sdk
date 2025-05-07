@@ -425,6 +425,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.find_user_availble_resources_with_options_async(request, runtime)
 
+    def get_security_event_detail_with_options(
+        self,
+        request: buss_20220822_models.GetSecurityEventDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> buss_20220822_models.GetSecurityEventDetailResponse:
+        """
+        @summary 查询安全事件详情
+        
+        @param request: GetSecurityEventDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSecurityEventDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSecurityEventDetail',
+            version='2022-08-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            buss_20220822_models.GetSecurityEventDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_security_event_detail_with_options_async(
+        self,
+        request: buss_20220822_models.GetSecurityEventDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> buss_20220822_models.GetSecurityEventDetailResponse:
+        """
+        @summary 查询安全事件详情
+        
+        @param request: GetSecurityEventDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSecurityEventDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSecurityEventDetail',
+            version='2022-08-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            buss_20220822_models.GetSecurityEventDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_security_event_detail(
+        self,
+        request: buss_20220822_models.GetSecurityEventDetailRequest,
+    ) -> buss_20220822_models.GetSecurityEventDetailResponse:
+        """
+        @summary 查询安全事件详情
+        
+        @param request: GetSecurityEventDetailRequest
+        @return: GetSecurityEventDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_security_event_detail_with_options(request, runtime)
+
+    async def get_security_event_detail_async(
+        self,
+        request: buss_20220822_models.GetSecurityEventDetailRequest,
+    ) -> buss_20220822_models.GetSecurityEventDetailResponse:
+        """
+        @summary 查询安全事件详情
+        
+        @param request: GetSecurityEventDetailRequest
+        @return: GetSecurityEventDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_security_event_detail_with_options_async(request, runtime)
+
     def punish_resource_search_with_options(
         self,
         tmp_req: buss_20220822_models.PunishResourceSearchRequest,
@@ -536,6 +628,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.punish_resource_search_with_options_async(request, runtime)
+
+    def record_click_link_action_with_options(
+        self,
+        request: buss_20220822_models.RecordClickLinkActionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> buss_20220822_models.RecordClickLinkActionResponse:
+        """
+        @summary 记录是否点击链接
+        
+        @param request: RecordClickLinkActionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RecordClickLinkActionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecordClickLinkAction',
+            version='2022-08-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            buss_20220822_models.RecordClickLinkActionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def record_click_link_action_with_options_async(
+        self,
+        request: buss_20220822_models.RecordClickLinkActionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> buss_20220822_models.RecordClickLinkActionResponse:
+        """
+        @summary 记录是否点击链接
+        
+        @param request: RecordClickLinkActionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RecordClickLinkActionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecordClickLinkAction',
+            version='2022-08-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            buss_20220822_models.RecordClickLinkActionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def record_click_link_action(
+        self,
+        request: buss_20220822_models.RecordClickLinkActionRequest,
+    ) -> buss_20220822_models.RecordClickLinkActionResponse:
+        """
+        @summary 记录是否点击链接
+        
+        @param request: RecordClickLinkActionRequest
+        @return: RecordClickLinkActionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.record_click_link_action_with_options(request, runtime)
+
+    async def record_click_link_action_async(
+        self,
+        request: buss_20220822_models.RecordClickLinkActionRequest,
+    ) -> buss_20220822_models.RecordClickLinkActionResponse:
+        """
+        @summary 记录是否点击链接
+        
+        @param request: RecordClickLinkActionRequest
+        @return: RecordClickLinkActionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.record_click_link_action_with_options_async(request, runtime)
 
     def risk_event_sync_with_options(
         self,
@@ -1100,3 +1288,95 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.search_punish_request_with_options_async(request, runtime)
+
+    def update_security_event_status_with_options(
+        self,
+        request: buss_20220822_models.UpdateSecurityEventStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> buss_20220822_models.UpdateSecurityEventStatusResponse:
+        """
+        @summary 更新安全事件状态
+        
+        @param request: UpdateSecurityEventStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSecurityEventStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSecurityEventStatus',
+            version='2022-08-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            buss_20220822_models.UpdateSecurityEventStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_security_event_status_with_options_async(
+        self,
+        request: buss_20220822_models.UpdateSecurityEventStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> buss_20220822_models.UpdateSecurityEventStatusResponse:
+        """
+        @summary 更新安全事件状态
+        
+        @param request: UpdateSecurityEventStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSecurityEventStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSecurityEventStatus',
+            version='2022-08-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            buss_20220822_models.UpdateSecurityEventStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_security_event_status(
+        self,
+        request: buss_20220822_models.UpdateSecurityEventStatusRequest,
+    ) -> buss_20220822_models.UpdateSecurityEventStatusResponse:
+        """
+        @summary 更新安全事件状态
+        
+        @param request: UpdateSecurityEventStatusRequest
+        @return: UpdateSecurityEventStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_security_event_status_with_options(request, runtime)
+
+    async def update_security_event_status_async(
+        self,
+        request: buss_20220822_models.UpdateSecurityEventStatusRequest,
+    ) -> buss_20220822_models.UpdateSecurityEventStatusResponse:
+        """
+        @summary 更新安全事件状态
+        
+        @param request: UpdateSecurityEventStatusRequest
+        @return: UpdateSecurityEventStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_security_event_status_with_options_async(request, runtime)

@@ -403,6 +403,7 @@ class CreateUserInvestigationInfoQueryTaskResponse(TeaModel):
 class FindInstanceInfoRequest(TeaModel):
     def __init__(
         self,
+        business_codes: str = None,
         bussiness_code: str = None,
         domain: str = None,
         end_time: int = None,
@@ -413,6 +414,7 @@ class FindInstanceInfoRequest(TeaModel):
         url: str = None,
         user_id: str = None,
     ):
+        self.business_codes = business_codes
         self.bussiness_code = bussiness_code
         self.domain = domain
         self.end_time = end_time
@@ -432,6 +434,8 @@ class FindInstanceInfoRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.business_codes is not None:
+            result['businessCodes'] = self.business_codes
         if self.bussiness_code is not None:
             result['bussinessCode'] = self.bussiness_code
         if self.domain is not None:
@@ -454,6 +458,8 @@ class FindInstanceInfoRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('businessCodes') is not None:
+            self.business_codes = m.get('businessCodes')
         if m.get('bussinessCode') is not None:
             self.bussiness_code = m.get('bussinessCode')
         if m.get('domain') is not None:
@@ -478,6 +484,7 @@ class FindInstanceInfoRequest(TeaModel):
 class FindInstanceInfoShrinkRequest(TeaModel):
     def __init__(
         self,
+        business_codes: str = None,
         bussiness_code: str = None,
         domain: str = None,
         end_time: int = None,
@@ -488,6 +495,7 @@ class FindInstanceInfoShrinkRequest(TeaModel):
         url: str = None,
         user_id: str = None,
     ):
+        self.business_codes = business_codes
         self.bussiness_code = bussiness_code
         self.domain = domain
         self.end_time = end_time
@@ -507,6 +515,8 @@ class FindInstanceInfoShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.business_codes is not None:
+            result['businessCodes'] = self.business_codes
         if self.bussiness_code is not None:
             result['bussinessCode'] = self.bussiness_code
         if self.domain is not None:
@@ -529,6 +539,8 @@ class FindInstanceInfoShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('businessCodes') is not None:
+            self.business_codes = m.get('businessCodes')
         if m.get('bussinessCode') is not None:
             self.bussiness_code = m.get('bussinessCode')
         if m.get('domain') is not None:
@@ -1159,6 +1171,238 @@ class FindUserAvailbleResourcesResponse(TeaModel):
         return self
 
 
+class GetSecurityEventDetailRequest(TeaModel):
+    def __init__(
+        self,
+        ali_uid: str = None,
+        event_id: str = None,
+        caller_parent_id: int = None,
+        caller_type: str = None,
+        caller_uid: int = None,
+    ):
+        self.ali_uid = ali_uid
+        self.event_id = event_id
+        self.caller_parent_id = caller_parent_id
+        self.caller_type = caller_type
+        self.caller_uid = caller_uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ali_uid is not None:
+            result['AliUid'] = self.ali_uid
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.caller_parent_id is not None:
+            result['callerParentId'] = self.caller_parent_id
+        if self.caller_type is not None:
+            result['callerType'] = self.caller_type
+        if self.caller_uid is not None:
+            result['callerUid'] = self.caller_uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliUid') is not None:
+            self.ali_uid = m.get('AliUid')
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('callerParentId') is not None:
+            self.caller_parent_id = m.get('callerParentId')
+        if m.get('callerType') is not None:
+            self.caller_type = m.get('callerType')
+        if m.get('callerUid') is not None:
+            self.caller_uid = m.get('callerUid')
+        return self
+
+
+class GetSecurityEventDetailResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        aliuid: str = None,
+        data_source: str = None,
+        event_code: str = None,
+        event_id: str = None,
+        event_time: str = None,
+        extra: str = None,
+        level: str = None,
+        principal_id: str = None,
+        resource_id: str = None,
+        status: str = None,
+        type: str = None,
+    ):
+        self.aliuid = aliuid
+        self.data_source = data_source
+        self.event_code = event_code
+        self.event_id = event_id
+        self.event_time = event_time
+        self.extra = extra
+        self.level = level
+        self.principal_id = principal_id
+        self.resource_id = resource_id
+        self.status = status
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliuid is not None:
+            result['Aliuid'] = self.aliuid
+        if self.data_source is not None:
+            result['DataSource'] = self.data_source
+        if self.event_code is not None:
+            result['EventCode'] = self.event_code
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.event_time is not None:
+            result['EventTime'] = self.event_time
+        if self.extra is not None:
+            result['Extra'] = self.extra
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.principal_id is not None:
+            result['PrincipalId'] = self.principal_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Aliuid') is not None:
+            self.aliuid = m.get('Aliuid')
+        if m.get('DataSource') is not None:
+            self.data_source = m.get('DataSource')
+        if m.get('EventCode') is not None:
+            self.event_code = m.get('EventCode')
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('EventTime') is not None:
+            self.event_time = m.get('EventTime')
+        if m.get('Extra') is not None:
+            self.extra = m.get('Extra')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('PrincipalId') is not None:
+            self.principal_id = m.get('PrincipalId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetSecurityEventDetailResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetSecurityEventDetailResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetSecurityEventDetailResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetSecurityEventDetailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetSecurityEventDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetSecurityEventDetailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class PunishResourceSearchRequest(TeaModel):
     def __init__(
         self,
@@ -1636,6 +1880,125 @@ class PunishResourceSearchResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PunishResourceSearchResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RecordClickLinkActionRequest(TeaModel):
+    def __init__(
+        self,
+        tag: str = None,
+    ):
+        self.tag = tag
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag is not None:
+            result['Tag'] = self.tag
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Tag') is not None:
+            self.tag = m.get('Tag')
+        return self
+
+
+class RecordClickLinkActionResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        count: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.count = count
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class RecordClickLinkActionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RecordClickLinkActionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RecordClickLinkActionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2822,8 +3185,12 @@ class SearchPunishRequestResponseBodyDataList(TeaModel):
         instance_id: str = None,
         ip_string: str = None,
         modifier: str = None,
+        operator: str = None,
+        operator_num: str = None,
         punish_domain: str = None,
         punish_ip: str = None,
+        punish_officer: str = None,
+        punish_officer_num: str = None,
         punish_request: str = None,
         punish_resp_time: str = None,
         punish_result: str = None,
@@ -2855,8 +3222,12 @@ class SearchPunishRequestResponseBodyDataList(TeaModel):
         self.instance_id = instance_id
         self.ip_string = ip_string
         self.modifier = modifier
+        self.operator = operator
+        self.operator_num = operator_num
         self.punish_domain = punish_domain
         self.punish_ip = punish_ip
+        self.punish_officer = punish_officer
+        self.punish_officer_num = punish_officer_num
         self.punish_request = punish_request
         self.punish_resp_time = punish_resp_time
         self.punish_result = punish_result
@@ -2918,10 +3289,18 @@ class SearchPunishRequestResponseBodyDataList(TeaModel):
             result['IpString'] = self.ip_string
         if self.modifier is not None:
             result['Modifier'] = self.modifier
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.operator_num is not None:
+            result['OperatorNum'] = self.operator_num
         if self.punish_domain is not None:
             result['PunishDomain'] = self.punish_domain
         if self.punish_ip is not None:
             result['PunishIp'] = self.punish_ip
+        if self.punish_officer is not None:
+            result['PunishOfficer'] = self.punish_officer
+        if self.punish_officer_num is not None:
+            result['PunishOfficerNum'] = self.punish_officer_num
         if self.punish_request is not None:
             result['PunishRequest'] = self.punish_request
         if self.punish_resp_time is not None:
@@ -2986,10 +3365,18 @@ class SearchPunishRequestResponseBodyDataList(TeaModel):
             self.ip_string = m.get('IpString')
         if m.get('Modifier') is not None:
             self.modifier = m.get('Modifier')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('OperatorNum') is not None:
+            self.operator_num = m.get('OperatorNum')
         if m.get('PunishDomain') is not None:
             self.punish_domain = m.get('PunishDomain')
         if m.get('PunishIp') is not None:
             self.punish_ip = m.get('PunishIp')
+        if m.get('PunishOfficer') is not None:
+            self.punish_officer = m.get('PunishOfficer')
+        if m.get('PunishOfficerNum') is not None:
+            self.punish_officer_num = m.get('PunishOfficerNum')
         if m.get('PunishRequest') is not None:
             self.punish_request = m.get('PunishRequest')
         if m.get('PunishRespTime') is not None:
@@ -3125,6 +3512,155 @@ class SearchPunishRequestResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SearchPunishRequestResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateSecurityEventStatusRequest(TeaModel):
+    def __init__(
+        self,
+        ali_uid: str = None,
+        event_id: str = None,
+        status: str = None,
+        caller_parent_id: int = None,
+        caller_type: str = None,
+        caller_uid: int = None,
+    ):
+        self.ali_uid = ali_uid
+        self.event_id = event_id
+        self.status = status
+        self.caller_parent_id = caller_parent_id
+        self.caller_type = caller_type
+        self.caller_uid = caller_uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ali_uid is not None:
+            result['AliUid'] = self.ali_uid
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.caller_parent_id is not None:
+            result['callerParentId'] = self.caller_parent_id
+        if self.caller_type is not None:
+            result['callerType'] = self.caller_type
+        if self.caller_uid is not None:
+            result['callerUid'] = self.caller_uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliUid') is not None:
+            self.ali_uid = m.get('AliUid')
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('callerParentId') is not None:
+            self.caller_parent_id = m.get('callerParentId')
+        if m.get('callerType') is not None:
+            self.caller_type = m.get('callerType')
+        if m.get('callerUid') is not None:
+            self.caller_uid = m.get('callerUid')
+        return self
+
+
+class UpdateSecurityEventStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: Any = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateSecurityEventStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateSecurityEventStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateSecurityEventStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
