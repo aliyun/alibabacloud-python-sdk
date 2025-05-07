@@ -30845,11 +30845,27 @@ class RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelection(T
 class RunSearchGenerationRequestAgentContextBizContext(TeaModel):
     def __init__(
         self,
+        ask_user: str = None,
+        ask_user_keywords: List[str] = None,
+        current_step: str = None,
         multimodal_media_selection: RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelection = None,
+        next_step: str = None,
         skip_current_supplement: bool = None,
+        supplement_data_type: str = None,
+        supplement_enable: bool = None,
+        user_back: str = None,
+        user_back_keywords: List[str] = None,
     ):
+        self.ask_user = ask_user
+        self.ask_user_keywords = ask_user_keywords
+        self.current_step = current_step
         self.multimodal_media_selection = multimodal_media_selection
+        self.next_step = next_step
         self.skip_current_supplement = skip_current_supplement
+        self.supplement_data_type = supplement_data_type
+        self.supplement_enable = supplement_enable
+        self.user_back = user_back
+        self.user_back_keywords = user_back_keywords
 
     def validate(self):
         if self.multimodal_media_selection:
@@ -30861,19 +30877,51 @@ class RunSearchGenerationRequestAgentContextBizContext(TeaModel):
             return _map
 
         result = dict()
+        if self.ask_user is not None:
+            result['AskUser'] = self.ask_user
+        if self.ask_user_keywords is not None:
+            result['AskUserKeywords'] = self.ask_user_keywords
+        if self.current_step is not None:
+            result['CurrentStep'] = self.current_step
         if self.multimodal_media_selection is not None:
             result['MultimodalMediaSelection'] = self.multimodal_media_selection.to_map()
+        if self.next_step is not None:
+            result['NextStep'] = self.next_step
         if self.skip_current_supplement is not None:
             result['SkipCurrentSupplement'] = self.skip_current_supplement
+        if self.supplement_data_type is not None:
+            result['SupplementDataType'] = self.supplement_data_type
+        if self.supplement_enable is not None:
+            result['SupplementEnable'] = self.supplement_enable
+        if self.user_back is not None:
+            result['UserBack'] = self.user_back
+        if self.user_back_keywords is not None:
+            result['UserBackKeywords'] = self.user_back_keywords
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AskUser') is not None:
+            self.ask_user = m.get('AskUser')
+        if m.get('AskUserKeywords') is not None:
+            self.ask_user_keywords = m.get('AskUserKeywords')
+        if m.get('CurrentStep') is not None:
+            self.current_step = m.get('CurrentStep')
         if m.get('MultimodalMediaSelection') is not None:
             temp_model = RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelection()
             self.multimodal_media_selection = temp_model.from_map(m['MultimodalMediaSelection'])
+        if m.get('NextStep') is not None:
+            self.next_step = m.get('NextStep')
         if m.get('SkipCurrentSupplement') is not None:
             self.skip_current_supplement = m.get('SkipCurrentSupplement')
+        if m.get('SupplementDataType') is not None:
+            self.supplement_data_type = m.get('SupplementDataType')
+        if m.get('SupplementEnable') is not None:
+            self.supplement_enable = m.get('SupplementEnable')
+        if m.get('UserBack') is not None:
+            self.user_back = m.get('UserBack')
+        if m.get('UserBackKeywords') is not None:
+            self.user_back_keywords = m.get('UserBackKeywords')
         return self
 
 
@@ -34653,6 +34701,8 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextTokenCal
 class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext(TeaModel):
     def __init__(
         self,
+        ask_user: str = None,
+        ask_user_keywords: List[str] = None,
         current_step: str = None,
         generated_content: RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent = None,
         model_id: str = None,
@@ -34664,6 +34714,8 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext(TeaMode
         supplement_enable: bool = None,
         token_calculate: RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextTokenCalculate = None,
     ):
+        self.ask_user = ask_user
+        self.ask_user_keywords = ask_user_keywords
         self.current_step = current_step
         self.generated_content = generated_content
         self.model_id = model_id
@@ -34687,6 +34739,10 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext(TeaMode
             return _map
 
         result = dict()
+        if self.ask_user is not None:
+            result['AskUser'] = self.ask_user
+        if self.ask_user_keywords is not None:
+            result['AskUserKeywords'] = self.ask_user_keywords
         if self.current_step is not None:
             result['CurrentStep'] = self.current_step
         if self.generated_content is not None:
@@ -34711,6 +34767,10 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext(TeaMode
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AskUser') is not None:
+            self.ask_user = m.get('AskUser')
+        if m.get('AskUserKeywords') is not None:
+            self.ask_user_keywords = m.get('AskUserKeywords')
         if m.get('CurrentStep') is not None:
             self.current_step = m.get('CurrentStep')
         if m.get('GeneratedContent') is not None:
