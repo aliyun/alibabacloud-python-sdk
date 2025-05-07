@@ -20194,6 +20194,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeDBInstancesForCloneResponse:
         """
+        @deprecated OpenAPI DescribeDBInstancesForClone is deprecated, please use Rds::2014-08-15::DescribeDBInstances instead.
+        
         @summary Queries a list of instances.
         
         @description This operation is phased out.
@@ -20201,6 +20203,7 @@ class Client(OpenApiClient):
         @param request: DescribeDBInstancesForCloneRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeDBInstancesForCloneResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -20281,6 +20284,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeDBInstancesForCloneResponse:
         """
+        @deprecated OpenAPI DescribeDBInstancesForClone is deprecated, please use Rds::2014-08-15::DescribeDBInstances instead.
+        
         @summary Queries a list of instances.
         
         @description This operation is phased out.
@@ -20288,6 +20293,7 @@ class Client(OpenApiClient):
         @param request: DescribeDBInstancesForCloneRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeDBInstancesForCloneResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -20367,12 +20373,15 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeDBInstancesForCloneRequest,
     ) -> rds_20140815_models.DescribeDBInstancesForCloneResponse:
         """
+        @deprecated OpenAPI DescribeDBInstancesForClone is deprecated, please use Rds::2014-08-15::DescribeDBInstances instead.
+        
         @summary Queries a list of instances.
         
         @description This operation is phased out.
         
         @param request: DescribeDBInstancesForCloneRequest
         @return: DescribeDBInstancesForCloneResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.describe_dbinstances_for_clone_with_options(request, runtime)
@@ -20382,12 +20391,15 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeDBInstancesForCloneRequest,
     ) -> rds_20140815_models.DescribeDBInstancesForCloneResponse:
         """
+        @deprecated OpenAPI DescribeDBInstancesForClone is deprecated, please use Rds::2014-08-15::DescribeDBInstances instead.
+        
         @summary Queries a list of instances.
         
         @description This operation is phased out.
         
         @param request: DescribeDBInstancesForCloneRequest
         @return: DescribeDBInstancesForCloneResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstances_for_clone_with_options_async(request, runtime)
@@ -28140,6 +28152,8 @@ class Client(OpenApiClient):
             query['PublicIp'] = request.public_ip
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.vpc_id):
@@ -28191,6 +28205,8 @@ class Client(OpenApiClient):
             query['PublicIp'] = request.public_ip
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.vpc_id):
@@ -44686,15 +44702,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ModifySQLCollectorPolicyResponse:
         """
-        @summary Enables or disables the SQL Explorer (SQL Audit) feature for an instance.
+        @summary This operation can still be called but is no longer maintained. This operation enables or disables the SQL Explorer (SQL Audit) feature for an instance.
         
-        @description ### [](#)Note:
-        This operation is no longer maintained. We recommend that you enable or configure Database Autonomy Service (DAS) Enterprise Edition. For more information, see [Enable or configure DAS Enterprise Edition](https://help.aliyun.com/document_detail/2778835.html).
-        ### [](#)References
-        >  Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
-        [Use the SQL Explorer and Audit feature for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/476574.html)
-        [Use the SQL Audit feature for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96766.html)
-        [Use the SQL Audit feature for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/95712.html)
+        @description This operation can still be called but is no longer maintained. We recommend that you call the [ModifySqlLogConfig](https://help.aliyun.com/document_detail/2778835.html) operation instead of this operation.
         
         @param request: ModifySQLCollectorPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -44741,15 +44751,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ModifySQLCollectorPolicyResponse:
         """
-        @summary Enables or disables the SQL Explorer (SQL Audit) feature for an instance.
+        @summary This operation can still be called but is no longer maintained. This operation enables or disables the SQL Explorer (SQL Audit) feature for an instance.
         
-        @description ### [](#)Note:
-        This operation is no longer maintained. We recommend that you enable or configure Database Autonomy Service (DAS) Enterprise Edition. For more information, see [Enable or configure DAS Enterprise Edition](https://help.aliyun.com/document_detail/2778835.html).
-        ### [](#)References
-        >  Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
-        [Use the SQL Explorer and Audit feature for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/476574.html)
-        [Use the SQL Audit feature for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96766.html)
-        [Use the SQL Audit feature for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/95712.html)
+        @description This operation can still be called but is no longer maintained. We recommend that you call the [ModifySqlLogConfig](https://help.aliyun.com/document_detail/2778835.html) operation instead of this operation.
         
         @param request: ModifySQLCollectorPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -44795,15 +44799,9 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ModifySQLCollectorPolicyRequest,
     ) -> rds_20140815_models.ModifySQLCollectorPolicyResponse:
         """
-        @summary Enables or disables the SQL Explorer (SQL Audit) feature for an instance.
+        @summary This operation can still be called but is no longer maintained. This operation enables or disables the SQL Explorer (SQL Audit) feature for an instance.
         
-        @description ### [](#)Note:
-        This operation is no longer maintained. We recommend that you enable or configure Database Autonomy Service (DAS) Enterprise Edition. For more information, see [Enable or configure DAS Enterprise Edition](https://help.aliyun.com/document_detail/2778835.html).
-        ### [](#)References
-        >  Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
-        [Use the SQL Explorer and Audit feature for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/476574.html)
-        [Use the SQL Audit feature for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96766.html)
-        [Use the SQL Audit feature for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/95712.html)
+        @description This operation can still be called but is no longer maintained. We recommend that you call the [ModifySqlLogConfig](https://help.aliyun.com/document_detail/2778835.html) operation instead of this operation.
         
         @param request: ModifySQLCollectorPolicyRequest
         @return: ModifySQLCollectorPolicyResponse
@@ -44816,15 +44814,9 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ModifySQLCollectorPolicyRequest,
     ) -> rds_20140815_models.ModifySQLCollectorPolicyResponse:
         """
-        @summary Enables or disables the SQL Explorer (SQL Audit) feature for an instance.
+        @summary This operation can still be called but is no longer maintained. This operation enables or disables the SQL Explorer (SQL Audit) feature for an instance.
         
-        @description ### [](#)Note:
-        This operation is no longer maintained. We recommend that you enable or configure Database Autonomy Service (DAS) Enterprise Edition. For more information, see [Enable or configure DAS Enterprise Edition](https://help.aliyun.com/document_detail/2778835.html).
-        ### [](#)References
-        >  Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
-        [Use the SQL Explorer and Audit feature for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/476574.html)
-        [Use the SQL Audit feature for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96766.html)
-        [Use the SQL Audit feature for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/95712.html)
+        @description This operation can still be called but is no longer maintained. We recommend that you call the [ModifySqlLogConfig](https://help.aliyun.com/document_detail/2778835.html) operation instead of this operation.
         
         @param request: ModifySQLCollectorPolicyRequest
         @return: ModifySQLCollectorPolicyResponse

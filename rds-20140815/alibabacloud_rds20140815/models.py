@@ -27442,6 +27442,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         auto_upgrade_minor_version: str = None,
         availability_value: str = None,
         babelfish_config: DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeBabelfishConfig = None,
+        blue_green_deployment_name: str = None,
+        blue_instance_name: str = None,
         bpe_enabled: str = None,
         bursting_enabled: bool = None,
         can_temp_upgrade: bool = None,
@@ -27450,6 +27452,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         collation: str = None,
         compression_mode: str = None,
         compression_ratio: str = None,
+        compute_burst_enabled: bool = None,
         connection_mode: str = None,
         connection_string: str = None,
         console_version: str = None,
@@ -27478,6 +27481,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         expire_time: str = None,
         extra: DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra = None,
         general_group_name: str = None,
+        green_instance_name: str = None,
         guard_dbinstance_id: str = None,
         iptype: str = None,
         increment_source_dbinstance_id: str = None,
@@ -27540,9 +27544,16 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         # 
         # >  This parameter applies only to ApsaraDB RDS for PostgreSQL instances for which Babelfish is enabled. For more information, see [Introduction to Babelfish](https://help.aliyun.com/document_detail/428613.html).
         self.babelfish_config = babelfish_config
+        self.blue_green_deployment_name = blue_green_deployment_name
+        self.blue_instance_name = blue_instance_name
         # A deprecated parameter. You do not need to specify this parameter.
         self.bpe_enabled = bpe_enabled
-        # An invalid parameter. You do not need to specify this parameter.
+        # Indicates whether the I/O burst feature is enabled for Premium ESSDs. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # >  For more information about the I/O burst feature, see [What are Premium ESSDs?](https://help.aliyun.com/document_detail/2340501.html)
         self.bursting_enabled = bursting_enabled
         # Indicates whether the conditions for a temporary upgrade are met.
         # 
@@ -27557,7 +27568,12 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         # *   **Finance**: RDS Enterprise Edition
         # *   **Serverless_basic**: RDS Basic Edition for serverless instances
         self.category = category
-        # A reserved parameter.
+        # Indicates whether the data archiving feature is enabled for Premium ESSDs. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        # 
+        # For more information about the data archiving feature, see [Use the data archiving feature](https://help.aliyun.com/document_detail/2701832.html).
         self.cold_data_enabled = cold_data_enabled
         # The character set collation of the instance.
         self.collation = collation
@@ -27565,6 +27581,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.compression_mode = compression_mode
         # The storage compression ratio.
         self.compression_ratio = compression_ratio
+        self.compute_burst_enabled = compute_burst_enabled
         # The connection mode of the instance. Valid values:
         # 
         # *   **Standard**: standard mode
@@ -27615,10 +27632,10 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.dbinstance_storage = dbinstance_storage
         # The storage type of the instance. Valid values:
         # 
-        # *   **local_ssd** or **ephemeral_ssd**: local SSD
+        # *   **local_ssd** and **ephemeral_ssd**: Premium Local SSD
         # *   **cloud_ssd**: standard SSD
-        # *   **cloud_essd**: Enterprise SSD (ESSD).
-        # *   **general_essd**: general ESSD
+        # *   **cloud_essd**: ESSD
+        # *   **cloud_essd**: Premium ESSD
         self.dbinstance_storage_type = dbinstance_storage_type
         # The type of the instance. Valid values:
         # 
@@ -27657,6 +27674,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.extra = extra
         # The name of the dedicated cluster to which the instance belongs. This parameter is returned only when the instance is created in an ApsaraDB MyBase cluster that runs MySQL on Standard Edition.
         self.general_group_name = general_group_name
+        self.green_instance_name = green_instance_name
         # The ID of the disaster recovery instance that is attached to the primary instance.
         self.guard_dbinstance_id = guard_dbinstance_id
         # The IP address type. Only **IPv4 addresses** are supported.
@@ -27673,7 +27691,12 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         # *   **x86**\
         # *   **arm**\
         self.instruction_set_arch = instruction_set_arch
-        # A reserved parameter.
+        # Indicates whether Buffer Pool Extension (BPE) is enabled for Premium ESSDs.
+        # 
+        # *   **1**: enabled
+        # *   **0**: disabled
+        # 
+        # >  For more information, see [Buffer Pool Extension(BPE)](https://help.aliyun.com/document_detail/2527067.html).
         self.io_acceleration_enabled = io_acceleration_enabled
         # The latest minor engine version that is supported by the instance.
         self.latest_kernel_version = latest_kernel_version
@@ -27704,11 +27727,10 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.max_iops = max_iops
         # Indicates whether auto scaling is being performed on the instance. If the value **true** is returned, auto scaling is being performed on the instance. If no value is returned, auto scaling is not being performed on the instance.
         self.multiple_temp_upgrade = multiple_temp_upgrade
-        # OptimizedWritesInfo contains two fields:
+        # The OptimizedWritesInfo parameter contains the following fields:
         # 
-        # - optimized_writes: Whether write optimization is enabled for the current instance.
-        # 
-        # - init_optimized_writes: Whether write optimization can be enabled for the instance. Some instances do not display the write optimization switch in the console because init_optimized_writes is false.
+        # *   **optimized_writes**: indicates whether the 16K atomic write feature is enabled for the current instance.
+        # *   **init_optimized_writes**: indicates whether the 16K atomic write feature can be enabled for the current instance. If init_optimized_writes is set to false, the 16K atomic write switch is not displayed for specific instances in the console.
         self.optimized_writes_info = optimized_writes_info
         # Indicates whether PgBouncer is enabled.
         # 
@@ -27815,6 +27837,10 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
             result['AvailabilityValue'] = self.availability_value
         if self.babelfish_config is not None:
             result['BabelfishConfig'] = self.babelfish_config.to_map()
+        if self.blue_green_deployment_name is not None:
+            result['BlueGreenDeploymentName'] = self.blue_green_deployment_name
+        if self.blue_instance_name is not None:
+            result['BlueInstanceName'] = self.blue_instance_name
         if self.bpe_enabled is not None:
             result['BpeEnabled'] = self.bpe_enabled
         if self.bursting_enabled is not None:
@@ -27831,6 +27857,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
             result['CompressionMode'] = self.compression_mode
         if self.compression_ratio is not None:
             result['CompressionRatio'] = self.compression_ratio
+        if self.compute_burst_enabled is not None:
+            result['ComputeBurstEnabled'] = self.compute_burst_enabled
         if self.connection_mode is not None:
             result['ConnectionMode'] = self.connection_mode
         if self.connection_string is not None:
@@ -27887,6 +27915,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
             result['Extra'] = self.extra.to_map()
         if self.general_group_name is not None:
             result['GeneralGroupName'] = self.general_group_name
+        if self.green_instance_name is not None:
+            result['GreenInstanceName'] = self.green_instance_name
         if self.guard_dbinstance_id is not None:
             result['GuardDBInstanceId'] = self.guard_dbinstance_id
         if self.iptype is not None:
@@ -27988,6 +28018,10 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         if m.get('BabelfishConfig') is not None:
             temp_model = DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeBabelfishConfig()
             self.babelfish_config = temp_model.from_map(m['BabelfishConfig'])
+        if m.get('BlueGreenDeploymentName') is not None:
+            self.blue_green_deployment_name = m.get('BlueGreenDeploymentName')
+        if m.get('BlueInstanceName') is not None:
+            self.blue_instance_name = m.get('BlueInstanceName')
         if m.get('BpeEnabled') is not None:
             self.bpe_enabled = m.get('BpeEnabled')
         if m.get('BurstingEnabled') is not None:
@@ -28004,6 +28038,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
             self.compression_mode = m.get('CompressionMode')
         if m.get('CompressionRatio') is not None:
             self.compression_ratio = m.get('CompressionRatio')
+        if m.get('ComputeBurstEnabled') is not None:
+            self.compute_burst_enabled = m.get('ComputeBurstEnabled')
         if m.get('ConnectionMode') is not None:
             self.connection_mode = m.get('ConnectionMode')
         if m.get('ConnectionString') is not None:
@@ -28062,6 +28098,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
             self.extra = temp_model.from_map(m['Extra'])
         if m.get('GeneralGroupName') is not None:
             self.general_group_name = m.get('GeneralGroupName')
+        if m.get('GreenInstanceName') is not None:
+            self.green_instance_name = m.get('GreenInstanceName')
         if m.get('GuardDBInstanceId') is not None:
             self.guard_dbinstance_id = m.get('GuardDBInstanceId')
         if m.get('IPType') is not None:
@@ -33680,6 +33718,8 @@ class DescribeDBInstancesResponseBodyItemsDBInstanceReadOnlyDBInstanceIds(TeaMod
 class DescribeDBInstancesResponseBodyItemsDBInstance(TeaModel):
     def __init__(
         self,
+        blue_green_deployment_name: str = None,
+        blue_instance_name: str = None,
         bpe_enabled: str = None,
         bursting_enabled: bool = None,
         category: str = None,
@@ -33713,6 +33753,7 @@ class DescribeDBInstancesResponseBodyItemsDBInstance(TeaModel):
         engine_version: str = None,
         expire_time: str = None,
         general_group_name: str = None,
+        green_instance_name: str = None,
         guard_dbinstance_id: str = None,
         instance_network_type: str = None,
         io_acceleration_enabled: str = None,
@@ -33734,6 +33775,8 @@ class DescribeDBInstancesResponseBodyItemsDBInstance(TeaModel):
         vpc_name: str = None,
         zone_id: str = None,
     ):
+        self.blue_green_deployment_name = blue_green_deployment_name
+        self.blue_instance_name = blue_instance_name
         # A deprecated parameter.
         self.bpe_enabled = bpe_enabled
         # Indicates whether the I/O burst feature is enabled. Valid values:
@@ -33829,6 +33872,7 @@ class DescribeDBInstancesResponseBodyItemsDBInstance(TeaModel):
         self.expire_time = expire_time
         # The name of the dedicated cluster to which the instance belongs. This parameter is returned only when the instance is created in an ApsaraDB MyBase cluster that runs MySQL on Standard Edition.
         self.general_group_name = general_group_name
+        self.green_instance_name = green_instance_name
         # The ID of the disaster recovery instance. This parameter is returned only when the instance is a primary instance and has a disaster recovery instance attached.
         self.guard_dbinstance_id = guard_dbinstance_id
         # The network type of the instance. Valid values:
@@ -33907,6 +33951,10 @@ class DescribeDBInstancesResponseBodyItemsDBInstance(TeaModel):
             return _map
 
         result = dict()
+        if self.blue_green_deployment_name is not None:
+            result['BlueGreenDeploymentName'] = self.blue_green_deployment_name
+        if self.blue_instance_name is not None:
+            result['BlueInstanceName'] = self.blue_instance_name
         if self.bpe_enabled is not None:
             result['BpeEnabled'] = self.bpe_enabled
         if self.bursting_enabled is not None:
@@ -33973,6 +34021,8 @@ class DescribeDBInstancesResponseBodyItemsDBInstance(TeaModel):
             result['ExpireTime'] = self.expire_time
         if self.general_group_name is not None:
             result['GeneralGroupName'] = self.general_group_name
+        if self.green_instance_name is not None:
+            result['GreenInstanceName'] = self.green_instance_name
         if self.guard_dbinstance_id is not None:
             result['GuardDBInstanceId'] = self.guard_dbinstance_id
         if self.instance_network_type is not None:
@@ -34017,6 +34067,10 @@ class DescribeDBInstancesResponseBodyItemsDBInstance(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BlueGreenDeploymentName') is not None:
+            self.blue_green_deployment_name = m.get('BlueGreenDeploymentName')
+        if m.get('BlueInstanceName') is not None:
+            self.blue_instance_name = m.get('BlueInstanceName')
         if m.get('BpeEnabled') is not None:
             self.bpe_enabled = m.get('BpeEnabled')
         if m.get('BurstingEnabled') is not None:
@@ -34083,6 +34137,8 @@ class DescribeDBInstancesResponseBodyItemsDBInstance(TeaModel):
             self.expire_time = m.get('ExpireTime')
         if m.get('GeneralGroupName') is not None:
             self.general_group_name = m.get('GeneralGroupName')
+        if m.get('GreenInstanceName') is not None:
+            self.green_instance_name = m.get('GreenInstanceName')
         if m.get('GuardDBInstanceId') is not None:
             self.guard_dbinstance_id = m.get('GuardDBInstanceId')
         if m.get('InstanceNetworkType') is not None:
@@ -38282,7 +38338,7 @@ class DescribeDatabasesRequest(TeaModel):
         # 
         # Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Valid values:
+        # The number of entries to return per page. Valid values:
         # 
         # *   **30**\
         # *   **50**\
@@ -49660,11 +49716,12 @@ class DescribePriceRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbinstance_storage = dbinstance_storage
-        # The storage type of the instance. Valid values:
+        # The storage type of the new instance. Valid values:
         # 
-        # *   **local_ssd**: local SSD
+        # *   **general_essd**: premium Enterprise SSD (ESSD)
+        # *   **local_ssd**: premium local SSD
         # *   **cloud_ssd**: standard SSD
-        # *   **cloud_essd**: PL1 ESSD
+        # *   **cloud_essd**: performance level 1 (PL1) ESSD
         # *   **cloud_essd2**: PL2 ESSD
         # *   **cloud_essd3**: PL3 ESSD
         self.dbinstance_storage_type = dbinstance_storage_type
@@ -49681,10 +49738,10 @@ class DescribePriceRequest(TeaModel):
         # 
         # This parameter is required.
         self.engine = engine
-        # The database engine version of the instance.
+        # The database engine version of the instance. Valid values:
         # 
         # *   Valid values if you set Engine to **MySQL**: **5.5**, **5.6**, **5.7**, and **8.0**\
-        # *   Valid values if you set Engine to **SQLServer**: **08r2_ent_ha** (cloud disks, discontinued), **2008r2**(local disks, discontinued), **2012** (SQL Server EE Basic), **2012_ent_ha**, **2012_std_ha**, **2012_web**, **2016_ent_ha**, **2016_std_ha**, **2016_web**, **2017_ent**, **2017_std_ha**, **2017_web**, **2019_ent**, **2019_std_ha**, **2019_web**, **2022_ent**, **2022_std_ha**, and **2022_web**\
+        # *   Valid values if you set Engine to **SQL Server**: **08r2_ent_ha**(cloud disks, discontinued), **2008r2**(high-performance local disks, discontinued), **2012** (SQL Server EE Basic)**2012_ent_ha**, **2012_std_ha**, **2012_web**, **2016_ent_ha**, **2016_std_ha**, **2016_web**, **2017_ent**, **2017_std_ha**, **2017_web**, **2019_ent**, **2019_std_ha**, **2019_web**, **2022_ent**, **2022_std_ha**, and **2022_web**\
         # *   Valid values if you set Engine to **PostgreSQL**: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, and **15.0**\
         # *   Valid value if you set Engine to **MariaDB**: **10.3**\
         # 
@@ -49909,11 +49966,12 @@ class DescribePriceShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbinstance_storage = dbinstance_storage
-        # The storage type of the instance. Valid values:
+        # The storage type of the new instance. Valid values:
         # 
-        # *   **local_ssd**: local SSD
+        # *   **general_essd**: premium Enterprise SSD (ESSD)
+        # *   **local_ssd**: premium local SSD
         # *   **cloud_ssd**: standard SSD
-        # *   **cloud_essd**: PL1 ESSD
+        # *   **cloud_essd**: performance level 1 (PL1) ESSD
         # *   **cloud_essd2**: PL2 ESSD
         # *   **cloud_essd3**: PL3 ESSD
         self.dbinstance_storage_type = dbinstance_storage_type
@@ -49930,10 +49988,10 @@ class DescribePriceShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.engine = engine
-        # The database engine version of the instance.
+        # The database engine version of the instance. Valid values:
         # 
         # *   Valid values if you set Engine to **MySQL**: **5.5**, **5.6**, **5.7**, and **8.0**\
-        # *   Valid values if you set Engine to **SQLServer**: **08r2_ent_ha** (cloud disks, discontinued), **2008r2**(local disks, discontinued), **2012** (SQL Server EE Basic), **2012_ent_ha**, **2012_std_ha**, **2012_web**, **2016_ent_ha**, **2016_std_ha**, **2016_web**, **2017_ent**, **2017_std_ha**, **2017_web**, **2019_ent**, **2019_std_ha**, **2019_web**, **2022_ent**, **2022_std_ha**, and **2022_web**\
+        # *   Valid values if you set Engine to **SQL Server**: **08r2_ent_ha**(cloud disks, discontinued), **2008r2**(high-performance local disks, discontinued), **2012** (SQL Server EE Basic)**2012_ent_ha**, **2012_std_ha**, **2012_web**, **2016_ent_ha**, **2016_std_ha**, **2016_web**, **2017_ent**, **2017_std_ha**, **2017_web**, **2019_ent**, **2019_std_ha**, **2019_web**, **2022_ent**, **2022_std_ha**, and **2022_web**\
         # *   Valid values if you set Engine to **PostgreSQL**: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, and **15.0**\
         # *   Valid value if you set Engine to **MariaDB**: **10.3**\
         # 
@@ -51946,7 +52004,7 @@ class DescribeRCDisksRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
     ):
-        # The IDs of cloud disks, local disks, or elastic ephemeral disks. The value is a JSON array that consists of up to 100 disk IDs. Separate the disk IDs with commas (,).
+        # The disk ID. The value is a JSON array that consists of up to 100 disk IDs. Separate the disk IDs with commas (,). Format: `["Disk ID1","Disk ID2"]`.
         self.disk_ids = disk_ids
         # The instance ID.
         self.instance_id = instance_id
@@ -52024,20 +52082,12 @@ class DescribeRCDisksResponseBodyDisks(TeaModel):
         type: str = None,
         zone_id: str = None,
     ):
-        # The disk category. Valid values:
+        # The category of the disk. Valid values:
         # 
-        # *   cloud: basic disk
-        # *   cloud_efficiency: utra disk
-        # *   cloud_ssd: standard SSD
-        # *   cloud_essd: Enterprise SSD (ESSD)
-        # *   cloud_auto: ESSD AutoPL disk
-        # *   local_ssd_pro: I/O-intensive local disk
-        # *   local_hdd_pro: throughput-intensive local disk
-        # *   cloud_essd_entry: ESSD Entry disk
-        # *   elastic_ephemeral_disk_standard: standard elastic ephemeral disk
-        # *   elastic_ephemeral_disk_premium: premium static ephemeral disk
-        # *   ephemeral: retired local disk
-        # *   ephemeral_ssd: retired local SSD
+        # *   **cloud_efficiency**: ultra disk
+        # *   **cloud_ssd**: standard SSD
+        # *   **cloud_essd**: ESSD
+        # *   **cloud_auto**: Premium ESSD
         self.category = category
         # The creation time.
         self.creation_time = creation_time
@@ -55462,6 +55512,7 @@ class DescribeRCInstancesRequest(TeaModel):
         page_size: int = None,
         public_ip: str = None,
         region_id: str = None,
+        status: str = None,
         tag: str = None,
         vpc_id: str = None,
     ):
@@ -55484,6 +55535,7 @@ class DescribeRCInstancesRequest(TeaModel):
         self.public_ip = public_ip
         # The region ID.
         self.region_id = region_id
+        self.status = status
         self.tag = tag
         # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
@@ -55511,6 +55563,8 @@ class DescribeRCInstancesRequest(TeaModel):
             result['PublicIp'] = self.public_ip
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.status is not None:
+            result['Status'] = self.status
         if self.tag is not None:
             result['Tag'] = self.tag
         if self.vpc_id is not None:
@@ -55533,6 +55587,8 @@ class DescribeRCInstancesRequest(TeaModel):
             self.public_ip = m.get('PublicIp')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('Tag') is not None:
             self.tag = m.get('Tag')
         if m.get('VpcId') is not None:

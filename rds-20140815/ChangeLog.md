@@ -1,3 +1,14 @@
+2025-05-07 Version: 11.3.1
+- Update API DescribeDBInstanceAttribute: add response parameters Body.Items.$.BlueGreenDeploymentName.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.Items.$.BlueInstanceName.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.Items.$.ComputeBurstEnabled.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.Items.$.GreenInstanceName.
+- Update API DescribeDBInstances: add response parameters Body.Items.$.BlueGreenDeploymentName.
+- Update API DescribeDBInstances: add response parameters Body.Items.$.BlueInstanceName.
+- Update API DescribeDBInstances: add response parameters Body.Items.$.GreenInstanceName.
+- Update API DescribeRCInstances: add request parameters Status.
+
+
 2025-04-27 Version: 11.3.0
 - Support API AcceptRCInquiredSystemEvent.
 - Support API DescribeRCInstanceDdosCount.
