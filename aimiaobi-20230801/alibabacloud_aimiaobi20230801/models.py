@@ -1178,6 +1178,7 @@ class CreateDatasetRequest(TeaModel):
         dataset_name: str = None,
         dataset_type: str = None,
         document_handle_config: CreateDatasetRequestDocumentHandleConfig = None,
+        invoke_type: str = None,
         search_dataset_enable: int = None,
         workspace_id: str = None,
     ):
@@ -1187,6 +1188,7 @@ class CreateDatasetRequest(TeaModel):
         self.dataset_name = dataset_name
         self.dataset_type = dataset_type
         self.document_handle_config = document_handle_config
+        self.invoke_type = invoke_type
         self.search_dataset_enable = search_dataset_enable
         # This parameter is required.
         self.workspace_id = workspace_id
@@ -1213,6 +1215,8 @@ class CreateDatasetRequest(TeaModel):
             result['DatasetType'] = self.dataset_type
         if self.document_handle_config is not None:
             result['DocumentHandleConfig'] = self.document_handle_config.to_map()
+        if self.invoke_type is not None:
+            result['InvokeType'] = self.invoke_type
         if self.search_dataset_enable is not None:
             result['SearchDatasetEnable'] = self.search_dataset_enable
         if self.workspace_id is not None:
@@ -1233,6 +1237,8 @@ class CreateDatasetRequest(TeaModel):
         if m.get('DocumentHandleConfig') is not None:
             temp_model = CreateDatasetRequestDocumentHandleConfig()
             self.document_handle_config = temp_model.from_map(m['DocumentHandleConfig'])
+        if m.get('InvokeType') is not None:
+            self.invoke_type = m.get('InvokeType')
         if m.get('SearchDatasetEnable') is not None:
             self.search_dataset_enable = m.get('SearchDatasetEnable')
         if m.get('WorkspaceId') is not None:
@@ -1248,6 +1254,7 @@ class CreateDatasetShrinkRequest(TeaModel):
         dataset_name: str = None,
         dataset_type: str = None,
         document_handle_config_shrink: str = None,
+        invoke_type: str = None,
         search_dataset_enable: int = None,
         workspace_id: str = None,
     ):
@@ -1257,6 +1264,7 @@ class CreateDatasetShrinkRequest(TeaModel):
         self.dataset_name = dataset_name
         self.dataset_type = dataset_type
         self.document_handle_config_shrink = document_handle_config_shrink
+        self.invoke_type = invoke_type
         self.search_dataset_enable = search_dataset_enable
         # This parameter is required.
         self.workspace_id = workspace_id
@@ -1280,6 +1288,8 @@ class CreateDatasetShrinkRequest(TeaModel):
             result['DatasetType'] = self.dataset_type
         if self.document_handle_config_shrink is not None:
             result['DocumentHandleConfig'] = self.document_handle_config_shrink
+        if self.invoke_type is not None:
+            result['InvokeType'] = self.invoke_type
         if self.search_dataset_enable is not None:
             result['SearchDatasetEnable'] = self.search_dataset_enable
         if self.workspace_id is not None:
@@ -1298,6 +1308,8 @@ class CreateDatasetShrinkRequest(TeaModel):
             self.dataset_type = m.get('DatasetType')
         if m.get('DocumentHandleConfig') is not None:
             self.document_handle_config_shrink = m.get('DocumentHandleConfig')
+        if m.get('InvokeType') is not None:
+            self.invoke_type = m.get('InvokeType')
         if m.get('SearchDatasetEnable') is not None:
             self.search_dataset_enable = m.get('SearchDatasetEnable')
         if m.get('WorkspaceId') is not None:
@@ -6545,11 +6557,13 @@ class GetDataSourceOrderConfigResponseBodyDataUserConfigDataSourceList(TeaModel)
     def __init__(
         self,
         code: str = None,
+        enable: bool = None,
         name: str = None,
         number: int = None,
         type: str = None,
     ):
         self.code = code
+        self.enable = enable
         self.name = name
         self.number = number
         self.type = type
@@ -6565,6 +6579,8 @@ class GetDataSourceOrderConfigResponseBodyDataUserConfigDataSourceList(TeaModel)
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
+        if self.enable is not None:
+            result['Enable'] = self.enable
         if self.name is not None:
             result['Name'] = self.name
         if self.number is not None:
@@ -6577,6 +6593,8 @@ class GetDataSourceOrderConfigResponseBodyDataUserConfigDataSourceList(TeaModel)
         m = m or dict()
         if m.get('Code') is not None:
             self.code = m.get('Code')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Number') is not None:
@@ -6589,8 +6607,10 @@ class GetDataSourceOrderConfigResponseBodyDataUserConfigDataSourceList(TeaModel)
 class GetDataSourceOrderConfigResponseBodyData(TeaModel):
     def __init__(
         self,
+        total_doc_size: int = None,
         user_config_data_source_list: List[GetDataSourceOrderConfigResponseBodyDataUserConfigDataSourceList] = None,
     ):
+        self.total_doc_size = total_doc_size
         self.user_config_data_source_list = user_config_data_source_list
 
     def validate(self):
@@ -6605,6 +6625,8 @@ class GetDataSourceOrderConfigResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.total_doc_size is not None:
+            result['TotalDocSize'] = self.total_doc_size
         result['UserConfigDataSourceList'] = []
         if self.user_config_data_source_list is not None:
             for k in self.user_config_data_source_list:
@@ -6613,6 +6635,8 @@ class GetDataSourceOrderConfigResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('TotalDocSize') is not None:
+            self.total_doc_size = m.get('TotalDocSize')
         self.user_config_data_source_list = []
         if m.get('UserConfigDataSourceList') is not None:
             for k in m.get('UserConfigDataSourceList'):
@@ -31020,6 +31044,7 @@ class RunSearchGenerationRequest(TeaModel):
         self,
         agent_context: RunSearchGenerationRequestAgentContext = None,
         chat_config: RunSearchGenerationRequestChatConfig = None,
+        model_id: str = None,
         original_session_id: str = None,
         prompt: str = None,
         task_id: str = None,
@@ -31027,6 +31052,7 @@ class RunSearchGenerationRequest(TeaModel):
     ):
         self.agent_context = agent_context
         self.chat_config = chat_config
+        self.model_id = model_id
         self.original_session_id = original_session_id
         self.prompt = prompt
         self.task_id = task_id
@@ -31049,6 +31075,8 @@ class RunSearchGenerationRequest(TeaModel):
             result['AgentContext'] = self.agent_context.to_map()
         if self.chat_config is not None:
             result['ChatConfig'] = self.chat_config.to_map()
+        if self.model_id is not None:
+            result['ModelId'] = self.model_id
         if self.original_session_id is not None:
             result['OriginalSessionId'] = self.original_session_id
         if self.prompt is not None:
@@ -31067,6 +31095,8 @@ class RunSearchGenerationRequest(TeaModel):
         if m.get('ChatConfig') is not None:
             temp_model = RunSearchGenerationRequestChatConfig()
             self.chat_config = temp_model.from_map(m['ChatConfig'])
+        if m.get('ModelId') is not None:
+            self.model_id = m.get('ModelId')
         if m.get('OriginalSessionId') is not None:
             self.original_session_id = m.get('OriginalSessionId')
         if m.get('Prompt') is not None:
@@ -31083,6 +31113,7 @@ class RunSearchGenerationShrinkRequest(TeaModel):
         self,
         agent_context_shrink: str = None,
         chat_config_shrink: str = None,
+        model_id: str = None,
         original_session_id: str = None,
         prompt: str = None,
         task_id: str = None,
@@ -31090,6 +31121,7 @@ class RunSearchGenerationShrinkRequest(TeaModel):
     ):
         self.agent_context_shrink = agent_context_shrink
         self.chat_config_shrink = chat_config_shrink
+        self.model_id = model_id
         self.original_session_id = original_session_id
         self.prompt = prompt
         self.task_id = task_id
@@ -31109,6 +31141,8 @@ class RunSearchGenerationShrinkRequest(TeaModel):
             result['AgentContext'] = self.agent_context_shrink
         if self.chat_config_shrink is not None:
             result['ChatConfig'] = self.chat_config_shrink
+        if self.model_id is not None:
+            result['ModelId'] = self.model_id
         if self.original_session_id is not None:
             result['OriginalSessionId'] = self.original_session_id
         if self.prompt is not None:
@@ -31125,6 +31159,8 @@ class RunSearchGenerationShrinkRequest(TeaModel):
             self.agent_context_shrink = m.get('AgentContext')
         if m.get('ChatConfig') is not None:
             self.chat_config_shrink = m.get('ChatConfig')
+        if m.get('ModelId') is not None:
+            self.model_id = m.get('ModelId')
         if m.get('OriginalSessionId') is not None:
             self.original_session_id = m.get('OriginalSessionId')
         if m.get('Prompt') is not None:
@@ -32195,11 +32231,13 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         self,
         generate_finished: bool = None,
         generate_level: str = None,
+        reason_text_generate: str = None,
         search_result: List[RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult] = None,
         text_generate: str = None,
     ):
         self.generate_finished = generate_finished
         self.generate_level = generate_level
+        self.reason_text_generate = reason_text_generate
         self.search_result = search_result
         self.text_generate = text_generate
 
@@ -32219,6 +32257,8 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
             result['GenerateFinished'] = self.generate_finished
         if self.generate_level is not None:
             result['GenerateLevel'] = self.generate_level
+        if self.reason_text_generate is not None:
+            result['ReasonTextGenerate'] = self.reason_text_generate
         result['SearchResult'] = []
         if self.search_result is not None:
             for k in self.search_result:
@@ -32233,6 +32273,8 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
             self.generate_finished = m.get('GenerateFinished')
         if m.get('GenerateLevel') is not None:
             self.generate_level = m.get('GenerateLevel')
+        if m.get('ReasonTextGenerate') is not None:
+            self.reason_text_generate = m.get('ReasonTextGenerate')
         self.search_result = []
         if m.get('SearchResult') is not None:
             for k in m.get('SearchResult'):
@@ -33319,6 +33361,7 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         generate_level: str = None,
         generate_traceability: RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceability = None,
         multimodal_search_result_list: List[RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultList] = None,
+        reason_text_generate: str = None,
         reference_list: List[RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList] = None,
         text_generate: str = None,
         text_generate_multimodal_media_list: List[RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaList] = None,
@@ -33327,6 +33370,7 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         self.generate_level = generate_level
         self.generate_traceability = generate_traceability
         self.multimodal_search_result_list = multimodal_search_result_list
+        self.reason_text_generate = reason_text_generate
         self.reference_list = reference_list
         self.text_generate = text_generate
         self.text_generate_multimodal_media_list = text_generate_multimodal_media_list
@@ -33363,6 +33407,8 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         if self.multimodal_search_result_list is not None:
             for k in self.multimodal_search_result_list:
                 result['MultimodalSearchResultList'].append(k.to_map() if k else None)
+        if self.reason_text_generate is not None:
+            result['ReasonTextGenerate'] = self.reason_text_generate
         result['ReferenceList'] = []
         if self.reference_list is not None:
             for k in self.reference_list:
@@ -33389,6 +33435,8 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
             for k in m.get('MultimodalSearchResultList'):
                 temp_model = RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultList()
                 self.multimodal_search_result_list.append(temp_model.from_map(k))
+        if m.get('ReasonTextGenerate') is not None:
+            self.reason_text_generate = m.get('ReasonTextGenerate')
         self.reference_list = []
         if m.get('ReferenceList') is not None:
             for k in m.get('ReferenceList'):
@@ -34174,6 +34222,7 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         generate_finished: bool = None,
         generate_traceability: RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceability = None,
         multimodal_search_result_list: List[RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultList] = None,
+        reason_text_generate: str = None,
         reference_list: List[RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList] = None,
         text_generate: str = None,
         text_generate_multimodal_media_list: List[RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaList] = None,
@@ -34181,6 +34230,7 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         self.generate_finished = generate_finished
         self.generate_traceability = generate_traceability
         self.multimodal_search_result_list = multimodal_search_result_list
+        self.reason_text_generate = reason_text_generate
         self.reference_list = reference_list
         self.text_generate = text_generate
         self.text_generate_multimodal_media_list = text_generate_multimodal_media_list
@@ -34215,6 +34265,8 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         if self.multimodal_search_result_list is not None:
             for k in self.multimodal_search_result_list:
                 result['MultimodalSearchResultList'].append(k.to_map() if k else None)
+        if self.reason_text_generate is not None:
+            result['ReasonTextGenerate'] = self.reason_text_generate
         result['ReferenceList'] = []
         if self.reference_list is not None:
             for k in self.reference_list:
@@ -34239,6 +34291,8 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
             for k in m.get('MultimodalSearchResultList'):
                 temp_model = RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultList()
                 self.multimodal_search_result_list.append(temp_model.from_map(k))
+        if m.get('ReasonTextGenerate') is not None:
+            self.reason_text_generate = m.get('ReasonTextGenerate')
         self.reference_list = []
         if m.get('ReferenceList') is not None:
             for k in m.get('ReferenceList'):
@@ -34545,30 +34599,87 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         return self
 
 
+class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextTokenCalculate(TeaModel):
+    def __init__(
+        self,
+        first_token_time: float = None,
+        output_avg_time: float = None,
+        search_time: float = None,
+        time: float = None,
+        total_tokens: int = None,
+    ):
+        self.first_token_time = first_token_time
+        self.output_avg_time = output_avg_time
+        self.search_time = search_time
+        self.time = time
+        self.total_tokens = total_tokens
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.first_token_time is not None:
+            result['FirstTokenTime'] = self.first_token_time
+        if self.output_avg_time is not None:
+            result['OutputAvgTime'] = self.output_avg_time
+        if self.search_time is not None:
+            result['SearchTime'] = self.search_time
+        if self.time is not None:
+            result['Time'] = self.time
+        if self.total_tokens is not None:
+            result['TotalTokens'] = self.total_tokens
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FirstTokenTime') is not None:
+            self.first_token_time = m.get('FirstTokenTime')
+        if m.get('OutputAvgTime') is not None:
+            self.output_avg_time = m.get('OutputAvgTime')
+        if m.get('SearchTime') is not None:
+            self.search_time = m.get('SearchTime')
+        if m.get('Time') is not None:
+            self.time = m.get('Time')
+        if m.get('TotalTokens') is not None:
+            self.total_tokens = m.get('TotalTokens')
+        return self
+
+
 class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext(TeaModel):
     def __init__(
         self,
         current_step: str = None,
         generated_content: RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent = None,
+        model_id: str = None,
         next_step: str = None,
         recommend_search_query_list: List[str] = None,
         search_keywords: List[str] = None,
         search_query_list: List[str] = None,
         supplement_data_type: str = None,
         supplement_enable: bool = None,
+        token_calculate: RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextTokenCalculate = None,
     ):
         self.current_step = current_step
         self.generated_content = generated_content
+        self.model_id = model_id
         self.next_step = next_step
         self.recommend_search_query_list = recommend_search_query_list
         self.search_keywords = search_keywords
         self.search_query_list = search_query_list
         self.supplement_data_type = supplement_data_type
         self.supplement_enable = supplement_enable
+        self.token_calculate = token_calculate
 
     def validate(self):
         if self.generated_content:
             self.generated_content.validate()
+        if self.token_calculate:
+            self.token_calculate.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -34580,6 +34691,8 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext(TeaMode
             result['CurrentStep'] = self.current_step
         if self.generated_content is not None:
             result['GeneratedContent'] = self.generated_content.to_map()
+        if self.model_id is not None:
+            result['ModelId'] = self.model_id
         if self.next_step is not None:
             result['NextStep'] = self.next_step
         if self.recommend_search_query_list is not None:
@@ -34592,6 +34705,8 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext(TeaMode
             result['SupplementDataType'] = self.supplement_data_type
         if self.supplement_enable is not None:
             result['SupplementEnable'] = self.supplement_enable
+        if self.token_calculate is not None:
+            result['TokenCalculate'] = self.token_calculate.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -34601,6 +34716,8 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext(TeaMode
         if m.get('GeneratedContent') is not None:
             temp_model = RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent()
             self.generated_content = temp_model.from_map(m['GeneratedContent'])
+        if m.get('ModelId') is not None:
+            self.model_id = m.get('ModelId')
         if m.get('NextStep') is not None:
             self.next_step = m.get('NextStep')
         if m.get('RecommendSearchQueryList') is not None:
@@ -34613,6 +34730,9 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext(TeaMode
             self.supplement_data_type = m.get('SupplementDataType')
         if m.get('SupplementEnable') is not None:
             self.supplement_enable = m.get('SupplementEnable')
+        if m.get('TokenCalculate') is not None:
+            temp_model = RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextTokenCalculate()
+            self.token_calculate = temp_model.from_map(m['TokenCalculate'])
         return self
 
 
@@ -39825,6 +39945,230 @@ class SaveMaterialDocumentResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SaveMaterialDocumentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SaveStyleLearningResultRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        aigc_result: str = None,
+        custom_text_id_list: List[int] = None,
+        material_id_list: List[int] = None,
+        rewrite_result: str = None,
+        style_name: str = None,
+        task_id: str = None,
+    ):
+        self.agent_key = agent_key
+        self.aigc_result = aigc_result
+        self.custom_text_id_list = custom_text_id_list
+        self.material_id_list = material_id_list
+        self.rewrite_result = rewrite_result
+        self.style_name = style_name
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.aigc_result is not None:
+            result['AigcResult'] = self.aigc_result
+        if self.custom_text_id_list is not None:
+            result['CustomTextIdList'] = self.custom_text_id_list
+        if self.material_id_list is not None:
+            result['MaterialIdList'] = self.material_id_list
+        if self.rewrite_result is not None:
+            result['RewriteResult'] = self.rewrite_result
+        if self.style_name is not None:
+            result['StyleName'] = self.style_name
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('AigcResult') is not None:
+            self.aigc_result = m.get('AigcResult')
+        if m.get('CustomTextIdList') is not None:
+            self.custom_text_id_list = m.get('CustomTextIdList')
+        if m.get('MaterialIdList') is not None:
+            self.material_id_list = m.get('MaterialIdList')
+        if m.get('RewriteResult') is not None:
+            self.rewrite_result = m.get('RewriteResult')
+        if m.get('StyleName') is not None:
+            self.style_name = m.get('StyleName')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class SaveStyleLearningResultShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        aigc_result: str = None,
+        custom_text_id_list_shrink: str = None,
+        material_id_list_shrink: str = None,
+        rewrite_result: str = None,
+        style_name: str = None,
+        task_id: str = None,
+    ):
+        self.agent_key = agent_key
+        self.aigc_result = aigc_result
+        self.custom_text_id_list_shrink = custom_text_id_list_shrink
+        self.material_id_list_shrink = material_id_list_shrink
+        self.rewrite_result = rewrite_result
+        self.style_name = style_name
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.aigc_result is not None:
+            result['AigcResult'] = self.aigc_result
+        if self.custom_text_id_list_shrink is not None:
+            result['CustomTextIdList'] = self.custom_text_id_list_shrink
+        if self.material_id_list_shrink is not None:
+            result['MaterialIdList'] = self.material_id_list_shrink
+        if self.rewrite_result is not None:
+            result['RewriteResult'] = self.rewrite_result
+        if self.style_name is not None:
+            result['StyleName'] = self.style_name
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('AigcResult') is not None:
+            self.aigc_result = m.get('AigcResult')
+        if m.get('CustomTextIdList') is not None:
+            self.custom_text_id_list_shrink = m.get('CustomTextIdList')
+        if m.get('MaterialIdList') is not None:
+            self.material_id_list_shrink = m.get('MaterialIdList')
+        if m.get('RewriteResult') is not None:
+            self.rewrite_result = m.get('RewriteResult')
+        if m.get('StyleName') is not None:
+            self.style_name = m.get('StyleName')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class SaveStyleLearningResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: bool = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SaveStyleLearningResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SaveStyleLearningResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SaveStyleLearningResultResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

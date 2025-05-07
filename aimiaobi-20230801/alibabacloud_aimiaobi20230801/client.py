@@ -387,6 +387,8 @@ class Client(OpenApiClient):
             body['DatasetType'] = request.dataset_type
         if not UtilClient.is_unset(request.document_handle_config_shrink):
             body['DocumentHandleConfig'] = request.document_handle_config_shrink
+        if not UtilClient.is_unset(request.invoke_type):
+            body['InvokeType'] = request.invoke_type
         if not UtilClient.is_unset(request.search_dataset_enable):
             body['SearchDatasetEnable'] = request.search_dataset_enable
         if not UtilClient.is_unset(request.workspace_id):
@@ -440,6 +442,8 @@ class Client(OpenApiClient):
             body['DatasetType'] = request.dataset_type
         if not UtilClient.is_unset(request.document_handle_config_shrink):
             body['DocumentHandleConfig'] = request.document_handle_config_shrink
+        if not UtilClient.is_unset(request.invoke_type):
+            body['InvokeType'] = request.invoke_type
         if not UtilClient.is_unset(request.search_dataset_enable):
             body['SearchDatasetEnable'] = request.search_dataset_enable
         if not UtilClient.is_unset(request.workspace_id):
@@ -11637,6 +11641,8 @@ class Client(OpenApiClient):
             body['AgentContext'] = request.agent_context_shrink
         if not UtilClient.is_unset(request.chat_config_shrink):
             body['ChatConfig'] = request.chat_config_shrink
+        if not UtilClient.is_unset(request.model_id):
+            body['ModelId'] = request.model_id
         if not UtilClient.is_unset(request.original_session_id):
             body['OriginalSessionId'] = request.original_session_id
         if not UtilClient.is_unset(request.prompt):
@@ -11688,6 +11694,8 @@ class Client(OpenApiClient):
             body['AgentContext'] = request.agent_context_shrink
         if not UtilClient.is_unset(request.chat_config_shrink):
             body['ChatConfig'] = request.chat_config_shrink
+        if not UtilClient.is_unset(request.model_id):
+            body['ModelId'] = request.model_id
         if not UtilClient.is_unset(request.original_session_id):
             body['OriginalSessionId'] = request.original_session_id
         if not UtilClient.is_unset(request.prompt):
@@ -13188,6 +13196,138 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.save_material_document_with_options_async(request, runtime)
+
+    def save_style_learning_result_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.SaveStyleLearningResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.SaveStyleLearningResultResponse:
+        """
+        @summary 保存自定义文体
+        
+        @param tmp_req: SaveStyleLearningResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveStyleLearningResultResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.SaveStyleLearningResultShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.custom_text_id_list):
+            request.custom_text_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_text_id_list, 'CustomTextIdList', 'json')
+        if not UtilClient.is_unset(tmp_req.material_id_list):
+            request.material_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.material_id_list, 'MaterialIdList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.agent_key):
+            body['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.aigc_result):
+            body['AigcResult'] = request.aigc_result
+        if not UtilClient.is_unset(request.custom_text_id_list_shrink):
+            body['CustomTextIdList'] = request.custom_text_id_list_shrink
+        if not UtilClient.is_unset(request.material_id_list_shrink):
+            body['MaterialIdList'] = request.material_id_list_shrink
+        if not UtilClient.is_unset(request.rewrite_result):
+            body['RewriteResult'] = request.rewrite_result
+        if not UtilClient.is_unset(request.style_name):
+            body['StyleName'] = request.style_name
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SaveStyleLearningResult',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.SaveStyleLearningResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def save_style_learning_result_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.SaveStyleLearningResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.SaveStyleLearningResultResponse:
+        """
+        @summary 保存自定义文体
+        
+        @param tmp_req: SaveStyleLearningResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveStyleLearningResultResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.SaveStyleLearningResultShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.custom_text_id_list):
+            request.custom_text_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_text_id_list, 'CustomTextIdList', 'json')
+        if not UtilClient.is_unset(tmp_req.material_id_list):
+            request.material_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.material_id_list, 'MaterialIdList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.agent_key):
+            body['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.aigc_result):
+            body['AigcResult'] = request.aigc_result
+        if not UtilClient.is_unset(request.custom_text_id_list_shrink):
+            body['CustomTextIdList'] = request.custom_text_id_list_shrink
+        if not UtilClient.is_unset(request.material_id_list_shrink):
+            body['MaterialIdList'] = request.material_id_list_shrink
+        if not UtilClient.is_unset(request.rewrite_result):
+            body['RewriteResult'] = request.rewrite_result
+        if not UtilClient.is_unset(request.style_name):
+            body['StyleName'] = request.style_name
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SaveStyleLearningResult',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.SaveStyleLearningResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def save_style_learning_result(
+        self,
+        request: ai_miao_bi_20230801_models.SaveStyleLearningResultRequest,
+    ) -> ai_miao_bi_20230801_models.SaveStyleLearningResultResponse:
+        """
+        @summary 保存自定义文体
+        
+        @param request: SaveStyleLearningResultRequest
+        @return: SaveStyleLearningResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.save_style_learning_result_with_options(request, runtime)
+
+    async def save_style_learning_result_async(
+        self,
+        request: ai_miao_bi_20230801_models.SaveStyleLearningResultRequest,
+    ) -> ai_miao_bi_20230801_models.SaveStyleLearningResultResponse:
+        """
+        @summary 保存自定义文体
+        
+        @param request: SaveStyleLearningResultRequest
+        @return: SaveStyleLearningResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.save_style_learning_result_with_options_async(request, runtime)
 
     def search_dataset_documents_with_options(
         self,

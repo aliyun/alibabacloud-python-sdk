@@ -1,3 +1,16 @@
+2025-05-07 Version: 1.22.0
+- Support API SaveStyleLearningResult.
+- Update API CreateDataset: add request parameters InvokeType.
+- Update API GetDataSourceOrderConfig: add response parameters Body.Data.TotalDocSize.
+- Update API GetDataSourceOrderConfig: add response parameters Body.Data.UserConfigDataSourceList.$.Enable.
+- Update API RunSearchGeneration: add request parameters ModelId.
+- Update API RunSearchGeneration: add response parameters Body.Payload.Output.AgentContext.BizContext.ModelId.
+- Update API RunSearchGeneration: add response parameters Body.Payload.Output.AgentContext.BizContext.TokenCalculate.
+- Update API RunSearchGeneration: add response parameters Body.Payload.Output.AgentContext.BizContext.GeneratedContent.ExcerptResult.ReasonTextGenerate.
+- Update API RunSearchGeneration: add response parameters Body.Payload.Output.AgentContext.BizContext.GeneratedContent.TextGenerateResult.ReasonTextGenerate.
+- Update API RunSearchGeneration: add response parameters Body.Payload.Output.AgentContext.BizContext.GeneratedContent.TimelineResult.ReasonTextGenerate.
+
+
 2025-04-17 Version: 1.20.6
 - Update API SubmitEnterpriseVocAnalysisTask: add request parameters ApiKey.
 
