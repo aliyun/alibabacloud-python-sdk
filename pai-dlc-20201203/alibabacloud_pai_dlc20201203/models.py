@@ -6436,7 +6436,14 @@ class GetRayDashboardRequest(TeaModel):
         is_shared: bool = None,
         token: str = None,
     ):
+        # Specifies whether the link is a sharing link. If yes, a token is required.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.is_shared = is_shared
+        # The token obtained from GetToken
         self.token = token
 
     def validate(self):
@@ -6469,7 +6476,9 @@ class GetRayDashboardResponseBody(TeaModel):
         metrics_enabled: str = None,
         url: str = None,
     ):
+        # Indicates whether the dashboard has been integrated with CloudMonitor and supports ray metrics
         self.metrics_enabled = metrics_enabled
+        # The Ray Dashboard URL
         self.url = url
 
     def validate(self):
@@ -6732,9 +6741,9 @@ class GetTokenRequest(TeaModel):
         target_id: str = None,
         target_type: str = None,
     ):
-        # The time when the share link expires. Default value: 604800 seconds. Minimum value: 0.
+        # The time when the share link expires. Default value: 604800. Minimum value: 0. Unit: seconds.
         self.expire_time = expire_time
-        # The ID of the job that is waiting to be shared.
+        # The ID of the job to be shared.
         self.target_id = target_id
         # The type of the job that you want to share. Valid values: job and tensorboard.
         self.target_type = target_type
@@ -6775,7 +6784,7 @@ class GetTokenResponseBody(TeaModel):
     ):
         # The request ID, which is used to troubleshoot issues.
         self.request_id = request_id
-        # The token of the shared job, which can be used as the value of the Token parameter in the GetJob API operation to view information about the shared job.
+        # The sharing token, used to view the information about the shared job.
         self.token = token
 
     def validate(self):
@@ -7309,6 +7318,7 @@ class ListJobsRequest(TeaModel):
         end_time: str = None,
         from_all_workspaces: bool = None,
         job_id: str = None,
+        job_ids: str = None,
         job_type: str = None,
         order: str = None,
         oversold_info: str = None,
@@ -7344,6 +7354,7 @@ class ListJobsRequest(TeaModel):
         self.from_all_workspaces = from_all_workspaces
         # The job ID. Fuzzy query is supported. The name is case-insensitive. Wildcards are not supported. The default value null indicates any job ID.
         self.job_id = job_id
+        self.job_ids = job_ids
         # The job type. The default value null indicates any type. Valid values:
         # 
         # *   TFJob
@@ -7368,6 +7379,11 @@ class ListJobsRequest(TeaModel):
         self.page_number = page_number
         # The number of jobs per page.
         self.page_size = page_size
+        # The type of the resource. Valid values:
+        # 
+        # *   PrePaid: Resource quota
+        # *   Spot: Preemptible resources
+        # *   PostPaid: Public resources
         self.payment_type = payment_type
         # The specific pipeline ID used to filter jobs.
         self.pipeline_id = pipeline_id
@@ -7435,6 +7451,8 @@ class ListJobsRequest(TeaModel):
             result['FromAllWorkspaces'] = self.from_all_workspaces
         if self.job_id is not None:
             result['JobId'] = self.job_id
+        if self.job_ids is not None:
+            result['JobIds'] = self.job_ids
         if self.job_type is not None:
             result['JobType'] = self.job_type
         if self.order is not None:
@@ -7487,6 +7505,8 @@ class ListJobsRequest(TeaModel):
             self.from_all_workspaces = m.get('FromAllWorkspaces')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
+        if m.get('JobIds') is not None:
+            self.job_ids = m.get('JobIds')
         if m.get('JobType') is not None:
             self.job_type = m.get('JobType')
         if m.get('Order') is not None:
@@ -7534,6 +7554,7 @@ class ListJobsShrinkRequest(TeaModel):
         end_time: str = None,
         from_all_workspaces: bool = None,
         job_id: str = None,
+        job_ids: str = None,
         job_type: str = None,
         order: str = None,
         oversold_info: str = None,
@@ -7569,6 +7590,7 @@ class ListJobsShrinkRequest(TeaModel):
         self.from_all_workspaces = from_all_workspaces
         # The job ID. Fuzzy query is supported. The name is case-insensitive. Wildcards are not supported. The default value null indicates any job ID.
         self.job_id = job_id
+        self.job_ids = job_ids
         # The job type. The default value null indicates any type. Valid values:
         # 
         # *   TFJob
@@ -7593,6 +7615,11 @@ class ListJobsShrinkRequest(TeaModel):
         self.page_number = page_number
         # The number of jobs per page.
         self.page_size = page_size
+        # The type of the resource. Valid values:
+        # 
+        # *   PrePaid: Resource quota
+        # *   Spot: Preemptible resources
+        # *   PostPaid: Public resources
         self.payment_type = payment_type
         # The specific pipeline ID used to filter jobs.
         self.pipeline_id = pipeline_id
@@ -7660,6 +7687,8 @@ class ListJobsShrinkRequest(TeaModel):
             result['FromAllWorkspaces'] = self.from_all_workspaces
         if self.job_id is not None:
             result['JobId'] = self.job_id
+        if self.job_ids is not None:
+            result['JobIds'] = self.job_ids
         if self.job_type is not None:
             result['JobType'] = self.job_type
         if self.order is not None:
@@ -7712,6 +7741,8 @@ class ListJobsShrinkRequest(TeaModel):
             self.from_all_workspaces = m.get('FromAllWorkspaces')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
+        if m.get('JobIds') is not None:
+            self.job_ids = m.get('JobIds')
         if m.get('JobType') is not None:
             self.job_type = m.get('JobType')
         if m.get('Order') is not None:

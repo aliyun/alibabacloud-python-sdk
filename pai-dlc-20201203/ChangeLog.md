@@ -1,3 +1,7 @@
+2025-05-07 Version: 1.5.2
+- Update API ListJobs: add request parameters JobIds.
+
+
 2025-04-18 Version: 1.5.1
 - Generated python 2020-12-03 for pai-dlc.
 

@@ -1380,7 +1380,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetRayDashboardResponse:
         """
-        @summary 获取 Ray Dashboard 链接
+        @summary Obtains a Ray Dashboard URL.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of Deep Learning Containers (DLC) of Platform for AI (PAI).
         
         @param request: GetRayDashboardRequest
         @param headers: map
@@ -1421,7 +1423,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetRayDashboardResponse:
         """
-        @summary 获取 Ray Dashboard 链接
+        @summary Obtains a Ray Dashboard URL.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of Deep Learning Containers (DLC) of Platform for AI (PAI).
         
         @param request: GetRayDashboardRequest
         @param headers: map
@@ -1460,7 +1464,9 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.GetRayDashboardRequest,
     ) -> pai_dlc_20201203_models.GetRayDashboardResponse:
         """
-        @summary 获取 Ray Dashboard 链接
+        @summary Obtains a Ray Dashboard URL.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of Deep Learning Containers (DLC) of Platform for AI (PAI).
         
         @param request: GetRayDashboardRequest
         @return: GetRayDashboardResponse
@@ -1475,7 +1481,9 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.GetRayDashboardRequest,
     ) -> pai_dlc_20201203_models.GetRayDashboardResponse:
         """
-        @summary 获取 Ray Dashboard 链接
+        @summary Obtains a Ray Dashboard URL.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of Deep Learning Containers (DLC) of Platform for AI (PAI).
         
         @param request: GetRayDashboardRequest
         @return: GetRayDashboardResponse
@@ -1715,7 +1723,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetTokenResponse:
         """
-        @summary Queries a user token.
+        @summary Obtains the sharing token of a DLC job. This token is used to view the information about the shared job.
         
         @param request: GetTokenRequest
         @param headers: map
@@ -1757,7 +1765,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetTokenResponse:
         """
-        @summary Queries a user token.
+        @summary Obtains the sharing token of a DLC job. This token is used to view the information about the shared job.
         
         @param request: GetTokenRequest
         @param headers: map
@@ -1797,7 +1805,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.GetTokenRequest,
     ) -> pai_dlc_20201203_models.GetTokenResponse:
         """
-        @summary Queries a user token.
+        @summary Obtains the sharing token of a DLC job. This token is used to view the information about the shared job.
         
         @param request: GetTokenRequest
         @return: GetTokenResponse
@@ -1811,7 +1819,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.GetTokenRequest,
     ) -> pai_dlc_20201203_models.GetTokenResponse:
         """
-        @summary Queries a user token.
+        @summary Obtains the sharing token of a DLC job. This token is used to view the information about the shared job.
         
         @param request: GetTokenRequest
         @return: GetTokenResponse
@@ -2206,6 +2214,8 @@ class Client(OpenApiClient):
             query['FromAllWorkspaces'] = request.from_all_workspaces
         if not UtilClient.is_unset(request.job_id):
             query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
         if not UtilClient.is_unset(request.job_type):
             query['JobType'] = request.job_type
         if not UtilClient.is_unset(request.order):
@@ -2294,6 +2304,8 @@ class Client(OpenApiClient):
             query['FromAllWorkspaces'] = request.from_all_workspaces
         if not UtilClient.is_unset(request.job_id):
             query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
         if not UtilClient.is_unset(request.job_type):
             query['JobType'] = request.job_type
         if not UtilClient.is_unset(request.order):
