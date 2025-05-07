@@ -1,3 +1,7 @@
+2025-05-07 Version: 1.2.4
+- Update API DescribeUserResources: add response parameters Body.Resources.$.Sessions.$.NickName.
+
+
 2025-04-19 Version: 1.2.3
 - Update API StopDesktops: add request parameters Uuid.
 

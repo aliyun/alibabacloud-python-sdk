@@ -2852,10 +2852,12 @@ class DescribeUserResourcesResponseBodyResourcesOsUpdate(TeaModel):
 class DescribeUserResourcesResponseBodyResourcesSessions(TeaModel):
     def __init__(
         self,
+        nick_name: str = None,
         resource_session_start_time: str = None,
         user_id: str = None,
         user_principal_name: str = None,
     ):
+        self.nick_name = nick_name
         self.resource_session_start_time = resource_session_start_time
         self.user_id = user_id
         self.user_principal_name = user_principal_name
@@ -2869,6 +2871,8 @@ class DescribeUserResourcesResponseBodyResourcesSessions(TeaModel):
             return _map
 
         result = dict()
+        if self.nick_name is not None:
+            result['NickName'] = self.nick_name
         if self.resource_session_start_time is not None:
             result['ResourceSessionStartTime'] = self.resource_session_start_time
         if self.user_id is not None:
@@ -2879,6 +2883,8 @@ class DescribeUserResourcesResponseBodyResourcesSessions(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('NickName') is not None:
+            self.nick_name = m.get('NickName')
         if m.get('ResourceSessionStartTime') is not None:
             self.resource_session_start_time = m.get('ResourceSessionStartTime')
         if m.get('UserId') is not None:
