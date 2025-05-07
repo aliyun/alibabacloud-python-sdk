@@ -614,6 +614,178 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.bind_axb_with_options_async(request, runtime)
 
+    def bind_axb_fixed_line_with_options(
+        self,
+        tmp_req: dyplsapi_20170525_models.BindAxbFixedLineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.BindAxbFixedLineResponse:
+        """
+        @summary 固话AxB绑定
+        
+        @param tmp_req: BindAxbFixedLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindAxbFixedLineResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dyplsapi_20170525_models.BindAxbFixedLineShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.extra):
+            request.extra_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extra, 'Extra', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.anucode):
+            query['Anucode'] = request.anucode
+        if not UtilClient.is_unset(request.anucodecalled):
+            query['Anucodecalled'] = request.anucodecalled
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.areacode):
+            query['Areacode'] = request.areacode
+        if not UtilClient.is_unset(request.bind_type):
+            query['BindType'] = request.bind_type
+        if not UtilClient.is_unset(request.expiration):
+            query['Expiration'] = request.expiration
+        if not UtilClient.is_unset(request.extra_shrink):
+            query['Extra'] = request.extra_shrink
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.subts):
+            query['Subts'] = request.subts
+        if not UtilClient.is_unset(request.tanucode_connect):
+            query['TAnucodeConnect'] = request.tanucode_connect
+        if not UtilClient.is_unset(request.tel_a):
+            query['TelA'] = request.tel_a
+        if not UtilClient.is_unset(request.tel_b):
+            query['TelB'] = request.tel_b
+        if not UtilClient.is_unset(request.tel_x):
+            query['TelX'] = request.tel_x
+        if not UtilClient.is_unset(request.ts):
+            query['Ts'] = request.ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindAxbFixedLine',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.BindAxbFixedLineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def bind_axb_fixed_line_with_options_async(
+        self,
+        tmp_req: dyplsapi_20170525_models.BindAxbFixedLineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.BindAxbFixedLineResponse:
+        """
+        @summary 固话AxB绑定
+        
+        @param tmp_req: BindAxbFixedLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindAxbFixedLineResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dyplsapi_20170525_models.BindAxbFixedLineShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.extra):
+            request.extra_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extra, 'Extra', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.anucode):
+            query['Anucode'] = request.anucode
+        if not UtilClient.is_unset(request.anucodecalled):
+            query['Anucodecalled'] = request.anucodecalled
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.areacode):
+            query['Areacode'] = request.areacode
+        if not UtilClient.is_unset(request.bind_type):
+            query['BindType'] = request.bind_type
+        if not UtilClient.is_unset(request.expiration):
+            query['Expiration'] = request.expiration
+        if not UtilClient.is_unset(request.extra_shrink):
+            query['Extra'] = request.extra_shrink
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.subts):
+            query['Subts'] = request.subts
+        if not UtilClient.is_unset(request.tanucode_connect):
+            query['TAnucodeConnect'] = request.tanucode_connect
+        if not UtilClient.is_unset(request.tel_a):
+            query['TelA'] = request.tel_a
+        if not UtilClient.is_unset(request.tel_b):
+            query['TelB'] = request.tel_b
+        if not UtilClient.is_unset(request.tel_x):
+            query['TelX'] = request.tel_x
+        if not UtilClient.is_unset(request.ts):
+            query['Ts'] = request.ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindAxbFixedLine',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.BindAxbFixedLineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def bind_axb_fixed_line(
+        self,
+        request: dyplsapi_20170525_models.BindAxbFixedLineRequest,
+    ) -> dyplsapi_20170525_models.BindAxbFixedLineResponse:
+        """
+        @summary 固话AxB绑定
+        
+        @param request: BindAxbFixedLineRequest
+        @return: BindAxbFixedLineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.bind_axb_fixed_line_with_options(request, runtime)
+
+    async def bind_axb_fixed_line_async(
+        self,
+        request: dyplsapi_20170525_models.BindAxbFixedLineRequest,
+    ) -> dyplsapi_20170525_models.BindAxbFixedLineResponse:
+        """
+        @summary 固话AxB绑定
+        
+        @param request: BindAxbFixedLineRequest
+        @return: BindAxbFixedLineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.bind_axb_fixed_line_with_options_async(request, runtime)
+
     def bind_axg_with_options(
         self,
         request: dyplsapi_20170525_models.BindAxgRequest,
@@ -1157,6 +1329,350 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.bind_axn_extension_with_options_async(request, runtime)
+
+    def bind_axn_extension_fixed_line_with_options(
+        self,
+        tmp_req: dyplsapi_20170525_models.BindAxnExtensionFixedLineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.BindAxnExtensionFixedLineResponse:
+        """
+        @summary AXN分机号-号码绑定
+        
+        @param tmp_req: BindAxnExtensionFixedLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindAxnExtensionFixedLineResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dyplsapi_20170525_models.BindAxnExtensionFixedLineShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.extraaxx):
+            request.extraaxx_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extraaxx, 'Extraaxx', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.anucode):
+            query['Anucode'] = request.anucode
+        if not UtilClient.is_unset(request.anucodecalled):
+            query['Anucodecalled'] = request.anucodecalled
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.areacode):
+            query['Areacode'] = request.areacode
+        if not UtilClient.is_unset(request.bind_type):
+            query['BindType'] = request.bind_type
+        if not UtilClient.is_unset(request.expiration):
+            query['Expiration'] = request.expiration
+        if not UtilClient.is_unset(request.extraaxx_shrink):
+            query['Extraaxx'] = request.extraaxx_shrink
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.subts):
+            query['Subts'] = request.subts
+        if not UtilClient.is_unset(request.tanucode_connect):
+            query['TAnucodeConnect'] = request.tanucode_connect
+        if not UtilClient.is_unset(request.tel_a):
+            query['TelA'] = request.tel_a
+        if not UtilClient.is_unset(request.tel_x):
+            query['TelX'] = request.tel_x
+        if not UtilClient.is_unset(request.tel_xext):
+            query['TelXext'] = request.tel_xext
+        if not UtilClient.is_unset(request.ts):
+            query['Ts'] = request.ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindAxnExtensionFixedLine',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.BindAxnExtensionFixedLineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def bind_axn_extension_fixed_line_with_options_async(
+        self,
+        tmp_req: dyplsapi_20170525_models.BindAxnExtensionFixedLineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.BindAxnExtensionFixedLineResponse:
+        """
+        @summary AXN分机号-号码绑定
+        
+        @param tmp_req: BindAxnExtensionFixedLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindAxnExtensionFixedLineResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dyplsapi_20170525_models.BindAxnExtensionFixedLineShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.extraaxx):
+            request.extraaxx_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extraaxx, 'Extraaxx', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.anucode):
+            query['Anucode'] = request.anucode
+        if not UtilClient.is_unset(request.anucodecalled):
+            query['Anucodecalled'] = request.anucodecalled
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.areacode):
+            query['Areacode'] = request.areacode
+        if not UtilClient.is_unset(request.bind_type):
+            query['BindType'] = request.bind_type
+        if not UtilClient.is_unset(request.expiration):
+            query['Expiration'] = request.expiration
+        if not UtilClient.is_unset(request.extraaxx_shrink):
+            query['Extraaxx'] = request.extraaxx_shrink
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.subts):
+            query['Subts'] = request.subts
+        if not UtilClient.is_unset(request.tanucode_connect):
+            query['TAnucodeConnect'] = request.tanucode_connect
+        if not UtilClient.is_unset(request.tel_a):
+            query['TelA'] = request.tel_a
+        if not UtilClient.is_unset(request.tel_x):
+            query['TelX'] = request.tel_x
+        if not UtilClient.is_unset(request.tel_xext):
+            query['TelXext'] = request.tel_xext
+        if not UtilClient.is_unset(request.ts):
+            query['Ts'] = request.ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindAxnExtensionFixedLine',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.BindAxnExtensionFixedLineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def bind_axn_extension_fixed_line(
+        self,
+        request: dyplsapi_20170525_models.BindAxnExtensionFixedLineRequest,
+    ) -> dyplsapi_20170525_models.BindAxnExtensionFixedLineResponse:
+        """
+        @summary AXN分机号-号码绑定
+        
+        @param request: BindAxnExtensionFixedLineRequest
+        @return: BindAxnExtensionFixedLineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.bind_axn_extension_fixed_line_with_options(request, runtime)
+
+    async def bind_axn_extension_fixed_line_async(
+        self,
+        request: dyplsapi_20170525_models.BindAxnExtensionFixedLineRequest,
+    ) -> dyplsapi_20170525_models.BindAxnExtensionFixedLineResponse:
+        """
+        @summary AXN分机号-号码绑定
+        
+        @param request: BindAxnExtensionFixedLineRequest
+        @return: BindAxnExtensionFixedLineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.bind_axn_extension_fixed_line_with_options_async(request, runtime)
+
+    def bind_axn_fixed_line_with_options(
+        self,
+        tmp_req: dyplsapi_20170525_models.BindAxnFixedLineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.BindAxnFixedLineResponse:
+        """
+        @summary AXN模式绑定，分配X号码
+        
+        @param tmp_req: BindAxnFixedLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindAxnFixedLineResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dyplsapi_20170525_models.BindAxnFixedLineShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.extra):
+            request.extra_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extra, 'Extra', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.anucode):
+            query['Anucode'] = request.anucode
+        if not UtilClient.is_unset(request.anucodecalled):
+            query['Anucodecalled'] = request.anucodecalled
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.areacode):
+            query['Areacode'] = request.areacode
+        if not UtilClient.is_unset(request.bind_type):
+            query['BindType'] = request.bind_type
+        if not UtilClient.is_unset(request.expiration):
+            query['Expiration'] = request.expiration
+        if not UtilClient.is_unset(request.extra_shrink):
+            query['Extra'] = request.extra_shrink
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.subts):
+            query['Subts'] = request.subts
+        if not UtilClient.is_unset(request.tanucode_connect):
+            query['TAnucodeConnect'] = request.tanucode_connect
+        if not UtilClient.is_unset(request.tel_a):
+            query['TelA'] = request.tel_a
+        if not UtilClient.is_unset(request.tel_b):
+            query['TelB'] = request.tel_b
+        if not UtilClient.is_unset(request.tel_x):
+            query['TelX'] = request.tel_x
+        if not UtilClient.is_unset(request.ts):
+            query['Ts'] = request.ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindAxnFixedLine',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.BindAxnFixedLineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def bind_axn_fixed_line_with_options_async(
+        self,
+        tmp_req: dyplsapi_20170525_models.BindAxnFixedLineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.BindAxnFixedLineResponse:
+        """
+        @summary AXN模式绑定，分配X号码
+        
+        @param tmp_req: BindAxnFixedLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindAxnFixedLineResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dyplsapi_20170525_models.BindAxnFixedLineShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.extra):
+            request.extra_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extra, 'Extra', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.anucode):
+            query['Anucode'] = request.anucode
+        if not UtilClient.is_unset(request.anucodecalled):
+            query['Anucodecalled'] = request.anucodecalled
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.areacode):
+            query['Areacode'] = request.areacode
+        if not UtilClient.is_unset(request.bind_type):
+            query['BindType'] = request.bind_type
+        if not UtilClient.is_unset(request.expiration):
+            query['Expiration'] = request.expiration
+        if not UtilClient.is_unset(request.extra_shrink):
+            query['Extra'] = request.extra_shrink
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.subts):
+            query['Subts'] = request.subts
+        if not UtilClient.is_unset(request.tanucode_connect):
+            query['TAnucodeConnect'] = request.tanucode_connect
+        if not UtilClient.is_unset(request.tel_a):
+            query['TelA'] = request.tel_a
+        if not UtilClient.is_unset(request.tel_b):
+            query['TelB'] = request.tel_b
+        if not UtilClient.is_unset(request.tel_x):
+            query['TelX'] = request.tel_x
+        if not UtilClient.is_unset(request.ts):
+            query['Ts'] = request.ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindAxnFixedLine',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.BindAxnFixedLineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def bind_axn_fixed_line(
+        self,
+        request: dyplsapi_20170525_models.BindAxnFixedLineRequest,
+    ) -> dyplsapi_20170525_models.BindAxnFixedLineResponse:
+        """
+        @summary AXN模式绑定，分配X号码
+        
+        @param request: BindAxnFixedLineRequest
+        @return: BindAxnFixedLineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.bind_axn_fixed_line_with_options(request, runtime)
+
+    async def bind_axn_fixed_line_async(
+        self,
+        request: dyplsapi_20170525_models.BindAxnFixedLineRequest,
+    ) -> dyplsapi_20170525_models.BindAxnFixedLineResponse:
+        """
+        @summary AXN模式绑定，分配X号码
+        
+        @param request: BindAxnFixedLineRequest
+        @return: BindAxnFixedLineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.bind_axn_fixed_line_with_options_async(request, runtime)
 
     def bind_batch_axg_with_options(
         self,
@@ -2690,6 +3206,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_sms_sign_with_options_async(request, runtime)
 
+    def delete_axb_bind_fixed_line_with_options(
+        self,
+        request: dyplsapi_20170525_models.DeleteAxbBindFixedLineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.DeleteAxbBindFixedLineResponse:
+        """
+        @summary 固话AxB解绑
+        
+        @param request: DeleteAxbBindFixedLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAxbBindFixedLineResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sub_id):
+            query['SubId'] = request.sub_id
+        if not UtilClient.is_unset(request.ts):
+            query['Ts'] = request.ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAxbBindFixedLine',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.DeleteAxbBindFixedLineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_axb_bind_fixed_line_with_options_async(
+        self,
+        request: dyplsapi_20170525_models.DeleteAxbBindFixedLineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.DeleteAxbBindFixedLineResponse:
+        """
+        @summary 固话AxB解绑
+        
+        @param request: DeleteAxbBindFixedLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAxbBindFixedLineResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sub_id):
+            query['SubId'] = request.sub_id
+        if not UtilClient.is_unset(request.ts):
+            query['Ts'] = request.ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAxbBindFixedLine',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.DeleteAxbBindFixedLineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_axb_bind_fixed_line(
+        self,
+        request: dyplsapi_20170525_models.DeleteAxbBindFixedLineRequest,
+    ) -> dyplsapi_20170525_models.DeleteAxbBindFixedLineResponse:
+        """
+        @summary 固话AxB解绑
+        
+        @param request: DeleteAxbBindFixedLineRequest
+        @return: DeleteAxbBindFixedLineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_axb_bind_fixed_line_with_options(request, runtime)
+
+    async def delete_axb_bind_fixed_line_async(
+        self,
+        request: dyplsapi_20170525_models.DeleteAxbBindFixedLineRequest,
+    ) -> dyplsapi_20170525_models.DeleteAxbBindFixedLineResponse:
+        """
+        @summary 固话AxB解绑
+        
+        @param request: DeleteAxbBindFixedLineRequest
+        @return: DeleteAxbBindFixedLineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_axb_bind_fixed_line_with_options_async(request, runtime)
+
     def delete_axg_group_with_options(
         self,
         request: dyplsapi_20170525_models.DeleteAxgGroupRequest,
@@ -2793,6 +3429,246 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_axg_group_with_options_async(request, runtime)
+
+    def delete_axn_bind_fixed_line_with_options(
+        self,
+        request: dyplsapi_20170525_models.DeleteAxnBindFixedLineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.DeleteAxnBindFixedLineResponse:
+        """
+        @summary 解绑已有Axn绑定
+        
+        @param request: DeleteAxnBindFixedLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAxnBindFixedLineResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sub_id):
+            query['SubId'] = request.sub_id
+        if not UtilClient.is_unset(request.ts):
+            query['Ts'] = request.ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAxnBindFixedLine',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.DeleteAxnBindFixedLineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_axn_bind_fixed_line_with_options_async(
+        self,
+        request: dyplsapi_20170525_models.DeleteAxnBindFixedLineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.DeleteAxnBindFixedLineResponse:
+        """
+        @summary 解绑已有Axn绑定
+        
+        @param request: DeleteAxnBindFixedLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAxnBindFixedLineResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sub_id):
+            query['SubId'] = request.sub_id
+        if not UtilClient.is_unset(request.ts):
+            query['Ts'] = request.ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAxnBindFixedLine',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.DeleteAxnBindFixedLineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_axn_bind_fixed_line(
+        self,
+        request: dyplsapi_20170525_models.DeleteAxnBindFixedLineRequest,
+    ) -> dyplsapi_20170525_models.DeleteAxnBindFixedLineResponse:
+        """
+        @summary 解绑已有Axn绑定
+        
+        @param request: DeleteAxnBindFixedLineRequest
+        @return: DeleteAxnBindFixedLineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_axn_bind_fixed_line_with_options(request, runtime)
+
+    async def delete_axn_bind_fixed_line_async(
+        self,
+        request: dyplsapi_20170525_models.DeleteAxnBindFixedLineRequest,
+    ) -> dyplsapi_20170525_models.DeleteAxnBindFixedLineResponse:
+        """
+        @summary 解绑已有Axn绑定
+        
+        @param request: DeleteAxnBindFixedLineRequest
+        @return: DeleteAxnBindFixedLineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_axn_bind_fixed_line_with_options_async(request, runtime)
+
+    def delete_axn_extension_bind_fixed_line_with_options(
+        self,
+        request: dyplsapi_20170525_models.DeleteAxnExtensionBindFixedLineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.DeleteAxnExtensionBindFixedLineResponse:
+        """
+        @summary 解绑已有AXN分机号绑定
+        
+        @param request: DeleteAxnExtensionBindFixedLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAxnExtensionBindFixedLineResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sub_id):
+            query['SubId'] = request.sub_id
+        if not UtilClient.is_unset(request.ts):
+            query['Ts'] = request.ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAxnExtensionBindFixedLine',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.DeleteAxnExtensionBindFixedLineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_axn_extension_bind_fixed_line_with_options_async(
+        self,
+        request: dyplsapi_20170525_models.DeleteAxnExtensionBindFixedLineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.DeleteAxnExtensionBindFixedLineResponse:
+        """
+        @summary 解绑已有AXN分机号绑定
+        
+        @param request: DeleteAxnExtensionBindFixedLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAxnExtensionBindFixedLineResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sub_id):
+            query['SubId'] = request.sub_id
+        if not UtilClient.is_unset(request.ts):
+            query['Ts'] = request.ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAxnExtensionBindFixedLine',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.DeleteAxnExtensionBindFixedLineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_axn_extension_bind_fixed_line(
+        self,
+        request: dyplsapi_20170525_models.DeleteAxnExtensionBindFixedLineRequest,
+    ) -> dyplsapi_20170525_models.DeleteAxnExtensionBindFixedLineResponse:
+        """
+        @summary 解绑已有AXN分机号绑定
+        
+        @param request: DeleteAxnExtensionBindFixedLineRequest
+        @return: DeleteAxnExtensionBindFixedLineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_axn_extension_bind_fixed_line_with_options(request, runtime)
+
+    async def delete_axn_extension_bind_fixed_line_async(
+        self,
+        request: dyplsapi_20170525_models.DeleteAxnExtensionBindFixedLineRequest,
+    ) -> dyplsapi_20170525_models.DeleteAxnExtensionBindFixedLineResponse:
+        """
+        @summary 解绑已有AXN分机号绑定
+        
+        @param request: DeleteAxnExtensionBindFixedLineRequest
+        @return: DeleteAxnExtensionBindFixedLineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_axn_extension_bind_fixed_line_with_options_async(request, runtime)
 
     def delete_secret_aphone_no_to_cust_with_options(
         self,
@@ -4153,6 +5029,398 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.operate_black_no_with_options_async(request, runtime)
+
+    def query_axb_bind_fixed_line_with_options(
+        self,
+        request: dyplsapi_20170525_models.QueryAxbBindFixedLineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.QueryAxbBindFixedLineResponse:
+        """
+        @summary 固话AxB查询
+        
+        @param request: QueryAxbBindFixedLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAxbBindFixedLineResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone):
+            query['Phone'] = request.phone
+        if not UtilClient.is_unset(request.query_type):
+            query['QueryType'] = request.query_type
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sub_id):
+            query['SubId'] = request.sub_id
+        if not UtilClient.is_unset(request.tel_x):
+            query['TelX'] = request.tel_x
+        if not UtilClient.is_unset(request.ts):
+            query['Ts'] = request.ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryAxbBindFixedLine',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.QueryAxbBindFixedLineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_axb_bind_fixed_line_with_options_async(
+        self,
+        request: dyplsapi_20170525_models.QueryAxbBindFixedLineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.QueryAxbBindFixedLineResponse:
+        """
+        @summary 固话AxB查询
+        
+        @param request: QueryAxbBindFixedLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAxbBindFixedLineResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone):
+            query['Phone'] = request.phone
+        if not UtilClient.is_unset(request.query_type):
+            query['QueryType'] = request.query_type
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sub_id):
+            query['SubId'] = request.sub_id
+        if not UtilClient.is_unset(request.tel_x):
+            query['TelX'] = request.tel_x
+        if not UtilClient.is_unset(request.ts):
+            query['Ts'] = request.ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryAxbBindFixedLine',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.QueryAxbBindFixedLineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_axb_bind_fixed_line(
+        self,
+        request: dyplsapi_20170525_models.QueryAxbBindFixedLineRequest,
+    ) -> dyplsapi_20170525_models.QueryAxbBindFixedLineResponse:
+        """
+        @summary 固话AxB查询
+        
+        @param request: QueryAxbBindFixedLineRequest
+        @return: QueryAxbBindFixedLineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_axb_bind_fixed_line_with_options(request, runtime)
+
+    async def query_axb_bind_fixed_line_async(
+        self,
+        request: dyplsapi_20170525_models.QueryAxbBindFixedLineRequest,
+    ) -> dyplsapi_20170525_models.QueryAxbBindFixedLineResponse:
+        """
+        @summary 固话AxB查询
+        
+        @param request: QueryAxbBindFixedLineRequest
+        @return: QueryAxbBindFixedLineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_axb_bind_fixed_line_with_options_async(request, runtime)
+
+    def query_axn_bind_fixed_line_with_options(
+        self,
+        request: dyplsapi_20170525_models.QueryAxnBindFixedLineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.QueryAxnBindFixedLineResponse:
+        """
+        @summary 查询Axn绑定关系
+        
+        @param request: QueryAxnBindFixedLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAxnBindFixedLineResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone):
+            query['Phone'] = request.phone
+        if not UtilClient.is_unset(request.query_type):
+            query['QueryType'] = request.query_type
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sub_id):
+            query['SubId'] = request.sub_id
+        if not UtilClient.is_unset(request.tel_x):
+            query['TelX'] = request.tel_x
+        if not UtilClient.is_unset(request.ts):
+            query['Ts'] = request.ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryAxnBindFixedLine',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.QueryAxnBindFixedLineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_axn_bind_fixed_line_with_options_async(
+        self,
+        request: dyplsapi_20170525_models.QueryAxnBindFixedLineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.QueryAxnBindFixedLineResponse:
+        """
+        @summary 查询Axn绑定关系
+        
+        @param request: QueryAxnBindFixedLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAxnBindFixedLineResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone):
+            query['Phone'] = request.phone
+        if not UtilClient.is_unset(request.query_type):
+            query['QueryType'] = request.query_type
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sub_id):
+            query['SubId'] = request.sub_id
+        if not UtilClient.is_unset(request.tel_x):
+            query['TelX'] = request.tel_x
+        if not UtilClient.is_unset(request.ts):
+            query['Ts'] = request.ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryAxnBindFixedLine',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.QueryAxnBindFixedLineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_axn_bind_fixed_line(
+        self,
+        request: dyplsapi_20170525_models.QueryAxnBindFixedLineRequest,
+    ) -> dyplsapi_20170525_models.QueryAxnBindFixedLineResponse:
+        """
+        @summary 查询Axn绑定关系
+        
+        @param request: QueryAxnBindFixedLineRequest
+        @return: QueryAxnBindFixedLineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_axn_bind_fixed_line_with_options(request, runtime)
+
+    async def query_axn_bind_fixed_line_async(
+        self,
+        request: dyplsapi_20170525_models.QueryAxnBindFixedLineRequest,
+    ) -> dyplsapi_20170525_models.QueryAxnBindFixedLineResponse:
+        """
+        @summary 查询Axn绑定关系
+        
+        @param request: QueryAxnBindFixedLineRequest
+        @return: QueryAxnBindFixedLineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_axn_bind_fixed_line_with_options_async(request, runtime)
+
+    def query_axn_extension_bind_fixed_line_with_options(
+        self,
+        request: dyplsapi_20170525_models.QueryAxnExtensionBindFixedLineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.QueryAxnExtensionBindFixedLineResponse:
+        """
+        @summary 查询AXN分机号绑定关系
+        
+        @param request: QueryAxnExtensionBindFixedLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAxnExtensionBindFixedLineResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.query_type):
+            query['QueryType'] = request.query_type
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sub_id):
+            query['SubId'] = request.sub_id
+        if not UtilClient.is_unset(request.tel_a):
+            query['TelA'] = request.tel_a
+        if not UtilClient.is_unset(request.ts):
+            query['Ts'] = request.ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryAxnExtensionBindFixedLine',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.QueryAxnExtensionBindFixedLineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_axn_extension_bind_fixed_line_with_options_async(
+        self,
+        request: dyplsapi_20170525_models.QueryAxnExtensionBindFixedLineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.QueryAxnExtensionBindFixedLineResponse:
+        """
+        @summary 查询AXN分机号绑定关系
+        
+        @param request: QueryAxnExtensionBindFixedLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAxnExtensionBindFixedLineResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.query_type):
+            query['QueryType'] = request.query_type
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sub_id):
+            query['SubId'] = request.sub_id
+        if not UtilClient.is_unset(request.tel_a):
+            query['TelA'] = request.tel_a
+        if not UtilClient.is_unset(request.ts):
+            query['Ts'] = request.ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryAxnExtensionBindFixedLine',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.QueryAxnExtensionBindFixedLineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_axn_extension_bind_fixed_line(
+        self,
+        request: dyplsapi_20170525_models.QueryAxnExtensionBindFixedLineRequest,
+    ) -> dyplsapi_20170525_models.QueryAxnExtensionBindFixedLineResponse:
+        """
+        @summary 查询AXN分机号绑定关系
+        
+        @param request: QueryAxnExtensionBindFixedLineRequest
+        @return: QueryAxnExtensionBindFixedLineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_axn_extension_bind_fixed_line_with_options(request, runtime)
+
+    async def query_axn_extension_bind_fixed_line_async(
+        self,
+        request: dyplsapi_20170525_models.QueryAxnExtensionBindFixedLineRequest,
+    ) -> dyplsapi_20170525_models.QueryAxnExtensionBindFixedLineResponse:
+        """
+        @summary 查询AXN分机号绑定关系
+        
+        @param request: QueryAxnExtensionBindFixedLineRequest
+        @return: QueryAxnExtensionBindFixedLineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_axn_extension_bind_fixed_line_with_options_async(request, runtime)
 
     def query_phone_no_aby_track_no_with_options(
         self,
@@ -5805,6 +7073,494 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.unlock_secret_no_with_options_async(request, runtime)
+
+    def update_axb_bind_fixed_line_with_options(
+        self,
+        tmp_req: dyplsapi_20170525_models.UpdateAxbBindFixedLineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.UpdateAxbBindFixedLineResponse:
+        """
+        @summary 固话AxB绑定更新
+        
+        @param tmp_req: UpdateAxbBindFixedLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAxbBindFixedLineResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dyplsapi_20170525_models.UpdateAxbBindFixedLineShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.extra):
+            request.extra_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extra, 'Extra', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.anucode):
+            query['Anucode'] = request.anucode
+        if not UtilClient.is_unset(request.anucodecalled):
+            query['Anucodecalled'] = request.anucodecalled
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.expiration):
+            query['Expiration'] = request.expiration
+        if not UtilClient.is_unset(request.extra_shrink):
+            query['Extra'] = request.extra_shrink
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sub_id):
+            query['SubId'] = request.sub_id
+        if not UtilClient.is_unset(request.subts):
+            query['Subts'] = request.subts
+        if not UtilClient.is_unset(request.tanucode_connect):
+            query['TAnucodeConnect'] = request.tanucode_connect
+        if not UtilClient.is_unset(request.tel_a):
+            query['TelA'] = request.tel_a
+        if not UtilClient.is_unset(request.tel_b):
+            query['TelB'] = request.tel_b
+        if not UtilClient.is_unset(request.ts):
+            query['Ts'] = request.ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAxbBindFixedLine',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.UpdateAxbBindFixedLineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_axb_bind_fixed_line_with_options_async(
+        self,
+        tmp_req: dyplsapi_20170525_models.UpdateAxbBindFixedLineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.UpdateAxbBindFixedLineResponse:
+        """
+        @summary 固话AxB绑定更新
+        
+        @param tmp_req: UpdateAxbBindFixedLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAxbBindFixedLineResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dyplsapi_20170525_models.UpdateAxbBindFixedLineShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.extra):
+            request.extra_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extra, 'Extra', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.anucode):
+            query['Anucode'] = request.anucode
+        if not UtilClient.is_unset(request.anucodecalled):
+            query['Anucodecalled'] = request.anucodecalled
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.expiration):
+            query['Expiration'] = request.expiration
+        if not UtilClient.is_unset(request.extra_shrink):
+            query['Extra'] = request.extra_shrink
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sub_id):
+            query['SubId'] = request.sub_id
+        if not UtilClient.is_unset(request.subts):
+            query['Subts'] = request.subts
+        if not UtilClient.is_unset(request.tanucode_connect):
+            query['TAnucodeConnect'] = request.tanucode_connect
+        if not UtilClient.is_unset(request.tel_a):
+            query['TelA'] = request.tel_a
+        if not UtilClient.is_unset(request.tel_b):
+            query['TelB'] = request.tel_b
+        if not UtilClient.is_unset(request.ts):
+            query['Ts'] = request.ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAxbBindFixedLine',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.UpdateAxbBindFixedLineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_axb_bind_fixed_line(
+        self,
+        request: dyplsapi_20170525_models.UpdateAxbBindFixedLineRequest,
+    ) -> dyplsapi_20170525_models.UpdateAxbBindFixedLineResponse:
+        """
+        @summary 固话AxB绑定更新
+        
+        @param request: UpdateAxbBindFixedLineRequest
+        @return: UpdateAxbBindFixedLineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_axb_bind_fixed_line_with_options(request, runtime)
+
+    async def update_axb_bind_fixed_line_async(
+        self,
+        request: dyplsapi_20170525_models.UpdateAxbBindFixedLineRequest,
+    ) -> dyplsapi_20170525_models.UpdateAxbBindFixedLineResponse:
+        """
+        @summary 固话AxB绑定更新
+        
+        @param request: UpdateAxbBindFixedLineRequest
+        @return: UpdateAxbBindFixedLineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_axb_bind_fixed_line_with_options_async(request, runtime)
+
+    def update_axn_bind_fixed_line_with_options(
+        self,
+        tmp_req: dyplsapi_20170525_models.UpdateAxnBindFixedLineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.UpdateAxnBindFixedLineResponse:
+        """
+        @summary 更新Axn绑定关系
+        
+        @param tmp_req: UpdateAxnBindFixedLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAxnBindFixedLineResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dyplsapi_20170525_models.UpdateAxnBindFixedLineShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.extra):
+            request.extra_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extra, 'Extra', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.anucode):
+            query['Anucode'] = request.anucode
+        if not UtilClient.is_unset(request.anucodecalled):
+            query['Anucodecalled'] = request.anucodecalled
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.expiration):
+            query['Expiration'] = request.expiration
+        if not UtilClient.is_unset(request.extra_shrink):
+            query['Extra'] = request.extra_shrink
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sub_id):
+            query['SubId'] = request.sub_id
+        if not UtilClient.is_unset(request.subts):
+            query['Subts'] = request.subts
+        if not UtilClient.is_unset(request.tanucode_connect):
+            query['TAnucodeConnect'] = request.tanucode_connect
+        if not UtilClient.is_unset(request.tel_a):
+            query['TelA'] = request.tel_a
+        if not UtilClient.is_unset(request.tel_b):
+            query['TelB'] = request.tel_b
+        if not UtilClient.is_unset(request.ts):
+            query['Ts'] = request.ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAxnBindFixedLine',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.UpdateAxnBindFixedLineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_axn_bind_fixed_line_with_options_async(
+        self,
+        tmp_req: dyplsapi_20170525_models.UpdateAxnBindFixedLineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.UpdateAxnBindFixedLineResponse:
+        """
+        @summary 更新Axn绑定关系
+        
+        @param tmp_req: UpdateAxnBindFixedLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAxnBindFixedLineResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dyplsapi_20170525_models.UpdateAxnBindFixedLineShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.extra):
+            request.extra_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extra, 'Extra', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.anucode):
+            query['Anucode'] = request.anucode
+        if not UtilClient.is_unset(request.anucodecalled):
+            query['Anucodecalled'] = request.anucodecalled
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.expiration):
+            query['Expiration'] = request.expiration
+        if not UtilClient.is_unset(request.extra_shrink):
+            query['Extra'] = request.extra_shrink
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sub_id):
+            query['SubId'] = request.sub_id
+        if not UtilClient.is_unset(request.subts):
+            query['Subts'] = request.subts
+        if not UtilClient.is_unset(request.tanucode_connect):
+            query['TAnucodeConnect'] = request.tanucode_connect
+        if not UtilClient.is_unset(request.tel_a):
+            query['TelA'] = request.tel_a
+        if not UtilClient.is_unset(request.tel_b):
+            query['TelB'] = request.tel_b
+        if not UtilClient.is_unset(request.ts):
+            query['Ts'] = request.ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAxnBindFixedLine',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.UpdateAxnBindFixedLineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_axn_bind_fixed_line(
+        self,
+        request: dyplsapi_20170525_models.UpdateAxnBindFixedLineRequest,
+    ) -> dyplsapi_20170525_models.UpdateAxnBindFixedLineResponse:
+        """
+        @summary 更新Axn绑定关系
+        
+        @param request: UpdateAxnBindFixedLineRequest
+        @return: UpdateAxnBindFixedLineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_axn_bind_fixed_line_with_options(request, runtime)
+
+    async def update_axn_bind_fixed_line_async(
+        self,
+        request: dyplsapi_20170525_models.UpdateAxnBindFixedLineRequest,
+    ) -> dyplsapi_20170525_models.UpdateAxnBindFixedLineResponse:
+        """
+        @summary 更新Axn绑定关系
+        
+        @param request: UpdateAxnBindFixedLineRequest
+        @return: UpdateAxnBindFixedLineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_axn_bind_fixed_line_with_options_async(request, runtime)
+
+    def update_axn_extension_bind_fixed_line_with_options(
+        self,
+        tmp_req: dyplsapi_20170525_models.UpdateAxnExtensionBindFixedLineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.UpdateAxnExtensionBindFixedLineResponse:
+        """
+        @summary 更新AXN分机号绑定关系
+        
+        @param tmp_req: UpdateAxnExtensionBindFixedLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAxnExtensionBindFixedLineResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dyplsapi_20170525_models.UpdateAxnExtensionBindFixedLineShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.extraaxx):
+            request.extraaxx_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extraaxx, 'Extraaxx', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.anucode):
+            query['Anucode'] = request.anucode
+        if not UtilClient.is_unset(request.anucodecalled):
+            query['Anucodecalled'] = request.anucodecalled
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.expiration):
+            query['Expiration'] = request.expiration
+        if not UtilClient.is_unset(request.extraaxx_shrink):
+            query['Extraaxx'] = request.extraaxx_shrink
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sub_id):
+            query['SubId'] = request.sub_id
+        if not UtilClient.is_unset(request.subts):
+            query['Subts'] = request.subts
+        if not UtilClient.is_unset(request.tanucode_connect):
+            query['TAnucodeConnect'] = request.tanucode_connect
+        if not UtilClient.is_unset(request.tel_a):
+            query['TelA'] = request.tel_a
+        if not UtilClient.is_unset(request.ts):
+            query['Ts'] = request.ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAxnExtensionBindFixedLine',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.UpdateAxnExtensionBindFixedLineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_axn_extension_bind_fixed_line_with_options_async(
+        self,
+        tmp_req: dyplsapi_20170525_models.UpdateAxnExtensionBindFixedLineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.UpdateAxnExtensionBindFixedLineResponse:
+        """
+        @summary 更新AXN分机号绑定关系
+        
+        @param tmp_req: UpdateAxnExtensionBindFixedLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAxnExtensionBindFixedLineResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dyplsapi_20170525_models.UpdateAxnExtensionBindFixedLineShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.extraaxx):
+            request.extraaxx_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extraaxx, 'Extraaxx', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.anucode):
+            query['Anucode'] = request.anucode
+        if not UtilClient.is_unset(request.anucodecalled):
+            query['Anucodecalled'] = request.anucodecalled
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.expiration):
+            query['Expiration'] = request.expiration
+        if not UtilClient.is_unset(request.extraaxx_shrink):
+            query['Extraaxx'] = request.extraaxx_shrink
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sub_id):
+            query['SubId'] = request.sub_id
+        if not UtilClient.is_unset(request.subts):
+            query['Subts'] = request.subts
+        if not UtilClient.is_unset(request.tanucode_connect):
+            query['TAnucodeConnect'] = request.tanucode_connect
+        if not UtilClient.is_unset(request.tel_a):
+            query['TelA'] = request.tel_a
+        if not UtilClient.is_unset(request.ts):
+            query['Ts'] = request.ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAxnExtensionBindFixedLine',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.UpdateAxnExtensionBindFixedLineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_axn_extension_bind_fixed_line(
+        self,
+        request: dyplsapi_20170525_models.UpdateAxnExtensionBindFixedLineRequest,
+    ) -> dyplsapi_20170525_models.UpdateAxnExtensionBindFixedLineResponse:
+        """
+        @summary 更新AXN分机号绑定关系
+        
+        @param request: UpdateAxnExtensionBindFixedLineRequest
+        @return: UpdateAxnExtensionBindFixedLineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_axn_extension_bind_fixed_line_with_options(request, runtime)
+
+    async def update_axn_extension_bind_fixed_line_async(
+        self,
+        request: dyplsapi_20170525_models.UpdateAxnExtensionBindFixedLineRequest,
+    ) -> dyplsapi_20170525_models.UpdateAxnExtensionBindFixedLineResponse:
+        """
+        @summary 更新AXN分机号绑定关系
+        
+        @param request: UpdateAxnExtensionBindFixedLineRequest
+        @return: UpdateAxnExtensionBindFixedLineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_axn_extension_bind_fixed_line_with_options_async(request, runtime)
 
     def update_subscription_with_options(
         self,

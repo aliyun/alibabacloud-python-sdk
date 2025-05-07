@@ -894,6 +894,499 @@ class BindAxbResponse(TeaModel):
         return self
 
 
+class BindAxbFixedLineRequestExtra(TeaModel):
+    def __init__(
+        self,
+        callrecording: str = None,
+    ):
+        # 录音控制，默认是0（不开通录音功能）。 0：不录音 1：录音
+        self.callrecording = callrecording
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.callrecording is not None:
+            result['Callrecording'] = self.callrecording
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Callrecording') is not None:
+            self.callrecording = m.get('Callrecording')
+        return self
+
+
+class BindAxbFixedLineRequest(TeaModel):
+    def __init__(
+        self,
+        anucode: str = None,
+        anucodecalled: str = None,
+        app_id: str = None,
+        areacode: str = None,
+        bind_type: str = None,
+        expiration: str = None,
+        extra: BindAxbFixedLineRequestExtra = None,
+        order_id: str = None,
+        owner_id: int = None,
+        remark: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        subts: str = None,
+        tanucode_connect: str = None,
+        tel_a: str = None,
+        tel_b: str = None,
+        tel_x: str = None,
+        ts: str = None,
+    ):
+        # 主叫侧放音编码，AXB业务时必须设置。  放音编码必须包含3个场景的编码。按照“B->X,A->X,其他号码->X”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2,3”表示B->X放音编号为1，A->X放音编号为2， 其他号码->X放音编号为3
+        # 
+        # This parameter is required.
+        self.anucode = anucode
+        # 接通后被叫侧放音编码,接通后被叫侧放音编码  被叫放音编码必须包含2个场景的编码。按照“A被叫,B被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫侧接听时的放音编号为1，B号码为被叫侧接听时的放音编号为2。
+        self.anucodecalled = anucodecalled
+        # 应用id
+        # 
+        # This parameter is required.
+        self.app_id = app_id
+        # 区号,去掉“0” 例如：北京（10）；在平台分配X号码模式中，平台从号码池中分配该地区的X号码，避免产生呼叫长途费。
+        self.areacode = areacode
+        # 绑定类型，值如下： mode101：客户携带X号码 mode102：平台分配X号码
+        # 
+        # This parameter is required.
+        self.bind_type = bind_type
+        # 过期时间,单位：秒，必须为数字 0：不会自动解绑 非0：自动解绑周期
+        # 
+        # This parameter is required.
+        self.expiration = expiration
+        # 扩展参数
+        self.extra = extra
+        # 消息请求标识
+        # 
+        # This parameter is required.
+        self.order_id = order_id
+        self.owner_id = owner_id
+        # 接入商自有字段，不能超过100个长度
+        self.remark = remark
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # 绑定时间，格式为yyyyMMddHHmmss。时间采用北京时间，24小时制。
+        # 
+        # This parameter is required.
+        self.subts = subts
+        # 接通后主叫侧的放音编码,接通后主叫侧放音编码  接通后主叫侧放音编码必须包含2个场景的编码。按照“A被叫,B被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫时主叫侧的放音编号为1，B号码为被叫时主叫侧的放音编号为2。
+        self.tanucode_connect = tanucode_connect
+        # 真实号码
+        # 
+        # This parameter is required.
+        self.tel_a = tel_a
+        # 对端号码
+        # 
+        # This parameter is required.
+        self.tel_b = tel_b
+        # X号码； 平台分配号码模式下，该参数可不带，系统忽略该参数  格式为yyyyMMddHHmmss。时间采用北京时间，24小时制。
+        self.tel_x = tel_x
+        # 业务时间戳，格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+        # 
+        # This parameter is required.
+        self.ts = ts
+
+    def validate(self):
+        if self.extra:
+            self.extra.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.anucode is not None:
+            result['Anucode'] = self.anucode
+        if self.anucodecalled is not None:
+            result['Anucodecalled'] = self.anucodecalled
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.areacode is not None:
+            result['Areacode'] = self.areacode
+        if self.bind_type is not None:
+            result['BindType'] = self.bind_type
+        if self.expiration is not None:
+            result['Expiration'] = self.expiration
+        if self.extra is not None:
+            result['Extra'] = self.extra.to_map()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.subts is not None:
+            result['Subts'] = self.subts
+        if self.tanucode_connect is not None:
+            result['TAnucodeConnect'] = self.tanucode_connect
+        if self.tel_a is not None:
+            result['TelA'] = self.tel_a
+        if self.tel_b is not None:
+            result['TelB'] = self.tel_b
+        if self.tel_x is not None:
+            result['TelX'] = self.tel_x
+        if self.ts is not None:
+            result['Ts'] = self.ts
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Anucode') is not None:
+            self.anucode = m.get('Anucode')
+        if m.get('Anucodecalled') is not None:
+            self.anucodecalled = m.get('Anucodecalled')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Areacode') is not None:
+            self.areacode = m.get('Areacode')
+        if m.get('BindType') is not None:
+            self.bind_type = m.get('BindType')
+        if m.get('Expiration') is not None:
+            self.expiration = m.get('Expiration')
+        if m.get('Extra') is not None:
+            temp_model = BindAxbFixedLineRequestExtra()
+            self.extra = temp_model.from_map(m['Extra'])
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('Subts') is not None:
+            self.subts = m.get('Subts')
+        if m.get('TAnucodeConnect') is not None:
+            self.tanucode_connect = m.get('TAnucodeConnect')
+        if m.get('TelA') is not None:
+            self.tel_a = m.get('TelA')
+        if m.get('TelB') is not None:
+            self.tel_b = m.get('TelB')
+        if m.get('TelX') is not None:
+            self.tel_x = m.get('TelX')
+        if m.get('Ts') is not None:
+            self.ts = m.get('Ts')
+        return self
+
+
+class BindAxbFixedLineShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        anucode: str = None,
+        anucodecalled: str = None,
+        app_id: str = None,
+        areacode: str = None,
+        bind_type: str = None,
+        expiration: str = None,
+        extra_shrink: str = None,
+        order_id: str = None,
+        owner_id: int = None,
+        remark: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        subts: str = None,
+        tanucode_connect: str = None,
+        tel_a: str = None,
+        tel_b: str = None,
+        tel_x: str = None,
+        ts: str = None,
+    ):
+        # 主叫侧放音编码，AXB业务时必须设置。  放音编码必须包含3个场景的编码。按照“B->X,A->X,其他号码->X”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2,3”表示B->X放音编号为1，A->X放音编号为2， 其他号码->X放音编号为3
+        # 
+        # This parameter is required.
+        self.anucode = anucode
+        # 接通后被叫侧放音编码,接通后被叫侧放音编码  被叫放音编码必须包含2个场景的编码。按照“A被叫,B被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫侧接听时的放音编号为1，B号码为被叫侧接听时的放音编号为2。
+        self.anucodecalled = anucodecalled
+        # 应用id
+        # 
+        # This parameter is required.
+        self.app_id = app_id
+        # 区号,去掉“0” 例如：北京（10）；在平台分配X号码模式中，平台从号码池中分配该地区的X号码，避免产生呼叫长途费。
+        self.areacode = areacode
+        # 绑定类型，值如下： mode101：客户携带X号码 mode102：平台分配X号码
+        # 
+        # This parameter is required.
+        self.bind_type = bind_type
+        # 过期时间,单位：秒，必须为数字 0：不会自动解绑 非0：自动解绑周期
+        # 
+        # This parameter is required.
+        self.expiration = expiration
+        # 扩展参数
+        self.extra_shrink = extra_shrink
+        # 消息请求标识
+        # 
+        # This parameter is required.
+        self.order_id = order_id
+        self.owner_id = owner_id
+        # 接入商自有字段，不能超过100个长度
+        self.remark = remark
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # 绑定时间，格式为yyyyMMddHHmmss。时间采用北京时间，24小时制。
+        # 
+        # This parameter is required.
+        self.subts = subts
+        # 接通后主叫侧的放音编码,接通后主叫侧放音编码  接通后主叫侧放音编码必须包含2个场景的编码。按照“A被叫,B被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫时主叫侧的放音编号为1，B号码为被叫时主叫侧的放音编号为2。
+        self.tanucode_connect = tanucode_connect
+        # 真实号码
+        # 
+        # This parameter is required.
+        self.tel_a = tel_a
+        # 对端号码
+        # 
+        # This parameter is required.
+        self.tel_b = tel_b
+        # X号码； 平台分配号码模式下，该参数可不带，系统忽略该参数  格式为yyyyMMddHHmmss。时间采用北京时间，24小时制。
+        self.tel_x = tel_x
+        # 业务时间戳，格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+        # 
+        # This parameter is required.
+        self.ts = ts
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.anucode is not None:
+            result['Anucode'] = self.anucode
+        if self.anucodecalled is not None:
+            result['Anucodecalled'] = self.anucodecalled
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.areacode is not None:
+            result['Areacode'] = self.areacode
+        if self.bind_type is not None:
+            result['BindType'] = self.bind_type
+        if self.expiration is not None:
+            result['Expiration'] = self.expiration
+        if self.extra_shrink is not None:
+            result['Extra'] = self.extra_shrink
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.subts is not None:
+            result['Subts'] = self.subts
+        if self.tanucode_connect is not None:
+            result['TAnucodeConnect'] = self.tanucode_connect
+        if self.tel_a is not None:
+            result['TelA'] = self.tel_a
+        if self.tel_b is not None:
+            result['TelB'] = self.tel_b
+        if self.tel_x is not None:
+            result['TelX'] = self.tel_x
+        if self.ts is not None:
+            result['Ts'] = self.ts
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Anucode') is not None:
+            self.anucode = m.get('Anucode')
+        if m.get('Anucodecalled') is not None:
+            self.anucodecalled = m.get('Anucodecalled')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Areacode') is not None:
+            self.areacode = m.get('Areacode')
+        if m.get('BindType') is not None:
+            self.bind_type = m.get('BindType')
+        if m.get('Expiration') is not None:
+            self.expiration = m.get('Expiration')
+        if m.get('Extra') is not None:
+            self.extra_shrink = m.get('Extra')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('Subts') is not None:
+            self.subts = m.get('Subts')
+        if m.get('TAnucodeConnect') is not None:
+            self.tanucode_connect = m.get('TAnucodeConnect')
+        if m.get('TelA') is not None:
+            self.tel_a = m.get('TelA')
+        if m.get('TelB') is not None:
+            self.tel_b = m.get('TelB')
+        if m.get('TelX') is not None:
+            self.tel_x = m.get('TelX')
+        if m.get('Ts') is not None:
+            self.ts = m.get('Ts')
+        return self
+
+
+class BindAxbFixedLineResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        subid: str = None,
+        tel_x: str = None,
+    ):
+        # 绑定id
+        self.subid = subid
+        # X号码
+        self.tel_x = tel_x
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.subid is not None:
+            result['Subid'] = self.subid
+        if self.tel_x is not None:
+            result['TelX'] = self.tel_x
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Subid') is not None:
+            self.subid = m.get('Subid')
+        if m.get('TelX') is not None:
+            self.tel_x = m.get('TelX')
+        return self
+
+
+class BindAxbFixedLineResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: BindAxbFixedLineResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        # 响应码 0-成功
+        self.code = code
+        # 响应内容
+        self.data = data
+        # 响应消息
+        self.message = message
+        self.request_id = request_id
+        # 是否处理成功  true-成功
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = BindAxbFixedLineResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class BindAxbFixedLineResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BindAxbFixedLineResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BindAxbFixedLineResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class BindAxgRequest(TeaModel):
     def __init__(
         self,
@@ -1859,6 +2352,998 @@ class BindAxnExtensionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = BindAxnExtensionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class BindAxnExtensionFixedLineRequestExtraaxx(TeaModel):
+    def __init__(
+        self,
+        callback: str = None,
+        callrecording: str = None,
+    ):
+        # A通过X呼叫，即A主叫X，仅下列值有效。默认是0。 0：不能外呼 1：接续最近的B号码
+        self.callback = callback
+        # 录音控制，仅下列值有效。默认是0（不开通录音功能）。 0：不录音 1：录音
+        self.callrecording = callrecording
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.callback is not None:
+            result['Callback'] = self.callback
+        if self.callrecording is not None:
+            result['Callrecording'] = self.callrecording
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Callback') is not None:
+            self.callback = m.get('Callback')
+        if m.get('Callrecording') is not None:
+            self.callrecording = m.get('Callrecording')
+        return self
+
+
+class BindAxnExtensionFixedLineRequest(TeaModel):
+    def __init__(
+        self,
+        anucode: str = None,
+        anucodecalled: str = None,
+        app_id: str = None,
+        areacode: str = None,
+        bind_type: str = None,
+        expiration: str = None,
+        extraaxx: BindAxnExtensionFixedLineRequestExtraaxx = None,
+        order_id: str = None,
+        owner_id: int = None,
+        remark: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        subts: str = None,
+        tanucode_connect: str = None,
+        tel_a: str = None,
+        tel_x: str = None,
+        tel_xext: str = None,
+        ts: str = None,
+    ):
+        # This parameter is required.
+        self.anucode = anucode
+        # 被叫侧放音编码  被叫放音编码必须包含2个场景的编码。按照“A被叫,其他号码被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫侧接听时的放音编号为1，其他号码为被叫侧接听时的放音编号为2
+        self.anucodecalled = anucodecalled
+        # 业务id标识，由阿里云分配给客户侧
+        # 
+        # This parameter is required.
+        self.app_id = app_id
+        # 去掉“0” 例如：北京（10）；在平台分配X号码模式中，平台从号码池中分配该地区的X号码，避免产生呼叫长途费
+        self.areacode = areacode
+        # 绑定类型，值如下： mode101：客户携带X号码 mode102：平台分配X号码
+        # 
+        # This parameter is required.
+        self.bind_type = bind_type
+        # 单位：秒，必须为数字 0：不会自动解绑 非0：自动解绑周期
+        # 
+        # This parameter is required.
+        self.expiration = expiration
+        # 额外字段
+        self.extraaxx = extraaxx
+        # 消息请求唯一标识
+        # 
+        # This parameter is required.
+        self.order_id = order_id
+        self.owner_id = owner_id
+        # 接入商自有字段，最大100字符长度
+        self.remark = remark
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # 格式为yyyyMMddHHmmss。时间采用北京时间，24小时制。
+        # 
+        # This parameter is required.
+        self.subts = subts
+        # 接通后主叫侧放音编码  接通后主叫侧放音编码必须包含2个场景的编码。按照“A被叫,其他号码被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫时主叫侧的放音编号为1，其他号码为被叫时主叫侧的放音编号为2
+        self.tanucode_connect = tanucode_connect
+        # A号码
+        # 
+        # This parameter is required.
+        self.tel_a = tel_a
+        # X号码；平台分配号码模式下，该参数可不带，系统忽略该参数
+        self.tel_x = tel_x
+        # 分机号；平台分配号码模式下，该参数可不带，系统忽略该参数
+        self.tel_xext = tel_xext
+        # 格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+        # 
+        # This parameter is required.
+        self.ts = ts
+
+    def validate(self):
+        if self.extraaxx:
+            self.extraaxx.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.anucode is not None:
+            result['Anucode'] = self.anucode
+        if self.anucodecalled is not None:
+            result['Anucodecalled'] = self.anucodecalled
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.areacode is not None:
+            result['Areacode'] = self.areacode
+        if self.bind_type is not None:
+            result['BindType'] = self.bind_type
+        if self.expiration is not None:
+            result['Expiration'] = self.expiration
+        if self.extraaxx is not None:
+            result['Extraaxx'] = self.extraaxx.to_map()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.subts is not None:
+            result['Subts'] = self.subts
+        if self.tanucode_connect is not None:
+            result['TAnucodeConnect'] = self.tanucode_connect
+        if self.tel_a is not None:
+            result['TelA'] = self.tel_a
+        if self.tel_x is not None:
+            result['TelX'] = self.tel_x
+        if self.tel_xext is not None:
+            result['TelXext'] = self.tel_xext
+        if self.ts is not None:
+            result['Ts'] = self.ts
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Anucode') is not None:
+            self.anucode = m.get('Anucode')
+        if m.get('Anucodecalled') is not None:
+            self.anucodecalled = m.get('Anucodecalled')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Areacode') is not None:
+            self.areacode = m.get('Areacode')
+        if m.get('BindType') is not None:
+            self.bind_type = m.get('BindType')
+        if m.get('Expiration') is not None:
+            self.expiration = m.get('Expiration')
+        if m.get('Extraaxx') is not None:
+            temp_model = BindAxnExtensionFixedLineRequestExtraaxx()
+            self.extraaxx = temp_model.from_map(m['Extraaxx'])
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('Subts') is not None:
+            self.subts = m.get('Subts')
+        if m.get('TAnucodeConnect') is not None:
+            self.tanucode_connect = m.get('TAnucodeConnect')
+        if m.get('TelA') is not None:
+            self.tel_a = m.get('TelA')
+        if m.get('TelX') is not None:
+            self.tel_x = m.get('TelX')
+        if m.get('TelXext') is not None:
+            self.tel_xext = m.get('TelXext')
+        if m.get('Ts') is not None:
+            self.ts = m.get('Ts')
+        return self
+
+
+class BindAxnExtensionFixedLineShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        anucode: str = None,
+        anucodecalled: str = None,
+        app_id: str = None,
+        areacode: str = None,
+        bind_type: str = None,
+        expiration: str = None,
+        extraaxx_shrink: str = None,
+        order_id: str = None,
+        owner_id: int = None,
+        remark: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        subts: str = None,
+        tanucode_connect: str = None,
+        tel_a: str = None,
+        tel_x: str = None,
+        tel_xext: str = None,
+        ts: str = None,
+    ):
+        # This parameter is required.
+        self.anucode = anucode
+        # 被叫侧放音编码  被叫放音编码必须包含2个场景的编码。按照“A被叫,其他号码被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫侧接听时的放音编号为1，其他号码为被叫侧接听时的放音编号为2
+        self.anucodecalled = anucodecalled
+        # 业务id标识，由阿里云分配给客户侧
+        # 
+        # This parameter is required.
+        self.app_id = app_id
+        # 去掉“0” 例如：北京（10）；在平台分配X号码模式中，平台从号码池中分配该地区的X号码，避免产生呼叫长途费
+        self.areacode = areacode
+        # 绑定类型，值如下： mode101：客户携带X号码 mode102：平台分配X号码
+        # 
+        # This parameter is required.
+        self.bind_type = bind_type
+        # 单位：秒，必须为数字 0：不会自动解绑 非0：自动解绑周期
+        # 
+        # This parameter is required.
+        self.expiration = expiration
+        # 额外字段
+        self.extraaxx_shrink = extraaxx_shrink
+        # 消息请求唯一标识
+        # 
+        # This parameter is required.
+        self.order_id = order_id
+        self.owner_id = owner_id
+        # 接入商自有字段，最大100字符长度
+        self.remark = remark
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # 格式为yyyyMMddHHmmss。时间采用北京时间，24小时制。
+        # 
+        # This parameter is required.
+        self.subts = subts
+        # 接通后主叫侧放音编码  接通后主叫侧放音编码必须包含2个场景的编码。按照“A被叫,其他号码被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫时主叫侧的放音编号为1，其他号码为被叫时主叫侧的放音编号为2
+        self.tanucode_connect = tanucode_connect
+        # A号码
+        # 
+        # This parameter is required.
+        self.tel_a = tel_a
+        # X号码；平台分配号码模式下，该参数可不带，系统忽略该参数
+        self.tel_x = tel_x
+        # 分机号；平台分配号码模式下，该参数可不带，系统忽略该参数
+        self.tel_xext = tel_xext
+        # 格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+        # 
+        # This parameter is required.
+        self.ts = ts
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.anucode is not None:
+            result['Anucode'] = self.anucode
+        if self.anucodecalled is not None:
+            result['Anucodecalled'] = self.anucodecalled
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.areacode is not None:
+            result['Areacode'] = self.areacode
+        if self.bind_type is not None:
+            result['BindType'] = self.bind_type
+        if self.expiration is not None:
+            result['Expiration'] = self.expiration
+        if self.extraaxx_shrink is not None:
+            result['Extraaxx'] = self.extraaxx_shrink
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.subts is not None:
+            result['Subts'] = self.subts
+        if self.tanucode_connect is not None:
+            result['TAnucodeConnect'] = self.tanucode_connect
+        if self.tel_a is not None:
+            result['TelA'] = self.tel_a
+        if self.tel_x is not None:
+            result['TelX'] = self.tel_x
+        if self.tel_xext is not None:
+            result['TelXext'] = self.tel_xext
+        if self.ts is not None:
+            result['Ts'] = self.ts
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Anucode') is not None:
+            self.anucode = m.get('Anucode')
+        if m.get('Anucodecalled') is not None:
+            self.anucodecalled = m.get('Anucodecalled')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Areacode') is not None:
+            self.areacode = m.get('Areacode')
+        if m.get('BindType') is not None:
+            self.bind_type = m.get('BindType')
+        if m.get('Expiration') is not None:
+            self.expiration = m.get('Expiration')
+        if m.get('Extraaxx') is not None:
+            self.extraaxx_shrink = m.get('Extraaxx')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('Subts') is not None:
+            self.subts = m.get('Subts')
+        if m.get('TAnucodeConnect') is not None:
+            self.tanucode_connect = m.get('TAnucodeConnect')
+        if m.get('TelA') is not None:
+            self.tel_a = m.get('TelA')
+        if m.get('TelX') is not None:
+            self.tel_x = m.get('TelX')
+        if m.get('TelXext') is not None:
+            self.tel_xext = m.get('TelXext')
+        if m.get('Ts') is not None:
+            self.ts = m.get('Ts')
+        return self
+
+
+class BindAxnExtensionFixedLineResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        subid: str = None,
+        tel_x: str = None,
+        tel_xext: str = None,
+    ):
+        # 绑定id
+        self.subid = subid
+        # 隐私号码
+        self.tel_x = tel_x
+        # 分机号，只有4位
+        self.tel_xext = tel_xext
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.subid is not None:
+            result['Subid'] = self.subid
+        if self.tel_x is not None:
+            result['TelX'] = self.tel_x
+        if self.tel_xext is not None:
+            result['TelXext'] = self.tel_xext
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Subid') is not None:
+            self.subid = m.get('Subid')
+        if m.get('TelX') is not None:
+            self.tel_x = m.get('TelX')
+        if m.get('TelXext') is not None:
+            self.tel_xext = m.get('TelXext')
+        return self
+
+
+class BindAxnExtensionFixedLineResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: BindAxnExtensionFixedLineResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        # 响应码 0：成功，其它失败，具体见文档
+        self.code = code
+        # 响应信息
+        self.data = data
+        # 描述信息
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = BindAxnExtensionFixedLineResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class BindAxnExtensionFixedLineResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BindAxnExtensionFixedLineResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BindAxnExtensionFixedLineResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class BindAxnFixedLineRequestExtra(TeaModel):
+    def __init__(
+        self,
+        callback: str = None,
+        callrecording: str = None,
+    ):
+        # A通过X呼叫，即A主叫X，仅下列值有效。默认是0。 0：不能外呼 1：接续最近的N号码 2：回拨固定号码：telB
+        self.callback = callback
+        # 仅下列值有效。默认是0（不开通录音功能）。 0：不录音 1：录音
+        self.callrecording = callrecording
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.callback is not None:
+            result['Callback'] = self.callback
+        if self.callrecording is not None:
+            result['Callrecording'] = self.callrecording
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Callback') is not None:
+            self.callback = m.get('Callback')
+        if m.get('Callrecording') is not None:
+            self.callrecording = m.get('Callrecording')
+        return self
+
+
+class BindAxnFixedLineRequest(TeaModel):
+    def __init__(
+        self,
+        anucode: str = None,
+        anucodecalled: str = None,
+        app_id: str = None,
+        areacode: str = None,
+        bind_type: str = None,
+        expiration: str = None,
+        extra: BindAxnFixedLineRequestExtra = None,
+        order_id: str = None,
+        owner_id: int = None,
+        remark: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        subts: str = None,
+        tanucode_connect: str = None,
+        tel_a: str = None,
+        tel_b: str = None,
+        tel_x: str = None,
+        ts: str = None,
+    ):
+        # 放音编码必须包含3个场景的编码。按照“B->X,A->X,其他号码->X”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2,3”表示B->X放音编号为1，A->X放音编号为2， 其他号码->X放音编号为3
+        # 
+        # This parameter is required.
+        self.anucode = anucode
+        # 被叫侧放音编码  被叫放音编码必须包含2个场景的编码。按照“A被叫,其他号码被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫侧接听时的放音编号为1，其他号码为被叫侧接听时的放音编号为2
+        self.anucodecalled = anucodecalled
+        # 业务id标识，由阿里云分配给客户侧
+        # 
+        # This parameter is required.
+        self.app_id = app_id
+        # 去掉“0” 例如：北京（10）；在平台分配X号码模式中，平台从号码池中分配该地区的X号码，避免产生呼叫长途费
+        self.areacode = areacode
+        # 绑定类型，值如下： mode101：客户携带X号码 mode102：平台分配X号码
+        # 
+        # This parameter is required.
+        self.bind_type = bind_type
+        # 位：秒，必须为数字 0：不会自动解绑 非0：自动解绑周期
+        # 
+        # This parameter is required.
+        self.expiration = expiration
+        # 扩展参数
+        self.extra = extra
+        # 消息请求唯一标识
+        # 
+        # This parameter is required.
+        self.order_id = order_id
+        self.owner_id = owner_id
+        # 接入商自有字段，最大100字符长度
+        self.remark = remark
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # 格式为yyyyMMddHHmmss。时间采用北京时间，24小时制。
+        # 
+        # This parameter is required.
+        self.subts = subts
+        # 接通后主叫侧放音编码  接通后主叫侧放音编码必须包含2个场景的编码。按照“A被叫,其他号码被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫时主叫侧的放音编号为1，其他号码被叫为被叫时主叫侧的放音编号为2
+        self.tanucode_connect = tanucode_connect
+        # A号码
+        # 
+        # This parameter is required.
+        self.tel_a = tel_a
+        # N号码
+        self.tel_b = tel_b
+        # X号码； 平台分配号码模式下，该参数可不带，系统忽略该参数
+        self.tel_x = tel_x
+        # 格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+        # 
+        # This parameter is required.
+        self.ts = ts
+
+    def validate(self):
+        if self.extra:
+            self.extra.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.anucode is not None:
+            result['Anucode'] = self.anucode
+        if self.anucodecalled is not None:
+            result['Anucodecalled'] = self.anucodecalled
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.areacode is not None:
+            result['Areacode'] = self.areacode
+        if self.bind_type is not None:
+            result['BindType'] = self.bind_type
+        if self.expiration is not None:
+            result['Expiration'] = self.expiration
+        if self.extra is not None:
+            result['Extra'] = self.extra.to_map()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.subts is not None:
+            result['Subts'] = self.subts
+        if self.tanucode_connect is not None:
+            result['TAnucodeConnect'] = self.tanucode_connect
+        if self.tel_a is not None:
+            result['TelA'] = self.tel_a
+        if self.tel_b is not None:
+            result['TelB'] = self.tel_b
+        if self.tel_x is not None:
+            result['TelX'] = self.tel_x
+        if self.ts is not None:
+            result['Ts'] = self.ts
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Anucode') is not None:
+            self.anucode = m.get('Anucode')
+        if m.get('Anucodecalled') is not None:
+            self.anucodecalled = m.get('Anucodecalled')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Areacode') is not None:
+            self.areacode = m.get('Areacode')
+        if m.get('BindType') is not None:
+            self.bind_type = m.get('BindType')
+        if m.get('Expiration') is not None:
+            self.expiration = m.get('Expiration')
+        if m.get('Extra') is not None:
+            temp_model = BindAxnFixedLineRequestExtra()
+            self.extra = temp_model.from_map(m['Extra'])
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('Subts') is not None:
+            self.subts = m.get('Subts')
+        if m.get('TAnucodeConnect') is not None:
+            self.tanucode_connect = m.get('TAnucodeConnect')
+        if m.get('TelA') is not None:
+            self.tel_a = m.get('TelA')
+        if m.get('TelB') is not None:
+            self.tel_b = m.get('TelB')
+        if m.get('TelX') is not None:
+            self.tel_x = m.get('TelX')
+        if m.get('Ts') is not None:
+            self.ts = m.get('Ts')
+        return self
+
+
+class BindAxnFixedLineShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        anucode: str = None,
+        anucodecalled: str = None,
+        app_id: str = None,
+        areacode: str = None,
+        bind_type: str = None,
+        expiration: str = None,
+        extra_shrink: str = None,
+        order_id: str = None,
+        owner_id: int = None,
+        remark: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        subts: str = None,
+        tanucode_connect: str = None,
+        tel_a: str = None,
+        tel_b: str = None,
+        tel_x: str = None,
+        ts: str = None,
+    ):
+        # 放音编码必须包含3个场景的编码。按照“B->X,A->X,其他号码->X”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2,3”表示B->X放音编号为1，A->X放音编号为2， 其他号码->X放音编号为3
+        # 
+        # This parameter is required.
+        self.anucode = anucode
+        # 被叫侧放音编码  被叫放音编码必须包含2个场景的编码。按照“A被叫,其他号码被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫侧接听时的放音编号为1，其他号码为被叫侧接听时的放音编号为2
+        self.anucodecalled = anucodecalled
+        # 业务id标识，由阿里云分配给客户侧
+        # 
+        # This parameter is required.
+        self.app_id = app_id
+        # 去掉“0” 例如：北京（10）；在平台分配X号码模式中，平台从号码池中分配该地区的X号码，避免产生呼叫长途费
+        self.areacode = areacode
+        # 绑定类型，值如下： mode101：客户携带X号码 mode102：平台分配X号码
+        # 
+        # This parameter is required.
+        self.bind_type = bind_type
+        # 位：秒，必须为数字 0：不会自动解绑 非0：自动解绑周期
+        # 
+        # This parameter is required.
+        self.expiration = expiration
+        # 扩展参数
+        self.extra_shrink = extra_shrink
+        # 消息请求唯一标识
+        # 
+        # This parameter is required.
+        self.order_id = order_id
+        self.owner_id = owner_id
+        # 接入商自有字段，最大100字符长度
+        self.remark = remark
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # 格式为yyyyMMddHHmmss。时间采用北京时间，24小时制。
+        # 
+        # This parameter is required.
+        self.subts = subts
+        # 接通后主叫侧放音编码  接通后主叫侧放音编码必须包含2个场景的编码。按照“A被叫,其他号码被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫时主叫侧的放音编号为1，其他号码被叫为被叫时主叫侧的放音编号为2
+        self.tanucode_connect = tanucode_connect
+        # A号码
+        # 
+        # This parameter is required.
+        self.tel_a = tel_a
+        # N号码
+        self.tel_b = tel_b
+        # X号码； 平台分配号码模式下，该参数可不带，系统忽略该参数
+        self.tel_x = tel_x
+        # 格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+        # 
+        # This parameter is required.
+        self.ts = ts
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.anucode is not None:
+            result['Anucode'] = self.anucode
+        if self.anucodecalled is not None:
+            result['Anucodecalled'] = self.anucodecalled
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.areacode is not None:
+            result['Areacode'] = self.areacode
+        if self.bind_type is not None:
+            result['BindType'] = self.bind_type
+        if self.expiration is not None:
+            result['Expiration'] = self.expiration
+        if self.extra_shrink is not None:
+            result['Extra'] = self.extra_shrink
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.subts is not None:
+            result['Subts'] = self.subts
+        if self.tanucode_connect is not None:
+            result['TAnucodeConnect'] = self.tanucode_connect
+        if self.tel_a is not None:
+            result['TelA'] = self.tel_a
+        if self.tel_b is not None:
+            result['TelB'] = self.tel_b
+        if self.tel_x is not None:
+            result['TelX'] = self.tel_x
+        if self.ts is not None:
+            result['Ts'] = self.ts
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Anucode') is not None:
+            self.anucode = m.get('Anucode')
+        if m.get('Anucodecalled') is not None:
+            self.anucodecalled = m.get('Anucodecalled')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Areacode') is not None:
+            self.areacode = m.get('Areacode')
+        if m.get('BindType') is not None:
+            self.bind_type = m.get('BindType')
+        if m.get('Expiration') is not None:
+            self.expiration = m.get('Expiration')
+        if m.get('Extra') is not None:
+            self.extra_shrink = m.get('Extra')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('Subts') is not None:
+            self.subts = m.get('Subts')
+        if m.get('TAnucodeConnect') is not None:
+            self.tanucode_connect = m.get('TAnucodeConnect')
+        if m.get('TelA') is not None:
+            self.tel_a = m.get('TelA')
+        if m.get('TelB') is not None:
+            self.tel_b = m.get('TelB')
+        if m.get('TelX') is not None:
+            self.tel_x = m.get('TelX')
+        if m.get('Ts') is not None:
+            self.ts = m.get('Ts')
+        return self
+
+
+class BindAxnFixedLineResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        subid: str = None,
+        tel_x: str = None,
+    ):
+        # 绑定id
+        self.subid = subid
+        # 隐私号码
+        self.tel_x = tel_x
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.subid is not None:
+            result['Subid'] = self.subid
+        if self.tel_x is not None:
+            result['TelX'] = self.tel_x
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Subid') is not None:
+            self.subid = m.get('Subid')
+        if m.get('TelX') is not None:
+            self.tel_x = m.get('TelX')
+        return self
+
+
+class BindAxnFixedLineResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: BindAxnFixedLineResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        # 响应码 0：成功，其它失败，具体见文档
+        self.code = code
+        self.data = data
+        # 描述信息
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = BindAxnFixedLineResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class BindAxnFixedLineResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BindAxnFixedLineResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BindAxnFixedLineResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5602,6 +7087,223 @@ class CreateSmsSignResponse(TeaModel):
         return self
 
 
+class DeleteAxbBindFixedLineRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        order_id: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        sub_id: str = None,
+        ts: str = None,
+    ):
+        # 应用id
+        # 
+        # This parameter is required.
+        self.app_id = app_id
+        # 消息请求标识
+        # 
+        # This parameter is required.
+        self.order_id = order_id
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # 绑定id
+        # 
+        # This parameter is required.
+        self.sub_id = sub_id
+        # 业务时间戳，格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+        # 
+        # This parameter is required.
+        self.ts = ts
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.sub_id is not None:
+            result['SubId'] = self.sub_id
+        if self.ts is not None:
+            result['Ts'] = self.ts
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SubId') is not None:
+            self.sub_id = m.get('SubId')
+        if m.get('Ts') is not None:
+            self.ts = m.get('Ts')
+        return self
+
+
+class DeleteAxbBindFixedLineResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        success: bool = None,
+    ):
+        # 响应码  0-成功
+        self.code = code
+        # 响应消息
+        self.message = message
+        # 是否处理成功  true-成功  false-失败
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteAxbBindFixedLineResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: DeleteAxbBindFixedLineResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = DeleteAxbBindFixedLineResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteAxbBindFixedLineResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteAxbBindFixedLineResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteAxbBindFixedLineResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteAxgGroupRequest(TeaModel):
     def __init__(
         self,
@@ -5731,6 +7433,438 @@ class DeleteAxgGroupResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteAxgGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteAxnBindFixedLineRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        order_id: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        sub_id: str = None,
+        ts: str = None,
+    ):
+        # 业务id标识，由阿里云分配给客户侧
+        # 
+        # This parameter is required.
+        self.app_id = app_id
+        # 消息请求唯一标识
+        # 
+        # This parameter is required.
+        self.order_id = order_id
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # 绑定id
+        # 
+        # This parameter is required.
+        self.sub_id = sub_id
+        # 格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+        # 
+        # This parameter is required.
+        self.ts = ts
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.sub_id is not None:
+            result['SubId'] = self.sub_id
+        if self.ts is not None:
+            result['Ts'] = self.ts
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SubId') is not None:
+            self.sub_id = m.get('SubId')
+        if m.get('Ts') is not None:
+            self.ts = m.get('Ts')
+        return self
+
+
+class DeleteAxnBindFixedLineResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        success: bool = None,
+    ):
+        # 响应码 0：成功，其它失败，具体见文档
+        self.code = code
+        # 描述信息
+        self.message = message
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteAxnBindFixedLineResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: DeleteAxnBindFixedLineResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = DeleteAxnBindFixedLineResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteAxnBindFixedLineResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteAxnBindFixedLineResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteAxnBindFixedLineResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteAxnExtensionBindFixedLineRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        order_id: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        sub_id: str = None,
+        ts: str = None,
+    ):
+        # 业务id标识，由阿里云分配给客户侧
+        # 
+        # This parameter is required.
+        self.app_id = app_id
+        # 消息请求唯一标识
+        # 
+        # This parameter is required.
+        self.order_id = order_id
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # 绑定id
+        # 
+        # This parameter is required.
+        self.sub_id = sub_id
+        # 格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+        # 
+        # This parameter is required.
+        self.ts = ts
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.sub_id is not None:
+            result['SubId'] = self.sub_id
+        if self.ts is not None:
+            result['Ts'] = self.ts
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SubId') is not None:
+            self.sub_id = m.get('SubId')
+        if m.get('Ts') is not None:
+            self.ts = m.get('Ts')
+        return self
+
+
+class DeleteAxnExtensionBindFixedLineResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        success: bool = None,
+    ):
+        # 响应码 0：成功，其它失败，具体见文档
+        self.code = code
+        # 描述信息
+        self.message = message
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteAxnExtensionBindFixedLineResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: DeleteAxnExtensionBindFixedLineResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = DeleteAxnExtensionBindFixedLineResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteAxnExtensionBindFixedLineResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteAxnExtensionBindFixedLineResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteAxnExtensionBindFixedLineResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8327,6 +10461,1028 @@ class OperateBlackNoResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OperateBlackNoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryAxbBindFixedLineRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        order_id: str = None,
+        owner_id: int = None,
+        phone: str = None,
+        query_type: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        sub_id: str = None,
+        tel_x: str = None,
+        ts: str = None,
+    ):
+        # 应用id
+        # 
+        # This parameter is required.
+        self.app_id = app_id
+        # 业务id，消息请求标识
+        # 
+        # This parameter is required.
+        self.order_id = order_id
+        self.owner_id = owner_id
+        # A/B号码，queryType=1时，必传
+        self.phone = phone
+        # 查询类型 0：根据绑定id查询 1：根据X和A/B号码查询
+        # 
+        # This parameter is required.
+        self.query_type = query_type
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # 绑定id， queryType=0时，必传
+        self.sub_id = sub_id
+        # x号码，queryType=1时，必传
+        self.tel_x = tel_x
+        # 格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+        # 
+        # This parameter is required.
+        self.ts = ts
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.phone is not None:
+            result['Phone'] = self.phone
+        if self.query_type is not None:
+            result['QueryType'] = self.query_type
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.sub_id is not None:
+            result['SubId'] = self.sub_id
+        if self.tel_x is not None:
+            result['TelX'] = self.tel_x
+        if self.ts is not None:
+            result['Ts'] = self.ts
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Phone') is not None:
+            self.phone = m.get('Phone')
+        if m.get('QueryType') is not None:
+            self.query_type = m.get('QueryType')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SubId') is not None:
+            self.sub_id = m.get('SubId')
+        if m.get('TelX') is not None:
+            self.tel_x = m.get('TelX')
+        if m.get('Ts') is not None:
+            self.ts = m.get('Ts')
+        return self
+
+
+class QueryAxbBindFixedLineResponseBodyDataExtra(TeaModel):
+    def __init__(
+        self,
+        callrecording: str = None,
+    ):
+        # 录音控制，仅下列值有效。默认是0（不开通录音功能）。 0：不录音 1：录音
+        self.callrecording = callrecording
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.callrecording is not None:
+            result['Callrecording'] = self.callrecording
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Callrecording') is not None:
+            self.callrecording = m.get('Callrecording')
+        return self
+
+
+class QueryAxbBindFixedLineResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        anucode: str = None,
+        anucodecalled: str = None,
+        areacode: str = None,
+        expiration: str = None,
+        extra: QueryAxbBindFixedLineResponseBodyDataExtra = None,
+        remark: str = None,
+        subid: str = None,
+        subts: str = None,
+        tanucode_connect: str = None,
+        tel_a: str = None,
+        tel_b: str = None,
+        tel_x: str = None,
+    ):
+        # 接通前放音编码，放音编码必须包含3个场景的编码。按照“B->X,A->X,其他号码->X”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2,3”表示B->X放音编号为1，A->X放音编号为2， 其他号码->X放音编号为3
+        self.anucode = anucode
+        # 接通后被叫侧放音编码
+        self.anucodecalled = anucodecalled
+        # 隐私号码区号
+        self.areacode = areacode
+        # 绑定过期时间
+        self.expiration = expiration
+        # 额外字段
+        self.extra = extra
+        # 接入商自有字段，最大100字符长度
+        self.remark = remark
+        # 绑定id
+        self.subid = subid
+        # 绑定时间，格式为yyyyMMddHHmmss。时间采用北京时间，24小时制。
+        self.subts = subts
+        # 接通后主叫侧放音编码
+        self.tanucode_connect = tanucode_connect
+        # A号码
+        self.tel_a = tel_a
+        # B号码
+        self.tel_b = tel_b
+        # 小号号码
+        self.tel_x = tel_x
+
+    def validate(self):
+        if self.extra:
+            self.extra.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.anucode is not None:
+            result['Anucode'] = self.anucode
+        if self.anucodecalled is not None:
+            result['Anucodecalled'] = self.anucodecalled
+        if self.areacode is not None:
+            result['Areacode'] = self.areacode
+        if self.expiration is not None:
+            result['Expiration'] = self.expiration
+        if self.extra is not None:
+            result['Extra'] = self.extra.to_map()
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.subid is not None:
+            result['Subid'] = self.subid
+        if self.subts is not None:
+            result['Subts'] = self.subts
+        if self.tanucode_connect is not None:
+            result['TAnucodeConnect'] = self.tanucode_connect
+        if self.tel_a is not None:
+            result['TelA'] = self.tel_a
+        if self.tel_b is not None:
+            result['TelB'] = self.tel_b
+        if self.tel_x is not None:
+            result['TelX'] = self.tel_x
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Anucode') is not None:
+            self.anucode = m.get('Anucode')
+        if m.get('Anucodecalled') is not None:
+            self.anucodecalled = m.get('Anucodecalled')
+        if m.get('Areacode') is not None:
+            self.areacode = m.get('Areacode')
+        if m.get('Expiration') is not None:
+            self.expiration = m.get('Expiration')
+        if m.get('Extra') is not None:
+            temp_model = QueryAxbBindFixedLineResponseBodyDataExtra()
+            self.extra = temp_model.from_map(m['Extra'])
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('Subid') is not None:
+            self.subid = m.get('Subid')
+        if m.get('Subts') is not None:
+            self.subts = m.get('Subts')
+        if m.get('TAnucodeConnect') is not None:
+            self.tanucode_connect = m.get('TAnucodeConnect')
+        if m.get('TelA') is not None:
+            self.tel_a = m.get('TelA')
+        if m.get('TelB') is not None:
+            self.tel_b = m.get('TelB')
+        if m.get('TelX') is not None:
+            self.tel_x = m.get('TelX')
+        return self
+
+
+class QueryAxbBindFixedLineResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: QueryAxbBindFixedLineResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        # 响应码
+        self.code = code
+        # 绑定信息
+        self.data = data
+        # 描述信息
+        self.message = message
+        self.request_id = request_id
+        # 处理是否成功 true-成功
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = QueryAxbBindFixedLineResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryAxbBindFixedLineResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryAxbBindFixedLineResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryAxbBindFixedLineResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryAxnBindFixedLineRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        order_id: str = None,
+        owner_id: int = None,
+        phone: str = None,
+        query_type: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        sub_id: str = None,
+        tel_x: str = None,
+        ts: str = None,
+    ):
+        # 业务id标识，由阿里云分配给客户侧
+        # 
+        # This parameter is required.
+        self.app_id = app_id
+        # 消息请求唯一标识
+        # 
+        # This parameter is required.
+        self.order_id = order_id
+        self.owner_id = owner_id
+        # A号码，queryType=1时，必传
+        self.phone = phone
+        # 查询类型 0：根据绑定id查询 1：根据A号码查询 2：根据X查询
+        # 
+        # This parameter is required.
+        self.query_type = query_type
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # 绑定id queryType=0时，必传
+        self.sub_id = sub_id
+        # 隐私号码
+        self.tel_x = tel_x
+        # 格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+        # 
+        # This parameter is required.
+        self.ts = ts
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.phone is not None:
+            result['Phone'] = self.phone
+        if self.query_type is not None:
+            result['QueryType'] = self.query_type
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.sub_id is not None:
+            result['SubId'] = self.sub_id
+        if self.tel_x is not None:
+            result['TelX'] = self.tel_x
+        if self.ts is not None:
+            result['Ts'] = self.ts
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Phone') is not None:
+            self.phone = m.get('Phone')
+        if m.get('QueryType') is not None:
+            self.query_type = m.get('QueryType')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SubId') is not None:
+            self.sub_id = m.get('SubId')
+        if m.get('TelX') is not None:
+            self.tel_x = m.get('TelX')
+        if m.get('Ts') is not None:
+            self.ts = m.get('Ts')
+        return self
+
+
+class QueryAxnBindFixedLineResponseBodyDataExtra(TeaModel):
+    def __init__(
+        self,
+        callback: str = None,
+        callrecording: str = None,
+    ):
+        # A通过X呼叫，即A主叫X，仅下列值有效。默认是0。 0：不能外呼 1：接续最近的N号码 2：回拨固定号码：telB
+        self.callback = callback
+        # 录音控制，仅下列值有效。默认是0（不开通录音功能）。 0：不录音 1：录音
+        self.callrecording = callrecording
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.callback is not None:
+            result['Callback'] = self.callback
+        if self.callrecording is not None:
+            result['Callrecording'] = self.callrecording
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Callback') is not None:
+            self.callback = m.get('Callback')
+        if m.get('Callrecording') is not None:
+            self.callrecording = m.get('Callrecording')
+        return self
+
+
+class QueryAxnBindFixedLineResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        anucode: str = None,
+        anucodecalled: str = None,
+        areacode: str = None,
+        expiration: str = None,
+        extra: QueryAxnBindFixedLineResponseBodyDataExtra = None,
+        remark: str = None,
+        subid: str = None,
+        subts: str = None,
+        tanucode_connect: str = None,
+        tel_a: str = None,
+        tel_b: str = None,
+        tel_x: str = None,
+    ):
+        # 接通前放音啊编码
+        self.anucode = anucode
+        # 被叫侧放音编码
+        self.anucodecalled = anucodecalled
+        # 隐私号码区号
+        self.areacode = areacode
+        # 过期时间
+        self.expiration = expiration
+        # 额外字段
+        self.extra = extra
+        # 接入商自有字段，最大100字符长度
+        self.remark = remark
+        # 绑定id
+        self.subid = subid
+        # 格式为yyyyMMddHHmmss。时间采用北京时间，24小时制。
+        self.subts = subts
+        # 接通后主叫侧放音编码
+        self.tanucode_connect = tanucode_connect
+        # A号码
+        self.tel_a = tel_a
+        # N号码
+        self.tel_b = tel_b
+        # 隐私号码
+        self.tel_x = tel_x
+
+    def validate(self):
+        if self.extra:
+            self.extra.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.anucode is not None:
+            result['Anucode'] = self.anucode
+        if self.anucodecalled is not None:
+            result['Anucodecalled'] = self.anucodecalled
+        if self.areacode is not None:
+            result['Areacode'] = self.areacode
+        if self.expiration is not None:
+            result['Expiration'] = self.expiration
+        if self.extra is not None:
+            result['Extra'] = self.extra.to_map()
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.subid is not None:
+            result['Subid'] = self.subid
+        if self.subts is not None:
+            result['Subts'] = self.subts
+        if self.tanucode_connect is not None:
+            result['TAnucodeConnect'] = self.tanucode_connect
+        if self.tel_a is not None:
+            result['TelA'] = self.tel_a
+        if self.tel_b is not None:
+            result['TelB'] = self.tel_b
+        if self.tel_x is not None:
+            result['TelX'] = self.tel_x
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Anucode') is not None:
+            self.anucode = m.get('Anucode')
+        if m.get('Anucodecalled') is not None:
+            self.anucodecalled = m.get('Anucodecalled')
+        if m.get('Areacode') is not None:
+            self.areacode = m.get('Areacode')
+        if m.get('Expiration') is not None:
+            self.expiration = m.get('Expiration')
+        if m.get('Extra') is not None:
+            temp_model = QueryAxnBindFixedLineResponseBodyDataExtra()
+            self.extra = temp_model.from_map(m['Extra'])
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('Subid') is not None:
+            self.subid = m.get('Subid')
+        if m.get('Subts') is not None:
+            self.subts = m.get('Subts')
+        if m.get('TAnucodeConnect') is not None:
+            self.tanucode_connect = m.get('TAnucodeConnect')
+        if m.get('TelA') is not None:
+            self.tel_a = m.get('TelA')
+        if m.get('TelB') is not None:
+            self.tel_b = m.get('TelB')
+        if m.get('TelX') is not None:
+            self.tel_x = m.get('TelX')
+        return self
+
+
+class QueryAxnBindFixedLineResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: List[QueryAxnBindFixedLineResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        # 响应码
+        self.code = code
+        # 绑定对象
+        self.data = data
+        # 描述信息
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = QueryAxnBindFixedLineResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryAxnBindFixedLineResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryAxnBindFixedLineResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryAxnBindFixedLineResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryAxnExtensionBindFixedLineRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        order_id: str = None,
+        owner_id: int = None,
+        query_type: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        sub_id: str = None,
+        tel_a: str = None,
+        ts: str = None,
+    ):
+        # 业务id标识，由阿里云分配给客户侧
+        # 
+        # This parameter is required.
+        self.app_id = app_id
+        # 消息请求标识
+        # 
+        # This parameter is required.
+        self.order_id = order_id
+        self.owner_id = owner_id
+        # 查询类型 0：根据绑定id查询 1：根据A号码查询
+        # 
+        # This parameter is required.
+        self.query_type = query_type
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # 绑定id，queryType=0时，必传
+        self.sub_id = sub_id
+        # A号码，queryType=1时，必传
+        self.tel_a = tel_a
+        # 格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+        # 
+        # This parameter is required.
+        self.ts = ts
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.query_type is not None:
+            result['QueryType'] = self.query_type
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.sub_id is not None:
+            result['SubId'] = self.sub_id
+        if self.tel_a is not None:
+            result['TelA'] = self.tel_a
+        if self.ts is not None:
+            result['Ts'] = self.ts
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('QueryType') is not None:
+            self.query_type = m.get('QueryType')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SubId') is not None:
+            self.sub_id = m.get('SubId')
+        if m.get('TelA') is not None:
+            self.tel_a = m.get('TelA')
+        if m.get('Ts') is not None:
+            self.ts = m.get('Ts')
+        return self
+
+
+class QueryAxnExtensionBindFixedLineResponseBodyDataExtraaxx(TeaModel):
+    def __init__(
+        self,
+        callback: str = None,
+        callrecording: str = None,
+    ):
+        # 回拨控制
+        self.callback = callback
+        # 录音控制
+        self.callrecording = callrecording
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.callback is not None:
+            result['Callback'] = self.callback
+        if self.callrecording is not None:
+            result['Callrecording'] = self.callrecording
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Callback') is not None:
+            self.callback = m.get('Callback')
+        if m.get('Callrecording') is not None:
+            self.callrecording = m.get('Callrecording')
+        return self
+
+
+class QueryAxnExtensionBindFixedLineResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        anucode: str = None,
+        anucodecalled: str = None,
+        areacode: str = None,
+        expiration: str = None,
+        extraaxx: QueryAxnExtensionBindFixedLineResponseBodyDataExtraaxx = None,
+        remark: str = None,
+        subid: str = None,
+        subts: str = None,
+        tanucode_connect: str = None,
+        tel_a: str = None,
+        tel_x: str = None,
+        tel_xext: str = None,
+    ):
+        # 放音编码
+        self.anucode = anucode
+        # 被叫侧放音
+        self.anucodecalled = anucodecalled
+        # 隐私号码区号
+        self.areacode = areacode
+        # 过期时间
+        self.expiration = expiration
+        # 额外字段
+        self.extraaxx = extraaxx
+        # 接入商自有字段
+        self.remark = remark
+        # 绑定ID
+        self.subid = subid
+        # 绑定时间
+        self.subts = subts
+        # 接通后主叫侧放音编码
+        self.tanucode_connect = tanucode_connect
+        # A号码
+        self.tel_a = tel_a
+        # 小号号码
+        self.tel_x = tel_x
+        # 分机号
+        self.tel_xext = tel_xext
+
+    def validate(self):
+        if self.extraaxx:
+            self.extraaxx.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.anucode is not None:
+            result['Anucode'] = self.anucode
+        if self.anucodecalled is not None:
+            result['Anucodecalled'] = self.anucodecalled
+        if self.areacode is not None:
+            result['Areacode'] = self.areacode
+        if self.expiration is not None:
+            result['Expiration'] = self.expiration
+        if self.extraaxx is not None:
+            result['Extraaxx'] = self.extraaxx.to_map()
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.subid is not None:
+            result['Subid'] = self.subid
+        if self.subts is not None:
+            result['Subts'] = self.subts
+        if self.tanucode_connect is not None:
+            result['TAnucodeConnect'] = self.tanucode_connect
+        if self.tel_a is not None:
+            result['TelA'] = self.tel_a
+        if self.tel_x is not None:
+            result['TelX'] = self.tel_x
+        if self.tel_xext is not None:
+            result['TelXext'] = self.tel_xext
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Anucode') is not None:
+            self.anucode = m.get('Anucode')
+        if m.get('Anucodecalled') is not None:
+            self.anucodecalled = m.get('Anucodecalled')
+        if m.get('Areacode') is not None:
+            self.areacode = m.get('Areacode')
+        if m.get('Expiration') is not None:
+            self.expiration = m.get('Expiration')
+        if m.get('Extraaxx') is not None:
+            temp_model = QueryAxnExtensionBindFixedLineResponseBodyDataExtraaxx()
+            self.extraaxx = temp_model.from_map(m['Extraaxx'])
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('Subid') is not None:
+            self.subid = m.get('Subid')
+        if m.get('Subts') is not None:
+            self.subts = m.get('Subts')
+        if m.get('TAnucodeConnect') is not None:
+            self.tanucode_connect = m.get('TAnucodeConnect')
+        if m.get('TelA') is not None:
+            self.tel_a = m.get('TelA')
+        if m.get('TelX') is not None:
+            self.tel_x = m.get('TelX')
+        if m.get('TelXext') is not None:
+            self.tel_xext = m.get('TelXext')
+        return self
+
+
+class QueryAxnExtensionBindFixedLineResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: List[QueryAxnExtensionBindFixedLineResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        # 响应码
+        self.code = code
+        # 查询绑定对象集合，具体对象字段见绑定请求
+        self.data = data
+        # 描述信息
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = QueryAxnExtensionBindFixedLineResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryAxnExtensionBindFixedLineResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryAxnExtensionBindFixedLineResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryAxnExtensionBindFixedLineResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -11010,6 +14166,1364 @@ class UnlockSecretNoResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UnlockSecretNoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateAxbBindFixedLineRequestExtra(TeaModel):
+    def __init__(
+        self,
+        callrecording: str = None,
+    ):
+        # 录音控制， 0：不录音 1：录音
+        self.callrecording = callrecording
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.callrecording is not None:
+            result['Callrecording'] = self.callrecording
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Callrecording') is not None:
+            self.callrecording = m.get('Callrecording')
+        return self
+
+
+class UpdateAxbBindFixedLineRequest(TeaModel):
+    def __init__(
+        self,
+        anucode: str = None,
+        anucodecalled: str = None,
+        app_id: str = None,
+        expiration: str = None,
+        extra: UpdateAxbBindFixedLineRequestExtra = None,
+        order_id: str = None,
+        owner_id: int = None,
+        remark: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        sub_id: str = None,
+        subts: str = None,
+        tanucode_connect: str = None,
+        tel_a: str = None,
+        tel_b: str = None,
+        ts: str = None,
+    ):
+        # 主叫侧放音编码
+        self.anucode = anucode
+        # 被叫侧放音编码
+        self.anucodecalled = anucodecalled
+        # 应用id，请求和绑定时的appId必须一致
+        # 
+        # This parameter is required.
+        self.app_id = app_id
+        # 过期时间,单位：秒，必须为数字 0：不会自动解绑 非0：自动解绑周期
+        self.expiration = expiration
+        # 扩展参数
+        self.extra = extra
+        # 消息请求标识
+        # 
+        # This parameter is required.
+        self.order_id = order_id
+        self.owner_id = owner_id
+        # 接入商自有字段，不能超过100个字符
+        self.remark = remark
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # 绑定id
+        # 
+        # This parameter is required.
+        self.sub_id = sub_id
+        # 格式为yyyyMMddHHmmss。时间采用北京时间，24小时制。
+        # 
+        # This parameter is required.
+        self.subts = subts
+        # 接通后主叫侧的放音编码
+        self.tanucode_connect = tanucode_connect
+        # 真实号码，telA,telB不允许同时更新
+        self.tel_a = tel_a
+        # 对端号码，telA,telB不允许同时更新
+        self.tel_b = tel_b
+        # 业务时间戳，格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+        # 
+        # This parameter is required.
+        self.ts = ts
+
+    def validate(self):
+        if self.extra:
+            self.extra.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.anucode is not None:
+            result['Anucode'] = self.anucode
+        if self.anucodecalled is not None:
+            result['Anucodecalled'] = self.anucodecalled
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.expiration is not None:
+            result['Expiration'] = self.expiration
+        if self.extra is not None:
+            result['Extra'] = self.extra.to_map()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.sub_id is not None:
+            result['SubId'] = self.sub_id
+        if self.subts is not None:
+            result['Subts'] = self.subts
+        if self.tanucode_connect is not None:
+            result['TAnucodeConnect'] = self.tanucode_connect
+        if self.tel_a is not None:
+            result['TelA'] = self.tel_a
+        if self.tel_b is not None:
+            result['TelB'] = self.tel_b
+        if self.ts is not None:
+            result['Ts'] = self.ts
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Anucode') is not None:
+            self.anucode = m.get('Anucode')
+        if m.get('Anucodecalled') is not None:
+            self.anucodecalled = m.get('Anucodecalled')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Expiration') is not None:
+            self.expiration = m.get('Expiration')
+        if m.get('Extra') is not None:
+            temp_model = UpdateAxbBindFixedLineRequestExtra()
+            self.extra = temp_model.from_map(m['Extra'])
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SubId') is not None:
+            self.sub_id = m.get('SubId')
+        if m.get('Subts') is not None:
+            self.subts = m.get('Subts')
+        if m.get('TAnucodeConnect') is not None:
+            self.tanucode_connect = m.get('TAnucodeConnect')
+        if m.get('TelA') is not None:
+            self.tel_a = m.get('TelA')
+        if m.get('TelB') is not None:
+            self.tel_b = m.get('TelB')
+        if m.get('Ts') is not None:
+            self.ts = m.get('Ts')
+        return self
+
+
+class UpdateAxbBindFixedLineShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        anucode: str = None,
+        anucodecalled: str = None,
+        app_id: str = None,
+        expiration: str = None,
+        extra_shrink: str = None,
+        order_id: str = None,
+        owner_id: int = None,
+        remark: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        sub_id: str = None,
+        subts: str = None,
+        tanucode_connect: str = None,
+        tel_a: str = None,
+        tel_b: str = None,
+        ts: str = None,
+    ):
+        # 主叫侧放音编码
+        self.anucode = anucode
+        # 被叫侧放音编码
+        self.anucodecalled = anucodecalled
+        # 应用id，请求和绑定时的appId必须一致
+        # 
+        # This parameter is required.
+        self.app_id = app_id
+        # 过期时间,单位：秒，必须为数字 0：不会自动解绑 非0：自动解绑周期
+        self.expiration = expiration
+        # 扩展参数
+        self.extra_shrink = extra_shrink
+        # 消息请求标识
+        # 
+        # This parameter is required.
+        self.order_id = order_id
+        self.owner_id = owner_id
+        # 接入商自有字段，不能超过100个字符
+        self.remark = remark
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # 绑定id
+        # 
+        # This parameter is required.
+        self.sub_id = sub_id
+        # 格式为yyyyMMddHHmmss。时间采用北京时间，24小时制。
+        # 
+        # This parameter is required.
+        self.subts = subts
+        # 接通后主叫侧的放音编码
+        self.tanucode_connect = tanucode_connect
+        # 真实号码，telA,telB不允许同时更新
+        self.tel_a = tel_a
+        # 对端号码，telA,telB不允许同时更新
+        self.tel_b = tel_b
+        # 业务时间戳，格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+        # 
+        # This parameter is required.
+        self.ts = ts
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.anucode is not None:
+            result['Anucode'] = self.anucode
+        if self.anucodecalled is not None:
+            result['Anucodecalled'] = self.anucodecalled
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.expiration is not None:
+            result['Expiration'] = self.expiration
+        if self.extra_shrink is not None:
+            result['Extra'] = self.extra_shrink
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.sub_id is not None:
+            result['SubId'] = self.sub_id
+        if self.subts is not None:
+            result['Subts'] = self.subts
+        if self.tanucode_connect is not None:
+            result['TAnucodeConnect'] = self.tanucode_connect
+        if self.tel_a is not None:
+            result['TelA'] = self.tel_a
+        if self.tel_b is not None:
+            result['TelB'] = self.tel_b
+        if self.ts is not None:
+            result['Ts'] = self.ts
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Anucode') is not None:
+            self.anucode = m.get('Anucode')
+        if m.get('Anucodecalled') is not None:
+            self.anucodecalled = m.get('Anucodecalled')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Expiration') is not None:
+            self.expiration = m.get('Expiration')
+        if m.get('Extra') is not None:
+            self.extra_shrink = m.get('Extra')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SubId') is not None:
+            self.sub_id = m.get('SubId')
+        if m.get('Subts') is not None:
+            self.subts = m.get('Subts')
+        if m.get('TAnucodeConnect') is not None:
+            self.tanucode_connect = m.get('TAnucodeConnect')
+        if m.get('TelA') is not None:
+            self.tel_a = m.get('TelA')
+        if m.get('TelB') is not None:
+            self.tel_b = m.get('TelB')
+        if m.get('Ts') is not None:
+            self.ts = m.get('Ts')
+        return self
+
+
+class UpdateAxbBindFixedLineResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        success: bool = None,
+    ):
+        # 响应码 0-成功
+        self.code = code
+        # 响应消息
+        self.message = message
+        # 是否处理成功  true-成功
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateAxbBindFixedLineResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: UpdateAxbBindFixedLineResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = UpdateAxbBindFixedLineResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateAxbBindFixedLineResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateAxbBindFixedLineResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateAxbBindFixedLineResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateAxnBindFixedLineRequestExtra(TeaModel):
+    def __init__(
+        self,
+        callback: str = None,
+        callrecording: str = None,
+    ):
+        # A通过X呼叫，即A主叫X，仅下列值有效。默认是0。 0：不能外呼 1：接续最近的N号码 2：回拨固定号码：telB
+        self.callback = callback
+        # 录音控制，仅下列值有效。默认是0（不开通录音功能）。 0：不录音 1：录音
+        self.callrecording = callrecording
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.callback is not None:
+            result['Callback'] = self.callback
+        if self.callrecording is not None:
+            result['Callrecording'] = self.callrecording
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Callback') is not None:
+            self.callback = m.get('Callback')
+        if m.get('Callrecording') is not None:
+            self.callrecording = m.get('Callrecording')
+        return self
+
+
+class UpdateAxnBindFixedLineRequest(TeaModel):
+    def __init__(
+        self,
+        anucode: str = None,
+        anucodecalled: str = None,
+        app_id: str = None,
+        expiration: str = None,
+        extra: UpdateAxnBindFixedLineRequestExtra = None,
+        order_id: str = None,
+        owner_id: int = None,
+        remark: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        sub_id: str = None,
+        subts: str = None,
+        tanucode_connect: str = None,
+        tel_a: str = None,
+        tel_b: str = None,
+        ts: str = None,
+    ):
+        # 放音编码必须包含3个场景的编码。按照“B->X,A->X,其他号码->X”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2,3”表示B->X放音编号为1，A->X放音编号为2， 其他号码->X放音编号为3。
+        self.anucode = anucode
+        # 被叫侧放音编码  被叫放音编码必须包含2个场景的编码。按照“A被叫,其他号码被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫侧接听时的放音编号为1，其他号码为被叫侧接听时的放音编号为2。
+        self.anucodecalled = anucodecalled
+        # 业务id标识，由阿里云分配给客户侧
+        # 
+        # This parameter is required.
+        self.app_id = app_id
+        # 位：秒，必须为数字 0：不会自动解绑 非0：自动解绑周期
+        self.expiration = expiration
+        # 额外字段
+        self.extra = extra
+        # 消息请求唯一标识
+        # 
+        # This parameter is required.
+        self.order_id = order_id
+        self.owner_id = owner_id
+        # 接入商自有字段，最大100字符长度
+        self.remark = remark
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # 绑定id
+        # 
+        # This parameter is required.
+        self.sub_id = sub_id
+        # 格式为yyyyMMddHHmmss。时间采用北京时间，24小时制。
+        # 
+        # This parameter is required.
+        self.subts = subts
+        # 接通后主叫侧放音编码  接通后主叫侧放音编码必须包含2个场景的编码。按照“A被叫,其他号码被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫时主叫侧的放音编号为1，其他号码被叫为被叫时主叫侧的放音编号为2
+        self.tanucode_connect = tanucode_connect
+        # A号码
+        self.tel_a = tel_a
+        # B号码
+        self.tel_b = tel_b
+        # 格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+        # 
+        # This parameter is required.
+        self.ts = ts
+
+    def validate(self):
+        if self.extra:
+            self.extra.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.anucode is not None:
+            result['Anucode'] = self.anucode
+        if self.anucodecalled is not None:
+            result['Anucodecalled'] = self.anucodecalled
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.expiration is not None:
+            result['Expiration'] = self.expiration
+        if self.extra is not None:
+            result['Extra'] = self.extra.to_map()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.sub_id is not None:
+            result['SubId'] = self.sub_id
+        if self.subts is not None:
+            result['Subts'] = self.subts
+        if self.tanucode_connect is not None:
+            result['TAnucodeConnect'] = self.tanucode_connect
+        if self.tel_a is not None:
+            result['TelA'] = self.tel_a
+        if self.tel_b is not None:
+            result['TelB'] = self.tel_b
+        if self.ts is not None:
+            result['Ts'] = self.ts
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Anucode') is not None:
+            self.anucode = m.get('Anucode')
+        if m.get('Anucodecalled') is not None:
+            self.anucodecalled = m.get('Anucodecalled')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Expiration') is not None:
+            self.expiration = m.get('Expiration')
+        if m.get('Extra') is not None:
+            temp_model = UpdateAxnBindFixedLineRequestExtra()
+            self.extra = temp_model.from_map(m['Extra'])
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SubId') is not None:
+            self.sub_id = m.get('SubId')
+        if m.get('Subts') is not None:
+            self.subts = m.get('Subts')
+        if m.get('TAnucodeConnect') is not None:
+            self.tanucode_connect = m.get('TAnucodeConnect')
+        if m.get('TelA') is not None:
+            self.tel_a = m.get('TelA')
+        if m.get('TelB') is not None:
+            self.tel_b = m.get('TelB')
+        if m.get('Ts') is not None:
+            self.ts = m.get('Ts')
+        return self
+
+
+class UpdateAxnBindFixedLineShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        anucode: str = None,
+        anucodecalled: str = None,
+        app_id: str = None,
+        expiration: str = None,
+        extra_shrink: str = None,
+        order_id: str = None,
+        owner_id: int = None,
+        remark: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        sub_id: str = None,
+        subts: str = None,
+        tanucode_connect: str = None,
+        tel_a: str = None,
+        tel_b: str = None,
+        ts: str = None,
+    ):
+        # 放音编码必须包含3个场景的编码。按照“B->X,A->X,其他号码->X”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2,3”表示B->X放音编号为1，A->X放音编号为2， 其他号码->X放音编号为3。
+        self.anucode = anucode
+        # 被叫侧放音编码  被叫放音编码必须包含2个场景的编码。按照“A被叫,其他号码被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫侧接听时的放音编号为1，其他号码为被叫侧接听时的放音编号为2。
+        self.anucodecalled = anucodecalled
+        # 业务id标识，由阿里云分配给客户侧
+        # 
+        # This parameter is required.
+        self.app_id = app_id
+        # 位：秒，必须为数字 0：不会自动解绑 非0：自动解绑周期
+        self.expiration = expiration
+        # 额外字段
+        self.extra_shrink = extra_shrink
+        # 消息请求唯一标识
+        # 
+        # This parameter is required.
+        self.order_id = order_id
+        self.owner_id = owner_id
+        # 接入商自有字段，最大100字符长度
+        self.remark = remark
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # 绑定id
+        # 
+        # This parameter is required.
+        self.sub_id = sub_id
+        # 格式为yyyyMMddHHmmss。时间采用北京时间，24小时制。
+        # 
+        # This parameter is required.
+        self.subts = subts
+        # 接通后主叫侧放音编码  接通后主叫侧放音编码必须包含2个场景的编码。按照“A被叫,其他号码被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫时主叫侧的放音编号为1，其他号码被叫为被叫时主叫侧的放音编号为2
+        self.tanucode_connect = tanucode_connect
+        # A号码
+        self.tel_a = tel_a
+        # B号码
+        self.tel_b = tel_b
+        # 格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+        # 
+        # This parameter is required.
+        self.ts = ts
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.anucode is not None:
+            result['Anucode'] = self.anucode
+        if self.anucodecalled is not None:
+            result['Anucodecalled'] = self.anucodecalled
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.expiration is not None:
+            result['Expiration'] = self.expiration
+        if self.extra_shrink is not None:
+            result['Extra'] = self.extra_shrink
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.sub_id is not None:
+            result['SubId'] = self.sub_id
+        if self.subts is not None:
+            result['Subts'] = self.subts
+        if self.tanucode_connect is not None:
+            result['TAnucodeConnect'] = self.tanucode_connect
+        if self.tel_a is not None:
+            result['TelA'] = self.tel_a
+        if self.tel_b is not None:
+            result['TelB'] = self.tel_b
+        if self.ts is not None:
+            result['Ts'] = self.ts
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Anucode') is not None:
+            self.anucode = m.get('Anucode')
+        if m.get('Anucodecalled') is not None:
+            self.anucodecalled = m.get('Anucodecalled')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Expiration') is not None:
+            self.expiration = m.get('Expiration')
+        if m.get('Extra') is not None:
+            self.extra_shrink = m.get('Extra')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SubId') is not None:
+            self.sub_id = m.get('SubId')
+        if m.get('Subts') is not None:
+            self.subts = m.get('Subts')
+        if m.get('TAnucodeConnect') is not None:
+            self.tanucode_connect = m.get('TAnucodeConnect')
+        if m.get('TelA') is not None:
+            self.tel_a = m.get('TelA')
+        if m.get('TelB') is not None:
+            self.tel_b = m.get('TelB')
+        if m.get('Ts') is not None:
+            self.ts = m.get('Ts')
+        return self
+
+
+class UpdateAxnBindFixedLineResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        success: bool = None,
+    ):
+        # 响应码 0：成功，其它失败，具体见文档
+        self.code = code
+        # 描述信息
+        self.message = message
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateAxnBindFixedLineResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: UpdateAxnBindFixedLineResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = UpdateAxnBindFixedLineResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateAxnBindFixedLineResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateAxnBindFixedLineResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateAxnBindFixedLineResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateAxnExtensionBindFixedLineRequestExtraaxx(TeaModel):
+    def __init__(
+        self,
+        callback: str = None,
+        callrecording: str = None,
+    ):
+        # 可选。 A通过X呼叫，即A主叫X，仅下列值有效。默认是0。 0：不能外呼 1：接续最近的B号码
+        self.callback = callback
+        # 录音控制，仅下列值有效。默认是0（不开通录音功能）。 0：不录音 1：录音
+        self.callrecording = callrecording
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.callback is not None:
+            result['Callback'] = self.callback
+        if self.callrecording is not None:
+            result['Callrecording'] = self.callrecording
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Callback') is not None:
+            self.callback = m.get('Callback')
+        if m.get('Callrecording') is not None:
+            self.callrecording = m.get('Callrecording')
+        return self
+
+
+class UpdateAxnExtensionBindFixedLineRequest(TeaModel):
+    def __init__(
+        self,
+        anucode: str = None,
+        anucodecalled: str = None,
+        app_id: str = None,
+        expiration: str = None,
+        extraaxx: UpdateAxnExtensionBindFixedLineRequestExtraaxx = None,
+        order_id: str = None,
+        owner_id: int = None,
+        remark: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        sub_id: str = None,
+        subts: str = None,
+        tanucode_connect: str = None,
+        tel_a: str = None,
+        ts: str = None,
+    ):
+        # 放音编码必须包含3个场景的编码。按照“B->X,A->X,其他号码->X”的顺序填写编码，编码之间以逗号分隔。  AXN分机号业务的放音编码,B->X和其他号码->X的编码一致  比如：“1,2,3”表示B->X放音编号为1，A->X放音编号为2， 其他号码->X放音编号为3
+        self.anucode = anucode
+        # 被叫侧放音编码  被叫放音编码必须包含2个场景的编码。按照“A被叫,其他号码被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫侧接听时的放音编号为1，其他号码为被叫侧接听时的放音编号为2
+        self.anucodecalled = anucodecalled
+        # 业务id标识，由阿里云分配给客户侧
+        # 
+        # This parameter is required.
+        self.app_id = app_id
+        # 单位：秒，必须为数字 0：不会自动解绑 非0：自动解绑周期
+        self.expiration = expiration
+        # AXx的扩展参数项
+        self.extraaxx = extraaxx
+        # 消息请求标识
+        # 
+        # This parameter is required.
+        self.order_id = order_id
+        self.owner_id = owner_id
+        # 接入商自有字段，最大100字符长度
+        self.remark = remark
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # 绑定id
+        # 
+        # This parameter is required.
+        self.sub_id = sub_id
+        # 格式为yyyyMMddHHmmss。时间采用北京时间，24小时制。
+        # 
+        # This parameter is required.
+        self.subts = subts
+        # 接通后主叫侧放音编码  接通后主叫侧放音编码必须包含2个场景的编码。按照“A被叫,其他号码被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫时主叫侧的放音编号为1，其他号码为被叫时主叫侧的放音编号为2
+        self.tanucode_connect = tanucode_connect
+        # A号码
+        # 
+        # This parameter is required.
+        self.tel_a = tel_a
+        # 格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+        # 
+        # This parameter is required.
+        self.ts = ts
+
+    def validate(self):
+        if self.extraaxx:
+            self.extraaxx.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.anucode is not None:
+            result['Anucode'] = self.anucode
+        if self.anucodecalled is not None:
+            result['Anucodecalled'] = self.anucodecalled
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.expiration is not None:
+            result['Expiration'] = self.expiration
+        if self.extraaxx is not None:
+            result['Extraaxx'] = self.extraaxx.to_map()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.sub_id is not None:
+            result['SubId'] = self.sub_id
+        if self.subts is not None:
+            result['Subts'] = self.subts
+        if self.tanucode_connect is not None:
+            result['TAnucodeConnect'] = self.tanucode_connect
+        if self.tel_a is not None:
+            result['TelA'] = self.tel_a
+        if self.ts is not None:
+            result['Ts'] = self.ts
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Anucode') is not None:
+            self.anucode = m.get('Anucode')
+        if m.get('Anucodecalled') is not None:
+            self.anucodecalled = m.get('Anucodecalled')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Expiration') is not None:
+            self.expiration = m.get('Expiration')
+        if m.get('Extraaxx') is not None:
+            temp_model = UpdateAxnExtensionBindFixedLineRequestExtraaxx()
+            self.extraaxx = temp_model.from_map(m['Extraaxx'])
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SubId') is not None:
+            self.sub_id = m.get('SubId')
+        if m.get('Subts') is not None:
+            self.subts = m.get('Subts')
+        if m.get('TAnucodeConnect') is not None:
+            self.tanucode_connect = m.get('TAnucodeConnect')
+        if m.get('TelA') is not None:
+            self.tel_a = m.get('TelA')
+        if m.get('Ts') is not None:
+            self.ts = m.get('Ts')
+        return self
+
+
+class UpdateAxnExtensionBindFixedLineShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        anucode: str = None,
+        anucodecalled: str = None,
+        app_id: str = None,
+        expiration: str = None,
+        extraaxx_shrink: str = None,
+        order_id: str = None,
+        owner_id: int = None,
+        remark: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        sub_id: str = None,
+        subts: str = None,
+        tanucode_connect: str = None,
+        tel_a: str = None,
+        ts: str = None,
+    ):
+        # 放音编码必须包含3个场景的编码。按照“B->X,A->X,其他号码->X”的顺序填写编码，编码之间以逗号分隔。  AXN分机号业务的放音编码,B->X和其他号码->X的编码一致  比如：“1,2,3”表示B->X放音编号为1，A->X放音编号为2， 其他号码->X放音编号为3
+        self.anucode = anucode
+        # 被叫侧放音编码  被叫放音编码必须包含2个场景的编码。按照“A被叫,其他号码被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫侧接听时的放音编号为1，其他号码为被叫侧接听时的放音编号为2
+        self.anucodecalled = anucodecalled
+        # 业务id标识，由阿里云分配给客户侧
+        # 
+        # This parameter is required.
+        self.app_id = app_id
+        # 单位：秒，必须为数字 0：不会自动解绑 非0：自动解绑周期
+        self.expiration = expiration
+        # AXx的扩展参数项
+        self.extraaxx_shrink = extraaxx_shrink
+        # 消息请求标识
+        # 
+        # This parameter is required.
+        self.order_id = order_id
+        self.owner_id = owner_id
+        # 接入商自有字段，最大100字符长度
+        self.remark = remark
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # 绑定id
+        # 
+        # This parameter is required.
+        self.sub_id = sub_id
+        # 格式为yyyyMMddHHmmss。时间采用北京时间，24小时制。
+        # 
+        # This parameter is required.
+        self.subts = subts
+        # 接通后主叫侧放音编码  接通后主叫侧放音编码必须包含2个场景的编码。按照“A被叫,其他号码被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫时主叫侧的放音编号为1，其他号码为被叫时主叫侧的放音编号为2
+        self.tanucode_connect = tanucode_connect
+        # A号码
+        # 
+        # This parameter is required.
+        self.tel_a = tel_a
+        # 格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+        # 
+        # This parameter is required.
+        self.ts = ts
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.anucode is not None:
+            result['Anucode'] = self.anucode
+        if self.anucodecalled is not None:
+            result['Anucodecalled'] = self.anucodecalled
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.expiration is not None:
+            result['Expiration'] = self.expiration
+        if self.extraaxx_shrink is not None:
+            result['Extraaxx'] = self.extraaxx_shrink
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.sub_id is not None:
+            result['SubId'] = self.sub_id
+        if self.subts is not None:
+            result['Subts'] = self.subts
+        if self.tanucode_connect is not None:
+            result['TAnucodeConnect'] = self.tanucode_connect
+        if self.tel_a is not None:
+            result['TelA'] = self.tel_a
+        if self.ts is not None:
+            result['Ts'] = self.ts
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Anucode') is not None:
+            self.anucode = m.get('Anucode')
+        if m.get('Anucodecalled') is not None:
+            self.anucodecalled = m.get('Anucodecalled')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Expiration') is not None:
+            self.expiration = m.get('Expiration')
+        if m.get('Extraaxx') is not None:
+            self.extraaxx_shrink = m.get('Extraaxx')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SubId') is not None:
+            self.sub_id = m.get('SubId')
+        if m.get('Subts') is not None:
+            self.subts = m.get('Subts')
+        if m.get('TAnucodeConnect') is not None:
+            self.tanucode_connect = m.get('TAnucodeConnect')
+        if m.get('TelA') is not None:
+            self.tel_a = m.get('TelA')
+        if m.get('Ts') is not None:
+            self.ts = m.get('Ts')
+        return self
+
+
+class UpdateAxnExtensionBindFixedLineResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        success: bool = None,
+    ):
+        # 响应码 0：成功，其它失败，具体见文档
+        self.code = code
+        # 描述信息
+        self.message = message
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateAxnExtensionBindFixedLineResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: UpdateAxnExtensionBindFixedLineResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = UpdateAxnExtensionBindFixedLineResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateAxnExtensionBindFixedLineResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateAxnExtensionBindFixedLineResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateAxnExtensionBindFixedLineResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

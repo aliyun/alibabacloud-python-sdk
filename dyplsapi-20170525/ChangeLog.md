@@ -1,3 +1,18 @@
+2025-05-07 Version: 2.4.0
+- Support API BindAxbFixedLine.
+- Support API BindAxnExtensionFixedLine.
+- Support API BindAxnFixedLine.
+- Support API DeleteAxbBindFixedLine.
+- Support API DeleteAxnBindFixedLine.
+- Support API DeleteAxnExtensionBindFixedLine.
+- Support API QueryAxbBindFixedLine.
+- Support API QueryAxnBindFixedLine.
+- Support API QueryAxnExtensionBindFixedLine.
+- Support API UpdateAxbBindFixedLine.
+- Support API UpdateAxnBindFixedLine.
+- Support API UpdateAxnExtensionBindFixedLine.
+
+
 2025-04-22 Version: 2.3.0
 - Support API DeleteSecretAPhoneNoToCust.
 - Support API QuerySecretAPhoneNoToCust.
