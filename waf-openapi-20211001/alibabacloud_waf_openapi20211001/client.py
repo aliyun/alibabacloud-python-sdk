@@ -105,16 +105,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ChangeResourceGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ChangeResourceGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ChangeResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def change_resource_group_with_options_async(
         self,
@@ -154,16 +148,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ChangeResourceGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ChangeResourceGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ChangeResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def change_resource_group(
         self,
@@ -229,16 +217,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ClearMajorProtectionBlackIpResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ClearMajorProtectionBlackIpResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ClearMajorProtectionBlackIpResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def clear_major_protection_black_ip_with_options_async(
         self,
@@ -278,16 +260,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ClearMajorProtectionBlackIpResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ClearMajorProtectionBlackIpResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ClearMajorProtectionBlackIpResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def clear_major_protection_black_ip(
         self,
@@ -351,16 +327,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CopyDefenseTemplateResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CopyDefenseTemplateResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.CopyDefenseTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def copy_defense_template_with_options_async(
         self,
@@ -398,16 +368,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CopyDefenseTemplateResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CopyDefenseTemplateResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.CopyDefenseTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def copy_defense_template(
         self,
@@ -479,16 +443,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateApiExportResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateApiExportResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.CreateApiExportResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_api_export_with_options_async(
         self,
@@ -534,16 +492,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateApiExportResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateApiExportResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.CreateApiExportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_api_export(
         self,
@@ -619,16 +571,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateCloudResourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateCloudResourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.CreateCloudResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_cloud_resource_with_options_async(
         self,
@@ -678,16 +624,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateCloudResourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateCloudResourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.CreateCloudResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_cloud_resource(
         self,
@@ -755,16 +695,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateDefenseResourceGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateDefenseResourceGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.CreateDefenseResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_defense_resource_group_with_options_async(
         self,
@@ -806,16 +740,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateDefenseResourceGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateDefenseResourceGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.CreateDefenseResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_defense_resource_group(
         self,
@@ -885,16 +813,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateDefenseRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateDefenseRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.CreateDefenseRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_defense_rule_with_options_async(
         self,
@@ -938,16 +860,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateDefenseRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateDefenseRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.CreateDefenseRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_defense_rule(
         self,
@@ -1021,16 +937,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateDefenseTemplateResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateDefenseTemplateResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.CreateDefenseTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_defense_template_with_options_async(
         self,
@@ -1078,16 +988,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateDefenseTemplateResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateDefenseTemplateResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.CreateDefenseTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_defense_template(
         self,
@@ -1165,16 +1069,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateDomainResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateDomainResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.CreateDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_domain_with_options_async(
         self,
@@ -1226,16 +1124,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateDomainResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateDomainResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.CreateDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_domain(
         self,
@@ -1311,16 +1203,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateHybridCloudGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateHybridCloudGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.CreateHybridCloudGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_hybrid_cloud_group_with_options_async(
         self,
@@ -1370,16 +1256,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateHybridCloudGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateHybridCloudGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.CreateHybridCloudGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_hybrid_cloud_group(
         self,
@@ -1453,16 +1333,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateMajorProtectionBlackIpResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateMajorProtectionBlackIpResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.CreateMajorProtectionBlackIpResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_major_protection_black_ip_with_options_async(
         self,
@@ -1510,16 +1384,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateMajorProtectionBlackIpResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateMajorProtectionBlackIpResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.CreateMajorProtectionBlackIpResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_major_protection_black_ip(
         self,
@@ -1589,16 +1457,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateMemberAccountsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateMemberAccountsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.CreateMemberAccountsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_member_accounts_with_options_async(
         self,
@@ -1638,16 +1500,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateMemberAccountsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateMemberAccountsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.CreateMemberAccountsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_member_accounts(
         self,
@@ -1707,16 +1563,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreatePostpaidInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreatePostpaidInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.CreatePostpaidInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_postpaid_instance_with_options_async(
         self,
@@ -1750,16 +1600,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreatePostpaidInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreatePostpaidInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.CreatePostpaidInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_postpaid_instance(
         self,
@@ -1831,16 +1675,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateSM2CertResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateSM2CertResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.CreateSM2CertResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_sm2cert_with_options_async(
         self,
@@ -1886,16 +1724,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateSM2CertResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.CreateSM2CertResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.CreateSM2CertResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_sm2cert(
         self,
@@ -1961,16 +1793,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DeleteApisecAbnormalsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DeleteApisecAbnormalsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DeleteApisecAbnormalsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_apisec_abnormals_with_options_async(
         self,
@@ -2010,16 +1836,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DeleteApisecAbnormalsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DeleteApisecAbnormalsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DeleteApisecAbnormalsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_apisec_abnormals(
         self,
@@ -2085,16 +1905,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DeleteApisecEventsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DeleteApisecEventsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DeleteApisecEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_apisec_events_with_options_async(
         self,
@@ -2134,16 +1948,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DeleteApisecEventsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DeleteApisecEventsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DeleteApisecEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_apisec_events(
         self,
@@ -2211,16 +2019,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DeleteCloudResourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DeleteCloudResourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DeleteCloudResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_cloud_resource_with_options_async(
         self,
@@ -2262,16 +2064,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DeleteCloudResourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DeleteCloudResourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DeleteCloudResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_cloud_resource(
         self,
@@ -2335,16 +2131,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DeleteDefenseResourceGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DeleteDefenseResourceGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DeleteDefenseResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_defense_resource_group_with_options_async(
         self,
@@ -2382,16 +2172,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DeleteDefenseResourceGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DeleteDefenseResourceGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DeleteDefenseResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_defense_resource_group(
         self,
@@ -2457,16 +2241,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DeleteDefenseRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DeleteDefenseRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DeleteDefenseRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_defense_rule_with_options_async(
         self,
@@ -2506,16 +2284,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DeleteDefenseRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DeleteDefenseRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DeleteDefenseRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_defense_rule(
         self,
@@ -2579,16 +2351,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DeleteDefenseTemplateResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DeleteDefenseTemplateResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DeleteDefenseTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_defense_template_with_options_async(
         self,
@@ -2626,16 +2392,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DeleteDefenseTemplateResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DeleteDefenseTemplateResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DeleteDefenseTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_defense_template(
         self,
@@ -2701,16 +2461,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DeleteDomainResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DeleteDomainResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DeleteDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_domain_with_options_async(
         self,
@@ -2750,16 +2504,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DeleteDomainResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DeleteDomainResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DeleteDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_domain(
         self,
@@ -2827,16 +2575,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DeleteMajorProtectionBlackIpResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DeleteMajorProtectionBlackIpResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DeleteMajorProtectionBlackIpResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_major_protection_black_ip_with_options_async(
         self,
@@ -2878,16 +2620,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DeleteMajorProtectionBlackIpResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DeleteMajorProtectionBlackIpResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DeleteMajorProtectionBlackIpResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_major_protection_black_ip(
         self,
@@ -2953,16 +2689,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DeleteMemberAccountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DeleteMemberAccountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DeleteMemberAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_member_account_with_options_async(
         self,
@@ -3002,16 +2732,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DeleteMemberAccountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DeleteMemberAccountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DeleteMemberAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_member_account(
         self,
@@ -3073,16 +2797,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeAccountDelegatedStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeAccountDelegatedStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeAccountDelegatedStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_account_delegated_status_with_options_async(
         self,
@@ -3118,16 +2836,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeAccountDelegatedStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeAccountDelegatedStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeAccountDelegatedStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_account_delegated_status(
         self,
@@ -3195,16 +2907,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApiExportsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApiExportsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApiExportsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_api_exports_with_options_async(
         self,
@@ -3246,16 +2952,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApiExportsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApiExportsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApiExportsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_api_exports(
         self,
@@ -3329,16 +3029,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecAbnormalDomainStatisticResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecAbnormalDomainStatisticResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecAbnormalDomainStatisticResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_apisec_abnormal_domain_statistic_with_options_async(
         self,
@@ -3386,16 +3080,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecAbnormalDomainStatisticResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecAbnormalDomainStatisticResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecAbnormalDomainStatisticResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_apisec_abnormal_domain_statistic(
         self,
@@ -3489,16 +3177,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecAbnormalsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecAbnormalsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecAbnormalsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_apisec_abnormals_with_options_async(
         self,
@@ -3566,16 +3248,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecAbnormalsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecAbnormalsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecAbnormalsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_apisec_abnormals(
         self,
@@ -3677,16 +3353,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecApiResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecApiResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecApiResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_apisec_api_resources_with_options_async(
         self,
@@ -3762,16 +3432,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecApiResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecApiResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecApiResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_apisec_api_resources(
         self,
@@ -3839,16 +3503,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecAssetTrendResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecAssetTrendResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecAssetTrendResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_apisec_asset_trend_with_options_async(
         self,
@@ -3890,16 +3548,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecAssetTrendResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecAssetTrendResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecAssetTrendResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_apisec_asset_trend(
         self,
@@ -3973,16 +3625,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecEventDomainStatisticResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecEventDomainStatisticResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecEventDomainStatisticResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_apisec_event_domain_statistic_with_options_async(
         self,
@@ -4030,16 +3676,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecEventDomainStatisticResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecEventDomainStatisticResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecEventDomainStatisticResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_apisec_event_domain_statistic(
         self,
@@ -4135,16 +3775,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecEventsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecEventsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_apisec_events_with_options_async(
         self,
@@ -4214,16 +3848,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecEventsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecEventsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_apisec_events(
         self,
@@ -4285,16 +3913,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecLogDeliveriesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecLogDeliveriesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecLogDeliveriesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_apisec_log_deliveries_with_options_async(
         self,
@@ -4330,16 +3952,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecLogDeliveriesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecLogDeliveriesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecLogDeliveriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_apisec_log_deliveries(
         self,
@@ -4411,16 +4027,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecMatchedHostsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecMatchedHostsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecMatchedHostsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_apisec_matched_hosts_with_options_async(
         self,
@@ -4466,16 +4076,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecMatchedHostsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecMatchedHostsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecMatchedHostsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_apisec_matched_hosts(
         self,
@@ -4545,16 +4149,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecProtectionGroupsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecProtectionGroupsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecProtectionGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_apisec_protection_groups_with_options_async(
         self,
@@ -4598,16 +4196,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecProtectionGroupsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecProtectionGroupsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecProtectionGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_apisec_protection_groups(
         self,
@@ -4677,16 +4269,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecProtectionResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecProtectionResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecProtectionResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_apisec_protection_resources_with_options_async(
         self,
@@ -4730,16 +4316,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecProtectionResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecProtectionResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecProtectionResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_apisec_protection_resources(
         self,
@@ -4815,16 +4395,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecRulesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecRulesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_apisec_rules_with_options_async(
         self,
@@ -4874,16 +4448,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecRulesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecRulesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_apisec_rules(
         self,
@@ -4959,16 +4527,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecSensitiveDomainStatisticResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecSensitiveDomainStatisticResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecSensitiveDomainStatisticResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_apisec_sensitive_domain_statistic_with_options_async(
         self,
@@ -5018,16 +4580,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecSensitiveDomainStatisticResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecSensitiveDomainStatisticResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecSensitiveDomainStatisticResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_apisec_sensitive_domain_statistic(
         self,
@@ -5093,16 +4649,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecSlsLogStoresResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecSlsLogStoresResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecSlsLogStoresResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_apisec_sls_log_stores_with_options_async(
         self,
@@ -5142,16 +4692,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecSlsLogStoresResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecSlsLogStoresResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecSlsLogStoresResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_apisec_sls_log_stores(
         self,
@@ -5215,16 +4759,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecSlsProjectsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecSlsProjectsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecSlsProjectsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_apisec_sls_projects_with_options_async(
         self,
@@ -5262,16 +4800,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecSlsProjectsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecSlsProjectsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecSlsProjectsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_apisec_sls_projects(
         self,
@@ -5337,16 +4869,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecStatisticsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecStatisticsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_apisec_statistics_with_options_async(
         self,
@@ -5386,16 +4912,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecStatisticsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecStatisticsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_apisec_statistics(
         self,
@@ -5461,16 +4981,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecSuggestionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecSuggestionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecSuggestionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_apisec_suggestions_with_options_async(
         self,
@@ -5510,16 +5024,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecSuggestionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecSuggestionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecSuggestionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_apisec_suggestions(
         self,
@@ -5587,16 +5095,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecUserOperationsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecUserOperationsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecUserOperationsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_apisec_user_operations_with_options_async(
         self,
@@ -5638,16 +5140,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecUserOperationsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeApisecUserOperationsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecUserOperationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_apisec_user_operations(
         self,
@@ -5711,16 +5207,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeCertDetailResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeCertDetailResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeCertDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_cert_detail_with_options_async(
         self,
@@ -5758,16 +5248,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeCertDetailResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeCertDetailResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeCertDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_cert_detail(
         self,
@@ -5837,16 +5321,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeCertsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeCertsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeCertsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_certs_with_options_async(
         self,
@@ -5890,16 +5368,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeCertsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeCertsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeCertsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_certs(
         self,
@@ -5973,16 +5445,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeCloudResourceAccessPortDetailsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeCloudResourceAccessPortDetailsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeCloudResourceAccessPortDetailsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_cloud_resource_access_port_details_with_options_async(
         self,
@@ -6030,16 +5496,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeCloudResourceAccessPortDetailsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeCloudResourceAccessPortDetailsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeCloudResourceAccessPortDetailsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_cloud_resource_access_port_details(
         self,
@@ -6103,16 +5563,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeCloudResourceAccessedPortsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeCloudResourceAccessedPortsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeCloudResourceAccessedPortsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_cloud_resource_accessed_ports_with_options_async(
         self,
@@ -6150,16 +5604,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeCloudResourceAccessedPortsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeCloudResourceAccessedPortsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeCloudResourceAccessedPortsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_cloud_resource_accessed_ports(
         self,
@@ -6243,16 +5691,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeCloudResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeCloudResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeCloudResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_cloud_resources_with_options_async(
         self,
@@ -6310,16 +5752,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeCloudResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeCloudResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeCloudResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_cloud_resources(
         self,
@@ -6381,16 +5817,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeCnameCountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeCnameCountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeCnameCountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_cname_count_with_options_async(
         self,
@@ -6426,16 +5856,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeCnameCountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeCnameCountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeCnameCountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_cname_count(
         self,
@@ -6497,16 +5921,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDDoSStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDDoSStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDDoSStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_ddo_sstatus_with_options_async(
         self,
@@ -6542,16 +5960,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDDoSStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDDoSStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDDoSStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_ddo_sstatus(
         self,
@@ -6613,16 +6025,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefaultHttpsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefaultHttpsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDefaultHttpsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_default_https_with_options_async(
         self,
@@ -6658,16 +6064,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefaultHttpsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefaultHttpsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDefaultHttpsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_default_https(
         self,
@@ -6731,16 +6131,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseResourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseResourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDefenseResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_defense_resource_with_options_async(
         self,
@@ -6778,16 +6172,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseResourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseResourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDefenseResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_defense_resource(
         self,
@@ -6851,16 +6239,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseResourceGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseResourceGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDefenseResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_defense_resource_group_with_options_async(
         self,
@@ -6898,16 +6280,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseResourceGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseResourceGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDefenseResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_defense_resource_group(
         self,
@@ -6975,16 +6351,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseResourceGroupNamesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseResourceGroupNamesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDefenseResourceGroupNamesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_defense_resource_group_names_with_options_async(
         self,
@@ -7026,16 +6396,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseResourceGroupNamesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseResourceGroupNamesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDefenseResourceGroupNamesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_defense_resource_group_names(
         self,
@@ -7105,16 +6469,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseResourceGroupsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseResourceGroupsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDefenseResourceGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_defense_resource_groups_with_options_async(
         self,
@@ -7158,16 +6516,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseResourceGroupsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseResourceGroupsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDefenseResourceGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_defense_resource_groups(
         self,
@@ -7235,16 +6587,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseResourceNamesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseResourceNamesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDefenseResourceNamesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_defense_resource_names_with_options_async(
         self,
@@ -7286,16 +6632,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseResourceNamesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseResourceNamesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDefenseResourceNamesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_defense_resource_names(
         self,
@@ -7369,16 +6709,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseResourceTemplatesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseResourceTemplatesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDefenseResourceTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_defense_resource_templates_with_options_async(
         self,
@@ -7426,16 +6760,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseResourceTemplatesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseResourceTemplatesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDefenseResourceTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_defense_resource_templates(
         self,
@@ -7505,16 +6833,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDefenseResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_defense_resources_with_options_async(
         self,
@@ -7558,16 +6880,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDefenseResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_defense_resources(
         self,
@@ -7633,16 +6949,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDefenseRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_defense_rule_with_options_async(
         self,
@@ -7682,16 +6992,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDefenseRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_defense_rule(
         self,
@@ -7761,16 +7065,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseRulesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseRulesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDefenseRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_defense_rules_with_options_async(
         self,
@@ -7814,16 +7112,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseRulesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseRulesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDefenseRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_defense_rules(
         self,
@@ -7887,16 +7179,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseTemplateResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseTemplateResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDefenseTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_defense_template_with_options_async(
         self,
@@ -7934,16 +7220,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseTemplateResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseTemplateResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDefenseTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_defense_template(
         self,
@@ -8015,16 +7295,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseTemplateValidGroupsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseTemplateValidGroupsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDefenseTemplateValidGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_defense_template_valid_groups_with_options_async(
         self,
@@ -8070,16 +7344,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseTemplateValidGroupsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseTemplateValidGroupsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDefenseTemplateValidGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_defense_template_valid_groups(
         self,
@@ -8161,16 +7429,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseTemplatesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseTemplatesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDefenseTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_defense_templates_with_options_async(
         self,
@@ -8226,16 +7488,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseTemplatesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDefenseTemplatesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDefenseTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_defense_templates(
         self,
@@ -8299,16 +7555,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDomainDNSRecordResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDomainDNSRecordResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDomainDNSRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_domain_dnsrecord_with_options_async(
         self,
@@ -8346,16 +7596,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDomainDNSRecordResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDomainDNSRecordResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDomainDNSRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_domain_dnsrecord(
         self,
@@ -8417,16 +7661,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDomainDetailResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDomainDetailResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDomainDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_domain_detail_with_options_async(
         self,
@@ -8462,16 +7700,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDomainDetailResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDomainDetailResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDomainDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_domain_detail(
         self,
@@ -8543,16 +7775,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDomainsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDomainsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDomainsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_domains_with_options_async(
         self,
@@ -8598,16 +7824,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDomainsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeDomainsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDomainsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_domains(
         self,
@@ -8677,16 +7897,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeFlowChartResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeFlowChartResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeFlowChartResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_flow_chart_with_options_async(
         self,
@@ -8730,16 +7944,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeFlowChartResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeFlowChartResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeFlowChartResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_flow_chart(
         self,
@@ -8805,16 +8013,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeFlowTopResourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeFlowTopResourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeFlowTopResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_flow_top_resource_with_options_async(
         self,
@@ -8854,16 +8056,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeFlowTopResourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeFlowTopResourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeFlowTopResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_flow_top_resource(
         self,
@@ -8931,16 +8127,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeFlowTopUrlResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeFlowTopUrlResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeFlowTopUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_flow_top_url_with_options_async(
         self,
@@ -8982,16 +8172,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeFlowTopUrlResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeFlowTopUrlResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeFlowTopUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_flow_top_url(
         self,
@@ -9053,16 +8237,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeFreeUserAssetCountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeFreeUserAssetCountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeFreeUserAssetCountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_free_user_asset_count_with_options_async(
         self,
@@ -9098,16 +8276,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeFreeUserAssetCountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeFreeUserAssetCountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeFreeUserAssetCountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_free_user_asset_count(
         self,
@@ -9169,16 +8341,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeFreeUserEventCountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeFreeUserEventCountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeFreeUserEventCountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_free_user_event_count_with_options_async(
         self,
@@ -9214,16 +8380,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeFreeUserEventCountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeFreeUserEventCountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeFreeUserEventCountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_free_user_event_count(
         self,
@@ -9285,16 +8445,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeFreeUserEventTypesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeFreeUserEventTypesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeFreeUserEventTypesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_free_user_event_types_with_options_async(
         self,
@@ -9330,16 +8484,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeFreeUserEventTypesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeFreeUserEventTypesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeFreeUserEventTypesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_free_user_event_types(
         self,
@@ -9401,16 +8549,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeFreeUserEventsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeFreeUserEventsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeFreeUserEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_free_user_events_with_options_async(
         self,
@@ -9446,16 +8588,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeFreeUserEventsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeFreeUserEventsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeFreeUserEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_free_user_events(
         self,
@@ -9511,16 +8647,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeHybridCloudClusterRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeHybridCloudClusterRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeHybridCloudClusterRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_hybrid_cloud_cluster_rule_with_options_async(
         self,
@@ -9550,16 +8680,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeHybridCloudClusterRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeHybridCloudClusterRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeHybridCloudClusterRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_hybrid_cloud_cluster_rule(
         self,
@@ -9621,16 +8745,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeHybridCloudClustersResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeHybridCloudClustersResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeHybridCloudClustersResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_hybrid_cloud_clusters_with_options_async(
         self,
@@ -9666,16 +8784,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeHybridCloudClustersResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeHybridCloudClustersResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeHybridCloudClustersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_hybrid_cloud_clusters(
         self,
@@ -9749,16 +8861,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeHybridCloudGroupsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeHybridCloudGroupsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeHybridCloudGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_hybrid_cloud_groups_with_options_async(
         self,
@@ -9806,16 +8912,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeHybridCloudGroupsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeHybridCloudGroupsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeHybridCloudGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_hybrid_cloud_groups(
         self,
@@ -9887,16 +8987,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeHybridCloudResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeHybridCloudResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeHybridCloudResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_hybrid_cloud_resources_with_options_async(
         self,
@@ -9942,16 +9036,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeHybridCloudResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeHybridCloudResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeHybridCloudResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_hybrid_cloud_resources(
         self,
@@ -10017,16 +9105,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeHybridCloudServerRegionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeHybridCloudServerRegionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeHybridCloudServerRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_hybrid_cloud_server_regions_with_options_async(
         self,
@@ -10066,16 +9148,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeHybridCloudServerRegionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeHybridCloudServerRegionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeHybridCloudServerRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_hybrid_cloud_server_regions(
         self,
@@ -10147,16 +9223,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeHybridCloudUnassignedMachinesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeHybridCloudUnassignedMachinesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeHybridCloudUnassignedMachinesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_hybrid_cloud_unassigned_machines_with_options_async(
         self,
@@ -10202,16 +9272,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeHybridCloudUnassignedMachinesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeHybridCloudUnassignedMachinesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeHybridCloudUnassignedMachinesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_hybrid_cloud_unassigned_machines(
         self,
@@ -10273,16 +9337,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeHybridCloudUserResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeHybridCloudUserResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeHybridCloudUserResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_hybrid_cloud_user_with_options_async(
         self,
@@ -10318,16 +9376,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeHybridCloudUserResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeHybridCloudUserResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeHybridCloudUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_hybrid_cloud_user(
         self,
@@ -10387,16 +9439,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_instance_with_options_async(
         self,
@@ -10430,16 +9476,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_instance(
         self,
@@ -10513,16 +9553,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeMajorProtectionBlackIpsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeMajorProtectionBlackIpsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeMajorProtectionBlackIpsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_major_protection_black_ips_with_options_async(
         self,
@@ -10570,16 +9604,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeMajorProtectionBlackIpsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeMajorProtectionBlackIpsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeMajorProtectionBlackIpsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_major_protection_black_ips(
         self,
@@ -10645,16 +9673,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeMemberAccountsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeMemberAccountsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeMemberAccountsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_member_accounts_with_options_async(
         self,
@@ -10694,16 +9716,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeMemberAccountsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeMemberAccountsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeMemberAccountsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_member_accounts(
         self,
@@ -10773,16 +9789,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeNetworkFlowTimeSeriesMetricResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeNetworkFlowTimeSeriesMetricResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeNetworkFlowTimeSeriesMetricResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_network_flow_time_series_metric_with_options_async(
         self,
@@ -10826,16 +9836,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeNetworkFlowTimeSeriesMetricResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeNetworkFlowTimeSeriesMetricResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeNetworkFlowTimeSeriesMetricResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_network_flow_time_series_metric(
         self,
@@ -10907,16 +9911,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeNetworkFlowTopNMetricResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeNetworkFlowTopNMetricResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeNetworkFlowTopNMetricResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_network_flow_top_nmetric_with_options_async(
         self,
@@ -10962,16 +9960,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeNetworkFlowTopNMetricResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeNetworkFlowTopNMetricResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeNetworkFlowTopNMetricResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_network_flow_top_nmetric(
         self,
@@ -11033,16 +10025,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribePauseProtectionStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribePauseProtectionStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribePauseProtectionStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_pause_protection_status_with_options_async(
         self,
@@ -11078,16 +10064,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribePauseProtectionStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribePauseProtectionStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribePauseProtectionStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_pause_protection_status(
         self,
@@ -11157,16 +10137,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribePeakTrendResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribePeakTrendResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribePeakTrendResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_peak_trend_with_options_async(
         self,
@@ -11210,16 +10184,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribePeakTrendResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribePeakTrendResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribePeakTrendResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_peak_trend(
         self,
@@ -11301,16 +10269,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeProductInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeProductInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeProductInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_product_instances_with_options_async(
         self,
@@ -11366,16 +10328,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeProductInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeProductInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeProductInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_product_instances(
         self,
@@ -11441,16 +10397,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribePunishedDomainsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribePunishedDomainsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribePunishedDomainsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_punished_domains_with_options_async(
         self,
@@ -11490,16 +10440,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribePunishedDomainsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribePunishedDomainsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribePunishedDomainsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_punished_domains(
         self,
@@ -11567,16 +10511,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeResourceInstanceCertsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeResourceInstanceCertsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeResourceInstanceCertsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_resource_instance_certs_with_options_async(
         self,
@@ -11618,16 +10556,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeResourceInstanceCertsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeResourceInstanceCertsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeResourceInstanceCertsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_resource_instance_certs(
         self,
@@ -11691,16 +10623,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeResourceLogStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeResourceLogStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeResourceLogStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_resource_log_status_with_options_async(
         self,
@@ -11738,16 +10664,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeResourceLogStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeResourceLogStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeResourceLogStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_resource_log_status(
         self,
@@ -11811,16 +10731,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeResourcePortResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeResourcePortResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeResourcePortResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_resource_port_with_options_async(
         self,
@@ -11858,16 +10772,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeResourcePortResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeResourcePortResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeResourcePortResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_resource_port(
         self,
@@ -11929,16 +10837,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeResourceRegionIdResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeResourceRegionIdResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeResourceRegionIdResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_resource_region_id_with_options_async(
         self,
@@ -11974,16 +10876,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeResourceRegionIdResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeResourceRegionIdResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeResourceRegionIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_resource_region_id(
         self,
@@ -12047,16 +10943,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeResourceSupportRegionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeResourceSupportRegionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeResourceSupportRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_resource_support_regions_with_options_async(
         self,
@@ -12094,16 +10984,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeResourceSupportRegionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeResourceSupportRegionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeResourceSupportRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_resource_support_regions(
         self,
@@ -12175,16 +11059,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeResponseCodeTrendGraphResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeResponseCodeTrendGraphResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeResponseCodeTrendGraphResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_response_code_trend_graph_with_options_async(
         self,
@@ -12230,16 +11108,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeResponseCodeTrendGraphResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeResponseCodeTrendGraphResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeResponseCodeTrendGraphResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_response_code_trend_graph(
         self,
@@ -12309,16 +11181,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeRuleGroupsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeRuleGroupsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeRuleGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_rule_groups_with_options_async(
         self,
@@ -12362,16 +11228,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeRuleGroupsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeRuleGroupsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeRuleGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_rule_groups(
         self,
@@ -12441,16 +11301,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeRuleHitsTopClientIpResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeRuleHitsTopClientIpResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeRuleHitsTopClientIpResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_rule_hits_top_client_ip_with_options_async(
         self,
@@ -12494,16 +11348,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeRuleHitsTopClientIpResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeRuleHitsTopClientIpResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeRuleHitsTopClientIpResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_rule_hits_top_client_ip(
         self,
@@ -12571,16 +11419,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeRuleHitsTopResourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeRuleHitsTopResourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeRuleHitsTopResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_rule_hits_top_resource_with_options_async(
         self,
@@ -12622,16 +11464,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeRuleHitsTopResourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeRuleHitsTopResourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeRuleHitsTopResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_rule_hits_top_resource(
         self,
@@ -12703,16 +11539,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeRuleHitsTopRuleIdResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeRuleHitsTopRuleIdResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeRuleHitsTopRuleIdResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_rule_hits_top_rule_id_with_options_async(
         self,
@@ -12758,16 +11588,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeRuleHitsTopRuleIdResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeRuleHitsTopRuleIdResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeRuleHitsTopRuleIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_rule_hits_top_rule_id(
         self,
@@ -12835,16 +11659,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeRuleHitsTopTuleTypeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeRuleHitsTopTuleTypeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeRuleHitsTopTuleTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_rule_hits_top_tule_type_with_options_async(
         self,
@@ -12886,16 +11704,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeRuleHitsTopTuleTypeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeRuleHitsTopTuleTypeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeRuleHitsTopTuleTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_rule_hits_top_tule_type(
         self,
@@ -12963,16 +11775,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeRuleHitsTopUaResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeRuleHitsTopUaResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeRuleHitsTopUaResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_rule_hits_top_ua_with_options_async(
         self,
@@ -13014,16 +11820,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeRuleHitsTopUaResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeRuleHitsTopUaResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeRuleHitsTopUaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_rule_hits_top_ua(
         self,
@@ -13093,16 +11893,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeRuleHitsTopUrlResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeRuleHitsTopUrlResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeRuleHitsTopUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_rule_hits_top_url_with_options_async(
         self,
@@ -13146,16 +11940,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeRuleHitsTopUrlResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeRuleHitsTopUrlResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeRuleHitsTopUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_rule_hits_top_url(
         self,
@@ -13232,16 +12020,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSecurityEventLogsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSecurityEventLogsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSecurityEventLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_security_event_logs_with_options_async(
         self,
@@ -13292,16 +12074,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSecurityEventLogsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSecurityEventLogsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSecurityEventLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_security_event_logs(
         self,
@@ -13386,16 +12162,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSecurityEventTimeSeriesMetricResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSecurityEventTimeSeriesMetricResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSecurityEventTimeSeriesMetricResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_security_event_time_series_metric_with_options_async(
         self,
@@ -13444,16 +12214,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSecurityEventTimeSeriesMetricResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSecurityEventTimeSeriesMetricResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSecurityEventTimeSeriesMetricResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_security_event_time_series_metric(
         self,
@@ -13540,16 +12304,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSecurityEventTopNMetricResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSecurityEventTopNMetricResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSecurityEventTopNMetricResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_security_event_top_nmetric_with_options_async(
         self,
@@ -13600,16 +12358,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSecurityEventTopNMetricResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSecurityEventTopNMetricResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSecurityEventTopNMetricResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_security_event_top_nmetric(
         self,
@@ -13693,16 +12445,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSensitiveApiStatisticResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSensitiveApiStatisticResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSensitiveApiStatisticResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_sensitive_api_statistic_with_options_async(
         self,
@@ -13750,16 +12496,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSensitiveApiStatisticResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSensitiveApiStatisticResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSensitiveApiStatisticResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_sensitive_api_statistic(
         self,
@@ -13827,16 +12567,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSensitiveDetectionResultResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSensitiveDetectionResultResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSensitiveDetectionResultResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_sensitive_detection_result_with_options_async(
         self,
@@ -13878,16 +12612,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSensitiveDetectionResultResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSensitiveDetectionResultResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSensitiveDetectionResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_sensitive_detection_result(
         self,
@@ -13955,16 +12683,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSensitiveOutboundDistributionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSensitiveOutboundDistributionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSensitiveOutboundDistributionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_sensitive_outbound_distribution_with_options_async(
         self,
@@ -14006,16 +12728,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSensitiveOutboundDistributionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSensitiveOutboundDistributionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSensitiveOutboundDistributionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_sensitive_outbound_distribution(
         self,
@@ -14099,16 +12815,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSensitiveOutboundStatisticResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSensitiveOutboundStatisticResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSensitiveOutboundStatisticResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_sensitive_outbound_statistic_with_options_async(
         self,
@@ -14166,16 +12876,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSensitiveOutboundStatisticResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSensitiveOutboundStatisticResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSensitiveOutboundStatisticResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_sensitive_outbound_statistic(
         self,
@@ -14243,16 +12947,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSensitiveOutboundTrendResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSensitiveOutboundTrendResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSensitiveOutboundTrendResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_sensitive_outbound_trend_with_options_async(
         self,
@@ -14294,16 +12992,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSensitiveOutboundTrendResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSensitiveOutboundTrendResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSensitiveOutboundTrendResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_sensitive_outbound_trend(
         self,
@@ -14385,16 +13077,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSensitiveRequestLogResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSensitiveRequestLogResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSensitiveRequestLogResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_sensitive_request_log_with_options_async(
         self,
@@ -14450,16 +13136,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSensitiveRequestLogResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSensitiveRequestLogResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSensitiveRequestLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_sensitive_request_log(
         self,
@@ -14535,16 +13215,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSensitiveRequestsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSensitiveRequestsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSensitiveRequestsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_sensitive_requests_with_options_async(
         self,
@@ -14594,16 +13268,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSensitiveRequestsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSensitiveRequestsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSensitiveRequestsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_sensitive_requests(
         self,
@@ -14677,16 +13345,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSensitiveStatisticResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSensitiveStatisticResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSensitiveStatisticResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_sensitive_statistic_with_options_async(
         self,
@@ -14734,16 +13396,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSensitiveStatisticResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSensitiveStatisticResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSensitiveStatisticResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_sensitive_statistic(
         self,
@@ -14805,16 +13461,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSlsAuthStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSlsAuthStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSlsAuthStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_sls_auth_status_with_options_async(
         self,
@@ -14850,16 +13500,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSlsAuthStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSlsAuthStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSlsAuthStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_sls_auth_status(
         self,
@@ -14921,16 +13565,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSlsLogStoreResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSlsLogStoreResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSlsLogStoreResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_sls_log_store_with_options_async(
         self,
@@ -14966,16 +13604,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSlsLogStoreResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSlsLogStoreResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSlsLogStoreResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_sls_log_store(
         self,
@@ -15037,16 +13669,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSlsLogStoreStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSlsLogStoreStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSlsLogStoreStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_sls_log_store_status_with_options_async(
         self,
@@ -15082,16 +13708,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSlsLogStoreStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeSlsLogStoreStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSlsLogStoreStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_sls_log_store_status(
         self,
@@ -15155,16 +13775,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeTemplateResourceCountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeTemplateResourceCountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeTemplateResourceCountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_template_resource_count_with_options_async(
         self,
@@ -15202,16 +13816,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeTemplateResourceCountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeTemplateResourceCountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeTemplateResourceCountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_template_resource_count(
         self,
@@ -15277,16 +13885,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeTemplateResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeTemplateResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeTemplateResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_template_resources_with_options_async(
         self,
@@ -15326,16 +13928,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeTemplateResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeTemplateResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeTemplateResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_template_resources(
         self,
@@ -15399,16 +13995,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeUserAbnormalTrendResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeUserAbnormalTrendResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeUserAbnormalTrendResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_user_abnormal_trend_with_options_async(
         self,
@@ -15446,16 +14036,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeUserAbnormalTrendResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeUserAbnormalTrendResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeUserAbnormalTrendResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_user_abnormal_trend(
         self,
@@ -15523,16 +14107,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeUserAbnormalTypeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeUserAbnormalTypeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeUserAbnormalTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_user_abnormal_type_with_options_async(
         self,
@@ -15574,16 +14152,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeUserAbnormalTypeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeUserAbnormalTypeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeUserAbnormalTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_user_abnormal_type(
         self,
@@ -15655,16 +14227,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeUserApiRequestResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeUserApiRequestResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeUserApiRequestResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_user_api_request_with_options_async(
         self,
@@ -15710,16 +14276,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeUserApiRequestResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeUserApiRequestResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeUserApiRequestResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_user_api_request(
         self,
@@ -15787,16 +14347,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeUserAssetResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeUserAssetResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeUserAssetResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_user_asset_with_options_async(
         self,
@@ -15838,16 +14392,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeUserAssetResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeUserAssetResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeUserAssetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_user_asset(
         self,
@@ -15911,16 +14459,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeUserEventTrendResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeUserEventTrendResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeUserEventTrendResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_user_event_trend_with_options_async(
         self,
@@ -15958,16 +14500,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeUserEventTrendResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeUserEventTrendResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeUserEventTrendResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_user_event_trend(
         self,
@@ -16035,16 +14571,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeUserEventTypeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeUserEventTypeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeUserEventTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_user_event_type_with_options_async(
         self,
@@ -16086,16 +14616,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeUserEventTypeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeUserEventTypeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeUserEventTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_user_event_type(
         self,
@@ -16157,16 +14681,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeUserSlsLogRegionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeUserSlsLogRegionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeUserSlsLogRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_user_sls_log_regions_with_options_async(
         self,
@@ -16202,16 +14720,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeUserSlsLogRegionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeUserSlsLogRegionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeUserSlsLogRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_user_sls_log_regions(
         self,
@@ -16273,16 +14785,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeUserWafLogStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeUserWafLogStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeUserWafLogStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_user_waf_log_status_with_options_async(
         self,
@@ -16318,16 +14824,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeUserWafLogStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeUserWafLogStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeUserWafLogStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_user_waf_log_status(
         self,
@@ -16395,16 +14895,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeVisitTopIpResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeVisitTopIpResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeVisitTopIpResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_visit_top_ip_with_options_async(
         self,
@@ -16446,16 +14940,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeVisitTopIpResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeVisitTopIpResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeVisitTopIpResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_visit_top_ip(
         self,
@@ -16523,16 +15011,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeVisitUasResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeVisitUasResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeVisitUasResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_visit_uas_with_options_async(
         self,
@@ -16574,16 +15056,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeVisitUasResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeVisitUasResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeVisitUasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_visit_uas(
         self,
@@ -16645,16 +15121,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeWafSourceIpSegmentResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeWafSourceIpSegmentResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeWafSourceIpSegmentResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_waf_source_ip_segment_with_options_async(
         self,
@@ -16690,16 +15160,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeWafSourceIpSegmentResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.DescribeWafSourceIpSegmentResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeWafSourceIpSegmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_waf_source_ip_segment(
         self,
@@ -16763,16 +15227,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ListTagKeysResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ListTagKeysResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ListTagKeysResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_tag_keys_with_options_async(
         self,
@@ -16810,16 +15268,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ListTagKeysResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ListTagKeysResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ListTagKeysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_tag_keys(
         self,
@@ -16885,16 +15337,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ListTagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ListTagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_tag_resources_with_options_async(
         self,
@@ -16934,16 +15380,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ListTagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ListTagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_tag_resources(
         self,
@@ -17011,16 +15451,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ListTagValuesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ListTagValuesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ListTagValuesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_tag_values_with_options_async(
         self,
@@ -17062,16 +15496,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ListTagValuesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ListTagValuesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ListTagValuesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_tag_values(
         self,
@@ -17141,16 +15569,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyApisecAbnormalsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyApisecAbnormalsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyApisecAbnormalsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_apisec_abnormals_with_options_async(
         self,
@@ -17194,16 +15616,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyApisecAbnormalsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyApisecAbnormalsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyApisecAbnormalsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_apisec_abnormals(
         self,
@@ -17273,16 +15689,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyApisecApiResourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyApisecApiResourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyApisecApiResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_apisec_api_resource_with_options_async(
         self,
@@ -17326,16 +15736,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyApisecApiResourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyApisecApiResourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyApisecApiResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_apisec_api_resource(
         self,
@@ -17405,16 +15809,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyApisecEventsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyApisecEventsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyApisecEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_apisec_events_with_options_async(
         self,
@@ -17458,16 +15856,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyApisecEventsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyApisecEventsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyApisecEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_apisec_events(
         self,
@@ -17537,16 +15929,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyApisecLogDeliveryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyApisecLogDeliveryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyApisecLogDeliveryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_apisec_log_delivery_with_options_async(
         self,
@@ -17590,16 +15976,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyApisecLogDeliveryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyApisecLogDeliveryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyApisecLogDeliveryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_apisec_log_delivery(
         self,
@@ -17665,16 +16045,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyApisecLogDeliveryStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyApisecLogDeliveryStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyApisecLogDeliveryStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_apisec_log_delivery_status_with_options_async(
         self,
@@ -17714,16 +16088,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyApisecLogDeliveryStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyApisecLogDeliveryStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyApisecLogDeliveryStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_apisec_log_delivery_status(
         self,
@@ -17793,16 +16161,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyApisecModuleStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyApisecModuleStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyApisecModuleStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_apisec_module_status_with_options_async(
         self,
@@ -17846,16 +16208,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyApisecModuleStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyApisecModuleStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyApisecModuleStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_apisec_module_status(
         self,
@@ -17923,16 +16279,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyApisecStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyApisecStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyApisecStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_apisec_status_with_options_async(
         self,
@@ -17974,16 +16324,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyApisecStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyApisecStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyApisecStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_apisec_status(
         self,
@@ -18055,16 +16399,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyCloudResourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyCloudResourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyCloudResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_cloud_resource_with_options_async(
         self,
@@ -18110,16 +16448,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyCloudResourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyCloudResourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyCloudResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_cloud_resource(
         self,
@@ -18191,16 +16523,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDefaultHttpsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDefaultHttpsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyDefaultHttpsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_default_https_with_options_async(
         self,
@@ -18246,16 +16572,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDefaultHttpsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDefaultHttpsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyDefaultHttpsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_default_https(
         self,
@@ -18325,16 +16645,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDefenseResourceGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDefenseResourceGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyDefenseResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_defense_resource_group_with_options_async(
         self,
@@ -18378,16 +16692,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDefenseResourceGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDefenseResourceGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyDefenseResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_defense_resource_group(
         self,
@@ -18463,16 +16771,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDefenseResourceXffResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDefenseResourceXffResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyDefenseResourceXffResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_defense_resource_xff_with_options_async(
         self,
@@ -18522,16 +16824,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDefenseResourceXffResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDefenseResourceXffResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyDefenseResourceXffResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_defense_resource_xff(
         self,
@@ -18601,16 +16897,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDefenseRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDefenseRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyDefenseRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_defense_rule_with_options_async(
         self,
@@ -18654,16 +16944,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDefenseRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDefenseRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyDefenseRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_defense_rule(
         self,
@@ -18729,16 +17013,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDefenseRuleCacheResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDefenseRuleCacheResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyDefenseRuleCacheResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_defense_rule_cache_with_options_async(
         self,
@@ -18778,16 +17056,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDefenseRuleCacheResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDefenseRuleCacheResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyDefenseRuleCacheResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_defense_rule_cache(
         self,
@@ -18855,16 +17127,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDefenseRuleStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDefenseRuleStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyDefenseRuleStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_defense_rule_status_with_options_async(
         self,
@@ -18906,16 +17172,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDefenseRuleStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDefenseRuleStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyDefenseRuleStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_defense_rule_status(
         self,
@@ -18983,16 +17243,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDefenseTemplateResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDefenseTemplateResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyDefenseTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_defense_template_with_options_async(
         self,
@@ -19034,16 +17288,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDefenseTemplateResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDefenseTemplateResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyDefenseTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_defense_template(
         self,
@@ -19109,16 +17357,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDefenseTemplateStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDefenseTemplateStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyDefenseTemplateStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_defense_template_status_with_options_async(
         self,
@@ -19158,16 +17400,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDefenseTemplateStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDefenseTemplateStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyDefenseTemplateStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_defense_template_status(
         self,
@@ -19241,16 +17477,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDomainResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDomainResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_domain_with_options_async(
         self,
@@ -19298,16 +17528,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDomainResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDomainResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_domain(
         self,
@@ -19371,16 +17595,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDomainPunishStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDomainPunishStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyDomainPunishStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_domain_punish_status_with_options_async(
         self,
@@ -19418,16 +17636,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDomainPunishStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyDomainPunishStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyDomainPunishStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_domain_punish_status(
         self,
@@ -19493,16 +17705,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyHybridCloudClusterBypassStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyHybridCloudClusterBypassStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyHybridCloudClusterBypassStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_hybrid_cloud_cluster_bypass_status_with_options_async(
         self,
@@ -19542,16 +17748,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyHybridCloudClusterBypassStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyHybridCloudClusterBypassStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyHybridCloudClusterBypassStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_hybrid_cloud_cluster_bypass_status(
         self,
@@ -19621,16 +17821,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyHybridCloudClusterRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyHybridCloudClusterRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyHybridCloudClusterRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_hybrid_cloud_cluster_rule_with_options_async(
         self,
@@ -19674,16 +17868,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyHybridCloudClusterRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyHybridCloudClusterRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyHybridCloudClusterRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_hybrid_cloud_cluster_rule(
         self,
@@ -19753,16 +17941,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyHybridCloudGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyHybridCloudGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyHybridCloudGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_hybrid_cloud_group_with_options_async(
         self,
@@ -19806,16 +17988,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyHybridCloudGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyHybridCloudGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyHybridCloudGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_hybrid_cloud_group(
         self,
@@ -19883,16 +18059,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyHybridCloudGroupExpansionServerResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyHybridCloudGroupExpansionServerResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyHybridCloudGroupExpansionServerResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_hybrid_cloud_group_expansion_server_with_options_async(
         self,
@@ -19934,16 +18104,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyHybridCloudGroupExpansionServerResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyHybridCloudGroupExpansionServerResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyHybridCloudGroupExpansionServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_hybrid_cloud_group_expansion_server(
         self,
@@ -20011,16 +18175,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyHybridCloudGroupShrinkServerResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyHybridCloudGroupShrinkServerResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyHybridCloudGroupShrinkServerResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_hybrid_cloud_group_shrink_server_with_options_async(
         self,
@@ -20062,16 +18220,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyHybridCloudGroupShrinkServerResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyHybridCloudGroupShrinkServerResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyHybridCloudGroupShrinkServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_hybrid_cloud_group_shrink_server(
         self,
@@ -20133,16 +18285,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyHybridCloudSdkPullinStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyHybridCloudSdkPullinStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyHybridCloudSdkPullinStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_hybrid_cloud_sdk_pullin_status_with_options_async(
         self,
@@ -20178,16 +18324,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyHybridCloudSdkPullinStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyHybridCloudSdkPullinStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyHybridCloudSdkPullinStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_hybrid_cloud_sdk_pullin_status(
         self,
@@ -20259,16 +18399,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyHybridCloudServerResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyHybridCloudServerResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyHybridCloudServerResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_hybrid_cloud_server_with_options_async(
         self,
@@ -20314,16 +18448,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyHybridCloudServerResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyHybridCloudServerResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyHybridCloudServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_hybrid_cloud_server(
         self,
@@ -20395,16 +18523,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyMajorProtectionBlackIpResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyMajorProtectionBlackIpResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyMajorProtectionBlackIpResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_major_protection_black_ip_with_options_async(
         self,
@@ -20450,16 +18572,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyMajorProtectionBlackIpResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyMajorProtectionBlackIpResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyMajorProtectionBlackIpResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_major_protection_black_ip(
         self,
@@ -20527,16 +18643,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyMemberAccountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyMemberAccountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyMemberAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_member_account_with_options_async(
         self,
@@ -20578,16 +18688,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyMemberAccountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyMemberAccountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyMemberAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_member_account(
         self,
@@ -20651,16 +18755,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyPauseProtectionStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyPauseProtectionStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyPauseProtectionStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_pause_protection_status_with_options_async(
         self,
@@ -20698,16 +18796,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyPauseProtectionStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyPauseProtectionStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyPauseProtectionStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_pause_protection_status(
         self,
@@ -20773,16 +18865,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyResourceLogStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyResourceLogStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyResourceLogStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_resource_log_status_with_options_async(
         self,
@@ -20822,16 +18908,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyResourceLogStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyResourceLogStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyResourceLogStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_resource_log_status(
         self,
@@ -20903,16 +18983,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyTemplateResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyTemplateResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyTemplateResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_template_resources_with_options_async(
         self,
@@ -20958,16 +19032,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyTemplateResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ModifyTemplateResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyTemplateResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_template_resources(
         self,
@@ -21029,16 +19097,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ReleaseInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ReleaseInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ReleaseInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def release_instance_with_options_async(
         self,
@@ -21074,16 +19136,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ReleaseInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.ReleaseInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ReleaseInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def release_instance(
         self,
@@ -21117,7 +19173,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.SyncProductInstanceResponse:
         """
-        @summary Synchronizes Elastic Compute Service (ECS) instances and Classic Load Balancer (CLB) instances with Web Application Firewall (WAF).
+        @summary Synchronizes Elastic Compute Service (ECS), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances to Web Application Firewall (WAF).
         
         @description SyncProductInstance is an asynchronous operation. You can call the [DescribeProductInstances](https://help.aliyun.com/document_detail/2743168.html) operation to query the status of the task.
         
@@ -21147,16 +19203,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.SyncProductInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.SyncProductInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.SyncProductInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def sync_product_instance_with_options_async(
         self,
@@ -21164,7 +19214,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.SyncProductInstanceResponse:
         """
-        @summary Synchronizes Elastic Compute Service (ECS) instances and Classic Load Balancer (CLB) instances with Web Application Firewall (WAF).
+        @summary Synchronizes Elastic Compute Service (ECS), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances to Web Application Firewall (WAF).
         
         @description SyncProductInstance is an asynchronous operation. You can call the [DescribeProductInstances](https://help.aliyun.com/document_detail/2743168.html) operation to query the status of the task.
         
@@ -21194,23 +19244,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.SyncProductInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.SyncProductInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.SyncProductInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def sync_product_instance(
         self,
         request: waf_openapi_20211001_models.SyncProductInstanceRequest,
     ) -> waf_openapi_20211001_models.SyncProductInstanceResponse:
         """
-        @summary Synchronizes Elastic Compute Service (ECS) instances and Classic Load Balancer (CLB) instances with Web Application Firewall (WAF).
+        @summary Synchronizes Elastic Compute Service (ECS), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances to Web Application Firewall (WAF).
         
         @description SyncProductInstance is an asynchronous operation. You can call the [DescribeProductInstances](https://help.aliyun.com/document_detail/2743168.html) operation to query the status of the task.
         
@@ -21225,7 +19269,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.SyncProductInstanceRequest,
     ) -> waf_openapi_20211001_models.SyncProductInstanceResponse:
         """
-        @summary Synchronizes Elastic Compute Service (ECS) instances and Classic Load Balancer (CLB) instances with Web Application Firewall (WAF).
+        @summary Synchronizes Elastic Compute Service (ECS), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances to Web Application Firewall (WAF).
         
         @description SyncProductInstance is an asynchronous operation. You can call the [DescribeProductInstances](https://help.aliyun.com/document_detail/2743168.html) operation to query the status of the task.
         
@@ -21271,16 +19315,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.TagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.TagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def tag_resources_with_options_async(
         self,
@@ -21318,16 +19356,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.TagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.TagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def tag_resources(
         self,
@@ -21393,16 +19425,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.UntagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.UntagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def untag_resources_with_options_async(
         self,
@@ -21442,16 +19468,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.UntagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                waf_openapi_20211001_models.UntagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.UntagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def untag_resources(
         self,

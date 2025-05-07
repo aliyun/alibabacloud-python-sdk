@@ -1399,8 +1399,6 @@ class CreateDefenseRuleRequest(TeaModel):
         # This parameter is required.
         self.rules = rules
         # The ID of the rule template for which you want to create a protection rule.
-        # 
-        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -3827,8 +3825,6 @@ class DeleteDefenseRuleRequest(TeaModel):
         # This parameter is required.
         self.rule_ids = rule_ids
         # The ID of the protection rule template to which the protection rule that you want to delete belongs.
-        # 
-        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -13249,8 +13245,6 @@ class DescribeDefenseRuleRequest(TeaModel):
         # This parameter is required.
         self.rule_id = rule_id
         # The ID of the protection rule template to which the protection rule that you want to query belongs.
-        # 
-        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -13467,18 +13461,18 @@ class DescribeDefenseRulesRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: **10**.
+        # The number of entries per page. Default value: **10**.
         self.page_size = page_size
         # The query conditions. Specify a string that contains multiple parameters in the JSON format.
         # 
         # >  The results vary based on the query conditions. For more information, see the "**Query parameters**" section in this topic.
         self.query = query
-        # The region where the WAF instance resides. Valid values:
+        # The region ID of the WAF instance. Valid values:
         # 
-        # *   **cn-hangzhou:** the Chinese mainland.
-        # *   **ap-southeast-1:** outside the Chinese mainland.
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
@@ -20349,14 +20343,15 @@ class DescribeNetworkFlowTimeSeriesMetricRequestFilterConditions(TeaModel):
         op_value: str = None,
         values: Any = None,
     ):
-        # The filter field. Valid values:
+        # The filter fields. Valid values:
+        # *   matched_host
+        # *   cluster
         # 
-        # *   matched_host: The protected object.
-        # *   cluster: The protected cluster.
+        # For details, see the **Filter fields (Key)** section below.
         self.key = key
-        # The filter operator.
+        # The filter operator. For details, see the **Filter operators (OpValue)** section below.
         self.op_value = op_value
-        # Specifies the values to filter by.
+        # The filter content.
         self.values = values
 
     def validate(self):
@@ -20393,11 +20388,11 @@ class DescribeNetworkFlowTimeSeriesMetricRequestFilterDateRange(TeaModel):
         end_date: int = None,
         start_date: int = None,
     ):
-        # End time of the query range (UNIX timestamp, seconds).
+        # End time of the query range (Unix timestamp, seconds).
         # 
         # This parameter is required.
         self.end_date = end_date
-        # Start time of the query range (UNIX timestamp, seconds).
+        # Start time of the query range (Unix timestamp, seconds).
         # 
         # This parameter is required.
         self.start_date = start_date
@@ -20432,7 +20427,7 @@ class DescribeNetworkFlowTimeSeriesMetricRequestFilter(TeaModel):
         conditions: List[DescribeNetworkFlowTimeSeriesMetricRequestFilterConditions] = None,
         date_range: DescribeNetworkFlowTimeSeriesMetricRequestFilterDateRange = None,
     ):
-        # An array of filter conditions. Multiple filter parameters use AND logic.
+        # The list of filter conditions. Each node describes a filter condition.
         self.conditions = conditions
         # Specifies the date range for the query.
         # 
@@ -20488,21 +20483,20 @@ class DescribeNetworkFlowTimeSeriesMetricRequest(TeaModel):
         # This parameter is required.
         self.filter = filter
         # The Web Application Firewall (WAF) instance ID.
-        # 
-        # >  Call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to get the WAF instance ID.
+        # > Call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to retrieve the WAF instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Specifies the type of data returned by each metric. Valid values:
+        # Specifies the data type to be returned. Valid values:
         # 
-        # *   qps: Queries per second (QPS) of requests processed by WAF.
-        # *   total_requests: Total number of requests processed by WAF.
-        # *   top5_status: The top 5 HTTP status codes returned by WAF, along with their counts.
-        # *   top 5_upstream_status: The top 5 HTTP status codes returned by the origin server, along with their counts.
+        # *   qps: Returns the queries per second (QPS) processed by WAF. This value is calculated using a peak detection method: QPS is measured every 10 seconds, and the highest value within the specified time range is returned.
+        # *   total_requests: Returns the total number of requests processed by WAF.
+        # *   top5_status: Returns the top 5 HTTP status codes returned by the WAF to clients, along with their corresponding time series statistics.
+        # *   top 5_upstream_status: Returns the top 5 HTTP status codes returned by the origin server to clients, along with their corresponding time series data.
         # 
         # This parameter is required.
         self.metric = metric
-        # The region ID of the WAF instance. Valid values:
+        # The region ID of WAF instance. Valid values:
         # 
         # *   **cn-hangzhou**: The Chinese mainland.
         # *   **ap-southeast-1**: Outside the Chinese mainland.
@@ -20562,21 +20556,20 @@ class DescribeNetworkFlowTimeSeriesMetricShrinkRequest(TeaModel):
         # This parameter is required.
         self.filter_shrink = filter_shrink
         # The Web Application Firewall (WAF) instance ID.
-        # 
-        # >  Call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to get the WAF instance ID.
+        # > Call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to retrieve the WAF instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Specifies the type of data returned by each metric. Valid values:
+        # Specifies the data type to be returned. Valid values:
         # 
-        # *   qps: Queries per second (QPS) of requests processed by WAF.
-        # *   total_requests: Total number of requests processed by WAF.
-        # *   top5_status: The top 5 HTTP status codes returned by WAF, along with their counts.
-        # *   top 5_upstream_status: The top 5 HTTP status codes returned by the origin server, along with their counts.
+        # *   qps: Returns the queries per second (QPS) processed by WAF. This value is calculated using a peak detection method: QPS is measured every 10 seconds, and the highest value within the specified time range is returned.
+        # *   total_requests: Returns the total number of requests processed by WAF.
+        # *   top5_status: Returns the top 5 HTTP status codes returned by the WAF to clients, along with their corresponding time series statistics.
+        # *   top 5_upstream_status: Returns the top 5 HTTP status codes returned by the origin server to clients, along with their corresponding time series data.
         # 
         # This parameter is required.
         self.metric = metric
-        # The region ID of the WAF instance. Valid values:
+        # The region ID of WAF instance. Valid values:
         # 
         # *   **cn-hangzhou**: The Chinese mainland.
         # *   **ap-southeast-1**: Outside the Chinese mainland.
@@ -20668,9 +20661,9 @@ class DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRange
         end_date: int = None,
         start_date: int = None,
     ):
-        # The end time of the query range (in UNIX timestamp, seconds). Same as the EndDate request parameter.
+        # The end time of the query range (Unix timestamp, seconds). Same as the EndDate request parameter.
         self.end_date = end_date
-        # The start time of the query range (in UNIX timestamp, seconds). It is the same as the StartDate request parameter.
+        # The start time of the query range (Unix timestamp, seconds). Same as the StartDate request parameter.
         self.start_date = start_date
 
     def validate(self):
@@ -20704,11 +20697,11 @@ class DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaData(TeaModel
         date_range: DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRange = None,
         units: str = None,
     ):
-        # The time granularity. For example, "15m" indicates that each data point is counted every 15 minutes. For details, see **Time granularity of time series data points**.
+        # The time granularity. For example, 15m indicates that each data point is counted every 15 minutes. For details, see the **Time granularity of time series data points** section below.
         self.aggregate_interval = aggregate_interval
         # The query time range.
         self.date_range = date_range
-        # The unit of the returned data. Defaults to the value: request.
+        # The unit of the returned data. It is fixed as requests.
         self.units = units
 
     def validate(self):
@@ -20750,9 +20743,9 @@ class DescribeNetworkFlowTimeSeriesMetricResponseBody(TeaModel):
     ):
         # The array of time-series data. Supports returning data with multiple values.
         self.network_flow_time_series = network_flow_time_series
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The time series metadata.
+        # The metadata of the returned data.
         self.time_series_meta_data = time_series_meta_data
 
     def validate(self):
@@ -20844,10 +20837,13 @@ class DescribeNetworkFlowTopNMetricRequestFilterConditions(TeaModel):
     ):
         # The filter fields. Valid values:
         # 
-        # *   matched_host: The protected object.
-        # *   cluster: The protected cluster.
+        # *   matched_host
+        # *   cluster
+        # 
+        # For details, see the **Filter fields (Key)** section below.
         self.key = key
         # The filter operator.
+        # For details, see the **Filter operators (OpValue)** section below.
         self.op_value = op_value
         # The filter content.
         self.values = values
@@ -20886,11 +20882,11 @@ class DescribeNetworkFlowTopNMetricRequestFilterDateRange(TeaModel):
         end_date: int = None,
         start_date: int = None,
     ):
-        # End time of the query range (UNIX timestamp, seconds).
+        # End time of the query range (Unix timestamp, seconds).
         # 
         # This parameter is required.
         self.end_date = end_date
-        # Start time of the query range (UNIX timestamp, seconds).
+        # Start time of the query range (Unix timestamp, seconds).
         # 
         # This parameter is required.
         self.start_date = start_date
@@ -20925,7 +20921,7 @@ class DescribeNetworkFlowTopNMetricRequestFilter(TeaModel):
         conditions: List[DescribeNetworkFlowTopNMetricRequestFilterConditions] = None,
         date_range: DescribeNetworkFlowTopNMetricRequestFilterDateRange = None,
     ):
-        # An array of filter conditions. Multiple filter parameters use AND logic.
+        # The list of filter conditions. Each node describes a filter condition.
         self.conditions = conditions
         # Specifies the date range for the query.
         # 
@@ -20977,7 +20973,7 @@ class DescribeNetworkFlowTopNMetricRequest(TeaModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # Specifies filtering conditions. Multiple filter parameters use AND logic.
+        # An array of filter conditions. Multiple filter parameters use AND logic.
         # 
         # This parameter is required.
         self.filter = filter
@@ -20991,16 +20987,16 @@ class DescribeNetworkFlowTopNMetricRequest(TeaModel):
         # 
         # This parameter is required.
         self.limit = limit
-        # Specifies the type of data returned by each metric. Valid values:
+        # Specifies the data type to be returned. Valid values:
         # 
-        # *   real_client_ip: The top N requests, sorted in descending order by source IP address, aggregated from all the user\\"s WAF requests.
+        # *   real_client_ip: The top N requests, sorted in descending order by source IP address, aggregated from all the current user\\"s WAF requests.
         # *   request_path: The top N requests, sorted in descending order by user-agent, aggregated from all the current user\\"s WAF requests.
-        # *   request_path: The top N URLs, sorted in descending order by frequency, aggregated from all the current user\\"s WAF requests.
-        # *   matched_host_by_total_requests: The top N protected objects with their request counts for the current user.
+        # *   request_path: The top N requests, sorted in descending order by request URL, aggregated from all the current user\\"s WAF requests.
+        # *   matched_host_by_total_requests: The top N protected objects and their request counts for the current user.
         # *   matched_host_by_qps: The top N protected objects and their queries per second (QPS) values.
-        # *   matched_host_by_status: When using it, you must specify status in the Conditions field of the Filter parameter. If the HTTP response code returned by WAF matches the status specified in Conditions, then the top N data is returned, sorted by protected objects. The format for specifying the status is as follows:\\
+        # *   matched_host_by_status: When using it, you must specify status in the Conditions field of the Filter parameter. If the HTTP response code returned by WAF matches the status specified in the Conditions, then the top N data is returned, sorted in descending order by protected objects. The format for specifying the status is as follows:\\
         #     {"Key":"status","OpValue":"eq","Values":"200"}
-        # *   matched_host_by_upstream_status: When using it, you must specify a upstream_status in the Conditions field of the Filter parameter. If the HTTP response code returned by the origin server matches the upstream_status specified by Conditions, the top N data is returned, sorted by protected objects. The format for specifying the upstream_status is as follows:\\
+        # *   matched_host_by_upstream_status: When using it, you must specify upstream_status in the Conditions field of the Filter parameter. If the HTTP response code returned by the origin server matches the upstream_status specified, the top N data is returned, sorted in descending order by protected objects. The format for specifying the upstream_status is as follows:\\
         #     {"Key":"upstream_status","OpValue":"eq","Values":"200"}
         # 
         # This parameter is required.
@@ -21065,7 +21061,7 @@ class DescribeNetworkFlowTopNMetricShrinkRequest(TeaModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # Specifies filtering conditions. Multiple filter parameters use AND logic.
+        # An array of filter conditions. Multiple filter parameters use AND logic.
         # 
         # This parameter is required.
         self.filter_shrink = filter_shrink
@@ -21079,16 +21075,16 @@ class DescribeNetworkFlowTopNMetricShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.limit = limit
-        # Specifies the type of data returned by each metric. Valid values:
+        # Specifies the data type to be returned. Valid values:
         # 
-        # *   real_client_ip: The top N requests, sorted in descending order by source IP address, aggregated from all the user\\"s WAF requests.
+        # *   real_client_ip: The top N requests, sorted in descending order by source IP address, aggregated from all the current user\\"s WAF requests.
         # *   request_path: The top N requests, sorted in descending order by user-agent, aggregated from all the current user\\"s WAF requests.
-        # *   request_path: The top N URLs, sorted in descending order by frequency, aggregated from all the current user\\"s WAF requests.
-        # *   matched_host_by_total_requests: The top N protected objects with their request counts for the current user.
+        # *   request_path: The top N requests, sorted in descending order by request URL, aggregated from all the current user\\"s WAF requests.
+        # *   matched_host_by_total_requests: The top N protected objects and their request counts for the current user.
         # *   matched_host_by_qps: The top N protected objects and their queries per second (QPS) values.
-        # *   matched_host_by_status: When using it, you must specify status in the Conditions field of the Filter parameter. If the HTTP response code returned by WAF matches the status specified in Conditions, then the top N data is returned, sorted by protected objects. The format for specifying the status is as follows:\\
+        # *   matched_host_by_status: When using it, you must specify status in the Conditions field of the Filter parameter. If the HTTP response code returned by WAF matches the status specified in the Conditions, then the top N data is returned, sorted in descending order by protected objects. The format for specifying the status is as follows:\\
         #     {"Key":"status","OpValue":"eq","Values":"200"}
-        # *   matched_host_by_upstream_status: When using it, you must specify a upstream_status in the Conditions field of the Filter parameter. If the HTTP response code returned by the origin server matches the upstream_status specified by Conditions, the top N data is returned, sorted by protected objects. The format for specifying the upstream_status is as follows:\\
+        # *   matched_host_by_upstream_status: When using it, you must specify upstream_status in the Conditions field of the Filter parameter. If the HTTP response code returned by the origin server matches the upstream_status specified, the top N data is returned, sorted in descending order by protected objects. The format for specifying the upstream_status is as follows:\\
         #     {"Key":"upstream_status","OpValue":"eq","Values":"200"}
         # 
         # This parameter is required.
@@ -21148,7 +21144,7 @@ class DescribeNetworkFlowTopNMetricResponseBodyNetworkFlowTopNValues(TeaModel):
         name: str = None,
         value: int = None,
     ):
-        # Returns additional information, such as the country, province, and city to which an IP address belongs. It\\"s currently empty.
+        # Returns additional information, such as the country, province, or city to which an IP address belongs.
         self.attribute = attribute
         # The value of this field varies depending on the queried Metric.
         self.name = name
@@ -21189,9 +21185,9 @@ class DescribeNetworkFlowTopNMetricResponseBodyTopNMetaDataDateRange(TeaModel):
         end_date: int = None,
         start_date: int = None,
     ):
-        # The end time of the query range (in UNIX timestamp, seconds). Same as the EndDate request parameter.
+        # The end time of the query range (Unix timestamp, seconds). Same as the EndDate request parameter.
         self.end_date = end_date
-        # The start time of the query range (in UNIX timestamp, seconds). Same as the StartDate request parameter.
+        # The start time of the query range (Unix timestamp, seconds). Same as the StartDate request parameter.
         self.start_date = start_date
 
     def validate(self):
@@ -21226,7 +21222,7 @@ class DescribeNetworkFlowTopNMetricResponseBodyTopNMetaData(TeaModel):
     ):
         # The query time range.
         self.date_range = date_range
-        # The unit of the returned data. Defaults to the value: request.
+        # The unit of the returned data. It is fixed as requests.
         self.units = units
 
     def validate(self):
@@ -21264,7 +21260,7 @@ class DescribeNetworkFlowTopNMetricResponseBody(TeaModel):
     ):
         # The top statistical data array returned.
         self.network_flow_top_nvalues = network_flow_top_nvalues
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The metadata of the returned data.
         self.top_nmeta_data = top_nmeta_data
@@ -24783,9 +24779,9 @@ class DescribeSecurityEventLogsRequestFilterConditions(TeaModel):
         op_value: str = None,
         values: Any = None,
     ):
-        # The field name. This operation supports all fields.
+        # The field name. This operation supports all fields. For more information, see the **Supported field names** section below.
         self.key = key
-        # The operator.
+        # The operator. For more information, see the **Supported operators** section below.
         self.op_value = op_value
         # The field content.
         self.values = values
@@ -24863,7 +24859,7 @@ class DescribeSecurityEventLogsRequestFilter(TeaModel):
         conditions: List[DescribeSecurityEventLogsRequestFilterConditions] = None,
         date_range: DescribeSecurityEventLogsRequestFilterDateRange = None,
     ):
-        # The filter conditions. Multiple conditions are evaluated by using a logical AND.
+        # The filter conditions. Each object describes a filter condition.
         self.conditions = conditions
         # The time range for the query.
         # 
@@ -24915,7 +24911,7 @@ class DescribeSecurityEventLogsRequest(TeaModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The filter parameters for the query. Multiple parameters are evaluated by using a logical AND.
+        # The filter conditions for the query. Multiple conditions are evaluated by using a logical AND.
         # 
         # This parameter is required.
         self.filter = filter
@@ -24993,7 +24989,7 @@ class DescribeSecurityEventLogsShrinkRequest(TeaModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The filter parameters for the query. Multiple parameters are evaluated by using a logical AND.
+        # The filter conditions for the query. Multiple conditions are evaluated by using a logical AND.
         # 
         # This parameter is required.
         self.filter_shrink = filter_shrink
@@ -25102,7 +25098,7 @@ class DescribeSecurityEventLogsResponseBodySecurityEventMetaData(TeaModel):
     ):
         # The time range that is used for the query.
         self.date_range = date_range
-        # The unit of the returned data. Defaults to the value: requests.
+        # The unit of the statistics returned. The value is fixed as requests.
         self.units = units
 
     def validate(self):
@@ -25145,7 +25141,7 @@ class DescribeSecurityEventLogsResponseBody(TeaModel):
         self.security_event_logs = security_event_logs
         # The total number of logs returned.
         self.security_event_logs_total_count = security_event_logs_total_count
-        # The metadata of logs returned.
+        # The metadata of the time series data returned.
         self.security_event_meta_data = security_event_meta_data
 
     def validate(self):
@@ -25230,9 +25226,9 @@ class DescribeSecurityEventTimeSeriesMetricRequestFilterConditions(TeaModel):
         op_value: str = None,
         values: Any = None,
     ):
-        # The field name. This operation supports all fields.
+        # The field name. This operation supports all fields. For details, see the **Supported field names** section below.
         self.key = key
-        # The operator.
+        # The operator. For details, see the **Supported operators** section below.
         self.op_value = op_value
         # The field content.
         self.values = values
@@ -25271,11 +25267,11 @@ class DescribeSecurityEventTimeSeriesMetricRequestFilterDateRange(TeaModel):
         end_date: int = None,
         start_date: int = None,
     ):
-        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # The end of the time range to query. The value is a Unix timestamp. Unit: seconds.
         # 
         # This parameter is required.
         self.end_date = end_date
-        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # The beginning of the time range to query. The value is a Unix timestamp. Unit: seconds.
         # 
         # This parameter is required.
         self.start_date = start_date
@@ -25310,7 +25306,7 @@ class DescribeSecurityEventTimeSeriesMetricRequestFilter(TeaModel):
         conditions: List[DescribeSecurityEventTimeSeriesMetricRequestFilterConditions] = None,
         date_range: DescribeSecurityEventTimeSeriesMetricRequestFilterDateRange = None,
     ):
-        # The filter conditions. Multiple conditions are evaluated by using a logical AND.
+        # The filter conditions. Each object describes a filter condition.
         self.conditions = conditions
         # The time range for the query.
         # 
@@ -25361,7 +25357,7 @@ class DescribeSecurityEventTimeSeriesMetricRequest(TeaModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The filter parameters for the query. Multiple parameters are evaluated by using a logical AND.
+        # The filter conditions for the query. Multiple conditions are evaluated by using a logical AND.
         # 
         # This parameter is required.
         self.filter = filter
@@ -25435,7 +25431,7 @@ class DescribeSecurityEventTimeSeriesMetricShrinkRequest(TeaModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The filter parameters for the query. Multiple parameters are evaluated by using a logical AND.
+        # The filter conditions for the query. Multiple conditions are evaluated by using a logical AND.
         # 
         # This parameter is required.
         self.filter_shrink = filter_shrink
@@ -25546,9 +25542,9 @@ class DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRan
         end_date: int = None,
         start_date: int = None,
     ):
-        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds. This value is the same as the value of EndDate in the request parameters.
+        # The end of the time range to query. The value is a Unix timestamp. Unit: seconds. This value is the same as the value of EndDate in the request parameters.
         self.end_date = end_date
-        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds. This value is the same as the value of StartDate in the request parameters.
+        # The beginning of the time range to query. The value is a Unix timestamp. Unit: seconds. This value is the same as the value of StartDate in the request parameters.
         self.start_date = start_date
 
     def validate(self):
@@ -25582,11 +25578,11 @@ class DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaData(TeaMod
         date_range: DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRange = None,
         units: str = None,
     ):
-        # The time granularity of data points in the time series data returned. For example, a value of 15m indicates that data points are collected at 15-minute intervals. For more information about the supported time granularities, see the "**Time granularities for data points in time series records**" section of the **DescribeNetworkFlowTimeSeriesMetric** topic.
+        # The time granularity of data points in the time series data returned. For example, a value of 15m indicates that data points are collected at 15-minute intervals. For more information about time granularities, see the **Time granularities of data points in time series** section below.
         self.aggregate_interval = aggregate_interval
         # The time range that is used for the query.
         self.date_range = date_range
-        # The unit of the returned data. Defaults to the value: request.
+        # The unit of the statistics returned. It is fixed as requests.
         self.units = units
 
     def validate(self):
@@ -25720,9 +25716,9 @@ class DescribeSecurityEventTopNMetricRequestFilterConditions(TeaModel):
         op_value: str = None,
         values: Any = None,
     ):
-        # The field name. This operation supports all fields.
+        # The field name. This operation supports all fields. For more information, see the **Supported field names** section below.
         self.key = key
-        # The filter operator.
+        # The operator. For more information, see the **Supported operators** section below.
         self.op_value = op_value
         # The field content.
         self.values = values
@@ -25761,11 +25757,11 @@ class DescribeSecurityEventTopNMetricRequestFilterDateRange(TeaModel):
         end_date: int = None,
         start_date: int = None,
     ):
-        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # The end of the time range to query. The value is a Unix timestamp. Unit: seconds.
         # 
         # This parameter is required.
         self.end_date = end_date
-        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # The beginning of the time range to query. The value is a Unix timestamp. Unit: seconds.
         # 
         # This parameter is required.
         self.start_date = start_date
@@ -25800,7 +25796,7 @@ class DescribeSecurityEventTopNMetricRequestFilter(TeaModel):
         conditions: List[DescribeSecurityEventTopNMetricRequestFilterConditions] = None,
         date_range: DescribeSecurityEventTopNMetricRequestFilterDateRange = None,
     ):
-        # The filter conditions. Multiple conditions are evaluated by using a logical AND.
+        # The filter conditions. Each object describes a filter condition.
         self.conditions = conditions
         # The time range for the query.
         # 
@@ -25852,7 +25848,7 @@ class DescribeSecurityEventTopNMetricRequest(TeaModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The filter parameters for the query. Multiple parameters are evaluated by using a logical AND.
+        # The filter conditions for the query. Multiple conditions are evaluated by using a logical AND.
         # 
         # This parameter is required.
         self.filter = filter
@@ -25868,7 +25864,7 @@ class DescribeSecurityEventTopNMetricRequest(TeaModel):
         self.limit = limit
         # The metric whose top N data entries you want to return. The following metrics are supported:
         # 
-        # >  For more information about attack requests, see the "Usage notes" section of this topic.
+        # >  For more information about attack requests, see the "Operation description" section of this topic.
         # 
         # *   real_client_ip: The system aggregates the source IP addresses of attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries.
         # *   http_user_agent: The system aggregates the User-Agent header field of attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries.
@@ -25948,7 +25944,7 @@ class DescribeSecurityEventTopNMetricShrinkRequest(TeaModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The filter parameters for the query. Multiple parameters are evaluated by using a logical AND.
+        # The filter conditions for the query. Multiple conditions are evaluated by using a logical AND.
         # 
         # This parameter is required.
         self.filter_shrink = filter_shrink
@@ -25964,7 +25960,7 @@ class DescribeSecurityEventTopNMetricShrinkRequest(TeaModel):
         self.limit = limit
         # The metric whose top N data entries you want to return. The following metrics are supported:
         # 
-        # >  For more information about attack requests, see the "Usage notes" section of this topic.
+        # >  For more information about attack requests, see the "Operation description" section of this topic.
         # 
         # *   real_client_ip: The system aggregates the source IP addresses of attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries.
         # *   http_user_agent: The system aggregates the User-Agent header field of attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries.
@@ -26080,9 +26076,9 @@ class DescribeSecurityEventTopNMetricResponseBodyTopNMetaDataDateRange(TeaModel)
         end_date: int = None,
         start_date: int = None,
     ):
-        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds. This value is the same as the value of EndDate in the request parameters.
+        # The end of the time range to query. The value is a Unix timestamp. Unit: seconds. This value is the same as the value of EndDate in the request parameters.
         self.end_date = end_date
-        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds. This value is the same as the value of StartDate in the request parameters.
+        # The beginning of the time range to query. The value is a Unix timestamp. Unit: seconds. This value is the same as the value of StartDate in the request parameters.
         self.start_date = start_date
 
     def validate(self):
@@ -26117,7 +26113,7 @@ class DescribeSecurityEventTopNMetricResponseBodyTopNMetaData(TeaModel):
     ):
         # The time range that is used for the query.
         self.date_range = date_range
-        # The unit of the returned data. Defaults to the value: request.
+        # The unit of the statistics returned. It is fixed as requests.
         self.units = units
 
     def validate(self):
@@ -31912,6 +31908,7 @@ class ModifyApisecAbnormalsRequest(TeaModel):
         # *   **cn-hangzhou**: the Chinese mainland.
         # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The risk status. Valid values:
         # 
@@ -34046,8 +34043,6 @@ class ModifyDefenseRuleRequest(TeaModel):
         # This parameter is required.
         self.rules = rules
         # The ID of the protection rule template to which the protection rule whose configurations you want to modify belongs.
-        # 
-        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -37432,11 +37427,12 @@ class SyncProductInstanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region of the WAF instance. Valid values:
+        # The region ID of the WAF instance. Valid values:
         # 
         # *   **cn-hangzhou**: Chinese mainland.
-        # *   **ap-southeast-1**: Outside the Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):
