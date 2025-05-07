@@ -1,3 +1,7 @@
+2025-05-07 Version: 8.2.0
+- Support API UploadDataSyncForLLM.
+
+
 2025-02-06 Version: 8.1.0
 - Support API ApplyWsToken.
 - Update API GetAsrVocab: update response param.
