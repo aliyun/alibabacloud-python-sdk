@@ -1,3 +1,6 @@
+2025-05-07 Version: 1.3.2
+- Generated python 2022-09-26 for Green.
+
 2025-03-31 Version: 1.3.0
 - Support API DeleteFeatureConfig.
 - Support API GetFeatureConfig.

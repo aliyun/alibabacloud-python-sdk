@@ -5210,6 +5210,45 @@ class GetCipStatsResponseBodyDataLabelStatChartImageTreeChar(TeaModel):
         return self
 
 
+class GetCipStatsResponseBodyDataLabelStatChartTextTreeChart(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        name: str = None,
+        value: str = None,
+    ):
+        self.description = description
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class GetCipStatsResponseBodyDataLabelStatChartTreeChart(TeaModel):
     def __init__(
         self,
@@ -5326,6 +5365,7 @@ class GetCipStatsResponseBodyDataLabelStatChart(TeaModel):
         self,
         image_tree_char: List[GetCipStatsResponseBodyDataLabelStatChartImageTreeChar] = None,
         service_code: str = None,
+        text_tree_chart: List[GetCipStatsResponseBodyDataLabelStatChartTextTreeChart] = None,
         total_count: int = None,
         tree_chart: List[GetCipStatsResponseBodyDataLabelStatChartTreeChart] = None,
         voice_tree_chart: List[GetCipStatsResponseBodyDataLabelStatChartVoiceTreeChart] = None,
@@ -5334,6 +5374,7 @@ class GetCipStatsResponseBodyDataLabelStatChart(TeaModel):
     ):
         self.image_tree_char = image_tree_char
         self.service_code = service_code
+        self.text_tree_chart = text_tree_chart
         self.total_count = total_count
         self.tree_chart = tree_chart
         self.voice_tree_chart = voice_tree_chart
@@ -5343,6 +5384,10 @@ class GetCipStatsResponseBodyDataLabelStatChart(TeaModel):
     def validate(self):
         if self.image_tree_char:
             for k in self.image_tree_char:
+                if k:
+                    k.validate()
+        if self.text_tree_chart:
+            for k in self.text_tree_chart:
                 if k:
                     k.validate()
         if self.tree_chart:
@@ -5370,6 +5415,10 @@ class GetCipStatsResponseBodyDataLabelStatChart(TeaModel):
                 result['ImageTreeChar'].append(k.to_map() if k else None)
         if self.service_code is not None:
             result['ServiceCode'] = self.service_code
+        result['TextTreeChart'] = []
+        if self.text_tree_chart is not None:
+            for k in self.text_tree_chart:
+                result['TextTreeChart'].append(k.to_map() if k else None)
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
         result['TreeChart'] = []
@@ -5397,6 +5446,11 @@ class GetCipStatsResponseBodyDataLabelStatChart(TeaModel):
                 self.image_tree_char.append(temp_model.from_map(k))
         if m.get('ServiceCode') is not None:
             self.service_code = m.get('ServiceCode')
+        self.text_tree_chart = []
+        if m.get('TextTreeChart') is not None:
+            for k in m.get('TextTreeChart'):
+                temp_model = GetCipStatsResponseBodyDataLabelStatChartTextTreeChart()
+                self.text_tree_chart.append(temp_model.from_map(k))
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
         self.tree_chart = []
@@ -5489,7 +5543,7 @@ class GetCipStatsResponseBodyData(TeaModel):
     def __init__(
         self,
         label_stat_chart: List[GetCipStatsResponseBodyDataLabelStatChart] = None,
-        total_stat: Dict[str, Any] = None,
+        total_stat: Dict[str, dict] = None,
         uids: List[str] = None,
         x: List[str] = None,
         y: List[GetCipStatsResponseBodyDataY] = None,
