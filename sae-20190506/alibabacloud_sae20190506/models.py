@@ -34367,9 +34367,13 @@ class GetWebshellTokenRequest(TeaModel):
 class GetWebshellTokenResponseBodyData(TeaModel):
     def __init__(
         self,
+        http_url: str = None,
         token: str = None,
+        web_socket_url: str = None,
     ):
+        self.http_url = http_url
         self.token = token
+        self.web_socket_url = web_socket_url
 
     def validate(self):
         pass
@@ -34380,14 +34384,22 @@ class GetWebshellTokenResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.http_url is not None:
+            result['HttpUrl'] = self.http_url
         if self.token is not None:
             result['Token'] = self.token
+        if self.web_socket_url is not None:
+            result['WebSocketUrl'] = self.web_socket_url
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('HttpUrl') is not None:
+            self.http_url = m.get('HttpUrl')
         if m.get('Token') is not None:
             self.token = m.get('Token')
+        if m.get('WebSocketUrl') is not None:
+            self.web_socket_url = m.get('WebSocketUrl')
         return self
 
 

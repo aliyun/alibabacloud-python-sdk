@@ -1,3 +1,8 @@
+2025-05-07 Version: 2.0.5
+- Update API GetWebshellToken: add response parameters Body.Data.HttpUrl.
+- Update API GetWebshellToken: add response parameters Body.Data.WebSocketUrl.
+
+
 2025-04-25 Version: 2.0.4
 - Update API CreateApplication: add request parameters InitContainersConfig.
 - Update API DeployApplication: add request parameters InitContainersConfig.
