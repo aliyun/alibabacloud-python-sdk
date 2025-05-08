@@ -6522,10 +6522,12 @@ class GetDataSourceOrderConfigRequest(TeaModel):
     def __init__(
         self,
         agent_key: str = None,
+        generate_technology: str = None,
         product_code: str = None,
     ):
         # This parameter is required.
         self.agent_key = agent_key
+        self.generate_technology = generate_technology
         # This parameter is required.
         self.product_code = product_code
 
@@ -6540,6 +6542,8 @@ class GetDataSourceOrderConfigRequest(TeaModel):
         result = dict()
         if self.agent_key is not None:
             result['AgentKey'] = self.agent_key
+        if self.generate_technology is not None:
+            result['GenerateTechnology'] = self.generate_technology
         if self.product_code is not None:
             result['ProductCode'] = self.product_code
         return result
@@ -6548,6 +6552,8 @@ class GetDataSourceOrderConfigRequest(TeaModel):
         m = m or dict()
         if m.get('AgentKey') is not None:
             self.agent_key = m.get('AgentKey')
+        if m.get('GenerateTechnology') is not None:
+            self.generate_technology = m.get('GenerateTechnology')
         if m.get('ProductCode') is not None:
             self.product_code = m.get('ProductCode')
         return self
@@ -39676,12 +39682,14 @@ class SaveDataSourceOrderConfigRequestUserConfigDataSourceList(TeaModel):
     def __init__(
         self,
         code: str = None,
+        enable: bool = None,
         name: str = None,
         number: int = None,
         type: str = None,
     ):
         # This parameter is required.
         self.code = code
+        self.enable = enable
         self.name = name
         # This parameter is required.
         self.number = number
@@ -39699,6 +39707,8 @@ class SaveDataSourceOrderConfigRequestUserConfigDataSourceList(TeaModel):
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
+        if self.enable is not None:
+            result['Enable'] = self.enable
         if self.name is not None:
             result['Name'] = self.name
         if self.number is not None:
@@ -39711,6 +39721,8 @@ class SaveDataSourceOrderConfigRequestUserConfigDataSourceList(TeaModel):
         m = m or dict()
         if m.get('Code') is not None:
             self.code = m.get('Code')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Number') is not None:
@@ -39724,11 +39736,13 @@ class SaveDataSourceOrderConfigRequest(TeaModel):
     def __init__(
         self,
         agent_key: str = None,
+        generate_technology: str = None,
         product_code: str = None,
         user_config_data_source_list: List[SaveDataSourceOrderConfigRequestUserConfigDataSourceList] = None,
     ):
         # This parameter is required.
         self.agent_key = agent_key
+        self.generate_technology = generate_technology
         # This parameter is required.
         self.product_code = product_code
         # This parameter is required.
@@ -39748,6 +39762,8 @@ class SaveDataSourceOrderConfigRequest(TeaModel):
         result = dict()
         if self.agent_key is not None:
             result['AgentKey'] = self.agent_key
+        if self.generate_technology is not None:
+            result['GenerateTechnology'] = self.generate_technology
         if self.product_code is not None:
             result['ProductCode'] = self.product_code
         result['UserConfigDataSourceList'] = []
@@ -39760,6 +39776,8 @@ class SaveDataSourceOrderConfigRequest(TeaModel):
         m = m or dict()
         if m.get('AgentKey') is not None:
             self.agent_key = m.get('AgentKey')
+        if m.get('GenerateTechnology') is not None:
+            self.generate_technology = m.get('GenerateTechnology')
         if m.get('ProductCode') is not None:
             self.product_code = m.get('ProductCode')
         self.user_config_data_source_list = []
@@ -39774,11 +39792,13 @@ class SaveDataSourceOrderConfigShrinkRequest(TeaModel):
     def __init__(
         self,
         agent_key: str = None,
+        generate_technology: str = None,
         product_code: str = None,
         user_config_data_source_list_shrink: str = None,
     ):
         # This parameter is required.
         self.agent_key = agent_key
+        self.generate_technology = generate_technology
         # This parameter is required.
         self.product_code = product_code
         # This parameter is required.
@@ -39795,6 +39815,8 @@ class SaveDataSourceOrderConfigShrinkRequest(TeaModel):
         result = dict()
         if self.agent_key is not None:
             result['AgentKey'] = self.agent_key
+        if self.generate_technology is not None:
+            result['GenerateTechnology'] = self.generate_technology
         if self.product_code is not None:
             result['ProductCode'] = self.product_code
         if self.user_config_data_source_list_shrink is not None:
@@ -39805,6 +39827,8 @@ class SaveDataSourceOrderConfigShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('AgentKey') is not None:
             self.agent_key = m.get('AgentKey')
+        if m.get('GenerateTechnology') is not None:
+            self.generate_technology = m.get('GenerateTechnology')
         if m.get('ProductCode') is not None:
             self.product_code = m.get('ProductCode')
         if m.get('UserConfigDataSourceList') is not None:

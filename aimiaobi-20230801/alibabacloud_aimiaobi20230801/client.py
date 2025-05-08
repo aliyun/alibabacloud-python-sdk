@@ -3374,6 +3374,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.agent_key):
             query['AgentKey'] = request.agent_key
         body = {}
+        if not UtilClient.is_unset(request.generate_technology):
+            body['GenerateTechnology'] = request.generate_technology
         if not UtilClient.is_unset(request.product_code):
             body['ProductCode'] = request.product_code
         req = open_api_models.OpenApiRequest(
@@ -3413,6 +3415,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.agent_key):
             query['AgentKey'] = request.agent_key
         body = {}
+        if not UtilClient.is_unset(request.generate_technology):
+            body['GenerateTechnology'] = request.generate_technology
         if not UtilClient.is_unset(request.product_code):
             body['ProductCode'] = request.product_code
         req = open_api_models.OpenApiRequest(
@@ -12942,6 +12946,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.agent_key):
             query['AgentKey'] = request.agent_key
         body = {}
+        if not UtilClient.is_unset(request.generate_technology):
+            body['GenerateTechnology'] = request.generate_technology
         if not UtilClient.is_unset(request.product_code):
             body['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.user_config_data_source_list_shrink):
@@ -12987,6 +12993,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.agent_key):
             query['AgentKey'] = request.agent_key
         body = {}
+        if not UtilClient.is_unset(request.generate_technology):
+            body['GenerateTechnology'] = request.generate_technology
         if not UtilClient.is_unset(request.product_code):
             body['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.user_config_data_source_list_shrink):
