@@ -1,3 +1,7 @@
+2025-05-08 Version: 1.5.0
+- Support API GetDetectLanguageVpc.
+
+
 2025-01-17 Version: 1.4.0
 - Support API TranslateSearch.
 - Update API Translate: update param SourceText.

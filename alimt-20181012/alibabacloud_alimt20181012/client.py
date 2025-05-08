@@ -992,12 +992,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_detect_language_with_options_async(request, runtime)
 
+    def get_detect_language_vpc_with_options(
+        self,
+        request: alimt_20181012_models.GetDetectLanguageVpcRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alimt_20181012_models.GetDetectLanguageVpcResponse:
+        """
+        @summary 语种识别
+        
+        @param request: GetDetectLanguageVpcRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDetectLanguageVpcResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.source_text):
+            body['SourceText'] = request.source_text
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDetectLanguageVpc',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alimt_20181012_models.GetDetectLanguageVpcResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_detect_language_vpc_with_options_async(
+        self,
+        request: alimt_20181012_models.GetDetectLanguageVpcRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alimt_20181012_models.GetDetectLanguageVpcResponse:
+        """
+        @summary 语种识别
+        
+        @param request: GetDetectLanguageVpcRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDetectLanguageVpcResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.source_text):
+            body['SourceText'] = request.source_text
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDetectLanguageVpc',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alimt_20181012_models.GetDetectLanguageVpcResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_detect_language_vpc(
+        self,
+        request: alimt_20181012_models.GetDetectLanguageVpcRequest,
+    ) -> alimt_20181012_models.GetDetectLanguageVpcResponse:
+        """
+        @summary 语种识别
+        
+        @param request: GetDetectLanguageVpcRequest
+        @return: GetDetectLanguageVpcResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_detect_language_vpc_with_options(request, runtime)
+
+    async def get_detect_language_vpc_async(
+        self,
+        request: alimt_20181012_models.GetDetectLanguageVpcRequest,
+    ) -> alimt_20181012_models.GetDetectLanguageVpcResponse:
+        """
+        @summary 语种识别
+        
+        @param request: GetDetectLanguageVpcRequest
+        @return: GetDetectLanguageVpcResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_detect_language_vpc_with_options_async(request, runtime)
+
     def get_doc_translate_task_with_options(
         self,
         request: alimt_20181012_models.GetDocTranslateTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetDocTranslateTaskResponse:
         """
+        @summary 获取文档翻译任务
+        
         @param request: GetDocTranslateTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetDocTranslateTaskResponse
@@ -1029,6 +1127,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetDocTranslateTaskResponse:
         """
+        @summary 获取文档翻译任务
+        
         @param request: GetDocTranslateTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetDocTranslateTaskResponse
@@ -1059,6 +1159,8 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.GetDocTranslateTaskRequest,
     ) -> alimt_20181012_models.GetDocTranslateTaskResponse:
         """
+        @summary 获取文档翻译任务
+        
         @param request: GetDocTranslateTaskRequest
         @return: GetDocTranslateTaskResponse
         """
@@ -1070,6 +1172,8 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.GetDocTranslateTaskRequest,
     ) -> alimt_20181012_models.GetDocTranslateTaskResponse:
         """
+        @summary 获取文档翻译任务
+        
         @param request: GetDocTranslateTaskRequest
         @return: GetDocTranslateTaskResponse
         """
@@ -1362,6 +1466,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetTitleDiagnoseResponse:
         """
+        @summary GetTitleDiagnose
+        
         @param request: GetTitleDiagnoseRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetTitleDiagnoseResponse
@@ -1403,6 +1509,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetTitleDiagnoseResponse:
         """
+        @summary GetTitleDiagnose
+        
         @param request: GetTitleDiagnoseRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetTitleDiagnoseResponse
@@ -1443,6 +1551,8 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.GetTitleDiagnoseRequest,
     ) -> alimt_20181012_models.GetTitleDiagnoseResponse:
         """
+        @summary GetTitleDiagnose
+        
         @param request: GetTitleDiagnoseRequest
         @return: GetTitleDiagnoseResponse
         """
@@ -1454,6 +1564,8 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.GetTitleDiagnoseRequest,
     ) -> alimt_20181012_models.GetTitleDiagnoseResponse:
         """
+        @summary GetTitleDiagnose
+        
         @param request: GetTitleDiagnoseRequest
         @return: GetTitleDiagnoseResponse
         """
@@ -1466,6 +1578,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetTitleGenerateResponse:
         """
+        @summary GetTitleGenerate
+        
         @param request: GetTitleGenerateRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetTitleGenerateResponse
@@ -1511,6 +1625,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetTitleGenerateResponse:
         """
+        @summary GetTitleGenerate
+        
         @param request: GetTitleGenerateRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetTitleGenerateResponse
@@ -1555,6 +1671,8 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.GetTitleGenerateRequest,
     ) -> alimt_20181012_models.GetTitleGenerateResponse:
         """
+        @summary GetTitleGenerate
+        
         @param request: GetTitleGenerateRequest
         @return: GetTitleGenerateResponse
         """
@@ -1566,6 +1684,8 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.GetTitleGenerateRequest,
     ) -> alimt_20181012_models.GetTitleGenerateResponse:
         """
+        @summary GetTitleGenerate
+        
         @param request: GetTitleGenerateRequest
         @return: GetTitleGenerateResponse
         """
@@ -1578,6 +1698,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetTitleIntelligenceResponse:
         """
+        @summary GetTitleIntelligence
+        
         @param request: GetTitleIntelligenceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetTitleIntelligenceResponse
@@ -1619,6 +1741,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetTitleIntelligenceResponse:
         """
+        @summary GetTitleIntelligence
+        
         @param request: GetTitleIntelligenceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetTitleIntelligenceResponse
@@ -1659,6 +1783,8 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.GetTitleIntelligenceRequest,
     ) -> alimt_20181012_models.GetTitleIntelligenceResponse:
         """
+        @summary GetTitleIntelligence
+        
         @param request: GetTitleIntelligenceRequest
         @return: GetTitleIntelligenceResponse
         """
@@ -1670,6 +1796,8 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.GetTitleIntelligenceRequest,
     ) -> alimt_20181012_models.GetTitleIntelligenceResponse:
         """
+        @summary GetTitleIntelligence
+        
         @param request: GetTitleIntelligenceRequest
         @return: GetTitleIntelligenceResponse
         """
@@ -1778,6 +1906,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetTranslateReportResponse:
         """
+        @summary GetTranslateReport
+        
         @param request: GetTranslateReportRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetTranslateReportResponse
@@ -1817,6 +1947,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetTranslateReportResponse:
         """
+        @summary GetTranslateReport
+        
         @param request: GetTranslateReportRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetTranslateReportResponse
@@ -1855,6 +1987,8 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.GetTranslateReportRequest,
     ) -> alimt_20181012_models.GetTranslateReportResponse:
         """
+        @summary GetTranslateReport
+        
         @param request: GetTranslateReportRequest
         @return: GetTranslateReportResponse
         """
@@ -1866,6 +2000,8 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.GetTranslateReportRequest,
     ) -> alimt_20181012_models.GetTranslateReportResponse:
         """
+        @summary GetTranslateReport
+        
         @param request: GetTranslateReportRequest
         @return: GetTranslateReportResponse
         """
@@ -1978,6 +2114,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.TranslateResponse:
         """
+        @summary 专业文本翻译
+        
         @param request: TranslateRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: TranslateResponse
@@ -2023,6 +2161,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.TranslateResponse:
         """
+        @summary 专业文本翻译
+        
         @param request: TranslateRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: TranslateResponse
@@ -2067,6 +2207,8 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.TranslateRequest,
     ) -> alimt_20181012_models.TranslateResponse:
         """
+        @summary 专业文本翻译
+        
         @param request: TranslateRequest
         @return: TranslateResponse
         """
@@ -2078,6 +2220,8 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.TranslateRequest,
     ) -> alimt_20181012_models.TranslateResponse:
         """
+        @summary 专业文本翻译
+        
         @param request: TranslateRequest
         @return: TranslateResponse
         """
@@ -2090,6 +2234,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.TranslateCertificateResponse:
         """
+        @summary TranslateCertificate
+        
         @param request: TranslateCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: TranslateCertificateResponse
@@ -2131,6 +2277,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.TranslateCertificateResponse:
         """
+        @summary TranslateCertificate
+        
         @param request: TranslateCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: TranslateCertificateResponse
@@ -2171,6 +2319,8 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.TranslateCertificateRequest,
     ) -> alimt_20181012_models.TranslateCertificateResponse:
         """
+        @summary TranslateCertificate
+        
         @param request: TranslateCertificateRequest
         @return: TranslateCertificateResponse
         """
@@ -2182,6 +2332,8 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.TranslateCertificateRequest,
     ) -> alimt_20181012_models.TranslateCertificateResponse:
         """
+        @summary TranslateCertificate
+        
         @param request: TranslateCertificateRequest
         @return: TranslateCertificateResponse
         """
@@ -2340,6 +2492,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI TranslateECommerce is deprecated, please use alimt::2018-10-12::Translate instead.
         
+        @summary TranslateECommerce
+        
         @param request: TranslateECommerceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: TranslateECommerceResponse
@@ -2388,6 +2542,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI TranslateECommerce is deprecated, please use alimt::2018-10-12::Translate instead.
         
+        @summary TranslateECommerce
+        
         @param request: TranslateECommerceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: TranslateECommerceResponse
@@ -2435,6 +2591,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI TranslateECommerce is deprecated, please use alimt::2018-10-12::Translate instead.
         
+        @summary TranslateECommerce
+        
         @param request: TranslateECommerceRequest
         @return: TranslateECommerceResponse
         Deprecated
@@ -2449,6 +2607,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI TranslateECommerce is deprecated, please use alimt::2018-10-12::Translate instead.
         
+        @summary TranslateECommerce
+        
         @param request: TranslateECommerceRequest
         @return: TranslateECommerceResponse
         Deprecated
@@ -2462,6 +2622,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.TranslateGeneralResponse:
         """
+        @summary 文本通用翻译
+        
         @param request: TranslateGeneralRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: TranslateGeneralResponse
@@ -2507,6 +2669,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.TranslateGeneralResponse:
         """
+        @summary 文本通用翻译
+        
         @param request: TranslateGeneralRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: TranslateGeneralResponse
@@ -2551,6 +2715,8 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.TranslateGeneralRequest,
     ) -> alimt_20181012_models.TranslateGeneralResponse:
         """
+        @summary 文本通用翻译
+        
         @param request: TranslateGeneralRequest
         @return: TranslateGeneralResponse
         """
@@ -2562,6 +2728,8 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.TranslateGeneralRequest,
     ) -> alimt_20181012_models.TranslateGeneralResponse:
         """
+        @summary 文本通用翻译
+        
         @param request: TranslateGeneralRequest
         @return: TranslateGeneralResponse
         """
