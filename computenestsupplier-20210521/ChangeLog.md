@@ -1,3 +1,8 @@
+2025-05-08 Version: 7.1.0
+- Support API ListServiceInstanceBill.
+- Update API UpdateService: add request parameters BuildParameters.
+
+
 2025-04-17 Version: 7.0.6
 - Update API GetService: add response parameters Body.SupportContacts.
 - Update API GetSupplierInformation: add response parameters Body.SupportContacts.
