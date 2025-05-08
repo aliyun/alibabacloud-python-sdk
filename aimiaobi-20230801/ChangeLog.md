@@ -1,3 +1,6 @@
+2025-05-08 Version: 1.22.5
+- Generated python 2023-08-01 for AiMiaoBi.
+
 2025-05-08 Version: 1.22.4
 - Update API GetDataSourceOrderConfig: add request parameters GenerateTechnology.
 - Update API SaveDataSourceOrderConfig: add request parameters GenerateTechnology.
