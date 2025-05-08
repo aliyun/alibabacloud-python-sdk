@@ -185,6 +185,7 @@ class AddFileRequest(TeaModel):
         category_id: str = None,
         category_type: str = None,
         lease_id: str = None,
+        original_file_url: str = None,
         parser: str = None,
         tags: List[str] = None,
     ):
@@ -197,6 +198,7 @@ class AddFileRequest(TeaModel):
         # 
         # This parameter is required.
         self.lease_id = lease_id
+        self.original_file_url = original_file_url
         # The parser. Valid value:
         # 
         # *   DASHSCOPE_DOCMIND: Intelligent document parsing by Alibaba Cloud.
@@ -221,6 +223,8 @@ class AddFileRequest(TeaModel):
             result['CategoryType'] = self.category_type
         if self.lease_id is not None:
             result['LeaseId'] = self.lease_id
+        if self.original_file_url is not None:
+            result['OriginalFileUrl'] = self.original_file_url
         if self.parser is not None:
             result['Parser'] = self.parser
         if self.tags is not None:
@@ -235,6 +239,8 @@ class AddFileRequest(TeaModel):
             self.category_type = m.get('CategoryType')
         if m.get('LeaseId') is not None:
             self.lease_id = m.get('LeaseId')
+        if m.get('OriginalFileUrl') is not None:
+            self.original_file_url = m.get('OriginalFileUrl')
         if m.get('Parser') is not None:
             self.parser = m.get('Parser')
         if m.get('Tags') is not None:
@@ -248,6 +254,7 @@ class AddFileShrinkRequest(TeaModel):
         category_id: str = None,
         category_type: str = None,
         lease_id: str = None,
+        original_file_url: str = None,
         parser: str = None,
         tags_shrink: str = None,
     ):
@@ -260,6 +267,7 @@ class AddFileShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.lease_id = lease_id
+        self.original_file_url = original_file_url
         # The parser. Valid value:
         # 
         # *   DASHSCOPE_DOCMIND: Intelligent document parsing by Alibaba Cloud.
@@ -284,6 +292,8 @@ class AddFileShrinkRequest(TeaModel):
             result['CategoryType'] = self.category_type
         if self.lease_id is not None:
             result['LeaseId'] = self.lease_id
+        if self.original_file_url is not None:
+            result['OriginalFileUrl'] = self.original_file_url
         if self.parser is not None:
             result['Parser'] = self.parser
         if self.tags_shrink is not None:
@@ -298,6 +308,8 @@ class AddFileShrinkRequest(TeaModel):
             self.category_type = m.get('CategoryType')
         if m.get('LeaseId') is not None:
             self.lease_id = m.get('LeaseId')
+        if m.get('OriginalFileUrl') is not None:
+            self.original_file_url = m.get('OriginalFileUrl')
         if m.get('Parser') is not None:
             self.parser = m.get('Parser')
         if m.get('Tags') is not None:

@@ -190,6 +190,8 @@ class Client(OpenApiClient):
             body['CategoryType'] = request.category_type
         if not UtilClient.is_unset(request.lease_id):
             body['LeaseId'] = request.lease_id
+        if not UtilClient.is_unset(request.original_file_url):
+            body['OriginalFileUrl'] = request.original_file_url
         if not UtilClient.is_unset(request.parser):
             body['Parser'] = request.parser
         if not UtilClient.is_unset(request.tags_shrink):
@@ -247,6 +249,8 @@ class Client(OpenApiClient):
             body['CategoryType'] = request.category_type
         if not UtilClient.is_unset(request.lease_id):
             body['LeaseId'] = request.lease_id
+        if not UtilClient.is_unset(request.original_file_url):
+            body['OriginalFileUrl'] = request.original_file_url
         if not UtilClient.is_unset(request.parser):
             body['Parser'] = request.parser
         if not UtilClient.is_unset(request.tags_shrink):
