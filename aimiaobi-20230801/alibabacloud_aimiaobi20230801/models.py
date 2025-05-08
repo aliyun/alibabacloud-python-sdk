@@ -10862,6 +10862,45 @@ class GetPropertiesResponseBodyDataConsoleConfig(TeaModel):
         return self
 
 
+class GetPropertiesResponseBodyDataIntelligentSearchConfigCopilotPreciseSearchSources(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        dataset_name: str = None,
+        name: str = None,
+    ):
+        self.code = code
+        self.dataset_name = dataset_name
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
 class GetPropertiesResponseBodyDataIntelligentSearchConfigSearchSamplesArticles(TeaModel):
     def __init__(
         self,
@@ -10996,15 +11035,21 @@ class GetPropertiesResponseBodyDataIntelligentSearchConfigSearchSources(TeaModel
 class GetPropertiesResponseBodyDataIntelligentSearchConfig(TeaModel):
     def __init__(
         self,
+        copilot_precise_search_sources: List[GetPropertiesResponseBodyDataIntelligentSearchConfigCopilotPreciseSearchSources] = None,
         product_description: str = None,
         search_samples: List[GetPropertiesResponseBodyDataIntelligentSearchConfigSearchSamples] = None,
         search_sources: List[GetPropertiesResponseBodyDataIntelligentSearchConfigSearchSources] = None,
     ):
+        self.copilot_precise_search_sources = copilot_precise_search_sources
         self.product_description = product_description
         self.search_samples = search_samples
         self.search_sources = search_sources
 
     def validate(self):
+        if self.copilot_precise_search_sources:
+            for k in self.copilot_precise_search_sources:
+                if k:
+                    k.validate()
         if self.search_samples:
             for k in self.search_samples:
                 if k:
@@ -11020,6 +11065,10 @@ class GetPropertiesResponseBodyDataIntelligentSearchConfig(TeaModel):
             return _map
 
         result = dict()
+        result['CopilotPreciseSearchSources'] = []
+        if self.copilot_precise_search_sources is not None:
+            for k in self.copilot_precise_search_sources:
+                result['CopilotPreciseSearchSources'].append(k.to_map() if k else None)
         if self.product_description is not None:
             result['ProductDescription'] = self.product_description
         result['SearchSamples'] = []
@@ -11034,6 +11083,11 @@ class GetPropertiesResponseBodyDataIntelligentSearchConfig(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.copilot_precise_search_sources = []
+        if m.get('CopilotPreciseSearchSources') is not None:
+            for k in m.get('CopilotPreciseSearchSources'):
+                temp_model = GetPropertiesResponseBodyDataIntelligentSearchConfigCopilotPreciseSearchSources()
+                self.copilot_precise_search_sources.append(temp_model.from_map(k))
         if m.get('ProductDescription') is not None:
             self.product_description = m.get('ProductDescription')
         self.search_samples = []
