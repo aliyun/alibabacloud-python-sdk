@@ -1,3 +1,7 @@
+2025-05-08 Version: 1.3.0
+- Support API UnifiedSearch.
+
+
 2025-05-08 Version: 1.2.1
 - Generated python 2024-11-11 for IQS.
 

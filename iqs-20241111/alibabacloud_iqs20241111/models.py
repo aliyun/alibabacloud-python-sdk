@@ -1243,7 +1243,7 @@ class UnifiedSearchInformation(TeaModel):
         return self
 
 
-class UnifiedSearchRequest(TeaModel):
+class UnifiedSearchInput(TeaModel):
     def __init__(
         self,
         category: str = None,
@@ -1296,7 +1296,7 @@ class UnifiedSearchRequest(TeaModel):
         return self
 
 
-class UnifiedSearchResponse(TeaModel):
+class UnifiedSearchOutput(TeaModel):
     def __init__(
         self,
         cost_credits: UnifiedCostCredits = None,
@@ -1964,6 +1964,76 @@ class GlobalSearchResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GlobalSearchResult()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UnifiedSearchRequest(TeaModel):
+    def __init__(
+        self,
+        body: UnifiedSearchInput = None,
+    ):
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = UnifiedSearchInput()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UnifiedSearchResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UnifiedSearchOutput = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UnifiedSearchOutput()
             self.body = temp_model.from_map(m['body'])
         return self
 

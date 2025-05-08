@@ -528,3 +528,101 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.global_search_with_options_async(request, headers, runtime)
+
+    def unified_search_with_options(
+        self,
+        request: iqs20241111_models.UnifiedSearchRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> iqs20241111_models.UnifiedSearchResponse:
+        """
+        @summary 通晓统一搜索API
+        
+        @param request: UnifiedSearchRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnifiedSearchResponse
+        """
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='UnifiedSearch',
+            version='2024-11-11',
+            protocol='HTTPS',
+            pathname=f'/linked-retrieval/linked-retrieval-entry/v1/iqs/search/unified',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iqs20241111_models.UnifiedSearchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def unified_search_with_options_async(
+        self,
+        request: iqs20241111_models.UnifiedSearchRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> iqs20241111_models.UnifiedSearchResponse:
+        """
+        @summary 通晓统一搜索API
+        
+        @param request: UnifiedSearchRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnifiedSearchResponse
+        """
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='UnifiedSearch',
+            version='2024-11-11',
+            protocol='HTTPS',
+            pathname=f'/linked-retrieval/linked-retrieval-entry/v1/iqs/search/unified',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iqs20241111_models.UnifiedSearchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def unified_search(
+        self,
+        request: iqs20241111_models.UnifiedSearchRequest,
+    ) -> iqs20241111_models.UnifiedSearchResponse:
+        """
+        @summary 通晓统一搜索API
+        
+        @param request: UnifiedSearchRequest
+        @return: UnifiedSearchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.unified_search_with_options(request, headers, runtime)
+
+    async def unified_search_async(
+        self,
+        request: iqs20241111_models.UnifiedSearchRequest,
+    ) -> iqs20241111_models.UnifiedSearchResponse:
+        """
+        @summary 通晓统一搜索API
+        
+        @param request: UnifiedSearchRequest
+        @return: UnifiedSearchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.unified_search_with_options_async(request, headers, runtime)
