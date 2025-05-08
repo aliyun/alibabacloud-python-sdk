@@ -12819,6 +12819,8 @@ class Client(OpenApiClient):
             query['Overrides'] = request.overrides_shrink
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.parallel_task):
+            query['ParallelTask'] = request.parallel_task
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.scaling_group_id):
@@ -12888,6 +12890,8 @@ class Client(OpenApiClient):
             query['Overrides'] = request.overrides_shrink
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.parallel_task):
+            query['ParallelTask'] = request.parallel_task
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.scaling_group_id):

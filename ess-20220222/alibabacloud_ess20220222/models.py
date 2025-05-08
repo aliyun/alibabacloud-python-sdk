@@ -37833,6 +37833,7 @@ class ScaleWithAdjustmentRequest(TeaModel):
         min_adjustment_magnitude: int = None,
         overrides: ScaleWithAdjustmentRequestOverrides = None,
         owner_id: int = None,
+        parallel_task: bool = None,
         resource_owner_account: str = None,
         scaling_group_id: str = None,
         sync_activity: bool = None,
@@ -37864,6 +37865,7 @@ class ScaleWithAdjustmentRequest(TeaModel):
         # The overrides that allow you to adjust the scaling group of the Elastic Container Instance type during a scale-out event.
         self.overrides = overrides
         self.owner_id = owner_id
+        self.parallel_task = parallel_task
         self.resource_owner_account = resource_owner_account
         # The ID of the scaling group.
         # 
@@ -37907,6 +37909,8 @@ class ScaleWithAdjustmentRequest(TeaModel):
             result['Overrides'] = self.overrides.to_map()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.parallel_task is not None:
+            result['ParallelTask'] = self.parallel_task
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.scaling_group_id is not None:
@@ -37935,6 +37939,8 @@ class ScaleWithAdjustmentRequest(TeaModel):
             self.overrides = temp_model.from_map(m['Overrides'])
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('ParallelTask') is not None:
+            self.parallel_task = m.get('ParallelTask')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ScalingGroupId') is not None:
@@ -37955,6 +37961,7 @@ class ScaleWithAdjustmentShrinkRequest(TeaModel):
         min_adjustment_magnitude: int = None,
         overrides_shrink: str = None,
         owner_id: int = None,
+        parallel_task: bool = None,
         resource_owner_account: str = None,
         scaling_group_id: str = None,
         sync_activity: bool = None,
@@ -37986,6 +37993,7 @@ class ScaleWithAdjustmentShrinkRequest(TeaModel):
         # The overrides that allow you to adjust the scaling group of the Elastic Container Instance type during a scale-out event.
         self.overrides_shrink = overrides_shrink
         self.owner_id = owner_id
+        self.parallel_task = parallel_task
         self.resource_owner_account = resource_owner_account
         # The ID of the scaling group.
         # 
@@ -38026,6 +38034,8 @@ class ScaleWithAdjustmentShrinkRequest(TeaModel):
             result['Overrides'] = self.overrides_shrink
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.parallel_task is not None:
+            result['ParallelTask'] = self.parallel_task
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.scaling_group_id is not None:
@@ -38052,6 +38062,8 @@ class ScaleWithAdjustmentShrinkRequest(TeaModel):
             self.overrides_shrink = m.get('Overrides')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('ParallelTask') is not None:
+            self.parallel_task = m.get('ParallelTask')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ScalingGroupId') is not None:

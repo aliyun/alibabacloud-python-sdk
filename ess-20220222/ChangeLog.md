@@ -1,3 +1,7 @@
+2025-05-08 Version: 1.10.15
+- Update API ScaleWithAdjustment: add request parameters ParallelTask.
+
+
 2025-04-29 Version: 1.10.14
 - Update API CreateScalingRule: add request parameters AlarmOptions.
 - Update API DescribeScalingRules: add response parameters Body.ScalingRules.$.Alarms.$.Period.
