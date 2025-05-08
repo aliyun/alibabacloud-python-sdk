@@ -82,16 +82,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                iqs20241111_models.AiSearchResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                iqs20241111_models.AiSearchResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            iqs20241111_models.AiSearchResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def ai_search_with_options_async(
         self,
@@ -134,16 +128,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                iqs20241111_models.AiSearchResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                iqs20241111_models.AiSearchResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            iqs20241111_models.AiSearchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def ai_search(
         self,
@@ -212,16 +200,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                iqs20241111_models.GenericAdvancedSearchResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                iqs20241111_models.GenericAdvancedSearchResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            iqs20241111_models.GenericAdvancedSearchResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def generic_advanced_search_with_options_async(
         self,
@@ -262,16 +244,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                iqs20241111_models.GenericAdvancedSearchResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                iqs20241111_models.GenericAdvancedSearchResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            iqs20241111_models.GenericAdvancedSearchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def generic_advanced_search(
         self,
@@ -350,16 +326,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                iqs20241111_models.GenericSearchResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                iqs20241111_models.GenericSearchResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            iqs20241111_models.GenericSearchResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def generic_search_with_options_async(
         self,
@@ -410,16 +380,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                iqs20241111_models.GenericSearchResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                iqs20241111_models.GenericSearchResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            iqs20241111_models.GenericSearchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def generic_search(
         self,
@@ -488,16 +452,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                iqs20241111_models.GlobalSearchResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                iqs20241111_models.GlobalSearchResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            iqs20241111_models.GlobalSearchResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def global_search_with_options_async(
         self,
@@ -538,16 +496,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                iqs20241111_models.GlobalSearchResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                iqs20241111_models.GlobalSearchResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            iqs20241111_models.GlobalSearchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def global_search(
         self,

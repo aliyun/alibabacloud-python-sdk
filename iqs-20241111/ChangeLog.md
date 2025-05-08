@@ -1,3 +1,6 @@
+2025-05-08 Version: 1.2.1
+- Generated python 2024-11-11 for IQS.
+
 2025-04-08 Version: 1.2.0
 - Support API GlobalSearch.
 
