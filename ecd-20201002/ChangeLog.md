@@ -1,3 +1,7 @@
+2025-05-08 Version: 1.2.5
+- Update API GetLoginToken: add response parameters Body.NickName.
+
+
 2025-05-07 Version: 1.2.4
 - Update API DescribeUserResources: add response parameters Body.Resources.$.Sessions.$.NickName.
 

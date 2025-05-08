@@ -4226,6 +4226,7 @@ class GetLoginTokenResponseBody(TeaModel):
         label: str = None,
         login_token: str = None,
         next_stage: str = None,
+        nick_name: str = None,
         password_strategy: GetLoginTokenResponseBodyPasswordStrategy = None,
         phone: str = None,
         props: Dict[str, str] = None,
@@ -4257,6 +4258,7 @@ class GetLoginTokenResponseBody(TeaModel):
         # 
         # >  For more information about the authentication stages, see the `CurrentStage` parameter.
         self.next_stage = next_stage
+        self.nick_name = nick_name
         # > This is a parameter only for internal use.
         self.password_strategy = password_strategy
         # Enter the mobile number of the convenience user. For an AD user, null is returned.
@@ -4312,6 +4314,8 @@ class GetLoginTokenResponseBody(TeaModel):
             result['LoginToken'] = self.login_token
         if self.next_stage is not None:
             result['NextStage'] = self.next_stage
+        if self.nick_name is not None:
+            result['NickName'] = self.nick_name
         if self.password_strategy is not None:
             result['PasswordStrategy'] = self.password_strategy.to_map()
         if self.phone is not None:
@@ -4352,6 +4356,8 @@ class GetLoginTokenResponseBody(TeaModel):
             self.login_token = m.get('LoginToken')
         if m.get('NextStage') is not None:
             self.next_stage = m.get('NextStage')
+        if m.get('NickName') is not None:
+            self.nick_name = m.get('NickName')
         if m.get('PasswordStrategy') is not None:
             temp_model = GetLoginTokenResponseBodyPasswordStrategy()
             self.password_strategy = temp_model.from_map(m['PasswordStrategy'])
