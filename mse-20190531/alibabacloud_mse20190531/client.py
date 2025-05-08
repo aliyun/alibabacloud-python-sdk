@@ -5354,6 +5354,162 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_plugin_config_with_options_async(request, runtime)
 
+    def create_web_flow_rule_with_options(
+        self,
+        request: mse_20190531_models.CreateWebFlowRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.CreateWebFlowRuleResponse:
+        """
+        @summary 创建热点参数防护规则（HTTP 请求）
+        
+        @param request: CreateWebFlowRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWebFlowRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.burst):
+            query['Burst'] = request.burst
+        if not UtilClient.is_unset(request.control_behavior):
+            query['ControlBehavior'] = request.control_behavior
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.max_queueing_time_ms):
+            query['MaxQueueingTimeMs'] = request.max_queueing_time_ms
+        if not UtilClient.is_unset(request.metric_type):
+            query['MetricType'] = request.metric_type
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.param_item):
+            query['ParamItem'] = request.param_item
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
+        if not UtilClient.is_unset(request.resource_mode):
+            query['ResourceMode'] = request.resource_mode
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.stat_interval_ms):
+            query['StatIntervalMs'] = request.stat_interval_ms
+        if not UtilClient.is_unset(request.threshold):
+            query['Threshold'] = request.threshold
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateWebFlowRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.CreateWebFlowRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_web_flow_rule_with_options_async(
+        self,
+        request: mse_20190531_models.CreateWebFlowRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.CreateWebFlowRuleResponse:
+        """
+        @summary 创建热点参数防护规则（HTTP 请求）
+        
+        @param request: CreateWebFlowRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWebFlowRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.burst):
+            query['Burst'] = request.burst
+        if not UtilClient.is_unset(request.control_behavior):
+            query['ControlBehavior'] = request.control_behavior
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.max_queueing_time_ms):
+            query['MaxQueueingTimeMs'] = request.max_queueing_time_ms
+        if not UtilClient.is_unset(request.metric_type):
+            query['MetricType'] = request.metric_type
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.param_item):
+            query['ParamItem'] = request.param_item
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
+        if not UtilClient.is_unset(request.resource_mode):
+            query['ResourceMode'] = request.resource_mode
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.stat_interval_ms):
+            query['StatIntervalMs'] = request.stat_interval_ms
+        if not UtilClient.is_unset(request.threshold):
+            query['Threshold'] = request.threshold
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateWebFlowRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.CreateWebFlowRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_web_flow_rule(
+        self,
+        request: mse_20190531_models.CreateWebFlowRuleRequest,
+    ) -> mse_20190531_models.CreateWebFlowRuleResponse:
+        """
+        @summary 创建热点参数防护规则（HTTP 请求）
+        
+        @param request: CreateWebFlowRuleRequest
+        @return: CreateWebFlowRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_web_flow_rule_with_options(request, runtime)
+
+    async def create_web_flow_rule_async(
+        self,
+        request: mse_20190531_models.CreateWebFlowRuleRequest,
+    ) -> mse_20190531_models.CreateWebFlowRuleResponse:
+        """
+        @summary 创建热点参数防护规则（HTTP 请求）
+        
+        @param request: CreateWebFlowRuleRequest
+        @return: CreateWebFlowRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_web_flow_rule_with_options_async(request, runtime)
+
     def create_znode_with_options(
         self,
         request: mse_20190531_models.CreateZnodeRequest,
@@ -8529,6 +8685,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_swimming_lane_group_with_options_async(request, runtime)
+
+    def delete_web_flow_rules_with_options(
+        self,
+        request: mse_20190531_models.DeleteWebFlowRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.DeleteWebFlowRulesResponse:
+        """
+        @summary 删除热点参数防护规则（HTTP 请求）
+        
+        @param request: DeleteWebFlowRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWebFlowRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteWebFlowRules',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.DeleteWebFlowRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_web_flow_rules_with_options_async(
+        self,
+        request: mse_20190531_models.DeleteWebFlowRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.DeleteWebFlowRulesResponse:
+        """
+        @summary 删除热点参数防护规则（HTTP 请求）
+        
+        @param request: DeleteWebFlowRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWebFlowRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteWebFlowRules',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.DeleteWebFlowRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_web_flow_rules(
+        self,
+        request: mse_20190531_models.DeleteWebFlowRulesRequest,
+    ) -> mse_20190531_models.DeleteWebFlowRulesResponse:
+        """
+        @summary 删除热点参数防护规则（HTTP 请求）
+        
+        @param request: DeleteWebFlowRulesRequest
+        @return: DeleteWebFlowRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_web_flow_rules_with_options(request, runtime)
+
+    async def delete_web_flow_rules_async(
+        self,
+        request: mse_20190531_models.DeleteWebFlowRulesRequest,
+    ) -> mse_20190531_models.DeleteWebFlowRulesResponse:
+        """
+        @summary 删除热点参数防护规则（HTTP 请求）
+        
+        @param request: DeleteWebFlowRulesRequest
+        @return: DeleteWebFlowRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_web_flow_rules_with_options_async(request, runtime)
 
     def delete_znode_with_options(
         self,
@@ -18750,6 +19014,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
+    def list_web_flow_rules_with_options(
+        self,
+        request: mse_20190531_models.ListWebFlowRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.ListWebFlowRulesResponse:
+        """
+        @summary 查询热点参数防护规则（HTTP 请求）
+        
+        @param request: ListWebFlowRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWebFlowRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.page_index):
+            query['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
+        if not UtilClient.is_unset(request.resource_search_key):
+            query['ResourceSearchKey'] = request.resource_search_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWebFlowRules',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.ListWebFlowRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_web_flow_rules_with_options_async(
+        self,
+        request: mse_20190531_models.ListWebFlowRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.ListWebFlowRulesResponse:
+        """
+        @summary 查询热点参数防护规则（HTTP 请求）
+        
+        @param request: ListWebFlowRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWebFlowRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.page_index):
+            query['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
+        if not UtilClient.is_unset(request.resource_search_key):
+            query['ResourceSearchKey'] = request.resource_search_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWebFlowRules',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.ListWebFlowRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_web_flow_rules(
+        self,
+        request: mse_20190531_models.ListWebFlowRulesRequest,
+    ) -> mse_20190531_models.ListWebFlowRulesResponse:
+        """
+        @summary 查询热点参数防护规则（HTTP 请求）
+        
+        @param request: ListWebFlowRulesRequest
+        @return: ListWebFlowRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_web_flow_rules_with_options(request, runtime)
+
+    async def list_web_flow_rules_async(
+        self,
+        request: mse_20190531_models.ListWebFlowRulesRequest,
+    ) -> mse_20190531_models.ListWebFlowRulesResponse:
+        """
+        @summary 查询热点参数防护规则（HTTP 请求）
+        
+        @param request: ListWebFlowRulesRequest
+        @return: ListWebFlowRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_web_flow_rules_with_options_async(request, runtime)
+
     def list_zk_track_with_options(
         self,
         request: mse_20190531_models.ListZkTrackRequest,
@@ -28325,6 +28713,158 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_service_source_with_options_async(request, runtime)
+
+    def update_web_flow_rule_with_options(
+        self,
+        request: mse_20190531_models.UpdateWebFlowRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.UpdateWebFlowRuleResponse:
+        """
+        @summary 更新热点参数防护规则（HTTP 请求）
+        
+        @param request: UpdateWebFlowRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWebFlowRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.burst):
+            query['Burst'] = request.burst
+        if not UtilClient.is_unset(request.control_behavior):
+            query['ControlBehavior'] = request.control_behavior
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.max_queueing_time_ms):
+            query['MaxQueueingTimeMs'] = request.max_queueing_time_ms
+        if not UtilClient.is_unset(request.metric_type):
+            query['MetricType'] = request.metric_type
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.param_item):
+            query['ParamItem'] = request.param_item
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_mode):
+            query['ResourceMode'] = request.resource_mode
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.stat_interval_ms):
+            query['StatIntervalMs'] = request.stat_interval_ms
+        if not UtilClient.is_unset(request.threshold):
+            query['Threshold'] = request.threshold
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateWebFlowRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.UpdateWebFlowRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_web_flow_rule_with_options_async(
+        self,
+        request: mse_20190531_models.UpdateWebFlowRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.UpdateWebFlowRuleResponse:
+        """
+        @summary 更新热点参数防护规则（HTTP 请求）
+        
+        @param request: UpdateWebFlowRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWebFlowRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.burst):
+            query['Burst'] = request.burst
+        if not UtilClient.is_unset(request.control_behavior):
+            query['ControlBehavior'] = request.control_behavior
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.max_queueing_time_ms):
+            query['MaxQueueingTimeMs'] = request.max_queueing_time_ms
+        if not UtilClient.is_unset(request.metric_type):
+            query['MetricType'] = request.metric_type
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.param_item):
+            query['ParamItem'] = request.param_item
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_mode):
+            query['ResourceMode'] = request.resource_mode
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.stat_interval_ms):
+            query['StatIntervalMs'] = request.stat_interval_ms
+        if not UtilClient.is_unset(request.threshold):
+            query['Threshold'] = request.threshold
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateWebFlowRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.UpdateWebFlowRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_web_flow_rule(
+        self,
+        request: mse_20190531_models.UpdateWebFlowRuleRequest,
+    ) -> mse_20190531_models.UpdateWebFlowRuleResponse:
+        """
+        @summary 更新热点参数防护规则（HTTP 请求）
+        
+        @param request: UpdateWebFlowRuleRequest
+        @return: UpdateWebFlowRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_web_flow_rule_with_options(request, runtime)
+
+    async def update_web_flow_rule_async(
+        self,
+        request: mse_20190531_models.UpdateWebFlowRuleRequest,
+    ) -> mse_20190531_models.UpdateWebFlowRuleResponse:
+        """
+        @summary 更新热点参数防护规则（HTTP 请求）
+        
+        @param request: UpdateWebFlowRuleRequest
+        @return: UpdateWebFlowRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_web_flow_rule_with_options_async(request, runtime)
 
     def update_znode_with_options(
         self,

@@ -13831,6 +13831,332 @@ class CreatePluginConfigResponse(TeaModel):
         return self
 
 
+class CreateWebFlowRuleRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        app_id: str = None,
+        app_name: str = None,
+        burst: int = None,
+        control_behavior: int = None,
+        enable: bool = None,
+        max_queueing_time_ms: int = None,
+        metric_type: int = None,
+        namespace: str = None,
+        param_item: str = None,
+        region_id: str = None,
+        resource: str = None,
+        resource_mode: int = None,
+        resource_type: int = None,
+        stat_interval_ms: int = None,
+        threshold: float = None,
+    ):
+        self.accept_language = accept_language
+        self.app_id = app_id
+        # This parameter is required.
+        self.app_name = app_name
+        self.burst = burst
+        self.control_behavior = control_behavior
+        self.enable = enable
+        self.max_queueing_time_ms = max_queueing_time_ms
+        self.metric_type = metric_type
+        self.namespace = namespace
+        self.param_item = param_item
+        self.region_id = region_id
+        # This parameter is required.
+        self.resource = resource
+        # This parameter is required.
+        self.resource_mode = resource_mode
+        self.resource_type = resource_type
+        self.stat_interval_ms = stat_interval_ms
+        # This parameter is required.
+        self.threshold = threshold
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.burst is not None:
+            result['Burst'] = self.burst
+        if self.control_behavior is not None:
+            result['ControlBehavior'] = self.control_behavior
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.max_queueing_time_ms is not None:
+            result['MaxQueueingTimeMs'] = self.max_queueing_time_ms
+        if self.metric_type is not None:
+            result['MetricType'] = self.metric_type
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.param_item is not None:
+            result['ParamItem'] = self.param_item
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource is not None:
+            result['Resource'] = self.resource
+        if self.resource_mode is not None:
+            result['ResourceMode'] = self.resource_mode
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.stat_interval_ms is not None:
+            result['StatIntervalMs'] = self.stat_interval_ms
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('Burst') is not None:
+            self.burst = m.get('Burst')
+        if m.get('ControlBehavior') is not None:
+            self.control_behavior = m.get('ControlBehavior')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('MaxQueueingTimeMs') is not None:
+            self.max_queueing_time_ms = m.get('MaxQueueingTimeMs')
+        if m.get('MetricType') is not None:
+            self.metric_type = m.get('MetricType')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('ParamItem') is not None:
+            self.param_item = m.get('ParamItem')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Resource') is not None:
+            self.resource = m.get('Resource')
+        if m.get('ResourceMode') is not None:
+            self.resource_mode = m.get('ResourceMode')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('StatIntervalMs') is not None:
+            self.stat_interval_ms = m.get('StatIntervalMs')
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+        return self
+
+
+class CreateWebFlowRuleResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        app_name: str = None,
+        burst: int = None,
+        control_behavior: int = None,
+        enable: bool = None,
+        id: int = None,
+        max_queueing_time_ms: int = None,
+        metric_type: int = None,
+        namespace: str = None,
+        param_item: str = None,
+        region_id: str = None,
+        reource_mode: int = None,
+        resource: str = None,
+        stat_interval_ms: int = None,
+        threshold: float = None,
+    ):
+        self.app_id = app_id
+        self.app_name = app_name
+        self.burst = burst
+        self.control_behavior = control_behavior
+        self.enable = enable
+        self.id = id
+        self.max_queueing_time_ms = max_queueing_time_ms
+        self.metric_type = metric_type
+        self.namespace = namespace
+        self.param_item = param_item
+        self.region_id = region_id
+        self.reource_mode = reource_mode
+        self.resource = resource
+        self.stat_interval_ms = stat_interval_ms
+        self.threshold = threshold
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.burst is not None:
+            result['Burst'] = self.burst
+        if self.control_behavior is not None:
+            result['ControlBehavior'] = self.control_behavior
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.max_queueing_time_ms is not None:
+            result['MaxQueueingTimeMs'] = self.max_queueing_time_ms
+        if self.metric_type is not None:
+            result['MetricType'] = self.metric_type
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.param_item is not None:
+            result['ParamItem'] = self.param_item
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.reource_mode is not None:
+            result['ReourceMode'] = self.reource_mode
+        if self.resource is not None:
+            result['Resource'] = self.resource
+        if self.stat_interval_ms is not None:
+            result['StatIntervalMs'] = self.stat_interval_ms
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('Burst') is not None:
+            self.burst = m.get('Burst')
+        if m.get('ControlBehavior') is not None:
+            self.control_behavior = m.get('ControlBehavior')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MaxQueueingTimeMs') is not None:
+            self.max_queueing_time_ms = m.get('MaxQueueingTimeMs')
+        if m.get('MetricType') is not None:
+            self.metric_type = m.get('MetricType')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('ParamItem') is not None:
+            self.param_item = m.get('ParamItem')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ReourceMode') is not None:
+            self.reource_mode = m.get('ReourceMode')
+        if m.get('Resource') is not None:
+            self.resource = m.get('Resource')
+        if m.get('StatIntervalMs') is not None:
+            self.stat_interval_ms = m.get('StatIntervalMs')
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+        return self
+
+
+class CreateWebFlowRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateWebFlowRuleResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = CreateWebFlowRuleResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateWebFlowRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateWebFlowRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateWebFlowRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateZnodeRequest(TeaModel):
     def __init__(
         self,
@@ -19132,6 +19458,152 @@ class DeleteSwimmingLaneGroupResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteSwimmingLaneGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteWebFlowRulesRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        app_name: str = None,
+        ids: str = None,
+        namespace: str = None,
+    ):
+        self.accept_language = accept_language
+        # This parameter is required.
+        self.app_name = app_name
+        # This parameter is required.
+        self.ids = ids
+        # This parameter is required.
+        self.namespace = namespace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.ids is not None:
+            result['Ids'] = self.ids
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('Ids') is not None:
+            self.ids = m.get('Ids')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        return self
+
+
+class DeleteWebFlowRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: List[int] = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteWebFlowRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteWebFlowRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteWebFlowRulesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -32807,6 +33279,7 @@ class ImportServicesRequestServiceList(TeaModel):
         ips: List[str] = None,
         name: str = None,
         namespace: str = None,
+        sae_app_id: str = None,
         service_port: int = None,
         service_protocol: str = None,
     ):
@@ -32819,6 +33292,7 @@ class ImportServicesRequestServiceList(TeaModel):
         self.name = name
         # The namespace.
         self.namespace = namespace
+        self.sae_app_id = sae_app_id
         # The port of the service.
         self.service_port = service_port
         # The protocol of the service.
@@ -32843,6 +33317,8 @@ class ImportServicesRequestServiceList(TeaModel):
             result['Name'] = self.name
         if self.namespace is not None:
             result['Namespace'] = self.namespace
+        if self.sae_app_id is not None:
+            result['SaeAppId'] = self.sae_app_id
         if self.service_port is not None:
             result['ServicePort'] = self.service_port
         if self.service_protocol is not None:
@@ -32861,6 +33337,8 @@ class ImportServicesRequestServiceList(TeaModel):
             self.name = m.get('Name')
         if m.get('Namespace') is not None:
             self.namespace = m.get('Namespace')
+        if m.get('SaeAppId') is not None:
+            self.sae_app_id = m.get('SaeAppId')
         if m.get('ServicePort') is not None:
             self.service_port = m.get('ServicePort')
         if m.get('ServiceProtocol') is not None:
@@ -51569,6 +52047,352 @@ class ListTagResourcesResponse(TeaModel):
         return self
 
 
+class ListWebFlowRulesRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        app_id: str = None,
+        app_name: str = None,
+        namespace: str = None,
+        page_index: int = None,
+        page_size: int = None,
+        resource: str = None,
+        resource_search_key: str = None,
+    ):
+        self.accept_language = accept_language
+        self.app_id = app_id
+        # This parameter is required.
+        self.app_name = app_name
+        self.namespace = namespace
+        self.page_index = page_index
+        self.page_size = page_size
+        self.resource = resource
+        self.resource_search_key = resource_search_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.resource is not None:
+            result['Resource'] = self.resource
+        if self.resource_search_key is not None:
+            result['ResourceSearchKey'] = self.resource_search_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Resource') is not None:
+            self.resource = m.get('Resource')
+        if m.get('ResourceSearchKey') is not None:
+            self.resource_search_key = m.get('ResourceSearchKey')
+        return self
+
+
+class ListWebFlowRulesResponseBodyDataResult(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        app_name: str = None,
+        burst: int = None,
+        control_behavior: int = None,
+        enable: bool = None,
+        fallback_object: str = None,
+        max_queueing_time_ms: int = None,
+        metric_type: int = None,
+        namespace: str = None,
+        param_item: str = None,
+        region_id: str = None,
+        resource: str = None,
+        resource_mode: int = None,
+        resource_type: int = None,
+        rule_id: str = None,
+        stat_interval_ms: int = None,
+        threshold: float = None,
+    ):
+        self.app_id = app_id
+        self.app_name = app_name
+        self.burst = burst
+        self.control_behavior = control_behavior
+        self.enable = enable
+        self.fallback_object = fallback_object
+        self.max_queueing_time_ms = max_queueing_time_ms
+        self.metric_type = metric_type
+        self.namespace = namespace
+        self.param_item = param_item
+        self.region_id = region_id
+        self.resource = resource
+        self.resource_mode = resource_mode
+        self.resource_type = resource_type
+        self.rule_id = rule_id
+        self.stat_interval_ms = stat_interval_ms
+        self.threshold = threshold
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.burst is not None:
+            result['Burst'] = self.burst
+        if self.control_behavior is not None:
+            result['ControlBehavior'] = self.control_behavior
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.fallback_object is not None:
+            result['FallbackObject'] = self.fallback_object
+        if self.max_queueing_time_ms is not None:
+            result['MaxQueueingTimeMs'] = self.max_queueing_time_ms
+        if self.metric_type is not None:
+            result['MetricType'] = self.metric_type
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.param_item is not None:
+            result['ParamItem'] = self.param_item
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource is not None:
+            result['Resource'] = self.resource
+        if self.resource_mode is not None:
+            result['ResourceMode'] = self.resource_mode
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.stat_interval_ms is not None:
+            result['StatIntervalMs'] = self.stat_interval_ms
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('Burst') is not None:
+            self.burst = m.get('Burst')
+        if m.get('ControlBehavior') is not None:
+            self.control_behavior = m.get('ControlBehavior')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('FallbackObject') is not None:
+            self.fallback_object = m.get('FallbackObject')
+        if m.get('MaxQueueingTimeMs') is not None:
+            self.max_queueing_time_ms = m.get('MaxQueueingTimeMs')
+        if m.get('MetricType') is not None:
+            self.metric_type = m.get('MetricType')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('ParamItem') is not None:
+            self.param_item = m.get('ParamItem')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Resource') is not None:
+            self.resource = m.get('Resource')
+        if m.get('ResourceMode') is not None:
+            self.resource_mode = m.get('ResourceMode')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('StatIntervalMs') is not None:
+            self.stat_interval_ms = m.get('StatIntervalMs')
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+        return self
+
+
+class ListWebFlowRulesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        result: List[ListWebFlowRulesResponseBodyDataResult] = None,
+        total_size: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.result = result
+        self.total_size = total_size
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        result['Result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['Result'].append(k.to_map() if k else None)
+        if self.total_size is not None:
+            result['TotalSize'] = self.total_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        self.result = []
+        if m.get('Result') is not None:
+            for k in m.get('Result'):
+                temp_model = ListWebFlowRulesResponseBodyDataResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('TotalSize') is not None:
+            self.total_size = m.get('TotalSize')
+        return self
+
+
+class ListWebFlowRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: ListWebFlowRulesResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ListWebFlowRulesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListWebFlowRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListWebFlowRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListWebFlowRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListZkTrackRequest(TeaModel):
     def __init__(
         self,
@@ -53275,6 +54099,7 @@ class PullServicesResponseBodyDataServices(TeaModel):
         group_name: str = None,
         name: str = None,
         namespace: str = None,
+        sae_app_id: str = None,
         source_id: str = None,
         source_id_list: List[int] = None,
         source_type: str = None,
@@ -53285,6 +54110,7 @@ class PullServicesResponseBodyDataServices(TeaModel):
         self.name = name
         # The namespace.
         self.namespace = namespace
+        self.sae_app_id = sae_app_id
         # The ID of the service source.
         self.source_id = source_id
         self.source_id_list = source_id_list
@@ -53306,6 +54132,8 @@ class PullServicesResponseBodyDataServices(TeaModel):
             result['Name'] = self.name
         if self.namespace is not None:
             result['Namespace'] = self.namespace
+        if self.sae_app_id is not None:
+            result['SaeAppId'] = self.sae_app_id
         if self.source_id is not None:
             result['SourceId'] = self.source_id
         if self.source_id_list is not None:
@@ -53322,6 +54150,8 @@ class PullServicesResponseBodyDataServices(TeaModel):
             self.name = m.get('Name')
         if m.get('Namespace') is not None:
             self.namespace = m.get('Namespace')
+        if m.get('SaeAppId') is not None:
+            self.sae_app_id = m.get('SaeAppId')
         if m.get('SourceId') is not None:
             self.source_id = m.get('SourceId')
         if m.get('SourceIdList') is not None:
@@ -72810,6 +73640,324 @@ class UpdateServiceSourceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateServiceSourceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateWebFlowRuleRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        app_id: str = None,
+        app_name: str = None,
+        burst: int = None,
+        control_behavior: int = None,
+        enable: bool = None,
+        max_queueing_time_ms: int = None,
+        metric_type: int = None,
+        namespace: str = None,
+        param_item: str = None,
+        region_id: str = None,
+        resource_mode: int = None,
+        rule_id: int = None,
+        stat_interval_ms: int = None,
+        threshold: float = None,
+    ):
+        self.accept_language = accept_language
+        self.app_id = app_id
+        # This parameter is required.
+        self.app_name = app_name
+        self.burst = burst
+        self.control_behavior = control_behavior
+        self.enable = enable
+        self.max_queueing_time_ms = max_queueing_time_ms
+        self.metric_type = metric_type
+        self.namespace = namespace
+        self.param_item = param_item
+        self.region_id = region_id
+        self.resource_mode = resource_mode
+        # This parameter is required.
+        self.rule_id = rule_id
+        self.stat_interval_ms = stat_interval_ms
+        self.threshold = threshold
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.burst is not None:
+            result['Burst'] = self.burst
+        if self.control_behavior is not None:
+            result['ControlBehavior'] = self.control_behavior
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.max_queueing_time_ms is not None:
+            result['MaxQueueingTimeMs'] = self.max_queueing_time_ms
+        if self.metric_type is not None:
+            result['MetricType'] = self.metric_type
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.param_item is not None:
+            result['ParamItem'] = self.param_item
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_mode is not None:
+            result['ResourceMode'] = self.resource_mode
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.stat_interval_ms is not None:
+            result['StatIntervalMs'] = self.stat_interval_ms
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('Burst') is not None:
+            self.burst = m.get('Burst')
+        if m.get('ControlBehavior') is not None:
+            self.control_behavior = m.get('ControlBehavior')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('MaxQueueingTimeMs') is not None:
+            self.max_queueing_time_ms = m.get('MaxQueueingTimeMs')
+        if m.get('MetricType') is not None:
+            self.metric_type = m.get('MetricType')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('ParamItem') is not None:
+            self.param_item = m.get('ParamItem')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceMode') is not None:
+            self.resource_mode = m.get('ResourceMode')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('StatIntervalMs') is not None:
+            self.stat_interval_ms = m.get('StatIntervalMs')
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+        return self
+
+
+class UpdateWebFlowRuleResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        app_name: str = None,
+        burst: int = None,
+        control_behavior: int = None,
+        enable: bool = None,
+        id: int = None,
+        max_queueing_time_ms: int = None,
+        metric_type: int = None,
+        namespace: str = None,
+        param_item: str = None,
+        region_id: str = None,
+        reource_mode: int = None,
+        resource: str = None,
+        stat_interval_ms: int = None,
+        threshold: float = None,
+    ):
+        self.app_id = app_id
+        self.app_name = app_name
+        self.burst = burst
+        self.control_behavior = control_behavior
+        self.enable = enable
+        self.id = id
+        self.max_queueing_time_ms = max_queueing_time_ms
+        self.metric_type = metric_type
+        self.namespace = namespace
+        self.param_item = param_item
+        self.region_id = region_id
+        self.reource_mode = reource_mode
+        self.resource = resource
+        self.stat_interval_ms = stat_interval_ms
+        self.threshold = threshold
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.burst is not None:
+            result['Burst'] = self.burst
+        if self.control_behavior is not None:
+            result['ControlBehavior'] = self.control_behavior
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.max_queueing_time_ms is not None:
+            result['MaxQueueingTimeMs'] = self.max_queueing_time_ms
+        if self.metric_type is not None:
+            result['MetricType'] = self.metric_type
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.param_item is not None:
+            result['ParamItem'] = self.param_item
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.reource_mode is not None:
+            result['ReourceMode'] = self.reource_mode
+        if self.resource is not None:
+            result['Resource'] = self.resource
+        if self.stat_interval_ms is not None:
+            result['StatIntervalMs'] = self.stat_interval_ms
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('Burst') is not None:
+            self.burst = m.get('Burst')
+        if m.get('ControlBehavior') is not None:
+            self.control_behavior = m.get('ControlBehavior')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MaxQueueingTimeMs') is not None:
+            self.max_queueing_time_ms = m.get('MaxQueueingTimeMs')
+        if m.get('MetricType') is not None:
+            self.metric_type = m.get('MetricType')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('ParamItem') is not None:
+            self.param_item = m.get('ParamItem')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ReourceMode') is not None:
+            self.reource_mode = m.get('ReourceMode')
+        if m.get('Resource') is not None:
+            self.resource = m.get('Resource')
+        if m.get('StatIntervalMs') is not None:
+            self.stat_interval_ms = m.get('StatIntervalMs')
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+        return self
+
+
+class UpdateWebFlowRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: UpdateWebFlowRuleResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = UpdateWebFlowRuleResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateWebFlowRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateWebFlowRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateWebFlowRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

@@ -1,3 +1,12 @@
+2025-05-08 Version: 6.19.0
+- Support API CreateWebFlowRule.
+- Support API DeleteWebFlowRules.
+- Support API ListWebFlowRules.
+- Support API UpdateWebFlowRule.
+- Update API ImportServices: add request parameters ServiceList.$.SaeAppId.
+- Update API PullServices: add response parameters Body.Data.$.Services.$.SaeAppId.
+
+
 2025-04-23 Version: 6.18.6
 - Update API QueryConfig: add response parameters Body.Data.NacosRunningEnv.grayAuth.
 
