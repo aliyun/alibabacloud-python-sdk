@@ -1,3 +1,11 @@
+2025-05-08 Version: 9.0.6
+- Update API CreateARMServerInstances: add request parameters Tag.
+- Update API CreateDisk: add request parameters InstanceBillingCycle.
+- Update API CreateSnapshot: add request parameters InstanceBillingCycle.
+- Update API DescribeARMServerInstances: add response parameters Body.Servers.$.Tags.
+- Update API RunInstances: add request parameters Ipv6AddressCount.
+
+
 2025-04-25 Version: 9.0.5
 - Update API DescribeEnsEipAddresses: add response parameters Body.EipAddresses.$.Tags.$.Key.
 - Update API DescribeEnsEipAddresses: add response parameters Body.EipAddresses.$.Tags.$.Value.

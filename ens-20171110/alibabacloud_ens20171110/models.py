@@ -3413,6 +3413,39 @@ class CopySnapshotResponse(TeaModel):
         return self
 
 
+class CreateARMServerInstancesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateARMServerInstancesRequest(TeaModel):
     def __init__(
         self,
@@ -3433,6 +3466,7 @@ class CreateARMServerInstancesRequest(TeaModel):
         resolution: str = None,
         server_name: str = None,
         server_type: str = None,
+        tag: List[CreateARMServerInstancesRequestTag] = None,
     ):
         # The number of instances to create. Valid values: **1** to **100**.
         # 
@@ -3538,9 +3572,13 @@ class CreateARMServerInstancesRequest(TeaModel):
         # 
         # This parameter is required.
         self.server_type = server_type
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -3582,6 +3620,10 @@ class CreateARMServerInstancesRequest(TeaModel):
             result['ServerName'] = self.server_name
         if self.server_type is not None:
             result['ServerType'] = self.server_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -3620,6 +3662,11 @@ class CreateARMServerInstancesRequest(TeaModel):
             self.server_name = m.get('ServerName')
         if m.get('ServerType') is not None:
             self.server_type = m.get('ServerType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateARMServerInstancesRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -4122,6 +4169,7 @@ class CreateDiskRequest(TeaModel):
         disk_name: str = None,
         encrypted: bool = None,
         ens_region_id: str = None,
+        instance_billing_cycle: str = None,
         instance_charge_type: str = None,
         kmskey_id: str = None,
         size: str = None,
@@ -4146,6 +4194,7 @@ class CreateDiskRequest(TeaModel):
         # 
         # This parameter is required.
         self.ens_region_id = ens_region_id
+        self.instance_billing_cycle = instance_billing_cycle
         # The billing method of the instance. Set the value to **PostPaid**.
         # 
         # This parameter is required.
@@ -4186,6 +4235,8 @@ class CreateDiskRequest(TeaModel):
             result['Encrypted'] = self.encrypted
         if self.ens_region_id is not None:
             result['EnsRegionId'] = self.ens_region_id
+        if self.instance_billing_cycle is not None:
+            result['InstanceBillingCycle'] = self.instance_billing_cycle
         if self.instance_charge_type is not None:
             result['InstanceChargeType'] = self.instance_charge_type
         if self.kmskey_id is not None:
@@ -4210,6 +4261,8 @@ class CreateDiskRequest(TeaModel):
             self.encrypted = m.get('Encrypted')
         if m.get('EnsRegionId') is not None:
             self.ens_region_id = m.get('EnsRegionId')
+        if m.get('InstanceBillingCycle') is not None:
+            self.instance_billing_cycle = m.get('InstanceBillingCycle')
         if m.get('InstanceChargeType') is not None:
             self.instance_charge_type = m.get('InstanceChargeType')
         if m.get('KMSKeyId') is not None:
@@ -4546,10 +4599,10 @@ class CreateEnsRouteEntryRequest(TeaModel):
     ):
         # The description of the custom route entry.
         self.description = description
-        # The destination CIDR block of the custom route entry. Make sure that the destination CIDR block meets the following requirements:
+        # The destination CIDR block of the custom route entry. Make sure that the following requirements are met:
         # 
-        # *   The destination CIDR block is not 100.64.0.0/10 or a subset of 100.64.0.0/10.
-        # *   The destination CIDR block of the custom route entry is different from the destination CIDR blocks of other route entries in the same route table.
+        # *   The destination CIDR block cannot point or belong to 100.64.0.0/10.
+        # *   The destination CIDR blocks of the custom route entries in the same route table cannot overlap.
         # *   0.0.0.0/0 indicates the default CIDR block.
         # 
         # This parameter is required.
@@ -9356,6 +9409,7 @@ class CreateSnapshotRequest(TeaModel):
         description: str = None,
         disk_id: str = None,
         ens_region_id: str = None,
+        instance_billing_cycle: str = None,
         snapshot_name: str = None,
     ):
         # The description of the snapshot. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
@@ -9370,6 +9424,7 @@ class CreateSnapshotRequest(TeaModel):
         # 
         # This parameter is required.
         self.ens_region_id = ens_region_id
+        self.instance_billing_cycle = instance_billing_cycle
         # The name of the snapshot. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         self.snapshot_name = snapshot_name
 
@@ -9388,6 +9443,8 @@ class CreateSnapshotRequest(TeaModel):
             result['DiskId'] = self.disk_id
         if self.ens_region_id is not None:
             result['EnsRegionId'] = self.ens_region_id
+        if self.instance_billing_cycle is not None:
+            result['InstanceBillingCycle'] = self.instance_billing_cycle
         if self.snapshot_name is not None:
             result['SnapshotName'] = self.snapshot_name
         return result
@@ -9400,6 +9457,8 @@ class CreateSnapshotRequest(TeaModel):
             self.disk_id = m.get('DiskId')
         if m.get('EnsRegionId') is not None:
             self.ens_region_id = m.get('EnsRegionId')
+        if m.get('InstanceBillingCycle') is not None:
+            self.instance_billing_cycle = m.get('InstanceBillingCycle')
         if m.get('SnapshotName') is not None:
             self.snapshot_name = m.get('SnapshotName')
         return self
@@ -15260,6 +15319,39 @@ class DescribeARMServerInstancesResponseBodyServersAICInstances(TeaModel):
         return self
 
 
+class DescribeARMServerInstancesResponseBodyServersTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeARMServerInstancesResponseBodyServers(TeaModel):
     def __init__(
         self,
@@ -15275,6 +15367,7 @@ class DescribeARMServerInstancesResponseBodyServers(TeaModel):
         spec_name: str = None,
         state: str = None,
         status: str = None,
+        tags: List[DescribeARMServerInstancesResponseBodyServersTags] = None,
     ):
         # The information about the AIC instances.
         self.aicinstances = aicinstances
@@ -15312,10 +15405,15 @@ class DescribeARMServerInstancesResponseBodyServers(TeaModel):
         # *   **down**\
         # *   **starting**\
         self.status = status
+        self.tags = tags
 
     def validate(self):
         if self.aicinstances:
             for k in self.aicinstances:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
                 if k:
                     k.validate()
 
@@ -15351,6 +15449,10 @@ class DescribeARMServerInstancesResponseBodyServers(TeaModel):
             result['State'] = self.state
         if self.status is not None:
             result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -15382,6 +15484,11 @@ class DescribeARMServerInstancesResponseBodyServers(TeaModel):
             self.state = m.get('State')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = DescribeARMServerInstancesResponseBodyServersTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -20611,7 +20718,7 @@ class DescribeEnsEipAddressesRequest(TeaModel):
         self.eip_name = eip_name
         # The ID of the Edge Node Service (ENS) node.
         self.ens_region_id = ens_region_id
-        # ENS节点ID数组。数组长度：1~100。
+        # The IDs of edge nodes. You can specify 1 to 100 IDs.
         self.ens_region_ids = ens_region_ids
         # The page number. Default value: 1.
         self.page_number = page_number
@@ -20687,9 +20794,11 @@ class DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTagsTag(TeaModel)
         tag_value: str = None,
         value: str = None,
     ):
+        # 标签键
         self.key = key
         self.tag_key = tag_key
         self.tag_value = tag_value
+        # 标签值。
         self.value = value
 
     def validate(self):
@@ -20960,7 +21069,7 @@ class DescribeEnsEipAddressesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details about the EIP.
+        # Details of the EIPs.
         self.eip_addresses = eip_addresses
         # The page number. Valid values: an integer that is greater than 0. Default value: 1.
         self.page_number = page_number
@@ -27771,6 +27880,7 @@ class DescribeImageSharePermissionResponseBodyAccountsAccount(TeaModel):
         self,
         aliyun_uid: str = None,
     ):
+        # The Alibaba Cloud account with which you share the image.
         self.aliyun_uid = aliyun_uid
 
     def validate(self):
@@ -38224,9 +38334,11 @@ class DescribeNetworksResponseBodyNetworksNetworkTagsTag(TeaModel):
         tag_value: str = None,
         value: str = None,
     ):
+        # 标签键。
         self.key = key
         self.tag_key = tag_key
         self.tag_value = tag_value
+        # 标签值。
         self.value = value
 
     def validate(self):
@@ -47243,9 +47355,11 @@ class DescribeVSwitchesResponseBodyVSwitchesVSwitchTagsTag(TeaModel):
         tag_value: str = None,
         value: str = None,
     ):
+        # 标签键。
         self.key = key
         self.tag_key = tag_key
         self.tag_value = tag_value
+        # 标签值。
         self.value = value
 
     def validate(self):
@@ -59539,6 +59653,7 @@ class RunInstancesRequest(TeaModel):
         internet_charge_type: str = None,
         internet_max_bandwidth_out: int = None,
         ip_type: str = None,
+        ipv_6address_count: int = None,
         key_pair_name: str = None,
         net_district_code: str = None,
         net_work_id: str = None,
@@ -59639,6 +59754,7 @@ class RunInstancesRequest(TeaModel):
         # *   **ipv4Andipv6** (single stack).
         # *   **ipv4Withipv6** (dual stack).
         self.ip_type = ip_type
+        self.ipv_6address_count = ipv_6address_count
         # The name of the key pair.
         # 
         # >  You need to specify at least one of **Password**, **KeyPairName**, and **PasswordInherit**.
@@ -59782,6 +59898,8 @@ class RunInstancesRequest(TeaModel):
             result['InternetMaxBandwidthOut'] = self.internet_max_bandwidth_out
         if self.ip_type is not None:
             result['IpType'] = self.ip_type
+        if self.ipv_6address_count is not None:
+            result['Ipv6AddressCount'] = self.ipv_6address_count
         if self.key_pair_name is not None:
             result['KeyPairName'] = self.key_pair_name
         if self.net_district_code is not None:
@@ -59865,6 +59983,8 @@ class RunInstancesRequest(TeaModel):
             self.internet_max_bandwidth_out = m.get('InternetMaxBandwidthOut')
         if m.get('IpType') is not None:
             self.ip_type = m.get('IpType')
+        if m.get('Ipv6AddressCount') is not None:
+            self.ipv_6address_count = m.get('Ipv6AddressCount')
         if m.get('KeyPairName') is not None:
             self.key_pair_name = m.get('KeyPairName')
         if m.get('NetDistrictCode') is not None:
@@ -59967,6 +60087,7 @@ class RunInstancesShrinkRequest(TeaModel):
         internet_charge_type: str = None,
         internet_max_bandwidth_out: int = None,
         ip_type: str = None,
+        ipv_6address_count: int = None,
         key_pair_name: str = None,
         net_district_code: str = None,
         net_work_id: str = None,
@@ -60067,6 +60188,7 @@ class RunInstancesShrinkRequest(TeaModel):
         # *   **ipv4Andipv6** (single stack).
         # *   **ipv4Withipv6** (dual stack).
         self.ip_type = ip_type
+        self.ipv_6address_count = ipv_6address_count
         # The name of the key pair.
         # 
         # >  You need to specify at least one of **Password**, **KeyPairName**, and **PasswordInherit**.
@@ -60202,6 +60324,8 @@ class RunInstancesShrinkRequest(TeaModel):
             result['InternetMaxBandwidthOut'] = self.internet_max_bandwidth_out
         if self.ip_type is not None:
             result['IpType'] = self.ip_type
+        if self.ipv_6address_count is not None:
+            result['Ipv6AddressCount'] = self.ipv_6address_count
         if self.key_pair_name is not None:
             result['KeyPairName'] = self.key_pair_name
         if self.net_district_code is not None:
@@ -60282,6 +60406,8 @@ class RunInstancesShrinkRequest(TeaModel):
             self.internet_max_bandwidth_out = m.get('InternetMaxBandwidthOut')
         if m.get('IpType') is not None:
             self.ip_type = m.get('IpType')
+        if m.get('Ipv6AddressCount') is not None:
+            self.ipv_6address_count = m.get('Ipv6AddressCount')
         if m.get('KeyPairName') is not None:
             self.key_pair_name = m.get('KeyPairName')
         if m.get('NetDistrictCode') is not None:

@@ -1913,6 +1913,8 @@ class Client(OpenApiClient):
             query['ServerName'] = request.server_name
         if not UtilClient.is_unset(request.server_type):
             query['ServerType'] = request.server_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1980,6 +1982,8 @@ class Client(OpenApiClient):
             query['ServerName'] = request.server_name
         if not UtilClient.is_unset(request.server_type):
             query['ServerType'] = request.server_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2367,6 +2371,8 @@ class Client(OpenApiClient):
             query['Encrypted'] = request.encrypted
         if not UtilClient.is_unset(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.instance_billing_cycle):
+            query['InstanceBillingCycle'] = request.instance_billing_cycle
         if not UtilClient.is_unset(request.instance_charge_type):
             query['InstanceChargeType'] = request.instance_charge_type
         if not UtilClient.is_unset(request.kmskey_id):
@@ -2418,6 +2424,8 @@ class Client(OpenApiClient):
             query['Encrypted'] = request.encrypted
         if not UtilClient.is_unset(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.instance_billing_cycle):
+            query['InstanceBillingCycle'] = request.instance_billing_cycle
         if not UtilClient.is_unset(request.instance_charge_type):
             query['InstanceChargeType'] = request.instance_charge_type
         if not UtilClient.is_unset(request.kmskey_id):
@@ -5725,6 +5733,8 @@ class Client(OpenApiClient):
             query['DiskId'] = request.disk_id
         if not UtilClient.is_unset(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.instance_billing_cycle):
+            query['InstanceBillingCycle'] = request.instance_billing_cycle
         if not UtilClient.is_unset(request.snapshot_name):
             query['SnapshotName'] = request.snapshot_name
         req = open_api_models.OpenApiRequest(
@@ -5766,6 +5776,8 @@ class Client(OpenApiClient):
             query['DiskId'] = request.disk_id
         if not UtilClient.is_unset(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.instance_billing_cycle):
+            query['InstanceBillingCycle'] = request.instance_billing_cycle
         if not UtilClient.is_unset(request.snapshot_name):
             query['SnapshotName'] = request.snapshot_name
         req = open_api_models.OpenApiRequest(
@@ -28459,6 +28471,8 @@ class Client(OpenApiClient):
             query['InternetMaxBandwidthOut'] = request.internet_max_bandwidth_out
         if not UtilClient.is_unset(request.ip_type):
             query['IpType'] = request.ip_type
+        if not UtilClient.is_unset(request.ipv_6address_count):
+            query['Ipv6AddressCount'] = request.ipv_6address_count
         if not UtilClient.is_unset(request.key_pair_name):
             query['KeyPairName'] = request.key_pair_name
         if not UtilClient.is_unset(request.net_district_code):
@@ -28572,6 +28586,8 @@ class Client(OpenApiClient):
             query['InternetMaxBandwidthOut'] = request.internet_max_bandwidth_out
         if not UtilClient.is_unset(request.ip_type):
             query['IpType'] = request.ip_type
+        if not UtilClient.is_unset(request.ipv_6address_count):
+            query['Ipv6AddressCount'] = request.ipv_6address_count
         if not UtilClient.is_unset(request.key_pair_name):
             query['KeyPairName'] = request.key_pair_name
         if not UtilClient.is_unset(request.net_district_code):
