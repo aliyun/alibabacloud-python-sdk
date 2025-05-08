@@ -50680,6 +50680,192 @@ class ListRoutineCanaryAreasResponse(TeaModel):
         return self
 
 
+class ListRoutineCodeVersionsRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        search_key_word: str = None,
+    ):
+        # This parameter is required.
+        self.name = name
+        self.page_number = page_number
+        self.page_size = page_size
+        self.search_key_word = search_key_word
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.search_key_word is not None:
+            result['SearchKeyWord'] = self.search_key_word
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SearchKeyWord') is not None:
+            self.search_key_word = m.get('SearchKeyWord')
+        return self
+
+
+class ListRoutineCodeVersionsResponseBodyCodeVersions(TeaModel):
+    def __init__(
+        self,
+        code_description: str = None,
+        code_version: str = None,
+        create_time: str = None,
+    ):
+        self.code_description = code_description
+        self.code_version = code_version
+        self.create_time = create_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code_description is not None:
+            result['CodeDescription'] = self.code_description
+        if self.code_version is not None:
+            result['CodeVersion'] = self.code_version
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CodeDescription') is not None:
+            self.code_description = m.get('CodeDescription')
+        if m.get('CodeVersion') is not None:
+            self.code_version = m.get('CodeVersion')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        return self
+
+
+class ListRoutineCodeVersionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code_versions: List[ListRoutineCodeVersionsResponseBodyCodeVersions] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.code_versions = code_versions
+        self.page_number = page_number
+        self.page_size = page_size
+        # Id of the request
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.code_versions:
+            for k in self.code_versions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CodeVersions'] = []
+        if self.code_versions is not None:
+            for k in self.code_versions:
+                result['CodeVersions'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.code_versions = []
+        if m.get('CodeVersions') is not None:
+            for k in m.get('CodeVersions'):
+                temp_model = ListRoutineCodeVersionsResponseBodyCodeVersions()
+                self.code_versions.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListRoutineCodeVersionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListRoutineCodeVersionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListRoutineCodeVersionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListRoutineRelatedRecordsRequest(TeaModel):
     def __init__(
         self,

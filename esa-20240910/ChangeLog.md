@@ -1,3 +1,7 @@
+2025-05-08 Version: 2.24.0
+- Support API ListRoutineCodeVersions.
+
+
 2025-04-17 Version: 2.23.1
 - Update API CreateOriginRule: add request parameters Follow302Enable.
 - Update API CreateOriginRule: add request parameters Follow302MaxTries.

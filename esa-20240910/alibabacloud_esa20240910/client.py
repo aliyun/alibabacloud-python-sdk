@@ -24039,6 +24039,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_routine_canary_areas_with_options_async(runtime)
 
+    def list_routine_code_versions_with_options(
+        self,
+        request: esa20240910_models.ListRoutineCodeVersionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListRoutineCodeVersionsResponse:
+        """
+        @summary 查询Routine的代码版本列表
+        
+        @param request: ListRoutineCodeVersionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRoutineCodeVersionsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_key_word):
+            body['SearchKeyWord'] = request.search_key_word
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListRoutineCodeVersions',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListRoutineCodeVersionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_routine_code_versions_with_options_async(
+        self,
+        request: esa20240910_models.ListRoutineCodeVersionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListRoutineCodeVersionsResponse:
+        """
+        @summary 查询Routine的代码版本列表
+        
+        @param request: ListRoutineCodeVersionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRoutineCodeVersionsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_key_word):
+            body['SearchKeyWord'] = request.search_key_word
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListRoutineCodeVersions',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListRoutineCodeVersionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_routine_code_versions(
+        self,
+        request: esa20240910_models.ListRoutineCodeVersionsRequest,
+    ) -> esa20240910_models.ListRoutineCodeVersionsResponse:
+        """
+        @summary 查询Routine的代码版本列表
+        
+        @param request: ListRoutineCodeVersionsRequest
+        @return: ListRoutineCodeVersionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_routine_code_versions_with_options(request, runtime)
+
+    async def list_routine_code_versions_async(
+        self,
+        request: esa20240910_models.ListRoutineCodeVersionsRequest,
+    ) -> esa20240910_models.ListRoutineCodeVersionsResponse:
+        """
+        @summary 查询Routine的代码版本列表
+        
+        @param request: ListRoutineCodeVersionsRequest
+        @return: ListRoutineCodeVersionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_routine_code_versions_with_options_async(request, runtime)
+
     def list_routine_related_records_with_options(
         self,
         request: esa20240910_models.ListRoutineRelatedRecordsRequest,
