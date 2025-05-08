@@ -21655,9 +21655,161 @@ class ListSearchTaskDialoguesRequest(TeaModel):
         return self
 
 
+class ListSearchTaskDialoguesResponseBodyDataChatConfigSearchParamSearchSources(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        dataset_name: str = None,
+        name: str = None,
+    ):
+        self.code = code
+        self.dataset_name = dataset_name
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class ListSearchTaskDialoguesResponseBodyDataChatConfigSearchParam(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        multimodal_search_types: List[str] = None,
+        search_sources: List[ListSearchTaskDialoguesResponseBodyDataChatConfigSearchParamSearchSources] = None,
+        start_time: str = None,
+    ):
+        self.end_time = end_time
+        self.multimodal_search_types = multimodal_search_types
+        self.search_sources = search_sources
+        self.start_time = start_time
+
+    def validate(self):
+        if self.search_sources:
+            for k in self.search_sources:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.multimodal_search_types is not None:
+            result['MultimodalSearchTypes'] = self.multimodal_search_types
+        result['SearchSources'] = []
+        if self.search_sources is not None:
+            for k in self.search_sources:
+                result['SearchSources'].append(k.to_map() if k else None)
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('MultimodalSearchTypes') is not None:
+            self.multimodal_search_types = m.get('MultimodalSearchTypes')
+        self.search_sources = []
+        if m.get('SearchSources') is not None:
+            for k in m.get('SearchSources'):
+                temp_model = ListSearchTaskDialoguesResponseBodyDataChatConfigSearchParamSearchSources()
+                self.search_sources.append(temp_model.from_map(k))
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class ListSearchTaskDialoguesResponseBodyDataChatConfig(TeaModel):
+    def __init__(
+        self,
+        dialogue_type: int = None,
+        end_to_end: bool = None,
+        generate_level: str = None,
+        generate_technology: str = None,
+        search_models: List[str] = None,
+        search_param: ListSearchTaskDialoguesResponseBodyDataChatConfigSearchParam = None,
+    ):
+        self.dialogue_type = dialogue_type
+        self.end_to_end = end_to_end
+        self.generate_level = generate_level
+        self.generate_technology = generate_technology
+        self.search_models = search_models
+        self.search_param = search_param
+
+    def validate(self):
+        if self.search_param:
+            self.search_param.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dialogue_type is not None:
+            result['DialogueType'] = self.dialogue_type
+        if self.end_to_end is not None:
+            result['EndToEnd'] = self.end_to_end
+        if self.generate_level is not None:
+            result['GenerateLevel'] = self.generate_level
+        if self.generate_technology is not None:
+            result['GenerateTechnology'] = self.generate_technology
+        if self.search_models is not None:
+            result['SearchModels'] = self.search_models
+        if self.search_param is not None:
+            result['SearchParam'] = self.search_param.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DialogueType') is not None:
+            self.dialogue_type = m.get('DialogueType')
+        if m.get('EndToEnd') is not None:
+            self.end_to_end = m.get('EndToEnd')
+        if m.get('GenerateLevel') is not None:
+            self.generate_level = m.get('GenerateLevel')
+        if m.get('GenerateTechnology') is not None:
+            self.generate_technology = m.get('GenerateTechnology')
+        if m.get('SearchModels') is not None:
+            self.search_models = m.get('SearchModels')
+        if m.get('SearchParam') is not None:
+            temp_model = ListSearchTaskDialoguesResponseBodyDataChatConfigSearchParam()
+            self.search_param = temp_model.from_map(m['SearchParam'])
+        return self
+
+
 class ListSearchTaskDialoguesResponseBodyData(TeaModel):
     def __init__(
         self,
+        chat_config: ListSearchTaskDialoguesResponseBodyDataChatConfig = None,
         create_time: str = None,
         dialogue_type: int = None,
         good_text: str = None,
@@ -21670,6 +21822,7 @@ class ListSearchTaskDialoguesResponseBodyData(TeaModel):
         task_id: str = None,
         text: str = None,
     ):
+        self.chat_config = chat_config
         self.create_time = create_time
         self.dialogue_type = dialogue_type
         self.good_text = good_text
@@ -21683,7 +21836,8 @@ class ListSearchTaskDialoguesResponseBodyData(TeaModel):
         self.text = text
 
     def validate(self):
-        pass
+        if self.chat_config:
+            self.chat_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -21691,6 +21845,8 @@ class ListSearchTaskDialoguesResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.chat_config is not None:
+            result['ChatConfig'] = self.chat_config.to_map()
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.dialogue_type is not None:
@@ -21717,6 +21873,9 @@ class ListSearchTaskDialoguesResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ChatConfig') is not None:
+            temp_model = ListSearchTaskDialoguesResponseBodyDataChatConfig()
+            self.chat_config = temp_model.from_map(m['ChatConfig'])
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('DialogueType') is not None:
