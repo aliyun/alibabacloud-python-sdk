@@ -16218,6 +16218,7 @@ class ListDatasetDocumentsResponseBodyData(TeaModel):
         self,
         category_uuid: str = None,
         content: str = None,
+        create_time: str = None,
         disable_handle_multimodal_media: bool = None,
         doc_id: str = None,
         doc_type: str = None,
@@ -16231,10 +16232,12 @@ class ListDatasetDocumentsResponseBodyData(TeaModel):
         status: int = None,
         summary: str = None,
         title: str = None,
+        update_time: str = None,
         url: str = None,
     ):
         self.category_uuid = category_uuid
         self.content = content
+        self.create_time = create_time
         self.disable_handle_multimodal_media = disable_handle_multimodal_media
         self.doc_id = doc_id
         self.doc_type = doc_type
@@ -16248,6 +16251,7 @@ class ListDatasetDocumentsResponseBodyData(TeaModel):
         self.status = status
         self.summary = summary
         self.title = title
+        self.update_time = update_time
         # url
         self.url = url
 
@@ -16267,6 +16271,8 @@ class ListDatasetDocumentsResponseBodyData(TeaModel):
             result['CategoryUuid'] = self.category_uuid
         if self.content is not None:
             result['Content'] = self.content
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
         if self.disable_handle_multimodal_media is not None:
             result['DisableHandleMultimodalMedia'] = self.disable_handle_multimodal_media
         if self.doc_id is not None:
@@ -16295,6 +16301,8 @@ class ListDatasetDocumentsResponseBodyData(TeaModel):
             result['Summary'] = self.summary
         if self.title is not None:
             result['Title'] = self.title
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
         if self.url is not None:
             result['Url'] = self.url
         return result
@@ -16305,6 +16313,8 @@ class ListDatasetDocumentsResponseBodyData(TeaModel):
             self.category_uuid = m.get('CategoryUuid')
         if m.get('Content') is not None:
             self.content = m.get('Content')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
         if m.get('DisableHandleMultimodalMedia') is not None:
             self.disable_handle_multimodal_media = m.get('DisableHandleMultimodalMedia')
         if m.get('DocId') is not None:
@@ -16334,6 +16344,8 @@ class ListDatasetDocumentsResponseBodyData(TeaModel):
             self.summary = m.get('Summary')
         if m.get('Title') is not None:
             self.title = m.get('Title')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
         if m.get('Url') is not None:
             self.url = m.get('Url')
         return self
@@ -16470,6 +16482,7 @@ class ListDatasetsRequest(TeaModel):
         dataset_name: str = None,
         dataset_type: str = None,
         end_time: str = None,
+        include_config: bool = None,
         page_number: int = None,
         page_size: str = None,
         search_dataset_enable: int = None,
@@ -16480,6 +16493,7 @@ class ListDatasetsRequest(TeaModel):
         self.dataset_name = dataset_name
         self.dataset_type = dataset_type
         self.end_time = end_time
+        self.include_config = include_config
         self.page_number = page_number
         self.page_size = page_size
         self.search_dataset_enable = search_dataset_enable
@@ -16504,6 +16518,8 @@ class ListDatasetsRequest(TeaModel):
             result['DatasetType'] = self.dataset_type
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.include_config is not None:
+            result['IncludeConfig'] = self.include_config
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -16526,6 +16542,8 @@ class ListDatasetsRequest(TeaModel):
             self.dataset_type = m.get('DatasetType')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('IncludeConfig') is not None:
+            self.include_config = m.get('IncludeConfig')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -16539,6 +16557,51 @@ class ListDatasetsRequest(TeaModel):
         return self
 
 
+class ListDatasetsResponseBodyCustomSemanticSearchConfig(TeaModel):
+    def __init__(
+        self,
+        dataset_quota: int = None,
+        dataset_used_quota: int = None,
+        doc_quota: int = None,
+        doc_used_quota: int = None,
+    ):
+        self.dataset_quota = dataset_quota
+        self.dataset_used_quota = dataset_used_quota
+        self.doc_quota = doc_quota
+        self.doc_used_quota = doc_used_quota
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_quota is not None:
+            result['DatasetQuota'] = self.dataset_quota
+        if self.dataset_used_quota is not None:
+            result['DatasetUsedQuota'] = self.dataset_used_quota
+        if self.doc_quota is not None:
+            result['DocQuota'] = self.doc_quota
+        if self.doc_used_quota is not None:
+            result['DocUsedQuota'] = self.doc_used_quota
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetQuota') is not None:
+            self.dataset_quota = m.get('DatasetQuota')
+        if m.get('DatasetUsedQuota') is not None:
+            self.dataset_used_quota = m.get('DatasetUsedQuota')
+        if m.get('DocQuota') is not None:
+            self.doc_quota = m.get('DocQuota')
+        if m.get('DocUsedQuota') is not None:
+            self.doc_used_quota = m.get('DocUsedQuota')
+        return self
+
+
 class ListDatasetsResponseBodyData(TeaModel):
     def __init__(
         self,
@@ -16548,6 +16611,7 @@ class ListDatasetsResponseBodyData(TeaModel):
         dataset_id: int = None,
         dataset_name: str = None,
         dataset_type: str = None,
+        doc_used_quota: int = None,
         search_dataset_enable: int = None,
     ):
         self.create_time = create_time
@@ -16556,6 +16620,7 @@ class ListDatasetsResponseBodyData(TeaModel):
         self.dataset_id = dataset_id
         self.dataset_name = dataset_name
         self.dataset_type = dataset_type
+        self.doc_used_quota = doc_used_quota
         self.search_dataset_enable = search_dataset_enable
 
     def validate(self):
@@ -16579,6 +16644,8 @@ class ListDatasetsResponseBodyData(TeaModel):
             result['DatasetName'] = self.dataset_name
         if self.dataset_type is not None:
             result['DatasetType'] = self.dataset_type
+        if self.doc_used_quota is not None:
+            result['DocUsedQuota'] = self.doc_used_quota
         if self.search_dataset_enable is not None:
             result['SearchDatasetEnable'] = self.search_dataset_enable
         return result
@@ -16597,8 +16664,43 @@ class ListDatasetsResponseBodyData(TeaModel):
             self.dataset_name = m.get('DatasetName')
         if m.get('DatasetType') is not None:
             self.dataset_type = m.get('DatasetType')
+        if m.get('DocUsedQuota') is not None:
+            self.doc_used_quota = m.get('DocUsedQuota')
         if m.get('SearchDatasetEnable') is not None:
             self.search_dataset_enable = m.get('SearchDatasetEnable')
+        return self
+
+
+class ListDatasetsResponseBodyThirdSearchConfig(TeaModel):
+    def __init__(
+        self,
+        dataset_quota: int = None,
+        dataset_used_quota: int = None,
+    ):
+        self.dataset_quota = dataset_quota
+        self.dataset_used_quota = dataset_used_quota
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_quota is not None:
+            result['DatasetQuota'] = self.dataset_quota
+        if self.dataset_used_quota is not None:
+            result['DatasetUsedQuota'] = self.dataset_used_quota
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetQuota') is not None:
+            self.dataset_quota = m.get('DatasetQuota')
+        if m.get('DatasetUsedQuota') is not None:
+            self.dataset_used_quota = m.get('DatasetUsedQuota')
         return self
 
 
@@ -16606,6 +16708,7 @@ class ListDatasetsResponseBody(TeaModel):
     def __init__(
         self,
         code: str = None,
+        custom_semantic_search_config: ListDatasetsResponseBodyCustomSemanticSearchConfig = None,
         data: List[ListDatasetsResponseBodyData] = None,
         http_status_code: int = None,
         message: str = None,
@@ -16613,9 +16716,11 @@ class ListDatasetsResponseBody(TeaModel):
         page_size: int = None,
         request_id: str = None,
         success: bool = None,
+        third_search_config: ListDatasetsResponseBodyThirdSearchConfig = None,
         total_count: int = None,
     ):
         self.code = code
+        self.custom_semantic_search_config = custom_semantic_search_config
         self.data = data
         self.http_status_code = http_status_code
         self.message = message
@@ -16623,13 +16728,18 @@ class ListDatasetsResponseBody(TeaModel):
         self.page_size = page_size
         self.request_id = request_id
         self.success = success
+        self.third_search_config = third_search_config
         self.total_count = total_count
 
     def validate(self):
+        if self.custom_semantic_search_config:
+            self.custom_semantic_search_config.validate()
         if self.data:
             for k in self.data:
                 if k:
                     k.validate()
+        if self.third_search_config:
+            self.third_search_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -16639,6 +16749,8 @@ class ListDatasetsResponseBody(TeaModel):
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
+        if self.custom_semantic_search_config is not None:
+            result['CustomSemanticSearchConfig'] = self.custom_semantic_search_config.to_map()
         result['Data'] = []
         if self.data is not None:
             for k in self.data:
@@ -16655,6 +16767,8 @@ class ListDatasetsResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.success is not None:
             result['Success'] = self.success
+        if self.third_search_config is not None:
+            result['ThirdSearchConfig'] = self.third_search_config.to_map()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
         return result
@@ -16663,6 +16777,9 @@ class ListDatasetsResponseBody(TeaModel):
         m = m or dict()
         if m.get('Code') is not None:
             self.code = m.get('Code')
+        if m.get('CustomSemanticSearchConfig') is not None:
+            temp_model = ListDatasetsResponseBodyCustomSemanticSearchConfig()
+            self.custom_semantic_search_config = temp_model.from_map(m['CustomSemanticSearchConfig'])
         self.data = []
         if m.get('Data') is not None:
             for k in m.get('Data'):
@@ -16680,6 +16797,9 @@ class ListDatasetsResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('ThirdSearchConfig') is not None:
+            temp_model = ListDatasetsResponseBodyThirdSearchConfig()
+            self.third_search_config = temp_model.from_map(m['ThirdSearchConfig'])
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
         return self

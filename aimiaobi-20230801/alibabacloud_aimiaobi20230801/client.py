@@ -6415,6 +6415,8 @@ class Client(OpenApiClient):
             body['DatasetType'] = request.dataset_type
         if not UtilClient.is_unset(request.end_time):
             body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.include_config):
+            body['IncludeConfig'] = request.include_config
         if not UtilClient.is_unset(request.page_number):
             body['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -6466,6 +6468,8 @@ class Client(OpenApiClient):
             body['DatasetType'] = request.dataset_type
         if not UtilClient.is_unset(request.end_time):
             body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.include_config):
+            body['IncludeConfig'] = request.include_config
         if not UtilClient.is_unset(request.page_number):
             body['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):

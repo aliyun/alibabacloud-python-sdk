@@ -1,3 +1,12 @@
+2025-05-08 Version: 1.22.6
+- Update API ListDatasetDocuments: add response parameters Body.Data.$.CreateTime.
+- Update API ListDatasetDocuments: add response parameters Body.Data.$.UpdateTime.
+- Update API ListDatasets: add request parameters IncludeConfig.
+- Update API ListDatasets: add response parameters Body.CustomSemanticSearchConfig.
+- Update API ListDatasets: add response parameters Body.ThirdSearchConfig.
+- Update API ListDatasets: add response parameters Body.Data.$.DocUsedQuota.
+
+
 2025-05-08 Version: 1.22.5
 - Generated python 2023-08-01 for AiMiaoBi.
 
