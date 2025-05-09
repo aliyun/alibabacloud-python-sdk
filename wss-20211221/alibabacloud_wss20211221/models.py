@@ -724,6 +724,611 @@ class DescribeDeliveryAddressResponse(TeaModel):
         return self
 
 
+class DescribeMultiPriceRequestOrderItemsComponents(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeMultiPriceRequestOrderItems(TeaModel):
+    def __init__(
+        self,
+        amount: int = None,
+        components: List[DescribeMultiPriceRequestOrderItemsComponents] = None,
+        instance_ids: List[str] = None,
+        period: int = None,
+        period_unit: str = None,
+        promotion_id: str = None,
+        resource_ids: List[str] = None,
+        resource_type: str = None,
+    ):
+        self.amount = amount
+        self.components = components
+        self.instance_ids = instance_ids
+        self.period = period
+        self.period_unit = period_unit
+        self.promotion_id = promotion_id
+        self.resource_ids = resource_ids
+        self.resource_type = resource_type
+
+    def validate(self):
+        if self.components:
+            for k in self.components:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.amount is not None:
+            result['Amount'] = self.amount
+        result['Components'] = []
+        if self.components is not None:
+            for k in self.components:
+                result['Components'].append(k.to_map() if k else None)
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.period_unit is not None:
+            result['PeriodUnit'] = self.period_unit
+        if self.promotion_id is not None:
+            result['PromotionId'] = self.promotion_id
+        if self.resource_ids is not None:
+            result['ResourceIds'] = self.resource_ids
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Amount') is not None:
+            self.amount = m.get('Amount')
+        self.components = []
+        if m.get('Components') is not None:
+            for k in m.get('Components'):
+                temp_model = DescribeMultiPriceRequestOrderItemsComponents()
+                self.components.append(temp_model.from_map(k))
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('PeriodUnit') is not None:
+            self.period_unit = m.get('PeriodUnit')
+        if m.get('PromotionId') is not None:
+            self.promotion_id = m.get('PromotionId')
+        if m.get('ResourceIds') is not None:
+            self.resource_ids = m.get('ResourceIds')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class DescribeMultiPriceRequest(TeaModel):
+    def __init__(
+        self,
+        order_items: List[DescribeMultiPriceRequestOrderItems] = None,
+        order_type: str = None,
+        package_code: str = None,
+        reseller_owner_uid: int = None,
+    ):
+        self.order_items = order_items
+        self.order_type = order_type
+        self.package_code = package_code
+        self.reseller_owner_uid = reseller_owner_uid
+
+    def validate(self):
+        if self.order_items:
+            for k in self.order_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['OrderItems'] = []
+        if self.order_items is not None:
+            for k in self.order_items:
+                result['OrderItems'].append(k.to_map() if k else None)
+        if self.order_type is not None:
+            result['OrderType'] = self.order_type
+        if self.package_code is not None:
+            result['PackageCode'] = self.package_code
+        if self.reseller_owner_uid is not None:
+            result['ResellerOwnerUid'] = self.reseller_owner_uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.order_items = []
+        if m.get('OrderItems') is not None:
+            for k in m.get('OrderItems'):
+                temp_model = DescribeMultiPriceRequestOrderItems()
+                self.order_items.append(temp_model.from_map(k))
+        if m.get('OrderType') is not None:
+            self.order_type = m.get('OrderType')
+        if m.get('PackageCode') is not None:
+            self.package_code = m.get('PackageCode')
+        if m.get('ResellerOwnerUid') is not None:
+            self.reseller_owner_uid = m.get('ResellerOwnerUid')
+        return self
+
+
+class DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails(TeaModel):
+    def __init__(
+        self,
+        discount_price: float = None,
+        module_code: str = None,
+        module_name: str = None,
+        module_value: str = None,
+        original_price: float = None,
+        trade_price: float = None,
+    ):
+        self.discount_price = discount_price
+        self.module_code = module_code
+        self.module_name = module_name
+        self.module_value = module_value
+        self.original_price = original_price
+        self.trade_price = trade_price
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.discount_price is not None:
+            result['DiscountPrice'] = self.discount_price
+        if self.module_code is not None:
+            result['ModuleCode'] = self.module_code
+        if self.module_name is not None:
+            result['ModuleName'] = self.module_name
+        if self.module_value is not None:
+            result['ModuleValue'] = self.module_value
+        if self.original_price is not None:
+            result['OriginalPrice'] = self.original_price
+        if self.trade_price is not None:
+            result['TradePrice'] = self.trade_price
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiscountPrice') is not None:
+            self.discount_price = m.get('DiscountPrice')
+        if m.get('ModuleCode') is not None:
+            self.module_code = m.get('ModuleCode')
+        if m.get('ModuleName') is not None:
+            self.module_name = m.get('ModuleName')
+        if m.get('ModuleValue') is not None:
+            self.module_value = m.get('ModuleValue')
+        if m.get('OriginalPrice') is not None:
+            self.original_price = m.get('OriginalPrice')
+        if m.get('TradePrice') is not None:
+            self.trade_price = m.get('TradePrice')
+        return self
+
+
+class DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail(TeaModel):
+    def __init__(
+        self,
+        discount_price: float = None,
+        original_price: float = None,
+        resource_type: str = None,
+        trade_price: float = None,
+    ):
+        self.discount_price = discount_price
+        self.original_price = original_price
+        self.resource_type = resource_type
+        self.trade_price = trade_price
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.discount_price is not None:
+            result['DiscountPrice'] = self.discount_price
+        if self.original_price is not None:
+            result['OriginalPrice'] = self.original_price
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.trade_price is not None:
+            result['TradePrice'] = self.trade_price
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiscountPrice') is not None:
+            self.discount_price = m.get('DiscountPrice')
+        if m.get('OriginalPrice') is not None:
+            self.original_price = m.get('OriginalPrice')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TradePrice') is not None:
+            self.trade_price = m.get('TradePrice')
+        return self
+
+
+class DescribeMultiPriceResponseBodyPriceInfoPricePriceDetails(TeaModel):
+    def __init__(
+        self,
+        module_details: List[DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails] = None,
+        order_item: int = None,
+        price_detail: DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail = None,
+    ):
+        self.module_details = module_details
+        self.order_item = order_item
+        self.price_detail = price_detail
+
+    def validate(self):
+        if self.module_details:
+            for k in self.module_details:
+                if k:
+                    k.validate()
+        if self.price_detail:
+            self.price_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ModuleDetails'] = []
+        if self.module_details is not None:
+            for k in self.module_details:
+                result['ModuleDetails'].append(k.to_map() if k else None)
+        if self.order_item is not None:
+            result['OrderItem'] = self.order_item
+        if self.price_detail is not None:
+            result['PriceDetail'] = self.price_detail.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.module_details = []
+        if m.get('ModuleDetails') is not None:
+            for k in m.get('ModuleDetails'):
+                temp_model = DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails()
+                self.module_details.append(temp_model.from_map(k))
+        if m.get('OrderItem') is not None:
+            self.order_item = m.get('OrderItem')
+        if m.get('PriceDetail') is not None:
+            temp_model = DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail()
+            self.price_detail = temp_model.from_map(m['PriceDetail'])
+        return self
+
+
+class DescribeMultiPriceResponseBodyPriceInfoPricePromotions(TeaModel):
+    def __init__(
+        self,
+        option_code: str = None,
+        promotion_desc: str = None,
+        promotion_id: str = None,
+        promotion_name: str = None,
+        selected: bool = None,
+    ):
+        self.option_code = option_code
+        self.promotion_desc = promotion_desc
+        self.promotion_id = promotion_id
+        self.promotion_name = promotion_name
+        self.selected = selected
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.option_code is not None:
+            result['OptionCode'] = self.option_code
+        if self.promotion_desc is not None:
+            result['PromotionDesc'] = self.promotion_desc
+        if self.promotion_id is not None:
+            result['PromotionId'] = self.promotion_id
+        if self.promotion_name is not None:
+            result['PromotionName'] = self.promotion_name
+        if self.selected is not None:
+            result['Selected'] = self.selected
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OptionCode') is not None:
+            self.option_code = m.get('OptionCode')
+        if m.get('PromotionDesc') is not None:
+            self.promotion_desc = m.get('PromotionDesc')
+        if m.get('PromotionId') is not None:
+            self.promotion_id = m.get('PromotionId')
+        if m.get('PromotionName') is not None:
+            self.promotion_name = m.get('PromotionName')
+        if m.get('Selected') is not None:
+            self.selected = m.get('Selected')
+        return self
+
+
+class DescribeMultiPriceResponseBodyPriceInfoPrice(TeaModel):
+    def __init__(
+        self,
+        currency: str = None,
+        discount_price: float = None,
+        original_price: float = None,
+        price_details: List[DescribeMultiPriceResponseBodyPriceInfoPricePriceDetails] = None,
+        promotions: List[DescribeMultiPriceResponseBodyPriceInfoPricePromotions] = None,
+        refund_instance_id_price_map: Dict[str, float] = None,
+        refund_price: float = None,
+        trade_price: float = None,
+    ):
+        self.currency = currency
+        self.discount_price = discount_price
+        self.original_price = original_price
+        self.price_details = price_details
+        self.promotions = promotions
+        self.refund_instance_id_price_map = refund_instance_id_price_map
+        self.refund_price = refund_price
+        self.trade_price = trade_price
+
+    def validate(self):
+        if self.price_details:
+            for k in self.price_details:
+                if k:
+                    k.validate()
+        if self.promotions:
+            for k in self.promotions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.currency is not None:
+            result['Currency'] = self.currency
+        if self.discount_price is not None:
+            result['DiscountPrice'] = self.discount_price
+        if self.original_price is not None:
+            result['OriginalPrice'] = self.original_price
+        result['PriceDetails'] = []
+        if self.price_details is not None:
+            for k in self.price_details:
+                result['PriceDetails'].append(k.to_map() if k else None)
+        result['Promotions'] = []
+        if self.promotions is not None:
+            for k in self.promotions:
+                result['Promotions'].append(k.to_map() if k else None)
+        if self.refund_instance_id_price_map is not None:
+            result['RefundInstanceIdPriceMap'] = self.refund_instance_id_price_map
+        if self.refund_price is not None:
+            result['RefundPrice'] = self.refund_price
+        if self.trade_price is not None:
+            result['TradePrice'] = self.trade_price
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Currency') is not None:
+            self.currency = m.get('Currency')
+        if m.get('DiscountPrice') is not None:
+            self.discount_price = m.get('DiscountPrice')
+        if m.get('OriginalPrice') is not None:
+            self.original_price = m.get('OriginalPrice')
+        self.price_details = []
+        if m.get('PriceDetails') is not None:
+            for k in m.get('PriceDetails'):
+                temp_model = DescribeMultiPriceResponseBodyPriceInfoPricePriceDetails()
+                self.price_details.append(temp_model.from_map(k))
+        self.promotions = []
+        if m.get('Promotions') is not None:
+            for k in m.get('Promotions'):
+                temp_model = DescribeMultiPriceResponseBodyPriceInfoPricePromotions()
+                self.promotions.append(temp_model.from_map(k))
+        if m.get('RefundInstanceIdPriceMap') is not None:
+            self.refund_instance_id_price_map = m.get('RefundInstanceIdPriceMap')
+        if m.get('RefundPrice') is not None:
+            self.refund_price = m.get('RefundPrice')
+        if m.get('TradePrice') is not None:
+            self.trade_price = m.get('TradePrice')
+        return self
+
+
+class DescribeMultiPriceResponseBodyPriceInfoRules(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        rule_id: int = None,
+    ):
+        self.description = description
+        self.rule_id = rule_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        return self
+
+
+class DescribeMultiPriceResponseBodyPriceInfo(TeaModel):
+    def __init__(
+        self,
+        price: DescribeMultiPriceResponseBodyPriceInfoPrice = None,
+        rules: List[DescribeMultiPriceResponseBodyPriceInfoRules] = None,
+    ):
+        self.price = price
+        self.rules = rules
+
+    def validate(self):
+        if self.price:
+            self.price.validate()
+        if self.rules:
+            for k in self.rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.price is not None:
+            result['Price'] = self.price.to_map()
+        result['Rules'] = []
+        if self.rules is not None:
+            for k in self.rules:
+                result['Rules'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Price') is not None:
+            temp_model = DescribeMultiPriceResponseBodyPriceInfoPrice()
+            self.price = temp_model.from_map(m['Price'])
+        self.rules = []
+        if m.get('Rules') is not None:
+            for k in m.get('Rules'):
+                temp_model = DescribeMultiPriceResponseBodyPriceInfoRules()
+                self.rules.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeMultiPriceResponseBody(TeaModel):
+    def __init__(
+        self,
+        price_info: DescribeMultiPriceResponseBodyPriceInfo = None,
+        request_id: str = None,
+    ):
+        self.price_info = price_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.price_info:
+            self.price_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.price_info is not None:
+            result['PriceInfo'] = self.price_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PriceInfo') is not None:
+            temp_model = DescribeMultiPriceResponseBodyPriceInfo()
+            self.price_info = temp_model.from_map(m['PriceInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeMultiPriceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeMultiPriceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeMultiPriceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribePackageDeductionsRequest(TeaModel):
     def __init__(
         self,

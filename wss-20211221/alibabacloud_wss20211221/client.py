@@ -79,16 +79,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wss_20211221_models.CreateMultiOrderResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wss_20211221_models.CreateMultiOrderResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wss_20211221_models.CreateMultiOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_multi_order_with_options_async(
         self,
@@ -128,16 +122,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wss_20211221_models.CreateMultiOrderResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wss_20211221_models.CreateMultiOrderResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wss_20211221_models.CreateMultiOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_multi_order(
         self,
@@ -182,16 +170,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wss_20211221_models.DescribeDeliveryAddressResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wss_20211221_models.DescribeDeliveryAddressResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wss_20211221_models.DescribeDeliveryAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_delivery_address_with_options_async(
         self,
@@ -214,16 +196,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wss_20211221_models.DescribeDeliveryAddressResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wss_20211221_models.DescribeDeliveryAddressResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wss_20211221_models.DescribeDeliveryAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_delivery_address(self) -> wss_20211221_models.DescribeDeliveryAddressResponse:
         """
@@ -238,6 +214,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_delivery_address_with_options_async(runtime)
+
+    def describe_multi_price_with_options(
+        self,
+        request: wss_20211221_models.DescribeMultiPriceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> wss_20211221_models.DescribeMultiPriceResponse:
+        """
+        @param request: DescribeMultiPriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMultiPriceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_items):
+            query['OrderItems'] = request.order_items
+        if not UtilClient.is_unset(request.order_type):
+            query['OrderType'] = request.order_type
+        if not UtilClient.is_unset(request.package_code):
+            query['PackageCode'] = request.package_code
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMultiPrice',
+            version='2021-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            wss_20211221_models.DescribeMultiPriceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_multi_price_with_options_async(
+        self,
+        request: wss_20211221_models.DescribeMultiPriceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> wss_20211221_models.DescribeMultiPriceResponse:
+        """
+        @param request: DescribeMultiPriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMultiPriceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_items):
+            query['OrderItems'] = request.order_items
+        if not UtilClient.is_unset(request.order_type):
+            query['OrderType'] = request.order_type
+        if not UtilClient.is_unset(request.package_code):
+            query['PackageCode'] = request.package_code
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMultiPrice',
+            version='2021-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            wss_20211221_models.DescribeMultiPriceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_multi_price(
+        self,
+        request: wss_20211221_models.DescribeMultiPriceRequest,
+    ) -> wss_20211221_models.DescribeMultiPriceResponse:
+        """
+        @param request: DescribeMultiPriceRequest
+        @return: DescribeMultiPriceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_multi_price_with_options(request, runtime)
+
+    async def describe_multi_price_async(
+        self,
+        request: wss_20211221_models.DescribeMultiPriceRequest,
+    ) -> wss_20211221_models.DescribeMultiPriceResponse:
+        """
+        @param request: DescribeMultiPriceRequest
+        @return: DescribeMultiPriceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_multi_price_with_options_async(request, runtime)
 
     def describe_package_deductions_with_options(
         self,
@@ -281,16 +357,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wss_20211221_models.DescribePackageDeductionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wss_20211221_models.DescribePackageDeductionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wss_20211221_models.DescribePackageDeductionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_package_deductions_with_options_async(
         self,
@@ -334,16 +404,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wss_20211221_models.DescribePackageDeductionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wss_20211221_models.DescribePackageDeductionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wss_20211221_models.DescribePackageDeductionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_package_deductions(
         self,
@@ -407,16 +471,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wss_20211221_models.ModifyInstancePropertiesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wss_20211221_models.ModifyInstancePropertiesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wss_20211221_models.ModifyInstancePropertiesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_instance_properties_with_options_async(
         self,
@@ -454,16 +512,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wss_20211221_models.ModifyInstancePropertiesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wss_20211221_models.ModifyInstancePropertiesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wss_20211221_models.ModifyInstancePropertiesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_instance_properties(
         self,

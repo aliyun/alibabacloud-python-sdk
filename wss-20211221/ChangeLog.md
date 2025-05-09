@@ -1,3 +1,7 @@
+2025-05-09 Version: 1.3.0
+- Support API DescribeMultiPrice.
+
+
 2025-02-25 Version: 1.2.1
 - Update API CreateMultiOrder: add param ResellerOwnerUid.
 
