@@ -1,3 +1,7 @@
+2025-05-09 Version: 1.72.0
+- Support API SimplyAddInstance.
+
+
 2025-05-09 Version: 1.71.0
 - Support API DescribeDifyAttribute.
 - Support API DescribeDifyRegions.

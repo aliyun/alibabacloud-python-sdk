@@ -28595,6 +28595,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.set_workflow_extra_info_with_options_async(request, runtime)
 
+    def simply_add_instance_with_options(
+        self,
+        request: dms_enterprise_20181101_models.SimplyAddInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.SimplyAddInstanceResponse:
+        """
+        @summary 添加实例
+        
+        @param request: SimplyAddInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SimplyAddInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_password):
+            query['DatabasePassword'] = request.database_password
+        if not UtilClient.is_unset(request.database_user):
+            query['DatabaseUser'] = request.database_user
+        if not UtilClient.is_unset(request.host):
+            query['Host'] = request.host
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_region):
+            query['InstanceRegion'] = request.instance_region
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SimplyAddInstance',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.SimplyAddInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def simply_add_instance_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.SimplyAddInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.SimplyAddInstanceResponse:
+        """
+        @summary 添加实例
+        
+        @param request: SimplyAddInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SimplyAddInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_password):
+            query['DatabasePassword'] = request.database_password
+        if not UtilClient.is_unset(request.database_user):
+            query['DatabaseUser'] = request.database_user
+        if not UtilClient.is_unset(request.host):
+            query['Host'] = request.host
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_region):
+            query['InstanceRegion'] = request.instance_region
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SimplyAddInstance',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.SimplyAddInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def simply_add_instance(
+        self,
+        request: dms_enterprise_20181101_models.SimplyAddInstanceRequest,
+    ) -> dms_enterprise_20181101_models.SimplyAddInstanceResponse:
+        """
+        @summary 添加实例
+        
+        @param request: SimplyAddInstanceRequest
+        @return: SimplyAddInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.simply_add_instance_with_options(request, runtime)
+
+    async def simply_add_instance_async(
+        self,
+        request: dms_enterprise_20181101_models.SimplyAddInstanceRequest,
+    ) -> dms_enterprise_20181101_models.SimplyAddInstanceResponse:
+        """
+        @summary 添加实例
+        
+        @param request: SimplyAddInstanceRequest
+        @return: SimplyAddInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.simply_add_instance_with_options_async(request, runtime)
+
     def skip_data_correct_row_check_with_options(
         self,
         request: dms_enterprise_20181101_models.SkipDataCorrectRowCheckRequest,
