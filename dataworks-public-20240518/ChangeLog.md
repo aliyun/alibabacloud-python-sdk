@@ -1,3 +1,18 @@
+2025-05-09 Version: 7.0.0
+- Support API AbolishPipelineRun.
+- Support API CreatePipelineRun.
+- Support API ExecPipelineRunStage.
+- Support API GetPipelineRun.
+- Support API ListPipelineRuns.
+- Delete API AbolishDeployment.
+- Delete API CreateDeployment.
+- Delete API ExecDeploymentStage.
+- Delete API GetDeployment.
+- Delete API ListDeployments.
+- Update API CreateResource: add request parameters ResourceFile.
+- Update API UpdateResource: add request parameters ResourceFile.
+
+
 2025-04-14 Version: 6.2.0
 - Support API AddEntityIntoMetaCollection.
 - Support API CreateLineageRelationship.

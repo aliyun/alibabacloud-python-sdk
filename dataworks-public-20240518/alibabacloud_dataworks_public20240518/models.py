@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict, Any, BinaryIO
+from typing import List, Dict, BinaryIO, Any
 
 
 class Catalog(TeaModel):
@@ -2930,7 +2930,7 @@ class SuccessInfoValue(TeaModel):
         return self
 
 
-class AbolishDeploymentRequest(TeaModel):
+class AbolishPipelineRunRequest(TeaModel):
     def __init__(
         self,
         id: str = None,
@@ -2942,7 +2942,7 @@ class AbolishDeploymentRequest(TeaModel):
         self.id = id
         # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
         # 
-        # You can use this parameter to specify the DataWorks workspace on which you want to perform the API operation.
+        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
         # 
         # This parameter is required.
         self.project_id = project_id
@@ -2971,7 +2971,7 @@ class AbolishDeploymentRequest(TeaModel):
         return self
 
 
-class AbolishDeploymentResponseBody(TeaModel):
+class AbolishPipelineRunResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
@@ -3009,12 +3009,12 @@ class AbolishDeploymentResponseBody(TeaModel):
         return self
 
 
-class AbolishDeploymentResponse(TeaModel):
+class AbolishPipelineRunResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
-        body: AbolishDeploymentResponseBody = None,
+        body: AbolishPipelineRunResponseBody = None,
     ):
         self.headers = headers
         self.status_code = status_code
@@ -3045,7 +3045,7 @@ class AbolishDeploymentResponse(TeaModel):
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
-            temp_model = AbolishDeploymentResponseBody()
+            temp_model = AbolishPipelineRunResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9389,206 +9389,6 @@ class CreateDataSourceSharedRuleResponse(TeaModel):
         return self
 
 
-class CreateDeploymentRequest(TeaModel):
-    def __init__(
-        self,
-        description: str = None,
-        object_ids: List[str] = None,
-        project_id: int = None,
-        type: str = None,
-    ):
-        # The description of the process.
-        self.description = description
-        # The IDs of entities to which you want to apply the process.
-        # 
-        # >  A process can be applied to only a single entity and its child entities. If you specify multiple entities in the array, the process is applied only to the first entity in the array and its child entities. Make sure that the array in your request contains only one element. Extra elements will be ignored.
-        # 
-        # This parameter is required.
-        self.object_ids = object_ids
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
-        # 
-        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
-        # 
-        # This parameter is required.
-        self.project_id = project_id
-        # Specifies whether to deploy or undeploy the entity. Valid values:
-        # 
-        # *   Online: deploys the entity.
-        # *   Offline: undeploys the entity.
-        # 
-        # This parameter is required.
-        self.type = type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.object_ids is not None:
-            result['ObjectIds'] = self.object_ids
-        if self.project_id is not None:
-            result['ProjectId'] = self.project_id
-        if self.type is not None:
-            result['Type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('ObjectIds') is not None:
-            self.object_ids = m.get('ObjectIds')
-        if m.get('ProjectId') is not None:
-            self.project_id = m.get('ProjectId')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        return self
-
-
-class CreateDeploymentShrinkRequest(TeaModel):
-    def __init__(
-        self,
-        description: str = None,
-        object_ids_shrink: str = None,
-        project_id: int = None,
-        type: str = None,
-    ):
-        # The description of the process.
-        self.description = description
-        # The IDs of entities to which you want to apply the process.
-        # 
-        # >  A process can be applied to only a single entity and its child entities. If you specify multiple entities in the array, the process is applied only to the first entity in the array and its child entities. Make sure that the array in your request contains only one element. Extra elements will be ignored.
-        # 
-        # This parameter is required.
-        self.object_ids_shrink = object_ids_shrink
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
-        # 
-        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
-        # 
-        # This parameter is required.
-        self.project_id = project_id
-        # Specifies whether to deploy or undeploy the entity. Valid values:
-        # 
-        # *   Online: deploys the entity.
-        # *   Offline: undeploys the entity.
-        # 
-        # This parameter is required.
-        self.type = type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.object_ids_shrink is not None:
-            result['ObjectIds'] = self.object_ids_shrink
-        if self.project_id is not None:
-            result['ProjectId'] = self.project_id
-        if self.type is not None:
-            result['Type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('ObjectIds') is not None:
-            self.object_ids_shrink = m.get('ObjectIds')
-        if m.get('ProjectId') is not None:
-            self.project_id = m.get('ProjectId')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        return self
-
-
-class CreateDeploymentResponseBody(TeaModel):
-    def __init__(
-        self,
-        id: str = None,
-        request_id: str = None,
-    ):
-        # The ID of the process.
-        self.id = id
-        # The request ID.
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class CreateDeploymentResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: CreateDeploymentResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = CreateDeploymentResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class CreateFunctionRequest(TeaModel):
     def __init__(
         self,
@@ -10160,7 +9960,7 @@ class CreateNodeRequest(TeaModel):
         # 
         # This parameter is required.
         self.scene = scene
-        # The FlowSpec field information about the node. For more information, see [FlowSpec](https://github.com/aliyun/dataworks-spec/blob/master/README_zh_CN.md).
+        # { "type": "object", "description": "CycleWorkflow the structure of the workflow configurations", "properties": { "version": { "type": "string", "description": "the version ID of the workflow configuration files" }, "kind": { "type": "string", "description": "the category ID of the workflow", "enum": [ "CycleWorkflow", "ManualWorkflow", "ManualNode", "TemporaryWorkflow", "PaiFlow", "BatchDeployment", "DataSource", "DataQuality", "DataService", "DataCatalog", "Table", "Node", "Component", "Resource", "Function", "Workflow" ] }, "spec": { "type": "object", "description": "the key configurations of the workflow", "properties": { "name": { "type": "string", "description": "the readable name identifier of the workflow" }, "id": { "type": "string", "description": "the UUID of the workflow" }, "type": { "type": "string", "description": "the type of the workflow instance", "enum": [ "CycleWorkflow", "ManualWorkflow" ] }, "owner": { "type": "string", "description": "the system user ID of the workflow owner" }, "description": { "type": "string", "description": "the detailed description of the features and usage of the workflow" }, "workflows": { "type": "array", "description": an array of node configurations in the workflow. The workflows can be run at the same time", "items": { "type": "object", "properties": { "script": { "type": "object", "description": "the script parameters", "properties": { "path": { "type": "string", "description": "the storage path of the script file. Example: HDFS/S3" }, "runtime": { "type": "object", "description": "the parameter settings for the runtime environment, such as the specifications of computing resources" }, "id": { "type": "string", "description": "the unique identifiers of the script parameters" } } }, "id": { "type": "string", "description": "the ID of the node in the workflow" }, "trigger": { "type": "object", "description": "the rule configurations to trigger the node“, "properties": { "type": { "type": "string", "enum": [ "Scheduler", "Manual", "Streaming", "None" ], "description": "the trigger type. Valid values: Scheduler, Manual, Streaming, and None" }, "id": { "type": "string", "description": "the trigger ID" }, "cron": { "type": "string", "description": "the scheduling rule of the node. The rule is in the cron expression format" }, "startTime": { "type": "string", "description": "the start time for scheduling. The value is in the ISO 8601 format" }, "endTime": { "type": "string", "description": "the end time for scheduling. The value is in the ISO 8601 format" }, "timezone": { "type": "string", "description": "the time zone. Example: UTC+8" }, "delaySeconds": { "type": "number", "description": "the delayed execution time. Unit: seconds" } } }, "strategy": { "type": "object", "description": "the execution policy parameters", "properties": { "timeout": { "type": "number", "description": "the timeout period. Unit: seconds" }, "instanceMode": { "type": "string", "enum": [ "T+1", "Immediately" ], "description": "the instance scheduling mode. Valid values: T+1 and Immediately" }, "rerunMode": { "type": "string", "enum": [ "Allowed", "Denied", "FailureAllowed" ], "description": "the rerun mode. Valid values: Allowed, Denied, and FailureAllowed" }, "rerunTimes": { "type": "number", "description": "the maximum number of reruns allowed after a failure" }, "rerunInterval": { "type": "number", "description": "the rerun interval. Unit: seconds" }, "failureStrategy": { "type": "string", "enum": [ "Continue", "Break" ], "description": "the failure handling policy. Valid values: Continue and Break" }, "recurrenceType": { "type": "string", "enum": [ "Normal", "Pause", "Skip", "NoneAuto" ], "description": "the running mode of the auto triggered node. Valid values: Normal, Pause, Skip, and NoneAuto" } } }, "name": { "type": "string", "description": "the readable name of the node" }, "owner": { "type": "string", "description": "the system ID of the node owner" }, "description": { "type": "string", "description": "the feature description of the node" }, "citable": { "type": "boolean", "description": "specifies whether the node can be referenced by other workflows. Valid values: true and false" }, "metadata": { "type": "object", "description": "the container that stores the metadata information", "properties": { "owner": { "type": "string", "description": "the metadata owner ID" }, "project": { "type": "object", "properties": { "projectIdentifier": { "type": "string", "description": "the unique code of the project" }, "projectName": { "type": "string", "description": "the project name" }, "projectId": { "type": "string", "Description": "the project ID" } } }, "ownerName": { "type": "string", "description": "the name of the project owner" }, "projectId": { "type": "string", "description": "the ID of the associated project" } } }, "inputs": { "type": "object", "description": "the structure of the node input", "properties": { "nodeOutputs": { "type": "array", "description": "the configuration items for node input", "items": { "type": "object", "properties": { "data": { "type": "string", "description": "the content of the node input" }, "artifactType": { "type": "string", "enum": [ "Table", "File", "NodeOutput", "Variable" ], "description": "the type of the node input. Valid values: Table, File, NodeOutput, and Variable" }, "refTableName": { "type": "string", "description": "the name of the referenced table" }, "isDefault": { "type": "boolean", "description": "specifies whether the table is the default output“ } } } }, "tables": { "type": "array", "description": "the metadata collection in the input table", "items": { "type": "object", "properties": { "artifactType": { "type": "string", "enum": [ "Table", "File", "NodeOutput", "Variable" ], "description": "the type of the table" }, "guid": { "type": "string", "description": "the GUID of the table" } } } } } }, "outputs": { "type": "object", "description": "the structure of the node output", "properties": { "nodeOutputs": { "type": "array", "description": "the configuration items for node output", "items": { "type": "object", "properties": { "data": { "type": "string", "description": "the content of the node output" }, "artifactType": { "type": "string", "enum": [ "Table", "File", "NodeOutput", "Variable" ], "description": "the type of the node output. Valid values: Table, File, NodeOutput, and Variable" }, "refTableName": { "type": "string", "description": "the name of the referenced table" }, "isDefault": { "type": "boolean", "description": "specifies whether the table is the default output“ } } } }, "tables": { "type": "array", "description": "the metadata collection in the output table", "items": { "type": "object", "properties": { "artifactType": { "type": "string", "enum": [ "Table", "File", "NodeOutput", "Variable" ], "description": "the type of the table" }, "guid": { "type": "string", "description": "the GUID of the table" } } } } } }, "nodes": { "type": "array", "description": "the configuration items for descendant nodes that are used for workflow nesting", "items": { "type": "object", "properties": { "recurrence": { "type": "string", "enum": [ "Normal", "Pause", "Skip", "NoneAuto" ], "description": "the running mode of the descendant node" }, "id": { "type": "string", "description": "the descendant node ID" }, "timeout": { "type": "number", "description": "the timeout period of the descendant node. Unit: seconds" }, "instanceMode": { "type": "string", "enum": [ "T+1", "Immediately" ], "description": "the instance scheduling mode of the descendant node. Valid values: T+1 and Immediately" }, "rerunMode": { "type": "string", "enum": [ "Allowed", "Denied", "FailureAllowed" ], "description": "the rerun mode of the descendant node" }, "rerunTimes": { "type": "number", "description": "the maximum number of reruns allowed after a failure for the descendant node" }, "rerunInterval": { "type": "number", "description": "the rerun interval" }, "datasource": { "type": "object", "description": "the parameters of the associated data source", "properties": { "name": { "type": "string", "description": "the name of the data source" }, "type": { "type": "string", "description": "the type of the data source. Examples: MySQL and Oracle" } } }, "script": { "type": "object", "description": "the script configurations of the node", "properties": { "language": { "type": "string", "enum": [ "python2", "python3", "java8", "java11", "java17" ], "description": "the programming language of the script" }, "path": { "type": "string", "description": "the storage path of the code" }, "runtime": { "type": "object", "description": "the configurations of the runtime environment" }, "content": { "type": "string", "description": "the content of the inline script" }, "id": { "type": "string", "description": "the identifier of the script content" }, "parameters": { "type": "array", "description": "the parameters for initialization", "items": { "type": "object", "properties": { "name": { "type": "string", "description": "the identifier of the parameter name" }, "artifactType": { "type": "string", "enum": [ "Table", "File", "NodeOutput", "Variable" ], "description": "the identifier of the data type" }, "scope": { "type": "string", "enum": [ "Tenant", "Workspace", "Workflow", "NodeParameter", "NodeContext" ], "description": "the application scope of the parameter" }, "type": { "type": "string", "enum": [ "NoKvVariableExpression", "System", "Constant", "NodeOutput", "PaiOutput", "PassThrough" ], "description": "the type of the parameter" }, "value": { "type": "string", "description": "the default value of the parameter" }, "id": { "type": "string", "description": "the parameter ID" } } } } } }, "trigger": { "type": "object", "description": "the configurations of the trigger at the node level. You can overwrite or inherit the configurations" }, "runtimeResource": { "type": "object", "description": "the configurations of computing resources, such as CPU and memory" }, "name": { "type": "string", "description": "the readable name of the descendant node" }, "owner": { "type": "string", "description": "the ID of the descendant node owner" }, "metadata": { "type": "object", "description": "the extended metadata of the descendant node" }, "inputs": { "type": "object", "description": "the parameter definitions of the node input" }, "outputs": { "type": "object", "description": "the parameter definitions of the node output" } } } }, "dependencies": { "type": "array", "description": "the node dependencies", "items": { "type": "object", "properties": { "nodeId": { "type": "string", "description": "the ID of the current node" }, "depends": { "type": "array", "description": "the ancestor node output", "items": { "type": "object", "properties": { "type": { "type": "string", "enum": [ "Normal", "CrossCycleDependsOnSelf", "CrossCycleDependsOnChildren", "CrossCycleDependsOnOtherNode" ], "description": "the dependency type. Valid values: Normal, CrossCycleDependsOnSelf, CrossCycleDependsOnChildren, and CrossCycleDependsOnOtherNode" }, "output": { "type": "string", "description": "the unique identifier of the ancestor node output" }, "refTableName": { "type": "string", "description": "the identifier of the referenced table name" } } } } } } } } } }, "metadata": { "type": "object", "description": "the high-level metadata of the workflow", "properties": { "innerVersion": { "type": "object", "description": "the mappings between the versions of components", "additionalProperties": { "type": "number" } }, "gmtModified": { "type": "number", "description": "the last modification time. The value is a UNIX timestamp" }, "projectId": { "type": "string", "description": "the ID of the associated project" }, "uuid": { "type": "string", "description": "the GUID of the instance" } } } } } }, "required": [ "version", "kind", "spec" ] }
         # 
         # This parameter is required.
         self.spec = spec
@@ -10269,6 +10069,202 @@ class CreateNodeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateNodeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreatePipelineRunRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        object_ids: List[str] = None,
+        project_id: int = None,
+        type: str = None,
+    ):
+        # The description of the process.
+        self.description = description
+        # The IDs of entities to which you want to apply the process.
+        # 
+        # >  A process can be applied to only a single entity and its child entities. If you specify multiple entities in the array, the process is applied only to the first entity in the array and its child entities. Make sure that the array in your request contains only one element. Extra elements will be ignored.
+        # 
+        # This parameter is required.
+        self.object_ids = object_ids
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID. You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # 
+        # This parameter is required.
+        self.project_id = project_id
+        # Specifies whether to deploy or undeploy the entity. Valid values:
+        # 
+        # *   Online: deploys the entity.
+        # *   Offline: undeploys the entity.
+        # 
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.object_ids is not None:
+            result['ObjectIds'] = self.object_ids
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ObjectIds') is not None:
+            self.object_ids = m.get('ObjectIds')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CreatePipelineRunShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        object_ids_shrink: str = None,
+        project_id: int = None,
+        type: str = None,
+    ):
+        # The description of the process.
+        self.description = description
+        # The IDs of entities to which you want to apply the process.
+        # 
+        # >  A process can be applied to only a single entity and its child entities. If you specify multiple entities in the array, the process is applied only to the first entity in the array and its child entities. Make sure that the array in your request contains only one element. Extra elements will be ignored.
+        # 
+        # This parameter is required.
+        self.object_ids_shrink = object_ids_shrink
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID. You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # 
+        # This parameter is required.
+        self.project_id = project_id
+        # Specifies whether to deploy or undeploy the entity. Valid values:
+        # 
+        # *   Online: deploys the entity.
+        # *   Offline: undeploys the entity.
+        # 
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.object_ids_shrink is not None:
+            result['ObjectIds'] = self.object_ids_shrink
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ObjectIds') is not None:
+            self.object_ids_shrink = m.get('ObjectIds')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CreatePipelineRunResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        request_id: str = None,
+    ):
+        # The ID of the process.
+        self.id = id
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreatePipelineRunResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreatePipelineRunResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreatePipelineRunResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10772,12 +10768,14 @@ class CreateResourceRequest(TeaModel):
     def __init__(
         self,
         project_id: int = None,
+        resource_file: str = None,
         spec: str = None,
     ):
         # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
         # 
         # This parameter is required.
         self.project_id = project_id
+        self.resource_file = resource_file
         # The FlowSpec field information about the file resource. For more information, see [FlowSpec](https://github.com/aliyun/dataworks-spec/blob/master/README_zh_CN.md).
         # 
         # This parameter is required.
@@ -10794,6 +10792,8 @@ class CreateResourceRequest(TeaModel):
         result = dict()
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
+        if self.resource_file is not None:
+            result['ResourceFile'] = self.resource_file
         if self.spec is not None:
             result['Spec'] = self.spec
         return result
@@ -10802,6 +10802,53 @@ class CreateResourceRequest(TeaModel):
         m = m or dict()
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
+        if m.get('ResourceFile') is not None:
+            self.resource_file = m.get('ResourceFile')
+        if m.get('Spec') is not None:
+            self.spec = m.get('Spec')
+        return self
+
+
+class CreateResourceAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        project_id: int = None,
+        resource_file_object: BinaryIO = None,
+        spec: str = None,
+    ):
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # 
+        # This parameter is required.
+        self.project_id = project_id
+        self.resource_file_object = resource_file_object
+        # The FlowSpec field information about the file resource. For more information, see [FlowSpec](https://github.com/aliyun/dataworks-spec/blob/master/README_zh_CN.md).
+        # 
+        # This parameter is required.
+        self.spec = spec
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.resource_file_object is not None:
+            result['ResourceFile'] = self.resource_file_object
+        if self.spec is not None:
+            result['Spec'] = self.spec
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ResourceFile') is not None:
+            self.resource_file_object = m.get('ResourceFile')
         if m.get('Spec') is not None:
             self.spec = m.get('Spec')
         return self
@@ -15075,7 +15122,7 @@ class DissociateProjectFromResourceGroupResponse(TeaModel):
         return self
 
 
-class ExecDeploymentStageRequest(TeaModel):
+class ExecPipelineRunStageRequest(TeaModel):
     def __init__(
         self,
         code: str = None,
@@ -15090,9 +15137,7 @@ class ExecDeploymentStageRequest(TeaModel):
         # 
         # This parameter is required.
         self.id = id
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the ID.
-        # 
-        # You can use this parameter to specify the DataWorks workspace on which you want to perform the API operation.
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
         # 
         # This parameter is required.
         self.project_id = project_id
@@ -15125,7 +15170,7 @@ class ExecDeploymentStageRequest(TeaModel):
         return self
 
 
-class ExecDeploymentStageResponseBody(TeaModel):
+class ExecPipelineRunStageResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
@@ -15168,12 +15213,12 @@ class ExecDeploymentStageResponseBody(TeaModel):
         return self
 
 
-class ExecDeploymentStageResponse(TeaModel):
+class ExecPipelineRunStageResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
-        body: ExecDeploymentStageResponseBody = None,
+        body: ExecPipelineRunStageResponseBody = None,
     ):
         self.headers = headers
         self.status_code = status_code
@@ -15204,7 +15249,7 @@ class ExecDeploymentStageResponse(TeaModel):
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
-            temp_model = ExecDeploymentStageResponseBody()
+            temp_model = ExecPipelineRunStageResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -21401,313 +21446,6 @@ class GetDatabaseResponse(TeaModel):
         return self
 
 
-class GetDeploymentRequest(TeaModel):
-    def __init__(
-        self,
-        id: str = None,
-        project_id: int = None,
-    ):
-        # The ID of the process.
-        # 
-        # This parameter is required.
-        self.id = id
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
-        # 
-        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
-        # 
-        # This parameter is required.
-        self.project_id = project_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.project_id is not None:
-            result['ProjectId'] = self.project_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('ProjectId') is not None:
-            self.project_id = m.get('ProjectId')
-        return self
-
-
-class GetDeploymentResponseBodyPipelineStages(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        description: str = None,
-        detail: Dict[str, Any] = None,
-        message: str = None,
-        name: str = None,
-        status: str = None,
-        step: int = None,
-        type: str = None,
-    ):
-        # The code of the stage.
-        self.code = code
-        # The description of the stage.
-        self.description = description
-        # The details of the stage.
-        self.detail = detail
-        # The error message returned for the stage.
-        self.message = message
-        # The name of the stage.
-        self.name = name
-        # The status of the stage.
-        # 
-        # Valid values:
-        # 
-        # *   Init
-        # *   Running
-        # *   Success
-        # *   Fail
-        # *   Termination
-        # *   Cancel
-        self.status = status
-        # The step number of the stage.
-        self.step = step
-        # The type of the stage.
-        # 
-        # Valid values:
-        # 
-        # *   Deploy
-        # *   Check
-        # *   Offline
-        # *   Build
-        # *   Delete
-        self.type = type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.detail is not None:
-            result['Detail'] = self.detail
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.step is not None:
-            result['Step'] = self.step
-        if self.type is not None:
-            result['Type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('Detail') is not None:
-            self.detail = m.get('Detail')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('Step') is not None:
-            self.step = m.get('Step')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        return self
-
-
-class GetDeploymentResponseBodyPipeline(TeaModel):
-    def __init__(
-        self,
-        create_time: int = None,
-        creator: str = None,
-        id: str = None,
-        message: str = None,
-        modify_time: int = None,
-        project_id: int = None,
-        stages: List[GetDeploymentResponseBodyPipelineStages] = None,
-        status: str = None,
-    ):
-        # The time when the process was created. This value is a UNIX timestamp.
-        self.create_time = create_time
-        # The creator of the process.
-        self.creator = creator
-        # The ID of the process.
-        self.id = id
-        # The error message returned when the process fails.
-        self.message = message
-        # The time when the process was modified. This value is a UNIX timestamp.
-        self.modify_time = modify_time
-        # The DataWorks workspace ID.
-        self.project_id = project_id
-        # The information about stages in the process.
-        self.stages = stages
-        # The status of the process.
-        # 
-        # Valid values:
-        # 
-        # *   Init
-        # *   Running
-        # *   Success
-        # *   Fail
-        # *   Termination
-        # *   Cancel
-        self.status = status
-
-    def validate(self):
-        if self.stages:
-            for k in self.stages:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.create_time is not None:
-            result['CreateTime'] = self.create_time
-        if self.creator is not None:
-            result['Creator'] = self.creator
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.modify_time is not None:
-            result['ModifyTime'] = self.modify_time
-        if self.project_id is not None:
-            result['ProjectId'] = self.project_id
-        result['Stages'] = []
-        if self.stages is not None:
-            for k in self.stages:
-                result['Stages'].append(k.to_map() if k else None)
-        if self.status is not None:
-            result['Status'] = self.status
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CreateTime') is not None:
-            self.create_time = m.get('CreateTime')
-        if m.get('Creator') is not None:
-            self.creator = m.get('Creator')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('ModifyTime') is not None:
-            self.modify_time = m.get('ModifyTime')
-        if m.get('ProjectId') is not None:
-            self.project_id = m.get('ProjectId')
-        self.stages = []
-        if m.get('Stages') is not None:
-            for k in m.get('Stages'):
-                temp_model = GetDeploymentResponseBodyPipelineStages()
-                self.stages.append(temp_model.from_map(k))
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        return self
-
-
-class GetDeploymentResponseBody(TeaModel):
-    def __init__(
-        self,
-        pipeline: GetDeploymentResponseBodyPipeline = None,
-        request_id: str = None,
-    ):
-        # The information about the process.
-        self.pipeline = pipeline
-        # The request ID.
-        self.request_id = request_id
-
-    def validate(self):
-        if self.pipeline:
-            self.pipeline.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.pipeline is not None:
-            result['Pipeline'] = self.pipeline.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Pipeline') is not None:
-            temp_model = GetDeploymentResponseBodyPipeline()
-            self.pipeline = temp_model.from_map(m['Pipeline'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class GetDeploymentResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: GetDeploymentResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = GetDeploymentResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class GetFunctionRequest(TeaModel):
     def __init__(
         self,
@@ -22864,6 +22602,313 @@ class GetPartitionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetPartitionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetPipelineRunRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        project_id: int = None,
+    ):
+        # The ID of the process.
+        # 
+        # This parameter is required.
+        self.id = id
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # 
+        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # 
+        # This parameter is required.
+        self.project_id = project_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class GetPipelineRunResponseBodyPipelineStages(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        description: str = None,
+        detail: Dict[str, Any] = None,
+        message: str = None,
+        name: str = None,
+        status: str = None,
+        step: int = None,
+        type: str = None,
+    ):
+        # The code of the stage.
+        self.code = code
+        # The description of the stage.
+        self.description = description
+        # The details of the stage.
+        self.detail = detail
+        # The error message returned for the stage.
+        self.message = message
+        # The name of the stage.
+        self.name = name
+        # The status of the stage.
+        # 
+        # Valid values:
+        # 
+        # *   Init
+        # *   Running
+        # *   Success
+        # *   Fail
+        # *   Termination
+        # *   Cancel
+        self.status = status
+        # The step number of the stage.
+        self.step = step
+        # The type of the stage.
+        # 
+        # Valid values:
+        # 
+        # *   Deploy
+        # *   Check
+        # *   Offline
+        # *   Build
+        # *   Delete
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.detail is not None:
+            result['Detail'] = self.detail
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.step is not None:
+            result['Step'] = self.step
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Detail') is not None:
+            self.detail = m.get('Detail')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Step') is not None:
+            self.step = m.get('Step')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetPipelineRunResponseBodyPipeline(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        creator: str = None,
+        id: str = None,
+        message: str = None,
+        modify_time: int = None,
+        project_id: int = None,
+        stages: List[GetPipelineRunResponseBodyPipelineStages] = None,
+        status: str = None,
+    ):
+        # The time when the process was created. This value is a UNIX timestamp.
+        self.create_time = create_time
+        # The creator of the process.
+        self.creator = creator
+        # The process ID.
+        self.id = id
+        # The error message returned when the process fails.
+        self.message = message
+        # The time when the process was modified. This value is a UNIX timestamp.
+        self.modify_time = modify_time
+        # The DataWorks workspace ID.
+        self.project_id = project_id
+        # The information about stages in the process.
+        self.stages = stages
+        # The status of the process.
+        # 
+        # Valid values:
+        # 
+        # *   Init
+        # *   Running
+        # *   Success
+        # *   Fail
+        # *   Termination
+        # *   Cancel
+        self.status = status
+
+    def validate(self):
+        if self.stages:
+            for k in self.stages:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        result['Stages'] = []
+        if self.stages is not None:
+            for k in self.stages:
+                result['Stages'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        self.stages = []
+        if m.get('Stages') is not None:
+            for k in m.get('Stages'):
+                temp_model = GetPipelineRunResponseBodyPipelineStages()
+                self.stages.append(temp_model.from_map(k))
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetPipelineRunResponseBody(TeaModel):
+    def __init__(
+        self,
+        pipeline: GetPipelineRunResponseBodyPipeline = None,
+        request_id: str = None,
+    ):
+        # The information about the process.
+        self.pipeline = pipeline
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.pipeline:
+            self.pipeline.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pipeline is not None:
+            result['Pipeline'] = self.pipeline.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Pipeline') is not None:
+            temp_model = GetPipelineRunResponseBodyPipeline()
+            self.pipeline = temp_model.from_map(m['Pipeline'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetPipelineRunResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetPipelineRunResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetPipelineRunResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -36827,398 +36872,6 @@ class ListDatabasesResponse(TeaModel):
         return self
 
 
-class ListDeploymentsRequest(TeaModel):
-    def __init__(
-        self,
-        creator: str = None,
-        page_number: int = None,
-        page_size: int = None,
-        project_id: int = None,
-        status: str = None,
-    ):
-        # The ID of the user who creates the processes. This parameter specifies a filter condition.
-        self.creator = creator
-        # The page number. Pages start from page 1. Default value: 1.
-        self.page_number = page_number
-        # The number of entries per page. Default value: 10. Maximum value: 100.
-        self.page_size = page_size
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
-        # 
-        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
-        # 
-        # This parameter is required.
-        self.project_id = project_id
-        # The status of the processes. This parameter specifies a filter condition.
-        # 
-        # Valid values:
-        # 
-        # *   Init
-        # *   Running
-        # *   Success
-        # *   Fail
-        # *   Termination
-        # *   Cancel
-        self.status = status
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.creator is not None:
-            result['Creator'] = self.creator
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.project_id is not None:
-            result['ProjectId'] = self.project_id
-        if self.status is not None:
-            result['Status'] = self.status
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Creator') is not None:
-            self.creator = m.get('Creator')
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('ProjectId') is not None:
-            self.project_id = m.get('ProjectId')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        return self
-
-
-class ListDeploymentsResponseBodyPagingInfoDeploymentsStages(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        description: str = None,
-        detail: Dict[str, Any] = None,
-        message: str = None,
-        name: str = None,
-        status: str = None,
-        step: int = None,
-        type: str = None,
-    ):
-        # The code of the stage.
-        self.code = code
-        # The description of the stage.
-        self.description = description
-        # The additional information about the stage.
-        self.detail = detail
-        # The error message returned during the stage.
-        self.message = message
-        # The name of the stage.
-        self.name = name
-        # The status of the stage.
-        # 
-        # Valid values:
-        # 
-        # *   Init
-        # *   Running
-        # *   Success
-        # *   Fail
-        # *   Termination
-        # *   Cancel
-        self.status = status
-        # The step number of the stage.
-        self.step = step
-        # The type of the stage. This parameter indicates the operation type in the stage.
-        # 
-        # Valid values:
-        # 
-        # *   Deploy
-        # *   Check
-        # *   Offline
-        # *   Build
-        # *   Delete
-        self.type = type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.detail is not None:
-            result['Detail'] = self.detail
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.step is not None:
-            result['Step'] = self.step
-        if self.type is not None:
-            result['Type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('Detail') is not None:
-            self.detail = m.get('Detail')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('Step') is not None:
-            self.step = m.get('Step')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        return self
-
-
-class ListDeploymentsResponseBodyPagingInfoDeployments(TeaModel):
-    def __init__(
-        self,
-        create_time: int = None,
-        creator: str = None,
-        id: str = None,
-        message: str = None,
-        modify_time: int = None,
-        project_id: int = None,
-        stages: List[ListDeploymentsResponseBodyPagingInfoDeploymentsStages] = None,
-        status: str = None,
-    ):
-        # The time when the process was created. This value is a UNIX timestamp.
-        self.create_time = create_time
-        # The ID of the user who creates the process.
-        self.creator = creator
-        # The process ID.
-        self.id = id
-        # The error message returned if the process fails.
-        self.message = message
-        # The time when the process was last modified. This value is a UNIX timestamp.
-        self.modify_time = modify_time
-        # The DataWorks workspace ID.
-        self.project_id = project_id
-        # The stages of the process.
-        self.stages = stages
-        # The status of the process.
-        # 
-        # Valid values:
-        # 
-        # *   Init
-        # *   Running
-        # *   Success
-        # *   Fail
-        # *   Termination
-        # *   Cancel
-        self.status = status
-
-    def validate(self):
-        if self.stages:
-            for k in self.stages:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.create_time is not None:
-            result['CreateTime'] = self.create_time
-        if self.creator is not None:
-            result['Creator'] = self.creator
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.modify_time is not None:
-            result['ModifyTime'] = self.modify_time
-        if self.project_id is not None:
-            result['ProjectId'] = self.project_id
-        result['Stages'] = []
-        if self.stages is not None:
-            for k in self.stages:
-                result['Stages'].append(k.to_map() if k else None)
-        if self.status is not None:
-            result['Status'] = self.status
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CreateTime') is not None:
-            self.create_time = m.get('CreateTime')
-        if m.get('Creator') is not None:
-            self.creator = m.get('Creator')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('ModifyTime') is not None:
-            self.modify_time = m.get('ModifyTime')
-        if m.get('ProjectId') is not None:
-            self.project_id = m.get('ProjectId')
-        self.stages = []
-        if m.get('Stages') is not None:
-            for k in m.get('Stages'):
-                temp_model = ListDeploymentsResponseBodyPagingInfoDeploymentsStages()
-                self.stages.append(temp_model.from_map(k))
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        return self
-
-
-class ListDeploymentsResponseBodyPagingInfo(TeaModel):
-    def __init__(
-        self,
-        deployments: List[ListDeploymentsResponseBodyPagingInfoDeployments] = None,
-        page_number: str = None,
-        page_size: str = None,
-        total_count: str = None,
-    ):
-        # The processes.
-        self.deployments = deployments
-        # The page number.
-        self.page_number = page_number
-        # The number of entries per page.
-        self.page_size = page_size
-        # The total number of entries returned.
-        self.total_count = total_count
-
-    def validate(self):
-        if self.deployments:
-            for k in self.deployments:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Deployments'] = []
-        if self.deployments is not None:
-            for k in self.deployments:
-                result['Deployments'].append(k.to_map() if k else None)
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.deployments = []
-        if m.get('Deployments') is not None:
-            for k in m.get('Deployments'):
-                temp_model = ListDeploymentsResponseBodyPagingInfoDeployments()
-                self.deployments.append(temp_model.from_map(k))
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        return self
-
-
-class ListDeploymentsResponseBody(TeaModel):
-    def __init__(
-        self,
-        paging_info: ListDeploymentsResponseBodyPagingInfo = None,
-        request_id: str = None,
-    ):
-        # The pagination information.
-        self.paging_info = paging_info
-        # The request ID.
-        self.request_id = request_id
-
-    def validate(self):
-        if self.paging_info:
-            self.paging_info.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.paging_info is not None:
-            result['PagingInfo'] = self.paging_info.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('PagingInfo') is not None:
-            temp_model = ListDeploymentsResponseBodyPagingInfo()
-            self.paging_info = temp_model.from_map(m['PagingInfo'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class ListDeploymentsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ListDeploymentsResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ListDeploymentsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ListDownstreamTaskInstancesRequest(TeaModel):
     def __init__(
         self,
@@ -43539,6 +43192,398 @@ class ListPartitionsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListPartitionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListPipelineRunsRequest(TeaModel):
+    def __init__(
+        self,
+        creator: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        project_id: int = None,
+        status: str = None,
+    ):
+        # The ID of the user who creates the processes. This parameter specifies a filter condition.
+        self.creator = creator
+        # The page number. Pages start from page 1. Default value: 1.
+        self.page_number = page_number
+        # The number of entries per page. Default value: 10. Maximum value: 100.
+        self.page_size = page_size
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # 
+        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # 
+        # This parameter is required.
+        self.project_id = project_id
+        # The status of the processes. This parameter specifies a filter condition.
+        # 
+        # Valid values:
+        # 
+        # *   Init
+        # *   Running
+        # *   Success
+        # *   Fail
+        # *   Termination
+        # *   Cancel
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListPipelineRunsResponseBodyPagingInfoPipelineRunsStages(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        description: str = None,
+        detail: Dict[str, Any] = None,
+        message: str = None,
+        name: str = None,
+        status: str = None,
+        step: int = None,
+        type: str = None,
+    ):
+        # The code of the stage.
+        self.code = code
+        # The description of the stage.
+        self.description = description
+        # The additional information about the stage.
+        self.detail = detail
+        # The error message returned during the stage.
+        self.message = message
+        # The name of the stage.
+        self.name = name
+        # The status of the stage.
+        # 
+        # Valid values:
+        # 
+        # *   Init
+        # *   Running
+        # *   Success
+        # *   Fail
+        # *   Termination
+        # *   Cancel
+        self.status = status
+        # The step number of the stage.
+        self.step = step
+        # The type of the stage. This parameter indicates the operation type in the stage.
+        # 
+        # Valid values:
+        # 
+        # *   Deploy
+        # *   Check
+        # *   Offline
+        # *   Build
+        # *   Delete
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.detail is not None:
+            result['Detail'] = self.detail
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.step is not None:
+            result['Step'] = self.step
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Detail') is not None:
+            self.detail = m.get('Detail')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Step') is not None:
+            self.step = m.get('Step')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListPipelineRunsResponseBodyPagingInfoPipelineRuns(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        creator: str = None,
+        id: str = None,
+        message: str = None,
+        modify_time: int = None,
+        project_id: int = None,
+        stages: List[ListPipelineRunsResponseBodyPagingInfoPipelineRunsStages] = None,
+        status: str = None,
+    ):
+        # The time when the process was created. This value is a UNIX timestamp.
+        self.create_time = create_time
+        # The creator of the process.
+        self.creator = creator
+        # The process ID.
+        self.id = id
+        # The error message returned during the stage.
+        self.message = message
+        # The time when the process was modified. This value is a UNIX timestamp.
+        self.modify_time = modify_time
+        # The DataWorks workspace ID.
+        self.project_id = project_id
+        # The stages of the process.
+        self.stages = stages
+        # The status of the process.
+        # 
+        # Valid values:
+        # 
+        # *   Init
+        # *   Running
+        # *   Success
+        # *   Fail
+        # *   Termination
+        # *   Cancel
+        self.status = status
+
+    def validate(self):
+        if self.stages:
+            for k in self.stages:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        result['Stages'] = []
+        if self.stages is not None:
+            for k in self.stages:
+                result['Stages'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        self.stages = []
+        if m.get('Stages') is not None:
+            for k in m.get('Stages'):
+                temp_model = ListPipelineRunsResponseBodyPagingInfoPipelineRunsStages()
+                self.stages.append(temp_model.from_map(k))
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListPipelineRunsResponseBodyPagingInfo(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        pipeline_runs: List[ListPipelineRunsResponseBodyPagingInfoPipelineRuns] = None,
+        total_count: int = None,
+    ):
+        # The page number.
+        self.page_number = page_number
+        # The number of entries per page.
+        self.page_size = page_size
+        # The processes.
+        self.pipeline_runs = pipeline_runs
+        # The total number of entries returned.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.pipeline_runs:
+            for k in self.pipeline_runs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        result['PipelineRuns'] = []
+        if self.pipeline_runs is not None:
+            for k in self.pipeline_runs:
+                result['PipelineRuns'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        self.pipeline_runs = []
+        if m.get('PipelineRuns') is not None:
+            for k in m.get('PipelineRuns'):
+                temp_model = ListPipelineRunsResponseBodyPagingInfoPipelineRuns()
+                self.pipeline_runs.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListPipelineRunsResponseBody(TeaModel):
+    def __init__(
+        self,
+        paging_info: ListPipelineRunsResponseBodyPagingInfo = None,
+        request_id: str = None,
+    ):
+        # The pagination information.
+        self.paging_info = paging_info
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.paging_info:
+            self.paging_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.paging_info is not None:
+            result['PagingInfo'] = self.paging_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PagingInfo') is not None:
+            temp_model = ListPipelineRunsResponseBodyPagingInfo()
+            self.paging_info = temp_model.from_map(m['PagingInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListPipelineRunsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListPipelineRunsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListPipelineRunsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -61016,7 +61061,7 @@ class UpdateNodeRequest(TeaModel):
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The FlowSpec field information about the node. For more information, see [FlowSpec](https://github.com/aliyun/dataworks-spec/blob/master/README_zh_CN.md).
+        # { "title": "CycleWorkflow Schema", "description": "the JSON schema that is used to configure the auto triggered workflow and nodes in the workflow", "type": "object", "required": [ "version", "kind", "spec" ], "properties": { "version": { "type": "string", "const": "1.1.0", "description": "the schema version. The value is fixed to 1.1.0" }, "kind": { "type": "string", "enum": [ "Workflow", "Node" ], "description": "the resource type" }, "spec": { "type": "object", "description": "the key configurations of the workflow", "required": [ "nodes" ], "properties": { "nodes": { "type": "array", "description": "the nodes in the workflow", "items": { "type": "object", "required": [ "name", "script" ], "properties": { "recurrence": { "type": "string", "enum": [ "Normal", "Pause", "Skip", "NoneAuto" ], "description": "the running mode of the node. Valid values: Normal, Pause, Skip, and NoneAuto" }, "id": { "type": "string", "description": "the node ID" }, "timeout": { "type": "integer", "minimum": 0, "description": "the timeout period. Unit: seconds" }, "instanceMode": { "type": "string", "enum": [ "T+1", "Immediately" ], "description": "the instance generation mode. Valid values: T+1 and Immediately" }, "rerunMode": { "type": "string", "enum": [ "Allowed", "Denied", "FailureAllowed" ], "description": "the rerun mode. Valid values: AllAllowed, Denied, and FailureAllowed" }, "rerunTimes": { "type": "integer", "minimum": 0, "description": "the maximum number of reruns allowed after a failure" }, "rerunInterval": { "type": "integer", "minimum": 0, "description": "the rerun interval. Unit: seconds" }, "datasource": { "type": "object", "description": "the configurations of the data source", "required": [ "name", "type" ], "properties": { "name": { "type": "string", "description": "the name of the data source" }, "type": { "type": "string", "enum": [ "odps" ], "description": "the type of the data source. Only MaxCompute data sources are supported" } } }, "script": { "type": "object", "description": "the script configurations of the node", "required": [ "path", "runtime" ], "properties": { "language": { "type": "string", "description": "the programming language of the script" }, "path": { "type": "string", "description": "the storage path of the script file. The storage path ends with the node name and does not require a file extension" }, "runtime": { "type": "object", "description": "the configurations of the runtime environment", "required": [ "command" ], "properties": { "command": { "type": "string", "enum": [ "ODPS_SQL" ], "Description": "the command" }, "cu": { "type": "string", "description": "the unit of the computing resource" } } } } }, "trigger": { "type": "object", "description": "the configurations of the node trigger", "required": [ "type" ], "properties": { "type": { "type": "string", "enum": [ "Scheduler", "Manual", "Streaming", "None" ], "description": "the trigger type. Valid values: Scheduler, Manual, Streaming, and None" }, "cron": { "type": "string", "description": "the cron expression, which is suitable for only auto triggered nodes" }, "startTime": { "type": "string", "format": "yyyy-MM-dd hh:mm:ss", "description": "the start time for scheduling" }, "endTime": { "type": "string", "format": "yyyy-MM-dd hh:mm:ss", "description": "the end time for scheduling" } } }, "runtimeResource": { "type": "object", "description": "the resource configurations for running", "required": [ "resourceGroup" ], "properties": { "resourceGroup": { "type": "string", "description": "the name of the resource group" } } }, "name": { "type": "string", "description": "the name of the node" }, "owner": { "type": "string", "description": "the node owner" }, "inputs": { "type": "object", "description": "the node input parameters", "properties": { "nodeOutputs": { "type": "array", "description": "the node dependencies", "items": { "type": "object", "required": [ "data" ], "properties": { "data": { "type": "string", "description": "the identifier of the node dependency" }, "refTableName": { "type": "string", "description": "the name of the table that is associated with the node. You must configure this parameter if the artifactType parameter is set to Table" }, "isDefault": { "type": "boolean", "description": "specifies whether the table is the default input table“ } } } } } }, "outputs": { "type": "object", "description": "the node output parameters", "properties": { "nodeOutputs": { "type": "array", "description": "the node dependencies", "items": { "type": "object", "required": [ "data" ], "properties": { "data": { "type": "string", "description": "the identifier of the node dependency" }, "refTableName": { "type": "string", "description": "the name of the table that is associated with the node. You must configure this parameter if the artifactType parameter is set to Table" }, "isDefault": { "type": "boolean", "description": "specifies whether the table is the default output table“ } } } } } } } } } } } } }
         # 
         # This parameter is required.
         self.spec = spec
@@ -61290,6 +61335,7 @@ class UpdateResourceRequest(TeaModel):
         self,
         id: int = None,
         project_id: int = None,
+        resource_file: str = None,
         spec: str = None,
     ):
         # The ID of the file resource.
@@ -61300,6 +61346,7 @@ class UpdateResourceRequest(TeaModel):
         # 
         # This parameter is required.
         self.project_id = project_id
+        self.resource_file = resource_file
         # The FlowSpec field information about the file resource. For more information, see [FlowSpec](https://github.com/aliyun/dataworks-spec/blob/master/README_zh_CN.md).
         # 
         # This parameter is required.
@@ -61318,6 +61365,8 @@ class UpdateResourceRequest(TeaModel):
             result['Id'] = self.id
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
+        if self.resource_file is not None:
+            result['ResourceFile'] = self.resource_file
         if self.spec is not None:
             result['Spec'] = self.spec
         return result
@@ -61328,6 +61377,62 @@ class UpdateResourceRequest(TeaModel):
             self.id = m.get('Id')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
+        if m.get('ResourceFile') is not None:
+            self.resource_file = m.get('ResourceFile')
+        if m.get('Spec') is not None:
+            self.spec = m.get('Spec')
+        return self
+
+
+class UpdateResourceAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        project_id: int = None,
+        resource_file_object: BinaryIO = None,
+        spec: str = None,
+    ):
+        # The ID of the file resource.
+        # 
+        # This parameter is required.
+        self.id = id
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # 
+        # This parameter is required.
+        self.project_id = project_id
+        self.resource_file_object = resource_file_object
+        # The FlowSpec field information about the file resource. For more information, see [FlowSpec](https://github.com/aliyun/dataworks-spec/blob/master/README_zh_CN.md).
+        # 
+        # This parameter is required.
+        self.spec = spec
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.resource_file_object is not None:
+            result['ResourceFile'] = self.resource_file_object
+        if self.spec is not None:
+            result['Spec'] = self.spec
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ResourceFile') is not None:
+            self.resource_file_object = m.get('ResourceFile')
         if m.get('Spec') is not None:
             self.spec = m.get('Spec')
         return self

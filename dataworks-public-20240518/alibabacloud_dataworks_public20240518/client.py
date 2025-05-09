@@ -73,17 +73,17 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def abolish_deployment_with_options(
+    def abolish_pipeline_run_with_options(
         self,
-        request: dataworks_public_20240518_models.AbolishDeploymentRequest,
+        request: dataworks_public_20240518_models.AbolishPipelineRunRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20240518_models.AbolishDeploymentResponse:
+    ) -> dataworks_public_20240518_models.AbolishPipelineRunResponse:
         """
         @summary Terminates the process for deploying or undeploying an entity. The process is not deleted and can still be queried by calling query operations.
         
-        @param request: AbolishDeploymentRequest
+        @param request: AbolishPipelineRunRequest
         @param runtime: runtime options for this request RuntimeOptions
-        @return: AbolishDeploymentResponse
+        @return: AbolishPipelineRunResponse
         """
         UtilClient.validate_model(request)
         body = {}
@@ -95,7 +95,7 @@ class Client(OpenApiClient):
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='AbolishDeployment',
+            action='AbolishPipelineRun',
             version='2024-05-18',
             protocol='HTTPS',
             pathname='/',
@@ -105,28 +105,22 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.AbolishDeploymentResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.AbolishDeploymentResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.AbolishPipelineRunResponse(),
+            self.call_api(params, req, runtime)
+        )
 
-    async def abolish_deployment_with_options_async(
+    async def abolish_pipeline_run_with_options_async(
         self,
-        request: dataworks_public_20240518_models.AbolishDeploymentRequest,
+        request: dataworks_public_20240518_models.AbolishPipelineRunRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20240518_models.AbolishDeploymentResponse:
+    ) -> dataworks_public_20240518_models.AbolishPipelineRunResponse:
         """
         @summary Terminates the process for deploying or undeploying an entity. The process is not deleted and can still be queried by calling query operations.
         
-        @param request: AbolishDeploymentRequest
+        @param request: AbolishPipelineRunRequest
         @param runtime: runtime options for this request RuntimeOptions
-        @return: AbolishDeploymentResponse
+        @return: AbolishPipelineRunResponse
         """
         UtilClient.validate_model(request)
         body = {}
@@ -138,7 +132,7 @@ class Client(OpenApiClient):
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='AbolishDeployment',
+            action='AbolishPipelineRun',
             version='2024-05-18',
             protocol='HTTPS',
             pathname='/',
@@ -148,42 +142,36 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.AbolishDeploymentResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.AbolishDeploymentResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.AbolishPipelineRunResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
-    def abolish_deployment(
+    def abolish_pipeline_run(
         self,
-        request: dataworks_public_20240518_models.AbolishDeploymentRequest,
-    ) -> dataworks_public_20240518_models.AbolishDeploymentResponse:
+        request: dataworks_public_20240518_models.AbolishPipelineRunRequest,
+    ) -> dataworks_public_20240518_models.AbolishPipelineRunResponse:
         """
         @summary Terminates the process for deploying or undeploying an entity. The process is not deleted and can still be queried by calling query operations.
         
-        @param request: AbolishDeploymentRequest
-        @return: AbolishDeploymentResponse
+        @param request: AbolishPipelineRunRequest
+        @return: AbolishPipelineRunResponse
         """
         runtime = util_models.RuntimeOptions()
-        return self.abolish_deployment_with_options(request, runtime)
+        return self.abolish_pipeline_run_with_options(request, runtime)
 
-    async def abolish_deployment_async(
+    async def abolish_pipeline_run_async(
         self,
-        request: dataworks_public_20240518_models.AbolishDeploymentRequest,
-    ) -> dataworks_public_20240518_models.AbolishDeploymentResponse:
+        request: dataworks_public_20240518_models.AbolishPipelineRunRequest,
+    ) -> dataworks_public_20240518_models.AbolishPipelineRunResponse:
         """
         @summary Terminates the process for deploying or undeploying an entity. The process is not deleted and can still be queried by calling query operations.
         
-        @param request: AbolishDeploymentRequest
-        @return: AbolishDeploymentResponse
+        @param request: AbolishPipelineRunRequest
+        @return: AbolishPipelineRunResponse
         """
         runtime = util_models.RuntimeOptions()
-        return await self.abolish_deployment_with_options_async(request, runtime)
+        return await self.abolish_pipeline_run_with_options_async(request, runtime)
 
     def add_entity_into_meta_collection_with_options(
         self,
@@ -219,16 +207,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.AddEntityIntoMetaCollectionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.AddEntityIntoMetaCollectionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.AddEntityIntoMetaCollectionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def add_entity_into_meta_collection_with_options_async(
         self,
@@ -264,16 +246,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.AddEntityIntoMetaCollectionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.AddEntityIntoMetaCollectionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.AddEntityIntoMetaCollectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def add_entity_into_meta_collection(
         self,
@@ -337,16 +313,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.AssociateProjectToResourceGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.AssociateProjectToResourceGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.AssociateProjectToResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def associate_project_to_resource_group_with_options_async(
         self,
@@ -384,16 +354,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.AssociateProjectToResourceGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.AssociateProjectToResourceGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.AssociateProjectToResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def associate_project_to_resource_group(
         self,
@@ -467,16 +431,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.AttachDataQualityRulesToEvaluationTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.AttachDataQualityRulesToEvaluationTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.AttachDataQualityRulesToEvaluationTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def attach_data_quality_rules_to_evaluation_task_with_options_async(
         self,
@@ -516,16 +474,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.AttachDataQualityRulesToEvaluationTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.AttachDataQualityRulesToEvaluationTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.AttachDataQualityRulesToEvaluationTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def attach_data_quality_rules_to_evaluation_task(
         self,
@@ -591,16 +543,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.BatchUpdateTasksResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.BatchUpdateTasksResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.BatchUpdateTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def batch_update_tasks_with_options_async(
         self,
@@ -640,16 +586,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.BatchUpdateTasksResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.BatchUpdateTasksResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.BatchUpdateTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def batch_update_tasks(
         self,
@@ -717,16 +657,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CloneDataSourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CloneDataSourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CloneDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def clone_data_source_with_options_async(
         self,
@@ -764,16 +698,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CloneDataSourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CloneDataSourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CloneDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def clone_data_source(
         self,
@@ -853,16 +781,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateAlertRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateAlertRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateAlertRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_alert_rule_with_options_async(
         self,
@@ -908,16 +830,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateAlertRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateAlertRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateAlertRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_alert_rule(
         self,
@@ -979,16 +895,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDIAlarmRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDIAlarmRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDIAlarmRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_dialarm_rule_with_options_async(
         self,
@@ -1024,16 +934,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDIAlarmRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDIAlarmRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDIAlarmRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_dialarm_rule(
         self,
@@ -1106,16 +1010,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDIJobResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDIJobResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDIJobResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_dijob_with_options_async(
         self,
@@ -1162,16 +1060,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDIJobResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDIJobResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDIJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_dijob(
         self,
@@ -1251,16 +1143,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDataAssetTagResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDataAssetTagResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDataAssetTagResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_data_asset_tag_with_options_async(
         self,
@@ -1308,16 +1194,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDataAssetTagResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDataAssetTagResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDataAssetTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_data_asset_tag(
         self,
@@ -1411,16 +1291,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDataQualityEvaluationTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDataQualityEvaluationTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDataQualityEvaluationTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_data_quality_evaluation_task_with_options_async(
         self,
@@ -1484,16 +1358,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDataQualityEvaluationTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDataQualityEvaluationTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDataQualityEvaluationTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_data_quality_evaluation_task(
         self,
@@ -1565,16 +1433,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDataQualityEvaluationTaskInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDataQualityEvaluationTaskInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDataQualityEvaluationTaskInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_data_quality_evaluation_task_instance_with_options_async(
         self,
@@ -1616,16 +1478,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDataQualityEvaluationTaskInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDataQualityEvaluationTaskInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDataQualityEvaluationTaskInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_data_quality_evaluation_task_instance(
         self,
@@ -1711,16 +1567,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDataQualityRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDataQualityRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDataQualityRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_data_quality_rule_with_options_async(
         self,
@@ -1780,16 +1630,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDataQualityRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDataQualityRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDataQualityRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_data_quality_rule(
         self,
@@ -1863,16 +1707,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDataQualityRuleTemplateResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDataQualityRuleTemplateResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDataQualityRuleTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_data_quality_rule_template_with_options_async(
         self,
@@ -1920,16 +1758,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDataQualityRuleTemplateResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDataQualityRuleTemplateResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDataQualityRuleTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_data_quality_rule_template(
         self,
@@ -2001,16 +1833,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDataSourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDataSourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_data_source_with_options_async(
         self,
@@ -2056,16 +1882,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDataSourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDataSourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_data_source(
         self,
@@ -2141,16 +1961,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDataSourceSharedRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDataSourceSharedRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDataSourceSharedRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_data_source_shared_rule_with_options_async(
         self,
@@ -2192,16 +2006,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDataSourceSharedRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDataSourceSharedRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDataSourceSharedRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_data_source_shared_rule(
         self,
@@ -2237,142 +2045,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_data_source_shared_rule_with_options_async(request, runtime)
 
-    def create_deployment_with_options(
-        self,
-        tmp_req: dataworks_public_20240518_models.CreateDeploymentRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20240518_models.CreateDeploymentResponse:
-        """
-        @summary Creates a process for deploying or undeploying an entity in DataStudio.
-        
-        @description >  You cannot use this API operation to create a process for multiple entities at a time. If you specify multiple entities in a request, the system creates a process only for the first entity.
-        
-        @param tmp_req: CreateDeploymentRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateDeploymentResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = dataworks_public_20240518_models.CreateDeploymentShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.object_ids):
-            request.object_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.object_ids, 'ObjectIds', 'json')
-        body = {}
-        if not UtilClient.is_unset(request.description):
-            body['Description'] = request.description
-        if not UtilClient.is_unset(request.object_ids_shrink):
-            body['ObjectIds'] = request.object_ids_shrink
-        if not UtilClient.is_unset(request.project_id):
-            body['ProjectId'] = request.project_id
-        if not UtilClient.is_unset(request.type):
-            body['Type'] = request.type
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateDeployment',
-            version='2024-05-18',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDeploymentResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDeploymentResponse(),
-                self.execute(params, req, runtime)
-            )
-
-    async def create_deployment_with_options_async(
-        self,
-        tmp_req: dataworks_public_20240518_models.CreateDeploymentRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20240518_models.CreateDeploymentResponse:
-        """
-        @summary Creates a process for deploying or undeploying an entity in DataStudio.
-        
-        @description >  You cannot use this API operation to create a process for multiple entities at a time. If you specify multiple entities in a request, the system creates a process only for the first entity.
-        
-        @param tmp_req: CreateDeploymentRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateDeploymentResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = dataworks_public_20240518_models.CreateDeploymentShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.object_ids):
-            request.object_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.object_ids, 'ObjectIds', 'json')
-        body = {}
-        if not UtilClient.is_unset(request.description):
-            body['Description'] = request.description
-        if not UtilClient.is_unset(request.object_ids_shrink):
-            body['ObjectIds'] = request.object_ids_shrink
-        if not UtilClient.is_unset(request.project_id):
-            body['ProjectId'] = request.project_id
-        if not UtilClient.is_unset(request.type):
-            body['Type'] = request.type
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateDeployment',
-            version='2024-05-18',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDeploymentResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateDeploymentResponse(),
-                await self.execute_async(params, req, runtime)
-            )
-
-    def create_deployment(
-        self,
-        request: dataworks_public_20240518_models.CreateDeploymentRequest,
-    ) -> dataworks_public_20240518_models.CreateDeploymentResponse:
-        """
-        @summary Creates a process for deploying or undeploying an entity in DataStudio.
-        
-        @description >  You cannot use this API operation to create a process for multiple entities at a time. If you specify multiple entities in a request, the system creates a process only for the first entity.
-        
-        @param request: CreateDeploymentRequest
-        @return: CreateDeploymentResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.create_deployment_with_options(request, runtime)
-
-    async def create_deployment_async(
-        self,
-        request: dataworks_public_20240518_models.CreateDeploymentRequest,
-    ) -> dataworks_public_20240518_models.CreateDeploymentResponse:
-        """
-        @summary Creates a process for deploying or undeploying an entity in DataStudio.
-        
-        @description >  You cannot use this API operation to create a process for multiple entities at a time. If you specify multiple entities in a request, the system creates a process only for the first entity.
-        
-        @param request: CreateDeploymentRequest
-        @return: CreateDeploymentResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.create_deployment_with_options_async(request, runtime)
-
     def create_function_with_options(
         self,
         request: dataworks_public_20240518_models.CreateFunctionRequest,
@@ -2407,16 +2079,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateFunctionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateFunctionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateFunctionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_function_with_options_async(
         self,
@@ -2452,16 +2118,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateFunctionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateFunctionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateFunctionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_function(
         self,
@@ -2535,16 +2195,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateLineageRelationshipResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateLineageRelationshipResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateLineageRelationshipResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_lineage_relationship_with_options_async(
         self,
@@ -2588,16 +2242,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateLineageRelationshipResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateLineageRelationshipResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateLineageRelationshipResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_lineage_relationship(
         self,
@@ -2661,16 +2309,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateMetaCollectionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateMetaCollectionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateMetaCollectionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_meta_collection_with_options_async(
         self,
@@ -2708,16 +2350,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateMetaCollectionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateMetaCollectionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateMetaCollectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_meta_collection(
         self,
@@ -2783,16 +2419,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateNetworkResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateNetworkResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateNetworkResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_network_with_options_async(
         self,
@@ -2832,16 +2462,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateNetworkResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateNetworkResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateNetworkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_network(
         self,
@@ -2911,16 +2535,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateNodeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateNodeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateNodeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_node_with_options_async(
         self,
@@ -2960,16 +2578,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateNodeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateNodeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateNodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_node(
         self,
@@ -3000,6 +2612,130 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_node_with_options_async(request, runtime)
+
+    def create_pipeline_run_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.CreatePipelineRunRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreatePipelineRunResponse:
+        """
+        @summary Creates a process for deploying or undeploying an entity in Data Studio.
+        
+        @description >  You cannot use this API operation to create a process for multiple entities at a time. If you specify multiple entities in a request, the system creates a process only for the first entity.
+        
+        @param tmp_req: CreatePipelineRunRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePipelineRunResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.CreatePipelineRunShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.object_ids):
+            request.object_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.object_ids, 'ObjectIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.object_ids_shrink):
+            body['ObjectIds'] = request.object_ids_shrink
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreatePipelineRun',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreatePipelineRunResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_pipeline_run_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.CreatePipelineRunRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreatePipelineRunResponse:
+        """
+        @summary Creates a process for deploying or undeploying an entity in Data Studio.
+        
+        @description >  You cannot use this API operation to create a process for multiple entities at a time. If you specify multiple entities in a request, the system creates a process only for the first entity.
+        
+        @param tmp_req: CreatePipelineRunRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePipelineRunResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.CreatePipelineRunShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.object_ids):
+            request.object_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.object_ids, 'ObjectIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.object_ids_shrink):
+            body['ObjectIds'] = request.object_ids_shrink
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreatePipelineRun',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreatePipelineRunResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_pipeline_run(
+        self,
+        request: dataworks_public_20240518_models.CreatePipelineRunRequest,
+    ) -> dataworks_public_20240518_models.CreatePipelineRunResponse:
+        """
+        @summary Creates a process for deploying or undeploying an entity in Data Studio.
+        
+        @description >  You cannot use this API operation to create a process for multiple entities at a time. If you specify multiple entities in a request, the system creates a process only for the first entity.
+        
+        @param request: CreatePipelineRunRequest
+        @return: CreatePipelineRunResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_pipeline_run_with_options(request, runtime)
+
+    async def create_pipeline_run_async(
+        self,
+        request: dataworks_public_20240518_models.CreatePipelineRunRequest,
+    ) -> dataworks_public_20240518_models.CreatePipelineRunResponse:
+        """
+        @summary Creates a process for deploying or undeploying an entity in Data Studio.
+        
+        @description >  You cannot use this API operation to create a process for multiple entities at a time. If you specify multiple entities in a request, the system creates a process only for the first entity.
+        
+        @param request: CreatePipelineRunRequest
+        @return: CreatePipelineRunResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_pipeline_run_with_options_async(request, runtime)
 
     def create_project_with_options(
         self,
@@ -3049,16 +2785,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateProjectResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateProjectResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_project_with_options_async(
         self,
@@ -3108,16 +2838,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateProjectResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateProjectResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_project(
         self,
@@ -3185,16 +2909,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateProjectMemberResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateProjectMemberResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateProjectMemberResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_project_member_with_options_async(
         self,
@@ -3236,16 +2954,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateProjectMemberResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateProjectMemberResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateProjectMemberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_project_member(
         self,
@@ -3295,6 +3007,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.project_id):
             body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.resource_file):
+            body['ResourceFile'] = request.resource_file
         if not UtilClient.is_unset(request.spec):
             body['Spec'] = request.spec
         req = open_api_models.OpenApiRequest(
@@ -3311,16 +3025,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateResourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateResourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_resource_with_options_async(
         self,
@@ -3340,6 +3048,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.project_id):
             body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.resource_file):
+            body['ResourceFile'] = request.resource_file
         if not UtilClient.is_unset(request.spec):
             body['Spec'] = request.spec
         req = open_api_models.OpenApiRequest(
@@ -3356,16 +3066,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateResourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateResourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_resource(
         self,
@@ -3396,6 +3100,150 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_resource_with_options_async(request, runtime)
+
+    def create_resource_advance(
+        self,
+        request: dataworks_public_20240518_models.CreateResourceAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateResourceResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.empty(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='dataworks-public',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = OSSClient(oss_config)
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        create_resource_req = dataworks_public_20240518_models.CreateResourceRequest()
+        OpenApiUtilClient.convert(request, create_resource_req)
+        if not UtilClient.is_unset(request.resource_file_object):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.body.object_key,
+                content=request.resource_file_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.body.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            create_resource_req.resource_file = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+        create_resource_resp = self.create_resource_with_options(create_resource_req, runtime)
+        return create_resource_resp
+
+    async def create_resource_advance_async(
+        self,
+        request: dataworks_public_20240518_models.CreateResourceAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateResourceResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.empty(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='dataworks-public',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = OSSClient(oss_config)
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        create_resource_req = dataworks_public_20240518_models.CreateResourceRequest()
+        OpenApiUtilClient.convert(request, create_resource_req)
+        if not UtilClient.is_unset(request.resource_file_object):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.body.object_key,
+                content=request.resource_file_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.body.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            create_resource_req.resource_file = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+        create_resource_resp = await self.create_resource_with_options_async(create_resource_req, runtime)
+        return create_resource_resp
 
     def create_resource_group_with_options(
         self,
@@ -3456,16 +3304,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateResourceGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateResourceGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_resource_group_with_options_async(
         self,
@@ -3526,16 +3368,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateResourceGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateResourceGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_resource_group(
         self,
@@ -3605,16 +3441,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateRouteResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateRouteResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateRouteResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_route_with_options_async(
         self,
@@ -3652,16 +3482,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateRouteResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateRouteResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateRouteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_route(
         self,
@@ -3727,16 +3551,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateWorkflowDefinitionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateWorkflowDefinitionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateWorkflowDefinitionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_workflow_definition_with_options_async(
         self,
@@ -3772,16 +3590,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateWorkflowDefinitionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateWorkflowDefinitionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateWorkflowDefinitionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_workflow_definition(
         self,
@@ -3867,16 +3679,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateWorkflowInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateWorkflowInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateWorkflowInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_workflow_instances_with_options_async(
         self,
@@ -3932,16 +3738,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateWorkflowInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.CreateWorkflowInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateWorkflowInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_workflow_instances(
         self,
@@ -3995,16 +3795,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteAlertRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteAlertRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteAlertRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_alert_rule_with_options_async(
         self,
@@ -4036,16 +3830,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteAlertRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteAlertRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteAlertRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_alert_rule(
         self,
@@ -4108,16 +3896,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteCertificateResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteCertificateResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_certificate_with_options_async(
         self,
@@ -4154,16 +3936,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteCertificateResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteCertificateResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_certificate(
         self,
@@ -4225,16 +4001,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteDIAlarmRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteDIAlarmRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDIAlarmRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_dialarm_rule_with_options_async(
         self,
@@ -4264,16 +4034,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteDIAlarmRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteDIAlarmRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDIAlarmRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_dialarm_rule(
         self,
@@ -4331,16 +4095,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteDIJobResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteDIJobResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDIJobResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_dijob_with_options_async(
         self,
@@ -4372,16 +4130,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteDIJobResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteDIJobResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDIJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_dijob(
         self,
@@ -4451,16 +4203,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteDataAssetTagResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteDataAssetTagResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDataAssetTagResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_data_asset_tag_with_options_async(
         self,
@@ -4500,16 +4246,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteDataAssetTagResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteDataAssetTagResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDataAssetTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_data_asset_tag(
         self,
@@ -4573,16 +4313,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteDataQualityEvaluationTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteDataQualityEvaluationTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDataQualityEvaluationTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_data_quality_evaluation_task_with_options_async(
         self,
@@ -4616,16 +4350,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteDataQualityEvaluationTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteDataQualityEvaluationTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDataQualityEvaluationTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_data_quality_evaluation_task(
         self,
@@ -4685,16 +4413,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteDataQualityRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteDataQualityRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDataQualityRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_data_quality_rule_with_options_async(
         self,
@@ -4728,16 +4450,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteDataQualityRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteDataQualityRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDataQualityRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_data_quality_rule(
         self,
@@ -4797,16 +4513,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteDataQualityRuleTemplateResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteDataQualityRuleTemplateResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDataQualityRuleTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_data_quality_rule_template_with_options_async(
         self,
@@ -4840,16 +4550,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteDataQualityRuleTemplateResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteDataQualityRuleTemplateResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDataQualityRuleTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_data_quality_rule_template(
         self,
@@ -4909,16 +4613,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteDataSourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteDataSourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_data_source_with_options_async(
         self,
@@ -4952,16 +4650,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteDataSourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteDataSourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_data_source(
         self,
@@ -5031,16 +4723,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteDataSourceSharedRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteDataSourceSharedRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDataSourceSharedRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_data_source_shared_rule_with_options_async(
         self,
@@ -5076,16 +4762,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteDataSourceSharedRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteDataSourceSharedRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDataSourceSharedRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_data_source_shared_rule(
         self,
@@ -5155,16 +4835,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteFunctionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteFunctionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteFunctionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_function_with_options_async(
         self,
@@ -5200,16 +4874,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteFunctionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteFunctionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteFunctionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_function(
         self,
@@ -5271,16 +4939,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteLineageRelationshipResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteLineageRelationshipResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteLineageRelationshipResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_lineage_relationship_with_options_async(
         self,
@@ -5312,16 +4974,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteLineageRelationshipResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteLineageRelationshipResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteLineageRelationshipResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_lineage_relationship(
         self,
@@ -5379,16 +5035,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteMetaCollectionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteMetaCollectionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteMetaCollectionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_meta_collection_with_options_async(
         self,
@@ -5420,16 +5070,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteMetaCollectionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteMetaCollectionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteMetaCollectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_meta_collection(
         self,
@@ -5489,16 +5133,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteNetworkResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteNetworkResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteNetworkResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_network_with_options_async(
         self,
@@ -5532,16 +5170,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteNetworkResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteNetworkResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteNetworkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_network(
         self,
@@ -5607,16 +5239,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteNodeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteNodeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteNodeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_node_with_options_async(
         self,
@@ -5652,16 +5278,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteNodeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteNodeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteNodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_node(
         self,
@@ -5725,16 +5345,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteProjectResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteProjectResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_project_with_options_async(
         self,
@@ -5768,16 +5382,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteProjectResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteProjectResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_project(
         self,
@@ -5843,16 +5451,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteProjectMemberResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteProjectMemberResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteProjectMemberResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_project_member_with_options_async(
         self,
@@ -5888,16 +5490,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteProjectMemberResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteProjectMemberResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteProjectMemberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_project_member(
         self,
@@ -5963,16 +5559,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteResourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteResourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_resource_with_options_async(
         self,
@@ -6008,16 +5598,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteResourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteResourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_resource(
         self,
@@ -6082,16 +5666,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteResourceGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteResourceGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_resource_group_with_options_async(
         self,
@@ -6126,16 +5704,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteResourceGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteResourceGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_resource_group(
         self,
@@ -6201,16 +5773,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteRouteResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteRouteResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteRouteResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_route_with_options_async(
         self,
@@ -6244,16 +5810,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteRouteResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteRouteResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteRouteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_route(
         self,
@@ -6319,16 +5879,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_task_with_options_async(
         self,
@@ -6364,16 +5918,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_task(
         self,
@@ -6443,16 +5991,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteWorkflowResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteWorkflowResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteWorkflowResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_workflow_with_options_async(
         self,
@@ -6492,16 +6034,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteWorkflowResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteWorkflowResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteWorkflowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_workflow(
         self,
@@ -6567,16 +6103,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteWorkflowDefinitionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteWorkflowDefinitionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteWorkflowDefinitionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_workflow_definition_with_options_async(
         self,
@@ -6612,16 +6142,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteWorkflowDefinitionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DeleteWorkflowDefinitionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteWorkflowDefinitionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_workflow_definition(
         self,
@@ -6691,16 +6215,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DetachDataQualityRulesFromEvaluationTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DetachDataQualityRulesFromEvaluationTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DetachDataQualityRulesFromEvaluationTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def detach_data_quality_rules_from_evaluation_task_with_options_async(
         self,
@@ -6740,16 +6258,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DetachDataQualityRulesFromEvaluationTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DetachDataQualityRulesFromEvaluationTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DetachDataQualityRulesFromEvaluationTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def detach_data_quality_rules_from_evaluation_task(
         self,
@@ -6813,16 +6325,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DissociateProjectFromResourceGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DissociateProjectFromResourceGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DissociateProjectFromResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def dissociate_project_from_resource_group_with_options_async(
         self,
@@ -6860,16 +6366,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DissociateProjectFromResourceGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.DissociateProjectFromResourceGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DissociateProjectFromResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def dissociate_project_from_resource_group(
         self,
@@ -6905,20 +6405,20 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.dissociate_project_from_resource_group_with_options_async(request, runtime)
 
-    def exec_deployment_stage_with_options(
+    def exec_pipeline_run_stage_with_options(
         self,
-        request: dataworks_public_20240518_models.ExecDeploymentStageRequest,
+        request: dataworks_public_20240518_models.ExecPipelineRunStageRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20240518_models.ExecDeploymentStageResponse:
+    ) -> dataworks_public_20240518_models.ExecPipelineRunStageResponse:
         """
         @summary Executes a stage in a process.
         
         @description >  The stages in a process are sequential. For more information, see the GetDeployment operation. Skipping or repeating a stage is not allowed.
         >  The execution of a stage is asynchronous. The response of this operation indicates only whether a stage is triggered but does not indicate whether the execution of the stage is successful. You can call the GetDeployment operation to check whether the execution is successful.
         
-        @param request: ExecDeploymentStageRequest
+        @param request: ExecPipelineRunStageRequest
         @param runtime: runtime options for this request RuntimeOptions
-        @return: ExecDeploymentStageResponse
+        @return: ExecPipelineRunStageResponse
         """
         UtilClient.validate_model(request)
         query = {}
@@ -6934,7 +6434,7 @@ class Client(OpenApiClient):
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='ExecDeploymentStage',
+            action='ExecPipelineRunStage',
             version='2024-05-18',
             protocol='HTTPS',
             pathname='/',
@@ -6944,31 +6444,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ExecDeploymentStageResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ExecDeploymentStageResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ExecPipelineRunStageResponse(),
+            self.call_api(params, req, runtime)
+        )
 
-    async def exec_deployment_stage_with_options_async(
+    async def exec_pipeline_run_stage_with_options_async(
         self,
-        request: dataworks_public_20240518_models.ExecDeploymentStageRequest,
+        request: dataworks_public_20240518_models.ExecPipelineRunStageRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20240518_models.ExecDeploymentStageResponse:
+    ) -> dataworks_public_20240518_models.ExecPipelineRunStageResponse:
         """
         @summary Executes a stage in a process.
         
         @description >  The stages in a process are sequential. For more information, see the GetDeployment operation. Skipping or repeating a stage is not allowed.
         >  The execution of a stage is asynchronous. The response of this operation indicates only whether a stage is triggered but does not indicate whether the execution of the stage is successful. You can call the GetDeployment operation to check whether the execution is successful.
         
-        @param request: ExecDeploymentStageRequest
+        @param request: ExecPipelineRunStageRequest
         @param runtime: runtime options for this request RuntimeOptions
-        @return: ExecDeploymentStageResponse
+        @return: ExecPipelineRunStageResponse
         """
         UtilClient.validate_model(request)
         query = {}
@@ -6984,7 +6478,7 @@ class Client(OpenApiClient):
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='ExecDeploymentStage',
+            action='ExecPipelineRunStage',
             version='2024-05-18',
             protocol='HTTPS',
             pathname='/',
@@ -6994,48 +6488,42 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ExecDeploymentStageResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ExecDeploymentStageResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ExecPipelineRunStageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
-    def exec_deployment_stage(
+    def exec_pipeline_run_stage(
         self,
-        request: dataworks_public_20240518_models.ExecDeploymentStageRequest,
-    ) -> dataworks_public_20240518_models.ExecDeploymentStageResponse:
+        request: dataworks_public_20240518_models.ExecPipelineRunStageRequest,
+    ) -> dataworks_public_20240518_models.ExecPipelineRunStageResponse:
         """
         @summary Executes a stage in a process.
         
         @description >  The stages in a process are sequential. For more information, see the GetDeployment operation. Skipping or repeating a stage is not allowed.
         >  The execution of a stage is asynchronous. The response of this operation indicates only whether a stage is triggered but does not indicate whether the execution of the stage is successful. You can call the GetDeployment operation to check whether the execution is successful.
         
-        @param request: ExecDeploymentStageRequest
-        @return: ExecDeploymentStageResponse
+        @param request: ExecPipelineRunStageRequest
+        @return: ExecPipelineRunStageResponse
         """
         runtime = util_models.RuntimeOptions()
-        return self.exec_deployment_stage_with_options(request, runtime)
+        return self.exec_pipeline_run_stage_with_options(request, runtime)
 
-    async def exec_deployment_stage_async(
+    async def exec_pipeline_run_stage_async(
         self,
-        request: dataworks_public_20240518_models.ExecDeploymentStageRequest,
-    ) -> dataworks_public_20240518_models.ExecDeploymentStageResponse:
+        request: dataworks_public_20240518_models.ExecPipelineRunStageRequest,
+    ) -> dataworks_public_20240518_models.ExecPipelineRunStageResponse:
         """
         @summary Executes a stage in a process.
         
         @description >  The stages in a process are sequential. For more information, see the GetDeployment operation. Skipping or repeating a stage is not allowed.
         >  The execution of a stage is asynchronous. The response of this operation indicates only whether a stage is triggered but does not indicate whether the execution of the stage is successful. You can call the GetDeployment operation to check whether the execution is successful.
         
-        @param request: ExecDeploymentStageRequest
-        @return: ExecDeploymentStageResponse
+        @param request: ExecPipelineRunStageRequest
+        @return: ExecPipelineRunStageResponse
         """
         runtime = util_models.RuntimeOptions()
-        return await self.exec_deployment_stage_with_options_async(request, runtime)
+        return await self.exec_pipeline_run_stage_with_options_async(request, runtime)
 
     def execute_adhoc_workflow_instance_with_options(
         self,
@@ -7083,16 +6571,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ExecuteAdhocWorkflowInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ExecuteAdhocWorkflowInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ExecuteAdhocWorkflowInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def execute_adhoc_workflow_instance_with_options_async(
         self,
@@ -7140,16 +6622,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ExecuteAdhocWorkflowInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ExecuteAdhocWorkflowInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ExecuteAdhocWorkflowInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def execute_adhoc_workflow_instance(
         self,
@@ -7209,16 +6685,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetAlertRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetAlertRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetAlertRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_alert_rule_with_options_async(
         self,
@@ -7248,16 +6718,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetAlertRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetAlertRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetAlertRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_alert_rule(
         self,
@@ -7313,16 +6777,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetCatalogResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetCatalogResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetCatalogResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_catalog_with_options_async(
         self,
@@ -7352,16 +6810,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetCatalogResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetCatalogResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetCatalogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_catalog(
         self,
@@ -7420,16 +6872,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetCertificateResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetCertificateResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_certificate_with_options_async(
         self,
@@ -7462,16 +6908,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetCertificateResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetCertificateResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_certificate(
         self,
@@ -7533,16 +6973,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetColumnResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetColumnResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetColumnResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_column_with_options_async(
         self,
@@ -7572,16 +7006,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetColumnResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetColumnResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetColumnResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_column(
         self,
@@ -7639,16 +7067,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetCreateWorkflowInstancesResultResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetCreateWorkflowInstancesResultResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetCreateWorkflowInstancesResultResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_create_workflow_instances_result_with_options_async(
         self,
@@ -7680,16 +7102,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetCreateWorkflowInstancesResultResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetCreateWorkflowInstancesResultResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetCreateWorkflowInstancesResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_create_workflow_instances_result(
         self,
@@ -7751,16 +7167,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetDIJobResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetDIJobResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDIJobResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_dijob_with_options_async(
         self,
@@ -7792,16 +7202,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetDIJobResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetDIJobResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDIJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_dijob(
         self,
@@ -7863,16 +7267,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetDIJobLogResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetDIJobLogResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDIJobLogResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_dijob_log_with_options_async(
         self,
@@ -7904,16 +7302,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetDIJobLogResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetDIJobLogResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDIJobLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_dijob_log(
         self,
@@ -7973,16 +7365,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetDataQualityEvaluationTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetDataQualityEvaluationTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDataQualityEvaluationTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_data_quality_evaluation_task_with_options_async(
         self,
@@ -8012,16 +7398,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetDataQualityEvaluationTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetDataQualityEvaluationTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDataQualityEvaluationTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_data_quality_evaluation_task(
         self,
@@ -8077,16 +7457,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetDataQualityEvaluationTaskInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetDataQualityEvaluationTaskInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDataQualityEvaluationTaskInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_data_quality_evaluation_task_instance_with_options_async(
         self,
@@ -8116,16 +7490,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetDataQualityEvaluationTaskInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetDataQualityEvaluationTaskInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDataQualityEvaluationTaskInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_data_quality_evaluation_task_instance(
         self,
@@ -8183,16 +7551,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetDataQualityRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetDataQualityRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDataQualityRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_data_quality_rule_with_options_async(
         self,
@@ -8224,16 +7586,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetDataQualityRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetDataQualityRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDataQualityRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_data_quality_rule(
         self,
@@ -8295,16 +7651,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetDataQualityRuleTemplateResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetDataQualityRuleTemplateResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDataQualityRuleTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_data_quality_rule_template_with_options_async(
         self,
@@ -8336,16 +7686,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetDataQualityRuleTemplateResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetDataQualityRuleTemplateResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDataQualityRuleTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_data_quality_rule_template(
         self,
@@ -8409,16 +7753,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetDataSourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetDataSourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_data_source_with_options_async(
         self,
@@ -8452,16 +7790,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetDataSourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetDataSourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_data_source(
         self,
@@ -8525,16 +7857,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetDatabaseResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetDatabaseResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDatabaseResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_database_with_options_async(
         self,
@@ -8564,16 +7890,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetDatabaseResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetDatabaseResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDatabaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_database(
         self,
@@ -8600,110 +7920,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_database_with_options_async(request, runtime)
-
-    def get_deployment_with_options(
-        self,
-        request: dataworks_public_20240518_models.GetDeploymentRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20240518_models.GetDeploymentResponse:
-        """
-        @summary Queries the information about a process for deploying or undeploying an entity.
-        
-        @param request: GetDeploymentRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetDeploymentResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetDeployment',
-            version='2024-05-18',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetDeploymentResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetDeploymentResponse(),
-                self.execute(params, req, runtime)
-            )
-
-    async def get_deployment_with_options_async(
-        self,
-        request: dataworks_public_20240518_models.GetDeploymentRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20240518_models.GetDeploymentResponse:
-        """
-        @summary Queries the information about a process for deploying or undeploying an entity.
-        
-        @param request: GetDeploymentRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetDeploymentResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetDeployment',
-            version='2024-05-18',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetDeploymentResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetDeploymentResponse(),
-                await self.execute_async(params, req, runtime)
-            )
-
-    def get_deployment(
-        self,
-        request: dataworks_public_20240518_models.GetDeploymentRequest,
-    ) -> dataworks_public_20240518_models.GetDeploymentResponse:
-        """
-        @summary Queries the information about a process for deploying or undeploying an entity.
-        
-        @param request: GetDeploymentRequest
-        @return: GetDeploymentResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.get_deployment_with_options(request, runtime)
-
-    async def get_deployment_async(
-        self,
-        request: dataworks_public_20240518_models.GetDeploymentRequest,
-    ) -> dataworks_public_20240518_models.GetDeploymentResponse:
-        """
-        @summary Queries the information about a process for deploying or undeploying an entity.
-        
-        @param request: GetDeploymentRequest
-        @return: GetDeploymentResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.get_deployment_with_options_async(request, runtime)
 
     def get_function_with_options(
         self,
@@ -8733,16 +7949,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetFunctionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetFunctionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetFunctionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_function_with_options_async(
         self,
@@ -8772,16 +7982,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetFunctionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetFunctionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetFunctionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_function(
         self,
@@ -8837,16 +8041,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetJobStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetJobStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetJobStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_job_status_with_options_async(
         self,
@@ -8876,16 +8074,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetJobStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetJobStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetJobStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_job_status(
         self,
@@ -8941,16 +8133,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetLineageRelationshipResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetLineageRelationshipResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetLineageRelationshipResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_lineage_relationship_with_options_async(
         self,
@@ -8980,16 +8166,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetLineageRelationshipResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetLineageRelationshipResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetLineageRelationshipResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_lineage_relationship(
         self,
@@ -9045,16 +8225,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetMetaCollectionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetMetaCollectionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetMetaCollectionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_meta_collection_with_options_async(
         self,
@@ -9084,16 +8258,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetMetaCollectionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetMetaCollectionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetMetaCollectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_meta_collection(
         self,
@@ -9151,16 +8319,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetNetworkResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetNetworkResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetNetworkResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_network_with_options_async(
         self,
@@ -9192,16 +8354,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetNetworkResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetNetworkResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetNetworkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_network(
         self,
@@ -9261,16 +8417,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetNodeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetNodeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetNodeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_node_with_options_async(
         self,
@@ -9300,16 +8450,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetNodeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetNodeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetNodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_node(
         self,
@@ -9365,16 +8509,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetPartitionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetPartitionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetPartitionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_partition_with_options_async(
         self,
@@ -9404,16 +8542,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetPartitionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetPartitionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetPartitionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_partition(
         self,
@@ -9440,6 +8572,98 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_partition_with_options_async(request, runtime)
+
+    def get_pipeline_run_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetPipelineRunRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetPipelineRunResponse:
+        """
+        @summary Queries the information about a process for deploying or undeploying an entity.
+        
+        @param request: GetPipelineRunRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPipelineRunResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPipelineRun',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetPipelineRunResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_pipeline_run_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetPipelineRunRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetPipelineRunResponse:
+        """
+        @summary Queries the information about a process for deploying or undeploying an entity.
+        
+        @param request: GetPipelineRunRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPipelineRunResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPipelineRun',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetPipelineRunResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_pipeline_run(
+        self,
+        request: dataworks_public_20240518_models.GetPipelineRunRequest,
+    ) -> dataworks_public_20240518_models.GetPipelineRunResponse:
+        """
+        @summary Queries the information about a process for deploying or undeploying an entity.
+        
+        @param request: GetPipelineRunRequest
+        @return: GetPipelineRunResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_pipeline_run_with_options(request, runtime)
+
+    async def get_pipeline_run_async(
+        self,
+        request: dataworks_public_20240518_models.GetPipelineRunRequest,
+    ) -> dataworks_public_20240518_models.GetPipelineRunResponse:
+        """
+        @summary Queries the information about a process for deploying or undeploying an entity.
+        
+        @param request: GetPipelineRunRequest
+        @return: GetPipelineRunResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_pipeline_run_with_options_async(request, runtime)
 
     def get_project_with_options(
         self,
@@ -9471,16 +8695,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetProjectResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetProjectResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_project_with_options_async(
         self,
@@ -9512,16 +8730,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetProjectResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetProjectResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_project(
         self,
@@ -9587,16 +8799,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetProjectMemberResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetProjectMemberResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetProjectMemberResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_project_member_with_options_async(
         self,
@@ -9632,16 +8838,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetProjectMemberResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetProjectMemberResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetProjectMemberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_project_member(
         self,
@@ -9707,16 +8907,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetProjectRoleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetProjectRoleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetProjectRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_project_role_with_options_async(
         self,
@@ -9752,16 +8946,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetProjectRoleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetProjectRoleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetProjectRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_project_role(
         self,
@@ -9821,16 +9009,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetResourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetResourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_resource_with_options_async(
         self,
@@ -9860,16 +9042,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetResourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetResourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_resource(
         self,
@@ -9927,16 +9103,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetResourceGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetResourceGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_resource_group_with_options_async(
         self,
@@ -9968,16 +9138,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetResourceGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetResourceGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_resource_group(
         self,
@@ -10039,16 +9203,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetRouteResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetRouteResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetRouteResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_route_with_options_async(
         self,
@@ -10080,16 +9238,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetRouteResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetRouteResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetRouteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_route(
         self,
@@ -10149,16 +9301,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetSchemaResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetSchemaResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetSchemaResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_schema_with_options_async(
         self,
@@ -10188,16 +9334,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetSchemaResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetSchemaResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetSchemaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_schema(
         self,
@@ -10253,16 +9393,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetTableResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetTableResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetTableResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_table_with_options_async(
         self,
@@ -10292,16 +9426,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetTableResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetTableResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_table(
         self,
@@ -10357,16 +9485,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_task_with_options_async(
         self,
@@ -10396,16 +9518,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_task(
         self,
@@ -10463,16 +9579,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetTaskInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetTaskInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetTaskInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_task_instance_with_options_async(
         self,
@@ -10504,16 +9614,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetTaskInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetTaskInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetTaskInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_task_instance(
         self,
@@ -10575,16 +9679,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetTaskInstanceLogResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetTaskInstanceLogResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetTaskInstanceLogResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_task_instance_log_with_options_async(
         self,
@@ -10616,16 +9714,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetTaskInstanceLogResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetTaskInstanceLogResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetTaskInstanceLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_task_instance_log(
         self,
@@ -10687,16 +9779,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetWorkflowResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetWorkflowResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetWorkflowResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_workflow_with_options_async(
         self,
@@ -10728,16 +9814,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetWorkflowResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetWorkflowResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetWorkflowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_workflow(
         self,
@@ -10797,16 +9877,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetWorkflowDefinitionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetWorkflowDefinitionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetWorkflowDefinitionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_workflow_definition_with_options_async(
         self,
@@ -10836,16 +9910,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetWorkflowDefinitionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetWorkflowDefinitionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetWorkflowDefinitionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_workflow_definition(
         self,
@@ -10903,16 +9971,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetWorkflowInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetWorkflowInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetWorkflowInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_workflow_instance_with_options_async(
         self,
@@ -10944,16 +10006,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetWorkflowInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GetWorkflowInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetWorkflowInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_workflow_instance(
         self,
@@ -11025,16 +10081,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GrantMemberProjectRolesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GrantMemberProjectRolesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GrantMemberProjectRolesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def grant_member_project_roles_with_options_async(
         self,
@@ -11076,16 +10126,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GrantMemberProjectRolesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.GrantMemberProjectRolesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GrantMemberProjectRolesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def grant_member_project_roles(
         self,
@@ -11153,16 +10197,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ImportCertificateResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ImportCertificateResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ImportCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def import_certificate_with_options_async(
         self,
@@ -11200,16 +10238,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ImportCertificateResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ImportCertificateResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ImportCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def import_certificate(
         self,
@@ -11417,16 +10449,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ImportWorkflowDefinitionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ImportWorkflowDefinitionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ImportWorkflowDefinitionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def import_workflow_definition_with_options_async(
         self,
@@ -11464,16 +10490,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ImportWorkflowDefinitionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ImportWorkflowDefinitionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ImportWorkflowDefinitionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def import_workflow_definition(
         self,
@@ -11557,16 +10577,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListAlertRulesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListAlertRulesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListAlertRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_alert_rules_with_options_async(
         self,
@@ -11616,16 +10630,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListAlertRulesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListAlertRulesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListAlertRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_alert_rules(
         self,
@@ -11685,16 +10693,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListCatalogsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListCatalogsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListCatalogsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_catalogs_with_options_async(
         self,
@@ -11728,16 +10730,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListCatalogsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListCatalogsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListCatalogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_catalogs(
         self,
@@ -11796,16 +10792,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListCertificatesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListCertificatesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListCertificatesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_certificates_with_options_async(
         self,
@@ -11838,16 +10828,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListCertificatesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListCertificatesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListCertificatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_certificates(
         self,
@@ -11909,16 +10893,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListColumnsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListColumnsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListColumnsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_columns_with_options_async(
         self,
@@ -11948,16 +10926,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListColumnsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListColumnsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListColumnsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_columns(
         self,
@@ -12008,16 +10980,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListCrawlerTypesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListCrawlerTypesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListCrawlerTypesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_crawler_types_with_options_async(
         self,
@@ -12042,16 +11008,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListCrawlerTypesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListCrawlerTypesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListCrawlerTypesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_crawler_types(self) -> dataworks_public_20240518_models.ListCrawlerTypesResponse:
         """
@@ -12099,16 +11059,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDIAlarmRulesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDIAlarmRulesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDIAlarmRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_dialarm_rules_with_options_async(
         self,
@@ -12138,16 +11092,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDIAlarmRulesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDIAlarmRulesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDIAlarmRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_dialarm_rules(
         self,
@@ -12205,16 +11153,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDIJobEventsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDIJobEventsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDIJobEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_dijob_events_with_options_async(
         self,
@@ -12246,16 +11188,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDIJobEventsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDIJobEventsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDIJobEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_dijob_events(
         self,
@@ -12321,16 +11257,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDIJobMetricsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDIJobMetricsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDIJobMetricsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_dijob_metrics_with_options_async(
         self,
@@ -12366,16 +11296,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDIJobMetricsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDIJobMetricsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDIJobMetricsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_dijob_metrics(
         self,
@@ -12437,16 +11361,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDIJobRunDetailsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDIJobRunDetailsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDIJobRunDetailsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_dijob_run_details_with_options_async(
         self,
@@ -12478,16 +11396,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDIJobRunDetailsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDIJobRunDetailsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDIJobRunDetailsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_dijob_run_details(
         self,
@@ -12549,16 +11461,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDIJobsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDIJobsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDIJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_dijobs_with_options_async(
         self,
@@ -12590,16 +11496,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDIJobsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDIJobsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDIJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_dijobs(
         self,
@@ -12661,16 +11561,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDataAssetTagsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDataAssetTagsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDataAssetTagsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_data_asset_tags_with_options_async(
         self,
@@ -12702,16 +11596,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDataAssetTagsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDataAssetTagsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDataAssetTagsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_data_asset_tags(
         self,
@@ -12779,16 +11667,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDataAssetsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDataAssetsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDataAssetsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_data_assets_with_options_async(
         self,
@@ -12826,16 +11708,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDataAssetsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDataAssetsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDataAssetsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_data_assets(
         self,
@@ -12897,16 +11773,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDataQualityEvaluationTaskInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDataQualityEvaluationTaskInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDataQualityEvaluationTaskInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_data_quality_evaluation_task_instances_with_options_async(
         self,
@@ -12938,16 +11808,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDataQualityEvaluationTaskInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDataQualityEvaluationTaskInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDataQualityEvaluationTaskInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_data_quality_evaluation_task_instances(
         self,
@@ -13009,16 +11873,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDataQualityEvaluationTasksResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDataQualityEvaluationTasksResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDataQualityEvaluationTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_data_quality_evaluation_tasks_with_options_async(
         self,
@@ -13050,16 +11908,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDataQualityEvaluationTasksResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDataQualityEvaluationTasksResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDataQualityEvaluationTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_data_quality_evaluation_tasks(
         self,
@@ -13119,16 +11971,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDataQualityResultsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDataQualityResultsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDataQualityResultsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_data_quality_results_with_options_async(
         self,
@@ -13158,16 +12004,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDataQualityResultsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDataQualityResultsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDataQualityResultsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_data_quality_results(
         self,
@@ -13223,16 +12063,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDataQualityRuleTemplatesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDataQualityRuleTemplatesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDataQualityRuleTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_data_quality_rule_templates_with_options_async(
         self,
@@ -13262,16 +12096,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDataQualityRuleTemplatesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDataQualityRuleTemplatesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDataQualityRuleTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_data_quality_rule_templates(
         self,
@@ -13329,16 +12157,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDataQualityRulesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDataQualityRulesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDataQualityRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_data_quality_rules_with_options_async(
         self,
@@ -13370,16 +12192,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDataQualityRulesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDataQualityRulesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDataQualityRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_data_quality_rules(
         self,
@@ -13443,16 +12259,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDataSourceSharedRulesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDataSourceSharedRulesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDataSourceSharedRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_data_source_shared_rules_with_options_async(
         self,
@@ -13486,16 +12296,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDataSourceSharedRulesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDataSourceSharedRulesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDataSourceSharedRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_data_source_shared_rules(
         self,
@@ -13567,16 +12371,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDataSourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDataSourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDataSourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_data_sources_with_options_async(
         self,
@@ -13614,16 +12412,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDataSourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDataSourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDataSourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_data_sources(
         self,
@@ -13687,16 +12479,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDatabasesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDatabasesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDatabasesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_databases_with_options_async(
         self,
@@ -13726,16 +12512,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDatabasesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDatabasesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDatabasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_databases(
         self,
@@ -13762,110 +12542,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_databases_with_options_async(request, runtime)
-
-    def list_deployments_with_options(
-        self,
-        request: dataworks_public_20240518_models.ListDeploymentsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20240518_models.ListDeploymentsResponse:
-        """
-        @summary Queries a list of processes that are used to deploy or undeploy entities in DataStudio. You can also specify filter conditions to query specific processes.
-        
-        @param request: ListDeploymentsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListDeploymentsResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListDeployments',
-            version='2024-05-18',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDeploymentsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDeploymentsResponse(),
-                self.execute(params, req, runtime)
-            )
-
-    async def list_deployments_with_options_async(
-        self,
-        request: dataworks_public_20240518_models.ListDeploymentsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20240518_models.ListDeploymentsResponse:
-        """
-        @summary Queries a list of processes that are used to deploy or undeploy entities in DataStudio. You can also specify filter conditions to query specific processes.
-        
-        @param request: ListDeploymentsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListDeploymentsResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListDeployments',
-            version='2024-05-18',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDeploymentsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDeploymentsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
-
-    def list_deployments(
-        self,
-        request: dataworks_public_20240518_models.ListDeploymentsRequest,
-    ) -> dataworks_public_20240518_models.ListDeploymentsResponse:
-        """
-        @summary Queries a list of processes that are used to deploy or undeploy entities in DataStudio. You can also specify filter conditions to query specific processes.
-        
-        @param request: ListDeploymentsRequest
-        @return: ListDeploymentsResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.list_deployments_with_options(request, runtime)
-
-    async def list_deployments_async(
-        self,
-        request: dataworks_public_20240518_models.ListDeploymentsRequest,
-    ) -> dataworks_public_20240518_models.ListDeploymentsResponse:
-        """
-        @summary Queries a list of processes that are used to deploy or undeploy entities in DataStudio. You can also specify filter conditions to query specific processes.
-        
-        @param request: ListDeploymentsRequest
-        @return: ListDeploymentsResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.list_deployments_with_options_async(request, runtime)
 
     def list_downstream_task_instances_with_options(
         self,
@@ -13897,16 +12573,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDownstreamTaskInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDownstreamTaskInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDownstreamTaskInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_downstream_task_instances_with_options_async(
         self,
@@ -13938,16 +12608,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDownstreamTaskInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDownstreamTaskInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDownstreamTaskInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_downstream_task_instances(
         self,
@@ -14007,16 +12671,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDownstreamTasksResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDownstreamTasksResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDownstreamTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_downstream_tasks_with_options_async(
         self,
@@ -14046,16 +12704,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDownstreamTasksResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListDownstreamTasksResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDownstreamTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_downstream_tasks(
         self,
@@ -14111,16 +12763,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListEntitiesInMetaCollectionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListEntitiesInMetaCollectionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListEntitiesInMetaCollectionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_entities_in_meta_collection_with_options_async(
         self,
@@ -14150,16 +12796,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListEntitiesInMetaCollectionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListEntitiesInMetaCollectionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListEntitiesInMetaCollectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_entities_in_meta_collection(
         self,
@@ -14215,16 +12855,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListFunctionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListFunctionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListFunctionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_functions_with_options_async(
         self,
@@ -14254,16 +12888,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListFunctionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListFunctionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListFunctionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_functions(
         self,
@@ -14319,16 +12947,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListLineageRelationshipsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListLineageRelationshipsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListLineageRelationshipsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_lineage_relationships_with_options_async(
         self,
@@ -14358,16 +12980,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListLineageRelationshipsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListLineageRelationshipsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListLineageRelationshipsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_lineage_relationships(
         self,
@@ -14423,16 +13039,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListLineagesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListLineagesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListLineagesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_lineages_with_options_async(
         self,
@@ -14462,16 +13072,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListLineagesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListLineagesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListLineagesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_lineages(
         self,
@@ -14527,16 +13131,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListMetaCollectionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListMetaCollectionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListMetaCollectionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_meta_collections_with_options_async(
         self,
@@ -14566,16 +13164,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListMetaCollectionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListMetaCollectionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListMetaCollectionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_meta_collections(
         self,
@@ -14633,16 +13225,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListNetworksResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListNetworksResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListNetworksResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_networks_with_options_async(
         self,
@@ -14674,16 +13260,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListNetworksResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListNetworksResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListNetworksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_networks(
         self,
@@ -14743,16 +13323,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListNodeDependenciesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListNodeDependenciesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListNodeDependenciesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_node_dependencies_with_options_async(
         self,
@@ -14782,16 +13356,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListNodeDependenciesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListNodeDependenciesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListNodeDependenciesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_node_dependencies(
         self,
@@ -14847,16 +13415,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListNodesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListNodesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListNodesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_nodes_with_options_async(
         self,
@@ -14886,16 +13448,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListNodesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListNodesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListNodesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_nodes(
         self,
@@ -14951,16 +13507,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListPartitionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListPartitionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListPartitionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_partitions_with_options_async(
         self,
@@ -14990,16 +13540,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListPartitionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListPartitionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListPartitionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_partitions(
         self,
@@ -15026,6 +13570,98 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_partitions_with_options_async(request, runtime)
+
+    def list_pipeline_runs_with_options(
+        self,
+        request: dataworks_public_20240518_models.ListPipelineRunsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListPipelineRunsResponse:
+        """
+        @summary Queries a list of processes that are used to deploy or undeploy entities in DataStudio. You can also specify filter conditions to query specific processes.
+        
+        @param request: ListPipelineRunsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPipelineRunsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPipelineRuns',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListPipelineRunsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_pipeline_runs_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.ListPipelineRunsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListPipelineRunsResponse:
+        """
+        @summary Queries a list of processes that are used to deploy or undeploy entities in DataStudio. You can also specify filter conditions to query specific processes.
+        
+        @param request: ListPipelineRunsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPipelineRunsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPipelineRuns',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListPipelineRunsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_pipeline_runs(
+        self,
+        request: dataworks_public_20240518_models.ListPipelineRunsRequest,
+    ) -> dataworks_public_20240518_models.ListPipelineRunsResponse:
+        """
+        @summary Queries a list of processes that are used to deploy or undeploy entities in DataStudio. You can also specify filter conditions to query specific processes.
+        
+        @param request: ListPipelineRunsRequest
+        @return: ListPipelineRunsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_pipeline_runs_with_options(request, runtime)
+
+    async def list_pipeline_runs_async(
+        self,
+        request: dataworks_public_20240518_models.ListPipelineRunsRequest,
+    ) -> dataworks_public_20240518_models.ListPipelineRunsResponse:
+        """
+        @summary Queries a list of processes that are used to deploy or undeploy entities in DataStudio. You can also specify filter conditions to query specific processes.
+        
+        @param request: ListPipelineRunsRequest
+        @return: ListPipelineRunsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_pipeline_runs_with_options_async(request, runtime)
 
     def list_project_members_with_options(
         self,
@@ -15073,16 +13709,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListProjectMembersResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListProjectMembersResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListProjectMembersResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_project_members_with_options_async(
         self,
@@ -15130,16 +13760,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListProjectMembersResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListProjectMembersResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListProjectMembersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_project_members(
         self,
@@ -15219,16 +13843,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListProjectRolesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListProjectRolesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListProjectRolesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_project_roles_with_options_async(
         self,
@@ -15278,16 +13896,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListProjectRolesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListProjectRolesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListProjectRolesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_project_roles(
         self,
@@ -15375,16 +13987,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListProjectsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListProjectsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListProjectsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_projects_with_options_async(
         self,
@@ -15442,16 +14048,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListProjectsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListProjectsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListProjectsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_projects(
         self,
@@ -15515,16 +14115,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListResourceGroupsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListResourceGroupsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListResourceGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_resource_groups_with_options_async(
         self,
@@ -15562,16 +14156,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListResourceGroupsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListResourceGroupsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListResourceGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_resource_groups(
         self,
@@ -15627,16 +14215,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_resources_with_options_async(
         self,
@@ -15666,16 +14248,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_resources(
         self,
@@ -15733,16 +14309,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListRoutesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListRoutesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListRoutesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_routes_with_options_async(
         self,
@@ -15774,16 +14344,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListRoutesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListRoutesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListRoutesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_routes(
         self,
@@ -15847,16 +14411,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListSchemasResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListSchemasResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListSchemasResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_schemas_with_options_async(
         self,
@@ -15890,16 +14448,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListSchemasResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListSchemasResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListSchemasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_schemas(
         self,
@@ -15959,16 +14511,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListTablesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListTablesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListTablesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_tables_with_options_async(
         self,
@@ -16002,16 +14548,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListTablesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListTablesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListTablesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_tables(
         self,
@@ -16070,16 +14610,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListTaskInstanceOperationLogsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListTaskInstanceOperationLogsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListTaskInstanceOperationLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_task_instance_operation_logs_with_options_async(
         self,
@@ -16112,16 +14646,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListTaskInstanceOperationLogsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListTaskInstanceOperationLogsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListTaskInstanceOperationLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_task_instance_operation_logs(
         self,
@@ -16229,16 +14757,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListTaskInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListTaskInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListTaskInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_task_instances_with_options_async(
         self,
@@ -16314,16 +14836,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListTaskInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListTaskInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListTaskInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_task_instances(
         self,
@@ -16386,16 +14902,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListTaskOperationLogsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListTaskOperationLogsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListTaskOperationLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_task_operation_logs_with_options_async(
         self,
@@ -16428,16 +14938,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListTaskOperationLogsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListTaskOperationLogsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListTaskOperationLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_task_operation_logs(
         self,
@@ -16529,16 +15033,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListTasksResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListTasksResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_tasks_with_options_async(
         self,
@@ -16598,16 +15096,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListTasksResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListTasksResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_tasks(
         self,
@@ -16663,16 +15155,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListUpstreamTaskInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListUpstreamTaskInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListUpstreamTaskInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_upstream_task_instances_with_options_async(
         self,
@@ -16702,16 +15188,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListUpstreamTaskInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListUpstreamTaskInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListUpstreamTaskInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_upstream_task_instances(
         self,
@@ -16769,16 +15249,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListUpstreamTasksResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListUpstreamTasksResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListUpstreamTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_upstream_tasks_with_options_async(
         self,
@@ -16810,16 +15284,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListUpstreamTasksResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListUpstreamTasksResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListUpstreamTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_upstream_tasks(
         self,
@@ -16879,16 +15347,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListWorkflowDefinitionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListWorkflowDefinitionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListWorkflowDefinitionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_workflow_definitions_with_options_async(
         self,
@@ -16918,16 +15380,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListWorkflowDefinitionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListWorkflowDefinitionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListWorkflowDefinitionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_workflow_definitions(
         self,
@@ -17009,16 +15465,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListWorkflowInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListWorkflowInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListWorkflowInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_workflow_instances_with_options_async(
         self,
@@ -17074,16 +15524,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListWorkflowInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListWorkflowInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListWorkflowInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_workflow_instances(
         self,
@@ -17167,16 +15611,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListWorkflowsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListWorkflowsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListWorkflowsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_workflows_with_options_async(
         self,
@@ -17230,16 +15668,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListWorkflowsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ListWorkflowsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListWorkflowsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_workflows(
         self,
@@ -17305,16 +15737,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.MoveFunctionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.MoveFunctionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.MoveFunctionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def move_function_with_options_async(
         self,
@@ -17350,16 +15776,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.MoveFunctionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.MoveFunctionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.MoveFunctionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def move_function(
         self,
@@ -17421,16 +15841,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.MoveNodeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.MoveNodeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.MoveNodeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def move_node_with_options_async(
         self,
@@ -17466,16 +15880,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.MoveNodeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.MoveNodeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.MoveNodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def move_node(
         self,
@@ -17537,16 +15945,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.MoveResourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.MoveResourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.MoveResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def move_resource_with_options_async(
         self,
@@ -17582,16 +15984,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.MoveResourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.MoveResourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.MoveResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def move_resource(
         self,
@@ -17653,16 +16049,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.MoveWorkflowDefinitionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.MoveWorkflowDefinitionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.MoveWorkflowDefinitionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def move_workflow_definition_with_options_async(
         self,
@@ -17698,16 +16088,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.MoveWorkflowDefinitionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.MoveWorkflowDefinitionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.MoveWorkflowDefinitionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def move_workflow_definition(
         self,
@@ -17767,16 +16151,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.RemoveEntityFromMetaCollectionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.RemoveEntityFromMetaCollectionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.RemoveEntityFromMetaCollectionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def remove_entity_from_meta_collection_with_options_async(
         self,
@@ -17810,16 +16188,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.RemoveEntityFromMetaCollectionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.RemoveEntityFromMetaCollectionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.RemoveEntityFromMetaCollectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def remove_entity_from_meta_collection(
         self,
@@ -17889,16 +16261,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.RemoveTaskInstanceDependenciesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.RemoveTaskInstanceDependenciesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.RemoveTaskInstanceDependenciesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def remove_task_instance_dependencies_with_options_async(
         self,
@@ -17942,16 +16308,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.RemoveTaskInstanceDependenciesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.RemoveTaskInstanceDependenciesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.RemoveTaskInstanceDependenciesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def remove_task_instance_dependencies(
         self,
@@ -18017,16 +16377,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.RenameFunctionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.RenameFunctionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.RenameFunctionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def rename_function_with_options_async(
         self,
@@ -18062,16 +16416,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.RenameFunctionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.RenameFunctionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.RenameFunctionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def rename_function(
         self,
@@ -18133,16 +16481,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.RenameNodeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.RenameNodeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.RenameNodeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def rename_node_with_options_async(
         self,
@@ -18178,16 +16520,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.RenameNodeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.RenameNodeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.RenameNodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def rename_node(
         self,
@@ -18249,16 +16585,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.RenameResourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.RenameResourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.RenameResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def rename_resource_with_options_async(
         self,
@@ -18294,16 +16624,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.RenameResourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.RenameResourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.RenameResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def rename_resource(
         self,
@@ -18365,16 +16689,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.RenameWorkflowDefinitionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.RenameWorkflowDefinitionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.RenameWorkflowDefinitionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def rename_workflow_definition_with_options_async(
         self,
@@ -18410,16 +16728,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.RenameWorkflowDefinitionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.RenameWorkflowDefinitionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.RenameWorkflowDefinitionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def rename_workflow_definition(
         self,
@@ -18485,16 +16797,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.RerunTaskInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.RerunTaskInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.RerunTaskInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def rerun_task_instances_with_options_async(
         self,
@@ -18534,16 +16840,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.RerunTaskInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.RerunTaskInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.RerunTaskInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def rerun_task_instances(
         self,
@@ -18613,16 +16913,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ResumeTaskInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ResumeTaskInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ResumeTaskInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def resume_task_instances_with_options_async(
         self,
@@ -18662,16 +16956,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ResumeTaskInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.ResumeTaskInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ResumeTaskInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def resume_task_instances(
         self,
@@ -18743,16 +17031,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.RevokeMemberProjectRolesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.RevokeMemberProjectRolesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.RevokeMemberProjectRolesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def revoke_member_project_roles_with_options_async(
         self,
@@ -18794,16 +17076,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.RevokeMemberProjectRolesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.RevokeMemberProjectRolesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.RevokeMemberProjectRolesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def revoke_member_project_roles(
         self,
@@ -18873,16 +17149,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.SetSuccessTaskInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.SetSuccessTaskInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.SetSuccessTaskInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def set_success_task_instances_with_options_async(
         self,
@@ -18922,16 +17192,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.SetSuccessTaskInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.SetSuccessTaskInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.SetSuccessTaskInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def set_success_task_instances(
         self,
@@ -18997,16 +17261,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.StartDIJobResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.StartDIJobResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.StartDIJobResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def start_dijob_with_options_async(
         self,
@@ -19042,16 +17300,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.StartDIJobResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.StartDIJobResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.StartDIJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def start_dijob(
         self,
@@ -19121,16 +17373,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.StartWorkflowInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.StartWorkflowInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.StartWorkflowInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def start_workflow_instances_with_options_async(
         self,
@@ -19170,16 +17416,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.StartWorkflowInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.StartWorkflowInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.StartWorkflowInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def start_workflow_instances(
         self,
@@ -19241,16 +17481,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.StopDIJobResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.StopDIJobResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.StopDIJobResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def stop_dijob_with_options_async(
         self,
@@ -19282,16 +17516,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.StopDIJobResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.StopDIJobResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.StopDIJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def stop_dijob(
         self,
@@ -19361,16 +17589,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.StopTaskInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.StopTaskInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.StopTaskInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def stop_task_instances_with_options_async(
         self,
@@ -19410,16 +17632,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.StopTaskInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.StopTaskInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.StopTaskInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def stop_task_instances(
         self,
@@ -19489,16 +17705,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.StopWorkflowInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.StopWorkflowInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.StopWorkflowInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def stop_workflow_instances_with_options_async(
         self,
@@ -19538,16 +17748,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.StopWorkflowInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.StopWorkflowInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.StopWorkflowInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def stop_workflow_instances(
         self,
@@ -19617,16 +17821,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.SuspendTaskInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.SuspendTaskInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.SuspendTaskInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def suspend_task_instances_with_options_async(
         self,
@@ -19666,16 +17864,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.SuspendTaskInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.SuspendTaskInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.SuspendTaskInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def suspend_task_instances(
         self,
@@ -19755,16 +17947,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.TagDataAssetsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.TagDataAssetsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.TagDataAssetsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def tag_data_assets_with_options_async(
         self,
@@ -19814,16 +18000,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.TagDataAssetsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.TagDataAssetsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.TagDataAssetsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def tag_data_assets(
         self,
@@ -19892,16 +18072,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.TestDataSourceConnectivityResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.TestDataSourceConnectivityResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.TestDataSourceConnectivityResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def test_data_source_connectivity_with_options_async(
         self,
@@ -19940,16 +18114,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.TestDataSourceConnectivityResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.TestDataSourceConnectivityResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.TestDataSourceConnectivityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def test_data_source_connectivity(
         self,
@@ -20021,16 +18189,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.TriggerSchedulerTaskInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.TriggerSchedulerTaskInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.TriggerSchedulerTaskInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def trigger_scheduler_task_instance_with_options_async(
         self,
@@ -20070,16 +18232,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.TriggerSchedulerTaskInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.TriggerSchedulerTaskInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.TriggerSchedulerTaskInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def trigger_scheduler_task_instance(
         self,
@@ -20157,16 +18313,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UnTagDataAssetsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UnTagDataAssetsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UnTagDataAssetsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def un_tag_data_assets_with_options_async(
         self,
@@ -20214,16 +18364,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UnTagDataAssetsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UnTagDataAssetsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UnTagDataAssetsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def un_tag_data_assets(
         self,
@@ -20301,16 +18445,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateAlertRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateAlertRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateAlertRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_alert_rule_with_options_async(
         self,
@@ -20358,16 +18496,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateAlertRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateAlertRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateAlertRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_alert_rule(
         self,
@@ -20427,16 +18559,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateColumnBusinessMetadataResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateColumnBusinessMetadataResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateColumnBusinessMetadataResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_column_business_metadata_with_options_async(
         self,
@@ -20470,16 +18596,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateColumnBusinessMetadataResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateColumnBusinessMetadataResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateColumnBusinessMetadataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_column_business_metadata(
         self,
@@ -20541,16 +18661,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateDIAlarmRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateDIAlarmRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateDIAlarmRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_dialarm_rule_with_options_async(
         self,
@@ -20586,16 +18700,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateDIAlarmRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateDIAlarmRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateDIAlarmRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_dialarm_rule(
         self,
@@ -20663,16 +18771,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateDIJobResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateDIJobResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateDIJobResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_dijob_with_options_async(
         self,
@@ -20714,16 +18816,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateDIJobResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateDIJobResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateDIJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_dijob(
         self,
@@ -20799,16 +18895,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateDataAssetTagResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateDataAssetTagResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateDataAssetTagResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_data_asset_tag_with_options_async(
         self,
@@ -20854,16 +18944,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateDataAssetTagResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateDataAssetTagResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateDataAssetTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_data_asset_tag(
         self,
@@ -20959,16 +19043,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateDataQualityEvaluationTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateDataQualityEvaluationTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateDataQualityEvaluationTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_data_quality_evaluation_task_with_options_async(
         self,
@@ -21034,16 +19112,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateDataQualityEvaluationTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateDataQualityEvaluationTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateDataQualityEvaluationTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_data_quality_evaluation_task(
         self,
@@ -21133,16 +19205,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateDataQualityRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateDataQualityRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateDataQualityRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_data_quality_rule_with_options_async(
         self,
@@ -21202,16 +19268,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateDataQualityRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateDataQualityRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateDataQualityRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_data_quality_rule(
         self,
@@ -21287,16 +19347,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateDataQualityRuleTemplateResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateDataQualityRuleTemplateResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateDataQualityRuleTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_data_quality_rule_template_with_options_async(
         self,
@@ -21346,16 +19400,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateDataQualityRuleTemplateResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateDataQualityRuleTemplateResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateDataQualityRuleTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_data_quality_rule_template(
         self,
@@ -21425,16 +19473,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateDataSourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateDataSourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_data_source_with_options_async(
         self,
@@ -21478,16 +19520,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateDataSourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateDataSourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_data_source(
         self,
@@ -21557,16 +19593,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateFunctionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateFunctionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateFunctionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_function_with_options_async(
         self,
@@ -21602,16 +19632,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateFunctionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateFunctionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateFunctionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_function(
         self,
@@ -21679,16 +19703,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateMetaCollectionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateMetaCollectionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateMetaCollectionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_meta_collection_with_options_async(
         self,
@@ -21730,16 +19748,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateMetaCollectionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateMetaCollectionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateMetaCollectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_meta_collection(
         self,
@@ -21801,16 +19813,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateNodeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateNodeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateNodeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_node_with_options_async(
         self,
@@ -21846,16 +19852,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateNodeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateNodeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateNodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_node(
         self,
@@ -21925,16 +19925,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateProjectResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateProjectResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_project_with_options_async(
         self,
@@ -21978,16 +19972,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateProjectResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateProjectResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_project(
         self,
@@ -22033,6 +20021,8 @@ class Client(OpenApiClient):
             body['Id'] = request.id
         if not UtilClient.is_unset(request.project_id):
             body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.resource_file):
+            body['ResourceFile'] = request.resource_file
         if not UtilClient.is_unset(request.spec):
             body['Spec'] = request.spec
         req = open_api_models.OpenApiRequest(
@@ -22049,16 +20039,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateResourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateResourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_resource_with_options_async(
         self,
@@ -22078,6 +20062,8 @@ class Client(OpenApiClient):
             body['Id'] = request.id
         if not UtilClient.is_unset(request.project_id):
             body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.resource_file):
+            body['ResourceFile'] = request.resource_file
         if not UtilClient.is_unset(request.spec):
             body['Spec'] = request.spec
         req = open_api_models.OpenApiRequest(
@@ -22094,16 +20080,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateResourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateResourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_resource(
         self,
@@ -22130,6 +20110,150 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_resource_with_options_async(request, runtime)
+
+    def update_resource_advance(
+        self,
+        request: dataworks_public_20240518_models.UpdateResourceAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateResourceResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.empty(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='dataworks-public',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = OSSClient(oss_config)
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        update_resource_req = dataworks_public_20240518_models.UpdateResourceRequest()
+        OpenApiUtilClient.convert(request, update_resource_req)
+        if not UtilClient.is_unset(request.resource_file_object):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.body.object_key,
+                content=request.resource_file_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.body.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            update_resource_req.resource_file = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+        update_resource_resp = self.update_resource_with_options(update_resource_req, runtime)
+        return update_resource_resp
+
+    async def update_resource_advance_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateResourceAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateResourceResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.empty(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='dataworks-public',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = OSSClient(oss_config)
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        update_resource_req = dataworks_public_20240518_models.UpdateResourceRequest()
+        OpenApiUtilClient.convert(request, update_resource_req)
+        if not UtilClient.is_unset(request.resource_file_object):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.body.object_key,
+                content=request.resource_file_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.body.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            update_resource_req.resource_file = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+        update_resource_resp = await self.update_resource_with_options_async(update_resource_req, runtime)
+        return update_resource_resp
 
     def update_resource_group_with_options(
         self,
@@ -22169,16 +20293,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateResourceGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateResourceGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_resource_group_with_options_async(
         self,
@@ -22218,16 +20336,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateResourceGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateResourceGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_resource_group(
         self,
@@ -22293,16 +20405,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateRouteResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateRouteResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateRouteResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_route_with_options_async(
         self,
@@ -22338,16 +20444,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateRouteResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateRouteResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateRouteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_route(
         self,
@@ -22411,16 +20511,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateTableBusinessMetadataResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateTableBusinessMetadataResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateTableBusinessMetadataResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_table_business_metadata_with_options_async(
         self,
@@ -22454,16 +20548,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateTableBusinessMetadataResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateTableBusinessMetadataResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateTableBusinessMetadataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_table_business_metadata(
         self,
@@ -22575,16 +20663,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_task_with_options_async(
         self,
@@ -22670,16 +20752,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_task(
         self,
@@ -22745,16 +20821,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateTaskInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateTaskInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateTaskInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_task_instances_with_options_async(
         self,
@@ -22794,16 +20864,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateTaskInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateTaskInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateTaskInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_task_instances(
         self,
@@ -22901,16 +20965,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateWorkflowResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateWorkflowResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateWorkflowResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_workflow_with_options_async(
         self,
@@ -22978,16 +21036,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateWorkflowResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateWorkflowResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateWorkflowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_workflow(
         self,
@@ -23055,16 +21107,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateWorkflowDefinitionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateWorkflowDefinitionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateWorkflowDefinitionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_workflow_definition_with_options_async(
         self,
@@ -23102,16 +21148,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateWorkflowDefinitionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20240518_models.UpdateWorkflowDefinitionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateWorkflowDefinitionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_workflow_definition(
         self,
