@@ -3252,6 +3252,7 @@ class GetJobResponseBodyJobInfoTasks(TeaModel):
 class GetJobResponseBodyJobInfo(TeaModel):
     def __init__(
         self,
+        app_extra_info: str = None,
         create_time: str = None,
         deployment_policy: GetJobResponseBodyJobInfoDeploymentPolicy = None,
         end_time: str = None,
@@ -3263,6 +3264,7 @@ class GetJobResponseBodyJobInfo(TeaModel):
         status: str = None,
         tasks: List[GetJobResponseBodyJobInfoTasks] = None,
     ):
+        self.app_extra_info = app_extra_info
         self.create_time = create_time
         self.deployment_policy = deployment_policy
         self.end_time = end_time
@@ -3288,6 +3290,8 @@ class GetJobResponseBodyJobInfo(TeaModel):
             return _map
 
         result = dict()
+        if self.app_extra_info is not None:
+            result['AppExtraInfo'] = self.app_extra_info
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.deployment_policy is not None:
@@ -3314,6 +3318,8 @@ class GetJobResponseBodyJobInfo(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppExtraInfo') is not None:
+            self.app_extra_info = m.get('AppExtraInfo')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('DeploymentPolicy') is not None:
@@ -5005,6 +5011,7 @@ class ListJobsResponseBodyJobListTags(TeaModel):
 class ListJobsResponseBodyJobList(TeaModel):
     def __init__(
         self,
+        app_extra_info: str = None,
         app_name: str = None,
         create_time: str = None,
         end_time: str = None,
@@ -5019,6 +5026,7 @@ class ListJobsResponseBodyJobList(TeaModel):
         task_count: int = None,
         task_sustainable: bool = None,
     ):
+        self.app_extra_info = app_extra_info
         self.app_name = app_name
         self.create_time = create_time
         self.end_time = end_time
@@ -5045,6 +5053,8 @@ class ListJobsResponseBodyJobList(TeaModel):
             return _map
 
         result = dict()
+        if self.app_extra_info is not None:
+            result['AppExtraInfo'] = self.app_extra_info
         if self.app_name is not None:
             result['AppName'] = self.app_name
         if self.create_time is not None:
@@ -5077,6 +5087,8 @@ class ListJobsResponseBodyJobList(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppExtraInfo') is not None:
+            self.app_extra_info = m.get('AppExtraInfo')
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
         if m.get('CreateTime') is not None:
