@@ -8460,6 +8460,9 @@ class DescribeInternetOpenIpResponseBodyDataList(TeaModel):
         assets_type: str = None,
         detail_num: int = None,
         has_acl_recommend: bool = None,
+        in_bytes: int = None,
+        member_uid: int = None,
+        out_bytes: int = None,
         port_list: List[str] = None,
         public_ip: str = None,
         region_no: str = None,
@@ -8467,10 +8470,12 @@ class DescribeInternetOpenIpResponseBodyDataList(TeaModel):
         risk_reason: str = None,
         service_name_list: List[str] = None,
         src_ip_cnt: int = None,
+        total_bytes: int = None,
         total_reply_bytes: int = None,
         traffic_percent_1day: str = None,
         traffic_percent_30day: str = None,
         traffic_percent_7day: str = None,
+        unknown_reason: List[str] = None,
     ):
         # The reason why recommended intelligent policies are unavailable. Valid values:
         # 
@@ -8492,6 +8497,12 @@ class DescribeInternetOpenIpResponseBodyDataList(TeaModel):
         # *   **true**\
         # *   **false**\
         self.has_acl_recommend = has_acl_recommend
+        # The inbound network throughput, which indicates the total number of bytes that are sent inbound. Unit: bytes.
+        self.in_bytes = in_bytes
+        # The UID of the member that is managed by your Alibaba Cloud account.
+        self.member_uid = member_uid
+        # The outbound network throughput, which indicates the total number of bytes that are sent outbound. Unit: bytes.
+        self.out_bytes = out_bytes
         # The list of ports.
         self.port_list = port_list
         # The public IP address of the instance.
@@ -8511,14 +8522,18 @@ class DescribeInternetOpenIpResponseBodyDataList(TeaModel):
         self.service_name_list = service_name_list
         # Number of source IPs.
         self.src_ip_cnt = src_ip_cnt
+        # The total inbound and outbound network throughput, which indicates the total number of bytes that are sent inbound and outbound. Unit: bytes.
+        self.total_bytes = total_bytes
         # Outbound traffic in the last 7 days.
         self.total_reply_bytes = total_reply_bytes
-        # The percentage of traffic of a day. Unit: percent (%).
+        # For detailed traffic information, see the TotalBytes field.
         self.traffic_percent_1day = traffic_percent_1day
-        # The percentage of traffic of 30 days. Unit: percent (%).
+        # For detailed traffic information, see the TotalBytes field.
         self.traffic_percent_30day = traffic_percent_30day
-        # The percentage of traffic of seven days. Unit: percent (%).
+        # For detailed traffic information, see the TotalBytes field.
         self.traffic_percent_7day = traffic_percent_7day
+        # Reasons for not analyzing the protocol when the protocol is identified as Unknown.
+        self.unknown_reason = unknown_reason
 
     def validate(self):
         pass
@@ -8541,6 +8556,12 @@ class DescribeInternetOpenIpResponseBodyDataList(TeaModel):
             result['DetailNum'] = self.detail_num
         if self.has_acl_recommend is not None:
             result['HasAclRecommend'] = self.has_acl_recommend
+        if self.in_bytes is not None:
+            result['InBytes'] = self.in_bytes
+        if self.member_uid is not None:
+            result['MemberUid'] = self.member_uid
+        if self.out_bytes is not None:
+            result['OutBytes'] = self.out_bytes
         if self.port_list is not None:
             result['PortList'] = self.port_list
         if self.public_ip is not None:
@@ -8555,6 +8576,8 @@ class DescribeInternetOpenIpResponseBodyDataList(TeaModel):
             result['ServiceNameList'] = self.service_name_list
         if self.src_ip_cnt is not None:
             result['SrcIpCnt'] = self.src_ip_cnt
+        if self.total_bytes is not None:
+            result['TotalBytes'] = self.total_bytes
         if self.total_reply_bytes is not None:
             result['TotalReplyBytes'] = self.total_reply_bytes
         if self.traffic_percent_1day is not None:
@@ -8563,6 +8586,8 @@ class DescribeInternetOpenIpResponseBodyDataList(TeaModel):
             result['TrafficPercent30Day'] = self.traffic_percent_30day
         if self.traffic_percent_7day is not None:
             result['TrafficPercent7Day'] = self.traffic_percent_7day
+        if self.unknown_reason is not None:
+            result['UnknownReason'] = self.unknown_reason
         return result
 
     def from_map(self, m: dict = None):
@@ -8579,6 +8604,12 @@ class DescribeInternetOpenIpResponseBodyDataList(TeaModel):
             self.detail_num = m.get('DetailNum')
         if m.get('HasAclRecommend') is not None:
             self.has_acl_recommend = m.get('HasAclRecommend')
+        if m.get('InBytes') is not None:
+            self.in_bytes = m.get('InBytes')
+        if m.get('MemberUid') is not None:
+            self.member_uid = m.get('MemberUid')
+        if m.get('OutBytes') is not None:
+            self.out_bytes = m.get('OutBytes')
         if m.get('PortList') is not None:
             self.port_list = m.get('PortList')
         if m.get('PublicIp') is not None:
@@ -8593,6 +8624,8 @@ class DescribeInternetOpenIpResponseBodyDataList(TeaModel):
             self.service_name_list = m.get('ServiceNameList')
         if m.get('SrcIpCnt') is not None:
             self.src_ip_cnt = m.get('SrcIpCnt')
+        if m.get('TotalBytes') is not None:
+            self.total_bytes = m.get('TotalBytes')
         if m.get('TotalReplyBytes') is not None:
             self.total_reply_bytes = m.get('TotalReplyBytes')
         if m.get('TrafficPercent1Day') is not None:
@@ -8601,6 +8634,8 @@ class DescribeInternetOpenIpResponseBodyDataList(TeaModel):
             self.traffic_percent_30day = m.get('TrafficPercent30Day')
         if m.get('TrafficPercent7Day') is not None:
             self.traffic_percent_7day = m.get('TrafficPercent7Day')
+        if m.get('UnknownReason') is not None:
+            self.unknown_reason = m.get('UnknownReason')
         return self
 
 
@@ -9589,6 +9624,104 @@ class DescribeInvadeEventListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeInvadeEventListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeLogStoreInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        log_store_name: str = None,
+        project_name: str = None,
+        quota: int = None,
+        request_id: str = None,
+        ttl: int = None,
+        used: int = None,
+    ):
+        self.log_store_name = log_store_name
+        self.project_name = project_name
+        self.quota = quota
+        self.request_id = request_id
+        self.ttl = ttl
+        self.used = used
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.log_store_name is not None:
+            result['LogStoreName'] = self.log_store_name
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.quota is not None:
+            result['Quota'] = self.quota
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.ttl is not None:
+            result['Ttl'] = self.ttl
+        if self.used is not None:
+            result['Used'] = self.used
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LogStoreName') is not None:
+            self.log_store_name = m.get('LogStoreName')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('Quota') is not None:
+            self.quota = m.get('Quota')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Ttl') is not None:
+            self.ttl = m.get('Ttl')
+        if m.get('Used') is not None:
+            self.used = m.get('Used')
+        return self
+
+
+class DescribeLogStoreInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeLogStoreInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeLogStoreInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10800,6 +10933,226 @@ class DescribeNatFirewallPolicyPriorUsedResponse(TeaModel):
         return self
 
 
+class DescribeNatFirewallTrafficTrendRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        interval: int = None,
+        nat_gateway_id: str = None,
+        src_private_ip: str = None,
+        src_public_ip: str = None,
+        start_time: int = None,
+    ):
+        # The end of the time range to query. The value is a UNIX timestamp that is accurate to seconds.
+        self.end_time = end_time
+        # The time interval between the data entries to return. Unit: seconds. Valid values:
+        # 
+        # *   **60**: 1 minute
+        # *   **1800**: 30 minutes
+        self.interval = interval
+        # The ID of the NAT gateway.
+        self.nat_gateway_id = nat_gateway_id
+        # The private IP address of the source.
+        self.src_private_ip = src_private_ip
+        # The public IP address of the source.
+        self.src_public_ip = src_public_ip
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.nat_gateway_id is not None:
+            result['NatGatewayId'] = self.nat_gateway_id
+        if self.src_private_ip is not None:
+            result['SrcPrivateIP'] = self.src_private_ip
+        if self.src_public_ip is not None:
+            result['SrcPublicIP'] = self.src_public_ip
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('NatGatewayId') is not None:
+            self.nat_gateway_id = m.get('NatGatewayId')
+        if m.get('SrcPrivateIP') is not None:
+            self.src_private_ip = m.get('SrcPrivateIP')
+        if m.get('SrcPublicIP') is not None:
+            self.src_public_ip = m.get('SrcPublicIP')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeNatFirewallTrafficTrendResponseBodyDataList(TeaModel):
+    def __init__(
+        self,
+        max_in_bps: int = None,
+        max_out_bps: int = None,
+        max_total_bps: int = None,
+        traffic_time: int = None,
+    ):
+        # The maximum inbound network throughput, which indicates the maximum number of bits that are sent inbound per second. Unit: bit/s.
+        self.max_in_bps = max_in_bps
+        # The maximum outbound network throughput, which indicates the maximum number of bits that are sent outbound per second. Unit: bit/s.
+        self.max_out_bps = max_out_bps
+        # The total maximum inbound and outbound network throughput, which indicates the maximum number of bits that are sent inbound and outbound per second. Unit: bit/s.
+        self.max_total_bps = max_total_bps
+        # The time range to query. The value is a UNIX timestamp. Unit: seconds.
+        self.traffic_time = traffic_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_in_bps is not None:
+            result['MaxInBps'] = self.max_in_bps
+        if self.max_out_bps is not None:
+            result['MaxOutBps'] = self.max_out_bps
+        if self.max_total_bps is not None:
+            result['MaxTotalBps'] = self.max_total_bps
+        if self.traffic_time is not None:
+            result['TrafficTime'] = self.traffic_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxInBps') is not None:
+            self.max_in_bps = m.get('MaxInBps')
+        if m.get('MaxOutBps') is not None:
+            self.max_out_bps = m.get('MaxOutBps')
+        if m.get('MaxTotalBps') is not None:
+            self.max_total_bps = m.get('MaxTotalBps')
+        if m.get('TrafficTime') is not None:
+            self.traffic_time = m.get('TrafficTime')
+        return self
+
+
+class DescribeNatFirewallTrafficTrendResponseBody(TeaModel):
+    def __init__(
+        self,
+        data_list: List[DescribeNatFirewallTrafficTrendResponseBodyDataList] = None,
+        max_in_bps: int = None,
+        max_out_bps: int = None,
+        max_total_bps: int = None,
+        request_id: str = None,
+    ):
+        # The statistics on traffic.
+        self.data_list = data_list
+        # The maximum inbound network throughput, which indicates the maximum number of bits that are sent inbound per second. Unit: bit/s.
+        self.max_in_bps = max_in_bps
+        # The maximum outbound network throughput, which indicates the maximum number of bits that are sent outbound per second. Unit: bit/s.
+        self.max_out_bps = max_out_bps
+        # The total maximum inbound and outbound network throughput, which indicates the maximum number of bits that are sent inbound and outbound per second. Unit: bit/s.
+        self.max_total_bps = max_total_bps
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data_list:
+            for k in self.data_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DataList'] = []
+        if self.data_list is not None:
+            for k in self.data_list:
+                result['DataList'].append(k.to_map() if k else None)
+        if self.max_in_bps is not None:
+            result['MaxInBps'] = self.max_in_bps
+        if self.max_out_bps is not None:
+            result['MaxOutBps'] = self.max_out_bps
+        if self.max_total_bps is not None:
+            result['MaxTotalBps'] = self.max_total_bps
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data_list = []
+        if m.get('DataList') is not None:
+            for k in m.get('DataList'):
+                temp_model = DescribeNatFirewallTrafficTrendResponseBodyDataList()
+                self.data_list.append(temp_model.from_map(k))
+        if m.get('MaxInBps') is not None:
+            self.max_in_bps = m.get('MaxInBps')
+        if m.get('MaxOutBps') is not None:
+            self.max_out_bps = m.get('MaxOutBps')
+        if m.get('MaxTotalBps') is not None:
+            self.max_total_bps = m.get('MaxTotalBps')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeNatFirewallTrafficTrendResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeNatFirewallTrafficTrendResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeNatFirewallTrafficTrendResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeOutgoingDestinationIPRequest(TeaModel):
     def __init__(
         self,
@@ -11038,6 +11391,7 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList(TeaM
         self,
         application_name: str = None,
         port: int = None,
+        unknown_reason: List[str] = None,
     ):
         # The application type used in the access control policy. Valid values:
         # 
@@ -11061,6 +11415,7 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList(TeaM
         self.application_name = application_name
         # The application port.
         self.port = port
+        self.unknown_reason = unknown_reason
 
     def validate(self):
         pass
@@ -11075,6 +11430,8 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList(TeaM
             result['ApplicationName'] = self.application_name
         if self.port is not None:
             result['Port'] = self.port
+        if self.unknown_reason is not None:
+            result['UnknownReason'] = self.unknown_reason
         return result
 
     def from_map(self, m: dict = None):
@@ -11083,6 +11440,8 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList(TeaM
             self.application_name = m.get('ApplicationName')
         if m.get('Port') is not None:
             self.port = m.get('Port')
+        if m.get('UnknownReason') is not None:
+            self.unknown_reason = m.get('UnknownReason')
         return self
 
 

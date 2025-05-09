@@ -5549,6 +5549,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_invade_event_list_with_options_async(request, runtime)
 
+    def describe_log_store_info_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeLogStoreInfoResponse:
+        """
+        @summary 获取日志服务信息
+        
+        @param request: DescribeLogStoreInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLogStoreInfoResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeLogStoreInfo',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeLogStoreInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_log_store_info_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeLogStoreInfoResponse:
+        """
+        @summary 获取日志服务信息
+        
+        @param request: DescribeLogStoreInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLogStoreInfoResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeLogStoreInfo',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeLogStoreInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_log_store_info(self) -> cloudfw_20171207_models.DescribeLogStoreInfoResponse:
+        """
+        @summary 获取日志服务信息
+        
+        @return: DescribeLogStoreInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_log_store_info_with_options(runtime)
+
+    async def describe_log_store_info_async(self) -> cloudfw_20171207_models.DescribeLogStoreInfoResponse:
+        """
+        @summary 获取日志服务信息
+        
+        @return: DescribeLogStoreInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_log_store_info_with_options_async(runtime)
+
     def describe_nat_acl_page_status_with_options(
         self,
         request: cloudfw_20171207_models.DescribeNatAclPageStatusRequest,
@@ -6048,6 +6122,98 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_nat_firewall_policy_prior_used_with_options_async(request, runtime)
+
+    def describe_nat_firewall_traffic_trend_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeNatFirewallTrafficTrendRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeNatFirewallTrafficTrendResponse:
+        """
+        @summary 概览页-NAT流量趋势
+        
+        @param request: DescribeNatFirewallTrafficTrendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNatFirewallTrafficTrendResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNatFirewallTrafficTrend',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeNatFirewallTrafficTrendResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_nat_firewall_traffic_trend_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeNatFirewallTrafficTrendRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeNatFirewallTrafficTrendResponse:
+        """
+        @summary 概览页-NAT流量趋势
+        
+        @param request: DescribeNatFirewallTrafficTrendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNatFirewallTrafficTrendResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNatFirewallTrafficTrend',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeNatFirewallTrafficTrendResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_nat_firewall_traffic_trend(
+        self,
+        request: cloudfw_20171207_models.DescribeNatFirewallTrafficTrendRequest,
+    ) -> cloudfw_20171207_models.DescribeNatFirewallTrafficTrendResponse:
+        """
+        @summary 概览页-NAT流量趋势
+        
+        @param request: DescribeNatFirewallTrafficTrendRequest
+        @return: DescribeNatFirewallTrafficTrendResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_nat_firewall_traffic_trend_with_options(request, runtime)
+
+    async def describe_nat_firewall_traffic_trend_async(
+        self,
+        request: cloudfw_20171207_models.DescribeNatFirewallTrafficTrendRequest,
+    ) -> cloudfw_20171207_models.DescribeNatFirewallTrafficTrendResponse:
+        """
+        @summary 概览页-NAT流量趋势
+        
+        @param request: DescribeNatFirewallTrafficTrendRequest
+        @return: DescribeNatFirewallTrafficTrendResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_nat_firewall_traffic_trend_with_options_async(request, runtime)
 
     def describe_outgoing_destination_ipwith_options(
         self,

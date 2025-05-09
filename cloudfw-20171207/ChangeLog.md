@@ -1,3 +1,14 @@
+2025-05-09 Version: 6.1.0
+- Support API DescribeLogStoreInfo.
+- Support API DescribeNatFirewallTrafficTrend.
+- Update API DescribeInternetOpenIp: add response parameters Body.DataList.$.InBytes.
+- Update API DescribeInternetOpenIp: add response parameters Body.DataList.$.MemberUid.
+- Update API DescribeInternetOpenIp: add response parameters Body.DataList.$.OutBytes.
+- Update API DescribeInternetOpenIp: add response parameters Body.DataList.$.TotalBytes.
+- Update API DescribeInternetOpenIp: add response parameters Body.DataList.$.UnknownReason.
+- Update API DescribeOutgoingDestinationIP: add response parameters Body.DstIPList.$.ApplicationPortList.$.UnknownReason.
+
+
 2025-04-16 Version: 6.0.0
 - Update API CreateVpcFirewallCenConfigure: add request parameters FirewallVpcStandbyZoneId.
 - Update API DescribeDefaultIPSConfig: delete response parameters Body.FreeTrailStatus.
