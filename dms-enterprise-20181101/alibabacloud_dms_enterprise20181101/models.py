@@ -17020,6 +17020,232 @@ class DeleteUserResponse(TeaModel):
         return self
 
 
+class DescribeDifyAttributeRequest(TeaModel):
+    def __init__(
+        self,
+        app_uuid: str = None,
+        client_token: str = None,
+        data_region: str = None,
+        workspace_id: str = None,
+    ):
+        self.app_uuid = app_uuid
+        self.client_token = client_token
+        self.data_region = data_region
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_uuid is not None:
+            result['AppUuid'] = self.app_uuid
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppUuid') is not None:
+            self.app_uuid = m.get('AppUuid')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class DescribeDifyAttributeResponseBodyRoot(TeaModel):
+    def __init__(
+        self,
+        app_uuid: str = None,
+        replicas: str = None,
+        resource_quota: str = None,
+        security_group_id: str = None,
+        status: str = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
+        workspace_id: str = None,
+        zone_id: str = None,
+    ):
+        self.app_uuid = app_uuid
+        self.replicas = replicas
+        self.resource_quota = resource_quota
+        self.security_group_id = security_group_id
+        self.status = status
+        self.v_switch_id = v_switch_id
+        self.vpc_id = vpc_id
+        self.workspace_id = workspace_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_uuid is not None:
+            result['AppUuid'] = self.app_uuid
+        if self.replicas is not None:
+            result['Replicas'] = self.replicas
+        if self.resource_quota is not None:
+            result['ResourceQuota'] = self.resource_quota
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppUuid') is not None:
+            self.app_uuid = m.get('AppUuid')
+        if m.get('Replicas') is not None:
+            self.replicas = m.get('Replicas')
+        if m.get('ResourceQuota') is not None:
+            self.resource_quota = m.get('ResourceQuota')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribeDifyAttributeResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        error_code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        root: DescribeDifyAttributeResponseBodyRoot = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.error_code = error_code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.root = root
+        self.success = success
+
+    def validate(self):
+        if self.root:
+            self.root.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.root is not None:
+            result['Root'] = self.root.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Root') is not None:
+            temp_model = DescribeDifyAttributeResponseBodyRoot()
+            self.root = temp_model.from_map(m['Root'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DescribeDifyAttributeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDifyAttributeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDifyAttributeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeDifyDefaultVpcRequest(TeaModel):
     def __init__(
         self,
@@ -17194,6 +17420,178 @@ class DescribeDifyDefaultVpcResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDifyDefaultVpcResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDifyRegionsRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        data_region: str = None,
+    ):
+        self.client_token = client_token
+        self.data_region = data_region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        return self
+
+
+class DescribeDifyRegionsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+    ):
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeDifyRegionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[DescribeDifyRegionsResponseBodyData] = None,
+        error_code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_code = error_code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = DescribeDifyRegionsResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DescribeDifyRegionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDifyRegionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDifyRegionsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -18810,6 +19208,353 @@ class ExecuteStructSyncResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ExecuteStructSyncResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GenerateSqlFromNLRequest(TeaModel):
+    def __init__(
+        self,
+        db_id: str = None,
+        dialect: str = None,
+        knowledge: str = None,
+        level: str = None,
+        model: str = None,
+        question: str = None,
+    ):
+        # This parameter is required.
+        self.db_id = db_id
+        self.dialect = dialect
+        self.knowledge = knowledge
+        self.level = level
+        self.model = model
+        # This parameter is required.
+        self.question = question
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.db_id is not None:
+            result['DbId'] = self.db_id
+        if self.dialect is not None:
+            result['Dialect'] = self.dialect
+        if self.knowledge is not None:
+            result['Knowledge'] = self.knowledge
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.question is not None:
+            result['Question'] = self.question
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbId') is not None:
+            self.db_id = m.get('DbId')
+        if m.get('Dialect') is not None:
+            self.dialect = m.get('Dialect')
+        if m.get('Knowledge') is not None:
+            self.knowledge = m.get('Knowledge')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('Question') is not None:
+            self.question = m.get('Question')
+        return self
+
+
+class GenerateSqlFromNLResponseBodyDataKnowledgeReferences(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        level: str = None,
+        name: str = None,
+    ):
+        self.content = content
+        self.level = level
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class GenerateSqlFromNLResponseBodyDataSimilarSql(TeaModel):
+    def __init__(
+        self,
+        question: str = None,
+        score: str = None,
+        sql: str = None,
+        thought: str = None,
+    ):
+        self.question = question
+        self.score = score
+        self.sql = sql
+        self.thought = thought
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.question is not None:
+            result['Question'] = self.question
+        if self.score is not None:
+            result['Score'] = self.score
+        if self.sql is not None:
+            result['Sql'] = self.sql
+        if self.thought is not None:
+            result['Thought'] = self.thought
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Question') is not None:
+            self.question = m.get('Question')
+        if m.get('Score') is not None:
+            self.score = m.get('Score')
+        if m.get('Sql') is not None:
+            self.sql = m.get('Sql')
+        if m.get('Thought') is not None:
+            self.thought = m.get('Thought')
+        return self
+
+
+class GenerateSqlFromNLResponseBodyDataTables(TeaModel):
+    def __init__(
+        self,
+        table_name: str = None,
+    ):
+        self.table_name = table_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        return self
+
+
+class GenerateSqlFromNLResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        knowledge_references: List[GenerateSqlFromNLResponseBodyDataKnowledgeReferences] = None,
+        question: str = None,
+        similar_sql: List[GenerateSqlFromNLResponseBodyDataSimilarSql] = None,
+        sql: str = None,
+        tables: List[GenerateSqlFromNLResponseBodyDataTables] = None,
+        thought: str = None,
+    ):
+        self.knowledge_references = knowledge_references
+        self.question = question
+        self.similar_sql = similar_sql
+        self.sql = sql
+        self.tables = tables
+        self.thought = thought
+
+    def validate(self):
+        if self.knowledge_references:
+            for k in self.knowledge_references:
+                if k:
+                    k.validate()
+        if self.similar_sql:
+            for k in self.similar_sql:
+                if k:
+                    k.validate()
+        if self.tables:
+            for k in self.tables:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['KnowledgeReferences'] = []
+        if self.knowledge_references is not None:
+            for k in self.knowledge_references:
+                result['KnowledgeReferences'].append(k.to_map() if k else None)
+        if self.question is not None:
+            result['Question'] = self.question
+        result['SimilarSql'] = []
+        if self.similar_sql is not None:
+            for k in self.similar_sql:
+                result['SimilarSql'].append(k.to_map() if k else None)
+        if self.sql is not None:
+            result['Sql'] = self.sql
+        result['Tables'] = []
+        if self.tables is not None:
+            for k in self.tables:
+                result['Tables'].append(k.to_map() if k else None)
+        if self.thought is not None:
+            result['Thought'] = self.thought
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.knowledge_references = []
+        if m.get('KnowledgeReferences') is not None:
+            for k in m.get('KnowledgeReferences'):
+                temp_model = GenerateSqlFromNLResponseBodyDataKnowledgeReferences()
+                self.knowledge_references.append(temp_model.from_map(k))
+        if m.get('Question') is not None:
+            self.question = m.get('Question')
+        self.similar_sql = []
+        if m.get('SimilarSql') is not None:
+            for k in m.get('SimilarSql'):
+                temp_model = GenerateSqlFromNLResponseBodyDataSimilarSql()
+                self.similar_sql.append(temp_model.from_map(k))
+        if m.get('Sql') is not None:
+            self.sql = m.get('Sql')
+        self.tables = []
+        if m.get('Tables') is not None:
+            for k in m.get('Tables'):
+                temp_model = GenerateSqlFromNLResponseBodyDataTables()
+                self.tables.append(temp_model.from_map(k))
+        if m.get('Thought') is not None:
+            self.thought = m.get('Thought')
+        return self
+
+
+class GenerateSqlFromNLResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GenerateSqlFromNLResponseBodyData = None,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = GenerateSqlFromNLResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GenerateSqlFromNLResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GenerateSqlFromNLResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GenerateSqlFromNLResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -45652,6 +46397,267 @@ class ListDesensitizationRuleResponse(TeaModel):
         return self
 
 
+class ListDifyInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        data_region: str = None,
+        max_results: int = None,
+        next_token: str = None,
+    ):
+        self.client_token = client_token
+        self.data_region = data_region
+        self.max_results = max_results
+        self.next_token = next_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        return self
+
+
+class ListDifyInstancesResponseBodyRootData(TeaModel):
+    def __init__(
+        self,
+        app_uuid: str = None,
+        instance_id: str = None,
+        security_group_id: str = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
+        workspace_id: str = None,
+        zone_id: str = None,
+    ):
+        self.app_uuid = app_uuid
+        self.instance_id = instance_id
+        self.security_group_id = security_group_id
+        self.v_switch_id = v_switch_id
+        self.vpc_id = vpc_id
+        self.workspace_id = workspace_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_uuid is not None:
+            result['AppUuid'] = self.app_uuid
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppUuid') is not None:
+            self.app_uuid = m.get('AppUuid')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class ListDifyInstancesResponseBodyRoot(TeaModel):
+    def __init__(
+        self,
+        data: List[ListDifyInstancesResponseBodyRootData] = None,
+    ):
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListDifyInstancesResponseBodyRootData()
+                self.data.append(temp_model.from_map(k))
+        return self
+
+
+class ListDifyInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        error_code: str = None,
+        http_status_code: int = None,
+        max_results: int = None,
+        message: str = None,
+        next_token: str = None,
+        request_id: str = None,
+        root: ListDifyInstancesResponseBodyRoot = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.error_code = error_code
+        self.http_status_code = http_status_code
+        self.max_results = max_results
+        self.message = message
+        self.next_token = next_token
+        self.request_id = request_id
+        self.root = root
+        self.success = success
+
+    def validate(self):
+        if self.root:
+            self.root.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.root is not None:
+            result['Root'] = self.root.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Root') is not None:
+            temp_model = ListDifyInstancesResponseBodyRoot()
+            self.root = temp_model.from_map(m['Root'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListDifyInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDifyInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDifyInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListEffectiveOrdersRequest(TeaModel):
     def __init__(
         self,
@@ -59924,6 +60930,196 @@ class ReRunTaskFlowInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ReRunTaskFlowInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RedeployDifyInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        data_region: str = None,
+        dry_run: str = None,
+        workspace_id: str = None,
+    ):
+        self.client_token = client_token
+        self.data_region = data_region
+        self.dry_run = dry_run
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class RedeployDifyInstanceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        status: str = None,
+        workspace_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.status = status
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class RedeployDifyInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: RedeployDifyInstanceResponseBodyData = None,
+        error_code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_code = error_code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = RedeployDifyInstanceResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class RedeployDifyInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RedeployDifyInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RedeployDifyInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
