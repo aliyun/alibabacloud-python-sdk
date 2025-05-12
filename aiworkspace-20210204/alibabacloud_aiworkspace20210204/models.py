@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict, Any
+from typing import Dict, List, Any
 
 
 class CodeSourceItem(TeaModel):
@@ -157,6 +157,188 @@ class Collection(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
+        return self
+
+
+class ConnectionModels(TeaModel):
+    def __init__(
+        self,
+        display_name: str = None,
+        model: str = None,
+        model_type: str = None,
+    ):
+        self.display_name = display_name
+        self.model = model
+        self.model_type = model_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.model_type is not None:
+            result['ModelType'] = self.model_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('ModelType') is not None:
+            self.model_type = m.get('ModelType')
+        return self
+
+
+class ConnectionResourceMeta(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        instance_name: str = None,
+    ):
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        return self
+
+
+class Connection(TeaModel):
+    def __init__(
+        self,
+        accessibility: str = None,
+        configs: Dict[str, str] = None,
+        connection_id: str = None,
+        connection_name: str = None,
+        connection_type: str = None,
+        creator: str = None,
+        description: str = None,
+        gmt_create_time: str = None,
+        gmt_modified_time: str = None,
+        models: List[ConnectionModels] = None,
+        resource_meta: ConnectionResourceMeta = None,
+        secrets: Dict[str, str] = None,
+        workspace_id: str = None,
+    ):
+        self.accessibility = accessibility
+        self.configs = configs
+        self.connection_id = connection_id
+        self.connection_name = connection_name
+        self.connection_type = connection_type
+        self.creator = creator
+        self.description = description
+        self.gmt_create_time = gmt_create_time
+        self.gmt_modified_time = gmt_modified_time
+        self.models = models
+        self.resource_meta = resource_meta
+        self.secrets = secrets
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        if self.models:
+            for k in self.models:
+                if k:
+                    k.validate()
+        if self.resource_meta:
+            self.resource_meta.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accessibility is not None:
+            result['Accessibility'] = self.accessibility
+        if self.configs is not None:
+            result['Configs'] = self.configs
+        if self.connection_id is not None:
+            result['ConnectionId'] = self.connection_id
+        if self.connection_name is not None:
+            result['ConnectionName'] = self.connection_name
+        if self.connection_type is not None:
+            result['ConnectionType'] = self.connection_type
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.gmt_create_time is not None:
+            result['GmtCreateTime'] = self.gmt_create_time
+        if self.gmt_modified_time is not None:
+            result['GmtModifiedTime'] = self.gmt_modified_time
+        result['Models'] = []
+        if self.models is not None:
+            for k in self.models:
+                result['Models'].append(k.to_map() if k else None)
+        if self.resource_meta is not None:
+            result['ResourceMeta'] = self.resource_meta.to_map()
+        if self.secrets is not None:
+            result['Secrets'] = self.secrets
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Accessibility') is not None:
+            self.accessibility = m.get('Accessibility')
+        if m.get('Configs') is not None:
+            self.configs = m.get('Configs')
+        if m.get('ConnectionId') is not None:
+            self.connection_id = m.get('ConnectionId')
+        if m.get('ConnectionName') is not None:
+            self.connection_name = m.get('ConnectionName')
+        if m.get('ConnectionType') is not None:
+            self.connection_type = m.get('ConnectionType')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GmtCreateTime') is not None:
+            self.gmt_create_time = m.get('GmtCreateTime')
+        if m.get('GmtModifiedTime') is not None:
+            self.gmt_modified_time = m.get('GmtModifiedTime')
+        self.models = []
+        if m.get('Models') is not None:
+            for k in m.get('Models'):
+                temp_model = ConnectionModels()
+                self.models.append(temp_model.from_map(k))
+        if m.get('ResourceMeta') is not None:
+            temp_model = ConnectionResourceMeta()
+            self.resource_meta = temp_model.from_map(m['ResourceMeta'])
+        if m.get('Secrets') is not None:
+            self.secrets = m.get('Secrets')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -622,6 +804,7 @@ class DatasetFileMetaConentUpdate(TeaModel):
         data_size: int = None,
         dataset_file_meta_id: str = None,
         file_create_time: str = None,
+        file_finger_print: str = None,
         file_name: str = None,
         file_type: str = None,
         file_update_time: str = None,
@@ -637,6 +820,7 @@ class DatasetFileMetaConentUpdate(TeaModel):
         self.dataset_file_meta_id = dataset_file_meta_id
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.file_create_time = file_create_time
+        self.file_finger_print = file_finger_print
         self.file_name = file_name
         self.file_type = file_type
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
@@ -666,6 +850,8 @@ class DatasetFileMetaConentUpdate(TeaModel):
             result['DatasetFileMetaId'] = self.dataset_file_meta_id
         if self.file_create_time is not None:
             result['FileCreateTime'] = self.file_create_time
+        if self.file_finger_print is not None:
+            result['FileFingerPrint'] = self.file_finger_print
         if self.file_name is not None:
             result['FileName'] = self.file_name
         if self.file_type is not None:
@@ -694,6 +880,8 @@ class DatasetFileMetaConentUpdate(TeaModel):
             self.dataset_file_meta_id = m.get('DatasetFileMetaId')
         if m.get('FileCreateTime') is not None:
             self.file_create_time = m.get('FileCreateTime')
+        if m.get('FileFingerPrint') is not None:
+            self.file_finger_print = m.get('FileFingerPrint')
         if m.get('FileName') is not None:
             self.file_name = m.get('FileName')
         if m.get('FileType') is not None:
@@ -5148,7 +5336,8 @@ class CreateModelVersionRequest(TeaModel):
         self.format_type = format_type
         # The framework of the model. Valid values:
         # 
-        # *   Pytorch -XGBoost
+        # *   Pytorch 
+        # *   XGBoost
         # *   Keras
         # *   Caffe
         # *   Alink
@@ -8444,8 +8633,22 @@ class GetConfigRequest(TeaModel):
         config_key: str = None,
         verbose: str = None,
     ):
+        # The category of the configuration item. Supported categories:
+        # 
+        # *   CommonResourceConfig
+        # *   DLCAutoRecycle
+        # *   DLCPriorityConfig
+        # *   DSWPriorityConfig
+        # *   QuotaMaximumDuration
         self.category_name = category_name
+        # The key of the configuration item. Supported keys:
+        # 
+        # *   tempStoragePath: Temporary storage path. This key can be used only when CategoryName is set to CommonResourceConfig.
+        # *   isAutoRecycle: Automatic recycle configuration. This key can be used only when CategoryName is set to DLCAutoRecycle.
+        # *   priorityConfig: Priority configuration. This key can be used only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
+        # *   quotaMaximumDuration Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
         self.config_key = config_key
+        # The value of the configuration item.
         self.verbose = verbose
 
     def validate(self):
@@ -8482,7 +8685,9 @@ class GetConfigResponseBodyLabels(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -8519,11 +8724,28 @@ class GetConfigResponseBody(TeaModel):
         request_id: str = None,
         workspace_id: str = None,
     ):
+        # The category of the configuration item. Supported categories:
+        # 
+        # *   CommonResourceConfig
+        # *   DLCAutoRecycle
+        # *   DLCPriorityConfig
+        # *   DSWPriorityConfig
+        # *   QuotaMaximumDuration
         self.category_name = category_name
+        # The key of the configuration item. Supported keys:
+        # 
+        # *   tempStoragePath: Temporary storage path. This key can be used only when CategoryName is set to CommonResourceConfig.
+        # *   isAutoRecycle: Automatic recycle configuration. This key can be used only when CategoryName is set to DLCAutoRecycle.
+        # *   priorityConfig: Priority configuration. This key can be used only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
+        # *   quotaMaximumDuration Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
         self.config_key = config_key
+        # The value of the configuration item.
         self.config_value = config_value
+        # The tags of the configuration item.
         self.labels = labels
+        # The request ID.
         self.request_id = request_id
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -11767,9 +11989,27 @@ class ListConfigsRequest(TeaModel):
         labels: str = None,
         verbose: str = None,
     ):
+        # The category of the configuration item. Supported categories:
+        # 
+        # *   CommonResourceConfig
+        # *   DLCAutoRecycle
+        # *   DLCPriorityConfig
+        # *   DSWPriorityConfig
+        # *   QuotaMaximumDuration
         self.category_name = category_name
+        # The key of the configuration item. Supported keys:
+        # 
+        # *   tempStoragePath: Temporary storage path. This key can be used only when CategoryName is set to CommonResourceConfig.
+        # *   isAutoRecycle: Automatic recycle configuration. This key can be used only when CategoryName is set to DLCAutoRecycle.
+        # *   priorityConfig: Priority configuration. This key can be used only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
+        # *   quotaMaximumDuration Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
         self.config_keys = config_keys
+        # The tags used as filter conditions. Separate multiple tags with commas (,). These conditions are in an AND relationship.
         self.labels = labels
+        # Specifies whether to show the tag information.
+        # 
+        # *   true
+        # *   false
         self.verbose = verbose
 
     def validate(self):
@@ -11810,7 +12050,9 @@ class ListConfigsResponseBodyConfigsLabels(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -11844,8 +12086,16 @@ class ListConfigsResponseBodyConfigs(TeaModel):
         config_value: str = None,
         labels: List[ListConfigsResponseBodyConfigsLabels] = None,
     ):
+        # The key of the configuration item. Supported keys:
+        # 
+        # *   tempStoragePath: Temporary storage path. This key can be used only when CategoryName is set to CommonResourceConfig.
+        # *   isAutoRecycle: Automatic recycle configuration. This key can be used only when CategoryName is set to DLCAutoRecycle.
+        # *   tempStoragePath: Temporary storage path. This key can be used only when CategoryName is set to CommonResourceConfig.
+        # *   quotaMaximumDuration Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
         self.config_key = config_key
+        # The value of the configuration item.
         self.config_value = config_value
+        # The tags of the configuration item.
         self.labels = labels
 
     def validate(self):
@@ -11891,8 +12141,11 @@ class ListConfigsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The configuration items.
         self.configs = configs
+        # The request ID.
         self.request_id = request_id
+        # The number of items returned.
         self.total_count = total_count
 
     def validate(self):
@@ -18331,7 +18584,9 @@ class UpdateConfigRequestLabels(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -18366,9 +18621,24 @@ class UpdateConfigRequest(TeaModel):
         config_value: str = None,
         labels: List[UpdateConfigRequestLabels] = None,
     ):
+        # The category of the configuration item. Supported categories:
+        # 
+        # *   CommonResourceConfig
+        # *   DLCAutoRecycle
+        # *   DLCPriorityConfig
+        # *   DSWPriorityConfig
+        # *   QuotaMaximumDuration
         self.category_name = category_name
+        # The key of the configuration item. Supported keys:
+        # 
+        # *   tempStoragePath: Temporary storage path. This key can be used only when CategoryName is set to CommonResourceConfig.
+        # *   isAutoRecycle: Automatic recycle configuration. This key can be used only when CategoryName is set to DLCAutoRecycle.
+        # *   priorityConfig: Priority configuration. This key can be used only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
+        # *   quotaMaximumDuration Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
         self.config_key = config_key
+        # The value of the configuration item.
         self.config_value = config_value
+        # The tags of the configuration item.
         self.labels = labels
 
     def validate(self):
@@ -18416,6 +18686,7 @@ class UpdateConfigResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -18485,7 +18756,9 @@ class UpdateConfigsRequestConfigsLabels(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -18520,9 +18793,24 @@ class UpdateConfigsRequestConfigs(TeaModel):
         config_value: str = None,
         labels: List[UpdateConfigsRequestConfigsLabels] = None,
     ):
+        # The category of the configuration item. Supported categories:
+        # 
+        # *   CommonResourceConfig
+        # *   DLCAutoRecycle
+        # *   DLCPriorityConfig
+        # *   DSWPriorityConfig
+        # *   QuotaMaximumDuration
         self.category_name = category_name
+        # The key of the configuration item. Supported keys:
+        # 
+        # *   tempStoragePath: Temporary storage path. This key can be used only when CategoryName is set to CommonResourceConfig.
+        # *   isAutoRecycle: Automatic recycle configuration. This key can be used only when CategoryName is set to DLCAutoRecycle.
+        # *   priorityConfig: Priority configuration. This key can be used only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
+        # *   quotaMaximumDuration Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
         self.config_key = config_key
+        # The value of the configuration item.
         self.config_value = config_value
+        # The tags of the configuration item.
         self.labels = labels
 
     def validate(self):
@@ -18570,6 +18858,7 @@ class UpdateConfigsRequest(TeaModel):
         self,
         configs: List[UpdateConfigsRequestConfigs] = None,
     ):
+        # The list of workspace configurations to update or add.
         self.configs = configs
 
     def validate(self):
@@ -18605,6 +18894,7 @@ class UpdateConfigsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

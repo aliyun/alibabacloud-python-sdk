@@ -5159,7 +5159,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetConfigResponse:
         """
-        @summary 获取配置
+        @summary Obtains a workspace configuration item.
         
         @param request: GetConfigRequest
         @param headers: map
@@ -5202,7 +5202,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetConfigResponse:
         """
-        @summary 获取配置
+        @summary Obtains a workspace configuration item.
         
         @param request: GetConfigRequest
         @param headers: map
@@ -5243,7 +5243,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.GetConfigRequest,
     ) -> aiwork_space_20210204_models.GetConfigResponse:
         """
-        @summary 获取配置
+        @summary Obtains a workspace configuration item.
         
         @param request: GetConfigRequest
         @return: GetConfigResponse
@@ -5258,7 +5258,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.GetConfigRequest,
     ) -> aiwork_space_20210204_models.GetConfigResponse:
         """
-        @summary 获取配置
+        @summary Obtains a workspace configuration item.
         
         @param request: GetConfigRequest
         @return: GetConfigResponse
@@ -7015,7 +7015,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListConfigsResponse:
         """
-        @summary 获取配置
+        @summary Obtains a list of workspace configurations.
         
         @param request: ListConfigsRequest
         @param headers: map
@@ -7060,7 +7060,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListConfigsResponse:
         """
-        @summary 获取配置
+        @summary Obtains a list of workspace configurations.
         
         @param request: ListConfigsRequest
         @param headers: map
@@ -7103,7 +7103,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.ListConfigsRequest,
     ) -> aiwork_space_20210204_models.ListConfigsResponse:
         """
-        @summary 获取配置
+        @summary Obtains a list of workspace configurations.
         
         @param request: ListConfigsRequest
         @return: ListConfigsResponse
@@ -7118,7 +7118,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.ListConfigsRequest,
     ) -> aiwork_space_20210204_models.ListConfigsResponse:
         """
-        @summary 获取配置
+        @summary Obtains a list of workspace configurations.
         
         @param request: ListConfigsRequest
         @return: ListConfigsResponse
@@ -10973,7 +10973,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.UpdateConfigResponse:
         """
-        @summary 更新配置
+        @summary Updates or adds a workspace configuration item.
         
         @param request: UpdateConfigRequest
         @param headers: map
@@ -11018,7 +11018,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.UpdateConfigResponse:
         """
-        @summary 更新配置
+        @summary Updates or adds a workspace configuration item.
         
         @param request: UpdateConfigRequest
         @param headers: map
@@ -11061,7 +11061,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.UpdateConfigRequest,
     ) -> aiwork_space_20210204_models.UpdateConfigResponse:
         """
-        @summary 更新配置
+        @summary Updates or adds a workspace configuration item.
         
         @param request: UpdateConfigRequest
         @return: UpdateConfigResponse
@@ -11076,7 +11076,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.UpdateConfigRequest,
     ) -> aiwork_space_20210204_models.UpdateConfigResponse:
         """
-        @summary 更新配置
+        @summary Updates or adds a workspace configuration item.
         
         @param request: UpdateConfigRequest
         @return: UpdateConfigResponse
@@ -11093,7 +11093,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.UpdateConfigsResponse:
         """
-        @summary 更新配置
+        @summary Updates or adds workspace configurations in batches.
         
         @param request: UpdateConfigsRequest
         @param headers: map
@@ -11132,7 +11132,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.UpdateConfigsResponse:
         """
-        @summary 更新配置
+        @summary Updates or adds workspace configurations in batches.
         
         @param request: UpdateConfigsRequest
         @param headers: map
@@ -11169,7 +11169,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.UpdateConfigsRequest,
     ) -> aiwork_space_20210204_models.UpdateConfigsResponse:
         """
-        @summary 更新配置
+        @summary Updates or adds workspace configurations in batches.
         
         @param request: UpdateConfigsRequest
         @return: UpdateConfigsResponse
@@ -11184,7 +11184,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.UpdateConfigsRequest,
     ) -> aiwork_space_20210204_models.UpdateConfigsResponse:
         """
-        @summary 更新配置
+        @summary Updates or adds workspace configurations in batches.
         
         @param request: UpdateConfigsRequest
         @return: UpdateConfigsResponse
