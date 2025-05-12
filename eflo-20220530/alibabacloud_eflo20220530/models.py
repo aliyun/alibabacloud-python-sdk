@@ -739,6 +739,39 @@ class AttachElasticNetworkInterfaceResponse(TeaModel):
         return self
 
 
+class CreateElasticNetworkInterfaceRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateElasticNetworkInterfaceRequest(TeaModel):
     def __init__(
         self,
@@ -749,6 +782,7 @@ class CreateElasticNetworkInterfaceRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
         security_group_id: str = None,
+        tag: List[CreateElasticNetworkInterfaceRequestTag] = None,
         v_switch_id: str = None,
         vpc_id: str = None,
         zone_id: str = None,
@@ -768,6 +802,7 @@ class CreateElasticNetworkInterfaceRequest(TeaModel):
         self.resource_group_id = resource_group_id
         # The ID of the security group.
         self.security_group_id = security_group_id
+        self.tag = tag
         # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
         # The ID of the VPC.
@@ -780,7 +815,10 @@ class CreateElasticNetworkInterfaceRequest(TeaModel):
         self.zone_id = zone_id
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -802,6 +840,10 @@ class CreateElasticNetworkInterfaceRequest(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.vpc_id is not None:
@@ -826,6 +868,11 @@ class CreateElasticNetworkInterfaceRequest(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateElasticNetworkInterfaceRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('VpcId') is not None:
@@ -5124,6 +5171,39 @@ class GetElasticNetworkInterfaceResponseBodyContentPrivateIpAddresses(TeaModel):
         return self
 
 
+class GetElasticNetworkInterfaceResponseBodyContentTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
 class GetElasticNetworkInterfaceResponseBodyContent(TeaModel):
     def __init__(
         self,
@@ -5144,6 +5224,7 @@ class GetElasticNetworkInterfaceResponseBodyContent(TeaModel):
         resource_group_id: str = None,
         security_group_id: str = None,
         status: str = None,
+        tags: List[GetElasticNetworkInterfaceResponseBodyContentTags] = None,
         type: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
@@ -5190,6 +5271,7 @@ class GetElasticNetworkInterfaceResponseBodyContent(TeaModel):
         # *   Available
         # *   Deleting
         self.status = status
+        self.tags = tags
         # NIC Type
         # 
         # Valid value:
@@ -5211,6 +5293,10 @@ class GetElasticNetworkInterfaceResponseBodyContent(TeaModel):
                     k.validate()
         if self.private_ip_addresses:
             for k in self.private_ip_addresses:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
                 if k:
                     k.validate()
 
@@ -5258,6 +5344,10 @@ class GetElasticNetworkInterfaceResponseBodyContent(TeaModel):
             result['SecurityGroupId'] = self.security_group_id
         if self.status is not None:
             result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.type is not None:
             result['Type'] = self.type
         if self.v_switch_id is not None:
@@ -5310,6 +5400,11 @@ class GetElasticNetworkInterfaceResponseBodyContent(TeaModel):
             self.security_group_id = m.get('SecurityGroupId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = GetElasticNetworkInterfaceResponseBodyContentTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('Type') is not None:
             self.type = m.get('Type')
         if m.get('VSwitchId') is not None:
@@ -7782,8 +7877,6 @@ class GetNetworkInterfaceRequest(TeaModel):
         # This parameter is required.
         self.region_id = region_id
         # Subnet of Lingjun
-        # 
-        # This parameter is required.
         self.subnet_id = subnet_id
 
     def validate(self):
@@ -7926,6 +8019,39 @@ class GetNetworkInterfaceResponseBodyContentSubnetBaseInfo(TeaModel):
         return self
 
 
+class GetNetworkInterfaceResponseBodyContentTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
 class GetNetworkInterfaceResponseBodyContentVpdBaseInfo(TeaModel):
     def __init__(
         self,
@@ -8000,6 +8126,7 @@ class GetNetworkInterfaceResponseBodyContent(TeaModel):
         service_mac: str = None,
         status: str = None,
         subnet_base_info: GetNetworkInterfaceResponseBodyContentSubnetBaseInfo = None,
+        tags: List[GetNetworkInterfaceResponseBodyContentTags] = None,
         tenant_id: str = None,
         vpd_base_info: GetNetworkInterfaceResponseBodyContentVpdBaseInfo = None,
         zone_id: str = None,
@@ -8042,6 +8169,7 @@ class GetNetworkInterfaceResponseBodyContent(TeaModel):
         self.status = status
         # Lingjun subnet (Subnet) basic information
         self.subnet_base_info = subnet_base_info
+        self.tags = tags
         # The ID of the tenant.
         self.tenant_id = tenant_id
         # Basic information of Lingjun network segment (VPD)
@@ -8056,6 +8184,10 @@ class GetNetworkInterfaceResponseBodyContent(TeaModel):
                     k.validate()
         if self.subnet_base_info:
             self.subnet_base_info.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
         if self.vpd_base_info:
             self.vpd_base_info.validate()
 
@@ -8097,6 +8229,10 @@ class GetNetworkInterfaceResponseBodyContent(TeaModel):
             result['Status'] = self.status
         if self.subnet_base_info is not None:
             result['SubnetBaseInfo'] = self.subnet_base_info.to_map()
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
         if self.vpd_base_info is not None:
@@ -8141,6 +8277,11 @@ class GetNetworkInterfaceResponseBodyContent(TeaModel):
         if m.get('SubnetBaseInfo') is not None:
             temp_model = GetNetworkInterfaceResponseBodyContentSubnetBaseInfo()
             self.subnet_base_info = temp_model.from_map(m['SubnetBaseInfo'])
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = GetNetworkInterfaceResponseBodyContentTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
         if m.get('VpdBaseInfo') is not None:
@@ -11605,6 +11746,39 @@ class InitializeVccResponse(TeaModel):
         return self
 
 
+class ListElasticNetworkInterfacesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListElasticNetworkInterfacesRequest(TeaModel):
     def __init__(
         self,
@@ -11617,6 +11791,7 @@ class ListElasticNetworkInterfacesRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
         status: str = None,
+        tag: List[ListElasticNetworkInterfacesRequestTag] = None,
         type: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
@@ -11654,6 +11829,7 @@ class ListElasticNetworkInterfacesRequest(TeaModel):
         # *   Available: The template is available.
         # *   Deleting
         self.status = status
+        self.tag = tag
         # The type of the variable.
         # 
         # Valid value:
@@ -11669,7 +11845,10 @@ class ListElasticNetworkInterfacesRequest(TeaModel):
         self.zone_id = zone_id
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -11695,6 +11874,10 @@ class ListElasticNetworkInterfacesRequest(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.status is not None:
             result['Status'] = self.status
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.type is not None:
             result['Type'] = self.type
         if self.v_switch_id is not None:
@@ -11725,6 +11908,11 @@ class ListElasticNetworkInterfacesRequest(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListElasticNetworkInterfacesRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('Type') is not None:
             self.type = m.get('Type')
         if m.get('VSwitchId') is not None:
@@ -11733,6 +11921,39 @@ class ListElasticNetworkInterfacesRequest(TeaModel):
             self.vpc_id = m.get('VpcId')
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
+        return self
+
+
+class ListElasticNetworkInterfacesResponseBodyContentDataTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
         return self
 
 
@@ -11753,6 +11974,7 @@ class ListElasticNetworkInterfacesResponseBodyContentData(TeaModel):
         resource_group_id: str = None,
         security_group_id: str = None,
         status: str = None,
+        tags: List[ListElasticNetworkInterfacesResponseBodyContentDataTags] = None,
         type: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
@@ -11785,6 +12007,7 @@ class ListElasticNetworkInterfacesResponseBodyContentData(TeaModel):
         self.security_group_id = security_group_id
         # The status of the intervention entry. Valid value:
         self.status = status
+        self.tags = tags
         # network interface controller type, the default type DEFAULT cannot be manually released
         # 
         # Valid value:
@@ -11800,7 +12023,10 @@ class ListElasticNetworkInterfacesResponseBodyContentData(TeaModel):
         self.zone_id = zone_id
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -11836,6 +12062,10 @@ class ListElasticNetworkInterfacesResponseBodyContentData(TeaModel):
             result['SecurityGroupId'] = self.security_group_id
         if self.status is not None:
             result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.type is not None:
             result['Type'] = self.type
         if self.v_switch_id is not None:
@@ -11876,6 +12106,11 @@ class ListElasticNetworkInterfacesResponseBodyContentData(TeaModel):
             self.security_group_id = m.get('SecurityGroupId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListElasticNetworkInterfacesResponseBodyContentDataTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('Type') is not None:
             self.type = m.get('Type')
         if m.get('VSwitchId') is not None:
@@ -14534,6 +14769,39 @@ class ListLniPrivateIpAddressResponse(TeaModel):
         return self
 
 
+class ListNetworkInterfacesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListNetworkInterfacesRequest(TeaModel):
     def __init__(
         self,
@@ -14546,6 +14814,7 @@ class ListNetworkInterfacesRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
         subnet_id: str = None,
+        tag: List[ListNetworkInterfacesRequestTag] = None,
         vpd_id: str = None,
     ):
         # Specifies whether pagination is required.
@@ -14567,11 +14836,15 @@ class ListNetworkInterfacesRequest(TeaModel):
         self.resource_group_id = resource_group_id
         # The ID of the instance to which the Lingjun subnet belongs.
         self.subnet_id = subnet_id
+        self.tag = tag
         # The ID of the VPD.
         self.vpd_id = vpd_id
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -14597,6 +14870,10 @@ class ListNetworkInterfacesRequest(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.subnet_id is not None:
             result['SubnetId'] = self.subnet_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.vpd_id is not None:
             result['VpdId'] = self.vpd_id
         return result
@@ -14621,6 +14898,11 @@ class ListNetworkInterfacesRequest(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SubnetId') is not None:
             self.subnet_id = m.get('SubnetId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListNetworkInterfacesRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('VpdId') is not None:
             self.vpd_id = m.get('VpdId')
         return self
@@ -14745,6 +15027,39 @@ class ListNetworkInterfacesResponseBodyContentDataSubnetBaseInfo(TeaModel):
         return self
 
 
+class ListNetworkInterfacesResponseBodyContentDataTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
 class ListNetworkInterfacesResponseBodyContentDataVpdBaseInfo(TeaModel):
     def __init__(
         self,
@@ -14815,6 +15130,7 @@ class ListNetworkInterfacesResponseBodyContentData(TeaModel):
         service_mac: str = None,
         status: str = None,
         subnet_base_info: ListNetworkInterfacesResponseBodyContentDataSubnetBaseInfo = None,
+        tags: List[ListNetworkInterfacesResponseBodyContentDataTags] = None,
         tenant_id: str = None,
         vpd_base_info: ListNetworkInterfacesResponseBodyContentDataVpdBaseInfo = None,
         zone_id: str = None,
@@ -14857,6 +15173,7 @@ class ListNetworkInterfacesResponseBodyContentData(TeaModel):
         self.status = status
         # Lingjun subnet (Subnet) basic information.
         self.subnet_base_info = subnet_base_info
+        self.tags = tags
         # The tenant ID.
         self.tenant_id = tenant_id
         # Lingjun network segment (VPD) basic information.
@@ -14871,6 +15188,10 @@ class ListNetworkInterfacesResponseBodyContentData(TeaModel):
                     k.validate()
         if self.subnet_base_info:
             self.subnet_base_info.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
         if self.vpd_base_info:
             self.vpd_base_info.validate()
 
@@ -14912,6 +15233,10 @@ class ListNetworkInterfacesResponseBodyContentData(TeaModel):
             result['Status'] = self.status
         if self.subnet_base_info is not None:
             result['SubnetBaseInfo'] = self.subnet_base_info.to_map()
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
         if self.vpd_base_info is not None:
@@ -14956,6 +15281,11 @@ class ListNetworkInterfacesResponseBodyContentData(TeaModel):
         if m.get('SubnetBaseInfo') is not None:
             temp_model = ListNetworkInterfacesResponseBodyContentDataSubnetBaseInfo()
             self.subnet_base_info = temp_model.from_map(m['SubnetBaseInfo'])
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListNetworkInterfacesResponseBodyContentDataTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
         if m.get('VpdBaseInfo') is not None:

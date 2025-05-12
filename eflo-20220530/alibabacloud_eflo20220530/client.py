@@ -577,6 +577,8 @@ class Client(OpenApiClient):
             body['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.security_group_id):
             body['SecurityGroupId'] = request.security_group_id
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
         if not UtilClient.is_unset(request.v_switch_id):
             body['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.vpc_id):
@@ -630,6 +632,8 @@ class Client(OpenApiClient):
             body['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.security_group_id):
             body['SecurityGroupId'] = request.security_group_id
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
         if not UtilClient.is_unset(request.v_switch_id):
             body['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.vpc_id):
@@ -5345,6 +5349,8 @@ class Client(OpenApiClient):
             body['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.status):
             body['Status'] = request.status
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
         if not UtilClient.is_unset(request.type):
             body['Type'] = request.type
         if not UtilClient.is_unset(request.v_switch_id):
@@ -5404,6 +5410,8 @@ class Client(OpenApiClient):
             body['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.status):
             body['Status'] = request.status
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
         if not UtilClient.is_unset(request.type):
             body['Type'] = request.type
         if not UtilClient.is_unset(request.v_switch_id):
@@ -6425,6 +6433,8 @@ class Client(OpenApiClient):
             body['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.subnet_id):
             body['SubnetId'] = request.subnet_id
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
         if not UtilClient.is_unset(request.vpd_id):
             body['VpdId'] = request.vpd_id
         req = open_api_models.OpenApiRequest(
@@ -6478,6 +6488,8 @@ class Client(OpenApiClient):
             body['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.subnet_id):
             body['SubnetId'] = request.subnet_id
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
         if not UtilClient.is_unset(request.vpd_id):
             body['VpdId'] = request.vpd_id
         req = open_api_models.OpenApiRequest(

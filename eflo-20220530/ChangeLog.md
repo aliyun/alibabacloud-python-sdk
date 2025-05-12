@@ -1,3 +1,13 @@
+2025-05-12 Version: 2.0.5
+- Update API CreateElasticNetworkInterface: add request parameters Tag.
+- Update API GetElasticNetworkInterface: add response parameters Body.Content.Tags.
+- Update API GetNetworkInterface: add response parameters Body.Content.Tags.
+- Update API ListElasticNetworkInterfaces: add request parameters Tag.
+- Update API ListElasticNetworkInterfaces: add response parameters Body.Content.Data.$.Tags.
+- Update API ListNetworkInterfaces: add request parameters Tag.
+- Update API ListNetworkInterfaces: add response parameters Body.Content.Data.$.Tags.
+
+
 2025-04-18 Version: 2.0.4
 - Update API CreateElasticNetworkInterface: add request parameters ResourceGroupId.
 - Update API GetElasticNetworkInterface: add response parameters Body.Content.ResourceGroupId.
