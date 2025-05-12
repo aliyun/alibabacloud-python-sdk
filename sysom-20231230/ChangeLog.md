@@ -1,3 +1,18 @@
+2025-05-12 Version: 1.10.0
+- Support API CheckInstanceSupport.
+- Update API ListAbnormalyEvents: add response parameters Body.total.
+- Update API ListAbnormalyEvents: add response parameters Body.data.$.diag_status.
+- Update API ListAbnormalyEvents: add response parameters Body.data.$.end_at.
+- Update API ListAbnormalyEvents: add response parameters Body.data.$.level.
+- Update API ListAbnormalyEvents: add response parameters Body.data.$.namespace.
+- Update API ListAbnormalyEvents: add response parameters Body.data.$.pod.
+- Update API ListAbnormalyEvents: add response parameters Body.data.$.uuid.
+- Update API ListInstancesWithEcsInfo: add response parameters Body.data.$.kernel_version.
+- Update API UpdateFuncSwitchRecord: add request parameters params.region.
+- Update API UpdateFuncSwitchRecord: add request parameters params.args.duration.
+- Update API UpdateFuncSwitchRecord: add request parameters params.args.pid.
+
+
 2025-02-26 Version: 1.9.1
 - Update API StartAIAnalysis: update param body.
 

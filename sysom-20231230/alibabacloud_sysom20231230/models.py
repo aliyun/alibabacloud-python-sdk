@@ -170,6 +170,173 @@ class AuthDiagnosisResponse(TeaModel):
         return self
 
 
+class CheckInstanceSupportRequest(TeaModel):
+    def __init__(
+        self,
+        instances: List[str] = None,
+        region: str = None,
+    ):
+        self.instances = instances
+        self.region = region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instances is not None:
+            result['instances'] = self.instances
+        if self.region is not None:
+            result['region'] = self.region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('instances') is not None:
+            self.instances = m.get('instances')
+        if m.get('region') is not None:
+            self.region = m.get('region')
+        return self
+
+
+class CheckInstanceSupportResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        instance: str = None,
+        reason: str = None,
+        support: bool = None,
+    ):
+        self.instance = instance
+        self.reason = reason
+        self.support = support
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance is not None:
+            result['instance'] = self.instance
+        if self.reason is not None:
+            result['reason'] = self.reason
+        if self.support is not None:
+            result['support'] = self.support
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('instance') is not None:
+            self.instance = m.get('instance')
+        if m.get('reason') is not None:
+            self.reason = m.get('reason')
+        if m.get('support') is not None:
+            self.support = m.get('support')
+        return self
+
+
+class CheckInstanceSupportResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[CheckInstanceSupportResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = CheckInstanceSupportResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class CheckInstanceSupportResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CheckInstanceSupportResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CheckInstanceSupportResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GenerateCopilotResponseRequest(TeaModel):
     def __init__(
         self,
@@ -3719,9 +3886,9 @@ class GetRangeScoreRequest(TeaModel):
 class GetRangeScoreResponseBodyData(TeaModel):
     def __init__(
         self,
-        time: float = None,
+        time: int = None,
         type: str = None,
-        value: float = None,
+        value: int = None,
     ):
         self.time = time
         self.type = type
@@ -5184,16 +5351,14 @@ class ListAbnormalyEventsRequest(TeaModel):
         return self
 
 
-class ListAbnormalyEventsResponseBodyDataOpts(TeaModel):
+class ListAbnormalyEventsResponseBodyDataOptsResult(TeaModel):
     def __init__(
         self,
-        label: str = None,
-        params: str = None,
-        type: str = None,
+        status: str = None,
+        url: str = None,
     ):
-        self.label = label
-        self.params = params
-        self.type = type
+        self.status = status
+        self.url = url
 
     def validate(self):
         pass
@@ -5204,10 +5369,46 @@ class ListAbnormalyEventsResponseBodyDataOpts(TeaModel):
             return _map
 
         result = dict()
+        if self.status is not None:
+            result['status'] = self.status
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class ListAbnormalyEventsResponseBodyDataOpts(TeaModel):
+    def __init__(
+        self,
+        label: str = None,
+        result: ListAbnormalyEventsResponseBodyDataOptsResult = None,
+        type: str = None,
+    ):
+        self.label = label
+        self.result = result
+        self.type = type
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.label is not None:
             result['label'] = self.label
-        if self.params is not None:
-            result['params'] = self.params
+        if self.result is not None:
+            result['result'] = self.result.to_map()
         if self.type is not None:
             result['type'] = self.type
         return result
@@ -5216,8 +5417,9 @@ class ListAbnormalyEventsResponseBodyDataOpts(TeaModel):
         m = m or dict()
         if m.get('label') is not None:
             self.label = m.get('label')
-        if m.get('params') is not None:
-            self.params = m.get('params')
+        if m.get('result') is not None:
+            temp_model = ListAbnormalyEventsResponseBodyDataOptsResult()
+            self.result = temp_model.from_map(m['result'])
         if m.get('type') is not None:
             self.type = m.get('type')
         return self
@@ -5226,27 +5428,39 @@ class ListAbnormalyEventsResponseBodyDataOpts(TeaModel):
 class ListAbnormalyEventsResponseBodyData(TeaModel):
     def __init__(
         self,
-        created_at: float = None,
+        created_at: int = None,
         description: str = None,
-        id: str = None,
+        diag_status: int = None,
+        end_at: int = None,
         instance: str = None,
         item: str = None,
-        opts: ListAbnormalyEventsResponseBodyDataOpts = None,
+        level: str = None,
+        namespace: str = None,
+        opts: List[ListAbnormalyEventsResponseBodyDataOpts] = None,
+        pod: str = None,
         region_id: str = None,
         type: str = None,
+        uuid: str = None,
     ):
         self.created_at = created_at
         self.description = description
-        self.id = id
+        self.diag_status = diag_status
+        self.end_at = end_at
         self.instance = instance
         self.item = item
+        self.level = level
+        self.namespace = namespace
         self.opts = opts
+        self.pod = pod
         self.region_id = region_id
         self.type = type
+        self.uuid = uuid
 
     def validate(self):
         if self.opts:
-            self.opts.validate()
+            for k in self.opts:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5258,18 +5472,30 @@ class ListAbnormalyEventsResponseBodyData(TeaModel):
             result['created_at'] = self.created_at
         if self.description is not None:
             result['description'] = self.description
-        if self.id is not None:
-            result['id'] = self.id
+        if self.diag_status is not None:
+            result['diag_status'] = self.diag_status
+        if self.end_at is not None:
+            result['end_at'] = self.end_at
         if self.instance is not None:
             result['instance'] = self.instance
         if self.item is not None:
             result['item'] = self.item
+        if self.level is not None:
+            result['level'] = self.level
+        if self.namespace is not None:
+            result['namespace'] = self.namespace
+        result['opts'] = []
         if self.opts is not None:
-            result['opts'] = self.opts.to_map()
+            for k in self.opts:
+                result['opts'].append(k.to_map() if k else None)
+        if self.pod is not None:
+            result['pod'] = self.pod
         if self.region_id is not None:
             result['region_id'] = self.region_id
         if self.type is not None:
             result['type'] = self.type
+        if self.uuid is not None:
+            result['uuid'] = self.uuid
         return result
 
     def from_map(self, m: dict = None):
@@ -5278,19 +5504,31 @@ class ListAbnormalyEventsResponseBodyData(TeaModel):
             self.created_at = m.get('created_at')
         if m.get('description') is not None:
             self.description = m.get('description')
-        if m.get('id') is not None:
-            self.id = m.get('id')
+        if m.get('diag_status') is not None:
+            self.diag_status = m.get('diag_status')
+        if m.get('end_at') is not None:
+            self.end_at = m.get('end_at')
         if m.get('instance') is not None:
             self.instance = m.get('instance')
         if m.get('item') is not None:
             self.item = m.get('item')
+        if m.get('level') is not None:
+            self.level = m.get('level')
+        if m.get('namespace') is not None:
+            self.namespace = m.get('namespace')
+        self.opts = []
         if m.get('opts') is not None:
-            temp_model = ListAbnormalyEventsResponseBodyDataOpts()
-            self.opts = temp_model.from_map(m['opts'])
+            for k in m.get('opts'):
+                temp_model = ListAbnormalyEventsResponseBodyDataOpts()
+                self.opts.append(temp_model.from_map(k))
+        if m.get('pod') is not None:
+            self.pod = m.get('pod')
         if m.get('region_id') is not None:
             self.region_id = m.get('region_id')
         if m.get('type') is not None:
             self.type = m.get('type')
+        if m.get('uuid') is not None:
+            self.uuid = m.get('uuid')
         return self
 
 
@@ -5300,10 +5538,12 @@ class ListAbnormalyEventsResponseBody(TeaModel):
         code: str = None,
         data: List[ListAbnormalyEventsResponseBodyData] = None,
         message: str = None,
+        total: int = None,
     ):
         self.code = code
         self.data = data
         self.message = message
+        self.total = total
 
     def validate(self):
         if self.data:
@@ -5325,6 +5565,8 @@ class ListAbnormalyEventsResponseBody(TeaModel):
                 result['data'].append(k.to_map() if k else None)
         if self.message is not None:
             result['message'] = self.message
+        if self.total is not None:
+            result['total'] = self.total
         return result
 
     def from_map(self, m: dict = None):
@@ -5338,6 +5580,8 @@ class ListAbnormalyEventsResponseBody(TeaModel):
                 self.data.append(temp_model.from_map(k))
         if m.get('message') is not None:
             self.message = m.get('message')
+        if m.get('total') is not None:
+            self.total = m.get('total')
         return self
 
 
@@ -6680,7 +6924,7 @@ class ListInstanceHealthResponseBody(TeaModel):
     def __init__(
         self,
         code: str = None,
-        data: ListInstanceHealthResponseBodyData = None,
+        data: List[ListInstanceHealthResponseBodyData] = None,
         message: str = None,
         request_id: str = None,
         total: int = None,
@@ -6693,7 +6937,9 @@ class ListInstanceHealthResponseBody(TeaModel):
 
     def validate(self):
         if self.data:
-            self.data.validate()
+            for k in self.data:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6703,8 +6949,10 @@ class ListInstanceHealthResponseBody(TeaModel):
         result = dict()
         if self.code is not None:
             result['code'] = self.code
+        result['data'] = []
         if self.data is not None:
-            result['data'] = self.data.to_map()
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
         if self.message is not None:
             result['message'] = self.message
         if self.request_id is not None:
@@ -6717,9 +6965,11 @@ class ListInstanceHealthResponseBody(TeaModel):
         m = m or dict()
         if m.get('code') is not None:
             self.code = m.get('code')
+        self.data = []
         if m.get('data') is not None:
-            temp_model = ListInstanceHealthResponseBodyData()
-            self.data = temp_model.from_map(m['data'])
+            for k in m.get('data'):
+                temp_model = ListInstanceHealthResponseBodyData()
+                self.data.append(temp_model.from_map(k))
         if m.get('message') is not None:
             self.message = m.get('message')
         if m.get('request_id') is not None:
@@ -7695,6 +7945,7 @@ class ListInstancesWithEcsInfoResponseBodyData(TeaModel):
         instance_id: str = None,
         instance_name: str = None,
         instance_tag: List[ListInstancesWithEcsInfoResponseBodyDataInstanceTag] = None,
+        kernel_version: str = None,
         os_arch: str = None,
         os_health_score: str = None,
         os_name: str = None,
@@ -7708,6 +7959,7 @@ class ListInstancesWithEcsInfoResponseBodyData(TeaModel):
         self.instance_id = instance_id
         self.instance_name = instance_name
         self.instance_tag = instance_tag
+        self.kernel_version = kernel_version
         self.os_arch = os_arch
         self.os_health_score = os_health_score
         self.os_name = os_name
@@ -7739,6 +7991,8 @@ class ListInstancesWithEcsInfoResponseBodyData(TeaModel):
         if self.instance_tag is not None:
             for k in self.instance_tag:
                 result['instance_tag'].append(k.to_map() if k else None)
+        if self.kernel_version is not None:
+            result['kernel_version'] = self.kernel_version
         if self.os_arch is not None:
             result['os_arch'] = self.os_arch
         if self.os_health_score is not None:
@@ -7770,6 +8024,8 @@ class ListInstancesWithEcsInfoResponseBodyData(TeaModel):
             for k in m.get('instance_tag'):
                 temp_model = ListInstancesWithEcsInfoResponseBodyDataInstanceTag()
                 self.instance_tag.append(temp_model.from_map(k))
+        if m.get('kernel_version') is not None:
+            self.kernel_version = m.get('kernel_version')
         if m.get('os_arch') is not None:
             self.os_arch = m.get('os_arch')
         if m.get('os_health_score') is not None:
@@ -8970,7 +9226,7 @@ class UninstallAgentForClusterResponse(TeaModel):
         return self
 
 
-class UpdateEventsAttentionRequestBody(TeaModel):
+class UpdateEventsAttentionRequest(TeaModel):
     def __init__(
         self,
         mode: int = None,
@@ -9007,62 +9263,6 @@ class UpdateEventsAttentionRequestBody(TeaModel):
             self.range = m.get('range')
         if m.get('uuid') is not None:
             self.uuid = m.get('uuid')
-        return self
-
-
-class UpdateEventsAttentionRequest(TeaModel):
-    def __init__(
-        self,
-        body: UpdateEventsAttentionRequestBody = None,
-    ):
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('body') is not None:
-            temp_model = UpdateEventsAttentionRequestBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class UpdateEventsAttentionShrinkRequest(TeaModel):
-    def __init__(
-        self,
-        body_shrink: str = None,
-    ):
-        self.body_shrink = body_shrink
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.body_shrink is not None:
-            result['body'] = self.body_shrink
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('body') is not None:
-            self.body_shrink = m.get('body')
         return self
 
 
@@ -9186,18 +9386,22 @@ class UpdateFuncSwitchRecordRequestParamsArgs(TeaModel):
         self,
         add_cmd: str = None,
         cpu: str = None,
+        duration: int = None,
         java_store_path: str = None,
         locks: str = None,
         loop: int = None,
         mem: str = None,
+        pid: int = None,
         system_profiling: str = None,
     ):
         self.add_cmd = add_cmd
         self.cpu = cpu
+        self.duration = duration
         self.java_store_path = java_store_path
         self.locks = locks
         self.loop = loop
         self.mem = mem
+        self.pid = pid
         self.system_profiling = system_profiling
 
     def validate(self):
@@ -9213,6 +9417,8 @@ class UpdateFuncSwitchRecordRequestParamsArgs(TeaModel):
             result['add_cmd'] = self.add_cmd
         if self.cpu is not None:
             result['cpu'] = self.cpu
+        if self.duration is not None:
+            result['duration'] = self.duration
         if self.java_store_path is not None:
             result['java_store_path'] = self.java_store_path
         if self.locks is not None:
@@ -9221,6 +9427,8 @@ class UpdateFuncSwitchRecordRequestParamsArgs(TeaModel):
             result['loop'] = self.loop
         if self.mem is not None:
             result['mem'] = self.mem
+        if self.pid is not None:
+            result['pid'] = self.pid
         if self.system_profiling is not None:
             result['system_profiling'] = self.system_profiling
         return result
@@ -9231,6 +9439,8 @@ class UpdateFuncSwitchRecordRequestParamsArgs(TeaModel):
             self.add_cmd = m.get('add_cmd')
         if m.get('cpu') is not None:
             self.cpu = m.get('cpu')
+        if m.get('duration') is not None:
+            self.duration = m.get('duration')
         if m.get('java_store_path') is not None:
             self.java_store_path = m.get('java_store_path')
         if m.get('locks') is not None:
@@ -9239,6 +9449,8 @@ class UpdateFuncSwitchRecordRequestParamsArgs(TeaModel):
             self.loop = m.get('loop')
         if m.get('mem') is not None:
             self.mem = m.get('mem')
+        if m.get('pid') is not None:
+            self.pid = m.get('pid')
         if m.get('system_profiling') is not None:
             self.system_profiling = m.get('system_profiling')
         return self
@@ -9251,6 +9463,7 @@ class UpdateFuncSwitchRecordRequestParams(TeaModel):
         function_name: str = None,
         instance: str = None,
         op: str = None,
+        region: str = None,
         uid: str = None,
     ):
         self.args = args
@@ -9258,6 +9471,7 @@ class UpdateFuncSwitchRecordRequestParams(TeaModel):
         self.function_name = function_name
         self.instance = instance
         self.op = op
+        self.region = region
         self.uid = uid
 
     def validate(self):
@@ -9278,6 +9492,8 @@ class UpdateFuncSwitchRecordRequestParams(TeaModel):
             result['instance'] = self.instance
         if self.op is not None:
             result['op'] = self.op
+        if self.region is not None:
+            result['region'] = self.region
         if self.uid is not None:
             result['uid'] = self.uid
         return result
@@ -9293,6 +9509,8 @@ class UpdateFuncSwitchRecordRequestParams(TeaModel):
             self.instance = m.get('instance')
         if m.get('op') is not None:
             self.op = m.get('op')
+        if m.get('region') is not None:
+            self.region = m.get('region')
         if m.get('uid') is not None:
             self.uid = m.get('uid')
         return self
