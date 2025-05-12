@@ -1,3 +1,7 @@
+2025-05-12 Version: 6.8.0
+- Support API UpdateGroup.
+
+
 2025-04-27 Version: 6.7.5
 - Update API ListServices: add request parameters ResourceAliasName.
 - Update API ListServices: add request parameters ResourceId.

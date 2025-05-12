@@ -525,7 +525,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateAppServiceResponse:
         """
-        @summary Creates an application service.
+        @summary Creates an application service to obtain the inference capabilities of large models.
         
         @param request: CreateAppServiceRequest
         @param headers: map
@@ -579,7 +579,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateAppServiceResponse:
         """
-        @summary Creates an application service.
+        @summary Creates an application service to obtain the inference capabilities of large models.
         
         @param request: CreateAppServiceRequest
         @param headers: map
@@ -631,7 +631,7 @@ class Client(OpenApiClient):
         request: eas_20210701_models.CreateAppServiceRequest,
     ) -> eas_20210701_models.CreateAppServiceResponse:
         """
-        @summary Creates an application service.
+        @summary Creates an application service to obtain the inference capabilities of large models.
         
         @param request: CreateAppServiceRequest
         @return: CreateAppServiceResponse
@@ -645,7 +645,7 @@ class Client(OpenApiClient):
         request: eas_20210701_models.CreateAppServiceRequest,
     ) -> eas_20210701_models.CreateAppServiceResponse:
         """
-        @summary Creates an application service.
+        @summary Creates an application service to obtain the inference capabilities of large models.
         
         @param request: CreateAppServiceRequest
         @return: CreateAppServiceResponse
@@ -9613,6 +9613,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_gateway_with_options_async(gateway_id, cluster_id, request, headers, runtime)
+
+    def update_group_with_options(
+        self,
+        cluster_id: str,
+        group_name: str,
+        request: eas_20210701_models.UpdateGroupRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.UpdateGroupResponse:
+        """
+        @summary Updates the specific fields of a service group.
+        
+        @param request: UpdateGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGroupResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.traffic_mode):
+            body['TrafficMode'] = request.traffic_mode
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateGroup',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/groups/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(group_name)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_group_with_options_async(
+        self,
+        cluster_id: str,
+        group_name: str,
+        request: eas_20210701_models.UpdateGroupRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.UpdateGroupResponse:
+        """
+        @summary Updates the specific fields of a service group.
+        
+        @param request: UpdateGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGroupResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.traffic_mode):
+            body['TrafficMode'] = request.traffic_mode
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateGroup',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/groups/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(group_name)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_group(
+        self,
+        cluster_id: str,
+        group_name: str,
+        request: eas_20210701_models.UpdateGroupRequest,
+    ) -> eas_20210701_models.UpdateGroupResponse:
+        """
+        @summary Updates the specific fields of a service group.
+        
+        @param request: UpdateGroupRequest
+        @return: UpdateGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_group_with_options(cluster_id, group_name, request, headers, runtime)
+
+    async def update_group_async(
+        self,
+        cluster_id: str,
+        group_name: str,
+        request: eas_20210701_models.UpdateGroupRequest,
+    ) -> eas_20210701_models.UpdateGroupResponse:
+        """
+        @summary Updates the specific fields of a service group.
+        
+        @param request: UpdateGroupRequest
+        @return: UpdateGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_group_with_options_async(cluster_id, group_name, request, headers, runtime)
 
     def update_resource_with_options(
         self,
