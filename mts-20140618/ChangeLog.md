@@ -1,3 +1,8 @@
+2025-05-12 Version: 5.0.3
+- Update API AddSmarttagTemplate: add request parameters TemplateConfig.
+- Update API UpdateSmarttagTemplate: add request parameters TemplateConfig.
+
+
 2025-03-17 Version: 5.0.2
 - Update API AddSmarttagTemplate: add param LabelCustomCategoryIds.
 - Update API AddSmarttagTemplate: add param LabelCustomParamsConfig.

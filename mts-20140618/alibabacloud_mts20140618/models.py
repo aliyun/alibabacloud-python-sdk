@@ -1342,6 +1342,7 @@ class AddSmarttagTemplateRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         scene: str = None,
+        template_config: str = None,
         template_name: str = None,
     ):
         # This parameter is required.
@@ -1365,6 +1366,7 @@ class AddSmarttagTemplateRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         # This parameter is required.
         self.scene = scene
+        self.template_config = template_config
         # This parameter is required.
         self.template_name = template_name
 
@@ -1413,6 +1415,8 @@ class AddSmarttagTemplateRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.scene is not None:
             result['Scene'] = self.scene
+        if self.template_config is not None:
+            result['TemplateConfig'] = self.template_config
         if self.template_name is not None:
             result['TemplateName'] = self.template_name
         return result
@@ -1455,6 +1459,8 @@ class AddSmarttagTemplateRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('Scene') is not None:
             self.scene = m.get('Scene')
+        if m.get('TemplateConfig') is not None:
+            self.template_config = m.get('TemplateConfig')
         if m.get('TemplateName') is not None:
             self.template_name = m.get('TemplateName')
         return self
@@ -44939,6 +44945,7 @@ class UpdateSmarttagTemplateRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         scene: str = None,
+        template_config: str = None,
         template_id: str = None,
         template_name: str = None,
     ):
@@ -44958,6 +44965,7 @@ class UpdateSmarttagTemplateRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.scene = scene
+        self.template_config = template_config
         # This parameter is required.
         self.template_id = template_id
         self.template_name = template_name
@@ -45003,6 +45011,8 @@ class UpdateSmarttagTemplateRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.scene is not None:
             result['Scene'] = self.scene
+        if self.template_config is not None:
+            result['TemplateConfig'] = self.template_config
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
         if self.template_name is not None:
@@ -45043,6 +45053,8 @@ class UpdateSmarttagTemplateRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('Scene') is not None:
             self.scene = m.get('Scene')
+        if m.get('TemplateConfig') is not None:
+            self.template_config = m.get('TemplateConfig')
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
         if m.get('TemplateName') is not None:
