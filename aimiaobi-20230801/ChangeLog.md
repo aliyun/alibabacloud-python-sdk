@@ -1,3 +1,11 @@
+2025-05-12 Version: 1.22.7
+- Update API ListGeneratedContents: add request parameters DataType.
+- Update API ListGeneratedContents: add response parameters Body.Data.$.FileAttr.
+- Update API ListGeneratedContents: add response parameters Body.Data.$.FileKey.
+- Update API ListMaterialDocuments: add response parameters Body.Data.$.FileAttr.
+- Update API ListMaterialDocuments: add response parameters Body.Data.$.FileKey.
+
+
 2025-05-08 Version: 1.22.6
 - Update API ListDatasetDocuments: add response parameters Body.Data.$.CreateTime.
 - Update API ListDatasetDocuments: add response parameters Body.Data.$.UpdateTime.

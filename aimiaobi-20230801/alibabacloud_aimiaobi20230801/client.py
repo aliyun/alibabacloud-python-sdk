@@ -6918,6 +6918,8 @@ class Client(OpenApiClient):
             body['ContentDomain'] = request.content_domain
         if not UtilClient.is_unset(request.current):
             body['Current'] = request.current
+        if not UtilClient.is_unset(request.data_type):
+            body['DataType'] = request.data_type
         if not UtilClient.is_unset(request.end_time):
             body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.query):
@@ -6971,6 +6973,8 @@ class Client(OpenApiClient):
             body['ContentDomain'] = request.content_domain
         if not UtilClient.is_unset(request.current):
             body['Current'] = request.current
+        if not UtilClient.is_unset(request.data_type):
+            body['DataType'] = request.data_type
         if not UtilClient.is_unset(request.end_time):
             body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.query):

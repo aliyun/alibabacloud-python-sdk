@@ -17682,6 +17682,7 @@ class ListGeneratedContentsRequest(TeaModel):
         agent_key: str = None,
         content_domain: str = None,
         current: int = None,
+        data_type: str = None,
         end_time: str = None,
         query: str = None,
         size: int = None,
@@ -17693,6 +17694,7 @@ class ListGeneratedContentsRequest(TeaModel):
         self.agent_key = agent_key
         self.content_domain = content_domain
         self.current = current
+        self.data_type = data_type
         self.end_time = end_time
         self.query = query
         self.size = size
@@ -17715,6 +17717,8 @@ class ListGeneratedContentsRequest(TeaModel):
             result['ContentDomain'] = self.content_domain
         if self.current is not None:
             result['Current'] = self.current
+        if self.data_type is not None:
+            result['DataType'] = self.data_type
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.query is not None:
@@ -17737,6 +17741,8 @@ class ListGeneratedContentsRequest(TeaModel):
             self.content_domain = m.get('ContentDomain')
         if m.get('Current') is not None:
             self.current = m.get('Current')
+        if m.get('DataType') is not None:
+            self.data_type = m.get('DataType')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('Query') is not None:
@@ -17752,6 +17758,51 @@ class ListGeneratedContentsRequest(TeaModel):
         return self
 
 
+class ListGeneratedContentsResponseBodyDataFileAttr(TeaModel):
+    def __init__(
+        self,
+        file_name: str = None,
+        height: int = None,
+        tmp_url: str = None,
+        width: int = None,
+    ):
+        self.file_name = file_name
+        self.height = height
+        self.tmp_url = tmp_url
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.tmp_url is not None:
+            result['TmpUrl'] = self.tmp_url
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('TmpUrl') is not None:
+            self.tmp_url = m.get('TmpUrl')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
 class ListGeneratedContentsResponseBodyData(TeaModel):
     def __init__(
         self,
@@ -17761,6 +17812,8 @@ class ListGeneratedContentsResponseBodyData(TeaModel):
         create_time: str = None,
         create_user: str = None,
         device_id: str = None,
+        file_attr: ListGeneratedContentsResponseBodyDataFileAttr = None,
+        file_key: str = None,
         id: int = None,
         keyword_list: List[str] = None,
         keywords: str = None,
@@ -17777,6 +17830,8 @@ class ListGeneratedContentsResponseBodyData(TeaModel):
         self.create_time = create_time
         self.create_user = create_user
         self.device_id = device_id
+        self.file_attr = file_attr
+        self.file_key = file_key
         self.id = id
         self.keyword_list = keyword_list
         self.keywords = keywords
@@ -17788,7 +17843,8 @@ class ListGeneratedContentsResponseBodyData(TeaModel):
         self.uuid = uuid
 
     def validate(self):
-        pass
+        if self.file_attr:
+            self.file_attr.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -17808,6 +17864,10 @@ class ListGeneratedContentsResponseBodyData(TeaModel):
             result['CreateUser'] = self.create_user
         if self.device_id is not None:
             result['DeviceId'] = self.device_id
+        if self.file_attr is not None:
+            result['FileAttr'] = self.file_attr.to_map()
+        if self.file_key is not None:
+            result['FileKey'] = self.file_key
         if self.id is not None:
             result['Id'] = self.id
         if self.keyword_list is not None:
@@ -17842,6 +17902,11 @@ class ListGeneratedContentsResponseBodyData(TeaModel):
             self.create_user = m.get('CreateUser')
         if m.get('DeviceId') is not None:
             self.device_id = m.get('DeviceId')
+        if m.get('FileAttr') is not None:
+            temp_model = ListGeneratedContentsResponseBodyDataFileAttr()
+            self.file_attr = temp_model.from_map(m['FileAttr'])
+        if m.get('FileKey') is not None:
+            self.file_key = m.get('FileKey')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('KeywordList') is not None:
@@ -20653,6 +20718,63 @@ class ListMaterialDocumentsShrinkRequest(TeaModel):
         return self
 
 
+class ListMaterialDocumentsResponseBodyDataFileAttr(TeaModel):
+    def __init__(
+        self,
+        duration: float = None,
+        file_length: int = None,
+        file_name: str = None,
+        height: int = None,
+        mime_type: str = None,
+        width: int = None,
+    ):
+        self.duration = duration
+        self.file_length = file_length
+        self.file_name = file_name
+        self.height = height
+        self.mime_type = mime_type
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.file_length is not None:
+            result['FileLength'] = self.file_length
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.mime_type is not None:
+            result['MimeType'] = self.mime_type
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('FileLength') is not None:
+            self.file_length = m.get('FileLength')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('MimeType') is not None:
+            self.mime_type = m.get('MimeType')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
 class ListMaterialDocumentsResponseBodyData(TeaModel):
     def __init__(
         self,
@@ -20663,6 +20785,8 @@ class ListMaterialDocumentsResponseBodyData(TeaModel):
         doc_keywords: List[str] = None,
         doc_type: str = None,
         external_url: str = None,
+        file_attr: ListMaterialDocumentsResponseBodyDataFileAttr = None,
+        file_key: str = None,
         html_content: str = None,
         id: int = None,
         pub_time: str = None,
@@ -20685,6 +20809,8 @@ class ListMaterialDocumentsResponseBodyData(TeaModel):
         self.doc_keywords = doc_keywords
         self.doc_type = doc_type
         self.external_url = external_url
+        self.file_attr = file_attr
+        self.file_key = file_key
         self.html_content = html_content
         self.id = id
         self.pub_time = pub_time
@@ -20701,7 +20827,8 @@ class ListMaterialDocumentsResponseBodyData(TeaModel):
         self.url = url
 
     def validate(self):
-        pass
+        if self.file_attr:
+            self.file_attr.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -20723,6 +20850,10 @@ class ListMaterialDocumentsResponseBodyData(TeaModel):
             result['DocType'] = self.doc_type
         if self.external_url is not None:
             result['ExternalUrl'] = self.external_url
+        if self.file_attr is not None:
+            result['FileAttr'] = self.file_attr.to_map()
+        if self.file_key is not None:
+            result['FileKey'] = self.file_key
         if self.html_content is not None:
             result['HtmlContent'] = self.html_content
         if self.id is not None:
@@ -20769,6 +20900,11 @@ class ListMaterialDocumentsResponseBodyData(TeaModel):
             self.doc_type = m.get('DocType')
         if m.get('ExternalUrl') is not None:
             self.external_url = m.get('ExternalUrl')
+        if m.get('FileAttr') is not None:
+            temp_model = ListMaterialDocumentsResponseBodyDataFileAttr()
+            self.file_attr = temp_model.from_map(m['FileAttr'])
+        if m.get('FileKey') is not None:
+            self.file_key = m.get('FileKey')
         if m.get('HtmlContent') is not None:
             self.html_content = m.get('HtmlContent')
         if m.get('Id') is not None:
