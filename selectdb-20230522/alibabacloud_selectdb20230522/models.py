@@ -712,13 +712,190 @@ class CreateDBClusterResponse(TeaModel):
         return self
 
 
+class CreateDBClusterBindingRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        dbcluster_id_bak: str = None,
+        dbinstance_id: str = None,
+        region_id: str = None,
+    ):
+        # The cluster ID.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The cluster ID.
+        # 
+        # This parameter is required.
+        self.dbcluster_id_bak = dbcluster_id_bak
+        # The instance ID.
+        # 
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        # The region ID
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.dbcluster_id_bak is not None:
+            result['DBClusterIdBak'] = self.dbcluster_id_bak
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DBClusterIdBak') is not None:
+            self.dbcluster_id_bak = m.get('DBClusterIdBak')
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class CreateDBClusterBindingResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        db_cluster_id: str = None,
+        db_instance_id: str = None,
+        db_instance_name: str = None,
+    ):
+        # The cluster ID.
+        self.db_cluster_id = db_cluster_id
+        # The numeric ID.
+        self.db_instance_id = db_instance_id
+        # The instance ID.
+        self.db_instance_name = db_instance_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.db_cluster_id is not None:
+            result['DbClusterId'] = self.db_cluster_id
+        if self.db_instance_id is not None:
+            result['DbInstanceId'] = self.db_instance_id
+        if self.db_instance_name is not None:
+            result['DbInstanceName'] = self.db_instance_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbClusterId') is not None:
+            self.db_cluster_id = m.get('DbClusterId')
+        if m.get('DbInstanceId') is not None:
+            self.db_instance_id = m.get('DbInstanceId')
+        if m.get('DbInstanceName') is not None:
+            self.db_instance_name = m.get('DbInstanceName')
+        return self
+
+
+class CreateDBClusterBindingResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: CreateDBClusterBindingResponseBodyData = None,
+        request_id: str = None,
+    ):
+        # The data returned.
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = CreateDBClusterBindingResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateDBClusterBindingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDBClusterBindingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDBClusterBindingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateDBInstanceRequestMultiZone(TeaModel):
     def __init__(
         self,
         v_switch_ids: List[str] = None,
         zone_id: str = None,
     ):
+        # The vSwitch IDs.
         self.v_switch_ids = v_switch_ids
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -783,6 +960,7 @@ class CreateDBInstanceRequestTag(TeaModel):
 class CreateDBInstanceRequest(TeaModel):
     def __init__(
         self,
+        add_vpcips: str = None,
         cache_size: int = None,
         charge_type: str = None,
         client_token: str = None,
@@ -804,6 +982,7 @@ class CreateDBInstanceRequest(TeaModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        self.add_vpcips = add_vpcips
         # The reserved cache size.
         # 
         # This parameter is required.
@@ -819,23 +998,30 @@ class CreateDBInstanceRequest(TeaModel):
         self.client_token = client_token
         # The instance endpoint.
         self.connection_string = connection_string
-        # The specifications of the instance. Valid values:
-        # 
-        # *   **selectdb.xlarge**: 4 CPU cores and 32 GB of memory
-        # *   **selectdb.2xlarge**: 8 CPU cores and 64 GB of memory
-        # *   **selectdb.4xlarge**: 16 CPU cores and 128 GB of memory
+        # The instance type. You can call the [DescribeAllDBInstanceClass](https://help.aliyun.com/document_detail/2853363.html) operation to query instance types.
         # 
         # This parameter is required.
         self.dbinstance_class = dbinstance_class
         # The instance description.
         self.dbinstance_description = dbinstance_description
+        # The deployment method of the instance.
+        # 
+        # Valid values:
+        # 
+        # *   multi_az
+        # *   single_az
         self.deploy_scheme = deploy_scheme
         # The database engine of the instance. Default value: **selectdb**.
         self.engine = engine
-        # The database engine version of the instance. Default value: **2.4**.
+        # The database engine version of the instance. Default value: **3.0**.
         # 
         # This parameter is required.
         self.engine_version = engine_version
+        # The configurations of multi-zone deployment.
+        # 
+        # > 
+        # 
+        # *   This parameter takes effect and is required only when DeployScheme is set to multi_az.
         self.multi_zone = multi_zone
         # The unit of the subscription duration of the cluster. Valid values:
         # 
@@ -855,10 +1041,10 @@ class CreateDBInstanceRequest(TeaModel):
         self.security_iplist = security_iplist
         # The instance tags.
         self.tag = tag
-        # The subscription duration of the instance.
+        # The subscription duration of the instance. Valid values:
         # 
-        # *   Valid values when Period is set to Year: 1, 2, 3, and 5 (integer)
-        # *   Valid values when Period is set to Month: 1 to 9 (integer)
+        # *   If Period is set to Year, valid values of UsedTime are 1, 2, 3, 4, and 5.
+        # *   If Period is set to Month, valid values of UsedTime are 1 to 12.
         # 
         # >  This parameter takes effect and is required only when **ChargeType** is set to **Prepaid**.
         self.used_time = used_time
@@ -891,6 +1077,8 @@ class CreateDBInstanceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.add_vpcips is not None:
+            result['AddVPCIPs'] = self.add_vpcips
         if self.cache_size is not None:
             result['CacheSize'] = self.cache_size
         if self.charge_type is not None:
@@ -939,6 +1127,8 @@ class CreateDBInstanceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AddVPCIPs') is not None:
+            self.add_vpcips = m.get('AddVPCIPs')
         if m.get('CacheSize') is not None:
             self.cache_size = m.get('CacheSize')
         if m.get('ChargeType') is not None:
@@ -991,6 +1181,7 @@ class CreateDBInstanceRequest(TeaModel):
 class CreateDBInstanceShrinkRequest(TeaModel):
     def __init__(
         self,
+        add_vpcips: str = None,
         cache_size: int = None,
         charge_type: str = None,
         client_token: str = None,
@@ -1012,6 +1203,7 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        self.add_vpcips = add_vpcips
         # The reserved cache size.
         # 
         # This parameter is required.
@@ -1027,23 +1219,30 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         self.client_token = client_token
         # The instance endpoint.
         self.connection_string = connection_string
-        # The specifications of the instance. Valid values:
-        # 
-        # *   **selectdb.xlarge**: 4 CPU cores and 32 GB of memory
-        # *   **selectdb.2xlarge**: 8 CPU cores and 64 GB of memory
-        # *   **selectdb.4xlarge**: 16 CPU cores and 128 GB of memory
+        # The instance type. You can call the [DescribeAllDBInstanceClass](https://help.aliyun.com/document_detail/2853363.html) operation to query instance types.
         # 
         # This parameter is required.
         self.dbinstance_class = dbinstance_class
         # The instance description.
         self.dbinstance_description = dbinstance_description
+        # The deployment method of the instance.
+        # 
+        # Valid values:
+        # 
+        # *   multi_az
+        # *   single_az
         self.deploy_scheme = deploy_scheme
         # The database engine of the instance. Default value: **selectdb**.
         self.engine = engine
-        # The database engine version of the instance. Default value: **2.4**.
+        # The database engine version of the instance. Default value: **3.0**.
         # 
         # This parameter is required.
         self.engine_version = engine_version
+        # The configurations of multi-zone deployment.
+        # 
+        # > 
+        # 
+        # *   This parameter takes effect and is required only when DeployScheme is set to multi_az.
         self.multi_zone_shrink = multi_zone_shrink
         # The unit of the subscription duration of the cluster. Valid values:
         # 
@@ -1063,10 +1262,10 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         self.security_iplist = security_iplist
         # The instance tags.
         self.tag_shrink = tag_shrink
-        # The subscription duration of the instance.
+        # The subscription duration of the instance. Valid values:
         # 
-        # *   Valid values when Period is set to Year: 1, 2, 3, and 5 (integer)
-        # *   Valid values when Period is set to Month: 1 to 9 (integer)
+        # *   If Period is set to Year, valid values of UsedTime are 1, 2, 3, 4, and 5.
+        # *   If Period is set to Month, valid values of UsedTime are 1 to 12.
         # 
         # >  This parameter takes effect and is required only when **ChargeType** is set to **Prepaid**.
         self.used_time = used_time
@@ -1092,6 +1291,8 @@ class CreateDBInstanceShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.add_vpcips is not None:
+            result['AddVPCIPs'] = self.add_vpcips
         if self.cache_size is not None:
             result['CacheSize'] = self.cache_size
         if self.charge_type is not None:
@@ -1136,6 +1337,8 @@ class CreateDBInstanceShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AddVPCIPs') is not None:
+            self.add_vpcips = m.get('AddVPCIPs')
         if m.get('CacheSize') is not None:
             self.cache_size = m.get('CacheSize')
         if m.get('ChargeType') is not None:
@@ -1785,6 +1988,130 @@ class DeleteDBClusterResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteDBClusterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteDBClusterBindingRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        dbcluster_id_bak: str = None,
+        dbinstance_id: str = None,
+        region_id: str = None,
+    ):
+        # The ID of Cluster 1.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The ID of Cluster 2.
+        # 
+        # This parameter is required.
+        self.dbcluster_id_bak = dbcluster_id_bak
+        # The instance ID.
+        # 
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        # The region ID.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.dbcluster_id_bak is not None:
+            result['DBClusterIdBak'] = self.dbcluster_id_bak
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DBClusterIdBak') is not None:
+            self.dbcluster_id_bak = m.get('DBClusterIdBak')
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DeleteDBClusterBindingResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteDBClusterBindingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteDBClusterBindingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteDBClusterBindingResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5690,6 +6017,7 @@ class GetModifyBEClusterInquiryRequest(TeaModel):
         commodity_code: str = None,
         compute_size: int = None,
         db_instance_id: str = None,
+        modify_cluster_charge_type: bool = None,
         pre_cache_size: int = None,
         pre_compute_size: int = None,
         pricing_cycle: str = None,
@@ -5717,7 +6045,7 @@ class GetModifyBEClusterInquiryRequest(TeaModel):
         # *   selectdb_pre_public_intl: subscription commodity on the international site (alibabacloud.com)
         # *   selectdb_go_public_cn: pay-as-you-go commodity on the China site (aliyun.com)
         # *   selectdb_go_public_intl: pay-as-you-go commodity on the international site (alibabacloud.com)
-        # *   selectdb_pre_public_cn: subscription commodity on the China site (aliyun.com).
+        # *   selectdb_pre_public_cn: subscription commodity on the China site (aliyun.com)
         # 
         # This parameter is required.
         self.commodity_code = commodity_code
@@ -5727,6 +6055,7 @@ class GetModifyBEClusterInquiryRequest(TeaModel):
         # 
         # This parameter is required.
         self.db_instance_id = db_instance_id
+        self.modify_cluster_charge_type = modify_cluster_charge_type
         # The size of the reserved cache.
         self.pre_cache_size = pre_cache_size
         # The number of reserved CPU cores.
@@ -5774,6 +6103,8 @@ class GetModifyBEClusterInquiryRequest(TeaModel):
             result['ComputeSize'] = self.compute_size
         if self.db_instance_id is not None:
             result['DbInstanceId'] = self.db_instance_id
+        if self.modify_cluster_charge_type is not None:
+            result['ModifyClusterChargeType'] = self.modify_cluster_charge_type
         if self.pre_cache_size is not None:
             result['PreCacheSize'] = self.pre_cache_size
         if self.pre_compute_size is not None:
@@ -5802,6 +6133,8 @@ class GetModifyBEClusterInquiryRequest(TeaModel):
             self.compute_size = m.get('ComputeSize')
         if m.get('DbInstanceId') is not None:
             self.db_instance_id = m.get('DbInstanceId')
+        if m.get('ModifyClusterChargeType') is not None:
+            self.modify_cluster_charge_type = m.get('ModifyClusterChargeType')
         if m.get('PreCacheSize') is not None:
             self.pre_cache_size = m.get('PreCacheSize')
         if m.get('PreComputeSize') is not None:
@@ -5821,10 +6154,12 @@ class GetModifyBEClusterInquiryResponseBodyData(TeaModel):
     def __init__(
         self,
         currency: str = None,
+        refund_amount: str = None,
         trade_amount: str = None,
     ):
         # The currency.
         self.currency = currency
+        self.refund_amount = refund_amount
         # The amount of money.
         self.trade_amount = trade_amount
 
@@ -5839,6 +6174,8 @@ class GetModifyBEClusterInquiryResponseBodyData(TeaModel):
         result = dict()
         if self.currency is not None:
             result['Currency'] = self.currency
+        if self.refund_amount is not None:
+            result['RefundAmount'] = self.refund_amount
         if self.trade_amount is not None:
             result['TradeAmount'] = self.trade_amount
         return result
@@ -5847,6 +6184,8 @@ class GetModifyBEClusterInquiryResponseBodyData(TeaModel):
         m = m or dict()
         if m.get('Currency') is not None:
             self.currency = m.get('Currency')
+        if m.get('RefundAmount') is not None:
+            self.refund_amount = m.get('RefundAmount')
         if m.get('TradeAmount') is not None:
             self.trade_amount = m.get('TradeAmount')
         return self
@@ -5945,6 +6284,11 @@ class ModifyBEClusterAttributeRequest(TeaModel):
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The attribute type of the instance. Set this parameter to DBInstanceDescription.
+        # 
+        # Valid values:
+        # 
+        # *   MaintainTime
+        # *   DBInstanceDescription
         # 
         # This parameter is required.
         self.instance_attribute_type = instance_attribute_type

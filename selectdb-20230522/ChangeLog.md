@@ -1,3 +1,11 @@
+2025-05-12 Version: 4.3.0
+- Support API CreateDBClusterBinding.
+- Support API DeleteDBClusterBinding.
+- Update API CreateDBInstance: add request parameters AddVPCIPs.
+- Update API GetModifyBEClusterInquiry: add request parameters ModifyClusterChargeType.
+- Update API GetModifyBEClusterInquiry: add response parameters Body.Data.RefundAmount.
+
+
 2025-04-08 Version: 4.2.1
 - Update API CreateDBInstance: add request parameters DeployScheme.
 - Update API CreateDBInstance: add request parameters MultiZone.
