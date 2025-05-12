@@ -4004,7 +4004,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateCenterPolicyResponse:
         """
-        @summary 创建无地域策略
+        @summary Creates a center policy.
         
         @param request: CreateCenterPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4239,7 +4239,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateCenterPolicyResponse:
         """
-        @summary 创建无地域策略
+        @summary Creates a center policy.
         
         @param request: CreateCenterPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4473,7 +4473,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateCenterPolicyRequest,
     ) -> ecd_20200930_models.CreateCenterPolicyResponse:
         """
-        @summary 创建无地域策略
+        @summary Creates a center policy.
         
         @param request: CreateCenterPolicyRequest
         @return: CreateCenterPolicyResponse
@@ -4486,7 +4486,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateCenterPolicyRequest,
     ) -> ecd_20200930_models.CreateCenterPolicyResponse:
         """
-        @summary 创建无地域策略
+        @summary Creates a center policy.
         
         @param request: CreateCenterPolicyRequest
         @return: CreateCenterPolicyResponse
@@ -13314,6 +13314,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.reseller_owner_uid):
             query['ResellerOwnerUid'] = request.reseller_owner_uid
+        if not UtilClient.is_unset(request.resource_specs):
+            query['ResourceSpecs'] = request.resource_specs
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.root_disk_size_gib):
@@ -13363,6 +13365,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.reseller_owner_uid):
             query['ResellerOwnerUid'] = request.reseller_owner_uid
+        if not UtilClient.is_unset(request.resource_specs):
+            query['ResourceSpecs'] = request.resource_specs
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.root_disk_size_gib):
@@ -17402,7 +17406,7 @@ class Client(OpenApiClient):
         """
         @summary Obtains the credential that is used to connect to a cloud desktop.
         
-        @description The cloud computer must be in the Running state.
+        @description The cloud computer must be in the Running state. The ticket obtained by calling this operation will expire in 10 minutes.
         
         @param request: GetConnectionTicketRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17457,7 +17461,7 @@ class Client(OpenApiClient):
         """
         @summary Obtains the credential that is used to connect to a cloud desktop.
         
-        @description The cloud computer must be in the Running state.
+        @description The cloud computer must be in the Running state. The ticket obtained by calling this operation will expire in 10 minutes.
         
         @param request: GetConnectionTicketRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17511,7 +17515,7 @@ class Client(OpenApiClient):
         """
         @summary Obtains the credential that is used to connect to a cloud desktop.
         
-        @description The cloud computer must be in the Running state.
+        @description The cloud computer must be in the Running state. The ticket obtained by calling this operation will expire in 10 minutes.
         
         @param request: GetConnectionTicketRequest
         @return: GetConnectionTicketResponse
@@ -17526,7 +17530,7 @@ class Client(OpenApiClient):
         """
         @summary Obtains the credential that is used to connect to a cloud desktop.
         
-        @description The cloud computer must be in the Running state.
+        @description The cloud computer must be in the Running state. The ticket obtained by calling this operation will expire in 10 minutes.
         
         @param request: GetConnectionTicketRequest
         @return: GetConnectionTicketResponse

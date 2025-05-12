@@ -6514,7 +6514,7 @@ class CreateCenterPolicyRequestDeviceRules(TeaModel):
         # 
         # Valid values:
         # 
-        # *   usbKey: U keys.
+        # *   usbKey: UKeys.
         # *   other: other peripheral devices.
         # *   graphicsTablet: graphics tablets.
         # *   cardReader: card readers.
@@ -6533,9 +6533,9 @@ class CreateCenterPolicyRequestDeviceRules(TeaModel):
         # 
         # Valid values:
         # 
-        # *   deviceRedirect: enables device redirection.
-        # *   usbRedirect: enables USB redirection.
-        # *   off: disables any type of redirection.
+        # *   deviceRedirect: device redirection.
+        # *   usbRedirect: USB redirection.
+        # *   off: redirection disabled.
         self.redirect_type = redirect_type
 
     def validate(self):
@@ -6871,7 +6871,7 @@ class CreateCenterPolicyRequest(TeaModel):
         # 
         # Valid values:
         # 
-        # *   1: public cloud.
+        # *   1: public cloud
         # *   8: commercial edition.
         # 
         # This parameter is required.
@@ -6955,12 +6955,12 @@ class CreateCenterPolicyRequest(TeaModel):
         # *   off: disables the domain resolution policy.
         # *   on: enables the domain resolution policy.
         self.domain_resolve_rule_type = domain_resolve_rule_type
-        # Specifies whether to enforce session bandwidth limit.
+        # Specifies whether to enforce the peak bandwidth limit for sessions.
         # 
         # Valid values:
         # 
-        # *   off: doesn\\"t enforce session bandwidth limit.
-        # *   on: enforces session bandwidth limit.
+        # *   off: doesn\\"t enforce the peak bandwidth limit for sessions.
+        # *   on: enforces the peak bandwidth limit for sessions.
         self.enable_session_rate_limiting = enable_session_rate_limiting
         # Specifies whether to enable end users to request administrator help.
         # 
@@ -6969,12 +6969,12 @@ class CreateCenterPolicyRequest(TeaModel):
         # *   off: disables end users to request administrator help.
         # *   on: enables end users to request administrator help.
         self.end_user_apply_admin_coordinate = end_user_apply_admin_coordinate
-        # Specifies whether end users in the same workspace can share cloud computers.
+        # Specifies whether to allow end users in the same office network to share cloud computers.
         # 
         # Valid values:
         # 
-        # *   off: End users in the same workspace cannot share cloud computers.
-        # *   on: End users in the same workspace can share cloud computers
+        # *   off: doesn\\"t allow end users in the same office network to share cloud computers.
+        # *   on: allows end users in the same office network to share cloud computers.
         self.end_user_group_coordinate = end_user_group_coordinate
         # Specifies whether to enable file transfer.
         self.file_migrate = file_migrate
@@ -6985,7 +6985,7 @@ class CreateCenterPolicyRequest(TeaModel):
         # *   off: doesn\\"t enable image quality control.
         # *   on: enables image quality control.
         self.gpu_acceleration = gpu_acceleration
-        # The file transfer policy on the web client.
+        # The file transfer feature on the web client.
         # 
         # Valid values:
         # 
@@ -6994,14 +6994,14 @@ class CreateCenterPolicyRequest(TeaModel):
         # *   upload: Only file upload is supported.
         # *   off (default): File upload and download are not supported.
         self.html_5file_transfer = html_5file_transfer
-        # The network communication protocol.
+        # The protocol for network communication.
         # 
         # Valid values:
         # 
         # *   tcp: TCP is used when UDP/AST is restricted.
         # *   rtc: AST is used for high-frequency audio and video streaming.
-        # *   auto: UTO enables automatic switch between AST and UDP modes based on desktop content.
-        # *   both: UDP is ideal for office and HD graphic design use.
+        # *   auto: UTO is used to enable automatic switch between AST and UDP modes based on desktop content.
+        # *   both: UDP is used for office and HD graphic design use.
         self.internet_communication_protocol = internet_communication_protocol
         self.internet_printer = internet_printer
         # The read/write permissions on the on-premises drive.
@@ -7031,7 +7031,7 @@ class CreateCenterPolicyRequest(TeaModel):
         self.memory_sample_duration = memory_sample_duration
         # The memory usage per process. Valid values: 30 to 60. Unit: %.
         self.memory_single_rate_limit = memory_single_rate_limit
-        # Specifies whether to display the Restart button in the DesktopAssistant menu when end users connect to cloud computers from mobile clients (Android clients and iOS clients).
+        # Specifies whether to display the Restart button in the DesktopAssistant menu when end users connect to cloud computers from Android clients.
         # 
         # >  This feature applies to only mobile clients of version 7.4.0 or later.
         # 
@@ -7040,7 +7040,7 @@ class CreateCenterPolicyRequest(TeaModel):
         # *   off: doesn\\"t display the Restart button in the DesktopAssistant menu.
         # *   on: displays the Restart button in the DesktopAssistant menu.
         self.mobile_restart = mobile_restart
-        # Specifies whether to display the Stop button in the DesktopAssistant menu when end users connect to cloud computers from mobile clients (Android clients and iOS clients).
+        # Specifies whether to display the Stop button in the DesktopAssistant menu when end users connect to cloud computers from Android clients.
         # 
         # >  This feature applies to only mobile clients of version 7.4.0 or later.
         # 
@@ -7063,7 +7063,7 @@ class CreateCenterPolicyRequest(TeaModel):
         # *   off (default): disables network redirection.
         # *   on: enables the whitelist mode.
         self.net_redirect = net_redirect
-        # The network redirection policies.
+        # The network redirection policy.
         # 
         # >  This parameter is in private preview and only available to specific users.
         self.net_redirect_rule = net_redirect_rule
@@ -7101,7 +7101,7 @@ class CreateCenterPolicyRequest(TeaModel):
         self.record_event_file_paths = record_event_file_paths
         # The absolute paths to screen recording registries.
         self.record_event_registers = record_event_registers
-        # The event that triggers screen recording.
+        # The events that trigger screen recording.
         self.record_events = record_events
         # The screen recording policy.
         # 
@@ -7152,7 +7152,7 @@ class CreateCenterPolicyRequest(TeaModel):
         self.remote_coordinate = remote_coordinate
         # The computer reset setting.
         self.reset_desktop = reset_desktop
-        # The height of the resolution. Unit: pixel. Valid values for cloud applications: 500 to 50000. Valid values for cloud computers: 480 to 4096.
+        # The resolution height. Unit: pixel. Valid values for cloud applications: 500 to 50000. Valid values for cloud computers: 480 to 4096.
         self.resolution_height = resolution_height
         # The resolution type.
         # 
@@ -7161,14 +7161,14 @@ class CreateCenterPolicyRequest(TeaModel):
         # *   adaptive: adaptive resolution.
         # *   customer: fixed resolution.
         self.resolution_model = resolution_model
-        # The width of the resolution. Unit: pixel. Valid values for cloud applications: 500 to 50000. Valid values for cloud computers: 480 to 4096.
+        # The resolution width. Unit: pixel. Valid values for cloud applications: 500 to 50000. Valid values for cloud computers: 480 to 4096.
         self.resolution_width = resolution_width
         # The resource type.
         # 
         # Valid values:
         # 
         # *   app: cloud applications.
-        # *   Desktop: cloud computers.
+        # *   desktop: cloud computers.
         # 
         # This parameter is required.
         self.resource_type = resource_type
@@ -7182,7 +7182,7 @@ class CreateCenterPolicyRequest(TeaModel):
         self.scope = scope
         # The effective scopes. This parameter is required when `Scope` is set to `IP`. If `Scope` is set to `IP`, this parameter doesn\\"t take effect.
         self.scope_value = scope_value
-        # The bandwidth peak of the session. Valid values: 2000 to 100000.
+        # The bandwidth peak allowed for sessions. Unit: Kbit/s. Valid values: 2000 to 100000.
         self.session_max_rate_kbps = session_max_rate_kbps
         # Specifies whether to enable smoothness enhancement for daily office use.
         # 
@@ -7225,13 +7225,13 @@ class CreateCenterPolicyRequest(TeaModel):
         self.usb_redirect = usb_redirect
         # The USB redirection rules.
         self.usb_supply_redirect_rule = usb_supply_redirect_rule
-        # The average bitrate for video encoding. Valid values: 1000 to 50000.
+        # The average bitrate for video encoding. Unit: Kbit/s. Valid values: 1000 to 50000.
         self.video_enc_avg_kbps = video_enc_avg_kbps
         # The maximum QP for video files. Higher QP values result in lower video quality. Valid values: 0 to 51.
         self.video_enc_max_qp = video_enc_max_qp
         # The minimum quantizer parameter (QP) for video files. A lower QP means better video quality. Valid values: 0 to 51.
         self.video_enc_min_qp = video_enc_min_qp
-        # The peak bitrate for video encoding. Valid values: 1000 to 50000.
+        # The peak bitrate for video encoding. Unit: Kbit/s. Valid values: 1000 to 50000.
         self.video_enc_peak_kbps = video_enc_peak_kbps
         # The video encoding policy.
         # 
@@ -12421,22 +12421,22 @@ class CreatePolicyGroupRequestDeviceRules(TeaModel):
     ):
         # The device name.
         self.device_name = device_name
-        # The product ID.
+        # The product ID (PID).
         self.device_pid = device_pid
         # The peripheral type.
         # 
         # Valid values:
         # 
-        # *   usbKey
-        # *   other
-        # *   graphicsTablet
-        # *   printer
-        # *   cardReader
-        # *   scanner
-        # *   storage
-        # *   camera
-        # *   adb
-        # *   networkInterfaceCard: the NIC device.
+        # *   usbKey: UKeys.
+        # *   other: other peripheral devices.
+        # *   graphicsTablet: graphics tablets.
+        # *   printer: printers.
+        # *   cardReader: card readers.
+        # *   scanner: scanners.
+        # *   storage: storage devices.
+        # *   camera: web cameras.
+        # *   adb: Android Debug Bridge (ADB) devices.
+        # *   networkInterfaceCard: NIC devices.
         self.device_type = device_type
         # The vendor ID (VID). For more information, see [Valid USB VIDs](https://www.usb.org/sites/default/files/vendor_ids032322.pdf_1.pdf).
         self.device_vid = device_vid
@@ -16448,15 +16448,16 @@ class DescribeAclEntriesRequest(TeaModel):
         source_id: str = None,
         source_type: str = None,
     ):
-        # The number of entries per page. Maximum value: 1600.
+        # The number of entries per page.
         # 
-        # Default value: 1600.
+        # *   Maximum value: 1600.
+        # *   Default value: 1600.
         self.max_results = max_results
         # The token that is used for the next query. If this parameter is empty, all results have been returned.
         self.next_token = next_token
         # The office network ID.
         self.office_site_id = office_site_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -16524,7 +16525,7 @@ class DescribeAclEntriesResponseBodyAclEntries(TeaModel):
         # *   allow: whitelist
         # *   disable: blacklist
         self.policy = policy
-        # The ID of the instance to which the ACL applies, such as an office network ID or a cloud computer ID.
+        # The ID of the instance to which the ACL applies. You can specify an office network ID or a cloud computer ID.
         self.source_id = source_id
         # The granularity of the ACL.
         # 
@@ -17353,11 +17354,13 @@ class DescribeBundlesResponseBodyBundles(TeaModel):
         self.bundle_type = bundle_type
         # The time when the cloud computer template was created.
         self.creation_time = creation_time
-        # The category of the data disk. Valid values:
+        # The category of the data disk.
         # 
-        # *   cloud_efficiency: ultra disk
-        # *   cloud_auto: SSD
-        # *   cloud_essd: ESSD (supported by specific specifications)
+        # Valid values:
+        # 
+        # *   cloud_efficiency: the ultra disk
+        # *   cloud_auto: the standard SSD.
+        # *   cloud_essd: the ESSD. Take note that only specific cloud computer types support ESSDs.
         self.data_disk_category = data_disk_category
         # The description of the cloud computer template.
         self.description = description
@@ -17478,11 +17481,13 @@ class DescribeBundlesResponseBodyBundles(TeaModel):
         self.session_type = session_type
         # The inventory status of the cloud computer instance type. This parameter is returned only if you set the `CheckStock` parameter to `true`.
         self.stock_state = stock_state
-        # The category of the system disk. Valid values:
+        # The category of the system disk.
         # 
-        # *   cloud_efficiency: ultra disk
-        # *   cloud_auto: SSD
-        # *   cloud_essd: ESSD (supported by specific specifications)
+        # Valid values:
+        # 
+        # *   cloud_efficiency: the ultra disk
+        # *   cloud_auto: the standard SSD.
+        # *   cloud_essd: the Enterprise SSD (ESSD). Take note that only specific cloud computer types support ESSDs.
         self.system_disk_category = system_disk_category
         # Indicates whether disk encryption is enabled.
         self.volume_encryption_enabled = volume_encryption_enabled
@@ -17611,7 +17616,7 @@ class DescribeBundlesResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The details of the cloud computer templates.
+        # The cloud computer templates.
         self.bundles = bundles
         # The token that is used for the next query. If this parameter is empty, all results have been returned.
         self.next_token = next_token
@@ -18250,7 +18255,7 @@ class DescribeCenterPolicyListRequest(TeaModel):
         # 
         # Valid values:
         # 
-        # *   1: public cloud.
+        # *   1: public cloud
         # *   8: commercial edition.
         # 
         # This parameter is required.
@@ -18863,13 +18868,13 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(TeaModel):
         self.domain_resolve_rule_type = domain_resolve_rule_type
         # Indicates whether end users are allowed to request administrator help.
         self.end_user_apply_admin_coordinate = end_user_apply_admin_coordinate
-        # Indicates whether end users in the same workspace can share cloud computers.
+        # Indicates whether end users in the same office network can share cloud computers.
         self.end_user_group_coordinate = end_user_group_coordinate
         # Indicates whether image quality control is enabled. For optimal computer performance and user experience in professional design scenarios, we recommend enabling this feature.
         self.gpu_acceleration = gpu_acceleration
         # The web client access policy.
         self.html_5access = html_5access
-        # The file transfer policy of the HTML5 client.
+        # The file transfer feature on the web client.
         self.html_5file_transfer = html_5file_transfer
         # The network communication protocol.
         self.internet_communication_protocol = internet_communication_protocol
@@ -18890,11 +18895,11 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(TeaModel):
         self.memory_sample_duration = memory_sample_duration
         # The memory usage per process. Valid values: 30 to 60. Unit: %.
         self.memory_single_rate_limit = memory_single_rate_limit
-        # Indicates whether the Restart button is displayed in the DesktopAssistant menu when end users connect to cloud computers from mobile clients (Android clients and iOS clients).
+        # Indicates whether the Restart button is displayed in the DesktopAssistant menu when end users connect to cloud computers from Android clients.
         # 
         # >  This feature applies to only mobile clients of version 7.4.0 or later.
         self.mobile_restart = mobile_restart
-        # Indicates whether the Stop button is displayed in the DesktopAssistant menu when end users connect to cloud computers from mobile clients (Android clients and iOS clients).
+        # Indicates whether the Stop button is displayed in the DesktopAssistant menu when end users connect to cloud computers from Android clients.
         # 
         # >  This feature applies to only mobile clients of version 7.4.0 or later.
         self.mobile_shutdown = mobile_shutdown
@@ -18985,13 +18990,13 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(TeaModel):
         self.usb_redirect = usb_redirect
         # The USB redirection rules.
         self.usb_supply_redirect_rule = usb_supply_redirect_rule
-        # The average bitrate for video encoding. Valid values: 1000 to 50000.
+        # The average bitrate for video encoding. Unit: Kbit/s. Valid values: 1000 to 50000.
         self.video_enc_avg_kbps = video_enc_avg_kbps
         # The maximum QP for video files. Higher QP values result in lower video quality. Valid values: 0 to 51.
         self.video_enc_max_qp = video_enc_max_qp
         # The minimum quantizer parameter (QP) for video files. A lower QP means better video quality. Valid values: 0 to 51.
         self.video_enc_min_qp = video_enc_min_qp
-        # The peak bitrate for video encoding. Valid values: 1000 to 50000.
+        # The peak bitrate for video encoding. Unit: Kbit/s. Valid values: 1000 to 50000.
         self.video_enc_peak_kbps = video_enc_peak_kbps
         # The video encoding policy.
         self.video_enc_policy = video_enc_policy
@@ -23610,9 +23615,9 @@ class DescribeDesktopSessionsRequest(TeaModel):
         self.end_time = end_time
         # The ID of the end user.
         self.end_user_id = end_user_id
-        # The ID the end user. It is the same as EndUserId. Either one of these two parameters is required.
+        # The user ID. This parameter functions the same as the `EndUserId` parameter. You only need to include one of them in your request.
         self.end_user_id_filter = end_user_id_filter
-        # The ID of the office network.
+        # The office network ID.
         self.office_site_id = office_site_id
         # The page number.
         self.page_number = page_number
@@ -24002,277 +24007,102 @@ class DescribeDesktopTypesRequest(TeaModel):
         self.applied_scope = applied_scope
         # The number of vCPUs.
         self.cpu_count = cpu_count
-        # The ID of the cloud computer pool when you change instance types of cloud computers. If you specify this parameter, the information about whether the instance type is compatible with the cloud computer pool is included in the response.
+        # The ID of the cloud computer share you want to modify. If this parameter is provided, the response will include compatibility information for the specified specification.
         self.desktop_group_id_for_modify = desktop_group_id_for_modify
         # The ID of the cloud computer when you change instance types of cloud computers. If you specify this parameter, the information about whether the instance type is compatible with the cloud computer is included in the response.
         self.desktop_id_for_modify = desktop_id_for_modify
-        # The IDs of the instance types of cloud computers.
+        # The specification ID.
         # 
-        # >  If the values of the `InstanceTypeFamily` and `DesktopTypeId` parameters are empty, all instance types of cloud computers are queried.
+        # >  If both `InstanceTypeFamily` and `DesktopTypeId` are empty, all cloud computer specifications will be queried.
         # 
         # Valid values:
         # 
+        # *   eds.enterprise_office.4c8g
         # *   eds.hf.4c8g
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   ecd.basic.large
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   ecd.advanced.large
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
+        # *   eds.enterprise_office.8c16g
         # *   ecd.basic.small
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   ecd.graphics.2xlarge
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   eds.hf.8c16g
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   eds.hf.12c24g
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   eds.general.8c16g
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   eds.general.16c32g
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   ecd.advanced.xlarge
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   eds.graphics.16c1t4
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   ecd.graphics.xlarge
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   ecd.performance.2xlarge
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   eds.general.8c32g
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   eds.general.2c2g
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   eds.general.2c4g
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   eds.graphics.24c1t4
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   eds.general.4c8g
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
+        # *   eds.enterprise_office.2c4g
         # *   eds.general.4c16g
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   eds.general.2c8g
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.desktop_type_id = desktop_type_id
-        # The array of specifications.
+        # The specification IDs.
         self.desktop_type_id_list = desktop_type_id_list
         # The number of GPUs.
         self.gpu_count = gpu_count
-        # The type of the pre-installed GPU driver. Valid values:
+        # The GPU driver type.
         # 
-        # - T4
-        # - A10
-        # - G28
-        # - G39
+        # Valid values:
+        # 
+        # *   T4
+        # *   A10
+        # *   G28
+        # *   G39
         self.gpu_driver_type = gpu_driver_type
         # The GPU memory size. Unit: MB.
         self.gpu_memory = gpu_memory
-        # The name of the instance family.
+        # The name of the specification family.
         # 
-        # >  If the values of the `InstanceTypeFamily` and `DesktopTypeId` parameters are empty, all instance families of cloud computers are queried.
+        # >  If both `InstanceTypeFamily` and `DesktopTypeId` are empty, all specification families will be queried.
         # 
         # Valid values:
         # 
         # *   ecd.advanced
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   eds.graphics
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   ecd.basic
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
+        # *   eds.enterprise_office
         # *   eds.hf
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   ecd.graphics
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   eds.general
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   ecd.performance
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.instance_type_family = instance_type_family
         # The memory size. Unit: MiB.
         self.memory_size = memory_size
-        # The sort criterion. If left empty, the entries will be in descending order based on the creation time. Valid values:
+        # The sorting field. If this parameter is not provided, results are sorted by creation time in descending order.
         # 
-        # - Memory: sort by memory size
-        # - Cpu: sort by number of CPU cores
+        # Valid values:
+        # 
+        # *   Memory: sorts by memory size.
+        # *   Cpu: sorts by the number of vCPUs.
         self.order_by = order_by
         # The order type.
         self.order_type = order_type
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The sales mode. Valid values:
+        # The sales mode of the specification.
         # 
-        # - MonthPackage: monthly subscription
-        # - FastBuy: fast buy
+        # Valid values:
+        # 
+        # *   MonthPackage: the monthly subscription mode.
+        # *   FastBuy: the quick purchase mode.
         self.scope = scope
-        # The sort order. Valid values:
+        # The sorting order.
         # 
-        # - ASC: in ascending order [default]
-        # - DESC: in descending order
+        # Valid values:
+        # 
+        # *   ASC (default): the ascending order.
+        # *   DESC: the descending order.
         self.sort_type = sort_type
-        # The number of sessions supported.
+        # The number of sessions supported by the specification.
         self.support_min_session_count = support_min_session_count
-        # > This parameter is not publicly available.
+        # >  This parameter is not publicly available.
         self.zone_id = zone_id
 
     def validate(self):
@@ -24390,19 +24220,24 @@ class DescribeDesktopTypesResponseBodyDesktopTypes(TeaModel):
         self.desktop_type_status = desktop_type_status
         # The number of GPUs.
         self.gpu_count = gpu_count
-        # The GPU memory size. Unit: MB. This parameter applies to GPU-enabled cloud computers only.
+        # The GPU memory size. For GPU-accelerated cloud computers, this return value is significant. Unit: MB.
         self.gpu_memory = gpu_memory
         # The GPU memory.
         self.gpu_spec = gpu_spec
         # The family of the cloud desktop type.
         self.instance_type_family = instance_type_family
-        # The number of sessions supported by the current specification.
+        # The number of sessions supported by the specification.
         self.max_session_count = max_session_count
         # The memory size. Unit: MiB.
         self.memory_size = memory_size
-        # The array of sales modes.
+        # The sales modes of the specifications.
         self.scopes = scopes
-        # The stock status.
+        # The inventory status of the specification.
+        # 
+        # Valid values:
+        # 
+        # *   Insufficient
+        # *   Sufficient
         self.stock_state = stock_state
         # The size of the system disk. Unit: GiB.
         self.system_disk_size = system_disk_size
@@ -24481,7 +24316,7 @@ class DescribeDesktopTypesResponseBody(TeaModel):
         desktop_types: List[DescribeDesktopTypesResponseBodyDesktopTypes] = None,
         request_id: str = None,
     ):
-        # Details of cloud desktop types.
+        # The specifications.
         self.desktop_types = desktop_types
         # The ID of the request.
         self.request_id = request_id
@@ -29412,7 +29247,7 @@ class DescribeImageModifiedRecordsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details about the image modification record.
+        # The image change records.
         self.image_modified_records = image_modified_records
         # If the NextToken parameter is empty, no next page exists.
         self.next_token = next_token
@@ -30177,49 +30012,53 @@ class DescribeInvocationsRequest(TeaModel):
         next_token: str = None,
         region_id: str = None,
     ):
-        # The type of the command. Valid values:
-        # 
-        # *   RunBatScript
-        # *   RunPowerShellScript
-        self.command_type = command_type
-        # The encoding method of the command content and output. Valid values:
-        # 
-        # *   PlainText
-        # *   Base64
-        # 
-        # Default value: Base64.
-        self.content_encoding = content_encoding
-        # The ID of the cloud desktop. If you specify a cloud desktop, all the execution records of Cloud Assistant commands on the cloud desktop are queried.
-        self.desktop_id = desktop_id
-        # The IDs of the cloud desktops.
-        self.desktop_ids = desktop_ids
-        # The ID of the end user.
-        self.end_user_id = end_user_id
-        # Specifies whether to return the execution results of all cloud computers if the command is executed on multiple cloud computers.
+        # The command type.
         # 
         # Valid values:
         # 
-        # - true: returned.
-        # - false: not returned.
+        # *   RunPowerShellScript: the PowerShell command.
+        # *   RunBatScript: the Bat command.
+        self.command_type = command_type
+        # The encoding method of the command content and outputs.
+        # 
+        # Valid values:
+        # 
+        # *   Base64 (default): returns the Base64-encoded command content and command outputs.
+        # *   PlainText: returns the original command content and outputs in plain text.
+        self.content_encoding = content_encoding
+        # The cloud computer ID. If you specify a cloud computer, all command execution records of the cloud computer are queried.
+        self.desktop_id = desktop_id
+        # The cloud computer IDs.
+        # 
+        # >  The `DesktopId` parameter will be deprecated. We recommend using the DesktopIds parameter to specify cloud computer IDs instead.
+        self.desktop_ids = desktop_ids
+        # The user ID.
+        self.end_user_id = end_user_id
+        # Specifies whether to return the execution results of the remote command on all cloud computers when executed across multiple cloud computers.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.include_invoke_desktops = include_invoke_desktops
-        # Specifies whether to return command outputs in the response. Valid values:
+        # Specifies whether to return command outputs in the response.
         # 
-        # *   true: returns command outputs.
-        # *   false: does not return command outputs.
+        # Valid values:
         # 
-        # Default value: false.
+        # *   true
+        # *   false (default)
         self.include_output = include_output
-        # The ID of the execution.
+        # The execution ID of the command. You can obtain the value by calling the [RunCommand](~~RunCommand~~) operation.
         self.invoke_id = invoke_id
-        # The overall execution status of a command. The overall execution status is determined by the execution status of the command on one or more cloud desktops. Valid values:
+        # The execution status of the command. The value of this parameter is determined by the execution states of the command on all participating cloud computers.
         # 
-        # *   Running: The execution is in progress on one or more cloud desktops.
-        # *   Finished: The execution is finished on all cloud desktops, or the execution is manually stopped on some cloud desktops and the execution is finished on others.
-        # *   Failed: The execution failed on all cloud desktops.
-        # *   PartialFailed: The execution failed on some cloud desktops.
-        # *   Stopped: The execution is stopped.
+        # Valid values:
         # 
-        # Default value: Running.
+        # *   Finished: The command execution completes on all cloud computers. Alternatively, the command execution is manually stopped on some cloud computers while it completes on the others.
+        # *   Stopped: The command execution stops.
+        # *   Failed: The command execution failed on all cloud computers.
+        # *   Running: Once there is a command execution in progress, the execution status defaults to Running.
+        # *   PartialFailed: If the command execution failed on part of the cloud computers, the execution status is considered partially failed.
         self.invoke_status = invoke_status
         # The number of entries per page.
         # 
@@ -30228,7 +30067,7 @@ class DescribeInvocationsRequest(TeaModel):
         self.max_results = max_results
         # The query token. Set the value to the NextToken value that is returned from the last call to the previous DescribeInvocations operation.
         self.next_token = next_token
-        # The ID of the region.
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -30317,62 +30156,62 @@ class DescribeInvocationsResponseBodyInvocationsInvokeDesktops(TeaModel):
     ):
         # The time when the command execution was performed.
         self.creation_time = creation_time
-        # The ID of the cloud desktop.
+        # The cloud computer ID.
         self.desktop_id = desktop_id
-        # The name of the cloud desktop.
+        # The cloud computer name.
         self.desktop_name = desktop_name
         # The size of the text that is truncated and discarded when the Output value exceeds 24 KB in size.
         self.dropped = dropped
-        # The code that indicates the reason why a command failed to be sent or executed. The valid values include:
+        # The code explaining why the command failed to be sent or executed. Valid values:
         # 
-        # *   If this parameter is empty, the execution is normal.
-        # *   InstanceNotExists: The specified cloud desktop does not exist or is released.
-        # *   InstanceReleased: The cloud desktop is released during the execution.
-        # *   InstanceNotRunning: The cloud desktop is not running during the execution.
-        # *   CommandNotApplicable: The command cannot be used on the cloud desktop.
-        # *   ClientNotRunning: The Cloud Assistant client is not running.
-        # *   ClientNotResponse: The Cloud Assistant client does not respond.
-        # *   ClientIsUpgrading: The Cloud Assistant client is being upgraded.
-        # *   ClientNeedUpgrade: The Cloud Assistant client needs to be upgraded.
-        # *   DeliveryTimeout: The time to send the command in the request times out.
-        # *   ExecutionTimeout: The execution times out.
-        # *   ExecutionException: An exception occurs during the execution.
-        # *   ExecutionInterrupted: The execution is interrupted.
-        # *   ExitCodeNonzero: The execution finishes, but the exit code is not 0.
+        # *   Null: The command is executed successfully.
+        # *   InstanceNotExists: The specified cloud computer does not exist or is released.
+        # *   InstanceReleased: The cloud computer is released during the execution.
+        # *   InstanceNotRunning: The cloud computer is not running during the execution.
+        # *   CommandNotApplicable: The command cannot be executed on the specified cloud computer.
+        # *   ClientNotRunning: The Cloud Assistant agent is not running.
+        # *   ClientNotResponse: The Cloud Assistant agent does not respond.
+        # *   ClientIsUpgrading: The Cloud Assistant agent is being updated.
+        # *   ClientNeedUpgrade: The Cloud Assistant agent needs to be updated.
+        # *   DeliveryTimeout: The command sending times out.
+        # *   ExecutionTimeout: The command execution times out.
+        # *   ExecutionException: An exception occurs when the command is being executed.
+        # *   ExecutionInterrupted: The command execution is interrupted.
+        # *   ExitCodeNonzero: The command execution completes, but the exit code is not 0.
         self.error_code = error_code
-        # Details about the reason why the command failed to be sent or executed. The valid values include:
+        # The message explaining why the command failed to be sent or executed. Valid values:
         # 
-        # *   If this parameter is empty, the execution is normal.
-        # *   the specified instance does not exists: The cloud desktop does not exist or is released.
-        # *   the instance has released when create task: The cloud desktop is released during execution.
-        # *   the instance is not running when create task: The cloud desktop is not running when the execution is being performed.
-        # *   the command is not applicable: The command cannot be used on the specified cloud desktop.
-        # *   the aliyun service is not running on the instance: The Cloud Assistance client is not running.
-        # *   the aliyun service in the instance does not response: The Cloud Assistant client is not responding.
-        # *   the aliyun service in the instance is upgrading now: The Cloud Assistant client is being upgraded.
-        # *   the aliyun service in the instance need upgrade: The Cloud Assistant client needs to be upgraded.
-        # *   the command delivery has been timeout: The command that is sent in the request times out.
-        # *   the command execution has been timeout: The execution times out.
-        # *   the command execution got an exception: An exception occurs when the command is running.
-        # *   the command execution has been interrupted: The execution is interrupted.
-        # *   the command execution exit code is not zero: The execution finishes, but the exit code is not 0.
+        # *   Null: The command is executed successfully.
+        # *   the specified instance does not exists: The specified cloud computer does not exist or is released.
+        # *   the instance has released when create task: The cloud computer is released during the execution.
+        # *   the instance is not running when create task: The cloud computer is not running during the execution.
+        # *   the command is not applicable: The command cannot be executed on the specified cloud computer.
+        # *   the aliyun service is not running on the instance: The Cloud Assistant agent is not running.
+        # *   the aliyun service in the instance does not response: The Cloud Assistant agent does not respond.
+        # *   the aliyun service in the instance is upgrading now: The Cloud Assistant agent is being updated.
+        # *   the aliyun service in the instance need upgrade: The Cloud Assistant agent needs to be updated.
+        # *   the command delivery has been timeout: The command sending times out.
+        # *   the command execution has been timeout: The command execution times out.
+        # *   the command execution got an exception: An exception occurs when the command is being executed.
+        # *   the command execution has been interrupted: The command execution is interrupted.
+        # *   the command execution exit code is not zero: The command execution completes, but the exit code is not 0.
         self.error_info = error_info
         # The exit code of the execution.
         self.exit_code = exit_code
         # The time when the command execution ended.
         self.finish_time = finish_time
-        # The execution status on the cloud desktop.
+        # The execution progress of the command on a single cloud computer.
         self.invocation_status = invocation_status
         # The command output.
         # 
-        # *   If the IncludeOutput parameter is set to false, Output is not returned.
-        # *   If the ContentEncoding parameter is set to Base64, the value of Output is the output information that is encoded in Base64.
+        # *   When the `IncludeOutput` parameter is set to false, the output is not returned.
+        # *   When the `ContentEncoding` parameter is set to Base64, the output is returned as a Base64-encoded string.
         self.output = output
-        # The number of times that the command is executed on the cloud desktop.
+        # The number of times the command has been executed on the cloud computer.
         self.repeats = repeats
-        # The start time of the execution on the cloud desktop.
+        # The start time of the command execution.
         self.start_time = start_time
-        # The time when you called the [StopInvocation](~~196957#doc-api-ecd-StopInvocation~~ "You can call this operation to stop a Cloud Assistant command that is running on one or cloud desktops.") operation to manually stop the command.
+        # The stop time of the command execution (StopInvocatio).
         self.stop_time = stop_time
         # The time when the execution status was updated.
         self.update_time = update_time
@@ -30470,36 +30309,36 @@ class DescribeInvocationsResponseBodyInvocations(TeaModel):
         self.creation_time = creation_time
         # The ID of the end user.
         self.end_user_id = end_user_id
-        # The overall execution status of the command. The overall execution status is determined by the execution status on all involved cloud desktops. The valid values include:
+        # The overall execution status of the command. The value of this parameter depends on the execution status of the command on all the involved cloud computers. Valid values:
         # 
-        # *   Pending: The system is verifying or sending the command. If the execution status on at least one cloud desktop is Pending, the overall execution status is Pending.
+        # *   Pending: The command is being verified or sent. If the execution status is Pending on at least one cloud computer, the overall status is considered Pending.
         # 
-        # *   Running: The execution is in progress on cloud desktops. If the execution status on at least one cloud desktop is Running, the overall execution status is Running.
+        # *   Running: The command is being executed on cloud computers. If the execution status is Running on at least one cloud computer, the overall status is considered Running.
         # 
-        # *   Success: If the execution status on all cloud desktops is Success or Stopped, or the execution status on at least one cloud desktop is Success, the overall execution status is Success.
+        # *   Success: If the execution status is Success on at least one cloud computer and either Success or Stopped on all other cloud computers, the overall status is considered Success.
         # 
-        # *   Failed: If the execution status on all cloud desktops is Stopped or Failed, the overall execution status is Failed. If one or more execution status of a cloud desktop is one of the following values, Failed is returned:
+        # *   Failed: If the execution status is Stopped or Failed on all cloud computers, the overall status is considered Failed. If any execution status on cloud computers matches one of the following values, Failed is returned.
         # 
         #     *   Invalid: The command is invalid.
-        #     *   Aborted: The command fails to be sent.
+        #     *   Aborted: The command failed to be sent.
         #     *   Failed: The command is executed, but the exit code is not 0.
-        #     *   Timeout: The command times out.
-        #     *   Error: An error occurs in the command.
+        #     *   Timeout: The command execution timed out.
+        #     *   Error: An error occurred when the command is being executed.
         # 
-        # *   Stopping: The execution is being stopped. If the execution status on at least one cloud desktop is Stopping, the overall execution state is Stopping.
+        # *   Stopping: The command execution is being stopped. If the execution status is Stopping on at least one cloud computer, the overall status is considered Stopping.
         # 
-        # *   Stopped: The execution is stopped. If the execution status on all cloud desktops is Stopped, the overall execution state is Stopped. If the execution status on a cloud desktop is one of the following values, Stopped is returned:
+        # *   Stopped: The command execution stops. If the execution status is Stopped on at least one cloud computer, the overall status is considered Stopped. If any execution status on cloud computers matches one of the following values, Stopped is returned.
         # 
-        #     *   Cancelled: The execution is canceled.
-        #     *   Terminated: The execution is terminated.
+        #     *   Cancelled: The command execution is canceled.
+        #     *   Terminated: The command execution is terminated.
         # 
-        # *   PartialFailed: The execution succeeded on some cloud desktops and failed on others. If the execution status on different cloud desktops is Success, Failed, or Stopped, the overall execution state is PartialFailed.
+        # *   PartialFailed: The command execution succeeded on some cloud computers but failed on others. If the execution status on any cloud computer is Success, Failed, or Stopped, the overall status is considered PartialFailed.
         self.invocation_status = invocation_status
         # The total number of cloud computers on which the command is executed.
         self.invoke_desktop_count = invoke_desktop_count
-        # The total number of cloud computers on which the command is executed successfully.
+        # The total number of cloud computers on which the command execution succeeds.
         self.invoke_desktop_succeed_count = invoke_desktop_succeed_count
-        # The cloud desktops on which the command is executed.
+        # The cloud computers on which the command is executed.
         self.invoke_desktops = invoke_desktops
         # The ID of the execution.
         self.invoke_id = invoke_id
@@ -30571,7 +30410,7 @@ class DescribeInvocationsResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # Details about execution records of the command.
+        # The command execution records.
         self.invocations = invocations
         # The query token that is returned from this call.
         self.next_token = next_token
@@ -30830,6 +30669,45 @@ class DescribeKmsKeysResponse(TeaModel):
         return self
 
 
+class DescribeModificationPriceRequestResourceSpecs(TeaModel):
+    def __init__(
+        self,
+        desktop_id: str = None,
+        root_disk_size_gib: int = None,
+        user_disk_size_gib: int = None,
+    ):
+        self.desktop_id = desktop_id
+        self.root_disk_size_gib = root_disk_size_gib
+        self.user_disk_size_gib = user_disk_size_gib
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.desktop_id is not None:
+            result['DesktopId'] = self.desktop_id
+        if self.root_disk_size_gib is not None:
+            result['RootDiskSizeGib'] = self.root_disk_size_gib
+        if self.user_disk_size_gib is not None:
+            result['UserDiskSizeGib'] = self.user_disk_size_gib
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DesktopId') is not None:
+            self.desktop_id = m.get('DesktopId')
+        if m.get('RootDiskSizeGib') is not None:
+            self.root_disk_size_gib = m.get('RootDiskSizeGib')
+        if m.get('UserDiskSizeGib') is not None:
+            self.user_disk_size_gib = m.get('UserDiskSizeGib')
+        return self
+
+
 class DescribeModificationPriceRequest(TeaModel):
     def __init__(
         self,
@@ -30838,6 +30716,7 @@ class DescribeModificationPriceRequest(TeaModel):
         instance_type: str = None,
         region_id: str = None,
         reseller_owner_uid: int = None,
+        resource_specs: List[DescribeModificationPriceRequestResourceSpecs] = None,
         resource_type: str = None,
         root_disk_size_gib: int = None,
         user_disk_size_gib: int = None,
@@ -30878,6 +30757,7 @@ class DescribeModificationPriceRequest(TeaModel):
         # This parameter is required.
         self.region_id = region_id
         self.reseller_owner_uid = reseller_owner_uid
+        self.resource_specs = resource_specs
         # The resource type. The required parameters depend on the resource type.
         # 
         # *   When `ResourceType` is set to `Desktop`, the required parameters are `InstanceType`, `RootDiskSizeGib`, and `UserDiskSizeGib`.
@@ -30894,7 +30774,10 @@ class DescribeModificationPriceRequest(TeaModel):
         self.user_disk_size_gib = user_disk_size_gib
 
     def validate(self):
-        pass
+        if self.resource_specs:
+            for k in self.resource_specs:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -30912,6 +30795,10 @@ class DescribeModificationPriceRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.reseller_owner_uid is not None:
             result['ResellerOwnerUid'] = self.reseller_owner_uid
+        result['ResourceSpecs'] = []
+        if self.resource_specs is not None:
+            for k in self.resource_specs:
+                result['ResourceSpecs'].append(k.to_map() if k else None)
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
         if self.root_disk_size_gib is not None:
@@ -30932,6 +30819,11 @@ class DescribeModificationPriceRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ResellerOwnerUid') is not None:
             self.reseller_owner_uid = m.get('ResellerOwnerUid')
+        self.resource_specs = []
+        if m.get('ResourceSpecs') is not None:
+            for k in m.get('ResourceSpecs'):
+                temp_model = DescribeModificationPriceRequestResourceSpecs()
+                self.resource_specs.append(temp_model.from_map(k))
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
         if m.get('RootDiskSizeGib') is not None:
@@ -31237,9 +31129,9 @@ class DescribeNASFileSystemsRequest(TeaModel):
         office_site_id: str = None,
         region_id: str = None,
     ):
-        # The IDs of the NAS file system.
+        # The IDs of the NAS file systems.
         self.file_system_id = file_system_id
-        # Specifies whether to filter NAS file systems that only support the user profile management (UPM) feature.
+        # Specifies whether to include only NAS file systems that support the User Profile Management (UPM) feature in the query results.
         self.match_compatible_profile = match_compatible_profile
         # The number of entries to return on each page.
         # 
@@ -31249,9 +31141,9 @@ class DescribeNASFileSystemsRequest(TeaModel):
         self.max_results = max_results
         # The token that determines the start point of the query.
         self.next_token = next_token
-        # The ID of the workspace.
+        # The ID of the office network.
         self.office_site_id = office_site_id
-        # The ID of the region.
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -31337,9 +31229,9 @@ class DescribeNASFileSystemsResponseBodyFileSystemsDesktopGroups(TeaModel):
         desktop_group_id: str = None,
         desktop_group_name: str = None,
     ):
-        # The ID of the desktop group.
+        # The ID of the cloud computer share.
         self.desktop_group_id = desktop_group_id
-        # The name of the desktop group.
+        # The name of the cloud computer share.
         self.desktop_group_name = desktop_group_name
 
     def validate(self):
@@ -31428,9 +31320,9 @@ class DescribeNASFileSystemsResponseBodyFileSystems(TeaModel):
         support_acl: bool = None,
         zone_id: str = None,
     ):
-        # > This parameter is not publicly available.
+        # >  This parameter is not publicly available.
         self.allow_operate_user_drive = allow_operate_user_drive
-        # The array of the app steaming delivery groups bound with UPM-supported NAS.
+        # The application delivery groups that are associated with the UPM-supported NAS file systems.
         self.app_instance_groups = app_instance_groups
         # The total capacity of the NAS file system. Unit: GiB.
         # 
@@ -31441,7 +31333,7 @@ class DescribeNASFileSystemsResponseBodyFileSystems(TeaModel):
         self.create_time = create_time
         # The description of the NAS file system.
         self.description = description
-        # The desktop groups that are associated with the NAS file systems that support the UPM feature.
+        # The cloud computer shares that are associated with the UPM-supported NAS file systems.
         self.desktop_groups = desktop_groups
         # Indicates whether disk encryption is enabled.
         self.encryption_enabled = encryption_enabled
@@ -31458,9 +31350,9 @@ class DescribeNASFileSystemsResponseBodyFileSystems(TeaModel):
         # *   Deleted: The NAS file system is deleted.
         # *   Invalid: The NAS file system is invalid.
         self.file_system_status = file_system_status
-        # The type of the NAS file system. Valid value: Universal NAS. This value indicates that the NAS file system is a General-purpose one.
+        # The type of the NAS file system. The only valid value is `standard`.
         self.file_system_type = file_system_type
-        # The used storage of the NAS file system. Unit: byte.
+        # The used capacity of the NAS file system. Unit: bytes.
         self.metered_size = metered_size
         # The domain name of the mount target.
         self.mount_target_domain = mount_target_domain
@@ -31472,20 +31364,22 @@ class DescribeNASFileSystemsResponseBodyFileSystems(TeaModel):
         # *   Deleting: The mount target is being deleted.
         # *   Invalid: The mount target is invalid.
         self.mount_target_status = mount_target_status
-        # The ID of the workspace.
+        # The ID of the office network.
         self.office_site_id = office_site_id
-        # The name of the workspace.
+        # The name of the office network.
         self.office_site_name = office_site_name
-        # The array of office networks.
+        # The office networks.
         self.office_sites = office_sites
         # Indicates whether the User Profile Management (UPM) feature is supported.
         self.profile_compatible = profile_compatible
         # The ID of the region.
         self.region_id = region_id
-        # The storage type of the NAS file system. Valid values:
+        # The storage type of the NAS file system.
         # 
-        # - Upm: UPM NAS
-        # - ShareNas: Shared NAS
+        # Valid values:
+        # 
+        # *   Upm: the UPM-supported NAS file system.
+        # *   ShareNas: the shared NAS file system.
         self.scene = scene
         # The storage type of the NAS file system. Valid values:
         # 
@@ -31638,7 +31532,7 @@ class DescribeNASFileSystemsResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # Details about the NAS file systems.
+        # The NAS file systems.
         self.file_systems = file_systems
         # The token that determines the start point of the next query. This parameter is empty if no additional results exist.
         self.next_token = next_token
@@ -34725,7 +34619,7 @@ class DescribePolicyGroupsResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.count = count
-        # The details of the cloud computer policies.
+        # The cloud computer policies.
         self.describe_policy_groups = describe_policy_groups
         # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
@@ -42179,7 +42073,7 @@ class GetConnectionTicketResponseBody(TeaModel):
         self.desktop_id = desktop_id
         # The ID of the request.
         self.request_id = request_id
-        # The credential that is returned to connect to the cloud computer. Before you use the credential, you must Base64 decode the content of the credential, save the credential as an xxx.ica file, and then open the file. Python sample code:
+        # Before you use the credential, you must Base64 decode the content of the credential, save the credential as an xxx.ica file, and then open the file. Python sample code:
         # 
         #     import base64
         #     response = {
@@ -42193,7 +42087,7 @@ class GetConnectionTicketResponseBody(TeaModel):
         self.task_code = task_code
         # The ID of the cloud computer connection task.
         self.task_id = task_id
-        # The ID of the cloud computer connection task.
+        # The ID of the connection task.
         self.task_message = task_message
         # The task status.
         # 
@@ -42223,7 +42117,7 @@ class GetConnectionTicketResponseBody(TeaModel):
         # 
         #     <!-- -->
         self.task_status = task_status
-        # The credential of the cloud computer connection.
+        # The credentials for connecting to the cloud computer.
         self.ticket = ticket
 
     def validate(self):
@@ -46330,11 +46224,11 @@ class ModifyADConnectorOfficeSiteRequest(TeaModel):
     ):
         # The hostname of the domain controller. The hostname must comply with the naming conventions for hostnames in Windows.
         self.ad_hostname = ad_hostname
-        # The hostname of the backup domain controller.
+        # The hostname of the secondary domain controller.
         self.backup_dchostname = backup_dchostname
-        # The DNS address of the backup domain controller.
+        # The IP address of the DNS server corresponding to the secondary domain controller.
         self.backup_dns = backup_dns
-        # Details of the IP addresses of the Domain Name System (DNS) servers that correspond to the enterprise AD system. You can specify only one IP address.
+        # The IP addresses of the DNS servers corresponding to the enterprise ADs. You can specify only one DNS IP address.
         self.dns_address = dns_address
         # The domain name of the enterprise AD system. You can register each domain name only once.
         self.domain_name = domain_name
@@ -46372,11 +46266,11 @@ class ModifyADConnectorOfficeSiteRequest(TeaModel):
         self.office_site_id = office_site_id
         # The office network name. The name must be 2 to 255 characters in length. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
         self.office_site_name = office_site_name
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The DNS address of the subdomain in the enterprise AD domain. You can specify only one DNS address. If you configure `SubDomainName` and leave this parameter empty, the value is the same as that of the enterprise AD domain.
+        # The IP addresses of the DNS servers corresponding to the enterprise AD subdomains. You can specify only one DNS IP address. If you specify `SubDomainName` and leave this parameter empty, the value is the same as that of the enterprise AD domain.
         self.sub_domain_dns_address = sub_domain_dns_address
         # The name of the subdomain in the enterprise AD domain.
         self.sub_domain_name = sub_domain_name
@@ -47779,7 +47673,7 @@ class ModifyCenterPolicyRequestDeviceRules(TeaModel):
         # 
         # Valid values:
         # 
-        # *   usbKey: UKeys
+        # *   usbKey: UKeys.
         # *   other: other peripheral devices.
         # *   graphicsTablet: graphics tablets.
         # *   cardReader: card readers.
@@ -47798,9 +47692,9 @@ class ModifyCenterPolicyRequestDeviceRules(TeaModel):
         # 
         # Valid values:
         # 
-        # *   deviceRedirect: device redirection
+        # *   deviceRedirect: device redirection.
         # *   usbRedirect: USB redirection.
-        # *   off: any type of redirection.
+        # *   off: redirection disabled.
         self.redirect_type = redirect_type
 
     def validate(self):
@@ -53758,7 +53652,7 @@ class ModifyPolicyGroupRequestAuthorizeAccessPolicyRule(TeaModel):
         cidr_ip: str = None,
         description: str = None,
     ):
-        # The client CIDR block from which end users can connect to cloud computers. The value is an IPv4 CIDR block.
+        # The client CIDR block. Specify an IPv4 CIDR block.
         # 
         # This parameter is required.
         self.cidr_ip = cidr_ip
@@ -54003,16 +53897,16 @@ class ModifyPolicyGroupRequestDeviceRules(TeaModel):
         # 
         # Valid values:
         # 
-        # *   usbKey
-        # *   other
-        # *   graphicsTablet
-        # *   printer
-        # *   cardReader
-        # *   scanner
-        # *   storage
-        # *   camera
-        # *   adb
-        # *   networkInterfaceCard: the NIC device
+        # *   usbKey: UKeys
+        # *   other: other peripheral devices.
+        # *   graphicsTablet: graphics tablets.
+        # *   printer: printers.
+        # *   cardReader: card readers.
+        # *   scanner: scanners.
+        # *   storage: storage devices.
+        # *   camera: web cameras.
+        # *   adb: Android Debug Bridge (ADB) device
+        # *   networkInterfaceCard: NIC devices.
         self.device_type = device_type
         # The vendor ID (VID). For more information, see [Valid USB VIDs](https://www.usb.org/sites/default/files/vendor_ids032322.pdf_1.pdf).
         self.device_vid = device_vid
@@ -54024,7 +53918,7 @@ class ModifyPolicyGroupRequestDeviceRules(TeaModel):
         # Valid values:
         # 
         # *   deviceRedirect: device redirection
-        # *   usbRedirect: USB redirection
+        # *   usbRedirect: USB redirection.
         # *   off: redirection disabled
         self.redirect_type = redirect_type
 
@@ -54079,11 +53973,11 @@ class ModifyPolicyGroupRequestDomainResolveRule(TeaModel):
         domain: str = None,
         policy: str = None,
     ):
-        # The description of domain name resolution rule.
+        # The policy description.
         self.description = description
         # The domain name.
         self.domain = domain
-        # Specifies whether to allow the domain name resolution rule.
+        # The resolution policy.
         # 
         # Valid values:
         # 
@@ -54125,9 +54019,9 @@ class ModifyPolicyGroupRequestRevokeAccessPolicyRule(TeaModel):
         cidr_ip: str = None,
         description: str = None,
     ):
-        # The client CIDR block that you want to delete. After it is deleted, end users cannot connect to cloud computers from the CIDR block. The value is an IPv4 CIDR block.
+        # The client CIDR block that you want to delete. Specify an IPv4 CIDR block.
         self.cidr_ip = cidr_ip
-        # The description of the client IP addresses that you want to delete from the whitelist.
+        # The description of the client IP address whitelist that you want to delete.
         self.description = description
 
     def validate(self):
@@ -54404,7 +54298,7 @@ class ModifyPolicyGroupRequest(TeaModel):
         # *   off (default)
         # *   on
         self.app_content_protection = app_content_protection
-        # The client IP address whitelist.
+        # The client IP address whitelists.
         self.authorize_access_policy_rule = authorize_access_policy_rule
         # The security group rules.
         self.authorize_security_policy_rule = authorize_security_policy_rule
@@ -54437,7 +54331,7 @@ class ModifyPolicyGroupRequest(TeaModel):
         # *   off
         # *   on
         self.domain_list = domain_list
-        # The details of the domain name resolution rules.
+        # The domain resolution rules.
         self.domain_resolve_rule = domain_resolve_rule
         # The type of the domain name resolution rule.
         # 
@@ -54609,7 +54503,7 @@ class ModifyPolicyGroupRequest(TeaModel):
         # *   fullControl: You are granted the full permissions.
         # *   disableControl: You are not granted the permissions.
         self.remote_coordinate = remote_coordinate
-        # The client IP addresses that you want to delete from the whitelist.
+        # The client IP address whitelists that you want to delete.
         self.revoke_access_policy_rule = revoke_access_policy_rule
         # The security group rules that you want to delete.
         self.revoke_security_policy_rule = revoke_security_policy_rule
@@ -54712,14 +54606,12 @@ class ModifyPolicyGroupRequest(TeaModel):
         # *   HostName: the rightmost 15 digits of the cloud computer ID
         # *   ClientTime: the current time displayed on the cloud computer
         self.watermark_type = watermark_type
-        # Specifies whether to provide the AI Assistant function in the DesktopAssistant when the cloud computer is accessed from the Alibaba Cloud Workspace desktop clients (including the Windows client and the macOS client).
-        # 
-        # > Desktop clients of V7.7 and higher versions required.
+        # Specifies whether to display the Xiaoying AI Assistant entry in the DesktopAssistant menu.
         # 
         # Valid values:
         # 
-        # - off: the AI Aisstant function is not provided.
-        # - on: the AI Aisstant function is provided.
+        # *   off: does not display the Xiaoying AI Assistant entry in the DesktopAssistant menu.
+        # *   on: displays the Xiaoying AI Assistant entry in the DesktopAssistant menu.
         self.wy_assistant = wy_assistant
 
     def validate(self):
@@ -61405,9 +61297,9 @@ class UploadImageRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The size of the system disk. Unit: GB.
+        # The size of the system disk. Unit: GiB.
         # 
-        # > The size of the system disk cannot be smaller than the size of the image.
+        # >  The system disk must be at least as large as the image.
         self.system_disk_size = system_disk_size
 
     def validate(self):
