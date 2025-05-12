@@ -4,6 +4,316 @@ from Tea.model import TeaModel
 from typing import List, Dict, Any
 
 
+class WritingStyleTemplateDefineExample(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class WritingStyleTemplateFieldEnums(TeaModel):
+    def __init__(
+        self,
+        cascading_fields: List[str] = None,
+        key: str = None,
+        name: str = None,
+    ):
+        self.cascading_fields = cascading_fields
+        self.key = key
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cascading_fields is not None:
+            result['CascadingFields'] = self.cascading_fields
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CascadingFields') is not None:
+            self.cascading_fields = m.get('CascadingFields')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class WritingStyleTemplateFieldStyle(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        format: str = None,
+        placeholder: str = None,
+        show_time: bool = None,
+        suffix: str = None,
+        type: str = None,
+    ):
+        self.description = description
+        self.format = format
+        self.placeholder = placeholder
+        self.show_time = show_time
+        self.suffix = suffix
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.format is not None:
+            result['Format'] = self.format
+        if self.placeholder is not None:
+            result['Placeholder'] = self.placeholder
+        if self.show_time is not None:
+            result['ShowTime'] = self.show_time
+        if self.suffix is not None:
+            result['Suffix'] = self.suffix
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Format') is not None:
+            self.format = m.get('Format')
+        if m.get('Placeholder') is not None:
+            self.placeholder = m.get('Placeholder')
+        if m.get('ShowTime') is not None:
+            self.show_time = m.get('ShowTime')
+        if m.get('Suffix') is not None:
+            self.suffix = m.get('Suffix')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class WritingStyleTemplateField(TeaModel):
+    def __init__(
+        self,
+        build_in: bool = None,
+        cascading_fields: List['WritingStyleTemplateField'] = None,
+        enums: List[WritingStyleTemplateFieldEnums] = None,
+        initial_value: str = None,
+        key: str = None,
+        max: float = None,
+        max_item: int = None,
+        max_item_length: int = None,
+        max_length: int = None,
+        min: float = None,
+        min_item_length: int = None,
+        min_length: int = None,
+        name: str = None,
+        required: bool = None,
+        style: WritingStyleTemplateFieldStyle = None,
+    ):
+        self.build_in = build_in
+        self.cascading_fields = cascading_fields
+        self.enums = enums
+        self.initial_value = initial_value
+        self.key = key
+        self.max = max
+        self.max_item = max_item
+        self.max_item_length = max_item_length
+        self.max_length = max_length
+        self.min = min
+        self.min_item_length = min_item_length
+        self.min_length = min_length
+        self.name = name
+        self.required = required
+        self.style = style
+
+    def validate(self):
+        if self.cascading_fields:
+            for k in self.cascading_fields:
+                if k:
+                    k.validate()
+        if self.enums:
+            for k in self.enums:
+                if k:
+                    k.validate()
+        if self.style:
+            self.style.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.build_in is not None:
+            result['BuildIn'] = self.build_in
+        result['CascadingFields'] = []
+        if self.cascading_fields is not None:
+            for k in self.cascading_fields:
+                result['CascadingFields'].append(k.to_map() if k else None)
+        result['Enums'] = []
+        if self.enums is not None:
+            for k in self.enums:
+                result['Enums'].append(k.to_map() if k else None)
+        if self.initial_value is not None:
+            result['InitialValue'] = self.initial_value
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.max is not None:
+            result['Max'] = self.max
+        if self.max_item is not None:
+            result['MaxItem'] = self.max_item
+        if self.max_item_length is not None:
+            result['MaxItemLength'] = self.max_item_length
+        if self.max_length is not None:
+            result['MaxLength'] = self.max_length
+        if self.min is not None:
+            result['Min'] = self.min
+        if self.min_item_length is not None:
+            result['MinItemLength'] = self.min_item_length
+        if self.min_length is not None:
+            result['MinLength'] = self.min_length
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.required is not None:
+            result['Required'] = self.required
+        if self.style is not None:
+            result['Style'] = self.style.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BuildIn') is not None:
+            self.build_in = m.get('BuildIn')
+        self.cascading_fields = []
+        if m.get('CascadingFields') is not None:
+            for k in m.get('CascadingFields'):
+                temp_model = WritingStyleTemplateField()
+                self.cascading_fields.append(temp_model.from_map(k))
+        self.enums = []
+        if m.get('Enums') is not None:
+            for k in m.get('Enums'):
+                temp_model = WritingStyleTemplateFieldEnums()
+                self.enums.append(temp_model.from_map(k))
+        if m.get('InitialValue') is not None:
+            self.initial_value = m.get('InitialValue')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Max') is not None:
+            self.max = m.get('Max')
+        if m.get('MaxItem') is not None:
+            self.max_item = m.get('MaxItem')
+        if m.get('MaxItemLength') is not None:
+            self.max_item_length = m.get('MaxItemLength')
+        if m.get('MaxLength') is not None:
+            self.max_length = m.get('MaxLength')
+        if m.get('Min') is not None:
+            self.min = m.get('Min')
+        if m.get('MinItemLength') is not None:
+            self.min_item_length = m.get('MinItemLength')
+        if m.get('MinLength') is not None:
+            self.min_length = m.get('MinLength')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Required') is not None:
+            self.required = m.get('Required')
+        if m.get('Style') is not None:
+            temp_model = WritingStyleTemplateFieldStyle()
+            self.style = temp_model.from_map(m['Style'])
+        return self
+
+
+class WritingStyleTemplateDefine(TeaModel):
+    def __init__(
+        self,
+        example: List[WritingStyleTemplateDefineExample] = None,
+        fields: List[WritingStyleTemplateField] = None,
+    ):
+        self.example = example
+        self.fields = fields
+
+    def validate(self):
+        if self.example:
+            for k in self.example:
+                if k:
+                    k.validate()
+        if self.fields:
+            for k in self.fields:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Example'] = []
+        if self.example is not None:
+            for k in self.example:
+                result['Example'].append(k.to_map() if k else None)
+        result['Fields'] = []
+        if self.fields is not None:
+            for k in self.fields:
+                result['Fields'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.example = []
+        if m.get('Example') is not None:
+            for k in m.get('Example'):
+                temp_model = WritingStyleTemplateDefineExample()
+                self.example.append(temp_model.from_map(k))
+        self.fields = []
+        if m.get('Fields') is not None:
+            for k in m.get('Fields'):
+                temp_model = WritingStyleTemplateField()
+                self.fields.append(temp_model.from_map(k))
+        return self
+
+
 class AddDatasetDocumentRequestDocumentMultimodalMedias(TeaModel):
     def __init__(
         self,
@@ -11109,6 +11419,45 @@ class GetPropertiesResponseBodyDataIntelligentSearchConfig(TeaModel):
         return self
 
 
+class GetPropertiesResponseBodyDataSearchSourceList(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        dataset_name: str = None,
+        name: str = None,
+    ):
+        self.code = code
+        self.dataset_name = dataset_name
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
 class GetPropertiesResponseBodyDataSearchSources(TeaModel):
     def __init__(
         self,
@@ -11266,6 +11615,7 @@ class GetPropertiesResponseBodyData(TeaModel):
         console_config: GetPropertiesResponseBodyDataConsoleConfig = None,
         general_config_map: Dict[str, Any] = None,
         intelligent_search_config: GetPropertiesResponseBodyDataIntelligentSearchConfig = None,
+        search_source_list: List[GetPropertiesResponseBodyDataSearchSourceList] = None,
         search_sources: List[GetPropertiesResponseBodyDataSearchSources] = None,
         slr_authorized: bool = None,
         user_info: GetPropertiesResponseBodyDataUserInfo = None,
@@ -11276,6 +11626,7 @@ class GetPropertiesResponseBodyData(TeaModel):
         self.console_config = console_config
         self.general_config_map = general_config_map
         self.intelligent_search_config = intelligent_search_config
+        self.search_source_list = search_source_list
         self.search_sources = search_sources
         self.slr_authorized = slr_authorized
         self.user_info = user_info
@@ -11287,6 +11638,10 @@ class GetPropertiesResponseBodyData(TeaModel):
             self.console_config.validate()
         if self.intelligent_search_config:
             self.intelligent_search_config.validate()
+        if self.search_source_list:
+            for k in self.search_source_list:
+                if k:
+                    k.validate()
         if self.search_sources:
             for k in self.search_sources:
                 if k:
@@ -11316,6 +11671,10 @@ class GetPropertiesResponseBodyData(TeaModel):
             result['GeneralConfigMap'] = self.general_config_map
         if self.intelligent_search_config is not None:
             result['IntelligentSearchConfig'] = self.intelligent_search_config.to_map()
+        result['SearchSourceList'] = []
+        if self.search_source_list is not None:
+            for k in self.search_source_list:
+                result['SearchSourceList'].append(k.to_map() if k else None)
         result['SearchSources'] = []
         if self.search_sources is not None:
             for k in self.search_sources:
@@ -11346,6 +11705,11 @@ class GetPropertiesResponseBodyData(TeaModel):
         if m.get('IntelligentSearchConfig') is not None:
             temp_model = GetPropertiesResponseBodyDataIntelligentSearchConfig()
             self.intelligent_search_config = temp_model.from_map(m['IntelligentSearchConfig'])
+        self.search_source_list = []
+        if m.get('SearchSourceList') is not None:
+            for k in m.get('SearchSourceList'):
+                temp_model = GetPropertiesResponseBodyDataSearchSourceList()
+                self.search_source_list.append(temp_model.from_map(k))
         self.search_sources = []
         if m.get('SearchSources') is not None:
             for k in m.get('SearchSources'):
@@ -11757,6 +12121,449 @@ class GetSmartClipTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetSmartClipTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetStyleLearningResultRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        id: int = None,
+    ):
+        # This parameter is required.
+        self.agent_key = agent_key
+        # This parameter is required.
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class GetStyleLearningResultResponseBodyDataContentList(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        create_time: str = None,
+        create_user: str = None,
+        id: int = None,
+        title: str = None,
+        update_time: str = None,
+        update_user: str = None,
+    ):
+        self.content = content
+        self.create_time = create_time
+        self.create_user = create_user
+        self.id = id
+        self.title = title
+        self.update_time = update_time
+        self.update_user = update_user
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.update_user is not None:
+            result['UpdateUser'] = self.update_user
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UpdateUser') is not None:
+            self.update_user = m.get('UpdateUser')
+        return self
+
+
+class GetStyleLearningResultResponseBodyDataMaterialInfoList(TeaModel):
+    def __init__(
+        self,
+        author: str = None,
+        create_time: str = None,
+        create_user: str = None,
+        create_user_name: str = None,
+        doc_keywords: List[str] = None,
+        doc_type: str = None,
+        external_url: str = None,
+        file_length: int = None,
+        html_content: str = None,
+        id: int = None,
+        pub_time: str = None,
+        public_url: str = None,
+        share_attr: int = None,
+        src_from: str = None,
+        summary: str = None,
+        text_content: str = None,
+        thumbnail_in_base_64: str = None,
+        title: str = None,
+        update_time: str = None,
+        update_user: str = None,
+        update_user_name: str = None,
+        url: str = None,
+    ):
+        self.author = author
+        self.create_time = create_time
+        self.create_user = create_user
+        self.create_user_name = create_user_name
+        self.doc_keywords = doc_keywords
+        self.doc_type = doc_type
+        self.external_url = external_url
+        self.file_length = file_length
+        self.html_content = html_content
+        self.id = id
+        self.pub_time = pub_time
+        self.public_url = public_url
+        self.share_attr = share_attr
+        self.src_from = src_from
+        self.summary = summary
+        self.text_content = text_content
+        self.thumbnail_in_base_64 = thumbnail_in_base_64
+        self.title = title
+        self.update_time = update_time
+        self.update_user = update_user
+        self.update_user_name = update_user_name
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.author is not None:
+            result['Author'] = self.author
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
+        if self.create_user_name is not None:
+            result['CreateUserName'] = self.create_user_name
+        if self.doc_keywords is not None:
+            result['DocKeywords'] = self.doc_keywords
+        if self.doc_type is not None:
+            result['DocType'] = self.doc_type
+        if self.external_url is not None:
+            result['ExternalUrl'] = self.external_url
+        if self.file_length is not None:
+            result['FileLength'] = self.file_length
+        if self.html_content is not None:
+            result['HtmlContent'] = self.html_content
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.pub_time is not None:
+            result['PubTime'] = self.pub_time
+        if self.public_url is not None:
+            result['PublicUrl'] = self.public_url
+        if self.share_attr is not None:
+            result['ShareAttr'] = self.share_attr
+        if self.src_from is not None:
+            result['SrcFrom'] = self.src_from
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        if self.text_content is not None:
+            result['TextContent'] = self.text_content
+        if self.thumbnail_in_base_64 is not None:
+            result['ThumbnailInBase64'] = self.thumbnail_in_base_64
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.update_user is not None:
+            result['UpdateUser'] = self.update_user
+        if self.update_user_name is not None:
+            result['UpdateUserName'] = self.update_user_name
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Author') is not None:
+            self.author = m.get('Author')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
+        if m.get('CreateUserName') is not None:
+            self.create_user_name = m.get('CreateUserName')
+        if m.get('DocKeywords') is not None:
+            self.doc_keywords = m.get('DocKeywords')
+        if m.get('DocType') is not None:
+            self.doc_type = m.get('DocType')
+        if m.get('ExternalUrl') is not None:
+            self.external_url = m.get('ExternalUrl')
+        if m.get('FileLength') is not None:
+            self.file_length = m.get('FileLength')
+        if m.get('HtmlContent') is not None:
+            self.html_content = m.get('HtmlContent')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('PubTime') is not None:
+            self.pub_time = m.get('PubTime')
+        if m.get('PublicUrl') is not None:
+            self.public_url = m.get('PublicUrl')
+        if m.get('ShareAttr') is not None:
+            self.share_attr = m.get('ShareAttr')
+        if m.get('SrcFrom') is not None:
+            self.src_from = m.get('SrcFrom')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        if m.get('TextContent') is not None:
+            self.text_content = m.get('TextContent')
+        if m.get('ThumbnailInBase64') is not None:
+            self.thumbnail_in_base_64 = m.get('ThumbnailInBase64')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UpdateUser') is not None:
+            self.update_user = m.get('UpdateUser')
+        if m.get('UpdateUserName') is not None:
+            self.update_user_name = m.get('UpdateUserName')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class GetStyleLearningResultResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        aigc_result: str = None,
+        content_list: List[GetStyleLearningResultResponseBodyDataContentList] = None,
+        custom_text_id_list: List[int] = None,
+        id: int = None,
+        material_id_list: List[int] = None,
+        material_info_list: List[GetStyleLearningResultResponseBodyDataMaterialInfoList] = None,
+        rewrite_result: str = None,
+        style_name: str = None,
+        task_id: str = None,
+    ):
+        self.aigc_result = aigc_result
+        self.content_list = content_list
+        self.custom_text_id_list = custom_text_id_list
+        self.id = id
+        self.material_id_list = material_id_list
+        self.material_info_list = material_info_list
+        self.rewrite_result = rewrite_result
+        self.style_name = style_name
+        self.task_id = task_id
+
+    def validate(self):
+        if self.content_list:
+            for k in self.content_list:
+                if k:
+                    k.validate()
+        if self.material_info_list:
+            for k in self.material_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aigc_result is not None:
+            result['AigcResult'] = self.aigc_result
+        result['ContentList'] = []
+        if self.content_list is not None:
+            for k in self.content_list:
+                result['ContentList'].append(k.to_map() if k else None)
+        if self.custom_text_id_list is not None:
+            result['CustomTextIdList'] = self.custom_text_id_list
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.material_id_list is not None:
+            result['MaterialIdList'] = self.material_id_list
+        result['MaterialInfoList'] = []
+        if self.material_info_list is not None:
+            for k in self.material_info_list:
+                result['MaterialInfoList'].append(k.to_map() if k else None)
+        if self.rewrite_result is not None:
+            result['RewriteResult'] = self.rewrite_result
+        if self.style_name is not None:
+            result['StyleName'] = self.style_name
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AigcResult') is not None:
+            self.aigc_result = m.get('AigcResult')
+        self.content_list = []
+        if m.get('ContentList') is not None:
+            for k in m.get('ContentList'):
+                temp_model = GetStyleLearningResultResponseBodyDataContentList()
+                self.content_list.append(temp_model.from_map(k))
+        if m.get('CustomTextIdList') is not None:
+            self.custom_text_id_list = m.get('CustomTextIdList')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MaterialIdList') is not None:
+            self.material_id_list = m.get('MaterialIdList')
+        self.material_info_list = []
+        if m.get('MaterialInfoList') is not None:
+            for k in m.get('MaterialInfoList'):
+                temp_model = GetStyleLearningResultResponseBodyDataMaterialInfoList()
+                self.material_info_list.append(temp_model.from_map(k))
+        if m.get('RewriteResult') is not None:
+            self.rewrite_result = m.get('RewriteResult')
+        if m.get('StyleName') is not None:
+            self.style_name = m.get('StyleName')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class GetStyleLearningResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetStyleLearningResultResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetStyleLearningResultResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetStyleLearningResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetStyleLearningResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetStyleLearningResultResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -24082,6 +24889,246 @@ class ListWebReviewPointsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListWebReviewPointsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListWritingStylesRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        scene: str = None,
+        workspace_id: str = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        # This parameter is required.
+        self.scene = scene
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.scene is not None:
+            result['Scene'] = self.scene
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Scene') is not None:
+            self.scene = m.get('Scene')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class ListWritingStylesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        distribute_step_template_define: WritingStyleTemplateDefine = None,
+        distribute_writing: bool = None,
+        emoji: str = None,
+        style_description: str = None,
+        style_image: str = None,
+        style_key: str = None,
+        style_name: str = None,
+        template_define: WritingStyleTemplateDefine = None,
+    ):
+        self.distribute_step_template_define = distribute_step_template_define
+        self.distribute_writing = distribute_writing
+        self.emoji = emoji
+        self.style_description = style_description
+        self.style_image = style_image
+        self.style_key = style_key
+        self.style_name = style_name
+        self.template_define = template_define
+
+    def validate(self):
+        if self.distribute_step_template_define:
+            self.distribute_step_template_define.validate()
+        if self.template_define:
+            self.template_define.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.distribute_step_template_define is not None:
+            result['DistributeStepTemplateDefine'] = self.distribute_step_template_define.to_map()
+        if self.distribute_writing is not None:
+            result['DistributeWriting'] = self.distribute_writing
+        if self.emoji is not None:
+            result['Emoji'] = self.emoji
+        if self.style_description is not None:
+            result['StyleDescription'] = self.style_description
+        if self.style_image is not None:
+            result['StyleImage'] = self.style_image
+        if self.style_key is not None:
+            result['StyleKey'] = self.style_key
+        if self.style_name is not None:
+            result['StyleName'] = self.style_name
+        if self.template_define is not None:
+            result['TemplateDefine'] = self.template_define.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DistributeStepTemplateDefine') is not None:
+            temp_model = WritingStyleTemplateDefine()
+            self.distribute_step_template_define = temp_model.from_map(m['DistributeStepTemplateDefine'])
+        if m.get('DistributeWriting') is not None:
+            self.distribute_writing = m.get('DistributeWriting')
+        if m.get('Emoji') is not None:
+            self.emoji = m.get('Emoji')
+        if m.get('StyleDescription') is not None:
+            self.style_description = m.get('StyleDescription')
+        if m.get('StyleImage') is not None:
+            self.style_image = m.get('StyleImage')
+        if m.get('StyleKey') is not None:
+            self.style_key = m.get('StyleKey')
+        if m.get('StyleName') is not None:
+            self.style_name = m.get('StyleName')
+        if m.get('TemplateDefine') is not None:
+            temp_model = WritingStyleTemplateDefine()
+            self.template_define = temp_model.from_map(m['TemplateDefine'])
+        return self
+
+
+class ListWritingStylesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[ListWritingStylesResponseBodyData] = None,
+        max_results: int = None,
+        message: str = None,
+        next_token: str = None,
+        request_id: str = None,
+        success: str = None,
+        total_count: int = None,
+    ):
+        self.code = code
+        self.data = data
+        self.max_results = max_results
+        self.message = message
+        self.next_token = next_token
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListWritingStylesResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListWritingStylesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListWritingStylesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListWritingStylesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -39786,6 +40833,959 @@ class RunWritingResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RunWritingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RunWritingV2RequestArticles(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        pub_time: str = None,
+        search_source_name: str = None,
+        source: str = None,
+        title: str = None,
+        url: str = None,
+    ):
+        self.content = content
+        self.pub_time = pub_time
+        self.search_source_name = search_source_name
+        self.source = source
+        self.title = title
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.pub_time is not None:
+            result['PubTime'] = self.pub_time
+        if self.search_source_name is not None:
+            result['SearchSourceName'] = self.search_source_name
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('PubTime') is not None:
+            self.pub_time = m.get('PubTime')
+        if m.get('SearchSourceName') is not None:
+            self.search_source_name = m.get('SearchSourceName')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class RunWritingV2RequestMiniDocs(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        index: str = None,
+        star: bool = None,
+    ):
+        self.content = content
+        self.index = index
+        self.star = star
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.index is not None:
+            result['Index'] = self.index
+        if self.star is not None:
+            result['Star'] = self.star
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Index') is not None:
+            self.index = m.get('Index')
+        if m.get('Star') is not None:
+            self.star = m.get('Star')
+        return self
+
+
+class RunWritingV2RequestOutlinesArticles(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        title: str = None,
+        url: str = None,
+    ):
+        self.content = content
+        self.title = title
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class RunWritingV2RequestOutlines(TeaModel):
+    def __init__(
+        self,
+        articles: List[RunWritingV2RequestOutlinesArticles] = None,
+        outline: str = None,
+    ):
+        self.articles = articles
+        self.outline = outline
+
+    def validate(self):
+        if self.articles:
+            for k in self.articles:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Articles'] = []
+        if self.articles is not None:
+            for k in self.articles:
+                result['Articles'].append(k.to_map() if k else None)
+        if self.outline is not None:
+            result['Outline'] = self.outline
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.articles = []
+        if m.get('Articles') is not None:
+            for k in m.get('Articles'):
+                temp_model = RunWritingV2RequestOutlinesArticles()
+                self.articles.append(temp_model.from_map(k))
+        if m.get('Outline') is not None:
+            self.outline = m.get('Outline')
+        return self
+
+
+class RunWritingV2RequestSearchSources(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        dataset_name: str = None,
+        name: str = None,
+    ):
+        self.code = code
+        self.dataset_name = dataset_name
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class RunWritingV2RequestSummarization(TeaModel):
+    def __init__(
+        self,
+        event: str = None,
+        message: str = None,
+    ):
+        self.event = event
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event is not None:
+            result['Event'] = self.event
+        if self.message is not None:
+            result['Message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Event') is not None:
+            self.event = m.get('Event')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        return self
+
+
+class RunWritingV2Request(TeaModel):
+    def __init__(
+        self,
+        articles: List[RunWritingV2RequestArticles] = None,
+        distribute_writing: bool = None,
+        gc_number_size: int = None,
+        gc_number_size_tag: str = None,
+        keywords: List[str] = None,
+        language: str = None,
+        mini_docs: List[RunWritingV2RequestMiniDocs] = None,
+        outlines: List[RunWritingV2RequestOutlines] = None,
+        prompt: str = None,
+        prompt_mode: str = None,
+        search_sources: List[RunWritingV2RequestSearchSources] = None,
+        session_id: str = None,
+        step: str = None,
+        summarization: List[RunWritingV2RequestSummarization] = None,
+        task_id: str = None,
+        use_search: bool = None,
+        workspace_id: str = None,
+        writing_params: Dict[str, str] = None,
+        writing_scene: str = None,
+        writing_style: str = None,
+    ):
+        self.articles = articles
+        self.distribute_writing = distribute_writing
+        self.gc_number_size = gc_number_size
+        self.gc_number_size_tag = gc_number_size_tag
+        self.keywords = keywords
+        self.language = language
+        self.mini_docs = mini_docs
+        self.outlines = outlines
+        self.prompt = prompt
+        self.prompt_mode = prompt_mode
+        self.search_sources = search_sources
+        self.session_id = session_id
+        self.step = step
+        self.summarization = summarization
+        self.task_id = task_id
+        self.use_search = use_search
+        # This parameter is required.
+        self.workspace_id = workspace_id
+        self.writing_params = writing_params
+        self.writing_scene = writing_scene
+        self.writing_style = writing_style
+
+    def validate(self):
+        if self.articles:
+            for k in self.articles:
+                if k:
+                    k.validate()
+        if self.mini_docs:
+            for k in self.mini_docs:
+                if k:
+                    k.validate()
+        if self.outlines:
+            for k in self.outlines:
+                if k:
+                    k.validate()
+        if self.search_sources:
+            for k in self.search_sources:
+                if k:
+                    k.validate()
+        if self.summarization:
+            for k in self.summarization:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Articles'] = []
+        if self.articles is not None:
+            for k in self.articles:
+                result['Articles'].append(k.to_map() if k else None)
+        if self.distribute_writing is not None:
+            result['DistributeWriting'] = self.distribute_writing
+        if self.gc_number_size is not None:
+            result['GcNumberSize'] = self.gc_number_size
+        if self.gc_number_size_tag is not None:
+            result['GcNumberSizeTag'] = self.gc_number_size_tag
+        if self.keywords is not None:
+            result['Keywords'] = self.keywords
+        if self.language is not None:
+            result['Language'] = self.language
+        result['MiniDocs'] = []
+        if self.mini_docs is not None:
+            for k in self.mini_docs:
+                result['MiniDocs'].append(k.to_map() if k else None)
+        result['Outlines'] = []
+        if self.outlines is not None:
+            for k in self.outlines:
+                result['Outlines'].append(k.to_map() if k else None)
+        if self.prompt is not None:
+            result['Prompt'] = self.prompt
+        if self.prompt_mode is not None:
+            result['PromptMode'] = self.prompt_mode
+        result['SearchSources'] = []
+        if self.search_sources is not None:
+            for k in self.search_sources:
+                result['SearchSources'].append(k.to_map() if k else None)
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.step is not None:
+            result['Step'] = self.step
+        result['Summarization'] = []
+        if self.summarization is not None:
+            for k in self.summarization:
+                result['Summarization'].append(k.to_map() if k else None)
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.use_search is not None:
+            result['UseSearch'] = self.use_search
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        if self.writing_params is not None:
+            result['WritingParams'] = self.writing_params
+        if self.writing_scene is not None:
+            result['WritingScene'] = self.writing_scene
+        if self.writing_style is not None:
+            result['WritingStyle'] = self.writing_style
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.articles = []
+        if m.get('Articles') is not None:
+            for k in m.get('Articles'):
+                temp_model = RunWritingV2RequestArticles()
+                self.articles.append(temp_model.from_map(k))
+        if m.get('DistributeWriting') is not None:
+            self.distribute_writing = m.get('DistributeWriting')
+        if m.get('GcNumberSize') is not None:
+            self.gc_number_size = m.get('GcNumberSize')
+        if m.get('GcNumberSizeTag') is not None:
+            self.gc_number_size_tag = m.get('GcNumberSizeTag')
+        if m.get('Keywords') is not None:
+            self.keywords = m.get('Keywords')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        self.mini_docs = []
+        if m.get('MiniDocs') is not None:
+            for k in m.get('MiniDocs'):
+                temp_model = RunWritingV2RequestMiniDocs()
+                self.mini_docs.append(temp_model.from_map(k))
+        self.outlines = []
+        if m.get('Outlines') is not None:
+            for k in m.get('Outlines'):
+                temp_model = RunWritingV2RequestOutlines()
+                self.outlines.append(temp_model.from_map(k))
+        if m.get('Prompt') is not None:
+            self.prompt = m.get('Prompt')
+        if m.get('PromptMode') is not None:
+            self.prompt_mode = m.get('PromptMode')
+        self.search_sources = []
+        if m.get('SearchSources') is not None:
+            for k in m.get('SearchSources'):
+                temp_model = RunWritingV2RequestSearchSources()
+                self.search_sources.append(temp_model.from_map(k))
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('Step') is not None:
+            self.step = m.get('Step')
+        self.summarization = []
+        if m.get('Summarization') is not None:
+            for k in m.get('Summarization'):
+                temp_model = RunWritingV2RequestSummarization()
+                self.summarization.append(temp_model.from_map(k))
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('UseSearch') is not None:
+            self.use_search = m.get('UseSearch')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        if m.get('WritingParams') is not None:
+            self.writing_params = m.get('WritingParams')
+        if m.get('WritingScene') is not None:
+            self.writing_scene = m.get('WritingScene')
+        if m.get('WritingStyle') is not None:
+            self.writing_style = m.get('WritingStyle')
+        return self
+
+
+class RunWritingV2ShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        articles_shrink: str = None,
+        distribute_writing: bool = None,
+        gc_number_size: int = None,
+        gc_number_size_tag: str = None,
+        keywords_shrink: str = None,
+        language: str = None,
+        mini_docs_shrink: str = None,
+        outlines_shrink: str = None,
+        prompt: str = None,
+        prompt_mode: str = None,
+        search_sources_shrink: str = None,
+        session_id: str = None,
+        step: str = None,
+        summarization_shrink: str = None,
+        task_id: str = None,
+        use_search: bool = None,
+        workspace_id: str = None,
+        writing_params_shrink: str = None,
+        writing_scene: str = None,
+        writing_style: str = None,
+    ):
+        self.articles_shrink = articles_shrink
+        self.distribute_writing = distribute_writing
+        self.gc_number_size = gc_number_size
+        self.gc_number_size_tag = gc_number_size_tag
+        self.keywords_shrink = keywords_shrink
+        self.language = language
+        self.mini_docs_shrink = mini_docs_shrink
+        self.outlines_shrink = outlines_shrink
+        self.prompt = prompt
+        self.prompt_mode = prompt_mode
+        self.search_sources_shrink = search_sources_shrink
+        self.session_id = session_id
+        self.step = step
+        self.summarization_shrink = summarization_shrink
+        self.task_id = task_id
+        self.use_search = use_search
+        # This parameter is required.
+        self.workspace_id = workspace_id
+        self.writing_params_shrink = writing_params_shrink
+        self.writing_scene = writing_scene
+        self.writing_style = writing_style
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.articles_shrink is not None:
+            result['Articles'] = self.articles_shrink
+        if self.distribute_writing is not None:
+            result['DistributeWriting'] = self.distribute_writing
+        if self.gc_number_size is not None:
+            result['GcNumberSize'] = self.gc_number_size
+        if self.gc_number_size_tag is not None:
+            result['GcNumberSizeTag'] = self.gc_number_size_tag
+        if self.keywords_shrink is not None:
+            result['Keywords'] = self.keywords_shrink
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.mini_docs_shrink is not None:
+            result['MiniDocs'] = self.mini_docs_shrink
+        if self.outlines_shrink is not None:
+            result['Outlines'] = self.outlines_shrink
+        if self.prompt is not None:
+            result['Prompt'] = self.prompt
+        if self.prompt_mode is not None:
+            result['PromptMode'] = self.prompt_mode
+        if self.search_sources_shrink is not None:
+            result['SearchSources'] = self.search_sources_shrink
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.step is not None:
+            result['Step'] = self.step
+        if self.summarization_shrink is not None:
+            result['Summarization'] = self.summarization_shrink
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.use_search is not None:
+            result['UseSearch'] = self.use_search
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        if self.writing_params_shrink is not None:
+            result['WritingParams'] = self.writing_params_shrink
+        if self.writing_scene is not None:
+            result['WritingScene'] = self.writing_scene
+        if self.writing_style is not None:
+            result['WritingStyle'] = self.writing_style
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Articles') is not None:
+            self.articles_shrink = m.get('Articles')
+        if m.get('DistributeWriting') is not None:
+            self.distribute_writing = m.get('DistributeWriting')
+        if m.get('GcNumberSize') is not None:
+            self.gc_number_size = m.get('GcNumberSize')
+        if m.get('GcNumberSizeTag') is not None:
+            self.gc_number_size_tag = m.get('GcNumberSizeTag')
+        if m.get('Keywords') is not None:
+            self.keywords_shrink = m.get('Keywords')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('MiniDocs') is not None:
+            self.mini_docs_shrink = m.get('MiniDocs')
+        if m.get('Outlines') is not None:
+            self.outlines_shrink = m.get('Outlines')
+        if m.get('Prompt') is not None:
+            self.prompt = m.get('Prompt')
+        if m.get('PromptMode') is not None:
+            self.prompt_mode = m.get('PromptMode')
+        if m.get('SearchSources') is not None:
+            self.search_sources_shrink = m.get('SearchSources')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('Step') is not None:
+            self.step = m.get('Step')
+        if m.get('Summarization') is not None:
+            self.summarization_shrink = m.get('Summarization')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('UseSearch') is not None:
+            self.use_search = m.get('UseSearch')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        if m.get('WritingParams') is not None:
+            self.writing_params_shrink = m.get('WritingParams')
+        if m.get('WritingScene') is not None:
+            self.writing_scene = m.get('WritingScene')
+        if m.get('WritingStyle') is not None:
+            self.writing_style = m.get('WritingStyle')
+        return self
+
+
+class RunWritingV2ResponseBodyHeader(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        event: str = None,
+        origin_session_id: str = None,
+        session_id: str = None,
+        status_code: int = None,
+        task_id: str = None,
+        trace_id: str = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.event = event
+        self.origin_session_id = origin_session_id
+        self.session_id = session_id
+        self.status_code = status_code
+        self.task_id = task_id
+        self.trace_id = trace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.event is not None:
+            result['Event'] = self.event
+        if self.origin_session_id is not None:
+            result['OriginSessionId'] = self.origin_session_id
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.status_code is not None:
+            result['StatusCode'] = self.status_code
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Event') is not None:
+            self.event = m.get('Event')
+        if m.get('OriginSessionId') is not None:
+            self.origin_session_id = m.get('OriginSessionId')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('StatusCode') is not None:
+            self.status_code = m.get('StatusCode')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class RunWritingV2ResponseBodyPayloadOutputArticles(TeaModel):
+    def __init__(
+        self,
+        author: str = None,
+        content: str = None,
+        doc_id: str = None,
+        doc_uuid: str = None,
+        pub_time: str = None,
+        source: str = None,
+        summary: str = None,
+        tag: str = None,
+        title: str = None,
+        url: str = None,
+    ):
+        self.author = author
+        self.content = content
+        self.doc_id = doc_id
+        self.doc_uuid = doc_uuid
+        self.pub_time = pub_time
+        self.source = source
+        self.summary = summary
+        self.tag = tag
+        self.title = title
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.author is not None:
+            result['Author'] = self.author
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.doc_id is not None:
+            result['DocId'] = self.doc_id
+        if self.doc_uuid is not None:
+            result['DocUuid'] = self.doc_uuid
+        if self.pub_time is not None:
+            result['PubTime'] = self.pub_time
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        if self.tag is not None:
+            result['Tag'] = self.tag
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Author') is not None:
+            self.author = m.get('Author')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('DocId') is not None:
+            self.doc_id = m.get('DocId')
+        if m.get('DocUuid') is not None:
+            self.doc_uuid = m.get('DocUuid')
+        if m.get('PubTime') is not None:
+            self.pub_time = m.get('PubTime')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        if m.get('Tag') is not None:
+            self.tag = m.get('Tag')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class RunWritingV2ResponseBodyPayloadOutput(TeaModel):
+    def __init__(
+        self,
+        articles: List[RunWritingV2ResponseBodyPayloadOutputArticles] = None,
+        mini_doc: List[str] = None,
+        search_query: str = None,
+        text: str = None,
+    ):
+        self.articles = articles
+        self.mini_doc = mini_doc
+        self.search_query = search_query
+        self.text = text
+
+    def validate(self):
+        if self.articles:
+            for k in self.articles:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Articles'] = []
+        if self.articles is not None:
+            for k in self.articles:
+                result['Articles'].append(k.to_map() if k else None)
+        if self.mini_doc is not None:
+            result['MiniDoc'] = self.mini_doc
+        if self.search_query is not None:
+            result['SearchQuery'] = self.search_query
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.articles = []
+        if m.get('Articles') is not None:
+            for k in m.get('Articles'):
+                temp_model = RunWritingV2ResponseBodyPayloadOutputArticles()
+                self.articles.append(temp_model.from_map(k))
+        if m.get('MiniDoc') is not None:
+            self.mini_doc = m.get('MiniDoc')
+        if m.get('SearchQuery') is not None:
+            self.search_query = m.get('SearchQuery')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class RunWritingV2ResponseBodyPayloadUsage(TeaModel):
+    def __init__(
+        self,
+        input_tokens: int = None,
+        output_tokens: int = None,
+        token_map: Dict[str, int] = None,
+        total_tokens: int = None,
+    ):
+        self.input_tokens = input_tokens
+        self.output_tokens = output_tokens
+        self.token_map = token_map
+        self.total_tokens = total_tokens
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_tokens is not None:
+            result['InputTokens'] = self.input_tokens
+        if self.output_tokens is not None:
+            result['OutputTokens'] = self.output_tokens
+        if self.token_map is not None:
+            result['TokenMap'] = self.token_map
+        if self.total_tokens is not None:
+            result['TotalTokens'] = self.total_tokens
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InputTokens') is not None:
+            self.input_tokens = m.get('InputTokens')
+        if m.get('OutputTokens') is not None:
+            self.output_tokens = m.get('OutputTokens')
+        if m.get('TokenMap') is not None:
+            self.token_map = m.get('TokenMap')
+        if m.get('TotalTokens') is not None:
+            self.total_tokens = m.get('TotalTokens')
+        return self
+
+
+class RunWritingV2ResponseBodyPayload(TeaModel):
+    def __init__(
+        self,
+        output: RunWritingV2ResponseBodyPayloadOutput = None,
+        usage: RunWritingV2ResponseBodyPayloadUsage = None,
+    ):
+        self.output = output
+        self.usage = usage
+
+    def validate(self):
+        if self.output:
+            self.output.validate()
+        if self.usage:
+            self.usage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.output is not None:
+            result['Output'] = self.output.to_map()
+        if self.usage is not None:
+            result['Usage'] = self.usage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Output') is not None:
+            temp_model = RunWritingV2ResponseBodyPayloadOutput()
+            self.output = temp_model.from_map(m['Output'])
+        if m.get('Usage') is not None:
+            temp_model = RunWritingV2ResponseBodyPayloadUsage()
+            self.usage = temp_model.from_map(m['Usage'])
+        return self
+
+
+class RunWritingV2ResponseBody(TeaModel):
+    def __init__(
+        self,
+        end: bool = None,
+        header: RunWritingV2ResponseBodyHeader = None,
+        payload: RunWritingV2ResponseBodyPayload = None,
+        request_id: str = None,
+    ):
+        self.end = end
+        self.header = header
+        self.payload = payload
+        self.request_id = request_id
+
+    def validate(self):
+        if self.header:
+            self.header.validate()
+        if self.payload:
+            self.payload.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end is not None:
+            result['End'] = self.end
+        if self.header is not None:
+            result['Header'] = self.header.to_map()
+        if self.payload is not None:
+            result['Payload'] = self.payload.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('End') is not None:
+            self.end = m.get('End')
+        if m.get('Header') is not None:
+            temp_model = RunWritingV2ResponseBodyHeader()
+            self.header = temp_model.from_map(m['Header'])
+        if m.get('Payload') is not None:
+            temp_model = RunWritingV2ResponseBodyPayload()
+            self.payload = temp_model.from_map(m['Payload'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RunWritingV2Response(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RunWritingV2ResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RunWritingV2ResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

@@ -1,3 +1,10 @@
+2025-05-12 Version: 1.23.0
+- Support API GetStyleLearningResult.
+- Support API ListWritingStyles.
+- Support API RunWritingV2.
+- Update API GetProperties: add response parameters Body.Data.SearchSourceList.
+
+
 2025-05-12 Version: 1.22.7
 - Update API ListGeneratedContents: add request parameters DataType.
 - Update API ListGeneratedContents: add response parameters Body.Data.$.FileAttr.

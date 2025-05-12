@@ -4953,6 +4953,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_smart_clip_task_with_options_async(request, runtime)
 
+    def get_style_learning_result_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.GetStyleLearningResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetStyleLearningResultResponse:
+        """
+        @summary 获取文体学习分析结果
+        
+        @param request: GetStyleLearningResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStyleLearningResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetStyleLearningResult',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetStyleLearningResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_style_learning_result_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetStyleLearningResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetStyleLearningResultResponse:
+        """
+        @summary 获取文体学习分析结果
+        
+        @param request: GetStyleLearningResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStyleLearningResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetStyleLearningResult',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetStyleLearningResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_style_learning_result(
+        self,
+        request: ai_miao_bi_20230801_models.GetStyleLearningResultRequest,
+    ) -> ai_miao_bi_20230801_models.GetStyleLearningResultResponse:
+        """
+        @summary 获取文体学习分析结果
+        
+        @param request: GetStyleLearningResultRequest
+        @return: GetStyleLearningResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_style_learning_result_with_options(request, runtime)
+
+    async def get_style_learning_result_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetStyleLearningResultRequest,
+    ) -> ai_miao_bi_20230801_models.GetStyleLearningResultResponse:
+        """
+        @summary 获取文体学习分析结果
+        
+        @param request: GetStyleLearningResultRequest
+        @return: GetStyleLearningResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_style_learning_result_with_options_async(request, runtime)
+
     def get_topic_by_id_with_options(
         self,
         request: ai_miao_bi_20230801_models.GetTopicByIdRequest,
@@ -9305,6 +9409,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_web_review_points_with_options_async(request, runtime)
 
+    def list_writing_styles_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.ListWritingStylesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListWritingStylesResponse:
+        """
+        @summary 获取文体列表
+        
+        @param request: ListWritingStylesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWritingStylesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.scene):
+            body['Scene'] = request.scene
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListWritingStyles',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListWritingStylesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_writing_styles_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListWritingStylesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListWritingStylesResponse:
+        """
+        @summary 获取文体列表
+        
+        @param request: ListWritingStylesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWritingStylesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.scene):
+            body['Scene'] = request.scene
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListWritingStyles',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListWritingStylesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_writing_styles(
+        self,
+        request: ai_miao_bi_20230801_models.ListWritingStylesRequest,
+    ) -> ai_miao_bi_20230801_models.ListWritingStylesResponse:
+        """
+        @summary 获取文体列表
+        
+        @param request: ListWritingStylesRequest
+        @return: ListWritingStylesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_writing_styles_with_options(request, runtime)
+
+    async def list_writing_styles_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListWritingStylesRequest,
+    ) -> ai_miao_bi_20230801_models.ListWritingStylesResponse:
+        """
+        @summary 获取文体列表
+        
+        @param request: ListWritingStylesRequest
+        @return: ListWritingStylesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_writing_styles_with_options_async(request, runtime)
+
     def query_async_task_with_options(
         self,
         request: ai_miao_bi_20230801_models.QueryAsyncTaskRequest,
@@ -12820,6 +13036,210 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.run_writing_with_options_async(request, runtime)
+
+    def run_writing_v2with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.RunWritingV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunWritingV2Response:
+        """
+        @summary 直接写作
+        
+        @param tmp_req: RunWritingV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunWritingV2Response
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.RunWritingV2ShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.articles):
+            request.articles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.articles, 'Articles', 'json')
+        if not UtilClient.is_unset(tmp_req.keywords):
+            request.keywords_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.keywords, 'Keywords', 'json')
+        if not UtilClient.is_unset(tmp_req.mini_docs):
+            request.mini_docs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.mini_docs, 'MiniDocs', 'json')
+        if not UtilClient.is_unset(tmp_req.outlines):
+            request.outlines_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.outlines, 'Outlines', 'json')
+        if not UtilClient.is_unset(tmp_req.search_sources):
+            request.search_sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.search_sources, 'SearchSources', 'json')
+        if not UtilClient.is_unset(tmp_req.summarization):
+            request.summarization_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.summarization, 'Summarization', 'json')
+        if not UtilClient.is_unset(tmp_req.writing_params):
+            request.writing_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.writing_params, 'WritingParams', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.articles_shrink):
+            body['Articles'] = request.articles_shrink
+        if not UtilClient.is_unset(request.distribute_writing):
+            body['DistributeWriting'] = request.distribute_writing
+        if not UtilClient.is_unset(request.gc_number_size):
+            body['GcNumberSize'] = request.gc_number_size
+        if not UtilClient.is_unset(request.gc_number_size_tag):
+            body['GcNumberSizeTag'] = request.gc_number_size_tag
+        if not UtilClient.is_unset(request.keywords_shrink):
+            body['Keywords'] = request.keywords_shrink
+        if not UtilClient.is_unset(request.language):
+            body['Language'] = request.language
+        if not UtilClient.is_unset(request.mini_docs_shrink):
+            body['MiniDocs'] = request.mini_docs_shrink
+        if not UtilClient.is_unset(request.outlines_shrink):
+            body['Outlines'] = request.outlines_shrink
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.prompt_mode):
+            body['PromptMode'] = request.prompt_mode
+        if not UtilClient.is_unset(request.search_sources_shrink):
+            body['SearchSources'] = request.search_sources_shrink
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.step):
+            body['Step'] = request.step
+        if not UtilClient.is_unset(request.summarization_shrink):
+            body['Summarization'] = request.summarization_shrink
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.use_search):
+            body['UseSearch'] = request.use_search
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        if not UtilClient.is_unset(request.writing_params_shrink):
+            body['WritingParams'] = request.writing_params_shrink
+        if not UtilClient.is_unset(request.writing_scene):
+            body['WritingScene'] = request.writing_scene
+        if not UtilClient.is_unset(request.writing_style):
+            body['WritingStyle'] = request.writing_style
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunWritingV2',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunWritingV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_writing_v2with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.RunWritingV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunWritingV2Response:
+        """
+        @summary 直接写作
+        
+        @param tmp_req: RunWritingV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunWritingV2Response
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.RunWritingV2ShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.articles):
+            request.articles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.articles, 'Articles', 'json')
+        if not UtilClient.is_unset(tmp_req.keywords):
+            request.keywords_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.keywords, 'Keywords', 'json')
+        if not UtilClient.is_unset(tmp_req.mini_docs):
+            request.mini_docs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.mini_docs, 'MiniDocs', 'json')
+        if not UtilClient.is_unset(tmp_req.outlines):
+            request.outlines_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.outlines, 'Outlines', 'json')
+        if not UtilClient.is_unset(tmp_req.search_sources):
+            request.search_sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.search_sources, 'SearchSources', 'json')
+        if not UtilClient.is_unset(tmp_req.summarization):
+            request.summarization_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.summarization, 'Summarization', 'json')
+        if not UtilClient.is_unset(tmp_req.writing_params):
+            request.writing_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.writing_params, 'WritingParams', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.articles_shrink):
+            body['Articles'] = request.articles_shrink
+        if not UtilClient.is_unset(request.distribute_writing):
+            body['DistributeWriting'] = request.distribute_writing
+        if not UtilClient.is_unset(request.gc_number_size):
+            body['GcNumberSize'] = request.gc_number_size
+        if not UtilClient.is_unset(request.gc_number_size_tag):
+            body['GcNumberSizeTag'] = request.gc_number_size_tag
+        if not UtilClient.is_unset(request.keywords_shrink):
+            body['Keywords'] = request.keywords_shrink
+        if not UtilClient.is_unset(request.language):
+            body['Language'] = request.language
+        if not UtilClient.is_unset(request.mini_docs_shrink):
+            body['MiniDocs'] = request.mini_docs_shrink
+        if not UtilClient.is_unset(request.outlines_shrink):
+            body['Outlines'] = request.outlines_shrink
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.prompt_mode):
+            body['PromptMode'] = request.prompt_mode
+        if not UtilClient.is_unset(request.search_sources_shrink):
+            body['SearchSources'] = request.search_sources_shrink
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.step):
+            body['Step'] = request.step
+        if not UtilClient.is_unset(request.summarization_shrink):
+            body['Summarization'] = request.summarization_shrink
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.use_search):
+            body['UseSearch'] = request.use_search
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        if not UtilClient.is_unset(request.writing_params_shrink):
+            body['WritingParams'] = request.writing_params_shrink
+        if not UtilClient.is_unset(request.writing_scene):
+            body['WritingScene'] = request.writing_scene
+        if not UtilClient.is_unset(request.writing_style):
+            body['WritingStyle'] = request.writing_style
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunWritingV2',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunWritingV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_writing_v2(
+        self,
+        request: ai_miao_bi_20230801_models.RunWritingV2Request,
+    ) -> ai_miao_bi_20230801_models.RunWritingV2Response:
+        """
+        @summary 直接写作
+        
+        @param request: RunWritingV2Request
+        @return: RunWritingV2Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.run_writing_v2with_options(request, runtime)
+
+    async def run_writing_v2_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunWritingV2Request,
+    ) -> ai_miao_bi_20230801_models.RunWritingV2Response:
+        """
+        @summary 直接写作
+        
+        @param request: RunWritingV2Request
+        @return: RunWritingV2Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.run_writing_v2with_options_async(request, runtime)
 
     def save_custom_text_with_options(
         self,
