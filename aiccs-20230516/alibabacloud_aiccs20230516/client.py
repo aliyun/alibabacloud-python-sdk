@@ -1109,6 +1109,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.import_number_with_options_async(request, runtime)
 
+    def import_number_v2with_options(
+        self,
+        tmp_req: aiccs_20230516_models.ImportNumberV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> aiccs_20230516_models.ImportNumberV2Response:
+        """
+        @summary 导入号码
+        
+        @param tmp_req: ImportNumberV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportNumberV2Response
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aiccs_20230516_models.ImportNumberV2ShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.customers):
+            request.customers_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.customers, 'Customers', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.customers_shrink):
+            query['Customers'] = request.customers_shrink
+        if not UtilClient.is_unset(request.fail_return):
+            query['FailReturn'] = request.fail_return
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ImportNumberV2',
+            version='2023-05-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiccs_20230516_models.ImportNumberV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def import_number_v2with_options_async(
+        self,
+        tmp_req: aiccs_20230516_models.ImportNumberV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> aiccs_20230516_models.ImportNumberV2Response:
+        """
+        @summary 导入号码
+        
+        @param tmp_req: ImportNumberV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportNumberV2Response
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aiccs_20230516_models.ImportNumberV2ShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.customers):
+            request.customers_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.customers, 'Customers', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.customers_shrink):
+            query['Customers'] = request.customers_shrink
+        if not UtilClient.is_unset(request.fail_return):
+            query['FailReturn'] = request.fail_return
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ImportNumberV2',
+            version='2023-05-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiccs_20230516_models.ImportNumberV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def import_number_v2(
+        self,
+        request: aiccs_20230516_models.ImportNumberV2Request,
+    ) -> aiccs_20230516_models.ImportNumberV2Response:
+        """
+        @summary 导入号码
+        
+        @param request: ImportNumberV2Request
+        @return: ImportNumberV2Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.import_number_v2with_options(request, runtime)
+
+    async def import_number_v2_async(
+        self,
+        request: aiccs_20230516_models.ImportNumberV2Request,
+    ) -> aiccs_20230516_models.ImportNumberV2Response:
+        """
+        @summary 导入号码
+        
+        @param request: ImportNumberV2Request
+        @return: ImportNumberV2Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.import_number_v2with_options_async(request, runtime)
+
     def page_with_options(
         self,
         tmp_req: aiccs_20230516_models.PageRequest,

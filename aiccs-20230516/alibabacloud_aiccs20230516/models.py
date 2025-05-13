@@ -2754,6 +2754,348 @@ class ImportNumberResponse(TeaModel):
         return self
 
 
+class ImportNumberV2RequestCustomers(TeaModel):
+    def __init__(
+        self,
+        client_url: str = None,
+        number: str = None,
+        number_md5: str = None,
+        properties: Dict[str, Any] = None,
+        tag: str = None,
+    ):
+        self.client_url = client_url
+        self.number = number
+        self.number_md5 = number_md5
+        self.properties = properties
+        self.tag = tag
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_url is not None:
+            result['ClientUrl'] = self.client_url
+        if self.number is not None:
+            result['Number'] = self.number
+        if self.number_md5 is not None:
+            result['NumberMD5'] = self.number_md5
+        if self.properties is not None:
+            result['Properties'] = self.properties
+        if self.tag is not None:
+            result['Tag'] = self.tag
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientUrl') is not None:
+            self.client_url = m.get('ClientUrl')
+        if m.get('Number') is not None:
+            self.number = m.get('Number')
+        if m.get('NumberMD5') is not None:
+            self.number_md5 = m.get('NumberMD5')
+        if m.get('Properties') is not None:
+            self.properties = m.get('Properties')
+        if m.get('Tag') is not None:
+            self.tag = m.get('Tag')
+        return self
+
+
+class ImportNumberV2Request(TeaModel):
+    def __init__(
+        self,
+        customers: List[ImportNumberV2RequestCustomers] = None,
+        fail_return: int = None,
+        out_id: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        task_id: int = None,
+    ):
+        self.customers = customers
+        self.fail_return = fail_return
+        self.out_id = out_id
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.task_id = task_id
+
+    def validate(self):
+        if self.customers:
+            for k in self.customers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Customers'] = []
+        if self.customers is not None:
+            for k in self.customers:
+                result['Customers'].append(k.to_map() if k else None)
+        if self.fail_return is not None:
+            result['FailReturn'] = self.fail_return
+        if self.out_id is not None:
+            result['OutId'] = self.out_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.customers = []
+        if m.get('Customers') is not None:
+            for k in m.get('Customers'):
+                temp_model = ImportNumberV2RequestCustomers()
+                self.customers.append(temp_model.from_map(k))
+        if m.get('FailReturn') is not None:
+            self.fail_return = m.get('FailReturn')
+        if m.get('OutId') is not None:
+            self.out_id = m.get('OutId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class ImportNumberV2ShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        customers_shrink: str = None,
+        fail_return: int = None,
+        out_id: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        task_id: int = None,
+    ):
+        self.customers_shrink = customers_shrink
+        self.fail_return = fail_return
+        self.out_id = out_id
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.customers_shrink is not None:
+            result['Customers'] = self.customers_shrink
+        if self.fail_return is not None:
+            result['FailReturn'] = self.fail_return
+        if self.out_id is not None:
+            result['OutId'] = self.out_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Customers') is not None:
+            self.customers_shrink = m.get('Customers')
+        if m.get('FailReturn') is not None:
+            self.fail_return = m.get('FailReturn')
+        if m.get('OutId') is not None:
+            self.out_id = m.get('OutId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class ImportNumberV2ResponseBodyModel(TeaModel):
+    def __init__(
+        self,
+        batch_id: int = None,
+        code: int = None,
+        data: str = None,
+        import_num: int = None,
+        message: str = None,
+    ):
+        self.batch_id = batch_id
+        self.code = code
+        self.data = data
+        self.import_num = import_num
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.batch_id is not None:
+            result['BatchId'] = self.batch_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.import_num is not None:
+            result['ImportNum'] = self.import_num
+        if self.message is not None:
+            result['Message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BatchId') is not None:
+            self.batch_id = m.get('BatchId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ImportNum') is not None:
+            self.import_num = m.get('ImportNum')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        return self
+
+
+class ImportNumberV2ResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: int = None,
+        message: str = None,
+        model: ImportNumberV2ResponseBodyModel = None,
+        request_id: str = None,
+        success: str = None,
+        timestamp: int = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.message = message
+        self.model = model
+        self.request_id = request_id
+        self.success = success
+        self.timestamp = timestamp
+
+    def validate(self):
+        if self.model:
+            self.model.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.model is not None:
+            result['Model'] = self.model.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.timestamp is not None:
+            result['Timestamp'] = self.timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Model') is not None:
+            temp_model = ImportNumberV2ResponseBodyModel()
+            self.model = temp_model.from_map(m['Model'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Timestamp') is not None:
+            self.timestamp = m.get('Timestamp')
+        return self
+
+
+class ImportNumberV2Response(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ImportNumberV2ResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ImportNumberV2ResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class PageRequest(TeaModel):
     def __init__(
         self,

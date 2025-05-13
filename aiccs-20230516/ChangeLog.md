@@ -1,3 +1,7 @@
+2025-05-13 Version: 1.1.0
+- Support API ImportNumberV2.
+
+
 2024-08-22 Version: 1.0.4
 - Update API AddTask: add param FlashSmsTemplateId.
 - Update API AddTask: add param FlashSmsType.
