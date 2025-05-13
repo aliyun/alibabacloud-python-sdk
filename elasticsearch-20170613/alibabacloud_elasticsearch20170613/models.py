@@ -2103,7 +2103,9 @@ class AddConnectableClusterRequest(TeaModel):
         body: str = None,
         client_token: str = None,
     ):
+        # 请求体。
         self.body = body
+        # 5A2CFF0E-5718-45B5-9D4D-70B3FF\\*\\*\\*\\*\
         self.client_token = client_token
 
     def validate(self):
@@ -2136,7 +2138,12 @@ class AddConnectableClusterResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The following information is returned:
+        # 
+        # *   true: The configuration is successful.
+        # *   false: The configuration failed.
         self.result = result
 
     def validate(self):
@@ -9250,7 +9257,7 @@ class DescribeInstanceResponseBodyResult(TeaModel):
         enable_kibana_private_network: bool = None,
         enable_kibana_public_network: bool = None,
         enable_public: bool = None,
-        endtime: int = None,
+        end_time: int = None,
         es_config: Dict[str, Any] = None,
         es_ipblacklist: List[str] = None,
         es_ipwhitelist: List[str] = None,
@@ -9307,7 +9314,7 @@ class DescribeInstanceResponseBodyResult(TeaModel):
         self.enable_kibana_private_network = enable_kibana_private_network
         self.enable_kibana_public_network = enable_kibana_public_network
         self.enable_public = enable_public
-        self.endtime = endtime
+        self.end_time = end_time
         self.es_config = es_config
         self.es_ipblacklist = es_ipblacklist
         self.es_ipwhitelist = es_ipwhitelist
@@ -9430,8 +9437,8 @@ class DescribeInstanceResponseBodyResult(TeaModel):
             result['enableKibanaPublicNetwork'] = self.enable_kibana_public_network
         if self.enable_public is not None:
             result['enablePublic'] = self.enable_public
-        if self.endtime is not None:
-            result['endtime'] = self.endtime
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
         if self.es_config is not None:
             result['esConfig'] = self.es_config
         if self.es_ipblacklist is not None:
@@ -9563,8 +9570,8 @@ class DescribeInstanceResponseBodyResult(TeaModel):
             self.enable_kibana_public_network = m.get('enableKibanaPublicNetwork')
         if m.get('enablePublic') is not None:
             self.enable_public = m.get('enablePublic')
-        if m.get('endtime') is not None:
-            self.endtime = m.get('endtime')
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
         if m.get('esConfig') is not None:
             self.es_config = m.get('esConfig')
         if m.get('esIPBlacklist') is not None:

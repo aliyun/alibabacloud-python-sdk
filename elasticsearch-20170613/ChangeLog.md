@@ -1,3 +1,7 @@
+2025-05-13 Version: 3.0.1
+- Update API DescribeInstance: add response parameters Body.Result.endTime.
+
+
 2025-04-27 Version: 3.0.0
 - Update API ListActionRecords: add response parameters Body.Result.$.actionName.
 - Update API ListActionRecords: add response parameters Body.Result.$.actionParams.

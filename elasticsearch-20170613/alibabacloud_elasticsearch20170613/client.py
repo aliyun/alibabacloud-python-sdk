@@ -160,6 +160,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.AddConnectableClusterResponse:
         """
+        @summary Connects Elasticsearch clusters.
+        
         @param request: AddConnectableClusterRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -198,6 +200,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.AddConnectableClusterResponse:
         """
+        @summary Connects Elasticsearch clusters.
+        
         @param request: AddConnectableClusterRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -234,6 +238,8 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.AddConnectableClusterRequest,
     ) -> elasticsearch_20170613_models.AddConnectableClusterResponse:
         """
+        @summary Connects Elasticsearch clusters.
+        
         @param request: AddConnectableClusterRequest
         @return: AddConnectableClusterResponse
         """
@@ -247,6 +253,8 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.AddConnectableClusterRequest,
     ) -> elasticsearch_20170613_models.AddConnectableClusterResponse:
         """
+        @summary Connects Elasticsearch clusters.
+        
         @param request: AddConnectableClusterRequest
         @return: AddConnectableClusterResponse
         """
