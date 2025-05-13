@@ -1,3 +1,7 @@
+2025-05-13 Version: 2.1.0
+- Support API ListApplicationsForSwimmingLane.
+
+
 2025-05-07 Version: 2.0.5
 - Update API GetWebshellToken: add response parameters Body.Data.HttpUrl.
 - Update API GetWebshellToken: add response parameters Body.Data.WebSocketUrl.

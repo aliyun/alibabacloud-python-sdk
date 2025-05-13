@@ -9899,6 +9899,118 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_applications_with_options_async(request, headers, runtime)
 
+    def list_applications_for_swimming_lane_with_options(
+        self,
+        request: sae_20190506_models.ListApplicationsForSwimmingLaneRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.ListApplicationsForSwimmingLaneResponse:
+        """
+        @summary 获取应用列表，供全链路灰度拉取应用列表
+        
+        @param request: ListApplicationsForSwimmingLaneRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationsForSwimmingLaneResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApplicationsForSwimmingLane',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/cas/gray/listApplicationsForSwimmingLane',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.ListApplicationsForSwimmingLaneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_applications_for_swimming_lane_with_options_async(
+        self,
+        request: sae_20190506_models.ListApplicationsForSwimmingLaneRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.ListApplicationsForSwimmingLaneResponse:
+        """
+        @summary 获取应用列表，供全链路灰度拉取应用列表
+        
+        @param request: ListApplicationsForSwimmingLaneRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationsForSwimmingLaneResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApplicationsForSwimmingLane',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/cas/gray/listApplicationsForSwimmingLane',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.ListApplicationsForSwimmingLaneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_applications_for_swimming_lane(
+        self,
+        request: sae_20190506_models.ListApplicationsForSwimmingLaneRequest,
+    ) -> sae_20190506_models.ListApplicationsForSwimmingLaneResponse:
+        """
+        @summary 获取应用列表，供全链路灰度拉取应用列表
+        
+        @param request: ListApplicationsForSwimmingLaneRequest
+        @return: ListApplicationsForSwimmingLaneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_applications_for_swimming_lane_with_options(request, headers, runtime)
+
+    async def list_applications_for_swimming_lane_async(
+        self,
+        request: sae_20190506_models.ListApplicationsForSwimmingLaneRequest,
+    ) -> sae_20190506_models.ListApplicationsForSwimmingLaneResponse:
+        """
+        @summary 获取应用列表，供全链路灰度拉取应用列表
+        
+        @param request: ListApplicationsForSwimmingLaneRequest
+        @return: ListApplicationsForSwimmingLaneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_applications_for_swimming_lane_with_options_async(request, headers, runtime)
+
     def list_change_orders_with_options(
         self,
         request: sae_20190506_models.ListChangeOrdersRequest,
