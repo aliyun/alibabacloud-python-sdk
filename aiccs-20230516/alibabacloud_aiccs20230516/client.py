@@ -1127,22 +1127,24 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.customers):
             request.customers_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.customers, 'Customers', 'json')
         query = {}
-        if not UtilClient.is_unset(request.customers_shrink):
-            query['Customers'] = request.customers_shrink
-        if not UtilClient.is_unset(request.fail_return):
-            query['FailReturn'] = request.fail_return
-        if not UtilClient.is_unset(request.out_id):
-            query['OutId'] = request.out_id
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        body = {}
+        if not UtilClient.is_unset(request.customers_shrink):
+            body['Customers'] = request.customers_shrink
+        if not UtilClient.is_unset(request.fail_return):
+            body['FailReturn'] = request.fail_return
+        if not UtilClient.is_unset(request.out_id):
+            body['OutId'] = request.out_id
         if not UtilClient.is_unset(request.task_id):
-            query['TaskId'] = request.task_id
+            body['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ImportNumberV2',
@@ -1178,22 +1180,24 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.customers):
             request.customers_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.customers, 'Customers', 'json')
         query = {}
-        if not UtilClient.is_unset(request.customers_shrink):
-            query['Customers'] = request.customers_shrink
-        if not UtilClient.is_unset(request.fail_return):
-            query['FailReturn'] = request.fail_return
-        if not UtilClient.is_unset(request.out_id):
-            query['OutId'] = request.out_id
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        body = {}
+        if not UtilClient.is_unset(request.customers_shrink):
+            body['Customers'] = request.customers_shrink
+        if not UtilClient.is_unset(request.fail_return):
+            body['FailReturn'] = request.fail_return
+        if not UtilClient.is_unset(request.out_id):
+            body['OutId'] = request.out_id
         if not UtilClient.is_unset(request.task_id):
-            query['TaskId'] = request.task_id
+            body['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ImportNumberV2',
