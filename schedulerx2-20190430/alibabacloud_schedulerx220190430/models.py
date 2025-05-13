@@ -68,79 +68,14 @@ class BatchDeleteJobsRequest(TeaModel):
         return self
 
 
-class BatchDeleteJobsResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
-        return self
-
-
 class BatchDeleteJobsResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: BatchDeleteJobsResponseBodyAccessDeniedDetail = None,
         code: int = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code.
         self.code = code
         # The additional information returned.
@@ -154,8 +89,7 @@ class BatchDeleteJobsResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -163,8 +97,6 @@ class BatchDeleteJobsResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
@@ -177,9 +109,6 @@ class BatchDeleteJobsResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = BatchDeleteJobsResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
@@ -240,11 +169,18 @@ class BatchDeleteRouteStrategyRequest(TeaModel):
         namespace: str = None,
         region_id: str = None,
     ):
+        # The ID of the application. You can obtain the application ID on the Application Management page in the SchedulerX console.
+        # 
         # This parameter is required.
         self.group_id = group_id
+        # The IDs of the jobs.
         self.job_id_list = job_id_list
+        # The ID of the namespace. You can obtain the ID of the namespace on the Namespace page in the SchedulerX console.
+        # 
         # This parameter is required.
         self.namespace = namespace
+        # The ID of the region.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -280,24 +216,25 @@ class BatchDeleteRouteStrategyRequest(TeaModel):
         return self
 
 
-class BatchDeleteRouteStrategyResponseBodyAccessDeniedDetail(TeaModel):
+class BatchDeleteRouteStrategyResponseBody(TeaModel):
     def __init__(
         self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
     ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
+        # The HTTP status code that is returned.
+        self.code = code
+        # The additional information that is returned.
+        self.message = message
+        # The ID of the request.
+        self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # true: The request was successful.
+        # false: The request failed.
+        self.success = success
 
     def validate(self):
         pass
@@ -308,68 +245,6 @@ class BatchDeleteRouteStrategyResponseBodyAccessDeniedDetail(TeaModel):
             return _map
 
         result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
-        return self
-
-
-class BatchDeleteRouteStrategyResponseBody(TeaModel):
-    def __init__(
-        self,
-        access_denied_detail: BatchDeleteRouteStrategyResponseBodyAccessDeniedDetail = None,
-        code: int = None,
-        message: str = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        self.access_denied_detail = access_denied_detail
-        self.code = code
-        self.message = message
-        self.request_id = request_id
-        self.success = success
-
-    def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
@@ -382,9 +257,6 @@ class BatchDeleteRouteStrategyResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = BatchDeleteRouteStrategyResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
@@ -499,79 +371,14 @@ class BatchDisableJobsRequest(TeaModel):
         return self
 
 
-class BatchDisableJobsResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
-        return self
-
-
 class BatchDisableJobsResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: BatchDisableJobsResponseBodyAccessDeniedDetail = None,
         code: int = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code.
         self.code = code
         # The additional information that was returned.
@@ -585,8 +392,7 @@ class BatchDisableJobsResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -594,8 +400,6 @@ class BatchDisableJobsResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
@@ -608,9 +412,6 @@ class BatchDisableJobsResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = BatchDisableJobsResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
@@ -725,79 +526,14 @@ class BatchEnableJobsRequest(TeaModel):
         return self
 
 
-class BatchEnableJobsResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
-        return self
-
-
 class BatchEnableJobsResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: BatchEnableJobsResponseBodyAccessDeniedDetail = None,
         code: int = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code.
         self.code = code
         # The returned additional information.
@@ -811,8 +547,7 @@ class BatchEnableJobsResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -820,8 +555,6 @@ class BatchEnableJobsResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
@@ -834,9 +567,6 @@ class BatchEnableJobsResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = BatchEnableJobsResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
@@ -1027,69 +757,6 @@ class CreateAppGroupRequest(TeaModel):
         return self
 
 
-class CreateAppGroupResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
-        return self
-
-
 class CreateAppGroupResponseBodyData(TeaModel):
     def __init__(
         self,
@@ -1128,14 +795,12 @@ class CreateAppGroupResponseBodyData(TeaModel):
 class CreateAppGroupResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: CreateAppGroupResponseBodyAccessDeniedDetail = None,
         code: int = None,
         data: CreateAppGroupResponseBodyData = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code.
         self.code = code
         # The information about the job group.
@@ -1151,8 +816,6 @@ class CreateAppGroupResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
         if self.data:
             self.data.validate()
 
@@ -1162,8 +825,6 @@ class CreateAppGroupResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
@@ -1178,9 +839,6 @@ class CreateAppGroupResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = CreateAppGroupResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
@@ -1310,6 +968,7 @@ class CreateJobRequest(TeaModel):
         namespace_source: str = None,
         page_size: int = None,
         parameters: str = None,
+        priority: int = None,
         queue_size: int = None,
         region_id: str = None,
         send_channel: str = None,
@@ -1403,6 +1062,7 @@ class CreateJobRequest(TeaModel):
         self.page_size = page_size
         # The user-defined parameters that you can obtain when the job is running.
         self.parameters = parameters
+        self.priority = priority
         # The maximum capacity of the task queue. You can specify this parameter for MapReduce jobs. Default value: 10000.
         self.queue_size = queue_size
         # The region ID.
@@ -1512,6 +1172,8 @@ class CreateJobRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.parameters is not None:
             result['Parameters'] = self.parameters
+        if self.priority is not None:
+            result['Priority'] = self.priority
         if self.queue_size is not None:
             result['QueueSize'] = self.queue_size
         if self.region_id is not None:
@@ -1591,6 +1253,8 @@ class CreateJobRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('Parameters') is not None:
             self.parameters = m.get('Parameters')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
         if m.get('QueueSize') is not None:
             self.queue_size = m.get('QueueSize')
         if m.get('RegionId') is not None:
@@ -1619,69 +1283,6 @@ class CreateJobRequest(TeaModel):
             self.timezone = m.get('Timezone')
         if m.get('XAttrs') is not None:
             self.xattrs = m.get('XAttrs')
-        return self
-
-
-class CreateJobResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
         return self
 
 
@@ -1716,14 +1317,12 @@ class CreateJobResponseBodyData(TeaModel):
 class CreateJobResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: CreateJobResponseBodyAccessDeniedDetail = None,
         code: int = None,
         data: CreateJobResponseBodyData = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code.
         self.code = code
         # The details of the job.
@@ -1739,8 +1338,6 @@ class CreateJobResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
         if self.data:
             self.data.validate()
 
@@ -1750,8 +1347,6 @@ class CreateJobResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
@@ -1766,9 +1361,6 @@ class CreateJobResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = CreateJobResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
@@ -1877,69 +1469,6 @@ class CreateNamespaceRequest(TeaModel):
         return self
 
 
-class CreateNamespaceResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
-        return self
-
-
 class CreateNamespaceResponseBodyData(TeaModel):
     def __init__(
         self,
@@ -1971,14 +1500,12 @@ class CreateNamespaceResponseBodyData(TeaModel):
 class CreateNamespaceResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: CreateNamespaceResponseBodyAccessDeniedDetail = None,
         code: int = None,
         data: CreateNamespaceResponseBodyData = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code.
         self.code = code
         # The information about the namespace.
@@ -1994,8 +1521,6 @@ class CreateNamespaceResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
         if self.data:
             self.data.validate()
 
@@ -2005,8 +1530,6 @@ class CreateNamespaceResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
@@ -2021,9 +1544,6 @@ class CreateNamespaceResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = CreateNamespaceResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
@@ -2169,69 +1689,6 @@ class CreateRouteStrategyRequest(TeaModel):
         return self
 
 
-class CreateRouteStrategyResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
-        return self
-
-
 class CreateRouteStrategyResponseBodyData(TeaModel):
     def __init__(self):
         pass
@@ -2255,14 +1712,12 @@ class CreateRouteStrategyResponseBodyData(TeaModel):
 class CreateRouteStrategyResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: CreateRouteStrategyResponseBodyAccessDeniedDetail = None,
         code: int = None,
         data: CreateRouteStrategyResponseBodyData = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code.
         self.code = code
         # The returned data.
@@ -2278,8 +1733,6 @@ class CreateRouteStrategyResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
         if self.data:
             self.data.validate()
 
@@ -2289,8 +1742,6 @@ class CreateRouteStrategyResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
@@ -2305,9 +1756,6 @@ class CreateRouteStrategyResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = CreateRouteStrategyResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
@@ -2470,69 +1918,6 @@ class CreateWorkflowRequest(TeaModel):
         return self
 
 
-class CreateWorkflowResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
-        return self
-
-
 class CreateWorkflowResponseBodyData(TeaModel):
     def __init__(
         self,
@@ -2564,14 +1949,12 @@ class CreateWorkflowResponseBodyData(TeaModel):
 class CreateWorkflowResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: CreateWorkflowResponseBodyAccessDeniedDetail = None,
         code: str = None,
         data: CreateWorkflowResponseBodyData = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code.
         self.code = code
         # The data that was returned for the request.
@@ -2587,8 +1970,6 @@ class CreateWorkflowResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
         if self.data:
             self.data.validate()
 
@@ -2598,8 +1979,6 @@ class CreateWorkflowResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
@@ -2614,9 +1993,6 @@ class CreateWorkflowResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = CreateWorkflowResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
@@ -2680,11 +2056,21 @@ class DeleteAppGroupRequest(TeaModel):
         namespace: str = None,
         region_id: str = None,
     ):
+        # Specifies whether to delete the jobs in the application group. Valid values:
+        # 
+        # true: deletes the jobs in the application group.
+        # false: does not delete the jobs in the application group.
         self.delete_jobs = delete_jobs
+        # The ID of the application. You can obtain the ID of the application on the Application Management page in the SchedulerX console.
+        # 
         # This parameter is required.
         self.group_id = group_id
+        # The ID of the namespace. You can obtain the ID of the namespace on the Namespace page in the SchedulerX console.
+        # 
         # This parameter is required.
         self.namespace = namespace
+        # The ID of the region.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -2720,24 +2106,25 @@ class DeleteAppGroupRequest(TeaModel):
         return self
 
 
-class DeleteAppGroupResponseBodyAccessDeniedDetail(TeaModel):
+class DeleteAppGroupResponseBody(TeaModel):
     def __init__(
         self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
     ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
+        # The HTTP status code that is returned.
+        self.code = code
+        # The additional information that is returned.
+        self.message = message
+        # The ID of the request.
+        self.request_id = request_id
+        # Indices whether the request was successful. Valid values:
+        # 
+        # true: The request was successful.
+        # false: The request failed.
+        self.success = success
 
     def validate(self):
         pass
@@ -2748,68 +2135,6 @@ class DeleteAppGroupResponseBodyAccessDeniedDetail(TeaModel):
             return _map
 
         result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
-        return self
-
-
-class DeleteAppGroupResponseBody(TeaModel):
-    def __init__(
-        self,
-        access_denied_detail: DeleteAppGroupResponseBodyAccessDeniedDetail = None,
-        code: int = None,
-        message: str = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        self.access_denied_detail = access_denied_detail
-        self.code = code
-        self.message = message
-        self.request_id = request_id
-        self.success = success
-
-    def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
@@ -2822,9 +2147,6 @@ class DeleteAppGroupResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = DeleteAppGroupResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
@@ -2941,79 +2263,14 @@ class DeleteJobRequest(TeaModel):
         return self
 
 
-class DeleteJobResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
-        return self
-
-
 class DeleteJobResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: DeleteJobResponseBodyAccessDeniedDetail = None,
         code: int = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code.
         self.code = code
         # The additional information returned.
@@ -3027,8 +2284,7 @@ class DeleteJobResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -3036,8 +2292,6 @@ class DeleteJobResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
@@ -3050,9 +2304,6 @@ class DeleteJobResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = DeleteJobResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
@@ -3101,6 +2352,127 @@ class DeleteJobResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteNamespaceRequest(TeaModel):
+    def __init__(
+        self,
+        namespace: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.namespace = namespace
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DeleteNamespaceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteNamespaceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteNamespaceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteNamespaceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3160,79 +2532,14 @@ class DeleteRouteStrategyRequest(TeaModel):
         return self
 
 
-class DeleteRouteStrategyResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
-        return self
-
-
 class DeleteRouteStrategyResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: DeleteRouteStrategyResponseBodyAccessDeniedDetail = None,
         code: int = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code that is returned.
         self.code = code
         # The additional information that is returned.
@@ -3246,8 +2553,7 @@ class DeleteRouteStrategyResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -3255,8 +2561,6 @@ class DeleteRouteStrategyResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
@@ -3269,9 +2573,6 @@ class DeleteRouteStrategyResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = DeleteRouteStrategyResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
@@ -3333,7 +2634,7 @@ class DeleteWorkflowRequest(TeaModel):
         region_id: str = None,
         workflow_id: int = None,
     ):
-        # The application ID. You can obtain the application ID on the Application Management page in the SchedulerX console.
+        # The application group ID. You can obtain the application group ID on the Application Management page in the SchedulerX console.
         self.group_id = group_id
         # The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
         # 
@@ -3386,79 +2687,14 @@ class DeleteWorkflowRequest(TeaModel):
         return self
 
 
-class DeleteWorkflowResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
-        return self
-
-
 class DeleteWorkflowResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: DeleteWorkflowResponseBodyAccessDeniedDetail = None,
         code: int = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code.
         self.code = code
         # The error message that is returned only if the corresponding error occurs.
@@ -3472,8 +2708,7 @@ class DeleteWorkflowResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -3481,8 +2716,6 @@ class DeleteWorkflowResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
@@ -3495,9 +2728,6 @@ class DeleteWorkflowResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = DeleteWorkflowResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
@@ -3824,79 +3054,14 @@ class DesignateWorkersRequest(TeaModel):
         return self
 
 
-class DesignateWorkersResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
-        return self
-
-
 class DesignateWorkersResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: DesignateWorkersResponseBodyAccessDeniedDetail = None,
         code: int = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code.
         self.code = code
         # The returned error message.
@@ -3907,8 +3072,7 @@ class DesignateWorkersResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -3916,8 +3080,6 @@ class DesignateWorkersResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
@@ -3930,9 +3092,6 @@ class DesignateWorkersResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = DesignateWorkersResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
@@ -4047,79 +3206,14 @@ class DisableJobRequest(TeaModel):
         return self
 
 
-class DisableJobResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
-        return self
-
-
 class DisableJobResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: DisableJobResponseBodyAccessDeniedDetail = None,
         code: int = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code.
         self.code = code
         # The error message that is returned only if the corresponding error occurs.
@@ -4133,8 +3227,7 @@ class DisableJobResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -4142,8 +3235,6 @@ class DisableJobResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
@@ -4156,9 +3247,6 @@ class DisableJobResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = DisableJobResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
@@ -4273,79 +3361,14 @@ class DisableWorkflowRequest(TeaModel):
         return self
 
 
-class DisableWorkflowResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
-        return self
-
-
 class DisableWorkflowResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: DisableWorkflowResponseBodyAccessDeniedDetail = None,
         code: int = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code.
         self.code = code
         # The error message that is returned only if the corresponding error occurs.
@@ -4359,8 +3382,7 @@ class DisableWorkflowResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -4368,8 +3390,6 @@ class DisableWorkflowResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
@@ -4382,9 +3402,6 @@ class DisableWorkflowResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = DisableWorkflowResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
@@ -4499,79 +3516,14 @@ class EnableJobRequest(TeaModel):
         return self
 
 
-class EnableJobResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
-        return self
-
-
 class EnableJobResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: EnableJobResponseBodyAccessDeniedDetail = None,
         code: int = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code.
         self.code = code
         # The error message that is returned only if the corresponding error occurs.
@@ -4585,8 +3537,7 @@ class EnableJobResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -4594,8 +3545,6 @@ class EnableJobResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
@@ -4608,9 +3557,6 @@ class EnableJobResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = EnableJobResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
@@ -4725,79 +3671,14 @@ class EnableWorkflowRequest(TeaModel):
         return self
 
 
-class EnableWorkflowResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
-        return self
-
-
 class EnableWorkflowResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: EnableWorkflowResponseBodyAccessDeniedDetail = None,
         code: int = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code.
         self.code = code
         # The error message that is returned only if the corresponding error occurs.
@@ -4811,8 +3692,7 @@ class EnableWorkflowResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -4820,8 +3700,6 @@ class EnableWorkflowResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
@@ -4834,9 +3712,6 @@ class EnableWorkflowResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = EnableWorkflowResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
@@ -4988,69 +3863,6 @@ class ExecuteJobRequest(TeaModel):
         return self
 
 
-class ExecuteJobResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
-        return self
-
-
 class ExecuteJobResponseBodyData(TeaModel):
     def __init__(
         self,
@@ -5082,14 +3894,12 @@ class ExecuteJobResponseBodyData(TeaModel):
 class ExecuteJobResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: ExecuteJobResponseBodyAccessDeniedDetail = None,
         code: int = None,
         data: ExecuteJobResponseBodyData = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code.
         self.code = code
         # The ID of the job instance that is returned if the request is successful.
@@ -5105,8 +3915,6 @@ class ExecuteJobResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
         if self.data:
             self.data.validate()
 
@@ -5116,8 +3924,6 @@ class ExecuteJobResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
@@ -5132,9 +3938,6 @@ class ExecuteJobResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = ExecuteJobResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
@@ -5261,69 +4064,6 @@ class ExecuteWorkflowRequest(TeaModel):
         return self
 
 
-class ExecuteWorkflowResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
-        return self
-
-
 class ExecuteWorkflowResponseBodyData(TeaModel):
     def __init__(
         self,
@@ -5355,14 +4095,12 @@ class ExecuteWorkflowResponseBodyData(TeaModel):
 class ExecuteWorkflowResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: ExecuteWorkflowResponseBodyAccessDeniedDetail = None,
         code: int = None,
         data: ExecuteWorkflowResponseBodyData = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code.
         self.code = code
         # If the request is successful, the ID of the workflow instance is returned.
@@ -5375,8 +4113,6 @@ class ExecuteWorkflowResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
         if self.data:
             self.data.validate()
 
@@ -5386,8 +4122,6 @@ class ExecuteWorkflowResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
@@ -5402,9 +4136,6 @@ class ExecuteWorkflowResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = ExecuteWorkflowResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
@@ -5506,69 +4237,6 @@ class GetAppGroupRequest(TeaModel):
         return self
 
 
-class GetAppGroupResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
-        return self
-
-
 class GetAppGroupResponseBodyData(TeaModel):
     def __init__(
         self,
@@ -5580,6 +4248,8 @@ class GetAppGroupResponseBodyData(TeaModel):
         group_id: str = None,
         max_jobs: int = None,
         monitor_config_json: str = None,
+        monitor_contacts_json: str = None,
+        namespace: str = None,
     ):
         # The AppKey of the application.
         self.app_key = app_key
@@ -5595,8 +4265,16 @@ class GetAppGroupResponseBodyData(TeaModel):
         self.group_id = group_id
         # The maximum number of jobs that can be configured for the application group.
         self.max_jobs = max_jobs
-        # The configuration of the alert. The value is a JSON string. For more information, see **the additional information about response parameters below this table.**\
+        # The alert notification configurations.
+        # 
+        # >  For more information about this parameter, see the following **additional information about request parameters**.
         self.monitor_config_json = monitor_config_json
+        # The alert contact configurations.
+        # 
+        # >  For more information about this parameter, see the following **additional information about request parameters**.
+        self.monitor_contacts_json = monitor_contacts_json
+        # The ID of the namespace.
+        self.namespace = namespace
 
     def validate(self):
         pass
@@ -5623,6 +4301,10 @@ class GetAppGroupResponseBodyData(TeaModel):
             result['MaxJobs'] = self.max_jobs
         if self.monitor_config_json is not None:
             result['MonitorConfigJson'] = self.monitor_config_json
+        if self.monitor_contacts_json is not None:
+            result['MonitorContactsJson'] = self.monitor_contacts_json
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
         return result
 
     def from_map(self, m: dict = None):
@@ -5643,20 +4325,22 @@ class GetAppGroupResponseBodyData(TeaModel):
             self.max_jobs = m.get('MaxJobs')
         if m.get('MonitorConfigJson') is not None:
             self.monitor_config_json = m.get('MonitorConfigJson')
+        if m.get('MonitorContactsJson') is not None:
+            self.monitor_contacts_json = m.get('MonitorContactsJson')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
         return self
 
 
 class GetAppGroupResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: GetAppGroupResponseBodyAccessDeniedDetail = None,
         code: int = None,
         data: GetAppGroupResponseBodyData = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code that is returned.
         self.code = code
         # The information about the application group.
@@ -5672,8 +4356,6 @@ class GetAppGroupResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
         if self.data:
             self.data.validate()
 
@@ -5683,8 +4365,6 @@ class GetAppGroupResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
@@ -5699,9 +4379,6 @@ class GetAppGroupResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = GetAppGroupResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
@@ -5825,69 +4502,6 @@ class GetJobInfoRequest(TeaModel):
             self.namespace_source = m.get('NamespaceSource')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-        return self
-
-
-class GetJobInfoResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
         return self
 
 
@@ -6209,11 +4823,11 @@ class GetJobInfoResponseBodyDataJobConfigInfo(TeaModel):
         self.description = description
         # The execution mode of the job. Valid values:
         # 
-        # *   **Stand-alone operation**\
-        # *   **Broadcast run**\
-        # *   **Visual MapReduce**\
-        # *   **MapReduce**\
-        # *   **Shard run**\
+        # *   **Stand-alone operation**: standalone
+        # *   **Broadcast run**: broadcast
+        # *   **Visual MapReduce**: parallel
+        # *   **MapReduce**: batch
+        # *   **Shard run**: sharding
         self.execute_mode = execute_mode
         # The full path used to upload files to Object Storage Service (OSS).
         # 
@@ -6370,14 +4984,12 @@ class GetJobInfoResponseBodyData(TeaModel):
 class GetJobInfoResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: GetJobInfoResponseBodyAccessDeniedDetail = None,
         code: int = None,
         data: GetJobInfoResponseBodyData = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code.
         self.code = code
         # The details of the job.
@@ -6393,8 +5005,6 @@ class GetJobInfoResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
         if self.data:
             self.data.validate()
 
@@ -6404,8 +5014,6 @@ class GetJobInfoResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
@@ -6420,9 +5028,6 @@ class GetJobInfoResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = GetJobInfoResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
@@ -6546,69 +5151,6 @@ class GetJobInstanceRequest(TeaModel):
             self.namespace_source = m.get('NamespaceSource')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-        return self
-
-
-class GetJobInstanceResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
         return self
 
 
@@ -6801,14 +5343,12 @@ class GetJobInstanceResponseBodyData(TeaModel):
 class GetJobInstanceResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: GetJobInstanceResponseBodyAccessDeniedDetail = None,
         code: int = None,
         data: GetJobInstanceResponseBodyData = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code.
         self.code = code
         # The information about the job instance.
@@ -6824,8 +5364,6 @@ class GetJobInstanceResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
         if self.data:
             self.data.validate()
 
@@ -6835,8 +5373,6 @@ class GetJobInstanceResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
@@ -6851,9 +5387,6 @@ class GetJobInstanceResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = GetJobInstanceResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
@@ -7005,69 +5538,6 @@ class GetJobInstanceListRequest(TeaModel):
             self.start_timestamp = m.get('StartTimestamp')
         if m.get('Status') is not None:
             self.status = m.get('Status')
-        return self
-
-
-class GetJobInstanceListResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
         return self
 
 
@@ -7245,14 +5715,12 @@ class GetJobInstanceListResponseBodyData(TeaModel):
 class GetJobInstanceListResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: GetJobInstanceListResponseBodyAccessDeniedDetail = None,
         code: int = None,
         data: GetJobInstanceListResponseBodyData = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code.
         self.code = code
         # The information about the job instances.
@@ -7268,8 +5736,6 @@ class GetJobInstanceListResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
         if self.data:
             self.data.validate()
 
@@ -7279,8 +5745,6 @@ class GetJobInstanceListResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
@@ -7295,9 +5759,6 @@ class GetJobInstanceListResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = GetJobInstanceListResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
@@ -7464,69 +5925,6 @@ class GetLogRequest(TeaModel):
         return self
 
 
-class GetLogResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
-        return self
-
-
 class GetLogResponseBodyData(TeaModel):
     def __init__(
         self,
@@ -7558,14 +5956,12 @@ class GetLogResponseBodyData(TeaModel):
 class GetLogResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: GetLogResponseBodyAccessDeniedDetail = None,
         code: int = None,
         data: GetLogResponseBodyData = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code.
         self.code = code
         # The returned data.
@@ -7581,8 +5977,6 @@ class GetLogResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
         if self.data:
             self.data.validate()
 
@@ -7592,8 +5986,6 @@ class GetLogResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
@@ -7608,9 +6000,6 @@ class GetLogResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = GetLogResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
@@ -7739,24 +6128,21 @@ class GetOverviewRequest(TeaModel):
         return self
 
 
-class GetOverviewResponseBodyAccessDeniedDetail(TeaModel):
+class GetOverviewResponseBody(TeaModel):
     def __init__(
         self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
+        code: int = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
     ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
 
     def validate(self):
         pass
@@ -7767,71 +6153,6 @@ class GetOverviewResponseBodyAccessDeniedDetail(TeaModel):
             return _map
 
         result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
-        return self
-
-
-class GetOverviewResponseBody(TeaModel):
-    def __init__(
-        self,
-        access_denied_detail: GetOverviewResponseBodyAccessDeniedDetail = None,
-        code: int = None,
-        data: str = None,
-        message: str = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        self.access_denied_detail = access_denied_detail
-        self.code = code
-        self.data = data
-        self.message = message
-        # Id of the request
-        self.request_id = request_id
-        self.success = success
-
-    def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
@@ -7846,9 +6167,6 @@ class GetOverviewResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = GetOverviewResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
@@ -7967,74 +6285,14 @@ class GetWorkFlowRequest(TeaModel):
         return self
 
 
-class GetWorkFlowResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
-        return self
-
-
 class GetWorkFlowResponseBodyDataWorkFlowInfo(TeaModel):
     def __init__(
         self,
         description: str = None,
+        group_id: str = None,
+        max_concurrency: str = None,
         name: str = None,
+        namespace: str = None,
         status: str = None,
         time_expression: str = None,
         time_type: str = None,
@@ -8042,8 +6300,11 @@ class GetWorkFlowResponseBodyDataWorkFlowInfo(TeaModel):
     ):
         # The description of the workflow.
         self.description = description
+        self.group_id = group_id
+        self.max_concurrency = max_concurrency
         # The name of the workflow.
         self.name = name
+        self.namespace = namespace
         # The status of the workflow.
         self.status = status
         # The time expression of the workflow.
@@ -8064,8 +6325,14 @@ class GetWorkFlowResponseBodyDataWorkFlowInfo(TeaModel):
         result = dict()
         if self.description is not None:
             result['Description'] = self.description
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.max_concurrency is not None:
+            result['MaxConcurrency'] = self.max_concurrency
         if self.name is not None:
             result['Name'] = self.name
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
         if self.status is not None:
             result['Status'] = self.status
         if self.time_expression is not None:
@@ -8080,8 +6347,14 @@ class GetWorkFlowResponseBodyDataWorkFlowInfo(TeaModel):
         m = m or dict()
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('MaxConcurrency') is not None:
+            self.max_concurrency = m.get('MaxConcurrency')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('TimeExpression') is not None:
@@ -8265,14 +6538,12 @@ class GetWorkFlowResponseBodyData(TeaModel):
 class GetWorkFlowResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: GetWorkFlowResponseBodyAccessDeniedDetail = None,
         code: int = None,
         data: GetWorkFlowResponseBodyData = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # Error codes
         self.code = code
         # The data of the workflow.
@@ -8285,8 +6556,6 @@ class GetWorkFlowResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
         if self.data:
             self.data.validate()
 
@@ -8296,8 +6565,6 @@ class GetWorkFlowResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
@@ -8312,9 +6579,6 @@ class GetWorkFlowResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = GetWorkFlowResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
@@ -8425,69 +6689,6 @@ class GetWorkerListRequest(TeaModel):
         return self
 
 
-class GetWorkerListResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
-        return self
-
-
 class GetWorkerListResponseBodyDataWorkerInfos(TeaModel):
     def __init__(
         self,
@@ -8590,14 +6791,12 @@ class GetWorkerListResponseBodyData(TeaModel):
 class GetWorkerListResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: GetWorkerListResponseBodyAccessDeniedDetail = None,
         code: int = None,
         data: GetWorkerListResponseBodyData = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code that is returned.
         self.code = code
         # The job information.
@@ -8613,8 +6812,6 @@ class GetWorkerListResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
         if self.data:
             self.data.validate()
 
@@ -8624,8 +6821,6 @@ class GetWorkerListResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
@@ -8640,9 +6835,6 @@ class GetWorkerListResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = GetWorkerListResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
@@ -8768,69 +6960,6 @@ class GetWorkflowInstanceRequest(TeaModel):
             self.wf_instance_id = m.get('WfInstanceId')
         if m.get('WorkflowId') is not None:
             self.workflow_id = m.get('WorkflowId')
-        return self
-
-
-class GetWorkflowInstanceResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
         return self
 
 
@@ -9124,14 +7253,12 @@ class GetWorkflowInstanceResponseBodyData(TeaModel):
 class GetWorkflowInstanceResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: GetWorkflowInstanceResponseBodyAccessDeniedDetail = None,
         code: int = None,
         data: GetWorkflowInstanceResponseBodyData = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code.
         self.code = code
         # The details of the workflow instance.
@@ -9147,8 +7274,6 @@ class GetWorkflowInstanceResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
         if self.data:
             self.data.validate()
 
@@ -9158,8 +7283,6 @@ class GetWorkflowInstanceResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
@@ -9174,9 +7297,6 @@ class GetWorkflowInstanceResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = GetWorkflowInstanceResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
@@ -9310,79 +7430,14 @@ class GrantPermissionRequest(TeaModel):
         return self
 
 
-class GrantPermissionResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
-        return self
-
-
 class GrantPermissionResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: GrantPermissionResponseBodyAccessDeniedDetail = None,
         code: int = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code.
         self.code = code
         # The error message that is returned only if the corresponding error occurs.
@@ -9396,8 +7451,7 @@ class GrantPermissionResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -9405,8 +7459,6 @@ class GrantPermissionResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
@@ -9419,9 +7471,6 @@ class GrantPermissionResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = GrantPermissionResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
@@ -9525,69 +7574,6 @@ class ListGroupsRequest(TeaModel):
         return self
 
 
-class ListGroupsResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
-        return self
-
-
 class ListGroupsResponseBodyDataAppGroups(TeaModel):
     def __init__(
         self,
@@ -9597,6 +7583,7 @@ class ListGroupsResponseBodyDataAppGroups(TeaModel):
         app_version: int = None,
         description: str = None,
         group_id: str = None,
+        namespace: str = None,
     ):
         # The application group ID.
         self.app_group_id = app_group_id
@@ -9610,6 +7597,8 @@ class ListGroupsResponseBodyDataAppGroups(TeaModel):
         self.description = description
         # The application ID.
         self.group_id = group_id
+        # The ID of the namespace.
+        self.namespace = namespace
 
     def validate(self):
         pass
@@ -9632,6 +7621,8 @@ class ListGroupsResponseBodyDataAppGroups(TeaModel):
             result['Description'] = self.description
         if self.group_id is not None:
             result['GroupId'] = self.group_id
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
         return result
 
     def from_map(self, m: dict = None):
@@ -9648,6 +7639,8 @@ class ListGroupsResponseBodyDataAppGroups(TeaModel):
             self.description = m.get('Description')
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
         return self
 
 
@@ -9690,17 +7683,15 @@ class ListGroupsResponseBodyData(TeaModel):
 class ListGroupsResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: ListGroupsResponseBodyAccessDeniedDetail = None,
         code: int = None,
         data: ListGroupsResponseBodyData = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code.
         self.code = code
-        # The information about the applications.
+        # The applications.
         self.data = data
         # The returned message.
         self.message = message
@@ -9713,8 +7704,6 @@ class ListGroupsResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
         if self.data:
             self.data.validate()
 
@@ -9724,8 +7713,6 @@ class ListGroupsResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
@@ -9740,9 +7727,6 @@ class ListGroupsResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = ListGroupsResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
@@ -9794,6 +7778,237 @@ class ListGroupsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListGroupsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListJobScriptHistoryRequest(TeaModel):
+    def __init__(
+        self,
+        group_id: str = None,
+        job_id: int = None,
+        namespace: str = None,
+        namespace_source: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.group_id = group_id
+        # This parameter is required.
+        self.job_id = job_id
+        # This parameter is required.
+        self.namespace = namespace
+        self.namespace_source = namespace_source
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.namespace_source is not None:
+            result['NamespaceSource'] = self.namespace_source
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('NamespaceSource') is not None:
+            self.namespace_source = m.get('NamespaceSource')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ListJobScriptHistoryResponseBodyDataJobScriptHistoryInfos(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        creator: str = None,
+        script_content: str = None,
+        versiones_description: str = None,
+    ):
+        self.create_time = create_time
+        self.creator = creator
+        self.script_content = script_content
+        self.versiones_description = versiones_description
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        if self.script_content is not None:
+            result['ScriptContent'] = self.script_content
+        if self.versiones_description is not None:
+            result['VersionesDescription'] = self.versiones_description
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        if m.get('ScriptContent') is not None:
+            self.script_content = m.get('ScriptContent')
+        if m.get('VersionesDescription') is not None:
+            self.versiones_description = m.get('VersionesDescription')
+        return self
+
+
+class ListJobScriptHistoryResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        job_script_history_infos: List[ListJobScriptHistoryResponseBodyDataJobScriptHistoryInfos] = None,
+    ):
+        # -\
+        self.job_script_history_infos = job_script_history_infos
+
+    def validate(self):
+        if self.job_script_history_infos:
+            for k in self.job_script_history_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['JobScriptHistoryInfos'] = []
+        if self.job_script_history_infos is not None:
+            for k in self.job_script_history_infos:
+                result['JobScriptHistoryInfos'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.job_script_history_infos = []
+        if m.get('JobScriptHistoryInfos') is not None:
+            for k in m.get('JobScriptHistoryInfos'):
+                temp_model = ListJobScriptHistoryResponseBodyDataJobScriptHistoryInfos()
+                self.job_script_history_infos.append(temp_model.from_map(k))
+        return self
+
+
+class ListJobScriptHistoryResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: ListJobScriptHistoryResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        # -\
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ListJobScriptHistoryResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListJobScriptHistoryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListJobScriptHistoryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListJobScriptHistoryResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9867,69 +8082,6 @@ class ListJobsRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
-        return self
-
-
-class ListJobsResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
         return self
 
 
@@ -10419,14 +8571,12 @@ class ListJobsResponseBodyData(TeaModel):
 class ListJobsResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: ListJobsResponseBodyAccessDeniedDetail = None,
         code: int = None,
         data: ListJobsResponseBodyData = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code that is returned.
         self.code = code
         # The information about the jobs.
@@ -10442,8 +8592,6 @@ class ListJobsResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
         if self.data:
             self.data.validate()
 
@@ -10453,8 +8601,6 @@ class ListJobsResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
@@ -10469,9 +8615,6 @@ class ListJobsResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = ListJobsResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
@@ -10571,69 +8714,6 @@ class ListNamespacesRequest(TeaModel):
         return self
 
 
-class ListNamespacesResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
-        return self
-
-
 class ListNamespacesResponseBodyDataNamespaces(TeaModel):
     def __init__(
         self,
@@ -10715,14 +8795,12 @@ class ListNamespacesResponseBodyData(TeaModel):
 class ListNamespacesResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: ListNamespacesResponseBodyAccessDeniedDetail = None,
         code: int = None,
         data: ListNamespacesResponseBodyData = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code.
         self.code = code
         # The information about the namespaces.
@@ -10738,8 +8816,6 @@ class ListNamespacesResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
         if self.data:
             self.data.validate()
 
@@ -10749,8 +8825,6 @@ class ListNamespacesResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
@@ -10765,9 +8839,6 @@ class ListNamespacesResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = ListNamespacesResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
@@ -10887,69 +8958,6 @@ class ListWorkflowInstanceRequest(TeaModel):
         return self
 
 
-class ListWorkflowInstanceResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
-        return self
-
-
 class ListWorkflowInstanceResponseBodyDataWfInstanceInfos(TeaModel):
     def __init__(
         self,
@@ -11065,14 +9073,12 @@ class ListWorkflowInstanceResponseBodyData(TeaModel):
 class ListWorkflowInstanceResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: ListWorkflowInstanceResponseBodyAccessDeniedDetail = None,
         code: int = None,
         data: ListWorkflowInstanceResponseBodyData = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code.
         self.code = code
         # The information about workflow instances.
@@ -11088,8 +9094,6 @@ class ListWorkflowInstanceResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
         if self.data:
             self.data.validate()
 
@@ -11099,8 +9103,6 @@ class ListWorkflowInstanceResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
@@ -11115,9 +9117,6 @@ class ListWorkflowInstanceResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = ListWorkflowInstanceResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
@@ -11169,6 +9168,440 @@ class ListWorkflowInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListWorkflowInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ReadSchedulerxDesignateDetailRequest(TeaModel):
+    def __init__(
+        self,
+        designate_type: int = None,
+        group_id: str = None,
+        job_id: int = None,
+        namespace: str = None,
+        namespace_source: str = None,
+        region_id: str = None,
+    ):
+        self.designate_type = designate_type
+        # This parameter is required.
+        self.group_id = group_id
+        # This parameter is required.
+        self.job_id = job_id
+        # This parameter is required.
+        self.namespace = namespace
+        self.namespace_source = namespace_source
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.designate_type is not None:
+            result['DesignateType'] = self.designate_type
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.namespace_source is not None:
+            result['NamespaceSource'] = self.namespace_source
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DesignateType') is not None:
+            self.designate_type = m.get('DesignateType')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('NamespaceSource') is not None:
+            self.namespace_source = m.get('NamespaceSource')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ReadSchedulerxDesignateDetailResponseBodyAccessDeniedDetail(TeaModel):
+    def __init__(
+        self,
+        auth_action: str = None,
+        auth_principal_display_name: str = None,
+        auth_principal_owner_id: str = None,
+        auth_principal_type: str = None,
+        encoded_diagnostic_message: str = None,
+        no_permission_type: str = None,
+        policy_type: str = None,
+    ):
+        self.auth_action = auth_action
+        self.auth_principal_display_name = auth_principal_display_name
+        self.auth_principal_owner_id = auth_principal_owner_id
+        self.auth_principal_type = auth_principal_type
+        self.encoded_diagnostic_message = encoded_diagnostic_message
+        self.no_permission_type = no_permission_type
+        self.policy_type = policy_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_action is not None:
+            result['AuthAction'] = self.auth_action
+        if self.auth_principal_display_name is not None:
+            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
+        if self.auth_principal_owner_id is not None:
+            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
+        if self.auth_principal_type is not None:
+            result['AuthPrincipalType'] = self.auth_principal_type
+        if self.encoded_diagnostic_message is not None:
+            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
+        if self.no_permission_type is not None:
+            result['NoPermissionType'] = self.no_permission_type
+        if self.policy_type is not None:
+            result['PolicyType'] = self.policy_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthAction') is not None:
+            self.auth_action = m.get('AuthAction')
+        if m.get('AuthPrincipalDisplayName') is not None:
+            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
+        if m.get('AuthPrincipalOwnerId') is not None:
+            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
+        if m.get('AuthPrincipalType') is not None:
+            self.auth_principal_type = m.get('AuthPrincipalType')
+        if m.get('EncodedDiagnosticMessage') is not None:
+            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
+        if m.get('NoPermissionType') is not None:
+            self.no_permission_type = m.get('NoPermissionType')
+        if m.get('PolicyType') is not None:
+            self.policy_type = m.get('PolicyType')
+        return self
+
+
+class ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVosMetrics(TeaModel):
+    def __init__(
+        self,
+        cpu_load_1: float = None,
+        cpu_load_5: float = None,
+        cpu_processors: int = None,
+        disk_max: int = None,
+        disk_usage: float = None,
+        disk_used: int = None,
+        exec_count: int = None,
+        heap_1usage: float = None,
+        heap_1used: float = None,
+        heap_5usage: float = None,
+        heap_max: int = None,
+        share_pool_available_size: int = None,
+        share_pool_queue_size: int = None,
+    ):
+        self.cpu_load_1 = cpu_load_1
+        self.cpu_load_5 = cpu_load_5
+        self.cpu_processors = cpu_processors
+        self.disk_max = disk_max
+        self.disk_usage = disk_usage
+        self.disk_used = disk_used
+        self.exec_count = exec_count
+        self.heap_1usage = heap_1usage
+        self.heap_1used = heap_1used
+        self.heap_5usage = heap_5usage
+        self.heap_max = heap_max
+        self.share_pool_available_size = share_pool_available_size
+        self.share_pool_queue_size = share_pool_queue_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu_load_1 is not None:
+            result['CpuLoad1'] = self.cpu_load_1
+        if self.cpu_load_5 is not None:
+            result['CpuLoad5'] = self.cpu_load_5
+        if self.cpu_processors is not None:
+            result['CpuProcessors'] = self.cpu_processors
+        if self.disk_max is not None:
+            result['DiskMax'] = self.disk_max
+        if self.disk_usage is not None:
+            result['DiskUsage'] = self.disk_usage
+        if self.disk_used is not None:
+            result['DiskUsed'] = self.disk_used
+        if self.exec_count is not None:
+            result['ExecCount'] = self.exec_count
+        if self.heap_1usage is not None:
+            result['Heap1Usage'] = self.heap_1usage
+        if self.heap_1used is not None:
+            result['Heap1Used'] = self.heap_1used
+        if self.heap_5usage is not None:
+            result['Heap5Usage'] = self.heap_5usage
+        if self.heap_max is not None:
+            result['HeapMax'] = self.heap_max
+        if self.share_pool_available_size is not None:
+            result['SharePoolAvailableSize'] = self.share_pool_available_size
+        if self.share_pool_queue_size is not None:
+            result['SharePoolQueueSize'] = self.share_pool_queue_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CpuLoad1') is not None:
+            self.cpu_load_1 = m.get('CpuLoad1')
+        if m.get('CpuLoad5') is not None:
+            self.cpu_load_5 = m.get('CpuLoad5')
+        if m.get('CpuProcessors') is not None:
+            self.cpu_processors = m.get('CpuProcessors')
+        if m.get('DiskMax') is not None:
+            self.disk_max = m.get('DiskMax')
+        if m.get('DiskUsage') is not None:
+            self.disk_usage = m.get('DiskUsage')
+        if m.get('DiskUsed') is not None:
+            self.disk_used = m.get('DiskUsed')
+        if m.get('ExecCount') is not None:
+            self.exec_count = m.get('ExecCount')
+        if m.get('Heap1Usage') is not None:
+            self.heap_1usage = m.get('Heap1Usage')
+        if m.get('Heap1Used') is not None:
+            self.heap_1used = m.get('Heap1Used')
+        if m.get('Heap5Usage') is not None:
+            self.heap_5usage = m.get('Heap5Usage')
+        if m.get('HeapMax') is not None:
+            self.heap_max = m.get('HeapMax')
+        if m.get('SharePoolAvailableSize') is not None:
+            self.share_pool_available_size = m.get('SharePoolAvailableSize')
+        if m.get('SharePoolQueueSize') is not None:
+            self.share_pool_queue_size = m.get('SharePoolQueueSize')
+        return self
+
+
+class ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVos(TeaModel):
+    def __init__(
+        self,
+        busy: str = None,
+        checked: bool = None,
+        key: str = None,
+        metrics: ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVosMetrics = None,
+        offline: bool = None,
+        size: int = None,
+        starter: str = None,
+        version: str = None,
+    ):
+        self.busy = busy
+        self.checked = checked
+        self.key = key
+        self.metrics = metrics
+        self.offline = offline
+        self.size = size
+        self.starter = starter
+        self.version = version
+
+    def validate(self):
+        if self.metrics:
+            self.metrics.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.busy is not None:
+            result['Busy'] = self.busy
+        if self.checked is not None:
+            result['Checked'] = self.checked
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.metrics is not None:
+            result['Metrics'] = self.metrics.to_map()
+        if self.offline is not None:
+            result['Offline'] = self.offline
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.starter is not None:
+            result['Starter'] = self.starter
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Busy') is not None:
+            self.busy = m.get('Busy')
+        if m.get('Checked') is not None:
+            self.checked = m.get('Checked')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Metrics') is not None:
+            temp_model = ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVosMetrics()
+            self.metrics = temp_model.from_map(m['Metrics'])
+        if m.get('Offline') is not None:
+            self.offline = m.get('Offline')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Starter') is not None:
+            self.starter = m.get('Starter')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class ReadSchedulerxDesignateDetailResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        designate_detail_vos: List[ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVos] = None,
+    ):
+        # -\
+        self.designate_detail_vos = designate_detail_vos
+
+    def validate(self):
+        if self.designate_detail_vos:
+            for k in self.designate_detail_vos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DesignateDetailVos'] = []
+        if self.designate_detail_vos is not None:
+            for k in self.designate_detail_vos:
+                result['DesignateDetailVos'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.designate_detail_vos = []
+        if m.get('DesignateDetailVos') is not None:
+            for k in m.get('DesignateDetailVos'):
+                temp_model = ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVos()
+                self.designate_detail_vos.append(temp_model.from_map(k))
+        return self
+
+
+class ReadSchedulerxDesignateDetailResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: ReadSchedulerxDesignateDetailResponseBodyAccessDeniedDetail = None,
+        code: int = None,
+        data: ReadSchedulerxDesignateDetailResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        # -\
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.access_denied_detail:
+            self.access_denied_detail.validate()
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            temp_model = ReadSchedulerxDesignateDetailResponseBodyAccessDeniedDetail()
+            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ReadSchedulerxDesignateDetailResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ReadSchedulerxDesignateDetailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ReadSchedulerxDesignateDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ReadSchedulerxDesignateDetailResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -11264,79 +9697,14 @@ class RerunJobRequest(TeaModel):
         return self
 
 
-class RerunJobResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
-        return self
-
-
 class RerunJobResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: RerunJobResponseBodyAccessDeniedDetail = None,
         code: int = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code.
         self.code = code
         # The returned error message.
@@ -11350,8 +9718,7 @@ class RerunJobResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -11359,8 +9726,6 @@ class RerunJobResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
@@ -11373,9 +9738,6 @@ class RerunJobResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = RerunJobResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
@@ -11501,79 +9863,14 @@ class RetryJobInstanceRequest(TeaModel):
         return self
 
 
-class RetryJobInstanceResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
-        return self
-
-
 class RetryJobInstanceResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: RetryJobInstanceResponseBodyAccessDeniedDetail = None,
         code: int = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code.
         self.code = code
         # The returned error message.
@@ -11587,8 +9884,7 @@ class RetryJobInstanceResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -11596,8 +9892,6 @@ class RetryJobInstanceResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
@@ -11610,9 +9904,6 @@ class RetryJobInstanceResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = RetryJobInstanceResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
@@ -11729,79 +10020,14 @@ class RevokePermissionRequest(TeaModel):
         return self
 
 
-class RevokePermissionResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
-        return self
-
-
 class RevokePermissionResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: RevokePermissionResponseBodyAccessDeniedDetail = None,
         code: int = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code.
         self.code = code
         # The error message that is returned only if the corresponding error occurs.
@@ -11815,8 +10041,7 @@ class RevokePermissionResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -11824,8 +10049,6 @@ class RevokePermissionResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
@@ -11838,9 +10061,6 @@ class RevokePermissionResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = RevokePermissionResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
@@ -11966,79 +10186,14 @@ class SetJobInstanceSuccessRequest(TeaModel):
         return self
 
 
-class SetJobInstanceSuccessResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
-        return self
-
-
 class SetJobInstanceSuccessResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: SetJobInstanceSuccessResponseBodyAccessDeniedDetail = None,
         code: int = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code.
         self.code = code
         # The returned error message.
@@ -12052,8 +10207,7 @@ class SetJobInstanceSuccessResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -12061,8 +10215,6 @@ class SetJobInstanceSuccessResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
@@ -12075,9 +10227,6 @@ class SetJobInstanceSuccessResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = SetJobInstanceSuccessResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
@@ -12203,79 +10352,14 @@ class SetWfInstanceSuccessRequest(TeaModel):
         return self
 
 
-class SetWfInstanceSuccessResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
-        return self
-
-
 class SetWfInstanceSuccessResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: SetWfInstanceSuccessResponseBodyAccessDeniedDetail = None,
         code: int = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code.
         self.code = code
         # The error message that is returned only if the corresponding error occurs.
@@ -12289,8 +10373,7 @@ class SetWfInstanceSuccessResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -12298,8 +10381,6 @@ class SetWfInstanceSuccessResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
@@ -12312,9 +10393,6 @@ class SetWfInstanceSuccessResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = SetWfInstanceSuccessResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
@@ -12440,79 +10518,14 @@ class StopInstanceRequest(TeaModel):
         return self
 
 
-class StopInstanceResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
-        return self
-
-
 class StopInstanceResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: StopInstanceResponseBodyAccessDeniedDetail = None,
         code: int = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code that is returned.
         self.code = code
         # The error message that is returned only if an error occurs.
@@ -12526,8 +10539,7 @@ class StopInstanceResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -12535,8 +10547,6 @@ class StopInstanceResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
@@ -12549,9 +10559,6 @@ class StopInstanceResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = StopInstanceResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
@@ -12611,6 +10618,8 @@ class UpdateAppGroupRequest(TeaModel):
         description: str = None,
         group_id: str = None,
         max_concurrency: int = None,
+        monitor_config_json: str = None,
+        monitor_contacts_json: str = None,
         namespace: str = None,
         region_id: str = None,
     ):
@@ -12624,6 +10633,10 @@ class UpdateAppGroupRequest(TeaModel):
         self.group_id = group_id
         # The maximum number of concurrent instances. Default value: 1. A value of 1 specifies that if the last triggered instance is running, the next instance is not triggered even if the scheduled point in time for running the next instance is reached.
         self.max_concurrency = max_concurrency
+        # The configuration of the alert. The value is a JSON string. For more information about this parameter, see **Additional information about request parameters**.
+        self.monitor_config_json = monitor_config_json
+        # The configuration of alert contacts. The value is a JSON string.
+        self.monitor_contacts_json = monitor_contacts_json
         # The ID of the namespace. You can obtain the ID of the namespace on the Namespace page in the SchedulerX console.
         # 
         # This parameter is required.
@@ -12650,6 +10663,10 @@ class UpdateAppGroupRequest(TeaModel):
             result['GroupId'] = self.group_id
         if self.max_concurrency is not None:
             result['MaxConcurrency'] = self.max_concurrency
+        if self.monitor_config_json is not None:
+            result['MonitorConfigJson'] = self.monitor_config_json
+        if self.monitor_contacts_json is not None:
+            result['MonitorContactsJson'] = self.monitor_contacts_json
         if self.namespace is not None:
             result['Namespace'] = self.namespace
         if self.region_id is not None:
@@ -12666,6 +10683,10 @@ class UpdateAppGroupRequest(TeaModel):
             self.group_id = m.get('GroupId')
         if m.get('MaxConcurrency') is not None:
             self.max_concurrency = m.get('MaxConcurrency')
+        if m.get('MonitorConfigJson') is not None:
+            self.monitor_config_json = m.get('MonitorConfigJson')
+        if m.get('MonitorContactsJson') is not None:
+            self.monitor_contacts_json = m.get('MonitorContactsJson')
         if m.get('Namespace') is not None:
             self.namespace = m.get('Namespace')
         if m.get('RegionId') is not None:
@@ -12673,79 +10694,14 @@ class UpdateAppGroupRequest(TeaModel):
         return self
 
 
-class UpdateAppGroupResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
-        return self
-
-
 class UpdateAppGroupResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: UpdateAppGroupResponseBodyAccessDeniedDetail = None,
         code: int = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code returned.
         self.code = code
         # The additional information that is returned.
@@ -12759,8 +10715,7 @@ class UpdateAppGroupResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -12768,8 +10723,6 @@ class UpdateAppGroupResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
@@ -12782,9 +10735,6 @@ class UpdateAppGroupResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = UpdateAppGroupResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
@@ -12911,6 +10861,7 @@ class UpdateJobRequest(TeaModel):
         namespace_source: str = None,
         page_size: int = None,
         parameters: str = None,
+        priority: int = None,
         queue_size: int = None,
         region_id: str = None,
         send_channel: str = None,
@@ -12991,6 +10942,7 @@ class UpdateJobRequest(TeaModel):
         self.page_size = page_size
         # The user-defined parameters that you can obtain when the job is running.
         self.parameters = parameters
+        self.priority = priority
         # The maximum number of tasks that can be queued. Default value: 10000. This parameter is an advanced configuration item of the MapReduce job.
         self.queue_size = queue_size
         # The region ID.
@@ -13098,6 +11050,8 @@ class UpdateJobRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.parameters is not None:
             result['Parameters'] = self.parameters
+        if self.priority is not None:
+            result['Priority'] = self.priority
         if self.queue_size is not None:
             result['QueueSize'] = self.queue_size
         if self.region_id is not None:
@@ -13179,6 +11133,8 @@ class UpdateJobRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('Parameters') is not None:
             self.parameters = m.get('Parameters')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
         if m.get('QueueSize') is not None:
             self.queue_size = m.get('QueueSize')
         if m.get('RegionId') is not None:
@@ -13212,79 +11168,14 @@ class UpdateJobRequest(TeaModel):
         return self
 
 
-class UpdateJobResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
-        return self
-
-
 class UpdateJobResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: UpdateJobResponseBodyAccessDeniedDetail = None,
         code: int = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code.
         self.code = code
         # The additional information returned only if an error occurs.
@@ -13295,8 +11186,7 @@ class UpdateJobResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -13304,8 +11194,6 @@ class UpdateJobResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
@@ -13318,9 +11206,6 @@ class UpdateJobResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = UpdateJobResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
@@ -13369,6 +11254,292 @@ class UpdateJobResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateJobScriptRequest(TeaModel):
+    def __init__(
+        self,
+        group_id: str = None,
+        job_id: int = None,
+        namespace: str = None,
+        namespace_source: str = None,
+        region_id: str = None,
+        script_content: str = None,
+        version_description: str = None,
+    ):
+        # This parameter is required.
+        self.group_id = group_id
+        # This parameter is required.
+        self.job_id = job_id
+        # This parameter is required.
+        self.namespace = namespace
+        self.namespace_source = namespace_source
+        # This parameter is required.
+        self.region_id = region_id
+        self.script_content = script_content
+        self.version_description = version_description
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.namespace_source is not None:
+            result['NamespaceSource'] = self.namespace_source
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.script_content is not None:
+            result['ScriptContent'] = self.script_content
+        if self.version_description is not None:
+            result['VersionDescription'] = self.version_description
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('NamespaceSource') is not None:
+            self.namespace_source = m.get('NamespaceSource')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ScriptContent') is not None:
+            self.script_content = m.get('ScriptContent')
+        if m.get('VersionDescription') is not None:
+            self.version_description = m.get('VersionDescription')
+        return self
+
+
+class UpdateJobScriptResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateJobScriptResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateJobScriptResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateJobScriptResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateNamespaceRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        namespace: str = None,
+        namespace_name: str = None,
+        region_id: str = None,
+    ):
+        self.description = description
+        # This parameter is required.
+        self.namespace = namespace
+        self.namespace_name = namespace_name
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.namespace_name is not None:
+            result['NamespaceName'] = self.namespace_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('NamespaceName') is not None:
+            self.namespace_name = m.get('NamespaceName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class UpdateNamespaceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateNamespaceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateNamespaceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateNamespaceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -13471,79 +11642,14 @@ class UpdateWorkflowRequest(TeaModel):
         return self
 
 
-class UpdateWorkflowResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
-        return self
-
-
 class UpdateWorkflowResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: UpdateWorkflowResponseBodyAccessDeniedDetail = None,
         code: int = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code.
         self.code = code
         # The returned error message.
@@ -13557,8 +11663,7 @@ class UpdateWorkflowResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -13566,8 +11671,6 @@ class UpdateWorkflowResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
@@ -13580,9 +11683,6 @@ class UpdateWorkflowResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = UpdateWorkflowResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
@@ -13708,79 +11808,14 @@ class UpdateWorkflowDagRequest(TeaModel):
         return self
 
 
-class UpdateWorkflowDagResponseBodyAccessDeniedDetail(TeaModel):
-    def __init__(
-        self,
-        auth_action: str = None,
-        auth_principal_display_name: str = None,
-        auth_principal_owner_id: str = None,
-        auth_principal_type: str = None,
-        encoded_diagnostic_message: str = None,
-        no_permission_type: str = None,
-        policy_type: str = None,
-    ):
-        self.auth_action = auth_action
-        self.auth_principal_display_name = auth_principal_display_name
-        self.auth_principal_owner_id = auth_principal_owner_id
-        self.auth_principal_type = auth_principal_type
-        self.encoded_diagnostic_message = encoded_diagnostic_message
-        self.no_permission_type = no_permission_type
-        self.policy_type = policy_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auth_action is not None:
-            result['AuthAction'] = self.auth_action
-        if self.auth_principal_display_name is not None:
-            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
-        if self.auth_principal_owner_id is not None:
-            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
-        if self.auth_principal_type is not None:
-            result['AuthPrincipalType'] = self.auth_principal_type
-        if self.encoded_diagnostic_message is not None:
-            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
-        if self.no_permission_type is not None:
-            result['NoPermissionType'] = self.no_permission_type
-        if self.policy_type is not None:
-            result['PolicyType'] = self.policy_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthAction') is not None:
-            self.auth_action = m.get('AuthAction')
-        if m.get('AuthPrincipalDisplayName') is not None:
-            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
-        if m.get('AuthPrincipalOwnerId') is not None:
-            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
-        if m.get('AuthPrincipalType') is not None:
-            self.auth_principal_type = m.get('AuthPrincipalType')
-        if m.get('EncodedDiagnosticMessage') is not None:
-            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
-        if m.get('NoPermissionType') is not None:
-            self.no_permission_type = m.get('NoPermissionType')
-        if m.get('PolicyType') is not None:
-            self.policy_type = m.get('PolicyType')
-        return self
-
-
 class UpdateWorkflowDagResponseBody(TeaModel):
     def __init__(
         self,
-        access_denied_detail: UpdateWorkflowDagResponseBodyAccessDeniedDetail = None,
         code: int = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # The HTTP status code.
         self.code = code
         # The returned error message.
@@ -13794,8 +11829,7 @@ class UpdateWorkflowDagResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        if self.access_denied_detail:
-            self.access_denied_detail.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -13803,8 +11837,6 @@ class UpdateWorkflowDagResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
@@ -13817,9 +11849,6 @@ class UpdateWorkflowDagResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            temp_model = UpdateWorkflowDagResponseBodyAccessDeniedDetail()
-            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:

@@ -721,6 +721,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         body = {}
@@ -828,6 +830,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         body = {}
@@ -1510,6 +1514,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_job_with_options_async(request, runtime)
+
+    def delete_namespace_with_options(
+        self,
+        request: schedulerx_220190430_models.DeleteNamespaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.DeleteNamespaceResponse:
+        """
+        @summary 删除命名空间
+        
+        @param request: DeleteNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNamespaceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteNamespace',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.DeleteNamespaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_namespace_with_options_async(
+        self,
+        request: schedulerx_220190430_models.DeleteNamespaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.DeleteNamespaceResponse:
+        """
+        @summary 删除命名空间
+        
+        @param request: DeleteNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNamespaceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteNamespace',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.DeleteNamespaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_namespace(
+        self,
+        request: schedulerx_220190430_models.DeleteNamespaceRequest,
+    ) -> schedulerx_220190430_models.DeleteNamespaceResponse:
+        """
+        @summary 删除命名空间
+        
+        @param request: DeleteNamespaceRequest
+        @return: DeleteNamespaceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_namespace_with_options(request, runtime)
+
+    async def delete_namespace_async(
+        self,
+        request: schedulerx_220190430_models.DeleteNamespaceRequest,
+    ) -> schedulerx_220190430_models.DeleteNamespaceResponse:
+        """
+        @summary 删除命名空间
+        
+        @param request: DeleteNamespaceRequest
+        @return: DeleteNamespaceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_namespace_with_options_async(request, runtime)
 
     def delete_route_strategy_with_options(
         self,
@@ -2465,7 +2569,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.GetAppGroupResponse:
         """
-        @summary The configuration of the alert. The value is a JSON string. For more information, see \\\\*the additional information about response parameters below this table\\*\\*.
+        @summary The configuration of the alert. The value is a JSON string. For more information, see \\\\\\\\*the additional information about response parameters below this table\\\\*\\\\*.
         
         @param request: GetAppGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2504,7 +2608,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.GetAppGroupResponse:
         """
-        @summary The configuration of the alert. The value is a JSON string. For more information, see \\\\*the additional information about response parameters below this table\\*\\*.
+        @summary The configuration of the alert. The value is a JSON string. For more information, see \\\\\\\\*the additional information about response parameters below this table\\\\*\\\\*.
         
         @param request: GetAppGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2542,7 +2646,7 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.GetAppGroupRequest,
     ) -> schedulerx_220190430_models.GetAppGroupResponse:
         """
-        @summary The configuration of the alert. The value is a JSON string. For more information, see \\\\*the additional information about response parameters below this table\\*\\*.
+        @summary The configuration of the alert. The value is a JSON string. For more information, see \\\\\\\\*the additional information about response parameters below this table\\\\*\\\\*.
         
         @param request: GetAppGroupRequest
         @return: GetAppGroupResponse
@@ -2555,7 +2659,7 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.GetAppGroupRequest,
     ) -> schedulerx_220190430_models.GetAppGroupResponse:
         """
-        @summary The configuration of the alert. The value is a JSON string. For more information, see \\\\*the additional information about response parameters below this table\\*\\*.
+        @summary The configuration of the alert. The value is a JSON string. For more information, see \\\\\\\\*the additional information about response parameters below this table\\\\*\\\\*.
         
         @param request: GetAppGroupRequest
         @return: GetAppGroupResponse
@@ -3595,6 +3699,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_groups_with_options_async(request, runtime)
 
+    def list_job_script_history_with_options(
+        self,
+        request: schedulerx_220190430_models.ListJobScriptHistoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.ListJobScriptHistoryResponse:
+        """
+        @summary 获取任务脚本历史列表
+        
+        @param request: ListJobScriptHistoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListJobScriptHistoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_source):
+            query['NamespaceSource'] = request.namespace_source
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListJobScriptHistory',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.ListJobScriptHistoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_job_script_history_with_options_async(
+        self,
+        request: schedulerx_220190430_models.ListJobScriptHistoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.ListJobScriptHistoryResponse:
+        """
+        @summary 获取任务脚本历史列表
+        
+        @param request: ListJobScriptHistoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListJobScriptHistoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_source):
+            query['NamespaceSource'] = request.namespace_source
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListJobScriptHistory',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.ListJobScriptHistoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_job_script_history(
+        self,
+        request: schedulerx_220190430_models.ListJobScriptHistoryRequest,
+    ) -> schedulerx_220190430_models.ListJobScriptHistoryResponse:
+        """
+        @summary 获取任务脚本历史列表
+        
+        @param request: ListJobScriptHistoryRequest
+        @return: ListJobScriptHistoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_job_script_history_with_options(request, runtime)
+
+    async def list_job_script_history_async(
+        self,
+        request: schedulerx_220190430_models.ListJobScriptHistoryRequest,
+    ) -> schedulerx_220190430_models.ListJobScriptHistoryResponse:
+        """
+        @summary 获取任务脚本历史列表
+        
+        @param request: ListJobScriptHistoryRequest
+        @return: ListJobScriptHistoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_job_script_history_with_options_async(request, runtime)
+
     def list_jobs_with_options(
         self,
         request: schedulerx_220190430_models.ListJobsRequest,
@@ -3938,6 +4154,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_workflow_instance_with_options_async(request, runtime)
+
+    def read_schedulerx_designate_detail_with_options(
+        self,
+        request: schedulerx_220190430_models.ReadSchedulerxDesignateDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.ReadSchedulerxDesignateDetailResponse:
+        """
+        @summary 获取机器详细信息
+        
+        @param request: ReadSchedulerxDesignateDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReadSchedulerxDesignateDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.designate_type):
+            query['DesignateType'] = request.designate_type
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_source):
+            query['NamespaceSource'] = request.namespace_source
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReadSchedulerxDesignateDetail',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.ReadSchedulerxDesignateDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def read_schedulerx_designate_detail_with_options_async(
+        self,
+        request: schedulerx_220190430_models.ReadSchedulerxDesignateDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.ReadSchedulerxDesignateDetailResponse:
+        """
+        @summary 获取机器详细信息
+        
+        @param request: ReadSchedulerxDesignateDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReadSchedulerxDesignateDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.designate_type):
+            query['DesignateType'] = request.designate_type
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_source):
+            query['NamespaceSource'] = request.namespace_source
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReadSchedulerxDesignateDetail',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.ReadSchedulerxDesignateDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def read_schedulerx_designate_detail(
+        self,
+        request: schedulerx_220190430_models.ReadSchedulerxDesignateDetailRequest,
+    ) -> schedulerx_220190430_models.ReadSchedulerxDesignateDetailResponse:
+        """
+        @summary 获取机器详细信息
+        
+        @param request: ReadSchedulerxDesignateDetailRequest
+        @return: ReadSchedulerxDesignateDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.read_schedulerx_designate_detail_with_options(request, runtime)
+
+    async def read_schedulerx_designate_detail_async(
+        self,
+        request: schedulerx_220190430_models.ReadSchedulerxDesignateDetailRequest,
+    ) -> schedulerx_220190430_models.ReadSchedulerxDesignateDetailResponse:
+        """
+        @summary 获取机器详细信息
+        
+        @param request: ReadSchedulerxDesignateDetailRequest
+        @return: ReadSchedulerxDesignateDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.read_schedulerx_designate_detail_with_options_async(request, runtime)
 
     def rerun_job_with_options(
         self,
@@ -4621,7 +4953,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.UpdateAppGroupResponse:
         """
-        @summary The additional information that is returned.
+        @summary Updates the application group.
         
         @param request: UpdateAppGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4637,6 +4969,10 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.max_concurrency):
             query['MaxConcurrency'] = request.max_concurrency
+        if not UtilClient.is_unset(request.monitor_config_json):
+            query['MonitorConfigJson'] = request.monitor_config_json
+        if not UtilClient.is_unset(request.monitor_contacts_json):
+            query['MonitorContactsJson'] = request.monitor_contacts_json
         if not UtilClient.is_unset(request.namespace):
             query['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.region_id):
@@ -4666,7 +5002,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.UpdateAppGroupResponse:
         """
-        @summary The additional information that is returned.
+        @summary Updates the application group.
         
         @param request: UpdateAppGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4682,6 +5018,10 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.max_concurrency):
             query['MaxConcurrency'] = request.max_concurrency
+        if not UtilClient.is_unset(request.monitor_config_json):
+            query['MonitorConfigJson'] = request.monitor_config_json
+        if not UtilClient.is_unset(request.monitor_contacts_json):
+            query['MonitorContactsJson'] = request.monitor_contacts_json
         if not UtilClient.is_unset(request.namespace):
             query['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.region_id):
@@ -4710,7 +5050,7 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.UpdateAppGroupRequest,
     ) -> schedulerx_220190430_models.UpdateAppGroupResponse:
         """
-        @summary The additional information that is returned.
+        @summary Updates the application group.
         
         @param request: UpdateAppGroupRequest
         @return: UpdateAppGroupResponse
@@ -4723,7 +5063,7 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.UpdateAppGroupRequest,
     ) -> schedulerx_220190430_models.UpdateAppGroupResponse:
         """
-        @summary The additional information that is returned.
+        @summary Updates the application group.
         
         @param request: UpdateAppGroupRequest
         @return: UpdateAppGroupResponse
@@ -4745,6 +5085,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         body = {}
@@ -4854,6 +5196,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         body = {}
@@ -4974,6 +5318,234 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_job_with_options_async(request, runtime)
+
+    def update_job_script_with_options(
+        self,
+        request: schedulerx_220190430_models.UpdateJobScriptRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.UpdateJobScriptResponse:
+        """
+        @summary 更新任务执行脚本
+        
+        @param request: UpdateJobScriptRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateJobScriptResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.group_id):
+            body['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.job_id):
+            body['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_source):
+            body['NamespaceSource'] = request.namespace_source
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.script_content):
+            body['ScriptContent'] = request.script_content
+        if not UtilClient.is_unset(request.version_description):
+            body['VersionDescription'] = request.version_description
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateJobScript',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.UpdateJobScriptResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_job_script_with_options_async(
+        self,
+        request: schedulerx_220190430_models.UpdateJobScriptRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.UpdateJobScriptResponse:
+        """
+        @summary 更新任务执行脚本
+        
+        @param request: UpdateJobScriptRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateJobScriptResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.group_id):
+            body['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.job_id):
+            body['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_source):
+            body['NamespaceSource'] = request.namespace_source
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.script_content):
+            body['ScriptContent'] = request.script_content
+        if not UtilClient.is_unset(request.version_description):
+            body['VersionDescription'] = request.version_description
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateJobScript',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.UpdateJobScriptResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_job_script(
+        self,
+        request: schedulerx_220190430_models.UpdateJobScriptRequest,
+    ) -> schedulerx_220190430_models.UpdateJobScriptResponse:
+        """
+        @summary 更新任务执行脚本
+        
+        @param request: UpdateJobScriptRequest
+        @return: UpdateJobScriptResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_job_script_with_options(request, runtime)
+
+    async def update_job_script_async(
+        self,
+        request: schedulerx_220190430_models.UpdateJobScriptRequest,
+    ) -> schedulerx_220190430_models.UpdateJobScriptResponse:
+        """
+        @summary 更新任务执行脚本
+        
+        @param request: UpdateJobScriptRequest
+        @return: UpdateJobScriptResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_job_script_with_options_async(request, runtime)
+
+    def update_namespace_with_options(
+        self,
+        request: schedulerx_220190430_models.UpdateNamespaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.UpdateNamespaceResponse:
+        """
+        @summary 更新命名空间
+        
+        @param request: UpdateNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateNamespaceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_name):
+            query['NamespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateNamespace',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.UpdateNamespaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_namespace_with_options_async(
+        self,
+        request: schedulerx_220190430_models.UpdateNamespaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.UpdateNamespaceResponse:
+        """
+        @summary 更新命名空间
+        
+        @param request: UpdateNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateNamespaceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_name):
+            query['NamespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateNamespace',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.UpdateNamespaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_namespace(
+        self,
+        request: schedulerx_220190430_models.UpdateNamespaceRequest,
+    ) -> schedulerx_220190430_models.UpdateNamespaceResponse:
+        """
+        @summary 更新命名空间
+        
+        @param request: UpdateNamespaceRequest
+        @return: UpdateNamespaceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_namespace_with_options(request, runtime)
+
+    async def update_namespace_async(
+        self,
+        request: schedulerx_220190430_models.UpdateNamespaceRequest,
+    ) -> schedulerx_220190430_models.UpdateNamespaceResponse:
+        """
+        @summary 更新命名空间
+        
+        @param request: UpdateNamespaceRequest
+        @return: UpdateNamespaceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_namespace_with_options_async(request, runtime)
 
     def update_workflow_with_options(
         self,
