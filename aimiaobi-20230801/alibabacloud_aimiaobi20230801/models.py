@@ -27599,22 +27599,24 @@ class RunCustomHotTopicViewPointAnalysisResponseBodyHeader(TeaModel):
         return self
 
 
-class RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutput(TeaModel):
+class RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutputArticles(TeaModel):
     def __init__(
         self,
-        ask_user: List[str] = None,
-        async_task_id: str = None,
-        attitude: str = None,
-        custom_view_point_id: str = None,
-        text: str = None,
-        topic_id: str = None,
+        author: str = None,
+        content: str = None,
+        pub_time: str = None,
+        source: str = None,
+        summary: str = None,
+        title: str = None,
+        url: str = None,
     ):
-        self.ask_user = ask_user
-        self.async_task_id = async_task_id
-        self.attitude = attitude
-        self.custom_view_point_id = custom_view_point_id
-        self.text = text
-        self.topic_id = topic_id
+        self.author = author
+        self.content = content
+        self.pub_time = pub_time
+        self.source = source
+        self.summary = summary
+        self.title = title
+        self.url = url
 
     def validate(self):
         pass
@@ -27625,6 +27627,76 @@ class RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutput(TeaModel):
             return _map
 
         result = dict()
+        if self.author is not None:
+            result['Author'] = self.author
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.pub_time is not None:
+            result['PubTime'] = self.pub_time
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Author') is not None:
+            self.author = m.get('Author')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('PubTime') is not None:
+            self.pub_time = m.get('PubTime')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutput(TeaModel):
+    def __init__(
+        self,
+        articles: List[RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutputArticles] = None,
+        ask_user: List[str] = None,
+        async_task_id: str = None,
+        attitude: str = None,
+        custom_view_point_id: str = None,
+        text: str = None,
+        topic_id: str = None,
+    ):
+        self.articles = articles
+        self.ask_user = ask_user
+        self.async_task_id = async_task_id
+        self.attitude = attitude
+        self.custom_view_point_id = custom_view_point_id
+        self.text = text
+        self.topic_id = topic_id
+
+    def validate(self):
+        if self.articles:
+            for k in self.articles:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Articles'] = []
+        if self.articles is not None:
+            for k in self.articles:
+                result['Articles'].append(k.to_map() if k else None)
         if self.ask_user is not None:
             result['AskUser'] = self.ask_user
         if self.async_task_id is not None:
@@ -27641,6 +27713,11 @@ class RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutput(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.articles = []
+        if m.get('Articles') is not None:
+            for k in m.get('Articles'):
+                temp_model = RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutputArticles()
+                self.articles.append(temp_model.from_map(k))
         if m.get('AskUser') is not None:
             self.ask_user = m.get('AskUser')
         if m.get('AsyncTaskId') is not None:
