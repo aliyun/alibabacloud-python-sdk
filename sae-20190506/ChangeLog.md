@@ -1,3 +1,12 @@
+2025-05-13 Version: 2.1.1
+- Update API DescribeApplicationGroups: add response parameters Body.Data.$.PackageVersionId.
+- Update API DescribeApplicationSlbs: add response parameters Body.Data.AppId.
+- Update API DescribeApplicationSlbs: add response parameters Body.Data.AppName.
+- Update API DescribeApplicationSlbs: add response parameters Body.Data.ClusterId.
+- Update API DescribeChangeOrder: add response parameters Body.Data.ApplicationEnableGreyTagRoute.
+- Update API DescribeChangeOrder: add response parameters Body.Data.ApplicationUpdateStrategy.
+
+
 2025-05-13 Version: 2.1.0
 - Support API ListApplicationsForSwimmingLane.
 

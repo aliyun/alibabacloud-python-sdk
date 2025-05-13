@@ -21075,6 +21075,7 @@ class DescribeApplicationGroupsResponseBodyData(TeaModel):
         package_type: str = None,
         package_url: str = None,
         package_version: str = None,
+        package_version_id: str = None,
         replicas: int = None,
         running_instances: int = None,
         web_container: str = None,
@@ -21117,6 +21118,7 @@ class DescribeApplicationGroupsResponseBodyData(TeaModel):
         self.package_url = package_url
         # The version of the deployment package. This parameter is required when the **PackageType** parameter is set to **FatJar**, **War**, or **PhpZip**. The parameter value will be automatically generated when you use an image to deploy the application and specify the **ImageUrl** parameter.
         self.package_version = package_version
+        self.package_version_id = package_version_id
         # The total number of instances.
         self.replicas = replicas
         # The number of running instances.
@@ -21151,6 +21153,8 @@ class DescribeApplicationGroupsResponseBodyData(TeaModel):
             result['PackageUrl'] = self.package_url
         if self.package_version is not None:
             result['PackageVersion'] = self.package_version
+        if self.package_version_id is not None:
+            result['PackageVersionId'] = self.package_version_id
         if self.replicas is not None:
             result['Replicas'] = self.replicas
         if self.running_instances is not None:
@@ -21179,6 +21183,8 @@ class DescribeApplicationGroupsResponseBodyData(TeaModel):
             self.package_url = m.get('PackageUrl')
         if m.get('PackageVersion') is not None:
             self.package_version = m.get('PackageVersion')
+        if m.get('PackageVersionId') is not None:
+            self.package_version_id = m.get('PackageVersionId')
         if m.get('Replicas') is not None:
             self.replicas = m.get('Replicas')
         if m.get('RunningInstances') is not None:
@@ -23898,6 +23904,9 @@ class DescribeApplicationSlbsResponseBodyDataIntranet(TeaModel):
 class DescribeApplicationSlbsResponseBodyData(TeaModel):
     def __init__(
         self,
+        app_id: str = None,
+        app_name: str = None,
+        cluster_id: str = None,
         internet: List[DescribeApplicationSlbsResponseBodyDataInternet] = None,
         internet_ip: str = None,
         internet_slb_charge_type: str = None,
@@ -23909,6 +23918,9 @@ class DescribeApplicationSlbsResponseBodyData(TeaModel):
         intranet_slb_expired: bool = None,
         intranet_slb_id: str = None,
     ):
+        self.app_id = app_id
+        self.app_name = app_name
+        self.cluster_id = cluster_id
         # The configurations of the Internet-facing SLB instance.
         self.internet = internet
         # The ID of the Internet-facing SLB instance.
@@ -23945,6 +23957,12 @@ class DescribeApplicationSlbsResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
         result['Internet'] = []
         if self.internet is not None:
             for k in self.internet:
@@ -23973,6 +23991,12 @@ class DescribeApplicationSlbsResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
         self.internet = []
         if m.get('Internet') is not None:
             for k in m.get('Internet'):
@@ -24530,6 +24554,8 @@ class DescribeChangeOrderResponseBodyData(TeaModel):
         self,
         app_id: str = None,
         app_name: str = None,
+        application_enable_grey_tag_route: bool = None,
+        application_update_strategy: str = None,
         approval_id: str = None,
         auto: bool = None,
         batch_count: int = None,
@@ -24551,6 +24577,8 @@ class DescribeChangeOrderResponseBodyData(TeaModel):
         self.app_id = app_id
         # The name of the application.
         self.app_name = app_name
+        self.application_enable_grey_tag_route = application_enable_grey_tag_route
+        self.application_update_strategy = application_update_strategy
         # The approval ID of the change order.
         self.approval_id = approval_id
         # Indicates whether SAE automatically releases the batches. Valid values:
@@ -24644,6 +24672,10 @@ class DescribeChangeOrderResponseBodyData(TeaModel):
             result['AppId'] = self.app_id
         if self.app_name is not None:
             result['AppName'] = self.app_name
+        if self.application_enable_grey_tag_route is not None:
+            result['ApplicationEnableGreyTagRoute'] = self.application_enable_grey_tag_route
+        if self.application_update_strategy is not None:
+            result['ApplicationUpdateStrategy'] = self.application_update_strategy
         if self.approval_id is not None:
             result['ApprovalId'] = self.approval_id
         if self.auto is not None:
@@ -24686,6 +24718,10 @@ class DescribeChangeOrderResponseBodyData(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
+        if m.get('ApplicationEnableGreyTagRoute') is not None:
+            self.application_enable_grey_tag_route = m.get('ApplicationEnableGreyTagRoute')
+        if m.get('ApplicationUpdateStrategy') is not None:
+            self.application_update_strategy = m.get('ApplicationUpdateStrategy')
         if m.get('ApprovalId') is not None:
             self.approval_id = m.get('ApprovalId')
         if m.get('Auto') is not None:
