@@ -2256,7 +2256,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.ListEcsSpecsResponse:
         """
-        @summary 获取ECS规格列表
+        @summary Queries a list of specifications of ECS instances.
         
         @param request: ListEcsSpecsRequest
         @param headers: map
@@ -2302,7 +2302,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.ListEcsSpecsResponse:
         """
-        @summary 获取ECS规格列表
+        @summary Queries a list of specifications of ECS instances.
         
         @param request: ListEcsSpecsRequest
         @param headers: map
@@ -2346,7 +2346,7 @@ class Client(OpenApiClient):
         request: pai_dsw_20220101_models.ListEcsSpecsRequest,
     ) -> pai_dsw_20220101_models.ListEcsSpecsResponse:
         """
-        @summary 获取ECS规格列表
+        @summary Queries a list of specifications of ECS instances.
         
         @param request: ListEcsSpecsRequest
         @return: ListEcsSpecsResponse
@@ -2360,7 +2360,7 @@ class Client(OpenApiClient):
         request: pai_dsw_20220101_models.ListEcsSpecsRequest,
     ) -> pai_dsw_20220101_models.ListEcsSpecsResponse:
         """
-        @summary 获取ECS规格列表
+        @summary Queries a list of specifications of ECS instances.
         
         @param request: ListEcsSpecsRequest
         @return: ListEcsSpecsResponse

@@ -1000,7 +1000,7 @@ class CreateInstanceRequestDatasets(TeaModel):
         self.mount_path = mount_path
         # The mount type. You cannot specify Options at the same time. This is deprecated, and you can use Options instead.
         self.option_type = option_type
-        # The custom dataset mount options. Only OSS is supported. You cannot specify OptionType at the same time. For more information, see [DSW mount configurations](https://help.aliyun.com/zh/pai/user-guide/read-and-write-dataset-data).
+        # The custom dataset mount options. Only OSS is supported. You cannot specify OptionType at the same time. For more information, see [DSW mount configurations](https://www.alibabacloud.com/help/en/pai/user-guide/read-and-write-dataset-data).
         self.options = options
         # The URI of the storage service directory, which can be directly mounted. This parameter is mutually exclusive with DatasetId.
         # 
@@ -5645,11 +5645,23 @@ class ListEcsSpecsRequest(TeaModel):
         page_size: int = None,
         sort_by: str = None,
     ):
+        # The accelerator type.
+        # 
+        # *   CPU: Only CPU computing is used.
+        # *   GPU: GPUs are used to accelerate computing.
+        # 
         # This parameter is required.
         self.accelerator_type = accelerator_type
+        # The sorting order. Valid values:
+        # 
+        # *   ASC
+        # *   DESC
         self.order = order
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The field by which the query results are sorted. Set the value to gmtCreate.
         self.sort_by = sort_by
 
     def validate(self):
@@ -5694,7 +5706,9 @@ class ListEcsSpecsResponseBodyEcsSpecsLabels(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The label key added to the ECS specification.
         self.key = key
+        # The label value added to the ECS specification.
         self.value = value
 
     def validate(self):
@@ -5739,19 +5753,37 @@ class ListEcsSpecsResponseBodyEcsSpecs(TeaModel):
         spot_stock_status: str = None,
         system_disk_capacity: int = None,
     ):
+        # The accelerator type.
         self.accelerator_type = accelerator_type
+        # The number of vCPUs.
         self.cpu = cpu
+        # The currency unit.
         self.currency = currency
+        # The number of GPUs.
         self.gpu = gpu
         self.gpumemory_size = gpumemory_size
+        # The GPU type. Valid values:
+        # 
+        # *   V100
+        # *   A100
+        # *   A10
+        # *   T4
+        # *   P100
         self.gputype = gputype
+        # The inbound bandwidth of the instance.
         self.instance_bandwidth_rx = instance_bandwidth_rx
+        # The instance type.
         self.instance_type = instance_type
+        # Indicates whether the resource was available.
         self.is_available = is_available
+        # The labels of the ECS specification.
         self.labels = labels
+        # The memory size. Unit: GB.
         self.memory = memory
+        # The price.
         self.price = price
         self.spot_stock_status = spot_stock_status
+        # The size of the system disk. Unit: GB.
         self.system_disk_capacity = system_disk_capacity
 
     def validate(self):
@@ -5845,12 +5877,28 @@ class ListEcsSpecsResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The status code. Valid values:
+        # 
+        # *   InternalError: an internal error. All errors, except for parameter validation errors, are classified as internal errors.
+        # *   ValidationError: a parameter validation error.
         self.code = code
+        # The specifications of the ECS instances returned on this page.
         self.ecs_specs = ecs_specs
+        # The HTTP status code. Valid values:
+        # 
+        # *   400
+        # *   404
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
+        # The total number of ECS instances.
         self.total_count = total_count
 
     def validate(self):
@@ -8482,7 +8530,7 @@ class UpdateInstanceRequestDatasets(TeaModel):
         self.mount_path = mount_path
         # The mount type. You cannot specify Options at the same time. This is deprecated, you can use Options instead.
         self.option_type = option_type
-        # The custom dataset mount options. Only OSS is supported. You cannot specify OptionType at the same time. For more information, see [DSW mount configurations](https://help.aliyun.com/zh/pai/user-guide/read-and-write-dataset-data).
+        # The custom dataset mount options. Only OSS is supported. You cannot specify OptionType at the same time. For more information, see [DSW mount configurations](https://www.alibabacloud.com/help/en/pai/user-guide/read-and-write-dataset-data).
         self.options = options
         # The URI of the storage service directory, which can be directly mounted. This parameter is mutually exclusive with DatasetId.
         # 
