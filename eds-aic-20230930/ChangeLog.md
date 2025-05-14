@@ -1,3 +1,10 @@
+2025-05-14 Version: 4.7.0
+- Support API DescribeDisplayConfig.
+- Support API ModifyDisplayConfig.
+- Update API DescribeAndroidInstances: add request parameters QosRuleIds.
+- Update API DescribeAndroidInstances: add response parameters Body.InstanceModel.$.QosRuleId.
+
+
 2025-04-27 Version: 4.6.1
 - Generated python 2023-09-30 for eds-aic.
 

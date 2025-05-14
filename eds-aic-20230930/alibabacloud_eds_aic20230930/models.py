@@ -4731,6 +4731,7 @@ class DescribeAndroidInstancesRequest(TeaModel):
         node_id: str = None,
         node_name: str = None,
         office_site_ids: List[str] = None,
+        qos_rule_ids: List[str] = None,
         sale_mode: str = None,
         status: str = None,
         tag: List[DescribeAndroidInstancesRequestTag] = None,
@@ -4766,6 +4767,7 @@ class DescribeAndroidInstancesRequest(TeaModel):
         # The name of the node.
         self.node_name = node_name
         self.office_site_ids = office_site_ids
+        self.qos_rule_ids = qos_rule_ids
         # The sales mode.
         # 
         # Valid values:
@@ -4836,6 +4838,8 @@ class DescribeAndroidInstancesRequest(TeaModel):
             result['NodeName'] = self.node_name
         if self.office_site_ids is not None:
             result['OfficeSiteIds'] = self.office_site_ids
+        if self.qos_rule_ids is not None:
+            result['QosRuleIds'] = self.qos_rule_ids
         if self.sale_mode is not None:
             result['SaleMode'] = self.sale_mode
         if self.status is not None:
@@ -4876,6 +4880,8 @@ class DescribeAndroidInstancesRequest(TeaModel):
             self.node_name = m.get('NodeName')
         if m.get('OfficeSiteIds') is not None:
             self.office_site_ids = m.get('OfficeSiteIds')
+        if m.get('QosRuleIds') is not None:
+            self.qos_rule_ids = m.get('QosRuleIds')
         if m.get('SaleMode') is not None:
             self.sale_mode = m.get('SaleMode')
         if m.get('Status') is not None:
@@ -5041,6 +5047,7 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         policy_group_id: str = None,
         public_ip_address: str = None,
         public_ipv_6address: str = None,
+        qos_rule_id: str = None,
         rate: int = None,
         region_id: str = None,
         rendering_type: str = None,
@@ -5103,6 +5110,7 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         self.public_ip_address = public_ip_address
         # >  This parameter is not publicly available.
         self.public_ipv_6address = public_ipv_6address
+        self.qos_rule_id = qos_rule_id
         # The progress of instance data backup or restoration.
         self.rate = rate
         # The region ID of the instance.
@@ -5197,6 +5205,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             result['PublicIpAddress'] = self.public_ip_address
         if self.public_ipv_6address is not None:
             result['PublicIpv6Address'] = self.public_ipv_6address
+        if self.qos_rule_id is not None:
+            result['QosRuleId'] = self.qos_rule_id
         if self.rate is not None:
             result['Rate'] = self.rate
         if self.region_id is not None:
@@ -5275,6 +5285,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             self.public_ip_address = m.get('PublicIpAddress')
         if m.get('PublicIpv6Address') is not None:
             self.public_ipv_6address = m.get('PublicIpv6Address')
+        if m.get('QosRuleId') is not None:
+            self.qos_rule_id = m.get('QosRuleId')
         if m.get('Rate') is not None:
             self.rate = m.get('Rate')
         if m.get('RegionId') is not None:
@@ -6450,6 +6462,172 @@ class DescribeCloudPhoneNodesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeCloudPhoneNodesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDisplayConfigRequest(TeaModel):
+    def __init__(
+        self,
+        android_instance_ids: List[str] = None,
+    ):
+        self.android_instance_ids = android_instance_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.android_instance_ids is not None:
+            result['AndroidInstanceIds'] = self.android_instance_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AndroidInstanceIds') is not None:
+            self.android_instance_ids = m.get('AndroidInstanceIds')
+        return self
+
+
+class DescribeDisplayConfigResponseBodyDisplayConfigModel(TeaModel):
+    def __init__(
+        self,
+        android_instance_id: str = None,
+        dpi: int = None,
+        fps: int = None,
+        lock_resolution: str = None,
+        resolution_height: int = None,
+        resolution_width: int = None,
+    ):
+        self.android_instance_id = android_instance_id
+        self.dpi = dpi
+        self.fps = fps
+        self.lock_resolution = lock_resolution
+        self.resolution_height = resolution_height
+        self.resolution_width = resolution_width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.android_instance_id is not None:
+            result['AndroidInstanceId'] = self.android_instance_id
+        if self.dpi is not None:
+            result['Dpi'] = self.dpi
+        if self.fps is not None:
+            result['Fps'] = self.fps
+        if self.lock_resolution is not None:
+            result['LockResolution'] = self.lock_resolution
+        if self.resolution_height is not None:
+            result['ResolutionHeight'] = self.resolution_height
+        if self.resolution_width is not None:
+            result['ResolutionWidth'] = self.resolution_width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AndroidInstanceId') is not None:
+            self.android_instance_id = m.get('AndroidInstanceId')
+        if m.get('Dpi') is not None:
+            self.dpi = m.get('Dpi')
+        if m.get('Fps') is not None:
+            self.fps = m.get('Fps')
+        if m.get('LockResolution') is not None:
+            self.lock_resolution = m.get('LockResolution')
+        if m.get('ResolutionHeight') is not None:
+            self.resolution_height = m.get('ResolutionHeight')
+        if m.get('ResolutionWidth') is not None:
+            self.resolution_width = m.get('ResolutionWidth')
+        return self
+
+
+class DescribeDisplayConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        display_config_model: List[DescribeDisplayConfigResponseBodyDisplayConfigModel] = None,
+        request_id: str = None,
+    ):
+        self.display_config_model = display_config_model
+        self.request_id = request_id
+
+    def validate(self):
+        if self.display_config_model:
+            for k in self.display_config_model:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DisplayConfigModel'] = []
+        if self.display_config_model is not None:
+            for k in self.display_config_model:
+                result['DisplayConfigModel'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.display_config_model = []
+        if m.get('DisplayConfigModel') is not None:
+            for k in m.get('DisplayConfigModel'):
+                temp_model = DescribeDisplayConfigResponseBodyDisplayConfigModel()
+                self.display_config_model.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeDisplayConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDisplayConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDisplayConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10304,6 +10482,193 @@ class ModifyCloudPhoneNodeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyCloudPhoneNodeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyDisplayConfigRequestDisplayConfig(TeaModel):
+    def __init__(
+        self,
+        dpi: int = None,
+        fps: int = None,
+        lock_resolution: str = None,
+        resolution_height: int = None,
+        resolution_width: int = None,
+    ):
+        self.dpi = dpi
+        self.fps = fps
+        self.lock_resolution = lock_resolution
+        self.resolution_height = resolution_height
+        self.resolution_width = resolution_width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dpi is not None:
+            result['Dpi'] = self.dpi
+        if self.fps is not None:
+            result['Fps'] = self.fps
+        if self.lock_resolution is not None:
+            result['LockResolution'] = self.lock_resolution
+        if self.resolution_height is not None:
+            result['ResolutionHeight'] = self.resolution_height
+        if self.resolution_width is not None:
+            result['ResolutionWidth'] = self.resolution_width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Dpi') is not None:
+            self.dpi = m.get('Dpi')
+        if m.get('Fps') is not None:
+            self.fps = m.get('Fps')
+        if m.get('LockResolution') is not None:
+            self.lock_resolution = m.get('LockResolution')
+        if m.get('ResolutionHeight') is not None:
+            self.resolution_height = m.get('ResolutionHeight')
+        if m.get('ResolutionWidth') is not None:
+            self.resolution_width = m.get('ResolutionWidth')
+        return self
+
+
+class ModifyDisplayConfigRequest(TeaModel):
+    def __init__(
+        self,
+        android_instance_ids: List[str] = None,
+        display_config: ModifyDisplayConfigRequestDisplayConfig = None,
+    ):
+        self.android_instance_ids = android_instance_ids
+        self.display_config = display_config
+
+    def validate(self):
+        if self.display_config:
+            self.display_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.android_instance_ids is not None:
+            result['AndroidInstanceIds'] = self.android_instance_ids
+        if self.display_config is not None:
+            result['DisplayConfig'] = self.display_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AndroidInstanceIds') is not None:
+            self.android_instance_ids = m.get('AndroidInstanceIds')
+        if m.get('DisplayConfig') is not None:
+            temp_model = ModifyDisplayConfigRequestDisplayConfig()
+            self.display_config = temp_model.from_map(m['DisplayConfig'])
+        return self
+
+
+class ModifyDisplayConfigShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        android_instance_ids: List[str] = None,
+        display_config_shrink: str = None,
+    ):
+        self.android_instance_ids = android_instance_ids
+        self.display_config_shrink = display_config_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.android_instance_ids is not None:
+            result['AndroidInstanceIds'] = self.android_instance_ids
+        if self.display_config_shrink is not None:
+            result['DisplayConfig'] = self.display_config_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AndroidInstanceIds') is not None:
+            self.android_instance_ids = m.get('AndroidInstanceIds')
+        if m.get('DisplayConfig') is not None:
+            self.display_config_shrink = m.get('DisplayConfig')
+        return self
+
+
+class ModifyDisplayConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyDisplayConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyDisplayConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyDisplayConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

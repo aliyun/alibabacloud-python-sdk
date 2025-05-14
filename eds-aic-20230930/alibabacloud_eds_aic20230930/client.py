@@ -2560,6 +2560,8 @@ class Client(OpenApiClient):
             query['NodeName'] = request.node_name
         if not UtilClient.is_unset(request.office_site_ids):
             query['OfficeSiteIds'] = request.office_site_ids
+        if not UtilClient.is_unset(request.qos_rule_ids):
+            query['QosRuleIds'] = request.qos_rule_ids
         if not UtilClient.is_unset(request.sale_mode):
             query['SaleMode'] = request.sale_mode
         if not UtilClient.is_unset(request.status):
@@ -2627,6 +2629,8 @@ class Client(OpenApiClient):
             query['NodeName'] = request.node_name
         if not UtilClient.is_unset(request.office_site_ids):
             query['OfficeSiteIds'] = request.office_site_ids
+        if not UtilClient.is_unset(request.qos_rule_ids):
+            query['QosRuleIds'] = request.qos_rule_ids
         if not UtilClient.is_unset(request.sale_mode):
             query['SaleMode'] = request.sale_mode
         if not UtilClient.is_unset(request.status):
@@ -3081,6 +3085,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cloud_phone_nodes_with_options_async(request, runtime)
+
+    def describe_display_config_with_options(
+        self,
+        request: eds_aic_20230930_models.DescribeDisplayConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.DescribeDisplayConfigResponse:
+        """
+        @summary 查询显示设置
+        
+        @param request: DescribeDisplayConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDisplayConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.android_instance_ids):
+            body['AndroidInstanceIds'] = request.android_instance_ids
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeDisplayConfig',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.DescribeDisplayConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_display_config_with_options_async(
+        self,
+        request: eds_aic_20230930_models.DescribeDisplayConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.DescribeDisplayConfigResponse:
+        """
+        @summary 查询显示设置
+        
+        @param request: DescribeDisplayConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDisplayConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.android_instance_ids):
+            body['AndroidInstanceIds'] = request.android_instance_ids
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeDisplayConfig',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.DescribeDisplayConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_display_config(
+        self,
+        request: eds_aic_20230930_models.DescribeDisplayConfigRequest,
+    ) -> eds_aic_20230930_models.DescribeDisplayConfigResponse:
+        """
+        @summary 查询显示设置
+        
+        @param request: DescribeDisplayConfigRequest
+        @return: DescribeDisplayConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_display_config_with_options(request, runtime)
+
+    async def describe_display_config_async(
+        self,
+        request: eds_aic_20230930_models.DescribeDisplayConfigRequest,
+    ) -> eds_aic_20230930_models.DescribeDisplayConfigResponse:
+        """
+        @summary 查询显示设置
+        
+        @param request: DescribeDisplayConfigRequest
+        @return: DescribeDisplayConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_display_config_with_options_async(request, runtime)
 
     def describe_image_list_with_options(
         self,
@@ -5409,6 +5509,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_cloud_phone_node_with_options_async(request, runtime)
+
+    def modify_display_config_with_options(
+        self,
+        tmp_req: eds_aic_20230930_models.ModifyDisplayConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.ModifyDisplayConfigResponse:
+        """
+        @summary 修改显示设置
+        
+        @param tmp_req: ModifyDisplayConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDisplayConfigResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eds_aic_20230930_models.ModifyDisplayConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.display_config):
+            request.display_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.display_config, 'DisplayConfig', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.android_instance_ids):
+            body['AndroidInstanceIds'] = request.android_instance_ids
+        if not UtilClient.is_unset(request.display_config_shrink):
+            body['DisplayConfig'] = request.display_config_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyDisplayConfig',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.ModifyDisplayConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_display_config_with_options_async(
+        self,
+        tmp_req: eds_aic_20230930_models.ModifyDisplayConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.ModifyDisplayConfigResponse:
+        """
+        @summary 修改显示设置
+        
+        @param tmp_req: ModifyDisplayConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDisplayConfigResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eds_aic_20230930_models.ModifyDisplayConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.display_config):
+            request.display_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.display_config, 'DisplayConfig', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.android_instance_ids):
+            body['AndroidInstanceIds'] = request.android_instance_ids
+        if not UtilClient.is_unset(request.display_config_shrink):
+            body['DisplayConfig'] = request.display_config_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyDisplayConfig',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.ModifyDisplayConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_display_config(
+        self,
+        request: eds_aic_20230930_models.ModifyDisplayConfigRequest,
+    ) -> eds_aic_20230930_models.ModifyDisplayConfigResponse:
+        """
+        @summary 修改显示设置
+        
+        @param request: ModifyDisplayConfigRequest
+        @return: ModifyDisplayConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_display_config_with_options(request, runtime)
+
+    async def modify_display_config_async(
+        self,
+        request: eds_aic_20230930_models.ModifyDisplayConfigRequest,
+    ) -> eds_aic_20230930_models.ModifyDisplayConfigResponse:
+        """
+        @summary 修改显示设置
+        
+        @param request: ModifyDisplayConfigRequest
+        @return: ModifyDisplayConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_display_config_with_options_async(request, runtime)
 
     def modify_instance_charge_type_with_options(
         self,
