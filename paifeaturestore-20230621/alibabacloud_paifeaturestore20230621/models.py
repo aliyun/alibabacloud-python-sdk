@@ -462,14 +462,12 @@ class CreateFeatureEntityResponse(TeaModel):
         return self
 
 
-class CreateFeatureViewRequestFields(TeaModel):
+class CreateFeatureViewRequestFieldsTransformInput(TeaModel):
     def __init__(
         self,
-        attributes: List[str] = None,
         name: str = None,
         type: str = None,
     ):
-        self.attributes = attributes
         self.name = name
         self.type = type
 
@@ -482,10 +480,101 @@ class CreateFeatureViewRequestFields(TeaModel):
             return _map
 
         result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CreateFeatureViewRequestFieldsTransform(TeaModel):
+    def __init__(
+        self,
+        input: List[CreateFeatureViewRequestFieldsTransformInput] = None,
+        llmconfig_id: int = None,
+        type: str = None,
+    ):
+        self.input = input
+        self.llmconfig_id = llmconfig_id
+        self.type = type
+
+    def validate(self):
+        if self.input:
+            for k in self.input:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Input'] = []
+        if self.input is not None:
+            for k in self.input:
+                result['Input'].append(k.to_map() if k else None)
+        if self.llmconfig_id is not None:
+            result['LLMConfigId'] = self.llmconfig_id
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.input = []
+        if m.get('Input') is not None:
+            for k in m.get('Input'):
+                temp_model = CreateFeatureViewRequestFieldsTransformInput()
+                self.input.append(temp_model.from_map(k))
+        if m.get('LLMConfigId') is not None:
+            self.llmconfig_id = m.get('LLMConfigId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CreateFeatureViewRequestFields(TeaModel):
+    def __init__(
+        self,
+        attributes: List[str] = None,
+        name: str = None,
+        transform: List[CreateFeatureViewRequestFieldsTransform] = None,
+        type: str = None,
+    ):
+        self.attributes = attributes
+        self.name = name
+        self.transform = transform
+        self.type = type
+
+    def validate(self):
+        if self.transform:
+            for k in self.transform:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.attributes is not None:
             result['Attributes'] = self.attributes
         if self.name is not None:
             result['Name'] = self.name
+        result['Transform'] = []
+        if self.transform is not None:
+            for k in self.transform:
+                result['Transform'].append(k.to_map() if k else None)
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -496,6 +585,11 @@ class CreateFeatureViewRequestFields(TeaModel):
             self.attributes = m.get('Attributes')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        self.transform = []
+        if m.get('Transform') is not None:
+            for k in m.get('Transform'):
+                temp_model = CreateFeatureViewRequestFieldsTransform()
+                self.transform.append(temp_model.from_map(k))
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -2355,14 +2449,12 @@ class GetFeatureEntityResponse(TeaModel):
         return self
 
 
-class GetFeatureViewResponseBodyFields(TeaModel):
+class GetFeatureViewResponseBodyFieldsTransformInput(TeaModel):
     def __init__(
         self,
-        attributes: List[str] = None,
         name: str = None,
         type: str = None,
     ):
-        self.attributes = attributes
         self.name = name
         self.type = type
 
@@ -2375,10 +2467,97 @@ class GetFeatureViewResponseBodyFields(TeaModel):
             return _map
 
         result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetFeatureViewResponseBodyFieldsTransform(TeaModel):
+    def __init__(
+        self,
+        input: List[GetFeatureViewResponseBodyFieldsTransformInput] = None,
+        llmconfig_id: int = None,
+        type: str = None,
+    ):
+        self.input = input
+        self.llmconfig_id = llmconfig_id
+        self.type = type
+
+    def validate(self):
+        if self.input:
+            for k in self.input:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Input'] = []
+        if self.input is not None:
+            for k in self.input:
+                result['Input'].append(k.to_map() if k else None)
+        if self.llmconfig_id is not None:
+            result['LLMConfigId'] = self.llmconfig_id
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.input = []
+        if m.get('Input') is not None:
+            for k in m.get('Input'):
+                temp_model = GetFeatureViewResponseBodyFieldsTransformInput()
+                self.input.append(temp_model.from_map(k))
+        if m.get('LLMConfigId') is not None:
+            self.llmconfig_id = m.get('LLMConfigId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetFeatureViewResponseBodyFields(TeaModel):
+    def __init__(
+        self,
+        attributes: List[str] = None,
+        name: str = None,
+        transform: GetFeatureViewResponseBodyFieldsTransform = None,
+        type: str = None,
+    ):
+        self.attributes = attributes
+        self.name = name
+        self.transform = transform
+        self.type = type
+
+    def validate(self):
+        if self.transform:
+            self.transform.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.attributes is not None:
             result['Attributes'] = self.attributes
         if self.name is not None:
             result['Name'] = self.name
+        if self.transform is not None:
+            result['Transform'] = self.transform.to_map()
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -2389,6 +2568,9 @@ class GetFeatureViewResponseBodyFields(TeaModel):
             self.attributes = m.get('Attributes')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('Transform') is not None:
+            temp_model = GetFeatureViewResponseBodyFieldsTransform()
+            self.transform = temp_model.from_map(m['Transform'])
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self

@@ -1,3 +1,8 @@
+2025-05-14 Version: 5.0.4
+- Update API CreateFeatureView: add request parameters body.Fields.$.Transform.
+- Update API GetFeatureView: add response parameters Body.Fields.$.Transform.
+
+
 2025-03-12 Version: 5.0.3
 - Update API ListFeatureViewFieldRelationships: update response param.
 
