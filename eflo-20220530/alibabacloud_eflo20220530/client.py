@@ -715,6 +715,8 @@ class Client(OpenApiClient):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -764,6 +766,8 @@ class Client(OpenApiClient):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -5943,6 +5947,8 @@ class Client(OpenApiClient):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -5996,6 +6002,8 @@ class Client(OpenApiClient):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )

@@ -1016,6 +1016,39 @@ class CreateElasticNetworkInterfaceResponse(TeaModel):
         return self
 
 
+class CreateErRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateErRequest(TeaModel):
     def __init__(
         self,
@@ -1024,6 +1057,7 @@ class CreateErRequest(TeaModel):
         master_zone_id: str = None,
         region_id: str = None,
         resource_group_id: str = None,
+        tag: List[CreateErRequestTag] = None,
     ):
         # The description of the document.
         self.description = description
@@ -1041,9 +1075,13 @@ class CreateErRequest(TeaModel):
         self.region_id = region_id
         # Resource group instance ID
         self.resource_group_id = resource_group_id
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1061,6 +1099,10 @@ class CreateErRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -1075,6 +1117,11 @@ class CreateErRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateErRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -5977,6 +6024,39 @@ class GetErResponseBodyContentErRouteMaps(TeaModel):
         return self
 
 
+class GetErResponseBodyContentTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
 class GetErResponseBodyContent(TeaModel):
     def __init__(
         self,
@@ -5993,6 +6073,7 @@ class GetErResponseBodyContent(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
         status: str = None,
+        tags: List[GetErResponseBodyContentTags] = None,
         tenant_id: str = None,
     ):
         # The time when the data address was created.
@@ -6021,6 +6102,7 @@ class GetErResponseBodyContent(TeaModel):
         self.resource_group_id = resource_group_id
         # The status of the intervention entry. Valid value:
         self.status = status
+        self.tags = tags
         # The ID of the tenant.
         self.tenant_id = tenant_id
 
@@ -6035,6 +6117,10 @@ class GetErResponseBodyContent(TeaModel):
                     k.validate()
         if self.er_route_maps:
             for k in self.er_route_maps:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
                 if k:
                     k.validate()
 
@@ -6076,6 +6162,10 @@ class GetErResponseBodyContent(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.status is not None:
             result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
         return result
@@ -6117,6 +6207,11 @@ class GetErResponseBodyContent(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = GetErResponseBodyContentTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
         return self
@@ -13531,6 +13626,39 @@ class ListErRouteMapsResponse(TeaModel):
         return self
 
 
+class ListErsRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListErsRequest(TeaModel):
     def __init__(
         self,
@@ -13544,6 +13672,7 @@ class ListErsRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
         resource_group_id: str = None,
+        tag: List[ListErsRequestTag] = None,
     ):
         # Specifies whether to enable paged query. Valid values:
         # 
@@ -13573,9 +13702,13 @@ class ListErsRequest(TeaModel):
         self.region_id = region_id
         # Resource group instance ID
         self.resource_group_id = resource_group_id
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -13603,6 +13736,10 @@ class ListErsRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -13627,6 +13764,44 @@ class ListErsRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListErsRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListErsResponseBodyContentDataTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
         return self
 
 
@@ -13645,6 +13820,7 @@ class ListErsResponseBodyContentData(TeaModel):
         resource_group_id: str = None,
         route_maps: int = None,
         status: str = None,
+        tags: List[ListErsResponseBodyContentDataTags] = None,
         tenant_id: str = None,
     ):
         # The number of connections to the Lingjun HUB network instance.
@@ -13671,11 +13847,15 @@ class ListErsResponseBodyContentData(TeaModel):
         self.route_maps = route_maps
         # The task status.
         self.status = status
+        self.tags = tags
         # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -13707,6 +13887,10 @@ class ListErsResponseBodyContentData(TeaModel):
             result['RouteMaps'] = self.route_maps
         if self.status is not None:
             result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
         return result
@@ -13737,6 +13921,11 @@ class ListErsResponseBodyContentData(TeaModel):
             self.route_maps = m.get('RouteMaps')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListErsResponseBodyContentDataTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
         return self

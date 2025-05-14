@@ -1,3 +1,10 @@
+2025-05-14 Version: 2.0.6
+- Update API CreateEr: add request parameters Tag.
+- Update API GetEr: add response parameters Body.Content.Tags.
+- Update API ListErs: add request parameters Tag.
+- Update API ListErs: add response parameters Body.Content.Data.$.Tags.
+
+
 2025-05-12 Version: 2.0.5
 - Update API CreateElasticNetworkInterface: add request parameters Tag.
 - Update API GetElasticNetworkInterface: add response parameters Body.Content.Tags.
