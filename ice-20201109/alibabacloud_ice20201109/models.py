@@ -73044,8 +73044,8 @@ class SubmitCopyrightJobRequest(TeaModel):
         message: str = None,
         output: SubmitCopyrightJobRequestOutput = None,
         params: str = None,
-        start_time: str = None,
-        total_time: str = None,
+        start_time: int = None,
+        total_time: int = None,
         user_data: str = None,
     ):
         self.description = description
@@ -73127,8 +73127,8 @@ class SubmitCopyrightJobShrinkRequest(TeaModel):
         message: str = None,
         output_shrink: str = None,
         params: str = None,
-        start_time: str = None,
-        total_time: str = None,
+        start_time: int = None,
+        total_time: int = None,
         user_data: str = None,
     ):
         self.description = description
@@ -81309,8 +81309,8 @@ class SubmitTraceAbJobRequest(TeaModel):
         input: SubmitTraceAbJobRequestInput = None,
         level: int = None,
         output: SubmitTraceAbJobRequestOutput = None,
-        start_time: str = None,
-        total_time: str = None,
+        start_time: int = None,
+        total_time: int = None,
         user_data: str = None,
     ):
         self.cipher_base_64ed = cipher_base_64ed
@@ -81379,8 +81379,8 @@ class SubmitTraceAbJobShrinkRequest(TeaModel):
         input_shrink: str = None,
         level: int = None,
         output_shrink: str = None,
-        start_time: str = None,
-        total_time: str = None,
+        start_time: int = None,
+        total_time: int = None,
         user_data: str = None,
     ):
         self.cipher_base_64ed = cipher_base_64ed

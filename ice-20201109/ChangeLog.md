@@ -1,3 +1,14 @@
+2025-05-14 Version: 6.0.0
+- Update API SubmitCopyrightJob: update request parameters StartTime' type has changed.
+- Update API SubmitCopyrightJob: update request parameters StartTime' format has changed.
+- Update API SubmitCopyrightJob: update request parameters TotalTime' type has changed.
+- Update API SubmitCopyrightJob: update request parameters TotalTime' format has changed.
+- Update API SubmitTraceAbJob: update request parameters StartTime' type has changed.
+- Update API SubmitTraceAbJob: update request parameters StartTime' format has changed.
+- Update API SubmitTraceAbJob: update request parameters TotalTime' type has changed.
+- Update API SubmitTraceAbJob: update request parameters TotalTime' format has changed.
+
+
 2025-04-28 Version: 5.0.7
 - Update API DeleteAIAgentDialogue: add request parameters NodeId.
 - Update API ListAIAgentDialogues: add request parameters RoundLimit.
