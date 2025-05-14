@@ -1,3 +1,17 @@
+2025-05-14 Version: 4.9.0
+- Support API CreateClusterInspectConfig.
+- Support API DeleteClusterInspectConfig.
+- Support API GetClusterInspectConfig.
+- Support API GetClusterInspectReportDetail.
+- Support API ListClusterInspectReports.
+- Support API RunClusterInspect.
+- Support API UpdateClusterInspectConfig.
+- Update API DescribeClusterNodePoolDetail: add response parameters Body.auto_mode.
+- Update API DescribeClusterNodePools: add response parameters Body.nodepools.$.auto_mode.
+- Update API ModifyClusterNodePool: add request parameters body.scaling_group.deploymentset_id.
+- Update API ModifyClusterNodePool: add request parameters body.scaling_group.security_group_ids.
+
+
 2025-03-18 Version: 4.8.14
 - Update API DescribeSubaccountK8sClusterUserConfig: update response param.
 
