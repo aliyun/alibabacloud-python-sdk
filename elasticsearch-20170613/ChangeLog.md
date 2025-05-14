@@ -1,3 +1,6 @@
+2025-05-14 Version: 3.0.2
+- Generated python 2017-06-13 for elasticsearch.
+
 2025-05-13 Version: 3.0.1
 - Update API DescribeInstance: add response parameters Body.Result.endTime.
 
