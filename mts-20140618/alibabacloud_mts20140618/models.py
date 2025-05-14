@@ -35453,8 +35453,8 @@ class SubmitCopyrightJobRequest(TeaModel):
         message: str = None,
         output: str = None,
         params: str = None,
-        start_time: str = None,
-        total_time: str = None,
+        start_time: int = None,
+        total_time: int = None,
         url: str = None,
         user_data: str = None,
     ):
@@ -42284,8 +42284,8 @@ class SubmitTraceAbJobRequest(TeaModel):
         input: str = None,
         level: int = None,
         output: str = None,
-        start_time: str = None,
-        total_time: str = None,
+        start_time: int = None,
+        total_time: int = None,
         url: str = None,
         user_data: str = None,
     ):

@@ -1,3 +1,14 @@
+2025-05-14 Version: 6.0.0
+- Update API SubmitCopyrightJob: update request parameters StartTime' type has changed.
+- Update API SubmitCopyrightJob: update request parameters StartTime' format has changed.
+- Update API SubmitCopyrightJob: update request parameters TotalTime' type has changed.
+- Update API SubmitCopyrightJob: update request parameters TotalTime' format has changed.
+- Update API SubmitTraceAbJob: update request parameters StartTime' type has changed.
+- Update API SubmitTraceAbJob: update request parameters StartTime' format has changed.
+- Update API SubmitTraceAbJob: update request parameters TotalTime' type has changed.
+- Update API SubmitTraceAbJob: update request parameters TotalTime' format has changed.
+
+
 2025-05-12 Version: 5.0.3
 - Update API AddSmarttagTemplate: add request parameters TemplateConfig.
 - Update API UpdateSmarttagTemplate: add request parameters TemplateConfig.
