@@ -245,8 +245,12 @@ class CreatePlayingListShrinkRequest(TeaModel):
 class CreatePlayingListResponseBody(TeaModel):
     def __init__(
         self,
+        code: str = None,
+        message: str = None,
         request_id: str = None,
     ):
+        self.code = code
+        self.message = message
         self.request_id = request_id
 
     def validate(self):
@@ -258,12 +262,20 @@ class CreatePlayingListResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
