@@ -609,6 +609,152 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.AddMeetingRoomsHeaders()
         return await self.add_meeting_rooms_with_options_async(request, headers, runtime)
 
+    def add_multi_dim_table_with_options(
+        self,
+        tmp_req: aliding_20230426_models.AddMultiDimTableRequest,
+        tmp_header: aliding_20230426_models.AddMultiDimTableHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.AddMultiDimTableResponse:
+        """
+        @summary 新增数据表
+        
+        @param tmp_req: AddMultiDimTableRequest
+        @param tmp_header: AddMultiDimTableHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddMultiDimTableResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.AddMultiDimTableShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.AddMultiDimTableShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.fields):
+            request.fields_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.fields, 'Fields', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.base_id):
+            body['BaseId'] = request.base_id
+        if not UtilClient.is_unset(request.fields_shrink):
+            body['Fields'] = request.fields_shrink
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddMultiDimTable',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/table/addMultiDimTable',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.AddMultiDimTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_multi_dim_table_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.AddMultiDimTableRequest,
+        tmp_header: aliding_20230426_models.AddMultiDimTableHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.AddMultiDimTableResponse:
+        """
+        @summary 新增数据表
+        
+        @param tmp_req: AddMultiDimTableRequest
+        @param tmp_header: AddMultiDimTableHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddMultiDimTableResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.AddMultiDimTableShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.AddMultiDimTableShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.fields):
+            request.fields_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.fields, 'Fields', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.base_id):
+            body['BaseId'] = request.base_id
+        if not UtilClient.is_unset(request.fields_shrink):
+            body['Fields'] = request.fields_shrink
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddMultiDimTable',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/table/addMultiDimTable',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.AddMultiDimTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_multi_dim_table(
+        self,
+        request: aliding_20230426_models.AddMultiDimTableRequest,
+    ) -> aliding_20230426_models.AddMultiDimTableResponse:
+        """
+        @summary 新增数据表
+        
+        @param request: AddMultiDimTableRequest
+        @return: AddMultiDimTableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.AddMultiDimTableHeaders()
+        return self.add_multi_dim_table_with_options(request, headers, runtime)
+
+    async def add_multi_dim_table_async(
+        self,
+        request: aliding_20230426_models.AddMultiDimTableRequest,
+    ) -> aliding_20230426_models.AddMultiDimTableResponse:
+        """
+        @summary 新增数据表
+        
+        @param request: AddMultiDimTableRequest
+        @return: AddMultiDimTableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.AddMultiDimTableHeaders()
+        return await self.add_multi_dim_table_with_options_async(request, headers, runtime)
+
     def add_permission_with_options(
         self,
         tmp_req: aliding_20230426_models.AddPermissionRequest,
@@ -4959,6 +5105,160 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.CreateMessageHeaders()
         return await self.create_message_with_options_async(request, headers, runtime)
 
+    def create_multi_dim_table_field_with_options(
+        self,
+        tmp_req: aliding_20230426_models.CreateMultiDimTableFieldRequest,
+        tmp_header: aliding_20230426_models.CreateMultiDimTableFieldHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.CreateMultiDimTableFieldResponse:
+        """
+        @summary 创建字段
+        
+        @param tmp_req: CreateMultiDimTableFieldRequest
+        @param tmp_header: CreateMultiDimTableFieldHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMultiDimTableFieldResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.CreateMultiDimTableFieldShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.CreateMultiDimTableFieldShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.property):
+            request.property_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.property, 'Property', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.base_id):
+            body['BaseId'] = request.base_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.property_shrink):
+            body['Property'] = request.property_shrink
+        if not UtilClient.is_unset(request.sheet_id_or_name):
+            body['SheetIdOrName'] = request.sheet_id_or_name
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateMultiDimTableField',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/table/createMultiDimTableField',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.CreateMultiDimTableFieldResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_multi_dim_table_field_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.CreateMultiDimTableFieldRequest,
+        tmp_header: aliding_20230426_models.CreateMultiDimTableFieldHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.CreateMultiDimTableFieldResponse:
+        """
+        @summary 创建字段
+        
+        @param tmp_req: CreateMultiDimTableFieldRequest
+        @param tmp_header: CreateMultiDimTableFieldHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMultiDimTableFieldResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.CreateMultiDimTableFieldShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.CreateMultiDimTableFieldShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.property):
+            request.property_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.property, 'Property', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.base_id):
+            body['BaseId'] = request.base_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.property_shrink):
+            body['Property'] = request.property_shrink
+        if not UtilClient.is_unset(request.sheet_id_or_name):
+            body['SheetIdOrName'] = request.sheet_id_or_name
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateMultiDimTableField',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/table/createMultiDimTableField',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.CreateMultiDimTableFieldResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_multi_dim_table_field(
+        self,
+        request: aliding_20230426_models.CreateMultiDimTableFieldRequest,
+    ) -> aliding_20230426_models.CreateMultiDimTableFieldResponse:
+        """
+        @summary 创建字段
+        
+        @param request: CreateMultiDimTableFieldRequest
+        @return: CreateMultiDimTableFieldResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.CreateMultiDimTableFieldHeaders()
+        return self.create_multi_dim_table_field_with_options(request, headers, runtime)
+
+    async def create_multi_dim_table_field_async(
+        self,
+        request: aliding_20230426_models.CreateMultiDimTableFieldRequest,
+    ) -> aliding_20230426_models.CreateMultiDimTableFieldResponse:
+        """
+        @summary 创建字段
+        
+        @param request: CreateMultiDimTableFieldRequest
+        @return: CreateMultiDimTableFieldResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.CreateMultiDimTableFieldHeaders()
+        return await self.create_multi_dim_table_field_with_options_async(request, headers, runtime)
+
     def create_or_update_form_data_with_options(
         self,
         request: aliding_20230426_models.CreateOrUpdateFormDataRequest,
@@ -8827,6 +9127,294 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.DeleteMeetingRoomGroupHeaders()
         return await self.delete_meeting_room_group_with_options_async(request, headers, runtime)
 
+    def delete_multi_dim_table_field_with_options(
+        self,
+        tmp_req: aliding_20230426_models.DeleteMultiDimTableFieldRequest,
+        tmp_header: aliding_20230426_models.DeleteMultiDimTableFieldHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.DeleteMultiDimTableFieldResponse:
+        """
+        @summary 删除字段
+        
+        @param tmp_req: DeleteMultiDimTableFieldRequest
+        @param tmp_header: DeleteMultiDimTableFieldHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMultiDimTableFieldResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.DeleteMultiDimTableFieldShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.DeleteMultiDimTableFieldShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.base_id):
+            body['BaseId'] = request.base_id
+        if not UtilClient.is_unset(request.field_id_or_name):
+            body['FieldIdOrName'] = request.field_id_or_name
+        if not UtilClient.is_unset(request.sheet_id_or_name):
+            body['SheetIdOrName'] = request.sheet_id_or_name
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteMultiDimTableField',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/table/deleteMultiDimTableField',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.DeleteMultiDimTableFieldResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_multi_dim_table_field_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.DeleteMultiDimTableFieldRequest,
+        tmp_header: aliding_20230426_models.DeleteMultiDimTableFieldHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.DeleteMultiDimTableFieldResponse:
+        """
+        @summary 删除字段
+        
+        @param tmp_req: DeleteMultiDimTableFieldRequest
+        @param tmp_header: DeleteMultiDimTableFieldHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMultiDimTableFieldResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.DeleteMultiDimTableFieldShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.DeleteMultiDimTableFieldShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.base_id):
+            body['BaseId'] = request.base_id
+        if not UtilClient.is_unset(request.field_id_or_name):
+            body['FieldIdOrName'] = request.field_id_or_name
+        if not UtilClient.is_unset(request.sheet_id_or_name):
+            body['SheetIdOrName'] = request.sheet_id_or_name
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteMultiDimTableField',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/table/deleteMultiDimTableField',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.DeleteMultiDimTableFieldResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_multi_dim_table_field(
+        self,
+        request: aliding_20230426_models.DeleteMultiDimTableFieldRequest,
+    ) -> aliding_20230426_models.DeleteMultiDimTableFieldResponse:
+        """
+        @summary 删除字段
+        
+        @param request: DeleteMultiDimTableFieldRequest
+        @return: DeleteMultiDimTableFieldResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.DeleteMultiDimTableFieldHeaders()
+        return self.delete_multi_dim_table_field_with_options(request, headers, runtime)
+
+    async def delete_multi_dim_table_field_async(
+        self,
+        request: aliding_20230426_models.DeleteMultiDimTableFieldRequest,
+    ) -> aliding_20230426_models.DeleteMultiDimTableFieldResponse:
+        """
+        @summary 删除字段
+        
+        @param request: DeleteMultiDimTableFieldRequest
+        @return: DeleteMultiDimTableFieldResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.DeleteMultiDimTableFieldHeaders()
+        return await self.delete_multi_dim_table_field_with_options_async(request, headers, runtime)
+
+    def delete_multi_dim_table_records_with_options(
+        self,
+        tmp_req: aliding_20230426_models.DeleteMultiDimTableRecordsRequest,
+        tmp_header: aliding_20230426_models.DeleteMultiDimTableRecordsHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.DeleteMultiDimTableRecordsResponse:
+        """
+        @summary 删除多行记录
+        
+        @param tmp_req: DeleteMultiDimTableRecordsRequest
+        @param tmp_header: DeleteMultiDimTableRecordsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMultiDimTableRecordsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.DeleteMultiDimTableRecordsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.DeleteMultiDimTableRecordsShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.record_ids):
+            request.record_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.record_ids, 'RecordIds', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.base_id):
+            body['BaseId'] = request.base_id
+        if not UtilClient.is_unset(request.record_ids_shrink):
+            body['RecordIds'] = request.record_ids_shrink
+        if not UtilClient.is_unset(request.sheet_id_or_name):
+            body['SheetIdOrName'] = request.sheet_id_or_name
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteMultiDimTableRecords',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/table/deleteMultiDimTableRecords',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.DeleteMultiDimTableRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_multi_dim_table_records_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.DeleteMultiDimTableRecordsRequest,
+        tmp_header: aliding_20230426_models.DeleteMultiDimTableRecordsHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.DeleteMultiDimTableRecordsResponse:
+        """
+        @summary 删除多行记录
+        
+        @param tmp_req: DeleteMultiDimTableRecordsRequest
+        @param tmp_header: DeleteMultiDimTableRecordsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMultiDimTableRecordsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.DeleteMultiDimTableRecordsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.DeleteMultiDimTableRecordsShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.record_ids):
+            request.record_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.record_ids, 'RecordIds', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.base_id):
+            body['BaseId'] = request.base_id
+        if not UtilClient.is_unset(request.record_ids_shrink):
+            body['RecordIds'] = request.record_ids_shrink
+        if not UtilClient.is_unset(request.sheet_id_or_name):
+            body['SheetIdOrName'] = request.sheet_id_or_name
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteMultiDimTableRecords',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/table/deleteMultiDimTableRecords',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.DeleteMultiDimTableRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_multi_dim_table_records(
+        self,
+        request: aliding_20230426_models.DeleteMultiDimTableRecordsRequest,
+    ) -> aliding_20230426_models.DeleteMultiDimTableRecordsResponse:
+        """
+        @summary 删除多行记录
+        
+        @param request: DeleteMultiDimTableRecordsRequest
+        @return: DeleteMultiDimTableRecordsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.DeleteMultiDimTableRecordsHeaders()
+        return self.delete_multi_dim_table_records_with_options(request, headers, runtime)
+
+    async def delete_multi_dim_table_records_async(
+        self,
+        request: aliding_20230426_models.DeleteMultiDimTableRecordsRequest,
+    ) -> aliding_20230426_models.DeleteMultiDimTableRecordsResponse:
+        """
+        @summary 删除多行记录
+        
+        @param request: DeleteMultiDimTableRecordsRequest
+        @return: DeleteMultiDimTableRecordsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.DeleteMultiDimTableRecordsHeaders()
+        return await self.delete_multi_dim_table_records_with_options_async(request, headers, runtime)
+
     def delete_permission_with_options(
         self,
         tmp_req: aliding_20230426_models.DeletePermissionRequest,
@@ -9930,6 +10518,152 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.DeleteWorkspaceMembersHeaders()
         return await self.delete_workspace_members_with_options_async(request, headers, runtime)
+
+    def doc_blocks_query_with_options(
+        self,
+        tmp_req: aliding_20230426_models.DocBlocksQueryRequest,
+        tmp_header: aliding_20230426_models.DocBlocksQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.DocBlocksQueryResponse:
+        """
+        @summary 查询块元素
+        
+        @param tmp_req: DocBlocksQueryRequest
+        @param tmp_header: DocBlocksQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DocBlocksQueryResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.DocBlocksQueryShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.DocBlocksQueryShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.block_type):
+            body['BlockType'] = request.block_type
+        if not UtilClient.is_unset(request.doc_key):
+            body['DocKey'] = request.doc_key
+        if not UtilClient.is_unset(request.end_index):
+            body['EndIndex'] = request.end_index
+        if not UtilClient.is_unset(request.start_index):
+            body['StartIndex'] = request.start_index
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DocBlocksQuery',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/documents/docBlocksQuery',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.DocBlocksQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def doc_blocks_query_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.DocBlocksQueryRequest,
+        tmp_header: aliding_20230426_models.DocBlocksQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.DocBlocksQueryResponse:
+        """
+        @summary 查询块元素
+        
+        @param tmp_req: DocBlocksQueryRequest
+        @param tmp_header: DocBlocksQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DocBlocksQueryResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.DocBlocksQueryShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.DocBlocksQueryShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.block_type):
+            body['BlockType'] = request.block_type
+        if not UtilClient.is_unset(request.doc_key):
+            body['DocKey'] = request.doc_key
+        if not UtilClient.is_unset(request.end_index):
+            body['EndIndex'] = request.end_index
+        if not UtilClient.is_unset(request.start_index):
+            body['StartIndex'] = request.start_index
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DocBlocksQuery',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/documents/docBlocksQuery',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.DocBlocksQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def doc_blocks_query(
+        self,
+        request: aliding_20230426_models.DocBlocksQueryRequest,
+    ) -> aliding_20230426_models.DocBlocksQueryResponse:
+        """
+        @summary 查询块元素
+        
+        @param request: DocBlocksQueryRequest
+        @return: DocBlocksQueryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.DocBlocksQueryHeaders()
+        return self.doc_blocks_query_with_options(request, headers, runtime)
+
+    async def doc_blocks_query_async(
+        self,
+        request: aliding_20230426_models.DocBlocksQueryRequest,
+    ) -> aliding_20230426_models.DocBlocksQueryResponse:
+        """
+        @summary 查询块元素
+        
+        @param request: DocBlocksQueryRequest
+        @return: DocBlocksQueryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.DocBlocksQueryHeaders()
+        return await self.doc_blocks_query_with_options_async(request, headers, runtime)
 
     def doc_update_content_with_options(
         self,
@@ -19878,6 +20612,152 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.InsertColumnsBeforeHeaders()
         return await self.insert_columns_before_with_options_async(request, headers, runtime)
+
+    def insert_multi_dim_table_record_with_options(
+        self,
+        tmp_req: aliding_20230426_models.InsertMultiDimTableRecordRequest,
+        tmp_header: aliding_20230426_models.InsertMultiDimTableRecordHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.InsertMultiDimTableRecordResponse:
+        """
+        @summary 新增记录
+        
+        @param tmp_req: InsertMultiDimTableRecordRequest
+        @param tmp_header: InsertMultiDimTableRecordHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InsertMultiDimTableRecordResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.InsertMultiDimTableRecordShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.InsertMultiDimTableRecordShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.records):
+            request.records_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.records, 'Records', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.base_id):
+            body['BaseId'] = request.base_id
+        if not UtilClient.is_unset(request.records_shrink):
+            body['Records'] = request.records_shrink
+        if not UtilClient.is_unset(request.sheet_id_or_name):
+            body['SheetIdOrName'] = request.sheet_id_or_name
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='InsertMultiDimTableRecord',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/table/insertMultiDimTableRecord',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.InsertMultiDimTableRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def insert_multi_dim_table_record_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.InsertMultiDimTableRecordRequest,
+        tmp_header: aliding_20230426_models.InsertMultiDimTableRecordHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.InsertMultiDimTableRecordResponse:
+        """
+        @summary 新增记录
+        
+        @param tmp_req: InsertMultiDimTableRecordRequest
+        @param tmp_header: InsertMultiDimTableRecordHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InsertMultiDimTableRecordResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.InsertMultiDimTableRecordShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.InsertMultiDimTableRecordShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.records):
+            request.records_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.records, 'Records', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.base_id):
+            body['BaseId'] = request.base_id
+        if not UtilClient.is_unset(request.records_shrink):
+            body['Records'] = request.records_shrink
+        if not UtilClient.is_unset(request.sheet_id_or_name):
+            body['SheetIdOrName'] = request.sheet_id_or_name
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='InsertMultiDimTableRecord',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/table/insertMultiDimTableRecord',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.InsertMultiDimTableRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def insert_multi_dim_table_record(
+        self,
+        request: aliding_20230426_models.InsertMultiDimTableRecordRequest,
+    ) -> aliding_20230426_models.InsertMultiDimTableRecordResponse:
+        """
+        @summary 新增记录
+        
+        @param request: InsertMultiDimTableRecordRequest
+        @return: InsertMultiDimTableRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.InsertMultiDimTableRecordHeaders()
+        return self.insert_multi_dim_table_record_with_options(request, headers, runtime)
+
+    async def insert_multi_dim_table_record_async(
+        self,
+        request: aliding_20230426_models.InsertMultiDimTableRecordRequest,
+    ) -> aliding_20230426_models.InsertMultiDimTableRecordResponse:
+        """
+        @summary 新增记录
+        
+        @param request: InsertMultiDimTableRecordRequest
+        @return: InsertMultiDimTableRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.InsertMultiDimTableRecordHeaders()
+        return await self.insert_multi_dim_table_record_with_options_async(request, headers, runtime)
 
     def insert_rows_before_with_options(
         self,
@@ -32928,6 +33808,448 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UpdateMeetingRoomGroupHeaders()
         return await self.update_meeting_room_group_with_options_async(request, headers, runtime)
+
+    def update_multi_dim_table_with_options(
+        self,
+        tmp_req: aliding_20230426_models.UpdateMultiDimTableRequest,
+        tmp_header: aliding_20230426_models.UpdateMultiDimTableHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.UpdateMultiDimTableResponse:
+        """
+        @summary 更新数据表
+        
+        @param tmp_req: UpdateMultiDimTableRequest
+        @param tmp_header: UpdateMultiDimTableHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMultiDimTableResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.UpdateMultiDimTableShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.UpdateMultiDimTableShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.base_id):
+            body['BaseId'] = request.base_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.sheet_id_or_name):
+            body['SheetIdOrName'] = request.sheet_id_or_name
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateMultiDimTable',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/table/updateMultiDimTable',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.UpdateMultiDimTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_multi_dim_table_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.UpdateMultiDimTableRequest,
+        tmp_header: aliding_20230426_models.UpdateMultiDimTableHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.UpdateMultiDimTableResponse:
+        """
+        @summary 更新数据表
+        
+        @param tmp_req: UpdateMultiDimTableRequest
+        @param tmp_header: UpdateMultiDimTableHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMultiDimTableResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.UpdateMultiDimTableShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.UpdateMultiDimTableShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.base_id):
+            body['BaseId'] = request.base_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.sheet_id_or_name):
+            body['SheetIdOrName'] = request.sheet_id_or_name
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateMultiDimTable',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/table/updateMultiDimTable',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.UpdateMultiDimTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_multi_dim_table(
+        self,
+        request: aliding_20230426_models.UpdateMultiDimTableRequest,
+    ) -> aliding_20230426_models.UpdateMultiDimTableResponse:
+        """
+        @summary 更新数据表
+        
+        @param request: UpdateMultiDimTableRequest
+        @return: UpdateMultiDimTableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.UpdateMultiDimTableHeaders()
+        return self.update_multi_dim_table_with_options(request, headers, runtime)
+
+    async def update_multi_dim_table_async(
+        self,
+        request: aliding_20230426_models.UpdateMultiDimTableRequest,
+    ) -> aliding_20230426_models.UpdateMultiDimTableResponse:
+        """
+        @summary 更新数据表
+        
+        @param request: UpdateMultiDimTableRequest
+        @return: UpdateMultiDimTableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.UpdateMultiDimTableHeaders()
+        return await self.update_multi_dim_table_with_options_async(request, headers, runtime)
+
+    def update_multi_dim_table_field_with_options(
+        self,
+        tmp_req: aliding_20230426_models.UpdateMultiDimTableFieldRequest,
+        tmp_header: aliding_20230426_models.UpdateMultiDimTableFieldHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.UpdateMultiDimTableFieldResponse:
+        """
+        @summary 更新字段
+        
+        @param tmp_req: UpdateMultiDimTableFieldRequest
+        @param tmp_header: UpdateMultiDimTableFieldHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMultiDimTableFieldResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.UpdateMultiDimTableFieldShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.UpdateMultiDimTableFieldShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.property):
+            request.property_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.property, 'Property', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.base_id):
+            body['BaseId'] = request.base_id
+        if not UtilClient.is_unset(request.field_id_or_name):
+            body['FieldIdOrName'] = request.field_id_or_name
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.property_shrink):
+            body['Property'] = request.property_shrink
+        if not UtilClient.is_unset(request.sheet_id_or_name):
+            body['SheetIdOrName'] = request.sheet_id_or_name
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateMultiDimTableField',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/table/updateMultiDimTableField',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.UpdateMultiDimTableFieldResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_multi_dim_table_field_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.UpdateMultiDimTableFieldRequest,
+        tmp_header: aliding_20230426_models.UpdateMultiDimTableFieldHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.UpdateMultiDimTableFieldResponse:
+        """
+        @summary 更新字段
+        
+        @param tmp_req: UpdateMultiDimTableFieldRequest
+        @param tmp_header: UpdateMultiDimTableFieldHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMultiDimTableFieldResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.UpdateMultiDimTableFieldShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.UpdateMultiDimTableFieldShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.property):
+            request.property_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.property, 'Property', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.base_id):
+            body['BaseId'] = request.base_id
+        if not UtilClient.is_unset(request.field_id_or_name):
+            body['FieldIdOrName'] = request.field_id_or_name
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.property_shrink):
+            body['Property'] = request.property_shrink
+        if not UtilClient.is_unset(request.sheet_id_or_name):
+            body['SheetIdOrName'] = request.sheet_id_or_name
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateMultiDimTableField',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/table/updateMultiDimTableField',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.UpdateMultiDimTableFieldResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_multi_dim_table_field(
+        self,
+        request: aliding_20230426_models.UpdateMultiDimTableFieldRequest,
+    ) -> aliding_20230426_models.UpdateMultiDimTableFieldResponse:
+        """
+        @summary 更新字段
+        
+        @param request: UpdateMultiDimTableFieldRequest
+        @return: UpdateMultiDimTableFieldResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.UpdateMultiDimTableFieldHeaders()
+        return self.update_multi_dim_table_field_with_options(request, headers, runtime)
+
+    async def update_multi_dim_table_field_async(
+        self,
+        request: aliding_20230426_models.UpdateMultiDimTableFieldRequest,
+    ) -> aliding_20230426_models.UpdateMultiDimTableFieldResponse:
+        """
+        @summary 更新字段
+        
+        @param request: UpdateMultiDimTableFieldRequest
+        @return: UpdateMultiDimTableFieldResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.UpdateMultiDimTableFieldHeaders()
+        return await self.update_multi_dim_table_field_with_options_async(request, headers, runtime)
+
+    def update_multi_dim_table_records_with_options(
+        self,
+        tmp_req: aliding_20230426_models.UpdateMultiDimTableRecordsRequest,
+        tmp_header: aliding_20230426_models.UpdateMultiDimTableRecordsHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.UpdateMultiDimTableRecordsResponse:
+        """
+        @summary 更新多行记录
+        
+        @param tmp_req: UpdateMultiDimTableRecordsRequest
+        @param tmp_header: UpdateMultiDimTableRecordsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMultiDimTableRecordsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.UpdateMultiDimTableRecordsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.UpdateMultiDimTableRecordsShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.record_ids):
+            request.record_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.record_ids, 'RecordIds', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.base_id):
+            body['BaseId'] = request.base_id
+        if not UtilClient.is_unset(request.record_ids_shrink):
+            body['RecordIds'] = request.record_ids_shrink
+        if not UtilClient.is_unset(request.sheet_id_or_name):
+            body['SheetIdOrName'] = request.sheet_id_or_name
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateMultiDimTableRecords',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/table/updateMultiDimTableRecords',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.UpdateMultiDimTableRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_multi_dim_table_records_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.UpdateMultiDimTableRecordsRequest,
+        tmp_header: aliding_20230426_models.UpdateMultiDimTableRecordsHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.UpdateMultiDimTableRecordsResponse:
+        """
+        @summary 更新多行记录
+        
+        @param tmp_req: UpdateMultiDimTableRecordsRequest
+        @param tmp_header: UpdateMultiDimTableRecordsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMultiDimTableRecordsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.UpdateMultiDimTableRecordsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.UpdateMultiDimTableRecordsShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.record_ids):
+            request.record_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.record_ids, 'RecordIds', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.base_id):
+            body['BaseId'] = request.base_id
+        if not UtilClient.is_unset(request.record_ids_shrink):
+            body['RecordIds'] = request.record_ids_shrink
+        if not UtilClient.is_unset(request.sheet_id_or_name):
+            body['SheetIdOrName'] = request.sheet_id_or_name
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateMultiDimTableRecords',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/table/updateMultiDimTableRecords',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.UpdateMultiDimTableRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_multi_dim_table_records(
+        self,
+        request: aliding_20230426_models.UpdateMultiDimTableRecordsRequest,
+    ) -> aliding_20230426_models.UpdateMultiDimTableRecordsResponse:
+        """
+        @summary 更新多行记录
+        
+        @param request: UpdateMultiDimTableRecordsRequest
+        @return: UpdateMultiDimTableRecordsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.UpdateMultiDimTableRecordsHeaders()
+        return self.update_multi_dim_table_records_with_options(request, headers, runtime)
+
+    async def update_multi_dim_table_records_async(
+        self,
+        request: aliding_20230426_models.UpdateMultiDimTableRecordsRequest,
+    ) -> aliding_20230426_models.UpdateMultiDimTableRecordsResponse:
+        """
+        @summary 更新多行记录
+        
+        @param request: UpdateMultiDimTableRecordsRequest
+        @return: UpdateMultiDimTableRecordsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.UpdateMultiDimTableRecordsHeaders()
+        return await self.update_multi_dim_table_records_with_options_async(request, headers, runtime)
 
     def update_permission_with_options(
         self,

@@ -1,3 +1,15 @@
+2025-05-14 Version: 2.37.0
+- Support API AddMultiDimTable.
+- Support API CreateMultiDimTableField.
+- Support API DeleteMultiDimTableField.
+- Support API DeleteMultiDimTableRecords.
+- Support API DocBlocksQuery.
+- Support API InsertMultiDimTableRecord.
+- Support API UpdateMultiDimTable.
+- Support API UpdateMultiDimTableField.
+- Support API UpdateMultiDimTableRecords.
+
+
 2025-04-28 Version: 2.36.1
 - Update API CreateRun: add response parameters Body.data.
 - Update API GetRange: add response parameters Body.hyperlinks.
