@@ -10744,6 +10744,7 @@ class CreateMediaLiveChannelRequestVideoSettings(TeaModel):
         name: str = None,
         video_codec: str = None,
         video_codec_setting: CreateMediaLiveChannelRequestVideoSettingsVideoCodecSetting = None,
+        video_codec_type: str = None,
         width: int = None,
     ):
         # The height of the output. Valid values: 0 to 2000. If you set it to 0 or leave it empty, the height automatically adapts to the specified width to maintain the original aspect ratio.
@@ -10756,6 +10757,7 @@ class CreateMediaLiveChannelRequestVideoSettings(TeaModel):
         self.video_codec = video_codec
         # The video encoding settings.
         self.video_codec_setting = video_codec_setting
+        self.video_codec_type = video_codec_type
         # The width of the output. Valid values: 0 to 2000. If you set it to 0 or leave it empty, the width automatically adapts to the specified height to maintain the original aspect ratio.
         self.width = width
 
@@ -10777,6 +10779,8 @@ class CreateMediaLiveChannelRequestVideoSettings(TeaModel):
             result['VideoCodec'] = self.video_codec
         if self.video_codec_setting is not None:
             result['VideoCodecSetting'] = self.video_codec_setting.to_map()
+        if self.video_codec_type is not None:
+            result['VideoCodecType'] = self.video_codec_type
         if self.width is not None:
             result['Width'] = self.width
         return result
@@ -10792,6 +10796,8 @@ class CreateMediaLiveChannelRequestVideoSettings(TeaModel):
         if m.get('VideoCodecSetting') is not None:
             temp_model = CreateMediaLiveChannelRequestVideoSettingsVideoCodecSetting()
             self.video_codec_setting = temp_model.from_map(m['VideoCodecSetting'])
+        if m.get('VideoCodecType') is not None:
+            self.video_codec_type = m.get('VideoCodecType')
         if m.get('Width') is not None:
             self.width = m.get('Width')
         return self
@@ -31402,6 +31408,7 @@ class GetMediaLiveChannelResponseBodyChannelVideoSettings(TeaModel):
         name: str = None,
         video_codec: str = None,
         video_codec_setting: GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSetting = None,
+        video_codec_type: str = None,
         width: int = None,
     ):
         # The height of the video in pixels.
@@ -31412,6 +31419,8 @@ class GetMediaLiveChannelResponseBodyChannelVideoSettings(TeaModel):
         self.video_codec = video_codec
         # The video encoding settings.
         self.video_codec_setting = video_codec_setting
+        # 视频转码方式（普通转码、窄带高清转码等）
+        self.video_codec_type = video_codec_type
         # The width of the video in pixels.
         self.width = width
 
@@ -31433,6 +31442,8 @@ class GetMediaLiveChannelResponseBodyChannelVideoSettings(TeaModel):
             result['VideoCodec'] = self.video_codec
         if self.video_codec_setting is not None:
             result['VideoCodecSetting'] = self.video_codec_setting.to_map()
+        if self.video_codec_type is not None:
+            result['VideoCodecType'] = self.video_codec_type
         if self.width is not None:
             result['Width'] = self.width
         return result
@@ -31448,6 +31459,8 @@ class GetMediaLiveChannelResponseBodyChannelVideoSettings(TeaModel):
         if m.get('VideoCodecSetting') is not None:
             temp_model = GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSetting()
             self.video_codec_setting = temp_model.from_map(m['VideoCodecSetting'])
+        if m.get('VideoCodecType') is not None:
+            self.video_codec_type = m.get('VideoCodecType')
         if m.get('Width') is not None:
             self.width = m.get('Width')
         return self
@@ -52390,6 +52403,7 @@ class ListMediaLiveChannelsResponseBodyChannelsVideoSettings(TeaModel):
         name: str = None,
         video_codec: str = None,
         video_codec_setting: ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSetting = None,
+        video_codec_type: str = None,
         width: int = None,
     ):
         # The height of the video in pixels.
@@ -52400,6 +52414,8 @@ class ListMediaLiveChannelsResponseBodyChannelsVideoSettings(TeaModel):
         self.video_codec = video_codec
         # The video encoding settings.
         self.video_codec_setting = video_codec_setting
+        # 视频转码方式（普通转码、窄带高清转码等）
+        self.video_codec_type = video_codec_type
         # The width of the video in pixels.
         self.width = width
 
@@ -52421,6 +52437,8 @@ class ListMediaLiveChannelsResponseBodyChannelsVideoSettings(TeaModel):
             result['VideoCodec'] = self.video_codec
         if self.video_codec_setting is not None:
             result['VideoCodecSetting'] = self.video_codec_setting.to_map()
+        if self.video_codec_type is not None:
+            result['VideoCodecType'] = self.video_codec_type
         if self.width is not None:
             result['Width'] = self.width
         return result
@@ -52436,6 +52454,8 @@ class ListMediaLiveChannelsResponseBodyChannelsVideoSettings(TeaModel):
         if m.get('VideoCodecSetting') is not None:
             temp_model = ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSetting()
             self.video_codec_setting = temp_model.from_map(m['VideoCodecSetting'])
+        if m.get('VideoCodecType') is not None:
+            self.video_codec_type = m.get('VideoCodecType')
         if m.get('Width') is not None:
             self.width = m.get('Width')
         return self
@@ -92730,6 +92750,7 @@ class UpdateMediaLiveChannelRequestVideoSettings(TeaModel):
         name: str = None,
         video_codec: str = None,
         video_codec_setting: UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSetting = None,
+        video_codec_type: str = None,
         width: int = None,
     ):
         # The height of the output. Valid values: 0 to 2000. If you set it to 0 or leave it empty, the height automatically adapts to the specified width to maintain the original aspect ratio.
@@ -92742,6 +92763,7 @@ class UpdateMediaLiveChannelRequestVideoSettings(TeaModel):
         self.video_codec = video_codec
         # The video encoding settings.
         self.video_codec_setting = video_codec_setting
+        self.video_codec_type = video_codec_type
         # The width of the output. Valid values: 0 to 2000. If you set it to 0 or leave it empty, the width automatically adapts to the specified height to maintain the original aspect ratio.
         self.width = width
 
@@ -92763,6 +92785,8 @@ class UpdateMediaLiveChannelRequestVideoSettings(TeaModel):
             result['VideoCodec'] = self.video_codec
         if self.video_codec_setting is not None:
             result['VideoCodecSetting'] = self.video_codec_setting.to_map()
+        if self.video_codec_type is not None:
+            result['VideoCodecType'] = self.video_codec_type
         if self.width is not None:
             result['Width'] = self.width
         return result
@@ -92778,6 +92802,8 @@ class UpdateMediaLiveChannelRequestVideoSettings(TeaModel):
         if m.get('VideoCodecSetting') is not None:
             temp_model = UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSetting()
             self.video_codec_setting = temp_model.from_map(m['VideoCodecSetting'])
+        if m.get('VideoCodecType') is not None:
+            self.video_codec_type = m.get('VideoCodecType')
         if m.get('Width') is not None:
             self.width = m.get('Width')
         return self

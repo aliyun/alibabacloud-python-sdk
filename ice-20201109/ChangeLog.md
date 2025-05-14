@@ -1,3 +1,10 @@
+2025-05-14 Version: 6.0.1
+- Update API CreateMediaLiveChannel: add request parameters VideoSettings.$.VideoCodecType.
+- Update API GetMediaLiveChannel: add response parameters Body.Channel.VideoSettings.$.VideoCodecType.
+- Update API ListMediaLiveChannels: add response parameters Body.Channels.$.VideoSettings.$.VideoCodecType.
+- Update API UpdateMediaLiveChannel: add request parameters VideoSettings.$.VideoCodecType.
+
+
 2025-05-14 Version: 6.0.0
 - Update API SubmitCopyrightJob: update request parameters StartTime' type has changed.
 - Update API SubmitCopyrightJob: update request parameters StartTime' format has changed.
