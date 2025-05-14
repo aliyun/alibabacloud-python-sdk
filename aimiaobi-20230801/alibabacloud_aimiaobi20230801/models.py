@@ -851,6 +851,144 @@ class CancelAsyncTaskResponse(TeaModel):
         return self
 
 
+class CancelAuditTaskRequest(TeaModel):
+    def __init__(
+        self,
+        article_id: str = None,
+        content_audit_task_id: str = None,
+        workspace_id: str = None,
+    ):
+        self.article_id = article_id
+        self.content_audit_task_id = content_audit_task_id
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.article_id is not None:
+            result['ArticleId'] = self.article_id
+        if self.content_audit_task_id is not None:
+            result['ContentAuditTaskId'] = self.content_audit_task_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ArticleId') is not None:
+            self.article_id = m.get('ArticleId')
+        if m.get('ContentAuditTaskId') is not None:
+            self.content_audit_task_id = m.get('ContentAuditTaskId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class CancelAuditTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: bool = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CancelAuditTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CancelAuditTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CancelAuditTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ClearIntervenesRequest(TeaModel):
     def __init__(
         self,
@@ -25372,6 +25510,392 @@ class QueryAsyncTaskResponse(TeaModel):
         return self
 
 
+class QueryAuditTaskRequest(TeaModel):
+    def __init__(
+        self,
+        article_id: str = None,
+        content_audit_task_id: str = None,
+        workspace_id: str = None,
+    ):
+        self.article_id = article_id
+        self.content_audit_task_id = content_audit_task_id
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.article_id is not None:
+            result['ArticleId'] = self.article_id
+        if self.content_audit_task_id is not None:
+            result['ContentAuditTaskId'] = self.content_audit_task_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ArticleId') is not None:
+            self.article_id = m.get('ArticleId')
+        if m.get('ContentAuditTaskId') is not None:
+            self.content_audit_task_id = m.get('ContentAuditTaskId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class QueryAuditTaskResponseBodyDataResponseHeader(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        event: str = None,
+        session_id: str = None,
+        task_id: str = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.event = event
+        self.session_id = session_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.event is not None:
+            result['Event'] = self.event
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Event') is not None:
+            self.event = m.get('Event')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class QueryAuditTaskResponseBodyDataResponsePayloadOutput(TeaModel):
+    def __init__(
+        self,
+        text: str = None,
+    ):
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class QueryAuditTaskResponseBodyDataResponsePayloadUsage(TeaModel):
+    def __init__(
+        self,
+        input_tokens: int = None,
+        output_tokens: int = None,
+        total_tokens: int = None,
+    ):
+        self.input_tokens = input_tokens
+        self.output_tokens = output_tokens
+        self.total_tokens = total_tokens
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_tokens is not None:
+            result['InputTokens'] = self.input_tokens
+        if self.output_tokens is not None:
+            result['OutputTokens'] = self.output_tokens
+        if self.total_tokens is not None:
+            result['TotalTokens'] = self.total_tokens
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InputTokens') is not None:
+            self.input_tokens = m.get('InputTokens')
+        if m.get('OutputTokens') is not None:
+            self.output_tokens = m.get('OutputTokens')
+        if m.get('TotalTokens') is not None:
+            self.total_tokens = m.get('TotalTokens')
+        return self
+
+
+class QueryAuditTaskResponseBodyDataResponsePayload(TeaModel):
+    def __init__(
+        self,
+        output: QueryAuditTaskResponseBodyDataResponsePayloadOutput = None,
+        usage: QueryAuditTaskResponseBodyDataResponsePayloadUsage = None,
+    ):
+        self.output = output
+        self.usage = usage
+
+    def validate(self):
+        if self.output:
+            self.output.validate()
+        if self.usage:
+            self.usage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.output is not None:
+            result['Output'] = self.output.to_map()
+        if self.usage is not None:
+            result['Usage'] = self.usage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Output') is not None:
+            temp_model = QueryAuditTaskResponseBodyDataResponsePayloadOutput()
+            self.output = temp_model.from_map(m['Output'])
+        if m.get('Usage') is not None:
+            temp_model = QueryAuditTaskResponseBodyDataResponsePayloadUsage()
+            self.usage = temp_model.from_map(m['Usage'])
+        return self
+
+
+class QueryAuditTaskResponseBodyDataResponse(TeaModel):
+    def __init__(
+        self,
+        header: QueryAuditTaskResponseBodyDataResponseHeader = None,
+        payload: QueryAuditTaskResponseBodyDataResponsePayload = None,
+    ):
+        self.header = header
+        self.payload = payload
+
+    def validate(self):
+        if self.header:
+            self.header.validate()
+        if self.payload:
+            self.payload.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.header is not None:
+            result['Header'] = self.header.to_map()
+        if self.payload is not None:
+            result['Payload'] = self.payload.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Header') is not None:
+            temp_model = QueryAuditTaskResponseBodyDataResponseHeader()
+            self.header = temp_model.from_map(m['Header'])
+        if m.get('Payload') is not None:
+            temp_model = QueryAuditTaskResponseBodyDataResponsePayload()
+            self.payload = temp_model.from_map(m['Payload'])
+        return self
+
+
+class QueryAuditTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        audit_time: str = None,
+        content: str = None,
+        response: QueryAuditTaskResponseBodyDataResponse = None,
+        status: str = None,
+        task_status: int = None,
+    ):
+        self.audit_time = audit_time
+        self.content = content
+        self.response = response
+        self.status = status
+        self.task_status = task_status
+
+    def validate(self):
+        if self.response:
+            self.response.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audit_time is not None:
+            result['AuditTime'] = self.audit_time
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.response is not None:
+            result['Response'] = self.response.to_map()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_status is not None:
+            result['TaskStatus'] = self.task_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuditTime') is not None:
+            self.audit_time = m.get('AuditTime')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Response') is not None:
+            temp_model = QueryAuditTaskResponseBodyDataResponse()
+            self.response = temp_model.from_map(m['Response'])
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskStatus') is not None:
+            self.task_status = m.get('TaskStatus')
+        return self
+
+
+class QueryAuditTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: QueryAuditTaskResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = QueryAuditTaskResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryAuditTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryAuditTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryAuditTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RunAbbreviationContentRequest(TeaModel):
     def __init__(
         self,
@@ -43611,6 +44135,185 @@ class SubmitAsyncTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SubmitAsyncTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SubmitAuditTaskRequest(TeaModel):
+    def __init__(
+        self,
+        article_id: str = None,
+        content: str = None,
+        html_content: str = None,
+        title: str = None,
+        workspace_id: str = None,
+    ):
+        self.article_id = article_id
+        self.content = content
+        self.html_content = html_content
+        self.title = title
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.article_id is not None:
+            result['ArticleId'] = self.article_id
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.html_content is not None:
+            result['HtmlContent'] = self.html_content
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ArticleId') is not None:
+            self.article_id = m.get('ArticleId')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('HtmlContent') is not None:
+            self.html_content = m.get('HtmlContent')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class SubmitAuditTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class SubmitAuditTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: SubmitAuditTaskResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = SubmitAuditTaskResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SubmitAuditTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitAuditTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitAuditTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
