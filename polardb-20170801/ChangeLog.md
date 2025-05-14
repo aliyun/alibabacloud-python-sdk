@@ -1,3 +1,13 @@
+2025-05-14 Version: 5.7.0
+- Support API CreateGlobalDataNetwork.
+- Support API DeleteGlobalDataNetwork.
+- Support API DescribeGlobalDataNetworkList.
+- Update API CreateGlobalDatabaseNetwork: add request parameters GDNVersion.
+- Update API DescribeGlobalDatabaseNetwork: add response parameters Body.Labels.
+- Update API DescribeGlobalDatabaseNetworks: add response parameters Body.Items.$.Labels.
+- Update API RemoveDBClusterFromGDN: add request parameters Force.
+
+
 2025-05-06 Version: 5.6.1
 - Update API ModifyMaskingRules: add request parameters DefaultAlgo.
 - Update API ModifyMaskingRules: add request parameters MaskingAlgo.

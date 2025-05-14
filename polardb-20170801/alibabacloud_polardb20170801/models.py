@@ -3898,12 +3898,175 @@ class CreateDatabaseResponse(TeaModel):
         return self
 
 
+class CreateGlobalDataNetworkRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        destination_file_system_path: str = None,
+        destination_id: str = None,
+        destination_region: str = None,
+        destination_type: str = None,
+        freeze_source_during_sync: str = None,
+        source_file_system_path: str = None,
+        source_id: str = None,
+        source_region: str = None,
+        source_type: str = None,
+    ):
+        self.description = description
+        self.destination_file_system_path = destination_file_system_path
+        self.destination_id = destination_id
+        self.destination_region = destination_region
+        self.destination_type = destination_type
+        self.freeze_source_during_sync = freeze_source_during_sync
+        self.source_file_system_path = source_file_system_path
+        self.source_id = source_id
+        self.source_region = source_region
+        self.source_type = source_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.destination_file_system_path is not None:
+            result['DestinationFileSystemPath'] = self.destination_file_system_path
+        if self.destination_id is not None:
+            result['DestinationId'] = self.destination_id
+        if self.destination_region is not None:
+            result['DestinationRegion'] = self.destination_region
+        if self.destination_type is not None:
+            result['DestinationType'] = self.destination_type
+        if self.freeze_source_during_sync is not None:
+            result['FreezeSourceDuringSync'] = self.freeze_source_during_sync
+        if self.source_file_system_path is not None:
+            result['SourceFileSystemPath'] = self.source_file_system_path
+        if self.source_id is not None:
+            result['SourceId'] = self.source_id
+        if self.source_region is not None:
+            result['SourceRegion'] = self.source_region
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DestinationFileSystemPath') is not None:
+            self.destination_file_system_path = m.get('DestinationFileSystemPath')
+        if m.get('DestinationId') is not None:
+            self.destination_id = m.get('DestinationId')
+        if m.get('DestinationRegion') is not None:
+            self.destination_region = m.get('DestinationRegion')
+        if m.get('DestinationType') is not None:
+            self.destination_type = m.get('DestinationType')
+        if m.get('FreezeSourceDuringSync') is not None:
+            self.freeze_source_during_sync = m.get('FreezeSourceDuringSync')
+        if m.get('SourceFileSystemPath') is not None:
+            self.source_file_system_path = m.get('SourceFileSystemPath')
+        if m.get('SourceId') is not None:
+            self.source_id = m.get('SourceId')
+        if m.get('SourceRegion') is not None:
+            self.source_region = m.get('SourceRegion')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        return self
+
+
+class CreateGlobalDataNetworkResponseBody(TeaModel):
+    def __init__(
+        self,
+        channel_id: str = None,
+        network_id: str = None,
+        request_id: str = None,
+    ):
+        self.channel_id = channel_id
+        # GDN ID
+        self.network_id = network_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        if self.network_id is not None:
+            result['NetworkId'] = self.network_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        if m.get('NetworkId') is not None:
+            self.network_id = m.get('NetworkId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateGlobalDataNetworkResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateGlobalDataNetworkResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateGlobalDataNetworkResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateGlobalDatabaseNetworkRequest(TeaModel):
     def __init__(
         self,
         dbcluster_id: str = None,
         enable_global_domain_name: bool = None,
         gdndescription: str = None,
+        gdnversion: str = None,
         owner_account: str = None,
         owner_id: int = None,
         resource_group_id: str = None,
@@ -3924,6 +4087,7 @@ class CreateGlobalDatabaseNetworkRequest(TeaModel):
         # *   It can contain letters, digits, underscores (_), and hyphens (-).
         # *   It must be 2 to 126 characters in length.
         self.gdndescription = gdndescription
+        self.gdnversion = gdnversion
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the resource group.
@@ -3947,6 +4111,8 @@ class CreateGlobalDatabaseNetworkRequest(TeaModel):
             result['EnableGlobalDomainName'] = self.enable_global_domain_name
         if self.gdndescription is not None:
             result['GDNDescription'] = self.gdndescription
+        if self.gdnversion is not None:
+            result['GDNVersion'] = self.gdnversion
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -3969,6 +4135,8 @@ class CreateGlobalDatabaseNetworkRequest(TeaModel):
             self.enable_global_domain_name = m.get('EnableGlobalDomainName')
         if m.get('GDNDescription') is not None:
             self.gdndescription = m.get('GDNDescription')
+        if m.get('GDNVersion') is not None:
+            self.gdnversion = m.get('GDNVersion')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -6095,6 +6263,102 @@ class DeleteDatabaseResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteDatabaseResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteGlobalDataNetworkRequest(TeaModel):
+    def __init__(
+        self,
+        network_id: str = None,
+    ):
+        # GDN ID
+        self.network_id = network_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.network_id is not None:
+            result['NetworkId'] = self.network_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NetworkId') is not None:
+            self.network_id = m.get('NetworkId')
+        return self
+
+
+class DeleteGlobalDataNetworkResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteGlobalDataNetworkResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteGlobalDataNetworkResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteGlobalDataNetworkResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -18834,6 +19098,422 @@ class DescribeDetachedBackupsResponse(TeaModel):
         return self
 
 
+class DescribeGlobalDataNetworkListRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class DescribeGlobalDataNetworkListResponseBodyItemsNetworksChannels(TeaModel):
+    def __init__(
+        self,
+        channel_id: str = None,
+        channel_status: str = None,
+        freeze_source_during_sync: bool = None,
+        progress: str = None,
+    ):
+        self.channel_id = channel_id
+        self.channel_status = channel_status
+        self.freeze_source_during_sync = freeze_source_during_sync
+        self.progress = progress
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        if self.channel_status is not None:
+            result['ChannelStatus'] = self.channel_status
+        if self.freeze_source_during_sync is not None:
+            result['FreezeSourceDuringSync'] = self.freeze_source_during_sync
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        if m.get('ChannelStatus') is not None:
+            self.channel_status = m.get('ChannelStatus')
+        if m.get('FreezeSourceDuringSync') is not None:
+            self.freeze_source_during_sync = m.get('FreezeSourceDuringSync')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        return self
+
+
+class DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologyDestinations(TeaModel):
+    def __init__(
+        self,
+        destination_file_system_path: str = None,
+        destination_id: str = None,
+        destination_region: str = None,
+        destination_type: str = None,
+    ):
+        self.destination_file_system_path = destination_file_system_path
+        self.destination_id = destination_id
+        self.destination_region = destination_region
+        self.destination_type = destination_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.destination_file_system_path is not None:
+            result['DestinationFileSystemPath'] = self.destination_file_system_path
+        if self.destination_id is not None:
+            result['DestinationId'] = self.destination_id
+        if self.destination_region is not None:
+            result['DestinationRegion'] = self.destination_region
+        if self.destination_type is not None:
+            result['DestinationType'] = self.destination_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestinationFileSystemPath') is not None:
+            self.destination_file_system_path = m.get('DestinationFileSystemPath')
+        if m.get('DestinationId') is not None:
+            self.destination_id = m.get('DestinationId')
+        if m.get('DestinationRegion') is not None:
+            self.destination_region = m.get('DestinationRegion')
+        if m.get('DestinationType') is not None:
+            self.destination_type = m.get('DestinationType')
+        return self
+
+
+class DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologySources(TeaModel):
+    def __init__(
+        self,
+        source_file_system_path: str = None,
+        source_id: str = None,
+        source_region: str = None,
+        source_type: str = None,
+    ):
+        self.source_file_system_path = source_file_system_path
+        self.source_id = source_id
+        self.source_region = source_region
+        self.source_type = source_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source_file_system_path is not None:
+            result['SourceFileSystemPath'] = self.source_file_system_path
+        if self.source_id is not None:
+            result['SourceId'] = self.source_id
+        if self.source_region is not None:
+            result['SourceRegion'] = self.source_region
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceFileSystemPath') is not None:
+            self.source_file_system_path = m.get('SourceFileSystemPath')
+        if m.get('SourceId') is not None:
+            self.source_id = m.get('SourceId')
+        if m.get('SourceRegion') is not None:
+            self.source_region = m.get('SourceRegion')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        return self
+
+
+class DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopology(TeaModel):
+    def __init__(
+        self,
+        destinations: List[DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologyDestinations] = None,
+        sources: List[DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologySources] = None,
+    ):
+        self.destinations = destinations
+        self.sources = sources
+
+    def validate(self):
+        if self.destinations:
+            for k in self.destinations:
+                if k:
+                    k.validate()
+        if self.sources:
+            for k in self.sources:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Destinations'] = []
+        if self.destinations is not None:
+            for k in self.destinations:
+                result['Destinations'].append(k.to_map() if k else None)
+        result['Sources'] = []
+        if self.sources is not None:
+            for k in self.sources:
+                result['Sources'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.destinations = []
+        if m.get('Destinations') is not None:
+            for k in m.get('Destinations'):
+                temp_model = DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologyDestinations()
+                self.destinations.append(temp_model.from_map(k))
+        self.sources = []
+        if m.get('Sources') is not None:
+            for k in m.get('Sources'):
+                temp_model = DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologySources()
+                self.sources.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeGlobalDataNetworkListResponseBodyItemsNetworks(TeaModel):
+    def __init__(
+        self,
+        channels: List[DescribeGlobalDataNetworkListResponseBodyItemsNetworksChannels] = None,
+        create_time: str = None,
+        network_description: str = None,
+        network_id: str = None,
+        network_status: str = None,
+        network_topology: DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopology = None,
+    ):
+        self.channels = channels
+        self.create_time = create_time
+        self.network_description = network_description
+        # GDN ID
+        self.network_id = network_id
+        self.network_status = network_status
+        self.network_topology = network_topology
+
+    def validate(self):
+        if self.channels:
+            for k in self.channels:
+                if k:
+                    k.validate()
+        if self.network_topology:
+            self.network_topology.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Channels'] = []
+        if self.channels is not None:
+            for k in self.channels:
+                result['Channels'].append(k.to_map() if k else None)
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.network_description is not None:
+            result['NetworkDescription'] = self.network_description
+        if self.network_id is not None:
+            result['NetworkId'] = self.network_id
+        if self.network_status is not None:
+            result['NetworkStatus'] = self.network_status
+        if self.network_topology is not None:
+            result['NetworkTopology'] = self.network_topology.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.channels = []
+        if m.get('Channels') is not None:
+            for k in m.get('Channels'):
+                temp_model = DescribeGlobalDataNetworkListResponseBodyItemsNetworksChannels()
+                self.channels.append(temp_model.from_map(k))
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('NetworkDescription') is not None:
+            self.network_description = m.get('NetworkDescription')
+        if m.get('NetworkId') is not None:
+            self.network_id = m.get('NetworkId')
+        if m.get('NetworkStatus') is not None:
+            self.network_status = m.get('NetworkStatus')
+        if m.get('NetworkTopology') is not None:
+            temp_model = DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopology()
+            self.network_topology = temp_model.from_map(m['NetworkTopology'])
+        return self
+
+
+class DescribeGlobalDataNetworkListResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        networks: List[DescribeGlobalDataNetworkListResponseBodyItemsNetworks] = None,
+    ):
+        self.networks = networks
+
+    def validate(self):
+        if self.networks:
+            for k in self.networks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Networks'] = []
+        if self.networks is not None:
+            for k in self.networks:
+                result['Networks'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.networks = []
+        if m.get('Networks') is not None:
+            for k in m.get('Networks'):
+                temp_model = DescribeGlobalDataNetworkListResponseBodyItemsNetworks()
+                self.networks.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeGlobalDataNetworkListResponseBody(TeaModel):
+    def __init__(
+        self,
+        items: DescribeGlobalDataNetworkListResponseBodyItems = None,
+        page_number: str = None,
+        page_record_count: str = None,
+        request_id: str = None,
+        total_record_count: str = None,
+    ):
+        self.items = items
+        self.page_number = page_number
+        self.page_record_count = page_record_count
+        self.request_id = request_id
+        self.total_record_count = total_record_count
+
+    def validate(self):
+        if self.items:
+            self.items.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.items is not None:
+            result['Items'] = self.items.to_map()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_record_count is not None:
+            result['PageRecordCount'] = self.page_record_count
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_record_count is not None:
+            result['TotalRecordCount'] = self.total_record_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Items') is not None:
+            temp_model = DescribeGlobalDataNetworkListResponseBodyItems()
+            self.items = temp_model.from_map(m['Items'])
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageRecordCount') is not None:
+            self.page_record_count = m.get('PageRecordCount')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalRecordCount') is not None:
+            self.total_record_count = m.get('TotalRecordCount')
+        return self
+
+
+class DescribeGlobalDataNetworkListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeGlobalDataNetworkListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeGlobalDataNetworkListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeGlobalDatabaseNetworkRequest(TeaModel):
     def __init__(
         self,
@@ -19210,6 +19890,33 @@ class DescribeGlobalDatabaseNetworkResponseBodyDBClusters(TeaModel):
         return self
 
 
+class DescribeGlobalDatabaseNetworkResponseBodyLabels(TeaModel):
+    def __init__(
+        self,
+        gdnversion: str = None,
+    ):
+        self.gdnversion = gdnversion
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gdnversion is not None:
+            result['GDNVersion'] = self.gdnversion
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GDNVersion') is not None:
+            self.gdnversion = m.get('GDNVersion')
+        return self
+
+
 class DescribeGlobalDatabaseNetworkResponseBody(TeaModel):
     def __init__(
         self,
@@ -19223,6 +19930,7 @@ class DescribeGlobalDatabaseNetworkResponseBody(TeaModel):
         gdnid: str = None,
         gdnstatus: str = None,
         global_domain_name: str = None,
+        labels: DescribeGlobalDatabaseNetworkResponseBodyLabels = None,
         request_id: str = None,
         resource_group_id: str = None,
     ):
@@ -19257,6 +19965,7 @@ class DescribeGlobalDatabaseNetworkResponseBody(TeaModel):
         self.gdnstatus = gdnstatus
         # The global domain name.
         self.global_domain_name = global_domain_name
+        self.labels = labels
         # The ID of the request.
         self.request_id = request_id
         # The ID of the resource group.
@@ -19271,6 +19980,8 @@ class DescribeGlobalDatabaseNetworkResponseBody(TeaModel):
             for k in self.dbclusters:
                 if k:
                     k.validate()
+        if self.labels:
+            self.labels.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -19302,6 +20013,8 @@ class DescribeGlobalDatabaseNetworkResponseBody(TeaModel):
             result['GDNStatus'] = self.gdnstatus
         if self.global_domain_name is not None:
             result['GlobalDomainName'] = self.global_domain_name
+        if self.labels is not None:
+            result['Labels'] = self.labels.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.resource_group_id is not None:
@@ -19336,6 +20049,9 @@ class DescribeGlobalDatabaseNetworkResponseBody(TeaModel):
             self.gdnstatus = m.get('GDNStatus')
         if m.get('GlobalDomainName') is not None:
             self.global_domain_name = m.get('GlobalDomainName')
+        if m.get('Labels') is not None:
+            temp_model = DescribeGlobalDatabaseNetworkResponseBodyLabels()
+            self.labels = temp_model.from_map(m['Labels'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('ResourceGroupId') is not None:
@@ -19542,6 +20258,33 @@ class DescribeGlobalDatabaseNetworksResponseBodyItemsDBClusters(TeaModel):
         return self
 
 
+class DescribeGlobalDatabaseNetworksResponseBodyItemsLabels(TeaModel):
+    def __init__(
+        self,
+        gdnversion: str = None,
+    ):
+        self.gdnversion = gdnversion
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gdnversion is not None:
+            result['GDNVersion'] = self.gdnversion
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GDNVersion') is not None:
+            self.gdnversion = m.get('GDNVersion')
+        return self
+
+
 class DescribeGlobalDatabaseNetworksResponseBodyItems(TeaModel):
     def __init__(
         self,
@@ -19552,6 +20295,7 @@ class DescribeGlobalDatabaseNetworksResponseBodyItems(TeaModel):
         gdndescription: str = None,
         gdnid: str = None,
         gdnstatus: str = None,
+        labels: DescribeGlobalDatabaseNetworksResponseBodyItemsLabels = None,
     ):
         # The time when the GDN was created. The time is in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
         self.create_time = create_time
@@ -19578,12 +20322,15 @@ class DescribeGlobalDatabaseNetworksResponseBodyItems(TeaModel):
         # *   **locked**: The GDN is locked. If the GDN is locked, you cannot perform operations on clusters in the GDN.
         # *   **removing_member**: The secondary cluster is being removed from the GDN.
         self.gdnstatus = gdnstatus
+        self.labels = labels
 
     def validate(self):
         if self.dbclusters:
             for k in self.dbclusters:
                 if k:
                     k.validate()
+        if self.labels:
+            self.labels.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -19607,6 +20354,8 @@ class DescribeGlobalDatabaseNetworksResponseBodyItems(TeaModel):
             result['GDNId'] = self.gdnid
         if self.gdnstatus is not None:
             result['GDNStatus'] = self.gdnstatus
+        if self.labels is not None:
+            result['Labels'] = self.labels.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -19628,6 +20377,9 @@ class DescribeGlobalDatabaseNetworksResponseBodyItems(TeaModel):
             self.gdnid = m.get('GDNId')
         if m.get('GDNStatus') is not None:
             self.gdnstatus = m.get('GDNStatus')
+        if m.get('Labels') is not None:
+            temp_model = DescribeGlobalDatabaseNetworksResponseBodyItemsLabels()
+            self.labels = temp_model.from_map(m['Labels'])
         return self
 
 
@@ -34204,6 +34956,7 @@ class RemoveDBClusterFromGDNRequest(TeaModel):
     def __init__(
         self,
         dbcluster_id: str = None,
+        force: bool = None,
         gdnid: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -34217,6 +34970,7 @@ class RemoveDBClusterFromGDNRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        self.force = force
         # The ID of the GDN.
         # 
         # This parameter is required.
@@ -34238,6 +34992,8 @@ class RemoveDBClusterFromGDNRequest(TeaModel):
         result = dict()
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
+        if self.force is not None:
+            result['Force'] = self.force
         if self.gdnid is not None:
             result['GDNId'] = self.gdnid
         if self.owner_account is not None:
@@ -34256,6 +35012,8 @@ class RemoveDBClusterFromGDNRequest(TeaModel):
         m = m or dict()
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
+        if m.get('Force') is not None:
+            self.force = m.get('Force')
         if m.get('GDNId') is not None:
             self.gdnid = m.get('GDNId')
         if m.get('OwnerAccount') is not None:

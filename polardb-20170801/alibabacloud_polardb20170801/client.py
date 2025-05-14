@@ -2671,6 +2671,138 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_database_with_options_async(request, runtime)
 
+    def create_global_data_network_with_options(
+        self,
+        request: polardb_20170801_models.CreateGlobalDataNetworkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.CreateGlobalDataNetworkResponse:
+        """
+        @summary 创建全球数据网络
+        
+        @param request: CreateGlobalDataNetworkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGlobalDataNetworkResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.destination_file_system_path):
+            query['DestinationFileSystemPath'] = request.destination_file_system_path
+        if not UtilClient.is_unset(request.destination_id):
+            query['DestinationId'] = request.destination_id
+        if not UtilClient.is_unset(request.destination_region):
+            query['DestinationRegion'] = request.destination_region
+        if not UtilClient.is_unset(request.destination_type):
+            query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.freeze_source_during_sync):
+            query['FreezeSourceDuringSync'] = request.freeze_source_during_sync
+        if not UtilClient.is_unset(request.source_file_system_path):
+            query['SourceFileSystemPath'] = request.source_file_system_path
+        if not UtilClient.is_unset(request.source_id):
+            query['SourceId'] = request.source_id
+        if not UtilClient.is_unset(request.source_region):
+            query['SourceRegion'] = request.source_region
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateGlobalDataNetwork',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateGlobalDataNetworkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_global_data_network_with_options_async(
+        self,
+        request: polardb_20170801_models.CreateGlobalDataNetworkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.CreateGlobalDataNetworkResponse:
+        """
+        @summary 创建全球数据网络
+        
+        @param request: CreateGlobalDataNetworkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGlobalDataNetworkResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.destination_file_system_path):
+            query['DestinationFileSystemPath'] = request.destination_file_system_path
+        if not UtilClient.is_unset(request.destination_id):
+            query['DestinationId'] = request.destination_id
+        if not UtilClient.is_unset(request.destination_region):
+            query['DestinationRegion'] = request.destination_region
+        if not UtilClient.is_unset(request.destination_type):
+            query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.freeze_source_during_sync):
+            query['FreezeSourceDuringSync'] = request.freeze_source_during_sync
+        if not UtilClient.is_unset(request.source_file_system_path):
+            query['SourceFileSystemPath'] = request.source_file_system_path
+        if not UtilClient.is_unset(request.source_id):
+            query['SourceId'] = request.source_id
+        if not UtilClient.is_unset(request.source_region):
+            query['SourceRegion'] = request.source_region
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateGlobalDataNetwork',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateGlobalDataNetworkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_global_data_network(
+        self,
+        request: polardb_20170801_models.CreateGlobalDataNetworkRequest,
+    ) -> polardb_20170801_models.CreateGlobalDataNetworkResponse:
+        """
+        @summary 创建全球数据网络
+        
+        @param request: CreateGlobalDataNetworkRequest
+        @return: CreateGlobalDataNetworkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_global_data_network_with_options(request, runtime)
+
+    async def create_global_data_network_async(
+        self,
+        request: polardb_20170801_models.CreateGlobalDataNetworkRequest,
+    ) -> polardb_20170801_models.CreateGlobalDataNetworkResponse:
+        """
+        @summary 创建全球数据网络
+        
+        @param request: CreateGlobalDataNetworkRequest
+        @return: CreateGlobalDataNetworkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_global_data_network_with_options_async(request, runtime)
+
     def create_global_database_network_with_options(
         self,
         request: polardb_20170801_models.CreateGlobalDatabaseNetworkRequest,
@@ -2693,6 +2825,8 @@ class Client(OpenApiClient):
             query['EnableGlobalDomainName'] = request.enable_global_domain_name
         if not UtilClient.is_unset(request.gdndescription):
             query['GDNDescription'] = request.gdndescription
+        if not UtilClient.is_unset(request.gdnversion):
+            query['GDNVersion'] = request.gdnversion
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -2746,6 +2880,8 @@ class Client(OpenApiClient):
             query['EnableGlobalDomainName'] = request.enable_global_domain_name
         if not UtilClient.is_unset(request.gdndescription):
             query['GDNDescription'] = request.gdndescription
+        if not UtilClient.is_unset(request.gdnversion):
+            query['GDNVersion'] = request.gdnversion
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -4426,6 +4562,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_database_with_options_async(request, runtime)
+
+    def delete_global_data_network_with_options(
+        self,
+        request: polardb_20170801_models.DeleteGlobalDataNetworkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DeleteGlobalDataNetworkResponse:
+        """
+        @summary DeleteGlobalDataNetwork
+        
+        @param request: DeleteGlobalDataNetworkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGlobalDataNetworkResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.network_id):
+            query['NetworkId'] = request.network_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteGlobalDataNetwork',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DeleteGlobalDataNetworkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_global_data_network_with_options_async(
+        self,
+        request: polardb_20170801_models.DeleteGlobalDataNetworkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DeleteGlobalDataNetworkResponse:
+        """
+        @summary DeleteGlobalDataNetwork
+        
+        @param request: DeleteGlobalDataNetworkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGlobalDataNetworkResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.network_id):
+            query['NetworkId'] = request.network_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteGlobalDataNetwork',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DeleteGlobalDataNetworkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_global_data_network(
+        self,
+        request: polardb_20170801_models.DeleteGlobalDataNetworkRequest,
+    ) -> polardb_20170801_models.DeleteGlobalDataNetworkResponse:
+        """
+        @summary DeleteGlobalDataNetwork
+        
+        @param request: DeleteGlobalDataNetworkRequest
+        @return: DeleteGlobalDataNetworkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_global_data_network_with_options(request, runtime)
+
+    async def delete_global_data_network_async(
+        self,
+        request: polardb_20170801_models.DeleteGlobalDataNetworkRequest,
+    ) -> polardb_20170801_models.DeleteGlobalDataNetworkResponse:
+        """
+        @summary DeleteGlobalDataNetwork
+        
+        @param request: DeleteGlobalDataNetworkRequest
+        @return: DeleteGlobalDataNetworkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_global_data_network_with_options_async(request, runtime)
 
     def delete_global_database_network_with_options(
         self,
@@ -9466,6 +9698,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_detached_backups_with_options_async(request, runtime)
+
+    def describe_global_data_network_list_with_options(
+        self,
+        request: polardb_20170801_models.DescribeGlobalDataNetworkListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeGlobalDataNetworkListResponse:
+        """
+        @summary DescribeGlobalDataNetworkList
+        
+        @param request: DescribeGlobalDataNetworkListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGlobalDataNetworkListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGlobalDataNetworkList',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeGlobalDataNetworkListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_global_data_network_list_with_options_async(
+        self,
+        request: polardb_20170801_models.DescribeGlobalDataNetworkListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeGlobalDataNetworkListResponse:
+        """
+        @summary DescribeGlobalDataNetworkList
+        
+        @param request: DescribeGlobalDataNetworkListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGlobalDataNetworkListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGlobalDataNetworkList',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeGlobalDataNetworkListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_global_data_network_list(
+        self,
+        request: polardb_20170801_models.DescribeGlobalDataNetworkListRequest,
+    ) -> polardb_20170801_models.DescribeGlobalDataNetworkListResponse:
+        """
+        @summary DescribeGlobalDataNetworkList
+        
+        @param request: DescribeGlobalDataNetworkListRequest
+        @return: DescribeGlobalDataNetworkListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_global_data_network_list_with_options(request, runtime)
+
+    async def describe_global_data_network_list_async(
+        self,
+        request: polardb_20170801_models.DescribeGlobalDataNetworkListRequest,
+    ) -> polardb_20170801_models.DescribeGlobalDataNetworkListResponse:
+        """
+        @summary DescribeGlobalDataNetworkList
+        
+        @param request: DescribeGlobalDataNetworkListRequest
+        @return: DescribeGlobalDataNetworkListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_global_data_network_list_with_options_async(request, runtime)
 
     def describe_global_database_network_with_options(
         self,
@@ -18693,6 +19025,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
         if not UtilClient.is_unset(request.gdnid):
             query['GDNId'] = request.gdnid
         if not UtilClient.is_unset(request.owner_account):
@@ -18742,6 +19076,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
         if not UtilClient.is_unset(request.gdnid):
             query['GDNId'] = request.gdnid
         if not UtilClient.is_unset(request.owner_account):
