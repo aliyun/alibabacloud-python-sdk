@@ -9217,6 +9217,495 @@ class RealTimeDialogResponse(TeaModel):
         return self
 
 
+class RealtimeDialogAssistRequestConversationModel(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        customer_id: str = None,
+        customer_service_id: str = None,
+        customer_service_type: str = None,
+        role: int = None,
+        type: str = None,
+    ):
+        # This parameter is required.
+        self.content = content
+        self.customer_id = customer_id
+        self.customer_service_id = customer_service_id
+        self.customer_service_type = customer_service_type
+        # This parameter is required.
+        self.role = role
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.customer_id is not None:
+            result['customerId'] = self.customer_id
+        if self.customer_service_id is not None:
+            result['customerServiceId'] = self.customer_service_id
+        if self.customer_service_type is not None:
+            result['customerServiceType'] = self.customer_service_type
+        if self.role is not None:
+            result['role'] = self.role
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('customerId') is not None:
+            self.customer_id = m.get('customerId')
+        if m.get('customerServiceId') is not None:
+            self.customer_service_id = m.get('customerServiceId')
+        if m.get('customerServiceType') is not None:
+            self.customer_service_type = m.get('customerServiceType')
+        if m.get('role') is not None:
+            self.role = m.get('role')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class RealtimeDialogAssistRequest(TeaModel):
+    def __init__(
+        self,
+        analysis: bool = None,
+        biz_type: str = None,
+        conversation_model: List[RealtimeDialogAssistRequestConversationModel] = None,
+        dialog_memory_turns: int = None,
+        hang_up_dialog: bool = None,
+        meta_data: Dict[str, Any] = None,
+        request_id: str = None,
+        session_id: str = None,
+    ):
+        self.analysis = analysis
+        # This parameter is required.
+        self.biz_type = biz_type
+        # This parameter is required.
+        self.conversation_model = conversation_model
+        self.dialog_memory_turns = dialog_memory_turns
+        self.hang_up_dialog = hang_up_dialog
+        # metaData
+        self.meta_data = meta_data
+        # This parameter is required.
+        self.request_id = request_id
+        # This parameter is required.
+        self.session_id = session_id
+
+    def validate(self):
+        if self.conversation_model:
+            for k in self.conversation_model:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.analysis is not None:
+            result['analysis'] = self.analysis
+        if self.biz_type is not None:
+            result['bizType'] = self.biz_type
+        result['conversationModel'] = []
+        if self.conversation_model is not None:
+            for k in self.conversation_model:
+                result['conversationModel'].append(k.to_map() if k else None)
+        if self.dialog_memory_turns is not None:
+            result['dialogMemoryTurns'] = self.dialog_memory_turns
+        if self.hang_up_dialog is not None:
+            result['hangUpDialog'] = self.hang_up_dialog
+        if self.meta_data is not None:
+            result['metaData'] = self.meta_data
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.session_id is not None:
+            result['sessionId'] = self.session_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('analysis') is not None:
+            self.analysis = m.get('analysis')
+        if m.get('bizType') is not None:
+            self.biz_type = m.get('bizType')
+        self.conversation_model = []
+        if m.get('conversationModel') is not None:
+            for k in m.get('conversationModel'):
+                temp_model = RealtimeDialogAssistRequestConversationModel()
+                self.conversation_model.append(temp_model.from_map(k))
+        if m.get('dialogMemoryTurns') is not None:
+            self.dialog_memory_turns = m.get('dialogMemoryTurns')
+        if m.get('hangUpDialog') is not None:
+            self.hang_up_dialog = m.get('hangUpDialog')
+        if m.get('metaData') is not None:
+            self.meta_data = m.get('metaData')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('sessionId') is not None:
+            self.session_id = m.get('sessionId')
+        return self
+
+
+class RealtimeDialogAssistResponseBodyDataAssistScripts(TeaModel):
+    def __init__(
+        self,
+        assist_script: str = None,
+        intent_code: str = None,
+        intent_labels: str = None,
+        intent_name: str = None,
+        is_default: bool = None,
+    ):
+        self.assist_script = assist_script
+        self.intent_code = intent_code
+        self.intent_labels = intent_labels
+        self.intent_name = intent_name
+        self.is_default = is_default
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assist_script is not None:
+            result['assistScript'] = self.assist_script
+        if self.intent_code is not None:
+            result['intentCode'] = self.intent_code
+        if self.intent_labels is not None:
+            result['intentLabels'] = self.intent_labels
+        if self.intent_name is not None:
+            result['intentName'] = self.intent_name
+        if self.is_default is not None:
+            result['isDefault'] = self.is_default
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('assistScript') is not None:
+            self.assist_script = m.get('assistScript')
+        if m.get('intentCode') is not None:
+            self.intent_code = m.get('intentCode')
+        if m.get('intentLabels') is not None:
+            self.intent_labels = m.get('intentLabels')
+        if m.get('intentName') is not None:
+            self.intent_name = m.get('intentName')
+        if m.get('isDefault') is not None:
+            self.is_default = m.get('isDefault')
+        return self
+
+
+class RealtimeDialogAssistResponseBodyDataAssistSop(TeaModel):
+    def __init__(
+        self,
+        assist_sop: str = None,
+        intent_code: str = None,
+        intent_name: str = None,
+        is_default: bool = None,
+    ):
+        self.assist_sop = assist_sop
+        self.intent_code = intent_code
+        self.intent_name = intent_name
+        self.is_default = is_default
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assist_sop is not None:
+            result['assistSop'] = self.assist_sop
+        if self.intent_code is not None:
+            result['intentCode'] = self.intent_code
+        if self.intent_name is not None:
+            result['intentName'] = self.intent_name
+        if self.is_default is not None:
+            result['isDefault'] = self.is_default
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('assistSop') is not None:
+            self.assist_sop = m.get('assistSop')
+        if m.get('intentCode') is not None:
+            self.intent_code = m.get('intentCode')
+        if m.get('intentName') is not None:
+            self.intent_name = m.get('intentName')
+        if m.get('isDefault') is not None:
+            self.is_default = m.get('isDefault')
+        return self
+
+
+class RealtimeDialogAssistResponseBodyDataConversationModel(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        customer_id: str = None,
+        customer_service_id: str = None,
+        customer_service_type: str = None,
+        role: str = None,
+        type: str = None,
+    ):
+        self.content = content
+        self.customer_id = customer_id
+        self.customer_service_id = customer_service_id
+        self.customer_service_type = customer_service_type
+        self.role = role
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.customer_id is not None:
+            result['customerId'] = self.customer_id
+        if self.customer_service_id is not None:
+            result['customerServiceId'] = self.customer_service_id
+        if self.customer_service_type is not None:
+            result['customerServiceType'] = self.customer_service_type
+        if self.role is not None:
+            result['role'] = self.role
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('customerId') is not None:
+            self.customer_id = m.get('customerId')
+        if m.get('customerServiceId') is not None:
+            self.customer_service_id = m.get('customerServiceId')
+        if m.get('customerServiceType') is not None:
+            self.customer_service_type = m.get('customerServiceType')
+        if m.get('role') is not None:
+            self.role = m.get('role')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class RealtimeDialogAssistResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        analysis_process: str = None,
+        assist_scripts: List[RealtimeDialogAssistResponseBodyDataAssistScripts] = None,
+        assist_sop: List[RealtimeDialogAssistResponseBodyDataAssistSop] = None,
+        conversation_model: List[RealtimeDialogAssistResponseBodyDataConversationModel] = None,
+        request_id: str = None,
+        session_id: str = None,
+    ):
+        self.analysis_process = analysis_process
+        self.assist_scripts = assist_scripts
+        self.assist_sop = assist_sop
+        self.conversation_model = conversation_model
+        self.request_id = request_id
+        self.session_id = session_id
+
+    def validate(self):
+        if self.assist_scripts:
+            for k in self.assist_scripts:
+                if k:
+                    k.validate()
+        if self.assist_sop:
+            for k in self.assist_sop:
+                if k:
+                    k.validate()
+        if self.conversation_model:
+            for k in self.conversation_model:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.analysis_process is not None:
+            result['analysisProcess'] = self.analysis_process
+        result['assistScripts'] = []
+        if self.assist_scripts is not None:
+            for k in self.assist_scripts:
+                result['assistScripts'].append(k.to_map() if k else None)
+        result['assistSop'] = []
+        if self.assist_sop is not None:
+            for k in self.assist_sop:
+                result['assistSop'].append(k.to_map() if k else None)
+        result['conversationModel'] = []
+        if self.conversation_model is not None:
+            for k in self.conversation_model:
+                result['conversationModel'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.session_id is not None:
+            result['sessionId'] = self.session_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('analysisProcess') is not None:
+            self.analysis_process = m.get('analysisProcess')
+        self.assist_scripts = []
+        if m.get('assistScripts') is not None:
+            for k in m.get('assistScripts'):
+                temp_model = RealtimeDialogAssistResponseBodyDataAssistScripts()
+                self.assist_scripts.append(temp_model.from_map(k))
+        self.assist_sop = []
+        if m.get('assistSop') is not None:
+            for k in m.get('assistSop'):
+                temp_model = RealtimeDialogAssistResponseBodyDataAssistSop()
+                self.assist_sop.append(temp_model.from_map(k))
+        self.conversation_model = []
+        if m.get('conversationModel') is not None:
+            for k in m.get('conversationModel'):
+                temp_model = RealtimeDialogAssistResponseBodyDataConversationModel()
+                self.conversation_model.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('sessionId') is not None:
+            self.session_id = m.get('sessionId')
+        return self
+
+
+class RealtimeDialogAssistResponseBody(TeaModel):
+    def __init__(
+        self,
+        cost: int = None,
+        data: RealtimeDialogAssistResponseBodyData = None,
+        data_type: str = None,
+        err_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        time: str = None,
+    ):
+        self.cost = cost
+        self.data = data
+        self.data_type = data_type
+        self.err_code = err_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.time = time
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost is not None:
+            result['cost'] = self.cost
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.data_type is not None:
+            result['dataType'] = self.data_type
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.time is not None:
+            result['time'] = self.time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cost') is not None:
+            self.cost = m.get('cost')
+        if m.get('data') is not None:
+            temp_model = RealtimeDialogAssistResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('dataType') is not None:
+            self.data_type = m.get('dataType')
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('time') is not None:
+            self.time = m.get('time')
+        return self
+
+
+class RealtimeDialogAssistResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RealtimeDialogAssistResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RealtimeDialogAssistResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RebuildTaskRequest(TeaModel):
     def __init__(
         self,

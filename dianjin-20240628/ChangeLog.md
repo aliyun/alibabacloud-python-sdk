@@ -1,3 +1,7 @@
+2025-05-14 Version: 1.14.0
+- Support API RealtimeDialogAssist.
+
+
 2025-04-09 Version: 1.13.0
 - Support API GetDialogDetail.
 
