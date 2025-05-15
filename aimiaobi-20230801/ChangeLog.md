@@ -1,3 +1,24 @@
+2025-05-15 Version: 1.25.0
+- Support API GetFileContentLength.
+- Support API RunBookBrainmap.
+- Update API ClearIntervenes: add response parameters Body.Data.Code.
+- Update API DeleteInterveneRule: add response parameters Body.Data.Code.
+- Update API ExportIntervenes: add response parameters Body.Data.Code.
+- Update API GetInterveneGlobalReply: add response parameters Body.Data.Code.
+- Update API GetInterveneImportTaskInfo: add response parameters Body.Data.Code.
+- Update API GetInterveneRuleDetail: add response parameters Body.Data.Code.
+- Update API GetInterveneTemplateFileUrl: add response parameters Body.Data.Code.
+- Update API ImportInterveneFile: add response parameters Body.Data.Code.
+- Update API ImportInterveneFileAsync: add response parameters Body.Data.Code.
+- Update API InsertInterveneGlobalReply: add response parameters Body.Data.Code.
+- Update API InsertInterveneRule: add response parameters Body.Data.Code.
+- Update API ListInterveneCnt: add response parameters Body.Data.Code.
+- Update API ListInterveneImportTasks: add response parameters Body.Data.Code.
+- Update API ListInterveneRules: add response parameters Body.Data.Code.
+- Update API ListIntervenes: add response parameters Body.Data.Code.
+- Update API RunDocSmartCard: add request parameters Prompt.
+
+
 2025-05-14 Version: 1.24.0
 - Support API CancelAuditTask.
 - Support API QueryAuditTask.

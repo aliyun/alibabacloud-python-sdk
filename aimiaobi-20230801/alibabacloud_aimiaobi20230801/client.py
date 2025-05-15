@@ -4093,6 +4093,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_enterprise_voc_analysis_task_with_options_async(request, runtime)
 
+    def get_file_content_length_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.GetFileContentLengthRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetFileContentLengthResponse:
+        """
+        @summary 妙读获得文档字数
+        
+        @param request: GetFileContentLengthRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFileContentLengthResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.doc_name):
+            body['DocName'] = request.doc_name
+        if not UtilClient.is_unset(request.file_url):
+            body['FileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetFileContentLength',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetFileContentLengthResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_file_content_length_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetFileContentLengthRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetFileContentLengthResponse:
+        """
+        @summary 妙读获得文档字数
+        
+        @param request: GetFileContentLengthRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFileContentLengthResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.doc_name):
+            body['DocName'] = request.doc_name
+        if not UtilClient.is_unset(request.file_url):
+            body['FileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetFileContentLength',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetFileContentLengthResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_file_content_length(
+        self,
+        request: ai_miao_bi_20230801_models.GetFileContentLengthRequest,
+    ) -> ai_miao_bi_20230801_models.GetFileContentLengthResponse:
+        """
+        @summary 妙读获得文档字数
+        
+        @param request: GetFileContentLengthRequest
+        @return: GetFileContentLengthResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_file_content_length_with_options(request, runtime)
+
+    async def get_file_content_length_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetFileContentLengthRequest,
+    ) -> ai_miao_bi_20230801_models.GetFileContentLengthResponse:
+        """
+        @summary 妙读获得文档字数
+        
+        @param request: GetFileContentLengthRequest
+        @return: GetFileContentLengthResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_file_content_length_with_options_async(request, runtime)
+
     def get_generated_content_with_options(
         self,
         request: ai_miao_bi_20230801_models.GetGeneratedContentRequest,
@@ -9933,6 +10037,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.run_abbreviation_content_with_options_async(request, runtime)
 
+    def run_book_brainmap_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.RunBookBrainmapRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunBookBrainmapResponse:
+        """
+        @summary 妙读生成书籍脑图
+        
+        @param request: RunBookBrainmapRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunBookBrainmapResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.clean_cache):
+            body['CleanCache'] = request.clean_cache
+        if not UtilClient.is_unset(request.doc_id):
+            body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.node_number):
+            body['NodeNumber'] = request.node_number
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.word_number):
+            body['WordNumber'] = request.word_number
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunBookBrainmap',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunBookBrainmapResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_book_brainmap_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunBookBrainmapRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunBookBrainmapResponse:
+        """
+        @summary 妙读生成书籍脑图
+        
+        @param request: RunBookBrainmapRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunBookBrainmapResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.clean_cache):
+            body['CleanCache'] = request.clean_cache
+        if not UtilClient.is_unset(request.doc_id):
+            body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.node_number):
+            body['NodeNumber'] = request.node_number
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.word_number):
+            body['WordNumber'] = request.word_number
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunBookBrainmap',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunBookBrainmapResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_book_brainmap(
+        self,
+        request: ai_miao_bi_20230801_models.RunBookBrainmapRequest,
+    ) -> ai_miao_bi_20230801_models.RunBookBrainmapResponse:
+        """
+        @summary 妙读生成书籍脑图
+        
+        @param request: RunBookBrainmapRequest
+        @return: RunBookBrainmapResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.run_book_brainmap_with_options(request, runtime)
+
+    async def run_book_brainmap_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunBookBrainmapRequest,
+    ) -> ai_miao_bi_20230801_models.RunBookBrainmapResponse:
+        """
+        @summary 妙读生成书籍脑图
+        
+        @param request: RunBookBrainmapRequest
+        @return: RunBookBrainmapResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.run_book_brainmap_with_options_async(request, runtime)
+
     def run_book_introduction_with_options(
         self,
         request: ai_miao_bi_20230801_models.RunBookIntroductionRequest,
@@ -11057,6 +11281,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.doc_id):
             body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
         if not UtilClient.is_unset(request.session_id):
             body['SessionId'] = request.session_id
         if not UtilClient.is_unset(request.workspace_id):
@@ -11096,6 +11322,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.doc_id):
             body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
         if not UtilClient.is_unset(request.session_id):
             body['SessionId'] = request.session_id
         if not UtilClient.is_unset(request.workspace_id):
