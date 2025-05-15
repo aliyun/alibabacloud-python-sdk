@@ -2223,6 +2223,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_service_categories_with_options_async(runtime)
 
+    def list_service_instance_bill_with_options(
+        self,
+        request: compute_nest_20210601_models.ListServiceInstanceBillRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.ListServiceInstanceBillResponse:
+        """
+        @summary 展示服务实例账单
+        
+        @param request: ListServiceInstanceBillRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceInstanceBillResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.billing_cycle):
+            query['BillingCycle'] = request.billing_cycle
+        if not UtilClient.is_unset(request.billing_date):
+            query['BillingDate'] = request.billing_date
+        if not UtilClient.is_unset(request.granularity):
+            query['Granularity'] = request.granularity
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.service_instance_id):
+            query['ServiceInstanceId'] = request.service_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListServiceInstanceBill',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.ListServiceInstanceBillResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_service_instance_bill_with_options_async(
+        self,
+        request: compute_nest_20210601_models.ListServiceInstanceBillRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.ListServiceInstanceBillResponse:
+        """
+        @summary 展示服务实例账单
+        
+        @param request: ListServiceInstanceBillRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceInstanceBillResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.billing_cycle):
+            query['BillingCycle'] = request.billing_cycle
+        if not UtilClient.is_unset(request.billing_date):
+            query['BillingDate'] = request.billing_date
+        if not UtilClient.is_unset(request.granularity):
+            query['Granularity'] = request.granularity
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.service_instance_id):
+            query['ServiceInstanceId'] = request.service_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListServiceInstanceBill',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.ListServiceInstanceBillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_service_instance_bill(
+        self,
+        request: compute_nest_20210601_models.ListServiceInstanceBillRequest,
+    ) -> compute_nest_20210601_models.ListServiceInstanceBillResponse:
+        """
+        @summary 展示服务实例账单
+        
+        @param request: ListServiceInstanceBillRequest
+        @return: ListServiceInstanceBillResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_service_instance_bill_with_options(request, runtime)
+
+    async def list_service_instance_bill_async(
+        self,
+        request: compute_nest_20210601_models.ListServiceInstanceBillRequest,
+    ) -> compute_nest_20210601_models.ListServiceInstanceBillResponse:
+        """
+        @summary 展示服务实例账单
+        
+        @param request: ListServiceInstanceBillRequest
+        @return: ListServiceInstanceBillResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_service_instance_bill_with_options_async(request, runtime)
+
     def list_service_instance_logs_with_options(
         self,
         request: compute_nest_20210601_models.ListServiceInstanceLogsRequest,

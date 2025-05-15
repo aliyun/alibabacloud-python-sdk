@@ -1,3 +1,8 @@
+2025-05-15 Version: 4.1.0
+- Support API ListServiceInstanceBill.
+- Update API ListServices: add response parameters Body.Services.$.ServiceInfos.$.Softwares.
+
+
 2025-04-17 Version: 4.0.1
 - Update API GetService: add response parameters Body.SupportContacts.
 
