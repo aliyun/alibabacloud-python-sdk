@@ -1,3 +1,11 @@
+2025-05-15 Version: 7.0.3
+- Update API CreateStorageSet: add request parameters Tag.
+- Update API DescribeStorageSets: add request parameters Tag.
+- Update API DescribeStorageSets: add response parameters Body.StorageSets.$.ResourceGroupId.
+- Update API DescribeStorageSets: add response parameters Body.StorageSets.$.Tags.
+- Update API InvokeCommand: add request parameters WorkingDir.
+
+
 2025-04-29 Version: 7.0.2
 - Update API CopyImage: add request parameters ClientToken.
 - Update API CopyImage: add request parameters DryRun.
