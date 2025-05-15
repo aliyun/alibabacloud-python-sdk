@@ -1,3 +1,7 @@
+2025-05-15 Version: 6.3.2
+- Update API DeleteUserConfig: add request parameters Scope.
+
+
 2025-05-12 Version: 6.3.1
 - Generated python 2021-02-04 for AIWorkSpace.
 

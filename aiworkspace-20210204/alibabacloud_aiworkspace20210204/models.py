@@ -166,10 +166,12 @@ class ConnectionModels(TeaModel):
         display_name: str = None,
         model: str = None,
         model_type: str = None,
+        tool_call: bool = None,
     ):
         self.display_name = display_name
         self.model = model
         self.model_type = model_type
+        self.tool_call = tool_call
 
     def validate(self):
         pass
@@ -186,6 +188,8 @@ class ConnectionModels(TeaModel):
             result['Model'] = self.model
         if self.model_type is not None:
             result['ModelType'] = self.model_type
+        if self.tool_call is not None:
+            result['ToolCall'] = self.tool_call
         return result
 
     def from_map(self, m: dict = None):
@@ -196,6 +200,8 @@ class ConnectionModels(TeaModel):
             self.model = m.get('Model')
         if m.get('ModelType') is not None:
             self.model_type = m.get('ModelType')
+        if m.get('ToolCall') is not None:
+            self.tool_call = m.get('ToolCall')
         return self
 
 
@@ -2241,6 +2247,75 @@ class Model(TeaModel):
             self.user_id = m.get('UserId')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class Prompt(TeaModel):
+    def __init__(
+        self,
+        accessibility: str = None,
+        create_time: str = None,
+        description: str = None,
+        framework_content: str = None,
+        framework_type: str = None,
+        modify_time: str = None,
+        prompt_id: str = None,
+        prompt_name: str = None,
+    ):
+        self.accessibility = accessibility
+        self.create_time = create_time
+        self.description = description
+        self.framework_content = framework_content
+        self.framework_type = framework_type
+        self.modify_time = modify_time
+        self.prompt_id = prompt_id
+        self.prompt_name = prompt_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accessibility is not None:
+            result['Accessibility'] = self.accessibility
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.framework_content is not None:
+            result['FrameworkContent'] = self.framework_content
+        if self.framework_type is not None:
+            result['FrameworkType'] = self.framework_type
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.prompt_id is not None:
+            result['PromptId'] = self.prompt_id
+        if self.prompt_name is not None:
+            result['PromptName'] = self.prompt_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Accessibility') is not None:
+            self.accessibility = m.get('Accessibility')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FrameworkContent') is not None:
+            self.framework_content = m.get('FrameworkContent')
+        if m.get('FrameworkType') is not None:
+            self.framework_type = m.get('FrameworkType')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('PromptId') is not None:
+            self.prompt_id = m.get('PromptId')
+        if m.get('PromptName') is not None:
+            self.prompt_name = m.get('PromptName')
         return self
 
 
@@ -8146,9 +8221,11 @@ class DeleteUserConfigRequest(TeaModel):
     def __init__(
         self,
         config_key: str = None,
+        scope: str = None,
     ):
         # The configuration item keys. Currently, only customizePAIAssumedRole.
         self.config_key = config_key
+        self.scope = scope
 
     def validate(self):
         pass
@@ -8161,12 +8238,16 @@ class DeleteUserConfigRequest(TeaModel):
         result = dict()
         if self.config_key is not None:
             result['ConfigKey'] = self.config_key
+        if self.scope is not None:
+            result['Scope'] = self.scope
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ConfigKey') is not None:
             self.config_key = m.get('ConfigKey')
+        if m.get('Scope') is not None:
+            self.scope = m.get('Scope')
         return self
 
 
@@ -18584,9 +18665,9 @@ class UpdateConfigRequestLabels(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -18621,20 +18702,22 @@ class UpdateConfigRequest(TeaModel):
         config_value: str = None,
         labels: List[UpdateConfigRequestLabels] = None,
     ):
-        # The category of the configuration item. Supported categories:
+        # The category of the configuration item. Valid values:
         # 
         # *   CommonResourceConfig
         # *   DLCAutoRecycle
         # *   DLCPriorityConfig
         # *   DSWPriorityConfig
         # *   QuotaMaximumDuration
+        # *   CommonTagConfig
         self.category_name = category_name
-        # The key of the configuration item. Supported keys:
+        # The key of the configuration item. Valid values:
         # 
         # *   tempStoragePath: Temporary storage path. This key can be used only when CategoryName is set to CommonResourceConfig.
         # *   isAutoRecycle: Automatic recycle configuration. This key can be used only when CategoryName is set to DLCAutoRecycle.
         # *   priorityConfig: Priority configuration. This key can be used only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
-        # *   quotaMaximumDuration Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
+        # *   quotaMaximumDuration: Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
+        # *   predefinedTags: Preset tags of the workspace. Created resources must include tags.
         self.config_key = config_key
         # The value of the configuration item.
         self.config_value = config_value

@@ -4754,6 +4754,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.config_key):
             query['ConfigKey'] = request.config_key
+        if not UtilClient.is_unset(request.scope):
+            query['Scope'] = request.scope
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -4793,6 +4795,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.config_key):
             query['ConfigKey'] = request.config_key
+        if not UtilClient.is_unset(request.scope):
+            query['Scope'] = request.scope
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
