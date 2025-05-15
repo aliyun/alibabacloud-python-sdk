@@ -4,6 +4,12 @@
 - Update API GetNodeInfoForPod: add response parameters Body.Content.leniIpv6SipQuota.
 
 
+2025-05-15 Version: 2.0.7
+- Update API GetNodeInfoForPod: add response parameters Body.Content.hdeniIpv6SipQuota.
+- Update API GetNodeInfoForPod: add response parameters Body.Content.hdeniSipQuota.
+- Update API GetNodeInfoForPod: add response parameters Body.Content.leniIpv6SipQuota.
+
+
 2025-05-14 Version: 2.0.6
 - Update API CreateEr: add request parameters Tag.
 - Update API GetEr: add response parameters Body.Content.Tags.
