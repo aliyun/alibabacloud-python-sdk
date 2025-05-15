@@ -9160,6 +9160,7 @@ class GetReportResponse(TeaModel):
 class ListReportsRequest(TeaModel):
     def __init__(
         self,
+        app_id: str = None,
         app_name: str = None,
         max_results: int = None,
         next_token: str = None,
@@ -9167,9 +9168,8 @@ class ListReportsRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
     ):
+        self.app_id = app_id
         # App name.
-        # 
-        # This parameter is required.
         self.app_name = app_name
         # Maximum number of items for Token-based pagination.
         self.max_results = max_results
@@ -9191,6 +9191,8 @@ class ListReportsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
         if self.app_name is not None:
             result['AppName'] = self.app_name
         if self.max_results is not None:
@@ -9207,6 +9209,8 @@ class ListReportsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
         if m.get('MaxResults') is not None:

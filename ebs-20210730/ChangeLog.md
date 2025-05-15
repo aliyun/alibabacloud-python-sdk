@@ -1,3 +1,7 @@
+2025-05-15 Version: 3.1.2
+- Update API ListReports: add request parameters AppId.
+
+
 2025-04-29 Version: 3.1.1
 - Update API DescribeLensMonitorDisks: add response parameters Body.DiskInfos.$.SharingEnabled.
 - Update API DescribeMetricData: add request parameters AggreOverLineOps.
