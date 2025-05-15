@@ -20937,6 +20937,8 @@ class Client(OpenApiClient):
             body['EnvType'] = request.env_type
         if not UtilClient.is_unset(request.id):
             body['Id'] = request.id
+        if not UtilClient.is_unset(request.instance_mode):
+            body['InstanceMode'] = request.instance_mode
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.outputs_shrink):
@@ -21008,6 +21010,8 @@ class Client(OpenApiClient):
             body['EnvType'] = request.env_type
         if not UtilClient.is_unset(request.id):
             body['Id'] = request.id
+        if not UtilClient.is_unset(request.instance_mode):
+            body['InstanceMode'] = request.instance_mode
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.outputs_shrink):

@@ -1,3 +1,7 @@
+2025-05-15 Version: 7.0.1
+- Update API UpdateWorkflow: add request parameters InstanceMode.
+
+
 2025-05-09 Version: 7.0.0
 - Support API AbolishPipelineRun.
 - Support API CreatePipelineRun.

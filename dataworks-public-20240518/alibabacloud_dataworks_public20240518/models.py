@@ -63925,6 +63925,7 @@ class UpdateWorkflowRequest(TeaModel):
         description: str = None,
         env_type: str = None,
         id: int = None,
+        instance_mode: str = None,
         name: str = None,
         outputs: UpdateWorkflowRequestOutputs = None,
         owner: str = None,
@@ -63948,6 +63949,7 @@ class UpdateWorkflowRequest(TeaModel):
         # 
         # This parameter is required.
         self.id = id
+        self.instance_mode = instance_mode
         # The name of the workflow.
         # 
         # This parameter is required.
@@ -64005,6 +64007,8 @@ class UpdateWorkflowRequest(TeaModel):
             result['EnvType'] = self.env_type
         if self.id is not None:
             result['Id'] = self.id
+        if self.instance_mode is not None:
+            result['InstanceMode'] = self.instance_mode
         if self.name is not None:
             result['Name'] = self.name
         if self.outputs is not None:
@@ -64040,6 +64044,8 @@ class UpdateWorkflowRequest(TeaModel):
             self.env_type = m.get('EnvType')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('InstanceMode') is not None:
+            self.instance_mode = m.get('InstanceMode')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Outputs') is not None:
@@ -64073,6 +64079,7 @@ class UpdateWorkflowShrinkRequest(TeaModel):
         description: str = None,
         env_type: str = None,
         id: int = None,
+        instance_mode: str = None,
         name: str = None,
         outputs_shrink: str = None,
         owner: str = None,
@@ -64096,6 +64103,7 @@ class UpdateWorkflowShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.id = id
+        self.instance_mode = instance_mode
         # The name of the workflow.
         # 
         # This parameter is required.
@@ -64136,6 +64144,8 @@ class UpdateWorkflowShrinkRequest(TeaModel):
             result['EnvType'] = self.env_type
         if self.id is not None:
             result['Id'] = self.id
+        if self.instance_mode is not None:
+            result['InstanceMode'] = self.instance_mode
         if self.name is not None:
             result['Name'] = self.name
         if self.outputs_shrink is not None:
@@ -64164,6 +64174,8 @@ class UpdateWorkflowShrinkRequest(TeaModel):
             self.env_type = m.get('EnvType')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('InstanceMode') is not None:
+            self.instance_mode = m.get('InstanceMode')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Outputs') is not None:
