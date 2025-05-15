@@ -1,3 +1,9 @@
+2025-05-15 Version: 6.1.1
+- Update API DescribeLogStoreInfo: add response parameters Body.RegionId.
+- Update API DescribeOutgoingDomain: add request parameters DataType.
+- Update API DescribeOutgoingDomain: add request parameters IsAITraffic.
+
+
 2025-05-09 Version: 6.1.0
 - Support API DescribeLogStoreInfo.
 - Support API DescribeNatFirewallTrafficTrend.

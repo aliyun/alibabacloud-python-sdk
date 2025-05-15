@@ -9634,6 +9634,7 @@ class DescribeLogStoreInfoResponseBody(TeaModel):
         log_store_name: str = None,
         project_name: str = None,
         quota: int = None,
+        region_id: str = None,
         request_id: str = None,
         ttl: int = None,
         used: int = None,
@@ -9641,6 +9642,7 @@ class DescribeLogStoreInfoResponseBody(TeaModel):
         self.log_store_name = log_store_name
         self.project_name = project_name
         self.quota = quota
+        self.region_id = region_id
         self.request_id = request_id
         self.ttl = ttl
         self.used = used
@@ -9660,6 +9662,8 @@ class DescribeLogStoreInfoResponseBody(TeaModel):
             result['ProjectName'] = self.project_name
         if self.quota is not None:
             result['Quota'] = self.quota
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.ttl is not None:
@@ -9676,6 +9680,8 @@ class DescribeLogStoreInfoResponseBody(TeaModel):
             self.project_name = m.get('ProjectName')
         if m.get('Quota') is not None:
             self.quota = m.get('Quota')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Ttl') is not None:
@@ -11858,8 +11864,10 @@ class DescribeOutgoingDomainRequest(TeaModel):
         self,
         category_id: str = None,
         current_page: str = None,
+        data_type: str = None,
         domain: str = None,
         end_time: str = None,
+        is_aitraffic: str = None,
         lang: str = None,
         order: str = None,
         page_size: str = None,
@@ -11880,12 +11888,14 @@ class DescribeOutgoingDomainRequest(TeaModel):
         # 
         # Default value: 1.
         self.current_page = current_page
+        self.data_type = data_type
         # The domain name in outbound connections.
         self.domain = domain
         # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # This parameter is required.
         self.end_time = end_time
+        self.is_aitraffic = is_aitraffic
         # The language of the content within the request. Valid values:
         # 
         # *   **zh**: Chinese (default)
@@ -11965,10 +11975,14 @@ class DescribeOutgoingDomainRequest(TeaModel):
             result['CategoryId'] = self.category_id
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
+        if self.data_type is not None:
+            result['DataType'] = self.data_type
         if self.domain is not None:
             result['Domain'] = self.domain
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.is_aitraffic is not None:
+            result['IsAITraffic'] = self.is_aitraffic
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.order is not None:
@@ -11991,10 +12005,14 @@ class DescribeOutgoingDomainRequest(TeaModel):
             self.category_id = m.get('CategoryId')
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
+        if m.get('DataType') is not None:
+            self.data_type = m.get('DataType')
         if m.get('Domain') is not None:
             self.domain = m.get('Domain')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('IsAITraffic') is not None:
+            self.is_aitraffic = m.get('IsAITraffic')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('Order') is not None:

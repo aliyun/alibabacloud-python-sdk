@@ -6381,10 +6381,14 @@ class Client(OpenApiClient):
             query['CategoryId'] = request.category_id
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.data_type):
+            query['DataType'] = request.data_type
         if not UtilClient.is_unset(request.domain):
             query['Domain'] = request.domain
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.is_aitraffic):
+            query['IsAITraffic'] = request.is_aitraffic
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.order):
@@ -6436,10 +6440,14 @@ class Client(OpenApiClient):
             query['CategoryId'] = request.category_id
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.data_type):
+            query['DataType'] = request.data_type
         if not UtilClient.is_unset(request.domain):
             query['Domain'] = request.domain
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.is_aitraffic):
+            query['IsAITraffic'] = request.is_aitraffic
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.order):
