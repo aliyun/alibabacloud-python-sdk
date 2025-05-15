@@ -47,7 +47,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_cnp_20230828_models.ChangeResourceGroupResponse:
         """
-        @summary 资源转组
+        @summary Change resource group
         
         @param request: ChangeResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -55,6 +55,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_id):
@@ -86,7 +88,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_cnp_20230828_models.ChangeResourceGroupResponse:
         """
-        @summary 资源转组
+        @summary Change resource group
         
         @param request: ChangeResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -94,6 +96,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_id):
@@ -124,7 +128,7 @@ class Client(OpenApiClient):
         request: eflo_cnp_20230828_models.ChangeResourceGroupRequest,
     ) -> eflo_cnp_20230828_models.ChangeResourceGroupResponse:
         """
-        @summary 资源转组
+        @summary Change resource group
         
         @param request: ChangeResourceGroupRequest
         @return: ChangeResourceGroupResponse
@@ -137,7 +141,7 @@ class Client(OpenApiClient):
         request: eflo_cnp_20230828_models.ChangeResourceGroupRequest,
     ) -> eflo_cnp_20230828_models.ChangeResourceGroupResponse:
         """
-        @summary 资源转组
+        @summary Change resource group
         
         @param request: ChangeResourceGroupRequest
         @return: ChangeResourceGroupResponse
@@ -165,10 +169,14 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.external_params_shrink):
             query['ExternalParams'] = request.external_params_shrink
+        if not UtilClient.is_unset(request.plan_template_name):
+            query['PlanTemplateName'] = request.plan_template_name
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_id):
             query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
@@ -210,10 +218,14 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.external_params_shrink):
             query['ExternalParams'] = request.external_params_shrink
+        if not UtilClient.is_unset(request.plan_template_name):
+            query['PlanTemplateName'] = request.plan_template_name
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_id):
             query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
@@ -267,7 +279,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_cnp_20230828_models.CreateExperimentPlanTemplateResponse:
         """
-        @summary 创建/更新测试计划模板
+        @summary Create/Update Test Plan Template
         
         @param tmp_req: CreateExperimentPlanTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -316,7 +328,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_cnp_20230828_models.CreateExperimentPlanTemplateResponse:
         """
-        @summary 创建/更新测试计划模板
+        @summary Create/Update Test Plan Template
         
         @param tmp_req: CreateExperimentPlanTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -364,7 +376,7 @@ class Client(OpenApiClient):
         request: eflo_cnp_20230828_models.CreateExperimentPlanTemplateRequest,
     ) -> eflo_cnp_20230828_models.CreateExperimentPlanTemplateResponse:
         """
-        @summary 创建/更新测试计划模板
+        @summary Create/Update Test Plan Template
         
         @param request: CreateExperimentPlanTemplateRequest
         @return: CreateExperimentPlanTemplateResponse
@@ -377,7 +389,7 @@ class Client(OpenApiClient):
         request: eflo_cnp_20230828_models.CreateExperimentPlanTemplateRequest,
     ) -> eflo_cnp_20230828_models.CreateExperimentPlanTemplateResponse:
         """
-        @summary 创建/更新测试计划模板
+        @summary Create/Update Test Plan Template
         
         @param request: CreateExperimentPlanTemplateRequest
         @return: CreateExperimentPlanTemplateResponse
@@ -411,10 +423,6 @@ class Client(OpenApiClient):
             query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.cluster_name):
             query['ClusterName'] = request.cluster_name
-        if not UtilClient.is_unset(request.cluster_type):
-            query['ClusterType'] = request.cluster_type
-        if not UtilClient.is_unset(request.resource_type):
-            query['ResourceType'] = request.resource_type
         body = {}
         if not UtilClient.is_unset(request.machine_types_shrink):
             body['MachineTypes'] = request.machine_types_shrink
@@ -466,10 +474,6 @@ class Client(OpenApiClient):
             query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.cluster_name):
             query['ClusterName'] = request.cluster_name
-        if not UtilClient.is_unset(request.cluster_type):
-            query['ClusterType'] = request.cluster_type
-        if not UtilClient.is_unset(request.resource_type):
-            query['ResourceType'] = request.resource_type
         body = {}
         if not UtilClient.is_unset(request.machine_types_shrink):
             body['MachineTypes'] = request.machine_types_shrink
@@ -527,7 +531,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_cnp_20230828_models.DeleteExperimentResponse:
         """
-        @summary 删除实验
+        @summary Delete Experiment
         
         @param request: DeleteExperimentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -537,6 +541,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.experiment_id):
             query['ExperimentId'] = request.experiment_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -562,7 +568,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_cnp_20230828_models.DeleteExperimentResponse:
         """
-        @summary 删除实验
+        @summary Delete Experiment
         
         @param request: DeleteExperimentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -572,6 +578,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.experiment_id):
             query['ExperimentId'] = request.experiment_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -596,7 +604,7 @@ class Client(OpenApiClient):
         request: eflo_cnp_20230828_models.DeleteExperimentRequest,
     ) -> eflo_cnp_20230828_models.DeleteExperimentResponse:
         """
-        @summary 删除实验
+        @summary Delete Experiment
         
         @param request: DeleteExperimentRequest
         @return: DeleteExperimentResponse
@@ -609,7 +617,7 @@ class Client(OpenApiClient):
         request: eflo_cnp_20230828_models.DeleteExperimentRequest,
     ) -> eflo_cnp_20230828_models.DeleteExperimentResponse:
         """
-        @summary 删除实验
+        @summary Delete Experiment
         
         @param request: DeleteExperimentRequest
         @return: DeleteExperimentResponse
@@ -617,13 +625,109 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_experiment_with_options_async(request, runtime)
 
+    def delete_experiment_plan_with_options(
+        self,
+        request: eflo_cnp_20230828_models.DeleteExperimentPlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_cnp_20230828_models.DeleteExperimentPlanResponse:
+        """
+        @summary 获取实验计划详情
+        
+        @param request: DeleteExperimentPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteExperimentPlanResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.plan_id):
+            query['PlanId'] = request.plan_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteExperimentPlan',
+            version='2023-08-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_cnp_20230828_models.DeleteExperimentPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_experiment_plan_with_options_async(
+        self,
+        request: eflo_cnp_20230828_models.DeleteExperimentPlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_cnp_20230828_models.DeleteExperimentPlanResponse:
+        """
+        @summary 获取实验计划详情
+        
+        @param request: DeleteExperimentPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteExperimentPlanResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.plan_id):
+            query['PlanId'] = request.plan_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteExperimentPlan',
+            version='2023-08-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_cnp_20230828_models.DeleteExperimentPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_experiment_plan(
+        self,
+        request: eflo_cnp_20230828_models.DeleteExperimentPlanRequest,
+    ) -> eflo_cnp_20230828_models.DeleteExperimentPlanResponse:
+        """
+        @summary 获取实验计划详情
+        
+        @param request: DeleteExperimentPlanRequest
+        @return: DeleteExperimentPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_experiment_plan_with_options(request, runtime)
+
+    async def delete_experiment_plan_async(
+        self,
+        request: eflo_cnp_20230828_models.DeleteExperimentPlanRequest,
+    ) -> eflo_cnp_20230828_models.DeleteExperimentPlanResponse:
+        """
+        @summary 获取实验计划详情
+        
+        @param request: DeleteExperimentPlanRequest
+        @return: DeleteExperimentPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_experiment_plan_with_options_async(request, runtime)
+
     def delete_experiment_plan_template_with_options(
         self,
         request: eflo_cnp_20230828_models.DeleteExperimentPlanTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_cnp_20230828_models.DeleteExperimentPlanTemplateResponse:
         """
-        @summary 删除测试计划模板
+        @summary Delete Test Plan Template
         
         @param request: DeleteExperimentPlanTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -658,7 +762,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_cnp_20230828_models.DeleteExperimentPlanTemplateResponse:
         """
-        @summary 删除测试计划模板
+        @summary Delete Test Plan Template
         
         @param request: DeleteExperimentPlanTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -692,7 +796,7 @@ class Client(OpenApiClient):
         request: eflo_cnp_20230828_models.DeleteExperimentPlanTemplateRequest,
     ) -> eflo_cnp_20230828_models.DeleteExperimentPlanTemplateResponse:
         """
-        @summary 删除测试计划模板
+        @summary Delete Test Plan Template
         
         @param request: DeleteExperimentPlanTemplateRequest
         @return: DeleteExperimentPlanTemplateResponse
@@ -705,7 +809,7 @@ class Client(OpenApiClient):
         request: eflo_cnp_20230828_models.DeleteExperimentPlanTemplateRequest,
     ) -> eflo_cnp_20230828_models.DeleteExperimentPlanTemplateResponse:
         """
-        @summary 删除测试计划模板
+        @summary Delete Test Plan Template
         
         @param request: DeleteExperimentPlanTemplateRequest
         @return: DeleteExperimentPlanTemplateResponse
@@ -719,7 +823,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_cnp_20230828_models.GetExperimentResponse:
         """
-        @summary 获取实验详情
+        @summary Get Experiment Details
         
         @param request: GetExperimentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -729,6 +833,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.experiment_id):
             query['ExperimentId'] = request.experiment_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -754,7 +860,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_cnp_20230828_models.GetExperimentResponse:
         """
-        @summary 获取实验详情
+        @summary Get Experiment Details
         
         @param request: GetExperimentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -764,6 +870,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.experiment_id):
             query['ExperimentId'] = request.experiment_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -788,7 +896,7 @@ class Client(OpenApiClient):
         request: eflo_cnp_20230828_models.GetExperimentRequest,
     ) -> eflo_cnp_20230828_models.GetExperimentResponse:
         """
-        @summary 获取实验详情
+        @summary Get Experiment Details
         
         @param request: GetExperimentRequest
         @return: GetExperimentResponse
@@ -801,7 +909,7 @@ class Client(OpenApiClient):
         request: eflo_cnp_20230828_models.GetExperimentRequest,
     ) -> eflo_cnp_20230828_models.GetExperimentResponse:
         """
-        @summary 获取实验详情
+        @summary Get Experiment Details
         
         @param request: GetExperimentRequest
         @return: GetExperimentResponse
@@ -905,13 +1013,109 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_experiment_plan_with_options_async(request, runtime)
 
+    def get_experiment_plan_template_with_options(
+        self,
+        request: eflo_cnp_20230828_models.GetExperimentPlanTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_cnp_20230828_models.GetExperimentPlanTemplateResponse:
+        """
+        @summary Query Test Plan Template Details
+        
+        @param request: GetExperimentPlanTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetExperimentPlanTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetExperimentPlanTemplate',
+            version='2023-08-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_cnp_20230828_models.GetExperimentPlanTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_experiment_plan_template_with_options_async(
+        self,
+        request: eflo_cnp_20230828_models.GetExperimentPlanTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_cnp_20230828_models.GetExperimentPlanTemplateResponse:
+        """
+        @summary Query Test Plan Template Details
+        
+        @param request: GetExperimentPlanTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetExperimentPlanTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetExperimentPlanTemplate',
+            version='2023-08-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_cnp_20230828_models.GetExperimentPlanTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_experiment_plan_template(
+        self,
+        request: eflo_cnp_20230828_models.GetExperimentPlanTemplateRequest,
+    ) -> eflo_cnp_20230828_models.GetExperimentPlanTemplateResponse:
+        """
+        @summary Query Test Plan Template Details
+        
+        @param request: GetExperimentPlanTemplateRequest
+        @return: GetExperimentPlanTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_experiment_plan_template_with_options(request, runtime)
+
+    async def get_experiment_plan_template_async(
+        self,
+        request: eflo_cnp_20230828_models.GetExperimentPlanTemplateRequest,
+    ) -> eflo_cnp_20230828_models.GetExperimentPlanTemplateResponse:
+        """
+        @summary Query Test Plan Template Details
+        
+        @param request: GetExperimentPlanTemplateRequest
+        @return: GetExperimentPlanTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_experiment_plan_template_with_options_async(request, runtime)
+
     def get_experiment_result_data_with_options(
         self,
         request: eflo_cnp_20230828_models.GetExperimentResultDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_cnp_20230828_models.GetExperimentResultDataResponse:
         """
-        @summary 获取实验结果数据
+        @summary Fetch Experiment Result Data
         
         @param request: GetExperimentResultDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -923,6 +1127,8 @@ class Client(OpenApiClient):
             query['ExperimentId'] = request.experiment_id
         if not UtilClient.is_unset(request.hostname):
             query['Hostname'] = request.hostname
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.workload_type):
             query['WorkloadType'] = request.workload_type
         req = open_api_models.OpenApiRequest(
@@ -950,7 +1156,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_cnp_20230828_models.GetExperimentResultDataResponse:
         """
-        @summary 获取实验结果数据
+        @summary Fetch Experiment Result Data
         
         @param request: GetExperimentResultDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -962,6 +1168,8 @@ class Client(OpenApiClient):
             query['ExperimentId'] = request.experiment_id
         if not UtilClient.is_unset(request.hostname):
             query['Hostname'] = request.hostname
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.workload_type):
             query['WorkloadType'] = request.workload_type
         req = open_api_models.OpenApiRequest(
@@ -988,7 +1196,7 @@ class Client(OpenApiClient):
         request: eflo_cnp_20230828_models.GetExperimentResultDataRequest,
     ) -> eflo_cnp_20230828_models.GetExperimentResultDataResponse:
         """
-        @summary 获取实验结果数据
+        @summary Fetch Experiment Result Data
         
         @param request: GetExperimentResultDataRequest
         @return: GetExperimentResultDataResponse
@@ -1001,7 +1209,7 @@ class Client(OpenApiClient):
         request: eflo_cnp_20230828_models.GetExperimentResultDataRequest,
     ) -> eflo_cnp_20230828_models.GetExperimentResultDataResponse:
         """
-        @summary 获取实验结果数据
+        @summary Fetch Experiment Result Data
         
         @param request: GetExperimentResultDataRequest
         @return: GetExperimentResultDataResponse
@@ -1111,7 +1319,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_cnp_20230828_models.GetResourcePredictResultResponse:
         """
-        @summary 查询测试计划模板资源预测结果
+        @summary Query the resource prediction results of the test plan template
         
         @param request: GetResourcePredictResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1148,7 +1356,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_cnp_20230828_models.GetResourcePredictResultResponse:
         """
-        @summary 查询测试计划模板资源预测结果
+        @summary Query the resource prediction results of the test plan template
         
         @param request: GetResourcePredictResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1184,7 +1392,7 @@ class Client(OpenApiClient):
         request: eflo_cnp_20230828_models.GetResourcePredictResultRequest,
     ) -> eflo_cnp_20230828_models.GetResourcePredictResultResponse:
         """
-        @summary 查询测试计划模板资源预测结果
+        @summary Query the resource prediction results of the test plan template
         
         @param request: GetResourcePredictResultRequest
         @return: GetResourcePredictResultResponse
@@ -1197,7 +1405,7 @@ class Client(OpenApiClient):
         request: eflo_cnp_20230828_models.GetResourcePredictResultRequest,
     ) -> eflo_cnp_20230828_models.GetResourcePredictResultResponse:
         """
-        @summary 查询测试计划模板资源预测结果
+        @summary Query the resource prediction results of the test plan template
         
         @param request: GetResourcePredictResultRequest
         @return: GetResourcePredictResultResponse
@@ -1211,7 +1419,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_cnp_20230828_models.GetWorkloadResponse:
         """
-        @summary 通过id获取负载信息
+        @summary Retrieve workload information by ID
         
         @param request: GetWorkloadRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1246,7 +1454,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_cnp_20230828_models.GetWorkloadResponse:
         """
-        @summary 通过id获取负载信息
+        @summary Retrieve workload information by ID
         
         @param request: GetWorkloadRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1280,7 +1488,7 @@ class Client(OpenApiClient):
         request: eflo_cnp_20230828_models.GetWorkloadRequest,
     ) -> eflo_cnp_20230828_models.GetWorkloadResponse:
         """
-        @summary 通过id获取负载信息
+        @summary Retrieve workload information by ID
         
         @param request: GetWorkloadRequest
         @return: GetWorkloadResponse
@@ -1293,7 +1501,7 @@ class Client(OpenApiClient):
         request: eflo_cnp_20230828_models.GetWorkloadRequest,
     ) -> eflo_cnp_20230828_models.GetWorkloadResponse:
         """
-        @summary 通过id获取负载信息
+        @summary Retrieve workload information by ID
         
         @param request: GetWorkloadRequest
         @return: GetWorkloadResponse
@@ -1416,6 +1624,8 @@ class Client(OpenApiClient):
             request.plan_task_status_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.plan_task_status, 'PlanTaskStatus', 'json')
         if not UtilClient.is_unset(tmp_req.resource_name):
             request.resource_name_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_name, 'ResourceName', 'json')
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.creat_time_order):
             query['CreatTimeOrder'] = request.creat_time_order
@@ -1425,10 +1635,16 @@ class Client(OpenApiClient):
             query['Page'] = request.page
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.size):
             query['Size'] = request.size
         if not UtilClient.is_unset(request.start_time_order):
             query['StartTimeOrder'] = request.start_time_order
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         body = {}
         if not UtilClient.is_unset(request.plan_task_status_shrink):
             body['PlanTaskStatus'] = request.plan_task_status_shrink
@@ -1473,6 +1689,8 @@ class Client(OpenApiClient):
             request.plan_task_status_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.plan_task_status, 'PlanTaskStatus', 'json')
         if not UtilClient.is_unset(tmp_req.resource_name):
             request.resource_name_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_name, 'ResourceName', 'json')
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.creat_time_order):
             query['CreatTimeOrder'] = request.creat_time_order
@@ -1482,10 +1700,16 @@ class Client(OpenApiClient):
             query['Page'] = request.page
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.size):
             query['Size'] = request.size
         if not UtilClient.is_unset(request.start_time_order):
             query['StartTimeOrder'] = request.start_time_order
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         body = {}
         if not UtilClient.is_unset(request.plan_task_status_shrink):
             body['PlanTaskStatus'] = request.plan_task_status_shrink
@@ -1555,6 +1779,8 @@ class Client(OpenApiClient):
             query['Order'] = request.order
         if not UtilClient.is_unset(request.plan_id):
             query['PlanId'] = request.plan_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1592,6 +1818,8 @@ class Client(OpenApiClient):
             query['Order'] = request.order
         if not UtilClient.is_unset(request.plan_id):
             query['PlanId'] = request.plan_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1637,13 +1865,121 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_experiments_with_options_async(request, runtime)
 
+    def list_tag_resources_with_options(
+        self,
+        request: eflo_cnp_20230828_models.ListTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_cnp_20230828_models.ListTagResourcesResponse:
+        """
+        @summary Query Resource Tags
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2023-08-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_cnp_20230828_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tag_resources_with_options_async(
+        self,
+        request: eflo_cnp_20230828_models.ListTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_cnp_20230828_models.ListTagResourcesResponse:
+        """
+        @summary Query Resource Tags
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2023-08-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_cnp_20230828_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tag_resources(
+        self,
+        request: eflo_cnp_20230828_models.ListTagResourcesRequest,
+    ) -> eflo_cnp_20230828_models.ListTagResourcesResponse:
+        """
+        @summary Query Resource Tags
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_tag_resources_with_options(request, runtime)
+
+    async def list_tag_resources_async(
+        self,
+        request: eflo_cnp_20230828_models.ListTagResourcesRequest,
+    ) -> eflo_cnp_20230828_models.ListTagResourcesResponse:
+        """
+        @summary Query Resource Tags
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_tag_resources_with_options_async(request, runtime)
+
     def list_workloads_with_options(
         self,
         request: eflo_cnp_20230828_models.ListWorkloadsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_cnp_20230828_models.ListWorkloadsResponse:
         """
-        @summary 获取负载列表
+        @summary Get Workload List
         
         @param request: ListWorkloadsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1678,7 +2014,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_cnp_20230828_models.ListWorkloadsResponse:
         """
-        @summary 获取负载列表
+        @summary Get Workload List
         
         @param request: ListWorkloadsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1712,7 +2048,7 @@ class Client(OpenApiClient):
         request: eflo_cnp_20230828_models.ListWorkloadsRequest,
     ) -> eflo_cnp_20230828_models.ListWorkloadsResponse:
         """
-        @summary 获取负载列表
+        @summary Get Workload List
         
         @param request: ListWorkloadsRequest
         @return: ListWorkloadsResponse
@@ -1725,7 +2061,7 @@ class Client(OpenApiClient):
         request: eflo_cnp_20230828_models.ListWorkloadsRequest,
     ) -> eflo_cnp_20230828_models.ListWorkloadsResponse:
         """
-        @summary 获取负载列表
+        @summary Get Workload List
         
         @param request: ListWorkloadsRequest
         @return: ListWorkloadsResponse
@@ -1739,7 +2075,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_cnp_20230828_models.StopExperimentResponse:
         """
-        @summary 停止实验
+        @summary Stop Experiment
         
         @param request: StopExperimentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1749,6 +2085,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.experiment_id):
             query['ExperimentId'] = request.experiment_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1774,7 +2112,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_cnp_20230828_models.StopExperimentResponse:
         """
-        @summary 停止实验
+        @summary Stop Experiment
         
         @param request: StopExperimentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1784,6 +2122,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.experiment_id):
             query['ExperimentId'] = request.experiment_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1808,7 +2148,7 @@ class Client(OpenApiClient):
         request: eflo_cnp_20230828_models.StopExperimentRequest,
     ) -> eflo_cnp_20230828_models.StopExperimentResponse:
         """
-        @summary 停止实验
+        @summary Stop Experiment
         
         @param request: StopExperimentRequest
         @return: StopExperimentResponse
@@ -1821,13 +2161,437 @@ class Client(OpenApiClient):
         request: eflo_cnp_20230828_models.StopExperimentRequest,
     ) -> eflo_cnp_20230828_models.StopExperimentResponse:
         """
-        @summary 停止实验
+        @summary Stop Experiment
         
         @param request: StopExperimentRequest
         @return: StopExperimentResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.stop_experiment_with_options_async(request, runtime)
+
+    def tag_resources_with_options(
+        self,
+        request: eflo_cnp_20230828_models.TagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_cnp_20230828_models.TagResourcesResponse:
+        """
+        @summary Tag Resources with User Labels
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2023-08-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_cnp_20230828_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def tag_resources_with_options_async(
+        self,
+        request: eflo_cnp_20230828_models.TagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_cnp_20230828_models.TagResourcesResponse:
+        """
+        @summary Tag Resources with User Labels
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2023-08-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_cnp_20230828_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def tag_resources(
+        self,
+        request: eflo_cnp_20230828_models.TagResourcesRequest,
+    ) -> eflo_cnp_20230828_models.TagResourcesResponse:
+        """
+        @summary Tag Resources with User Labels
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.tag_resources_with_options(request, runtime)
+
+    async def tag_resources_async(
+        self,
+        request: eflo_cnp_20230828_models.TagResourcesRequest,
+    ) -> eflo_cnp_20230828_models.TagResourcesResponse:
+        """
+        @summary Tag Resources with User Labels
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.tag_resources_with_options_async(request, runtime)
+
+    def untag_resources_with_options(
+        self,
+        request: eflo_cnp_20230828_models.UntagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_cnp_20230828_models.UntagResourcesResponse:
+        """
+        @summary Remove User Tags from Resources
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2023-08-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_cnp_20230828_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def untag_resources_with_options_async(
+        self,
+        request: eflo_cnp_20230828_models.UntagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_cnp_20230828_models.UntagResourcesResponse:
+        """
+        @summary Remove User Tags from Resources
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2023-08-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_cnp_20230828_models.UntagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def untag_resources(
+        self,
+        request: eflo_cnp_20230828_models.UntagResourcesRequest,
+    ) -> eflo_cnp_20230828_models.UntagResourcesResponse:
+        """
+        @summary Remove User Tags from Resources
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.untag_resources_with_options(request, runtime)
+
+    async def untag_resources_async(
+        self,
+        request: eflo_cnp_20230828_models.UntagResourcesRequest,
+    ) -> eflo_cnp_20230828_models.UntagResourcesResponse:
+        """
+        @summary Remove User Tags from Resources
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.untag_resources_with_options_async(request, runtime)
+
+    def update_experiment_plan_with_options(
+        self,
+        request: eflo_cnp_20230828_models.UpdateExperimentPlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_cnp_20230828_models.UpdateExperimentPlanResponse:
+        """
+        @summary Update Experiment Plan
+        
+        @param request: UpdateExperimentPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateExperimentPlanResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.plan_id):
+            query['PlanId'] = request.plan_id
+        if not UtilClient.is_unset(request.plan_template_name):
+            query['PlanTemplateName'] = request.plan_template_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateExperimentPlan',
+            version='2023-08-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_cnp_20230828_models.UpdateExperimentPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_experiment_plan_with_options_async(
+        self,
+        request: eflo_cnp_20230828_models.UpdateExperimentPlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_cnp_20230828_models.UpdateExperimentPlanResponse:
+        """
+        @summary Update Experiment Plan
+        
+        @param request: UpdateExperimentPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateExperimentPlanResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.plan_id):
+            query['PlanId'] = request.plan_id
+        if not UtilClient.is_unset(request.plan_template_name):
+            query['PlanTemplateName'] = request.plan_template_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateExperimentPlan',
+            version='2023-08-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_cnp_20230828_models.UpdateExperimentPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_experiment_plan(
+        self,
+        request: eflo_cnp_20230828_models.UpdateExperimentPlanRequest,
+    ) -> eflo_cnp_20230828_models.UpdateExperimentPlanResponse:
+        """
+        @summary Update Experiment Plan
+        
+        @param request: UpdateExperimentPlanRequest
+        @return: UpdateExperimentPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_experiment_plan_with_options(request, runtime)
+
+    async def update_experiment_plan_async(
+        self,
+        request: eflo_cnp_20230828_models.UpdateExperimentPlanRequest,
+    ) -> eflo_cnp_20230828_models.UpdateExperimentPlanResponse:
+        """
+        @summary Update Experiment Plan
+        
+        @param request: UpdateExperimentPlanRequest
+        @return: UpdateExperimentPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_experiment_plan_with_options_async(request, runtime)
+
+    def update_experiment_plan_template_with_options(
+        self,
+        tmp_req: eflo_cnp_20230828_models.UpdateExperimentPlanTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_cnp_20230828_models.UpdateExperimentPlanTemplateResponse:
+        """
+        @summary Update Test Plan Template
+        
+        @param tmp_req: UpdateExperimentPlanTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateExperimentPlanTemplateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eflo_cnp_20230828_models.UpdateExperimentPlanTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.template_pipeline):
+            request.template_pipeline_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.template_pipeline, 'TemplatePipeline', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        body = {}
+        if not UtilClient.is_unset(request.template_pipeline_shrink):
+            body['TemplatePipeline'] = request.template_pipeline_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateExperimentPlanTemplate',
+            version='2023-08-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_cnp_20230828_models.UpdateExperimentPlanTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_experiment_plan_template_with_options_async(
+        self,
+        tmp_req: eflo_cnp_20230828_models.UpdateExperimentPlanTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_cnp_20230828_models.UpdateExperimentPlanTemplateResponse:
+        """
+        @summary Update Test Plan Template
+        
+        @param tmp_req: UpdateExperimentPlanTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateExperimentPlanTemplateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eflo_cnp_20230828_models.UpdateExperimentPlanTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.template_pipeline):
+            request.template_pipeline_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.template_pipeline, 'TemplatePipeline', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        body = {}
+        if not UtilClient.is_unset(request.template_pipeline_shrink):
+            body['TemplatePipeline'] = request.template_pipeline_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateExperimentPlanTemplate',
+            version='2023-08-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_cnp_20230828_models.UpdateExperimentPlanTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_experiment_plan_template(
+        self,
+        request: eflo_cnp_20230828_models.UpdateExperimentPlanTemplateRequest,
+    ) -> eflo_cnp_20230828_models.UpdateExperimentPlanTemplateResponse:
+        """
+        @summary Update Test Plan Template
+        
+        @param request: UpdateExperimentPlanTemplateRequest
+        @return: UpdateExperimentPlanTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_experiment_plan_template_with_options(request, runtime)
+
+    async def update_experiment_plan_template_async(
+        self,
+        request: eflo_cnp_20230828_models.UpdateExperimentPlanTemplateRequest,
+    ) -> eflo_cnp_20230828_models.UpdateExperimentPlanTemplateResponse:
+        """
+        @summary Update Test Plan Template
+        
+        @param request: UpdateExperimentPlanTemplateRequest
+        @return: UpdateExperimentPlanTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_experiment_plan_template_with_options_async(request, runtime)
 
     def validate_resource_with_options(
         self,
