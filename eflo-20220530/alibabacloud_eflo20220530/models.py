@@ -8538,6 +8538,9 @@ class GetNodeInfoForPodResponseBodyContent(TeaModel):
         v_switches: List[str] = None,
         vpc_id: str = None,
         zone_id: str = None,
+        hdeni_ipv_6sip_quota: int = None,
+        hdeni_sip_quota: int = None,
+        leni_ipv_6sip_quota: int = None,
     ):
         # The cluster ID.
         self.cluster_id = cluster_id
@@ -8559,6 +8562,9 @@ class GetNodeInfoForPodResponseBodyContent(TeaModel):
         self.vpc_id = vpc_id
         # The zone ID.
         self.zone_id = zone_id
+        self.hdeni_ipv_6sip_quota = hdeni_ipv_6sip_quota
+        self.hdeni_sip_quota = hdeni_sip_quota
+        self.leni_ipv_6sip_quota = leni_ipv_6sip_quota
 
     def validate(self):
         pass
@@ -8589,6 +8595,12 @@ class GetNodeInfoForPodResponseBodyContent(TeaModel):
             result['VpcId'] = self.vpc_id
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
+        if self.hdeni_ipv_6sip_quota is not None:
+            result['hdeniIpv6SipQuota'] = self.hdeni_ipv_6sip_quota
+        if self.hdeni_sip_quota is not None:
+            result['hdeniSipQuota'] = self.hdeni_sip_quota
+        if self.leni_ipv_6sip_quota is not None:
+            result['leniIpv6SipQuota'] = self.leni_ipv_6sip_quota
         return result
 
     def from_map(self, m: dict = None):
@@ -8613,6 +8625,12 @@ class GetNodeInfoForPodResponseBodyContent(TeaModel):
             self.vpc_id = m.get('VpcId')
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
+        if m.get('hdeniIpv6SipQuota') is not None:
+            self.hdeni_ipv_6sip_quota = m.get('hdeniIpv6SipQuota')
+        if m.get('hdeniSipQuota') is not None:
+            self.hdeni_sip_quota = m.get('hdeniSipQuota')
+        if m.get('leniIpv6SipQuota') is not None:
+            self.leni_ipv_6sip_quota = m.get('leniIpv6SipQuota')
         return self
 
 
