@@ -1785,6 +1785,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_material_by_id_with_options_async(request, runtime)
 
+    def delete_style_learning_result_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteStyleLearningResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.DeleteStyleLearningResultResponse:
+        """
+        @summary 删除指定自定义文体
+        
+        @param request: DeleteStyleLearningResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteStyleLearningResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteStyleLearningResult',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.DeleteStyleLearningResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_style_learning_result_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteStyleLearningResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.DeleteStyleLearningResultResponse:
+        """
+        @summary 删除指定自定义文体
+        
+        @param request: DeleteStyleLearningResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteStyleLearningResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteStyleLearningResult',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.DeleteStyleLearningResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_style_learning_result(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteStyleLearningResultRequest,
+    ) -> ai_miao_bi_20230801_models.DeleteStyleLearningResultResponse:
+        """
+        @summary 删除指定自定义文体
+        
+        @param request: DeleteStyleLearningResultRequest
+        @return: DeleteStyleLearningResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_style_learning_result_with_options(request, runtime)
+
+    async def delete_style_learning_result_async(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteStyleLearningResultRequest,
+    ) -> ai_miao_bi_20230801_models.DeleteStyleLearningResultResponse:
+        """
+        @summary 删除指定自定义文体
+        
+        @param request: DeleteStyleLearningResultRequest
+        @return: DeleteStyleLearningResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_style_learning_result_with_options_async(request, runtime)
+
     def document_extraction_with_options(
         self,
         tmp_req: ai_miao_bi_20230801_models.DocumentExtractionRequest,

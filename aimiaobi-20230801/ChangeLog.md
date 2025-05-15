@@ -1,3 +1,9 @@
+2025-05-15 Version: 1.26.0
+- Support API DeleteStyleLearningResult.
+- Update API QueryAuditTask: add response parameters Body.Data.HtmlContent.
+- Update API QueryAuditTask: add response parameters Body.Data.Title.
+
+
 2025-05-15 Version: 1.25.0
 - Support API GetFileContentLength.
 - Support API RunBookBrainmap.
