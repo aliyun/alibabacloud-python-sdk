@@ -927,6 +927,122 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_video_analysis_task_with_options_async(workspace_id, request, headers, runtime)
 
+    def list_analysis_tag_detail_by_task_id_with_options(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.ListAnalysisTagDetailByTaskIdRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.ListAnalysisTagDetailByTaskIdResponse:
+        """
+        @summary 获取挖掘分析结果明细列表
+        
+        @param request: ListAnalysisTagDetailByTaskIdRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAnalysisTagDetailByTaskIdResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAnalysisTagDetailByTaskId',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/listAnalysisTagDetailByTaskId',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.ListAnalysisTagDetailByTaskIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_analysis_tag_detail_by_task_id_with_options_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.ListAnalysisTagDetailByTaskIdRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.ListAnalysisTagDetailByTaskIdResponse:
+        """
+        @summary 获取挖掘分析结果明细列表
+        
+        @param request: ListAnalysisTagDetailByTaskIdRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAnalysisTagDetailByTaskIdResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAnalysisTagDetailByTaskId',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/listAnalysisTagDetailByTaskId',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.ListAnalysisTagDetailByTaskIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_analysis_tag_detail_by_task_id(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.ListAnalysisTagDetailByTaskIdRequest,
+    ) -> quan_miao_light_app_20240801_models.ListAnalysisTagDetailByTaskIdResponse:
+        """
+        @summary 获取挖掘分析结果明细列表
+        
+        @param request: ListAnalysisTagDetailByTaskIdRequest
+        @return: ListAnalysisTagDetailByTaskIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_analysis_tag_detail_by_task_id_with_options(workspace_id, request, headers, runtime)
+
+    async def list_analysis_tag_detail_by_task_id_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.ListAnalysisTagDetailByTaskIdRequest,
+    ) -> quan_miao_light_app_20240801_models.ListAnalysisTagDetailByTaskIdResponse:
+        """
+        @summary 获取挖掘分析结果明细列表
+        
+        @param request: ListAnalysisTagDetailByTaskIdRequest
+        @return: ListAnalysisTagDetailByTaskIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_analysis_tag_detail_by_task_id_with_options_async(workspace_id, request, headers, runtime)
+
     def list_hot_topic_summaries_with_options(
         self,
         workspace_id: str,
@@ -2689,6 +2805,8 @@ class Client(OpenApiClient):
             request.generate_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.generate_options, 'generateOptions', 'json')
         if not UtilClient.is_unset(tmp_req.text_process_tasks):
             request.text_process_tasks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.text_process_tasks, 'textProcessTasks', 'json')
+        if not UtilClient.is_unset(tmp_req.video_caption_info):
+            request.video_caption_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_caption_info, 'videoCaptionInfo', 'json')
         if not UtilClient.is_unset(tmp_req.video_roles):
             request.video_roles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_roles, 'videoRoles', 'json')
         body = {}
@@ -2718,6 +2836,8 @@ class Client(OpenApiClient):
             body['taskId'] = request.task_id
         if not UtilClient.is_unset(request.text_process_tasks_shrink):
             body['textProcessTasks'] = request.text_process_tasks_shrink
+        if not UtilClient.is_unset(request.video_caption_info_shrink):
+            body['videoCaptionInfo'] = request.video_caption_info_shrink
         if not UtilClient.is_unset(request.video_extra_info):
             body['videoExtraInfo'] = request.video_extra_info
         if not UtilClient.is_unset(request.video_model_custom_prompt_template):
@@ -2776,6 +2896,8 @@ class Client(OpenApiClient):
             request.generate_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.generate_options, 'generateOptions', 'json')
         if not UtilClient.is_unset(tmp_req.text_process_tasks):
             request.text_process_tasks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.text_process_tasks, 'textProcessTasks', 'json')
+        if not UtilClient.is_unset(tmp_req.video_caption_info):
+            request.video_caption_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_caption_info, 'videoCaptionInfo', 'json')
         if not UtilClient.is_unset(tmp_req.video_roles):
             request.video_roles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_roles, 'videoRoles', 'json')
         body = {}
@@ -2805,6 +2927,8 @@ class Client(OpenApiClient):
             body['taskId'] = request.task_id
         if not UtilClient.is_unset(request.text_process_tasks_shrink):
             body['textProcessTasks'] = request.text_process_tasks_shrink
+        if not UtilClient.is_unset(request.video_caption_info_shrink):
+            body['videoCaptionInfo'] = request.video_caption_info_shrink
         if not UtilClient.is_unset(request.video_extra_info):
             body['videoExtraInfo'] = request.video_extra_info
         if not UtilClient.is_unset(request.video_model_custom_prompt_template):
@@ -3205,6 +3329,8 @@ class Client(OpenApiClient):
             request.generate_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.generate_options, 'generateOptions', 'json')
         if not UtilClient.is_unset(tmp_req.text_process_tasks):
             request.text_process_tasks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.text_process_tasks, 'textProcessTasks', 'json')
+        if not UtilClient.is_unset(tmp_req.video_caption_info):
+            request.video_caption_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_caption_info, 'videoCaptionInfo', 'json')
         if not UtilClient.is_unset(tmp_req.video_roles):
             request.video_roles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_roles, 'videoRoles', 'json')
         body = {}
@@ -3232,6 +3358,8 @@ class Client(OpenApiClient):
             body['splitInterval'] = request.split_interval
         if not UtilClient.is_unset(request.text_process_tasks_shrink):
             body['textProcessTasks'] = request.text_process_tasks_shrink
+        if not UtilClient.is_unset(request.video_caption_info_shrink):
+            body['videoCaptionInfo'] = request.video_caption_info_shrink
         if not UtilClient.is_unset(request.video_extra_info):
             body['videoExtraInfo'] = request.video_extra_info
         if not UtilClient.is_unset(request.video_model_custom_prompt_template):
@@ -3290,6 +3418,8 @@ class Client(OpenApiClient):
             request.generate_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.generate_options, 'generateOptions', 'json')
         if not UtilClient.is_unset(tmp_req.text_process_tasks):
             request.text_process_tasks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.text_process_tasks, 'textProcessTasks', 'json')
+        if not UtilClient.is_unset(tmp_req.video_caption_info):
+            request.video_caption_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_caption_info, 'videoCaptionInfo', 'json')
         if not UtilClient.is_unset(tmp_req.video_roles):
             request.video_roles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_roles, 'videoRoles', 'json')
         body = {}
@@ -3317,6 +3447,8 @@ class Client(OpenApiClient):
             body['splitInterval'] = request.split_interval
         if not UtilClient.is_unset(request.text_process_tasks_shrink):
             body['textProcessTasks'] = request.text_process_tasks_shrink
+        if not UtilClient.is_unset(request.video_caption_info_shrink):
+            body['videoCaptionInfo'] = request.video_caption_info_shrink
         if not UtilClient.is_unset(request.video_extra_info):
             body['videoExtraInfo'] = request.video_extra_info
         if not UtilClient.is_unset(request.video_model_custom_prompt_template):
@@ -3486,3 +3618,115 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_video_analysis_config_with_options_async(workspace_id, request, headers, runtime)
+
+    def update_video_analysis_task_with_options(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.UpdateVideoAnalysisTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.UpdateVideoAnalysisTaskResponse:
+        """
+        @summary 视频理解-修改任务状态
+        
+        @param request: UpdateVideoAnalysisTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateVideoAnalysisTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['taskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_status):
+            body['taskStatus'] = request.task_status
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateVideoAnalysisTask',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/videoAnalysis/updateVideoAnalysisTask',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.UpdateVideoAnalysisTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_video_analysis_task_with_options_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.UpdateVideoAnalysisTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.UpdateVideoAnalysisTaskResponse:
+        """
+        @summary 视频理解-修改任务状态
+        
+        @param request: UpdateVideoAnalysisTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateVideoAnalysisTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['taskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_status):
+            body['taskStatus'] = request.task_status
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateVideoAnalysisTask',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/videoAnalysis/updateVideoAnalysisTask',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.UpdateVideoAnalysisTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_video_analysis_task(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.UpdateVideoAnalysisTaskRequest,
+    ) -> quan_miao_light_app_20240801_models.UpdateVideoAnalysisTaskResponse:
+        """
+        @summary 视频理解-修改任务状态
+        
+        @param request: UpdateVideoAnalysisTaskRequest
+        @return: UpdateVideoAnalysisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_video_analysis_task_with_options(workspace_id, request, headers, runtime)
+
+    async def update_video_analysis_task_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.UpdateVideoAnalysisTaskRequest,
+    ) -> quan_miao_light_app_20240801_models.UpdateVideoAnalysisTaskResponse:
+        """
+        @summary 视频理解-修改任务状态
+        
+        @param request: UpdateVideoAnalysisTaskRequest
+        @return: UpdateVideoAnalysisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_video_analysis_task_with_options_async(workspace_id, request, headers, runtime)

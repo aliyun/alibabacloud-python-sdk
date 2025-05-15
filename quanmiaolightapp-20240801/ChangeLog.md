@@ -1,3 +1,12 @@
+2025-05-15 Version: 2.8.0
+- Support API ListAnalysisTagDetailByTaskId.
+- Support API UpdateVideoAnalysisTask.
+- Update API GetVideoAnalysisTask: add response parameters Body.data.payload.output.videoCaptionResult.videoCaptions.$.speaker.
+- Update API RunVideoAnalysis: add request parameters videoCaptionInfo.
+- Update API RunVideoAnalysis: add response parameters Body.payload.output.videoCaptionResult.videoCaptions.$.speaker.
+- Update API SubmitVideoAnalysisTask: add request parameters videoCaptionInfo.
+
+
 2025-04-29 Version: 2.7.2
 - Generated python 2024-08-01 for QuanMiaoLightApp.
 
