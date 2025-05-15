@@ -2426,6 +2426,7 @@ class ListEvaluationMetadataRequest(TeaModel):
     def __init__(
         self,
         language: str = None,
+        lens_code: str = None,
         region_id: str = None,
     ):
         # The language. The information is returned in the specified language. Valid values:
@@ -2433,6 +2434,7 @@ class ListEvaluationMetadataRequest(TeaModel):
         # *   en: English
         # *   zh: Chinese
         self.language = language
+        self.lens_code = lens_code
         # The region ID.
         self.region_id = region_id
 
@@ -2447,6 +2449,8 @@ class ListEvaluationMetadataRequest(TeaModel):
         result = dict()
         if self.language is not None:
             result['Language'] = self.language
+        if self.lens_code is not None:
+            result['LensCode'] = self.lens_code
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         return result
@@ -2455,6 +2459,8 @@ class ListEvaluationMetadataRequest(TeaModel):
         m = m or dict()
         if m.get('Language') is not None:
             self.language = m.get('Language')
+        if m.get('LensCode') is not None:
+            self.lens_code = m.get('LensCode')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         return self
@@ -3303,6 +3309,7 @@ class ListEvaluationResultsRequest(TeaModel):
         self,
         account_id: int = None,
         filters: List[ListEvaluationResultsRequestFilters] = None,
+        lens_code: str = None,
         region_id: str = None,
         scope: str = None,
         snapshot_id: str = None,
@@ -3311,6 +3318,7 @@ class ListEvaluationResultsRequest(TeaModel):
         self.account_id = account_id
         # The filter conditions.
         self.filters = filters
+        self.lens_code = lens_code
         # The region ID.
         self.region_id = region_id
         self.scope = scope
@@ -3334,6 +3342,8 @@ class ListEvaluationResultsRequest(TeaModel):
         if self.filters is not None:
             for k in self.filters:
                 result['Filters'].append(k.to_map() if k else None)
+        if self.lens_code is not None:
+            result['LensCode'] = self.lens_code
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.scope is not None:
@@ -3351,6 +3361,8 @@ class ListEvaluationResultsRequest(TeaModel):
             for k in m.get('Filters'):
                 temp_model = ListEvaluationResultsRequestFilters()
                 self.filters.append(temp_model.from_map(k))
+        if m.get('LensCode') is not None:
+            self.lens_code = m.get('LensCode')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('Scope') is not None:
