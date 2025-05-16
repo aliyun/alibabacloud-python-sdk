@@ -1,3 +1,9 @@
+2025-05-16 Version: 7.0.4
+- Update API DescribeSnapshotLinks: add request parameters MaxResults.
+- Update API DescribeSnapshotLinks: add request parameters NextToken.
+- Update API DescribeSnapshotLinks: add response parameters Body.NextToken.
+
+
 2025-05-15 Version: 7.0.3
 - Update API CreateStorageSet: add request parameters Tag.
 - Update API DescribeStorageSets: add request parameters Tag.
