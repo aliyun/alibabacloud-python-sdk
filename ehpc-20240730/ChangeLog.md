@@ -1,3 +1,7 @@
+2025-05-16 Version: 2.1.0
+- Support API AttachNodes.
+
+
 2025-02-12 Version: 2.0.3
 - Update API CreateNodes: add param DeploymentSetId.
 - Update API CreateNodes: add param ReservedNodePoolId.

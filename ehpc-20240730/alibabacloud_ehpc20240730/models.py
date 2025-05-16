@@ -621,6 +621,220 @@ class SharedStorageTemplate(TeaModel):
         return self
 
 
+class AttachNodesRequestComputeNode(TeaModel):
+    def __init__(
+        self,
+        image_id: str = None,
+        instance_ids: List[str] = None,
+    ):
+        # The image ID. This image will be used to replace the original system disk image.
+        # 
+        # This parameter is required.
+        self.image_id = image_id
+        # The instance IDs.
+        # 
+        # This parameter is required.
+        self.instance_ids = instance_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        return self
+
+
+class AttachNodesRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        compute_node: AttachNodesRequestComputeNode = None,
+        queue_name: str = None,
+    ):
+        # The cluster ID.
+        # 
+        # This parameter is required.
+        self.cluster_id = cluster_id
+        # The compute node information.
+        # 
+        # This parameter is required.
+        self.compute_node = compute_node
+        # The name of the queue to which the instance is to be added.
+        self.queue_name = queue_name
+
+    def validate(self):
+        if self.compute_node:
+            self.compute_node.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.compute_node is not None:
+            result['ComputeNode'] = self.compute_node.to_map()
+        if self.queue_name is not None:
+            result['QueueName'] = self.queue_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('ComputeNode') is not None:
+            temp_model = AttachNodesRequestComputeNode()
+            self.compute_node = temp_model.from_map(m['ComputeNode'])
+        if m.get('QueueName') is not None:
+            self.queue_name = m.get('QueueName')
+        return self
+
+
+class AttachNodesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        compute_node_shrink: str = None,
+        queue_name: str = None,
+    ):
+        # The cluster ID.
+        # 
+        # This parameter is required.
+        self.cluster_id = cluster_id
+        # The compute node information.
+        # 
+        # This parameter is required.
+        self.compute_node_shrink = compute_node_shrink
+        # The name of the queue to which the instance is to be added.
+        self.queue_name = queue_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.compute_node_shrink is not None:
+            result['ComputeNode'] = self.compute_node_shrink
+        if self.queue_name is not None:
+            result['QueueName'] = self.queue_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('ComputeNode') is not None:
+            self.compute_node_shrink = m.get('ComputeNode')
+        if m.get('QueueName') is not None:
+            self.queue_name = m.get('QueueName')
+        return self
+
+
+class AttachNodesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether the request is successful.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class AttachNodesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AttachNodesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AttachNodesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AttachSharedStoragesRequestSharedStorages(TeaModel):
     def __init__(
         self,
@@ -1072,9 +1286,9 @@ class CreateClusterRequestManagerDNS(TeaModel):
     ):
         # The domain name resolution type.
         # 
-        # Valid values:
+        # Valid value:
         # 
-        # *   NIS: NIS.
+        # *   NIS
         self.type = type
         # The version of the domain name resolution service.
         self.version = version
@@ -1111,9 +1325,9 @@ class CreateClusterRequestManagerDirectoryService(TeaModel):
     ):
         # The type of the domain account.
         # 
-        # Valid values:
+        # Valid value:
         # 
-        # *   NIS: NIS.
+        # *   NIS
         self.type = type
         # The version of the domain account service.
         self.version = version
@@ -1193,7 +1407,7 @@ class CreateClusterRequestManager(TeaModel):
     ):
         # The configurations of the domain name resolution service.
         self.dns = dns
-        # The configurations of the directory service.
+        # The configurations of the domain account service.
         self.directory_service = directory_service
         # The hardware configurations of the management node.
         self.manager_node = manager_node
@@ -1354,7 +1568,7 @@ class CreateClusterRequest(TeaModel):
         self.max_core_count = max_core_count
         # The maximum number of compute nodes that the cluster can manage. Valid values: 0 to 5,000.
         self.max_count = max_count
-        # The configurations of the queues in the cluster. The number of queues can be 0 to 8.
+        # The queues in the cluster. The number of queues can be 0 to 8.
         self.queues = queues
         # The ID of the resource group to which the cluster belongs.
         # 
@@ -1364,7 +1578,7 @@ class CreateClusterRequest(TeaModel):
         # 
         # You can call the [DescribeSecurityGroups](https://help.aliyun.com/document_detail/25556.html) operation to query available security groups in the current region.
         self.security_group_id = security_group_id
-        # The configurations of shared storage in the cluster.
+        # The shared storage resources of the cluster.
         self.shared_storages = shared_storages
         # The tags of the cluster.
         self.tags = tags
@@ -1598,7 +1812,7 @@ class CreateClusterShrinkRequest(TeaModel):
         self.max_core_count = max_core_count
         # The maximum number of compute nodes that the cluster can manage. Valid values: 0 to 5,000.
         self.max_count = max_count
-        # The configurations of the queues in the cluster. The number of queues can be 0 to 8.
+        # The queues in the cluster. The number of queues can be 0 to 8.
         self.queues_shrink = queues_shrink
         # The ID of the resource group to which the cluster belongs.
         # 
@@ -1608,7 +1822,7 @@ class CreateClusterShrinkRequest(TeaModel):
         # 
         # You can call the [DescribeSecurityGroups](https://help.aliyun.com/document_detail/25556.html) operation to query available security groups in the current region.
         self.security_group_id = security_group_id
-        # The configurations of shared storage in the cluster.
+        # The shared storage resources of the cluster.
         self.shared_storages_shrink = shared_storages_shrink
         # The tags of the cluster.
         self.tags_shrink = tags_shrink
@@ -2175,6 +2389,7 @@ class CreateNodesRequest(TeaModel):
         # *   If the number of available ECS instances is larger than the MinCount value but smaller than the Count value, nodes are added based on the MinCount value.
         # *   If the number of available ECS instances is larger than the Count value, nodes are added based on the Count value.
         self.count = count
+        # Deployment set ID. You can obtain the deployment set ID through [DescribeDeploymentSets](https://help.aliyun.com/document_detail/91313.html). Currently, only deployment sets with a low network latency strategy are supported.
         self.deployment_set_id = deployment_set_id
         # The type of the network between compute nodes. Valid values:
         # 
@@ -2191,6 +2406,7 @@ class CreateNodesRequest(TeaModel):
         self.queue_name = queue_name
         # The Resource Access Management (RAM) role to be assumed by the added nodes.
         self.ram_role = ram_role
+        # Preset node pool ID.
         self.reserved_node_pool_id = reserved_node_pool_id
         # The ID of the vSwitch to be used by the added nodes.
         self.v_switch_id = v_switch_id
@@ -2289,6 +2505,7 @@ class CreateNodesShrinkRequest(TeaModel):
         # *   If the number of available ECS instances is larger than the MinCount value but smaller than the Count value, nodes are added based on the MinCount value.
         # *   If the number of available ECS instances is larger than the Count value, nodes are added based on the Count value.
         self.count = count
+        # Deployment set ID. You can obtain the deployment set ID through [DescribeDeploymentSets](https://help.aliyun.com/document_detail/91313.html). Currently, only deployment sets with a low network latency strategy are supported.
         self.deployment_set_id = deployment_set_id
         # The type of the network between compute nodes. Valid values:
         # 
@@ -2305,6 +2522,7 @@ class CreateNodesShrinkRequest(TeaModel):
         self.queue_name = queue_name
         # The Resource Access Management (RAM) role to be assumed by the added nodes.
         self.ram_role = ram_role
+        # Preset node pool ID.
         self.reserved_node_pool_id = reserved_node_pool_id
         # The ID of the vSwitch to be used by the added nodes.
         self.v_switch_id = v_switch_id
@@ -4660,7 +4878,7 @@ class GetAddonResponseBody(TeaModel):
         addon: GetAddonResponseBodyAddon = None,
         request_id: str = None,
     ):
-        # The details about the addon.
+        # The information about the addon.
         self.addon = addon
         # The request ID.
         self.request_id = request_id
@@ -5068,6 +5286,10 @@ class GetClusterResponseBodyMonitorSpec(TeaModel):
         self,
         enable_compute_load_monitor: bool = None,
     ):
+        # Indicates whether the monitoring component of compute nodes is enabled for the cluster. Valid values:
+        # 
+        # *   true
+        # *   false
         self.enable_compute_load_monitor = enable_compute_load_monitor
 
     def validate(self):
@@ -5095,6 +5317,10 @@ class GetClusterResponseBodySchedulerSpec(TeaModel):
         self,
         enable_topology_awareness: bool = None,
     ):
+        # Indicates whether the topology awareness feature is enabled for the cluster. Valid values:
+        # 
+        # *   true
+        # *   false
         self.enable_topology_awareness = enable_topology_awareness
 
     def validate(self):
@@ -5212,11 +5438,13 @@ class GetClusterResponseBody(TeaModel):
         self.max_core_count = max_core_count
         # The maximum number of compute nodes that the cluster can manage.
         self.max_count = max_count
+        # The monitoring details of the cluster.
         self.monitor_spec = monitor_spec
         # The request ID.
         self.request_id = request_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The scheduler specifications of the cluster.
         self.scheduler_spec = scheduler_spec
         # The security group ID.
         self.security_group_id = security_group_id
@@ -6405,6 +6633,7 @@ class GetQueueResponseBodyQueue(TeaModel):
         self.queue_name = queue_name
         # The Resource Access Management (RAM) role that is assumed by compute nodes in the queue.
         self.ram_role = ram_role
+        # Preset node pool ID.
         self.reserved_node_pool_id = reserved_node_pool_id
         # The available vSwitches for compute nodes in the queue. Valid values of N: 1 to 5.
         self.v_switch_ids = v_switch_ids
@@ -9825,8 +10054,11 @@ class ListJobsRequestJobFilterDiagnosis(TeaModel):
         option: str = None,
         threshold: str = None,
     ):
+        # Job diagnosis threshold comparator.
         self.operator = operator
+        # Job diagnosis and analysis metrics
         self.option = option
+        # Job diagnosis threshold.
         self.threshold = threshold
 
     def validate(self):
@@ -9931,6 +10163,7 @@ class ListJobsRequestJobFilter(TeaModel):
         self.create_time_end = create_time_end
         # The time when the job started. The value is a UNIX timestamp representing the number of seconds that have elapsed since 1970-01-01T00:00:00Z.
         self.create_time_start = create_time_start
+        # Job diagnosis and analysis list.
         self.diagnosis = diagnosis
         # The job name. Fuzzy match is supported.
         self.job_name = job_name
@@ -10191,9 +10424,13 @@ class ListJobsResponseBodyJobsJobSpecResourcesActualOccupied(TeaModel):
         memory: str = None,
         nodes: str = None,
     ):
+        # Number of CPU cores.
         self.cores = cores
+        # Number of CPUs
         self.gpus = gpus
+        # Number of memory.
         self.memory = memory
+        # Number of compute nodes.
         self.nodes = nodes
 
     def validate(self):
@@ -10273,9 +10510,11 @@ class ListJobsResponseBodyJobsJobSpec(TeaModel):
         self.priority = priority
         # The information about the resources required to run the job.
         self.resources = resources
+        # Actual resource usage of the job program
         self.resources_actual_occupied = resources_actual_occupied
         # The user that ran the job.
         self.runas_user = runas_user
+        # Job start time.
         self.start_time = start_time
         # The job state. Valid values: (PBS cluster and Slurm cluster)
         # 
@@ -12134,7 +12373,7 @@ class ListUsersRequest(TeaModel):
         self.page_number = page_number
         # The number of entries per page. Valid values: 1 to 50.
         # 
-        # Default value: 10
+        # Default value: 10.
         self.page_size = page_size
 
     def validate(self):
@@ -12818,9 +13057,12 @@ class UpdateClusterRequestClusterCustomConfiguration(TeaModel):
         args: str = None,
         script: str = None,
     ):
-        # The arguments that are used to run the post-processing script.
+        # Specifies whether to enable the monitoring component of compute nodes. Valid values:
+        # 
+        # *   true
+        # *   false
         self.args = args
-        # The URL that is used to download the post-processing script.
+        # The monitoring details of the cluster.
         self.script = script
 
     def validate(self):
@@ -12852,6 +13094,10 @@ class UpdateClusterRequestMonitorSpec(TeaModel):
         self,
         enable_compute_load_monitor: bool = None,
     ):
+        # Specifies whether to enable the monitoring component of compute nodes. Valid values:
+        # 
+        # *   true
+        # *   false
         self.enable_compute_load_monitor = enable_compute_load_monitor
 
     def validate(self):
@@ -12879,6 +13125,10 @@ class UpdateClusterRequestSchedulerSpec(TeaModel):
         self,
         enable_topology_awareness: bool = None,
     ):
+        # Specifies whether to enable the topology awareness feature. Valid values:
+        # 
+        # *   true
+        # *   false
         self.enable_topology_awareness = enable_topology_awareness
 
     def validate(self):
@@ -12919,44 +13169,45 @@ class UpdateClusterRequest(TeaModel):
         monitor_spec: UpdateClusterRequestMonitorSpec = None,
         scheduler_spec: UpdateClusterRequestSchedulerSpec = None,
     ):
-        # The client version. By default, the latest version is used.
-        self.client_version = client_version
-        # The post-processing script of the cluster.
-        self.cluster_custom_configuration = cluster_custom_configuration
-        # The cluster description. The description must be 1 to 128 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
-        self.cluster_description = cluster_description
-        # The cluster ID.
-        # 
-        # You can call the [ListClusters](https://help.aliyun.com/document_detail/87116.html) operation to query the cluster ID.
-        self.cluster_id = cluster_id
-        # The cluster name. The name must be 1 to 128 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
-        self.cluster_name = cluster_name
-        # Specifies whether to enable deletion protection for the cluster. Deletion protection decides whether the cluster can be deleted in the console or by calling the DeleteCluster operation. Valid values:
-        # 
-        # *   true
-        # *   false
-        # 
-        # Default value: false.
-        self.deletion_protection = deletion_protection
-        # Specifies whether to enable auto scale-in for the cluster. Valid values:
-        # 
-        # *   true
-        # *   false
-        self.enable_scale_in = enable_scale_in
         # Specifies whether to enable auto scale-out for the cluster. Valid values:
         # 
         # *   true
         # *   false
-        self.enable_scale_out = enable_scale_out
-        # The interval at which the cluster is automatically scaled out.
-        self.grow_interval = grow_interval
+        self.client_version = client_version
+        # Specifies whether to enable auto scale-in for the cluster. Valid values:
+        # 
+        # *   true
+        # *   false
+        self.cluster_custom_configuration = cluster_custom_configuration
+        # The URL that is used to download the post-processing script.
+        self.cluster_description = cluster_description
+        # The client version. By default, the latest version is used.
+        self.cluster_id = cluster_id
+        # The post-processing script of the cluster.
+        self.cluster_name = cluster_name
         # The idle duration of the compute nodes allowed by the cluster.
+        self.deletion_protection = deletion_protection
+        # The request result. Valid values:
+        # 
+        # *   true: The request was successful.
+        # *   false: The request failed.
+        self.enable_scale_in = enable_scale_in
+        # The response parameters.
+        self.enable_scale_out = enable_scale_out
+        # The scheduler specifications of the cluster.
+        self.grow_interval = grow_interval
+        # Specifies whether to enable the topology awareness feature. Valid values:
+        # 
+        # *   true
+        # *   false
         self.idle_interval = idle_interval
-        # The total maximum number of vCPUs for use by compute nodes in the cluster. Valid values: 0 to 100,000.
+        # The interval at which the cluster is automatically scaled out.
         self.max_core_count = max_core_count
-        # The maximum number of compute nodes that the cluster can manage. Valid values: 0 to 5,000.
+        # The arguments that are used to run the post-processing script.
         self.max_count = max_count
+        # The monitoring details of the cluster.
         self.monitor_spec = monitor_spec
+        # The scheduler specifications of the cluster.
         self.scheduler_spec = scheduler_spec
 
     def validate(self):
@@ -13057,44 +13308,45 @@ class UpdateClusterShrinkRequest(TeaModel):
         monitor_spec_shrink: str = None,
         scheduler_spec_shrink: str = None,
     ):
-        # The client version. By default, the latest version is used.
-        self.client_version = client_version
-        # The post-processing script of the cluster.
-        self.cluster_custom_configuration_shrink = cluster_custom_configuration_shrink
-        # The cluster description. The description must be 1 to 128 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
-        self.cluster_description = cluster_description
-        # The cluster ID.
-        # 
-        # You can call the [ListClusters](https://help.aliyun.com/document_detail/87116.html) operation to query the cluster ID.
-        self.cluster_id = cluster_id
-        # The cluster name. The name must be 1 to 128 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
-        self.cluster_name = cluster_name
-        # Specifies whether to enable deletion protection for the cluster. Deletion protection decides whether the cluster can be deleted in the console or by calling the DeleteCluster operation. Valid values:
-        # 
-        # *   true
-        # *   false
-        # 
-        # Default value: false.
-        self.deletion_protection = deletion_protection
-        # Specifies whether to enable auto scale-in for the cluster. Valid values:
-        # 
-        # *   true
-        # *   false
-        self.enable_scale_in = enable_scale_in
         # Specifies whether to enable auto scale-out for the cluster. Valid values:
         # 
         # *   true
         # *   false
-        self.enable_scale_out = enable_scale_out
-        # The interval at which the cluster is automatically scaled out.
-        self.grow_interval = grow_interval
+        self.client_version = client_version
+        # Specifies whether to enable auto scale-in for the cluster. Valid values:
+        # 
+        # *   true
+        # *   false
+        self.cluster_custom_configuration_shrink = cluster_custom_configuration_shrink
+        # The URL that is used to download the post-processing script.
+        self.cluster_description = cluster_description
+        # The client version. By default, the latest version is used.
+        self.cluster_id = cluster_id
+        # The post-processing script of the cluster.
+        self.cluster_name = cluster_name
         # The idle duration of the compute nodes allowed by the cluster.
+        self.deletion_protection = deletion_protection
+        # The request result. Valid values:
+        # 
+        # *   true: The request was successful.
+        # *   false: The request failed.
+        self.enable_scale_in = enable_scale_in
+        # The response parameters.
+        self.enable_scale_out = enable_scale_out
+        # The scheduler specifications of the cluster.
+        self.grow_interval = grow_interval
+        # Specifies whether to enable the topology awareness feature. Valid values:
+        # 
+        # *   true
+        # *   false
         self.idle_interval = idle_interval
-        # The total maximum number of vCPUs for use by compute nodes in the cluster. Valid values: 0 to 100,000.
+        # The interval at which the cluster is automatically scaled out.
         self.max_core_count = max_core_count
-        # The maximum number of compute nodes that the cluster can manage. Valid values: 0 to 5,000.
+        # The arguments that are used to run the post-processing script.
         self.max_count = max_count
+        # The monitoring details of the cluster.
         self.monitor_spec_shrink = monitor_spec_shrink
+        # The scheduler specifications of the cluster.
         self.scheduler_spec_shrink = scheduler_spec_shrink
 
     def validate(self):
@@ -13175,12 +13427,11 @@ class UpdateClusterResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
-        # The request result. Valid values:
-        # 
-        # *   true: The request was successful.
-        # *   false: The request failed.
+        # Request result, possible values: 
+        # - true: request succeeded 
+        # - false: request failed
         self.success = success
 
     def validate(self):
@@ -13473,10 +13724,10 @@ class UpdateQueueRequestQueue(TeaModel):
         self.enable_scale_in = enable_scale_in
         # Specifies whether to enable auto scale-out for the queue. Valid values:
         # 
-        # *   true
-        # *   false
+        # *   true: deletion protection is enabled.
+        # *   false: disables ASM.
         self.enable_scale_out = enable_scale_out
-        # The hostname prefix of the compute nodes in the queue.
+        # The hostname prefix of the added compute nodes.
         self.hostname_prefix = hostname_prefix
         # The hostname suffix of the compute nodes in the queue.
         self.hostname_suffix = hostname_suffix
