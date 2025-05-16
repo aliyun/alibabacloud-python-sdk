@@ -1,3 +1,6 @@
+2025-05-16 Version: 1.10.1
+- Generated python 2023-08-08 for emr-serverless-spark.
+
 2025-05-06 Version: 1.10.0
 - Support API CreateSessionCluster.
 - Support API CreateWorkspace.
