@@ -1913,6 +1913,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_exchange_rate_with_options_async(request, runtime)
 
+    def query_export_domain_expire_snatchs_with_options(
+        self,
+        request: domain_20180208_models.QueryExportDomainExpireSnatchsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180208_models.QueryExportDomainExpireSnatchsResponse:
+        """
+        @summary 查询导出的抢注域名
+        
+        @param request: QueryExportDomainExpireSnatchsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryExportDomainExpireSnatchsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_id):
+            query['CurrentId'] = request.current_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryExportDomainExpireSnatchs',
+            version='2018-02-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180208_models.QueryExportDomainExpireSnatchsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_export_domain_expire_snatchs_with_options_async(
+        self,
+        request: domain_20180208_models.QueryExportDomainExpireSnatchsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180208_models.QueryExportDomainExpireSnatchsResponse:
+        """
+        @summary 查询导出的抢注域名
+        
+        @param request: QueryExportDomainExpireSnatchsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryExportDomainExpireSnatchsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_id):
+            query['CurrentId'] = request.current_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryExportDomainExpireSnatchs',
+            version='2018-02-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180208_models.QueryExportDomainExpireSnatchsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_export_domain_expire_snatchs(
+        self,
+        request: domain_20180208_models.QueryExportDomainExpireSnatchsRequest,
+    ) -> domain_20180208_models.QueryExportDomainExpireSnatchsResponse:
+        """
+        @summary 查询导出的抢注域名
+        
+        @param request: QueryExportDomainExpireSnatchsRequest
+        @return: QueryExportDomainExpireSnatchsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_export_domain_expire_snatchs_with_options(request, runtime)
+
+    async def query_export_domain_expire_snatchs_async(
+        self,
+        request: domain_20180208_models.QueryExportDomainExpireSnatchsRequest,
+    ) -> domain_20180208_models.QueryExportDomainExpireSnatchsResponse:
+        """
+        @summary 查询导出的抢注域名
+        
+        @param request: QueryExportDomainExpireSnatchsRequest
+        @return: QueryExportDomainExpireSnatchsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_export_domain_expire_snatchs_with_options_async(request, runtime)
+
     def query_purchased_domains_with_options(
         self,
         request: domain_20180208_models.QueryPurchasedDomainsRequest,

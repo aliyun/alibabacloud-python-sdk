@@ -1,3 +1,7 @@
+2025-05-16 Version: 1.4.0
+- Support API QueryExportDomainExpireSnatchs.
+
+
 2024-12-31 Version: 1.3.1
 - Update API CreateFixedPriceSelectedOrder: update response param.
 
