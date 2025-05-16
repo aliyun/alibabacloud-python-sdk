@@ -755,6 +755,142 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_code_source_with_options_async(request, headers, runtime)
 
+    def create_connection_with_options(
+        self,
+        request: aiwork_space_20210204_models.CreateConnectionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.CreateConnectionResponse:
+        """
+        @summary 创建连接
+        
+        @param request: CreateConnectionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateConnectionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.accessibility):
+            body['Accessibility'] = request.accessibility
+        if not UtilClient.is_unset(request.configs):
+            body['Configs'] = request.configs
+        if not UtilClient.is_unset(request.connection_name):
+            body['ConnectionName'] = request.connection_name
+        if not UtilClient.is_unset(request.connection_type):
+            body['ConnectionType'] = request.connection_type
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.models):
+            body['Models'] = request.models
+        if not UtilClient.is_unset(request.resource_meta):
+            body['ResourceMeta'] = request.resource_meta
+        if not UtilClient.is_unset(request.secrets):
+            body['Secrets'] = request.secrets
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateConnection',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/connections',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.CreateConnectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_connection_with_options_async(
+        self,
+        request: aiwork_space_20210204_models.CreateConnectionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.CreateConnectionResponse:
+        """
+        @summary 创建连接
+        
+        @param request: CreateConnectionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateConnectionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.accessibility):
+            body['Accessibility'] = request.accessibility
+        if not UtilClient.is_unset(request.configs):
+            body['Configs'] = request.configs
+        if not UtilClient.is_unset(request.connection_name):
+            body['ConnectionName'] = request.connection_name
+        if not UtilClient.is_unset(request.connection_type):
+            body['ConnectionType'] = request.connection_type
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.models):
+            body['Models'] = request.models
+        if not UtilClient.is_unset(request.resource_meta):
+            body['ResourceMeta'] = request.resource_meta
+        if not UtilClient.is_unset(request.secrets):
+            body['Secrets'] = request.secrets
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateConnection',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/connections',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.CreateConnectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_connection(
+        self,
+        request: aiwork_space_20210204_models.CreateConnectionRequest,
+    ) -> aiwork_space_20210204_models.CreateConnectionResponse:
+        """
+        @summary 创建连接
+        
+        @param request: CreateConnectionRequest
+        @return: CreateConnectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_connection_with_options(request, headers, runtime)
+
+    async def create_connection_async(
+        self,
+        request: aiwork_space_20210204_models.CreateConnectionRequest,
+    ) -> aiwork_space_20210204_models.CreateConnectionResponse:
+        """
+        @summary 创建连接
+        
+        @param request: CreateConnectionRequest
+        @return: CreateConnectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_connection_with_options_async(request, headers, runtime)
+
     def create_dataset_with_options(
         self,
         request: aiwork_space_20210204_models.CreateDatasetRequest,
@@ -3129,6 +3265,96 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_config_with_options_async(workspace_id, config_key, request, headers, runtime)
 
+    def delete_connection_with_options(
+        self,
+        connection_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.DeleteConnectionResponse:
+        """
+        @summary Deletes a connection.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConnectionResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteConnection',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/connections/{OpenApiUtilClient.get_encode_param(connection_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.DeleteConnectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_connection_with_options_async(
+        self,
+        connection_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.DeleteConnectionResponse:
+        """
+        @summary Deletes a connection.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConnectionResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteConnection',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/connections/{OpenApiUtilClient.get_encode_param(connection_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.DeleteConnectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_connection(
+        self,
+        connection_id: str,
+    ) -> aiwork_space_20210204_models.DeleteConnectionResponse:
+        """
+        @summary Deletes a connection.
+        
+        @return: DeleteConnectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_connection_with_options(connection_id, headers, runtime)
+
+    async def delete_connection_async(
+        self,
+        connection_id: str,
+    ) -> aiwork_space_20210204_models.DeleteConnectionResponse:
+        """
+        @summary Deletes a connection.
+        
+        @return: DeleteConnectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_connection_with_options_async(connection_id, headers, runtime)
+
     def delete_dataset_with_options(
         self,
         dataset_id: str,
@@ -5271,6 +5497,114 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_config_with_options_async(workspace_id, request, headers, runtime)
 
+    def get_connection_with_options(
+        self,
+        connection_id: str,
+        request: aiwork_space_20210204_models.GetConnectionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.GetConnectionResponse:
+        """
+        @summary 获取连接
+        
+        @param request: GetConnectionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConnectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.encrypt_option):
+            query['EncryptOption'] = request.encrypt_option
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetConnection',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/connections/{OpenApiUtilClient.get_encode_param(connection_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.GetConnectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_connection_with_options_async(
+        self,
+        connection_id: str,
+        request: aiwork_space_20210204_models.GetConnectionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.GetConnectionResponse:
+        """
+        @summary 获取连接
+        
+        @param request: GetConnectionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConnectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.encrypt_option):
+            query['EncryptOption'] = request.encrypt_option
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetConnection',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/connections/{OpenApiUtilClient.get_encode_param(connection_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.GetConnectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_connection(
+        self,
+        connection_id: str,
+        request: aiwork_space_20210204_models.GetConnectionRequest,
+    ) -> aiwork_space_20210204_models.GetConnectionResponse:
+        """
+        @summary 获取连接
+        
+        @param request: GetConnectionRequest
+        @return: GetConnectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_connection_with_options(connection_id, request, headers, runtime)
+
+    async def get_connection_async(
+        self,
+        connection_id: str,
+        request: aiwork_space_20210204_models.GetConnectionRequest,
+    ) -> aiwork_space_20210204_models.GetConnectionResponse:
+        """
+        @summary 获取连接
+        
+        @param request: GetConnectionRequest
+        @return: GetConnectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_connection_with_options_async(connection_id, request, headers, runtime)
+
     def get_dataset_with_options(
         self,
         dataset_id: str,
@@ -7130,6 +7464,170 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_configs_with_options_async(workspace_id, request, headers, runtime)
+
+    def list_connections_with_options(
+        self,
+        tmp_req: aiwork_space_20210204_models.ListConnectionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.ListConnectionsResponse:
+        """
+        @summary Lists connections.
+        
+        @param tmp_req: ListConnectionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConnectionsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aiwork_space_20210204_models.ListConnectionsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.connection_ids):
+            request.connection_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.connection_ids, 'ConnectionIds', 'simple')
+        if not UtilClient.is_unset(tmp_req.connection_types):
+            request.connection_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.connection_types, 'ConnectionTypes', 'simple')
+        if not UtilClient.is_unset(tmp_req.model_types):
+            request.model_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.model_types, 'ModelTypes', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.connection_ids_shrink):
+            query['ConnectionIds'] = request.connection_ids_shrink
+        if not UtilClient.is_unset(request.connection_name):
+            query['ConnectionName'] = request.connection_name
+        if not UtilClient.is_unset(request.connection_types_shrink):
+            query['ConnectionTypes'] = request.connection_types_shrink
+        if not UtilClient.is_unset(request.encrypt_option):
+            query['EncryptOption'] = request.encrypt_option
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.model):
+            query['Model'] = request.model
+        if not UtilClient.is_unset(request.model_types_shrink):
+            query['ModelTypes'] = request.model_types_shrink
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.tool_call):
+            query['ToolCall'] = request.tool_call
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListConnections',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/connections',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.ListConnectionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_connections_with_options_async(
+        self,
+        tmp_req: aiwork_space_20210204_models.ListConnectionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.ListConnectionsResponse:
+        """
+        @summary Lists connections.
+        
+        @param tmp_req: ListConnectionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConnectionsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aiwork_space_20210204_models.ListConnectionsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.connection_ids):
+            request.connection_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.connection_ids, 'ConnectionIds', 'simple')
+        if not UtilClient.is_unset(tmp_req.connection_types):
+            request.connection_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.connection_types, 'ConnectionTypes', 'simple')
+        if not UtilClient.is_unset(tmp_req.model_types):
+            request.model_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.model_types, 'ModelTypes', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.connection_ids_shrink):
+            query['ConnectionIds'] = request.connection_ids_shrink
+        if not UtilClient.is_unset(request.connection_name):
+            query['ConnectionName'] = request.connection_name
+        if not UtilClient.is_unset(request.connection_types_shrink):
+            query['ConnectionTypes'] = request.connection_types_shrink
+        if not UtilClient.is_unset(request.encrypt_option):
+            query['EncryptOption'] = request.encrypt_option
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.model):
+            query['Model'] = request.model
+        if not UtilClient.is_unset(request.model_types_shrink):
+            query['ModelTypes'] = request.model_types_shrink
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.tool_call):
+            query['ToolCall'] = request.tool_call
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListConnections',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/connections',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.ListConnectionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_connections(
+        self,
+        request: aiwork_space_20210204_models.ListConnectionsRequest,
+    ) -> aiwork_space_20210204_models.ListConnectionsResponse:
+        """
+        @summary Lists connections.
+        
+        @param request: ListConnectionsRequest
+        @return: ListConnectionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_connections_with_options(request, headers, runtime)
+
+    async def list_connections_async(
+        self,
+        request: aiwork_space_20210204_models.ListConnectionsRequest,
+    ) -> aiwork_space_20210204_models.ListConnectionsResponse:
+        """
+        @summary Lists connections.
+        
+        @param request: ListConnectionsRequest
+        @return: ListConnectionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_connections_with_options_async(request, headers, runtime)
 
     def list_dataset_file_metas_with_options(
         self,
@@ -11196,6 +11694,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_configs_with_options_async(workspace_id, request, headers, runtime)
+
+    def update_connection_with_options(
+        self,
+        connection_id: str,
+        request: aiwork_space_20210204_models.UpdateConnectionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.UpdateConnectionResponse:
+        """
+        @summary Updates a connection.
+        
+        @param request: UpdateConnectionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateConnectionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.configs):
+            body['Configs'] = request.configs
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.models):
+            body['Models'] = request.models
+        if not UtilClient.is_unset(request.secrets):
+            body['Secrets'] = request.secrets
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateConnection',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/connections/{OpenApiUtilClient.get_encode_param(connection_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.UpdateConnectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_connection_with_options_async(
+        self,
+        connection_id: str,
+        request: aiwork_space_20210204_models.UpdateConnectionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.UpdateConnectionResponse:
+        """
+        @summary Updates a connection.
+        
+        @param request: UpdateConnectionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateConnectionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.configs):
+            body['Configs'] = request.configs
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.models):
+            body['Models'] = request.models
+        if not UtilClient.is_unset(request.secrets):
+            body['Secrets'] = request.secrets
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateConnection',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/connections/{OpenApiUtilClient.get_encode_param(connection_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.UpdateConnectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_connection(
+        self,
+        connection_id: str,
+        request: aiwork_space_20210204_models.UpdateConnectionRequest,
+    ) -> aiwork_space_20210204_models.UpdateConnectionResponse:
+        """
+        @summary Updates a connection.
+        
+        @param request: UpdateConnectionRequest
+        @return: UpdateConnectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_connection_with_options(connection_id, request, headers, runtime)
+
+    async def update_connection_async(
+        self,
+        connection_id: str,
+        request: aiwork_space_20210204_models.UpdateConnectionRequest,
+    ) -> aiwork_space_20210204_models.UpdateConnectionResponse:
+        """
+        @summary Updates a connection.
+        
+        @param request: UpdateConnectionRequest
+        @return: UpdateConnectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_connection_with_options_async(connection_id, request, headers, runtime)
 
     def update_dataset_with_options(
         self,

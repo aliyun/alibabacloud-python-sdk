@@ -1,3 +1,11 @@
+2025-05-16 Version: 6.4.0
+- Support API CreateConnection.
+- Support API DeleteConnection.
+- Support API GetConnection.
+- Support API ListConnections.
+- Support API UpdateConnection.
+
+
 2025-05-15 Version: 6.3.2
 - Update API DeleteUserConfig: add request parameters Scope.
 

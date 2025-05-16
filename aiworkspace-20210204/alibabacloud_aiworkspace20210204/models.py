@@ -3405,6 +3405,246 @@ class CreateCodeSourceResponse(TeaModel):
         return self
 
 
+class CreateConnectionRequestModels(TeaModel):
+    def __init__(
+        self,
+        display_name: str = None,
+        model: str = None,
+        model_type: str = None,
+        tool_call: bool = None,
+    ):
+        self.display_name = display_name
+        self.model = model
+        self.model_type = model_type
+        self.tool_call = tool_call
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.model_type is not None:
+            result['ModelType'] = self.model_type
+        if self.tool_call is not None:
+            result['ToolCall'] = self.tool_call
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('ModelType') is not None:
+            self.model_type = m.get('ModelType')
+        if m.get('ToolCall') is not None:
+            self.tool_call = m.get('ToolCall')
+        return self
+
+
+class CreateConnectionRequestResourceMeta(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        instance_name: str = None,
+    ):
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        return self
+
+
+class CreateConnectionRequest(TeaModel):
+    def __init__(
+        self,
+        accessibility: str = None,
+        configs: Dict[str, str] = None,
+        connection_name: str = None,
+        connection_type: str = None,
+        description: str = None,
+        models: List[CreateConnectionRequestModels] = None,
+        resource_meta: CreateConnectionRequestResourceMeta = None,
+        secrets: Dict[str, str] = None,
+        workspace_id: str = None,
+    ):
+        self.accessibility = accessibility
+        # This parameter is required.
+        self.configs = configs
+        # This parameter is required.
+        self.connection_name = connection_name
+        self.connection_type = connection_type
+        self.description = description
+        self.models = models
+        self.resource_meta = resource_meta
+        self.secrets = secrets
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        if self.models:
+            for k in self.models:
+                if k:
+                    k.validate()
+        if self.resource_meta:
+            self.resource_meta.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accessibility is not None:
+            result['Accessibility'] = self.accessibility
+        if self.configs is not None:
+            result['Configs'] = self.configs
+        if self.connection_name is not None:
+            result['ConnectionName'] = self.connection_name
+        if self.connection_type is not None:
+            result['ConnectionType'] = self.connection_type
+        if self.description is not None:
+            result['Description'] = self.description
+        result['Models'] = []
+        if self.models is not None:
+            for k in self.models:
+                result['Models'].append(k.to_map() if k else None)
+        if self.resource_meta is not None:
+            result['ResourceMeta'] = self.resource_meta.to_map()
+        if self.secrets is not None:
+            result['Secrets'] = self.secrets
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Accessibility') is not None:
+            self.accessibility = m.get('Accessibility')
+        if m.get('Configs') is not None:
+            self.configs = m.get('Configs')
+        if m.get('ConnectionName') is not None:
+            self.connection_name = m.get('ConnectionName')
+        if m.get('ConnectionType') is not None:
+            self.connection_type = m.get('ConnectionType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        self.models = []
+        if m.get('Models') is not None:
+            for k in m.get('Models'):
+                temp_model = CreateConnectionRequestModels()
+                self.models.append(temp_model.from_map(k))
+        if m.get('ResourceMeta') is not None:
+            temp_model = CreateConnectionRequestResourceMeta()
+            self.resource_meta = temp_model.from_map(m['ResourceMeta'])
+        if m.get('Secrets') is not None:
+            self.secrets = m.get('Secrets')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class CreateConnectionResponseBody(TeaModel):
+    def __init__(
+        self,
+        connection_id: str = None,
+        request_id: str = None,
+    ):
+        self.connection_id = connection_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connection_id is not None:
+            result['ConnectionId'] = self.connection_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectionId') is not None:
+            self.connection_id = m.get('ConnectionId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateConnectionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateConnectionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateConnectionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateDatasetRequest(TeaModel):
     def __init__(
         self,
@@ -3432,16 +3672,16 @@ class CreateDatasetRequest(TeaModel):
         version_labels: List[Label] = None,
         workspace_id: str = None,
     ):
-        # The visibility of the workspace. Valid values:
+        # The workspace accessibility. Valid values:
         # 
-        # *   PRIVATE (default): The workspace is visible only to you and the administrator of the workspace.
-        # *   PUBLIC: The workspace is visible to all users.
+        # *   PRIVATE: The workspace is accessible only to you and the administrator of the workspace. This is the default value.
+        # *   PUBLIC: The workspace is accessible to all users.
         self.accessibility = accessibility
         # The number of dataset files.
         self.data_count = data_count
         # The size of the dataset file. Unit: bytes.
         self.data_size = data_size
-        # The type of the data source. Valid values:
+        # The data source type. Valid values:
         # 
         # *   OSS: Object Storage Service (OSS).
         # *   NAS: File Storage NAS (NAS).
@@ -3463,41 +3703,41 @@ class CreateDatasetRequest(TeaModel):
         # **OSS**\
         # 
         # {\\
-        # "region": "${region}",// The region ID\\
-        # "bucket": "${bucket}",//The bucket name\\
-        # "path": "${path}" // The file path\\
+        # "region": "${region}",// The region ID.\\
+        # "bucket": "${bucket}",//The bucket name.\\
+        # "path": "${path}" // The file path.\\
         # }\\
         # 
         # 
         # **NAS**\
         # 
         # {\\
-        # "region": "${region}",// The region ID\\
-        # "fileSystemId": "${file_system_id}", // The file system ID\\
-        # "path": "${path}", // The file system path\\
-        # "mountTarget": "${mount_target}" // The mount point of the file system\\
+        # "region": "${region}",// The region ID.\\
+        # "fileSystemId": "${file_system_id}", // The file system ID.\\
+        # "path": "${path}", // The file system path.\\
+        # "mountTarget": "${mount_target}" // The mount point of the file system.\\
         # }\\
         # 
         # 
         # **CPFS**\
         # 
         # {\\
-        # "region": "${region}",// The region ID\\
-        # "fileSystemId": "${file_system_id}", // The file system ID\\
-        # "protocolServiceId":"${protocol_service_id}", // The file system protocol service\\
-        # "exportId": "${export_id}", // The file system export directory\\
-        # "path": "${path}", // The file system path\\
+        # "region": "${region}",// The region ID.\\
+        # "fileSystemId": "${file_system_id}", // The file system ID.\\
+        # "protocolServiceId":"${protocol_service_id}", // The file system protocol service.\\
+        # "exportId": "${export_id}", // The file system export directory.\\
+        # "path": "${path}", // The file system path.\\
         # }\\
         # 
         # 
         # **CPFS for Lingjun**\
         # 
         # {\\
-        # "region": "${region}",// The region ID\\
-        # "fileSystemId": "${file_system_id}", // The file system ID\\
-        # "path": "${path}", // The file system path\\
-        # "mountTarget": "${mount_target}" // The mount point of the file system, CPFS for Lingjun only\\
-        # "isVpcMount": boolean, // Whether the mount point is a virtual private cloud (VPC) mount point, CPFS for Lingjun only\\
+        # "region": "${region}",// The region ID.\\
+        # "fileSystemId": "${file_system_id}", // The file system ID.\\
+        # "path": "${path}", // The file system path.\\
+        # "mountTarget": "${mount_target}" // The mount point of the file system, CPFS for Lingjun only.\\
+        # "isVpcMount": boolean, // Whether the mount point is a virtual private cloud (VPC) mount point, CPFS for Lingjun only.\\
         # }\\
         self.import_info = import_info
         # The tags.
@@ -3532,26 +3772,28 @@ class CreateDatasetRequest(TeaModel):
         # *   Ecs (default)
         # *   Lingjun
         self.provider_type = provider_type
-        # The ID of the source dataset of the labeled dataset.
+        # The ID of the source dataset for the labeled dataset.
         self.source_dataset_id = source_dataset_id
-        # The version of the source dataset of the labeled dataset.
+        # The version of the source dataset for the labeled dataset.
         self.source_dataset_version = source_dataset_version
-        # The ID of the data source.
+        # The data source ID.
         # 
-        # *   If SourceType is set to USER, the value of SourceId can be a custom string.
+        # *   If SourceType is set to USER, the value of SourceId is a custom string.
         # *   If SourceType is set to ITAG, the value of SourceId is the ID of the labeling job of iTAG.
-        # *   If SourceType is set to PAI_PUBLIC_DATASET, the value of SourceId is empty by default.
+        # *   If SourceType is set to PAI_PUBLIC_DATASET, SourceId is empty by default.
         self.source_id = source_id
-        # The type of the data source. Default value: USER. Valid values:
+        # The type of the data source. Default value: USER.
         # 
-        # *   PAI-PUBLIC-DATASET: a public dataset of Platform for AI (PAI).
+        # Valid values:
+        # 
+        # *   PAI_PUBLIC_DATASET: a public dataset of PAI.
         # *   ITAG: a dataset generated from a labeling job of iTAG.
         # *   USER: a dataset registered by a user.
         self.source_type = source_type
         # The URI of the data source.
         # 
-        # *   Value format when DataSourceType is set to OSS: `oss://bucket.endpoint/object`.
-        # *   Value formats when DataSourceType is set to NAS: General-purpose NAS: `nas://<nasfisid>.region/subpath/to/dir/`. CPFS 1.0: `nas://<cpfs-fsid>.region/subpath/to/dir/`. CPFS 2.0: `nas://<cpfs-fsid>.region/<protocolserviceid>/`. You can distinguish CPFS 1.0 and CPFS 2.0 file systems based on the format of the file system ID: The ID for CPFS 1.0 is in the cpfs-<8-bit ASCII characters> format. The ID for CPFS 2.0 is in the cpfs-<16-bit ASCII characters> format.
+        # *   Value format if DataSourceType is set to OSS: `oss://bucket.endpoint/object`.
+        # *   Value formats if DataSourceType is set to NAS: General-purpose NAS: `nas://<nasfisid>.region/subpath/to/dir/`. CPFS 1.0: `nas://<cpfs-fsid>.region/subpath/to/dir/`. CPFS 2.0: `nas://<cpfs-fsid>.region/<protocolserviceid>/`. You can distinguish CPFS 1.0 and CPFS 2.0 file systems based on the format of the file system ID: The ID for CPFS 1.0 is in the cpfs-<8-bit ASCII characters> format. The ID for CPFS 2.0 is in the cpfs-<16-bit ASCII characters> format.
         # 
         # This parameter is required.
         self.uri = uri
@@ -5390,13 +5632,13 @@ class CreateModelVersionRequest(TeaModel):
         # *   Approved
         # *   Rejected
         self.approval_status = approval_status
-        # Compression Configuration
+        # The compression configuration.
         self.compression_spec = compression_spec
-        # Evaluation Configuration
+        # The evaluation configuration.
         self.evaluation_spec = evaluation_spec
-        # Other information.
+        # The additional information.
         self.extra_info = extra_info
-        # The format of the model. Valid values:
+        # The model format. Valid values:
         # 
         # *   OfflineModel
         # *   SavedModel
@@ -5409,9 +5651,9 @@ class CreateModelVersionRequest(TeaModel):
         # *   AlinkModel
         # *   ONNX
         self.format_type = format_type
-        # The framework of the model. Valid values:
+        # The model framework. Valid values:
         # 
-        # *   Pytorch 
+        # *   Pytorch
         # *   XGBoost
         # *   Keras
         # *   Caffe
@@ -5419,48 +5661,48 @@ class CreateModelVersionRequest(TeaModel):
         # *   Xflow
         # *   TensorFlow
         self.framework_type = framework_type
-        # Describes how to apply to downstream inference services. For example, describes the processor and container of EAS. Example: `{ "processor": "tensorflow_gpu_1.12" }`
+        # Describes how to apply to downstream inference services. For example, describe the processor and container of EAS. Example: `{ "processor": "tensorflow_gpu_1.12" }`
         self.inference_spec = inference_spec
-        # The tags.
+        # The labels.
         self.labels = labels
         # The metrics for the model. The length after serialization is limited to 8,192.
         self.metrics = metrics
         # The extended field. This is a JSON string.
         self.options = options
-        # The source ID.
+        # The ID of the model source.
         # 
-        # *   If the source type is Custom, this field is not limited.
-        # *   If the source is PAIFlow or TrainingService, the format is:
+        # *   If SourceType is set to Custom, this parameter is not limited.
+        # *   If SourceType is set to PAIFlow or TrainingService, the ID of the model source is in the following format:
         # 
         # <!---->
         # 
         #     region=<region_id>,workspaceId=<workspace_id>,kind=<kind>,id=<id>
         # 
-        # Where,
+        # Take note of the following parameters:
         # 
-        # *   region is the region ID.
-        # *   workspaceId is the ID of the workspace.
-        # *   kind is the type. Valid values: PipelineRun (PAIFlow) and ServiceJob (training service).
-        # *   id: a unique identifier.
+        # *   region indicates the region ID.
+        # *   workspaceId indicates the workspace ID.
+        # *   kind indicates the type. Valid values: PipelineRun (PAIFlow) and ServiceJob (training service).
+        # *   id indicates the unique identifier.
         self.source_id = source_id
         # The type of the model source. Valid values:
         # 
         # *   Custom (default)
         # *   PAIFlow
-        # *   TrainingService: PAI training service.
+        # *   TrainingService: the Platform for AI (PAI) training service.
         self.source_type = source_type
-        # The training configurations. Used for fine-tuning and incremental training.
+        # The training configurations, which is used for fine-tuning and incremental training.
         self.training_spec = training_spec
         # The URI of the model version, which is the location where the model is stored. Valid values:
         # 
         # *   The HTTP(S) address of the model. Example: `https://myweb.com/mymodel.tar.gz`.
-        # *   The OSS path of the model, in the format of `oss://<bucket>.<endpoint>/object`. For endpoint, see [OSS regions and endpoints](https://help.aliyun.com/document_detail/31837.html). Example: `oss://mybucket.oss-cn-beijing.aliyuncs.com/mypath/`.
+        # *   The OSS path of the model, in the format of `oss://<bucket>.<endpoint>/object`. For information about endpoints, see [OSS regions and endpoints](https://help.aliyun.com/document_detail/31837.html). Example: `oss://mybucket.oss-cn-beijing.aliyuncs.com/mypath/`.
         # 
         # This parameter is required.
         self.uri = uri
-        # The version descriptions.
+        # The version description.
         self.version_description = version_description
-        # The model version, which is unique for each model. If left empty, the first version is **0.1.0** by default. After that, the version number is increased by 1 in sequence. For example, the second version number is **0.2.0**. A version number consists of a major version number, a minor version number, and a stage version number, separated by periods (.). Among them: the major version number and minor version number are numeric. The stage version number begins with a digit and can include numbers, underscores, and letters. For example, the version number is 1.1.0 or 2.3.4_beta.
+        # The model version, which is unique for each model. If you leave this parameter empty, the first version is **0.1.0** by default. After that, the minor version number is increased by 1 in sequence. For example, the second version number is **0.2.0**. A version number consists of a major version number, a minor version number, and a stage version number, separated by periods (.). The major version number and minor version number are numeric. The stage version number begins with a digit and can include numbers, underscores, and letters. For example, the version number is 1.1.0 or 2.3.4_beta.
         self.version_name = version_name
 
     def validate(self):
@@ -6758,12 +7000,13 @@ class DeleteConfigRequest(TeaModel):
         category_name: str = None,
         labels: str = None,
     ):
-        # The category of the configuration item. Supported categories:
+        # The category of the configuration item. Valid values:
         # 
         # *   CommonResourceConfig
         # *   DLCAutoRecycle - DLCPriorityConfig
         # *   DSWPriorityConfig
         # *   QuotaMaximumDuration
+        # *   CommonTagConfig
         self.category_name = category_name
         # The filter conditions. Separate multiple conditions with commas (,). The conditions have an AND relationship.
         self.labels = labels
@@ -6857,6 +7100,75 @@ class DeleteConfigResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteConnectionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteConnectionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteConnectionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteConnectionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8225,6 +8537,7 @@ class DeleteUserConfigRequest(TeaModel):
     ):
         # The configuration item keys. Currently, only customizePAIAssumedRole.
         self.config_key = config_key
+        # The scope. Valid values: subUser and owner.
         self.scope = scope
 
     def validate(self):
@@ -8714,20 +9027,22 @@ class GetConfigRequest(TeaModel):
         config_key: str = None,
         verbose: str = None,
     ):
-        # The category of the configuration item. Supported categories:
+        # The category of the configuration item. Valid values:
         # 
         # *   CommonResourceConfig
         # *   DLCAutoRecycle
         # *   DLCPriorityConfig
         # *   DSWPriorityConfig
         # *   QuotaMaximumDuration
+        # *   CommonTagConfig
         self.category_name = category_name
-        # The key of the configuration item. Supported keys:
+        # The key of the configuration item. Valid values:
         # 
         # *   tempStoragePath: Temporary storage path. This key can be used only when CategoryName is set to CommonResourceConfig.
         # *   isAutoRecycle: Automatic recycle configuration. This key can be used only when CategoryName is set to DLCAutoRecycle.
         # *   priorityConfig: Priority configuration. This key can be used only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
-        # *   quotaMaximumDuration Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
+        # *   quotaMaximumDuration: Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
+        # *   predefinedTags: Predefined tags of the workspace. Created resources must include tags.
         self.config_key = config_key
         # The value of the configuration item.
         self.verbose = verbose
@@ -8805,20 +9120,22 @@ class GetConfigResponseBody(TeaModel):
         request_id: str = None,
         workspace_id: str = None,
     ):
-        # The category of the configuration item. Supported categories:
+        # The category of the configuration item. Valid values:
         # 
         # *   CommonResourceConfig
         # *   DLCAutoRecycle
         # *   DLCPriorityConfig
         # *   DSWPriorityConfig
         # *   QuotaMaximumDuration
+        # *   CommonTagConfig
         self.category_name = category_name
-        # The key of the configuration item. Supported keys:
+        # The key of the configuration item. Valid values:
         # 
         # *   tempStoragePath: Temporary storage path. This key can be used only when CategoryName is set to CommonResourceConfig.
         # *   isAutoRecycle: Automatic recycle configuration. This key can be used only when CategoryName is set to DLCAutoRecycle.
         # *   priorityConfig: Priority configuration. This key can be used only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
-        # *   quotaMaximumDuration Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
+        # *   quotaMaximumDuration: Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
+        # *   predefinedTags: Predefined tags of the workspace. Created resources must include tags.
         self.config_key = config_key
         # The value of the configuration item.
         self.config_value = config_value
@@ -8914,6 +9231,268 @@ class GetConfigResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetConnectionRequest(TeaModel):
+    def __init__(
+        self,
+        encrypt_option: str = None,
+    ):
+        self.encrypt_option = encrypt_option
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.encrypt_option is not None:
+            result['EncryptOption'] = self.encrypt_option
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EncryptOption') is not None:
+            self.encrypt_option = m.get('EncryptOption')
+        return self
+
+
+class GetConnectionResponseBodyModels(TeaModel):
+    def __init__(
+        self,
+        display_name: str = None,
+        model: str = None,
+        model_type: str = None,
+        tool_call: bool = None,
+    ):
+        self.display_name = display_name
+        self.model = model
+        self.model_type = model_type
+        self.tool_call = tool_call
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.model_type is not None:
+            result['ModelType'] = self.model_type
+        if self.tool_call is not None:
+            result['ToolCall'] = self.tool_call
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('ModelType') is not None:
+            self.model_type = m.get('ModelType')
+        if m.get('ToolCall') is not None:
+            self.tool_call = m.get('ToolCall')
+        return self
+
+
+class GetConnectionResponseBodyResourceMeta(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        instance_name: str = None,
+    ):
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        return self
+
+
+class GetConnectionResponseBody(TeaModel):
+    def __init__(
+        self,
+        accessibility: str = None,
+        configs: Dict[str, str] = None,
+        connection_id: str = None,
+        connection_name: str = None,
+        connection_type: str = None,
+        creator: str = None,
+        description: str = None,
+        gmt_create_time: str = None,
+        gmt_modified_time: str = None,
+        models: List[GetConnectionResponseBodyModels] = None,
+        request_id: str = None,
+        resource_meta: GetConnectionResponseBodyResourceMeta = None,
+        secrets: Dict[str, str] = None,
+        workspace_id: str = None,
+    ):
+        self.accessibility = accessibility
+        self.configs = configs
+        self.connection_id = connection_id
+        self.connection_name = connection_name
+        self.connection_type = connection_type
+        self.creator = creator
+        self.description = description
+        self.gmt_create_time = gmt_create_time
+        self.gmt_modified_time = gmt_modified_time
+        self.models = models
+        self.request_id = request_id
+        self.resource_meta = resource_meta
+        self.secrets = secrets
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        if self.models:
+            for k in self.models:
+                if k:
+                    k.validate()
+        if self.resource_meta:
+            self.resource_meta.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accessibility is not None:
+            result['Accessibility'] = self.accessibility
+        if self.configs is not None:
+            result['Configs'] = self.configs
+        if self.connection_id is not None:
+            result['ConnectionId'] = self.connection_id
+        if self.connection_name is not None:
+            result['ConnectionName'] = self.connection_name
+        if self.connection_type is not None:
+            result['ConnectionType'] = self.connection_type
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.gmt_create_time is not None:
+            result['GmtCreateTime'] = self.gmt_create_time
+        if self.gmt_modified_time is not None:
+            result['GmtModifiedTime'] = self.gmt_modified_time
+        result['Models'] = []
+        if self.models is not None:
+            for k in self.models:
+                result['Models'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.resource_meta is not None:
+            result['ResourceMeta'] = self.resource_meta.to_map()
+        if self.secrets is not None:
+            result['Secrets'] = self.secrets
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Accessibility') is not None:
+            self.accessibility = m.get('Accessibility')
+        if m.get('Configs') is not None:
+            self.configs = m.get('Configs')
+        if m.get('ConnectionId') is not None:
+            self.connection_id = m.get('ConnectionId')
+        if m.get('ConnectionName') is not None:
+            self.connection_name = m.get('ConnectionName')
+        if m.get('ConnectionType') is not None:
+            self.connection_type = m.get('ConnectionType')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GmtCreateTime') is not None:
+            self.gmt_create_time = m.get('GmtCreateTime')
+        if m.get('GmtModifiedTime') is not None:
+            self.gmt_modified_time = m.get('GmtModifiedTime')
+        self.models = []
+        if m.get('Models') is not None:
+            for k in m.get('Models'):
+                temp_model = GetConnectionResponseBodyModels()
+                self.models.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResourceMeta') is not None:
+            temp_model = GetConnectionResponseBodyResourceMeta()
+            self.resource_meta = temp_model.from_map(m['ResourceMeta'])
+        if m.get('Secrets') is not None:
+            self.secrets = m.get('Secrets')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class GetConnectionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetConnectionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetConnectionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12077,13 +12656,15 @@ class ListConfigsRequest(TeaModel):
         # *   DLCPriorityConfig
         # *   DSWPriorityConfig
         # *   QuotaMaximumDuration
+        # *   CommonTagConfig
         self.category_name = category_name
         # The key of the configuration item. Supported keys:
         # 
         # *   tempStoragePath: Temporary storage path. This key can be used only when CategoryName is set to CommonResourceConfig.
         # *   isAutoRecycle: Automatic recycle configuration. This key can be used only when CategoryName is set to DLCAutoRecycle.
         # *   priorityConfig: Priority configuration. This key can be used only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
-        # *   quotaMaximumDuration Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
+        # *   quotaMaximumDuration: Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
+        # *   predefinedTags: The predefined tags of the workspace. All created resources must have tags
         self.config_keys = config_keys
         # The tags used as filter conditions. Separate multiple tags with commas (,). These conditions are in an AND relationship.
         self.labels = labels
@@ -12172,7 +12753,8 @@ class ListConfigsResponseBodyConfigs(TeaModel):
         # *   tempStoragePath: Temporary storage path. This key can be used only when CategoryName is set to CommonResourceConfig.
         # *   isAutoRecycle: Automatic recycle configuration. This key can be used only when CategoryName is set to DLCAutoRecycle.
         # *   tempStoragePath: Temporary storage path. This key can be used only when CategoryName is set to CommonResourceConfig.
-        # *   quotaMaximumDuration Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
+        # *   quotaMaximumDuration: Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
+        # *   predefinedTags: The predefined tags of the workspace. All created resources must have tags
         self.config_key = config_key
         # The value of the configuration item.
         self.config_value = config_value
@@ -12302,6 +12884,343 @@ class ListConfigsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListConfigsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListConnectionsRequest(TeaModel):
+    def __init__(
+        self,
+        connection_ids: List[str] = None,
+        connection_name: str = None,
+        connection_types: List[str] = None,
+        encrypt_option: str = None,
+        max_results: int = None,
+        model: str = None,
+        model_types: List[str] = None,
+        next_token: str = None,
+        order: str = None,
+        sort_by: str = None,
+        tool_call: bool = None,
+        workspace_id: str = None,
+    ):
+        # The list of connection IDs.
+        self.connection_ids = connection_ids
+        # The connection name.
+        self.connection_name = connection_name
+        # The list of connection types.
+        self.connection_types = connection_types
+        # The encryption settings. Valid values:
+        # 
+        # *   PlainText
+        # *   Secret
+        self.encrypt_option = encrypt_option
+        # The maximum number of entries per page.
+        self.max_results = max_results
+        # The model identifier.
+        self.model = model
+        # The list of model types.
+        self.model_types = model_types
+        # The pagination token that indicates the start position from which to retrieve data on the next page.
+        self.next_token = next_token
+        # The order in which the entries are sorted by the specific field on the returned page. This parameter must be used together with SortBy.
+        # 
+        # *   ASC: ascending order.
+        # *   DESC: descending order. This is the default value.
+        self.order = order
+        # The field used to sort the results in queries by page. Default value: GmtCreateTime. Valid value:
+        # 
+        # *   GmtCreateTime: The results are sorted by creation time. This is the default value.
+        self.sort_by = sort_by
+        # Specifies whether a tool can be called by using ToolCall. Valid values:
+        # 
+        # *   true
+        # *   false
+        self.tool_call = tool_call
+        # The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connection_ids is not None:
+            result['ConnectionIds'] = self.connection_ids
+        if self.connection_name is not None:
+            result['ConnectionName'] = self.connection_name
+        if self.connection_types is not None:
+            result['ConnectionTypes'] = self.connection_types
+        if self.encrypt_option is not None:
+            result['EncryptOption'] = self.encrypt_option
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.model_types is not None:
+            result['ModelTypes'] = self.model_types
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.tool_call is not None:
+            result['ToolCall'] = self.tool_call
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectionIds') is not None:
+            self.connection_ids = m.get('ConnectionIds')
+        if m.get('ConnectionName') is not None:
+            self.connection_name = m.get('ConnectionName')
+        if m.get('ConnectionTypes') is not None:
+            self.connection_types = m.get('ConnectionTypes')
+        if m.get('EncryptOption') is not None:
+            self.encrypt_option = m.get('EncryptOption')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('ModelTypes') is not None:
+            self.model_types = m.get('ModelTypes')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('ToolCall') is not None:
+            self.tool_call = m.get('ToolCall')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class ListConnectionsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        connection_ids_shrink: str = None,
+        connection_name: str = None,
+        connection_types_shrink: str = None,
+        encrypt_option: str = None,
+        max_results: int = None,
+        model: str = None,
+        model_types_shrink: str = None,
+        next_token: str = None,
+        order: str = None,
+        sort_by: str = None,
+        tool_call: bool = None,
+        workspace_id: str = None,
+    ):
+        # The list of connection IDs.
+        self.connection_ids_shrink = connection_ids_shrink
+        # The connection name.
+        self.connection_name = connection_name
+        # The list of connection types.
+        self.connection_types_shrink = connection_types_shrink
+        # The encryption settings. Valid values:
+        # 
+        # *   PlainText
+        # *   Secret
+        self.encrypt_option = encrypt_option
+        # The maximum number of entries per page.
+        self.max_results = max_results
+        # The model identifier.
+        self.model = model
+        # The list of model types.
+        self.model_types_shrink = model_types_shrink
+        # The pagination token that indicates the start position from which to retrieve data on the next page.
+        self.next_token = next_token
+        # The order in which the entries are sorted by the specific field on the returned page. This parameter must be used together with SortBy.
+        # 
+        # *   ASC: ascending order.
+        # *   DESC: descending order. This is the default value.
+        self.order = order
+        # The field used to sort the results in queries by page. Default value: GmtCreateTime. Valid value:
+        # 
+        # *   GmtCreateTime: The results are sorted by creation time. This is the default value.
+        self.sort_by = sort_by
+        # Specifies whether a tool can be called by using ToolCall. Valid values:
+        # 
+        # *   true
+        # *   false
+        self.tool_call = tool_call
+        # The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connection_ids_shrink is not None:
+            result['ConnectionIds'] = self.connection_ids_shrink
+        if self.connection_name is not None:
+            result['ConnectionName'] = self.connection_name
+        if self.connection_types_shrink is not None:
+            result['ConnectionTypes'] = self.connection_types_shrink
+        if self.encrypt_option is not None:
+            result['EncryptOption'] = self.encrypt_option
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.model_types_shrink is not None:
+            result['ModelTypes'] = self.model_types_shrink
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.tool_call is not None:
+            result['ToolCall'] = self.tool_call
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectionIds') is not None:
+            self.connection_ids_shrink = m.get('ConnectionIds')
+        if m.get('ConnectionName') is not None:
+            self.connection_name = m.get('ConnectionName')
+        if m.get('ConnectionTypes') is not None:
+            self.connection_types_shrink = m.get('ConnectionTypes')
+        if m.get('EncryptOption') is not None:
+            self.encrypt_option = m.get('EncryptOption')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('ModelTypes') is not None:
+            self.model_types_shrink = m.get('ModelTypes')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('ToolCall') is not None:
+            self.tool_call = m.get('ToolCall')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class ListConnectionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        connections: List[Connection] = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        # The connection list.
+        self.connections = connections
+        # The maximum number of entries per page.
+        self.max_results = max_results
+        # The pagination token that indicates the start position from which to retrieve data on the next page.
+        self.next_token = next_token
+        # The request ID.
+        self.request_id = request_id
+        # The total number of connections that meet the filter conditions.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.connections:
+            for k in self.connections:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Connections'] = []
+        if self.connections is not None:
+            for k in self.connections:
+                result['Connections'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.connections = []
+        if m.get('Connections') is not None:
+            for k in m.get('Connections'):
+                temp_model = Connection()
+                self.connections.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListConnectionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListConnectionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListConnectionsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -18256,13 +19175,21 @@ class SetUserConfigsRequestConfigs(TeaModel):
         config_value: str = None,
         scope: str = None,
     ):
-        # The category. Currently, only DataPrivacyConfig is supported.
+        # The category. Only DataPrivacyConfig is supported.
+        # 
+        # This parameter is required.
         self.category_name = category_name
         # The key of the configuration item.
+        # 
+        # This parameter is required.
         self.config_key = config_key
         # The value of the configuration item.
+        # 
+        # This parameter is required.
         self.config_value = config_value
-        # The scope. Currently, subUser and owner are supported.
+        # The scope. Valid values: subUser and owner.
+        # 
+        # This parameter is required.
         self.scope = scope
 
     def validate(self):
@@ -18839,7 +19766,7 @@ class UpdateConfigsRequestConfigsLabels(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
         # The value of the tag.
         self.value = value
@@ -18883,15 +19810,19 @@ class UpdateConfigsRequestConfigs(TeaModel):
         # *   DLCPriorityConfig
         # *   DSWPriorityConfig
         # *   QuotaMaximumDuration
+        # *   CommonTagConfig
         self.category_name = category_name
         # The key of the configuration item. Supported keys:
         # 
         # *   tempStoragePath: Temporary storage path. This key can be used only when CategoryName is set to CommonResourceConfig.
         # *   isAutoRecycle: Automatic recycle configuration. This key can be used only when CategoryName is set to DLCAutoRecycle.
-        # *   priorityConfig: Priority configuration. This key can be used only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
-        # *   quotaMaximumDuration Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
+        # *   tempStoragePath: Temporary storage path. This key can be used only when CategoryName is set to CommonResourceConfig.
+        # *   quotaMaximumDuration: Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
+        # *   predefinedTags: The predefined tags of the workspace. All created resources must have tags.
         self.config_key = config_key
         # The value of the configuration item.
+        # 
+        # *   When ConfigKey is predefinedTags, the ConfigValue follows this format: [{"Type":"Tag","Key":"Key1","Value":"{"Products":"DLC,DSW,EAS","Values":"value1,value2,value3"}"}]. "Products" indicates the products that use the predefined tags.
         self.config_value = config_value
         # The tags of the configuration item.
         self.labels = labels
@@ -19037,6 +19968,188 @@ class UpdateConfigsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateConfigsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateConnectionRequestModels(TeaModel):
+    def __init__(
+        self,
+        display_name: str = None,
+        model: str = None,
+        model_type: str = None,
+        tool_call: bool = None,
+    ):
+        # The display name of the model.
+        self.display_name = display_name
+        # The model identifier.
+        self.model = model
+        # The model type. Valid values:
+        # 
+        # *   LLM
+        # *   Embedding
+        # *   ReRank
+        self.model_type = model_type
+        # Indicates whether tool calling is supported. Valid values:
+        # 
+        # *   true
+        # *   false
+        self.tool_call = tool_call
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.model_type is not None:
+            result['ModelType'] = self.model_type
+        if self.tool_call is not None:
+            result['ToolCall'] = self.tool_call
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('ModelType') is not None:
+            self.model_type = m.get('ModelType')
+        if m.get('ToolCall') is not None:
+            self.tool_call = m.get('ToolCall')
+        return self
+
+
+class UpdateConnectionRequest(TeaModel):
+    def __init__(
+        self,
+        configs: Dict[str, str] = None,
+        description: str = None,
+        models: List[UpdateConnectionRequestModels] = None,
+        secrets: Dict[str, str] = None,
+    ):
+        # The connection configuration. The connection configuration is in the key-value format. The keys configured for different connection types are different. For more information, see the supplementary description of the request parameters in CreateConnection.
+        self.configs = configs
+        # The connection description.
+        self.description = description
+        # The models.
+        self.models = models
+        # The key-value configuration to be encrypted, such as the database logon password and the key for model connection.
+        self.secrets = secrets
+
+    def validate(self):
+        if self.models:
+            for k in self.models:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.configs is not None:
+            result['Configs'] = self.configs
+        if self.description is not None:
+            result['Description'] = self.description
+        result['Models'] = []
+        if self.models is not None:
+            for k in self.models:
+                result['Models'].append(k.to_map() if k else None)
+        if self.secrets is not None:
+            result['Secrets'] = self.secrets
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Configs') is not None:
+            self.configs = m.get('Configs')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        self.models = []
+        if m.get('Models') is not None:
+            for k in m.get('Models'):
+                temp_model = UpdateConnectionRequestModels()
+                self.models.append(temp_model.from_map(k))
+        if m.get('Secrets') is not None:
+            self.secrets = m.get('Secrets')
+        return self
+
+
+class UpdateConnectionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateConnectionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateConnectionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateConnectionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
