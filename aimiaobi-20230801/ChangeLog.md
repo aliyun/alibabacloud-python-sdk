@@ -1,3 +1,6 @@
+2025-05-16 Version: 1.26.1
+- Generated python 2023-08-01 for AiMiaoBi.
+
 2025-05-15 Version: 1.26.0
 - Support API DeleteStyleLearningResult.
 - Update API QueryAuditTask: add response parameters Body.Data.HtmlContent.
