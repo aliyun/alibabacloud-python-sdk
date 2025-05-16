@@ -1,3 +1,16 @@
+2025-05-16 Version: 3.0.0
+- Support API CountOralEvaluationStatisticsCalls.
+- Support API CountOralEvaluationStatisticsConcurrent.
+- Support API CountOralEvaluationStatisticsError.
+- Support API ExecuteHundredThousandWhysDialogue.
+- Update API ExecuteAITeacherChineseCompositionTutoringWorkflowRun: delete request parameters callerParentId.
+- Update API ExecuteAITeacherChineseCompositionTutoringWorkflowRun: delete request parameters callerType.
+- Update API ExecuteAITeacherChineseCompositionTutoringWorkflowRun: delete request parameters callerUid.
+- Update API ExecuteAITeacherChineseCompositionTutoringWorkflowRun: delete request parameters stsTokenCallerUid.
+- Update API ListTextbookAssistantGradeVolumes: update response parameters Body.data' type has changed.
+- Update API ListTextbookAssistantGradeVolumes: delete response parameters Body.data.
+
+
 2025-03-27 Version: 2.1.0
 - Support API ExecuteTextbookAssistantSseDialogue.
 - Support API ListTextbookAssistantArticleDetails.

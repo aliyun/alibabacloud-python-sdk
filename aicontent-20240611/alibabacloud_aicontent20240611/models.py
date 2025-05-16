@@ -364,6 +364,679 @@ class OpenApiSingleResponse(TeaModel):
         return self
 
 
+class OralEvaluationStatisticsCallsCountRequest(TeaModel):
+    def __init__(
+        self,
+        application_access_id: str = None,
+        end_time: str = None,
+        granularity: str = None,
+        project_id: str = None,
+        start_time: str = None,
+    ):
+        self.application_access_id = application_access_id
+        self.end_time = end_time
+        self.granularity = granularity
+        self.project_id = project_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_access_id is not None:
+            result['applicationAccessId'] = self.application_access_id
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.granularity is not None:
+            result['granularity'] = self.granularity
+        if self.project_id is not None:
+            result['projectId'] = self.project_id
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('applicationAccessId') is not None:
+            self.application_access_id = m.get('applicationAccessId')
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('granularity') is not None:
+            self.granularity = m.get('granularity')
+        if m.get('projectId') is not None:
+            self.project_id = m.get('projectId')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        return self
+
+
+class OralEvaluationStatisticsCallsCountResponseProjectDataApplicationDataData(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        name: str = None,
+    ):
+        # This parameter is required.
+        self.count = count
+        # This parameter is required.
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['count'] = self.count
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('count') is not None:
+            self.count = m.get('count')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class OralEvaluationStatisticsCallsCountResponseProjectDataApplicationData(TeaModel):
+    def __init__(
+        self,
+        data: List[OralEvaluationStatisticsCallsCountResponseProjectDataApplicationDataData] = None,
+        application_access_id: str = None,
+    ):
+        self.data = data
+        # This parameter is required.
+        self.application_access_id = application_access_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.application_access_id is not None:
+            result['applicationAccessId'] = self.application_access_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = OralEvaluationStatisticsCallsCountResponseProjectDataApplicationDataData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('applicationAccessId') is not None:
+            self.application_access_id = m.get('applicationAccessId')
+        return self
+
+
+class OralEvaluationStatisticsCallsCountResponseProjectData(TeaModel):
+    def __init__(
+        self,
+        application_data: List[OralEvaluationStatisticsCallsCountResponseProjectDataApplicationData] = None,
+        application_internal_id: str = None,
+    ):
+        self.application_data = application_data
+        # This parameter is required.
+        self.application_internal_id = application_internal_id
+
+    def validate(self):
+        if self.application_data:
+            for k in self.application_data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ApplicationData'] = []
+        if self.application_data is not None:
+            for k in self.application_data:
+                result['ApplicationData'].append(k.to_map() if k else None)
+        if self.application_internal_id is not None:
+            result['applicationInternalId'] = self.application_internal_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.application_data = []
+        if m.get('ApplicationData') is not None:
+            for k in m.get('ApplicationData'):
+                temp_model = OralEvaluationStatisticsCallsCountResponseProjectDataApplicationData()
+                self.application_data.append(temp_model.from_map(k))
+        if m.get('applicationInternalId') is not None:
+            self.application_internal_id = m.get('applicationInternalId')
+        return self
+
+
+class OralEvaluationStatisticsCallsCountResponse(TeaModel):
+    def __init__(
+        self,
+        project_data: OralEvaluationStatisticsCallsCountResponseProjectData = None,
+        project_id: str = None,
+    ):
+        # This parameter is required.
+        self.project_data = project_data
+        # This parameter is required.
+        self.project_id = project_id
+
+    def validate(self):
+        if self.project_data:
+            self.project_data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_data is not None:
+            result['projectData'] = self.project_data.to_map()
+        if self.project_id is not None:
+            result['projectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('projectData') is not None:
+            temp_model = OralEvaluationStatisticsCallsCountResponseProjectData()
+            self.project_data = temp_model.from_map(m['projectData'])
+        if m.get('projectId') is not None:
+            self.project_id = m.get('projectId')
+        return self
+
+
+class OralEvaluationStatisticsConcurrentCountRequest(TeaModel):
+    def __init__(
+        self,
+        application_access_id: str = None,
+        end_time: str = None,
+        granularity: str = None,
+        project_id: str = None,
+        start_time: str = None,
+    ):
+        self.application_access_id = application_access_id
+        self.end_time = end_time
+        self.granularity = granularity
+        self.project_id = project_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_access_id is not None:
+            result['applicationAccessId'] = self.application_access_id
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.granularity is not None:
+            result['granularity'] = self.granularity
+        if self.project_id is not None:
+            result['projectId'] = self.project_id
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('applicationAccessId') is not None:
+            self.application_access_id = m.get('applicationAccessId')
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('granularity') is not None:
+            self.granularity = m.get('granularity')
+        if m.get('projectId') is not None:
+            self.project_id = m.get('projectId')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        return self
+
+
+class OralEvaluationStatisticsConcurrentCountResponseProjectDataApplicationDataData(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        name: str = None,
+    ):
+        # This parameter is required.
+        self.count = count
+        # This parameter is required.
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['count'] = self.count
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('count') is not None:
+            self.count = m.get('count')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class OralEvaluationStatisticsConcurrentCountResponseProjectDataApplicationData(TeaModel):
+    def __init__(
+        self,
+        data: List[OralEvaluationStatisticsConcurrentCountResponseProjectDataApplicationDataData] = None,
+        application_access_id: str = None,
+    ):
+        self.data = data
+        # This parameter is required.
+        self.application_access_id = application_access_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.application_access_id is not None:
+            result['applicationAccessId'] = self.application_access_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = OralEvaluationStatisticsConcurrentCountResponseProjectDataApplicationDataData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('applicationAccessId') is not None:
+            self.application_access_id = m.get('applicationAccessId')
+        return self
+
+
+class OralEvaluationStatisticsConcurrentCountResponseProjectData(TeaModel):
+    def __init__(
+        self,
+        application_data: List[OralEvaluationStatisticsConcurrentCountResponseProjectDataApplicationData] = None,
+        application_internal_id: str = None,
+    ):
+        self.application_data = application_data
+        # This parameter is required.
+        self.application_internal_id = application_internal_id
+
+    def validate(self):
+        if self.application_data:
+            for k in self.application_data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ApplicationData'] = []
+        if self.application_data is not None:
+            for k in self.application_data:
+                result['ApplicationData'].append(k.to_map() if k else None)
+        if self.application_internal_id is not None:
+            result['applicationInternalId'] = self.application_internal_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.application_data = []
+        if m.get('ApplicationData') is not None:
+            for k in m.get('ApplicationData'):
+                temp_model = OralEvaluationStatisticsConcurrentCountResponseProjectDataApplicationData()
+                self.application_data.append(temp_model.from_map(k))
+        if m.get('applicationInternalId') is not None:
+            self.application_internal_id = m.get('applicationInternalId')
+        return self
+
+
+class OralEvaluationStatisticsConcurrentCountResponse(TeaModel):
+    def __init__(
+        self,
+        project_data: OralEvaluationStatisticsConcurrentCountResponseProjectData = None,
+        project_id: str = None,
+    ):
+        # This parameter is required.
+        self.project_data = project_data
+        # This parameter is required.
+        self.project_id = project_id
+
+    def validate(self):
+        if self.project_data:
+            self.project_data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_data is not None:
+            result['projectData'] = self.project_data.to_map()
+        if self.project_id is not None:
+            result['projectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('projectData') is not None:
+            temp_model = OralEvaluationStatisticsConcurrentCountResponseProjectData()
+            self.project_data = temp_model.from_map(m['projectData'])
+        if m.get('projectId') is not None:
+            self.project_id = m.get('projectId')
+        return self
+
+
+class OralEvaluationStatisticsErrorCountRequest(TeaModel):
+    def __init__(
+        self,
+        application_access_id: str = None,
+        end_time: str = None,
+        error_code: List[str] = None,
+        granularity: str = None,
+        project_id: str = None,
+        start_time: str = None,
+    ):
+        self.application_access_id = application_access_id
+        self.end_time = end_time
+        self.error_code = error_code
+        self.granularity = granularity
+        self.project_id = project_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_access_id is not None:
+            result['applicationAccessId'] = self.application_access_id
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.granularity is not None:
+            result['granularity'] = self.granularity
+        if self.project_id is not None:
+            result['projectId'] = self.project_id
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('applicationAccessId') is not None:
+            self.application_access_id = m.get('applicationAccessId')
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('granularity') is not None:
+            self.granularity = m.get('granularity')
+        if m.get('projectId') is not None:
+            self.project_id = m.get('projectId')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        return self
+
+
+class OralEvaluationStatisticsErrorCountResponseProjectDataApplicationDataDataData(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        name: str = None,
+    ):
+        # This parameter is required.
+        self.count = count
+        # This parameter is required.
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['count'] = self.count
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('count') is not None:
+            self.count = m.get('count')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class OralEvaluationStatisticsErrorCountResponseProjectDataApplicationDataData(TeaModel):
+    def __init__(
+        self,
+        data: List[OralEvaluationStatisticsErrorCountResponseProjectDataApplicationDataDataData] = None,
+        error_code: str = None,
+        error_message: str = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = OralEvaluationStatisticsErrorCountResponseProjectDataApplicationDataDataData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        return self
+
+
+class OralEvaluationStatisticsErrorCountResponseProjectDataApplicationData(TeaModel):
+    def __init__(
+        self,
+        data: List[OralEvaluationStatisticsErrorCountResponseProjectDataApplicationDataData] = None,
+        application_access_id: str = None,
+    ):
+        self.data = data
+        # This parameter is required.
+        self.application_access_id = application_access_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.application_access_id is not None:
+            result['applicationAccessId'] = self.application_access_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = OralEvaluationStatisticsErrorCountResponseProjectDataApplicationDataData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('applicationAccessId') is not None:
+            self.application_access_id = m.get('applicationAccessId')
+        return self
+
+
+class OralEvaluationStatisticsErrorCountResponseProjectData(TeaModel):
+    def __init__(
+        self,
+        application_data: List[OralEvaluationStatisticsErrorCountResponseProjectDataApplicationData] = None,
+        application_internal_id: str = None,
+    ):
+        self.application_data = application_data
+        # This parameter is required.
+        self.application_internal_id = application_internal_id
+
+    def validate(self):
+        if self.application_data:
+            for k in self.application_data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ApplicationData'] = []
+        if self.application_data is not None:
+            for k in self.application_data:
+                result['ApplicationData'].append(k.to_map() if k else None)
+        if self.application_internal_id is not None:
+            result['applicationInternalId'] = self.application_internal_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.application_data = []
+        if m.get('ApplicationData') is not None:
+            for k in m.get('ApplicationData'):
+                temp_model = OralEvaluationStatisticsErrorCountResponseProjectDataApplicationData()
+                self.application_data.append(temp_model.from_map(k))
+        if m.get('applicationInternalId') is not None:
+            self.application_internal_id = m.get('applicationInternalId')
+        return self
+
+
+class OralEvaluationStatisticsErrorCountResponse(TeaModel):
+    def __init__(
+        self,
+        project_data: OralEvaluationStatisticsErrorCountResponseProjectData = None,
+        project_id: str = None,
+    ):
+        self.project_data = project_data
+        # This parameter is required.
+        self.project_id = project_id
+
+    def validate(self):
+        if self.project_data:
+            self.project_data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_data is not None:
+            result['ProjectData'] = self.project_data.to_map()
+        if self.project_id is not None:
+            result['projectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectData') is not None:
+            temp_model = OralEvaluationStatisticsErrorCountResponseProjectData()
+            self.project_data = temp_model.from_map(m['ProjectData'])
+        if m.get('projectId') is not None:
+            self.project_id = m.get('projectId')
+        return self
+
+
 class Personalizedtxt2imgAddInferenceJobCmd(TeaModel):
     def __init__(
         self,
@@ -1386,6 +2059,411 @@ class AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse(TeaModel):
         return self
 
 
+class CountOralEvaluationStatisticsCallsRequest(TeaModel):
+    def __init__(
+        self,
+        body: OralEvaluationStatisticsCallsCountRequest = None,
+    ):
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = OralEvaluationStatisticsCallsCountRequest()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CountOralEvaluationStatisticsCallsResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[OralEvaluationStatisticsCallsCountResponse] = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.err_message is not None:
+            result['errMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = OralEvaluationStatisticsCallsCountResponse()
+                self.data.append(temp_model.from_map(k))
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('errMessage') is not None:
+            self.err_message = m.get('errMessage')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class CountOralEvaluationStatisticsCallsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CountOralEvaluationStatisticsCallsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CountOralEvaluationStatisticsCallsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CountOralEvaluationStatisticsConcurrentRequest(TeaModel):
+    def __init__(
+        self,
+        body: OralEvaluationStatisticsConcurrentCountRequest = None,
+    ):
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = OralEvaluationStatisticsConcurrentCountRequest()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CountOralEvaluationStatisticsConcurrentResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[OralEvaluationStatisticsConcurrentCountResponse] = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.err_message is not None:
+            result['errMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = OralEvaluationStatisticsConcurrentCountResponse()
+                self.data.append(temp_model.from_map(k))
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('errMessage') is not None:
+            self.err_message = m.get('errMessage')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class CountOralEvaluationStatisticsConcurrentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CountOralEvaluationStatisticsConcurrentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CountOralEvaluationStatisticsConcurrentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CountOralEvaluationStatisticsErrorRequest(TeaModel):
+    def __init__(
+        self,
+        body: OralEvaluationStatisticsErrorCountRequest = None,
+    ):
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = OralEvaluationStatisticsErrorCountRequest()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CountOralEvaluationStatisticsErrorResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[OralEvaluationStatisticsErrorCountResponse] = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.err_message is not None:
+            result['errMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = OralEvaluationStatisticsErrorCountResponse()
+                self.data.append(temp_model.from_map(k))
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('errMessage') is not None:
+            self.err_message = m.get('errMessage')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class CountOralEvaluationStatisticsErrorResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CountOralEvaluationStatisticsErrorResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CountOralEvaluationStatisticsErrorResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateAccessWarrantRequest(TeaModel):
     def __init__(
         self,
@@ -1956,57 +3034,6 @@ class CreateProjectResponse(TeaModel):
         return self
 
 
-class ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders(TeaModel):
-    def __init__(
-        self,
-        common_headers: Dict[str, str] = None,
-        caller_parent_id: int = None,
-        caller_type: str = None,
-        caller_uid: int = None,
-        sts_token_caller_uid: int = None,
-    ):
-        self.common_headers = common_headers
-        self.caller_parent_id = caller_parent_id
-        self.caller_type = caller_type
-        self.caller_uid = caller_uid
-        self.sts_token_caller_uid = sts_token_caller_uid
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.common_headers is not None:
-            result['commonHeaders'] = self.common_headers
-        if self.caller_parent_id is not None:
-            result['callerParentId'] = self.caller_parent_id
-        if self.caller_type is not None:
-            result['callerType'] = self.caller_type
-        if self.caller_uid is not None:
-            result['callerUid'] = self.caller_uid
-        if self.sts_token_caller_uid is not None:
-            result['stsTokenCallerUid'] = self.sts_token_caller_uid
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('commonHeaders') is not None:
-            self.common_headers = m.get('commonHeaders')
-        if m.get('callerParentId') is not None:
-            self.caller_parent_id = m.get('callerParentId')
-        if m.get('callerType') is not None:
-            self.caller_type = m.get('callerType')
-        if m.get('callerUid') is not None:
-            self.caller_uid = m.get('callerUid')
-        if m.get('stsTokenCallerUid') is not None:
-            self.sts_token_caller_uid = m.get('stsTokenCallerUid')
-        return self
-
-
 class ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest(TeaModel):
     def __init__(
         self,
@@ -2020,12 +3047,18 @@ class ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest(TeaModel):
         user_id: str = None,
     ):
         self.essay_outline = essay_outline
+        # This parameter is required.
         self.essay_requirements = essay_requirements
+        # This parameter is required.
         self.essay_topic = essay_topic
+        # This parameter is required.
         self.essay_type = essay_type
         self.essay_word_count = essay_word_count
+        # This parameter is required.
         self.grade = grade
+        # This parameter is required.
         self.response_mode = response_mode
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -2173,6 +3206,7 @@ class ExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest(TeaModel):
         self.essay_requirements = essay_requirements
         # This parameter is required.
         self.essay_topic = essay_topic
+        # This parameter is required.
         self.essay_type = essay_type
         self.essay_word_count = essay_word_count
         # This parameter is required.
@@ -2323,12 +3357,17 @@ class ExecuteAITeacherEnglishParaphraseChatMessageRequest(TeaModel):
         user_id: str = None,
     ):
         self.chat_id = chat_id
+        # This parameter is required.
         self.content = content
         self.grade = grade
         self.question_id = question_id
+        # This parameter is required.
         self.question_info = question_info
+        # This parameter is required.
         self.response_mode = response_mode
+        # This parameter is required.
         self.user_answer = user_answer
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -4332,6 +5371,284 @@ class ExecuteAITeacherSyncDialogueTranslateResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ExecuteAITeacherSyncDialogueTranslateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ExecuteHundredThousandWhysDialogueRequestMessages(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        role: str = None,
+    ):
+        # This parameter is required.
+        self.content = content
+        # This parameter is required.
+        self.role = role
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.role is not None:
+            result['role'] = self.role
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('role') is not None:
+            self.role = m.get('role')
+        return self
+
+
+class ExecuteHundredThousandWhysDialogueRequest(TeaModel):
+    def __init__(
+        self,
+        age_group: str = None,
+        chat_id: str = None,
+        device_id: str = None,
+        mac_address: str = None,
+        messages: List[ExecuteHundredThousandWhysDialogueRequestMessages] = None,
+    ):
+        self.age_group = age_group
+        self.chat_id = chat_id
+        # This parameter is required.
+        self.device_id = device_id
+        # This parameter is required.
+        self.mac_address = mac_address
+        # This parameter is required.
+        self.messages = messages
+
+    def validate(self):
+        if self.messages:
+            for k in self.messages:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.age_group is not None:
+            result['ageGroup'] = self.age_group
+        if self.chat_id is not None:
+            result['chatId'] = self.chat_id
+        if self.device_id is not None:
+            result['deviceId'] = self.device_id
+        if self.mac_address is not None:
+            result['macAddress'] = self.mac_address
+        result['messages'] = []
+        if self.messages is not None:
+            for k in self.messages:
+                result['messages'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ageGroup') is not None:
+            self.age_group = m.get('ageGroup')
+        if m.get('chatId') is not None:
+            self.chat_id = m.get('chatId')
+        if m.get('deviceId') is not None:
+            self.device_id = m.get('deviceId')
+        if m.get('macAddress') is not None:
+            self.mac_address = m.get('macAddress')
+        self.messages = []
+        if m.get('messages') is not None:
+            for k in m.get('messages'):
+                temp_model = ExecuteHundredThousandWhysDialogueRequestMessages()
+                self.messages.append(temp_model.from_map(k))
+        return self
+
+
+class ExecuteHundredThousandWhysDialogueResponseBodyChoicesDelta(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        role: str = None,
+    ):
+        self.content = content
+        self.role = role
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.role is not None:
+            result['role'] = self.role
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('role') is not None:
+            self.role = m.get('role')
+        return self
+
+
+class ExecuteHundredThousandWhysDialogueResponseBodyChoices(TeaModel):
+    def __init__(
+        self,
+        delta: ExecuteHundredThousandWhysDialogueResponseBodyChoicesDelta = None,
+        finish_reason: str = None,
+        index: int = None,
+    ):
+        self.delta = delta
+        self.finish_reason = finish_reason
+        self.index = index
+
+    def validate(self):
+        if self.delta:
+            self.delta.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delta is not None:
+            result['delta'] = self.delta.to_map()
+        if self.finish_reason is not None:
+            result['finish_reason'] = self.finish_reason
+        if self.index is not None:
+            result['index'] = self.index
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('delta') is not None:
+            temp_model = ExecuteHundredThousandWhysDialogueResponseBodyChoicesDelta()
+            self.delta = temp_model.from_map(m['delta'])
+        if m.get('finish_reason') is not None:
+            self.finish_reason = m.get('finish_reason')
+        if m.get('index') is not None:
+            self.index = m.get('index')
+        return self
+
+
+class ExecuteHundredThousandWhysDialogueResponseBody(TeaModel):
+    def __init__(
+        self,
+        choices: List[ExecuteHundredThousandWhysDialogueResponseBodyChoices] = None,
+        created: int = None,
+        id: str = None,
+        model: str = None,
+        object: str = None,
+        request_id: str = None,
+    ):
+        self.choices = choices
+        self.created = created
+        self.id = id
+        self.model = model
+        self.object = object
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.choices:
+            for k in self.choices:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['choices'] = []
+        if self.choices is not None:
+            for k in self.choices:
+                result['choices'].append(k.to_map() if k else None)
+        if self.created is not None:
+            result['created'] = self.created
+        if self.id is not None:
+            result['id'] = self.id
+        if self.model is not None:
+            result['model'] = self.model
+        if self.object is not None:
+            result['object'] = self.object
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.choices = []
+        if m.get('choices') is not None:
+            for k in m.get('choices'):
+                temp_model = ExecuteHundredThousandWhysDialogueResponseBodyChoices()
+                self.choices.append(temp_model.from_map(k))
+        if m.get('created') is not None:
+            self.created = m.get('created')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('model') is not None:
+            self.model = m.get('model')
+        if m.get('object') is not None:
+            self.object = m.get('object')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ExecuteHundredThousandWhysDialogueResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExecuteHundredThousandWhysDialogueResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExecuteHundredThousandWhysDialogueResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8498,9 +9815,7 @@ class ListTextbookAssistantGradeVolumesResponseBodyDataGradeVolumes(TeaModel):
         grade: str = None,
         volume: str = None,
     ):
-        # This parameter is required.
         self.grade = grade
-        # This parameter is required.
         self.volume = volume
 
     def validate(self):
@@ -8534,7 +9849,6 @@ class ListTextbookAssistantGradeVolumesResponseBodyData(TeaModel):
         textbook_version: str = None,
     ):
         self.grade_volumes = grade_volumes
-        # This parameter is required.
         self.textbook_version = textbook_version
 
     def validate(self):
@@ -8572,7 +9886,7 @@ class ListTextbookAssistantGradeVolumesResponseBodyData(TeaModel):
 class ListTextbookAssistantGradeVolumesResponseBody(TeaModel):
     def __init__(
         self,
-        data: ListTextbookAssistantGradeVolumesResponseBodyData = None,
+        data: List[ListTextbookAssistantGradeVolumesResponseBodyData] = None,
         err_code: str = None,
         err_message: str = None,
         http_status_code: int = None,
@@ -8589,7 +9903,9 @@ class ListTextbookAssistantGradeVolumesResponseBody(TeaModel):
 
     def validate(self):
         if self.data:
-            self.data.validate()
+            for k in self.data:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -8597,8 +9913,10 @@ class ListTextbookAssistantGradeVolumesResponseBody(TeaModel):
             return _map
 
         result = dict()
+        result['data'] = []
         if self.data is not None:
-            result['data'] = self.data.to_map()
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
         if self.err_code is not None:
             result['errCode'] = self.err_code
         if self.err_message is not None:
@@ -8613,9 +9931,11 @@ class ListTextbookAssistantGradeVolumesResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.data = []
         if m.get('data') is not None:
-            temp_model = ListTextbookAssistantGradeVolumesResponseBodyData()
-            self.data = temp_model.from_map(m['data'])
+            for k in m.get('data'):
+                temp_model = ListTextbookAssistantGradeVolumesResponseBodyData()
+                self.data.append(temp_model.from_map(k))
         if m.get('errCode') is not None:
             self.err_code = m.get('errCode')
         if m.get('errMessage') is not None:
