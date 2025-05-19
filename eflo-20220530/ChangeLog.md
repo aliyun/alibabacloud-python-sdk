@@ -1,3 +1,9 @@
+2025-05-19 Version: 2.0.8
+- Update API GetNodeInfoForPod: add response parameters Body.Content.HdeniIpv6SipQuota.
+- Update API GetNodeInfoForPod: add response parameters Body.Content.HdeniSipQuota.
+- Update API GetNodeInfoForPod: add response parameters Body.Content.LeniIpv6SipQuota.
+
+
 2025-05-15 Version: 2.0.7
 - Update API GetNodeInfoForPod: add response parameters Body.Content.hdeniIpv6SipQuota.
 - Update API GetNodeInfoForPod: add response parameters Body.Content.hdeniSipQuota.

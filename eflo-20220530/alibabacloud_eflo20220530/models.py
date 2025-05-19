@@ -8529,7 +8529,10 @@ class GetNodeInfoForPodResponseBodyContent(TeaModel):
     def __init__(
         self,
         cluster_id: str = None,
+        hdeni_ipv_6sip_quota: int = None,
         hdeni_quota: int = None,
+        hdeni_sip_quota: int = None,
+        leni_ipv_6sip_quota: int = None,
         leni_quota: int = None,
         leni_sip_quota: int = None,
         lni_sip_quota: int = None,
@@ -8538,14 +8541,14 @@ class GetNodeInfoForPodResponseBodyContent(TeaModel):
         v_switches: List[str] = None,
         vpc_id: str = None,
         zone_id: str = None,
-        hdeni_ipv_6sip_quota: int = None,
-        hdeni_sip_quota: int = None,
-        leni_ipv_6sip_quota: int = None,
     ):
         # The cluster ID.
         self.cluster_id = cluster_id
+        self.hdeni_ipv_6sip_quota = hdeni_ipv_6sip_quota
         # Lingjun Gaomi network interface controller quota
         self.hdeni_quota = hdeni_quota
+        self.hdeni_sip_quota = hdeni_sip_quota
+        self.leni_ipv_6sip_quota = leni_ipv_6sip_quota
         # Lingjun Elastic Network Interface quota, including system type
         self.leni_quota = leni_quota
         # Lingjun Elastic Network Interface Secondary Private IP Quota
@@ -8562,9 +8565,6 @@ class GetNodeInfoForPodResponseBodyContent(TeaModel):
         self.vpc_id = vpc_id
         # The zone ID.
         self.zone_id = zone_id
-        self.hdeni_ipv_6sip_quota = hdeni_ipv_6sip_quota
-        self.hdeni_sip_quota = hdeni_sip_quota
-        self.leni_ipv_6sip_quota = leni_ipv_6sip_quota
 
     def validate(self):
         pass
@@ -8577,8 +8577,14 @@ class GetNodeInfoForPodResponseBodyContent(TeaModel):
         result = dict()
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
+        if self.hdeni_ipv_6sip_quota is not None:
+            result['HdeniIpv6SipQuota'] = self.hdeni_ipv_6sip_quota
         if self.hdeni_quota is not None:
             result['HdeniQuota'] = self.hdeni_quota
+        if self.hdeni_sip_quota is not None:
+            result['HdeniSipQuota'] = self.hdeni_sip_quota
+        if self.leni_ipv_6sip_quota is not None:
+            result['LeniIpv6SipQuota'] = self.leni_ipv_6sip_quota
         if self.leni_quota is not None:
             result['LeniQuota'] = self.leni_quota
         if self.leni_sip_quota is not None:
@@ -8595,20 +8601,20 @@ class GetNodeInfoForPodResponseBodyContent(TeaModel):
             result['VpcId'] = self.vpc_id
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
-        if self.hdeni_ipv_6sip_quota is not None:
-            result['hdeniIpv6SipQuota'] = self.hdeni_ipv_6sip_quota
-        if self.hdeni_sip_quota is not None:
-            result['hdeniSipQuota'] = self.hdeni_sip_quota
-        if self.leni_ipv_6sip_quota is not None:
-            result['leniIpv6SipQuota'] = self.leni_ipv_6sip_quota
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
+        if m.get('HdeniIpv6SipQuota') is not None:
+            self.hdeni_ipv_6sip_quota = m.get('HdeniIpv6SipQuota')
         if m.get('HdeniQuota') is not None:
             self.hdeni_quota = m.get('HdeniQuota')
+        if m.get('HdeniSipQuota') is not None:
+            self.hdeni_sip_quota = m.get('HdeniSipQuota')
+        if m.get('LeniIpv6SipQuota') is not None:
+            self.leni_ipv_6sip_quota = m.get('LeniIpv6SipQuota')
         if m.get('LeniQuota') is not None:
             self.leni_quota = m.get('LeniQuota')
         if m.get('LeniSipQuota') is not None:
@@ -8625,12 +8631,6 @@ class GetNodeInfoForPodResponseBodyContent(TeaModel):
             self.vpc_id = m.get('VpcId')
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
-        if m.get('hdeniIpv6SipQuota') is not None:
-            self.hdeni_ipv_6sip_quota = m.get('hdeniIpv6SipQuota')
-        if m.get('hdeniSipQuota') is not None:
-            self.hdeni_sip_quota = m.get('hdeniSipQuota')
-        if m.get('leniIpv6SipQuota') is not None:
-            self.leni_ipv_6sip_quota = m.get('leniIpv6SipQuota')
         return self
 
 
