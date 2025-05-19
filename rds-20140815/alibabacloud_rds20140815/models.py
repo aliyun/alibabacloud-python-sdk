@@ -5486,12 +5486,12 @@ class CreateDBInstanceRequest(TeaModel):
         self.babelfish_config = babelfish_config
         # A deprecated parameter. You do not need to specify this parameter.
         self.bpe_enabled = bpe_enabled
-        # Specifies whether to enable the I/O burst feature of general ESSDs. Valid values:
+        # Specifies whether to enable the I/O burst feature of Premium ESSDs. Valid values:
         # 
         # *   **true**\
         # *   **false**\
         # 
-        # >  For more information about the I/O burst feature of general ESSDs, see [What are general ESSDs?](https://help.aliyun.com/document_detail/2340501.html)
+        # >  For more information about the I/O burst feature of general ESSDs, see [What are Premium ESSDs?](https://help.aliyun.com/document_detail/2340501.html)
         self.bursting_enabled = bursting_enabled
         # The additional business information about the instance.
         self.business_info = business_info
@@ -5517,12 +5517,12 @@ class CreateDBInstanceRequest(TeaModel):
         self.category = category
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # Specifies whether to enable the data archiving feature of general ESSDs. Valid values:
+        # Specifies whether to enable the data archiving feature of Premium ESSDs. Valid values:
         # 
         # *   **true**\
         # *   **false**\
         # 
-        # >  For more information about the data archiving feature of general ESSDs, see [Use the data archiving feature of general ESSDs](https://help.aliyun.com/document_detail/2701832.html).
+        # >  For more information about the data archiving feature of Premium ESSDs, see [Use the data archiving feature](https://help.aliyun.com/document_detail/2701832.html).
         self.cold_data_enabled = cold_data_enabled
         # The connection mode of the instance. Valid values:
         # 
@@ -5566,8 +5566,8 @@ class CreateDBInstanceRequest(TeaModel):
         self.dbinstance_storage = dbinstance_storage
         # The storage type of the instance. Valid values:
         # 
-        # *   **local_ssd**: local SSD. This is the recommended storage type.
-        # *   **general_essd**: general Enterprise SSD (ESSD). This is the recommended storage type.
+        # *   **local_ssd**: Premium Local SSD (recommended)
+        # *   **general_essd**: Premium Enterprise SSD (ESSD) (recommend)
         # *   **cloud_essd**: PL1 ESSD
         # *   **cloud_essd2**: PL2 ESSD
         # *   **cloud_essd3**: PL3 ESSD
@@ -5575,10 +5575,10 @@ class CreateDBInstanceRequest(TeaModel):
         # 
         # The default value of this parameter is determined by the instance type specified by the **DBInstanceClass** parameter.
         # 
-        # *   If the instance type specifies the local SSD storage type, the default value of this parameter is **local_ssd**.
-        # *   If the instance type specifies the standard SSD or ESSD storage type, the default value of this parameter is **cloud_essd**.
+        # *   If the instance type specifies the Premium Local SSD storage type, the default value of this parameter is **local_ssd**.
+        # *   If the instance type specifies the cloud disk storage type, the default value of this parameter is **cloud_essd**.
         # 
-        # >  Serverless instances support only PL1 ESSDs and general ESSDs.
+        # >  Serverless instances support only PL1 ESSDs and Premium ESSDs.
         self.dbinstance_storage_type = dbinstance_storage_type
         # Specifies whether the table name is case-sensitive. Valid values:
         # 
@@ -5589,20 +5589,23 @@ class CreateDBInstanceRequest(TeaModel):
         # 
         # >  This parameter is available if you want to create an instance that runs MySQL or PostgreSQL. If you do not configure this parameter, the default parameter template is used. If you want to use a custom parameter template, you can customize a parameter template and set this parameter to the ID of the custom template.
         self.dbparam_group_id = dbparam_group_id
-        # The time zone of the instance. This parameter takes effect only when you set the **Engine** parameter to **MySQL** or **PostgreSQL**.
+        # The time zone of the instance. This parameter takes effect only when you set **Engine** to **MySQL** or **PostgreSQL**.
         # 
-        # *   If you set **Engine** to **MySQL**:
+        # *   **Engine** is set to **MySQL**:
         # 
-        #     *   The time zone of the instance is in UTC. Valid values: **-12:59** to **+13:00**.
-        #     *   If the instance uses local SSDs, you can specify the name of the time zone. Example: Asia/Hong_Kong. For more information, see [Time zones](https://help.aliyun.com/document_detail/297356.html).
+        #     *   This time zone is in UTC. Valid values: \\*\\*-12:59\\*\\* to **+13:00**.
+        #     *   If the instance uses Premium Local SSDs, you can specify the name of the time zone. For example, you can specify the Asia/Hong_Kong time zone. For more information, see [Time zones](https://help.aliyun.com/document_detail/297356.html).
         # 
-        # *   If you set **Engine** to **PostgreSQL**:
+        # *   **Engine** is set to **PostgreSQL**.
         # 
-        #     *   The time zone of the instance is not in UTC. For more information, see [Time zones](https://help.aliyun.com/document_detail/297356.html).
-        #     *   You can specify this parameter only when the instance runs PostgreSQL with standard SSDs or ESSDs.
+        #     *   This time zone is not in UTC. For more information, see [Time zones](https://help.aliyun.com/document_detail/297356.html).
+        #     *   You can configure this parameter only when the RDS instance uses cloud disks.
         # 
-        # > *   You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance.
-        # > *   If you do not specify this parameter, the system automatically assigns the default time zone of the region in which the instance resides.
+        # > 
+        # 
+        # *   You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance.
+        # 
+        # *   If you do not specify this parameter, the system automatically assigns the default time zone of the region in which the instance resides.
         self.dbtime_zone = dbtime_zone
         # The ID of the dedicated cluster to which the instance belongs.
         # 
@@ -5640,12 +5643,12 @@ class CreateDBInstanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.engine = engine
-        # The database engine version of the instance. Valid values:
+        # The database engine version of the instance.
         # 
         # *   Regular RDS instance
         # 
         #     *   Valid values when you set Engine to MySQL: **5.5**, **5.6**, **5.7**, and **8.0**\
-        #     *   Valid values when you set Engine to SQLServer: **08r2_ent_ha** (cloud disks, discontinued), **2008r2** (local disks, discontinued), **2012** (SQL Server EE Basic), **2012_ent_ha**, **2012_std_ha**, **2012_web**, **2014_ent_ha**, **2014_std_ha**, **2016_ent_ha**, **2016_std_ha**, **2016_web**, **2017_ent**, **2017_std_ha**, **2017_web**, **2019_ent**, **2019_std_ha**, **2019_web**, **2022_ent**, **2022_std_ha**, and **2022_web**\
+        #     *   Valid values when you set Engine to SQLServer: **08r2_ent_ha**(cloud disks, discontinued), **2008r2**(premium local disks, discontinued), **2012**(SQL Server EE Basic), **2012_ent_ha**, **2012_std_ha**, **2012_web**, **2014_ent_ha**, **2014_std_ha**, **2016_ent_ha**, **2016_std_ha**, **2016_web**, **2017_ent**, **2017_std_ha**, **2017_web**, **2019_ent**, **2019_std_ha**, **2019_web**, **2022_ent**, **2022_std_ha**, and **2022_web**\
         #     *   Valid values when you set Engine to PostgreSQL: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, **15.0**, **16.0**, and **17.0**\
         #     *   Valid values when you set Engine to MariaDB: **10.3** and **10.6**\
         # 
@@ -5680,19 +5683,19 @@ class CreateDBInstanceRequest(TeaModel):
         # 
         # *   If the instance runs SQL Server Basic or SQL Server Web, you can set this parameter to VPC or Classic. If the instance runs other database engine, you must set this parameter to **VPC**.
         self.instance_network_type = instance_network_type
-        # Specifies whether to enable the I/O acceleration feature of general ESSDs. Valid values:
+        # Specifies whether to enable Buffer Pool Extension (BPE) of Premium ESSDs. Valid values:
         # 
-        # *   **1**: enabled
-        # *   **0**: disabled
+        # *   **1**: enables BPE.
+        # *   **0**: disables BPE.
         # 
-        # >  For more information about the I/O acceleration feature of general ESSDs, see [Introduction](https://help.aliyun.com/document_detail/2527067.html).
+        # >  For more information about Buffer Pool Extension(BPE) of Premium ESSDs, see [Buffer Pool Extension(BPE)](https://help.aliyun.com/document_detail/2527067.html).
         self.io_acceleration_enabled = io_acceleration_enabled
-        # Specifies whether to enable the write optimization feature. Valid values:
+        # The switch of the 16K atomic write function. Valid values:
         # 
         # *   **optimized**\
         # *   **none** (default)
         # 
-        # >  For more information about the write optimization feature, see [Write optimization](https://help.aliyun.com/document_detail/2858761.html).
+        # >  For more information, see [Use the 16K atomic write feature](https://help.aliyun.com/document_detail/2858761.html).
         self.optimized_writes = optimized_writes
         # The billing method of the instance. Valid values:
         # 
@@ -6276,12 +6279,12 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         self.babelfish_config = babelfish_config
         # A deprecated parameter. You do not need to specify this parameter.
         self.bpe_enabled = bpe_enabled
-        # Specifies whether to enable the I/O burst feature of general ESSDs. Valid values:
+        # Specifies whether to enable the I/O burst feature of Premium ESSDs. Valid values:
         # 
         # *   **true**\
         # *   **false**\
         # 
-        # >  For more information about the I/O burst feature of general ESSDs, see [What are general ESSDs?](https://help.aliyun.com/document_detail/2340501.html)
+        # >  For more information about the I/O burst feature of general ESSDs, see [What are Premium ESSDs?](https://help.aliyun.com/document_detail/2340501.html)
         self.bursting_enabled = bursting_enabled
         # The additional business information about the instance.
         self.business_info = business_info
@@ -6307,12 +6310,12 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         self.category = category
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # Specifies whether to enable the data archiving feature of general ESSDs. Valid values:
+        # Specifies whether to enable the data archiving feature of Premium ESSDs. Valid values:
         # 
         # *   **true**\
         # *   **false**\
         # 
-        # >  For more information about the data archiving feature of general ESSDs, see [Use the data archiving feature of general ESSDs](https://help.aliyun.com/document_detail/2701832.html).
+        # >  For more information about the data archiving feature of Premium ESSDs, see [Use the data archiving feature](https://help.aliyun.com/document_detail/2701832.html).
         self.cold_data_enabled = cold_data_enabled
         # The connection mode of the instance. Valid values:
         # 
@@ -6356,8 +6359,8 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         self.dbinstance_storage = dbinstance_storage
         # The storage type of the instance. Valid values:
         # 
-        # *   **local_ssd**: local SSD. This is the recommended storage type.
-        # *   **general_essd**: general Enterprise SSD (ESSD). This is the recommended storage type.
+        # *   **local_ssd**: Premium Local SSD (recommended)
+        # *   **general_essd**: Premium Enterprise SSD (ESSD) (recommend)
         # *   **cloud_essd**: PL1 ESSD
         # *   **cloud_essd2**: PL2 ESSD
         # *   **cloud_essd3**: PL3 ESSD
@@ -6365,10 +6368,10 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         # 
         # The default value of this parameter is determined by the instance type specified by the **DBInstanceClass** parameter.
         # 
-        # *   If the instance type specifies the local SSD storage type, the default value of this parameter is **local_ssd**.
-        # *   If the instance type specifies the standard SSD or ESSD storage type, the default value of this parameter is **cloud_essd**.
+        # *   If the instance type specifies the Premium Local SSD storage type, the default value of this parameter is **local_ssd**.
+        # *   If the instance type specifies the cloud disk storage type, the default value of this parameter is **cloud_essd**.
         # 
-        # >  Serverless instances support only PL1 ESSDs and general ESSDs.
+        # >  Serverless instances support only PL1 ESSDs and Premium ESSDs.
         self.dbinstance_storage_type = dbinstance_storage_type
         # Specifies whether the table name is case-sensitive. Valid values:
         # 
@@ -6379,20 +6382,23 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         # 
         # >  This parameter is available if you want to create an instance that runs MySQL or PostgreSQL. If you do not configure this parameter, the default parameter template is used. If you want to use a custom parameter template, you can customize a parameter template and set this parameter to the ID of the custom template.
         self.dbparam_group_id = dbparam_group_id
-        # The time zone of the instance. This parameter takes effect only when you set the **Engine** parameter to **MySQL** or **PostgreSQL**.
+        # The time zone of the instance. This parameter takes effect only when you set **Engine** to **MySQL** or **PostgreSQL**.
         # 
-        # *   If you set **Engine** to **MySQL**:
+        # *   **Engine** is set to **MySQL**:
         # 
-        #     *   The time zone of the instance is in UTC. Valid values: **-12:59** to **+13:00**.
-        #     *   If the instance uses local SSDs, you can specify the name of the time zone. Example: Asia/Hong_Kong. For more information, see [Time zones](https://help.aliyun.com/document_detail/297356.html).
+        #     *   This time zone is in UTC. Valid values: \\*\\*-12:59\\*\\* to **+13:00**.
+        #     *   If the instance uses Premium Local SSDs, you can specify the name of the time zone. For example, you can specify the Asia/Hong_Kong time zone. For more information, see [Time zones](https://help.aliyun.com/document_detail/297356.html).
         # 
-        # *   If you set **Engine** to **PostgreSQL**:
+        # *   **Engine** is set to **PostgreSQL**.
         # 
-        #     *   The time zone of the instance is not in UTC. For more information, see [Time zones](https://help.aliyun.com/document_detail/297356.html).
-        #     *   You can specify this parameter only when the instance runs PostgreSQL with standard SSDs or ESSDs.
+        #     *   This time zone is not in UTC. For more information, see [Time zones](https://help.aliyun.com/document_detail/297356.html).
+        #     *   You can configure this parameter only when the RDS instance uses cloud disks.
         # 
-        # > *   You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance.
-        # > *   If you do not specify this parameter, the system automatically assigns the default time zone of the region in which the instance resides.
+        # > 
+        # 
+        # *   You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance.
+        # 
+        # *   If you do not specify this parameter, the system automatically assigns the default time zone of the region in which the instance resides.
         self.dbtime_zone = dbtime_zone
         # The ID of the dedicated cluster to which the instance belongs.
         # 
@@ -6430,12 +6436,12 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.engine = engine
-        # The database engine version of the instance. Valid values:
+        # The database engine version of the instance.
         # 
         # *   Regular RDS instance
         # 
         #     *   Valid values when you set Engine to MySQL: **5.5**, **5.6**, **5.7**, and **8.0**\
-        #     *   Valid values when you set Engine to SQLServer: **08r2_ent_ha** (cloud disks, discontinued), **2008r2** (local disks, discontinued), **2012** (SQL Server EE Basic), **2012_ent_ha**, **2012_std_ha**, **2012_web**, **2014_ent_ha**, **2014_std_ha**, **2016_ent_ha**, **2016_std_ha**, **2016_web**, **2017_ent**, **2017_std_ha**, **2017_web**, **2019_ent**, **2019_std_ha**, **2019_web**, **2022_ent**, **2022_std_ha**, and **2022_web**\
+        #     *   Valid values when you set Engine to SQLServer: **08r2_ent_ha**(cloud disks, discontinued), **2008r2**(premium local disks, discontinued), **2012**(SQL Server EE Basic), **2012_ent_ha**, **2012_std_ha**, **2012_web**, **2014_ent_ha**, **2014_std_ha**, **2016_ent_ha**, **2016_std_ha**, **2016_web**, **2017_ent**, **2017_std_ha**, **2017_web**, **2019_ent**, **2019_std_ha**, **2019_web**, **2022_ent**, **2022_std_ha**, and **2022_web**\
         #     *   Valid values when you set Engine to PostgreSQL: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, **15.0**, **16.0**, and **17.0**\
         #     *   Valid values when you set Engine to MariaDB: **10.3** and **10.6**\
         # 
@@ -6470,19 +6476,19 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         # 
         # *   If the instance runs SQL Server Basic or SQL Server Web, you can set this parameter to VPC or Classic. If the instance runs other database engine, you must set this parameter to **VPC**.
         self.instance_network_type = instance_network_type
-        # Specifies whether to enable the I/O acceleration feature of general ESSDs. Valid values:
+        # Specifies whether to enable Buffer Pool Extension (BPE) of Premium ESSDs. Valid values:
         # 
-        # *   **1**: enabled
-        # *   **0**: disabled
+        # *   **1**: enables BPE.
+        # *   **0**: disables BPE.
         # 
-        # >  For more information about the I/O acceleration feature of general ESSDs, see [Introduction](https://help.aliyun.com/document_detail/2527067.html).
+        # >  For more information about Buffer Pool Extension(BPE) of Premium ESSDs, see [Buffer Pool Extension(BPE)](https://help.aliyun.com/document_detail/2527067.html).
         self.io_acceleration_enabled = io_acceleration_enabled
-        # Specifies whether to enable the write optimization feature. Valid values:
+        # The switch of the 16K atomic write function. Valid values:
         # 
         # *   **optimized**\
         # *   **none** (default)
         # 
-        # >  For more information about the write optimization feature, see [Write optimization](https://help.aliyun.com/document_detail/2858761.html).
+        # >  For more information, see [Use the 16K atomic write feature](https://help.aliyun.com/document_detail/2858761.html).
         self.optimized_writes = optimized_writes
         # The billing method of the instance. Valid values:
         # 
@@ -9324,21 +9330,21 @@ class CreateGADInstanceRequestUnitNode(TeaModel):
         # 
         # *   The name must be **2 to 255** characters in length.
         # *   The name can contain letters, digits, underscores (_), and hyphens (-) and must start with a letter.
-        # *   The name cannot start with `http://` or `https://`.
+        # *   Does not start with `http://` or `https://`.
         self.dbinstance_description = dbinstance_description
-        # The storage capacity of the unit node that you want to create. Unit: GB You can adjust the storage capacity in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html). You can also call the DescribeAvailableResource operation to query the storage capacity range that is supported by the new instance type.
+        # The storage capacity of the unit node that you want to create. Unit: GB. You can adjust the storage capacity in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html). You can also call the DescribeAvailableResource operation to query the storage capacity range that is supported by the new instance type.
         self.dbinstance_storage = dbinstance_storage
-        # The storage type of the instance. Valid values:
+        # The storage type of the new instance. Valid values:
         # 
-        # *   **local_ssd**: local SSD. This is the recommended storage type.
-        # *   **cloud_ssd**: standard SSD. This storage type is not recommended. Standard SSDs are no longer available for purchase in some Alibaba Cloud regions.
-        # *   **cloud_essd**: PL1 ESSD
-        # *   **cloud_essd2**: PL2 ESSD
-        # *   **cloud_essd3**: PL3 ESSD
+        # *   **local_ssd**: Premium Local SSD (recommended)
+        # *   **cloud_ssd**: standard SSD. This storage type is not recommended. Standard SSDs are no longer available for purchase in specific Alibaba Cloud regions.
+        # *   **cloud_essd**: Enterprise SSD (ESSD) of performance level 1 (PL1).
+        # *   **cloud_essd2**: ESSD of PL2.
+        # *   **cloud_essd3**: ESSD of PL3.
         # 
         # The default value of this parameter is determined by the instance type specified by the **DBInstanceClass** parameter.
         # 
-        # *   If the instance type specifies the local SSD storage type, the default value of this parameter is **local_ssd**.
+        # *   If the instance type specifies the Premium Local SSD storage type, the default value of this parameter is **local_ssd**.
         # *   If the instance type specifies the cloud disk storage type, the default value of this parameter is **cloud_essd**.
         self.dbinstance_storage_type = dbinstance_storage_type
         # The instance type of the unit node that you want to create. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html). You can call the DescribeAvailableResource operation to query the available instance types in a region.
@@ -11778,6 +11784,39 @@ class CreateRCDeploymentSetResponse(TeaModel):
         return self
 
 
+class CreateRCDiskRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateRCDiskRequest(TeaModel):
     def __init__(
         self,
@@ -11792,16 +11831,18 @@ class CreateRCDiskRequest(TeaModel):
         period: int = None,
         period_unit: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         size: int = None,
         snapshot_id: str = None,
+        tag: List[CreateRCDiskRequestTag] = None,
         zone_id: str = None,
     ):
         # Specifies whether to enable automatic payment. Valid values:
         # 
-        # *   **true**: enables the feature. You must make sure that your account balance is sufficient.
-        # *   **false**: disables the feature. An unpaid order is generated.
+        # *   **true** (default): enables automatic payment. Make sure that your account balance is sufficient.
+        # *   **false**: does not automatically complete the payment. An unpaid order is generated.
         # 
-        # >  Default value: true. If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, you can log on to the ApsaraDB RDS console to complete the payment.
+        # >  If your account balance is insufficient, you can set the parameter to false. In this case, an unpaid order is generated. You can complete the payment in the Expenses and Costs console.
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal. You must specify this parameter only when the data disk uses the subscription billing method. Valid values:
         # 
@@ -11810,27 +11851,25 @@ class CreateRCDiskRequest(TeaModel):
         # 
         # >  The auto-renewal cycle is one month for a monthly subscription. The auto-renewal cycle is one year for a yearly subscription.
         self.auto_renew = auto_renew
-        # The disk description. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`. By default, this parameter is left empty.
+        # The disk description. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # The category of the data disk. Valid values:
+        # The data disk type. Valid values:
         # 
-        # *   **cloud_efficiency**: ultra disk.
-        # *   **cloud_ssd**: standard SSD.
-        # *   **cloud_essd**: ESSD.
-        # *   **cloud_auto**: ESSD AutoPL disk.
+        # *   **cloud_efficiency**: ultra disk
+        # *   **cloud_ssd**: standard SSD
+        # *   **cloud_essd**: ESSD
+        # *   **cloud_auto** (default): Premium ESSD
         self.disk_category = disk_category
         # The name of the data disk. The name must be 2 to 128 characters in length and can contain letters and digits. The name can contain colons (:), underscores (_), periods (.), and hyphens (-).
-        # 
-        # By default, this parameter is left empty.
         self.disk_name = disk_name
         # The billing method. Set the value to **Postpaid**, which specifies the pay-as-you-go billing method.
         self.instance_charge_type = instance_charge_type
         # The ID of the instance to which you want to attach the disk.
         self.instance_id = instance_id
-        # The performance level (PL) of the disk if the disk is an ESSD. Valid values:
+        # The performance level (PL) of ESSDs. Valid values:
         # 
         # *   **PL0**: A single ESSD delivers up to 10,000 random read/write IOPS.
-        # *   **PL1** (default): A single ESSD can deliver up to 50,000 random read/write IOPS.
+        # *   **PL1: An ESSD delivers up to 50,000 random read/write IOPS.**\
         # *   **PL2**: A single ESSD delivers up to 100,000 random read/write IOPS.
         # *   **PL3**: A single ESSD delivers up to 1,000,000 random read/write IOPS.
         # 
@@ -11844,39 +11883,41 @@ class CreateRCDiskRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The disk size. Unit: GiB. This parameter is required. Valid values:
         # 
-        # *   Valid values if you set DiskCategory to **cloud_essd_entry**: 10 to 32768.
+        # *   Valid values if you set DiskCategory to **cloud_efficiency**: 20 to 32768.
         # 
         # *   Valid values if you set DiskCategory to **cloud_ssd**: 20 to 32768.
         # 
-        # *   Valid values if you set DiskCategory to **cloud_essd**: depend on the value of PerformanceLevel.
+        # *   Valid values if you set DiskCategory to **cloud_auto**: 1 to 65536.
+        # 
+        # *   Valid values when DiskCategory is set to cloud_essd: depending on the value of **PerformanceLevel**.****\
         # 
         #     *   Valid values if PerformanceLevel is set to PL0: 1 to 65536
         #     *   Valid values if PerformanceLevel is set to PL1: 20 to 65536
         #     *   Valid values if PerformanceLevel is set to PL2: 461 to 65536
         #     *   Valid values if PerformanceLevel is set to PL3: 1261 to 65536
         # 
-        # *   Valid values if you set DiskCategory to **cloud_auto**: 1 to 65536.
-        # 
-        # If `SnapshotId` is specified, the following limits apply to `SnapshotId` and `Size`:
-        # 
-        # *   If the size of the snapshot specified by `SnapshotId` is larger than the value of `Size`, the size of the created disk is equal to the size of the snapshot.
-        # *   If the size of the snapshot specified by `SnapshotId` is smaller than the value of `Size`, the size of the created disk is equal to the value of `Size`.
+        # If **SnapshotId** is specified and the size of the corresponding snapshot is greater than the **Size** value, the size of the created disk is the same as that of the snapshot. If the snapshot size is less than the **Size** value, the size of the created disk is equal to the **Size** value.
         self.size = size
-        # The snapshot that you want to use to create the disk. Snapshots that were created on or before July 15, 2013 cannot be used to create disks. The following limits apply to `SnapshotId` and `Size`:
+        # The snapshot that you want to use to create the disk.
         # 
-        # *   If the size of the snapshot specified by `SnapshotId` is larger than the value of `Size`, the size of the created disk is equal to the specified snapshot size.
-        # *   If the size of the snapshot specified by `SnapshotId` is smaller than the value of `Size`, the size of the created disk is equal to the value of `Size`.
+        # *   If the size of the snapshot specified by **SnapshotId** is greater than the value of **Size**, the size of the created disk is equal to the specified snapshot size. If the snapshot size is less than the **Size** value, the size of the created disk is equal to the **Size** value.
         # *   You cannot create elastic ephemeral disks from snapshots.
+        # *   Snapshots that were created on or before July 15, 2013 cannot be used to create disks.
         self.snapshot_id = snapshot_id
+        self.tag = tag
         # The zone ID.
         # 
         # This parameter is required if you do not specify **InstanceId**.
         self.zone_id = zone_id
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -11906,10 +11947,16 @@ class CreateRCDiskRequest(TeaModel):
             result['PeriodUnit'] = self.period_unit
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.size is not None:
             result['Size'] = self.size
         if self.snapshot_id is not None:
             result['SnapshotId'] = self.snapshot_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
         return result
@@ -11938,10 +11985,17 @@ class CreateRCDiskRequest(TeaModel):
             self.period_unit = m.get('PeriodUnit')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Size') is not None:
             self.size = m.get('Size')
         if m.get('SnapshotId') is not None:
             self.snapshot_id = m.get('SnapshotId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateRCDiskRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
         return self
@@ -12220,8 +12274,8 @@ class CreateRCNodePoolRequest(TeaModel):
         self.amount = amount
         # Specifies whether to enable automatic payment. Valid values:
         # 
-        # *   **true**: enables the feature. Make sure that your account balance is sufficient.
-        # *   **false**: disables the feature. An unpaid order is generated.
+        # *   **true**: enables the feature. Make sure that your account balance is sufficient when you enable automatic payment.
+        # *   **false**: does not automatically complete the payment. An unpaid order is generated.
         # 
         # >  Default value: true. If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, you can log on to the ApsaraDB RDS console to complete the payment.
         self.auto_pay = auto_pay
@@ -12574,8 +12628,8 @@ class CreateRCNodePoolShrinkRequest(TeaModel):
         self.amount = amount
         # Specifies whether to enable automatic payment. Valid values:
         # 
-        # *   **true**: enables the feature. Make sure that your account balance is sufficient.
-        # *   **false**: disables the feature. An unpaid order is generated.
+        # *   **true**: enables the feature. Make sure that your account balance is sufficient when you enable automatic payment.
+        # *   **false**: does not automatically complete the payment. An unpaid order is generated.
         # 
         # >  Default value: true. If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, you can log on to the ApsaraDB RDS console to complete the payment.
         self.auto_pay = auto_pay
@@ -51995,6 +52049,39 @@ class DescribeRCDeploymentSetsResponse(TeaModel):
         return self
 
 
+class DescribeRCDisksRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeRCDisksRequest(TeaModel):
     def __init__(
         self,
@@ -52003,6 +52090,7 @@ class DescribeRCDisksRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
+        tag: List[DescribeRCDisksRequestTag] = None,
     ):
         # The disk ID. The value is a JSON array that consists of up to 100 disk IDs. Separate the disk IDs with commas (,). Format: `["Disk ID1","Disk ID2"]`.
         self.disk_ids = disk_ids
@@ -52012,13 +52100,17 @@ class DescribeRCDisksRequest(TeaModel):
         self.page_number = page_number
         # The number of entries per page. Valid values: **30** to **100**. Default value: **30**.
         self.page_size = page_size
-        # The region ID of the instance.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -52036,6 +52128,10 @@ class DescribeRCDisksRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -52050,6 +52146,44 @@ class DescribeRCDisksRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeRCDisksRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeRCDisksResponseBodyDisksTag(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
         return self
 
 
@@ -52079,14 +52213,15 @@ class DescribeRCDisksResponseBodyDisks(TeaModel):
         status: str = None,
         storage_cluster_id: str = None,
         storage_set_id: str = None,
+        tag: List[DescribeRCDisksResponseBodyDisksTag] = None,
         type: str = None,
         zone_id: str = None,
     ):
         # The category of the disk. Valid values:
         # 
-        # *   **cloud_efficiency**: ultra disk
-        # *   **cloud_ssd**: standard SSD
-        # *   **cloud_essd**: ESSD
+        # *   **cloud_efficiency**: ultra disk.
+        # *   **cloud_ssd**: standard SSD.
+        # *   **cloud_essd**: ESSD.
         # *   **cloud_auto**: Premium ESSD
         self.category = category
         # The creation time.
@@ -52160,6 +52295,7 @@ class DescribeRCDisksResponseBodyDisks(TeaModel):
         self.storage_cluster_id = storage_cluster_id
         # The storage set ID.
         self.storage_set_id = storage_set_id
+        self.tag = tag
         # The disk type. Valid values:
         # 
         # *   system: system disk
@@ -52169,7 +52305,10 @@ class DescribeRCDisksResponseBodyDisks(TeaModel):
         self.zone_id = zone_id
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -52223,6 +52362,10 @@ class DescribeRCDisksResponseBodyDisks(TeaModel):
             result['StorageClusterId'] = self.storage_cluster_id
         if self.storage_set_id is not None:
             result['StorageSetId'] = self.storage_set_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.type is not None:
             result['Type'] = self.type
         if self.zone_id is not None:
@@ -52277,6 +52420,11 @@ class DescribeRCDisksResponseBodyDisks(TeaModel):
             self.storage_cluster_id = m.get('StorageClusterId')
         if m.get('StorageSetId') is not None:
             self.storage_set_id = m.get('StorageSetId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeRCDisksResponseBodyDisksTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('Type') is not None:
             self.type = m.get('Type')
         if m.get('ZoneId') is not None:
@@ -53803,8 +53951,11 @@ class DescribeRCInstanceDdosCountRequest(TeaModel):
         instance_type: str = None,
         region_id: str = None,
     ):
+        # The region ID of the asset.
         self.ddos_region_id = ddos_region_id
+        # The type of the asset that is assigned a public IP address. Fixed value: **ecs**.
         self.instance_type = instance_type
+        # The ID of the region in which the RDS Custom instance resides.
         self.region_id = region_id
 
     def validate(self):
@@ -53842,8 +53993,11 @@ class DescribeRCInstanceDdosCountResponseBodyDdosCount(TeaModel):
         defense_count: str = None,
         instacen_count: str = None,
     ):
+        # The number of instances for which blackhole filtering is triggered.
         self.blackhole_count = blackhole_count
+        # The number of instances for which traffic scrubbing is triggered.
         self.defense_count = defense_count
+        # The total number of instances.
         self.instacen_count = instacen_count
 
     def validate(self):
@@ -53880,7 +54034,9 @@ class DescribeRCInstanceDdosCountResponseBody(TeaModel):
         ddos_count: DescribeRCInstanceDdosCountResponseBodyDdosCount = None,
         request_id: str = None,
     ):
+        # The number of instances that are under DDoS attacks.
         self.ddos_count = ddos_count
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -54632,15 +54788,28 @@ class DescribeRCInstanceIpAddressRequest(TeaModel):
         region_id: str = None,
         resource_type: str = None,
     ):
+        # The page number. Default value: 1. Pages start from page 1.
         self.current_page = current_page
+        # The region ID of the asset.
         self.ddos_region_id = ddos_region_id
+        # The DDoS mitigation status of the asset. Valid values:
+        # 
+        # *   **defense**: queries assets for which traffic scrubbing is performed.
+        # *   **blackhole**: queries assets for which blackhole filtering is triggered.
         self.ddos_status = ddos_status
+        # The ID of the RDS Custom instance to which the asset to query is added.
         self.instance_id = instance_id
+        # The IP address of the asset to query.
         self.instance_ip = instance_ip
+        # The name of the RDS Custom instance to which the asset to query is added.
         self.instance_name = instance_name
+        # The type of the asset that is assigned a public IP address. Set the value to **ecs**.
         self.instance_type = instance_type
+        # The number of instances on each page.
         self.page_size = page_size
+        # The ID of the region in which the RDS Custom instance resides.
         self.region_id = region_id
+        # The type of the resource. Set the value to **ecs**.
         self.resource_type = resource_type
 
     def validate(self):
@@ -54713,15 +54882,38 @@ class DescribeRCInstanceIpAddressResponseBodyRCInstanceListIpAddressConfig(TeaMo
         is_full_protection: int = None,
         region_id: str = None,
     ):
+        # The basic protection threshold for the asset. Unit: Mbit/s.
         self.blackhole_threshold = blackhole_threshold
+        # The traffic scrubbing threshold for the asset measured in Mbit/s. Unit: Mbit/s.
         self.defense_bps_threshold = defense_bps_threshold
+        # The traffic scrubbing threshold for the asset measured in packets per second (PPS). Unit: packets per second (pps).
         self.defense_pps_threshold = defense_pps_threshold
+        # The burstable protection threshold for the asset. Unit: Mbit/s.
         self.elastic_threshold = elastic_threshold
+        # The IP address of the asset.
         self.instance_ip = instance_ip
+        # The DDoS mitigation status of the asset. Valid values:
+        # 
+        # *   **mitigating**\
+        # *   **blackholed**\
+        # *   **normal**\
         self.ip_status = ip_status
+        # The IP version of the instance. Valid values:
+        # 
+        # *   **v4**\
+        # *   **v6**\
         self.ip_version = ip_version
+        # Indicates whether the asset is added to the instance. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.is_bgppack = is_bgppack
+        # Indicates whether best-effort protection is enabled for the asset. Valid values:
+        # 
+        # *   **0**: Best-effort protection is disabled.
+        # *   **1**: Best-effort protection is enabled.
         self.is_full_protection = is_full_protection
+        # The region code of the asset.
         self.region_id = region_id
 
     def validate(self):
@@ -54789,10 +54981,18 @@ class DescribeRCInstanceIpAddressResponseBodyRCInstanceList(TeaModel):
         instance_type: str = None,
         ip_address_config: List[DescribeRCInstanceIpAddressResponseBodyRCInstanceListIpAddressConfig] = None,
     ):
+        # The ID of the RDS Custom instance.
         self.instance_id = instance_id
+        # The instance name.
         self.instance_name = instance_name
+        # The DDoS mitigation status of the instance. Valid values:
+        # 
+        # *   **normal**\
+        # *   **abnormal**\
         self.instance_status = instance_status
+        # The type of the asset. The value is fixed to **ecs**.
         self.instance_type = instance_type
+        # An array that consists of the details of the asset.
         self.ip_address_config = ip_address_config
 
     def validate(self):
@@ -54846,8 +55046,11 @@ class DescribeRCInstanceIpAddressResponseBody(TeaModel):
         request_id: str = None,
         total: str = None,
     ):
+        # An array that consists of details of the instance.
         self.rcinstance_list = rcinstance_list
+        # The request ID.
         self.request_id = request_id
+        # The total number of the assets.
         self.total = total
 
     def validate(self):
@@ -63612,7 +63815,7 @@ class DescribeTasksRequest(TeaModel):
         status: str = None,
         task_action: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
@@ -63712,7 +63915,7 @@ class DescribeTasksResponseBodyItemsTaskProgressInfo(TeaModel):
         task_error_message: str = None,
         task_id: str = None,
     ):
-        # The start time of the task. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC .
+        # The start time of the task. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
         self.begin_time = begin_time
         # The name of the subtask.
         self.current_step_name = current_step_name
@@ -63720,15 +63923,15 @@ class DescribeTasksResponseBodyItemsTaskProgressInfo(TeaModel):
         self.dbname = dbname
         # The estimated end time of the task.
         # 
-        # > In most cases, this parameter is empty.
+        # >  In most cases, this parameter is empty.
         self.expected_finish_time = expected_finish_time
         # The end time of the task. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
         self.finish_time = finish_time
-        # The progress of the task in percentage.
+        # The task progress in percentage.
         self.progress = progress
         # The description of the task progress.
         # 
-        # > If no progress description is provided for the task, this parameter is empty.
+        # >  If no progress description is provided for the task, this parameter is empty.
         self.progress_info = progress_info
         # The estimated remaining time of the task. Unit: seconds.
         # 
@@ -63744,13 +63947,13 @@ class DescribeTasksResponseBodyItemsTaskProgressInfo(TeaModel):
         self.task_action = task_action
         # The error code that is returned when an error occurs.
         # 
-        # > This parameter is returned only when an error occurs.
+        # >  This parameter is returned only when an error occurs.
         self.task_error_code = task_error_code
         # The error message that is returned when an error occurs.
         # 
         # >  This parameter is returned only when an error occurs.
         self.task_error_message = task_error_message
-        # The ID of the task.
+        # The task ID. You can use one of the following methods to obtain the task ID:
         self.task_id = task_id
 
     def validate(self):
@@ -63875,13 +64078,13 @@ class DescribeTasksResponseBody(TeaModel):
     ):
         # The details of the task execution.
         self.items = items
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
         # The number of entries on the current page.
         self.page_record_count = page_record_count
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of returned entries.
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -79846,10 +80049,12 @@ class ModifyRCInstanceRequest(TeaModel):
     def __init__(
         self,
         auto_pay: bool = None,
+        auto_use_coupon: bool = None,
         direction: str = None,
         dry_run: bool = None,
         instance_id: str = None,
         instance_type: str = None,
+        promotion_code: str = None,
         reboot_time: str = None,
         reboot_when_finished: bool = None,
         region_id: str = None,
@@ -79861,6 +80066,7 @@ class ModifyRCInstanceRequest(TeaModel):
         # 
         # >  If your account balance is insufficient, you can set AutoPay to false. In this case, an unpaid order is generated. You can complete the payment in the Expenses and Costs console.
         self.auto_pay = auto_pay
+        self.auto_use_coupon = auto_use_coupon
         # The type of the change that you want to perform on the instance. Valid values:
         # 
         # >  This parameter is optional. The system can automatically determine whether the instance change is an upgrade or a downgrade. If you want to specify this parameter, take note of the following items:
@@ -79877,6 +80083,7 @@ class ModifyRCInstanceRequest(TeaModel):
         self.instance_id = instance_id
         # The new instance type. For more information about the instance types that are supported by RDS Custom instances, see [Instance types of RDS Custom instances](https://help.aliyun.com/document_detail/2844823.html).
         self.instance_type = instance_type
+        self.promotion_code = promotion_code
         self.reboot_time = reboot_time
         self.reboot_when_finished = reboot_when_finished
         # The region ID of the instance.
@@ -79893,6 +80100,8 @@ class ModifyRCInstanceRequest(TeaModel):
         result = dict()
         if self.auto_pay is not None:
             result['AutoPay'] = self.auto_pay
+        if self.auto_use_coupon is not None:
+            result['AutoUseCoupon'] = self.auto_use_coupon
         if self.direction is not None:
             result['Direction'] = self.direction
         if self.dry_run is not None:
@@ -79901,6 +80110,8 @@ class ModifyRCInstanceRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
+        if self.promotion_code is not None:
+            result['PromotionCode'] = self.promotion_code
         if self.reboot_time is not None:
             result['RebootTime'] = self.reboot_time
         if self.reboot_when_finished is not None:
@@ -79913,6 +80124,8 @@ class ModifyRCInstanceRequest(TeaModel):
         m = m or dict()
         if m.get('AutoPay') is not None:
             self.auto_pay = m.get('AutoPay')
+        if m.get('AutoUseCoupon') is not None:
+            self.auto_use_coupon = m.get('AutoUseCoupon')
         if m.get('Direction') is not None:
             self.direction = m.get('Direction')
         if m.get('DryRun') is not None:
@@ -79921,6 +80134,8 @@ class ModifyRCInstanceRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
+        if m.get('PromotionCode') is not None:
+            self.promotion_code = m.get('PromotionCode')
         if m.get('RebootTime') is not None:
             self.reboot_time = m.get('RebootTime')
         if m.get('RebootWhenFinished') is not None:
@@ -87375,6 +87590,7 @@ class RunRCInstancesRequest(TeaModel):
         amount: int = None,
         auto_pay: bool = None,
         auto_renew: bool = None,
+        auto_use_coupon: bool = None,
         client_token: str = None,
         create_ack_edge_param: RunRCInstancesRequestCreateAckEdgeParam = None,
         create_extra_param: str = None,
@@ -87395,6 +87611,7 @@ class RunRCInstancesRequest(TeaModel):
         password: str = None,
         period: int = None,
         period_unit: str = None,
+        promotion_code: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         security_enhancement_strategy: str = None,
@@ -87424,6 +87641,7 @@ class RunRCInstancesRequest(TeaModel):
         # *   **true** (default)
         # *   **false**\
         self.auto_renew = auto_renew
+        self.auto_use_coupon = auto_use_coupon
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         self.create_ack_edge_param = create_ack_edge_param
@@ -87468,6 +87686,7 @@ class RunRCInstancesRequest(TeaModel):
         # *   **Year**\
         # *   **Month** (default)
         self.period_unit = period_unit
+        self.promotion_code = promotion_code
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         # 
         # This parameter is required.
@@ -87523,6 +87742,8 @@ class RunRCInstancesRequest(TeaModel):
             result['AutoPay'] = self.auto_pay
         if self.auto_renew is not None:
             result['AutoRenew'] = self.auto_renew
+        if self.auto_use_coupon is not None:
+            result['AutoUseCoupon'] = self.auto_use_coupon
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.create_ack_edge_param is not None:
@@ -87565,6 +87786,8 @@ class RunRCInstancesRequest(TeaModel):
             result['Period'] = self.period
         if self.period_unit is not None:
             result['PeriodUnit'] = self.period_unit
+        if self.promotion_code is not None:
+            result['PromotionCode'] = self.promotion_code
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -87601,6 +87824,8 @@ class RunRCInstancesRequest(TeaModel):
             self.auto_pay = m.get('AutoPay')
         if m.get('AutoRenew') is not None:
             self.auto_renew = m.get('AutoRenew')
+        if m.get('AutoUseCoupon') is not None:
+            self.auto_use_coupon = m.get('AutoUseCoupon')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('CreateAckEdgeParam') is not None:
@@ -87645,6 +87870,8 @@ class RunRCInstancesRequest(TeaModel):
             self.period = m.get('Period')
         if m.get('PeriodUnit') is not None:
             self.period_unit = m.get('PeriodUnit')
+        if m.get('PromotionCode') is not None:
+            self.promotion_code = m.get('PromotionCode')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -87715,6 +87942,7 @@ class RunRCInstancesShrinkRequest(TeaModel):
         amount: int = None,
         auto_pay: bool = None,
         auto_renew: bool = None,
+        auto_use_coupon: bool = None,
         client_token: str = None,
         create_ack_edge_param_shrink: str = None,
         create_extra_param: str = None,
@@ -87735,6 +87963,7 @@ class RunRCInstancesShrinkRequest(TeaModel):
         password: str = None,
         period: int = None,
         period_unit: str = None,
+        promotion_code: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         security_enhancement_strategy: str = None,
@@ -87764,6 +87993,7 @@ class RunRCInstancesShrinkRequest(TeaModel):
         # *   **true** (default)
         # *   **false**\
         self.auto_renew = auto_renew
+        self.auto_use_coupon = auto_use_coupon
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         self.create_ack_edge_param_shrink = create_ack_edge_param_shrink
@@ -87808,6 +88038,7 @@ class RunRCInstancesShrinkRequest(TeaModel):
         # *   **Year**\
         # *   **Month** (default)
         self.period_unit = period_unit
+        self.promotion_code = promotion_code
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         # 
         # This parameter is required.
@@ -87855,6 +88086,8 @@ class RunRCInstancesShrinkRequest(TeaModel):
             result['AutoPay'] = self.auto_pay
         if self.auto_renew is not None:
             result['AutoRenew'] = self.auto_renew
+        if self.auto_use_coupon is not None:
+            result['AutoUseCoupon'] = self.auto_use_coupon
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.create_ack_edge_param_shrink is not None:
@@ -87895,6 +88128,8 @@ class RunRCInstancesShrinkRequest(TeaModel):
             result['Period'] = self.period
         if self.period_unit is not None:
             result['PeriodUnit'] = self.period_unit
+        if self.promotion_code is not None:
+            result['PromotionCode'] = self.promotion_code
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -87931,6 +88166,8 @@ class RunRCInstancesShrinkRequest(TeaModel):
             self.auto_pay = m.get('AutoPay')
         if m.get('AutoRenew') is not None:
             self.auto_renew = m.get('AutoRenew')
+        if m.get('AutoUseCoupon') is not None:
+            self.auto_use_coupon = m.get('AutoUseCoupon')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('CreateAckEdgeParam') is not None:
@@ -87971,6 +88208,8 @@ class RunRCInstancesShrinkRequest(TeaModel):
             self.period = m.get('Period')
         if m.get('PeriodUnit') is not None:
             self.period_unit = m.get('PeriodUnit')
+        if m.get('PromotionCode') is not None:
+            self.promotion_code = m.get('PromotionCode')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:

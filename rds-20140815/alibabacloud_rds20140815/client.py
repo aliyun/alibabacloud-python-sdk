@@ -7528,10 +7528,14 @@ class Client(OpenApiClient):
             query['PeriodUnit'] = request.period_unit
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.size):
             query['Size'] = request.size
         if not UtilClient.is_unset(request.snapshot_id):
             query['SnapshotId'] = request.snapshot_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.zone_id):
             query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
@@ -7589,10 +7593,14 @@ class Client(OpenApiClient):
             query['PeriodUnit'] = request.period_unit
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.size):
             query['Size'] = request.size
         if not UtilClient.is_unset(request.snapshot_id):
             query['SnapshotId'] = request.snapshot_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.zone_id):
             query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
@@ -27414,7 +27422,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeRCInstanceDdosCountResponse:
         """
-        @summary 查询RDS Custom实例被DDos攻击的数量
+        @summary Queries the number of DDos attacks on an RDS Custom for SQL Server instance and monitors the security status of the instance in real time to assess potential security risks.
+        
+        @description ### [](#)Supported database engine
+        SQL Server
+        ### [](#)References
+        [Introduction to ApsaraDB RDS Custom](https://help.aliyun.com/document_detail/2864363.html)
         
         @param request: DescribeRCInstanceDdosCountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27453,7 +27466,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeRCInstanceDdosCountResponse:
         """
-        @summary 查询RDS Custom实例被DDos攻击的数量
+        @summary Queries the number of DDos attacks on an RDS Custom for SQL Server instance and monitors the security status of the instance in real time to assess potential security risks.
+        
+        @description ### [](#)Supported database engine
+        SQL Server
+        ### [](#)References
+        [Introduction to ApsaraDB RDS Custom](https://help.aliyun.com/document_detail/2864363.html)
         
         @param request: DescribeRCInstanceDdosCountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27491,7 +27509,12 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeRCInstanceDdosCountRequest,
     ) -> rds_20140815_models.DescribeRCInstanceDdosCountResponse:
         """
-        @summary 查询RDS Custom实例被DDos攻击的数量
+        @summary Queries the number of DDos attacks on an RDS Custom for SQL Server instance and monitors the security status of the instance in real time to assess potential security risks.
+        
+        @description ### [](#)Supported database engine
+        SQL Server
+        ### [](#)References
+        [Introduction to ApsaraDB RDS Custom](https://help.aliyun.com/document_detail/2864363.html)
         
         @param request: DescribeRCInstanceDdosCountRequest
         @return: DescribeRCInstanceDdosCountResponse
@@ -27504,7 +27527,12 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeRCInstanceDdosCountRequest,
     ) -> rds_20140815_models.DescribeRCInstanceDdosCountResponse:
         """
-        @summary 查询RDS Custom实例被DDos攻击的数量
+        @summary Queries the number of DDos attacks on an RDS Custom for SQL Server instance and monitors the security status of the instance in real time to assess potential security risks.
+        
+        @description ### [](#)Supported database engine
+        SQL Server
+        ### [](#)References
+        [Introduction to ApsaraDB RDS Custom](https://help.aliyun.com/document_detail/2864363.html)
         
         @param request: DescribeRCInstanceDdosCountRequest
         @return: DescribeRCInstanceDdosCountResponse
@@ -27674,7 +27702,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeRCInstanceIpAddressResponse:
         """
-        @summary 查询RDS Custom实例的公网IP
+        @summary Queries the protection information about an RDS Custom for SQL Server instance and the details of the Anti-DDoS Origin instance to which the RDS Custom instance is added.
+        
+        @description ### [](#)Supported database engine
+        SQL Server
+        ### [](#)References
+        [Introduction to ApsaraDB RDS Custom](https://help.aliyun.com/document_detail/2864363.html)
+        >  If one or more assets of the current Alibaba Cloud account are added to an [Anti-DDoS Origin instance](https://help.aliyun.com/document_detail/63643.html), you can call the DescribeRCInstanceIpAddress operation to query the DDoS mitigation information and the details of the Anti-DDoS Origin instance. The information and the details include the basic protection threshold and traffic scrubbing threshold for the assets, DDoS mitigation status of the assets, ID of the instance, and the mitigation status of the instance.
         
         @param request: DescribeRCInstanceIpAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27727,7 +27761,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeRCInstanceIpAddressResponse:
         """
-        @summary 查询RDS Custom实例的公网IP
+        @summary Queries the protection information about an RDS Custom for SQL Server instance and the details of the Anti-DDoS Origin instance to which the RDS Custom instance is added.
+        
+        @description ### [](#)Supported database engine
+        SQL Server
+        ### [](#)References
+        [Introduction to ApsaraDB RDS Custom](https://help.aliyun.com/document_detail/2864363.html)
+        >  If one or more assets of the current Alibaba Cloud account are added to an [Anti-DDoS Origin instance](https://help.aliyun.com/document_detail/63643.html), you can call the DescribeRCInstanceIpAddress operation to query the DDoS mitigation information and the details of the Anti-DDoS Origin instance. The information and the details include the basic protection threshold and traffic scrubbing threshold for the assets, DDoS mitigation status of the assets, ID of the instance, and the mitigation status of the instance.
         
         @param request: DescribeRCInstanceIpAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27779,7 +27819,13 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeRCInstanceIpAddressRequest,
     ) -> rds_20140815_models.DescribeRCInstanceIpAddressResponse:
         """
-        @summary 查询RDS Custom实例的公网IP
+        @summary Queries the protection information about an RDS Custom for SQL Server instance and the details of the Anti-DDoS Origin instance to which the RDS Custom instance is added.
+        
+        @description ### [](#)Supported database engine
+        SQL Server
+        ### [](#)References
+        [Introduction to ApsaraDB RDS Custom](https://help.aliyun.com/document_detail/2864363.html)
+        >  If one or more assets of the current Alibaba Cloud account are added to an [Anti-DDoS Origin instance](https://help.aliyun.com/document_detail/63643.html), you can call the DescribeRCInstanceIpAddress operation to query the DDoS mitigation information and the details of the Anti-DDoS Origin instance. The information and the details include the basic protection threshold and traffic scrubbing threshold for the assets, DDoS mitigation status of the assets, ID of the instance, and the mitigation status of the instance.
         
         @param request: DescribeRCInstanceIpAddressRequest
         @return: DescribeRCInstanceIpAddressResponse
@@ -27792,7 +27838,13 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeRCInstanceIpAddressRequest,
     ) -> rds_20140815_models.DescribeRCInstanceIpAddressResponse:
         """
-        @summary 查询RDS Custom实例的公网IP
+        @summary Queries the protection information about an RDS Custom for SQL Server instance and the details of the Anti-DDoS Origin instance to which the RDS Custom instance is added.
+        
+        @description ### [](#)Supported database engine
+        SQL Server
+        ### [](#)References
+        [Introduction to ApsaraDB RDS Custom](https://help.aliyun.com/document_detail/2864363.html)
+        >  If one or more assets of the current Alibaba Cloud account are added to an [Anti-DDoS Origin instance](https://help.aliyun.com/document_detail/63643.html), you can call the DescribeRCInstanceIpAddress operation to query the DDoS mitigation information and the details of the Anti-DDoS Origin instance. The information and the details include the basic protection threshold and traffic scrubbing threshold for the assets, DDoS mitigation status of the assets, ID of the instance, and the mitigation status of the instance.
         
         @param request: DescribeRCInstanceIpAddressRequest
         @return: DescribeRCInstanceIpAddressResponse
@@ -31714,9 +31766,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeTasksResponse:
         """
-        @summary You can call the DescribeTasks operation to query the tasks that are running on an instance.
+        @summary Queries the tasks in the Waiting or Executing state on an ApsaraDB RDS for SQL Server instance.
         
-        @description This operation is phased out.
+        @description ### [](#)Supported database engine
+        SQL Server
+        >  You can call the [DescribeHistoryTasks](https://help.aliyun.com/document_detail/2627863.html) operation to query the tasks on an ApsaraDB RDS for MySQL or ApsaraDB RDS for PostgreSQL instance
         
         @param request: DescribeTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -31771,9 +31825,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeTasksResponse:
         """
-        @summary You can call the DescribeTasks operation to query the tasks that are running on an instance.
+        @summary Queries the tasks in the Waiting or Executing state on an ApsaraDB RDS for SQL Server instance.
         
-        @description This operation is phased out.
+        @description ### [](#)Supported database engine
+        SQL Server
+        >  You can call the [DescribeHistoryTasks](https://help.aliyun.com/document_detail/2627863.html) operation to query the tasks on an ApsaraDB RDS for MySQL or ApsaraDB RDS for PostgreSQL instance
         
         @param request: DescribeTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -31827,9 +31883,11 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeTasksRequest,
     ) -> rds_20140815_models.DescribeTasksResponse:
         """
-        @summary You can call the DescribeTasks operation to query the tasks that are running on an instance.
+        @summary Queries the tasks in the Waiting or Executing state on an ApsaraDB RDS for SQL Server instance.
         
-        @description This operation is phased out.
+        @description ### [](#)Supported database engine
+        SQL Server
+        >  You can call the [DescribeHistoryTasks](https://help.aliyun.com/document_detail/2627863.html) operation to query the tasks on an ApsaraDB RDS for MySQL or ApsaraDB RDS for PostgreSQL instance
         
         @param request: DescribeTasksRequest
         @return: DescribeTasksResponse
@@ -31842,9 +31900,11 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeTasksRequest,
     ) -> rds_20140815_models.DescribeTasksResponse:
         """
-        @summary You can call the DescribeTasks operation to query the tasks that are running on an instance.
+        @summary Queries the tasks in the Waiting or Executing state on an ApsaraDB RDS for SQL Server instance.
         
-        @description This operation is phased out.
+        @description ### [](#)Supported database engine
+        SQL Server
+        >  You can call the [DescribeHistoryTasks](https://help.aliyun.com/document_detail/2627863.html) operation to query the tasks on an ApsaraDB RDS for MySQL or ApsaraDB RDS for PostgreSQL instance
         
         @param request: DescribeTasksRequest
         @return: DescribeTasksResponse
@@ -43348,6 +43408,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
             query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
         if not UtilClient.is_unset(request.direction):
             query['Direction'] = request.direction
         if not UtilClient.is_unset(request.dry_run):
@@ -43356,6 +43418,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.instance_type):
             query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.promotion_code):
+            query['PromotionCode'] = request.promotion_code
         if not UtilClient.is_unset(request.reboot_time):
             query['RebootTime'] = request.reboot_time
         if not UtilClient.is_unset(request.reboot_when_finished):
@@ -43405,6 +43469,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
             query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
         if not UtilClient.is_unset(request.direction):
             query['Direction'] = request.direction
         if not UtilClient.is_unset(request.dry_run):
@@ -43413,6 +43479,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.instance_type):
             query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.promotion_code):
+            query['PromotionCode'] = request.promotion_code
         if not UtilClient.is_unset(request.reboot_time):
             query['RebootTime'] = request.reboot_time
         if not UtilClient.is_unset(request.reboot_when_finished):
@@ -43604,6 +43672,16 @@ class Client(OpenApiClient):
         """
         @summary Modifies the billing method of an RDS Custom instance or cloud disks. You can call this operation to change the billing method of instances between pay-as-you-go and subscription.
         
+        @description ### [](#)Precautions
+        Before you call this operation, make sure that you are familiar with the subscription and pay-as-you-go billing methods and pricing of RDS Custom.
+        The instances must be in the **Running** or **Stopped** state, and you have no overdue payments for the instances.
+        The disk is in the **In_use** state and the billing method of the disk has not been changed within the previous 15 minutes.
+        After you change the billing method, the payment is automatically completed. Make sure that the balance in your account is sufficient. Otherwise, your order becomes invalid and is canceled.
+        ### [](#)Considerations
+        For more information, see the following documentation:
+        [Change the billing method of an instance](https://help.aliyun.com/document_detail/2878542.html)
+        [Change the billing method of a disk](https://help.aliyun.com/document_detail/2878547.html)
+        
         @param request: ModifyRCInstanceChargeTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyRCInstanceChargeTypeResponse
@@ -43667,6 +43745,16 @@ class Client(OpenApiClient):
         """
         @summary Modifies the billing method of an RDS Custom instance or cloud disks. You can call this operation to change the billing method of instances between pay-as-you-go and subscription.
         
+        @description ### [](#)Precautions
+        Before you call this operation, make sure that you are familiar with the subscription and pay-as-you-go billing methods and pricing of RDS Custom.
+        The instances must be in the **Running** or **Stopped** state, and you have no overdue payments for the instances.
+        The disk is in the **In_use** state and the billing method of the disk has not been changed within the previous 15 minutes.
+        After you change the billing method, the payment is automatically completed. Make sure that the balance in your account is sufficient. Otherwise, your order becomes invalid and is canceled.
+        ### [](#)Considerations
+        For more information, see the following documentation:
+        [Change the billing method of an instance](https://help.aliyun.com/document_detail/2878542.html)
+        [Change the billing method of a disk](https://help.aliyun.com/document_detail/2878547.html)
+        
         @param request: ModifyRCInstanceChargeTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyRCInstanceChargeTypeResponse
@@ -43729,6 +43817,16 @@ class Client(OpenApiClient):
         """
         @summary Modifies the billing method of an RDS Custom instance or cloud disks. You can call this operation to change the billing method of instances between pay-as-you-go and subscription.
         
+        @description ### [](#)Precautions
+        Before you call this operation, make sure that you are familiar with the subscription and pay-as-you-go billing methods and pricing of RDS Custom.
+        The instances must be in the **Running** or **Stopped** state, and you have no overdue payments for the instances.
+        The disk is in the **In_use** state and the billing method of the disk has not been changed within the previous 15 minutes.
+        After you change the billing method, the payment is automatically completed. Make sure that the balance in your account is sufficient. Otherwise, your order becomes invalid and is canceled.
+        ### [](#)Considerations
+        For more information, see the following documentation:
+        [Change the billing method of an instance](https://help.aliyun.com/document_detail/2878542.html)
+        [Change the billing method of a disk](https://help.aliyun.com/document_detail/2878547.html)
+        
         @param request: ModifyRCInstanceChargeTypeRequest
         @return: ModifyRCInstanceChargeTypeResponse
         """
@@ -43741,6 +43839,16 @@ class Client(OpenApiClient):
     ) -> rds_20140815_models.ModifyRCInstanceChargeTypeResponse:
         """
         @summary Modifies the billing method of an RDS Custom instance or cloud disks. You can call this operation to change the billing method of instances between pay-as-you-go and subscription.
+        
+        @description ### [](#)Precautions
+        Before you call this operation, make sure that you are familiar with the subscription and pay-as-you-go billing methods and pricing of RDS Custom.
+        The instances must be in the **Running** or **Stopped** state, and you have no overdue payments for the instances.
+        The disk is in the **In_use** state and the billing method of the disk has not been changed within the previous 15 minutes.
+        After you change the billing method, the payment is automatically completed. Make sure that the balance in your account is sufficient. Otherwise, your order becomes invalid and is canceled.
+        ### [](#)Considerations
+        For more information, see the following documentation:
+        [Change the billing method of an instance](https://help.aliyun.com/document_detail/2878542.html)
+        [Change the billing method of a disk](https://help.aliyun.com/document_detail/2878547.html)
         
         @param request: ModifyRCInstanceChargeTypeRequest
         @return: ModifyRCInstanceChargeTypeResponse
@@ -49472,6 +49580,8 @@ class Client(OpenApiClient):
             query['AutoPay'] = request.auto_pay
         if not UtilClient.is_unset(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.create_ack_edge_param_shrink):
@@ -49512,6 +49622,8 @@ class Client(OpenApiClient):
             query['Period'] = request.period
         if not UtilClient.is_unset(request.period_unit):
             query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.promotion_code):
+            query['PromotionCode'] = request.promotion_code
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -49587,6 +49699,8 @@ class Client(OpenApiClient):
             query['AutoPay'] = request.auto_pay
         if not UtilClient.is_unset(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.create_ack_edge_param_shrink):
@@ -49627,6 +49741,8 @@ class Client(OpenApiClient):
             query['Period'] = request.period
         if not UtilClient.is_unset(request.period_unit):
             query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.promotion_code):
+            query['PromotionCode'] = request.promotion_code
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):

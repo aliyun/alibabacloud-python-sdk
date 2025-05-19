@@ -1,3 +1,14 @@
+2025-05-19 Version: 11.3.2
+- Update API CreateRCDisk: add request parameters ResourceGroupId.
+- Update API CreateRCDisk: add request parameters Tag.
+- Update API DescribeRCDisks: add request parameters Tag.
+- Update API DescribeRCDisks: add response parameters Body.Disks.$.Tag.
+- Update API ModifyRCInstance: add request parameters AutoUseCoupon.
+- Update API ModifyRCInstance: add request parameters PromotionCode.
+- Update API RunRCInstances: add request parameters AutoUseCoupon.
+- Update API RunRCInstances: add request parameters PromotionCode.
+
+
 2025-05-07 Version: 11.3.1
 - Update API DescribeDBInstanceAttribute: add response parameters Body.Items.$.BlueGreenDeploymentName.
 - Update API DescribeDBInstanceAttribute: add response parameters Body.Items.$.BlueInstanceName.
