@@ -163,6 +163,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.change_order_id):
             query['ChangeOrderId'] = request.change_order_id
+        if not UtilClient.is_unset(request.rollback):
+            query['Rollback'] = request.rollback
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -201,6 +203,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.change_order_id):
             query['ChangeOrderId'] = request.change_order_id
+        if not UtilClient.is_unset(request.rollback):
+            query['Rollback'] = request.rollback
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2141,6 +2145,290 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_namespace_with_options_async(request, headers, runtime)
 
+    def create_or_update_swimming_lane_with_options(
+        self,
+        tmp_req: sae_20190506_models.CreateOrUpdateSwimmingLaneRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.CreateOrUpdateSwimmingLaneResponse:
+        """
+        @summary 创建或者更新泳道
+        
+        @param tmp_req: CreateOrUpdateSwimmingLaneRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOrUpdateSwimmingLaneResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = sae_20190506_models.CreateOrUpdateSwimmingLaneShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.app_entry_rule):
+            request.app_entry_rule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.app_entry_rule, 'AppEntryRule', 'json')
+        if not UtilClient.is_unset(tmp_req.mse_gateway_entry_rule):
+            request.mse_gateway_entry_rule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.mse_gateway_entry_rule, 'MseGatewayEntryRule', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_entry_rule_shrink):
+            query['AppEntryRule'] = request.app_entry_rule_shrink
+        if not UtilClient.is_unset(request.canary_model):
+            query['CanaryModel'] = request.canary_model
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.lane_id):
+            query['LaneId'] = request.lane_id
+        if not UtilClient.is_unset(request.lane_name):
+            query['LaneName'] = request.lane_name
+        if not UtilClient.is_unset(request.lane_tag):
+            query['LaneTag'] = request.lane_tag
+        if not UtilClient.is_unset(request.mse_gateway_entry_rule_shrink):
+            query['MseGatewayEntryRule'] = request.mse_gateway_entry_rule_shrink
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOrUpdateSwimmingLane',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/cas/gray/createOrUpdateSwimmingLane',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.CreateOrUpdateSwimmingLaneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_or_update_swimming_lane_with_options_async(
+        self,
+        tmp_req: sae_20190506_models.CreateOrUpdateSwimmingLaneRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.CreateOrUpdateSwimmingLaneResponse:
+        """
+        @summary 创建或者更新泳道
+        
+        @param tmp_req: CreateOrUpdateSwimmingLaneRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOrUpdateSwimmingLaneResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = sae_20190506_models.CreateOrUpdateSwimmingLaneShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.app_entry_rule):
+            request.app_entry_rule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.app_entry_rule, 'AppEntryRule', 'json')
+        if not UtilClient.is_unset(tmp_req.mse_gateway_entry_rule):
+            request.mse_gateway_entry_rule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.mse_gateway_entry_rule, 'MseGatewayEntryRule', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_entry_rule_shrink):
+            query['AppEntryRule'] = request.app_entry_rule_shrink
+        if not UtilClient.is_unset(request.canary_model):
+            query['CanaryModel'] = request.canary_model
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.lane_id):
+            query['LaneId'] = request.lane_id
+        if not UtilClient.is_unset(request.lane_name):
+            query['LaneName'] = request.lane_name
+        if not UtilClient.is_unset(request.lane_tag):
+            query['LaneTag'] = request.lane_tag
+        if not UtilClient.is_unset(request.mse_gateway_entry_rule_shrink):
+            query['MseGatewayEntryRule'] = request.mse_gateway_entry_rule_shrink
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOrUpdateSwimmingLane',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/cas/gray/createOrUpdateSwimmingLane',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.CreateOrUpdateSwimmingLaneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_or_update_swimming_lane(
+        self,
+        request: sae_20190506_models.CreateOrUpdateSwimmingLaneRequest,
+    ) -> sae_20190506_models.CreateOrUpdateSwimmingLaneResponse:
+        """
+        @summary 创建或者更新泳道
+        
+        @param request: CreateOrUpdateSwimmingLaneRequest
+        @return: CreateOrUpdateSwimmingLaneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_or_update_swimming_lane_with_options(request, headers, runtime)
+
+    async def create_or_update_swimming_lane_async(
+        self,
+        request: sae_20190506_models.CreateOrUpdateSwimmingLaneRequest,
+    ) -> sae_20190506_models.CreateOrUpdateSwimmingLaneResponse:
+        """
+        @summary 创建或者更新泳道
+        
+        @param request: CreateOrUpdateSwimmingLaneRequest
+        @return: CreateOrUpdateSwimmingLaneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_or_update_swimming_lane_with_options_async(request, headers, runtime)
+
+    def create_or_update_swimming_lane_group_with_options(
+        self,
+        tmp_req: sae_20190506_models.CreateOrUpdateSwimmingLaneGroupRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.CreateOrUpdateSwimmingLaneGroupResponse:
+        """
+        @summary 创建或者更新泳道组
+        
+        @param tmp_req: CreateOrUpdateSwimmingLaneGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOrUpdateSwimmingLaneGroupResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = sae_20190506_models.CreateOrUpdateSwimmingLaneGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.app_ids):
+            request.app_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.app_ids, 'AppIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_ids_shrink):
+            query['AppIds'] = request.app_ids_shrink
+        if not UtilClient.is_unset(request.entry_app_id):
+            query['EntryAppId'] = request.entry_app_id
+        if not UtilClient.is_unset(request.entry_app_type):
+            query['EntryAppType'] = request.entry_app_type
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.swim_version):
+            query['SwimVersion'] = request.swim_version
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOrUpdateSwimmingLaneGroup',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/cas/gray/createOrUpdateSwimmingLaneGroup',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.CreateOrUpdateSwimmingLaneGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_or_update_swimming_lane_group_with_options_async(
+        self,
+        tmp_req: sae_20190506_models.CreateOrUpdateSwimmingLaneGroupRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.CreateOrUpdateSwimmingLaneGroupResponse:
+        """
+        @summary 创建或者更新泳道组
+        
+        @param tmp_req: CreateOrUpdateSwimmingLaneGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOrUpdateSwimmingLaneGroupResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = sae_20190506_models.CreateOrUpdateSwimmingLaneGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.app_ids):
+            request.app_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.app_ids, 'AppIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_ids_shrink):
+            query['AppIds'] = request.app_ids_shrink
+        if not UtilClient.is_unset(request.entry_app_id):
+            query['EntryAppId'] = request.entry_app_id
+        if not UtilClient.is_unset(request.entry_app_type):
+            query['EntryAppType'] = request.entry_app_type
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.swim_version):
+            query['SwimVersion'] = request.swim_version
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOrUpdateSwimmingLaneGroup',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/cas/gray/createOrUpdateSwimmingLaneGroup',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.CreateOrUpdateSwimmingLaneGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_or_update_swimming_lane_group(
+        self,
+        request: sae_20190506_models.CreateOrUpdateSwimmingLaneGroupRequest,
+    ) -> sae_20190506_models.CreateOrUpdateSwimmingLaneGroupResponse:
+        """
+        @summary 创建或者更新泳道组
+        
+        @param request: CreateOrUpdateSwimmingLaneGroupRequest
+        @return: CreateOrUpdateSwimmingLaneGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_or_update_swimming_lane_group_with_options(request, headers, runtime)
+
+    async def create_or_update_swimming_lane_group_async(
+        self,
+        request: sae_20190506_models.CreateOrUpdateSwimmingLaneGroupRequest,
+    ) -> sae_20190506_models.CreateOrUpdateSwimmingLaneGroupResponse:
+        """
+        @summary 创建或者更新泳道组
+        
+        @param request: CreateOrUpdateSwimmingLaneGroupRequest
+        @return: CreateOrUpdateSwimmingLaneGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_or_update_swimming_lane_group_with_options_async(request, headers, runtime)
+
     def create_secret_with_options(
         self,
         tmp_req: sae_20190506_models.CreateSecretRequest,
@@ -3444,6 +3732,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_secret_with_options_async(request, headers, runtime)
+
+    def delete_swimming_lane_group_with_options(
+        self,
+        request: sae_20190506_models.DeleteSwimmingLaneGroupRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DeleteSwimmingLaneGroupResponse:
+        """
+        @summary 删除泳道组
+        
+        @param request: DeleteSwimmingLaneGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSwimmingLaneGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSwimmingLaneGroup',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/cas/gray/deleteSwimmingLaneGroup',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DeleteSwimmingLaneGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_swimming_lane_group_with_options_async(
+        self,
+        request: sae_20190506_models.DeleteSwimmingLaneGroupRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DeleteSwimmingLaneGroupResponse:
+        """
+        @summary 删除泳道组
+        
+        @param request: DeleteSwimmingLaneGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSwimmingLaneGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSwimmingLaneGroup',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/cas/gray/deleteSwimmingLaneGroup',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DeleteSwimmingLaneGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_swimming_lane_group(
+        self,
+        request: sae_20190506_models.DeleteSwimmingLaneGroupRequest,
+    ) -> sae_20190506_models.DeleteSwimmingLaneGroupResponse:
+        """
+        @summary 删除泳道组
+        
+        @param request: DeleteSwimmingLaneGroupRequest
+        @return: DeleteSwimmingLaneGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_swimming_lane_group_with_options(request, headers, runtime)
+
+    async def delete_swimming_lane_group_async(
+        self,
+        request: sae_20190506_models.DeleteSwimmingLaneGroupRequest,
+    ) -> sae_20190506_models.DeleteSwimmingLaneGroupResponse:
+        """
+        @summary 删除泳道组
+        
+        @param request: DeleteSwimmingLaneGroupRequest
+        @return: DeleteSwimmingLaneGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_swimming_lane_group_with_options_async(request, headers, runtime)
 
     def delete_web_application_with_options(
         self,
@@ -7155,6 +7551,118 @@ class Client(OpenApiClient):
         headers = {}
         return await self.describe_secret_with_options_async(request, headers, runtime)
 
+    def describe_swimming_lane_with_options(
+        self,
+        request: sae_20190506_models.DescribeSwimmingLaneRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DescribeSwimmingLaneResponse:
+        """
+        @summary 查询泳道详情
+        
+        @param request: DescribeSwimmingLaneRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSwimmingLaneResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.lane_id):
+            query['LaneId'] = request.lane_id
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSwimmingLane',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/cas/gray/describeSwimmingLane',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DescribeSwimmingLaneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_swimming_lane_with_options_async(
+        self,
+        request: sae_20190506_models.DescribeSwimmingLaneRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DescribeSwimmingLaneResponse:
+        """
+        @summary 查询泳道详情
+        
+        @param request: DescribeSwimmingLaneRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSwimmingLaneResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.lane_id):
+            query['LaneId'] = request.lane_id
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSwimmingLane',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/cas/gray/describeSwimmingLane',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DescribeSwimmingLaneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_swimming_lane(
+        self,
+        request: sae_20190506_models.DescribeSwimmingLaneRequest,
+    ) -> sae_20190506_models.DescribeSwimmingLaneResponse:
+        """
+        @summary 查询泳道详情
+        
+        @param request: DescribeSwimmingLaneRequest
+        @return: DescribeSwimmingLaneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_swimming_lane_with_options(request, headers, runtime)
+
+    async def describe_swimming_lane_async(
+        self,
+        request: sae_20190506_models.DescribeSwimmingLaneRequest,
+    ) -> sae_20190506_models.DescribeSwimmingLaneResponse:
+        """
+        @summary 查询泳道详情
+        
+        @param request: DescribeSwimmingLaneRequest
+        @return: DescribeSwimmingLaneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_swimming_lane_with_options_async(request, headers, runtime)
+
     def describe_web_application_with_options(
         self,
         application_id: str,
@@ -9271,6 +9779,218 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_webshell_token_with_options_async(request, headers, runtime)
 
+    def list_all_swimming_lane_groups_with_options(
+        self,
+        request: sae_20190506_models.ListAllSwimmingLaneGroupsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.ListAllSwimmingLaneGroupsResponse:
+        """
+        @summary 查询所有泳道组
+        
+        @param request: ListAllSwimmingLaneGroupsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAllSwimmingLaneGroupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAllSwimmingLaneGroups',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/cas/gray/listSwimmingLaneGroups',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.ListAllSwimmingLaneGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_all_swimming_lane_groups_with_options_async(
+        self,
+        request: sae_20190506_models.ListAllSwimmingLaneGroupsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.ListAllSwimmingLaneGroupsResponse:
+        """
+        @summary 查询所有泳道组
+        
+        @param request: ListAllSwimmingLaneGroupsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAllSwimmingLaneGroupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAllSwimmingLaneGroups',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/cas/gray/listSwimmingLaneGroups',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.ListAllSwimmingLaneGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_all_swimming_lane_groups(
+        self,
+        request: sae_20190506_models.ListAllSwimmingLaneGroupsRequest,
+    ) -> sae_20190506_models.ListAllSwimmingLaneGroupsResponse:
+        """
+        @summary 查询所有泳道组
+        
+        @param request: ListAllSwimmingLaneGroupsRequest
+        @return: ListAllSwimmingLaneGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_all_swimming_lane_groups_with_options(request, headers, runtime)
+
+    async def list_all_swimming_lane_groups_async(
+        self,
+        request: sae_20190506_models.ListAllSwimmingLaneGroupsRequest,
+    ) -> sae_20190506_models.ListAllSwimmingLaneGroupsResponse:
+        """
+        @summary 查询所有泳道组
+        
+        @param request: ListAllSwimmingLaneGroupsRequest
+        @return: ListAllSwimmingLaneGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_all_swimming_lane_groups_with_options_async(request, headers, runtime)
+
+    def list_all_swimming_lanes_with_options(
+        self,
+        request: sae_20190506_models.ListAllSwimmingLanesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.ListAllSwimmingLanesResponse:
+        """
+        @summary 查询所有泳道
+        
+        @param request: ListAllSwimmingLanesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAllSwimmingLanesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAllSwimmingLanes',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/cas/gray/listSwimmingLanes',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.ListAllSwimmingLanesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_all_swimming_lanes_with_options_async(
+        self,
+        request: sae_20190506_models.ListAllSwimmingLanesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.ListAllSwimmingLanesResponse:
+        """
+        @summary 查询所有泳道
+        
+        @param request: ListAllSwimmingLanesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAllSwimmingLanesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAllSwimmingLanes',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/cas/gray/listSwimmingLanes',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.ListAllSwimmingLanesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_all_swimming_lanes(
+        self,
+        request: sae_20190506_models.ListAllSwimmingLanesRequest,
+    ) -> sae_20190506_models.ListAllSwimmingLanesResponse:
+        """
+        @summary 查询所有泳道
+        
+        @param request: ListAllSwimmingLanesRequest
+        @return: ListAllSwimmingLanesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_all_swimming_lanes_with_options(request, headers, runtime)
+
+    async def list_all_swimming_lanes_async(
+        self,
+        request: sae_20190506_models.ListAllSwimmingLanesRequest,
+    ) -> sae_20190506_models.ListAllSwimmingLanesResponse:
+        """
+        @summary 查询所有泳道
+        
+        @param request: ListAllSwimmingLanesRequest
+        @return: ListAllSwimmingLanesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_all_swimming_lanes_with_options_async(request, headers, runtime)
+
     def list_app_events_with_options(
         self,
         request: sae_20190506_models.ListAppEventsRequest,
@@ -11154,6 +11874,222 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_secrets_with_options_async(request, headers, runtime)
+
+    def list_swimming_lane_gateway_routes_with_options(
+        self,
+        request: sae_20190506_models.ListSwimmingLaneGatewayRoutesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.ListSwimmingLaneGatewayRoutesResponse:
+        """
+        @summary 查询泳道可选的网关路由
+        
+        @param request: ListSwimmingLaneGatewayRoutesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSwimmingLaneGatewayRoutesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSwimmingLaneGatewayRoutes',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/cas/gray/listSwimmingLaneGatewayRoutes',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.ListSwimmingLaneGatewayRoutesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_swimming_lane_gateway_routes_with_options_async(
+        self,
+        request: sae_20190506_models.ListSwimmingLaneGatewayRoutesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.ListSwimmingLaneGatewayRoutesResponse:
+        """
+        @summary 查询泳道可选的网关路由
+        
+        @param request: ListSwimmingLaneGatewayRoutesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSwimmingLaneGatewayRoutesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSwimmingLaneGatewayRoutes',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/cas/gray/listSwimmingLaneGatewayRoutes',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.ListSwimmingLaneGatewayRoutesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_swimming_lane_gateway_routes(
+        self,
+        request: sae_20190506_models.ListSwimmingLaneGatewayRoutesRequest,
+    ) -> sae_20190506_models.ListSwimmingLaneGatewayRoutesResponse:
+        """
+        @summary 查询泳道可选的网关路由
+        
+        @param request: ListSwimmingLaneGatewayRoutesRequest
+        @return: ListSwimmingLaneGatewayRoutesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_swimming_lane_gateway_routes_with_options(request, headers, runtime)
+
+    async def list_swimming_lane_gateway_routes_async(
+        self,
+        request: sae_20190506_models.ListSwimmingLaneGatewayRoutesRequest,
+    ) -> sae_20190506_models.ListSwimmingLaneGatewayRoutesResponse:
+        """
+        @summary 查询泳道可选的网关路由
+        
+        @param request: ListSwimmingLaneGatewayRoutesRequest
+        @return: ListSwimmingLaneGatewayRoutesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_swimming_lane_gateway_routes_with_options_async(request, headers, runtime)
+
+    def list_swimming_lane_group_tags_with_options(
+        self,
+        request: sae_20190506_models.ListSwimmingLaneGroupTagsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.ListSwimmingLaneGroupTagsResponse:
+        """
+        @summary 查询所有泳道标签列表
+        
+        @param request: ListSwimmingLaneGroupTagsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSwimmingLaneGroupTagsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSwimmingLaneGroupTags',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/cas/gray/listSwimmingLaneGroupTags',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.ListSwimmingLaneGroupTagsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_swimming_lane_group_tags_with_options_async(
+        self,
+        request: sae_20190506_models.ListSwimmingLaneGroupTagsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.ListSwimmingLaneGroupTagsResponse:
+        """
+        @summary 查询所有泳道标签列表
+        
+        @param request: ListSwimmingLaneGroupTagsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSwimmingLaneGroupTagsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSwimmingLaneGroupTags',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/cas/gray/listSwimmingLaneGroupTags',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.ListSwimmingLaneGroupTagsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_swimming_lane_group_tags(
+        self,
+        request: sae_20190506_models.ListSwimmingLaneGroupTagsRequest,
+    ) -> sae_20190506_models.ListSwimmingLaneGroupTagsResponse:
+        """
+        @summary 查询所有泳道标签列表
+        
+        @param request: ListSwimmingLaneGroupTagsRequest
+        @return: ListSwimmingLaneGroupTagsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_swimming_lane_group_tags_with_options(request, headers, runtime)
+
+    async def list_swimming_lane_group_tags_async(
+        self,
+        request: sae_20190506_models.ListSwimmingLaneGroupTagsRequest,
+    ) -> sae_20190506_models.ListSwimmingLaneGroupTagsResponse:
+        """
+        @summary 查询所有泳道标签列表
+        
+        @param request: ListSwimmingLaneGroupTagsRequest
+        @return: ListSwimmingLaneGroupTagsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_swimming_lane_group_tags_with_options_async(request, headers, runtime)
 
     def list_tag_resources_with_options(
         self,
@@ -15358,6 +16294,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_secret_with_options_async(request, headers, runtime)
+
+    def update_swimming_lane_enable_attribute_with_options(
+        self,
+        request: sae_20190506_models.UpdateSwimmingLaneEnableAttributeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.UpdateSwimmingLaneEnableAttributeResponse:
+        """
+        @summary 更新泳道的启用属性
+        
+        @param request: UpdateSwimmingLaneEnableAttributeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSwimmingLaneEnableAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.lane_id):
+            query['LaneId'] = request.lane_id
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSwimmingLaneEnableAttribute',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/cas/gray/updateSwimmingLaneEnableAttribute',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.UpdateSwimmingLaneEnableAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_swimming_lane_enable_attribute_with_options_async(
+        self,
+        request: sae_20190506_models.UpdateSwimmingLaneEnableAttributeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.UpdateSwimmingLaneEnableAttributeResponse:
+        """
+        @summary 更新泳道的启用属性
+        
+        @param request: UpdateSwimmingLaneEnableAttributeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSwimmingLaneEnableAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.lane_id):
+            query['LaneId'] = request.lane_id
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSwimmingLaneEnableAttribute',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/cas/gray/updateSwimmingLaneEnableAttribute',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.UpdateSwimmingLaneEnableAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_swimming_lane_enable_attribute(
+        self,
+        request: sae_20190506_models.UpdateSwimmingLaneEnableAttributeRequest,
+    ) -> sae_20190506_models.UpdateSwimmingLaneEnableAttributeResponse:
+        """
+        @summary 更新泳道的启用属性
+        
+        @param request: UpdateSwimmingLaneEnableAttributeRequest
+        @return: UpdateSwimmingLaneEnableAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_swimming_lane_enable_attribute_with_options(request, headers, runtime)
+
+    async def update_swimming_lane_enable_attribute_async(
+        self,
+        request: sae_20190506_models.UpdateSwimmingLaneEnableAttributeRequest,
+    ) -> sae_20190506_models.UpdateSwimmingLaneEnableAttributeResponse:
+        """
+        @summary 更新泳道的启用属性
+        
+        @param request: UpdateSwimmingLaneEnableAttributeRequest
+        @return: UpdateSwimmingLaneEnableAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_swimming_lane_enable_attribute_with_options_async(request, headers, runtime)
 
     def update_web_application_with_options(
         self,

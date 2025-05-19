@@ -10986,11 +10986,13 @@ class AbortChangeOrderRequest(TeaModel):
     def __init__(
         self,
         change_order_id: str = None,
+        rollback: bool = None,
     ):
         # The ID of the change order.
         # 
         # This parameter is required.
         self.change_order_id = change_order_id
+        self.rollback = rollback
 
     def validate(self):
         pass
@@ -11003,12 +11005,16 @@ class AbortChangeOrderRequest(TeaModel):
         result = dict()
         if self.change_order_id is not None:
             result['ChangeOrderId'] = self.change_order_id
+        if self.rollback is not None:
+            result['Rollback'] = self.rollback
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ChangeOrderId') is not None:
             self.change_order_id = m.get('ChangeOrderId')
+        if m.get('Rollback') is not None:
+            self.rollback = m.get('Rollback')
         return self
 
 
@@ -15379,6 +15385,773 @@ class CreateNamespaceResponse(TeaModel):
         return self
 
 
+class CreateOrUpdateSwimmingLaneRequestAppEntryRuleConditions(TeaModel):
+    def __init__(
+        self,
+        condition: str = None,
+        name: str = None,
+        type: str = None,
+        value: str = None,
+    ):
+        self.condition = condition
+        self.name = name
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition is not None:
+            result['Condition'] = self.condition
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Condition') is not None:
+            self.condition = m.get('Condition')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateOrUpdateSwimmingLaneRequestAppEntryRule(TeaModel):
+    def __init__(
+        self,
+        condition_joiner: str = None,
+        conditions: List[CreateOrUpdateSwimmingLaneRequestAppEntryRuleConditions] = None,
+        independent_percentage_enable: bool = None,
+        paths: List[str] = None,
+        percentage: int = None,
+        percentage_by_path: Dict[str, int] = None,
+    ):
+        self.condition_joiner = condition_joiner
+        self.conditions = conditions
+        self.independent_percentage_enable = independent_percentage_enable
+        self.paths = paths
+        self.percentage = percentage
+        self.percentage_by_path = percentage_by_path
+
+    def validate(self):
+        if self.conditions:
+            for k in self.conditions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition_joiner is not None:
+            result['ConditionJoiner'] = self.condition_joiner
+        result['Conditions'] = []
+        if self.conditions is not None:
+            for k in self.conditions:
+                result['Conditions'].append(k.to_map() if k else None)
+        if self.independent_percentage_enable is not None:
+            result['IndependentPercentageEnable'] = self.independent_percentage_enable
+        if self.paths is not None:
+            result['Paths'] = self.paths
+        if self.percentage is not None:
+            result['Percentage'] = self.percentage
+        if self.percentage_by_path is not None:
+            result['PercentageByPath'] = self.percentage_by_path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConditionJoiner') is not None:
+            self.condition_joiner = m.get('ConditionJoiner')
+        self.conditions = []
+        if m.get('Conditions') is not None:
+            for k in m.get('Conditions'):
+                temp_model = CreateOrUpdateSwimmingLaneRequestAppEntryRuleConditions()
+                self.conditions.append(temp_model.from_map(k))
+        if m.get('IndependentPercentageEnable') is not None:
+            self.independent_percentage_enable = m.get('IndependentPercentageEnable')
+        if m.get('Paths') is not None:
+            self.paths = m.get('Paths')
+        if m.get('Percentage') is not None:
+            self.percentage = m.get('Percentage')
+        if m.get('PercentageByPath') is not None:
+            self.percentage_by_path = m.get('PercentageByPath')
+        return self
+
+
+class CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRuleConditions(TeaModel):
+    def __init__(
+        self,
+        condition: str = None,
+        name: str = None,
+        type: str = None,
+        value: str = None,
+    ):
+        self.condition = condition
+        self.name = name
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition is not None:
+            result['Condition'] = self.condition
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Condition') is not None:
+            self.condition = m.get('Condition')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRule(TeaModel):
+    def __init__(
+        self,
+        condition_joiner: str = None,
+        conditions: List[CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRuleConditions] = None,
+        independent_percentage_enable: bool = None,
+        percentage: int = None,
+        percentage_by_route: Dict[str, int] = None,
+        route_ids: List[int] = None,
+    ):
+        self.condition_joiner = condition_joiner
+        self.conditions = conditions
+        self.independent_percentage_enable = independent_percentage_enable
+        self.percentage = percentage
+        self.percentage_by_route = percentage_by_route
+        self.route_ids = route_ids
+
+    def validate(self):
+        if self.conditions:
+            for k in self.conditions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition_joiner is not None:
+            result['ConditionJoiner'] = self.condition_joiner
+        result['Conditions'] = []
+        if self.conditions is not None:
+            for k in self.conditions:
+                result['Conditions'].append(k.to_map() if k else None)
+        if self.independent_percentage_enable is not None:
+            result['IndependentPercentageEnable'] = self.independent_percentage_enable
+        if self.percentage is not None:
+            result['Percentage'] = self.percentage
+        if self.percentage_by_route is not None:
+            result['PercentageByRoute'] = self.percentage_by_route
+        if self.route_ids is not None:
+            result['RouteIds'] = self.route_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConditionJoiner') is not None:
+            self.condition_joiner = m.get('ConditionJoiner')
+        self.conditions = []
+        if m.get('Conditions') is not None:
+            for k in m.get('Conditions'):
+                temp_model = CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRuleConditions()
+                self.conditions.append(temp_model.from_map(k))
+        if m.get('IndependentPercentageEnable') is not None:
+            self.independent_percentage_enable = m.get('IndependentPercentageEnable')
+        if m.get('Percentage') is not None:
+            self.percentage = m.get('Percentage')
+        if m.get('PercentageByRoute') is not None:
+            self.percentage_by_route = m.get('PercentageByRoute')
+        if m.get('RouteIds') is not None:
+            self.route_ids = m.get('RouteIds')
+        return self
+
+
+class CreateOrUpdateSwimmingLaneRequest(TeaModel):
+    def __init__(
+        self,
+        app_entry_rule: CreateOrUpdateSwimmingLaneRequestAppEntryRule = None,
+        canary_model: int = None,
+        enable: bool = None,
+        group_id: int = None,
+        lane_id: int = None,
+        lane_name: str = None,
+        lane_tag: str = None,
+        mse_gateway_entry_rule: CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRule = None,
+        namespace_id: str = None,
+    ):
+        self.app_entry_rule = app_entry_rule
+        self.canary_model = canary_model
+        self.enable = enable
+        self.group_id = group_id
+        self.lane_id = lane_id
+        self.lane_name = lane_name
+        self.lane_tag = lane_tag
+        self.mse_gateway_entry_rule = mse_gateway_entry_rule
+        self.namespace_id = namespace_id
+
+    def validate(self):
+        if self.app_entry_rule:
+            self.app_entry_rule.validate()
+        if self.mse_gateway_entry_rule:
+            self.mse_gateway_entry_rule.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_entry_rule is not None:
+            result['AppEntryRule'] = self.app_entry_rule.to_map()
+        if self.canary_model is not None:
+            result['CanaryModel'] = self.canary_model
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.lane_id is not None:
+            result['LaneId'] = self.lane_id
+        if self.lane_name is not None:
+            result['LaneName'] = self.lane_name
+        if self.lane_tag is not None:
+            result['LaneTag'] = self.lane_tag
+        if self.mse_gateway_entry_rule is not None:
+            result['MseGatewayEntryRule'] = self.mse_gateway_entry_rule.to_map()
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppEntryRule') is not None:
+            temp_model = CreateOrUpdateSwimmingLaneRequestAppEntryRule()
+            self.app_entry_rule = temp_model.from_map(m['AppEntryRule'])
+        if m.get('CanaryModel') is not None:
+            self.canary_model = m.get('CanaryModel')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('LaneId') is not None:
+            self.lane_id = m.get('LaneId')
+        if m.get('LaneName') is not None:
+            self.lane_name = m.get('LaneName')
+        if m.get('LaneTag') is not None:
+            self.lane_tag = m.get('LaneTag')
+        if m.get('MseGatewayEntryRule') is not None:
+            temp_model = CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRule()
+            self.mse_gateway_entry_rule = temp_model.from_map(m['MseGatewayEntryRule'])
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        return self
+
+
+class CreateOrUpdateSwimmingLaneShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_entry_rule_shrink: str = None,
+        canary_model: int = None,
+        enable: bool = None,
+        group_id: int = None,
+        lane_id: int = None,
+        lane_name: str = None,
+        lane_tag: str = None,
+        mse_gateway_entry_rule_shrink: str = None,
+        namespace_id: str = None,
+    ):
+        self.app_entry_rule_shrink = app_entry_rule_shrink
+        self.canary_model = canary_model
+        self.enable = enable
+        self.group_id = group_id
+        self.lane_id = lane_id
+        self.lane_name = lane_name
+        self.lane_tag = lane_tag
+        self.mse_gateway_entry_rule_shrink = mse_gateway_entry_rule_shrink
+        self.namespace_id = namespace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_entry_rule_shrink is not None:
+            result['AppEntryRule'] = self.app_entry_rule_shrink
+        if self.canary_model is not None:
+            result['CanaryModel'] = self.canary_model
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.lane_id is not None:
+            result['LaneId'] = self.lane_id
+        if self.lane_name is not None:
+            result['LaneName'] = self.lane_name
+        if self.lane_tag is not None:
+            result['LaneTag'] = self.lane_tag
+        if self.mse_gateway_entry_rule_shrink is not None:
+            result['MseGatewayEntryRule'] = self.mse_gateway_entry_rule_shrink
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppEntryRule') is not None:
+            self.app_entry_rule_shrink = m.get('AppEntryRule')
+        if m.get('CanaryModel') is not None:
+            self.canary_model = m.get('CanaryModel')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('LaneId') is not None:
+            self.lane_id = m.get('LaneId')
+        if m.get('LaneName') is not None:
+            self.lane_name = m.get('LaneName')
+        if m.get('LaneTag') is not None:
+            self.lane_tag = m.get('LaneTag')
+        if m.get('MseGatewayEntryRule') is not None:
+            self.mse_gateway_entry_rule_shrink = m.get('MseGatewayEntryRule')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        return self
+
+
+class CreateOrUpdateSwimmingLaneResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        lane_id: int = None,
+    ):
+        self.lane_id = lane_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lane_id is not None:
+            result['LaneId'] = self.lane_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LaneId') is not None:
+            self.lane_id = m.get('LaneId')
+        return self
+
+
+class CreateOrUpdateSwimmingLaneResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateOrUpdateSwimmingLaneResponseBodyData = None,
+        error_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_code = error_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = CreateOrUpdateSwimmingLaneResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class CreateOrUpdateSwimmingLaneResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateOrUpdateSwimmingLaneResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateOrUpdateSwimmingLaneResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateOrUpdateSwimmingLaneGroupRequest(TeaModel):
+    def __init__(
+        self,
+        app_ids: List[str] = None,
+        entry_app_id: str = None,
+        entry_app_type: str = None,
+        group_id: int = None,
+        group_name: str = None,
+        namespace_id: str = None,
+        swim_version: str = None,
+    ):
+        self.app_ids = app_ids
+        self.entry_app_id = entry_app_id
+        self.entry_app_type = entry_app_type
+        self.group_id = group_id
+        self.group_name = group_name
+        self.namespace_id = namespace_id
+        self.swim_version = swim_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_ids is not None:
+            result['AppIds'] = self.app_ids
+        if self.entry_app_id is not None:
+            result['EntryAppId'] = self.entry_app_id
+        if self.entry_app_type is not None:
+            result['EntryAppType'] = self.entry_app_type
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.swim_version is not None:
+            result['SwimVersion'] = self.swim_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppIds') is not None:
+            self.app_ids = m.get('AppIds')
+        if m.get('EntryAppId') is not None:
+            self.entry_app_id = m.get('EntryAppId')
+        if m.get('EntryAppType') is not None:
+            self.entry_app_type = m.get('EntryAppType')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('SwimVersion') is not None:
+            self.swim_version = m.get('SwimVersion')
+        return self
+
+
+class CreateOrUpdateSwimmingLaneGroupShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_ids_shrink: str = None,
+        entry_app_id: str = None,
+        entry_app_type: str = None,
+        group_id: int = None,
+        group_name: str = None,
+        namespace_id: str = None,
+        swim_version: str = None,
+    ):
+        self.app_ids_shrink = app_ids_shrink
+        self.entry_app_id = entry_app_id
+        self.entry_app_type = entry_app_type
+        self.group_id = group_id
+        self.group_name = group_name
+        self.namespace_id = namespace_id
+        self.swim_version = swim_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_ids_shrink is not None:
+            result['AppIds'] = self.app_ids_shrink
+        if self.entry_app_id is not None:
+            result['EntryAppId'] = self.entry_app_id
+        if self.entry_app_type is not None:
+            result['EntryAppType'] = self.entry_app_type
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.swim_version is not None:
+            result['SwimVersion'] = self.swim_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppIds') is not None:
+            self.app_ids_shrink = m.get('AppIds')
+        if m.get('EntryAppId') is not None:
+            self.entry_app_id = m.get('EntryAppId')
+        if m.get('EntryAppType') is not None:
+            self.entry_app_type = m.get('EntryAppType')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('SwimVersion') is not None:
+            self.swim_version = m.get('SwimVersion')
+        return self
+
+
+class CreateOrUpdateSwimmingLaneGroupResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        group_id: int = None,
+    ):
+        self.group_id = group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        return self
+
+
+class CreateOrUpdateSwimmingLaneGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateOrUpdateSwimmingLaneGroupResponseBodyData = None,
+        error_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_code = error_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = CreateOrUpdateSwimmingLaneGroupResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class CreateOrUpdateSwimmingLaneGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateOrUpdateSwimmingLaneGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateOrUpdateSwimmingLaneGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateSecretRequestSecretData(TeaModel):
     def __init__(
         self,
@@ -17336,6 +18109,137 @@ class DeleteSecretResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteSecretResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteSwimmingLaneGroupRequest(TeaModel):
+    def __init__(
+        self,
+        group_id: int = None,
+        namespace_id: str = None,
+    ):
+        self.group_id = group_id
+        self.namespace_id = namespace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        return self
+
+
+class DeleteSwimmingLaneGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        error_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.error_code = error_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class DeleteSwimmingLaneGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteSwimmingLaneGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteSwimmingLaneGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -31569,6 +32473,635 @@ class DescribeSecretResponse(TeaModel):
         return self
 
 
+class DescribeSwimmingLaneRequest(TeaModel):
+    def __init__(
+        self,
+        group_id: int = None,
+        lane_id: int = None,
+        namespace_id: str = None,
+    ):
+        self.group_id = group_id
+        self.lane_id = lane_id
+        self.namespace_id = namespace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.lane_id is not None:
+            result['LaneId'] = self.lane_id
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('LaneId') is not None:
+            self.lane_id = m.get('LaneId')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        return self
+
+
+class DescribeSwimmingLaneResponseBodyDataAppEntryRuleConditions(TeaModel):
+    def __init__(
+        self,
+        condition: str = None,
+        name: str = None,
+        type: str = None,
+        value: str = None,
+        values: List[str] = None,
+    ):
+        self.condition = condition
+        self.name = name
+        self.type = type
+        self.value = value
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition is not None:
+            result['Condition'] = self.condition
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Condition') is not None:
+            self.condition = m.get('Condition')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
+class DescribeSwimmingLaneResponseBodyDataAppEntryRule(TeaModel):
+    def __init__(
+        self,
+        condition_joiner: str = None,
+        conditions: List[DescribeSwimmingLaneResponseBodyDataAppEntryRuleConditions] = None,
+        independent_percentage_enable: bool = None,
+        paths: List[str] = None,
+        percentage: int = None,
+        percentage_by_path: Dict[str, int] = None,
+    ):
+        self.condition_joiner = condition_joiner
+        self.conditions = conditions
+        self.independent_percentage_enable = independent_percentage_enable
+        self.paths = paths
+        self.percentage = percentage
+        self.percentage_by_path = percentage_by_path
+
+    def validate(self):
+        if self.conditions:
+            for k in self.conditions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition_joiner is not None:
+            result['ConditionJoiner'] = self.condition_joiner
+        result['Conditions'] = []
+        if self.conditions is not None:
+            for k in self.conditions:
+                result['Conditions'].append(k.to_map() if k else None)
+        if self.independent_percentage_enable is not None:
+            result['IndependentPercentageEnable'] = self.independent_percentage_enable
+        if self.paths is not None:
+            result['Paths'] = self.paths
+        if self.percentage is not None:
+            result['Percentage'] = self.percentage
+        if self.percentage_by_path is not None:
+            result['PercentageByPath'] = self.percentage_by_path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConditionJoiner') is not None:
+            self.condition_joiner = m.get('ConditionJoiner')
+        self.conditions = []
+        if m.get('Conditions') is not None:
+            for k in m.get('Conditions'):
+                temp_model = DescribeSwimmingLaneResponseBodyDataAppEntryRuleConditions()
+                self.conditions.append(temp_model.from_map(k))
+        if m.get('IndependentPercentageEnable') is not None:
+            self.independent_percentage_enable = m.get('IndependentPercentageEnable')
+        if m.get('Paths') is not None:
+            self.paths = m.get('Paths')
+        if m.get('Percentage') is not None:
+            self.percentage = m.get('Percentage')
+        if m.get('PercentageByPath') is not None:
+            self.percentage_by_path = m.get('PercentageByPath')
+        return self
+
+
+class DescribeSwimmingLaneResponseBodyDataApps(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        app_name: str = None,
+        mse_app_id: str = None,
+        mse_app_name: str = None,
+        mse_namespace_id: str = None,
+    ):
+        self.app_id = app_id
+        self.app_name = app_name
+        self.mse_app_id = mse_app_id
+        self.mse_app_name = mse_app_name
+        self.mse_namespace_id = mse_namespace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.mse_app_id is not None:
+            result['MseAppId'] = self.mse_app_id
+        if self.mse_app_name is not None:
+            result['MseAppName'] = self.mse_app_name
+        if self.mse_namespace_id is not None:
+            result['mseNamespaceId'] = self.mse_namespace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('MseAppId') is not None:
+            self.mse_app_id = m.get('MseAppId')
+        if m.get('MseAppName') is not None:
+            self.mse_app_name = m.get('MseAppName')
+        if m.get('mseNamespaceId') is not None:
+            self.mse_namespace_id = m.get('mseNamespaceId')
+        return self
+
+
+class DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleConditions(TeaModel):
+    def __init__(
+        self,
+        condition: str = None,
+        name: str = None,
+        type: str = None,
+        value: str = None,
+    ):
+        self.condition = condition
+        self.name = name
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition is not None:
+            result['Condition'] = self.condition
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Condition') is not None:
+            self.condition = m.get('Condition')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicatePathPredicate(TeaModel):
+    def __init__(
+        self,
+        path: str = None,
+        type: str = None,
+    ):
+        self.path = path
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.path is not None:
+            result['Path'] = self.path
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicate(TeaModel):
+    def __init__(
+        self,
+        path_predicate: DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicatePathPredicate = None,
+    ):
+        self.path_predicate = path_predicate
+
+    def validate(self):
+        if self.path_predicate:
+            self.path_predicate.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.path_predicate is not None:
+            result['PathPredicate'] = self.path_predicate.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PathPredicate') is not None:
+            temp_model = DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicatePathPredicate()
+            self.path_predicate = temp_model.from_map(m['PathPredicate'])
+        return self
+
+
+class DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutes(TeaModel):
+    def __init__(
+        self,
+        route_id: int = None,
+        route_name: str = None,
+        route_predicate: DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicate = None,
+    ):
+        self.route_id = route_id
+        self.route_name = route_name
+        self.route_predicate = route_predicate
+
+    def validate(self):
+        if self.route_predicate:
+            self.route_predicate.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.route_id is not None:
+            result['RouteId'] = self.route_id
+        if self.route_name is not None:
+            result['RouteName'] = self.route_name
+        if self.route_predicate is not None:
+            result['RoutePredicate'] = self.route_predicate.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RouteId') is not None:
+            self.route_id = m.get('RouteId')
+        if m.get('RouteName') is not None:
+            self.route_name = m.get('RouteName')
+        if m.get('RoutePredicate') is not None:
+            temp_model = DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicate()
+            self.route_predicate = temp_model.from_map(m['RoutePredicate'])
+        return self
+
+
+class DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRule(TeaModel):
+    def __init__(
+        self,
+        condition_joiner: str = None,
+        conditions: List[DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleConditions] = None,
+        independent_percentage_enable: bool = None,
+        percentage: int = None,
+        percentage_by_route: Dict[str, int] = None,
+        route_ids: List[int] = None,
+        routes: List[DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutes] = None,
+    ):
+        self.condition_joiner = condition_joiner
+        self.conditions = conditions
+        self.independent_percentage_enable = independent_percentage_enable
+        self.percentage = percentage
+        self.percentage_by_route = percentage_by_route
+        self.route_ids = route_ids
+        self.routes = routes
+
+    def validate(self):
+        if self.conditions:
+            for k in self.conditions:
+                if k:
+                    k.validate()
+        if self.routes:
+            for k in self.routes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition_joiner is not None:
+            result['ConditionJoiner'] = self.condition_joiner
+        result['Conditions'] = []
+        if self.conditions is not None:
+            for k in self.conditions:
+                result['Conditions'].append(k.to_map() if k else None)
+        if self.independent_percentage_enable is not None:
+            result['IndependentPercentageEnable'] = self.independent_percentage_enable
+        if self.percentage is not None:
+            result['Percentage'] = self.percentage
+        if self.percentage_by_route is not None:
+            result['PercentageByRoute'] = self.percentage_by_route
+        if self.route_ids is not None:
+            result['RouteIds'] = self.route_ids
+        result['Routes'] = []
+        if self.routes is not None:
+            for k in self.routes:
+                result['Routes'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConditionJoiner') is not None:
+            self.condition_joiner = m.get('ConditionJoiner')
+        self.conditions = []
+        if m.get('Conditions') is not None:
+            for k in m.get('Conditions'):
+                temp_model = DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleConditions()
+                self.conditions.append(temp_model.from_map(k))
+        if m.get('IndependentPercentageEnable') is not None:
+            self.independent_percentage_enable = m.get('IndependentPercentageEnable')
+        if m.get('Percentage') is not None:
+            self.percentage = m.get('Percentage')
+        if m.get('PercentageByRoute') is not None:
+            self.percentage_by_route = m.get('PercentageByRoute')
+        if m.get('RouteIds') is not None:
+            self.route_ids = m.get('RouteIds')
+        self.routes = []
+        if m.get('Routes') is not None:
+            for k in m.get('Routes'):
+                temp_model = DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutes()
+                self.routes.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeSwimmingLaneResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        app_entry_rule: DescribeSwimmingLaneResponseBodyDataAppEntryRule = None,
+        apps: List[DescribeSwimmingLaneResponseBodyDataApps] = None,
+        canary_model: int = None,
+        enable: bool = None,
+        enable_rules: bool = None,
+        lane_id: int = None,
+        lane_name: str = None,
+        lane_tag: str = None,
+        mse_gateway_entry_rule: DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRule = None,
+    ):
+        self.app_entry_rule = app_entry_rule
+        self.apps = apps
+        self.canary_model = canary_model
+        self.enable = enable
+        self.enable_rules = enable_rules
+        self.lane_id = lane_id
+        self.lane_name = lane_name
+        self.lane_tag = lane_tag
+        self.mse_gateway_entry_rule = mse_gateway_entry_rule
+
+    def validate(self):
+        if self.app_entry_rule:
+            self.app_entry_rule.validate()
+        if self.apps:
+            for k in self.apps:
+                if k:
+                    k.validate()
+        if self.mse_gateway_entry_rule:
+            self.mse_gateway_entry_rule.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_entry_rule is not None:
+            result['AppEntryRule'] = self.app_entry_rule.to_map()
+        result['Apps'] = []
+        if self.apps is not None:
+            for k in self.apps:
+                result['Apps'].append(k.to_map() if k else None)
+        if self.canary_model is not None:
+            result['CanaryModel'] = self.canary_model
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.enable_rules is not None:
+            result['EnableRules'] = self.enable_rules
+        if self.lane_id is not None:
+            result['LaneId'] = self.lane_id
+        if self.lane_name is not None:
+            result['LaneName'] = self.lane_name
+        if self.lane_tag is not None:
+            result['LaneTag'] = self.lane_tag
+        if self.mse_gateway_entry_rule is not None:
+            result['MseGatewayEntryRule'] = self.mse_gateway_entry_rule.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppEntryRule') is not None:
+            temp_model = DescribeSwimmingLaneResponseBodyDataAppEntryRule()
+            self.app_entry_rule = temp_model.from_map(m['AppEntryRule'])
+        self.apps = []
+        if m.get('Apps') is not None:
+            for k in m.get('Apps'):
+                temp_model = DescribeSwimmingLaneResponseBodyDataApps()
+                self.apps.append(temp_model.from_map(k))
+        if m.get('CanaryModel') is not None:
+            self.canary_model = m.get('CanaryModel')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('EnableRules') is not None:
+            self.enable_rules = m.get('EnableRules')
+        if m.get('LaneId') is not None:
+            self.lane_id = m.get('LaneId')
+        if m.get('LaneName') is not None:
+            self.lane_name = m.get('LaneName')
+        if m.get('LaneTag') is not None:
+            self.lane_tag = m.get('LaneTag')
+        if m.get('MseGatewayEntryRule') is not None:
+            temp_model = DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRule()
+            self.mse_gateway_entry_rule = temp_model.from_map(m['MseGatewayEntryRule'])
+        return self
+
+
+class DescribeSwimmingLaneResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: DescribeSwimmingLaneResponseBodyData = None,
+        error_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_code = error_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = DescribeSwimmingLaneResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class DescribeSwimmingLaneResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSwimmingLaneResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSwimmingLaneResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeWebApplicationRequest(TeaModel):
     def __init__(
         self,
@@ -34541,6 +36074,980 @@ class GetWebshellTokenResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetWebshellTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListAllSwimmingLaneGroupsRequest(TeaModel):
+    def __init__(
+        self,
+        namespace_id: str = None,
+    ):
+        self.namespace_id = namespace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        return self
+
+
+class ListAllSwimmingLaneGroupsResponseBodyDataApps(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        app_name: str = None,
+        mse_app_id: str = None,
+        mse_app_name: str = None,
+        mse_namespace_id: str = None,
+    ):
+        self.app_id = app_id
+        self.app_name = app_name
+        self.mse_app_id = mse_app_id
+        self.mse_app_name = mse_app_name
+        self.mse_namespace_id = mse_namespace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.mse_app_id is not None:
+            result['MseAppId'] = self.mse_app_id
+        if self.mse_app_name is not None:
+            result['MseAppName'] = self.mse_app_name
+        if self.mse_namespace_id is not None:
+            result['MseNamespaceId'] = self.mse_namespace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('MseAppId') is not None:
+            self.mse_app_id = m.get('MseAppId')
+        if m.get('MseAppName') is not None:
+            self.mse_app_name = m.get('MseAppName')
+        if m.get('MseNamespaceId') is not None:
+            self.mse_namespace_id = m.get('MseNamespaceId')
+        return self
+
+
+class ListAllSwimmingLaneGroupsResponseBodyDataEntryApp(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        app_name: str = None,
+        app_type: str = None,
+        mse_app_id: str = None,
+        mse_app_name: str = None,
+        mse_namespace_id: str = None,
+    ):
+        self.app_id = app_id
+        self.app_name = app_name
+        self.app_type = app_type
+        self.mse_app_id = mse_app_id
+        self.mse_app_name = mse_app_name
+        self.mse_namespace_id = mse_namespace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.app_type is not None:
+            result['AppType'] = self.app_type
+        if self.mse_app_id is not None:
+            result['MseAppId'] = self.mse_app_id
+        if self.mse_app_name is not None:
+            result['MseAppName'] = self.mse_app_name
+        if self.mse_namespace_id is not None:
+            result['MseNamespaceId'] = self.mse_namespace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('AppType') is not None:
+            self.app_type = m.get('AppType')
+        if m.get('MseAppId') is not None:
+            self.mse_app_id = m.get('MseAppId')
+        if m.get('MseAppName') is not None:
+            self.mse_app_name = m.get('MseAppName')
+        if m.get('MseNamespaceId') is not None:
+            self.mse_namespace_id = m.get('MseNamespaceId')
+        return self
+
+
+class ListAllSwimmingLaneGroupsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        app_ids: List[str] = None,
+        apps: List[ListAllSwimmingLaneGroupsResponseBodyDataApps] = None,
+        canary_model: int = None,
+        entry_app: ListAllSwimmingLaneGroupsResponseBodyDataEntryApp = None,
+        entry_app_id: str = None,
+        entry_app_type: str = None,
+        group_id: int = None,
+        group_name: str = None,
+        mse_namespace_id: str = None,
+        namespace_id: str = None,
+        swim_version: str = None,
+    ):
+        self.app_ids = app_ids
+        self.apps = apps
+        self.canary_model = canary_model
+        self.entry_app = entry_app
+        self.entry_app_id = entry_app_id
+        self.entry_app_type = entry_app_type
+        self.group_id = group_id
+        self.group_name = group_name
+        self.mse_namespace_id = mse_namespace_id
+        self.namespace_id = namespace_id
+        self.swim_version = swim_version
+
+    def validate(self):
+        if self.apps:
+            for k in self.apps:
+                if k:
+                    k.validate()
+        if self.entry_app:
+            self.entry_app.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_ids is not None:
+            result['AppIds'] = self.app_ids
+        result['Apps'] = []
+        if self.apps is not None:
+            for k in self.apps:
+                result['Apps'].append(k.to_map() if k else None)
+        if self.canary_model is not None:
+            result['CanaryModel'] = self.canary_model
+        if self.entry_app is not None:
+            result['EntryApp'] = self.entry_app.to_map()
+        if self.entry_app_id is not None:
+            result['EntryAppId'] = self.entry_app_id
+        if self.entry_app_type is not None:
+            result['EntryAppType'] = self.entry_app_type
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.mse_namespace_id is not None:
+            result['MseNamespaceId'] = self.mse_namespace_id
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.swim_version is not None:
+            result['SwimVersion'] = self.swim_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppIds') is not None:
+            self.app_ids = m.get('AppIds')
+        self.apps = []
+        if m.get('Apps') is not None:
+            for k in m.get('Apps'):
+                temp_model = ListAllSwimmingLaneGroupsResponseBodyDataApps()
+                self.apps.append(temp_model.from_map(k))
+        if m.get('CanaryModel') is not None:
+            self.canary_model = m.get('CanaryModel')
+        if m.get('EntryApp') is not None:
+            temp_model = ListAllSwimmingLaneGroupsResponseBodyDataEntryApp()
+            self.entry_app = temp_model.from_map(m['EntryApp'])
+        if m.get('EntryAppId') is not None:
+            self.entry_app_id = m.get('EntryAppId')
+        if m.get('EntryAppType') is not None:
+            self.entry_app_type = m.get('EntryAppType')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('MseNamespaceId') is not None:
+            self.mse_namespace_id = m.get('MseNamespaceId')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('SwimVersion') is not None:
+            self.swim_version = m.get('SwimVersion')
+        return self
+
+
+class ListAllSwimmingLaneGroupsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[ListAllSwimmingLaneGroupsResponseBodyData] = None,
+        error_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_code = error_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListAllSwimmingLaneGroupsResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class ListAllSwimmingLaneGroupsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAllSwimmingLaneGroupsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAllSwimmingLaneGroupsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListAllSwimmingLanesRequest(TeaModel):
+    def __init__(
+        self,
+        group_id: int = None,
+        namespace_id: str = None,
+    ):
+        self.group_id = group_id
+        self.namespace_id = namespace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        return self
+
+
+class ListAllSwimmingLanesResponseBodyDataAppEntryRuleConditions(TeaModel):
+    def __init__(
+        self,
+        condition: str = None,
+        name: str = None,
+        type: str = None,
+        value: str = None,
+        values: List[str] = None,
+    ):
+        self.condition = condition
+        self.name = name
+        self.type = type
+        self.value = value
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition is not None:
+            result['Condition'] = self.condition
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Condition') is not None:
+            self.condition = m.get('Condition')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
+class ListAllSwimmingLanesResponseBodyDataAppEntryRule(TeaModel):
+    def __init__(
+        self,
+        condition_joiner: str = None,
+        conditions: List[ListAllSwimmingLanesResponseBodyDataAppEntryRuleConditions] = None,
+        independent_percentage_enable: bool = None,
+        paths: List[str] = None,
+        percentage: int = None,
+        percentage_by_path: Dict[str, int] = None,
+    ):
+        self.condition_joiner = condition_joiner
+        self.conditions = conditions
+        self.independent_percentage_enable = independent_percentage_enable
+        self.paths = paths
+        self.percentage = percentage
+        self.percentage_by_path = percentage_by_path
+
+    def validate(self):
+        if self.conditions:
+            for k in self.conditions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition_joiner is not None:
+            result['ConditionJoiner'] = self.condition_joiner
+        result['Conditions'] = []
+        if self.conditions is not None:
+            for k in self.conditions:
+                result['Conditions'].append(k.to_map() if k else None)
+        if self.independent_percentage_enable is not None:
+            result['IndependentPercentageEnable'] = self.independent_percentage_enable
+        if self.paths is not None:
+            result['Paths'] = self.paths
+        if self.percentage is not None:
+            result['Percentage'] = self.percentage
+        if self.percentage_by_path is not None:
+            result['PercentageByPath'] = self.percentage_by_path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConditionJoiner') is not None:
+            self.condition_joiner = m.get('ConditionJoiner')
+        self.conditions = []
+        if m.get('Conditions') is not None:
+            for k in m.get('Conditions'):
+                temp_model = ListAllSwimmingLanesResponseBodyDataAppEntryRuleConditions()
+                self.conditions.append(temp_model.from_map(k))
+        if m.get('IndependentPercentageEnable') is not None:
+            self.independent_percentage_enable = m.get('IndependentPercentageEnable')
+        if m.get('Paths') is not None:
+            self.paths = m.get('Paths')
+        if m.get('Percentage') is not None:
+            self.percentage = m.get('Percentage')
+        if m.get('PercentageByPath') is not None:
+            self.percentage_by_path = m.get('PercentageByPath')
+        return self
+
+
+class ListAllSwimmingLanesResponseBodyDataApps(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        app_name: str = None,
+        mse_app_id: str = None,
+        mse_app_name: str = None,
+        mse_namespace_id: str = None,
+    ):
+        self.app_id = app_id
+        self.app_name = app_name
+        self.mse_app_id = mse_app_id
+        self.mse_app_name = mse_app_name
+        self.mse_namespace_id = mse_namespace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.mse_app_id is not None:
+            result['MseAppId'] = self.mse_app_id
+        if self.mse_app_name is not None:
+            result['MseAppName'] = self.mse_app_name
+        if self.mse_namespace_id is not None:
+            result['MseNamespaceId'] = self.mse_namespace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('MseAppId') is not None:
+            self.mse_app_id = m.get('MseAppId')
+        if m.get('MseAppName') is not None:
+            self.mse_app_name = m.get('MseAppName')
+        if m.get('MseNamespaceId') is not None:
+            self.mse_namespace_id = m.get('MseNamespaceId')
+        return self
+
+
+class ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleConditions(TeaModel):
+    def __init__(
+        self,
+        condition: str = None,
+        name: str = None,
+        type: str = None,
+        value: str = None,
+    ):
+        self.condition = condition
+        self.name = name
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition is not None:
+            result['Condition'] = self.condition
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Condition') is not None:
+            self.condition = m.get('Condition')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicatePathPredicate(TeaModel):
+    def __init__(
+        self,
+        path: str = None,
+        type: str = None,
+    ):
+        self.path = path
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.path is not None:
+            result['path'] = self.path
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('path') is not None:
+            self.path = m.get('path')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicate(TeaModel):
+    def __init__(
+        self,
+        path_predicate: ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicatePathPredicate = None,
+    ):
+        self.path_predicate = path_predicate
+
+    def validate(self):
+        if self.path_predicate:
+            self.path_predicate.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.path_predicate is not None:
+            result['PathPredicate'] = self.path_predicate.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PathPredicate') is not None:
+            temp_model = ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicatePathPredicate()
+            self.path_predicate = temp_model.from_map(m['PathPredicate'])
+        return self
+
+
+class ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutes(TeaModel):
+    def __init__(
+        self,
+        route_id: int = None,
+        route_name: str = None,
+        route_predicate: ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicate = None,
+    ):
+        self.route_id = route_id
+        self.route_name = route_name
+        self.route_predicate = route_predicate
+
+    def validate(self):
+        if self.route_predicate:
+            self.route_predicate.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.route_id is not None:
+            result['RouteId'] = self.route_id
+        if self.route_name is not None:
+            result['RouteName'] = self.route_name
+        if self.route_predicate is not None:
+            result['RoutePredicate'] = self.route_predicate.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RouteId') is not None:
+            self.route_id = m.get('RouteId')
+        if m.get('RouteName') is not None:
+            self.route_name = m.get('RouteName')
+        if m.get('RoutePredicate') is not None:
+            temp_model = ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicate()
+            self.route_predicate = temp_model.from_map(m['RoutePredicate'])
+        return self
+
+
+class ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRule(TeaModel):
+    def __init__(
+        self,
+        condition_joiner: str = None,
+        conditions: List[ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleConditions] = None,
+        independent_percentage_enable: bool = None,
+        percentage: int = None,
+        percentage_by_route: Dict[str, int] = None,
+        route_ids: List[int] = None,
+        routes: List[ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutes] = None,
+    ):
+        self.condition_joiner = condition_joiner
+        self.conditions = conditions
+        self.independent_percentage_enable = independent_percentage_enable
+        self.percentage = percentage
+        self.percentage_by_route = percentage_by_route
+        self.route_ids = route_ids
+        self.routes = routes
+
+    def validate(self):
+        if self.conditions:
+            for k in self.conditions:
+                if k:
+                    k.validate()
+        if self.routes:
+            for k in self.routes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition_joiner is not None:
+            result['ConditionJoiner'] = self.condition_joiner
+        result['Conditions'] = []
+        if self.conditions is not None:
+            for k in self.conditions:
+                result['Conditions'].append(k.to_map() if k else None)
+        if self.independent_percentage_enable is not None:
+            result['IndependentPercentageEnable'] = self.independent_percentage_enable
+        if self.percentage is not None:
+            result['Percentage'] = self.percentage
+        if self.percentage_by_route is not None:
+            result['PercentageByRoute'] = self.percentage_by_route
+        if self.route_ids is not None:
+            result['RouteIds'] = self.route_ids
+        result['Routes'] = []
+        if self.routes is not None:
+            for k in self.routes:
+                result['Routes'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConditionJoiner') is not None:
+            self.condition_joiner = m.get('ConditionJoiner')
+        self.conditions = []
+        if m.get('Conditions') is not None:
+            for k in m.get('Conditions'):
+                temp_model = ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleConditions()
+                self.conditions.append(temp_model.from_map(k))
+        if m.get('IndependentPercentageEnable') is not None:
+            self.independent_percentage_enable = m.get('IndependentPercentageEnable')
+        if m.get('Percentage') is not None:
+            self.percentage = m.get('Percentage')
+        if m.get('PercentageByRoute') is not None:
+            self.percentage_by_route = m.get('PercentageByRoute')
+        if m.get('RouteIds') is not None:
+            self.route_ids = m.get('RouteIds')
+        self.routes = []
+        if m.get('Routes') is not None:
+            for k in m.get('Routes'):
+                temp_model = ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutes()
+                self.routes.append(temp_model.from_map(k))
+        return self
+
+
+class ListAllSwimmingLanesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        app_entry_rule: ListAllSwimmingLanesResponseBodyDataAppEntryRule = None,
+        apps: List[ListAllSwimmingLanesResponseBodyDataApps] = None,
+        canary_model: int = None,
+        enable: bool = None,
+        enable_rules: bool = None,
+        lane_id: int = None,
+        lane_name: str = None,
+        lane_tag: str = None,
+        mse_gateway_entry_rule: ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRule = None,
+    ):
+        self.app_entry_rule = app_entry_rule
+        self.apps = apps
+        self.canary_model = canary_model
+        self.enable = enable
+        self.enable_rules = enable_rules
+        self.lane_id = lane_id
+        self.lane_name = lane_name
+        self.lane_tag = lane_tag
+        self.mse_gateway_entry_rule = mse_gateway_entry_rule
+
+    def validate(self):
+        if self.app_entry_rule:
+            self.app_entry_rule.validate()
+        if self.apps:
+            for k in self.apps:
+                if k:
+                    k.validate()
+        if self.mse_gateway_entry_rule:
+            self.mse_gateway_entry_rule.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_entry_rule is not None:
+            result['AppEntryRule'] = self.app_entry_rule.to_map()
+        result['Apps'] = []
+        if self.apps is not None:
+            for k in self.apps:
+                result['Apps'].append(k.to_map() if k else None)
+        if self.canary_model is not None:
+            result['CanaryModel'] = self.canary_model
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.enable_rules is not None:
+            result['EnableRules'] = self.enable_rules
+        if self.lane_id is not None:
+            result['LaneId'] = self.lane_id
+        if self.lane_name is not None:
+            result['LaneName'] = self.lane_name
+        if self.lane_tag is not None:
+            result['LaneTag'] = self.lane_tag
+        if self.mse_gateway_entry_rule is not None:
+            result['MseGatewayEntryRule'] = self.mse_gateway_entry_rule.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppEntryRule') is not None:
+            temp_model = ListAllSwimmingLanesResponseBodyDataAppEntryRule()
+            self.app_entry_rule = temp_model.from_map(m['AppEntryRule'])
+        self.apps = []
+        if m.get('Apps') is not None:
+            for k in m.get('Apps'):
+                temp_model = ListAllSwimmingLanesResponseBodyDataApps()
+                self.apps.append(temp_model.from_map(k))
+        if m.get('CanaryModel') is not None:
+            self.canary_model = m.get('CanaryModel')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('EnableRules') is not None:
+            self.enable_rules = m.get('EnableRules')
+        if m.get('LaneId') is not None:
+            self.lane_id = m.get('LaneId')
+        if m.get('LaneName') is not None:
+            self.lane_name = m.get('LaneName')
+        if m.get('LaneTag') is not None:
+            self.lane_tag = m.get('LaneTag')
+        if m.get('MseGatewayEntryRule') is not None:
+            temp_model = ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRule()
+            self.mse_gateway_entry_rule = temp_model.from_map(m['MseGatewayEntryRule'])
+        return self
+
+
+class ListAllSwimmingLanesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[ListAllSwimmingLanesResponseBodyData] = None,
+        error_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_code = error_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListAllSwimmingLanesResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class ListAllSwimmingLanesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAllSwimmingLanesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAllSwimmingLanesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -40739,6 +43246,432 @@ class ListSecretsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListSecretsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListSwimmingLaneGatewayRoutesRequest(TeaModel):
+    def __init__(
+        self,
+        gateway_unique_id: str = None,
+        namespace_id: str = None,
+    ):
+        self.gateway_unique_id = gateway_unique_id
+        self.namespace_id = namespace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gateway_unique_id is not None:
+            result['GatewayUniqueId'] = self.gateway_unique_id
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GatewayUniqueId') is not None:
+            self.gateway_unique_id = m.get('GatewayUniqueId')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        return self
+
+
+class ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicatePathPredicate(TeaModel):
+    def __init__(
+        self,
+        path: str = None,
+        type: str = None,
+    ):
+        self.path = path
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.path is not None:
+            result['Path'] = self.path
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicate(TeaModel):
+    def __init__(
+        self,
+        path_predicate: ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicatePathPredicate = None,
+    ):
+        self.path_predicate = path_predicate
+
+    def validate(self):
+        if self.path_predicate:
+            self.path_predicate.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.path_predicate is not None:
+            result['PathPredicate'] = self.path_predicate.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PathPredicate') is not None:
+            temp_model = ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicatePathPredicate()
+            self.path_predicate = temp_model.from_map(m['PathPredicate'])
+        return self
+
+
+class ListSwimmingLaneGatewayRoutesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        route_id: int = None,
+        route_name: str = None,
+        route_predicate: ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicate = None,
+    ):
+        self.route_id = route_id
+        self.route_name = route_name
+        self.route_predicate = route_predicate
+
+    def validate(self):
+        if self.route_predicate:
+            self.route_predicate.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.route_id is not None:
+            result['RouteId'] = self.route_id
+        if self.route_name is not None:
+            result['RouteName'] = self.route_name
+        if self.route_predicate is not None:
+            result['RoutePredicate'] = self.route_predicate.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RouteId') is not None:
+            self.route_id = m.get('RouteId')
+        if m.get('RouteName') is not None:
+            self.route_name = m.get('RouteName')
+        if m.get('RoutePredicate') is not None:
+            temp_model = ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicate()
+            self.route_predicate = temp_model.from_map(m['RoutePredicate'])
+        return self
+
+
+class ListSwimmingLaneGatewayRoutesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[ListSwimmingLaneGatewayRoutesResponseBodyData] = None,
+        error_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_code = error_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListSwimmingLaneGatewayRoutesResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class ListSwimmingLaneGatewayRoutesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListSwimmingLaneGatewayRoutesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListSwimmingLaneGatewayRoutesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListSwimmingLaneGroupTagsRequest(TeaModel):
+    def __init__(
+        self,
+        group_id: int = None,
+        namespace_id: str = None,
+    ):
+        self.group_id = group_id
+        self.namespace_id = namespace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        return self
+
+
+class ListSwimmingLaneGroupTagsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        metadata: str = None,
+        tag: str = None,
+    ):
+        self.metadata = metadata
+        self.tag = tag
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.metadata is not None:
+            result['Metadata'] = self.metadata
+        if self.tag is not None:
+            result['Tag'] = self.tag
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Metadata') is not None:
+            self.metadata = m.get('Metadata')
+        if m.get('Tag') is not None:
+            self.tag = m.get('Tag')
+        return self
+
+
+class ListSwimmingLaneGroupTagsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[ListSwimmingLaneGroupTagsResponseBodyData] = None,
+        error_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_code = error_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListSwimmingLaneGroupTagsResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class ListSwimmingLaneGroupTagsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListSwimmingLaneGroupTagsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListSwimmingLaneGroupTagsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -47762,6 +50695,149 @@ class UpdateSecretResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateSecretResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateSwimmingLaneEnableAttributeRequest(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+        group_id: int = None,
+        lane_id: int = None,
+        namespace_id: str = None,
+    ):
+        self.enable = enable
+        self.group_id = group_id
+        self.lane_id = lane_id
+        self.namespace_id = namespace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.lane_id is not None:
+            result['LaneId'] = self.lane_id
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('LaneId') is not None:
+            self.lane_id = m.get('LaneId')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        return self
+
+
+class UpdateSwimmingLaneEnableAttributeResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        error_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.error_code = error_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class UpdateSwimmingLaneEnableAttributeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateSwimmingLaneEnableAttributeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateSwimmingLaneEnableAttributeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

@@ -1,3 +1,16 @@
+2025-05-19 Version: 2.2.0
+- Support API CreateOrUpdateSwimmingLane.
+- Support API CreateOrUpdateSwimmingLaneGroup.
+- Support API DeleteSwimmingLaneGroup.
+- Support API DescribeSwimmingLane.
+- Support API ListAllSwimmingLaneGroups.
+- Support API ListAllSwimmingLanes.
+- Support API ListSwimmingLaneGatewayRoutes.
+- Support API ListSwimmingLaneGroupTags.
+- Support API UpdateSwimmingLaneEnableAttribute.
+- Update API AbortChangeOrder: add request parameters Rollback.
+
+
 2025-05-13 Version: 2.1.1
 - Update API DescribeApplicationGroups: add response parameters Body.Data.$.PackageVersionId.
 - Update API DescribeApplicationSlbs: add response parameters Body.Data.AppId.
