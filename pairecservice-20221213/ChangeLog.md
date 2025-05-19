@@ -1,3 +1,21 @@
+2025-05-19 Version: 3.1.0
+- Support API CompareSampleConsistencyJob.
+- Support API CreateSampleConsistencyJob.
+- Support API DeleteSampleConsistencyJob.
+- Support API GetSampleConsistencyJob.
+- Support API ListSampleConsistencyJobs.
+- Support API QuerySampleConsistencyJobDifference.
+- Support API ReportSampleConsistencyJob.
+- Support API StopSampleConsistencyJob.
+- Update API CheckInstanceResources: add request parameters body.ResourceId.
+- Update API CreateTrafficControlTask: add request parameters body.FlinkResourceId.
+- Update API GetTrafficControlTask: add response parameters Body.FlinkResourceId.
+- Update API GetTrafficControlTask: add response parameters Body.FlinkResourceName.
+- Update API ListTrafficControlTasks: add response parameters Body.TrafficControlTasks.$.FlinkResourceId.
+- Update API ListTrafficControlTasks: add response parameters Body.TrafficControlTasks.$.FlinkResourceName.
+- Update API UpdateTrafficControlTask: add request parameters body.FlinkResourceId.
+
+
 2025-03-03 Version: 3.0.1
 - Update API BackflowFeatureConsistencyCheckJobData: update param body.
 

@@ -360,9 +360,11 @@ class BackflowFeatureConsistencyCheckJobDataResponse(TeaModel):
 class CheckInstanceResourcesRequest(TeaModel):
     def __init__(
         self,
+        resource_id: str = None,
         type: str = None,
         uri: str = None,
     ):
+        self.resource_id = resource_id
         # This parameter is required.
         self.type = type
         self.uri = uri
@@ -376,6 +378,8 @@ class CheckInstanceResourcesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
         if self.type is not None:
             result['Type'] = self.type
         if self.uri is not None:
@@ -384,6 +388,8 @@ class CheckInstanceResourcesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         if m.get('Uri') is not None:
@@ -1289,6 +1295,102 @@ class CloneTrafficControlTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CloneTrafficControlTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CompareSampleConsistencyJobRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class CompareSampleConsistencyJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CompareSampleConsistencyJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CompareSampleConsistencyJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CompareSampleConsistencyJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3732,6 +3834,180 @@ class CreateResourceRuleItemResponse(TeaModel):
         return self
 
 
+class CreateSampleConsistencyJobRequest(TeaModel):
+    def __init__(
+        self,
+        duration: str = None,
+        eas_model_service_name: str = None,
+        feature_save_resource_id: str = None,
+        instance_id: str = None,
+        item_id_field: str = None,
+        name: str = None,
+        partition_field: str = None,
+        partition_field_format: str = None,
+        request_id_field: str = None,
+        sample_rate: str = None,
+        sample_table_name: str = None,
+        scene_id: str = None,
+        user_id_field: str = None,
+    ):
+        self.duration = duration
+        self.eas_model_service_name = eas_model_service_name
+        self.feature_save_resource_id = feature_save_resource_id
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.item_id_field = item_id_field
+        self.name = name
+        self.partition_field = partition_field
+        self.partition_field_format = partition_field_format
+        self.request_id_field = request_id_field
+        self.sample_rate = sample_rate
+        self.sample_table_name = sample_table_name
+        self.scene_id = scene_id
+        self.user_id_field = user_id_field
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.eas_model_service_name is not None:
+            result['EasModelServiceName'] = self.eas_model_service_name
+        if self.feature_save_resource_id is not None:
+            result['FeatureSaveResourceId'] = self.feature_save_resource_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.item_id_field is not None:
+            result['ItemIdField'] = self.item_id_field
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.partition_field is not None:
+            result['PartitionField'] = self.partition_field
+        if self.partition_field_format is not None:
+            result['PartitionFieldFormat'] = self.partition_field_format
+        if self.request_id_field is not None:
+            result['RequestIdField'] = self.request_id_field
+        if self.sample_rate is not None:
+            result['SampleRate'] = self.sample_rate
+        if self.sample_table_name is not None:
+            result['SampleTableName'] = self.sample_table_name
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.user_id_field is not None:
+            result['UserIdField'] = self.user_id_field
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('EasModelServiceName') is not None:
+            self.eas_model_service_name = m.get('EasModelServiceName')
+        if m.get('FeatureSaveResourceId') is not None:
+            self.feature_save_resource_id = m.get('FeatureSaveResourceId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ItemIdField') is not None:
+            self.item_id_field = m.get('ItemIdField')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PartitionField') is not None:
+            self.partition_field = m.get('PartitionField')
+        if m.get('PartitionFieldFormat') is not None:
+            self.partition_field_format = m.get('PartitionFieldFormat')
+        if m.get('RequestIdField') is not None:
+            self.request_id_field = m.get('RequestIdField')
+        if m.get('SampleRate') is not None:
+            self.sample_rate = m.get('SampleRate')
+        if m.get('SampleTableName') is not None:
+            self.sample_table_name = m.get('SampleTableName')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('UserIdField') is not None:
+            self.user_id_field = m.get('UserIdField')
+        return self
+
+
+class CreateSampleConsistencyJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        sample_consistency_job_id: str = None,
+    ):
+        self.request_id = request_id
+        self.sample_consistency_job_id = sample_consistency_job_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.sample_consistency_job_id is not None:
+            result['SampleConsistencyJobId'] = self.sample_consistency_job_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SampleConsistencyJobId') is not None:
+            self.sample_consistency_job_id = m.get('SampleConsistencyJobId')
+        return self
+
+
+class CreateSampleConsistencyJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateSampleConsistencyJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateSampleConsistencyJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateSceneRequestFlows(TeaModel):
     def __init__(
         self,
@@ -4512,6 +4788,7 @@ class CreateTrafficControlTaskRequest(TeaModel):
         description: str = None,
         end_time: str = None,
         execution_time: str = None,
+        flink_resource_id: str = None,
         instance_id: str = None,
         item_condition_array: str = None,
         item_condition_express: str = None,
@@ -4539,6 +4816,7 @@ class CreateTrafficControlTaskRequest(TeaModel):
         self.description = description
         self.end_time = end_time
         self.execution_time = execution_time
+        self.flink_resource_id = flink_resource_id
         self.instance_id = instance_id
         self.item_condition_array = item_condition_array
         self.item_condition_express = item_condition_express
@@ -4586,6 +4864,8 @@ class CreateTrafficControlTaskRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.execution_time is not None:
             result['ExecutionTime'] = self.execution_time
+        if self.flink_resource_id is not None:
+            result['FlinkResourceId'] = self.flink_resource_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.item_condition_array is not None:
@@ -4644,6 +4924,8 @@ class CreateTrafficControlTaskRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('ExecutionTime') is not None:
             self.execution_time = m.get('ExecutionTime')
+        if m.get('FlinkResourceId') is not None:
+            self.flink_resource_id = m.get('FlinkResourceId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('ItemConditionArray') is not None:
@@ -6047,6 +6329,102 @@ class DeleteResourceRuleItemResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteResourceRuleItemResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteSampleConsistencyJobRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DeleteSampleConsistencyJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteSampleConsistencyJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteSampleConsistencyJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteSampleConsistencyJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9425,6 +9803,228 @@ class GetResourceRuleResponse(TeaModel):
         return self
 
 
+class GetSampleConsistencyJobRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class GetSampleConsistencyJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        config: str = None,
+        duration: str = None,
+        eas_model_service_name: str = None,
+        end_time: str = None,
+        feature_save_resource_id: str = None,
+        gmt_create_time: str = None,
+        gmt_modified_time: str = None,
+        item_id_field: str = None,
+        logs: str = None,
+        name: str = None,
+        partition_field: str = None,
+        partition_field_format: str = None,
+        request_id: str = None,
+        request_id_field: str = None,
+        sample_consistency_job_id: str = None,
+        sample_rate: str = None,
+        sample_table_name: str = None,
+        scene_id: str = None,
+        scene_name: str = None,
+        start_time: str = None,
+        status: str = None,
+        user_id_field: str = None,
+    ):
+        self.config = config
+        self.duration = duration
+        self.eas_model_service_name = eas_model_service_name
+        self.end_time = end_time
+        self.feature_save_resource_id = feature_save_resource_id
+        self.gmt_create_time = gmt_create_time
+        self.gmt_modified_time = gmt_modified_time
+        self.item_id_field = item_id_field
+        self.logs = logs
+        self.name = name
+        self.partition_field = partition_field
+        self.partition_field_format = partition_field_format
+        self.request_id = request_id
+        self.request_id_field = request_id_field
+        self.sample_consistency_job_id = sample_consistency_job_id
+        self.sample_rate = sample_rate
+        self.sample_table_name = sample_table_name
+        self.scene_id = scene_id
+        self.scene_name = scene_name
+        self.start_time = start_time
+        self.status = status
+        self.user_id_field = user_id_field
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['Config'] = self.config
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.eas_model_service_name is not None:
+            result['EasModelServiceName'] = self.eas_model_service_name
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.feature_save_resource_id is not None:
+            result['FeatureSaveResourceId'] = self.feature_save_resource_id
+        if self.gmt_create_time is not None:
+            result['GmtCreateTime'] = self.gmt_create_time
+        if self.gmt_modified_time is not None:
+            result['GmtModifiedTime'] = self.gmt_modified_time
+        if self.item_id_field is not None:
+            result['ItemIdField'] = self.item_id_field
+        if self.logs is not None:
+            result['Logs'] = self.logs
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.partition_field is not None:
+            result['PartitionField'] = self.partition_field
+        if self.partition_field_format is not None:
+            result['PartitionFieldFormat'] = self.partition_field_format
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.request_id_field is not None:
+            result['RequestIdField'] = self.request_id_field
+        if self.sample_consistency_job_id is not None:
+            result['SampleConsistencyJobId'] = self.sample_consistency_job_id
+        if self.sample_rate is not None:
+            result['SampleRate'] = self.sample_rate
+        if self.sample_table_name is not None:
+            result['SampleTableName'] = self.sample_table_name
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.scene_name is not None:
+            result['SceneName'] = self.scene_name
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.user_id_field is not None:
+            result['UserIdField'] = self.user_id_field
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('EasModelServiceName') is not None:
+            self.eas_model_service_name = m.get('EasModelServiceName')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('FeatureSaveResourceId') is not None:
+            self.feature_save_resource_id = m.get('FeatureSaveResourceId')
+        if m.get('GmtCreateTime') is not None:
+            self.gmt_create_time = m.get('GmtCreateTime')
+        if m.get('GmtModifiedTime') is not None:
+            self.gmt_modified_time = m.get('GmtModifiedTime')
+        if m.get('ItemIdField') is not None:
+            self.item_id_field = m.get('ItemIdField')
+        if m.get('Logs') is not None:
+            self.logs = m.get('Logs')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PartitionField') is not None:
+            self.partition_field = m.get('PartitionField')
+        if m.get('PartitionFieldFormat') is not None:
+            self.partition_field_format = m.get('PartitionFieldFormat')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RequestIdField') is not None:
+            self.request_id_field = m.get('RequestIdField')
+        if m.get('SampleConsistencyJobId') is not None:
+            self.sample_consistency_job_id = m.get('SampleConsistencyJobId')
+        if m.get('SampleRate') is not None:
+            self.sample_rate = m.get('SampleRate')
+        if m.get('SampleTableName') is not None:
+            self.sample_table_name = m.get('SampleTableName')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('SceneName') is not None:
+            self.scene_name = m.get('SceneName')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UserIdField') is not None:
+            self.user_id_field = m.get('UserIdField')
+        return self
+
+
+class GetSampleConsistencyJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetSampleConsistencyJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetSampleConsistencyJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetSceneRequest(TeaModel):
     def __init__(
         self,
@@ -10393,6 +10993,8 @@ class GetTrafficControlTaskResponseBody(TeaModel):
         end_time: str = None,
         ever_published: bool = None,
         execution_time: str = None,
+        flink_resource_id: str = None,
+        flink_resource_name: str = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
         item_condition_array: str = None,
@@ -10427,6 +11029,8 @@ class GetTrafficControlTaskResponseBody(TeaModel):
         self.end_time = end_time
         self.ever_published = ever_published
         self.execution_time = execution_time
+        self.flink_resource_id = flink_resource_id
+        self.flink_resource_name = flink_resource_name
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
         self.item_condition_array = item_condition_array
@@ -10481,6 +11085,10 @@ class GetTrafficControlTaskResponseBody(TeaModel):
             result['EverPublished'] = self.ever_published
         if self.execution_time is not None:
             result['ExecutionTime'] = self.execution_time
+        if self.flink_resource_id is not None:
+            result['FlinkResourceId'] = self.flink_resource_id
+        if self.flink_resource_name is not None:
+            result['FlinkResourceName'] = self.flink_resource_name
         if self.gmt_create_time is not None:
             result['GmtCreateTime'] = self.gmt_create_time
         if self.gmt_modified_time is not None:
@@ -10553,6 +11161,10 @@ class GetTrafficControlTaskResponseBody(TeaModel):
             self.ever_published = m.get('EverPublished')
         if m.get('ExecutionTime') is not None:
             self.execution_time = m.get('ExecutionTime')
+        if m.get('FlinkResourceId') is not None:
+            self.flink_resource_id = m.get('FlinkResourceId')
+        if m.get('FlinkResourceName') is not None:
+            self.flink_resource_name = m.get('FlinkResourceName')
         if m.get('GmtCreateTime') is not None:
             self.gmt_create_time = m.get('GmtCreateTime')
         if m.get('GmtModifiedTime') is not None:
@@ -15296,6 +15908,293 @@ class ListResourceRulesResponse(TeaModel):
         return self
 
 
+class ListSampleConsistencyJobsRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        order: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        sort_by: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.order = order
+        self.page_number = page_number
+        self.page_size = page_size
+        self.sort_by = sort_by
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        return self
+
+
+class ListSampleConsistencyJobsResponseBodySampleConsistencyJobs(TeaModel):
+    def __init__(
+        self,
+        config: str = None,
+        duration: str = None,
+        eas_model_service_name: str = None,
+        end_time: int = None,
+        feature_save_resource_id: str = None,
+        gmt_create_time: str = None,
+        gmt_modified_time: str = None,
+        item_id_field: str = None,
+        logs: str = None,
+        name: str = None,
+        partition_field: str = None,
+        partition_field_format: str = None,
+        request_id_field: str = None,
+        sample_consistency_job_id: str = None,
+        sample_rate: str = None,
+        sample_table_name: str = None,
+        scene_id: str = None,
+        scene_name: str = None,
+        start_time: int = None,
+        status: str = None,
+        user_id_field: str = None,
+    ):
+        self.config = config
+        self.duration = duration
+        self.eas_model_service_name = eas_model_service_name
+        self.end_time = end_time
+        self.feature_save_resource_id = feature_save_resource_id
+        self.gmt_create_time = gmt_create_time
+        self.gmt_modified_time = gmt_modified_time
+        self.item_id_field = item_id_field
+        self.logs = logs
+        self.name = name
+        self.partition_field = partition_field
+        self.partition_field_format = partition_field_format
+        self.request_id_field = request_id_field
+        self.sample_consistency_job_id = sample_consistency_job_id
+        self.sample_rate = sample_rate
+        self.sample_table_name = sample_table_name
+        self.scene_id = scene_id
+        self.scene_name = scene_name
+        self.start_time = start_time
+        self.status = status
+        self.user_id_field = user_id_field
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['Config'] = self.config
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.eas_model_service_name is not None:
+            result['EasModelServiceName'] = self.eas_model_service_name
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.feature_save_resource_id is not None:
+            result['FeatureSaveResourceId'] = self.feature_save_resource_id
+        if self.gmt_create_time is not None:
+            result['GmtCreateTime'] = self.gmt_create_time
+        if self.gmt_modified_time is not None:
+            result['GmtModifiedTime'] = self.gmt_modified_time
+        if self.item_id_field is not None:
+            result['ItemIdField'] = self.item_id_field
+        if self.logs is not None:
+            result['Logs'] = self.logs
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.partition_field is not None:
+            result['PartitionField'] = self.partition_field
+        if self.partition_field_format is not None:
+            result['PartitionFieldFormat'] = self.partition_field_format
+        if self.request_id_field is not None:
+            result['RequestIdField'] = self.request_id_field
+        if self.sample_consistency_job_id is not None:
+            result['SampleConsistencyJobId'] = self.sample_consistency_job_id
+        if self.sample_rate is not None:
+            result['SampleRate'] = self.sample_rate
+        if self.sample_table_name is not None:
+            result['SampleTableName'] = self.sample_table_name
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.scene_name is not None:
+            result['SceneName'] = self.scene_name
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.user_id_field is not None:
+            result['UserIdField'] = self.user_id_field
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('EasModelServiceName') is not None:
+            self.eas_model_service_name = m.get('EasModelServiceName')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('FeatureSaveResourceId') is not None:
+            self.feature_save_resource_id = m.get('FeatureSaveResourceId')
+        if m.get('GmtCreateTime') is not None:
+            self.gmt_create_time = m.get('GmtCreateTime')
+        if m.get('GmtModifiedTime') is not None:
+            self.gmt_modified_time = m.get('GmtModifiedTime')
+        if m.get('ItemIdField') is not None:
+            self.item_id_field = m.get('ItemIdField')
+        if m.get('Logs') is not None:
+            self.logs = m.get('Logs')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PartitionField') is not None:
+            self.partition_field = m.get('PartitionField')
+        if m.get('PartitionFieldFormat') is not None:
+            self.partition_field_format = m.get('PartitionFieldFormat')
+        if m.get('RequestIdField') is not None:
+            self.request_id_field = m.get('RequestIdField')
+        if m.get('SampleConsistencyJobId') is not None:
+            self.sample_consistency_job_id = m.get('SampleConsistencyJobId')
+        if m.get('SampleRate') is not None:
+            self.sample_rate = m.get('SampleRate')
+        if m.get('SampleTableName') is not None:
+            self.sample_table_name = m.get('SampleTableName')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('SceneName') is not None:
+            self.scene_name = m.get('SceneName')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UserIdField') is not None:
+            self.user_id_field = m.get('UserIdField')
+        return self
+
+
+class ListSampleConsistencyJobsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        sample_consistency_jobs: List[ListSampleConsistencyJobsResponseBodySampleConsistencyJobs] = None,
+        total_count: int = None,
+    ):
+        self.request_id = request_id
+        self.sample_consistency_jobs = sample_consistency_jobs
+        self.total_count = total_count
+
+    def validate(self):
+        if self.sample_consistency_jobs:
+            for k in self.sample_consistency_jobs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['SampleConsistencyJobs'] = []
+        if self.sample_consistency_jobs is not None:
+            for k in self.sample_consistency_jobs:
+                result['SampleConsistencyJobs'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.sample_consistency_jobs = []
+        if m.get('SampleConsistencyJobs') is not None:
+            for k in m.get('SampleConsistencyJobs'):
+                temp_model = ListSampleConsistencyJobsResponseBodySampleConsistencyJobs()
+                self.sample_consistency_jobs.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListSampleConsistencyJobsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListSampleConsistencyJobsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListSampleConsistencyJobsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListScenesRequest(TeaModel):
     def __init__(
         self,
@@ -16459,6 +17358,8 @@ class ListTrafficControlTasksResponseBodyTrafficControlTasks(TeaModel):
         end_time: str = None,
         ever_published: bool = None,
         execution_time: str = None,
+        flink_resource_id: str = None,
+        flink_resource_name: str = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
         item_condition_array: str = None,
@@ -16492,6 +17393,8 @@ class ListTrafficControlTasksResponseBodyTrafficControlTasks(TeaModel):
         self.end_time = end_time
         self.ever_published = ever_published
         self.execution_time = execution_time
+        self.flink_resource_id = flink_resource_id
+        self.flink_resource_name = flink_resource_name
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
         self.item_condition_array = item_condition_array
@@ -16545,6 +17448,10 @@ class ListTrafficControlTasksResponseBodyTrafficControlTasks(TeaModel):
             result['EverPublished'] = self.ever_published
         if self.execution_time is not None:
             result['ExecutionTime'] = self.execution_time
+        if self.flink_resource_id is not None:
+            result['FlinkResourceId'] = self.flink_resource_id
+        if self.flink_resource_name is not None:
+            result['FlinkResourceName'] = self.flink_resource_name
         if self.gmt_create_time is not None:
             result['GmtCreateTime'] = self.gmt_create_time
         if self.gmt_modified_time is not None:
@@ -16615,6 +17522,10 @@ class ListTrafficControlTasksResponseBodyTrafficControlTasks(TeaModel):
             self.ever_published = m.get('EverPublished')
         if m.get('ExecutionTime') is not None:
             self.execution_time = m.get('ExecutionTime')
+        if m.get('FlinkResourceId') is not None:
+            self.flink_resource_id = m.get('FlinkResourceId')
+        if m.get('FlinkResourceName') is not None:
+            self.flink_resource_name = m.get('FlinkResourceName')
         if m.get('GmtCreateTime') is not None:
             self.gmt_create_time = m.get('GmtCreateTime')
         if m.get('GmtModifiedTime') is not None:
@@ -17679,6 +18590,299 @@ class PushResourceRuleResponse(TeaModel):
         return self
 
 
+class QuerySampleConsistencyJobDifferenceRequest(TeaModel):
+    def __init__(
+        self,
+        feature_name: str = None,
+        feature_type: str = None,
+        instance_id: str = None,
+    ):
+        self.feature_name = feature_name
+        self.feature_type = feature_type
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.feature_name is not None:
+            result['FeatureName'] = self.feature_name
+        if self.feature_type is not None:
+            result['FeatureType'] = self.feature_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FeatureName') is not None:
+            self.feature_name = m.get('FeatureName')
+        if m.get('FeatureType') is not None:
+            self.feature_type = m.get('FeatureType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class QuerySampleConsistencyJobDifferenceResponseBodyDifferenceHistogram(TeaModel):
+    def __init__(
+        self,
+        abscissa: str = None,
+        value: int = None,
+    ):
+        self.abscissa = abscissa
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.abscissa is not None:
+            result['Abscissa'] = self.abscissa
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Abscissa') is not None:
+            self.abscissa = m.get('Abscissa')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class QuerySampleConsistencyJobDifferenceResponseBodyNumberFeatureDifferences(TeaModel):
+    def __init__(
+        self,
+        diff_value: float = None,
+        item_id: str = None,
+        reply_table_feature_value: float = None,
+        request_id: str = None,
+        sample_table_feature_value: float = None,
+        user_id: str = None,
+    ):
+        self.diff_value = diff_value
+        self.item_id = item_id
+        self.reply_table_feature_value = reply_table_feature_value
+        self.request_id = request_id
+        self.sample_table_feature_value = sample_table_feature_value
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.diff_value is not None:
+            result['DiffValue'] = self.diff_value
+        if self.item_id is not None:
+            result['ItemId'] = self.item_id
+        if self.reply_table_feature_value is not None:
+            result['ReplyTableFeatureValue'] = self.reply_table_feature_value
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.sample_table_feature_value is not None:
+            result['SampleTableFeatureValue'] = self.sample_table_feature_value
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiffValue') is not None:
+            self.diff_value = m.get('DiffValue')
+        if m.get('ItemId') is not None:
+            self.item_id = m.get('ItemId')
+        if m.get('ReplyTableFeatureValue') is not None:
+            self.reply_table_feature_value = m.get('ReplyTableFeatureValue')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SampleTableFeatureValue') is not None:
+            self.sample_table_feature_value = m.get('SampleTableFeatureValue')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class QuerySampleConsistencyJobDifferenceResponseBodyStringFeatureDifferences(TeaModel):
+    def __init__(
+        self,
+        item_id: str = None,
+        reply_table_feature_value: str = None,
+        request_id: str = None,
+        sample_table_feature_value: str = None,
+        user_id: str = None,
+    ):
+        self.item_id = item_id
+        self.reply_table_feature_value = reply_table_feature_value
+        self.request_id = request_id
+        self.sample_table_feature_value = sample_table_feature_value
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.item_id is not None:
+            result['ItemId'] = self.item_id
+        if self.reply_table_feature_value is not None:
+            result['ReplyTableFeatureValue'] = self.reply_table_feature_value
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.sample_table_feature_value is not None:
+            result['SampleTableFeatureValue'] = self.sample_table_feature_value
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ItemId') is not None:
+            self.item_id = m.get('ItemId')
+        if m.get('ReplyTableFeatureValue') is not None:
+            self.reply_table_feature_value = m.get('ReplyTableFeatureValue')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SampleTableFeatureValue') is not None:
+            self.sample_table_feature_value = m.get('SampleTableFeatureValue')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class QuerySampleConsistencyJobDifferenceResponseBody(TeaModel):
+    def __init__(
+        self,
+        difference_histogram: List[QuerySampleConsistencyJobDifferenceResponseBodyDifferenceHistogram] = None,
+        number_feature_differences: List[QuerySampleConsistencyJobDifferenceResponseBodyNumberFeatureDifferences] = None,
+        request_id: str = None,
+        string_feature_differences: List[QuerySampleConsistencyJobDifferenceResponseBodyStringFeatureDifferences] = None,
+    ):
+        self.difference_histogram = difference_histogram
+        self.number_feature_differences = number_feature_differences
+        self.request_id = request_id
+        self.string_feature_differences = string_feature_differences
+
+    def validate(self):
+        if self.difference_histogram:
+            for k in self.difference_histogram:
+                if k:
+                    k.validate()
+        if self.number_feature_differences:
+            for k in self.number_feature_differences:
+                if k:
+                    k.validate()
+        if self.string_feature_differences:
+            for k in self.string_feature_differences:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DifferenceHistogram'] = []
+        if self.difference_histogram is not None:
+            for k in self.difference_histogram:
+                result['DifferenceHistogram'].append(k.to_map() if k else None)
+        result['NumberFeatureDifferences'] = []
+        if self.number_feature_differences is not None:
+            for k in self.number_feature_differences:
+                result['NumberFeatureDifferences'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['StringFeatureDifferences'] = []
+        if self.string_feature_differences is not None:
+            for k in self.string_feature_differences:
+                result['StringFeatureDifferences'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.difference_histogram = []
+        if m.get('DifferenceHistogram') is not None:
+            for k in m.get('DifferenceHistogram'):
+                temp_model = QuerySampleConsistencyJobDifferenceResponseBodyDifferenceHistogram()
+                self.difference_histogram.append(temp_model.from_map(k))
+        self.number_feature_differences = []
+        if m.get('NumberFeatureDifferences') is not None:
+            for k in m.get('NumberFeatureDifferences'):
+                temp_model = QuerySampleConsistencyJobDifferenceResponseBodyNumberFeatureDifferences()
+                self.number_feature_differences.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.string_feature_differences = []
+        if m.get('StringFeatureDifferences') is not None:
+            for k in m.get('StringFeatureDifferences'):
+                temp_model = QuerySampleConsistencyJobDifferenceResponseBodyStringFeatureDifferences()
+                self.string_feature_differences.append(temp_model.from_map(k))
+        return self
+
+
+class QuerySampleConsistencyJobDifferenceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QuerySampleConsistencyJobDifferenceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QuerySampleConsistencyJobDifferenceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QueryTrafficControlTargetItemReportDetailRequest(TeaModel):
     def __init__(
         self,
@@ -18210,6 +19414,185 @@ class ReportABMetricGroupResponse(TeaModel):
         return self
 
 
+class ReportSampleConsistencyJobRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class ReportSampleConsistencyJobResponseBodyFeaturesDifference(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        feature_name: str = None,
+        feature_type: str = None,
+        ratio: str = None,
+    ):
+        self.count = count
+        self.feature_name = feature_name
+        self.feature_type = feature_type
+        self.ratio = ratio
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.feature_name is not None:
+            result['FeatureName'] = self.feature_name
+        if self.feature_type is not None:
+            result['FeatureType'] = self.feature_type
+        if self.ratio is not None:
+            result['Ratio'] = self.ratio
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('FeatureName') is not None:
+            self.feature_name = m.get('FeatureName')
+        if m.get('FeatureType') is not None:
+            self.feature_type = m.get('FeatureType')
+        if m.get('Ratio') is not None:
+            self.ratio = m.get('Ratio')
+        return self
+
+
+class ReportSampleConsistencyJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        features_difference: List[ReportSampleConsistencyJobResponseBodyFeaturesDifference] = None,
+        reply_table_features: int = None,
+        reply_table_lost_features: int = None,
+        request_id: int = None,
+        sample_table_features: int = None,
+        sample_table_lost_features: int = None,
+    ):
+        self.features_difference = features_difference
+        self.reply_table_features = reply_table_features
+        self.reply_table_lost_features = reply_table_lost_features
+        self.request_id = request_id
+        self.sample_table_features = sample_table_features
+        self.sample_table_lost_features = sample_table_lost_features
+
+    def validate(self):
+        if self.features_difference:
+            for k in self.features_difference:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['FeaturesDifference'] = []
+        if self.features_difference is not None:
+            for k in self.features_difference:
+                result['FeaturesDifference'].append(k.to_map() if k else None)
+        if self.reply_table_features is not None:
+            result['ReplyTableFeatures'] = self.reply_table_features
+        if self.reply_table_lost_features is not None:
+            result['ReplyTableLostFeatures'] = self.reply_table_lost_features
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.sample_table_features is not None:
+            result['SampleTableFeatures'] = self.sample_table_features
+        if self.sample_table_lost_features is not None:
+            result['SampleTableLostFeatures'] = self.sample_table_lost_features
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.features_difference = []
+        if m.get('FeaturesDifference') is not None:
+            for k in m.get('FeaturesDifference'):
+                temp_model = ReportSampleConsistencyJobResponseBodyFeaturesDifference()
+                self.features_difference.append(temp_model.from_map(k))
+        if m.get('ReplyTableFeatures') is not None:
+            self.reply_table_features = m.get('ReplyTableFeatures')
+        if m.get('ReplyTableLostFeatures') is not None:
+            self.reply_table_lost_features = m.get('ReplyTableLostFeatures')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SampleTableFeatures') is not None:
+            self.sample_table_features = m.get('SampleTableFeatures')
+        if m.get('SampleTableLostFeatures') is not None:
+            self.sample_table_lost_features = m.get('SampleTableLostFeatures')
+        return self
+
+
+class ReportSampleConsistencyJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ReportSampleConsistencyJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ReportSampleConsistencyJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SplitTrafficControlTargetRequest(TeaModel):
     def __init__(
         self,
@@ -18521,6 +19904,102 @@ class StartTrafficControlTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StartTrafficControlTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StopSampleConsistencyJobRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class StopSampleConsistencyJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StopSampleConsistencyJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StopSampleConsistencyJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StopSampleConsistencyJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -21600,6 +23079,7 @@ class UpdateTrafficControlTaskRequest(TeaModel):
         description: str = None,
         end_time: str = None,
         execution_time: str = None,
+        flink_resource_id: str = None,
         instance_id: str = None,
         item_condition_array: str = None,
         item_condition_express: str = None,
@@ -21627,6 +23107,7 @@ class UpdateTrafficControlTaskRequest(TeaModel):
         self.description = description
         self.end_time = end_time
         self.execution_time = execution_time
+        self.flink_resource_id = flink_resource_id
         self.instance_id = instance_id
         self.item_condition_array = item_condition_array
         self.item_condition_express = item_condition_express
@@ -21673,6 +23154,8 @@ class UpdateTrafficControlTaskRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.execution_time is not None:
             result['ExecutionTime'] = self.execution_time
+        if self.flink_resource_id is not None:
+            result['FlinkResourceId'] = self.flink_resource_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.item_condition_array is not None:
@@ -21731,6 +23214,8 @@ class UpdateTrafficControlTaskRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('ExecutionTime') is not None:
             self.execution_time = m.get('ExecutionTime')
+        if m.get('FlinkResourceId') is not None:
+            self.flink_resource_id = m.get('FlinkResourceId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('ItemConditionArray') is not None:
