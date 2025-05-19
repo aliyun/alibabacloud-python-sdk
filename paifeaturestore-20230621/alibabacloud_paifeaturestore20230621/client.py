@@ -157,6 +157,100 @@ class Client(OpenApiClient):
         headers = {}
         return await self.check_instance_datasource_with_options_async(instance_id, request, headers, runtime)
 
+    def check_model_feature_fgfeature_with_options(
+        self,
+        instance_id: str,
+        model_feature_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_feature_store_20230621_models.CheckModelFeatureFGFeatureResponse:
+        """
+        @summary 检查FG配置内容是否正确，是否满足所有规则。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckModelFeatureFGFeatureResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='CheckModelFeatureFGFeature',
+            version='2023-06-21',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/modelfeatures/{OpenApiUtilClient.get_encode_param(model_feature_id)}/action/checkfgfeature',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_feature_store_20230621_models.CheckModelFeatureFGFeatureResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_model_feature_fgfeature_with_options_async(
+        self,
+        instance_id: str,
+        model_feature_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_feature_store_20230621_models.CheckModelFeatureFGFeatureResponse:
+        """
+        @summary 检查FG配置内容是否正确，是否满足所有规则。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckModelFeatureFGFeatureResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='CheckModelFeatureFGFeature',
+            version='2023-06-21',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/modelfeatures/{OpenApiUtilClient.get_encode_param(model_feature_id)}/action/checkfgfeature',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_feature_store_20230621_models.CheckModelFeatureFGFeatureResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_model_feature_fgfeature(
+        self,
+        instance_id: str,
+        model_feature_id: str,
+    ) -> pai_feature_store_20230621_models.CheckModelFeatureFGFeatureResponse:
+        """
+        @summary 检查FG配置内容是否正确，是否满足所有规则。
+        
+        @return: CheckModelFeatureFGFeatureResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.check_model_feature_fgfeature_with_options(instance_id, model_feature_id, headers, runtime)
+
+    async def check_model_feature_fgfeature_async(
+        self,
+        instance_id: str,
+        model_feature_id: str,
+    ) -> pai_feature_store_20230621_models.CheckModelFeatureFGFeatureResponse:
+        """
+        @summary 检查FG配置内容是否正确，是否满足所有规则。
+        
+        @return: CheckModelFeatureFGFeatureResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.check_model_feature_fgfeature_with_options_async(instance_id, model_feature_id, headers, runtime)
+
     def create_datasource_with_options(
         self,
         instance_id: str,
@@ -656,6 +750,142 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_instance_with_options_async(request, headers, runtime)
+
+    def create_llmconfig_with_options(
+        self,
+        instance_id: str,
+        request: pai_feature_store_20230621_models.CreateLLMConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_feature_store_20230621_models.CreateLLMConfigResponse:
+        """
+        @summary 创建大模型调用信息配置
+        
+        @param request: CreateLLMConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLLMConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.api_key):
+            body['ApiKey'] = request.api_key
+        if not UtilClient.is_unset(request.base_url):
+            body['BaseUrl'] = request.base_url
+        if not UtilClient.is_unset(request.batch_size):
+            body['BatchSize'] = request.batch_size
+        if not UtilClient.is_unset(request.max_tokens):
+            body['MaxTokens'] = request.max_tokens
+        if not UtilClient.is_unset(request.model):
+            body['Model'] = request.model
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.rps):
+            body['Rps'] = request.rps
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateLLMConfig',
+            version='2023-06-21',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/llmconfigs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_feature_store_20230621_models.CreateLLMConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_llmconfig_with_options_async(
+        self,
+        instance_id: str,
+        request: pai_feature_store_20230621_models.CreateLLMConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_feature_store_20230621_models.CreateLLMConfigResponse:
+        """
+        @summary 创建大模型调用信息配置
+        
+        @param request: CreateLLMConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLLMConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.api_key):
+            body['ApiKey'] = request.api_key
+        if not UtilClient.is_unset(request.base_url):
+            body['BaseUrl'] = request.base_url
+        if not UtilClient.is_unset(request.batch_size):
+            body['BatchSize'] = request.batch_size
+        if not UtilClient.is_unset(request.max_tokens):
+            body['MaxTokens'] = request.max_tokens
+        if not UtilClient.is_unset(request.model):
+            body['Model'] = request.model
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.rps):
+            body['Rps'] = request.rps
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateLLMConfig',
+            version='2023-06-21',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/llmconfigs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_feature_store_20230621_models.CreateLLMConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_llmconfig(
+        self,
+        instance_id: str,
+        request: pai_feature_store_20230621_models.CreateLLMConfigRequest,
+    ) -> pai_feature_store_20230621_models.CreateLLMConfigResponse:
+        """
+        @summary 创建大模型调用信息配置
+        
+        @param request: CreateLLMConfigRequest
+        @return: CreateLLMConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_llmconfig_with_options(instance_id, request, headers, runtime)
+
+    async def create_llmconfig_async(
+        self,
+        instance_id: str,
+        request: pai_feature_store_20230621_models.CreateLLMConfigRequest,
+    ) -> pai_feature_store_20230621_models.CreateLLMConfigResponse:
+        """
+        @summary 创建大模型调用信息配置
+        
+        @param request: CreateLLMConfigRequest
+        @return: CreateLLMConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_llmconfig_with_options_async(instance_id, request, headers, runtime)
 
     def create_label_table_with_options(
         self,
@@ -1418,6 +1648,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_feature_view_with_options_async(instance_id, feature_view_id, headers, runtime)
+
+    def delete_llmconfig_with_options(
+        self,
+        instance_id: str,
+        llmconfig_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_feature_store_20230621_models.DeleteLLMConfigResponse:
+        """
+        @summary 删除大模型调用信息配置
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLLMConfigResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteLLMConfig',
+            version='2023-06-21',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/llmconfigs/{OpenApiUtilClient.get_encode_param(llmconfig_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_feature_store_20230621_models.DeleteLLMConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_llmconfig_with_options_async(
+        self,
+        instance_id: str,
+        llmconfig_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_feature_store_20230621_models.DeleteLLMConfigResponse:
+        """
+        @summary 删除大模型调用信息配置
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLLMConfigResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteLLMConfig',
+            version='2023-06-21',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/llmconfigs/{OpenApiUtilClient.get_encode_param(llmconfig_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_feature_store_20230621_models.DeleteLLMConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_llmconfig(
+        self,
+        instance_id: str,
+        llmconfig_id: str,
+    ) -> pai_feature_store_20230621_models.DeleteLLMConfigResponse:
+        """
+        @summary 删除大模型调用信息配置
+        
+        @return: DeleteLLMConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_llmconfig_with_options(instance_id, llmconfig_id, headers, runtime)
+
+    async def delete_llmconfig_async(
+        self,
+        instance_id: str,
+        llmconfig_id: str,
+    ) -> pai_feature_store_20230621_models.DeleteLLMConfigResponse:
+        """
+        @summary 删除大模型调用信息配置
+        
+        @return: DeleteLLMConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_llmconfig_with_options_async(instance_id, llmconfig_id, headers, runtime)
 
     def delete_label_table_with_options(
         self,
@@ -2299,6 +2623,104 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_instance_with_options_async(instance_id, headers, runtime)
 
+    def get_llmconfig_with_options(
+        self,
+        instance_id: str,
+        llmconfig_id: str,
+        region_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_feature_store_20230621_models.GetLLMConfigResponse:
+        """
+        @summary 获取 LLMConfig 信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLLMConfigResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetLLMConfig',
+            version='2023-06-21',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/llmconfigs/{OpenApiUtilClient.get_encode_param(llmconfig_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_feature_store_20230621_models.GetLLMConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_llmconfig_with_options_async(
+        self,
+        instance_id: str,
+        llmconfig_id: str,
+        region_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_feature_store_20230621_models.GetLLMConfigResponse:
+        """
+        @summary 获取 LLMConfig 信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLLMConfigResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetLLMConfig',
+            version='2023-06-21',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/llmconfigs/{OpenApiUtilClient.get_encode_param(llmconfig_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_feature_store_20230621_models.GetLLMConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_llmconfig(
+        self,
+        instance_id: str,
+        llmconfig_id: str,
+        region_id: str,
+    ) -> pai_feature_store_20230621_models.GetLLMConfigResponse:
+        """
+        @summary 获取 LLMConfig 信息
+        
+        @return: GetLLMConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_llmconfig_with_options(instance_id, llmconfig_id, region_id, headers, runtime)
+
+    async def get_llmconfig_async(
+        self,
+        instance_id: str,
+        llmconfig_id: str,
+        region_id: str,
+    ) -> pai_feature_store_20230621_models.GetLLMConfigResponse:
+        """
+        @summary 获取 LLMConfig 信息
+        
+        @return: GetLLMConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_llmconfig_with_options_async(instance_id, llmconfig_id, region_id, headers, runtime)
+
     def get_label_table_with_options(
         self,
         instance_id: str,
@@ -3050,6 +3472,166 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_task_with_options_async(instance_id, task_id, headers, runtime)
+
+    def list_datasource_feature_views_with_options(
+        self,
+        instance_id: str,
+        datasource_id: str,
+        request: pai_feature_store_20230621_models.ListDatasourceFeatureViewsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_feature_store_20230621_models.ListDatasourceFeatureViewsResponse:
+        """
+        @summary 获取数据源下所有特征视图信息。
+        
+        @param request: ListDatasourceFeatureViewsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatasourceFeatureViewsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.show_storage_usage):
+            query['ShowStorageUsage'] = request.show_storage_usage
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.verbose):
+            query['Verbose'] = request.verbose
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDatasourceFeatureViews',
+            version='2023-06-21',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/datasources/{OpenApiUtilClient.get_encode_param(datasource_id)}/featureviews',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_feature_store_20230621_models.ListDatasourceFeatureViewsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_datasource_feature_views_with_options_async(
+        self,
+        instance_id: str,
+        datasource_id: str,
+        request: pai_feature_store_20230621_models.ListDatasourceFeatureViewsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_feature_store_20230621_models.ListDatasourceFeatureViewsResponse:
+        """
+        @summary 获取数据源下所有特征视图信息。
+        
+        @param request: ListDatasourceFeatureViewsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatasourceFeatureViewsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.show_storage_usage):
+            query['ShowStorageUsage'] = request.show_storage_usage
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.verbose):
+            query['Verbose'] = request.verbose
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDatasourceFeatureViews',
+            version='2023-06-21',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/datasources/{OpenApiUtilClient.get_encode_param(datasource_id)}/featureviews',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_feature_store_20230621_models.ListDatasourceFeatureViewsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_datasource_feature_views(
+        self,
+        instance_id: str,
+        datasource_id: str,
+        request: pai_feature_store_20230621_models.ListDatasourceFeatureViewsRequest,
+    ) -> pai_feature_store_20230621_models.ListDatasourceFeatureViewsResponse:
+        """
+        @summary 获取数据源下所有特征视图信息。
+        
+        @param request: ListDatasourceFeatureViewsRequest
+        @return: ListDatasourceFeatureViewsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_datasource_feature_views_with_options(instance_id, datasource_id, request, headers, runtime)
+
+    async def list_datasource_feature_views_async(
+        self,
+        instance_id: str,
+        datasource_id: str,
+        request: pai_feature_store_20230621_models.ListDatasourceFeatureViewsRequest,
+    ) -> pai_feature_store_20230621_models.ListDatasourceFeatureViewsResponse:
+        """
+        @summary 获取数据源下所有特征视图信息。
+        
+        @param request: ListDatasourceFeatureViewsRequest
+        @return: ListDatasourceFeatureViewsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_datasource_feature_views_with_options_async(instance_id, datasource_id, request, headers, runtime)
 
     def list_datasource_tables_with_options(
         self,
@@ -4027,6 +4609,142 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_instances_with_options_async(request, headers, runtime)
 
+    def list_llmconfigs_with_options(
+        self,
+        instance_id: str,
+        request: pai_feature_store_20230621_models.ListLLMConfigsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_feature_store_20230621_models.ListLLMConfigsResponse:
+        """
+        @summary 获取大模型调用信息配置
+        
+        @param request: ListLLMConfigsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLLMConfigsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLLMConfigs',
+            version='2023-06-21',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/llmconfigs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_feature_store_20230621_models.ListLLMConfigsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_llmconfigs_with_options_async(
+        self,
+        instance_id: str,
+        request: pai_feature_store_20230621_models.ListLLMConfigsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_feature_store_20230621_models.ListLLMConfigsResponse:
+        """
+        @summary 获取大模型调用信息配置
+        
+        @param request: ListLLMConfigsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLLMConfigsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLLMConfigs',
+            version='2023-06-21',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/llmconfigs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_feature_store_20230621_models.ListLLMConfigsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_llmconfigs(
+        self,
+        instance_id: str,
+        request: pai_feature_store_20230621_models.ListLLMConfigsRequest,
+    ) -> pai_feature_store_20230621_models.ListLLMConfigsResponse:
+        """
+        @summary 获取大模型调用信息配置
+        
+        @param request: ListLLMConfigsRequest
+        @return: ListLLMConfigsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_llmconfigs_with_options(instance_id, request, headers, runtime)
+
+    async def list_llmconfigs_async(
+        self,
+        instance_id: str,
+        request: pai_feature_store_20230621_models.ListLLMConfigsRequest,
+    ) -> pai_feature_store_20230621_models.ListLLMConfigsResponse:
+        """
+        @summary 获取大模型调用信息配置
+        
+        @param request: ListLLMConfigsRequest
+        @return: ListLLMConfigsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_llmconfigs_with_options_async(instance_id, request, headers, runtime)
+
     def list_label_tables_with_options(
         self,
         instance_id: str,
@@ -4520,6 +5238,142 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_project_feature_views_with_options_async(instance_id, project_id, headers, runtime)
+
+    def list_project_features_with_options(
+        self,
+        instance_id: str,
+        project_id: str,
+        request: pai_feature_store_20230621_models.ListProjectFeaturesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_feature_store_20230621_models.ListProjectFeaturesResponse:
+        """
+        @summary 获取项目下所有特征信息
+        
+        @param request: ListProjectFeaturesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectFeaturesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.alias_name):
+            query['AliasName'] = request.alias_name
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListProjectFeatures',
+            version='2023-06-21',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/projects/{OpenApiUtilClient.get_encode_param(project_id)}/features',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_feature_store_20230621_models.ListProjectFeaturesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_project_features_with_options_async(
+        self,
+        instance_id: str,
+        project_id: str,
+        request: pai_feature_store_20230621_models.ListProjectFeaturesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_feature_store_20230621_models.ListProjectFeaturesResponse:
+        """
+        @summary 获取项目下所有特征信息
+        
+        @param request: ListProjectFeaturesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectFeaturesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.alias_name):
+            query['AliasName'] = request.alias_name
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListProjectFeatures',
+            version='2023-06-21',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/projects/{OpenApiUtilClient.get_encode_param(project_id)}/features',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_feature_store_20230621_models.ListProjectFeaturesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_project_features(
+        self,
+        instance_id: str,
+        project_id: str,
+        request: pai_feature_store_20230621_models.ListProjectFeaturesRequest,
+    ) -> pai_feature_store_20230621_models.ListProjectFeaturesResponse:
+        """
+        @summary 获取项目下所有特征信息
+        
+        @param request: ListProjectFeaturesRequest
+        @return: ListProjectFeaturesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_project_features_with_options(instance_id, project_id, request, headers, runtime)
+
+    async def list_project_features_async(
+        self,
+        instance_id: str,
+        project_id: str,
+        request: pai_feature_store_20230621_models.ListProjectFeaturesRequest,
+    ) -> pai_feature_store_20230621_models.ListProjectFeaturesResponse:
+        """
+        @summary 获取项目下所有特征信息
+        
+        @param request: ListProjectFeaturesRequest
+        @return: ListProjectFeaturesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_project_features_with_options_async(instance_id, project_id, request, headers, runtime)
 
     def list_projects_with_options(
         self,
@@ -5053,6 +5907,100 @@ class Client(OpenApiClient):
         headers = {}
         return await self.publish_feature_view_table_with_options_async(instance_id, feature_view_id, request, headers, runtime)
 
+    def stop_task_with_options(
+        self,
+        instance_id: str,
+        task_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_feature_store_20230621_models.StopTaskResponse:
+        """
+        @summary 停止任务。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopTaskResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='StopTask',
+            version='2023-06-21',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/action/stop',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_feature_store_20230621_models.StopTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_task_with_options_async(
+        self,
+        instance_id: str,
+        task_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_feature_store_20230621_models.StopTaskResponse:
+        """
+        @summary 停止任务。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopTaskResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='StopTask',
+            version='2023-06-21',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/action/stop',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_feature_store_20230621_models.StopTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_task(
+        self,
+        instance_id: str,
+        task_id: str,
+    ) -> pai_feature_store_20230621_models.StopTaskResponse:
+        """
+        @summary 停止任务。
+        
+        @return: StopTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.stop_task_with_options(instance_id, task_id, headers, runtime)
+
+    async def stop_task_async(
+        self,
+        instance_id: str,
+        task_id: str,
+    ) -> pai_feature_store_20230621_models.StopTaskResponse:
+        """
+        @summary 停止任务。
+        
+        @return: StopTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.stop_task_with_options_async(instance_id, task_id, headers, runtime)
+
     def update_datasource_with_options(
         self,
         instance_id: str,
@@ -5172,6 +6120,142 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_datasource_with_options_async(instance_id, datasource_id, request, headers, runtime)
+
+    def update_llmconfig_with_options(
+        self,
+        instance_id: str,
+        llmconfig_id: str,
+        request: pai_feature_store_20230621_models.UpdateLLMConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_feature_store_20230621_models.UpdateLLMConfigResponse:
+        """
+        @summary 更新大模型调用信息配置
+        
+        @param request: UpdateLLMConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLLMConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.api_key):
+            body['ApiKey'] = request.api_key
+        if not UtilClient.is_unset(request.base_url):
+            body['BaseUrl'] = request.base_url
+        if not UtilClient.is_unset(request.batch_size):
+            body['BatchSize'] = request.batch_size
+        if not UtilClient.is_unset(request.max_tokens):
+            body['MaxTokens'] = request.max_tokens
+        if not UtilClient.is_unset(request.model):
+            body['Model'] = request.model
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.rps):
+            body['Rps'] = request.rps
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateLLMConfig',
+            version='2023-06-21',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/llmconfigs/{OpenApiUtilClient.get_encode_param(llmconfig_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_feature_store_20230621_models.UpdateLLMConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_llmconfig_with_options_async(
+        self,
+        instance_id: str,
+        llmconfig_id: str,
+        request: pai_feature_store_20230621_models.UpdateLLMConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_feature_store_20230621_models.UpdateLLMConfigResponse:
+        """
+        @summary 更新大模型调用信息配置
+        
+        @param request: UpdateLLMConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLLMConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.api_key):
+            body['ApiKey'] = request.api_key
+        if not UtilClient.is_unset(request.base_url):
+            body['BaseUrl'] = request.base_url
+        if not UtilClient.is_unset(request.batch_size):
+            body['BatchSize'] = request.batch_size
+        if not UtilClient.is_unset(request.max_tokens):
+            body['MaxTokens'] = request.max_tokens
+        if not UtilClient.is_unset(request.model):
+            body['Model'] = request.model
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.rps):
+            body['Rps'] = request.rps
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateLLMConfig',
+            version='2023-06-21',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/llmconfigs/{OpenApiUtilClient.get_encode_param(llmconfig_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_feature_store_20230621_models.UpdateLLMConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_llmconfig(
+        self,
+        instance_id: str,
+        llmconfig_id: str,
+        request: pai_feature_store_20230621_models.UpdateLLMConfigRequest,
+    ) -> pai_feature_store_20230621_models.UpdateLLMConfigResponse:
+        """
+        @summary 更新大模型调用信息配置
+        
+        @param request: UpdateLLMConfigRequest
+        @return: UpdateLLMConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_llmconfig_with_options(instance_id, llmconfig_id, request, headers, runtime)
+
+    async def update_llmconfig_async(
+        self,
+        instance_id: str,
+        llmconfig_id: str,
+        request: pai_feature_store_20230621_models.UpdateLLMConfigRequest,
+    ) -> pai_feature_store_20230621_models.UpdateLLMConfigResponse:
+        """
+        @summary 更新大模型调用信息配置
+        
+        @param request: UpdateLLMConfigRequest
+        @return: UpdateLLMConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_llmconfig_with_options_async(instance_id, llmconfig_id, request, headers, runtime)
 
     def update_label_table_with_options(
         self,

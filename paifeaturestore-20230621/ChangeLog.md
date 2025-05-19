@@ -1,3 +1,15 @@
+2025-05-19 Version: 5.1.0
+- Support API CheckModelFeatureFGFeature.
+- Support API CreateLLMConfig.
+- Support API DeleteLLMConfig.
+- Support API GetLLMConfig.
+- Support API ListDatasourceFeatureViews.
+- Support API ListLLMConfigs.
+- Support API ListProjectFeatures.
+- Support API StopTask.
+- Support API UpdateLLMConfig.
+
+
 2025-05-14 Version: 5.0.4
 - Update API CreateFeatureView: add request parameters body.Fields.$.Transform.
 - Update API GetFeatureView: add response parameters Body.Fields.$.Transform.

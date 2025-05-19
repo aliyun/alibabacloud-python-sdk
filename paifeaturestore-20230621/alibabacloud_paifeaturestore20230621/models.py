@@ -217,6 +217,127 @@ class CheckInstanceDatasourceResponse(TeaModel):
         return self
 
 
+class CheckModelFeatureFGFeatureResponseBodyFGCheckResults(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        rule_code: str = None,
+        status: bool = None,
+    ):
+        self.message = message
+        self.rule_code = rule_code
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.rule_code is not None:
+            result['RuleCode'] = self.rule_code
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RuleCode') is not None:
+            self.rule_code = m.get('RuleCode')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class CheckModelFeatureFGFeatureResponseBody(TeaModel):
+    def __init__(
+        self,
+        fgcheck_results: List[CheckModelFeatureFGFeatureResponseBodyFGCheckResults] = None,
+        request_id: str = None,
+    ):
+        self.fgcheck_results = fgcheck_results
+        self.request_id = request_id
+
+    def validate(self):
+        if self.fgcheck_results:
+            for k in self.fgcheck_results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['FGCheckResults'] = []
+        if self.fgcheck_results is not None:
+            for k in self.fgcheck_results:
+                result['FGCheckResults'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.fgcheck_results = []
+        if m.get('FGCheckResults') is not None:
+            for k in m.get('FGCheckResults'):
+                temp_model = CheckModelFeatureFGFeatureResponseBodyFGCheckResults()
+                self.fgcheck_results.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class CheckModelFeatureFGFeatureResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CheckModelFeatureFGFeatureResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CheckModelFeatureFGFeatureResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateDatasourceRequest(TeaModel):
     def __init__(
         self,
@@ -884,6 +1005,154 @@ class CreateInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateLLMConfigRequest(TeaModel):
+    def __init__(
+        self,
+        api_key: str = None,
+        base_url: str = None,
+        batch_size: int = None,
+        max_tokens: int = None,
+        model: str = None,
+        name: str = None,
+        rps: int = None,
+        workspace_id: str = None,
+    ):
+        # This parameter is required.
+        self.api_key = api_key
+        self.base_url = base_url
+        self.batch_size = batch_size
+        self.max_tokens = max_tokens
+        # This parameter is required.
+        self.model = model
+        # This parameter is required.
+        self.name = name
+        self.rps = rps
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_key is not None:
+            result['ApiKey'] = self.api_key
+        if self.base_url is not None:
+            result['BaseUrl'] = self.base_url
+        if self.batch_size is not None:
+            result['BatchSize'] = self.batch_size
+        if self.max_tokens is not None:
+            result['MaxTokens'] = self.max_tokens
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.rps is not None:
+            result['Rps'] = self.rps
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiKey') is not None:
+            self.api_key = m.get('ApiKey')
+        if m.get('BaseUrl') is not None:
+            self.base_url = m.get('BaseUrl')
+        if m.get('BatchSize') is not None:
+            self.batch_size = m.get('BatchSize')
+        if m.get('MaxTokens') is not None:
+            self.max_tokens = m.get('MaxTokens')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Rps') is not None:
+            self.rps = m.get('Rps')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class CreateLLMConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        llmconfig_id: str = None,
+        request_id: str = None,
+    ):
+        self.llmconfig_id = llmconfig_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.llmconfig_id is not None:
+            result['LLMConfigId'] = self.llmconfig_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LLMConfigId') is not None:
+            self.llmconfig_id = m.get('LLMConfigId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateLLMConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateLLMConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateLLMConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1695,6 +1964,75 @@ class DeleteFeatureViewResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteFeatureViewResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteLLMConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteLLMConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteLLMConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteLLMConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2937,6 +3275,141 @@ class GetInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetLLMConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        api_key: str = None,
+        base_url: str = None,
+        batch_size: int = None,
+        gmt_create_time: str = None,
+        gmt_modified_time: str = None,
+        llmconfig_id: str = None,
+        max_tokens: int = None,
+        model: str = None,
+        name: str = None,
+        request_id: str = None,
+        rps: int = None,
+        workspace_id: str = None,
+    ):
+        self.api_key = api_key
+        self.base_url = base_url
+        self.batch_size = batch_size
+        self.gmt_create_time = gmt_create_time
+        self.gmt_modified_time = gmt_modified_time
+        self.llmconfig_id = llmconfig_id
+        self.max_tokens = max_tokens
+        self.model = model
+        self.name = name
+        # Id of the request
+        self.request_id = request_id
+        self.rps = rps
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_key is not None:
+            result['ApiKey'] = self.api_key
+        if self.base_url is not None:
+            result['BaseUrl'] = self.base_url
+        if self.batch_size is not None:
+            result['BatchSize'] = self.batch_size
+        if self.gmt_create_time is not None:
+            result['GmtCreateTime'] = self.gmt_create_time
+        if self.gmt_modified_time is not None:
+            result['GmtModifiedTime'] = self.gmt_modified_time
+        if self.llmconfig_id is not None:
+            result['LLMConfigId'] = self.llmconfig_id
+        if self.max_tokens is not None:
+            result['MaxTokens'] = self.max_tokens
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.rps is not None:
+            result['Rps'] = self.rps
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiKey') is not None:
+            self.api_key = m.get('ApiKey')
+        if m.get('BaseUrl') is not None:
+            self.base_url = m.get('BaseUrl')
+        if m.get('BatchSize') is not None:
+            self.batch_size = m.get('BatchSize')
+        if m.get('GmtCreateTime') is not None:
+            self.gmt_create_time = m.get('GmtCreateTime')
+        if m.get('GmtModifiedTime') is not None:
+            self.gmt_modified_time = m.get('GmtModifiedTime')
+        if m.get('LLMConfigId') is not None:
+            self.llmconfig_id = m.get('LLMConfigId')
+        if m.get('MaxTokens') is not None:
+            self.max_tokens = m.get('MaxTokens')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Rps') is not None:
+            self.rps = m.get('Rps')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class GetLLMConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetLLMConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetLLMConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4359,6 +4832,452 @@ class GetTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDatasourceFeatureViewsRequest(TeaModel):
+    def __init__(
+        self,
+        all: bool = None,
+        end_date: str = None,
+        name: str = None,
+        order: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        project_id: str = None,
+        project_name: str = None,
+        show_storage_usage: bool = None,
+        sort_by: str = None,
+        start_date: str = None,
+        type: str = None,
+        verbose: bool = None,
+    ):
+        self.all = all
+        self.end_date = end_date
+        self.name = name
+        self.order = order
+        self.page_number = page_number
+        self.page_size = page_size
+        self.project_id = project_id
+        self.project_name = project_name
+        self.show_storage_usage = show_storage_usage
+        self.sort_by = sort_by
+        self.start_date = start_date
+        self.type = type
+        self.verbose = verbose
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.all is not None:
+            result['All'] = self.all
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.show_storage_usage is not None:
+            result['ShowStorageUsage'] = self.show_storage_usage
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.verbose is not None:
+            result['Verbose'] = self.verbose
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('All') is not None:
+            self.all = m.get('All')
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('ShowStorageUsage') is not None:
+            self.show_storage_usage = m.get('ShowStorageUsage')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Verbose') is not None:
+            self.verbose = m.get('Verbose')
+        return self
+
+
+class ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatisticsReadWriteCount(TeaModel):
+    def __init__(
+        self,
+        date: str = None,
+        read_count: int = None,
+        write_count: int = None,
+    ):
+        self.date = date
+        self.read_count = read_count
+        self.write_count = write_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.date is not None:
+            result['Date'] = self.date
+        if self.read_count is not None:
+            result['ReadCount'] = self.read_count
+        if self.write_count is not None:
+            result['WriteCount'] = self.write_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Date') is not None:
+            self.date = m.get('Date')
+        if m.get('ReadCount') is not None:
+            self.read_count = m.get('ReadCount')
+        if m.get('WriteCount') is not None:
+            self.write_count = m.get('WriteCount')
+        return self
+
+
+class ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatistics(TeaModel):
+    def __init__(
+        self,
+        disk_usage: float = None,
+        memory_usage: float = None,
+        read_write_count: List[ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatisticsReadWriteCount] = None,
+        row_count: int = None,
+    ):
+        self.disk_usage = disk_usage
+        self.memory_usage = memory_usage
+        self.read_write_count = read_write_count
+        self.row_count = row_count
+
+    def validate(self):
+        if self.read_write_count:
+            for k in self.read_write_count:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disk_usage is not None:
+            result['DiskUsage'] = self.disk_usage
+        if self.memory_usage is not None:
+            result['MemoryUsage'] = self.memory_usage
+        result['ReadWriteCount'] = []
+        if self.read_write_count is not None:
+            for k in self.read_write_count:
+                result['ReadWriteCount'].append(k.to_map() if k else None)
+        if self.row_count is not None:
+            result['RowCount'] = self.row_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiskUsage') is not None:
+            self.disk_usage = m.get('DiskUsage')
+        if m.get('MemoryUsage') is not None:
+            self.memory_usage = m.get('MemoryUsage')
+        self.read_write_count = []
+        if m.get('ReadWriteCount') is not None:
+            for k in m.get('ReadWriteCount'):
+                temp_model = ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatisticsReadWriteCount()
+                self.read_write_count.append(temp_model.from_map(k))
+        if m.get('RowCount') is not None:
+            self.row_count = m.get('RowCount')
+        return self
+
+
+class ListDatasourceFeatureViewsResponseBodyFeatureViews(TeaModel):
+    def __init__(
+        self,
+        config: str = None,
+        feature_entity_name: str = None,
+        feature_view_id: str = None,
+        name: str = None,
+        project_name: str = None,
+        ttl: int = None,
+        type: str = None,
+        usage_statistics: ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatistics = None,
+    ):
+        self.config = config
+        self.feature_entity_name = feature_entity_name
+        self.feature_view_id = feature_view_id
+        self.name = name
+        self.project_name = project_name
+        self.ttl = ttl
+        self.type = type
+        self.usage_statistics = usage_statistics
+
+    def validate(self):
+        if self.usage_statistics:
+            self.usage_statistics.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['Config'] = self.config
+        if self.feature_entity_name is not None:
+            result['FeatureEntityName'] = self.feature_entity_name
+        if self.feature_view_id is not None:
+            result['FeatureViewId'] = self.feature_view_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.ttl is not None:
+            result['TTL'] = self.ttl
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.usage_statistics is not None:
+            result['UsageStatistics'] = self.usage_statistics.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
+        if m.get('FeatureEntityName') is not None:
+            self.feature_entity_name = m.get('FeatureEntityName')
+        if m.get('FeatureViewId') is not None:
+            self.feature_view_id = m.get('FeatureViewId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('TTL') is not None:
+            self.ttl = m.get('TTL')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UsageStatistics') is not None:
+            temp_model = ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatistics()
+            self.usage_statistics = temp_model.from_map(m['UsageStatistics'])
+        return self
+
+
+class ListDatasourceFeatureViewsResponseBodyTotalUsageStatisticsTotalReadWriteCount(TeaModel):
+    def __init__(
+        self,
+        date: str = None,
+        total_read_count: int = None,
+        total_write_count: int = None,
+    ):
+        self.date = date
+        self.total_read_count = total_read_count
+        self.total_write_count = total_write_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.date is not None:
+            result['Date'] = self.date
+        if self.total_read_count is not None:
+            result['TotalReadCount'] = self.total_read_count
+        if self.total_write_count is not None:
+            result['TotalWriteCount'] = self.total_write_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Date') is not None:
+            self.date = m.get('Date')
+        if m.get('TotalReadCount') is not None:
+            self.total_read_count = m.get('TotalReadCount')
+        if m.get('TotalWriteCount') is not None:
+            self.total_write_count = m.get('TotalWriteCount')
+        return self
+
+
+class ListDatasourceFeatureViewsResponseBodyTotalUsageStatistics(TeaModel):
+    def __init__(
+        self,
+        total_disk_usage: float = None,
+        total_memory_usage: float = None,
+        total_read_write_count: List[ListDatasourceFeatureViewsResponseBodyTotalUsageStatisticsTotalReadWriteCount] = None,
+    ):
+        self.total_disk_usage = total_disk_usage
+        self.total_memory_usage = total_memory_usage
+        self.total_read_write_count = total_read_write_count
+
+    def validate(self):
+        if self.total_read_write_count:
+            for k in self.total_read_write_count:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.total_disk_usage is not None:
+            result['TotalDiskUsage'] = self.total_disk_usage
+        if self.total_memory_usage is not None:
+            result['TotalMemoryUsage'] = self.total_memory_usage
+        result['TotalReadWriteCount'] = []
+        if self.total_read_write_count is not None:
+            for k in self.total_read_write_count:
+                result['TotalReadWriteCount'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalDiskUsage') is not None:
+            self.total_disk_usage = m.get('TotalDiskUsage')
+        if m.get('TotalMemoryUsage') is not None:
+            self.total_memory_usage = m.get('TotalMemoryUsage')
+        self.total_read_write_count = []
+        if m.get('TotalReadWriteCount') is not None:
+            for k in m.get('TotalReadWriteCount'):
+                temp_model = ListDatasourceFeatureViewsResponseBodyTotalUsageStatisticsTotalReadWriteCount()
+                self.total_read_write_count.append(temp_model.from_map(k))
+        return self
+
+
+class ListDatasourceFeatureViewsResponseBody(TeaModel):
+    def __init__(
+        self,
+        feature_views: List[ListDatasourceFeatureViewsResponseBodyFeatureViews] = None,
+        total_count: int = None,
+        total_usage_statistics: ListDatasourceFeatureViewsResponseBodyTotalUsageStatistics = None,
+        request_id: str = None,
+    ):
+        self.feature_views = feature_views
+        self.total_count = total_count
+        self.total_usage_statistics = total_usage_statistics
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.feature_views:
+            for k in self.feature_views:
+                if k:
+                    k.validate()
+        if self.total_usage_statistics:
+            self.total_usage_statistics.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['FeatureViews'] = []
+        if self.feature_views is not None:
+            for k in self.feature_views:
+                result['FeatureViews'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.total_usage_statistics is not None:
+            result['TotalUsageStatistics'] = self.total_usage_statistics.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.feature_views = []
+        if m.get('FeatureViews') is not None:
+            for k in m.get('FeatureViews'):
+                temp_model = ListDatasourceFeatureViewsResponseBodyFeatureViews()
+                self.feature_views.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('TotalUsageStatistics') is not None:
+            temp_model = ListDatasourceFeatureViewsResponseBodyTotalUsageStatistics()
+            self.total_usage_statistics = temp_model.from_map(m['TotalUsageStatistics'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ListDatasourceFeatureViewsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDatasourceFeatureViewsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDatasourceFeatureViewsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6043,6 +6962,270 @@ class ListInstancesResponse(TeaModel):
         return self
 
 
+class ListLLMConfigsRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        name: str = None,
+        next_token: str = None,
+        order: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        sort_by: str = None,
+        workspace_id: str = None,
+    ):
+        self.max_results = max_results
+        self.name = name
+        self.next_token = next_token
+        self.order = order
+        self.page_number = page_number
+        self.page_size = page_size
+        self.sort_by = sort_by
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class ListLLMConfigsResponseBodyLLMConfigs(TeaModel):
+    def __init__(
+        self,
+        api_key: str = None,
+        base_url: str = None,
+        batch_size: int = None,
+        gmt_create_time: str = None,
+        gmt_modified_time: str = None,
+        llmconfig_id: str = None,
+        max_tokens: int = None,
+        model: str = None,
+        name: str = None,
+        resource_group_id: str = None,
+        rps: int = None,
+        workspace_id: str = None,
+    ):
+        self.api_key = api_key
+        self.base_url = base_url
+        self.batch_size = batch_size
+        self.gmt_create_time = gmt_create_time
+        self.gmt_modified_time = gmt_modified_time
+        self.llmconfig_id = llmconfig_id
+        self.max_tokens = max_tokens
+        self.model = model
+        self.name = name
+        self.resource_group_id = resource_group_id
+        self.rps = rps
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_key is not None:
+            result['ApiKey'] = self.api_key
+        if self.base_url is not None:
+            result['BaseUrl'] = self.base_url
+        if self.batch_size is not None:
+            result['BatchSize'] = self.batch_size
+        if self.gmt_create_time is not None:
+            result['GmtCreateTime'] = self.gmt_create_time
+        if self.gmt_modified_time is not None:
+            result['GmtModifiedTime'] = self.gmt_modified_time
+        if self.llmconfig_id is not None:
+            result['LLMConfigId'] = self.llmconfig_id
+        if self.max_tokens is not None:
+            result['MaxTokens'] = self.max_tokens
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.rps is not None:
+            result['Rps'] = self.rps
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiKey') is not None:
+            self.api_key = m.get('ApiKey')
+        if m.get('BaseUrl') is not None:
+            self.base_url = m.get('BaseUrl')
+        if m.get('BatchSize') is not None:
+            self.batch_size = m.get('BatchSize')
+        if m.get('GmtCreateTime') is not None:
+            self.gmt_create_time = m.get('GmtCreateTime')
+        if m.get('GmtModifiedTime') is not None:
+            self.gmt_modified_time = m.get('GmtModifiedTime')
+        if m.get('LLMConfigId') is not None:
+            self.llmconfig_id = m.get('LLMConfigId')
+        if m.get('MaxTokens') is not None:
+            self.max_tokens = m.get('MaxTokens')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Rps') is not None:
+            self.rps = m.get('Rps')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class ListLLMConfigsResponseBody(TeaModel):
+    def __init__(
+        self,
+        llmconfigs: List[ListLLMConfigsResponseBodyLLMConfigs] = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        # This parameter is required.
+        self.llmconfigs = llmconfigs
+        self.max_results = max_results
+        self.next_token = next_token
+        # Id of the request
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.llmconfigs:
+            for k in self.llmconfigs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['LLMConfigs'] = []
+        if self.llmconfigs is not None:
+            for k in self.llmconfigs:
+                result['LLMConfigs'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.llmconfigs = []
+        if m.get('LLMConfigs') is not None:
+            for k in m.get('LLMConfigs'):
+                temp_model = ListLLMConfigsResponseBodyLLMConfigs()
+                self.llmconfigs.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListLLMConfigsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListLLMConfigsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListLLMConfigsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListLabelTablesRequest(TeaModel):
     def __init__(
         self,
@@ -6979,6 +8162,227 @@ class ListProjectFeatureViewsResponse(TeaModel):
         return self
 
 
+class ListProjectFeaturesRequest(TeaModel):
+    def __init__(
+        self,
+        alias_name: str = None,
+        filter: str = None,
+        name: str = None,
+        order: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        sort_by: str = None,
+    ):
+        self.alias_name = alias_name
+        self.filter = filter
+        self.name = name
+        self.order = order
+        self.page_number = page_number
+        self.page_size = page_size
+        self.sort_by = sort_by
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias_name is not None:
+            result['AliasName'] = self.alias_name
+        if self.filter is not None:
+            result['Filter'] = self.filter
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliasName') is not None:
+            self.alias_name = m.get('AliasName')
+        if m.get('Filter') is not None:
+            self.filter = m.get('Filter')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        return self
+
+
+class ListProjectFeaturesResponseBodyFeatures(TeaModel):
+    def __init__(
+        self,
+        alias_names: str = None,
+        feature_view_id: str = None,
+        feature_view_name: str = None,
+        gmt_create_time: str = None,
+        model_feature_count: int = None,
+        name: str = None,
+        owner: str = None,
+        type: str = None,
+    ):
+        self.alias_names = alias_names
+        self.feature_view_id = feature_view_id
+        self.feature_view_name = feature_view_name
+        self.gmt_create_time = gmt_create_time
+        self.model_feature_count = model_feature_count
+        self.name = name
+        self.owner = owner
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias_names is not None:
+            result['AliasNames'] = self.alias_names
+        if self.feature_view_id is not None:
+            result['FeatureViewId'] = self.feature_view_id
+        if self.feature_view_name is not None:
+            result['FeatureViewName'] = self.feature_view_name
+        if self.gmt_create_time is not None:
+            result['GmtCreateTime'] = self.gmt_create_time
+        if self.model_feature_count is not None:
+            result['ModelFeatureCount'] = self.model_feature_count
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliasNames') is not None:
+            self.alias_names = m.get('AliasNames')
+        if m.get('FeatureViewId') is not None:
+            self.feature_view_id = m.get('FeatureViewId')
+        if m.get('FeatureViewName') is not None:
+            self.feature_view_name = m.get('FeatureViewName')
+        if m.get('GmtCreateTime') is not None:
+            self.gmt_create_time = m.get('GmtCreateTime')
+        if m.get('ModelFeatureCount') is not None:
+            self.model_feature_count = m.get('ModelFeatureCount')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListProjectFeaturesResponseBody(TeaModel):
+    def __init__(
+        self,
+        features: List[ListProjectFeaturesResponseBodyFeatures] = None,
+        total_count: int = None,
+        request_id: str = None,
+    ):
+        self.features = features
+        self.total_count = total_count
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.features:
+            for k in self.features:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Features'] = []
+        if self.features is not None:
+            for k in self.features:
+                result['Features'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.features = []
+        if m.get('Features') is not None:
+            for k in m.get('Features'):
+                temp_model = ListProjectFeaturesResponseBodyFeatures()
+                self.features.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ListProjectFeaturesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListProjectFeaturesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListProjectFeaturesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListProjectsRequest(TeaModel):
     def __init__(
         self,
@@ -7869,6 +9273,75 @@ class PublishFeatureViewTableResponse(TeaModel):
         return self
 
 
+class StopTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class StopTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StopTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StopTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateDatasourceRequest(TeaModel):
     def __init__(
         self,
@@ -7974,6 +9447,144 @@ class UpdateDatasourceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateDatasourceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateLLMConfigRequest(TeaModel):
+    def __init__(
+        self,
+        api_key: str = None,
+        base_url: str = None,
+        batch_size: int = None,
+        max_tokens: int = None,
+        model: str = None,
+        name: str = None,
+        rps: int = None,
+    ):
+        # This parameter is required.
+        self.api_key = api_key
+        # This parameter is required.
+        self.base_url = base_url
+        self.batch_size = batch_size
+        # This parameter is required.
+        self.max_tokens = max_tokens
+        # This parameter is required.
+        self.model = model
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.rps = rps
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_key is not None:
+            result['ApiKey'] = self.api_key
+        if self.base_url is not None:
+            result['BaseUrl'] = self.base_url
+        if self.batch_size is not None:
+            result['BatchSize'] = self.batch_size
+        if self.max_tokens is not None:
+            result['MaxTokens'] = self.max_tokens
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.rps is not None:
+            result['Rps'] = self.rps
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiKey') is not None:
+            self.api_key = m.get('ApiKey')
+        if m.get('BaseUrl') is not None:
+            self.base_url = m.get('BaseUrl')
+        if m.get('BatchSize') is not None:
+            self.batch_size = m.get('BatchSize')
+        if m.get('MaxTokens') is not None:
+            self.max_tokens = m.get('MaxTokens')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Rps') is not None:
+            self.rps = m.get('Rps')
+        return self
+
+
+class UpdateLLMConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateLLMConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateLLMConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateLLMConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
