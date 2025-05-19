@@ -1,3 +1,11 @@
+2025-05-19 Version: 1.10.2
+- Update API CreateSessionCluster: add request parameters body.publicEndpointEnabled.
+- Update API GetSessionCluster: add response parameters Body.sessionCluster.publicEndpointEnabled.
+- Update API GetTemplate: add request parameters templateBizId.
+- Update API ListSessionClusters: add response parameters Body.sessionClusters.$.publicEndpointEnabled.
+- Update API ListWorkspaces: add response parameters Body.workspaces.$.prePaidQuota.orderId.
+
+
 2025-05-16 Version: 1.10.1
 - Generated python 2023-08-08 for emr-serverless-spark.
 

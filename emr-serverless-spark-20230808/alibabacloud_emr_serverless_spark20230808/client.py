@@ -501,6 +501,8 @@ class Client(OpenApiClient):
             body['kind'] = request.kind
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
+        if not UtilClient.is_unset(request.public_endpoint_enabled):
+            body['publicEndpointEnabled'] = request.public_endpoint_enabled
         if not UtilClient.is_unset(request.queue_name):
             body['queueName'] = request.queue_name
         if not UtilClient.is_unset(request.release_version):
@@ -562,6 +564,8 @@ class Client(OpenApiClient):
             body['kind'] = request.kind
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
+        if not UtilClient.is_unset(request.public_endpoint_enabled):
+            body['publicEndpointEnabled'] = request.public_endpoint_enabled
         if not UtilClient.is_unset(request.queue_name):
             body['queueName'] = request.queue_name
         if not UtilClient.is_unset(request.release_version):
@@ -1636,6 +1640,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.region_id):
             query['regionId'] = request.region_id
+        if not UtilClient.is_unset(request.template_biz_id):
+            query['templateBizId'] = request.template_biz_id
         if not UtilClient.is_unset(request.template_type):
             query['templateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
@@ -1677,6 +1683,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.region_id):
             query['regionId'] = request.region_id
+        if not UtilClient.is_unset(request.template_biz_id):
+            query['templateBizId'] = request.template_biz_id
         if not UtilClient.is_unset(request.template_type):
             query['templateType'] = request.template_type
         req = open_api_models.OpenApiRequest(

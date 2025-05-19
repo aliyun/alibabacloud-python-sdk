@@ -1359,12 +1359,15 @@ class TaskSnapshot(TeaModel):
 class Template(TeaModel):
     def __init__(
         self,
+        biz_id: str = None,
         creator: int = None,
         display_spark_version: str = None,
         fusion: bool = None,
         gmt_created: str = None,
         gmt_modified: str = None,
+        is_default: bool = None,
         modifier: int = None,
+        name: str = None,
         spark_conf: List[SparkConf] = None,
         spark_driver_cores: int = None,
         spark_driver_memory: int = None,
@@ -1375,6 +1378,7 @@ class Template(TeaModel):
         spark_version: str = None,
         template_type: str = None,
     ):
+        self.biz_id = biz_id
         # This parameter is required.
         self.creator = creator
         self.display_spark_version = display_spark_version
@@ -1383,8 +1387,10 @@ class Template(TeaModel):
         self.gmt_created = gmt_created
         # This parameter is required.
         self.gmt_modified = gmt_modified
+        self.is_default = is_default
         # This parameter is required.
         self.modifier = modifier
+        self.name = name
         self.spark_conf = spark_conf
         # This parameter is required.
         self.spark_driver_cores = spark_driver_cores
@@ -1414,6 +1420,8 @@ class Template(TeaModel):
             return _map
 
         result = dict()
+        if self.biz_id is not None:
+            result['bizId'] = self.biz_id
         if self.creator is not None:
             result['creator'] = self.creator
         if self.display_spark_version is not None:
@@ -1424,8 +1432,12 @@ class Template(TeaModel):
             result['gmtCreated'] = self.gmt_created
         if self.gmt_modified is not None:
             result['gmtModified'] = self.gmt_modified
+        if self.is_default is not None:
+            result['isDefault'] = self.is_default
         if self.modifier is not None:
             result['modifier'] = self.modifier
+        if self.name is not None:
+            result['name'] = self.name
         result['sparkConf'] = []
         if self.spark_conf is not None:
             for k in self.spark_conf:
@@ -1450,6 +1462,8 @@ class Template(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('bizId') is not None:
+            self.biz_id = m.get('bizId')
         if m.get('creator') is not None:
             self.creator = m.get('creator')
         if m.get('displaySparkVersion') is not None:
@@ -1460,8 +1474,12 @@ class Template(TeaModel):
             self.gmt_created = m.get('gmtCreated')
         if m.get('gmtModified') is not None:
             self.gmt_modified = m.get('gmtModified')
+        if m.get('isDefault') is not None:
+            self.is_default = m.get('isDefault')
         if m.get('modifier') is not None:
             self.modifier = m.get('modifier')
+        if m.get('name') is not None:
+            self.name = m.get('name')
         self.spark_conf = []
         if m.get('sparkConf') is not None:
             for k in m.get('sparkConf'):
@@ -2842,6 +2860,7 @@ class CreateSessionClusterRequest(TeaModel):
         fusion: bool = None,
         kind: str = None,
         name: str = None,
+        public_endpoint_enabled: bool = None,
         queue_name: str = None,
         release_version: str = None,
         region_id: str = None,
@@ -2865,6 +2884,7 @@ class CreateSessionClusterRequest(TeaModel):
         self.kind = kind
         # The name of the job.
         self.name = name
+        self.public_endpoint_enabled = public_endpoint_enabled
         # The queue name.
         self.queue_name = queue_name
         # The version number of Spark.
@@ -2906,6 +2926,8 @@ class CreateSessionClusterRequest(TeaModel):
             result['kind'] = self.kind
         if self.name is not None:
             result['name'] = self.name
+        if self.public_endpoint_enabled is not None:
+            result['publicEndpointEnabled'] = self.public_endpoint_enabled
         if self.queue_name is not None:
             result['queueName'] = self.queue_name
         if self.release_version is not None:
@@ -2937,6 +2959,8 @@ class CreateSessionClusterRequest(TeaModel):
             self.kind = m.get('kind')
         if m.get('name') is not None:
             self.name = m.get('name')
+        if m.get('publicEndpointEnabled') is not None:
+            self.public_endpoint_enabled = m.get('publicEndpointEnabled')
         if m.get('queueName') is not None:
             self.queue_name = m.get('queueName')
         if m.get('releaseVersion') is not None:
@@ -4475,6 +4499,7 @@ class GetSessionClusterResponseBodySessionCluster(TeaModel):
         gmt_create: int = None,
         kind: str = None,
         name: str = None,
+        public_endpoint_enabled: bool = None,
         queue_name: str = None,
         release_version: str = None,
         session_cluster_id: str = None,
@@ -4516,6 +4541,7 @@ class GetSessionClusterResponseBodySessionCluster(TeaModel):
         self.kind = kind
         # The name of the session.
         self.name = name
+        self.public_endpoint_enabled = public_endpoint_enabled
         # The queue name.
         self.queue_name = queue_name
         # The version of Serverless Spark.
@@ -4589,6 +4615,8 @@ class GetSessionClusterResponseBodySessionCluster(TeaModel):
             result['kind'] = self.kind
         if self.name is not None:
             result['name'] = self.name
+        if self.public_endpoint_enabled is not None:
+            result['publicEndpointEnabled'] = self.public_endpoint_enabled
         if self.queue_name is not None:
             result['queueName'] = self.queue_name
         if self.release_version is not None:
@@ -4644,6 +4672,8 @@ class GetSessionClusterResponseBodySessionCluster(TeaModel):
             self.kind = m.get('kind')
         if m.get('name') is not None:
             self.name = m.get('name')
+        if m.get('publicEndpointEnabled') is not None:
+            self.public_endpoint_enabled = m.get('publicEndpointEnabled')
         if m.get('queueName') is not None:
             self.queue_name = m.get('queueName')
         if m.get('releaseVersion') is not None:
@@ -4976,10 +5006,12 @@ class GetTemplateRequest(TeaModel):
     def __init__(
         self,
         region_id: str = None,
+        template_biz_id: str = None,
         template_type: str = None,
     ):
         # The region ID.
         self.region_id = region_id
+        self.template_biz_id = template_biz_id
         # The template type.
         # 
         # Valid values:
@@ -4999,6 +5031,8 @@ class GetTemplateRequest(TeaModel):
         result = dict()
         if self.region_id is not None:
             result['regionId'] = self.region_id
+        if self.template_biz_id is not None:
+            result['templateBizId'] = self.template_biz_id
         if self.template_type is not None:
             result['templateType'] = self.template_type
         return result
@@ -5007,6 +5041,8 @@ class GetTemplateRequest(TeaModel):
         m = m or dict()
         if m.get('regionId') is not None:
             self.region_id = m.get('regionId')
+        if m.get('templateBizId') is not None:
+            self.template_biz_id = m.get('templateBizId')
         if m.get('templateType') is not None:
             self.template_type = m.get('templateType')
         return self
@@ -6983,6 +7019,7 @@ class ListSessionClustersResponseBodySessionClusters(TeaModel):
         gmt_create: int = None,
         kind: str = None,
         name: str = None,
+        public_endpoint_enabled: bool = None,
         queue_name: str = None,
         release_version: str = None,
         session_cluster_id: str = None,
@@ -7024,6 +7061,7 @@ class ListSessionClustersResponseBodySessionClusters(TeaModel):
         self.kind = kind
         # The name of the session.
         self.name = name
+        self.public_endpoint_enabled = public_endpoint_enabled
         # The name of the queue that is used to run the session.
         self.queue_name = queue_name
         # The version of EMR Serverless Spark.
@@ -7095,6 +7133,8 @@ class ListSessionClustersResponseBodySessionClusters(TeaModel):
             result['kind'] = self.kind
         if self.name is not None:
             result['name'] = self.name
+        if self.public_endpoint_enabled is not None:
+            result['publicEndpointEnabled'] = self.public_endpoint_enabled
         if self.queue_name is not None:
             result['queueName'] = self.queue_name
         if self.release_version is not None:
@@ -7148,6 +7188,8 @@ class ListSessionClustersResponseBodySessionClusters(TeaModel):
             self.kind = m.get('kind')
         if m.get('name') is not None:
             self.name = m.get('name')
+        if m.get('publicEndpointEnabled') is not None:
+            self.public_endpoint_enabled = m.get('publicEndpointEnabled')
         if m.get('queueName') is not None:
             self.queue_name = m.get('queueName')
         if m.get('releaseVersion') is not None:
@@ -7792,6 +7834,7 @@ class ListWorkspacesResponseBodyWorkspacesPrePaidQuota(TeaModel):
         expire_time: int = None,
         instance_id: str = None,
         max_resource: str = None,
+        order_id: str = None,
         payment_status: str = None,
         used_resource: str = None,
     ):
@@ -7810,6 +7853,7 @@ class ListWorkspacesResponseBodyWorkspacesPrePaidQuota(TeaModel):
         self.instance_id = instance_id
         # The maximum amount of resources that can be used in a subscription quota.
         self.max_resource = max_resource
+        self.order_id = order_id
         # The status of the subscription quota. Valid values:
         # 
         # *   NORMAL
@@ -7840,6 +7884,8 @@ class ListWorkspacesResponseBodyWorkspacesPrePaidQuota(TeaModel):
             result['instanceId'] = self.instance_id
         if self.max_resource is not None:
             result['maxResource'] = self.max_resource
+        if self.order_id is not None:
+            result['orderId'] = self.order_id
         if self.payment_status is not None:
             result['paymentStatus'] = self.payment_status
         if self.used_resource is not None:
@@ -7860,6 +7906,8 @@ class ListWorkspacesResponseBodyWorkspacesPrePaidQuota(TeaModel):
             self.instance_id = m.get('instanceId')
         if m.get('maxResource') is not None:
             self.max_resource = m.get('maxResource')
+        if m.get('orderId') is not None:
+            self.order_id = m.get('orderId')
         if m.get('paymentStatus') is not None:
             self.payment_status = m.get('paymentStatus')
         if m.get('usedResource') is not None:
