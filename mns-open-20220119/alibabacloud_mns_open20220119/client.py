@@ -2235,6 +2235,8 @@ class Client(OpenApiClient):
             query['NotifyStrategy'] = request.notify_strategy
         if not UtilClient.is_unset(request.push_type):
             query['PushType'] = request.push_type
+        if not UtilClient.is_unset(request.sts_role_arn):
+            query['StsRoleArn'] = request.sts_role_arn
         if not UtilClient.is_unset(request.subscription_name):
             query['SubscriptionName'] = request.subscription_name
         if not UtilClient.is_unset(request.topic_name):
@@ -2288,6 +2290,8 @@ class Client(OpenApiClient):
             query['NotifyStrategy'] = request.notify_strategy
         if not UtilClient.is_unset(request.push_type):
             query['PushType'] = request.push_type
+        if not UtilClient.is_unset(request.sts_role_arn):
+            query['StsRoleArn'] = request.sts_role_arn
         if not UtilClient.is_unset(request.subscription_name):
             query['SubscriptionName'] = request.subscription_name
         if not UtilClient.is_unset(request.topic_name):

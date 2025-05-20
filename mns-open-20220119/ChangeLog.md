@@ -1,3 +1,7 @@
+2025-05-20 Version: 1.2.2
+- Update API Subscribe: add request parameters StsRoleArn.
+
+
 2025-04-25 Version: 1.2.1
 - Update API ListSubscriptionByTopic: add request parameters EndpointType.
 - Update API ListSubscriptionByTopic: add request parameters EndpointValue.

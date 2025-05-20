@@ -5469,6 +5469,7 @@ class SubscribeRequest(TeaModel):
         notify_content_format: str = None,
         notify_strategy: str = None,
         push_type: str = None,
+        sts_role_arn: str = None,
         subscription_name: str = None,
         topic_name: str = None,
     ):
@@ -5509,6 +5510,7 @@ class SubscribeRequest(TeaModel):
         # 
         # This parameter is required.
         self.push_type = push_type
+        self.sts_role_arn = sts_role_arn
         # The name of the subscription.
         # 
         # This parameter is required.
@@ -5540,6 +5542,8 @@ class SubscribeRequest(TeaModel):
             result['NotifyStrategy'] = self.notify_strategy
         if self.push_type is not None:
             result['PushType'] = self.push_type
+        if self.sts_role_arn is not None:
+            result['StsRoleArn'] = self.sts_role_arn
         if self.subscription_name is not None:
             result['SubscriptionName'] = self.subscription_name
         if self.topic_name is not None:
@@ -5561,6 +5565,8 @@ class SubscribeRequest(TeaModel):
             self.notify_strategy = m.get('NotifyStrategy')
         if m.get('PushType') is not None:
             self.push_type = m.get('PushType')
+        if m.get('StsRoleArn') is not None:
+            self.sts_role_arn = m.get('StsRoleArn')
         if m.get('SubscriptionName') is not None:
             self.subscription_name = m.get('SubscriptionName')
         if m.get('TopicName') is not None:
@@ -5577,6 +5583,7 @@ class SubscribeShrinkRequest(TeaModel):
         notify_content_format: str = None,
         notify_strategy: str = None,
         push_type: str = None,
+        sts_role_arn: str = None,
         subscription_name: str = None,
         topic_name: str = None,
     ):
@@ -5617,6 +5624,7 @@ class SubscribeShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.push_type = push_type
+        self.sts_role_arn = sts_role_arn
         # The name of the subscription.
         # 
         # This parameter is required.
@@ -5647,6 +5655,8 @@ class SubscribeShrinkRequest(TeaModel):
             result['NotifyStrategy'] = self.notify_strategy
         if self.push_type is not None:
             result['PushType'] = self.push_type
+        if self.sts_role_arn is not None:
+            result['StsRoleArn'] = self.sts_role_arn
         if self.subscription_name is not None:
             result['SubscriptionName'] = self.subscription_name
         if self.topic_name is not None:
@@ -5667,6 +5677,8 @@ class SubscribeShrinkRequest(TeaModel):
             self.notify_strategy = m.get('NotifyStrategy')
         if m.get('PushType') is not None:
             self.push_type = m.get('PushType')
+        if m.get('StsRoleArn') is not None:
+            self.sts_role_arn = m.get('StsRoleArn')
         if m.get('SubscriptionName') is not None:
             self.subscription_name = m.get('SubscriptionName')
         if m.get('TopicName') is not None:
