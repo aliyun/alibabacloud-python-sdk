@@ -8624,6 +8624,7 @@ class CreateNetworkAclEntryRequest(TeaModel):
         self,
         cidr_block: str = None,
         description: str = None,
+        destination_cidr_block: str = None,
         direction: str = None,
         network_acl_entry_name: str = None,
         network_acl_id: str = None,
@@ -8640,6 +8641,7 @@ class CreateNetworkAclEntryRequest(TeaModel):
         # 
         # The description must be 1 to 256 characters in length and cannot start with http:// or https://.
         self.description = description
+        self.destination_cidr_block = destination_cidr_block
         # The direction in which the rule is applied. Valid values:
         # 
         # *   **ingress**\
@@ -8696,6 +8698,8 @@ class CreateNetworkAclEntryRequest(TeaModel):
             result['CidrBlock'] = self.cidr_block
         if self.description is not None:
             result['Description'] = self.description
+        if self.destination_cidr_block is not None:
+            result['DestinationCidrBlock'] = self.destination_cidr_block
         if self.direction is not None:
             result['Direction'] = self.direction
         if self.network_acl_entry_name is not None:
@@ -8718,6 +8722,8 @@ class CreateNetworkAclEntryRequest(TeaModel):
             self.cidr_block = m.get('CidrBlock')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('DestinationCidrBlock') is not None:
+            self.destination_cidr_block = m.get('DestinationCidrBlock')
         if m.get('Direction') is not None:
             self.direction = m.get('Direction')
         if m.get('NetworkAclEntryName') is not None:
@@ -36766,6 +36772,7 @@ class DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries(TeaModel):
         self,
         cidr_block: str = None,
         description: str = None,
+        destination_cidr_block: str = None,
         network_acl_entry_id: str = None,
         network_acl_entry_name: str = None,
         policy: str = None,
@@ -36778,6 +36785,7 @@ class DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries(TeaModel):
         self.cidr_block = cidr_block
         # The description of the inbound rule.
         self.description = description
+        self.destination_cidr_block = destination_cidr_block
         # The ID of the inbound rule.
         self.network_acl_entry_id = network_acl_entry_id
         # The name of the inbound rule.
@@ -36820,6 +36828,8 @@ class DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries(TeaModel):
             result['CidrBlock'] = self.cidr_block
         if self.description is not None:
             result['Description'] = self.description
+        if self.destination_cidr_block is not None:
+            result['DestinationCidrBlock'] = self.destination_cidr_block
         if self.network_acl_entry_id is not None:
             result['NetworkAclEntryId'] = self.network_acl_entry_id
         if self.network_acl_entry_name is not None:
@@ -36842,6 +36852,8 @@ class DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries(TeaModel):
             self.cidr_block = m.get('CidrBlock')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('DestinationCidrBlock') is not None:
+            self.destination_cidr_block = m.get('DestinationCidrBlock')
         if m.get('NetworkAclEntryId') is not None:
             self.network_acl_entry_id = m.get('NetworkAclEntryId')
         if m.get('NetworkAclEntryName') is not None:

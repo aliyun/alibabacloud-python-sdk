@@ -5259,6 +5259,8 @@ class Client(OpenApiClient):
             query['CidrBlock'] = request.cidr_block
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            query['DestinationCidrBlock'] = request.destination_cidr_block
         if not UtilClient.is_unset(request.direction):
             query['Direction'] = request.direction
         if not UtilClient.is_unset(request.network_acl_entry_name):
@@ -5310,6 +5312,8 @@ class Client(OpenApiClient):
             query['CidrBlock'] = request.cidr_block
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            query['DestinationCidrBlock'] = request.destination_cidr_block
         if not UtilClient.is_unset(request.direction):
             query['Direction'] = request.direction
         if not UtilClient.is_unset(request.network_acl_entry_name):
@@ -16950,7 +16954,17 @@ class Client(OpenApiClient):
         @return: DescribeNetworkAclsResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.network_acl_id):
+            query['NetworkAclId'] = request.network_acl_id
+        if not UtilClient.is_unset(request.network_acl_name):
+            query['NetworkAclName'] = request.network_acl_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -16959,7 +16973,7 @@ class Client(OpenApiClient):
             version='2017-11-10',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -16983,7 +16997,17 @@ class Client(OpenApiClient):
         @return: DescribeNetworkAclsResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.network_acl_id):
+            query['NetworkAclId'] = request.network_acl_id
+        if not UtilClient.is_unset(request.network_acl_name):
+            query['NetworkAclName'] = request.network_acl_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -16992,7 +17016,7 @@ class Client(OpenApiClient):
             version='2017-11-10',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
