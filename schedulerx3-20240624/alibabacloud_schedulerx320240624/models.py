@@ -4607,6 +4607,7 @@ class ListJobExecutionsResponseBodyDataRecords(TeaModel):
         server_ip: str = None,
         status: int = None,
         time_type: int = None,
+        total_tokens: int = None,
         trigger_type: int = None,
         work_addr: str = None,
     ):
@@ -4627,6 +4628,7 @@ class ListJobExecutionsResponseBodyDataRecords(TeaModel):
         self.server_ip = server_ip
         self.status = status
         self.time_type = time_type
+        self.total_tokens = total_tokens
         self.trigger_type = trigger_type
         self.work_addr = work_addr
 
@@ -4673,6 +4675,8 @@ class ListJobExecutionsResponseBodyDataRecords(TeaModel):
             result['Status'] = self.status
         if self.time_type is not None:
             result['TimeType'] = self.time_type
+        if self.total_tokens is not None:
+            result['TotalTokens'] = self.total_tokens
         if self.trigger_type is not None:
             result['TriggerType'] = self.trigger_type
         if self.work_addr is not None:
@@ -4715,6 +4719,8 @@ class ListJobExecutionsResponseBodyDataRecords(TeaModel):
             self.status = m.get('Status')
         if m.get('TimeType') is not None:
             self.time_type = m.get('TimeType')
+        if m.get('TotalTokens') is not None:
+            self.total_tokens = m.get('TotalTokens')
         if m.get('TriggerType') is not None:
             self.trigger_type = m.get('TriggerType')
         if m.get('WorkAddr') is not None:
@@ -5774,6 +5780,7 @@ class ListScheduleEventRequest(TeaModel):
         cluster_id: str = None,
         end_time: int = None,
         event: str = None,
+        event_type: str = None,
         job_execution_id: str = None,
         job_name: str = None,
         keyword: str = None,
@@ -5787,6 +5794,7 @@ class ListScheduleEventRequest(TeaModel):
         self.cluster_id = cluster_id
         self.end_time = end_time
         self.event = event
+        self.event_type = event_type
         self.job_execution_id = job_execution_id
         self.job_name = job_name
         self.keyword = keyword
@@ -5812,6 +5820,8 @@ class ListScheduleEventRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.event is not None:
             result['Event'] = self.event
+        if self.event_type is not None:
+            result['EventType'] = self.event_type
         if self.job_execution_id is not None:
             result['JobExecutionId'] = self.job_execution_id
         if self.job_name is not None:
@@ -5838,6 +5848,8 @@ class ListScheduleEventRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('Event') is not None:
             self.event = m.get('Event')
+        if m.get('EventType') is not None:
+            self.event_type = m.get('EventType')
         if m.get('JobExecutionId') is not None:
             self.job_execution_id = m.get('JobExecutionId')
         if m.get('JobName') is not None:
