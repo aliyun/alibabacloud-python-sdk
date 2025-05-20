@@ -3,6 +3,11 @@
 - Update API ListScheduleEvent: add request parameters EventType.
 
 
+2025-05-20 Version: 1.0.4
+- Update API ListJobExecutions: add response parameters Body.Data.Records.$.TotalTokens.
+- Update API ListScheduleEvent: add request parameters EventType.
+
+
 2025-04-29 Version: 1.0.3
 - Update API GetCluster: add response parameters Body.Data.VersionLifecycle.
 - Update API ListClusters: add response parameters Body.Data.Records.$.VersionLifecycle.
