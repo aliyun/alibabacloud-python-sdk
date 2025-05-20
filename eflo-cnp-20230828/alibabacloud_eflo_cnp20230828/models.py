@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, Any, List
+from typing import Dict, List, Any
 
 
 class DataResultsTaskIndividualResultMapValue(TeaModel):
@@ -220,6 +220,200 @@ class ChangeResourceGroupResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ChangeResourceGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CheckServiceLinkedRoleEfloCnpForDeletingRequest(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+        deletion_task_id: str = None,
+        role_arn: str = None,
+        spiregion_id: str = None,
+        service_name: str = None,
+    ):
+        # The ID of the cloud account.
+        self.account_id = account_id
+        # The ID of the deletion task.
+        self.deletion_task_id = deletion_task_id
+        # The Alibaba Cloud Resource Name (ARN) of the RAM role.
+        # 
+        # The trusted entity of the RAM role is an Alibaba Cloud account. For more information, see [Create a RAM role for a trusted Alibaba Cloud account](https://help.aliyun.com/document_detail/93691.html) or [CreateRole](https://help.aliyun.com/document_detail/28710.html).
+        # 
+        # Format: `acs:ram::<account_id>:role/<role_name>`.
+        # 
+        # You can view the ARN in the RAM console or by calling operations. The following items describe the validity periods of storage addresses:
+        # 
+        # *   For more information about how to view the ARN in the RAM console, see [How do I find the ARN of the RAM role?](https://help.aliyun.com/document_detail/39744.html)
+        # *   For more information about how to view the ARN by calling operations, see [ListRoles](https://help.aliyun.com/document_detail/28713.html) or [GetRole](https://help.aliyun.com/document_detail/28711.html).
+        self.role_arn = role_arn
+        # The ID of the region.
+        self.spiregion_id = spiregion_id
+        # The Service Name.
+        self.service_name = service_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        if self.deletion_task_id is not None:
+            result['DeletionTaskId'] = self.deletion_task_id
+        if self.role_arn is not None:
+            result['RoleArn'] = self.role_arn
+        if self.spiregion_id is not None:
+            result['SPIRegionId'] = self.spiregion_id
+        if self.service_name is not None:
+            result['ServiceName'] = self.service_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        if m.get('DeletionTaskId') is not None:
+            self.deletion_task_id = m.get('DeletionTaskId')
+        if m.get('RoleArn') is not None:
+            self.role_arn = m.get('RoleArn')
+        if m.get('SPIRegionId') is not None:
+            self.spiregion_id = m.get('SPIRegionId')
+        if m.get('ServiceName') is not None:
+            self.service_name = m.get('ServiceName')
+        return self
+
+
+class CheckServiceLinkedRoleEfloCnpForDeletingResponseBodyResources(TeaModel):
+    def __init__(
+        self,
+        region: str = None,
+        resources: List[str] = None,
+    ):
+        # The region.
+        self.region = region
+        # The resources.
+        self.resources = resources
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.resources is not None:
+            result['Resources'] = self.resources
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Resources') is not None:
+            self.resources = m.get('Resources')
+        return self
+
+
+class CheckServiceLinkedRoleEfloCnpForDeletingResponseBody(TeaModel):
+    def __init__(
+        self,
+        deletable: bool = None,
+        request_id: str = None,
+        resources: List[CheckServiceLinkedRoleEfloCnpForDeletingResponseBodyResources] = None,
+    ):
+        # Indicates whether the SLR can be deleted. Valid values:
+        # 
+        # *   `true`: The SLR can be deleted.
+        # *   `false`: The SLR cannot be deleted.
+        self.deletable = deletable
+        # Request ID
+        self.request_id = request_id
+        # The resources.
+        self.resources = resources
+
+    def validate(self):
+        if self.resources:
+            for k in self.resources:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.deletable is not None:
+            result['Deletable'] = self.deletable
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Resources'] = []
+        if self.resources is not None:
+            for k in self.resources:
+                result['Resources'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Deletable') is not None:
+            self.deletable = m.get('Deletable')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.resources = []
+        if m.get('Resources') is not None:
+            for k in m.get('Resources'):
+                temp_model = CheckServiceLinkedRoleEfloCnpForDeletingResponseBodyResources()
+                self.resources.append(temp_model.from_map(k))
+        return self
+
+
+class CheckServiceLinkedRoleEfloCnpForDeletingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CheckServiceLinkedRoleEfloCnpForDeletingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CheckServiceLinkedRoleEfloCnpForDeletingResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

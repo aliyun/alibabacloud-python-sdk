@@ -149,6 +149,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.change_resource_group_with_options_async(request, runtime)
 
+    def check_service_linked_role_eflo_cnp_for_deleting_with_options(
+        self,
+        request: eflo_cnp_20230828_models.CheckServiceLinkedRoleEfloCnpForDeletingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_cnp_20230828_models.CheckServiceLinkedRoleEfloCnpForDeletingResponse:
+        """
+        @summary deleteSlrEfloCnpForDeleting
+        
+        @param request: CheckServiceLinkedRoleEfloCnpForDeletingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckServiceLinkedRoleEfloCnpForDeletingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.deletion_task_id):
+            query['DeletionTaskId'] = request.deletion_task_id
+        if not UtilClient.is_unset(request.role_arn):
+            query['RoleArn'] = request.role_arn
+        if not UtilClient.is_unset(request.spiregion_id):
+            query['SPIRegionId'] = request.spiregion_id
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckServiceLinkedRoleEfloCnpForDeleting',
+            version='2023-08-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_cnp_20230828_models.CheckServiceLinkedRoleEfloCnpForDeletingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_service_linked_role_eflo_cnp_for_deleting_with_options_async(
+        self,
+        request: eflo_cnp_20230828_models.CheckServiceLinkedRoleEfloCnpForDeletingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_cnp_20230828_models.CheckServiceLinkedRoleEfloCnpForDeletingResponse:
+        """
+        @summary deleteSlrEfloCnpForDeleting
+        
+        @param request: CheckServiceLinkedRoleEfloCnpForDeletingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckServiceLinkedRoleEfloCnpForDeletingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.deletion_task_id):
+            query['DeletionTaskId'] = request.deletion_task_id
+        if not UtilClient.is_unset(request.role_arn):
+            query['RoleArn'] = request.role_arn
+        if not UtilClient.is_unset(request.spiregion_id):
+            query['SPIRegionId'] = request.spiregion_id
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckServiceLinkedRoleEfloCnpForDeleting',
+            version='2023-08-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_cnp_20230828_models.CheckServiceLinkedRoleEfloCnpForDeletingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_service_linked_role_eflo_cnp_for_deleting(
+        self,
+        request: eflo_cnp_20230828_models.CheckServiceLinkedRoleEfloCnpForDeletingRequest,
+    ) -> eflo_cnp_20230828_models.CheckServiceLinkedRoleEfloCnpForDeletingResponse:
+        """
+        @summary deleteSlrEfloCnpForDeleting
+        
+        @param request: CheckServiceLinkedRoleEfloCnpForDeletingRequest
+        @return: CheckServiceLinkedRoleEfloCnpForDeletingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.check_service_linked_role_eflo_cnp_for_deleting_with_options(request, runtime)
+
+    async def check_service_linked_role_eflo_cnp_for_deleting_async(
+        self,
+        request: eflo_cnp_20230828_models.CheckServiceLinkedRoleEfloCnpForDeletingRequest,
+    ) -> eflo_cnp_20230828_models.CheckServiceLinkedRoleEfloCnpForDeletingResponse:
+        """
+        @summary deleteSlrEfloCnpForDeleting
+        
+        @param request: CheckServiceLinkedRoleEfloCnpForDeletingRequest
+        @return: CheckServiceLinkedRoleEfloCnpForDeletingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.check_service_linked_role_eflo_cnp_for_deleting_with_options_async(request, runtime)
+
     def create_experiment_plan_with_options(
         self,
         tmp_req: eflo_cnp_20230828_models.CreateExperimentPlanRequest,
