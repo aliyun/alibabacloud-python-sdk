@@ -1031,7 +1031,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.CreateVscResponse:
         """
-        @summary 创建Vsc
+        @summary Create Vsc
         
         @param request: CreateVscRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1078,7 +1078,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.CreateVscResponse:
         """
-        @summary 创建Vsc
+        @summary Create Vsc
         
         @param request: CreateVscRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1124,7 +1124,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.CreateVscRequest,
     ) -> eflo_controller_20221215_models.CreateVscResponse:
         """
-        @summary 创建Vsc
+        @summary Create Vsc
         
         @param request: CreateVscRequest
         @return: CreateVscResponse
@@ -1137,7 +1137,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.CreateVscRequest,
     ) -> eflo_controller_20221215_models.CreateVscResponse:
         """
-        @summary 创建Vsc
+        @summary Create Vsc
         
         @param request: CreateVscRequest
         @return: CreateVscResponse
@@ -1355,7 +1355,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DeleteVscResponse:
         """
-        @summary 删除Vsc
+        @summary Delete Vsc
         
         @param request: DeleteVscRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1394,7 +1394,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DeleteVscResponse:
         """
-        @summary 删除Vsc
+        @summary Delete Vsc
         
         @param request: DeleteVscRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1432,7 +1432,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DeleteVscRequest,
     ) -> eflo_controller_20221215_models.DeleteVscResponse:
         """
-        @summary 删除Vsc
+        @summary Delete Vsc
         
         @param request: DeleteVscRequest
         @return: DeleteVscResponse
@@ -1445,7 +1445,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DeleteVscRequest,
     ) -> eflo_controller_20221215_models.DeleteVscResponse:
         """
-        @summary 删除Vsc
+        @summary Delete Vsc
         
         @param request: DeleteVscRequest
         @return: DeleteVscResponse
@@ -2259,7 +2259,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeVscResponse:
         """
-        @summary 获取单个Vsc详情
+        @summary Get details of a single Vsc
         
         @param request: DescribeVscRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2294,7 +2294,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeVscResponse:
         """
-        @summary 获取单个Vsc详情
+        @summary Get details of a single Vsc
         
         @param request: DescribeVscRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2328,7 +2328,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeVscRequest,
     ) -> eflo_controller_20221215_models.DescribeVscResponse:
         """
-        @summary 获取单个Vsc详情
+        @summary Get details of a single Vsc
         
         @param request: DescribeVscRequest
         @return: DescribeVscResponse
@@ -2341,7 +2341,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeVscRequest,
     ) -> eflo_controller_20221215_models.DescribeVscResponse:
         """
-        @summary 获取单个Vsc详情
+        @summary Get details of a single Vsc
         
         @param request: DescribeVscRequest
         @return: DescribeVscResponse
@@ -3785,7 +3785,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListVscsResponse:
         """
-        @summary 查询Vsc列表
+        @summary Query Vsc List
         
         @param tmp_req: ListVscsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3836,7 +3836,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListVscsResponse:
         """
-        @summary 查询Vsc列表
+        @summary Query Vsc List
         
         @param tmp_req: ListVscsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3886,7 +3886,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListVscsRequest,
     ) -> eflo_controller_20221215_models.ListVscsResponse:
         """
-        @summary 查询Vsc列表
+        @summary Query Vsc List
         
         @param request: ListVscsRequest
         @return: ListVscsResponse
@@ -3899,7 +3899,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListVscsRequest,
     ) -> eflo_controller_20221215_models.ListVscsResponse:
         """
-        @summary 查询Vsc列表
+        @summary Query Vsc List
         
         @param request: ListVscsRequest
         @return: ListVscsResponse
@@ -5013,6 +5013,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.file_system_mount_enabled):
             body['FileSystemMountEnabled'] = request.file_system_mount_enabled
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.key_pair_name):
             body['KeyPairName'] = request.key_pair_name
         if not UtilClient.is_unset(request.new_node_group_name):
@@ -5058,6 +5060,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.file_system_mount_enabled):
             body['FileSystemMountEnabled'] = request.file_system_mount_enabled
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.key_pair_name):
             body['KeyPairName'] = request.key_pair_name
         if not UtilClient.is_unset(request.new_node_group_name):

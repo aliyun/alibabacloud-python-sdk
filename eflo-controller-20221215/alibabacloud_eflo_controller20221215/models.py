@@ -1091,6 +1091,7 @@ class CreateClusterRequestNodeGroups(TeaModel):
         user_data: str = None,
         zone_id: str = None,
     ):
+        # Whether file system mounting is supported
         self.file_system_mount_enabled = file_system_mount_enabled
         # System image ID
         self.image_id = image_id
@@ -2596,6 +2597,7 @@ class CreateNodeGroupRequestNodeGroup(TeaModel):
         # 
         # This parameter is required.
         self.az = az
+        # Whether file storage mounting is supported
         self.file_system_mount_enabled = file_system_mount_enabled
         # Image ID.
         # 
@@ -2994,7 +2996,9 @@ class CreateVscRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # Resource tag key
         self.key = key
+        # Resource tag value
         self.value = value
 
     def validate(self):
@@ -3031,12 +3035,19 @@ class CreateVscRequest(TeaModel):
         vsc_name: str = None,
         vsc_type: str = None,
     ):
+        # Idempotent parameter
         self.client_token = client_token
+        # Node ID
+        # 
         # This parameter is required.
         self.node_id = node_id
+        # Resource group ID
         self.resource_group_id = resource_group_id
+        # Resource tags
         self.tag = tag
+        # User-defined name for vscId, unique on a single compute node
         self.vsc_name = vsc_name
+        # Set VSC type, primary/standard, default value is primary
         self.vsc_type = vsc_type
 
     def validate(self):
@@ -3093,8 +3104,9 @@ class CreateVscResponseBody(TeaModel):
         request_id: str = None,
         vsc_id: str = None,
     ):
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Created VscId
         self.vsc_id = vsc_id
 
     def validate(self):
@@ -3371,7 +3383,10 @@ class DeleteVscRequest(TeaModel):
         client_token: str = None,
         vsc_id: str = None,
     ):
+        # Idempotent parameter
         self.client_token = client_token
+        # The VscId to be deleted
+        # 
         # This parameter is required.
         self.vsc_id = vsc_id
 
@@ -3404,7 +3419,7 @@ class DeleteVscResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -5211,7 +5226,7 @@ class DescribeNodeResponseBody(TeaModel):
         self.disks = disks
         # Expiration time
         self.expired_time = expired_time
-        # 是否支持文件存储挂载
+        # Whether file storage mounting is supported
         self.file_system_mount_enabled = file_system_mount_enabled
         # Hostname
         self.hostname = hostname
@@ -6326,6 +6341,8 @@ class DescribeVscRequest(TeaModel):
         self,
         vsc_id: str = None,
     ):
+        # The VscId to be queried
+        # 
         # This parameter is required.
         self.vsc_id = vsc_id
 
@@ -6360,14 +6377,19 @@ class DescribeVscResponseBody(TeaModel):
         vsc_name: str = None,
         vsc_type: str = None,
     ):
+        # ID of the compute node where the Vsc is located
         self.node_id = node_id
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Resource Group ID
         self.resource_group_id = resource_group_id
+        # Status of the Vsc
         self.status = status
-        # VscId
+        # Vsc ID
         self.vsc_id = vsc_id
+        # Custom name of the Vsc
         self.vsc_name = vsc_name
+        # Vsc type
         self.vsc_type = vsc_type
 
     def validate(self):
@@ -8490,6 +8512,7 @@ class ListFreeNodesRequest(TeaModel):
         self.max_results = max_results
         # Query token (Token), the value should be the NextToken parameter value returned from the previous API call.
         self.next_token = next_token
+        # return array of operating states
         self.operating_states = operating_states
         # Resource group ID
         self.resource_group_id = resource_group_id
@@ -10198,6 +10221,7 @@ class ListNodeGroupsResponseBodyGroups(TeaModel):
         self.create_time = create_time
         # Description
         self.description = description
+        # Whether file storage mounting is supported
         self.file_system_mount_enabled = file_system_mount_enabled
         # Group ID.
         self.group_id = group_id
@@ -10213,7 +10237,7 @@ class ListNodeGroupsResponseBodyGroups(TeaModel):
         self.node_count = node_count
         # Update time
         self.update_time = update_time
-        # 可用区id
+        # availability zone id
         self.zone_id = zone_id
 
     def validate(self):
@@ -10779,7 +10803,9 @@ class ListVscsRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # Tag key.
         self.key = key
+        # Tag value.
         self.value = value
 
     def validate(self):
@@ -10816,11 +10842,17 @@ class ListVscsRequest(TeaModel):
         tag: List[ListVscsRequestTag] = None,
         vsc_name: str = None,
     ):
+        # The maximum number of data records to be read in this request.
         self.max_results = max_results
+        # Marks the position to start reading from. If empty, it starts from the beginning.
         self.next_token = next_token
+        # List of node IDs
         self.node_ids = node_ids
+        # Resource group ID
         self.resource_group_id = resource_group_id
+        # List of tags.
         self.tag = tag
+        # Vsc name
         self.vsc_name = vsc_name
 
     def validate(self):
@@ -10877,7 +10909,9 @@ class ListVscsShrinkRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # Tag key.
         self.key = key
+        # Tag value.
         self.value = value
 
     def validate(self):
@@ -10914,11 +10948,17 @@ class ListVscsShrinkRequest(TeaModel):
         tag: List[ListVscsShrinkRequestTag] = None,
         vsc_name: str = None,
     ):
+        # The maximum number of data records to be read in this request.
         self.max_results = max_results
+        # Marks the position to start reading from. If empty, it starts from the beginning.
         self.next_token = next_token
+        # List of node IDs
         self.node_ids_shrink = node_ids_shrink
+        # Resource group ID
         self.resource_group_id = resource_group_id
+        # List of tags.
         self.tag = tag
+        # Vsc name
         self.vsc_name = vsc_name
 
     def validate(self):
@@ -10975,7 +11015,9 @@ class ListVscsResponseBodyVscsTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # Tag key
         self.tag_key = tag_key
+        # Tag value
         self.tag_value = tag_value
 
     def validate(self):
@@ -11013,13 +11055,19 @@ class ListVscsResponseBodyVscs(TeaModel):
         vsc_name: str = None,
         vsc_type: str = None,
     ):
+        # Lingjun node ID
         self.node_id = node_id
+        # Resource group ID
         self.resource_group_id = resource_group_id
+        # Status of Vsc
         self.status = status
+        # Tags
         self.tags = tags
-        # VscId
+        # Vsc ID
         self.vsc_id = vsc_id
+        # Customized name of Vsc
         self.vsc_name = vsc_name
+        # Vsc type, primary/standard
         self.vsc_type = vsc_type
 
     def validate(self):
@@ -11083,12 +11131,17 @@ class ListVscsResponseBody(TeaModel):
         total_count: int = None,
         vscs: List[ListVscsResponseBodyVscs] = None,
     ):
+        # No return. Please use TotalCount
         self.max_results = max_results
+        # Indicates the position of the current call return read. An empty value means that the data has been fully read.
+        # 
         # This parameter is required.
         self.next_token = next_token
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Total count of data under the current request conditions
         self.total_count = total_count
+        # VSC list
         self.vscs = vscs
 
     def validate(self):
@@ -13184,12 +13237,16 @@ class UpdateNodeGroupRequest(TeaModel):
     def __init__(
         self,
         file_system_mount_enabled: bool = None,
+        image_id: str = None,
         key_pair_name: str = None,
         new_node_group_name: str = None,
         node_group_id: str = None,
         user_data: str = None,
     ):
+        # Whether file storage mounting is supported
         self.file_system_mount_enabled = file_system_mount_enabled
+        # 节点组的默认镜像id，如果不设置，那么就不会改变。
+        self.image_id = image_id
         # The name of the key pair.
         self.key_pair_name = key_pair_name
         # Node group name
@@ -13210,6 +13267,8 @@ class UpdateNodeGroupRequest(TeaModel):
         result = dict()
         if self.file_system_mount_enabled is not None:
             result['FileSystemMountEnabled'] = self.file_system_mount_enabled
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
         if self.key_pair_name is not None:
             result['KeyPairName'] = self.key_pair_name
         if self.new_node_group_name is not None:
@@ -13224,6 +13283,8 @@ class UpdateNodeGroupRequest(TeaModel):
         m = m or dict()
         if m.get('FileSystemMountEnabled') is not None:
             self.file_system_mount_enabled = m.get('FileSystemMountEnabled')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
         if m.get('KeyPairName') is not None:
             self.key_pair_name = m.get('KeyPairName')
         if m.get('NewNodeGroupName') is not None:
