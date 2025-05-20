@@ -3474,10 +3474,12 @@ class InitializeResponseBodyResult(TeaModel):
     def __init__(
         self,
         client_cfg: str = None,
+        protocol: str = None,
         transaction_id: str = None,
         transaction_url: str = None,
     ):
         self.client_cfg = client_cfg
+        self.protocol = protocol
         self.transaction_id = transaction_id
         self.transaction_url = transaction_url
 
@@ -3492,6 +3494,8 @@ class InitializeResponseBodyResult(TeaModel):
         result = dict()
         if self.client_cfg is not None:
             result['ClientCfg'] = self.client_cfg
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
         if self.transaction_id is not None:
             result['TransactionId'] = self.transaction_id
         if self.transaction_url is not None:
@@ -3502,6 +3506,8 @@ class InitializeResponseBodyResult(TeaModel):
         m = m or dict()
         if m.get('ClientCfg') is not None:
             self.client_cfg = m.get('ClientCfg')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
         if m.get('TransactionId') is not None:
             self.transaction_id = m.get('TransactionId')
         if m.get('TransactionUrl') is not None:
