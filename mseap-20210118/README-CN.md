@@ -6,7 +6,7 @@
 
 ## 要求
 
-- Python >= 3.6
+- Python >= 3.7
 
 ## 安装
 
@@ -29,7 +29,7 @@ pip install alibabacloud_mseap20210118
 
 ## 发行说明
 
-每个版本的详细更改记录在[发行说明](./ChangeLog.md)中。
+每个版本的详细更改记录在[发行说明](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/mseap-20210118/ChangeLog.md)中。
 
 ## 相关
 
