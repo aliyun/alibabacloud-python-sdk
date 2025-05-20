@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_searchplat20240529.
 
-Created on 09/04/2025
+Created on 20/05/2025
 
 @author: Alibaba Cloud SDK
 """
@@ -39,7 +39,7 @@ VERSION = __import__(PACKAGE).__version__
 REQUIRES = [
     "alibabacloud_tea_util>=0.3.13, <1.0.0",
     "alibabacloud_gateway_pop>=0.0.8, <1.0.0",
-    "alibabacloud_tea_openapi>=0.3.12, <1.0.0",
+    "alibabacloud_tea_openapi>=0.3.15, <1.0.0",
     "alibabacloud_openapi_util>=0.2.2, <1.0.0"
 ]
 

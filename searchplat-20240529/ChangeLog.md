@@ -1,3 +1,7 @@
+2025-05-20 Version: 2.1.0
+- Support API GetMultiModalEmbedding.
+
+
 2025-04-09 Version: 2.0.1
 - Update API CreateDocumentAnalyzeTask: add request parameters body.strategy.
 

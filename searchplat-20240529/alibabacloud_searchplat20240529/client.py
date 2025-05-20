@@ -830,6 +830,118 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_image_analyze_task_status_with_options_async(workspace_name, service_id, request, headers, runtime)
 
+    def get_multi_modal_embedding_with_options(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.GetMultiModalEmbeddingRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchplat_20240529_models.GetMultiModalEmbeddingResponse:
+        """
+        @summary 多模态向量化
+        
+        @param request: GetMultiModalEmbeddingRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMultiModalEmbeddingResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.input):
+            body['input'] = request.input
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetMultiModalEmbedding',
+            version='2024-05-29',
+            protocol='HTTPS',
+            pathname=f'/v3/openapi/workspaces/{workspace_name}/multi-modal-embedding/{service_id}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchplat_20240529_models.GetMultiModalEmbeddingResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_multi_modal_embedding_with_options_async(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.GetMultiModalEmbeddingRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchplat_20240529_models.GetMultiModalEmbeddingResponse:
+        """
+        @summary 多模态向量化
+        
+        @param request: GetMultiModalEmbeddingRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMultiModalEmbeddingResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.input):
+            body['input'] = request.input
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetMultiModalEmbedding',
+            version='2024-05-29',
+            protocol='HTTPS',
+            pathname=f'/v3/openapi/workspaces/{workspace_name}/multi-modal-embedding/{service_id}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchplat_20240529_models.GetMultiModalEmbeddingResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_multi_modal_embedding(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.GetMultiModalEmbeddingRequest,
+    ) -> searchplat_20240529_models.GetMultiModalEmbeddingResponse:
+        """
+        @summary 多模态向量化
+        
+        @param request: GetMultiModalEmbeddingRequest
+        @return: GetMultiModalEmbeddingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_multi_modal_embedding_with_options(workspace_name, service_id, request, headers, runtime)
+
+    async def get_multi_modal_embedding_async(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.GetMultiModalEmbeddingRequest,
+    ) -> searchplat_20240529_models.GetMultiModalEmbeddingResponse:
+        """
+        @summary 多模态向量化
+        
+        @param request: GetMultiModalEmbeddingRequest
+        @return: GetMultiModalEmbeddingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_multi_modal_embedding_with_options_async(workspace_name, service_id, request, headers, runtime)
+
     def get_prediction_with_options(
         self,
         deployment_id: str,

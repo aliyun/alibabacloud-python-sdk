@@ -1728,6 +1728,266 @@ class GetImageAnalyzeTaskStatusResponse(TeaModel):
         return self
 
 
+class GetMultiModalEmbeddingRequestInput(TeaModel):
+    def __init__(
+        self,
+        image: str = None,
+        text: str = None,
+    ):
+        self.image = image
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image is not None:
+            result['image'] = self.image
+        if self.text is not None:
+            result['text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('image') is not None:
+            self.image = m.get('image')
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        return self
+
+
+class GetMultiModalEmbeddingRequest(TeaModel):
+    def __init__(
+        self,
+        input: List[GetMultiModalEmbeddingRequestInput] = None,
+    ):
+        self.input = input
+
+    def validate(self):
+        if self.input:
+            for k in self.input:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['input'] = []
+        if self.input is not None:
+            for k in self.input:
+                result['input'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.input = []
+        if m.get('input') is not None:
+            for k in m.get('input'):
+                temp_model = GetMultiModalEmbeddingRequestInput()
+                self.input.append(temp_model.from_map(k))
+        return self
+
+
+class GetMultiModalEmbeddingResponseBodyResultEmbeddings(TeaModel):
+    def __init__(
+        self,
+        embedding: List[float] = None,
+        index: int = None,
+    ):
+        self.embedding = embedding
+        self.index = index
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.embedding is not None:
+            result['embedding'] = self.embedding
+        if self.index is not None:
+            result['index'] = self.index
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('embedding') is not None:
+            self.embedding = m.get('embedding')
+        if m.get('index') is not None:
+            self.index = m.get('index')
+        return self
+
+
+class GetMultiModalEmbeddingResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        embeddings: List[GetMultiModalEmbeddingResponseBodyResultEmbeddings] = None,
+    ):
+        self.embeddings = embeddings
+
+    def validate(self):
+        if self.embeddings:
+            for k in self.embeddings:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['embeddings'] = []
+        if self.embeddings is not None:
+            for k in self.embeddings:
+                result['embeddings'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.embeddings = []
+        if m.get('embeddings') is not None:
+            for k in m.get('embeddings'):
+                temp_model = GetMultiModalEmbeddingResponseBodyResultEmbeddings()
+                self.embeddings.append(temp_model.from_map(k))
+        return self
+
+
+class GetMultiModalEmbeddingResponseBodyUsage(TeaModel):
+    def __init__(
+        self,
+        image: int = None,
+        token_count: int = None,
+    ):
+        self.image = image
+        self.token_count = token_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image is not None:
+            result['image'] = self.image
+        if self.token_count is not None:
+            result['token_count'] = self.token_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('image') is not None:
+            self.image = m.get('image')
+        if m.get('token_count') is not None:
+            self.token_count = m.get('token_count')
+        return self
+
+
+class GetMultiModalEmbeddingResponseBody(TeaModel):
+    def __init__(
+        self,
+        latency: int = None,
+        request_id: str = None,
+        result: GetMultiModalEmbeddingResponseBodyResult = None,
+        usage: GetMultiModalEmbeddingResponseBodyUsage = None,
+    ):
+        self.latency = latency
+        self.request_id = request_id
+        self.result = result
+        self.usage = usage
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+        if self.usage:
+            self.usage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.latency is not None:
+            result['latency'] = self.latency
+        if self.request_id is not None:
+            result['request_id'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        if self.usage is not None:
+            result['usage'] = self.usage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('latency') is not None:
+            self.latency = m.get('latency')
+        if m.get('request_id') is not None:
+            self.request_id = m.get('request_id')
+        if m.get('result') is not None:
+            temp_model = GetMultiModalEmbeddingResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        if m.get('usage') is not None:
+            temp_model = GetMultiModalEmbeddingResponseBodyUsage()
+            self.usage = temp_model.from_map(m['usage'])
+        return self
+
+
+class GetMultiModalEmbeddingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetMultiModalEmbeddingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetMultiModalEmbeddingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetPredictionHeaders(TeaModel):
     def __init__(
         self,
