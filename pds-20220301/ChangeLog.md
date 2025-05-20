@@ -1,3 +1,7 @@
+2025-05-20 Version: 4.2.6
+- Update API CompleteFile: add request parameters body.crc64_hash.
+
+
 2025-04-22 Version: 4.2.5
 - Generated python 2022-03-01 for pds.
 

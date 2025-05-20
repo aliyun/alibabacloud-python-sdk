@@ -11001,10 +11001,12 @@ class ClearRecyclebinResponse(TeaModel):
 class CompleteFileRequest(TeaModel):
     def __init__(
         self,
+        crc_64hash: str = None,
         drive_id: str = None,
         file_id: str = None,
         upload_id: str = None,
     ):
+        self.crc_64hash = crc_64hash
         # The drive ID.
         # 
         # This parameter is required.
@@ -11027,6 +11029,8 @@ class CompleteFileRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.crc_64hash is not None:
+            result['crc64_hash'] = self.crc_64hash
         if self.drive_id is not None:
             result['drive_id'] = self.drive_id
         if self.file_id is not None:
@@ -11037,6 +11041,8 @@ class CompleteFileRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('crc64_hash') is not None:
+            self.crc_64hash = m.get('crc64_hash')
         if m.get('drive_id') is not None:
             self.drive_id = m.get('drive_id')
         if m.get('file_id') is not None:
@@ -16327,6 +16333,7 @@ class GetShareLinkByAnonymousResponseBody(TeaModel):
         self.download_limit = download_limit
         # The time when the share link expires.
         self.expiration = expiration
+        # Indicates whether a password is specified for the share link.
         self.has_pwd = has_pwd
         # The number of times that the shared files are previewed.
         self.preview_count = preview_count
@@ -17264,12 +17271,12 @@ class GetVideoPreviewPlayInfoRequest(TeaModel):
         template_id: str = None,
         url_expire_sec: int = None,
     ):
-        # The preview type. You must enable the corresponding video transcoding feature. Valid values:
+        # The category. It is the transcoding mode that you want to use. Valid values:
         # 
-        # *   live_transcoding: previews a live stream while transcoding is in progress.
-        # *   quick_video: previews a video while transcoding is in progress.
-        # *   offline_audio: previews a piece of audio after the audio is transcoded offline.
-        # *   offline_video: previews a video after the video is transcoded offline.
+        # *   live_transcoding: plays a live stream while transcoding is in progress.
+        # *   quick_video: plays a video while transcoding is in progress.
+        # *   offline_audio: plays a piece of audio after the audio is transcoded offline.
+        # *   offline_video: plays a video after the video is transcoded offline.
         # 
         # This parameter is required.
         self.category = category
@@ -17279,15 +17286,17 @@ class GetVideoPreviewPlayInfoRequest(TeaModel):
         # 
         # This parameter is required.
         self.file_id = file_id
+        # Specifies whether to obtain the URL of the master M3U8 playlist. This parameter is valid only if the category parameter is set to quick_video.
         self.get_master_url = get_master_url
-        # Specifies whether not to query the playback URL. If you set this parameter to true, only transcoding metadata is returned. The video is not transcoded in the TS format, and the playback URL is not returned. If you set this parameter to false, the playback URL is returned. If the video has not been transcoded by using the template specified by template_id, the transcoding process is triggered. You are charged for the value-added service fees generated for transcoding.
+        # Specifies whether not to query the playback URL. If you set this parameter to true, only transcoding metadata is returned. The video is not transcoded in the TS format, and the playback URL is not returned. If you set this parameter to false, the playback URL is returned. If the video has not been transcoded by using the template specified by template_id, the transcoding process is triggered. You are charged value-added service fees generated for transcoding.
         self.get_without_url = get_without_url
+        # Specifies whether to initiate re-transcoding. If you set this parameter to true, the file is re-transcoded, with a fixed 202 response for retries. Before you use this parameter, contact us to enable it for you.
         self.re_transcode = re_transcode
-        # The share ID. If you want to manage a file by using a sharing link, carry the `x-share-token` header in the request and specify share_id. In this case, `drive_id` is invalid. Otherwise, use an `AccessKey pair` or `access token` for authentication and specify `drive_id`. You must specify at least either `share_id` or `drive_id`.
+        # The share ID. If you want to share a file, carry the `x-share-token` header for authentication in the request and specify share_id. In this case, `drive_id` is invalid. Otherwise, use an `AccessKey pair` or `access token` for authentication and specify `drive_id`. You must specify one of `share_id` and `drive_id`.
         self.share_id = share_id
         # The ID of the definition template. If you leave this parameter empty, all definition templates are available.
         self.template_id = template_id
-        # The validity period of the video preview. Unit: seconds. Default value: 900. Maximum value: 14400.
+        # The validity period of the URL. Unit: seconds. Default value: 900, which is 15 minutes. Maximum value: 14400, which is 4 hours.
         self.url_expire_sec = url_expire_sec
 
     def validate(self):
@@ -22425,6 +22434,13 @@ class SearchFileRequest(TeaModel):
     ):
         # The drive ID.
         self.drive_id = drive_id
+        # The field that is used to return additional information about files. Valid values:
+        # 
+        # *   dir_size: returns the statistics on each subfolder in the response.
+        # *   id_path: returns the id_path value of each child subject in the response.
+        # *   name_path: returns the name_path value of each child subject in the response.
+        # 
+        # You can specify multiple fields by separating them with commas (,). Example: "id_path,name_path,dir_size".
         self.fields = fields
         # The maximum number of entries to return. Valid values: 1 to 100.
         # 
