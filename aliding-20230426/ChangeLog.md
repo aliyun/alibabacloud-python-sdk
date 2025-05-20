@@ -1,3 +1,8 @@
+2025-05-20 Version: 2.38.0
+- Support API InsertContentWithOptions.
+- Support API QueryDentriesInfo.
+
+
 2025-05-14 Version: 2.37.0
 - Support API AddMultiDimTable.
 - Support API CreateMultiDimTableField.

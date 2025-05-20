@@ -20613,6 +20613,164 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.InsertColumnsBeforeHeaders()
         return await self.insert_columns_before_with_options_async(request, headers, runtime)
 
+    def insert_content_with_options_with_options(
+        self,
+        tmp_req: aliding_20230426_models.InsertContentWithOptionsRequest,
+        tmp_header: aliding_20230426_models.InsertContentWithOptionsHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.InsertContentWithOptionsResponse:
+        """
+        @summary 文档中插入内容
+        
+        @param tmp_req: InsertContentWithOptionsRequest
+        @param tmp_header: InsertContentWithOptionsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InsertContentWithOptionsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.InsertContentWithOptionsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.InsertContentWithOptionsShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.content):
+            request.content_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.content, 'Content', 'json')
+        if not UtilClient.is_unset(tmp_req.path):
+            request.path_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.path, 'Path', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.content_shrink):
+            body['Content'] = request.content_shrink
+        if not UtilClient.is_unset(request.document_id):
+            body['DocumentId'] = request.document_id
+        if not UtilClient.is_unset(request.index):
+            body['Index'] = request.index
+        if not UtilClient.is_unset(request.operator_id):
+            body['OperatorId'] = request.operator_id
+        if not UtilClient.is_unset(request.path_shrink):
+            body['Path'] = request.path_shrink
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='InsertContentWithOptions',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/documents/insertContentWithOptions',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.InsertContentWithOptionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def insert_content_with_options_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.InsertContentWithOptionsRequest,
+        tmp_header: aliding_20230426_models.InsertContentWithOptionsHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.InsertContentWithOptionsResponse:
+        """
+        @summary 文档中插入内容
+        
+        @param tmp_req: InsertContentWithOptionsRequest
+        @param tmp_header: InsertContentWithOptionsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InsertContentWithOptionsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.InsertContentWithOptionsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.InsertContentWithOptionsShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.content):
+            request.content_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.content, 'Content', 'json')
+        if not UtilClient.is_unset(tmp_req.path):
+            request.path_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.path, 'Path', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.content_shrink):
+            body['Content'] = request.content_shrink
+        if not UtilClient.is_unset(request.document_id):
+            body['DocumentId'] = request.document_id
+        if not UtilClient.is_unset(request.index):
+            body['Index'] = request.index
+        if not UtilClient.is_unset(request.operator_id):
+            body['OperatorId'] = request.operator_id
+        if not UtilClient.is_unset(request.path_shrink):
+            body['Path'] = request.path_shrink
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='InsertContentWithOptions',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/documents/insertContentWithOptions',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.InsertContentWithOptionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def insert_content_with_options(
+        self,
+        request: aliding_20230426_models.InsertContentWithOptionsRequest,
+    ) -> aliding_20230426_models.InsertContentWithOptionsResponse:
+        """
+        @summary 文档中插入内容
+        
+        @param request: InsertContentWithOptionsRequest
+        @return: InsertContentWithOptionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.InsertContentWithOptionsHeaders()
+        return self.insert_content_with_options_with_options(request, headers, runtime)
+
+    async def insert_content_with_options_async(
+        self,
+        request: aliding_20230426_models.InsertContentWithOptionsRequest,
+    ) -> aliding_20230426_models.InsertContentWithOptionsResponse:
+        """
+        @summary 文档中插入内容
+        
+        @param request: InsertContentWithOptionsRequest
+        @return: InsertContentWithOptionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.InsertContentWithOptionsHeaders()
+        return await self.insert_content_with_options_with_options_async(request, headers, runtime)
+
     def insert_multi_dim_table_record_with_options(
         self,
         tmp_req: aliding_20230426_models.InsertMultiDimTableRecordRequest,
@@ -24952,6 +25110,160 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.QueryConferenceMembersHeaders()
         return await self.query_conference_members_with_options_async(request, headers, runtime)
+
+    def query_dentries_info_with_options(
+        self,
+        tmp_req: aliding_20230426_models.QueryDentriesInfoRequest,
+        tmp_header: aliding_20230426_models.QueryDentriesInfoHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.QueryDentriesInfoResponse:
+        """
+        @summary 获取文件或文件夹信息
+        
+        @param tmp_req: QueryDentriesInfoRequest
+        @param tmp_header: QueryDentriesInfoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDentriesInfoResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.QueryDentriesInfoShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.QueryDentriesInfoShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.app_ids_for_app_properties):
+            request.app_ids_for_app_properties_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.app_ids_for_app_properties, 'AppIdsForAppProperties', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_ids_for_app_properties_shrink):
+            body['AppIdsForAppProperties'] = request.app_ids_for_app_properties_shrink
+        if not UtilClient.is_unset(request.dentry_id):
+            body['DentryId'] = request.dentry_id
+        if not UtilClient.is_unset(request.space_id):
+            body['SpaceId'] = request.space_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.union_id):
+            body['UnionId'] = request.union_id
+        if not UtilClient.is_unset(request.with_thumbnail):
+            body['WithThumbnail'] = request.with_thumbnail
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryDentriesInfo',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/documents/queryDentriesInfo',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.QueryDentriesInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_dentries_info_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.QueryDentriesInfoRequest,
+        tmp_header: aliding_20230426_models.QueryDentriesInfoHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.QueryDentriesInfoResponse:
+        """
+        @summary 获取文件或文件夹信息
+        
+        @param tmp_req: QueryDentriesInfoRequest
+        @param tmp_header: QueryDentriesInfoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDentriesInfoResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.QueryDentriesInfoShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.QueryDentriesInfoShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.app_ids_for_app_properties):
+            request.app_ids_for_app_properties_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.app_ids_for_app_properties, 'AppIdsForAppProperties', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_ids_for_app_properties_shrink):
+            body['AppIdsForAppProperties'] = request.app_ids_for_app_properties_shrink
+        if not UtilClient.is_unset(request.dentry_id):
+            body['DentryId'] = request.dentry_id
+        if not UtilClient.is_unset(request.space_id):
+            body['SpaceId'] = request.space_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.union_id):
+            body['UnionId'] = request.union_id
+        if not UtilClient.is_unset(request.with_thumbnail):
+            body['WithThumbnail'] = request.with_thumbnail
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryDentriesInfo',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/documents/queryDentriesInfo',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.QueryDentriesInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_dentries_info(
+        self,
+        request: aliding_20230426_models.QueryDentriesInfoRequest,
+    ) -> aliding_20230426_models.QueryDentriesInfoResponse:
+        """
+        @summary 获取文件或文件夹信息
+        
+        @param request: QueryDentriesInfoRequest
+        @return: QueryDentriesInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.QueryDentriesInfoHeaders()
+        return self.query_dentries_info_with_options(request, headers, runtime)
+
+    async def query_dentries_info_async(
+        self,
+        request: aliding_20230426_models.QueryDentriesInfoRequest,
+    ) -> aliding_20230426_models.QueryDentriesInfoResponse:
+        """
+        @summary 获取文件或文件夹信息
+        
+        @param request: QueryDentriesInfoRequest
+        @return: QueryDentriesInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.QueryDentriesInfoHeaders()
+        return await self.query_dentries_info_with_options_async(request, headers, runtime)
 
     def query_dentry_with_options(
         self,
