@@ -1,3 +1,8 @@
+2025-05-20 Version: 2.7.0
+- Support API DescribeQueryExplain.
+- Support API DescribeSlowLogRecords.
+
+
 2025-04-01 Version: 2.6.3
 - Update API DescribeSlowLogStatistic: add response parameters Body.Data.Data.Logs.$.RuleId.
 - Update API DescribeSqlLogTask: add response parameters Body.Data.Queries.$.SqlCommand.
