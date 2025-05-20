@@ -1,3 +1,15 @@
+2025-05-20 Version: 4.8.4
+- Update API GetLindormInstance: add response parameters Body.EngineList.$.ArbiterCoreCount.
+- Update API GetLindormInstance: add response parameters Body.EngineList.$.PrimaryCoreCount.
+- Update API GetLindormInstance: add response parameters Body.EngineList.$.StandbyCoreCount.
+- Update API GetLindormV2Instance: add response parameters Body.ArbiterVSwitchId.
+- Update API GetLindormV2Instance: add response parameters Body.ArbiterZoneId.
+- Update API GetLindormV2Instance: add response parameters Body.PrimaryVSwitchId.
+- Update API GetLindormV2Instance: add response parameters Body.PrimaryZoneId.
+- Update API GetLindormV2Instance: add response parameters Body.StandbyVSwitchId.
+- Update API GetLindormV2Instance: add response parameters Body.StandbyZoneId.
+
+
 2025-03-19 Version: 4.8.3
 - Update API CreateLindormInstance: add param Tag.
 

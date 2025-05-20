@@ -75,16 +75,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ChangeResourceGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ChangeResourceGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ChangeResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def change_resource_group_with_options_async(
         self,
@@ -120,16 +114,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ChangeResourceGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ChangeResourceGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ChangeResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def change_resource_group(
         self,
@@ -195,16 +183,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.CheckLdpsColumnarIndexStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.CheckLdpsColumnarIndexStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.CheckLdpsColumnarIndexStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def check_ldps_columnar_index_status_with_options_async(
         self,
@@ -244,16 +226,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.CheckLdpsColumnarIndexStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.CheckLdpsColumnarIndexStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.CheckLdpsColumnarIndexStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def check_ldps_columnar_index_status(
         self,
@@ -339,16 +315,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.CreateAutoScalingConfigResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.CreateAutoScalingConfigResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.CreateAutoScalingConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_auto_scaling_config_with_options_async(
         self,
@@ -412,16 +382,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.CreateAutoScalingConfigResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.CreateAutoScalingConfigResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.CreateAutoScalingConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_auto_scaling_config(
         self,
@@ -515,16 +479,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.CreateAutoScalingRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.CreateAutoScalingRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.CreateAutoScalingRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_auto_scaling_rule_with_options_async(
         self,
@@ -596,16 +554,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.CreateAutoScalingRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.CreateAutoScalingRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.CreateAutoScalingRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_auto_scaling_rule(
         self,
@@ -673,16 +625,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.CreateLdpsComputeGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.CreateLdpsComputeGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.CreateLdpsComputeGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_ldps_compute_group_with_options_async(
         self,
@@ -728,16 +674,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.CreateLdpsComputeGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.CreateLdpsComputeGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.CreateLdpsComputeGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_ldps_compute_group(
         self,
@@ -883,16 +823,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.CreateLindormInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.CreateLindormInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.CreateLindormInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_lindorm_instance_with_options_async(
         self,
@@ -1016,16 +950,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.CreateLindormInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.CreateLindormInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.CreateLindormInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_lindorm_instance(
         self,
@@ -1143,16 +1071,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.CreateLindormV2InstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.CreateLindormV2InstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.CreateLindormV2InstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_lindorm_v2instance_with_options_async(
         self,
@@ -1240,16 +1162,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.CreateLindormV2InstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.CreateLindormV2InstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.CreateLindormV2InstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_lindorm_v2instance(
         self,
@@ -1313,16 +1229,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.DeleteAutoScalingConfigResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.DeleteAutoScalingConfigResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.DeleteAutoScalingConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_auto_scaling_config_with_options_async(
         self,
@@ -1364,16 +1274,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.DeleteAutoScalingConfigResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.DeleteAutoScalingConfigResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.DeleteAutoScalingConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_auto_scaling_config(
         self,
@@ -1439,16 +1343,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.DeleteAutoScalingRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.DeleteAutoScalingRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.DeleteAutoScalingRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_auto_scaling_rule_with_options_async(
         self,
@@ -1492,16 +1390,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.DeleteAutoScalingRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.DeleteAutoScalingRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.DeleteAutoScalingRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_auto_scaling_rule(
         self,
@@ -1567,16 +1459,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.DeleteCustomResourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.DeleteCustomResourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.DeleteCustomResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_custom_resource_with_options_async(
         self,
@@ -1620,16 +1506,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.DeleteCustomResourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.DeleteCustomResourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.DeleteCustomResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_custom_resource(
         self,
@@ -1695,16 +1575,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.DeleteLdpsComputeGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.DeleteLdpsComputeGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.DeleteLdpsComputeGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_ldps_compute_group_with_options_async(
         self,
@@ -1748,16 +1622,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.DeleteLdpsComputeGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.DeleteLdpsComputeGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.DeleteLdpsComputeGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_ldps_compute_group(
         self,
@@ -1823,16 +1691,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.DeployLdpsSemiManagedComponentResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.DeployLdpsSemiManagedComponentResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.DeployLdpsSemiManagedComponentResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def deploy_ldps_semi_managed_component_with_options_async(
         self,
@@ -1876,16 +1738,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.DeployLdpsSemiManagedComponentResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.DeployLdpsSemiManagedComponentResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.DeployLdpsSemiManagedComponentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def deploy_ldps_semi_managed_component(
         self,
@@ -1949,16 +1805,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.DescribeRegionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.DescribeRegionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.DescribeRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_regions_with_options_async(
         self,
@@ -2000,16 +1850,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.DescribeRegionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.DescribeRegionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.DescribeRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_regions(
         self,
@@ -2077,16 +1921,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetAutoScalingConfigResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetAutoScalingConfigResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetAutoScalingConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_auto_scaling_config_with_options_async(
         self,
@@ -2128,16 +1966,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetAutoScalingConfigResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetAutoScalingConfigResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetAutoScalingConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_auto_scaling_config(
         self,
@@ -2203,16 +2035,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetAutoScalingRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetAutoScalingRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetAutoScalingRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_auto_scaling_rule_with_options_async(
         self,
@@ -2256,16 +2082,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetAutoScalingRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetAutoScalingRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetAutoScalingRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_auto_scaling_rule(
         self,
@@ -2329,16 +2149,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetClientSourceIpResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetClientSourceIpResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetClientSourceIpResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_client_source_ip_with_options_async(
         self,
@@ -2380,16 +2194,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetClientSourceIpResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetClientSourceIpResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetClientSourceIpResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_client_source_ip(
         self,
@@ -2453,16 +2261,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetEngineDefaultAuthResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetEngineDefaultAuthResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetEngineDefaultAuthResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_engine_default_auth_with_options_async(
         self,
@@ -2504,16 +2306,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetEngineDefaultAuthResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetEngineDefaultAuthResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetEngineDefaultAuthResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_engine_default_auth(
         self,
@@ -2577,16 +2373,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetInstanceIpWhiteListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetInstanceIpWhiteListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetInstanceIpWhiteListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_instance_ip_white_list_with_options_async(
         self,
@@ -2628,16 +2418,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetInstanceIpWhiteListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetInstanceIpWhiteListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetInstanceIpWhiteListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_instance_ip_white_list(
         self,
@@ -2703,16 +2487,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetInstanceSecurityGroupsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetInstanceSecurityGroupsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetInstanceSecurityGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_instance_security_groups_with_options_async(
         self,
@@ -2752,16 +2530,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetInstanceSecurityGroupsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetInstanceSecurityGroupsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetInstanceSecurityGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_instance_security_groups(
         self,
@@ -2827,16 +2599,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLdpsComputeGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLdpsComputeGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLdpsComputeGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_ldps_compute_group_with_options_async(
         self,
@@ -2880,16 +2646,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLdpsComputeGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLdpsComputeGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLdpsComputeGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_ldps_compute_group(
         self,
@@ -2955,16 +2715,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLdpsNamespacedQuotaResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLdpsNamespacedQuotaResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLdpsNamespacedQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_ldps_namespaced_quota_with_options_async(
         self,
@@ -3008,16 +2762,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLdpsNamespacedQuotaResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLdpsNamespacedQuotaResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLdpsNamespacedQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_ldps_namespaced_quota(
         self,
@@ -3087,16 +2835,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLdpsResourceCostResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLdpsResourceCostResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLdpsResourceCostResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_ldps_resource_cost_with_options_async(
         self,
@@ -3144,16 +2886,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLdpsResourceCostResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLdpsResourceCostResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLdpsResourceCostResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_ldps_resource_cost(
         self,
@@ -3183,6 +2919,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.GetLindormFsUsedDetailResponse:
         """
+        @summary Queries the details of each storage type in a Lindorm instance.
+        
+        @description If the version of the underlying storage engine in a Lindorm cluster is 4.1.9 or later, the storage usage values returned for the LStorageUsageList parameter prevail.
+        
         @param request: GetLindormFsUsedDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetLindormFsUsedDetailResponse
@@ -3217,16 +2957,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLindormFsUsedDetailResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLindormFsUsedDetailResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLindormFsUsedDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_lindorm_fs_used_detail_with_options_async(
         self,
@@ -3234,6 +2968,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.GetLindormFsUsedDetailResponse:
         """
+        @summary Queries the details of each storage type in a Lindorm instance.
+        
+        @description If the version of the underlying storage engine in a Lindorm cluster is 4.1.9 or later, the storage usage values returned for the LStorageUsageList parameter prevail.
+        
         @param request: GetLindormFsUsedDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetLindormFsUsedDetailResponse
@@ -3268,22 +3006,20 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLindormFsUsedDetailResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLindormFsUsedDetailResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLindormFsUsedDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_lindorm_fs_used_detail(
         self,
         request: hitsdb_20200615_models.GetLindormFsUsedDetailRequest,
     ) -> hitsdb_20200615_models.GetLindormFsUsedDetailResponse:
         """
+        @summary Queries the details of each storage type in a Lindorm instance.
+        
+        @description If the version of the underlying storage engine in a Lindorm cluster is 4.1.9 or later, the storage usage values returned for the LStorageUsageList parameter prevail.
+        
         @param request: GetLindormFsUsedDetailRequest
         @return: GetLindormFsUsedDetailResponse
         """
@@ -3295,6 +3031,10 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.GetLindormFsUsedDetailRequest,
     ) -> hitsdb_20200615_models.GetLindormFsUsedDetailResponse:
         """
+        @summary Queries the details of each storage type in a Lindorm instance.
+        
+        @description If the version of the underlying storage engine in a Lindorm cluster is 4.1.9 or later, the storage usage values returned for the LStorageUsageList parameter prevail.
+        
         @param request: GetLindormFsUsedDetailRequest
         @return: GetLindormFsUsedDetailResponse
         """
@@ -3341,16 +3081,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLindormInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLindormInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLindormInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_lindorm_instance_with_options_async(
         self,
@@ -3392,16 +3126,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLindormInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLindormInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLindormInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_lindorm_instance(
         self,
@@ -3471,16 +3199,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLindormInstanceEngineListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLindormInstanceEngineListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLindormInstanceEngineListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_lindorm_instance_engine_list_with_options_async(
         self,
@@ -3524,16 +3246,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLindormInstanceEngineListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLindormInstanceEngineListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLindormInstanceEngineListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_lindorm_instance_engine_list(
         self,
@@ -3615,16 +3331,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLindormInstanceListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLindormInstanceListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLindormInstanceListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_lindorm_instance_list_with_options_async(
         self,
@@ -3680,16 +3390,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLindormInstanceListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLindormInstanceListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLindormInstanceListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_lindorm_instance_list(
         self,
@@ -3755,16 +3459,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLindormV2InstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLindormV2InstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLindormV2InstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_lindorm_v2instance_with_options_async(
         self,
@@ -3804,16 +3502,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLindormV2InstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLindormV2InstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLindormV2InstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_lindorm_v2instance(
         self,
@@ -3877,16 +3569,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLindormV2InstanceEngineListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLindormV2InstanceEngineListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLindormV2InstanceEngineListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_lindorm_v2instance_engine_list_with_options_async(
         self,
@@ -3928,16 +3614,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLindormV2InstanceEngineListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLindormV2InstanceEngineListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLindormV2InstanceEngineListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_lindorm_v2instance_engine_list(
         self,
@@ -3999,16 +3679,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLindormV2StorageUsageResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLindormV2StorageUsageResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLindormV2StorageUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_lindorm_v2storage_usage_with_options_async(
         self,
@@ -4048,16 +3722,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLindormV2StorageUsageResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.GetLindormV2StorageUsageResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLindormV2StorageUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_lindorm_v2storage_usage(
         self,
@@ -4119,16 +3787,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ListAutoScalingConfigsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ListAutoScalingConfigsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ListAutoScalingConfigsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_auto_scaling_configs_with_options_async(
         self,
@@ -4168,16 +3830,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ListAutoScalingConfigsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ListAutoScalingConfigsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ListAutoScalingConfigsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_auto_scaling_configs(
         self,
@@ -4243,16 +3899,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ListAutoScalingRecordsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ListAutoScalingRecordsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ListAutoScalingRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_auto_scaling_records_with_options_async(
         self,
@@ -4296,16 +3946,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ListAutoScalingRecordsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ListAutoScalingRecordsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ListAutoScalingRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_auto_scaling_records(
         self,
@@ -4369,16 +4013,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ListAutoScalingRulesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ListAutoScalingRulesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ListAutoScalingRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_auto_scaling_rules_with_options_async(
         self,
@@ -4420,16 +4058,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ListAutoScalingRulesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ListAutoScalingRulesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ListAutoScalingRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_auto_scaling_rules(
         self,
@@ -4493,16 +4125,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ListLdpsComputeGroupsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ListLdpsComputeGroupsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ListLdpsComputeGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_ldps_compute_groups_with_options_async(
         self,
@@ -4544,16 +4170,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ListLdpsComputeGroupsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ListLdpsComputeGroupsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ListLdpsComputeGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_ldps_compute_groups(
         self,
@@ -4625,16 +4245,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ListTagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ListTagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_tag_resources_with_options_async(
         self,
@@ -4684,16 +4298,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ListTagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ListTagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_tag_resources(
         self,
@@ -4779,16 +4387,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ModifyAutoScalingConfigResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ModifyAutoScalingConfigResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ModifyAutoScalingConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_auto_scaling_config_with_options_async(
         self,
@@ -4848,16 +4450,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ModifyAutoScalingConfigResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ModifyAutoScalingConfigResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ModifyAutoScalingConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_auto_scaling_config(
         self,
@@ -4953,16 +4549,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ModifyAutoScalingRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ModifyAutoScalingRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ModifyAutoScalingRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_auto_scaling_rule_with_options_async(
         self,
@@ -5036,16 +4626,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ModifyAutoScalingRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ModifyAutoScalingRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ModifyAutoScalingRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_auto_scaling_rule(
         self,
@@ -5118,16 +4702,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ModifyInstancePayTypeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ModifyInstancePayTypeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ModifyInstancePayTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_instance_pay_type_with_options_async(
         self,
@@ -5178,16 +4756,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ModifyInstancePayTypeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ModifyInstancePayTypeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ModifyInstancePayTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_instance_pay_type(
         self,
@@ -5271,16 +4843,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ModifyLindormV2InstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ModifyLindormV2InstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ModifyLindormV2InstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_lindorm_v2instance_with_options_async(
         self,
@@ -5332,16 +4898,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ModifyLindormV2InstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ModifyLindormV2InstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ModifyLindormV2InstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_lindorm_v2instance(
         self,
@@ -5411,16 +4971,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ModifyLindormV2WhiteIpListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ModifyLindormV2WhiteIpListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ModifyLindormV2WhiteIpListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_lindorm_v2white_ip_list_with_options_async(
         self,
@@ -5468,16 +5022,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ModifyLindormV2WhiteIpListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ModifyLindormV2WhiteIpListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ModifyLindormV2WhiteIpListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_lindorm_v2white_ip_list(
         self,
@@ -5543,16 +5091,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.OpenComputeEngineResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.OpenComputeEngineResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.OpenComputeEngineResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def open_compute_engine_with_options_async(
         self,
@@ -5596,16 +5138,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.OpenComputeEngineResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.OpenComputeEngineResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.OpenComputeEngineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def open_compute_engine(
         self,
@@ -5671,16 +5207,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.OpenComputePreCheckResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.OpenComputePreCheckResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.OpenComputePreCheckResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def open_compute_pre_check_with_options_async(
         self,
@@ -5724,16 +5254,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.OpenComputePreCheckResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.OpenComputePreCheckResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.OpenComputePreCheckResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def open_compute_pre_check(
         self,
@@ -5799,16 +5323,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ReleaseLindormInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ReleaseLindormInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ReleaseLindormInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def release_lindorm_instance_with_options_async(
         self,
@@ -5852,16 +5370,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ReleaseLindormInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ReleaseLindormInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ReleaseLindormInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def release_lindorm_instance(
         self,
@@ -5929,16 +5441,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ReleaseLindormV2InstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ReleaseLindormV2InstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ReleaseLindormV2InstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def release_lindorm_v2instance_with_options_async(
         self,
@@ -5980,16 +5486,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ReleaseLindormV2InstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.ReleaseLindormV2InstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ReleaseLindormV2InstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def release_lindorm_v2instance(
         self,
@@ -6062,16 +5562,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.RenewLindormInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.RenewLindormInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.RenewLindormInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def renew_lindorm_instance_with_options_async(
         self,
@@ -6122,16 +5616,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.RenewLindormInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.RenewLindormInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.RenewLindormInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def renew_lindorm_instance(
         self,
@@ -6207,16 +5695,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.RestartLdpsComputeGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.RestartLdpsComputeGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.RestartLdpsComputeGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def restart_ldps_compute_group_with_options_async(
         self,
@@ -6260,16 +5742,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.RestartLdpsComputeGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.RestartLdpsComputeGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.RestartLdpsComputeGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def restart_ldps_compute_group(
         self,
@@ -6337,16 +5813,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.SetDefaultOlapComputeGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.SetDefaultOlapComputeGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.SetDefaultOlapComputeGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def set_default_olap_compute_group_with_options_async(
         self,
@@ -6392,16 +5862,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.SetDefaultOlapComputeGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.SetDefaultOlapComputeGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.SetDefaultOlapComputeGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def set_default_olap_compute_group(
         self,
@@ -6472,16 +5936,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.SwitchLSQLV3MySQLServiceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.SwitchLSQLV3MySQLServiceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.SwitchLSQLV3MySQLServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def switch_lsqlv3my_sqlservice_with_options_async(
         self,
@@ -6530,16 +5988,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.SwitchLSQLV3MySQLServiceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.SwitchLSQLV3MySQLServiceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.SwitchLSQLV3MySQLServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def switch_lsqlv3my_sqlservice(
         self,
@@ -6623,16 +6075,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.TagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.TagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def tag_resources_with_options_async(
         self,
@@ -6680,16 +6126,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.TagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.TagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def tag_resources(
         self,
@@ -6765,16 +6205,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.UntagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.UntagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def untag_resources_with_options_async(
         self,
@@ -6824,16 +6258,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.UntagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.UntagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.UntagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def untag_resources(
         self,
@@ -6911,16 +6339,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.UpdateInstanceIpWhiteListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.UpdateInstanceIpWhiteListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.UpdateInstanceIpWhiteListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_instance_ip_white_list_with_options_async(
         self,
@@ -6968,16 +6390,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.UpdateInstanceIpWhiteListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.UpdateInstanceIpWhiteListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.UpdateInstanceIpWhiteListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_instance_ip_white_list(
         self,
@@ -7045,16 +6461,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.UpdateInstanceSecurityGroupsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.UpdateInstanceSecurityGroupsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.UpdateInstanceSecurityGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_instance_security_groups_with_options_async(
         self,
@@ -7096,16 +6506,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.UpdateInstanceSecurityGroupsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.UpdateInstanceSecurityGroupsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.UpdateInstanceSecurityGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_instance_security_groups(
         self,
@@ -7173,16 +6577,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.UpdateLdpsComputeGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.UpdateLdpsComputeGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.UpdateLdpsComputeGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_ldps_compute_group_with_options_async(
         self,
@@ -7228,16 +6626,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.UpdateLdpsComputeGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.UpdateLdpsComputeGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.UpdateLdpsComputeGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_ldps_compute_group(
         self,
@@ -7305,16 +6697,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.UpdateLindormV2InstanceParameterResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.UpdateLindormV2InstanceParameterResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.UpdateLindormV2InstanceParameterResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_lindorm_v2instance_parameter_with_options_async(
         self,
@@ -7360,16 +6746,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.UpdateLindormV2InstanceParameterResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.UpdateLindormV2InstanceParameterResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.UpdateLindormV2InstanceParameterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_lindorm_v2instance_parameter(
         self,
@@ -7477,16 +6857,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.UpgradeLindormInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.UpgradeLindormInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.UpgradeLindormInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def upgrade_lindorm_instance_with_options_async(
         self,
@@ -7572,16 +6946,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.UpgradeLindormInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.UpgradeLindormInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.UpgradeLindormInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def upgrade_lindorm_instance(
         self,
@@ -7661,16 +7029,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.UpgradeLindormV2StreamEngineResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.UpgradeLindormV2StreamEngineResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.UpgradeLindormV2StreamEngineResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def upgrade_lindorm_v2stream_engine_with_options_async(
         self,
@@ -7720,16 +7082,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hitsdb_20200615_models.UpgradeLindormV2StreamEngineResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hitsdb_20200615_models.UpgradeLindormV2StreamEngineResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.UpgradeLindormV2StreamEngineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def upgrade_lindorm_v2stream_engine(
         self,

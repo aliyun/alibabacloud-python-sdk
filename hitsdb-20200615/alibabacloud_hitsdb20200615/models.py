@@ -1144,7 +1144,13 @@ class CreateLindormInstanceRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. Valid values of N: 1 to 20.
+        # 
+        # >  You can specify the keys of multiple tags. For example, you can specify the key of the first tag in the first key-value pair contained in the value of this parameter and specify the key of the second tag in the second key-value pair.
         self.key = key
+        # The tag value. Valid values of N: 1 to 20.
+        # 
+        # >  You can specify the values of multiple tags. For example, you can specify the value of the first tag in the first key-value pair contained in the value of this parameter and specify the value of the second tag in the second key-value pair.
         self.value = value
 
     def validate(self):
@@ -1253,18 +1259,34 @@ class CreateLindormInstanceRequest(TeaModel):
         self.core_single_storage = core_single_storage
         # The specification of the nodes in the instance if you set DiskCategory to local_ssd_pro or local_hdd_pro.
         # 
-        # When DiskCategory is set to local_ssd_pro, you can set this parameter to the following values:
+        # Valid values when DiskCategory is set to local_ssd_pro (i3 instance types support only subscription instances):
         # 
-        # *   **lindorm.i2.xlarge**: Each node has 4 dedicated CPU cores and 32 GB of dedicated memory.
-        # *   **lindorm.i2.2xlarge**: Each node has 8 dedicated CPU cores and 64 GB of dedicated memory.
-        # *   **lindorm.i2.4xlarge**: Each node has 16 dedicated CPU cores and 128 GB of dedicated memory.
-        # *   **lindorm.i2.8xlarge**: Each node has 32 dedicated CPU cores and 256 GB of dedicated memory.
+        # *   **lindorm.i4.xlarge**: Each node has 4 CPU cores and 32 GB of memory.
+        # *   **lindorm.i4.2xlarge**: Each node has 8 CPU cores and 64 GB of memory.
+        # *   **lindorm.i4.4xlarge**: Each node has 16 CPU cores and 128 GB of memory.
+        # *   **lindorm.i4.8xlarge**: Each node has 32 CPU cores and 256 GB of memory.
+        # *   **lindorm.i3.xlarge**: Each node has 4 CPU cores and 32 GB of memory.
+        # *   **lindorm.i3.2xlarge**: Each node has 8 CPU cores and 64 GB of memory.
+        # *   **lindorm.i3.4xlarge**: Each node has 16 CPU cores and 128 GB of memory.
+        # *   **lindorm.i3.8xlarge**: Each node has 32 CPU cores and 256 GB of memory.
+        # *   **lindorm.i2.xlarge**: Each node has 4 CPU cores and 32 GB of memory.
+        # *   **lindorm.i2.2xlarge**: Each node has 8 CPU cores and 64 GB of memory.
+        # *   **lindorm.i2.4xlarge**: Each node has 16 CPU cores and 128 GB of memory.
+        # *   **lindorm.i2.8xlarge**: Each node has 32 CPU cores and 256 GB of memory.
         # 
-        # When DiskCategory is set to local_hdd_pro, you can set this parameter to the following values:
+        # Valid values when DiskCategory is set to local_hhd_pro:
         # 
-        # *   **lindorm.d1.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
-        # *   **lindorm.d1.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
-        # *   **lindorm.d1.6xlarge**: Each node has 24 dedicated CPU cores and 96 GB of dedicated memory.
+        # *   **lindorm.sd3c.3xlarge**: Each node has 14 CPU cores and 56 GB of memory.
+        # *   **lindorm.sd3c.7xlarge**: Each node has 28 CPU cores and 112 GB of memory.
+        # *   **lindorm.sd3c.14xlarge**: Each node has 56 CPU cores and 224 GB of memory.
+        # *   **lindorm.d2c.6xlarge**: Each node has 24 CPU cores and 88 GB of memory.
+        # *   **lindorm.d2c.12xlarge**: Each node has 48 CPU cores and 176 GB of memory.
+        # *   **lindorm.d2c.24xlarge**: Each node has 96 CPU cores and 352 GB of memory.
+        # *   **lindorm.d2s.5xlarge**: Each node has 20 CPU cores and 88 GB of memory.
+        # *   **lindorm.d2s.10xlarge**: Each node has 40 CPU cores and 176 GB of memory.
+        # *   **lindorm.d1.2xlarge**: Each node has 8 CPU cores and 32 GB of memory.
+        # *   **lindorm.d1.4xlarge**: Each node has 16 CPU cores and 64 GB of memory.
+        # *   **lindorm.d1.6xlarge**: Each node has 24 CPU cores and 96 GB of memory.
         self.core_spec = core_spec
         # The storage type of the instance. Valid values:
         # 
@@ -1389,8 +1411,11 @@ class CreateLindormInstanceRequest(TeaModel):
         # The specification of the LindormSearch nodes in the instance. Valid values:
         # 
         # *   **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
+        # *   **lindorm.c.2xlarge**: Each node has 8 dedicated CPU cores and 16 GB of dedicated memory.
         # *   **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
+        # *   **lindorm.c.4xlarge**: Each node has 16 dedicated CPU cores and 32 GB of dedicated memory.
         # *   **lindorm.g.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
+        # *   **lindorm.c.8xlarge**: Each node has 32 dedicated CPU cores and 64 GB of dedicated memory.
         # *   **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
         self.solr_spec = solr_spec
         # The ID of the vSwitch that is specified for the secondary zone of the instance. The vSwitch must be deployed in the zone specified by the StandbyZoneId parameter. **This parameter is required if you want to create a multi-zone instance**.
@@ -1406,6 +1431,7 @@ class CreateLindormInstanceRequest(TeaModel):
         # *   **lindorm.g.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
         # *   **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
         self.stream_spec = stream_spec
+        # The tags that are added to instances.
         self.tag = tag
         # The number of the LindormTSDB nodes in the instance. The valid values of this parameter depend on the value of the PayType parameter.
         # 
@@ -1648,7 +1674,7 @@ class CreateLindormInstanceResponseBody(TeaModel):
         order_id: int = None,
         request_id: str = None,
     ):
-        # The details about the access denial.
+        # The detailed reason why the access was denied.
         self.access_denied_detail = access_denied_detail
         # The ID of the Lindorm instance that is created.
         self.instance_id = instance_id
@@ -5016,10 +5042,13 @@ class GetLindormFsUsedDetailRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # The ID of the instance. You can call the [GetLindormInstanceList](https://help.aliyun.com/document_detail/426069.html) operation to query the instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) operation to query the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -5081,13 +5110,28 @@ class GetLindormFsUsedDetailResponseBodyLStorageUsageList(TeaModel):
         used_lindorm_tsdb: str = None,
         used_other: str = None,
     ):
+        # The total storage capacity. Unit: bytes.
         self.capacity = capacity
+        # The storage type of the cluster. Valid values:
+        # 
+        # *   StandardCloudStorage
+        # *   PerformanceCloudStorage
+        # *   CapacityCloudStorage
+        # *   LocalSsdStorage
+        # *   LocalHddStorage
+        # *   LocalEbsStorage
         self.disk_type = disk_type
+        # The storage usage. Unit: bytes.
         self.used = used
+        # The storage usage of the search engine. Unit: bytes.
         self.used_lindorm_search = used_lindorm_search
+        # The storage usage of the compute engine. Unit: bytes.
         self.used_lindorm_spark = used_lindorm_spark
+        # The storage usage of the wide table engine. Unit: bytes.
         self.used_lindorm_table = used_lindorm_table
+        # The storage usage of the time series engine. Unit: bytes.
         self.used_lindorm_tsdb = used_lindorm_tsdb
+        # The storage usage of other resources, such as logs and recycle bins. Unit: bytes.
         self.used_other = used_other
 
     def validate(self):
@@ -5162,25 +5206,45 @@ class GetLindormFsUsedDetailResponseBody(TeaModel):
         request_id: str = None,
         valid: str = None,
     ):
+        # The detailed reason why the access was denied.
         self.access_denied_detail = access_denied_detail
+        # The total storage space of the cluster. Unit: bytes.
         self.fs_capacity = fs_capacity
+        # The cold storage space of the cluster. Unit: bytes.
         self.fs_capacity_cold = fs_capacity_cold
+        # The hot storage space of the cluster. Unit: bytes.
         self.fs_capacity_hot = fs_capacity_hot
+        # The cold storage usage of the cluster. Unit: bytes.
         self.fs_used_cold = fs_used_cold
+        # The cold storage usage of the table data of the search engine. Unit: bytes.
         self.fs_used_cold_on_lindorm_search = fs_used_cold_on_lindorm_search
+        # The cold storage usage of the table data of the time series engine. Unit: bytes.
         self.fs_used_cold_on_lindorm_tsdb = fs_used_cold_on_lindorm_tsdb
+        # The cold storage usage of the table data of the wide table engine. Unit: bytes.
         self.fs_used_cold_on_lindorm_table = fs_used_cold_on_lindorm_table
+        # The hot storage usage of the cluster. Unit: bytes.
         self.fs_used_hot = fs_used_hot
+        # The hot storage usage of the table data of the search engine. Unit: bytes.
         self.fs_used_hot_on_lindorm_search = fs_used_hot_on_lindorm_search
+        # The hot storage usage of the table data of the time series engine. Unit: bytes.
         self.fs_used_hot_on_lindorm_tsdb = fs_used_hot_on_lindorm_tsdb
+        # The hot storage usage of the table data of the wide table engine. Unit: bytes.
         self.fs_used_hot_on_lindorm_table = fs_used_hot_on_lindorm_table
+        # The storage usage of the search engine. Unit: bytes.
         self.fs_used_on_lindorm_search = fs_used_on_lindorm_search
+        # The storage usage of the time series engine. Unit: bytes.
         self.fs_used_on_lindorm_tsdb = fs_used_on_lindorm_tsdb
+        # The space usage of the wide table engine. Unit: bytes.
         self.fs_used_on_lindorm_table = fs_used_on_lindorm_table
+        # The storage usage of the table data of the wide table engine. Unit: bytes.
         self.fs_used_on_lindorm_table_data = fs_used_on_lindorm_table_data
+        # The storage usage of the log data of the wide table engine. Unit: bytes.
         self.fs_used_on_lindorm_table_wal = fs_used_on_lindorm_table_wal
+        # If the version of the underlying storage engine is 4.1.9 or later, the storage usage values returned for the LStorageUsageList parameter prevail. Storage details are returned based on the storage type.
         self.lstorage_usage_list = lstorage_usage_list
+        # The request ID. Each request has a unique ID. You can use the request ID to locate and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the return value is valid. Valid values: true and false. If a value of false is returned, you must provide the request ID for troubleshooting.
         self.valid = valid
 
     def validate(self):
@@ -5394,15 +5458,19 @@ class GetLindormInstanceRequest(TeaModel):
 class GetLindormInstanceResponseBodyEngineList(TeaModel):
     def __init__(
         self,
+        arbiter_core_count: str = None,
         core_count: str = None,
         cpu_count: str = None,
         engine: str = None,
         is_last_version: bool = None,
         latest_version: str = None,
         memory_size: str = None,
+        primary_core_count: str = None,
         specification: str = None,
+        standby_core_count: str = None,
         version: str = None,
     ):
+        self.arbiter_core_count = arbiter_core_count
         # The number of engine nodes.
         self.core_count = core_count
         # The number of CPU cores on the engine node.
@@ -5425,7 +5493,10 @@ class GetLindormInstanceResponseBodyEngineList(TeaModel):
         self.latest_version = latest_version
         # The memory size of the engine nodes.
         self.memory_size = memory_size
+        self.primary_core_count = primary_core_count
+        # The specification of the engine node.
         self.specification = specification
+        self.standby_core_count = standby_core_count
         # The version of the engine.
         self.version = version
 
@@ -5438,6 +5509,8 @@ class GetLindormInstanceResponseBodyEngineList(TeaModel):
             return _map
 
         result = dict()
+        if self.arbiter_core_count is not None:
+            result['ArbiterCoreCount'] = self.arbiter_core_count
         if self.core_count is not None:
             result['CoreCount'] = self.core_count
         if self.cpu_count is not None:
@@ -5450,14 +5523,20 @@ class GetLindormInstanceResponseBodyEngineList(TeaModel):
             result['LatestVersion'] = self.latest_version
         if self.memory_size is not None:
             result['MemorySize'] = self.memory_size
+        if self.primary_core_count is not None:
+            result['PrimaryCoreCount'] = self.primary_core_count
         if self.specification is not None:
             result['Specification'] = self.specification
+        if self.standby_core_count is not None:
+            result['StandbyCoreCount'] = self.standby_core_count
         if self.version is not None:
             result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ArbiterCoreCount') is not None:
+            self.arbiter_core_count = m.get('ArbiterCoreCount')
         if m.get('CoreCount') is not None:
             self.core_count = m.get('CoreCount')
         if m.get('CpuCount') is not None:
@@ -5470,8 +5549,12 @@ class GetLindormInstanceResponseBodyEngineList(TeaModel):
             self.latest_version = m.get('LatestVersion')
         if m.get('MemorySize') is not None:
             self.memory_size = m.get('MemorySize')
+        if m.get('PrimaryCoreCount') is not None:
+            self.primary_core_count = m.get('PrimaryCoreCount')
         if m.get('Specification') is not None:
             self.specification = m.get('Specification')
+        if m.get('StandbyCoreCount') is not None:
+            self.standby_core_count = m.get('StandbyCoreCount')
         if m.get('Version') is not None:
             self.version = m.get('Version')
         return self
@@ -5552,7 +5635,8 @@ class GetLindormInstanceResponseBody(TeaModel):
         # The Archive storage size of the instance.
         self.archive_storage = archive_storage
         # Indicates whether auto-renewal is enabled, with the following returns:
-        # - **true**: Enabled. - **false**: Disabled.
+        # - **true**: Enabled. 
+        # - **false**: Disabled.
         # > This parameter is returned when the instance\\"s payment type is prepaid.
         self.auto_renew = auto_renew
         # The Capacity storage size of the instance.
@@ -5575,7 +5659,8 @@ class GetLindormInstanceResponseBody(TeaModel):
         # The storage capacity of the disk of a single log node. This parameter is returned only for multi-zone instances.
         self.create_time = create_time
         # Indicates whether deletion protection is enabled, returning:
-        # - **true**: Enabled. - **false**: Disabled.
+        # - **true**: Enabled.
+        # - **false**: Disabled.
         self.deletion_protection = deletion_protection
         # The storage type of the instance. Valid values:
         # 
@@ -5596,17 +5681,22 @@ class GetLindormInstanceResponseBody(TeaModel):
         # true: LBlob is enabled for the instance. false: LBlob is not enabled for the instance.
         self.enable_blob = enable_blob
         # Indicates whether the data subscription feature for the instance is enabled. Returns:
-        # - **true**: Enabled. - **false**: Not enabled.
+        # - **true**: Enabled. 
+        # - **false**: Not enabled.
         self.enable_cdc = enable_cdc
         # Indicates whether the instance\\"s compute engine is enabled, returning:
-        # - **true**: Enabled. - **false**: Not enabled.
+        # - **true**: Enabled. 
+        # - **false**: Not enabled.
         self.enable_compute = enable_compute
         # Indicates whether the Key Management Service (KMS) is enabled, returning:
-        # - **true**: Enabled. - **false**: Disabled.
+        # - **true**: Enabled.
+        # - **false**: Disabled.
         self.enable_kms = enable_kms
-        # Indicates whether the wide-table engine supports Thrift and CQL protocols. If not supported, the SwitchLProxyService interface can be used to enable or disable.
-        # True indicates support
-        # False indicates no support
+        # Indicates whether LindormTable supports the Thrift and CQL protocols. If these protocols are not supported. You can call the SwitchLProxyService operation to enable or disable the support on these protocols for LindormTable.
+        # 
+        # True: LindormTable supports the Thrift and CQL protocols.
+        # 
+        # False: LindormTable does not support the Thrift and CQL protocols.
         self.enable_lproxy = enable_lproxy
         # Indicates whether the LTS engine is activated for the instance. Valid values:
         # 
@@ -5624,20 +5714,26 @@ class GetLindormInstanceResponseBody(TeaModel):
         # *   False: AI control nodes are not enabled for the instance.
         self.enable_mlctrl = enable_mlctrl
         # Indicates whether SSL link encryption is enabled, returning:
-        # - **true**: Enabled. - **false**: Disabled.
+        # - **true**: Enabled. 
+        # - **false**: Disabled.
         self.enable_ssl = enable_ssl
         # Whether to enable the Compute Engine History Server.
         self.enable_shs = enable_shs
         # Indicates whether the Transparent Data Encryption (TDE) is enabled, returning:
-        # - **true**: Enabled. - **false**: Disabled.
+        # - **true**: Enabled. 
+        # - **false**: Disabled.
         self.enable_store_tde = enable_store_tde
         # Indicates whether the instance has the stream engine enabled. Return values:
-        # - **true**: Stream engine is enabled. - **false**: Stream engine is not enabled.
+        # - **true**: Stream engine is enabled. 
+        # - **false**: Stream engine is not enabled.
         self.enable_stream = enable_stream
-        # The latest version number of the engine.
+        # The list of engines supported by the instance.
         self.engine_list = engine_list
         # Supported engine types, the return value is obtained by performing addition operations on the values of the following engine types.
-        # - 1: Search Engine - 2: Time Series Engine - 4: Wide Table Engine - 8: File Engine
+        # - 1: Search Engine 
+        # - 2: Time Series Engine
+        # - 4: Wide Table Engine
+        # - 8: File Engine
         # > For example: If EngineType is 15, where 15 = 8 + 4 + 2 + 1, it indicates that the instance supports Search Engine, Time Series Engine, Wide Table Engine, and File Engine. If EngineType is 6, where 6 = 4 + 2, it signifies that the instance supports Time Series Engine and Wide Table Engine.
         self.engine_type = engine_type
         # Expiration time of the instance, format: **yyyy-MM-dd HH:mm:ss**.
@@ -5676,7 +5772,8 @@ class GetLindormInstanceResponseBody(TeaModel):
         # Instance\\"s storage capacity.
         self.instance_storage = instance_storage
         # Multi-zone instance, log node disk type, returns:
-        # - **cloud_efficiency**：Standard cloud storage. - **cloud_ssd**：Performance cloud storage.
+        # - **cloud_efficiency**: Standard cloud storage. 
+        # - **cloud_ssd**: Performance cloud storage.
         self.log_disk_category = log_disk_category
         # Multi-zone instance, number of log nodes.
         self.log_num = log_num
@@ -5689,11 +5786,24 @@ class GetLindormInstanceResponseBody(TeaModel):
         # Maintainable start time.
         self.maintain_start_time = maintain_start_time
         # Multi-zone combinations. For support details on zone combinations, please refer to the product page.
-        # - **ap-southeast-5abc-aliyun**: Indonesia (Jakarta) A+B+C. - **cn-hangzhou-ehi-aliyun**: East China 1 (Hangzhou) E+H+I. - **cn-beijing-acd-aliyun**: North China 2 (Beijing) A+C+D. - **ap-southeast-1-abc-aliyun**: Singapore A+B+C. - **cn-zhangjiakou-abc-aliyun**: North China 3 (Zhangjiakou) A+B+C. - **cn-shanghai-efg-aliyun**: East China 2 (Shanghai) E+F+G. - **cn-shanghai-abd-aliyun**: East China 2 (Shanghai) A+B+D. - **cn-hangzhou-bef-aliyun**: East China 1 (Hangzhou) B+E+F. - **cn-hangzhou-bce-aliyun**: East China 1 (Hangzhou) B+C+E. - **cn-beijing-fgh-aliyun**: North China 2 (Beijing) F+G+H. - **cn-shenzhen-abc-aliyun**: South China 1 (Shenzhen) A+B+C.
+        # - **ap-southeast-5abc-aliyun**: Indonesia (Jakarta) A+B+C. 
+        # - **cn-hangzhou-ehi-aliyun**: East China 1 (Hangzhou) E+H+I.
+        # - **cn-beijing-acd-aliyun**: North China 2 (Beijing) A+C+D.
+        # - **ap-southeast-1-abc-aliyun**: Singapore A+B+C.
+        # - **cn-zhangjiakou-abc-aliyun**: North China 3 (Zhangjiakou) A+B+C.
+        # - **cn-shanghai-efg-aliyun**: East China 2 (Shanghai) E+F+G.
+        # - **cn-shanghai-abd-aliyun**: East China 2 (Shanghai) A+B+D.
+        # - **cn-hangzhou-bef-aliyun**: East China 1 (Hangzhou) B+E+F.
+        # - **cn-hangzhou-bce-aliyun**: East China 1 (Hangzhou) B+C+E.
+        # - **cn-beijing-fgh-aliyun**: North China 2 (Beijing) F+G+H.
+        # - **cn-shenzhen-abc-aliyun**: South China 1 (Shenzhen) A+B+C.
         self.multi_zone_combination = multi_zone_combination
         # Instance\\"s network type.
         self.network_type = network_type
-        # 400
+        # The billing method of the instance. Valid values:
+        # 
+        # PREPAY: subscription.
+        # POSTPAY: pay-as-you-go.
         self.pay_type = pay_type
         # Multi-zone instance, the virtual switch ID of the primary availability zone, which must be in the availability zone corresponding to PrimaryZoneId.
         self.primary_vswitch_id = primary_vswitch_id
@@ -5706,7 +5816,11 @@ class GetLindormInstanceResponseBody(TeaModel):
         # Resource group ID.
         self.resource_group_id = resource_group_id
         # Instance type, valid values:
-        # - **lindorm**：represents a Lindorm single-zone instance. - **lindorm_multizone**：represents a Lindorm multi-zone instance. - **serverless_lindorm**：represents a Lindorm Serverless instance. - **lindorm_standalone**：represents a Lindorm standalone instance. - **lts**：represents the Lindorm Data Channel Service type.
+        # - **lindorm**: represents a Lindorm single-zone instance.
+        # - **lindorm_multizone**: represents a Lindorm multi-zone instance.
+        # - **serverless_lindorm**: represents a Lindorm Serverless instance.
+        # - **lindorm_standalone**: represents a Lindorm standalone instance.
+        # - **lts**: represents the Lindorm Data Channel Service type.
         self.service_type = service_type
         # Multi-zone instance, the virtual switch ID of the backup availability zone, which must be in the availability zone corresponding to StandbyZoneId.
         self.standby_vswitch_id = standby_vswitch_id
@@ -6343,7 +6457,7 @@ class GetLindormInstanceListRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the pages to return,
+        # The number of the page to return.
         self.page_number = page_number
         # The number of instances to return on each page.
         self.page_size = page_size
@@ -6367,11 +6481,11 @@ class GetLindormInstanceListRequest(TeaModel):
         # The engine supported by the instances that you want to query. The engines are indicated by different numbers:
         # 
         # *   **1**: LindormSearch.
-        # *   **2**: LindormTSDB.
-        # *   **4**: LindormTable.
-        # *   **8**: LindormDFS.
+        # *   **2**: LindormTSDB
+        # *   **4**: LindormTable
+        # *   **8**: LindormDFS
         # 
-        # > The value of this parameter is the sum of all numbers that indicate the engines supported by the instance. For example, if you set the value of this parameter to 15, which is the sum of 1, 2, 4, and 8, this operation queries instances that support all four engines. If you set the value of this parameter to 6, which is the sum of 2 and 4, this operation queries instances that support LindormTSDB and LindormTable.
+        # >  The value of this parameter is the sum of all numbers that indicate the engines supported by the instance. For example, if you set the value of this parameter to 15, which is the sum of 1, 2, 4, and 8, this operation queries instances that support all four engines. If you set the value of this parameter to 6, which is the sum of 2 and 4, this operation queries instances that support LindormTSDB and LindormTable.
         self.support_engine = support_engine
         # The list of tags associated with the specified instances.
         self.tag = tag
@@ -6536,6 +6650,9 @@ class GetLindormInstanceListResponseBodyInstanceList(TeaModel):
         # Indicates whether the message engine is enabled, returning:
         # - **true**: Enabled. - **false**: Not enabled.
         self.enable_message = enable_message
+        # Indicates whether the table 3.0 storage engine is enabled, returning:
+        # 
+        # true: Enabled. - false: Not enabled.
         self.enable_row = enable_row
         # Indicates whether the Lindorm streaming engine is activated for the instance. Valid values:
         # 
@@ -6748,7 +6865,7 @@ class GetLindormInstanceListResponseBody(TeaModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The list of instance.
+        # The instances.
         self.instance_list = instance_list
         # The number of returned pages.
         self.page_number = page_number
@@ -7172,6 +7289,8 @@ class GetLindormV2InstanceResponseBody(TeaModel):
     def __init__(
         self,
         ali_uid: int = None,
+        arbiter_vswitch_id: str = None,
+        arbiter_zone_id: str = None,
         auto_renew: bool = None,
         cold_storage: int = None,
         create_milliseconds: int = None,
@@ -7191,10 +7310,14 @@ class GetLindormV2InstanceResponseBody(TeaModel):
         maintain_start_time: str = None,
         network_type: str = None,
         pay_type: str = None,
+        primary_vswitch_id: str = None,
+        primary_zone_id: str = None,
         region_id: str = None,
         request_id: str = None,
         resource_group_id: str = None,
         service_type: str = None,
+        standby_vswitch_id: str = None,
+        standby_zone_id: str = None,
         storage_usage: GetLindormV2InstanceResponseBodyStorageUsage = None,
         vpc_id: str = None,
         vswitch_id: str = None,
@@ -7203,6 +7326,8 @@ class GetLindormV2InstanceResponseBody(TeaModel):
         zone_id: str = None,
     ):
         self.ali_uid = ali_uid
+        self.arbiter_vswitch_id = arbiter_vswitch_id
+        self.arbiter_zone_id = arbiter_zone_id
         self.auto_renew = auto_renew
         self.cold_storage = cold_storage
         self.create_milliseconds = create_milliseconds
@@ -7222,10 +7347,14 @@ class GetLindormV2InstanceResponseBody(TeaModel):
         self.maintain_start_time = maintain_start_time
         self.network_type = network_type
         self.pay_type = pay_type
+        self.primary_vswitch_id = primary_vswitch_id
+        self.primary_zone_id = primary_zone_id
         self.region_id = region_id
         self.request_id = request_id
         self.resource_group_id = resource_group_id
         self.service_type = service_type
+        self.standby_vswitch_id = standby_vswitch_id
+        self.standby_zone_id = standby_zone_id
         self.storage_usage = storage_usage
         self.vpc_id = vpc_id
         self.vswitch_id = vswitch_id
@@ -7253,6 +7382,10 @@ class GetLindormV2InstanceResponseBody(TeaModel):
         result = dict()
         if self.ali_uid is not None:
             result['AliUid'] = self.ali_uid
+        if self.arbiter_vswitch_id is not None:
+            result['ArbiterVSwitchId'] = self.arbiter_vswitch_id
+        if self.arbiter_zone_id is not None:
+            result['ArbiterZoneId'] = self.arbiter_zone_id
         if self.auto_renew is not None:
             result['AutoRenew'] = self.auto_renew
         if self.cold_storage is not None:
@@ -7293,6 +7426,10 @@ class GetLindormV2InstanceResponseBody(TeaModel):
             result['NetworkType'] = self.network_type
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
+        if self.primary_vswitch_id is not None:
+            result['PrimaryVSwitchId'] = self.primary_vswitch_id
+        if self.primary_zone_id is not None:
+            result['PrimaryZoneId'] = self.primary_zone_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.request_id is not None:
@@ -7301,6 +7438,10 @@ class GetLindormV2InstanceResponseBody(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.service_type is not None:
             result['ServiceType'] = self.service_type
+        if self.standby_vswitch_id is not None:
+            result['StandbyVSwitchId'] = self.standby_vswitch_id
+        if self.standby_zone_id is not None:
+            result['StandbyZoneId'] = self.standby_zone_id
         if self.storage_usage is not None:
             result['StorageUsage'] = self.storage_usage.to_map()
         if self.vpc_id is not None:
@@ -7321,6 +7462,10 @@ class GetLindormV2InstanceResponseBody(TeaModel):
         m = m or dict()
         if m.get('AliUid') is not None:
             self.ali_uid = m.get('AliUid')
+        if m.get('ArbiterVSwitchId') is not None:
+            self.arbiter_vswitch_id = m.get('ArbiterVSwitchId')
+        if m.get('ArbiterZoneId') is not None:
+            self.arbiter_zone_id = m.get('ArbiterZoneId')
         if m.get('AutoRenew') is not None:
             self.auto_renew = m.get('AutoRenew')
         if m.get('ColdStorage') is not None:
@@ -7362,6 +7507,10 @@ class GetLindormV2InstanceResponseBody(TeaModel):
             self.network_type = m.get('NetworkType')
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
+        if m.get('PrimaryVSwitchId') is not None:
+            self.primary_vswitch_id = m.get('PrimaryVSwitchId')
+        if m.get('PrimaryZoneId') is not None:
+            self.primary_zone_id = m.get('PrimaryZoneId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('RequestId') is not None:
@@ -7370,6 +7519,10 @@ class GetLindormV2InstanceResponseBody(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ServiceType') is not None:
             self.service_type = m.get('ServiceType')
+        if m.get('StandbyVSwitchId') is not None:
+            self.standby_vswitch_id = m.get('StandbyVSwitchId')
+        if m.get('StandbyZoneId') is not None:
+            self.standby_zone_id = m.get('StandbyZoneId')
         if m.get('StorageUsage') is not None:
             temp_model = GetLindormV2InstanceResponseBodyStorageUsage()
             self.storage_usage = temp_model.from_map(m['StorageUsage'])
