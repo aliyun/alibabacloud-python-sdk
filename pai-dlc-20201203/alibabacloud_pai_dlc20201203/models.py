@@ -190,6 +190,33 @@ class AssumeUserInfo(TeaModel):
         return self
 
 
+class AutoScalingSpec(TeaModel):
+    def __init__(
+        self,
+        scaling_strategy: str = None,
+    ):
+        self.scaling_strategy = scaling_strategy
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scaling_strategy is not None:
+            result['ScalingStrategy'] = self.scaling_strategy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ScalingStrategy') is not None:
+            self.scaling_strategy = m.get('ScalingStrategy')
+        return self
+
+
 class CodeSourceItem(TeaModel):
     def __init__(
         self,
@@ -1931,6 +1958,45 @@ class JobItemUserVpc(TeaModel):
         return self
 
 
+class LocalMountSpec(TeaModel):
+    def __init__(
+        self,
+        local_path: str = None,
+        mount_mode: str = None,
+        mount_path: str = None,
+    ):
+        self.local_path = local_path
+        self.mount_mode = mount_mode
+        self.mount_path = mount_path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.local_path is not None:
+            result['LocalPath'] = self.local_path
+        if self.mount_mode is not None:
+            result['MountMode'] = self.mount_mode
+        if self.mount_path is not None:
+            result['MountPath'] = self.mount_path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LocalPath') is not None:
+            self.local_path = m.get('LocalPath')
+        if m.get('MountMode') is not None:
+            self.mount_mode = m.get('MountMode')
+        if m.get('MountPath') is not None:
+            self.mount_path = m.get('MountPath')
+        return self
+
+
 class ResourceConfig(TeaModel):
     def __init__(
         self,
@@ -1982,6 +2048,45 @@ class ResourceConfig(TeaModel):
         return self
 
 
+class ServiceSpec(TeaModel):
+    def __init__(
+        self,
+        default_port: int = None,
+        extra_ports: int = None,
+        service_mode: str = None,
+    ):
+        self.default_port = default_port
+        self.extra_ports = extra_ports
+        self.service_mode = service_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.default_port is not None:
+            result['DefaultPort'] = self.default_port
+        if self.extra_ports is not None:
+            result['ExtraPorts'] = self.extra_ports
+        if self.service_mode is not None:
+            result['ServiceMode'] = self.service_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DefaultPort') is not None:
+            self.default_port = m.get('DefaultPort')
+        if m.get('ExtraPorts') is not None:
+            self.extra_ports = m.get('ExtraPorts')
+        if m.get('ServiceMode') is not None:
+            self.service_mode = m.get('ServiceMode')
+        return self
+
+
 class SpotSpec(TeaModel):
     def __init__(
         self,
@@ -2025,23 +2130,33 @@ class JobSpec(TeaModel):
     def __init__(
         self,
         assign_node_spec: AssignNodeSpec = None,
+        auto_scaling_spec: AutoScalingSpec = None,
         ecs_spec: str = None,
         extra_pod_spec: ExtraPodSpec = None,
         image: str = None,
         image_config: ImageConfig = None,
+        is_cheif: bool = None,
+        local_mount_specs: List[LocalMountSpec] = None,
         pod_count: int = None,
         resource_config: ResourceConfig = None,
+        restart_policy: str = None,
+        service_spec: ServiceSpec = None,
         spot_spec: SpotSpec = None,
         type: str = None,
         use_spot_instance: bool = None,
     ):
         self.assign_node_spec = assign_node_spec
+        self.auto_scaling_spec = auto_scaling_spec
         self.ecs_spec = ecs_spec
         self.extra_pod_spec = extra_pod_spec
         self.image = image
         self.image_config = image_config
+        self.is_cheif = is_cheif
+        self.local_mount_specs = local_mount_specs
         self.pod_count = pod_count
         self.resource_config = resource_config
+        self.restart_policy = restart_policy
+        self.service_spec = service_spec
         self.spot_spec = spot_spec
         self.type = type
         self.use_spot_instance = use_spot_instance
@@ -2049,12 +2164,20 @@ class JobSpec(TeaModel):
     def validate(self):
         if self.assign_node_spec:
             self.assign_node_spec.validate()
+        if self.auto_scaling_spec:
+            self.auto_scaling_spec.validate()
         if self.extra_pod_spec:
             self.extra_pod_spec.validate()
         if self.image_config:
             self.image_config.validate()
+        if self.local_mount_specs:
+            for k in self.local_mount_specs:
+                if k:
+                    k.validate()
         if self.resource_config:
             self.resource_config.validate()
+        if self.service_spec:
+            self.service_spec.validate()
         if self.spot_spec:
             self.spot_spec.validate()
 
@@ -2066,6 +2189,8 @@ class JobSpec(TeaModel):
         result = dict()
         if self.assign_node_spec is not None:
             result['AssignNodeSpec'] = self.assign_node_spec.to_map()
+        if self.auto_scaling_spec is not None:
+            result['AutoScalingSpec'] = self.auto_scaling_spec.to_map()
         if self.ecs_spec is not None:
             result['EcsSpec'] = self.ecs_spec
         if self.extra_pod_spec is not None:
@@ -2074,10 +2199,20 @@ class JobSpec(TeaModel):
             result['Image'] = self.image
         if self.image_config is not None:
             result['ImageConfig'] = self.image_config.to_map()
+        if self.is_cheif is not None:
+            result['IsCheif'] = self.is_cheif
+        result['LocalMountSpecs'] = []
+        if self.local_mount_specs is not None:
+            for k in self.local_mount_specs:
+                result['LocalMountSpecs'].append(k.to_map() if k else None)
         if self.pod_count is not None:
             result['PodCount'] = self.pod_count
         if self.resource_config is not None:
             result['ResourceConfig'] = self.resource_config.to_map()
+        if self.restart_policy is not None:
+            result['RestartPolicy'] = self.restart_policy
+        if self.service_spec is not None:
+            result['ServiceSpec'] = self.service_spec.to_map()
         if self.spot_spec is not None:
             result['SpotSpec'] = self.spot_spec.to_map()
         if self.type is not None:
@@ -2091,6 +2226,9 @@ class JobSpec(TeaModel):
         if m.get('AssignNodeSpec') is not None:
             temp_model = AssignNodeSpec()
             self.assign_node_spec = temp_model.from_map(m['AssignNodeSpec'])
+        if m.get('AutoScalingSpec') is not None:
+            temp_model = AutoScalingSpec()
+            self.auto_scaling_spec = temp_model.from_map(m['AutoScalingSpec'])
         if m.get('EcsSpec') is not None:
             self.ecs_spec = m.get('EcsSpec')
         if m.get('ExtraPodSpec') is not None:
@@ -2101,11 +2239,23 @@ class JobSpec(TeaModel):
         if m.get('ImageConfig') is not None:
             temp_model = ImageConfig()
             self.image_config = temp_model.from_map(m['ImageConfig'])
+        if m.get('IsCheif') is not None:
+            self.is_cheif = m.get('IsCheif')
+        self.local_mount_specs = []
+        if m.get('LocalMountSpecs') is not None:
+            for k in m.get('LocalMountSpecs'):
+                temp_model = LocalMountSpec()
+                self.local_mount_specs.append(temp_model.from_map(k))
         if m.get('PodCount') is not None:
             self.pod_count = m.get('PodCount')
         if m.get('ResourceConfig') is not None:
             temp_model = ResourceConfig()
             self.resource_config = temp_model.from_map(m['ResourceConfig'])
+        if m.get('RestartPolicy') is not None:
+            self.restart_policy = m.get('RestartPolicy')
+        if m.get('ServiceSpec') is not None:
+            temp_model = ServiceSpec()
+            self.service_spec = temp_model.from_map(m['ServiceSpec'])
         if m.get('SpotSpec') is not None:
             temp_model = SpotSpec()
             self.spot_spec = temp_model.from_map(m['SpotSpec'])
@@ -2215,6 +2365,7 @@ class JobSettings(TeaModel):
     def __init__(
         self,
         advanced_settings: Dict[str, Any] = None,
+        allocate_all_rdmadevices: bool = None,
         business_user_id: str = None,
         caller: str = None,
         disable_ecs_stock_check: bool = None,
@@ -2234,6 +2385,7 @@ class JobSettings(TeaModel):
         tags: Dict[str, str] = None,
     ):
         self.advanced_settings = advanced_settings
+        self.allocate_all_rdmadevices = allocate_all_rdmadevices
         self.business_user_id = business_user_id
         self.caller = caller
         self.disable_ecs_stock_check = disable_ecs_stock_check
@@ -2263,6 +2415,8 @@ class JobSettings(TeaModel):
         result = dict()
         if self.advanced_settings is not None:
             result['AdvancedSettings'] = self.advanced_settings
+        if self.allocate_all_rdmadevices is not None:
+            result['AllocateAllRDMADevices'] = self.allocate_all_rdmadevices
         if self.business_user_id is not None:
             result['BusinessUserId'] = self.business_user_id
         if self.caller is not None:
@@ -2303,6 +2457,8 @@ class JobSettings(TeaModel):
         m = m or dict()
         if m.get('AdvancedSettings') is not None:
             self.advanced_settings = m.get('AdvancedSettings')
+        if m.get('AllocateAllRDMADevices') is not None:
+            self.allocate_all_rdmadevices = m.get('AllocateAllRDMADevices')
         if m.get('BusinessUserId') is not None:
             self.business_user_id = m.get('BusinessUserId')
         if m.get('Caller') is not None:
@@ -3349,18 +3505,57 @@ class SeccompProfile(TeaModel):
         return self
 
 
+class SecurityContextCapabilities(TeaModel):
+    def __init__(
+        self,
+        add: List[str] = None,
+        drop: List[str] = None,
+    ):
+        self.add = add
+        self.drop = drop
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.add is not None:
+            result['Add'] = self.add
+        if self.drop is not None:
+            result['Drop'] = self.drop
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Add') is not None:
+            self.add = m.get('Add')
+        if m.get('Drop') is not None:
+            self.drop = m.get('Drop')
+        return self
+
+
 class SecurityContext(TeaModel):
     def __init__(
         self,
+        capabilities: SecurityContextCapabilities = None,
+        privileged: bool = None,
         run_as_group: int = None,
         run_as_user: int = None,
         seccomp_profile: SeccompProfile = None,
     ):
+        self.capabilities = capabilities
+        self.privileged = privileged
         self.run_as_group = run_as_group
         self.run_as_user = run_as_user
         self.seccomp_profile = seccomp_profile
 
     def validate(self):
+        if self.capabilities:
+            self.capabilities.validate()
         if self.seccomp_profile:
             self.seccomp_profile.validate()
 
@@ -3370,6 +3565,10 @@ class SecurityContext(TeaModel):
             return _map
 
         result = dict()
+        if self.capabilities is not None:
+            result['Capabilities'] = self.capabilities.to_map()
+        if self.privileged is not None:
+            result['Privileged'] = self.privileged
         if self.run_as_group is not None:
             result['RunAsGroup'] = self.run_as_group
         if self.run_as_user is not None:
@@ -3380,6 +3579,11 @@ class SecurityContext(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Capabilities') is not None:
+            temp_model = SecurityContextCapabilities()
+            self.capabilities = temp_model.from_map(m['Capabilities'])
+        if m.get('Privileged') is not None:
+            self.privileged = m.get('Privileged')
         if m.get('RunAsGroup') is not None:
             self.run_as_group = m.get('RunAsGroup')
         if m.get('RunAsUser') is not None:
