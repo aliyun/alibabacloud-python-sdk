@@ -8697,8 +8697,10 @@ class RunVideoAnalysisRequestVideoCaptionInfoVideoCaptions(TeaModel):
 class RunVideoAnalysisRequestVideoCaptionInfo(TeaModel):
     def __init__(
         self,
+        video_caption_file_url: str = None,
         video_captions: List[RunVideoAnalysisRequestVideoCaptionInfoVideoCaptions] = None,
     ):
+        self.video_caption_file_url = video_caption_file_url
         self.video_captions = video_captions
 
     def validate(self):
@@ -8713,6 +8715,8 @@ class RunVideoAnalysisRequestVideoCaptionInfo(TeaModel):
             return _map
 
         result = dict()
+        if self.video_caption_file_url is not None:
+            result['videoCaptionFileUrl'] = self.video_caption_file_url
         result['videoCaptions'] = []
         if self.video_captions is not None:
             for k in self.video_captions:
@@ -8721,6 +8725,8 @@ class RunVideoAnalysisRequestVideoCaptionInfo(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('videoCaptionFileUrl') is not None:
+            self.video_caption_file_url = m.get('videoCaptionFileUrl')
         self.video_captions = []
         if m.get('videoCaptions') is not None:
             for k in m.get('videoCaptions'):
@@ -11122,8 +11128,10 @@ class SubmitVideoAnalysisTaskRequestVideoCaptionInfoVideoCaptions(TeaModel):
 class SubmitVideoAnalysisTaskRequestVideoCaptionInfo(TeaModel):
     def __init__(
         self,
+        video_caption_file_url: str = None,
         video_captions: List[SubmitVideoAnalysisTaskRequestVideoCaptionInfoVideoCaptions] = None,
     ):
+        self.video_caption_file_url = video_caption_file_url
         self.video_captions = video_captions
 
     def validate(self):
@@ -11138,6 +11146,8 @@ class SubmitVideoAnalysisTaskRequestVideoCaptionInfo(TeaModel):
             return _map
 
         result = dict()
+        if self.video_caption_file_url is not None:
+            result['videoCaptionFileUrl'] = self.video_caption_file_url
         result['videoCaptions'] = []
         if self.video_captions is not None:
             for k in self.video_captions:
@@ -11146,6 +11156,8 @@ class SubmitVideoAnalysisTaskRequestVideoCaptionInfo(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('videoCaptionFileUrl') is not None:
+            self.video_caption_file_url = m.get('videoCaptionFileUrl')
         self.video_captions = []
         if m.get('videoCaptions') is not None:
             for k in m.get('videoCaptions'):

@@ -1,3 +1,8 @@
+2025-05-20 Version: 2.8.1
+- Update API RunVideoAnalysis: add request parameters videoCaptionInfo.videoCaptionFileUrl.
+- Update API SubmitVideoAnalysisTask: add request parameters videoCaptionInfo.videoCaptionFileUrl.
+
+
 2025-05-15 Version: 2.8.0
 - Support API ListAnalysisTagDetailByTaskId.
 - Support API UpdateVideoAnalysisTask.
