@@ -3,6 +3,11 @@
 - Update API DescribeNetworkAcls: add response parameters Body.NetworkAcls.$.IngressAclEntries.$.DestinationCidrBlock.
 
 
+2025-05-20 Version: 9.0.7
+- Update API CreateNetworkAclEntry: add request parameters DestinationCidrBlock.
+- Update API DescribeNetworkAcls: add response parameters Body.NetworkAcls.$.IngressAclEntries.$.DestinationCidrBlock.
+
+
 2025-05-08 Version: 9.0.6
 - Update API CreateARMServerInstances: add request parameters Tag.
 - Update API CreateDisk: add request parameters InstanceBillingCycle.
