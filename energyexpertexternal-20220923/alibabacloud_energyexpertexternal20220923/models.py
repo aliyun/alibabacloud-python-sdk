@@ -55,6 +55,431 @@ class CarbonEmissionElecSummaryItem(TeaModel):
         return self
 
 
+class ChatRefDocPostion(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['x'] = self.x
+        if self.y is not None:
+            result['y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('x') is not None:
+            self.x = m.get('x')
+        if m.get('y') is not None:
+            self.y = m.get('y')
+        return self
+
+
+class ChatDocumentPageNum(TeaModel):
+    def __init__(
+        self,
+        num: int = None,
+        pos: List[List[ChatRefDocPostion]] = None,
+    ):
+        self.num = num
+        self.pos = pos
+
+    def validate(self):
+        if self.pos:
+            for k in self.pos:
+                for k1 in k:
+                    if k1:
+                        k1.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.num is not None:
+            result['num'] = self.num
+        result['pos'] = []
+        if self.pos is not None:
+            for k in self.pos:
+                l1 = []
+                for k1 in k:
+                    l1.append(k1.to_map() if k1 else None)
+                result['pos'].append(l1)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('num') is not None:
+            self.num = m.get('num')
+        self.pos = []
+        if m.get('pos') is not None:
+            for k in m.get('pos'):
+                l1 = []
+                for k1 in k:
+                    temp_model = ChatRefDocPostion()
+                    l1.append(temp_model.from_map(k1))
+                self.pos.append(l1)
+        return self
+
+
+class ChatRefDocPageInfo(TeaModel):
+    def __init__(
+        self,
+        angle: float = None,
+        excel_parse_result: str = None,
+        image_height: int = None,
+        image_url: str = None,
+        image_width: int = None,
+        page_id_cur_doc: int = None,
+        pdf_parse_result: str = None,
+        word_parse_result: str = None,
+    ):
+        self.angle = angle
+        self.excel_parse_result = excel_parse_result
+        self.image_height = image_height
+        self.image_url = image_url
+        self.image_width = image_width
+        self.page_id_cur_doc = page_id_cur_doc
+        self.pdf_parse_result = pdf_parse_result
+        self.word_parse_result = word_parse_result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.angle is not None:
+            result['angle'] = self.angle
+        if self.excel_parse_result is not None:
+            result['excelParseResult'] = self.excel_parse_result
+        if self.image_height is not None:
+            result['imageHeight'] = self.image_height
+        if self.image_url is not None:
+            result['imageUrl'] = self.image_url
+        if self.image_width is not None:
+            result['imageWidth'] = self.image_width
+        if self.page_id_cur_doc is not None:
+            result['pageIdCurDoc'] = self.page_id_cur_doc
+        if self.pdf_parse_result is not None:
+            result['pdfParseResult'] = self.pdf_parse_result
+        if self.word_parse_result is not None:
+            result['wordParseResult'] = self.word_parse_result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('angle') is not None:
+            self.angle = m.get('angle')
+        if m.get('excelParseResult') is not None:
+            self.excel_parse_result = m.get('excelParseResult')
+        if m.get('imageHeight') is not None:
+            self.image_height = m.get('imageHeight')
+        if m.get('imageUrl') is not None:
+            self.image_url = m.get('imageUrl')
+        if m.get('imageWidth') is not None:
+            self.image_width = m.get('imageWidth')
+        if m.get('pageIdCurDoc') is not None:
+            self.page_id_cur_doc = m.get('pageIdCurDoc')
+        if m.get('pdfParseResult') is not None:
+            self.pdf_parse_result = m.get('pdfParseResult')
+        if m.get('wordParseResult') is not None:
+            self.word_parse_result = m.get('wordParseResult')
+        return self
+
+
+class ChatRefDocInfo(TeaModel):
+    def __init__(
+        self,
+        page_list_info: List[ChatRefDocPageInfo] = None,
+        pages: int = None,
+    ):
+        self.page_list_info = page_list_info
+        self.pages = pages
+
+    def validate(self):
+        if self.page_list_info:
+            for k in self.page_list_info:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['pageListInfo'] = []
+        if self.page_list_info is not None:
+            for k in self.page_list_info:
+                result['pageListInfo'].append(k.to_map() if k else None)
+        if self.pages is not None:
+            result['pages'] = self.pages
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.page_list_info = []
+        if m.get('pageListInfo') is not None:
+            for k in m.get('pageListInfo'):
+                temp_model = ChatRefDocPageInfo()
+                self.page_list_info.append(temp_model.from_map(k))
+        if m.get('pages') is not None:
+            self.pages = m.get('pages')
+        return self
+
+
+class ChatRefDocItem(TeaModel):
+    def __init__(
+        self,
+        doc_info: ChatRefDocInfo = None,
+        doc_name: str = None,
+        doc_url: str = None,
+        origin_doc_name: str = None,
+        origin_doc_url: str = None,
+        page_num: List[ChatDocumentPageNum] = None,
+        source_type: str = None,
+    ):
+        self.doc_info = doc_info
+        self.doc_name = doc_name
+        self.doc_url = doc_url
+        self.origin_doc_name = origin_doc_name
+        self.origin_doc_url = origin_doc_url
+        self.page_num = page_num
+        self.source_type = source_type
+
+    def validate(self):
+        if self.doc_info:
+            self.doc_info.validate()
+        if self.page_num:
+            for k in self.page_num:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.doc_info is not None:
+            result['docInfo'] = self.doc_info.to_map()
+        if self.doc_name is not None:
+            result['docName'] = self.doc_name
+        if self.doc_url is not None:
+            result['docUrl'] = self.doc_url
+        if self.origin_doc_name is not None:
+            result['originDocName'] = self.origin_doc_name
+        if self.origin_doc_url is not None:
+            result['originDocUrl'] = self.origin_doc_url
+        result['pageNum'] = []
+        if self.page_num is not None:
+            for k in self.page_num:
+                result['pageNum'].append(k.to_map() if k else None)
+        if self.source_type is not None:
+            result['sourceType'] = self.source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('docInfo') is not None:
+            temp_model = ChatRefDocInfo()
+            self.doc_info = temp_model.from_map(m['docInfo'])
+        if m.get('docName') is not None:
+            self.doc_name = m.get('docName')
+        if m.get('docUrl') is not None:
+            self.doc_url = m.get('docUrl')
+        if m.get('originDocName') is not None:
+            self.origin_doc_name = m.get('originDocName')
+        if m.get('originDocUrl') is not None:
+            self.origin_doc_url = m.get('originDocUrl')
+        self.page_num = []
+        if m.get('pageNum') is not None:
+            for k in m.get('pageNum'):
+                temp_model = ChatDocumentPageNum()
+                self.page_num.append(temp_model.from_map(k))
+        if m.get('sourceType') is not None:
+            self.source_type = m.get('sourceType')
+        return self
+
+
+class ChatItem(TeaModel):
+    def __init__(
+        self,
+        answer: str = None,
+        create_time: int = None,
+        folder_id: str = None,
+        folder_name: str = None,
+        question: str = None,
+        ref_doc_list: List[ChatRefDocItem] = None,
+    ):
+        self.answer = answer
+        self.create_time = create_time
+        self.folder_id = folder_id
+        self.folder_name = folder_name
+        self.question = question
+        self.ref_doc_list = ref_doc_list
+
+    def validate(self):
+        if self.ref_doc_list:
+            for k in self.ref_doc_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.answer is not None:
+            result['answer'] = self.answer
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.folder_id is not None:
+            result['folderId'] = self.folder_id
+        if self.folder_name is not None:
+            result['folderName'] = self.folder_name
+        if self.question is not None:
+            result['question'] = self.question
+        result['refDocList'] = []
+        if self.ref_doc_list is not None:
+            for k in self.ref_doc_list:
+                result['refDocList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('answer') is not None:
+            self.answer = m.get('answer')
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('folderId') is not None:
+            self.folder_id = m.get('folderId')
+        if m.get('folderName') is not None:
+            self.folder_name = m.get('folderName')
+        if m.get('question') is not None:
+            self.question = m.get('question')
+        self.ref_doc_list = []
+        if m.get('refDocList') is not None:
+            for k in m.get('refDocList'):
+                temp_model = ChatRefDocItem()
+                self.ref_doc_list.append(temp_model.from_map(k))
+        return self
+
+
+class ChatFolderItem(TeaModel):
+    def __init__(
+        self,
+        folder_id: str = None,
+        folder_name: str = None,
+        sub_folders: List[ChatItem] = None,
+    ):
+        self.folder_id = folder_id
+        self.folder_name = folder_name
+        self.sub_folders = sub_folders
+
+    def validate(self):
+        if self.sub_folders:
+            for k in self.sub_folders:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.folder_id is not None:
+            result['folderId'] = self.folder_id
+        if self.folder_name is not None:
+            result['folderName'] = self.folder_name
+        result['subFolders'] = []
+        if self.sub_folders is not None:
+            for k in self.sub_folders:
+                result['subFolders'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('folderId') is not None:
+            self.folder_id = m.get('folderId')
+        if m.get('folderName') is not None:
+            self.folder_name = m.get('folderName')
+        self.sub_folders = []
+        if m.get('subFolders') is not None:
+            for k in m.get('subFolders'):
+                temp_model = ChatItem()
+                self.sub_folders.append(temp_model.from_map(k))
+        return self
+
+
+class ChatRefDocPageNum(TeaModel):
+    def __init__(
+        self,
+        num: int = None,
+        pos: List[List[ChatRefDocPostion]] = None,
+    ):
+        self.num = num
+        self.pos = pos
+
+    def validate(self):
+        if self.pos:
+            for k in self.pos:
+                for k1 in k:
+                    if k1:
+                        k1.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.num is not None:
+            result['num'] = self.num
+        result['pos'] = []
+        if self.pos is not None:
+            for k in self.pos:
+                l1 = []
+                for k1 in k:
+                    l1.append(k1.to_map() if k1 else None)
+                result['pos'].append(l1)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('num') is not None:
+            self.num = m.get('num')
+        self.pos = []
+        if m.get('pos') is not None:
+            for k in m.get('pos'):
+                l1 = []
+                for k1 in k:
+                    temp_model = ChatRefDocPostion()
+                    l1.append(temp_model.from_map(k1))
+                self.pos.append(l1)
+        return self
+
+
 class ConstituteItemEnvGasEmissions(TeaModel):
     def __init__(
         self,
@@ -1445,6 +1870,277 @@ class BatchUpdateSystemRunningPlanResponse(TeaModel):
         return self
 
 
+class ChatRequest(TeaModel):
+    def __init__(
+        self,
+        question: str = None,
+        session_id: str = None,
+    ):
+        # Q&A content.
+        # 
+        # This parameter is required.
+        self.question = question
+        # - Q&A session ID.
+        # - Historical sessions can be retrieved through GetSessionList.
+        # - A new session can also be created via CreateChatSession.
+        # 
+        # This parameter is required.
+        self.session_id = session_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.question is not None:
+            result['question'] = self.question
+        if self.session_id is not None:
+            result['sessionId'] = self.session_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('question') is not None:
+            self.question = m.get('question')
+        if m.get('sessionId') is not None:
+            self.session_id = m.get('sessionId')
+        return self
+
+
+class ChatResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ChatItem = None,
+        request_id: str = None,
+    ):
+        # Details of the Q&A.
+        self.data = data
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = ChatItem()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ChatResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ChatResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ChatResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateChatSessionRequest(TeaModel):
+    def __init__(
+        self,
+        folder_id: str = None,
+        name: str = None,
+        user_id: str = None,
+    ):
+        # Folder ID, to search for Q&A content within the current folder and its subfolders.
+        # 
+        # This parameter is required.
+        self.folder_id = folder_id
+        # Name of the current session.
+        # 
+        # This parameter is required.
+        self.name = name
+        # The unique identifier of the user. If not provided, the SDK calling account will be used as the user ID by default.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.folder_id is not None:
+            result['folderId'] = self.folder_id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('folderId') is not None:
+            self.folder_id = m.get('folderId')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        return self
+
+
+class CreateChatSessionResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        session_id: str = None,
+    ):
+        # Q&A session ID, used to record multiple Q&A sessions of the same user.
+        self.session_id = session_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.session_id is not None:
+            result['sessionId'] = self.session_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('sessionId') is not None:
+            self.session_id = m.get('sessionId')
+        return self
+
+
+class CreateChatSessionResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: CreateChatSessionResponseBodyData = None,
+        request_id: str = None,
+    ):
+        # Returned data structure.
+        self.data = data
+        # ID of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = CreateChatSessionResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class CreateChatSessionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateChatSessionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateChatSessionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class EditProhibitedDevicesRequestHvacDeviceConfigVOList(TeaModel):
     def __init__(
         self,
@@ -2575,6 +3271,530 @@ class GetCarbonEmissionTrendResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetCarbonEmissionTrendResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetChatFolderListResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[ChatFolderItem] = None,
+        request_id: str = None,
+    ):
+        # Returned data
+        self.data = data
+        # ID of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = ChatFolderItem()
+                self.data.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetChatFolderListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetChatFolderListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetChatFolderListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetChatListRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: str = None,
+        page_size: str = None,
+        session_id: str = None,
+    ):
+        # Pagination parameter, page number, starting from 1.
+        self.current_page = current_page
+        # Page size.
+        self.page_size = page_size
+        # Q&A session ID, used to record multiple Q&As for the same user.
+        # 
+        # This parameter is required.
+        self.session_id = session_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['currentPage'] = self.current_page
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.session_id is not None:
+            result['sessionId'] = self.session_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('currentPage') is not None:
+            self.current_page = m.get('currentPage')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('sessionId') is not None:
+            self.session_id = m.get('sessionId')
+        return self
+
+
+class GetChatListResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        chat_list: List[ChatItem] = None,
+        current_page: int = None,
+        page_size: int = None,
+        total: int = None,
+        total_page: int = None,
+    ):
+        # Q&A list.
+        self.chat_list = chat_list
+        # Current page number.
+        self.current_page = current_page
+        # Page size.
+        self.page_size = page_size
+        # Total number of records.
+        self.total = total
+        # Total number of pages.
+        self.total_page = total_page
+
+    def validate(self):
+        if self.chat_list:
+            for k in self.chat_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['chatList'] = []
+        if self.chat_list is not None:
+            for k in self.chat_list:
+                result['chatList'].append(k.to_map() if k else None)
+        if self.current_page is not None:
+            result['currentPage'] = self.current_page
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.total is not None:
+            result['total'] = self.total
+        if self.total_page is not None:
+            result['totalPage'] = self.total_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.chat_list = []
+        if m.get('chatList') is not None:
+            for k in m.get('chatList'):
+                temp_model = ChatItem()
+                self.chat_list.append(temp_model.from_map(k))
+        if m.get('currentPage') is not None:
+            self.current_page = m.get('currentPage')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        if m.get('totalPage') is not None:
+            self.total_page = m.get('totalPage')
+        return self
+
+
+class GetChatListResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetChatListResponseBodyData = None,
+        request_id: str = None,
+    ):
+        # Returned data structure.
+        self.data = data
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = GetChatListResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetChatListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetChatListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetChatListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetChatSessionListRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        name: str = None,
+        page_size: int = None,
+        user_id: str = None,
+    ):
+        # Pagination parameter, page number, default is 1.
+        self.current_page = current_page
+        # Session name.
+        self.name = name
+        # Page size, default is 10.
+        self.page_size = page_size
+        # The unique identifier of the user. If not provided, the SDK calling account will be used as the user ID by default.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['currentPage'] = self.current_page
+        if self.name is not None:
+            result['name'] = self.name
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('currentPage') is not None:
+            self.current_page = m.get('currentPage')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        return self
+
+
+class GetChatSessionListResponseBodyDataSessionList(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        folder_id: str = None,
+        name: str = None,
+        session_id: str = None,
+        update_time: int = None,
+        user_id: str = None,
+    ):
+        # Report creation timestamp, in milliseconds.
+        self.create_time = create_time
+        # Folder ID, used to specify the scope of documents to be queried.
+        self.folder_id = folder_id
+        # Session name
+        self.name = name
+        # Q&A session ID, used to record multiple Q&As of the same user.
+        self.session_id = session_id
+        # Modification time, in milliseconds.
+        self.update_time = update_time
+        # User ID of the current session.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.folder_id is not None:
+            result['folderId'] = self.folder_id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.session_id is not None:
+            result['sessionId'] = self.session_id
+        if self.update_time is not None:
+            result['updateTime'] = self.update_time
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('folderId') is not None:
+            self.folder_id = m.get('folderId')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('sessionId') is not None:
+            self.session_id = m.get('sessionId')
+        if m.get('updateTime') is not None:
+            self.update_time = m.get('updateTime')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        return self
+
+
+class GetChatSessionListResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        page_size: int = None,
+        session_list: List[GetChatSessionListResponseBodyDataSessionList] = None,
+        total: int = None,
+        total_page: int = None,
+    ):
+        # Current page number.
+        self.current_page = current_page
+        # 分页大小。
+        self.page_size = page_size
+        # Session list.
+        self.session_list = session_list
+        # Total number of records.
+        self.total = total
+        # Total number of pages
+        self.total_page = total_page
+
+    def validate(self):
+        if self.session_list:
+            for k in self.session_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['currentPage'] = self.current_page
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        result['sessionList'] = []
+        if self.session_list is not None:
+            for k in self.session_list:
+                result['sessionList'].append(k.to_map() if k else None)
+        if self.total is not None:
+            result['total'] = self.total
+        if self.total_page is not None:
+            result['totalPage'] = self.total_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('currentPage') is not None:
+            self.current_page = m.get('currentPage')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        self.session_list = []
+        if m.get('sessionList') is not None:
+            for k in m.get('sessionList'):
+                temp_model = GetChatSessionListResponseBodyDataSessionList()
+                self.session_list.append(temp_model.from_map(k))
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        if m.get('totalPage') is not None:
+            self.total_page = m.get('totalPage')
+        return self
+
+
+class GetChatSessionListResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetChatSessionListResponseBodyData = None,
+        request_id: str = None,
+    ):
+        # Returned data
+        self.data = data
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = GetChatSessionListResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetChatSessionListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetChatSessionListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetChatSessionListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

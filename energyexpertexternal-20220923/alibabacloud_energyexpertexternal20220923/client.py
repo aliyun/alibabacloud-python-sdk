@@ -581,6 +581,242 @@ class Client(OpenApiClient):
         headers = {}
         return await self.batch_update_system_running_plan_with_options_async(request, headers, runtime)
 
+    def chat_with_options(
+        self,
+        request: energy_expert_external_20220923_models.ChatRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.ChatResponse:
+        """
+        @summary Knowledge Base Q\\&A
+        
+        @description - The interface provides Q&A services within the scope of the selected directory in the session.
+        - The sessionId information is obtained through GetChatSessionList.
+        - You can also create a new session via the CreateChatSession interface.
+        
+        @param request: ChatRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChatResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.question):
+            body['question'] = request.question
+        if not UtilClient.is_unset(request.session_id):
+            body['sessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='Chat',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v2/aidoc/document/chat',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.ChatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def chat_with_options_async(
+        self,
+        request: energy_expert_external_20220923_models.ChatRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.ChatResponse:
+        """
+        @summary Knowledge Base Q\\&A
+        
+        @description - The interface provides Q&A services within the scope of the selected directory in the session.
+        - The sessionId information is obtained through GetChatSessionList.
+        - You can also create a new session via the CreateChatSession interface.
+        
+        @param request: ChatRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChatResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.question):
+            body['question'] = request.question
+        if not UtilClient.is_unset(request.session_id):
+            body['sessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='Chat',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v2/aidoc/document/chat',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.ChatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def chat(
+        self,
+        request: energy_expert_external_20220923_models.ChatRequest,
+    ) -> energy_expert_external_20220923_models.ChatResponse:
+        """
+        @summary Knowledge Base Q\\&A
+        
+        @description - The interface provides Q&A services within the scope of the selected directory in the session.
+        - The sessionId information is obtained through GetChatSessionList.
+        - You can also create a new session via the CreateChatSession interface.
+        
+        @param request: ChatRequest
+        @return: ChatResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.chat_with_options(request, headers, runtime)
+
+    async def chat_async(
+        self,
+        request: energy_expert_external_20220923_models.ChatRequest,
+    ) -> energy_expert_external_20220923_models.ChatResponse:
+        """
+        @summary Knowledge Base Q\\&A
+        
+        @description - The interface provides Q&A services within the scope of the selected directory in the session.
+        - The sessionId information is obtained through GetChatSessionList.
+        - You can also create a new session via the CreateChatSession interface.
+        
+        @param request: ChatRequest
+        @return: ChatResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.chat_with_options_async(request, headers, runtime)
+
+    def create_chat_session_with_options(
+        self,
+        request: energy_expert_external_20220923_models.CreateChatSessionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.CreateChatSessionResponse:
+        """
+        @summary Create Q&A Window
+        
+        @param request: CreateChatSessionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateChatSessionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.folder_id):
+            body['folderId'] = request.folder_id
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateChatSession',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v2/aidoc/document/chat/session/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.CreateChatSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_chat_session_with_options_async(
+        self,
+        request: energy_expert_external_20220923_models.CreateChatSessionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.CreateChatSessionResponse:
+        """
+        @summary Create Q&A Window
+        
+        @param request: CreateChatSessionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateChatSessionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.folder_id):
+            body['folderId'] = request.folder_id
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateChatSession',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v2/aidoc/document/chat/session/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.CreateChatSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_chat_session(
+        self,
+        request: energy_expert_external_20220923_models.CreateChatSessionRequest,
+    ) -> energy_expert_external_20220923_models.CreateChatSessionResponse:
+        """
+        @summary Create Q&A Window
+        
+        @param request: CreateChatSessionRequest
+        @return: CreateChatSessionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_chat_session_with_options(request, headers, runtime)
+
+    async def create_chat_session_async(
+        self,
+        request: energy_expert_external_20220923_models.CreateChatSessionRequest,
+    ) -> energy_expert_external_20220923_models.CreateChatSessionResponse:
+        """
+        @summary Create Q&A Window
+        
+        @param request: CreateChatSessionRequest
+        @return: CreateChatSessionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_chat_session_with_options_async(request, headers, runtime)
+
     def edit_prohibited_devices_with_options(
         self,
         request: energy_expert_external_20220923_models.EditProhibitedDevicesRequest,
@@ -1152,6 +1388,332 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_carbon_emission_trend_with_options_async(request, headers, runtime)
+
+    def get_chat_folder_list_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.GetChatFolderListResponse:
+        """
+        @summary Get Q&A folder List
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetChatFolderListResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetChatFolderList',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v2/aidoc/document/chat/folder/list',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetChatFolderListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_chat_folder_list_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.GetChatFolderListResponse:
+        """
+        @summary Get Q&A folder List
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetChatFolderListResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetChatFolderList',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v2/aidoc/document/chat/folder/list',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetChatFolderListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_chat_folder_list(self) -> energy_expert_external_20220923_models.GetChatFolderListResponse:
+        """
+        @summary Get Q&A folder List
+        
+        @return: GetChatFolderListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_chat_folder_list_with_options(headers, runtime)
+
+    async def get_chat_folder_list_async(self) -> energy_expert_external_20220923_models.GetChatFolderListResponse:
+        """
+        @summary Get Q&A folder List
+        
+        @return: GetChatFolderListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_chat_folder_list_with_options_async(headers, runtime)
+
+    def get_chat_list_with_options(
+        self,
+        request: energy_expert_external_20220923_models.GetChatListRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.GetChatListResponse:
+        """
+        @summary Retrieve the historical documents of a session
+        
+        @description - This API retrieves the list of historical documents within a session by passing in the session ID.
+        - The sessionId information is obtained through GetChatSessionList.
+        - A new session can also be created using the CreateChatSession interface.
+        
+        @param request: GetChatListRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetChatListResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.current_page):
+            body['currentPage'] = request.current_page
+        if not UtilClient.is_unset(request.page_size):
+            body['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.session_id):
+            body['sessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetChatList',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v2/aidoc/document/chat/list',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetChatListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_chat_list_with_options_async(
+        self,
+        request: energy_expert_external_20220923_models.GetChatListRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.GetChatListResponse:
+        """
+        @summary Retrieve the historical documents of a session
+        
+        @description - This API retrieves the list of historical documents within a session by passing in the session ID.
+        - The sessionId information is obtained through GetChatSessionList.
+        - A new session can also be created using the CreateChatSession interface.
+        
+        @param request: GetChatListRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetChatListResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.current_page):
+            body['currentPage'] = request.current_page
+        if not UtilClient.is_unset(request.page_size):
+            body['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.session_id):
+            body['sessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetChatList',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v2/aidoc/document/chat/list',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetChatListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_chat_list(
+        self,
+        request: energy_expert_external_20220923_models.GetChatListRequest,
+    ) -> energy_expert_external_20220923_models.GetChatListResponse:
+        """
+        @summary Retrieve the historical documents of a session
+        
+        @description - This API retrieves the list of historical documents within a session by passing in the session ID.
+        - The sessionId information is obtained through GetChatSessionList.
+        - A new session can also be created using the CreateChatSession interface.
+        
+        @param request: GetChatListRequest
+        @return: GetChatListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_chat_list_with_options(request, headers, runtime)
+
+    async def get_chat_list_async(
+        self,
+        request: energy_expert_external_20220923_models.GetChatListRequest,
+    ) -> energy_expert_external_20220923_models.GetChatListResponse:
+        """
+        @summary Retrieve the historical documents of a session
+        
+        @description - This API retrieves the list of historical documents within a session by passing in the session ID.
+        - The sessionId information is obtained through GetChatSessionList.
+        - A new session can also be created using the CreateChatSession interface.
+        
+        @param request: GetChatListRequest
+        @return: GetChatListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_chat_list_with_options_async(request, headers, runtime)
+
+    def get_chat_session_list_with_options(
+        self,
+        request: energy_expert_external_20220923_models.GetChatSessionListRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.GetChatSessionListResponse:
+        """
+        @summary Get Q&A Session List
+        
+        @param request: GetChatSessionListRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetChatSessionListResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.current_page):
+            body['currentPage'] = request.current_page
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.page_size):
+            body['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetChatSessionList',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v2/aidoc/document/chat/session/list',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetChatSessionListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_chat_session_list_with_options_async(
+        self,
+        request: energy_expert_external_20220923_models.GetChatSessionListRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.GetChatSessionListResponse:
+        """
+        @summary Get Q&A Session List
+        
+        @param request: GetChatSessionListRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetChatSessionListResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.current_page):
+            body['currentPage'] = request.current_page
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.page_size):
+            body['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetChatSessionList',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v2/aidoc/document/chat/session/list',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetChatSessionListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_chat_session_list(
+        self,
+        request: energy_expert_external_20220923_models.GetChatSessionListRequest,
+    ) -> energy_expert_external_20220923_models.GetChatSessionListResponse:
+        """
+        @summary Get Q&A Session List
+        
+        @param request: GetChatSessionListRequest
+        @return: GetChatSessionListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_chat_session_list_with_options(request, headers, runtime)
+
+    async def get_chat_session_list_async(
+        self,
+        request: energy_expert_external_20220923_models.GetChatSessionListRequest,
+    ) -> energy_expert_external_20220923_models.GetChatSessionListResponse:
+        """
+        @summary Get Q&A Session List
+        
+        @param request: GetChatSessionListRequest
+        @return: GetChatSessionListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_chat_session_list_with_options_async(request, headers, runtime)
 
     def get_data_item_list_with_options(
         self,

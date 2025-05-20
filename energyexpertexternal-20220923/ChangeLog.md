@@ -1,3 +1,11 @@
+2025-05-20 Version: 3.3.0
+- Support API Chat.
+- Support API CreateChatSession.
+- Support API GetChatFolderList.
+- Support API GetChatList.
+- Support API GetChatSessionList.
+
+
 2025-04-18 Version: 3.2.0
 - Support API GetDocExtractionResult.
 - Support API GetDocParsingResult.
