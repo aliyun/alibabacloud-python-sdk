@@ -1,3 +1,7 @@
+2025-05-21 Version: 4.0.1
+- Update API UpdateHttpApi: add request parameters body.onlyChangeConfig.
+
+
 2025-05-21 Version: 4.0.0
 - Support API CreatePluginAttachment.
 - Support API DeletePluginAttachment.

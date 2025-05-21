@@ -6260,6 +6260,8 @@ class Client(OpenApiClient):
             body['enableAuth'] = request.enable_auth
         if not UtilClient.is_unset(request.ingress_config):
             body['ingressConfig'] = request.ingress_config
+        if not UtilClient.is_unset(request.only_change_config):
+            body['onlyChangeConfig'] = request.only_change_config
         if not UtilClient.is_unset(request.protocols):
             body['protocols'] = request.protocols
         if not UtilClient.is_unset(request.version_config):
@@ -6315,6 +6317,8 @@ class Client(OpenApiClient):
             body['enableAuth'] = request.enable_auth
         if not UtilClient.is_unset(request.ingress_config):
             body['ingressConfig'] = request.ingress_config
+        if not UtilClient.is_unset(request.only_change_config):
+            body['onlyChangeConfig'] = request.only_change_config
         if not UtilClient.is_unset(request.protocols):
             body['protocols'] = request.protocols
         if not UtilClient.is_unset(request.version_config):

@@ -16730,6 +16730,7 @@ class UpdateHttpApiRequest(TeaModel):
         description: str = None,
         enable_auth: bool = None,
         ingress_config: UpdateHttpApiRequestIngressConfig = None,
+        only_change_config: bool = None,
         protocols: List[str] = None,
         version_config: HttpApiVersionConfig = None,
     ):
@@ -16749,6 +16750,7 @@ class UpdateHttpApiRequest(TeaModel):
         self.enable_auth = enable_auth
         # The HTTP Ingress API configurations.
         self.ingress_config = ingress_config
+        self.only_change_config = only_change_config
         # The protocols that are used to access the API.
         self.protocols = protocols
         # The versioning configurations.
@@ -16788,6 +16790,8 @@ class UpdateHttpApiRequest(TeaModel):
             result['enableAuth'] = self.enable_auth
         if self.ingress_config is not None:
             result['ingressConfig'] = self.ingress_config.to_map()
+        if self.only_change_config is not None:
+            result['onlyChangeConfig'] = self.only_change_config
         if self.protocols is not None:
             result['protocols'] = self.protocols
         if self.version_config is not None:
@@ -16815,6 +16819,8 @@ class UpdateHttpApiRequest(TeaModel):
         if m.get('ingressConfig') is not None:
             temp_model = UpdateHttpApiRequestIngressConfig()
             self.ingress_config = temp_model.from_map(m['ingressConfig'])
+        if m.get('onlyChangeConfig') is not None:
+            self.only_change_config = m.get('onlyChangeConfig')
         if m.get('protocols') is not None:
             self.protocols = m.get('protocols')
         if m.get('versionConfig') is not None:
