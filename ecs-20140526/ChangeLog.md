@@ -1,3 +1,12 @@
+2025-05-21 Version: 7.0.5
+- Update API CreateNetworkInterface: add request parameters EnhancedNetwork.VirtualFunctionQuantity.
+- Update API CreateNetworkInterface: add request parameters EnhancedNetwork.VirtualFunctionTotalQueueNumber.
+- Update API DescribeNetworkInterfaceAttribute: add response parameters Body.EnhancedNetwork.VirtualFunctionQuantity.
+- Update API DescribeNetworkInterfaceAttribute: add response parameters Body.EnhancedNetwork.VirtualFunctionTotalQueueNumber.
+- Update API ModifyNetworkInterfaceAttribute: add request parameters EnhancedNetwork.VirtualFunctionQuantity.
+- Update API ModifyNetworkInterfaceAttribute: add request parameters EnhancedNetwork.VirtualFunctionTotalQueueNumber.
+
+
 2025-05-16 Version: 7.0.4
 - Update API DescribeSnapshotLinks: add request parameters MaxResults.
 - Update API DescribeSnapshotLinks: add request parameters NextToken.

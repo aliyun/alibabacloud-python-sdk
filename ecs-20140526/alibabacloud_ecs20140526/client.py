@@ -53988,9 +53988,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RunInstancesResponse:
         """
-        @summary Creates Elastic Compute Service (ECS) instances. This operation helps simplify the procedure to create and manage ECS instances. When you call this operation, you can choose to create multiple ECS instances at a time, automatically start the instances, and assign public IP addresses to the instances based on outbound bandwidth parameters. You can also use the features provided by the operation, such as configuring an automatic release time for instances, using a launch template, and configuring custom CPU options, to customize instance configurations for better management of instances.
+        @summary Batch creates Elastic Compute Service (ECS) instances. You can automatically start, assign public IP addresses to, and specify an automatic release time for the instances.
         
-        @description When you create an ECS instance, you are charged for ECS resources, including the [instance type](https://help.aliyun.com/document_detail/25398.html), [image](https://help.aliyun.com/document_detail/179021.html), [block storage](https://help.aliyun.com/document_detail/179022.html), and [public bandwidth](https://help.aliyun.com/document_detail/25411.html). Before you call this operation, familiarize yourself with the billing rules and [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of ECS resources.
+        @description Before you call this operation, familiarize yourself with the billing rules and [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of ECS resources.
         This operation is an asynchronous operation. After a request to create ECS instances is sent, ECS instance IDs are returned but the creation and startup of the instances may be incomplete. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the instances. When the status of an instance is `Running` in the DescribeInstanceStatus response, the instance is created and started.
         ### [](#)Considerations
         If the resource inventory is insufficient to complete instance creation, Alibaba Cloud immediately sends an instance creation failure event (SystemFailure.Delete). You can call the [DescribeInstanceHistoryEvents](https://help.aliyun.com/document_detail/2679897.html) operation to check whether an instance creation failure event exists. For more information, see [System events related to instance creation failures](https://help.aliyun.com/document_detail/2545990.html).
@@ -54045,12 +54045,26 @@ class Client(OpenApiClient):
         InstanceChargeType:"PostPaid",
         SpotStrategy:"SpotAsPriceGo", //Set the bidding policy to SpotAsPriceGo, which specifies that the instances are created as preemptible instances for which the market price at the time of purchase is automatically used as the bid price.
         SpotDuration:1 //Set the protection period of the preemptible instances to 1. Unit: hours.
-        Call the [CreateLaunchTemplate](https://help.aliyun.com/document_detail/2679729.html) operation to create a launch template. Then, use the launch template to create ECS instances in the China (Hangzhou) region. Examples:
+        Use a launch template created by calling the [CreateLaunchTemplate](https://help.aliyun.com/document_detail/2679729.html) operation to create ECS instances in the China (Hangzhou) region. Examples:
         *Example: Create 10 ECS instances based on a launch template**\
         RegionId:"cn-hangzhou", //Set the region ID to cn-hangzhou, which specifies the China (Hangzhou) region.
         Amount:10, //Set the number of ECS instances that you want to create to 10.
         LaunchTemplateId:"lt-bp14xczpoxvb6rre***" //Set the launch template ID to lt-bp14xczpoxvb6rre****.
         >  If a parameter is specified both in the launch template that you reference in a request and in the instance parameters of the same request, the value specified in the instance parameters takes precedence. For example, if you set InstanceChargeType in the launch template to PrePaid (subscription) and set InstanceChargeType in the instance parameters to PostPaid (pay-as-you-go), the created instances are pay-as-you-go instances.
+        *Example: Use a full image (an image that contains the system disk and data disks) to create an ECS instance**\
+        RegionId:"cn-hangzhou", //Set the region ID to cn-hangzhou, which specifies the China (Hangzhou) region.
+        ImageId = m-bp13ohd32cvzpq9e***, //Set the custom image ID to m-bp13ohd32cvzpq9e****.
+        InstanceType = ecs.u1-c1m1.large, //Set the instance type to ecs.u1-c1m1.large.
+        SecurityGroupId = sg-bp10jztp6b0sdsyl***, //Set the security group ID to sg-bp10jztp6b0sdsyl****.
+        VSwitchId = vsw-bp19wo63nleroq22g***, //Set the vSwitch ID to vsw-bp19wo63nleroq22g****.
+        SystemDisk.Size = 50, //Set the size of the system disk in the full image to 50. Unit: GiB.
+        SystemDisk.Category = cloud_auto, //Set the category of the system disk in the full image to cloud_auto, which specifies the ESSD AutoPL disk category.
+        DataDisk.0.Device = /dev/xvdb, //Set the mount point of the data disk in the full image to /dev/xvdb.
+        DataDisk.0.Size = 50, //Set the size of the data disk in the full image to 50. Unit: GiB.
+        DataDisk.0.Category = cloud_essd, //Set the category of the data disk in the full image to cloud_essd, which specifies the ESSD category.
+        DataDisk.1.Device = /dev/xvdc, //Set the mount point of the new data disk to /dev/xvdc. If you want to use a new data disk to replace the data disk in the full image, set DataDisk.1.Device to /dev/xvdb (the default mount point of the data disk in the full image).
+        DataDisk.1.Size = 70, //Set the size of the new data disk to 70. Unit: GiB.
+        DataDisk.1.Category = cloud_auto, //Set the category of the new data disk to cloud_auto, which specifies the ESSD AutoPL disk category.
         
         @param request: RunInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -54239,9 +54253,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RunInstancesResponse:
         """
-        @summary Creates Elastic Compute Service (ECS) instances. This operation helps simplify the procedure to create and manage ECS instances. When you call this operation, you can choose to create multiple ECS instances at a time, automatically start the instances, and assign public IP addresses to the instances based on outbound bandwidth parameters. You can also use the features provided by the operation, such as configuring an automatic release time for instances, using a launch template, and configuring custom CPU options, to customize instance configurations for better management of instances.
+        @summary Batch creates Elastic Compute Service (ECS) instances. You can automatically start, assign public IP addresses to, and specify an automatic release time for the instances.
         
-        @description When you create an ECS instance, you are charged for ECS resources, including the [instance type](https://help.aliyun.com/document_detail/25398.html), [image](https://help.aliyun.com/document_detail/179021.html), [block storage](https://help.aliyun.com/document_detail/179022.html), and [public bandwidth](https://help.aliyun.com/document_detail/25411.html). Before you call this operation, familiarize yourself with the billing rules and [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of ECS resources.
+        @description Before you call this operation, familiarize yourself with the billing rules and [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of ECS resources.
         This operation is an asynchronous operation. After a request to create ECS instances is sent, ECS instance IDs are returned but the creation and startup of the instances may be incomplete. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the instances. When the status of an instance is `Running` in the DescribeInstanceStatus response, the instance is created and started.
         ### [](#)Considerations
         If the resource inventory is insufficient to complete instance creation, Alibaba Cloud immediately sends an instance creation failure event (SystemFailure.Delete). You can call the [DescribeInstanceHistoryEvents](https://help.aliyun.com/document_detail/2679897.html) operation to check whether an instance creation failure event exists. For more information, see [System events related to instance creation failures](https://help.aliyun.com/document_detail/2545990.html).
@@ -54296,12 +54310,26 @@ class Client(OpenApiClient):
         InstanceChargeType:"PostPaid",
         SpotStrategy:"SpotAsPriceGo", //Set the bidding policy to SpotAsPriceGo, which specifies that the instances are created as preemptible instances for which the market price at the time of purchase is automatically used as the bid price.
         SpotDuration:1 //Set the protection period of the preemptible instances to 1. Unit: hours.
-        Call the [CreateLaunchTemplate](https://help.aliyun.com/document_detail/2679729.html) operation to create a launch template. Then, use the launch template to create ECS instances in the China (Hangzhou) region. Examples:
+        Use a launch template created by calling the [CreateLaunchTemplate](https://help.aliyun.com/document_detail/2679729.html) operation to create ECS instances in the China (Hangzhou) region. Examples:
         *Example: Create 10 ECS instances based on a launch template**\
         RegionId:"cn-hangzhou", //Set the region ID to cn-hangzhou, which specifies the China (Hangzhou) region.
         Amount:10, //Set the number of ECS instances that you want to create to 10.
         LaunchTemplateId:"lt-bp14xczpoxvb6rre***" //Set the launch template ID to lt-bp14xczpoxvb6rre****.
         >  If a parameter is specified both in the launch template that you reference in a request and in the instance parameters of the same request, the value specified in the instance parameters takes precedence. For example, if you set InstanceChargeType in the launch template to PrePaid (subscription) and set InstanceChargeType in the instance parameters to PostPaid (pay-as-you-go), the created instances are pay-as-you-go instances.
+        *Example: Use a full image (an image that contains the system disk and data disks) to create an ECS instance**\
+        RegionId:"cn-hangzhou", //Set the region ID to cn-hangzhou, which specifies the China (Hangzhou) region.
+        ImageId = m-bp13ohd32cvzpq9e***, //Set the custom image ID to m-bp13ohd32cvzpq9e****.
+        InstanceType = ecs.u1-c1m1.large, //Set the instance type to ecs.u1-c1m1.large.
+        SecurityGroupId = sg-bp10jztp6b0sdsyl***, //Set the security group ID to sg-bp10jztp6b0sdsyl****.
+        VSwitchId = vsw-bp19wo63nleroq22g***, //Set the vSwitch ID to vsw-bp19wo63nleroq22g****.
+        SystemDisk.Size = 50, //Set the size of the system disk in the full image to 50. Unit: GiB.
+        SystemDisk.Category = cloud_auto, //Set the category of the system disk in the full image to cloud_auto, which specifies the ESSD AutoPL disk category.
+        DataDisk.0.Device = /dev/xvdb, //Set the mount point of the data disk in the full image to /dev/xvdb.
+        DataDisk.0.Size = 50, //Set the size of the data disk in the full image to 50. Unit: GiB.
+        DataDisk.0.Category = cloud_essd, //Set the category of the data disk in the full image to cloud_essd, which specifies the ESSD category.
+        DataDisk.1.Device = /dev/xvdc, //Set the mount point of the new data disk to /dev/xvdc. If you want to use a new data disk to replace the data disk in the full image, set DataDisk.1.Device to /dev/xvdb (the default mount point of the data disk in the full image).
+        DataDisk.1.Size = 70, //Set the size of the new data disk to 70. Unit: GiB.
+        DataDisk.1.Category = cloud_auto, //Set the category of the new data disk to cloud_auto, which specifies the ESSD AutoPL disk category.
         
         @param request: RunInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -54489,9 +54517,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.RunInstancesRequest,
     ) -> ecs_20140526_models.RunInstancesResponse:
         """
-        @summary Creates Elastic Compute Service (ECS) instances. This operation helps simplify the procedure to create and manage ECS instances. When you call this operation, you can choose to create multiple ECS instances at a time, automatically start the instances, and assign public IP addresses to the instances based on outbound bandwidth parameters. You can also use the features provided by the operation, such as configuring an automatic release time for instances, using a launch template, and configuring custom CPU options, to customize instance configurations for better management of instances.
+        @summary Batch creates Elastic Compute Service (ECS) instances. You can automatically start, assign public IP addresses to, and specify an automatic release time for the instances.
         
-        @description When you create an ECS instance, you are charged for ECS resources, including the [instance type](https://help.aliyun.com/document_detail/25398.html), [image](https://help.aliyun.com/document_detail/179021.html), [block storage](https://help.aliyun.com/document_detail/179022.html), and [public bandwidth](https://help.aliyun.com/document_detail/25411.html). Before you call this operation, familiarize yourself with the billing rules and [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of ECS resources.
+        @description Before you call this operation, familiarize yourself with the billing rules and [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of ECS resources.
         This operation is an asynchronous operation. After a request to create ECS instances is sent, ECS instance IDs are returned but the creation and startup of the instances may be incomplete. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the instances. When the status of an instance is `Running` in the DescribeInstanceStatus response, the instance is created and started.
         ### [](#)Considerations
         If the resource inventory is insufficient to complete instance creation, Alibaba Cloud immediately sends an instance creation failure event (SystemFailure.Delete). You can call the [DescribeInstanceHistoryEvents](https://help.aliyun.com/document_detail/2679897.html) operation to check whether an instance creation failure event exists. For more information, see [System events related to instance creation failures](https://help.aliyun.com/document_detail/2545990.html).
@@ -54546,12 +54574,26 @@ class Client(OpenApiClient):
         InstanceChargeType:"PostPaid",
         SpotStrategy:"SpotAsPriceGo", //Set the bidding policy to SpotAsPriceGo, which specifies that the instances are created as preemptible instances for which the market price at the time of purchase is automatically used as the bid price.
         SpotDuration:1 //Set the protection period of the preemptible instances to 1. Unit: hours.
-        Call the [CreateLaunchTemplate](https://help.aliyun.com/document_detail/2679729.html) operation to create a launch template. Then, use the launch template to create ECS instances in the China (Hangzhou) region. Examples:
+        Use a launch template created by calling the [CreateLaunchTemplate](https://help.aliyun.com/document_detail/2679729.html) operation to create ECS instances in the China (Hangzhou) region. Examples:
         *Example: Create 10 ECS instances based on a launch template**\
         RegionId:"cn-hangzhou", //Set the region ID to cn-hangzhou, which specifies the China (Hangzhou) region.
         Amount:10, //Set the number of ECS instances that you want to create to 10.
         LaunchTemplateId:"lt-bp14xczpoxvb6rre***" //Set the launch template ID to lt-bp14xczpoxvb6rre****.
         >  If a parameter is specified both in the launch template that you reference in a request and in the instance parameters of the same request, the value specified in the instance parameters takes precedence. For example, if you set InstanceChargeType in the launch template to PrePaid (subscription) and set InstanceChargeType in the instance parameters to PostPaid (pay-as-you-go), the created instances are pay-as-you-go instances.
+        *Example: Use a full image (an image that contains the system disk and data disks) to create an ECS instance**\
+        RegionId:"cn-hangzhou", //Set the region ID to cn-hangzhou, which specifies the China (Hangzhou) region.
+        ImageId = m-bp13ohd32cvzpq9e***, //Set the custom image ID to m-bp13ohd32cvzpq9e****.
+        InstanceType = ecs.u1-c1m1.large, //Set the instance type to ecs.u1-c1m1.large.
+        SecurityGroupId = sg-bp10jztp6b0sdsyl***, //Set the security group ID to sg-bp10jztp6b0sdsyl****.
+        VSwitchId = vsw-bp19wo63nleroq22g***, //Set the vSwitch ID to vsw-bp19wo63nleroq22g****.
+        SystemDisk.Size = 50, //Set the size of the system disk in the full image to 50. Unit: GiB.
+        SystemDisk.Category = cloud_auto, //Set the category of the system disk in the full image to cloud_auto, which specifies the ESSD AutoPL disk category.
+        DataDisk.0.Device = /dev/xvdb, //Set the mount point of the data disk in the full image to /dev/xvdb.
+        DataDisk.0.Size = 50, //Set the size of the data disk in the full image to 50. Unit: GiB.
+        DataDisk.0.Category = cloud_essd, //Set the category of the data disk in the full image to cloud_essd, which specifies the ESSD category.
+        DataDisk.1.Device = /dev/xvdc, //Set the mount point of the new data disk to /dev/xvdc. If you want to use a new data disk to replace the data disk in the full image, set DataDisk.1.Device to /dev/xvdb (the default mount point of the data disk in the full image).
+        DataDisk.1.Size = 70, //Set the size of the new data disk to 70. Unit: GiB.
+        DataDisk.1.Category = cloud_auto, //Set the category of the new data disk to cloud_auto, which specifies the ESSD AutoPL disk category.
         
         @param request: RunInstancesRequest
         @return: RunInstancesResponse
@@ -54564,9 +54606,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.RunInstancesRequest,
     ) -> ecs_20140526_models.RunInstancesResponse:
         """
-        @summary Creates Elastic Compute Service (ECS) instances. This operation helps simplify the procedure to create and manage ECS instances. When you call this operation, you can choose to create multiple ECS instances at a time, automatically start the instances, and assign public IP addresses to the instances based on outbound bandwidth parameters. You can also use the features provided by the operation, such as configuring an automatic release time for instances, using a launch template, and configuring custom CPU options, to customize instance configurations for better management of instances.
+        @summary Batch creates Elastic Compute Service (ECS) instances. You can automatically start, assign public IP addresses to, and specify an automatic release time for the instances.
         
-        @description When you create an ECS instance, you are charged for ECS resources, including the [instance type](https://help.aliyun.com/document_detail/25398.html), [image](https://help.aliyun.com/document_detail/179021.html), [block storage](https://help.aliyun.com/document_detail/179022.html), and [public bandwidth](https://help.aliyun.com/document_detail/25411.html). Before you call this operation, familiarize yourself with the billing rules and [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of ECS resources.
+        @description Before you call this operation, familiarize yourself with the billing rules and [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of ECS resources.
         This operation is an asynchronous operation. After a request to create ECS instances is sent, ECS instance IDs are returned but the creation and startup of the instances may be incomplete. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the instances. When the status of an instance is `Running` in the DescribeInstanceStatus response, the instance is created and started.
         ### [](#)Considerations
         If the resource inventory is insufficient to complete instance creation, Alibaba Cloud immediately sends an instance creation failure event (SystemFailure.Delete). You can call the [DescribeInstanceHistoryEvents](https://help.aliyun.com/document_detail/2679897.html) operation to check whether an instance creation failure event exists. For more information, see [System events related to instance creation failures](https://help.aliyun.com/document_detail/2545990.html).
@@ -54621,12 +54663,26 @@ class Client(OpenApiClient):
         InstanceChargeType:"PostPaid",
         SpotStrategy:"SpotAsPriceGo", //Set the bidding policy to SpotAsPriceGo, which specifies that the instances are created as preemptible instances for which the market price at the time of purchase is automatically used as the bid price.
         SpotDuration:1 //Set the protection period of the preemptible instances to 1. Unit: hours.
-        Call the [CreateLaunchTemplate](https://help.aliyun.com/document_detail/2679729.html) operation to create a launch template. Then, use the launch template to create ECS instances in the China (Hangzhou) region. Examples:
+        Use a launch template created by calling the [CreateLaunchTemplate](https://help.aliyun.com/document_detail/2679729.html) operation to create ECS instances in the China (Hangzhou) region. Examples:
         *Example: Create 10 ECS instances based on a launch template**\
         RegionId:"cn-hangzhou", //Set the region ID to cn-hangzhou, which specifies the China (Hangzhou) region.
         Amount:10, //Set the number of ECS instances that you want to create to 10.
         LaunchTemplateId:"lt-bp14xczpoxvb6rre***" //Set the launch template ID to lt-bp14xczpoxvb6rre****.
         >  If a parameter is specified both in the launch template that you reference in a request and in the instance parameters of the same request, the value specified in the instance parameters takes precedence. For example, if you set InstanceChargeType in the launch template to PrePaid (subscription) and set InstanceChargeType in the instance parameters to PostPaid (pay-as-you-go), the created instances are pay-as-you-go instances.
+        *Example: Use a full image (an image that contains the system disk and data disks) to create an ECS instance**\
+        RegionId:"cn-hangzhou", //Set the region ID to cn-hangzhou, which specifies the China (Hangzhou) region.
+        ImageId = m-bp13ohd32cvzpq9e***, //Set the custom image ID to m-bp13ohd32cvzpq9e****.
+        InstanceType = ecs.u1-c1m1.large, //Set the instance type to ecs.u1-c1m1.large.
+        SecurityGroupId = sg-bp10jztp6b0sdsyl***, //Set the security group ID to sg-bp10jztp6b0sdsyl****.
+        VSwitchId = vsw-bp19wo63nleroq22g***, //Set the vSwitch ID to vsw-bp19wo63nleroq22g****.
+        SystemDisk.Size = 50, //Set the size of the system disk in the full image to 50. Unit: GiB.
+        SystemDisk.Category = cloud_auto, //Set the category of the system disk in the full image to cloud_auto, which specifies the ESSD AutoPL disk category.
+        DataDisk.0.Device = /dev/xvdb, //Set the mount point of the data disk in the full image to /dev/xvdb.
+        DataDisk.0.Size = 50, //Set the size of the data disk in the full image to 50. Unit: GiB.
+        DataDisk.0.Category = cloud_essd, //Set the category of the data disk in the full image to cloud_essd, which specifies the ESSD category.
+        DataDisk.1.Device = /dev/xvdc, //Set the mount point of the new data disk to /dev/xvdc. If you want to use a new data disk to replace the data disk in the full image, set DataDisk.1.Device to /dev/xvdb (the default mount point of the data disk in the full image).
+        DataDisk.1.Size = 70, //Set the size of the new data disk to 70. Unit: GiB.
+        DataDisk.1.Category = cloud_auto, //Set the category of the new data disk to cloud_auto, which specifies the ESSD AutoPL disk category.
         
         @param request: RunInstancesRequest
         @return: RunInstancesResponse
