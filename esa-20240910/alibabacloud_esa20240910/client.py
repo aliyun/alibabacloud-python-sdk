@@ -5693,114 +5693,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_routine_related_record_with_options_async(request, runtime)
 
-    def create_routine_related_route_with_options(
-        self,
-        request: esa20240910_models.CreateRoutineRelatedRouteRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> esa20240910_models.CreateRoutineRelatedRouteResponse:
-        """
-        @summary Adds a route to map a URL to a routine so that the routine can be triggered to respond to requests destined for the URL.
-        
-        @param request: CreateRoutineRelatedRouteRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateRoutineRelatedRouteResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.by_pass):
-            body['ByPass'] = request.by_pass
-        if not UtilClient.is_unset(request.name):
-            body['Name'] = request.name
-        if not UtilClient.is_unset(request.route):
-            body['Route'] = request.route
-        if not UtilClient.is_unset(request.site_id):
-            body['SiteId'] = request.site_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateRoutineRelatedRoute',
-            version='2024-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            esa20240910_models.CreateRoutineRelatedRouteResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_routine_related_route_with_options_async(
-        self,
-        request: esa20240910_models.CreateRoutineRelatedRouteRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> esa20240910_models.CreateRoutineRelatedRouteResponse:
-        """
-        @summary Adds a route to map a URL to a routine so that the routine can be triggered to respond to requests destined for the URL.
-        
-        @param request: CreateRoutineRelatedRouteRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateRoutineRelatedRouteResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.by_pass):
-            body['ByPass'] = request.by_pass
-        if not UtilClient.is_unset(request.name):
-            body['Name'] = request.name
-        if not UtilClient.is_unset(request.route):
-            body['Route'] = request.route
-        if not UtilClient.is_unset(request.site_id):
-            body['SiteId'] = request.site_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateRoutineRelatedRoute',
-            version='2024-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            esa20240910_models.CreateRoutineRelatedRouteResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_routine_related_route(
-        self,
-        request: esa20240910_models.CreateRoutineRelatedRouteRequest,
-    ) -> esa20240910_models.CreateRoutineRelatedRouteResponse:
-        """
-        @summary Adds a route to map a URL to a routine so that the routine can be triggered to respond to requests destined for the URL.
-        
-        @param request: CreateRoutineRelatedRouteRequest
-        @return: CreateRoutineRelatedRouteResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.create_routine_related_route_with_options(request, runtime)
-
-    async def create_routine_related_route_async(
-        self,
-        request: esa20240910_models.CreateRoutineRelatedRouteRequest,
-    ) -> esa20240910_models.CreateRoutineRelatedRouteResponse:
-        """
-        @summary Adds a route to map a URL to a routine so that the routine can be triggered to respond to requests destined for the URL.
-        
-        @param request: CreateRoutineRelatedRouteRequest
-        @return: CreateRoutineRelatedRouteResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.create_routine_related_route_with_options_async(request, runtime)
-
     def create_routine_route_with_options(
         self,
         request: esa20240910_models.CreateRoutineRouteRequest,
@@ -10687,114 +10579,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_routine_related_record_with_options_async(request, runtime)
 
-    def delete_routine_related_route_with_options(
-        self,
-        request: esa20240910_models.DeleteRoutineRelatedRouteRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> esa20240910_models.DeleteRoutineRelatedRouteResponse:
-        """
-        @summary Deletes a route that is associated with a routine.
-        
-        @param request: DeleteRoutineRelatedRouteRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteRoutineRelatedRouteResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.name):
-            body['Name'] = request.name
-        if not UtilClient.is_unset(request.route):
-            body['Route'] = request.route
-        if not UtilClient.is_unset(request.route_id):
-            body['RouteId'] = request.route_id
-        if not UtilClient.is_unset(request.site_id):
-            body['SiteId'] = request.site_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DeleteRoutineRelatedRoute',
-            version='2024-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            esa20240910_models.DeleteRoutineRelatedRouteResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_routine_related_route_with_options_async(
-        self,
-        request: esa20240910_models.DeleteRoutineRelatedRouteRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> esa20240910_models.DeleteRoutineRelatedRouteResponse:
-        """
-        @summary Deletes a route that is associated with a routine.
-        
-        @param request: DeleteRoutineRelatedRouteRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteRoutineRelatedRouteResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.name):
-            body['Name'] = request.name
-        if not UtilClient.is_unset(request.route):
-            body['Route'] = request.route
-        if not UtilClient.is_unset(request.route_id):
-            body['RouteId'] = request.route_id
-        if not UtilClient.is_unset(request.site_id):
-            body['SiteId'] = request.site_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DeleteRoutineRelatedRoute',
-            version='2024-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            esa20240910_models.DeleteRoutineRelatedRouteResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_routine_related_route(
-        self,
-        request: esa20240910_models.DeleteRoutineRelatedRouteRequest,
-    ) -> esa20240910_models.DeleteRoutineRelatedRouteResponse:
-        """
-        @summary Deletes a route that is associated with a routine.
-        
-        @param request: DeleteRoutineRelatedRouteRequest
-        @return: DeleteRoutineRelatedRouteResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.delete_routine_related_route_with_options(request, runtime)
-
-    async def delete_routine_related_route_async(
-        self,
-        request: esa20240910_models.DeleteRoutineRelatedRouteRequest,
-    ) -> esa20240910_models.DeleteRoutineRelatedRouteResponse:
-        """
-        @summary Deletes a route that is associated with a routine.
-        
-        @param request: DeleteRoutineRelatedRouteRequest
-        @return: DeleteRoutineRelatedRouteResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_routine_related_route_with_options_async(request, runtime)
-
     def delete_routine_route_with_options(
         self,
         request: esa20240910_models.DeleteRoutineRouteRequest,
@@ -13084,6 +12868,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_rate_plan_instance_status_with_options_async(request, runtime)
+
+    def describe_site_logs_with_options(
+        self,
+        request: esa20240910_models.DescribeSiteLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DescribeSiteLogsResponse:
+        """
+        @summary 查询站点离线日志
+        
+        @param request: DescribeSiteLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSiteLogsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSiteLogs',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DescribeSiteLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_site_logs_with_options_async(
+        self,
+        request: esa20240910_models.DescribeSiteLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DescribeSiteLogsResponse:
+        """
+        @summary 查询站点离线日志
+        
+        @param request: DescribeSiteLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSiteLogsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSiteLogs',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DescribeSiteLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_site_logs(
+        self,
+        request: esa20240910_models.DescribeSiteLogsRequest,
+    ) -> esa20240910_models.DescribeSiteLogsResponse:
+        """
+        @summary 查询站点离线日志
+        
+        @param request: DescribeSiteLogsRequest
+        @return: DescribeSiteLogsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_site_logs_with_options(request, runtime)
+
+    async def describe_site_logs_async(
+        self,
+        request: esa20240910_models.DescribeSiteLogsRequest,
+    ) -> esa20240910_models.DescribeSiteLogsResponse:
+        """
+        @summary 查询站点离线日志
+        
+        @param request: DescribeSiteLogsRequest
+        @return: DescribeSiteLogsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_site_logs_with_options_async(request, runtime)
 
     def describe_site_time_series_data_with_options(
         self,
@@ -26351,6 +26247,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_waiting_rooms_with_options_async(request, runtime)
 
+    def open_er_service_with_options(
+        self,
+        request: esa20240910_models.OpenErServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.OpenErServiceResponse:
+        """
+        @summary OpenErService
+        
+        @param request: OpenErServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenErServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OpenErService',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.OpenErServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def open_er_service_with_options_async(
+        self,
+        request: esa20240910_models.OpenErServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.OpenErServiceResponse:
+        """
+        @summary OpenErService
+        
+        @param request: OpenErServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenErServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OpenErService',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.OpenErServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def open_er_service(
+        self,
+        request: esa20240910_models.OpenErServiceRequest,
+    ) -> esa20240910_models.OpenErServiceResponse:
+        """
+        @summary OpenErService
+        
+        @param request: OpenErServiceRequest
+        @return: OpenErServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.open_er_service_with_options(request, runtime)
+
+    async def open_er_service_async(
+        self,
+        request: esa20240910_models.OpenErServiceRequest,
+    ) -> esa20240910_models.OpenErServiceResponse:
+        """
+        @summary OpenErService
+        
+        @param request: OpenErServiceRequest
+        @return: OpenErServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.open_er_service_with_options_async(request, runtime)
+
     def preload_caches_with_options(
         self,
         tmp_req: esa20240910_models.PreloadCachesRequest,
@@ -31177,6 +31173,8 @@ class Client(OpenApiClient):
             query['AddClientGeolocationHeader'] = request.add_client_geolocation_header
         if not UtilClient.is_unset(request.add_real_client_ip_header):
             query['AddRealClientIpHeader'] = request.add_real_client_ip_header
+        if not UtilClient.is_unset(request.real_client_ip_header_name):
+            query['RealClientIpHeaderName'] = request.real_client_ip_header_name
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         if not UtilClient.is_unset(request.site_version):
@@ -31218,6 +31216,8 @@ class Client(OpenApiClient):
             query['AddClientGeolocationHeader'] = request.add_client_geolocation_header
         if not UtilClient.is_unset(request.add_real_client_ip_header):
             query['AddRealClientIpHeader'] = request.add_real_client_ip_header
+        if not UtilClient.is_unset(request.real_client_ip_header_name):
+            query['RealClientIpHeaderName'] = request.real_client_ip_header_name
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         if not UtilClient.is_unset(request.site_version):

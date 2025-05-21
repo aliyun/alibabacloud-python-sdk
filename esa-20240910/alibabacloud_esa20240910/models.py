@@ -11617,9 +11617,11 @@ class CreateRoutineRelatedRecordRequest(TeaModel):
 class CreateRoutineRelatedRecordResponseBody(TeaModel):
     def __init__(
         self,
+        record_id: int = None,
         request_id: str = None,
         status: str = None,
     ):
+        self.record_id = record_id
         # The request ID.
         self.request_id = request_id
         # Indicates whether the operation is successful.
@@ -11634,6 +11636,8 @@ class CreateRoutineRelatedRecordResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.record_id is not None:
+            result['RecordId'] = self.record_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.status is not None:
@@ -11642,6 +11646,8 @@ class CreateRoutineRelatedRecordResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RecordId') is not None:
+            self.record_id = m.get('RecordId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Status') is not None:
@@ -11686,136 +11692,6 @@ class CreateRoutineRelatedRecordResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateRoutineRelatedRecordResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class CreateRoutineRelatedRouteRequest(TeaModel):
-    def __init__(
-        self,
-        by_pass: str = None,
-        name: str = None,
-        route: str = None,
-        site_id: int = None,
-    ):
-        self.by_pass = by_pass
-        # The routine name.
-        # 
-        # This parameter is required.
-        self.name = name
-        # The route.
-        # 
-        # This parameter is required.
-        self.route = route
-        # The website ID.
-        # 
-        # This parameter is required.
-        self.site_id = site_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.by_pass is not None:
-            result['ByPass'] = self.by_pass
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.route is not None:
-            result['Route'] = self.route
-        if self.site_id is not None:
-            result['SiteId'] = self.site_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ByPass') is not None:
-            self.by_pass = m.get('ByPass')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Route') is not None:
-            self.route = m.get('Route')
-        if m.get('SiteId') is not None:
-            self.site_id = m.get('SiteId')
-        return self
-
-
-class CreateRoutineRelatedRouteResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        status: str = None,
-    ):
-        # The request ID.
-        self.request_id = request_id
-        # Indicates whether the operation is successful.
-        self.status = status
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.status is not None:
-            result['Status'] = self.status
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        return self
-
-
-class CreateRoutineRelatedRouteResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: CreateRoutineRelatedRouteResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = CreateRoutineRelatedRouteResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -19466,139 +19342,6 @@ class DeleteRoutineRelatedRecordResponse(TeaModel):
         return self
 
 
-class DeleteRoutineRelatedRouteRequest(TeaModel):
-    def __init__(
-        self,
-        name: str = None,
-        route: str = None,
-        route_id: str = None,
-        site_id: int = None,
-    ):
-        # The routine name.
-        # 
-        # This parameter is required.
-        self.name = name
-        # The route URL.
-        # 
-        # This parameter is required.
-        self.route = route
-        # The route ID.
-        # 
-        # This parameter is required.
-        self.route_id = route_id
-        # The website ID.
-        # 
-        # This parameter is required.
-        self.site_id = site_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.route is not None:
-            result['Route'] = self.route
-        if self.route_id is not None:
-            result['RouteId'] = self.route_id
-        if self.site_id is not None:
-            result['SiteId'] = self.site_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Route') is not None:
-            self.route = m.get('Route')
-        if m.get('RouteId') is not None:
-            self.route_id = m.get('RouteId')
-        if m.get('SiteId') is not None:
-            self.site_id = m.get('SiteId')
-        return self
-
-
-class DeleteRoutineRelatedRouteResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        status: str = None,
-    ):
-        # The request ID.
-        self.request_id = request_id
-        # Indicates whether the operation is successful.
-        self.status = status
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.status is not None:
-            result['Status'] = self.status
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        return self
-
-
-class DeleteRoutineRelatedRouteResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DeleteRoutineRelatedRouteResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DeleteRoutineRelatedRouteResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DeleteRoutineRouteRequest(TeaModel):
     def __init__(
         self,
@@ -23145,6 +22888,293 @@ class DescribeRatePlanInstanceStatusResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeRatePlanInstanceStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeSiteLogsRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        site_id: int = None,
+        start_time: str = None,
+    ):
+        self.end_time = end_time
+        self.page_number = page_number
+        self.page_size = page_size
+        # This parameter is required.
+        self.site_id = site_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeSiteLogsResponseBodySiteLogDetailsLogInfos(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        log_name: str = None,
+        log_path: str = None,
+        log_size: int = None,
+        start_time: str = None,
+    ):
+        self.end_time = end_time
+        self.log_name = log_name
+        self.log_path = log_path
+        self.log_size = log_size
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.log_name is not None:
+            result['LogName'] = self.log_name
+        if self.log_path is not None:
+            result['LogPath'] = self.log_path
+        if self.log_size is not None:
+            result['LogSize'] = self.log_size
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('LogName') is not None:
+            self.log_name = m.get('LogName')
+        if m.get('LogPath') is not None:
+            self.log_path = m.get('LogPath')
+        if m.get('LogSize') is not None:
+            self.log_size = m.get('LogSize')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeSiteLogsResponseBodySiteLogDetailsPageInfos(TeaModel):
+    def __init__(
+        self,
+        page_index: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.page_index = page_index
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeSiteLogsResponseBodySiteLogDetails(TeaModel):
+    def __init__(
+        self,
+        log_count: int = None,
+        log_infos: List[DescribeSiteLogsResponseBodySiteLogDetailsLogInfos] = None,
+        page_infos: DescribeSiteLogsResponseBodySiteLogDetailsPageInfos = None,
+        site_id: int = None,
+        site_name: str = None,
+    ):
+        self.log_count = log_count
+        self.log_infos = log_infos
+        self.page_infos = page_infos
+        self.site_id = site_id
+        self.site_name = site_name
+
+    def validate(self):
+        if self.log_infos:
+            for k in self.log_infos:
+                if k:
+                    k.validate()
+        if self.page_infos:
+            self.page_infos.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.log_count is not None:
+            result['LogCount'] = self.log_count
+        result['LogInfos'] = []
+        if self.log_infos is not None:
+            for k in self.log_infos:
+                result['LogInfos'].append(k.to_map() if k else None)
+        if self.page_infos is not None:
+            result['PageInfos'] = self.page_infos.to_map()
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_name is not None:
+            result['SiteName'] = self.site_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LogCount') is not None:
+            self.log_count = m.get('LogCount')
+        self.log_infos = []
+        if m.get('LogInfos') is not None:
+            for k in m.get('LogInfos'):
+                temp_model = DescribeSiteLogsResponseBodySiteLogDetailsLogInfos()
+                self.log_infos.append(temp_model.from_map(k))
+        if m.get('PageInfos') is not None:
+            temp_model = DescribeSiteLogsResponseBodySiteLogDetailsPageInfos()
+            self.page_infos = temp_model.from_map(m['PageInfos'])
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteName') is not None:
+            self.site_name = m.get('SiteName')
+        return self
+
+
+class DescribeSiteLogsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        site_log_details: List[DescribeSiteLogsResponseBodySiteLogDetails] = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.site_log_details = site_log_details
+
+    def validate(self):
+        if self.site_log_details:
+            for k in self.site_log_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['SiteLogDetails'] = []
+        if self.site_log_details is not None:
+            for k in self.site_log_details:
+                result['SiteLogDetails'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.site_log_details = []
+        if m.get('SiteLogDetails') is not None:
+            for k in m.get('SiteLogDetails'):
+                temp_model = DescribeSiteLogsResponseBodySiteLogDetails()
+                self.site_log_details.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeSiteLogsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSiteLogsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSiteLogsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -31402,6 +31432,7 @@ class GetManagedTransformResponseBody(TeaModel):
         self,
         add_client_geolocation_header: str = None,
         add_real_client_ip_header: str = None,
+        real_client_ip_header_name: str = None,
         request_id: str = None,
         site_version: int = None,
     ):
@@ -31413,6 +31444,7 @@ class GetManagedTransformResponseBody(TeaModel):
         # - on: Enable.
         # - off: Disable.
         self.add_real_client_ip_header = add_real_client_ip_header
+        self.real_client_ip_header_name = real_client_ip_header_name
         # Request ID.
         self.request_id = request_id
         # The version number of the site. For sites with version management enabled, this parameter can be used to specify the site version for which the configuration takes effect, defaulting to version 0.
@@ -31431,6 +31463,8 @@ class GetManagedTransformResponseBody(TeaModel):
             result['AddClientGeolocationHeader'] = self.add_client_geolocation_header
         if self.add_real_client_ip_header is not None:
             result['AddRealClientIpHeader'] = self.add_real_client_ip_header
+        if self.real_client_ip_header_name is not None:
+            result['RealClientIpHeaderName'] = self.real_client_ip_header_name
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.site_version is not None:
@@ -31443,6 +31477,8 @@ class GetManagedTransformResponseBody(TeaModel):
             self.add_client_geolocation_header = m.get('AddClientGeolocationHeader')
         if m.get('AddRealClientIpHeader') is not None:
             self.add_real_client_ip_header = m.get('AddRealClientIpHeader')
+        if m.get('RealClientIpHeaderName') is not None:
+            self.real_client_ip_header_name = m.get('RealClientIpHeaderName')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('SiteVersion') is not None:
@@ -56898,6 +56934,108 @@ class ListWaitingRoomsResponse(TeaModel):
         return self
 
 
+class OpenErServiceRequest(TeaModel):
+    def __init__(
+        self,
+        owner_id: int = None,
+        security_token: str = None,
+    ):
+        self.owner_id = owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class OpenErServiceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class OpenErServiceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: OpenErServiceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = OpenErServiceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class PreloadCachesRequest(TeaModel):
     def __init__(
         self,
@@ -64107,6 +64245,7 @@ class UpdateManagedTransformRequest(TeaModel):
         self,
         add_client_geolocation_header: str = None,
         add_real_client_ip_header: str = None,
+        real_client_ip_header_name: str = None,
         site_id: int = None,
         site_version: int = None,
     ):
@@ -64120,6 +64259,7 @@ class UpdateManagedTransformRequest(TeaModel):
         # *   on
         # *   off
         self.add_real_client_ip_header = add_real_client_ip_header
+        self.real_client_ip_header_name = real_client_ip_header_name
         # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         # 
         # This parameter is required.
@@ -64140,6 +64280,8 @@ class UpdateManagedTransformRequest(TeaModel):
             result['AddClientGeolocationHeader'] = self.add_client_geolocation_header
         if self.add_real_client_ip_header is not None:
             result['AddRealClientIpHeader'] = self.add_real_client_ip_header
+        if self.real_client_ip_header_name is not None:
+            result['RealClientIpHeaderName'] = self.real_client_ip_header_name
         if self.site_id is not None:
             result['SiteId'] = self.site_id
         if self.site_version is not None:
@@ -64152,6 +64294,8 @@ class UpdateManagedTransformRequest(TeaModel):
             self.add_client_geolocation_header = m.get('AddClientGeolocationHeader')
         if m.get('AddRealClientIpHeader') is not None:
             self.add_real_client_ip_header = m.get('AddRealClientIpHeader')
+        if m.get('RealClientIpHeaderName') is not None:
+            self.real_client_ip_header_name = m.get('RealClientIpHeaderName')
         if m.get('SiteId') is not None:
             self.site_id = m.get('SiteId')
         if m.get('SiteVersion') is not None:

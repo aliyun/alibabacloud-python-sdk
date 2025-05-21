@@ -1,3 +1,11 @@
+2025-05-21 Version: 2.25.0
+- Support API DescribeSiteLogs.
+- Support API OpenErService.
+- Update API CreateRoutineRelatedRecord: add response parameters Body.RecordId.
+- Update API GetManagedTransform: add response parameters Body.RealClientIpHeaderName.
+- Update API UpdateManagedTransform: add request parameters RealClientIpHeaderName.
+
+
 2025-05-08 Version: 2.24.0
 - Support API ListRoutineCodeVersions.
 
