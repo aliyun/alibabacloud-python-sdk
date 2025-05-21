@@ -1,3 +1,7 @@
+2025-05-21 Version: 9.0.8
+- Update API DescribeDisks: add response parameters Body.Disks.$.Tags.
+
+
 2025-05-20 Version: 9.0.7
 - Update API CreateNetworkAclEntry: add request parameters DestinationCidrBlock.
 - Update API DescribeNetworkAcls: add response parameters Body.NetworkAcls.$.IngressAclEntries.$.DestinationCidrBlock.

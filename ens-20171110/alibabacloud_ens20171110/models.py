@@ -19883,6 +19883,74 @@ class DescribeDisksRequest(TeaModel):
         return self
 
 
+class DescribeDisksResponseBodyDisksDisksTagsTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeDisksResponseBodyDisksDisksTags(TeaModel):
+    def __init__(
+        self,
+        tags: List[DescribeDisksResponseBodyDisksDisksTagsTags] = None,
+    ):
+        self.tags = tags
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = DescribeDisksResponseBodyDisksDisksTagsTags()
+                self.tags.append(temp_model.from_map(k))
+        return self
+
+
 class DescribeDisksResponseBodyDisksDisks(TeaModel):
     def __init__(
         self,
@@ -19903,6 +19971,7 @@ class DescribeDisksResponseBodyDisksDisks(TeaModel):
         size: int = None,
         snapshot_id: str = None,
         status: str = None,
+        tags: DescribeDisksResponseBodyDisksDisksTags = None,
         type: str = None,
     ):
         # The category of the disk.
@@ -19969,6 +20038,7 @@ class DescribeDisksResponseBodyDisksDisks(TeaModel):
         # *   Creating: The disk is being created.
         # *   ReIniting: The disk is being reset.
         self.status = status
+        self.tags = tags
         # The type of the cloud disk or local disk. Valid values:
         # 
         # *   1: system disk.
@@ -19976,7 +20046,8 @@ class DescribeDisksResponseBodyDisksDisks(TeaModel):
         self.type = type
 
     def validate(self):
-        pass
+        if self.tags:
+            self.tags.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -20018,6 +20089,8 @@ class DescribeDisksResponseBodyDisksDisks(TeaModel):
             result['SnapshotId'] = self.snapshot_id
         if self.status is not None:
             result['Status'] = self.status
+        if self.tags is not None:
+            result['Tags'] = self.tags.to_map()
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -20058,6 +20131,9 @@ class DescribeDisksResponseBodyDisksDisks(TeaModel):
             self.snapshot_id = m.get('SnapshotId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Tags') is not None:
+            temp_model = DescribeDisksResponseBodyDisksDisksTags()
+            self.tags = temp_model.from_map(m['Tags'])
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
