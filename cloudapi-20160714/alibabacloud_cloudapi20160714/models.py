@@ -3089,6 +3089,7 @@ class CreateDatasetRequest(TeaModel):
         self,
         dataset_name: str = None,
         dataset_type: str = None,
+        description: str = None,
         security_token: str = None,
         tag: List[CreateDatasetRequestTag] = None,
     ):
@@ -3104,6 +3105,7 @@ class CreateDatasetRequest(TeaModel):
         # 
         # This parameter is required.
         self.dataset_type = dataset_type
+        self.description = description
         self.security_token = security_token
         # The tag of objects that match the rule. You can specify multiple tags.
         self.tag = tag
@@ -3124,6 +3126,8 @@ class CreateDatasetRequest(TeaModel):
             result['DatasetName'] = self.dataset_name
         if self.dataset_type is not None:
             result['DatasetType'] = self.dataset_type
+        if self.description is not None:
+            result['Description'] = self.description
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
         result['Tag'] = []
@@ -3138,6 +3142,8 @@ class CreateDatasetRequest(TeaModel):
             self.dataset_name = m.get('DatasetName')
         if m.get('DatasetType') is not None:
             self.dataset_type = m.get('DatasetType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('SecurityToken') is not None:
             self.security_token = m.get('SecurityToken')
         self.tag = []
@@ -23302,6 +23308,7 @@ class DescribeDatasetInfoResponseBodyDatasetInfo(TeaModel):
         dataset_id: str = None,
         dataset_name: str = None,
         dataset_type: str = None,
+        description: str = None,
         modified_time: str = None,
     ):
         # The creation time (UTC) of the dataset.
@@ -23316,6 +23323,7 @@ class DescribeDatasetInfoResponseBodyDatasetInfo(TeaModel):
         # *   IP_WHITELIST_CIDR : an IP address whitelist
         # *   PARAMETER_ACCESS : parameter-based access control
         self.dataset_type = dataset_type
+        self.description = description
         # The last modification time (UTC) of the dataset.
         self.modified_time = modified_time
 
@@ -23336,6 +23344,8 @@ class DescribeDatasetInfoResponseBodyDatasetInfo(TeaModel):
             result['DatasetName'] = self.dataset_name
         if self.dataset_type is not None:
             result['DatasetType'] = self.dataset_type
+        if self.description is not None:
+            result['Description'] = self.description
         if self.modified_time is not None:
             result['ModifiedTime'] = self.modified_time
         return result
@@ -23350,6 +23360,8 @@ class DescribeDatasetInfoResponseBodyDatasetInfo(TeaModel):
             self.dataset_name = m.get('DatasetName')
         if m.get('DatasetType') is not None:
             self.dataset_type = m.get('DatasetType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('ModifiedTime') is not None:
             self.modified_time = m.get('ModifiedTime')
         return self
@@ -24010,6 +24022,7 @@ class DescribeDatasetListResponseBodyDatasetInfoList(TeaModel):
         dataset_id: str = None,
         dataset_name: str = None,
         dataset_type: str = None,
+        description: str = None,
         modified_time: str = None,
         tags: List[DescribeDatasetListResponseBodyDatasetInfoListTags] = None,
     ):
@@ -24025,6 +24038,7 @@ class DescribeDatasetListResponseBodyDatasetInfoList(TeaModel):
         # *   IP_WHITELIST_CIDR : an IP address whitelist
         # *   PARAMETER_ACCESS: a list of parameters for parameter-based access control
         self.dataset_type = dataset_type
+        self.description = description
         # The time when the dataset was last modified. The time is displayed in UTC.
         self.modified_time = modified_time
         # The tags.
@@ -24050,6 +24064,8 @@ class DescribeDatasetListResponseBodyDatasetInfoList(TeaModel):
             result['DatasetName'] = self.dataset_name
         if self.dataset_type is not None:
             result['DatasetType'] = self.dataset_type
+        if self.description is not None:
+            result['Description'] = self.description
         if self.modified_time is not None:
             result['ModifiedTime'] = self.modified_time
         result['Tags'] = []
@@ -24068,6 +24084,8 @@ class DescribeDatasetListResponseBodyDatasetInfoList(TeaModel):
             self.dataset_name = m.get('DatasetName')
         if m.get('DatasetType') is not None:
             self.dataset_type = m.get('DatasetType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('ModifiedTime') is not None:
             self.modified_time = m.get('ModifiedTime')
         self.tags = []
@@ -43540,6 +43558,7 @@ class ModifyDatasetRequest(TeaModel):
         self,
         dataset_id: str = None,
         dataset_name: str = None,
+        description: str = None,
         security_token: str = None,
     ):
         # The ID of the dataset.
@@ -43547,9 +43566,8 @@ class ModifyDatasetRequest(TeaModel):
         # This parameter is required.
         self.dataset_id = dataset_id
         # The name of the dataset.
-        # 
-        # This parameter is required.
         self.dataset_name = dataset_name
+        self.description = description
         self.security_token = security_token
 
     def validate(self):
@@ -43565,6 +43583,8 @@ class ModifyDatasetRequest(TeaModel):
             result['DatasetId'] = self.dataset_id
         if self.dataset_name is not None:
             result['DatasetName'] = self.dataset_name
+        if self.description is not None:
+            result['Description'] = self.description
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
         return result
@@ -43575,6 +43595,8 @@ class ModifyDatasetRequest(TeaModel):
             self.dataset_id = m.get('DatasetId')
         if m.get('DatasetName') is not None:
             self.dataset_name = m.get('DatasetName')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('SecurityToken') is not None:
             self.security_token = m.get('SecurityToken')
         return self

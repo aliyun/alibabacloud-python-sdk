@@ -1,3 +1,10 @@
+2025-05-21 Version: 4.8.4
+- Update API CreateDataset: add request parameters Description.
+- Update API DescribeDatasetInfo: add response parameters Body.DatasetInfo.Description.
+- Update API DescribeDatasetList: add response parameters Body.DatasetInfoList.$.Description.
+- Update API ModifyDataset: add request parameters Description.
+
+
 2025-04-29 Version: 4.8.3
 - Update API DescribeApi: add response parameters Body.ServiceConfig.FunctionComputeConfig.FcVersion.
 

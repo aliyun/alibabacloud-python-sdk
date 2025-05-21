@@ -2455,6 +2455,8 @@ class Client(OpenApiClient):
             query['DatasetName'] = request.dataset_name
         if not UtilClient.is_unset(request.dataset_type):
             query['DatasetType'] = request.dataset_type
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.tag):
@@ -2496,6 +2498,8 @@ class Client(OpenApiClient):
             query['DatasetName'] = request.dataset_name
         if not UtilClient.is_unset(request.dataset_type):
             query['DatasetType'] = request.dataset_type
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.tag):
@@ -19799,6 +19803,8 @@ class Client(OpenApiClient):
             query['DatasetId'] = request.dataset_id
         if not UtilClient.is_unset(request.dataset_name):
             query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
@@ -19838,6 +19844,8 @@ class Client(OpenApiClient):
             query['DatasetId'] = request.dataset_id
         if not UtilClient.is_unset(request.dataset_name):
             query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
