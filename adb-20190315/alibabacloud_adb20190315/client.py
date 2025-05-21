@@ -8485,7 +8485,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeInclinedTablesResponse:
         """
-        @summary Queries the monitoring information about tables.
+        @summary Queries the information about skewed tables for an AnalyticDB for MySQL cluster.
         
         @param request: DescribeInclinedTablesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8540,7 +8540,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeInclinedTablesResponse:
         """
-        @summary Queries the monitoring information about tables.
+        @summary Queries the information about skewed tables for an AnalyticDB for MySQL cluster.
         
         @param request: DescribeInclinedTablesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8594,7 +8594,7 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeInclinedTablesRequest,
     ) -> adb_20190315_models.DescribeInclinedTablesResponse:
         """
-        @summary Queries the monitoring information about tables.
+        @summary Queries the information about skewed tables for an AnalyticDB for MySQL cluster.
         
         @param request: DescribeInclinedTablesRequest
         @return: DescribeInclinedTablesResponse
@@ -8607,7 +8607,7 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeInclinedTablesRequest,
     ) -> adb_20190315_models.DescribeInclinedTablesResponse:
         """
-        @summary Queries the monitoring information about tables.
+        @summary Queries the information about skewed tables for an AnalyticDB for MySQL cluster.
         
         @param request: DescribeInclinedTablesRequest
         @return: DescribeInclinedTablesResponse
@@ -13889,6 +13889,8 @@ class Client(OpenApiClient):
             query['ComputeResource'] = request.compute_resource
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -13952,6 +13954,8 @@ class Client(OpenApiClient):
             query['ComputeResource'] = request.compute_resource
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -15797,7 +15801,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.ModifyDBClusterShardNumberResponse:
         """
-        @summary 修改实例分片数目
+        @summary Changes the number of shards for an AnalyticDB for MySQL cluster.
         
         @param request: ModifyDBClusterShardNumberRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15850,7 +15854,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.ModifyDBClusterShardNumberResponse:
         """
-        @summary 修改实例分片数目
+        @summary Changes the number of shards for an AnalyticDB for MySQL cluster.
         
         @param request: ModifyDBClusterShardNumberRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15902,7 +15906,7 @@ class Client(OpenApiClient):
         request: adb_20190315_models.ModifyDBClusterShardNumberRequest,
     ) -> adb_20190315_models.ModifyDBClusterShardNumberResponse:
         """
-        @summary 修改实例分片数目
+        @summary Changes the number of shards for an AnalyticDB for MySQL cluster.
         
         @param request: ModifyDBClusterShardNumberRequest
         @return: ModifyDBClusterShardNumberResponse
@@ -15915,7 +15919,7 @@ class Client(OpenApiClient):
         request: adb_20190315_models.ModifyDBClusterShardNumberRequest,
     ) -> adb_20190315_models.ModifyDBClusterShardNumberResponse:
         """
-        @summary 修改实例分片数目
+        @summary Changes the number of shards for an AnalyticDB for MySQL cluster.
         
         @param request: ModifyDBClusterShardNumberRequest
         @return: ModifyDBClusterShardNumberResponse

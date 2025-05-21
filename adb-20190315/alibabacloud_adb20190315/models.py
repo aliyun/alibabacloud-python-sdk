@@ -16206,13 +16206,16 @@ class DescribeEIURangeRequest(TeaModel):
 class DescribeEIURangeResponseBodyEIUInfo(TeaModel):
     def __init__(
         self,
+        default_reserved_node_size: str = None,
         default_value: str = None,
         eiurange: List[int] = None,
         max_value: str = None,
         min_value: str = None,
+        reserved_node_size_range: List[str] = None,
         step: str = None,
         storage_resource_range: List[str] = None,
     ):
+        self.default_reserved_node_size = default_reserved_node_size
         # The suggested value for the number of EIUs.
         self.default_value = default_value
         # The queried range for the number of EIUs.
@@ -16221,6 +16224,7 @@ class DescribeEIURangeResponseBodyEIUInfo(TeaModel):
         self.max_value = max_value
         # A reserved parameter.
         self.min_value = min_value
+        self.reserved_node_size_range = reserved_node_size_range
         # A reserved parameter.
         self.step = step
         # A reserved parameter.
@@ -16235,6 +16239,8 @@ class DescribeEIURangeResponseBodyEIUInfo(TeaModel):
             return _map
 
         result = dict()
+        if self.default_reserved_node_size is not None:
+            result['DefaultReservedNodeSize'] = self.default_reserved_node_size
         if self.default_value is not None:
             result['DefaultValue'] = self.default_value
         if self.eiurange is not None:
@@ -16243,6 +16249,8 @@ class DescribeEIURangeResponseBodyEIUInfo(TeaModel):
             result['MaxValue'] = self.max_value
         if self.min_value is not None:
             result['MinValue'] = self.min_value
+        if self.reserved_node_size_range is not None:
+            result['ReservedNodeSizeRange'] = self.reserved_node_size_range
         if self.step is not None:
             result['Step'] = self.step
         if self.storage_resource_range is not None:
@@ -16251,6 +16259,8 @@ class DescribeEIURangeResponseBodyEIUInfo(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DefaultReservedNodeSize') is not None:
+            self.default_reserved_node_size = m.get('DefaultReservedNodeSize')
         if m.get('DefaultValue') is not None:
             self.default_value = m.get('DefaultValue')
         if m.get('EIURange') is not None:
@@ -16259,6 +16269,8 @@ class DescribeEIURangeResponseBodyEIUInfo(TeaModel):
             self.max_value = m.get('MaxValue')
         if m.get('MinValue') is not None:
             self.min_value = m.get('MinValue')
+        if m.get('ReservedNodeSizeRange') is not None:
+            self.reserved_node_size_range = m.get('ReservedNodeSizeRange')
         if m.get('Step') is not None:
             self.step = m.get('Step')
         if m.get('StorageResourceRange') is not None:
@@ -18291,17 +18303,19 @@ class DescribeInclinedTablesRequest(TeaModel):
         resource_owner_id: int = None,
         table_type: str = None,
     ):
-        # The ID of the cluster.
+        # The ID of the AnalyticDB for MySQL Data Warehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The language in which you want to send requests and receive messages. Default value: zh. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # The order in which queries are sorted in the JSON format based on the specified fields. Specify the fields used to sort the queries and the order type.
+        # The order by which to sort query results. Specify the parameter value in the JSON format.
         # 
         # Example:
         # 
         # ```
-        # 
         # [
         # 
         #     {
@@ -18315,31 +18329,33 @@ class DescribeInclinedTablesRequest(TeaModel):
         # ]
         # ```
         # 
-        # In the preceding code, Field indicates the field used to sort queries. Set the value of Field to Name.
+        # Field specifies the field by which to sort the query results. Set the value to Name. Type specifies the sorting order. Valid values: Desc and Asc.
         # 
-        # Type indicates the order type. Valid values of Type: Desc and Asc. A value of Desc indicates a descending order. A value of Asc indicates an ascending order.
-        # 
-        # Both fields are not case-sensitive.
+        # Field and Type are case-insensitive.
         self.order = order
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Pages start from page 1. Default value: 1.
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values:
+        # The number of entries per page. Valid values:
         # 
-        # *   30
-        # *   50
-        # *   100
+        # - 30；
+        # - 50；
+        # - 100；
         # 
         # Default value: 30.
         self.page_size = page_size
+        # The region ID.
+        # 
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The type of the table. Valid values:
         # 
-        # *   FactTable
-        # *   DimensionTable
+        # 
+        # - **FactTable**: the partitioned table.
+        # - **DimensionTable**: the dimension table.
         # 
         # This parameter is required.
         self.table_type = table_type
@@ -18411,8 +18427,15 @@ class DescribeInclinedTablesResponseBodyDetectionItems(TeaModel):
         name: str = None,
         status: str = None,
     ):
+        # The message of the detection result.
         self.message = message
+        # The name of the detection item.
         self.name = name
+        # The severity level of the detection result. Valid values:
+        # 
+        # - NORMAL
+        # - WARNING
+        # - CRITICAL
         self.status = status
 
     def validate(self):
@@ -18455,13 +18478,21 @@ class DescribeInclinedTablesResponseBodyItemsTable(TeaModel):
         total_size: int = None,
         type: str = None,
     ):
+        # Indicates whether data is skewed in the table.
         self.is_incline = is_incline
+        # The name of the table.
         self.name = name
+        # The number of rows in the table.
         self.row_count = row_count
+        # The name of the database.
         self.schema = schema
+        # The number of rows in the table.
         self.size = size
+        # The percentage of the table size.
         self.space_ratio = space_ratio
+        # The total data size of the table.
         self.total_size = total_size
+        # The column type.
         self.type = type
 
     def validate(self):
@@ -18517,6 +18548,7 @@ class DescribeInclinedTablesResponseBodyItems(TeaModel):
         self,
         table: List[DescribeInclinedTablesResponseBodyItemsTable] = None,
     ):
+        # The queried table.
         self.table = table
 
     def validate(self):
@@ -18557,8 +18589,9 @@ class DescribeInclinedTablesResponseBody(TeaModel):
         request_id: str = None,
         total_count: str = None,
     ):
+        # The queried detection items and detection results.
         self.detection_items = detection_items
-        # The monitoring information about tables.
+        # The queried tables.
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -31049,6 +31082,7 @@ class MigrateDBClusterRequest(TeaModel):
         self,
         compute_resource: str = None,
         dbcluster_id: str = None,
+        dry_run: bool = None,
         owner_account: str = None,
         owner_id: int = None,
         product_form: str = None,
@@ -31070,6 +31104,7 @@ class MigrateDBClusterRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.product_form = product_form
@@ -31102,6 +31137,8 @@ class MigrateDBClusterRequest(TeaModel):
             result['ComputeResource'] = self.compute_resource
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -31136,6 +31173,8 @@ class MigrateDBClusterRequest(TeaModel):
             self.compute_resource = m.get('ComputeResource')
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -33552,16 +33591,34 @@ class ModifyDBClusterShardNumberRequest(TeaModel):
         switch_time: str = None,
         switch_time_mode: int = None,
     ):
+        # The ID of the AnalyticDB for MySQL Data Warehouse Edition cluster.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL Data Warehouse Edition clusters within a region, including cluster IDs.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # Specifies whether to perform only a dry run. Valid values:
+        # 
+        # *   true: sends a request to check whether the cluster meets the prerequisites for changing the number of shards and whether the desired number of shards is valid, but **does not** perform the change operation.
+        # *   false (default): sends a request to perform a check and trigger the change operation.
         self.dry_run = dry_run
+        # The desired number of shards.
         self.new_shard_number = new_shard_number
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The point in time when you want the system to perform the change operation. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
         self.switch_time = switch_time
+        # The mode in which you want the change operation to be performed. Valid values:
+        # 
+        # *   **Immediate** (default): immediately performs the change operation.
+        # *   **MaintainTime**: performs the change operation within the maintenance window of the cluster. You can call the ModifyDBInstanceMaintainTime operation to change the maintenance window.
+        # *   **ScheduleTime**: performs the change operation at the point in time that you specify. If you specify this value, you must also specify **SwitchTime**.
         self.switch_time_mode = switch_time_mode
 
     def validate(self):
@@ -33625,6 +33682,7 @@ class ModifyDBClusterShardNumberResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

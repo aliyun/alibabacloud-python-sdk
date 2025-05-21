@@ -1,3 +1,9 @@
+2025-05-21 Version: 5.0.2
+- Update API DescribeEIURange: add response parameters Body.EIUInfo.DefaultReservedNodeSize.
+- Update API DescribeEIURange: add response parameters Body.EIUInfo.ReservedNodeSizeRange.
+- Update API MigrateDBCluster: add request parameters DryRun.
+
+
 2025-04-28 Version: 5.0.1
 - Update API DescribeDBClusterAttribute: add response parameters Body.Items.$.ProductForm.
 - Update API DescribeDBClusterAttribute: add response parameters Body.Items.$.ReservedNodeCount.
