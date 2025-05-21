@@ -817,6 +817,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_node_by_template_id_with_options_async(request, runtime)
 
+    def get_platform_user_info_for_partner_with_options(
+        self,
+        request: mseap_20210118_models.GetPlatformUserInfoForPartnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mseap_20210118_models.GetPlatformUserInfoForPartnerResponse:
+        """
+        @summary 合作伙伴获取用户跨平台信息
+        
+        @param request: GetPlatformUserInfoForPartnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPlatformUserInfoForPartnerResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.platform_type):
+            query['PlatformType'] = request.platform_type
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPlatformUserInfoForPartner',
+            version='2021-01-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mseap_20210118_models.GetPlatformUserInfoForPartnerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_platform_user_info_for_partner_with_options_async(
+        self,
+        request: mseap_20210118_models.GetPlatformUserInfoForPartnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mseap_20210118_models.GetPlatformUserInfoForPartnerResponse:
+        """
+        @summary 合作伙伴获取用户跨平台信息
+        
+        @param request: GetPlatformUserInfoForPartnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPlatformUserInfoForPartnerResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.platform_type):
+            query['PlatformType'] = request.platform_type
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPlatformUserInfoForPartner',
+            version='2021-01-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mseap_20210118_models.GetPlatformUserInfoForPartnerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_platform_user_info_for_partner(
+        self,
+        request: mseap_20210118_models.GetPlatformUserInfoForPartnerRequest,
+    ) -> mseap_20210118_models.GetPlatformUserInfoForPartnerResponse:
+        """
+        @summary 合作伙伴获取用户跨平台信息
+        
+        @param request: GetPlatformUserInfoForPartnerRequest
+        @return: GetPlatformUserInfoForPartnerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_platform_user_info_for_partner_with_options(request, runtime)
+
+    async def get_platform_user_info_for_partner_async(
+        self,
+        request: mseap_20210118_models.GetPlatformUserInfoForPartnerRequest,
+    ) -> mseap_20210118_models.GetPlatformUserInfoForPartnerResponse:
+        """
+        @summary 合作伙伴获取用户跨平台信息
+        
+        @param request: GetPlatformUserInfoForPartnerRequest
+        @return: GetPlatformUserInfoForPartnerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_platform_user_info_for_partner_with_options_async(request, runtime)
+
     def get_proxy_by_type_with_options(
         self,
         request: mseap_20210118_models.GetProxyByTypeRequest,

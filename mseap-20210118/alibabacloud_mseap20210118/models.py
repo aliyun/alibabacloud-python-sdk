@@ -1288,6 +1288,139 @@ class GetNodeByTemplateIdResponse(TeaModel):
         return self
 
 
+class GetPlatformUserInfoForPartnerRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        platform_type: str = None,
+        user_id: str = None,
+    ):
+        self.app_id = app_id
+        self.platform_type = platform_type
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.platform_type is not None:
+            result['PlatformType'] = self.platform_type
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('PlatformType') is not None:
+            self.platform_type = m.get('PlatformType')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class GetPlatformUserInfoForPartnerResponseBody(TeaModel):
+    def __init__(
+        self,
+        encrypted_open_id: str = None,
+        encrypted_union_id: str = None,
+        error_msg: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.encrypted_open_id = encrypted_open_id
+        self.encrypted_union_id = encrypted_union_id
+        self.error_msg = error_msg
+        # Id of the request
+        self.request_id = request_id
+        # success
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.encrypted_open_id is not None:
+            result['EncryptedOpenId'] = self.encrypted_open_id
+        if self.encrypted_union_id is not None:
+            result['EncryptedUnionId'] = self.encrypted_union_id
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EncryptedOpenId') is not None:
+            self.encrypted_open_id = m.get('EncryptedOpenId')
+        if m.get('EncryptedUnionId') is not None:
+            self.encrypted_union_id = m.get('EncryptedUnionId')
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetPlatformUserInfoForPartnerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetPlatformUserInfoForPartnerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetPlatformUserInfoForPartnerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetProxyByTypeRequest(TeaModel):
     def __init__(
         self,

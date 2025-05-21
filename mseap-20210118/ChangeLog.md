@@ -1,3 +1,7 @@
+2025-05-21 Version: 1.1.0
+- Support API GetPlatformUserInfoForPartner.
+
+
 2025-05-20 Version: 1.0.4
 - Generated python 2021-01-18 for mseap.
 
