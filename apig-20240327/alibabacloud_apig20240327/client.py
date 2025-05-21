@@ -79,16 +79,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.AddGatewaySecurityGroupRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.AddGatewaySecurityGroupRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.AddGatewaySecurityGroupRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def add_gateway_security_group_rule_with_options_async(
         self,
@@ -128,16 +122,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.AddGatewaySecurityGroupRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.AddGatewaySecurityGroupRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.AddGatewaySecurityGroupRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def add_gateway_security_group_rule(
         self,
@@ -208,16 +196,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.ChangeResourceGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.ChangeResourceGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.ChangeResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def change_resource_group_with_options_async(
         self,
@@ -258,16 +240,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.ChangeResourceGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.ChangeResourceGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.ChangeResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def change_resource_group(
         self,
@@ -323,6 +299,8 @@ class Client(OpenApiClient):
             body['clientCACert'] = request.client_cacert
         if not UtilClient.is_unset(request.force_https):
             body['forceHttps'] = request.force_https
+        if not UtilClient.is_unset(request.gateway_type):
+            body['gatewayType'] = request.gateway_type
         if not UtilClient.is_unset(request.http_2option):
             body['http2Option'] = request.http_2option
         if not UtilClient.is_unset(request.m_tlsenabled):
@@ -354,16 +332,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.CreateDomainResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.CreateDomainResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.CreateDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_domain_with_options_async(
         self,
@@ -391,6 +363,8 @@ class Client(OpenApiClient):
             body['clientCACert'] = request.client_cacert
         if not UtilClient.is_unset(request.force_https):
             body['forceHttps'] = request.force_https
+        if not UtilClient.is_unset(request.gateway_type):
+            body['gatewayType'] = request.gateway_type
         if not UtilClient.is_unset(request.http_2option):
             body['http2Option'] = request.http_2option
         if not UtilClient.is_unset(request.m_tlsenabled):
@@ -422,16 +396,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.CreateDomainResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.CreateDomainResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.CreateDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_domain(
         self,
@@ -511,16 +479,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.CreateEnvironmentResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.CreateEnvironmentResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.CreateEnvironmentResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_environment_with_options_async(
         self,
@@ -568,16 +530,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.CreateEnvironmentResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.CreateEnvironmentResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.CreateEnvironmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_environment(
         self,
@@ -672,16 +628,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.CreateHttpApiResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.CreateHttpApiResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.CreateHttpApiResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_http_api_with_options_async(
         self,
@@ -738,16 +688,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.CreateHttpApiResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.CreateHttpApiResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.CreateHttpApiResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_http_api(
         self,
@@ -811,16 +755,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.CreateHttpApiOperationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.CreateHttpApiOperationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.CreateHttpApiOperationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_http_api_operation_with_options_async(
         self,
@@ -856,16 +794,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.CreateHttpApiOperationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.CreateHttpApiOperationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.CreateHttpApiOperationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_http_api_operation(
         self,
@@ -916,6 +848,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.backend_config):
             body['backendConfig'] = request.backend_config
+        if not UtilClient.is_unset(request.deploy_configs):
+            body['deployConfigs'] = request.deploy_configs
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
         if not UtilClient.is_unset(request.domain_ids):
@@ -941,16 +875,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.CreateHttpApiRouteResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.CreateHttpApiRouteResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.CreateHttpApiRouteResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_http_api_route_with_options_async(
         self,
@@ -971,6 +899,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.backend_config):
             body['backendConfig'] = request.backend_config
+        if not UtilClient.is_unset(request.deploy_configs):
+            body['deployConfigs'] = request.deploy_configs
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
         if not UtilClient.is_unset(request.domain_ids):
@@ -996,16 +926,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.CreateHttpApiRouteResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.CreateHttpApiRouteResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.CreateHttpApiRouteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_http_api_route(
         self,
@@ -1036,6 +960,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_http_api_route_with_options_async(http_api_id, request, headers, runtime)
+
+    def create_plugin_attachment_with_options(
+        self,
+        request: apig20240327_models.CreatePluginAttachmentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.CreatePluginAttachmentResponse:
+        """
+        @summary 创建API
+        
+        @param request: CreatePluginAttachmentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePluginAttachmentResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.attach_resource_ids):
+            body['attachResourceIds'] = request.attach_resource_ids
+        if not UtilClient.is_unset(request.attach_resource_type):
+            body['attachResourceType'] = request.attach_resource_type
+        if not UtilClient.is_unset(request.enable):
+            body['enable'] = request.enable
+        if not UtilClient.is_unset(request.environment_id):
+            body['environmentId'] = request.environment_id
+        if not UtilClient.is_unset(request.gateway_id):
+            body['gatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.plugin_config):
+            body['pluginConfig'] = request.plugin_config
+        if not UtilClient.is_unset(request.plugin_id):
+            body['pluginId'] = request.plugin_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreatePluginAttachment',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/plugin-attachments',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.CreatePluginAttachmentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_plugin_attachment_with_options_async(
+        self,
+        request: apig20240327_models.CreatePluginAttachmentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.CreatePluginAttachmentResponse:
+        """
+        @summary 创建API
+        
+        @param request: CreatePluginAttachmentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePluginAttachmentResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.attach_resource_ids):
+            body['attachResourceIds'] = request.attach_resource_ids
+        if not UtilClient.is_unset(request.attach_resource_type):
+            body['attachResourceType'] = request.attach_resource_type
+        if not UtilClient.is_unset(request.enable):
+            body['enable'] = request.enable
+        if not UtilClient.is_unset(request.environment_id):
+            body['environmentId'] = request.environment_id
+        if not UtilClient.is_unset(request.gateway_id):
+            body['gatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.plugin_config):
+            body['pluginConfig'] = request.plugin_config
+        if not UtilClient.is_unset(request.plugin_id):
+            body['pluginId'] = request.plugin_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreatePluginAttachment',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/plugin-attachments',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.CreatePluginAttachmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_plugin_attachment(
+        self,
+        request: apig20240327_models.CreatePluginAttachmentRequest,
+    ) -> apig20240327_models.CreatePluginAttachmentResponse:
+        """
+        @summary 创建API
+        
+        @param request: CreatePluginAttachmentRequest
+        @return: CreatePluginAttachmentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_plugin_attachment_with_options(request, headers, runtime)
+
+    async def create_plugin_attachment_async(
+        self,
+        request: apig20240327_models.CreatePluginAttachmentRequest,
+    ) -> apig20240327_models.CreatePluginAttachmentResponse:
+        """
+        @summary 创建API
+        
+        @param request: CreatePluginAttachmentRequest
+        @return: CreatePluginAttachmentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_plugin_attachment_with_options_async(request, headers, runtime)
 
     def create_policy_with_options(
         self,
@@ -1076,16 +1128,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.CreatePolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.CreatePolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.CreatePolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_policy_with_options_async(
         self,
@@ -1126,16 +1172,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.CreatePolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.CreatePolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.CreatePolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_policy(
         self,
@@ -1206,16 +1246,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.CreatePolicyAttachmentResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.CreatePolicyAttachmentResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.CreatePolicyAttachmentResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_policy_attachment_with_options_async(
         self,
@@ -1258,16 +1292,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.CreatePolicyAttachmentResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.CreatePolicyAttachmentResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.CreatePolicyAttachmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_policy_attachment(
         self,
@@ -1338,16 +1366,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.CreateServiceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.CreateServiceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.CreateServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_service_with_options_async(
         self,
@@ -1390,16 +1412,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.CreateServiceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.CreateServiceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.CreateServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_service(
         self,
@@ -1460,16 +1476,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.DeleteDomainResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.DeleteDomainResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.DeleteDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_domain_with_options_async(
         self,
@@ -1498,16 +1508,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.DeleteDomainResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.DeleteDomainResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.DeleteDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_domain(
         self,
@@ -1565,16 +1569,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.DeleteEnvironmentResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.DeleteEnvironmentResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.DeleteEnvironmentResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_environment_with_options_async(
         self,
@@ -1606,16 +1604,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.DeleteEnvironmentResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.DeleteEnvironmentResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.DeleteEnvironmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_environment(
         self,
@@ -1676,16 +1668,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.DeleteGatewayResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.DeleteGatewayResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.DeleteGatewayResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_gateway_with_options_async(
         self,
@@ -1714,16 +1700,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.DeleteGatewayResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.DeleteGatewayResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.DeleteGatewayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_gateway(
         self,
@@ -1786,16 +1766,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.DeleteGatewaySecurityGroupRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.DeleteGatewaySecurityGroupRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.DeleteGatewaySecurityGroupRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_gateway_security_group_rule_with_options_async(
         self,
@@ -1832,16 +1806,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.DeleteGatewaySecurityGroupRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.DeleteGatewaySecurityGroupRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.DeleteGatewaySecurityGroupRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_gateway_security_group_rule(
         self,
@@ -1902,16 +1870,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.DeleteHttpApiResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.DeleteHttpApiResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.DeleteHttpApiResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_http_api_with_options_async(
         self,
@@ -1940,16 +1902,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.DeleteHttpApiResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.DeleteHttpApiResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.DeleteHttpApiResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_http_api(
         self,
@@ -2005,16 +1961,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.DeleteHttpApiOperationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.DeleteHttpApiOperationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.DeleteHttpApiOperationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_http_api_operation_with_options_async(
         self,
@@ -2044,16 +1994,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.DeleteHttpApiOperationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.DeleteHttpApiOperationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.DeleteHttpApiOperationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_http_api_operation(
         self,
@@ -2111,16 +2055,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.DeleteHttpApiRouteResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.DeleteHttpApiRouteResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.DeleteHttpApiRouteResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_http_api_route_with_options_async(
         self,
@@ -2150,16 +2088,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.DeleteHttpApiRouteResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.DeleteHttpApiRouteResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.DeleteHttpApiRouteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_http_api_route(
         self,
@@ -2189,6 +2121,96 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_http_api_route_with_options_async(http_api_id, route_id, headers, runtime)
 
+    def delete_plugin_attachment_with_options(
+        self,
+        plugin_attachment_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.DeletePluginAttachmentResponse:
+        """
+        @summary 删除挂载规则API
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePluginAttachmentResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeletePluginAttachment',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/plugin-attachments/{OpenApiUtilClient.get_encode_param(plugin_attachment_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.DeletePluginAttachmentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_plugin_attachment_with_options_async(
+        self,
+        plugin_attachment_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.DeletePluginAttachmentResponse:
+        """
+        @summary 删除挂载规则API
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePluginAttachmentResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeletePluginAttachment',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/plugin-attachments/{OpenApiUtilClient.get_encode_param(plugin_attachment_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.DeletePluginAttachmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_plugin_attachment(
+        self,
+        plugin_attachment_id: str,
+    ) -> apig20240327_models.DeletePluginAttachmentResponse:
+        """
+        @summary 删除挂载规则API
+        
+        @return: DeletePluginAttachmentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_plugin_attachment_with_options(plugin_attachment_id, headers, runtime)
+
+    async def delete_plugin_attachment_async(
+        self,
+        plugin_attachment_id: str,
+    ) -> apig20240327_models.DeletePluginAttachmentResponse:
+        """
+        @summary 删除挂载规则API
+        
+        @return: DeletePluginAttachmentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_plugin_attachment_with_options_async(plugin_attachment_id, headers, runtime)
+
     def delete_policy_with_options(
         self,
         policy_id: str,
@@ -2216,16 +2238,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.DeletePolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.DeletePolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.DeletePolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_policy_with_options_async(
         self,
@@ -2254,16 +2270,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.DeletePolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.DeletePolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.DeletePolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_policy(
         self,
@@ -2318,16 +2328,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.DeletePolicyAttachmentResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.DeletePolicyAttachmentResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.DeletePolicyAttachmentResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_policy_attachment_with_options_async(
         self,
@@ -2356,16 +2360,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.DeletePolicyAttachmentResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.DeletePolicyAttachmentResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.DeletePolicyAttachmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_policy_attachment(
         self,
@@ -2410,6 +2408,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.http_api_config):
+            body['httpApiConfig'] = request.http_api_config
         if not UtilClient.is_unset(request.rest_api_config):
             body['restApiConfig'] = request.rest_api_config
         if not UtilClient.is_unset(request.route_id):
@@ -2429,16 +2429,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.DeployHttpApiResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.DeployHttpApiResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.DeployHttpApiResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def deploy_http_api_with_options_async(
         self,
@@ -2457,6 +2451,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.http_api_config):
+            body['httpApiConfig'] = request.http_api_config
         if not UtilClient.is_unset(request.rest_api_config):
             body['restApiConfig'] = request.rest_api_config
         if not UtilClient.is_unset(request.route_id):
@@ -2476,16 +2472,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.DeployHttpApiResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.DeployHttpApiResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.DeployHttpApiResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def deploy_http_api(
         self,
@@ -2544,16 +2534,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.ExportHttpApiResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.ExportHttpApiResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.ExportHttpApiResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def export_http_api_with_options_async(
         self,
@@ -2582,16 +2566,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.ExportHttpApiResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.ExportHttpApiResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.ExportHttpApiResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def export_http_api(
         self,
@@ -2671,16 +2649,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.GetDashboardResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.GetDashboardResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.GetDashboardResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_dashboard_with_options_async(
         self,
@@ -2734,16 +2706,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.GetDashboardResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.GetDashboardResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.GetDashboardResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_dashboard(
         self,
@@ -2809,16 +2775,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.GetDomainResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.GetDomainResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.GetDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_domain_with_options_async(
         self,
@@ -2854,16 +2814,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.GetDomainResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.GetDomainResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.GetDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_domain(
         self,
@@ -2934,16 +2888,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.GetEnvironmentResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.GetEnvironmentResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.GetEnvironmentResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_environment_with_options_async(
         self,
@@ -2984,16 +2932,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.GetEnvironmentResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.GetEnvironmentResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.GetEnvironmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_environment(
         self,
@@ -3058,16 +3000,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.GetGatewayResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.GetGatewayResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.GetGatewayResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_gateway_with_options_async(
         self,
@@ -3096,16 +3032,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.GetGatewayResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.GetGatewayResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.GetGatewayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_gateway(
         self,
@@ -3160,16 +3090,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.GetHttpApiResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.GetHttpApiResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.GetHttpApiResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_http_api_with_options_async(
         self,
@@ -3198,16 +3122,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.GetHttpApiResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.GetHttpApiResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.GetHttpApiResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_http_api(
         self,
@@ -3263,16 +3181,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.GetHttpApiOperationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.GetHttpApiOperationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.GetHttpApiOperationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_http_api_operation_with_options_async(
         self,
@@ -3302,16 +3214,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.GetHttpApiOperationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.GetHttpApiOperationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.GetHttpApiOperationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_http_api_operation(
         self,
@@ -3369,16 +3275,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.GetHttpApiRouteResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.GetHttpApiRouteResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.GetHttpApiRouteResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_http_api_route_with_options_async(
         self,
@@ -3408,16 +3308,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.GetHttpApiRouteResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.GetHttpApiRouteResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.GetHttpApiRouteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_http_api_route(
         self,
@@ -3447,6 +3341,96 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_http_api_route_with_options_async(http_api_id, route_id, headers, runtime)
 
+    def get_plugin_attachment_with_options(
+        self,
+        plugin_attachment_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.GetPluginAttachmentResponse:
+        """
+        @summary GetPluginAttachment。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPluginAttachmentResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetPluginAttachment',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/plugin-attachments/{OpenApiUtilClient.get_encode_param(plugin_attachment_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.GetPluginAttachmentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_plugin_attachment_with_options_async(
+        self,
+        plugin_attachment_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.GetPluginAttachmentResponse:
+        """
+        @summary GetPluginAttachment。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPluginAttachmentResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetPluginAttachment',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/plugin-attachments/{OpenApiUtilClient.get_encode_param(plugin_attachment_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.GetPluginAttachmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_plugin_attachment(
+        self,
+        plugin_attachment_id: str,
+    ) -> apig20240327_models.GetPluginAttachmentResponse:
+        """
+        @summary GetPluginAttachment。
+        
+        @return: GetPluginAttachmentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_plugin_attachment_with_options(plugin_attachment_id, headers, runtime)
+
+    async def get_plugin_attachment_async(
+        self,
+        plugin_attachment_id: str,
+    ) -> apig20240327_models.GetPluginAttachmentResponse:
+        """
+        @summary GetPluginAttachment。
+        
+        @return: GetPluginAttachmentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_plugin_attachment_with_options_async(plugin_attachment_id, headers, runtime)
+
     def get_policy_with_options(
         self,
         policy_id: str,
@@ -3474,16 +3458,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.GetPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.GetPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.GetPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_policy_with_options_async(
         self,
@@ -3512,16 +3490,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.GetPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.GetPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.GetPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_policy(
         self,
@@ -3576,16 +3548,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.GetPolicyAttachmentResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.GetPolicyAttachmentResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.GetPolicyAttachmentResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_policy_attachment_with_options_async(
         self,
@@ -3614,16 +3580,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.GetPolicyAttachmentResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.GetPolicyAttachmentResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.GetPolicyAttachmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_policy_attachment(
         self,
@@ -3653,18 +3613,25 @@ class Client(OpenApiClient):
 
     def get_resource_overview_with_options(
         self,
+        request: apig20240327_models.GetResourceOverviewRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetResourceOverviewResponse:
         """
         @summary Get resource overview information
         
+        @param request: GetResourceOverviewRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetResourceOverviewResponse
         """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gateway_type):
+            query['gatewayType'] = request.gateway_type
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetResourceOverview',
@@ -3677,31 +3644,32 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.GetResourceOverviewResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.GetResourceOverviewResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.GetResourceOverviewResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_resource_overview_with_options_async(
         self,
+        request: apig20240327_models.GetResourceOverviewRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetResourceOverviewResponse:
         """
         @summary Get resource overview information
         
+        @param request: GetResourceOverviewRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetResourceOverviewResponse
         """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gateway_type):
+            query['gatewayType'] = request.gateway_type
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetResourceOverview',
@@ -3714,36 +3682,38 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.GetResourceOverviewResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.GetResourceOverviewResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.GetResourceOverviewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
-    def get_resource_overview(self) -> apig20240327_models.GetResourceOverviewResponse:
+    def get_resource_overview(
+        self,
+        request: apig20240327_models.GetResourceOverviewRequest,
+    ) -> apig20240327_models.GetResourceOverviewResponse:
         """
         @summary Get resource overview information
         
+        @param request: GetResourceOverviewRequest
         @return: GetResourceOverviewResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_resource_overview_with_options(headers, runtime)
+        return self.get_resource_overview_with_options(request, headers, runtime)
 
-    async def get_resource_overview_async(self) -> apig20240327_models.GetResourceOverviewResponse:
+    async def get_resource_overview_async(
+        self,
+        request: apig20240327_models.GetResourceOverviewRequest,
+    ) -> apig20240327_models.GetResourceOverviewResponse:
         """
         @summary Get resource overview information
         
+        @param request: GetResourceOverviewRequest
         @return: GetResourceOverviewResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_resource_overview_with_options_async(headers, runtime)
+        return await self.get_resource_overview_with_options_async(request, headers, runtime)
 
     def get_service_with_options(
         self,
@@ -3772,16 +3742,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.GetServiceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.GetServiceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.GetServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_service_with_options_async(
         self,
@@ -3810,16 +3774,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.GetServiceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.GetServiceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.GetServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_service(
         self,
@@ -3881,16 +3839,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.GetTraceConfigResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.GetTraceConfigResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.GetTraceConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_trace_config_with_options_async(
         self,
@@ -3926,16 +3878,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.GetTraceConfigResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.GetTraceConfigResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.GetTraceConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_trace_config(
         self,
@@ -3983,10 +3929,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.deploy_configs):
+            body['deployConfigs'] = request.deploy_configs
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
         if not UtilClient.is_unset(request.dry_run):
             body['dryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.mcp_route_id):
+            body['mcpRouteId'] = request.mcp_route_id
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
         if not UtilClient.is_unset(request.resource_group_id):
@@ -4018,16 +3968,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.ImportHttpApiResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.ImportHttpApiResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.ImportHttpApiResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def import_http_api_with_options_async(
         self,
@@ -4045,10 +3989,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.deploy_configs):
+            body['deployConfigs'] = request.deploy_configs
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
         if not UtilClient.is_unset(request.dry_run):
             body['dryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.mcp_route_id):
+            body['mcpRouteId'] = request.mcp_route_id
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
         if not UtilClient.is_unset(request.resource_group_id):
@@ -4080,16 +4028,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.ImportHttpApiResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.ImportHttpApiResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.ImportHttpApiResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def import_http_api(
         self,
@@ -4137,6 +4079,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.gateway_id):
             query['gatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_type):
+            query['gatewayType'] = request.gateway_type
         if not UtilClient.is_unset(request.name_like):
             query['nameLike'] = request.name_like
         if not UtilClient.is_unset(request.page_number):
@@ -4160,16 +4104,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.ListDomainsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.ListDomainsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.ListDomainsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_domains_with_options_async(
         self,
@@ -4189,6 +4127,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.gateway_id):
             query['gatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_type):
+            query['gatewayType'] = request.gateway_type
         if not UtilClient.is_unset(request.name_like):
             query['nameLike'] = request.name_like
         if not UtilClient.is_unset(request.page_number):
@@ -4212,16 +4152,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.ListDomainsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.ListDomainsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.ListDomainsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_domains(
         self,
@@ -4276,6 +4210,8 @@ class Client(OpenApiClient):
             query['gatewayId'] = request.gateway_id
         if not UtilClient.is_unset(request.gateway_name_like):
             query['gatewayNameLike'] = request.gateway_name_like
+        if not UtilClient.is_unset(request.gateway_type):
+            query['gatewayType'] = request.gateway_type
         if not UtilClient.is_unset(request.name_like):
             query['nameLike'] = request.name_like
         if not UtilClient.is_unset(request.page_number):
@@ -4299,16 +4235,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.ListEnvironmentsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.ListEnvironmentsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.ListEnvironmentsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_environments_with_options_async(
         self,
@@ -4335,6 +4265,8 @@ class Client(OpenApiClient):
             query['gatewayId'] = request.gateway_id
         if not UtilClient.is_unset(request.gateway_name_like):
             query['gatewayNameLike'] = request.gateway_name_like
+        if not UtilClient.is_unset(request.gateway_type):
+            query['gatewayType'] = request.gateway_type
         if not UtilClient.is_unset(request.name_like):
             query['nameLike'] = request.name_like
         if not UtilClient.is_unset(request.page_number):
@@ -4358,16 +4290,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.ListEnvironmentsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.ListEnvironmentsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.ListEnvironmentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_environments(
         self,
@@ -4425,6 +4351,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.gateway_id):
             query['gatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_type):
+            query['gatewayType'] = request.gateway_type
         if not UtilClient.is_unset(request.keyword):
             query['keyword'] = request.keyword
         if not UtilClient.is_unset(request.name):
@@ -4452,16 +4380,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.ListGatewaysResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.ListGatewaysResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.ListGatewaysResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_gateways_with_options_async(
         self,
@@ -4485,6 +4407,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.gateway_id):
             query['gatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_type):
+            query['gatewayType'] = request.gateway_type
         if not UtilClient.is_unset(request.keyword):
             query['keyword'] = request.keyword
         if not UtilClient.is_unset(request.name):
@@ -4512,16 +4436,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.ListGatewaysResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.ListGatewaysResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.ListGatewaysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_gateways(
         self,
@@ -4570,6 +4488,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.consumer_authorization_rule_id):
             query['consumerAuthorizationRuleId'] = request.consumer_authorization_rule_id
+        if not UtilClient.is_unset(request.for_deploy):
+            query['forDeploy'] = request.for_deploy
+        if not UtilClient.is_unset(request.gateway_id):
+            query['gatewayId'] = request.gateway_id
         if not UtilClient.is_unset(request.method):
             query['method'] = request.method
         if not UtilClient.is_unset(request.name):
@@ -4603,16 +4525,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.ListHttpApiOperationsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.ListHttpApiOperationsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.ListHttpApiOperationsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_http_api_operations_with_options_async(
         self,
@@ -4633,6 +4549,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.consumer_authorization_rule_id):
             query['consumerAuthorizationRuleId'] = request.consumer_authorization_rule_id
+        if not UtilClient.is_unset(request.for_deploy):
+            query['forDeploy'] = request.for_deploy
+        if not UtilClient.is_unset(request.gateway_id):
+            query['gatewayId'] = request.gateway_id
         if not UtilClient.is_unset(request.method):
             query['method'] = request.method
         if not UtilClient.is_unset(request.name):
@@ -4666,16 +4586,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.ListHttpApiOperationsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.ListHttpApiOperationsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.ListHttpApiOperationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_http_api_operations(
         self,
@@ -4732,6 +4646,8 @@ class Client(OpenApiClient):
             query['domainId'] = request.domain_id
         if not UtilClient.is_unset(request.environment_id):
             query['environmentId'] = request.environment_id
+        if not UtilClient.is_unset(request.for_deploy):
+            query['forDeploy'] = request.for_deploy
         if not UtilClient.is_unset(request.gateway_id):
             query['gatewayId'] = request.gateway_id
         if not UtilClient.is_unset(request.name):
@@ -4765,16 +4681,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.ListHttpApiRoutesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.ListHttpApiRoutesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.ListHttpApiRoutesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_http_api_routes_with_options_async(
         self,
@@ -4801,6 +4711,8 @@ class Client(OpenApiClient):
             query['domainId'] = request.domain_id
         if not UtilClient.is_unset(request.environment_id):
             query['environmentId'] = request.environment_id
+        if not UtilClient.is_unset(request.for_deploy):
+            query['forDeploy'] = request.for_deploy
         if not UtilClient.is_unset(request.gateway_id):
             query['gatewayId'] = request.gateway_id
         if not UtilClient.is_unset(request.name):
@@ -4834,16 +4746,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.ListHttpApiRoutesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.ListHttpApiRoutesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.ListHttpApiRoutesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_http_api_routes(
         self,
@@ -4893,6 +4799,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.gateway_id):
             query['gatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_type):
+            query['gatewayType'] = request.gateway_type
         if not UtilClient.is_unset(request.keyword):
             query['keyword'] = request.keyword
         if not UtilClient.is_unset(request.name):
@@ -4938,16 +4846,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.ListHttpApisResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.ListHttpApisResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.ListHttpApisResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_http_apis_with_options_async(
         self,
@@ -4967,6 +4869,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.gateway_id):
             query['gatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_type):
+            query['gatewayType'] = request.gateway_type
         if not UtilClient.is_unset(request.keyword):
             query['keyword'] = request.keyword
         if not UtilClient.is_unset(request.name):
@@ -5012,16 +4916,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.ListHttpApisResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.ListHttpApisResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.ListHttpApisResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_http_apis(
         self,
@@ -5050,6 +4948,142 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_http_apis_with_options_async(request, headers, runtime)
+
+    def list_plugins_with_options(
+        self,
+        request: apig20240327_models.ListPluginsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.ListPluginsResponse:
+        """
+        @summary ListPlugins
+        
+        @param request: ListPluginsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPluginsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.attach_resource_id):
+            query['attachResourceId'] = request.attach_resource_id
+        if not UtilClient.is_unset(request.attach_resource_type):
+            query['attachResourceType'] = request.attach_resource_type
+        if not UtilClient.is_unset(request.gateway_id):
+            query['gatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_type):
+            query['gatewayType'] = request.gateway_type
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.plugin_class_id):
+            query['pluginClassId'] = request.plugin_class_id
+        if not UtilClient.is_unset(request.plugin_class_name):
+            query['pluginClassName'] = request.plugin_class_name
+        if not UtilClient.is_unset(request.with_attachment_info):
+            query['withAttachmentInfo'] = request.with_attachment_info
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPlugins',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/plugins',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.ListPluginsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_plugins_with_options_async(
+        self,
+        request: apig20240327_models.ListPluginsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.ListPluginsResponse:
+        """
+        @summary ListPlugins
+        
+        @param request: ListPluginsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPluginsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.attach_resource_id):
+            query['attachResourceId'] = request.attach_resource_id
+        if not UtilClient.is_unset(request.attach_resource_type):
+            query['attachResourceType'] = request.attach_resource_type
+        if not UtilClient.is_unset(request.gateway_id):
+            query['gatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_type):
+            query['gatewayType'] = request.gateway_type
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.plugin_class_id):
+            query['pluginClassId'] = request.plugin_class_id
+        if not UtilClient.is_unset(request.plugin_class_name):
+            query['pluginClassName'] = request.plugin_class_name
+        if not UtilClient.is_unset(request.with_attachment_info):
+            query['withAttachmentInfo'] = request.with_attachment_info
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPlugins',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/plugins',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.ListPluginsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_plugins(
+        self,
+        request: apig20240327_models.ListPluginsRequest,
+    ) -> apig20240327_models.ListPluginsResponse:
+        """
+        @summary ListPlugins
+        
+        @param request: ListPluginsRequest
+        @return: ListPluginsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_plugins_with_options(request, headers, runtime)
+
+    async def list_plugins_async(
+        self,
+        request: apig20240327_models.ListPluginsRequest,
+    ) -> apig20240327_models.ListPluginsResponse:
+        """
+        @summary ListPlugins
+        
+        @param request: ListPluginsRequest
+        @return: ListPluginsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_plugins_with_options_async(request, headers, runtime)
 
     def list_policy_classes_with_options(
         self,
@@ -5092,16 +5126,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.ListPolicyClassesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.ListPolicyClassesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.ListPolicyClassesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_policy_classes_with_options_async(
         self,
@@ -5144,16 +5172,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.ListPolicyClassesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.ListPolicyClassesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.ListPolicyClassesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_policy_classes(
         self,
@@ -5228,16 +5250,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.ListServicesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.ListServicesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.ListServicesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_services_with_options_async(
         self,
@@ -5284,16 +5300,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.ListServicesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.ListServicesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.ListServicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_services(
         self,
@@ -5362,16 +5372,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.ListSslCertsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.ListSslCertsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.ListSslCertsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_ssl_certs_with_options_async(
         self,
@@ -5412,16 +5416,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.ListSslCertsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.ListSslCertsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.ListSslCertsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_ssl_certs(
         self,
@@ -5477,16 +5475,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.ListZonesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.ListZonesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.ListZonesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_zones_with_options_async(
         self,
@@ -5514,16 +5506,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.ListZonesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.ListZonesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.ListZonesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_zones(self) -> apig20240327_models.ListZonesResponse:
         """
@@ -5572,16 +5558,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.RestartGatewayResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.RestartGatewayResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.RestartGatewayResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def restart_gateway_with_options_async(
         self,
@@ -5610,16 +5590,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.RestartGatewayResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.RestartGatewayResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.RestartGatewayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def restart_gateway(
         self,
@@ -5666,6 +5640,10 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.environment_id):
             body['environmentId'] = request.environment_id
+        if not UtilClient.is_unset(request.gateway_id):
+            body['gatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.operation_id):
+            body['operationId'] = request.operation_id
         if not UtilClient.is_unset(request.route_id):
             body['routeId'] = request.route_id
         req = open_api_models.OpenApiRequest(
@@ -5683,16 +5661,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.UndeployHttpApiResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.UndeployHttpApiResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.UndeployHttpApiResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def undeploy_http_api_with_options_async(
         self,
@@ -5713,6 +5685,10 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.environment_id):
             body['environmentId'] = request.environment_id
+        if not UtilClient.is_unset(request.gateway_id):
+            body['gatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.operation_id):
+            body['operationId'] = request.operation_id
         if not UtilClient.is_unset(request.route_id):
             body['routeId'] = request.route_id
         req = open_api_models.OpenApiRequest(
@@ -5730,16 +5706,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.UndeployHttpApiResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.UndeployHttpApiResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.UndeployHttpApiResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def undeploy_http_api(
         self,
@@ -5823,16 +5793,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.UpdateDomainResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.UpdateDomainResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.UpdateDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_domain_with_options_async(
         self,
@@ -5886,16 +5850,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.UpdateDomainResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.UpdateDomainResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.UpdateDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_domain(
         self,
@@ -5966,16 +5924,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.UpdateEnvironmentResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.UpdateEnvironmentResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.UpdateEnvironmentResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_environment_with_options_async(
         self,
@@ -6016,16 +5968,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.UpdateEnvironmentResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.UpdateEnvironmentResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.UpdateEnvironmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_environment(
         self,
@@ -6098,16 +6044,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.UpdateGatewayFeatureResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.UpdateGatewayFeatureResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.UpdateGatewayFeatureResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_gateway_feature_with_options_async(
         self,
@@ -6144,16 +6084,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.UpdateGatewayFeatureResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.UpdateGatewayFeatureResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.UpdateGatewayFeatureResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_gateway_feature(
         self,
@@ -6221,16 +6155,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.UpdateGatewayNameResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.UpdateGatewayNameResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.UpdateGatewayNameResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_gateway_name_with_options_async(
         self,
@@ -6266,16 +6194,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.UpdateGatewayNameResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.UpdateGatewayNameResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.UpdateGatewayNameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_gateway_name(
         self,
@@ -6357,16 +6279,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.UpdateHttpApiResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.UpdateHttpApiResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.UpdateHttpApiResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_http_api_with_options_async(
         self,
@@ -6418,16 +6334,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.UpdateHttpApiResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.UpdateHttpApiResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.UpdateHttpApiResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_http_api(
         self,
@@ -6494,16 +6404,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.UpdateHttpApiOperationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.UpdateHttpApiOperationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.UpdateHttpApiOperationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_http_api_operation_with_options_async(
         self,
@@ -6540,16 +6444,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.UpdateHttpApiOperationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.UpdateHttpApiOperationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.UpdateHttpApiOperationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_http_api_operation(
         self,
@@ -6603,6 +6501,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.backend_config):
             body['backendConfig'] = request.backend_config
+        if not UtilClient.is_unset(request.deploy_configs):
+            body['deployConfigs'] = request.deploy_configs
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
         if not UtilClient.is_unset(request.domain_ids):
@@ -6626,16 +6526,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.UpdateHttpApiRouteResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.UpdateHttpApiRouteResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.UpdateHttpApiRouteResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_http_api_route_with_options_async(
         self,
@@ -6657,6 +6551,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.backend_config):
             body['backendConfig'] = request.backend_config
+        if not UtilClient.is_unset(request.deploy_configs):
+            body['deployConfigs'] = request.deploy_configs
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
         if not UtilClient.is_unset(request.domain_ids):
@@ -6680,16 +6576,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.UpdateHttpApiRouteResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.UpdateHttpApiRouteResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.UpdateHttpApiRouteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_http_api_route(
         self,
@@ -6722,6 +6612,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_http_api_route_with_options_async(http_api_id, route_id, request, headers, runtime)
+
+    def update_plugin_attachment_with_options(
+        self,
+        plugin_attachment_id: str,
+        request: apig20240327_models.UpdatePluginAttachmentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.UpdatePluginAttachmentResponse:
+        """
+        @summary 更新挂载规则API
+        
+        @param request: UpdatePluginAttachmentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePluginAttachmentResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.attach_resource_ids):
+            body['attachResourceIds'] = request.attach_resource_ids
+        if not UtilClient.is_unset(request.enable):
+            body['enable'] = request.enable
+        if not UtilClient.is_unset(request.plugin_config):
+            body['pluginConfig'] = request.plugin_config
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdatePluginAttachment',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/plugin-attachments/{OpenApiUtilClient.get_encode_param(plugin_attachment_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.UpdatePluginAttachmentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_plugin_attachment_with_options_async(
+        self,
+        plugin_attachment_id: str,
+        request: apig20240327_models.UpdatePluginAttachmentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.UpdatePluginAttachmentResponse:
+        """
+        @summary 更新挂载规则API
+        
+        @param request: UpdatePluginAttachmentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePluginAttachmentResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.attach_resource_ids):
+            body['attachResourceIds'] = request.attach_resource_ids
+        if not UtilClient.is_unset(request.enable):
+            body['enable'] = request.enable
+        if not UtilClient.is_unset(request.plugin_config):
+            body['pluginConfig'] = request.plugin_config
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdatePluginAttachment',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/plugin-attachments/{OpenApiUtilClient.get_encode_param(plugin_attachment_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.UpdatePluginAttachmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_plugin_attachment(
+        self,
+        plugin_attachment_id: str,
+        request: apig20240327_models.UpdatePluginAttachmentRequest,
+    ) -> apig20240327_models.UpdatePluginAttachmentResponse:
+        """
+        @summary 更新挂载规则API
+        
+        @param request: UpdatePluginAttachmentRequest
+        @return: UpdatePluginAttachmentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_plugin_attachment_with_options(plugin_attachment_id, request, headers, runtime)
+
+    async def update_plugin_attachment_async(
+        self,
+        plugin_attachment_id: str,
+        request: apig20240327_models.UpdatePluginAttachmentRequest,
+    ) -> apig20240327_models.UpdatePluginAttachmentResponse:
+        """
+        @summary 更新挂载规则API
+        
+        @param request: UpdatePluginAttachmentRequest
+        @return: UpdatePluginAttachmentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_plugin_attachment_with_options_async(plugin_attachment_id, request, headers, runtime)
 
     def update_policy_with_options(
         self,
@@ -6761,16 +6767,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.UpdatePolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.UpdatePolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.UpdatePolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_policy_with_options_async(
         self,
@@ -6810,16 +6810,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.UpdatePolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.UpdatePolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.UpdatePolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_policy(
         self,
@@ -6885,16 +6879,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.UpgradeGatewayResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.UpgradeGatewayResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.UpgradeGatewayResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def upgrade_gateway_with_options_async(
         self,
@@ -6930,16 +6918,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                apig20240327_models.UpgradeGatewayResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                apig20240327_models.UpgradeGatewayResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            apig20240327_models.UpgradeGatewayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def upgrade_gateway(
         self,

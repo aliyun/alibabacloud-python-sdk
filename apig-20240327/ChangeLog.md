@@ -1,3 +1,33 @@
+2025-05-21 Version: 4.0.0
+- Support API CreatePluginAttachment.
+- Support API DeletePluginAttachment.
+- Support API GetPluginAttachment.
+- Support API ListPlugins.
+- Support API UpdatePluginAttachment.
+- Update API CreateDomain: add request parameters body.gatewayType.
+- Update API CreateHttpApi: add request parameters body.ingressConfig.clusterId.
+- Update API CreateHttpApiRoute: add request parameters body.deployConfigs.
+- Update API DeployHttpApi: add request parameters body.httpApiConfig.
+- Update API DeployHttpApi: add request parameters body.restApiConfig.gatewayId.
+- Update API DeployHttpApi: add request parameters body.restApiConfig.operationIds.
+- Update API GetResourceOverview: add request parameters gatewayType.
+- Update API GetResourceOverview: add request The number of query or body parameters has changed from zero to many.
+- Update API ImportHttpApi: add request parameters body.deployConfigs.
+- Update API ImportHttpApi: add request parameters body.mcpRouteId.
+- Update API ListDomains: add request parameters gatewayType.
+- Update API ListEnvironments: add request parameters gatewayType.
+- Update API ListGateways: add request parameters gatewayType.
+- Update API ListGateways: add response parameters Body.data.items.$.gatewayType.
+- Update API ListGateways: add response parameters Body.data.items.$.legacy.
+- Update API ListHttpApiOperations: add request parameters forDeploy.
+- Update API ListHttpApiOperations: add request parameters gatewayId.
+- Update API ListHttpApiRoutes: add request parameters forDeploy.
+- Update API ListHttpApis: add request parameters gatewayType.
+- Update API UndeployHttpApi: add request parameters body.gatewayId.
+- Update API UndeployHttpApi: add request parameters body.operationId.
+- Update API UpdateHttpApiRoute: add request parameters body.deployConfigs.
+
+
 2025-04-14 Version: 3.2.2
 - Update API ListServices: add request parameters sourceTypes.
 
