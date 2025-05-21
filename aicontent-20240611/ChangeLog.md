@@ -1,3 +1,10 @@
+2025-05-21 Version: 4.0.0
+- Update API ListTextbookAssistantArticleDetails: add response parameters Body.data.$.sceneList.$.sceneTranslate.
+- Update API ListTextbookAssistantArticleDetails: delete response parameters Body.data.$.sceneList.$.sceneTransLate.
+- Update API ListTextbookAssistantBookDirectories: add response parameters Body.data.directoryTree.$.unit.
+- Update API ListTextbookAssistantSceneDetails: add response parameters Body.data.$.sceneTranslate.
+
+
 2025-05-16 Version: 3.0.0
 - Support API CountOralEvaluationStatisticsCalls.
 - Support API CountOralEvaluationStatisticsConcurrent.

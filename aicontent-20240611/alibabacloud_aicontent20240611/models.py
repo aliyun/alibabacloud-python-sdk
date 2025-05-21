@@ -8511,12 +8511,12 @@ class ListTextbookAssistantArticleDetailsResponseBodyDataSceneList(TeaModel):
         scene: str = None,
         scene_id: str = None,
         scene_image_list: List[str] = None,
-        scene_trans_late: str = None,
+        scene_translate: str = None,
     ):
         self.scene = scene
         self.scene_id = scene_id
         self.scene_image_list = scene_image_list
-        self.scene_trans_late = scene_trans_late
+        self.scene_translate = scene_translate
 
     def validate(self):
         pass
@@ -8533,8 +8533,8 @@ class ListTextbookAssistantArticleDetailsResponseBodyDataSceneList(TeaModel):
             result['sceneId'] = self.scene_id
         if self.scene_image_list is not None:
             result['sceneImageList'] = self.scene_image_list
-        if self.scene_trans_late is not None:
-            result['sceneTransLate'] = self.scene_trans_late
+        if self.scene_translate is not None:
+            result['sceneTranslate'] = self.scene_translate
         return result
 
     def from_map(self, m: dict = None):
@@ -8545,8 +8545,8 @@ class ListTextbookAssistantArticleDetailsResponseBodyDataSceneList(TeaModel):
             self.scene_id = m.get('sceneId')
         if m.get('sceneImageList') is not None:
             self.scene_image_list = m.get('sceneImageList')
-        if m.get('sceneTransLate') is not None:
-            self.scene_trans_late = m.get('sceneTransLate')
+        if m.get('sceneTranslate') is not None:
+            self.scene_translate = m.get('sceneTranslate')
         return self
 
 
@@ -9167,13 +9167,48 @@ class ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeTopic(Tea
         return self
 
 
-class ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTree(TeaModel):
+class ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSectionTopic(TeaModel):
     def __init__(
         self,
+        label_id: str = None,
+        label_name: str = None,
+    ):
+        self.label_id = label_id
+        self.label_name = label_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.label_id is not None:
+            result['labelId'] = self.label_id
+        if self.label_name is not None:
+            result['labelName'] = self.label_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('labelId') is not None:
+            self.label_id = m.get('labelId')
+        if m.get('labelName') is not None:
+            self.label_name = m.get('labelName')
+        return self
+
+
+class ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSection(TeaModel):
+    def __init__(
+        self,
+        children: Any = None,
         directory_id: str = None,
         directory_name: str = None,
-        topic: List[ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeTopic] = None,
+        topic: List[ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSectionTopic] = None,
     ):
+        self.children = children
         self.directory_id = directory_id
         self.directory_name = directory_name
         self.topic = topic
@@ -9181,6 +9216,158 @@ class ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTree(TeaModel
     def validate(self):
         if self.topic:
             for k in self.topic:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.children is not None:
+            result['children'] = self.children
+        if self.directory_id is not None:
+            result['directoryId'] = self.directory_id
+        if self.directory_name is not None:
+            result['directoryName'] = self.directory_name
+        result['topic'] = []
+        if self.topic is not None:
+            for k in self.topic:
+                result['topic'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('children') is not None:
+            self.children = m.get('children')
+        if m.get('directoryId') is not None:
+            self.directory_id = m.get('directoryId')
+        if m.get('directoryName') is not None:
+            self.directory_name = m.get('directoryName')
+        self.topic = []
+        if m.get('topic') is not None:
+            for k in m.get('topic'):
+                temp_model = ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSectionTopic()
+                self.topic.append(temp_model.from_map(k))
+        return self
+
+
+class ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitTopic(TeaModel):
+    def __init__(
+        self,
+        label_id: str = None,
+        label_name: str = None,
+    ):
+        self.label_id = label_id
+        self.label_name = label_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.label_id is not None:
+            result['labelId'] = self.label_id
+        if self.label_name is not None:
+            result['labelName'] = self.label_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('labelId') is not None:
+            self.label_id = m.get('labelId')
+        if m.get('labelName') is not None:
+            self.label_name = m.get('labelName')
+        return self
+
+
+class ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnit(TeaModel):
+    def __init__(
+        self,
+        directory_id: str = None,
+        directory_name: str = None,
+        section: List[ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSection] = None,
+        topic: List[ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitTopic] = None,
+    ):
+        self.directory_id = directory_id
+        self.directory_name = directory_name
+        self.section = section
+        self.topic = topic
+
+    def validate(self):
+        if self.section:
+            for k in self.section:
+                if k:
+                    k.validate()
+        if self.topic:
+            for k in self.topic:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.directory_id is not None:
+            result['directoryId'] = self.directory_id
+        if self.directory_name is not None:
+            result['directoryName'] = self.directory_name
+        result['section'] = []
+        if self.section is not None:
+            for k in self.section:
+                result['section'].append(k.to_map() if k else None)
+        result['topic'] = []
+        if self.topic is not None:
+            for k in self.topic:
+                result['topic'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('directoryId') is not None:
+            self.directory_id = m.get('directoryId')
+        if m.get('directoryName') is not None:
+            self.directory_name = m.get('directoryName')
+        self.section = []
+        if m.get('section') is not None:
+            for k in m.get('section'):
+                temp_model = ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSection()
+                self.section.append(temp_model.from_map(k))
+        self.topic = []
+        if m.get('topic') is not None:
+            for k in m.get('topic'):
+                temp_model = ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitTopic()
+                self.topic.append(temp_model.from_map(k))
+        return self
+
+
+class ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTree(TeaModel):
+    def __init__(
+        self,
+        directory_id: str = None,
+        directory_name: str = None,
+        topic: List[ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeTopic] = None,
+        unit: List[ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnit] = None,
+    ):
+        self.directory_id = directory_id
+        self.directory_name = directory_name
+        self.topic = topic
+        self.unit = unit
+
+    def validate(self):
+        if self.topic:
+            for k in self.topic:
+                if k:
+                    k.validate()
+        if self.unit:
+            for k in self.unit:
                 if k:
                     k.validate()
 
@@ -9198,6 +9385,10 @@ class ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTree(TeaModel
         if self.topic is not None:
             for k in self.topic:
                 result['topic'].append(k.to_map() if k else None)
+        result['unit'] = []
+        if self.unit is not None:
+            for k in self.unit:
+                result['unit'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -9211,6 +9402,11 @@ class ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTree(TeaModel
             for k in m.get('topic'):
                 temp_model = ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeTopic()
                 self.topic.append(temp_model.from_map(k))
+        self.unit = []
+        if m.get('unit') is not None:
+            for k in m.get('unit'):
+                temp_model = ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnit()
+                self.unit.append(temp_model.from_map(k))
         return self
 
 
@@ -10283,6 +10479,7 @@ class ListTextbookAssistantSceneDetailsResponseBodyData(TeaModel):
         scene_id: str = None,
         scene_image_list: List[str] = None,
         scene_task_list: List[ListTextbookAssistantSceneDetailsResponseBodyDataSceneTaskList] = None,
+        scene_translate: str = None,
         sentence_list: List[ListTextbookAssistantSceneDetailsResponseBodyDataSentenceList] = None,
         target: str = None,
         theme: ListTextbookAssistantSceneDetailsResponseBodyDataTheme = None,
@@ -10294,6 +10491,7 @@ class ListTextbookAssistantSceneDetailsResponseBodyData(TeaModel):
         self.scene_id = scene_id
         self.scene_image_list = scene_image_list
         self.scene_task_list = scene_task_list
+        self.scene_translate = scene_translate
         self.sentence_list = sentence_list
         self.target = target
         self.theme = theme
@@ -10342,6 +10540,8 @@ class ListTextbookAssistantSceneDetailsResponseBodyData(TeaModel):
         if self.scene_task_list is not None:
             for k in self.scene_task_list:
                 result['sceneTaskList'].append(k.to_map() if k else None)
+        if self.scene_translate is not None:
+            result['sceneTranslate'] = self.scene_translate
         result['sentenceList'] = []
         if self.sentence_list is not None:
             for k in self.sentence_list:
@@ -10376,6 +10576,8 @@ class ListTextbookAssistantSceneDetailsResponseBodyData(TeaModel):
             for k in m.get('sceneTaskList'):
                 temp_model = ListTextbookAssistantSceneDetailsResponseBodyDataSceneTaskList()
                 self.scene_task_list.append(temp_model.from_map(k))
+        if m.get('sceneTranslate') is not None:
+            self.scene_translate = m.get('sceneTranslate')
         self.sentence_list = []
         if m.get('sentenceList') is not None:
             for k in m.get('sentenceList'):
