@@ -1,3 +1,13 @@
+2025-05-21 Version: 2.14.2
+- Update API GetAICoachScript: add response parameters Body.scoreConfig.levelEnabled.
+- Update API GetAICoachScript: add response parameters Body.scoreConfig.levels.
+- Update API GetAICoachScript: add response parameters Body.weights.similarPronunciationScoringEnabled.
+- Update API GetAICoachTaskSessionHistory: add response parameters Body.conversationList.$.dateLabel.
+- Update API ListAICoachScriptPage: add response parameters Body.list.$.scoreConfig.levelEnabled.
+- Update API ListAICoachScriptPage: add response parameters Body.list.$.scoreConfig.levels.
+- Update API ListAICoachScriptPage: add response parameters Body.list.$.weights.similarPronunciationScoringEnabled.
+
+
 2025-04-27 Version: 2.14.1
 - Update API GetAICoachScript: add response parameters Body.scoreConfig.
 

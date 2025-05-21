@@ -6380,14 +6380,16 @@ class GetAICoachScriptResponseBodySampleDialogueList(TeaModel):
         return self
 
 
-class GetAICoachScriptResponseBodyScoreConfig(TeaModel):
+class GetAICoachScriptResponseBodyScoreConfigLevels(TeaModel):
     def __init__(
         self,
-        enabled: bool = None,
-        pass_score: str = None,
+        max: int = None,
+        min: int = None,
+        name: str = None,
     ):
-        self.enabled = enabled
-        self.pass_score = pass_score
+        self.max = max
+        self.min = min
+        self.name = name
 
     def validate(self):
         pass
@@ -6398,8 +6400,58 @@ class GetAICoachScriptResponseBodyScoreConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.max is not None:
+            result['max'] = self.max
+        if self.min is not None:
+            result['min'] = self.min
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('max') is not None:
+            self.max = m.get('max')
+        if m.get('min') is not None:
+            self.min = m.get('min')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class GetAICoachScriptResponseBodyScoreConfig(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        level_enabled: bool = None,
+        levels: List[GetAICoachScriptResponseBodyScoreConfigLevels] = None,
+        pass_score: str = None,
+    ):
+        self.enabled = enabled
+        self.level_enabled = level_enabled
+        self.levels = levels
+        self.pass_score = pass_score
+
+    def validate(self):
+        if self.levels:
+            for k in self.levels:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.enabled is not None:
             result['enabled'] = self.enabled
+        if self.level_enabled is not None:
+            result['levelEnabled'] = self.level_enabled
+        result['levels'] = []
+        if self.levels is not None:
+            for k in self.levels:
+                result['levels'].append(k.to_map() if k else None)
         if self.pass_score is not None:
             result['passScore'] = self.pass_score
         return result
@@ -6408,6 +6460,13 @@ class GetAICoachScriptResponseBodyScoreConfig(TeaModel):
         m = m or dict()
         if m.get('enabled') is not None:
             self.enabled = m.get('enabled')
+        if m.get('levelEnabled') is not None:
+            self.level_enabled = m.get('levelEnabled')
+        self.levels = []
+        if m.get('levels') is not None:
+            for k in m.get('levels'):
+                temp_model = GetAICoachScriptResponseBodyScoreConfigLevels()
+                self.levels.append(temp_model.from_map(k))
         if m.get('passScore') is not None:
             self.pass_score = m.get('passScore')
         return self
@@ -6424,6 +6483,7 @@ class GetAICoachScriptResponseBodyWeights(TeaModel):
         expressiveness_enabled: bool = None,
         point_deduction_rule: int = None,
         point_deduction_rule_enabled: bool = None,
+        similar_pronunciation_scoring_enabled: bool = None,
         standard: int = None,
         standard_enabled: bool = None,
     ):
@@ -6435,6 +6495,7 @@ class GetAICoachScriptResponseBodyWeights(TeaModel):
         self.expressiveness_enabled = expressiveness_enabled
         self.point_deduction_rule = point_deduction_rule
         self.point_deduction_rule_enabled = point_deduction_rule_enabled
+        self.similar_pronunciation_scoring_enabled = similar_pronunciation_scoring_enabled
         self.standard = standard
         self.standard_enabled = standard_enabled
 
@@ -6463,6 +6524,8 @@ class GetAICoachScriptResponseBodyWeights(TeaModel):
             result['pointDeductionRule'] = self.point_deduction_rule
         if self.point_deduction_rule_enabled is not None:
             result['pointDeductionRuleEnabled'] = self.point_deduction_rule_enabled
+        if self.similar_pronunciation_scoring_enabled is not None:
+            result['similarPronunciationScoringEnabled'] = self.similar_pronunciation_scoring_enabled
         if self.standard is not None:
             result['standard'] = self.standard
         if self.standard_enabled is not None:
@@ -6487,6 +6550,8 @@ class GetAICoachScriptResponseBodyWeights(TeaModel):
             self.point_deduction_rule = m.get('pointDeductionRule')
         if m.get('pointDeductionRuleEnabled') is not None:
             self.point_deduction_rule_enabled = m.get('pointDeductionRuleEnabled')
+        if m.get('similarPronunciationScoringEnabled') is not None:
+            self.similar_pronunciation_scoring_enabled = m.get('similarPronunciationScoringEnabled')
         if m.get('standard') is not None:
             self.standard = m.get('standard')
         if m.get('standardEnabled') is not None:
@@ -6874,6 +6939,7 @@ class GetAICoachTaskSessionHistoryResponseBodyConversationList(TeaModel):
     def __init__(
         self,
         audio_url: str = None,
+        date_label: str = None,
         evaluation_feedback: str = None,
         evaluation_result: str = None,
         message: str = None,
@@ -6881,6 +6947,7 @@ class GetAICoachTaskSessionHistoryResponseBodyConversationList(TeaModel):
         role: str = None,
     ):
         self.audio_url = audio_url
+        self.date_label = date_label
         self.evaluation_feedback = evaluation_feedback
         self.evaluation_result = evaluation_result
         self.message = message
@@ -6898,6 +6965,8 @@ class GetAICoachTaskSessionHistoryResponseBodyConversationList(TeaModel):
         result = dict()
         if self.audio_url is not None:
             result['audioUrl'] = self.audio_url
+        if self.date_label is not None:
+            result['dateLabel'] = self.date_label
         if self.evaluation_feedback is not None:
             result['evaluationFeedback'] = self.evaluation_feedback
         if self.evaluation_result is not None:
@@ -6914,6 +6983,8 @@ class GetAICoachTaskSessionHistoryResponseBodyConversationList(TeaModel):
         m = m or dict()
         if m.get('audioUrl') is not None:
             self.audio_url = m.get('audioUrl')
+        if m.get('dateLabel') is not None:
+            self.date_label = m.get('dateLabel')
         if m.get('evaluationFeedback') is not None:
             self.evaluation_feedback = m.get('evaluationFeedback')
         if m.get('evaluationResult') is not None:
@@ -8085,14 +8156,16 @@ class ListAICoachScriptPageResponseBodyListSampleDialogueList(TeaModel):
         return self
 
 
-class ListAICoachScriptPageResponseBodyListScoreConfig(TeaModel):
+class ListAICoachScriptPageResponseBodyListScoreConfigLevels(TeaModel):
     def __init__(
         self,
-        enabled: bool = None,
-        pass_score: int = None,
+        max: int = None,
+        min: int = None,
+        name: str = None,
     ):
-        self.enabled = enabled
-        self.pass_score = pass_score
+        self.max = max
+        self.min = min
+        self.name = name
 
     def validate(self):
         pass
@@ -8103,8 +8176,58 @@ class ListAICoachScriptPageResponseBodyListScoreConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.max is not None:
+            result['max'] = self.max
+        if self.min is not None:
+            result['min'] = self.min
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('max') is not None:
+            self.max = m.get('max')
+        if m.get('min') is not None:
+            self.min = m.get('min')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class ListAICoachScriptPageResponseBodyListScoreConfig(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        level_enabled: bool = None,
+        levels: List[ListAICoachScriptPageResponseBodyListScoreConfigLevels] = None,
+        pass_score: int = None,
+    ):
+        self.enabled = enabled
+        self.level_enabled = level_enabled
+        self.levels = levels
+        self.pass_score = pass_score
+
+    def validate(self):
+        if self.levels:
+            for k in self.levels:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.enabled is not None:
             result['enabled'] = self.enabled
+        if self.level_enabled is not None:
+            result['levelEnabled'] = self.level_enabled
+        result['levels'] = []
+        if self.levels is not None:
+            for k in self.levels:
+                result['levels'].append(k.to_map() if k else None)
         if self.pass_score is not None:
             result['passScore'] = self.pass_score
         return result
@@ -8113,6 +8236,13 @@ class ListAICoachScriptPageResponseBodyListScoreConfig(TeaModel):
         m = m or dict()
         if m.get('enabled') is not None:
             self.enabled = m.get('enabled')
+        if m.get('levelEnabled') is not None:
+            self.level_enabled = m.get('levelEnabled')
+        self.levels = []
+        if m.get('levels') is not None:
+            for k in m.get('levels'):
+                temp_model = ListAICoachScriptPageResponseBodyListScoreConfigLevels()
+                self.levels.append(temp_model.from_map(k))
         if m.get('passScore') is not None:
             self.pass_score = m.get('passScore')
         return self
@@ -8127,6 +8257,7 @@ class ListAICoachScriptPageResponseBodyListWeights(TeaModel):
         expressiveness_enabled: bool = None,
         point_deduction_rule: int = None,
         point_deduction_rule_enabled: bool = None,
+        similar_pronunciation_scoring_enabled: bool = None,
         standard: int = None,
         standard_enabled: bool = None,
     ):
@@ -8136,6 +8267,7 @@ class ListAICoachScriptPageResponseBodyListWeights(TeaModel):
         self.expressiveness_enabled = expressiveness_enabled
         self.point_deduction_rule = point_deduction_rule
         self.point_deduction_rule_enabled = point_deduction_rule_enabled
+        self.similar_pronunciation_scoring_enabled = similar_pronunciation_scoring_enabled
         self.standard = standard
         self.standard_enabled = standard_enabled
 
@@ -8160,6 +8292,8 @@ class ListAICoachScriptPageResponseBodyListWeights(TeaModel):
             result['pointDeductionRule'] = self.point_deduction_rule
         if self.point_deduction_rule_enabled is not None:
             result['pointDeductionRuleEnabled'] = self.point_deduction_rule_enabled
+        if self.similar_pronunciation_scoring_enabled is not None:
+            result['similarPronunciationScoringEnabled'] = self.similar_pronunciation_scoring_enabled
         if self.standard is not None:
             result['standard'] = self.standard
         if self.standard_enabled is not None:
@@ -8180,6 +8314,8 @@ class ListAICoachScriptPageResponseBodyListWeights(TeaModel):
             self.point_deduction_rule = m.get('pointDeductionRule')
         if m.get('pointDeductionRuleEnabled') is not None:
             self.point_deduction_rule_enabled = m.get('pointDeductionRuleEnabled')
+        if m.get('similarPronunciationScoringEnabled') is not None:
+            self.similar_pronunciation_scoring_enabled = m.get('similarPronunciationScoringEnabled')
         if m.get('standard') is not None:
             self.standard = m.get('standard')
         if m.get('standardEnabled') is not None:
