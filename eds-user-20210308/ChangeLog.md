@@ -1,3 +1,9 @@
+2025-05-22 Version: 1.5.1
+- Update API DescribeResourceGroups: add response parameters Body.ResourceGroup.$.AppRules.
+- Update API DescribeResourceGroups: add response parameters Body.ResourceGroup.$.Timers.$.BindStatus.
+- Update API DescribeResourceGroups: add response parameters Body.ResourceGroup.$.Timers.$.TimerStatus.
+
+
 2025-04-27 Version: 1.5.0
 - Support API CreateResourceGroup.
 - Support API DeleteResourceGroup.

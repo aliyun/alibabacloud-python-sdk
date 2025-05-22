@@ -880,7 +880,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.DeleteResourceGroupResponse:
         """
-        @summary 删除资源组
+        @summary Deletes a resource group.
         
         @param request: DeleteResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -917,7 +917,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.DeleteResourceGroupResponse:
         """
-        @summary 删除资源组
+        @summary Deletes a resource group.
         
         @param request: DeleteResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -953,7 +953,7 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.DeleteResourceGroupRequest,
     ) -> eds_user_20210308_models.DeleteResourceGroupResponse:
         """
-        @summary 删除资源组
+        @summary Deletes a resource group.
         
         @param request: DeleteResourceGroupRequest
         @return: DeleteResourceGroupResponse
@@ -966,7 +966,7 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.DeleteResourceGroupRequest,
     ) -> eds_user_20210308_models.DeleteResourceGroupResponse:
         """
-        @summary 删除资源组
+        @summary Deletes a resource group.
         
         @param request: DeleteResourceGroupRequest
         @return: DeleteResourceGroupResponse

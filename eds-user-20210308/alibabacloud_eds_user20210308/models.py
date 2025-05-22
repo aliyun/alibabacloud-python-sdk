@@ -1694,7 +1694,13 @@ class DeleteResourceGroupRequest(TeaModel):
         resource_group_id: str = None,
         resource_group_ids: List[str] = None,
     ):
+        # >  The ID of the resource group that you want to delete.
+        # 
+        # *   If you also specify ResourceGroupIds, both parameters take effect.
         self.resource_group_id = resource_group_id
+        # >  The IDs of the resource groups that you want to delete.
+        # 
+        # *   If you also specify ResourceGroupId, both parameters take effect.
         self.resource_group_ids = resource_group_ids
 
     def validate(self):
@@ -1726,6 +1732,7 @@ class DeleteResourceGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2558,6 +2565,45 @@ class DescribeResourceGroupsRequest(TeaModel):
         return self
 
 
+class DescribeResourceGroupsResponseBodyResourceGroupAppRules(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        name: str = None,
+        type: int = None,
+    ):
+        self.id = id
+        self.name = name
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
 class DescribeResourceGroupsResponseBodyResourceGroupPolicies(TeaModel):
     def __init__(
         self,
@@ -2600,11 +2646,15 @@ class DescribeResourceGroupsResponseBodyResourceGroupPolicies(TeaModel):
 class DescribeResourceGroupsResponseBodyResourceGroupTimers(TeaModel):
     def __init__(
         self,
+        bind_status: str = None,
         id: str = None,
         name: str = None,
+        timer_status: str = None,
     ):
+        self.bind_status = bind_status
         self.id = id
         self.name = name
+        self.timer_status = timer_status
 
     def validate(self):
         pass
@@ -2615,24 +2665,33 @@ class DescribeResourceGroupsResponseBodyResourceGroupTimers(TeaModel):
             return _map
 
         result = dict()
+        if self.bind_status is not None:
+            result['BindStatus'] = self.bind_status
         if self.id is not None:
             result['Id'] = self.id
         if self.name is not None:
             result['Name'] = self.name
+        if self.timer_status is not None:
+            result['TimerStatus'] = self.timer_status
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BindStatus') is not None:
+            self.bind_status = m.get('BindStatus')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('TimerStatus') is not None:
+            self.timer_status = m.get('TimerStatus')
         return self
 
 
 class DescribeResourceGroupsResponseBodyResourceGroup(TeaModel):
     def __init__(
         self,
+        app_rules: List[DescribeResourceGroupsResponseBodyResourceGroupAppRules] = None,
         auth_count: str = None,
         create_time: str = None,
         policies: List[DescribeResourceGroupsResponseBodyResourceGroupPolicies] = None,
@@ -2641,6 +2700,7 @@ class DescribeResourceGroupsResponseBodyResourceGroup(TeaModel):
         resource_group_name: str = None,
         timers: List[DescribeResourceGroupsResponseBodyResourceGroupTimers] = None,
     ):
+        self.app_rules = app_rules
         self.auth_count = auth_count
         self.create_time = create_time
         self.policies = policies
@@ -2650,6 +2710,10 @@ class DescribeResourceGroupsResponseBodyResourceGroup(TeaModel):
         self.timers = timers
 
     def validate(self):
+        if self.app_rules:
+            for k in self.app_rules:
+                if k:
+                    k.validate()
         if self.policies:
             for k in self.policies:
                 if k:
@@ -2665,6 +2729,10 @@ class DescribeResourceGroupsResponseBodyResourceGroup(TeaModel):
             return _map
 
         result = dict()
+        result['AppRules'] = []
+        if self.app_rules is not None:
+            for k in self.app_rules:
+                result['AppRules'].append(k.to_map() if k else None)
         if self.auth_count is not None:
             result['AuthCount'] = self.auth_count
         if self.create_time is not None:
@@ -2687,6 +2755,11 @@ class DescribeResourceGroupsResponseBodyResourceGroup(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.app_rules = []
+        if m.get('AppRules') is not None:
+            for k in m.get('AppRules'):
+                temp_model = DescribeResourceGroupsResponseBodyResourceGroupAppRules()
+                self.app_rules.append(temp_model.from_map(k))
         if m.get('AuthCount') is not None:
             self.auth_count = m.get('AuthCount')
         if m.get('CreateTime') is not None:
