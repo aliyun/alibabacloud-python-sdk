@@ -927,6 +927,114 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_video_analysis_task_with_options_async(workspace_id, request, headers, runtime)
 
+    def hot_news_recommend_with_options(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.HotNewsRecommendRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.HotNewsRecommendResponse:
+        """
+        @summary 热点新闻推荐
+        
+        @param request: HotNewsRecommendRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotNewsRecommendResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.prompt):
+            body['prompt'] = request.prompt
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='HotNewsRecommend',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/hotNewsRecommend',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.HotNewsRecommendResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def hot_news_recommend_with_options_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.HotNewsRecommendRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.HotNewsRecommendResponse:
+        """
+        @summary 热点新闻推荐
+        
+        @param request: HotNewsRecommendRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotNewsRecommendResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.prompt):
+            body['prompt'] = request.prompt
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='HotNewsRecommend',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/hotNewsRecommend',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.HotNewsRecommendResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def hot_news_recommend(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.HotNewsRecommendRequest,
+    ) -> quan_miao_light_app_20240801_models.HotNewsRecommendResponse:
+        """
+        @summary 热点新闻推荐
+        
+        @param request: HotNewsRecommendRequest
+        @return: HotNewsRecommendResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.hot_news_recommend_with_options(workspace_id, request, headers, runtime)
+
+    async def hot_news_recommend_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.HotNewsRecommendRequest,
+    ) -> quan_miao_light_app_20240801_models.HotNewsRecommendResponse:
+        """
+        @summary 热点新闻推荐
+        
+        @param request: HotNewsRecommendRequest
+        @return: HotNewsRecommendResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.hot_news_recommend_with_options_async(workspace_id, request, headers, runtime)
+
     def list_analysis_tag_detail_by_task_id_with_options(
         self,
         workspace_id: str,
