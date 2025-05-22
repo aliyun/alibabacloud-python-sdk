@@ -1,3 +1,7 @@
+2025-05-22 Version: 7.1.1
+- Update API UpdateServiceInstanceAttribute: add request parameters LicenseData.ResponseInfo.
+
+
 2025-05-08 Version: 7.1.0
 - Support API ListServiceInstanceBill.
 - Update API UpdateService: add request parameters BuildParameters.

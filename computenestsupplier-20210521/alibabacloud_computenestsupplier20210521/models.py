@@ -21007,13 +21007,16 @@ class UpdateServiceResponse(TeaModel):
         return self
 
 
-class UpdateServiceInstanceAttributeRequestLicenseData(TeaModel):
+class UpdateServiceInstanceAttributeRequestLicenseDataResponseInfo(TeaModel):
     def __init__(
         self,
-        custom_data: str = None,
+        error_code: str = None,
+        error_message: str = None,
+        update_response: bool = None,
     ):
-        # The Custom Data
-        self.custom_data = custom_data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.update_response = update_response
 
     def validate(self):
         pass
@@ -21024,14 +21027,58 @@ class UpdateServiceInstanceAttributeRequestLicenseData(TeaModel):
             return _map
 
         result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.update_response is not None:
+            result['UpdateResponse'] = self.update_response
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('UpdateResponse') is not None:
+            self.update_response = m.get('UpdateResponse')
+        return self
+
+
+class UpdateServiceInstanceAttributeRequestLicenseData(TeaModel):
+    def __init__(
+        self,
+        custom_data: str = None,
+        response_info: UpdateServiceInstanceAttributeRequestLicenseDataResponseInfo = None,
+    ):
+        # The Custom Data
+        self.custom_data = custom_data
+        self.response_info = response_info
+
+    def validate(self):
+        if self.response_info:
+            self.response_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.custom_data is not None:
             result['CustomData'] = self.custom_data
+        if self.response_info is not None:
+            result['ResponseInfo'] = self.response_info.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('CustomData') is not None:
             self.custom_data = m.get('CustomData')
+        if m.get('ResponseInfo') is not None:
+            temp_model = UpdateServiceInstanceAttributeRequestLicenseDataResponseInfo()
+            self.response_info = temp_model.from_map(m['ResponseInfo'])
         return self
 
 
