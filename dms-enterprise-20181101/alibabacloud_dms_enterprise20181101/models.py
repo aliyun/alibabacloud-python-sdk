@@ -8082,6 +8082,7 @@ class CreateDataImportOrderRequest(TeaModel):
         attachment_key: str = None,
         comment: str = None,
         param: CreateDataImportOrderRequestParam = None,
+        real_login_user_uid: str = None,
         related_user_list: List[int] = None,
         tid: int = None,
     ):
@@ -8095,6 +8096,7 @@ class CreateDataImportOrderRequest(TeaModel):
         # 
         # This parameter is required.
         self.param = param
+        self.real_login_user_uid = real_login_user_uid
         # The stakeholders of the data import. All stakeholders can view the ticket details and assist in the approval process. Irrelevant users other than DMS administrators and database administrators (DBAs) are not allowed to view the ticket details.
         self.related_user_list = related_user_list
         # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
@@ -8116,6 +8118,8 @@ class CreateDataImportOrderRequest(TeaModel):
             result['Comment'] = self.comment
         if self.param is not None:
             result['Param'] = self.param.to_map()
+        if self.real_login_user_uid is not None:
+            result['RealLoginUserUid'] = self.real_login_user_uid
         if self.related_user_list is not None:
             result['RelatedUserList'] = self.related_user_list
         if self.tid is not None:
@@ -8131,6 +8135,8 @@ class CreateDataImportOrderRequest(TeaModel):
         if m.get('Param') is not None:
             temp_model = CreateDataImportOrderRequestParam()
             self.param = temp_model.from_map(m['Param'])
+        if m.get('RealLoginUserUid') is not None:
+            self.real_login_user_uid = m.get('RealLoginUserUid')
         if m.get('RelatedUserList') is not None:
             self.related_user_list = m.get('RelatedUserList')
         if m.get('Tid') is not None:
@@ -8144,6 +8150,7 @@ class CreateDataImportOrderShrinkRequest(TeaModel):
         attachment_key: str = None,
         comment: str = None,
         param_shrink: str = None,
+        real_login_user_uid: str = None,
         related_user_list_shrink: str = None,
         tid: int = None,
     ):
@@ -8157,6 +8164,7 @@ class CreateDataImportOrderShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.param_shrink = param_shrink
+        self.real_login_user_uid = real_login_user_uid
         # The stakeholders of the data import. All stakeholders can view the ticket details and assist in the approval process. Irrelevant users other than DMS administrators and database administrators (DBAs) are not allowed to view the ticket details.
         self.related_user_list_shrink = related_user_list_shrink
         # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
@@ -8177,6 +8185,8 @@ class CreateDataImportOrderShrinkRequest(TeaModel):
             result['Comment'] = self.comment
         if self.param_shrink is not None:
             result['Param'] = self.param_shrink
+        if self.real_login_user_uid is not None:
+            result['RealLoginUserUid'] = self.real_login_user_uid
         if self.related_user_list_shrink is not None:
             result['RelatedUserList'] = self.related_user_list_shrink
         if self.tid is not None:
@@ -8191,6 +8201,8 @@ class CreateDataImportOrderShrinkRequest(TeaModel):
             self.comment = m.get('Comment')
         if m.get('Param') is not None:
             self.param_shrink = m.get('Param')
+        if m.get('RealLoginUserUid') is not None:
+            self.real_login_user_uid = m.get('RealLoginUserUid')
         if m.get('RelatedUserList') is not None:
             self.related_user_list_shrink = m.get('RelatedUserList')
         if m.get('Tid') is not None:

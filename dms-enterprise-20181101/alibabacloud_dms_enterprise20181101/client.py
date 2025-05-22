@@ -3139,6 +3139,8 @@ class Client(OpenApiClient):
             query['Comment'] = request.comment
         if not UtilClient.is_unset(request.param_shrink):
             query['Param'] = request.param_shrink
+        if not UtilClient.is_unset(request.real_login_user_uid):
+            query['RealLoginUserUid'] = request.real_login_user_uid
         if not UtilClient.is_unset(request.related_user_list_shrink):
             query['RelatedUserList'] = request.related_user_list_shrink
         if not UtilClient.is_unset(request.tid):
@@ -3190,6 +3192,8 @@ class Client(OpenApiClient):
             query['Comment'] = request.comment
         if not UtilClient.is_unset(request.param_shrink):
             query['Param'] = request.param_shrink
+        if not UtilClient.is_unset(request.real_login_user_uid):
+            query['RealLoginUserUid'] = request.real_login_user_uid
         if not UtilClient.is_unset(request.related_user_list_shrink):
             query['RelatedUserList'] = request.related_user_list_shrink
         if not UtilClient.is_unset(request.tid):
