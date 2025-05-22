@@ -104,6 +104,11 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.BindProduceAuthorizationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.BindProduceAuthorizationResponse:
+        """
+        @param request: BindProduceAuthorizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindProduceAuthorizationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.authorized_user_ids):
@@ -136,6 +141,11 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.BindProduceAuthorizationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.BindProduceAuthorizationResponse:
+        """
+        @param request: BindProduceAuthorizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindProduceAuthorizationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.authorized_user_ids):
@@ -167,6 +177,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.BindProduceAuthorizationRequest,
     ) -> companyreg_20200306_models.BindProduceAuthorizationResponse:
+        """
+        @param request: BindProduceAuthorizationRequest
+        @return: BindProduceAuthorizationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.bind_produce_authorization_with_options(request, runtime)
 
@@ -174,6 +188,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.BindProduceAuthorizationRequest,
     ) -> companyreg_20200306_models.BindProduceAuthorizationResponse:
+        """
+        @param request: BindProduceAuthorizationRequest
+        @return: BindProduceAuthorizationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.bind_produce_authorization_with_options_async(request, runtime)
 
@@ -182,6 +200,11 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.CloseIntentionForPartnerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.CloseIntentionForPartnerResponse:
+        """
+        @param request: CloseIntentionForPartnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloseIntentionForPartnerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_type):
@@ -214,6 +237,11 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.CloseIntentionForPartnerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.CloseIntentionForPartnerResponse:
+        """
+        @param request: CloseIntentionForPartnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloseIntentionForPartnerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_type):
@@ -245,6 +273,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.CloseIntentionForPartnerRequest,
     ) -> companyreg_20200306_models.CloseIntentionForPartnerResponse:
+        """
+        @param request: CloseIntentionForPartnerRequest
+        @return: CloseIntentionForPartnerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.close_intention_for_partner_with_options(request, runtime)
 
@@ -252,6 +284,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.CloseIntentionForPartnerRequest,
     ) -> companyreg_20200306_models.CloseIntentionForPartnerResponse:
+        """
+        @param request: CloseIntentionForPartnerRequest
+        @return: CloseIntentionForPartnerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.close_intention_for_partner_with_options_async(request, runtime)
 
@@ -260,6 +296,11 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.CloseUserIntentionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.CloseUserIntentionResponse:
+        """
+        @param request: CloseUserIntentionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloseUserIntentionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_type):
@@ -292,6 +333,11 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.CloseUserIntentionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.CloseUserIntentionResponse:
+        """
+        @param request: CloseUserIntentionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloseUserIntentionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_type):
@@ -323,6 +369,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.CloseUserIntentionRequest,
     ) -> companyreg_20200306_models.CloseUserIntentionResponse:
+        """
+        @param request: CloseUserIntentionRequest
+        @return: CloseUserIntentionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.close_user_intention_with_options(request, runtime)
 
@@ -330,6 +380,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.CloseUserIntentionRequest,
     ) -> companyreg_20200306_models.CloseUserIntentionResponse:
+        """
+        @param request: CloseUserIntentionRequest
+        @return: CloseUserIntentionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.close_user_intention_with_options_async(request, runtime)
 
@@ -338,6 +392,11 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.CreateBusinessOpportunityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.CreateBusinessOpportunityResponse:
+        """
+        @param request: CreateBusinessOpportunityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBusinessOpportunityResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_type):
@@ -374,6 +433,11 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.CreateBusinessOpportunityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.CreateBusinessOpportunityResponse:
+        """
+        @param request: CreateBusinessOpportunityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBusinessOpportunityResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_type):
@@ -409,6 +473,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.CreateBusinessOpportunityRequest,
     ) -> companyreg_20200306_models.CreateBusinessOpportunityResponse:
+        """
+        @param request: CreateBusinessOpportunityRequest
+        @return: CreateBusinessOpportunityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_business_opportunity_with_options(request, runtime)
 
@@ -416,6 +484,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.CreateBusinessOpportunityRequest,
     ) -> companyreg_20200306_models.CreateBusinessOpportunityResponse:
+        """
+        @param request: CreateBusinessOpportunityRequest
+        @return: CreateBusinessOpportunityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_business_opportunity_with_options_async(request, runtime)
 
@@ -424,6 +496,11 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.CreateProduceForPartnerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.CreateProduceForPartnerResponse:
+        """
+        @param request: CreateProduceForPartnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProduceForPartnerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -456,6 +533,11 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.CreateProduceForPartnerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.CreateProduceForPartnerResponse:
+        """
+        @param request: CreateProduceForPartnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProduceForPartnerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -487,6 +569,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.CreateProduceForPartnerRequest,
     ) -> companyreg_20200306_models.CreateProduceForPartnerResponse:
+        """
+        @param request: CreateProduceForPartnerRequest
+        @return: CreateProduceForPartnerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_produce_for_partner_with_options(request, runtime)
 
@@ -494,6 +580,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.CreateProduceForPartnerRequest,
     ) -> companyreg_20200306_models.CreateProduceForPartnerResponse:
+        """
+        @param request: CreateProduceForPartnerRequest
+        @return: CreateProduceForPartnerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_produce_for_partner_with_options_async(request, runtime)
 
@@ -502,6 +592,11 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.DescribePartnerConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.DescribePartnerConfigResponse:
+        """
+        @param request: DescribePartnerConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePartnerConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_type):
@@ -532,6 +627,11 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.DescribePartnerConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.DescribePartnerConfigResponse:
+        """
+        @param request: DescribePartnerConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePartnerConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_type):
@@ -561,6 +661,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.DescribePartnerConfigRequest,
     ) -> companyreg_20200306_models.DescribePartnerConfigResponse:
+        """
+        @param request: DescribePartnerConfigRequest
+        @return: DescribePartnerConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_partner_config_with_options(request, runtime)
 
@@ -568,6 +672,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.DescribePartnerConfigRequest,
     ) -> companyreg_20200306_models.DescribePartnerConfigResponse:
+        """
+        @param request: DescribePartnerConfigRequest
+        @return: DescribePartnerConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_partner_config_with_options_async(request, runtime)
 
@@ -576,6 +684,11 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.GenerateUploadFilePolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.GenerateUploadFilePolicyResponse:
+        """
+        @param request: GenerateUploadFilePolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateUploadFilePolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_type):
@@ -608,6 +721,11 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.GenerateUploadFilePolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.GenerateUploadFilePolicyResponse:
+        """
+        @param request: GenerateUploadFilePolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateUploadFilePolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_type):
@@ -639,6 +757,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.GenerateUploadFilePolicyRequest,
     ) -> companyreg_20200306_models.GenerateUploadFilePolicyResponse:
+        """
+        @param request: GenerateUploadFilePolicyRequest
+        @return: GenerateUploadFilePolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.generate_upload_file_policy_with_options(request, runtime)
 
@@ -646,6 +768,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.GenerateUploadFilePolicyRequest,
     ) -> companyreg_20200306_models.GenerateUploadFilePolicyResponse:
+        """
+        @param request: GenerateUploadFilePolicyRequest
+        @return: GenerateUploadFilePolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.generate_upload_file_policy_with_options_async(request, runtime)
 
@@ -654,6 +780,11 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.GetAlipayUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.GetAlipayUrlResponse:
+        """
+        @param request: GetAlipayUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAlipayUrlResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -680,6 +811,11 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.GetAlipayUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.GetAlipayUrlResponse:
+        """
+        @param request: GetAlipayUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAlipayUrlResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -705,6 +841,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.GetAlipayUrlRequest,
     ) -> companyreg_20200306_models.GetAlipayUrlResponse:
+        """
+        @param request: GetAlipayUrlRequest
+        @return: GetAlipayUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_alipay_url_with_options(request, runtime)
 
@@ -712,6 +852,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.GetAlipayUrlRequest,
     ) -> companyreg_20200306_models.GetAlipayUrlResponse:
+        """
+        @param request: GetAlipayUrlRequest
+        @return: GetAlipayUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_alipay_url_with_options_async(request, runtime)
 
@@ -720,10 +864,17 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.ListIntentionNoteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.ListIntentionNoteResponse:
+        """
+        @param request: ListIntentionNoteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIntentionNoteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.begin_time):
             query['BeginTime'] = request.begin_time
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.intention_biz_id):
@@ -756,10 +907,17 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.ListIntentionNoteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.ListIntentionNoteResponse:
+        """
+        @param request: ListIntentionNoteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIntentionNoteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.begin_time):
             query['BeginTime'] = request.begin_time
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.intention_biz_id):
@@ -791,6 +949,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.ListIntentionNoteRequest,
     ) -> companyreg_20200306_models.ListIntentionNoteResponse:
+        """
+        @param request: ListIntentionNoteRequest
+        @return: ListIntentionNoteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_intention_note_with_options(request, runtime)
 
@@ -798,6 +960,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.ListIntentionNoteRequest,
     ) -> companyreg_20200306_models.ListIntentionNoteResponse:
+        """
+        @param request: ListIntentionNoteRequest
+        @return: ListIntentionNoteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_intention_note_with_options_async(request, runtime)
 
@@ -806,6 +972,11 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.ListProduceAuthorizationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.ListProduceAuthorizationResponse:
+        """
+        @param request: ListProduceAuthorizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProduceAuthorizationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -840,6 +1011,11 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.ListProduceAuthorizationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.ListProduceAuthorizationResponse:
+        """
+        @param request: ListProduceAuthorizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProduceAuthorizationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -873,6 +1049,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.ListProduceAuthorizationRequest,
     ) -> companyreg_20200306_models.ListProduceAuthorizationResponse:
+        """
+        @param request: ListProduceAuthorizationRequest
+        @return: ListProduceAuthorizationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_produce_authorization_with_options(request, runtime)
 
@@ -880,6 +1060,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.ListProduceAuthorizationRequest,
     ) -> companyreg_20200306_models.ListProduceAuthorizationResponse:
+        """
+        @param request: ListProduceAuthorizationRequest
+        @return: ListProduceAuthorizationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_produce_authorization_with_options_async(request, runtime)
 
@@ -888,6 +1072,11 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.ListUserDetailSolutionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.ListUserDetailSolutionsResponse:
+        """
+        @param request: ListUserDetailSolutionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserDetailSolutionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_type):
@@ -922,6 +1111,11 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.ListUserDetailSolutionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.ListUserDetailSolutionsResponse:
+        """
+        @param request: ListUserDetailSolutionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserDetailSolutionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_type):
@@ -955,6 +1149,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.ListUserDetailSolutionsRequest,
     ) -> companyreg_20200306_models.ListUserDetailSolutionsResponse:
+        """
+        @param request: ListUserDetailSolutionsRequest
+        @return: ListUserDetailSolutionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_user_detail_solutions_with_options(request, runtime)
 
@@ -962,6 +1160,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.ListUserDetailSolutionsRequest,
     ) -> companyreg_20200306_models.ListUserDetailSolutionsResponse:
+        """
+        @param request: ListUserDetailSolutionsRequest
+        @return: ListUserDetailSolutionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_user_detail_solutions_with_options_async(request, runtime)
 
@@ -970,6 +1172,11 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.ListUserIntentionNotesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.ListUserIntentionNotesResponse:
+        """
+        @param request: ListUserIntentionNotesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserIntentionNotesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_type):
@@ -1004,6 +1211,11 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.ListUserIntentionNotesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.ListUserIntentionNotesResponse:
+        """
+        @param request: ListUserIntentionNotesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserIntentionNotesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_type):
@@ -1037,6 +1249,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.ListUserIntentionNotesRequest,
     ) -> companyreg_20200306_models.ListUserIntentionNotesResponse:
+        """
+        @param request: ListUserIntentionNotesRequest
+        @return: ListUserIntentionNotesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_user_intention_notes_with_options(request, runtime)
 
@@ -1044,6 +1260,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.ListUserIntentionNotesRequest,
     ) -> companyreg_20200306_models.ListUserIntentionNotesResponse:
+        """
+        @param request: ListUserIntentionNotesRequest
+        @return: ListUserIntentionNotesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_user_intention_notes_with_options_async(request, runtime)
 
@@ -1052,6 +1272,13 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.ListUserIntentionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.ListUserIntentionsResponse:
+        """
+        @summary 用户控制天需求列表查询
+        
+        @param request: ListUserIntentionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserIntentionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.area):
@@ -1098,6 +1325,13 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.ListUserIntentionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.ListUserIntentionsResponse:
+        """
+        @summary 用户控制天需求列表查询
+        
+        @param request: ListUserIntentionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserIntentionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.area):
@@ -1143,6 +1377,12 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.ListUserIntentionsRequest,
     ) -> companyreg_20200306_models.ListUserIntentionsResponse:
+        """
+        @summary 用户控制天需求列表查询
+        
+        @param request: ListUserIntentionsRequest
+        @return: ListUserIntentionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_user_intentions_with_options(request, runtime)
 
@@ -1150,6 +1390,12 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.ListUserIntentionsRequest,
     ) -> companyreg_20200306_models.ListUserIntentionsResponse:
+        """
+        @summary 用户控制天需求列表查询
+        
+        @param request: ListUserIntentionsRequest
+        @return: ListUserIntentionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_user_intentions_with_options_async(request, runtime)
 
@@ -1158,6 +1404,11 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.ListUserProduceOperateLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.ListUserProduceOperateLogsResponse:
+        """
+        @param request: ListUserProduceOperateLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserProduceOperateLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -1192,6 +1443,11 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.ListUserProduceOperateLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.ListUserProduceOperateLogsResponse:
+        """
+        @param request: ListUserProduceOperateLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserProduceOperateLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -1225,6 +1481,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.ListUserProduceOperateLogsRequest,
     ) -> companyreg_20200306_models.ListUserProduceOperateLogsResponse:
+        """
+        @param request: ListUserProduceOperateLogsRequest
+        @return: ListUserProduceOperateLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_user_produce_operate_logs_with_options(request, runtime)
 
@@ -1232,6 +1492,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.ListUserProduceOperateLogsRequest,
     ) -> companyreg_20200306_models.ListUserProduceOperateLogsResponse:
+        """
+        @param request: ListUserProduceOperateLogsRequest
+        @return: ListUserProduceOperateLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_user_produce_operate_logs_with_options_async(request, runtime)
 
@@ -1240,12 +1504,19 @@ class Client(OpenApiClient):
         tmp_req: companyreg_20200306_models.ListUserSolutionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.ListUserSolutionsResponse:
+        """
+        @param tmp_req: ListUserSolutionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserSolutionsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = companyreg_20200306_models.ListUserSolutionsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.exist_status):
             request.exist_status_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.exist_status, 'ExistStatus', 'json')
         query = {}
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
         if not UtilClient.is_unset(request.exist_status_shrink):
             query['ExistStatus'] = request.exist_status_shrink
         if not UtilClient.is_unset(request.intention_biz_id):
@@ -1278,12 +1549,19 @@ class Client(OpenApiClient):
         tmp_req: companyreg_20200306_models.ListUserSolutionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.ListUserSolutionsResponse:
+        """
+        @param tmp_req: ListUserSolutionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserSolutionsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = companyreg_20200306_models.ListUserSolutionsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.exist_status):
             request.exist_status_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.exist_status, 'ExistStatus', 'json')
         query = {}
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
         if not UtilClient.is_unset(request.exist_status_shrink):
             query['ExistStatus'] = request.exist_status_shrink
         if not UtilClient.is_unset(request.intention_biz_id):
@@ -1315,6 +1593,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.ListUserSolutionsRequest,
     ) -> companyreg_20200306_models.ListUserSolutionsResponse:
+        """
+        @param request: ListUserSolutionsRequest
+        @return: ListUserSolutionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_user_solutions_with_options(request, runtime)
 
@@ -1322,6 +1604,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.ListUserSolutionsRequest,
     ) -> companyreg_20200306_models.ListUserSolutionsResponse:
+        """
+        @param request: ListUserSolutionsRequest
+        @return: ListUserSolutionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_user_solutions_with_options_async(request, runtime)
 
@@ -1330,6 +1616,11 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.OperateProduceForPartnerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.OperateProduceForPartnerResponse:
+        """
+        @param request: OperateProduceForPartnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OperateProduceForPartnerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -1364,6 +1655,11 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.OperateProduceForPartnerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.OperateProduceForPartnerResponse:
+        """
+        @param request: OperateProduceForPartnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OperateProduceForPartnerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -1397,6 +1693,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.OperateProduceForPartnerRequest,
     ) -> companyreg_20200306_models.OperateProduceForPartnerResponse:
+        """
+        @param request: OperateProduceForPartnerRequest
+        @return: OperateProduceForPartnerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.operate_produce_for_partner_with_options(request, runtime)
 
@@ -1404,6 +1704,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.OperateProduceForPartnerRequest,
     ) -> companyreg_20200306_models.OperateProduceForPartnerResponse:
+        """
+        @param request: OperateProduceForPartnerRequest
+        @return: OperateProduceForPartnerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.operate_produce_for_partner_with_options_async(request, runtime)
 
@@ -1412,6 +1716,11 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.PutMeasureDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.PutMeasureDataResponse:
+        """
+        @param request: PutMeasureDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutMeasureDataResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.biz_type):
@@ -1448,6 +1757,11 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.PutMeasureDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.PutMeasureDataResponse:
+        """
+        @param request: PutMeasureDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutMeasureDataResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.biz_type):
@@ -1483,6 +1797,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.PutMeasureDataRequest,
     ) -> companyreg_20200306_models.PutMeasureDataResponse:
+        """
+        @param request: PutMeasureDataRequest
+        @return: PutMeasureDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.put_measure_data_with_options(request, runtime)
 
@@ -1490,6 +1808,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.PutMeasureDataRequest,
     ) -> companyreg_20200306_models.PutMeasureDataResponse:
+        """
+        @param request: PutMeasureDataRequest
+        @return: PutMeasureDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.put_measure_data_with_options_async(request, runtime)
 
@@ -1498,6 +1820,11 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.PutMeasureReadyFlagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.PutMeasureReadyFlagResponse:
+        """
+        @param request: PutMeasureReadyFlagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutMeasureReadyFlagResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_type):
@@ -1534,6 +1861,11 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.PutMeasureReadyFlagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.PutMeasureReadyFlagResponse:
+        """
+        @param request: PutMeasureReadyFlagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutMeasureReadyFlagResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_type):
@@ -1569,6 +1901,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.PutMeasureReadyFlagRequest,
     ) -> companyreg_20200306_models.PutMeasureReadyFlagResponse:
+        """
+        @param request: PutMeasureReadyFlagRequest
+        @return: PutMeasureReadyFlagResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.put_measure_ready_flag_with_options(request, runtime)
 
@@ -1576,6 +1912,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.PutMeasureReadyFlagRequest,
     ) -> companyreg_20200306_models.PutMeasureReadyFlagResponse:
+        """
+        @param request: PutMeasureReadyFlagRequest
+        @return: PutMeasureReadyFlagResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.put_measure_ready_flag_with_options_async(request, runtime)
 
@@ -1584,6 +1924,13 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.QueryAvailableNumbersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.QueryAvailableNumbersResponse:
+        """
+        @summary 获取玄坛合作伙伴双呼时可用外呼号码
+        
+        @param request: QueryAvailableNumbersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAvailableNumbersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_type):
@@ -1612,6 +1959,13 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.QueryAvailableNumbersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.QueryAvailableNumbersResponse:
+        """
+        @summary 获取玄坛合作伙伴双呼时可用外呼号码
+        
+        @param request: QueryAvailableNumbersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAvailableNumbersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_type):
@@ -1639,6 +1993,12 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.QueryAvailableNumbersRequest,
     ) -> companyreg_20200306_models.QueryAvailableNumbersResponse:
+        """
+        @summary 获取玄坛合作伙伴双呼时可用外呼号码
+        
+        @param request: QueryAvailableNumbersRequest
+        @return: QueryAvailableNumbersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_available_numbers_with_options(request, runtime)
 
@@ -1646,6 +2006,12 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.QueryAvailableNumbersRequest,
     ) -> companyreg_20200306_models.QueryAvailableNumbersResponse:
+        """
+        @summary 获取玄坛合作伙伴双呼时可用外呼号码
+        
+        @param request: QueryAvailableNumbersRequest
+        @return: QueryAvailableNumbersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_available_numbers_with_options_async(request, runtime)
 
@@ -1654,6 +2020,11 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.QueryBagRemainingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.QueryBagRemainingResponse:
+        """
+        @param request: QueryBagRemainingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryBagRemainingResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1680,6 +2051,11 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.QueryBagRemainingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.QueryBagRemainingResponse:
+        """
+        @param request: QueryBagRemainingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryBagRemainingResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1705,6 +2081,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.QueryBagRemainingRequest,
     ) -> companyreg_20200306_models.QueryBagRemainingResponse:
+        """
+        @param request: QueryBagRemainingRequest
+        @return: QueryBagRemainingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_bag_remaining_with_options(request, runtime)
 
@@ -1712,92 +2092,23 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.QueryBagRemainingRequest,
     ) -> companyreg_20200306_models.QueryBagRemainingResponse:
+        """
+        @param request: QueryBagRemainingRequest
+        @return: QueryBagRemainingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_bag_remaining_with_options_async(request, runtime)
-
-    def query_commodity_config_with_options(
-        self,
-        request: companyreg_20200306_models.QueryCommodityConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.QueryCommodityConfigResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.biz_type):
-            query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.commodity_code):
-            query['CommodityCode'] = request.commodity_code
-        if not UtilClient.is_unset(request.query_module):
-            query['QueryModule'] = request.query_module
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='QueryCommodityConfig',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            companyreg_20200306_models.QueryCommodityConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def query_commodity_config_with_options_async(
-        self,
-        request: companyreg_20200306_models.QueryCommodityConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.QueryCommodityConfigResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.biz_type):
-            query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.commodity_code):
-            query['CommodityCode'] = request.commodity_code
-        if not UtilClient.is_unset(request.query_module):
-            query['QueryModule'] = request.query_module
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='QueryCommodityConfig',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            companyreg_20200306_models.QueryCommodityConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def query_commodity_config(
-        self,
-        request: companyreg_20200306_models.QueryCommodityConfigRequest,
-    ) -> companyreg_20200306_models.QueryCommodityConfigResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.query_commodity_config_with_options(request, runtime)
-
-    async def query_commodity_config_async(
-        self,
-        request: companyreg_20200306_models.QueryCommodityConfigRequest,
-    ) -> companyreg_20200306_models.QueryCommodityConfigResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.query_commodity_config_with_options_async(request, runtime)
 
     def query_instance_with_options(
         self,
         request: companyreg_20200306_models.QueryInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.QueryInstanceResponse:
+        """
+        @param request: QueryInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_type):
@@ -1828,6 +2139,11 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.QueryInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.QueryInstanceResponse:
+        """
+        @param request: QueryInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_type):
@@ -1857,6 +2173,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.QueryInstanceRequest,
     ) -> companyreg_20200306_models.QueryInstanceResponse:
+        """
+        @param request: QueryInstanceRequest
+        @return: QueryInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_instance_with_options(request, runtime)
 
@@ -1864,6 +2184,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.QueryInstanceRequest,
     ) -> companyreg_20200306_models.QueryInstanceResponse:
+        """
+        @param request: QueryInstanceRequest
+        @return: QueryInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_instance_with_options_async(request, runtime)
 
@@ -1872,6 +2196,13 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.QueryPartnerIntentionListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.QueryPartnerIntentionListResponse:
+        """
+        @summary QueryPartnerIntentionList
+        
+        @param request: QueryPartnerIntentionListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPartnerIntentionListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -1906,6 +2237,13 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.QueryPartnerIntentionListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.QueryPartnerIntentionListResponse:
+        """
+        @summary QueryPartnerIntentionList
+        
+        @param request: QueryPartnerIntentionListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPartnerIntentionListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -1939,6 +2277,12 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.QueryPartnerIntentionListRequest,
     ) -> companyreg_20200306_models.QueryPartnerIntentionListResponse:
+        """
+        @summary QueryPartnerIntentionList
+        
+        @param request: QueryPartnerIntentionListRequest
+        @return: QueryPartnerIntentionListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_partner_intention_list_with_options(request, runtime)
 
@@ -1946,6 +2290,12 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.QueryPartnerIntentionListRequest,
     ) -> companyreg_20200306_models.QueryPartnerIntentionListResponse:
+        """
+        @summary QueryPartnerIntentionList
+        
+        @param request: QueryPartnerIntentionListRequest
+        @return: QueryPartnerIntentionListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_partner_intention_list_with_options_async(request, runtime)
 
@@ -1954,6 +2304,13 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.QueryPartnerProduceListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.QueryPartnerProduceListResponse:
+        """
+        @summary QueryPartnerProduceList
+        
+        @param request: QueryPartnerProduceListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPartnerProduceListResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1980,6 +2337,13 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.QueryPartnerProduceListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.QueryPartnerProduceListResponse:
+        """
+        @summary QueryPartnerProduceList
+        
+        @param request: QueryPartnerProduceListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPartnerProduceListResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2005,6 +2369,12 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.QueryPartnerProduceListRequest,
     ) -> companyreg_20200306_models.QueryPartnerProduceListResponse:
+        """
+        @summary QueryPartnerProduceList
+        
+        @param request: QueryPartnerProduceListRequest
+        @return: QueryPartnerProduceListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_partner_produce_list_with_options(request, runtime)
 
@@ -2012,6 +2382,12 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.QueryPartnerProduceListRequest,
     ) -> companyreg_20200306_models.QueryPartnerProduceListResponse:
+        """
+        @summary QueryPartnerProduceList
+        
+        @param request: QueryPartnerProduceListRequest
+        @return: QueryPartnerProduceListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_partner_produce_list_with_options_async(request, runtime)
 
@@ -2019,6 +2395,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.QueryUserNeedAuthResponse:
+        """
+        @param request: QueryUserNeedAuthRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryUserNeedAuthResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='QueryUserNeedAuth',
@@ -2040,6 +2421,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.QueryUserNeedAuthResponse:
+        """
+        @param request: QueryUserNeedAuthRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryUserNeedAuthResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='QueryUserNeedAuth',
@@ -2058,10 +2444,16 @@ class Client(OpenApiClient):
         )
 
     def query_user_need_auth(self) -> companyreg_20200306_models.QueryUserNeedAuthResponse:
+        """
+        @return: QueryUserNeedAuthResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_user_need_auth_with_options(runtime)
 
     async def query_user_need_auth_async(self) -> companyreg_20200306_models.QueryUserNeedAuthResponse:
+        """
+        @return: QueryUserNeedAuthResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_user_need_auth_with_options_async(runtime)
 
@@ -2070,6 +2462,13 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.RecordPostBackRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.RecordPostBackResponse:
+        """
+        @summary RecordPostBack
+        
+        @param request: RecordPostBackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RecordPostBackResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -2106,6 +2505,13 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.RecordPostBackRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.RecordPostBackResponse:
+        """
+        @summary RecordPostBack
+        
+        @param request: RecordPostBackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RecordPostBackResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -2141,6 +2547,12 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.RecordPostBackRequest,
     ) -> companyreg_20200306_models.RecordPostBackResponse:
+        """
+        @summary RecordPostBack
+        
+        @param request: RecordPostBackRequest
+        @return: RecordPostBackResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.record_post_back_with_options(request, runtime)
 
@@ -2148,6 +2560,12 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.RecordPostBackRequest,
     ) -> companyreg_20200306_models.RecordPostBackResponse:
+        """
+        @summary RecordPostBack
+        
+        @param request: RecordPostBackRequest
+        @return: RecordPostBackResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.record_post_back_with_options_async(request, runtime)
 
@@ -2156,8 +2574,15 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.RejectSolutionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.RejectSolutionResponse:
+        """
+        @param request: RejectSolutionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RejectSolutionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
         if not UtilClient.is_unset(request.note):
             query['Note'] = request.note
         if not UtilClient.is_unset(request.solution_biz_id):
@@ -2186,8 +2611,15 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.RejectSolutionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.RejectSolutionResponse:
+        """
+        @param request: RejectSolutionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RejectSolutionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
         if not UtilClient.is_unset(request.note):
             query['Note'] = request.note
         if not UtilClient.is_unset(request.solution_biz_id):
@@ -2215,6 +2647,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.RejectSolutionRequest,
     ) -> companyreg_20200306_models.RejectSolutionResponse:
+        """
+        @param request: RejectSolutionRequest
+        @return: RejectSolutionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.reject_solution_with_options(request, runtime)
 
@@ -2222,6 +2658,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.RejectSolutionRequest,
     ) -> companyreg_20200306_models.RejectSolutionResponse:
+        """
+        @param request: RejectSolutionRequest
+        @return: RejectSolutionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.reject_solution_with_options_async(request, runtime)
 
@@ -2230,6 +2670,11 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.RejectUserSolutionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.RejectUserSolutionResponse:
+        """
+        @param request: RejectUserSolutionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RejectUserSolutionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_type):
@@ -2262,6 +2707,11 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.RejectUserSolutionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.RejectUserSolutionResponse:
+        """
+        @param request: RejectUserSolutionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RejectUserSolutionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_type):
@@ -2293,6 +2743,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.RejectUserSolutionRequest,
     ) -> companyreg_20200306_models.RejectUserSolutionResponse:
+        """
+        @param request: RejectUserSolutionRequest
+        @return: RejectUserSolutionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.reject_user_solution_with_options(request, runtime)
 
@@ -2300,6 +2754,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.RejectUserSolutionRequest,
     ) -> companyreg_20200306_models.RejectUserSolutionResponse:
+        """
+        @param request: RejectUserSolutionRequest
+        @return: RejectUserSolutionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.reject_user_solution_with_options_async(request, runtime)
 
@@ -2308,6 +2766,11 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.ReleaseProduceAuthorizationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.ReleaseProduceAuthorizationResponse:
+        """
+        @param request: ReleaseProduceAuthorizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseProduceAuthorizationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.authorized_user_id):
@@ -2340,6 +2803,11 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.ReleaseProduceAuthorizationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.ReleaseProduceAuthorizationResponse:
+        """
+        @param request: ReleaseProduceAuthorizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseProduceAuthorizationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.authorized_user_id):
@@ -2371,6 +2839,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.ReleaseProduceAuthorizationRequest,
     ) -> companyreg_20200306_models.ReleaseProduceAuthorizationResponse:
+        """
+        @param request: ReleaseProduceAuthorizationRequest
+        @return: ReleaseProduceAuthorizationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.release_produce_authorization_with_options(request, runtime)
 
@@ -2378,6 +2850,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.ReleaseProduceAuthorizationRequest,
     ) -> companyreg_20200306_models.ReleaseProduceAuthorizationResponse:
+        """
+        @param request: ReleaseProduceAuthorizationRequest
+        @return: ReleaseProduceAuthorizationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.release_produce_authorization_with_options_async(request, runtime)
 
@@ -2386,6 +2862,13 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.StartBackToBackCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.StartBackToBackCallResponse:
+        """
+        @summary 玄坛双呼外呼发起
+        
+        @param request: StartBackToBackCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartBackToBackCallResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -2424,6 +2907,13 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.StartBackToBackCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.StartBackToBackCallResponse:
+        """
+        @summary 玄坛双呼外呼发起
+        
+        @param request: StartBackToBackCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartBackToBackCallResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -2461,6 +2951,12 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.StartBackToBackCallRequest,
     ) -> companyreg_20200306_models.StartBackToBackCallResponse:
+        """
+        @summary 玄坛双呼外呼发起
+        
+        @param request: StartBackToBackCallRequest
+        @return: StartBackToBackCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_back_to_back_call_with_options(request, runtime)
 
@@ -2468,16 +2964,161 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.StartBackToBackCallRequest,
     ) -> companyreg_20200306_models.StartBackToBackCallResponse:
+        """
+        @summary 玄坛双呼外呼发起
+        
+        @param request: StartBackToBackCallRequest
+        @return: StartBackToBackCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_back_to_back_call_with_options_async(request, runtime)
+
+    def submit_intention_for_partner_with_options(
+        self,
+        request: companyreg_20200306_models.SubmitIntentionForPartnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> companyreg_20200306_models.SubmitIntentionForPartnerResponse:
+        """
+        @summary 合作伙伴提交需求单
+        
+        @param request: SubmitIntentionForPartnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitIntentionForPartnerResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.area):
+            query['Area'] = request.area
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.channel):
+            query['Channel'] = request.channel
+        if not UtilClient.is_unset(request.commodity_type):
+            query['CommodityType'] = request.commodity_type
+        if not UtilClient.is_unset(request.contact_name):
+            query['ContactName'] = request.contact_name
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.ext_info):
+            query['ExtInfo'] = request.ext_info
+        if not UtilClient.is_unset(request.grade):
+            query['Grade'] = request.grade
+        if not UtilClient.is_unset(request.mobile):
+            query['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitIntentionForPartner',
+            version='2020-03-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            companyreg_20200306_models.SubmitIntentionForPartnerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_intention_for_partner_with_options_async(
+        self,
+        request: companyreg_20200306_models.SubmitIntentionForPartnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> companyreg_20200306_models.SubmitIntentionForPartnerResponse:
+        """
+        @summary 合作伙伴提交需求单
+        
+        @param request: SubmitIntentionForPartnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitIntentionForPartnerResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.area):
+            query['Area'] = request.area
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.channel):
+            query['Channel'] = request.channel
+        if not UtilClient.is_unset(request.commodity_type):
+            query['CommodityType'] = request.commodity_type
+        if not UtilClient.is_unset(request.contact_name):
+            query['ContactName'] = request.contact_name
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.ext_info):
+            query['ExtInfo'] = request.ext_info
+        if not UtilClient.is_unset(request.grade):
+            query['Grade'] = request.grade
+        if not UtilClient.is_unset(request.mobile):
+            query['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitIntentionForPartner',
+            version='2020-03-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            companyreg_20200306_models.SubmitIntentionForPartnerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_intention_for_partner(
+        self,
+        request: companyreg_20200306_models.SubmitIntentionForPartnerRequest,
+    ) -> companyreg_20200306_models.SubmitIntentionForPartnerResponse:
+        """
+        @summary 合作伙伴提交需求单
+        
+        @param request: SubmitIntentionForPartnerRequest
+        @return: SubmitIntentionForPartnerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_intention_for_partner_with_options(request, runtime)
+
+    async def submit_intention_for_partner_async(
+        self,
+        request: companyreg_20200306_models.SubmitIntentionForPartnerRequest,
+    ) -> companyreg_20200306_models.SubmitIntentionForPartnerResponse:
+        """
+        @summary 合作伙伴提交需求单
+        
+        @param request: SubmitIntentionForPartnerRequest
+        @return: SubmitIntentionForPartnerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_intention_for_partner_with_options_async(request, runtime)
 
     def submit_intention_note_with_options(
         self,
         request: companyreg_20200306_models.SubmitIntentionNoteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.SubmitIntentionNoteResponse:
+        """
+        @param request: SubmitIntentionNoteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitIntentionNoteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
         if not UtilClient.is_unset(request.intention_biz_id):
             query['IntentionBizId'] = request.intention_biz_id
         if not UtilClient.is_unset(request.note):
@@ -2506,8 +3147,15 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.SubmitIntentionNoteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.SubmitIntentionNoteResponse:
+        """
+        @param request: SubmitIntentionNoteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitIntentionNoteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
         if not UtilClient.is_unset(request.intention_biz_id):
             query['IntentionBizId'] = request.intention_biz_id
         if not UtilClient.is_unset(request.note):
@@ -2535,6 +3183,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.SubmitIntentionNoteRequest,
     ) -> companyreg_20200306_models.SubmitIntentionNoteResponse:
+        """
+        @param request: SubmitIntentionNoteRequest
+        @return: SubmitIntentionNoteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_intention_note_with_options(request, runtime)
 
@@ -2542,6 +3194,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.SubmitIntentionNoteRequest,
     ) -> companyreg_20200306_models.SubmitIntentionNoteResponse:
+        """
+        @param request: SubmitIntentionNoteRequest
+        @return: SubmitIntentionNoteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_intention_note_with_options_async(request, runtime)
 
@@ -2550,6 +3206,11 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.SubmitSolutionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.SubmitSolutionResponse:
+        """
+        @param request: SubmitSolutionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitSolutionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_type):
@@ -2586,6 +3247,11 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.SubmitSolutionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.SubmitSolutionResponse:
+        """
+        @param request: SubmitSolutionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitSolutionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_type):
@@ -2621,6 +3287,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.SubmitSolutionRequest,
     ) -> companyreg_20200306_models.SubmitSolutionResponse:
+        """
+        @param request: SubmitSolutionRequest
+        @return: SubmitSolutionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_solution_with_options(request, runtime)
 
@@ -2628,6 +3298,10 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.SubmitSolutionRequest,
     ) -> companyreg_20200306_models.SubmitSolutionResponse:
+        """
+        @param request: SubmitSolutionRequest
+        @return: SubmitSolutionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_solution_with_options_async(request, runtime)
 
@@ -2636,6 +3310,13 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.TransferIntentionOwnerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.TransferIntentionOwnerResponse:
+        """
+        @summary 玄坛需求单转派小二
+        
+        @param request: TransferIntentionOwnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TransferIntentionOwnerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -2670,6 +3351,13 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.TransferIntentionOwnerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.TransferIntentionOwnerResponse:
+        """
+        @summary 玄坛需求单转派小二
+        
+        @param request: TransferIntentionOwnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TransferIntentionOwnerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -2703,6 +3391,12 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.TransferIntentionOwnerRequest,
     ) -> companyreg_20200306_models.TransferIntentionOwnerResponse:
+        """
+        @summary 玄坛需求单转派小二
+        
+        @param request: TransferIntentionOwnerRequest
+        @return: TransferIntentionOwnerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.transfer_intention_owner_with_options(request, runtime)
 
@@ -2710,6 +3404,12 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.TransferIntentionOwnerRequest,
     ) -> companyreg_20200306_models.TransferIntentionOwnerResponse:
+        """
+        @summary 玄坛需求单转派小二
+        
+        @param request: TransferIntentionOwnerRequest
+        @return: TransferIntentionOwnerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.transfer_intention_owner_with_options_async(request, runtime)
 
@@ -2718,6 +3418,13 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.TransferProduceOwnerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.TransferProduceOwnerResponse:
+        """
+        @summary 玄坛服务单转派小二
+        
+        @param request: TransferProduceOwnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TransferProduceOwnerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -2752,6 +3459,13 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.TransferProduceOwnerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.TransferProduceOwnerResponse:
+        """
+        @summary 玄坛服务单转派小二
+        
+        @param request: TransferProduceOwnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TransferProduceOwnerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -2785,6 +3499,12 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.TransferProduceOwnerRequest,
     ) -> companyreg_20200306_models.TransferProduceOwnerResponse:
+        """
+        @summary 玄坛服务单转派小二
+        
+        @param request: TransferProduceOwnerRequest
+        @return: TransferProduceOwnerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.transfer_produce_owner_with_options(request, runtime)
 
@@ -2792,5 +3512,11 @@ class Client(OpenApiClient):
         self,
         request: companyreg_20200306_models.TransferProduceOwnerRequest,
     ) -> companyreg_20200306_models.TransferProduceOwnerResponse:
+        """
+        @summary 玄坛服务单转派小二
+        
+        @param request: TransferProduceOwnerRequest
+        @return: TransferProduceOwnerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.transfer_produce_owner_with_options_async(request, runtime)

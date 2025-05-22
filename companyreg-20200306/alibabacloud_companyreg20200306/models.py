@@ -12,7 +12,9 @@ class BindProduceAuthorizationRequest(TeaModel):
         biz_type: str = None,
     ):
         self.authorized_user_ids = authorized_user_ids
+        # This parameter is required.
         self.biz_id = biz_id
+        # This parameter is required.
         self.biz_type = biz_type
 
     def validate(self):
@@ -224,8 +226,11 @@ class CloseIntentionForPartnerRequest(TeaModel):
         intention_biz_id: str = None,
         note: str = None,
     ):
+        # This parameter is required.
         self.biz_type = biz_type
+        # This parameter is required.
         self.intention_biz_id = intention_biz_id
+        # This parameter is required.
         self.note = note
 
     def validate(self):
@@ -350,7 +355,9 @@ class CloseUserIntentionRequest(TeaModel):
         note: str = None,
     ):
         self.biz_type = biz_type
+        # This parameter is required.
         self.intention_biz_id = intention_biz_id
+        # This parameter is required.
         self.note = note
 
     def validate(self):
@@ -476,9 +483,12 @@ class CreateBusinessOpportunityRequest(TeaModel):
         source: int = None,
         vcode: str = None,
     ):
+        # This parameter is required.
         self.biz_type = biz_type
         self.contact_name = contact_name
+        # This parameter is required.
         self.mobile = mobile
+        # This parameter is required.
         self.source = source
         self.vcode = vcode
 
@@ -611,7 +621,9 @@ class CreateProduceForPartnerRequest(TeaModel):
         biz_type: str = None,
         ext_info: str = None,
     ):
+        # This parameter is required.
         self.biz_id = biz_id
+        # This parameter is required.
         self.biz_type = biz_type
         self.ext_info = ext_info
 
@@ -741,7 +753,9 @@ class DescribePartnerConfigRequest(TeaModel):
         biz_type: str = None,
         partner_code: str = None,
     ):
+        # This parameter is required.
         self.biz_type = biz_type
+        # This parameter is required.
         self.partner_code = partner_code
 
     def validate(self):
@@ -1013,9 +1027,12 @@ class GetAlipayUrlRequest(TeaModel):
         return_url: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.biz_type = biz_type
+        # This parameter is required.
         self.order_id = order_id
         self.return_url = return_url
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -1128,13 +1145,16 @@ class ListIntentionNoteRequest(TeaModel):
     def __init__(
         self,
         begin_time: int = None,
+        biz_type: str = None,
         end_time: int = None,
         intention_biz_id: str = None,
         page_number: int = None,
         page_size: int = None,
     ):
         self.begin_time = begin_time
+        self.biz_type = biz_type
         self.end_time = end_time
+        # This parameter is required.
         self.intention_biz_id = intention_biz_id
         self.page_number = page_number
         self.page_size = page_size
@@ -1150,6 +1170,8 @@ class ListIntentionNoteRequest(TeaModel):
         result = dict()
         if self.begin_time is not None:
             result['BeginTime'] = self.begin_time
+        if self.biz_type is not None:
+            result['BizType'] = self.biz_type
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.intention_biz_id is not None:
@@ -1164,6 +1186,8 @@ class ListIntentionNoteRequest(TeaModel):
         m = m or dict()
         if m.get('BeginTime') is not None:
             self.begin_time = m.get('BeginTime')
+        if m.get('BizType') is not None:
+            self.biz_type = m.get('BizType')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('IntentionBizId') is not None:
@@ -1342,7 +1366,9 @@ class ListProduceAuthorizationRequest(TeaModel):
     ):
         self.biz_id = biz_id
         self.biz_type = biz_type
+        # This parameter is required.
         self.page_num = page_num
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -1774,9 +1800,13 @@ class ListUserIntentionNotesRequest(TeaModel):
         page_num: int = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.biz_type = biz_type
+        # This parameter is required.
         self.intention_biz_id = intention_biz_id
+        # This parameter is required.
         self.page_num = page_num
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -2244,9 +2274,13 @@ class ListUserProduceOperateLogsRequest(TeaModel):
         page_num: int = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.biz_id = biz_id
+        # This parameter is required.
         self.biz_type = biz_type
+        # This parameter is required.
         self.page_num = page_num
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -2465,11 +2499,13 @@ class ListUserProduceOperateLogsResponse(TeaModel):
 class ListUserSolutionsRequest(TeaModel):
     def __init__(
         self,
+        biz_type: str = None,
         exist_status: List[int] = None,
         intention_biz_id: str = None,
         page_num: int = None,
         page_size: int = None,
     ):
+        self.biz_type = biz_type
         self.exist_status = exist_status
         self.intention_biz_id = intention_biz_id
         self.page_num = page_num
@@ -2484,6 +2520,8 @@ class ListUserSolutionsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.biz_type is not None:
+            result['BizType'] = self.biz_type
         if self.exist_status is not None:
             result['ExistStatus'] = self.exist_status
         if self.intention_biz_id is not None:
@@ -2496,6 +2534,8 @@ class ListUserSolutionsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BizType') is not None:
+            self.biz_type = m.get('BizType')
         if m.get('ExistStatus') is not None:
             self.exist_status = m.get('ExistStatus')
         if m.get('IntentionBizId') is not None:
@@ -2510,11 +2550,13 @@ class ListUserSolutionsRequest(TeaModel):
 class ListUserSolutionsShrinkRequest(TeaModel):
     def __init__(
         self,
+        biz_type: str = None,
         exist_status_shrink: str = None,
         intention_biz_id: str = None,
         page_num: int = None,
         page_size: int = None,
     ):
+        self.biz_type = biz_type
         self.exist_status_shrink = exist_status_shrink
         self.intention_biz_id = intention_biz_id
         self.page_num = page_num
@@ -2529,6 +2571,8 @@ class ListUserSolutionsShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.biz_type is not None:
+            result['BizType'] = self.biz_type
         if self.exist_status_shrink is not None:
             result['ExistStatus'] = self.exist_status_shrink
         if self.intention_biz_id is not None:
@@ -2541,6 +2585,8 @@ class ListUserSolutionsShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BizType') is not None:
+            self.biz_type = m.get('BizType')
         if m.get('ExistStatus') is not None:
             self.exist_status_shrink = m.get('ExistStatus')
         if m.get('IntentionBizId') is not None:
@@ -2885,10 +2931,15 @@ class PutMeasureDataRequest(TeaModel):
         end_time: str = None,
         start_time: str = None,
     ):
+        # This parameter is required.
         self.biz_type = biz_type
+        # This parameter is required.
         self.data = data
+        # This parameter is required.
         self.data_type = data_type
+        # This parameter is required.
         self.end_time = end_time
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -3010,10 +3061,15 @@ class PutMeasureReadyFlagRequest(TeaModel):
         ready_flag: str = None,
         start_time: str = None,
     ):
+        # This parameter is required.
         self.biz_type = biz_type
+        # This parameter is required.
         self.data_type = data_type
+        # This parameter is required.
         self.end_time = end_time
+        # This parameter is required.
         self.ready_flag = ready_flag
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -3131,6 +3187,7 @@ class QueryAvailableNumbersRequest(TeaModel):
         self,
         biz_type: str = None,
     ):
+        # This parameter is required.
         self.biz_type = biz_type
 
     def validate(self):
@@ -3250,6 +3307,7 @@ class QueryBagRemainingRequest(TeaModel):
         self,
         biz_type: str = None,
     ):
+        # This parameter is required.
         self.biz_type = biz_type
 
     def validate(self):
@@ -3346,280 +3404,15 @@ class QueryBagRemainingResponse(TeaModel):
         return self
 
 
-class QueryCommodityConfigRequest(TeaModel):
-    def __init__(
-        self,
-        biz_type: str = None,
-        commodity_code: str = None,
-        query_module: bool = None,
-    ):
-        self.biz_type = biz_type
-        self.commodity_code = commodity_code
-        self.query_module = query_module
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.biz_type is not None:
-            result['BizType'] = self.biz_type
-        if self.commodity_code is not None:
-            result['CommodityCode'] = self.commodity_code
-        if self.query_module is not None:
-            result['QueryModule'] = self.query_module
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('BizType') is not None:
-            self.biz_type = m.get('BizType')
-        if m.get('CommodityCode') is not None:
-            self.commodity_code = m.get('CommodityCode')
-        if m.get('QueryModule') is not None:
-            self.query_module = m.get('QueryModule')
-        return self
-
-
-class QueryCommodityConfigResponseBodyDataCommodityModules(TeaModel):
-    def __init__(
-        self,
-        lx_module_code: str = None,
-        module_code: str = None,
-        module_description: str = None,
-        module_name: str = None,
-        module_tip: str = None,
-        module_type: str = None,
-        module_url: str = None,
-        module_value: str = None,
-        sort_number: int = None,
-    ):
-        self.lx_module_code = lx_module_code
-        self.module_code = module_code
-        self.module_description = module_description
-        self.module_name = module_name
-        self.module_tip = module_tip
-        self.module_type = module_type
-        self.module_url = module_url
-        self.module_value = module_value
-        self.sort_number = sort_number
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.lx_module_code is not None:
-            result['LxModuleCode'] = self.lx_module_code
-        if self.module_code is not None:
-            result['ModuleCode'] = self.module_code
-        if self.module_description is not None:
-            result['ModuleDescription'] = self.module_description
-        if self.module_name is not None:
-            result['ModuleName'] = self.module_name
-        if self.module_tip is not None:
-            result['ModuleTip'] = self.module_tip
-        if self.module_type is not None:
-            result['ModuleType'] = self.module_type
-        if self.module_url is not None:
-            result['ModuleUrl'] = self.module_url
-        if self.module_value is not None:
-            result['ModuleValue'] = self.module_value
-        if self.sort_number is not None:
-            result['SortNumber'] = self.sort_number
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('LxModuleCode') is not None:
-            self.lx_module_code = m.get('LxModuleCode')
-        if m.get('ModuleCode') is not None:
-            self.module_code = m.get('ModuleCode')
-        if m.get('ModuleDescription') is not None:
-            self.module_description = m.get('ModuleDescription')
-        if m.get('ModuleName') is not None:
-            self.module_name = m.get('ModuleName')
-        if m.get('ModuleTip') is not None:
-            self.module_tip = m.get('ModuleTip')
-        if m.get('ModuleType') is not None:
-            self.module_type = m.get('ModuleType')
-        if m.get('ModuleUrl') is not None:
-            self.module_url = m.get('ModuleUrl')
-        if m.get('ModuleValue') is not None:
-            self.module_value = m.get('ModuleValue')
-        if m.get('SortNumber') is not None:
-            self.sort_number = m.get('SortNumber')
-        return self
-
-
-class QueryCommodityConfigResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        commodity_code: str = None,
-        commodity_modules: List[QueryCommodityConfigResponseBodyDataCommodityModules] = None,
-        description: str = None,
-        icon_url: str = None,
-        product_line: str = None,
-        protocol_url: str = None,
-        starting_price: str = None,
-        type: int = None,
-    ):
-        self.commodity_code = commodity_code
-        self.commodity_modules = commodity_modules
-        self.description = description
-        self.icon_url = icon_url
-        self.product_line = product_line
-        self.protocol_url = protocol_url
-        self.starting_price = starting_price
-        self.type = type
-
-    def validate(self):
-        if self.commodity_modules:
-            for k in self.commodity_modules:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.commodity_code is not None:
-            result['CommodityCode'] = self.commodity_code
-        result['CommodityModules'] = []
-        if self.commodity_modules is not None:
-            for k in self.commodity_modules:
-                result['CommodityModules'].append(k.to_map() if k else None)
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.icon_url is not None:
-            result['IconUrl'] = self.icon_url
-        if self.product_line is not None:
-            result['ProductLine'] = self.product_line
-        if self.protocol_url is not None:
-            result['ProtocolUrl'] = self.protocol_url
-        if self.starting_price is not None:
-            result['StartingPrice'] = self.starting_price
-        if self.type is not None:
-            result['Type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CommodityCode') is not None:
-            self.commodity_code = m.get('CommodityCode')
-        self.commodity_modules = []
-        if m.get('CommodityModules') is not None:
-            for k in m.get('CommodityModules'):
-                temp_model = QueryCommodityConfigResponseBodyDataCommodityModules()
-                self.commodity_modules.append(temp_model.from_map(k))
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('IconUrl') is not None:
-            self.icon_url = m.get('IconUrl')
-        if m.get('ProductLine') is not None:
-            self.product_line = m.get('ProductLine')
-        if m.get('ProtocolUrl') is not None:
-            self.protocol_url = m.get('ProtocolUrl')
-        if m.get('StartingPrice') is not None:
-            self.starting_price = m.get('StartingPrice')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        return self
-
-
-class QueryCommodityConfigResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: QueryCommodityConfigResponseBodyData = None,
-        request_id: str = None,
-    ):
-        self.data = data
-        self.request_id = request_id
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Data') is not None:
-            temp_model = QueryCommodityConfigResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class QueryCommodityConfigResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: QueryCommodityConfigResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = QueryCommodityConfigResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class QueryInstanceRequest(TeaModel):
     def __init__(
         self,
         biz_type: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.biz_type = biz_type
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -4189,10 +3982,15 @@ class RecordPostBackRequest(TeaModel):
         content: str = None,
         entity_key: str = None,
     ):
+        # This parameter is required.
         self.biz_id = biz_id
+        # This parameter is required.
         self.biz_type = biz_type
+        # This parameter is required.
         self.contactor = contactor
+        # This parameter is required.
         self.content = content
+        # This parameter is required.
         self.entity_key = entity_key
 
     def validate(self):
@@ -4362,10 +4160,14 @@ class RecordPostBackResponse(TeaModel):
 class RejectSolutionRequest(TeaModel):
     def __init__(
         self,
+        biz_type: str = None,
         note: str = None,
         solution_biz_id: str = None,
     ):
+        self.biz_type = biz_type
+        # This parameter is required.
         self.note = note
+        # This parameter is required.
         self.solution_biz_id = solution_biz_id
 
     def validate(self):
@@ -4377,6 +4179,8 @@ class RejectSolutionRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.biz_type is not None:
+            result['BizType'] = self.biz_type
         if self.note is not None:
             result['Note'] = self.note
         if self.solution_biz_id is not None:
@@ -4385,6 +4189,8 @@ class RejectSolutionRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BizType') is not None:
+            self.biz_type = m.get('BizType')
         if m.get('Note') is not None:
             self.note = m.get('Note')
         if m.get('SolutionBizId') is not None:
@@ -4485,8 +4291,11 @@ class RejectUserSolutionRequest(TeaModel):
         note: str = None,
         solution_biz_id: str = None,
     ):
+        # This parameter is required.
         self.biz_type = biz_type
+        # This parameter is required.
         self.note = note
+        # This parameter is required.
         self.solution_biz_id = solution_biz_id
 
     def validate(self):
@@ -4611,7 +4420,9 @@ class ReleaseProduceAuthorizationRequest(TeaModel):
         biz_type: str = None,
     ):
         self.authorized_user_id = authorized_user_id
+        # This parameter is required.
         self.biz_id = biz_id
+        # This parameter is required.
         self.biz_type = biz_type
 
     def validate(self):
@@ -4738,11 +4549,15 @@ class StartBackToBackCallRequest(TeaModel):
         mobile_key: str = None,
         skill_type: int = None,
     ):
+        # This parameter is required.
         self.biz_id = biz_id
+        # This parameter is required.
         self.biz_type = biz_type
         self.call_center_number = call_center_number
+        # This parameter is required.
         self.caller = caller
         self.mobile_key = mobile_key
+        # This parameter is required.
         self.skill_type = skill_type
 
     def validate(self):
@@ -4877,13 +4692,185 @@ class StartBackToBackCallResponse(TeaModel):
         return self
 
 
+class SubmitIntentionForPartnerRequest(TeaModel):
+    def __init__(
+        self,
+        area: str = None,
+        biz_type: str = None,
+        channel: str = None,
+        commodity_type: str = None,
+        contact_name: str = None,
+        description: str = None,
+        ext_info: str = None,
+        grade: int = None,
+        mobile: str = None,
+        user_id: str = None,
+    ):
+        self.area = area
+        self.biz_type = biz_type
+        self.channel = channel
+        self.commodity_type = commodity_type
+        self.contact_name = contact_name
+        self.description = description
+        self.ext_info = ext_info
+        self.grade = grade
+        self.mobile = mobile
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.area is not None:
+            result['Area'] = self.area
+        if self.biz_type is not None:
+            result['BizType'] = self.biz_type
+        if self.channel is not None:
+            result['Channel'] = self.channel
+        if self.commodity_type is not None:
+            result['CommodityType'] = self.commodity_type
+        if self.contact_name is not None:
+            result['ContactName'] = self.contact_name
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.ext_info is not None:
+            result['ExtInfo'] = self.ext_info
+        if self.grade is not None:
+            result['Grade'] = self.grade
+        if self.mobile is not None:
+            result['Mobile'] = self.mobile
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Area') is not None:
+            self.area = m.get('Area')
+        if m.get('BizType') is not None:
+            self.biz_type = m.get('BizType')
+        if m.get('Channel') is not None:
+            self.channel = m.get('Channel')
+        if m.get('CommodityType') is not None:
+            self.commodity_type = m.get('CommodityType')
+        if m.get('ContactName') is not None:
+            self.contact_name = m.get('ContactName')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ExtInfo') is not None:
+            self.ext_info = m.get('ExtInfo')
+        if m.get('Grade') is not None:
+            self.grade = m.get('Grade')
+        if m.get('Mobile') is not None:
+            self.mobile = m.get('Mobile')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class SubmitIntentionForPartnerResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_msg: str = None,
+        intention_biz_id: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_msg = error_msg
+        self.intention_biz_id = intention_biz_id
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.intention_biz_id is not None:
+            result['IntentionBizId'] = self.intention_biz_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('IntentionBizId') is not None:
+            self.intention_biz_id = m.get('IntentionBizId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SubmitIntentionForPartnerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitIntentionForPartnerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitIntentionForPartnerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SubmitIntentionNoteRequest(TeaModel):
     def __init__(
         self,
+        biz_type: str = None,
         intention_biz_id: str = None,
         note: str = None,
     ):
+        self.biz_type = biz_type
+        # This parameter is required.
         self.intention_biz_id = intention_biz_id
+        # This parameter is required.
         self.note = note
 
     def validate(self):
@@ -4895,6 +4882,8 @@ class SubmitIntentionNoteRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.biz_type is not None:
+            result['BizType'] = self.biz_type
         if self.intention_biz_id is not None:
             result['IntentionBizId'] = self.intention_biz_id
         if self.note is not None:
@@ -4903,6 +4892,8 @@ class SubmitIntentionNoteRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BizType') is not None:
+            self.biz_type = m.get('BizType')
         if m.get('IntentionBizId') is not None:
             self.intention_biz_id = m.get('IntentionBizId')
         if m.get('Note') is not None:
@@ -5005,9 +4996,12 @@ class SubmitSolutionRequest(TeaModel):
         solution: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.biz_type = biz_type
+        # This parameter is required.
         self.intention_biz_id = intention_biz_id
         self.operate_type = operate_type
+        # This parameter is required.
         self.solution = solution
         self.user_id = user_id
 
@@ -5153,8 +5147,11 @@ class TransferIntentionOwnerRequest(TeaModel):
         person_id: int = None,
         remark: str = None,
     ):
+        # This parameter is required.
         self.biz_id = biz_id
+        # This parameter is required.
         self.biz_type = biz_type
+        # This parameter is required.
         self.person_id = person_id
         self.remark = remark
 
@@ -5290,8 +5287,11 @@ class TransferProduceOwnerRequest(TeaModel):
         person_id: int = None,
         remark: str = None,
     ):
+        # This parameter is required.
         self.biz_id = biz_id
+        # This parameter is required.
         self.biz_type = biz_type
+        # This parameter is required.
         self.person_id = person_id
         self.remark = remark
 
