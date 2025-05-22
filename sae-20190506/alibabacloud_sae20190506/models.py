@@ -8578,7 +8578,11 @@ class PriceEstimateFeature(TeaModel):
         app_type: str = None,
         cpu_core: float = None,
         cpu_strategy: str = None,
+        cpu_util_level: str = None,
+        cpu_util_metrics: List[float] = None,
+        enable_cpu_idle: bool = None,
         env_type: str = None,
+        ephemeral_storage_gi_b: int = None,
         high_load_instance_count: int = None,
         high_load_qps: float = None,
         high_load_seconds: int = None,
@@ -8590,9 +8594,11 @@ class PriceEstimateFeature(TeaModel):
         max_instance_count: int = None,
         memory_gi_b: float = None,
         min_instance_count: int = None,
+        new_sae_version: str = None,
         none_load_instance_count: int = None,
         none_load_seconds: int = None,
         region_id: str = None,
+        resource_type: str = None,
     ):
         # This parameter is required.
         self.app_type = app_type
@@ -8600,8 +8606,12 @@ class PriceEstimateFeature(TeaModel):
         self.cpu_core = cpu_core
         # This parameter is required.
         self.cpu_strategy = cpu_strategy
+        self.cpu_util_level = cpu_util_level
+        self.cpu_util_metrics = cpu_util_metrics
+        self.enable_cpu_idle = enable_cpu_idle
         # This parameter is required.
         self.env_type = env_type
+        self.ephemeral_storage_gi_b = ephemeral_storage_gi_b
         self.high_load_instance_count = high_load_instance_count
         self.high_load_qps = high_load_qps
         self.high_load_seconds = high_load_seconds
@@ -8614,10 +8624,12 @@ class PriceEstimateFeature(TeaModel):
         # This parameter is required.
         self.memory_gi_b = memory_gi_b
         self.min_instance_count = min_instance_count
+        self.new_sae_version = new_sae_version
         self.none_load_instance_count = none_load_instance_count
         self.none_load_seconds = none_load_seconds
         # This parameter is required.
         self.region_id = region_id
+        self.resource_type = resource_type
 
     def validate(self):
         pass
@@ -8634,8 +8646,16 @@ class PriceEstimateFeature(TeaModel):
             result['CpuCore'] = self.cpu_core
         if self.cpu_strategy is not None:
             result['CpuStrategy'] = self.cpu_strategy
+        if self.cpu_util_level is not None:
+            result['CpuUtilLevel'] = self.cpu_util_level
+        if self.cpu_util_metrics is not None:
+            result['CpuUtilMetrics'] = self.cpu_util_metrics
+        if self.enable_cpu_idle is not None:
+            result['EnableCpuIdle'] = self.enable_cpu_idle
         if self.env_type is not None:
             result['EnvType'] = self.env_type
+        if self.ephemeral_storage_gi_b is not None:
+            result['EphemeralStorageGiB'] = self.ephemeral_storage_gi_b
         if self.high_load_instance_count is not None:
             result['HighLoadInstanceCount'] = self.high_load_instance_count
         if self.high_load_qps is not None:
@@ -8658,12 +8678,16 @@ class PriceEstimateFeature(TeaModel):
             result['MemoryGiB'] = self.memory_gi_b
         if self.min_instance_count is not None:
             result['MinInstanceCount'] = self.min_instance_count
+        if self.new_sae_version is not None:
+            result['NewSaeVersion'] = self.new_sae_version
         if self.none_load_instance_count is not None:
             result['NoneLoadInstanceCount'] = self.none_load_instance_count
         if self.none_load_seconds is not None:
             result['NoneLoadSeconds'] = self.none_load_seconds
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         return result
 
     def from_map(self, m: dict = None):
@@ -8674,8 +8698,16 @@ class PriceEstimateFeature(TeaModel):
             self.cpu_core = m.get('CpuCore')
         if m.get('CpuStrategy') is not None:
             self.cpu_strategy = m.get('CpuStrategy')
+        if m.get('CpuUtilLevel') is not None:
+            self.cpu_util_level = m.get('CpuUtilLevel')
+        if m.get('CpuUtilMetrics') is not None:
+            self.cpu_util_metrics = m.get('CpuUtilMetrics')
+        if m.get('EnableCpuIdle') is not None:
+            self.enable_cpu_idle = m.get('EnableCpuIdle')
         if m.get('EnvType') is not None:
             self.env_type = m.get('EnvType')
+        if m.get('EphemeralStorageGiB') is not None:
+            self.ephemeral_storage_gi_b = m.get('EphemeralStorageGiB')
         if m.get('HighLoadInstanceCount') is not None:
             self.high_load_instance_count = m.get('HighLoadInstanceCount')
         if m.get('HighLoadQps') is not None:
@@ -8698,12 +8730,16 @@ class PriceEstimateFeature(TeaModel):
             self.memory_gi_b = m.get('MemoryGiB')
         if m.get('MinInstanceCount') is not None:
             self.min_instance_count = m.get('MinInstanceCount')
+        if m.get('NewSaeVersion') is not None:
+            self.new_sae_version = m.get('NewSaeVersion')
         if m.get('NoneLoadInstanceCount') is not None:
             self.none_load_instance_count = m.get('NoneLoadInstanceCount')
         if m.get('NoneLoadSeconds') is not None:
             self.none_load_seconds = m.get('NoneLoadSeconds')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         return self
 
 
@@ -12018,6 +12054,7 @@ class CreateApplicationRequest(TeaModel):
         enable_new_arms: bool = None,
         enable_sidecar_resource_isolated: bool = None,
         envs: str = None,
+        gpu_config: str = None,
         image_pull_secrets: str = None,
         image_url: str = None,
         init_containers_config: List[InitContainerConfig] = None,
@@ -12109,6 +12146,7 @@ class CreateApplicationRequest(TeaModel):
         self.enable_sidecar_resource_isolated = enable_sidecar_resource_isolated
         # [{"name":"envtmp","value":"0"}]
         self.envs = envs
+        self.gpu_config = gpu_config
         self.image_pull_secrets = image_pull_secrets
         # registry.cn-hangzhou.aliyuncs.com/sae_test/ali_sae_test:0.0.1
         self.image_url = image_url
@@ -12259,6 +12297,8 @@ class CreateApplicationRequest(TeaModel):
             result['EnableSidecarResourceIsolated'] = self.enable_sidecar_resource_isolated
         if self.envs is not None:
             result['Envs'] = self.envs
+        if self.gpu_config is not None:
+            result['GpuConfig'] = self.gpu_config
         if self.image_pull_secrets is not None:
             result['ImagePullSecrets'] = self.image_pull_secrets
         if self.image_url is not None:
@@ -12415,6 +12455,8 @@ class CreateApplicationRequest(TeaModel):
             self.enable_sidecar_resource_isolated = m.get('EnableSidecarResourceIsolated')
         if m.get('Envs') is not None:
             self.envs = m.get('Envs')
+        if m.get('GpuConfig') is not None:
+            self.gpu_config = m.get('GpuConfig')
         if m.get('ImagePullSecrets') is not None:
             self.image_pull_secrets = m.get('ImagePullSecrets')
         if m.get('ImageUrl') is not None:
@@ -12552,6 +12594,7 @@ class CreateApplicationShrinkRequest(TeaModel):
         enable_new_arms: bool = None,
         enable_sidecar_resource_isolated: bool = None,
         envs: str = None,
+        gpu_config: str = None,
         image_pull_secrets: str = None,
         image_url: str = None,
         init_containers_config_shrink: str = None,
@@ -12643,6 +12686,7 @@ class CreateApplicationShrinkRequest(TeaModel):
         self.enable_sidecar_resource_isolated = enable_sidecar_resource_isolated
         # [{"name":"envtmp","value":"0"}]
         self.envs = envs
+        self.gpu_config = gpu_config
         self.image_pull_secrets = image_pull_secrets
         # registry.cn-hangzhou.aliyuncs.com/sae_test/ali_sae_test:0.0.1
         self.image_url = image_url
@@ -12786,6 +12830,8 @@ class CreateApplicationShrinkRequest(TeaModel):
             result['EnableSidecarResourceIsolated'] = self.enable_sidecar_resource_isolated
         if self.envs is not None:
             result['Envs'] = self.envs
+        if self.gpu_config is not None:
+            result['GpuConfig'] = self.gpu_config
         if self.image_pull_secrets is not None:
             result['ImagePullSecrets'] = self.image_pull_secrets
         if self.image_url is not None:
@@ -12938,6 +12984,8 @@ class CreateApplicationShrinkRequest(TeaModel):
             self.enable_sidecar_resource_isolated = m.get('EnableSidecarResourceIsolated')
         if m.get('Envs') is not None:
             self.envs = m.get('Envs')
+        if m.get('GpuConfig') is not None:
+            self.gpu_config = m.get('GpuConfig')
         if m.get('ImagePullSecrets') is not None:
             self.image_pull_secrets = m.get('ImagePullSecrets')
         if m.get('ImageUrl') is not None:
@@ -17615,6 +17663,174 @@ class DeleteIngressResponse(TeaModel):
         return self
 
 
+class DeleteInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        instance_ids: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.instance_ids = instance_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        return self
+
+
+class DeleteInstancesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        change_order_id: str = None,
+    ):
+        self.change_order_id = change_order_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.change_order_id is not None:
+            result['ChangeOrderId'] = self.change_order_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChangeOrderId') is not None:
+            self.change_order_id = m.get('ChangeOrderId')
+        return self
+
+
+class DeleteInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: DeleteInstancesResponseBodyData = None,
+        error_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_code = error_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = DeleteInstancesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class DeleteInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteJobRequest(TeaModel):
     def __init__(
         self,
@@ -18482,6 +18698,7 @@ class DeployApplicationRequest(TeaModel):
         enable_new_arms: bool = None,
         enable_sidecar_resource_isolated: bool = None,
         envs: str = None,
+        gpu_config: str = None,
         image_pull_secrets: str = None,
         image_url: str = None,
         init_containers_config: List[InitContainerConfig] = None,
@@ -18622,6 +18839,7 @@ class DeployApplicationRequest(TeaModel):
         #     *   **configMapId**: the ConfigMap ID.
         #     *   **key**: the key. If you want to reference all keys, do not configure this parameter.
         self.envs = envs
+        self.gpu_config = gpu_config
         # The ID of the corresponding Secret.
         self.image_pull_secrets = image_pull_secrets
         # The URL of the image. This parameter is returned only if the **PackageType** parameter is set to **Image**.
@@ -18883,6 +19101,8 @@ class DeployApplicationRequest(TeaModel):
             result['EnableSidecarResourceIsolated'] = self.enable_sidecar_resource_isolated
         if self.envs is not None:
             result['Envs'] = self.envs
+        if self.gpu_config is not None:
+            result['GpuConfig'] = self.gpu_config
         if self.image_pull_secrets is not None:
             result['ImagePullSecrets'] = self.image_pull_secrets
         if self.image_url is not None:
@@ -19035,6 +19255,8 @@ class DeployApplicationRequest(TeaModel):
             self.enable_sidecar_resource_isolated = m.get('EnableSidecarResourceIsolated')
         if m.get('Envs') is not None:
             self.envs = m.get('Envs')
+        if m.get('GpuConfig') is not None:
+            self.gpu_config = m.get('GpuConfig')
         if m.get('ImagePullSecrets') is not None:
             self.image_pull_secrets = m.get('ImagePullSecrets')
         if m.get('ImageUrl') is not None:
@@ -19169,6 +19391,7 @@ class DeployApplicationShrinkRequest(TeaModel):
         enable_new_arms: bool = None,
         enable_sidecar_resource_isolated: bool = None,
         envs: str = None,
+        gpu_config: str = None,
         image_pull_secrets: str = None,
         image_url: str = None,
         init_containers_config_shrink: str = None,
@@ -19309,6 +19532,7 @@ class DeployApplicationShrinkRequest(TeaModel):
         #     *   **configMapId**: the ConfigMap ID.
         #     *   **key**: the key. If you want to reference all keys, do not configure this parameter.
         self.envs = envs
+        self.gpu_config = gpu_config
         # The ID of the corresponding Secret.
         self.image_pull_secrets = image_pull_secrets
         # The URL of the image. This parameter is returned only if the **PackageType** parameter is set to **Image**.
@@ -19563,6 +19787,8 @@ class DeployApplicationShrinkRequest(TeaModel):
             result['EnableSidecarResourceIsolated'] = self.enable_sidecar_resource_isolated
         if self.envs is not None:
             result['Envs'] = self.envs
+        if self.gpu_config is not None:
+            result['GpuConfig'] = self.gpu_config
         if self.image_pull_secrets is not None:
             result['ImagePullSecrets'] = self.image_pull_secrets
         if self.image_url is not None:
@@ -19711,6 +19937,8 @@ class DeployApplicationShrinkRequest(TeaModel):
             self.enable_sidecar_resource_isolated = m.get('EnableSidecarResourceIsolated')
         if m.get('Envs') is not None:
             self.envs = m.get('Envs')
+        if m.get('GpuConfig') is not None:
+            self.gpu_config = m.get('GpuConfig')
         if m.get('ImagePullSecrets') is not None:
             self.image_pull_secrets = m.get('ImagePullSecrets')
         if m.get('ImageUrl') is not None:
@@ -44655,6 +44883,8 @@ class QueryResourceStaticsResponseBodyDataSummary(TeaModel):
         cpu: float = None,
         cu: float = None,
         ephemeral_storage: float = None,
+        gpu_a10: float = None,
+        gpu_ppu_810e: float = None,
         idle_cpu: float = None,
         memory: float = None,
     ):
@@ -44663,6 +44893,8 @@ class QueryResourceStaticsResponseBodyDataSummary(TeaModel):
         self.cpu = cpu
         self.cu = cu
         self.ephemeral_storage = ephemeral_storage
+        self.gpu_a10 = gpu_a10
+        self.gpu_ppu_810e = gpu_ppu_810e
         self.idle_cpu = idle_cpu
         # The memory usage. Unit: GiB per minute.
         self.memory = memory
@@ -44684,6 +44916,10 @@ class QueryResourceStaticsResponseBodyDataSummary(TeaModel):
             result['Cu'] = self.cu
         if self.ephemeral_storage is not None:
             result['EphemeralStorage'] = self.ephemeral_storage
+        if self.gpu_a10 is not None:
+            result['GpuA10'] = self.gpu_a10
+        if self.gpu_ppu_810e is not None:
+            result['GpuPpu810e'] = self.gpu_ppu_810e
         if self.idle_cpu is not None:
             result['IdleCpu'] = self.idle_cpu
         if self.memory is not None:
@@ -44700,6 +44936,10 @@ class QueryResourceStaticsResponseBodyDataSummary(TeaModel):
             self.cu = m.get('Cu')
         if m.get('EphemeralStorage') is not None:
             self.ephemeral_storage = m.get('EphemeralStorage')
+        if m.get('GpuA10') is not None:
+            self.gpu_a10 = m.get('GpuA10')
+        if m.get('GpuPpu810e') is not None:
+            self.gpu_ppu_810e = m.get('GpuPpu810e')
         if m.get('IdleCpu') is not None:
             self.idle_cpu = m.get('IdleCpu')
         if m.get('Memory') is not None:

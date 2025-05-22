@@ -1,3 +1,11 @@
+2025-05-22 Version: 2.3.0
+- Support API DeleteInstances.
+- Update API CreateApplication: add request parameters GpuConfig.
+- Update API DeployApplication: add request parameters GpuConfig.
+- Update API QueryResourceStatics: add response parameters Body.Data.Summary.GpuA10.
+- Update API QueryResourceStatics: add response parameters Body.Data.Summary.GpuPpu810e.
+
+
 2025-05-19 Version: 2.2.0
 - Support API CreateOrUpdateSwimmingLane.
 - Support API CreateOrUpdateSwimmingLaneGroup.

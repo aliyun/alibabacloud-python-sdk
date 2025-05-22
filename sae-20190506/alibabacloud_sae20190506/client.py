@@ -753,6 +753,8 @@ class Client(OpenApiClient):
             query['EnableNewArms'] = request.enable_new_arms
         if not UtilClient.is_unset(request.envs):
             query['Envs'] = request.envs
+        if not UtilClient.is_unset(request.gpu_config):
+            query['GpuConfig'] = request.gpu_config
         if not UtilClient.is_unset(request.image_pull_secrets):
             query['ImagePullSecrets'] = request.image_pull_secrets
         if not UtilClient.is_unset(request.image_url):
@@ -943,6 +945,8 @@ class Client(OpenApiClient):
             query['EnableNewArms'] = request.enable_new_arms
         if not UtilClient.is_unset(request.envs):
             query['Envs'] = request.envs
+        if not UtilClient.is_unset(request.gpu_config):
+            query['GpuConfig'] = request.gpu_config
         if not UtilClient.is_unset(request.image_pull_secrets):
             query['ImagePullSecrets'] = request.image_pull_secrets
         if not UtilClient.is_unset(request.image_url):
@@ -3413,6 +3417,114 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_ingress_with_options_async(request, headers, runtime)
 
+    def delete_instances_with_options(
+        self,
+        request: sae_20190506_models.DeleteInstancesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DeleteInstancesResponse:
+        """
+        @summary 删除实例
+        
+        @param request: DeleteInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteInstances',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/app/deleteInstances',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DeleteInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_instances_with_options_async(
+        self,
+        request: sae_20190506_models.DeleteInstancesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DeleteInstancesResponse:
+        """
+        @summary 删除实例
+        
+        @param request: DeleteInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteInstances',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/app/deleteInstances',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DeleteInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_instances(
+        self,
+        request: sae_20190506_models.DeleteInstancesRequest,
+    ) -> sae_20190506_models.DeleteInstancesResponse:
+        """
+        @summary 删除实例
+        
+        @param request: DeleteInstancesRequest
+        @return: DeleteInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_instances_with_options(request, headers, runtime)
+
+    async def delete_instances_async(
+        self,
+        request: sae_20190506_models.DeleteInstancesRequest,
+    ) -> sae_20190506_models.DeleteInstancesResponse:
+        """
+        @summary 删除实例
+        
+        @param request: DeleteInstancesRequest
+        @return: DeleteInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_instances_with_options_async(request, headers, runtime)
+
     def delete_job_with_options(
         self,
         request: sae_20190506_models.DeleteJobRequest,
@@ -4251,6 +4363,8 @@ class Client(OpenApiClient):
             query['EnableNewArms'] = request.enable_new_arms
         if not UtilClient.is_unset(request.envs):
             query['Envs'] = request.envs
+        if not UtilClient.is_unset(request.gpu_config):
+            query['GpuConfig'] = request.gpu_config
         if not UtilClient.is_unset(request.image_pull_secrets):
             query['ImagePullSecrets'] = request.image_pull_secrets
         if not UtilClient.is_unset(request.image_url):
@@ -4439,6 +4553,8 @@ class Client(OpenApiClient):
             query['EnableNewArms'] = request.enable_new_arms
         if not UtilClient.is_unset(request.envs):
             query['Envs'] = request.envs
+        if not UtilClient.is_unset(request.gpu_config):
+            query['GpuConfig'] = request.gpu_config
         if not UtilClient.is_unset(request.image_pull_secrets):
             query['ImagePullSecrets'] = request.image_pull_secrets
         if not UtilClient.is_unset(request.image_url):
