@@ -411,7 +411,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.CreateAITaskResponse:
         """
-        @summary 创建AI任务
+        @summary Create AI Task
+        
+        @description This API allows users to create an AI task based on the specified task type, covering a range of capabilities from natural language understanding to resource stack deployment. Users need to provide the task type and any required parameters, and the API will return a unique TaskId for tracking the status and results of the task.
         
         @param request: CreateAITaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -454,7 +456,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.CreateAITaskResponse:
         """
-        @summary 创建AI任务
+        @summary Create AI Task
+        
+        @description This API allows users to create an AI task based on the specified task type, covering a range of capabilities from natural language understanding to resource stack deployment. Users need to provide the task type and any required parameters, and the API will return a unique TaskId for tracking the status and results of the task.
         
         @param request: CreateAITaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -496,7 +500,9 @@ class Client(OpenApiClient):
         request: ros20190910_models.CreateAITaskRequest,
     ) -> ros20190910_models.CreateAITaskResponse:
         """
-        @summary 创建AI任务
+        @summary Create AI Task
+        
+        @description This API allows users to create an AI task based on the specified task type, covering a range of capabilities from natural language understanding to resource stack deployment. Users need to provide the task type and any required parameters, and the API will return a unique TaskId for tracking the status and results of the task.
         
         @param request: CreateAITaskRequest
         @return: CreateAITaskResponse
@@ -509,7 +515,9 @@ class Client(OpenApiClient):
         request: ros20190910_models.CreateAITaskRequest,
     ) -> ros20190910_models.CreateAITaskResponse:
         """
-        @summary 创建AI任务
+        @summary Create AI Task
+        
+        @description This API allows users to create an AI task based on the specified task type, covering a range of capabilities from natural language understanding to resource stack deployment. Users need to provide the task type and any required parameters, and the API will return a unique TaskId for tracking the status and results of the task.
         
         @param request: CreateAITaskRequest
         @return: CreateAITaskResponse
@@ -2983,6 +2991,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.DetectStackGroupDriftResponse:
         """
+        @summary 对资源栈组进行偏差检测
+        
         @param tmp_req: DetectStackGroupDriftRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DetectStackGroupDriftResponse
@@ -3026,6 +3036,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.DetectStackGroupDriftResponse:
         """
+        @summary 对资源栈组进行偏差检测
+        
         @param tmp_req: DetectStackGroupDriftRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DetectStackGroupDriftResponse
@@ -3068,6 +3080,8 @@ class Client(OpenApiClient):
         request: ros20190910_models.DetectStackGroupDriftRequest,
     ) -> ros20190910_models.DetectStackGroupDriftResponse:
         """
+        @summary 对资源栈组进行偏差检测
+        
         @param request: DetectStackGroupDriftRequest
         @return: DetectStackGroupDriftResponse
         """
@@ -3079,6 +3093,8 @@ class Client(OpenApiClient):
         request: ros20190910_models.DetectStackGroupDriftRequest,
     ) -> ros20190910_models.DetectStackGroupDriftResponse:
         """
+        @summary 对资源栈组进行偏差检测
+        
         @param request: DetectStackGroupDriftRequest
         @return: DetectStackGroupDriftResponse
         """
@@ -3555,7 +3571,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetAITaskResponse:
         """
-        @summary 查询指定AI任务信息
+        @summary Queries the information about an AI task by task ID.
         
         @param request: GetAITaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3592,7 +3608,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetAITaskResponse:
         """
-        @summary 查询指定AI任务信息
+        @summary Queries the information about an AI task by task ID.
         
         @param request: GetAITaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3628,7 +3644,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.GetAITaskRequest,
     ) -> ros20190910_models.GetAITaskResponse:
         """
-        @summary 查询指定AI任务信息
+        @summary Queries the information about an AI task by task ID.
         
         @param request: GetAITaskRequest
         @return: GetAITaskResponse
@@ -3641,7 +3657,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.GetAITaskRequest,
     ) -> ros20190910_models.GetAITaskResponse:
         """
-        @summary 查询指定AI任务信息
+        @summary Queries the information about an AI task by task ID.
         
         @param request: GetAITaskRequest
         @return: GetAITaskResponse
@@ -6279,7 +6295,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListAITaskEventsResponse:
         """
-        @summary 获取指定AITask事件列表
+        @summary Queries the events of an AI task.
         
         @param request: ListAITaskEventsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6318,7 +6334,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListAITaskEventsResponse:
         """
-        @summary 获取指定AITask事件列表
+        @summary Queries the events of an AI task.
         
         @param request: ListAITaskEventsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6356,7 +6372,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.ListAITaskEventsRequest,
     ) -> ros20190910_models.ListAITaskEventsResponse:
         """
-        @summary 获取指定AITask事件列表
+        @summary Queries the events of an AI task.
         
         @param request: ListAITaskEventsRequest
         @return: ListAITaskEventsResponse
@@ -6369,7 +6385,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.ListAITaskEventsRequest,
     ) -> ros20190910_models.ListAITaskEventsResponse:
         """
-        @summary 获取指定AITask事件列表
+        @summary Queries the events of an AI task.
         
         @param request: ListAITaskEventsRequest
         @return: ListAITaskEventsResponse
@@ -6383,7 +6399,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListAITasksResponse:
         """
-        @summary 查询AI任务列表
+        @summary Queries a list of AI tasks.
         
         @param request: ListAITasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6424,7 +6440,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListAITasksResponse:
         """
-        @summary 查询AI任务列表
+        @summary Queries a list of AI tasks.
         
         @param request: ListAITasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6464,7 +6480,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.ListAITasksRequest,
     ) -> ros20190910_models.ListAITasksResponse:
         """
-        @summary 查询AI任务列表
+        @summary Queries a list of AI tasks.
         
         @param request: ListAITasksRequest
         @return: ListAITasksResponse
@@ -6477,7 +6493,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.ListAITasksRequest,
     ) -> ros20190910_models.ListAITasksResponse:
         """
-        @summary 查询AI任务列表
+        @summary Queries a list of AI tasks.
         
         @param request: ListAITasksRequest
         @return: ListAITasksResponse
@@ -9315,6 +9331,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.SetDeletionProtectionResponse:
         """
+        @summary 修改资源栈的删除保护属性
+        
         @param request: SetDeletionProtectionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SetDeletionProtectionResponse
@@ -9352,6 +9370,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.SetDeletionProtectionResponse:
         """
+        @summary 修改资源栈的删除保护属性
+        
         @param request: SetDeletionProtectionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SetDeletionProtectionResponse
@@ -9388,6 +9408,8 @@ class Client(OpenApiClient):
         request: ros20190910_models.SetDeletionProtectionRequest,
     ) -> ros20190910_models.SetDeletionProtectionResponse:
         """
+        @summary 修改资源栈的删除保护属性
+        
         @param request: SetDeletionProtectionRequest
         @return: SetDeletionProtectionResponse
         """
@@ -9399,6 +9421,8 @@ class Client(OpenApiClient):
         request: ros20190910_models.SetDeletionProtectionRequest,
     ) -> ros20190910_models.SetDeletionProtectionResponse:
         """
+        @summary 修改资源栈的删除保护属性
+        
         @param request: SetDeletionProtectionRequest
         @return: SetDeletionProtectionResponse
         """

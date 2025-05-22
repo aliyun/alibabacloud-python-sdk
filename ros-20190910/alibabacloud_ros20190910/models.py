@@ -613,9 +613,18 @@ class CreateAITaskRequest(TeaModel):
         template: str = None,
         template_type: str = None,
     ):
+        # The input description for the AI task.
+        # 
+        # - When the task type is Generate Template, this parameter specifies the functionality of the template to be generated.
+        # - When the task type is FixTemplate, this parameter can describe how the template should be repaired.
         self.prompt = prompt
+        # The type of AI task. Values:
+        # - GenerateTemplate: AI template generation
+        # - FixTemplate: AI template repair
         self.task_type = task_type
+        # When the task type is AI template repair, specify the original template that needs to be fixed or modified.
         self.template = template
+        # The type of the template to be generated or repaired. Default is ROS.
         self.template_type = template_type
 
     def validate(self):
@@ -660,11 +669,19 @@ class CreateAITaskResponseBody(TeaModel):
         success: str = None,
         task_id: str = None,
     ):
+        # Error code.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Error message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful. Values:
+        # - true: Call succeeded.
+        # - false: Call failed.
         self.success = success
+        # AI task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -6629,7 +6646,14 @@ class GetAITaskRequest(TeaModel):
         output_option: str = None,
         task_id: str = None,
     ):
+        # Specifies whether to return the TaskOutput parameter. The TaskOutput parameter specifies the outputs of the AI task. Valid values:
+        # 
+        # *   Enabled
+        # *   Disabled (default)
+        # 
+        # >  The value of TaskOutput may be excessively long. If you do not require the outputs of the task, we recommend that you set OutputOption to Disabled to improve the response speed of the API operation.
         self.output_option = output_option
+        # The ID of the AI task.
         self.task_id = task_id
 
     def validate(self):
@@ -6670,15 +6694,40 @@ class GetAITaskResponseBody(TeaModel):
         task_output: Dict[str, Any] = None,
         task_type: str = None,
     ):
+        # The error code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The state of the AI task.
+        # 
+        # *   PENDING
+        # *   WAITING
+        # *   RUNNING
+        # *   SUCCESS
+        # *   FAILURE
         self.status = status
+        # The reason why the AI task is in the state.
         self.status_reason = status_reason
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
+        # The ID of the AI task.
         self.task_id = task_id
+        # The outputs of the AI task. The outputs include the template.
+        # 
+        # *\
         self.task_output = task_output
+        # The type of the AI task.
+        # 
+        # *   GenerateTemplate: The AI task is used to generate a template.
+        # *   FixTemplate: The AI task is used to fix a template.
+        # 
         # This parameter is required.
         self.task_type = task_type
 
@@ -8771,6 +8820,45 @@ class GetServiceProvisionsRequest(TeaModel):
         return self
 
 
+class GetServiceProvisionsResponseBodyServiceProvisionsCommodityProvisions(TeaModel):
+    def __init__(
+        self,
+        commodity_code: str = None,
+        enable_url: str = None,
+        status: str = None,
+    ):
+        self.commodity_code = commodity_code
+        self.enable_url = enable_url
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.commodity_code is not None:
+            result['CommodityCode'] = self.commodity_code
+        if self.enable_url is not None:
+            result['EnableURL'] = self.enable_url
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommodityCode') is not None:
+            self.commodity_code = m.get('CommodityCode')
+        if m.get('EnableURL') is not None:
+            self.enable_url = m.get('EnableURL')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
 class GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRolesApiForCreation(TeaModel):
     def __init__(
         self,
@@ -8926,6 +9014,7 @@ class GetServiceProvisionsResponseBodyServiceProvisions(TeaModel):
     def __init__(
         self,
         auto_enable_service: bool = None,
+        commodity_provisions: List[GetServiceProvisionsResponseBodyServiceProvisionsCommodityProvisions] = None,
         dependent_service_names: List[str] = None,
         enable_url: str = None,
         role_provision: GetServiceProvisionsResponseBodyServiceProvisionsRoleProvision = None,
@@ -8938,6 +9027,7 @@ class GetServiceProvisionsResponseBodyServiceProvisions(TeaModel):
         # *   true: Automatic activation for the service is defined in the template.
         # *   false: Manual activation for the service is defined in the template.
         self.auto_enable_service = auto_enable_service
+        self.commodity_provisions = commodity_provisions
         # The names of the services on which the service that is queried depends.
         self.dependent_service_names = dependent_service_names
         # The URL that points to the activation page of the service.
@@ -8960,6 +9050,10 @@ class GetServiceProvisionsResponseBodyServiceProvisions(TeaModel):
         self.status_reason = status_reason
 
     def validate(self):
+        if self.commodity_provisions:
+            for k in self.commodity_provisions:
+                if k:
+                    k.validate()
         if self.role_provision:
             self.role_provision.validate()
 
@@ -8971,6 +9065,10 @@ class GetServiceProvisionsResponseBodyServiceProvisions(TeaModel):
         result = dict()
         if self.auto_enable_service is not None:
             result['AutoEnableService'] = self.auto_enable_service
+        result['CommodityProvisions'] = []
+        if self.commodity_provisions is not None:
+            for k in self.commodity_provisions:
+                result['CommodityProvisions'].append(k.to_map() if k else None)
         if self.dependent_service_names is not None:
             result['DependentServiceNames'] = self.dependent_service_names
         if self.enable_url is not None:
@@ -8989,6 +9087,11 @@ class GetServiceProvisionsResponseBodyServiceProvisions(TeaModel):
         m = m or dict()
         if m.get('AutoEnableService') is not None:
             self.auto_enable_service = m.get('AutoEnableService')
+        self.commodity_provisions = []
+        if m.get('CommodityProvisions') is not None:
+            for k in m.get('CommodityProvisions'):
+                temp_model = GetServiceProvisionsResponseBodyServiceProvisionsCommodityProvisions()
+                self.commodity_provisions.append(temp_model.from_map(k))
         if m.get('DependentServiceNames') is not None:
             self.dependent_service_names = m.get('DependentServiceNames')
         if m.get('EnableURL') is not None:
@@ -14854,8 +14957,15 @@ class ListAITaskEventsRequest(TeaModel):
         next_token: str = None,
         task_id: str = None,
     ):
+        # The maximum number of results to be returned from a single query when the NextToken parameter is used in the query.
+        # 
+        # Valid values: 1 to 100.
+        # 
+        # Default value: 50.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        # The ID of the AI task.
         self.task_id = task_id
 
     def validate(self):
@@ -14896,11 +15006,47 @@ class ListAITaskEventsResponseBodyEvents(TeaModel):
         handler_process_status: str = None,
         handler_type: str = None,
     ):
+        # The type of the agent that is used to execute the AI task.
+        # 
+        # Valid values:
+        # 
+        # *   GenerateTemplateAgent
+        # *   FixUserTemplateAgent
         self.agent_type = agent_type
+        # The time when the event was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.create_time = create_time
+        # The estimated execution time of the handler. Unit: seconds.
         self.estimated_processing_time = estimated_processing_time
+        # The details of the event.
         self.event_data = event_data
+        # The execution state of the handler that process the AI task.
+        # 
+        # Valid values:
+        # 
+        # *   SUCCESS
+        # *   RUNNING
+        # *   FAILURE
         self.handler_process_status = handler_process_status
+        # The type of the handler that is used to execute the task.
+        # 
+        # Valid values:
+        # 
+        # *   TerraformTemplateGenerator
+        # *   TemplateGenerator
+        # *   ROSTemplateModifier
+        # *   TerraformTemplateStaticFixer
+        # *   TerraformTemplateDynamicFixer
+        # *   DocumentTemplateGenerator
+        # *   TerraformTemplateModifier
+        # *   TemplateModifier
+        # *   FixTemplateInputPreprocessor
+        # *   TemplateStaticFixer
+        # *   GenerateTemplateInputPreprocessor
+        # *   ROSTemplateGenerator
+        # *   TemplateDynamicFixer
+        # *   BaseDynamicFixer
+        # *   ROSTemplateStaticFixer
+        # *   ROSTemplateDynamicFixer
         self.handler_type = handler_type
 
     def validate(self):
@@ -14956,15 +15102,37 @@ class ListAITaskEventsResponseBody(TeaModel):
         task_status: str = None,
         task_type: str = None,
     ):
+        # The error code.
         self.code = code
+        # The events.
         self.events = events
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # 
         # This parameter is required.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
+        # The ID of the AI task.
         self.task_id = task_id
+        # The state of the AI task.
+        # 
+        # *   PENDING
+        # *   WAITING
+        # *   RUNNING
+        # *   SUCCESS
+        # *   FAILURE
         self.task_status = task_status
+        # The type of the AI task.
+        # 
+        # *   GenerateTemplate: The AI task is used to generate a template.
+        # *   FixTemplate: The AI task is used to fix a template.
         self.task_type = task_type
 
     def validate(self):
@@ -15076,9 +15244,18 @@ class ListAITasksRequest(TeaModel):
         task_id: str = None,
         task_type: str = None,
     ):
+        # The maximum number of data entries to return.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        # The ID of the AI task. You can filter AI tasks by task ID.
         self.task_id = task_id
+        # The type of the AI task. You can filter AI tasks by task type.
+        # 
+        # *   GenerateTemplate: The AI task is used to generate a template.
+        # *   FixTemplate: The AI task is used to fix a template.
+        # 
+        # If you leave this parameter empty, all task types are queried.
         self.task_type = task_type
 
     def validate(self):
@@ -15124,12 +15301,28 @@ class ListAITasksResponseBodyTasks(TeaModel):
         task_type: str = None,
         update_time: str = None,
     ):
+        # The time when the AI task was created. The time is displayed in UTC. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
         self.create_time = create_time
+        # The description of the AI task.
         self.prompt = prompt
+        # The state of the AI task.
+        # 
+        # *   PENDING
+        # *   WAITING
+        # *   RUNNING
+        # *   SUCCESS
+        # *   FAILURE
         self.status = status
+        # The reason why the AI task is in the state.
         self.status_reason = status_reason
+        # The ID of the AI task.
         self.task_id = task_id
+        # The type of the AI task.
+        # 
+        # *   GenerateTemplate: The AI task is used to generate a template.
+        # *   FixTemplate: The AI task is used to fix a template.
         self.task_type = task_type
+        # The time when the AI task was updated. The time is displayed in UTC. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format.
         self.update_time = update_time
 
     def validate(self):
@@ -15186,12 +15379,22 @@ class ListAITasksResponseBody(TeaModel):
         success: str = None,
         tasks: List[ListAITasksResponseBodyTasks] = None,
     ):
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # 
         # This parameter is required.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
+        # The AI tasks.
         self.tasks = tasks
 
     def validate(self):

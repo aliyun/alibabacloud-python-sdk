@@ -1,3 +1,7 @@
+2025-05-22 Version: 3.5.5
+- Update API GetServiceProvisions: add response parameters Body.ServiceProvisions.$.CommodityProvisions.
+
+
 2025-04-27 Version: 3.5.4
 - Generated python 2019-09-10 for ROS.
 
