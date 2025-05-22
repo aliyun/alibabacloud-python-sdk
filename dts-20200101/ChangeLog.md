@@ -1,3 +1,12 @@
+2025-05-22 Version: 5.8.2
+- Update API DescribeDtsJobs: add response parameters Body.DtsJobList.$.StructureDataCheckStatus.
+- Update API DescribeDtsJobs: add response parameters Body.DtsJobList.$.FullDataCheckStatus.CanSwitch.
+- Update API DescribeDtsJobs: add response parameters Body.DtsJobList.$.MigrationMode.StructureDataCheck.
+- Update API DescribeDtsJobs: add response parameters Body.DtsJobList.$.ReverseJob.StructureDataCheckStatus.
+- Update API DescribeDtsJobs: add response parameters Body.DtsJobList.$.ReverseJob.FullDataCheckStatus.CanSwitch.
+- Update API DescribeDtsJobs: add response parameters Body.DtsJobList.$.ReverseJob.MigrationMode.StructureDataCheck.
+
+
 2025-04-11 Version: 5.8.1
 - Update API DescribeDtsJobDetail: add response parameters Body.DestinationEndpoint.AliyunUid.
 - Update API DescribeDtsJobDetail: add response parameters Body.DestinationEndpoint.RoleName.

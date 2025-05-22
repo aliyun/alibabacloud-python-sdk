@@ -19755,11 +19755,13 @@ class DescribeDtsJobsResponseBodyDtsJobListErrorDetails(TeaModel):
 class DescribeDtsJobsResponseBodyDtsJobListFullDataCheckStatus(TeaModel):
     def __init__(
         self,
+        can_switch: bool = None,
         error_message: str = None,
         percent: str = None,
         progress: str = None,
         status: str = None,
     ):
+        self.can_switch = can_switch
         # The error message returned if the task failed.
         self.error_message = error_message
         # The progress of the full data verification task. Unit: percentage.
@@ -19783,6 +19785,8 @@ class DescribeDtsJobsResponseBodyDtsJobListFullDataCheckStatus(TeaModel):
             return _map
 
         result = dict()
+        if self.can_switch is not None:
+            result['CanSwitch'] = self.can_switch
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
         if self.percent is not None:
@@ -19795,6 +19799,8 @@ class DescribeDtsJobsResponseBodyDtsJobListFullDataCheckStatus(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CanSwitch') is not None:
+            self.can_switch = m.get('CanSwitch')
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
         if m.get('Percent') is not None:
@@ -19867,6 +19873,7 @@ class DescribeDtsJobsResponseBodyDtsJobListMigrationMode(TeaModel):
         data_synchronization: bool = None,
         full_data_check: bool = None,
         inc_data_check: bool = None,
+        structure_data_check: bool = None,
         structure_initialization: bool = None,
     ):
         # Indicates whether full data migration or synchronization is performed. Valid values:
@@ -19887,6 +19894,7 @@ class DescribeDtsJobsResponseBodyDtsJobListMigrationMode(TeaModel):
         # -  **true**: yes
         # -  **false**: no
         self.inc_data_check = inc_data_check
+        self.structure_data_check = structure_data_check
         # Indicates whether schema migration or schema synchronization is performed. Valid values:
         # 
         # *   **true**: yes
@@ -19910,6 +19918,8 @@ class DescribeDtsJobsResponseBodyDtsJobListMigrationMode(TeaModel):
             result['FullDataCheck'] = self.full_data_check
         if self.inc_data_check is not None:
             result['IncDataCheck'] = self.inc_data_check
+        if self.structure_data_check is not None:
+            result['StructureDataCheck'] = self.structure_data_check
         if self.structure_initialization is not None:
             result['StructureInitialization'] = self.structure_initialization
         return result
@@ -19924,6 +19934,8 @@ class DescribeDtsJobsResponseBodyDtsJobListMigrationMode(TeaModel):
             self.full_data_check = m.get('FullDataCheck')
         if m.get('IncDataCheck') is not None:
             self.inc_data_check = m.get('IncDataCheck')
+        if m.get('StructureDataCheck') is not None:
+            self.structure_data_check = m.get('StructureDataCheck')
         if m.get('StructureInitialization') is not None:
             self.structure_initialization = m.get('StructureInitialization')
         return self
@@ -20467,11 +20479,13 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJobErrorDetails(TeaModel):
 class DescribeDtsJobsResponseBodyDtsJobListReverseJobFullDataCheckStatus(TeaModel):
     def __init__(
         self,
+        can_switch: bool = None,
         error_message: str = None,
         percent: str = None,
         progress: str = None,
         status: str = None,
     ):
+        self.can_switch = can_switch
         # The error message returned if the task failed.
         self.error_message = error_message
         # The progress of the full data verification task. Unit: percentage.
@@ -20495,6 +20509,8 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJobFullDataCheckStatus(TeaMode
             return _map
 
         result = dict()
+        if self.can_switch is not None:
+            result['CanSwitch'] = self.can_switch
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
         if self.percent is not None:
@@ -20507,6 +20523,8 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJobFullDataCheckStatus(TeaMode
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CanSwitch') is not None:
+            self.can_switch = m.get('CanSwitch')
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
         if m.get('Percent') is not None:
@@ -20579,6 +20597,7 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode(TeaModel):
         data_synchronization: bool = None,
         full_data_check: bool = None,
         inc_data_check: bool = None,
+        structure_data_check: bool = None,
         structure_initialization: bool = None,
     ):
         # Indicates whether initial full data synchronization is performed. Valid values:
@@ -20598,6 +20617,7 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode(TeaModel):
         # -  **true**: yes
         # -  **false**: no
         self.inc_data_check = inc_data_check
+        self.structure_data_check = structure_data_check
         # Indicates whether initial schema synchronization is performed. Valid values:
         # -  **true**\
         # -  **false**\
@@ -20620,6 +20640,8 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode(TeaModel):
             result['FullDataCheck'] = self.full_data_check
         if self.inc_data_check is not None:
             result['IncDataCheck'] = self.inc_data_check
+        if self.structure_data_check is not None:
+            result['StructureDataCheck'] = self.structure_data_check
         if self.structure_initialization is not None:
             result['StructureInitialization'] = self.structure_initialization
         return result
@@ -20634,6 +20656,8 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode(TeaModel):
             self.full_data_check = m.get('FullDataCheck')
         if m.get('IncDataCheck') is not None:
             self.inc_data_check = m.get('IncDataCheck')
+        if m.get('StructureDataCheck') is not None:
+            self.structure_data_check = m.get('StructureDataCheck')
         if m.get('StructureInitialization') is not None:
             self.structure_initialization = m.get('StructureInitialization')
         return self
@@ -20894,6 +20918,51 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJobSourceEndpoint(TeaModel):
         return self
 
 
+class DescribeDtsJobsResponseBodyDtsJobListReverseJobStructureDataCheckStatus(TeaModel):
+    def __init__(
+        self,
+        error_message: str = None,
+        percent: str = None,
+        progress: str = None,
+        status: str = None,
+    ):
+        self.error_message = error_message
+        self.percent = percent
+        self.progress = progress
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.percent is not None:
+            result['Percent'] = self.percent
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Percent') is not None:
+            self.percent = m.get('Percent')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
 class DescribeDtsJobsResponseBodyDtsJobListReverseJobStructureInitializationStatus(TeaModel):
     def __init__(
         self,
@@ -20982,6 +21051,7 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJob(TeaModel):
         reserved: str = None,
         source_endpoint: DescribeDtsJobsResponseBodyDtsJobListReverseJobSourceEndpoint = None,
         status: str = None,
+        structure_data_check_status: DescribeDtsJobsResponseBodyDtsJobListReverseJobStructureDataCheckStatus = None,
         structure_initialization_status: DescribeDtsJobsResponseBodyDtsJobListReverseJobStructureInitializationStatus = None,
     ):
         # The start offset of incremental data synchronization. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
@@ -21057,6 +21127,7 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJob(TeaModel):
         self.source_endpoint = source_endpoint
         # The state of the DTS instance. For more information about the valid values, see the description of the request parameter **Status**.
         self.status = status
+        self.structure_data_check_status = structure_data_check_status
         # The state of initial schema synchronization.
         self.structure_initialization_status = structure_initialization_status
 
@@ -21083,6 +21154,8 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJob(TeaModel):
             self.precheck_status.validate()
         if self.source_endpoint:
             self.source_endpoint.validate()
+        if self.structure_data_check_status:
+            self.structure_data_check_status.validate()
         if self.structure_initialization_status:
             self.structure_initialization_status.validate()
 
@@ -21156,6 +21229,8 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJob(TeaModel):
             result['SourceEndpoint'] = self.source_endpoint.to_map()
         if self.status is not None:
             result['Status'] = self.status
+        if self.structure_data_check_status is not None:
+            result['StructureDataCheckStatus'] = self.structure_data_check_status.to_map()
         if self.structure_initialization_status is not None:
             result['StructureInitializationStatus'] = self.structure_initialization_status.to_map()
         return result
@@ -21236,6 +21311,9 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJob(TeaModel):
             self.source_endpoint = temp_model.from_map(m['SourceEndpoint'])
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('StructureDataCheckStatus') is not None:
+            temp_model = DescribeDtsJobsResponseBodyDtsJobListReverseJobStructureDataCheckStatus()
+            self.structure_data_check_status = temp_model.from_map(m['StructureDataCheckStatus'])
         if m.get('StructureInitializationStatus') is not None:
             temp_model = DescribeDtsJobsResponseBodyDtsJobListReverseJobStructureInitializationStatus()
             self.structure_initialization_status = temp_model.from_map(m['StructureInitializationStatus'])
@@ -21337,6 +21415,51 @@ class DescribeDtsJobsResponseBodyDtsJobListSourceEndpoint(TeaModel):
             self.ssl_solution_enum = m.get('SslSolutionEnum')
         if m.get('UserName') is not None:
             self.user_name = m.get('UserName')
+        return self
+
+
+class DescribeDtsJobsResponseBodyDtsJobListStructureDataCheckStatus(TeaModel):
+    def __init__(
+        self,
+        error_message: str = None,
+        percent: str = None,
+        progress: str = None,
+        status: str = None,
+    ):
+        self.error_message = error_message
+        self.percent = percent
+        self.progress = progress
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.percent is not None:
+            result['Percent'] = self.percent
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Percent') is not None:
+            self.percent = m.get('Percent')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
@@ -21484,6 +21607,7 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
         reverse_job: DescribeDtsJobsResponseBodyDtsJobListReverseJob = None,
         source_endpoint: DescribeDtsJobsResponseBodyDtsJobListSourceEndpoint = None,
         status: str = None,
+        structure_data_check_status: DescribeDtsJobsResponseBodyDtsJobListStructureDataCheckStatus = None,
         structure_initialization_status: DescribeDtsJobsResponseBodyDtsJobListStructureInitializationStatus = None,
         tag_list: List[DescribeDtsJobsResponseBodyDtsJobListTagList] = None,
     ):
@@ -21619,6 +21743,7 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
         self.source_endpoint = source_endpoint
         # The state of the DTS instance. For more information about the valid values, see the description of the request parameter **Status**.
         self.status = status
+        self.structure_data_check_status = structure_data_check_status
         # The state of schema migration or initial schema synchronization.
         self.structure_initialization_status = structure_initialization_status
         # The tags of the task.
@@ -21655,6 +21780,8 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
             self.reverse_job.validate()
         if self.source_endpoint:
             self.source_endpoint.validate()
+        if self.structure_data_check_status:
+            self.structure_data_check_status.validate()
         if self.structure_initialization_status:
             self.structure_initialization_status.validate()
         if self.tag_list:
@@ -21774,6 +21901,8 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
             result['SourceEndpoint'] = self.source_endpoint.to_map()
         if self.status is not None:
             result['Status'] = self.status
+        if self.structure_data_check_status is not None:
+            result['StructureDataCheckStatus'] = self.structure_data_check_status.to_map()
         if self.structure_initialization_status is not None:
             result['StructureInitializationStatus'] = self.structure_initialization_status.to_map()
         result['TagList'] = []
@@ -21904,6 +22033,9 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
             self.source_endpoint = temp_model.from_map(m['SourceEndpoint'])
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('StructureDataCheckStatus') is not None:
+            temp_model = DescribeDtsJobsResponseBodyDtsJobListStructureDataCheckStatus()
+            self.structure_data_check_status = temp_model.from_map(m['StructureDataCheckStatus'])
         if m.get('StructureInitializationStatus') is not None:
             temp_model = DescribeDtsJobsResponseBodyDtsJobListStructureInitializationStatus()
             self.structure_initialization_status = temp_model.from_map(m['StructureInitializationStatus'])
