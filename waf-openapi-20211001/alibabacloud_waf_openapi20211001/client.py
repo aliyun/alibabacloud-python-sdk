@@ -10239,6 +10239,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_instance_access_status):
+            query['ResourceInstanceAccessStatus'] = request.resource_instance_access_status
         if not UtilClient.is_unset(request.resource_instance_id):
             query['ResourceInstanceId'] = request.resource_instance_id
         if not UtilClient.is_unset(request.resource_instance_ip):
@@ -10298,6 +10300,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_instance_access_status):
+            query['ResourceInstanceAccessStatus'] = request.resource_instance_access_status
         if not UtilClient.is_unset(request.resource_instance_id):
             query['ResourceInstanceId'] = request.resource_instance_id
         if not UtilClient.is_unset(request.resource_instance_ip):

@@ -10127,6 +10127,81 @@ class DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsLogHead
         return self
 
 
+class DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsSubStatusDetails(TeaModel):
+    def __init__(
+        self,
+        applied_type: str = None,
+        cert_id: str = None,
+        cert_name: str = None,
+        common_name: str = None,
+        domain: str = None,
+        expire_time: int = None,
+        product_cert_id: str = None,
+        product_cert_name: str = None,
+        reason_code: str = None,
+    ):
+        self.applied_type = applied_type
+        self.cert_id = cert_id
+        self.cert_name = cert_name
+        self.common_name = common_name
+        self.domain = domain
+        self.expire_time = expire_time
+        self.product_cert_id = product_cert_id
+        self.product_cert_name = product_cert_name
+        self.reason_code = reason_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.applied_type is not None:
+            result['AppliedType'] = self.applied_type
+        if self.cert_id is not None:
+            result['CertId'] = self.cert_id
+        if self.cert_name is not None:
+            result['CertName'] = self.cert_name
+        if self.common_name is not None:
+            result['CommonName'] = self.common_name
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.product_cert_id is not None:
+            result['ProductCertId'] = self.product_cert_id
+        if self.product_cert_name is not None:
+            result['ProductCertName'] = self.product_cert_name
+        if self.reason_code is not None:
+            result['ReasonCode'] = self.reason_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppliedType') is not None:
+            self.applied_type = m.get('AppliedType')
+        if m.get('CertId') is not None:
+            self.cert_id = m.get('CertId')
+        if m.get('CertName') is not None:
+            self.cert_name = m.get('CertName')
+        if m.get('CommonName') is not None:
+            self.common_name = m.get('CommonName')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('ProductCertId') is not None:
+            self.product_cert_id = m.get('ProductCertId')
+        if m.get('ProductCertName') is not None:
+            self.product_cert_name = m.get('ProductCertName')
+        if m.get('ReasonCode') is not None:
+            self.reason_code = m.get('ReasonCode')
+        return self
+
+
 class DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails(TeaModel):
     def __init__(
         self,
@@ -10144,6 +10219,8 @@ class DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails(TeaMod
         protocol: str = None,
         read_timeout: int = None,
         status: int = None,
+        sub_status: str = None,
+        sub_status_details: List[DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsSubStatusDetails] = None,
         tlsversion: str = None,
         write_timeout: int = None,
         xff_header_mode: int = None,
@@ -10205,6 +10282,8 @@ class DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails(TeaMod
         # *   **3**: indicates that the port is being modified.
         # *   **4**: indicates that the port is being released.
         self.status = status
+        self.sub_status = sub_status
+        self.sub_status_details = sub_status_details
         # The version of the Transport Layer Security (TLS) protocol. Valid values:
         # 
         # *   **tlsv1**\
@@ -10236,6 +10315,10 @@ class DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails(TeaMod
                     k.validate()
         if self.log_headers:
             for k in self.log_headers:
+                if k:
+                    k.validate()
+        if self.sub_status_details:
+            for k in self.sub_status_details:
                 if k:
                     k.validate()
 
@@ -10277,6 +10360,12 @@ class DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails(TeaMod
             result['ReadTimeout'] = self.read_timeout
         if self.status is not None:
             result['Status'] = self.status
+        if self.sub_status is not None:
+            result['SubStatus'] = self.sub_status
+        result['SubStatusDetails'] = []
+        if self.sub_status_details is not None:
+            for k in self.sub_status_details:
+                result['SubStatusDetails'].append(k.to_map() if k else None)
         if self.tlsversion is not None:
             result['TLSVersion'] = self.tlsversion
         if self.write_timeout is not None:
@@ -10325,6 +10414,13 @@ class DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails(TeaMod
             self.read_timeout = m.get('ReadTimeout')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('SubStatus') is not None:
+            self.sub_status = m.get('SubStatus')
+        self.sub_status_details = []
+        if m.get('SubStatusDetails') is not None:
+            for k in m.get('SubStatusDetails'):
+                temp_model = DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsSubStatusDetails()
+                self.sub_status_details.append(temp_model.from_map(k))
         if m.get('TLSVersion') is not None:
             self.tlsversion = m.get('TLSVersion')
         if m.get('WriteTimeout') is not None:
@@ -21709,6 +21805,7 @@ class DescribeProductInstancesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
+        resource_instance_access_status: str = None,
         resource_instance_id: str = None,
         resource_instance_ip: str = None,
         resource_instance_name: str = None,
@@ -21735,6 +21832,7 @@ class DescribeProductInstancesRequest(TeaModel):
         # *   **cn-hangzhou**: Chinese mainland.
         # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
+        self.resource_instance_access_status = resource_instance_access_status
         # The ID of the instance.
         self.resource_instance_id = resource_instance_id
         # The IP address of the instance that is added to WAF.
@@ -21786,6 +21884,8 @@ class DescribeProductInstancesRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_instance_access_status is not None:
+            result['ResourceInstanceAccessStatus'] = self.resource_instance_access_status
         if self.resource_instance_id is not None:
             result['ResourceInstanceId'] = self.resource_instance_id
         if self.resource_instance_ip is not None:
@@ -21816,6 +21916,8 @@ class DescribeProductInstancesRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceInstanceAccessStatus') is not None:
+            self.resource_instance_access_status = m.get('ResourceInstanceAccessStatus')
         if m.get('ResourceInstanceId') is not None:
             self.resource_instance_id = m.get('ResourceInstanceId')
         if m.get('ResourceInstanceIp') is not None:
@@ -21835,16 +21937,16 @@ class DescribeProductInstancesRequest(TeaModel):
         return self
 
 
-class DescribeProductInstancesResponseBodyProductInstancesResourcePortsCertificates(TeaModel):
+class DescribeProductInstancesResponseBodyProductInstancesAccessPortAndProtocols(TeaModel):
     def __init__(
         self,
-        certificate_id: str = None,
-        certificate_name: str = None,
+        certificate_ids: List[str] = None,
+        port: int = None,
+        protocol: str = None,
     ):
-        # The ID of the certificate.
-        self.certificate_id = certificate_id
-        # The name of the certificate.
-        self.certificate_name = certificate_name
+        self.certificate_ids = certificate_ids
+        self.port = port
+        self.protocol = protocol
 
     def validate(self):
         pass
@@ -21855,18 +21957,69 @@ class DescribeProductInstancesResponseBodyProductInstancesResourcePortsCertifica
             return _map
 
         result = dict()
-        if self.certificate_id is not None:
-            result['CertificateId'] = self.certificate_id
-        if self.certificate_name is not None:
-            result['CertificateName'] = self.certificate_name
+        if self.certificate_ids is not None:
+            result['CertificateIds'] = self.certificate_ids
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CertificateIds') is not None:
+            self.certificate_ids = m.get('CertificateIds')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        return self
+
+
+class DescribeProductInstancesResponseBodyProductInstancesResourcePortsCertificates(TeaModel):
+    def __init__(
+        self,
+        applied_type: str = None,
+        certificate_id: str = None,
+        certificate_name: str = None,
+        domain: str = None,
+    ):
+        self.applied_type = applied_type
+        # The ID of the certificate.
+        self.certificate_id = certificate_id
+        # The name of the certificate.
+        self.certificate_name = certificate_name
+        self.domain = domain
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.applied_type is not None:
+            result['AppliedType'] = self.applied_type
+        if self.certificate_id is not None:
+            result['CertificateId'] = self.certificate_id
+        if self.certificate_name is not None:
+            result['CertificateName'] = self.certificate_name
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppliedType') is not None:
+            self.applied_type = m.get('AppliedType')
         if m.get('CertificateId') is not None:
             self.certificate_id = m.get('CertificateId')
         if m.get('CertificateName') is not None:
             self.certificate_name = m.get('CertificateName')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
         return self
 
 
@@ -21926,7 +22079,12 @@ class DescribeProductInstancesResponseBodyProductInstancesResourcePorts(TeaModel
 class DescribeProductInstancesResponseBodyProductInstances(TeaModel):
     def __init__(
         self,
+        access_instance_id: str = None,
+        access_port_and_protocols: List[DescribeProductInstancesResponseBodyProductInstancesAccessPortAndProtocols] = None,
+        access_ports: List[int] = None,
         owner_user_id: str = None,
+        resource_instance_access_status: str = None,
+        resource_instance_edition: str = None,
         resource_instance_id: str = None,
         resource_instance_ip: str = None,
         resource_instance_name: str = None,
@@ -21936,8 +22094,13 @@ class DescribeProductInstancesResponseBodyProductInstances(TeaModel):
         resource_product: str = None,
         resource_region_id: str = None,
     ):
+        self.access_instance_id = access_instance_id
+        self.access_port_and_protocols = access_port_and_protocols
+        self.access_ports = access_ports
         # The ID of the Alibaba Cloud account to which the resource belongs.
         self.owner_user_id = owner_user_id
+        self.resource_instance_access_status = resource_instance_access_status
+        self.resource_instance_edition = resource_instance_edition
         # The ID of the instance.
         self.resource_instance_id = resource_instance_id
         # The IP address of the instance that is added to WAF.
@@ -21971,6 +22134,10 @@ class DescribeProductInstancesResponseBodyProductInstances(TeaModel):
         self.resource_region_id = resource_region_id
 
     def validate(self):
+        if self.access_port_and_protocols:
+            for k in self.access_port_and_protocols:
+                if k:
+                    k.validate()
         if self.resource_ports:
             for k in self.resource_ports:
                 if k:
@@ -21982,8 +22149,20 @@ class DescribeProductInstancesResponseBodyProductInstances(TeaModel):
             return _map
 
         result = dict()
+        if self.access_instance_id is not None:
+            result['AccessInstanceId'] = self.access_instance_id
+        result['AccessPortAndProtocols'] = []
+        if self.access_port_and_protocols is not None:
+            for k in self.access_port_and_protocols:
+                result['AccessPortAndProtocols'].append(k.to_map() if k else None)
+        if self.access_ports is not None:
+            result['AccessPorts'] = self.access_ports
         if self.owner_user_id is not None:
             result['OwnerUserId'] = self.owner_user_id
+        if self.resource_instance_access_status is not None:
+            result['ResourceInstanceAccessStatus'] = self.resource_instance_access_status
+        if self.resource_instance_edition is not None:
+            result['ResourceInstanceEdition'] = self.resource_instance_edition
         if self.resource_instance_id is not None:
             result['ResourceInstanceId'] = self.resource_instance_id
         if self.resource_instance_ip is not None:
@@ -22006,8 +22185,21 @@ class DescribeProductInstancesResponseBodyProductInstances(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessInstanceId') is not None:
+            self.access_instance_id = m.get('AccessInstanceId')
+        self.access_port_and_protocols = []
+        if m.get('AccessPortAndProtocols') is not None:
+            for k in m.get('AccessPortAndProtocols'):
+                temp_model = DescribeProductInstancesResponseBodyProductInstancesAccessPortAndProtocols()
+                self.access_port_and_protocols.append(temp_model.from_map(k))
+        if m.get('AccessPorts') is not None:
+            self.access_ports = m.get('AccessPorts')
         if m.get('OwnerUserId') is not None:
             self.owner_user_id = m.get('OwnerUserId')
+        if m.get('ResourceInstanceAccessStatus') is not None:
+            self.resource_instance_access_status = m.get('ResourceInstanceAccessStatus')
+        if m.get('ResourceInstanceEdition') is not None:
+            self.resource_instance_edition = m.get('ResourceInstanceEdition')
         if m.get('ResourceInstanceId') is not None:
             self.resource_instance_id = m.get('ResourceInstanceId')
         if m.get('ResourceInstanceIp') is not None:

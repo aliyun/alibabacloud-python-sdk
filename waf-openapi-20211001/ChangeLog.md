@@ -1,3 +1,16 @@
+2025-05-22 Version: 5.1.3
+- Update API DescribeCloudResourceAccessPortDetails: add response parameters Body.AccessPortDetails.$.SubStatus.
+- Update API DescribeCloudResourceAccessPortDetails: add response parameters Body.AccessPortDetails.$.SubStatusDetails.
+- Update API DescribeProductInstances: add request parameters ResourceInstanceAccessStatus.
+- Update API DescribeProductInstances: add response parameters Body.ProductInstances.$.AccessInstanceId.
+- Update API DescribeProductInstances: add response parameters Body.ProductInstances.$.AccessPortAndProtocols.
+- Update API DescribeProductInstances: add response parameters Body.ProductInstances.$.AccessPorts.
+- Update API DescribeProductInstances: add response parameters Body.ProductInstances.$.ResourceInstanceAccessStatus.
+- Update API DescribeProductInstances: add response parameters Body.ProductInstances.$.ResourceInstanceEdition.
+- Update API DescribeProductInstances: add response parameters Body.ProductInstances.$.ResourcePorts.$.Certificates.$.AppliedType.
+- Update API DescribeProductInstances: add response parameters Body.ProductInstances.$.ResourcePorts.$.Certificates.$.Domain.
+
+
 2025-05-07 Version: 5.1.2
 - Generated python 2021-10-01 for waf-openapi.
 
