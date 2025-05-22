@@ -47,6 +47,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> wss_20211221_models.CreateMultiOrderResponse:
         """
+        @summary 多商品组合下单
+        
         @param tmp_req: CreateMultiOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateMultiOrderResponse
@@ -90,6 +92,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> wss_20211221_models.CreateMultiOrderResponse:
         """
+        @summary 多商品组合下单
+        
         @param tmp_req: CreateMultiOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateMultiOrderResponse
@@ -132,6 +136,8 @@ class Client(OpenApiClient):
         request: wss_20211221_models.CreateMultiOrderRequest,
     ) -> wss_20211221_models.CreateMultiOrderResponse:
         """
+        @summary 多商品组合下单
+        
         @param request: CreateMultiOrderRequest
         @return: CreateMultiOrderResponse
         """
@@ -143,6 +149,8 @@ class Client(OpenApiClient):
         request: wss_20211221_models.CreateMultiOrderRequest,
     ) -> wss_20211221_models.CreateMultiOrderResponse:
         """
+        @summary 多商品组合下单
+        
         @param request: CreateMultiOrderRequest
         @return: CreateMultiOrderResponse
         """

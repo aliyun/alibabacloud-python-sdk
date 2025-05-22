@@ -43,6 +43,7 @@ class CreateMultiOrderRequestOrderItems(TeaModel):
         amount: int = None,
         auto_pay: bool = None,
         auto_renew: bool = None,
+        buy_change: bool = None,
         components: List[CreateMultiOrderRequestOrderItemsComponents] = None,
         period: int = None,
         period_unit: str = None,
@@ -53,6 +54,7 @@ class CreateMultiOrderRequestOrderItems(TeaModel):
         self.amount = amount
         self.auto_pay = auto_pay
         self.auto_renew = auto_renew
+        self.buy_change = buy_change
         self.components = components
         self.period = period
         self.period_unit = period_unit
@@ -79,6 +81,8 @@ class CreateMultiOrderRequestOrderItems(TeaModel):
             result['AutoPay'] = self.auto_pay
         if self.auto_renew is not None:
             result['AutoRenew'] = self.auto_renew
+        if self.buy_change is not None:
+            result['BuyChange'] = self.buy_change
         result['Components'] = []
         if self.components is not None:
             for k in self.components:
@@ -103,6 +107,8 @@ class CreateMultiOrderRequestOrderItems(TeaModel):
             self.auto_pay = m.get('AutoPay')
         if m.get('AutoRenew') is not None:
             self.auto_renew = m.get('AutoRenew')
+        if m.get('BuyChange') is not None:
+            self.buy_change = m.get('BuyChange')
         self.components = []
         if m.get('Components') is not None:
             for k in m.get('Components'):
@@ -213,6 +219,7 @@ class CreateMultiOrderShrinkRequestOrderItems(TeaModel):
         amount: int = None,
         auto_pay: bool = None,
         auto_renew: bool = None,
+        buy_change: bool = None,
         components: List[CreateMultiOrderShrinkRequestOrderItemsComponents] = None,
         period: int = None,
         period_unit: str = None,
@@ -223,6 +230,7 @@ class CreateMultiOrderShrinkRequestOrderItems(TeaModel):
         self.amount = amount
         self.auto_pay = auto_pay
         self.auto_renew = auto_renew
+        self.buy_change = buy_change
         self.components = components
         self.period = period
         self.period_unit = period_unit
@@ -249,6 +257,8 @@ class CreateMultiOrderShrinkRequestOrderItems(TeaModel):
             result['AutoPay'] = self.auto_pay
         if self.auto_renew is not None:
             result['AutoRenew'] = self.auto_renew
+        if self.buy_change is not None:
+            result['BuyChange'] = self.buy_change
         result['Components'] = []
         if self.components is not None:
             for k in self.components:
@@ -273,6 +283,8 @@ class CreateMultiOrderShrinkRequestOrderItems(TeaModel):
             self.auto_pay = m.get('AutoPay')
         if m.get('AutoRenew') is not None:
             self.auto_renew = m.get('AutoRenew')
+        if m.get('BuyChange') is not None:
+            self.buy_change = m.get('BuyChange')
         self.components = []
         if m.get('Components') is not None:
             for k in m.get('Components'):
