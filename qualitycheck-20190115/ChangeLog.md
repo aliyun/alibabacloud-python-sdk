@@ -1,3 +1,9 @@
+2025-05-22 Version: 8.2.1
+- Update API GetResultToReview: add response parameters Body.Data.HitRuleReviewInfoList.$.MachineHitResult.
+- Update API GetResultToReview: add response parameters Body.Data.HitRuleReviewInfoList.$.ReviewHitResult.
+- Update API GetResultToReview: add response parameters Body.Data.HitRuleReviewInfoList.$.ConditionHitInfoList.$.KeyWords.$.IsMatch.
+
+
 2025-05-07 Version: 8.2.0
 - Support API UploadDataSyncForLLM.
 

@@ -11098,6 +11098,7 @@ class GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoCon
         cid: str = None,
         customize_code: str = None,
         from_: int = None,
+        is_match: bool = None,
         pid: int = None,
         tid: str = None,
         to: int = None,
@@ -11106,6 +11107,7 @@ class GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoCon
         self.cid = cid
         self.customize_code = customize_code
         self.from_ = from_
+        self.is_match = is_match
         self.pid = pid
         self.tid = tid
         self.to = to
@@ -11126,6 +11128,8 @@ class GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoCon
             result['CustomizeCode'] = self.customize_code
         if self.from_ is not None:
             result['From'] = self.from_
+        if self.is_match is not None:
+            result['IsMatch'] = self.is_match
         if self.pid is not None:
             result['Pid'] = self.pid
         if self.tid is not None:
@@ -11144,6 +11148,8 @@ class GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoCon
             self.customize_code = m.get('CustomizeCode')
         if m.get('From') is not None:
             self.from_ = m.get('From')
+        if m.get('IsMatch') is not None:
+            self.is_match = m.get('IsMatch')
         if m.get('Pid') is not None:
             self.pid = m.get('Pid')
         if m.get('Tid') is not None:
@@ -11393,6 +11399,8 @@ class GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo(Te
         complain_histories: GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoComplainHistories = None,
         complainable: bool = None,
         condition_hit_info_list: GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoList = None,
+        machine_hit_result: int = None,
+        review_hit_result: int = None,
         review_info: GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfo = None,
         rid: int = None,
         rule_name: str = None,
@@ -11405,6 +11413,8 @@ class GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo(Te
         self.complain_histories = complain_histories
         self.complainable = complainable
         self.condition_hit_info_list = condition_hit_info_list
+        self.machine_hit_result = machine_hit_result
+        self.review_hit_result = review_hit_result
         self.review_info = review_info
         self.rid = rid
         self.rule_name = rule_name
@@ -11435,6 +11445,10 @@ class GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo(Te
             result['Complainable'] = self.complainable
         if self.condition_hit_info_list is not None:
             result['ConditionHitInfoList'] = self.condition_hit_info_list.to_map()
+        if self.machine_hit_result is not None:
+            result['MachineHitResult'] = self.machine_hit_result
+        if self.review_hit_result is not None:
+            result['ReviewHitResult'] = self.review_hit_result
         if self.review_info is not None:
             result['ReviewInfo'] = self.review_info.to_map()
         if self.rid is not None:
@@ -11463,6 +11477,10 @@ class GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo(Te
         if m.get('ConditionHitInfoList') is not None:
             temp_model = GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoList()
             self.condition_hit_info_list = temp_model.from_map(m['ConditionHitInfoList'])
+        if m.get('MachineHitResult') is not None:
+            self.machine_hit_result = m.get('MachineHitResult')
+        if m.get('ReviewHitResult') is not None:
+            self.review_hit_result = m.get('ReviewHitResult')
         if m.get('ReviewInfo') is not None:
             temp_model = GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfo()
             self.review_info = temp_model.from_map(m['ReviewInfo'])
