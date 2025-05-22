@@ -1,3 +1,10 @@
+2025-05-22 Version: 1.4.6
+- Update API QueryDocParserStatus: add response parameters Body.Data.Processing.
+- Update API SubmitDocParserJob: add request parameters Option.
+- Update API SubmitDocParserJob: add request parameters PageIndex.
+- Update API SubmitDocStructureJob: add request parameters PageIndex.
+
+
 2025-03-17 Version: 1.4.5
 - Update API SubmitConvertPdfToWordJob: add param FormulaEnhancement.
 - Update API SubmitConvertPdfToWordJob: add param Option.

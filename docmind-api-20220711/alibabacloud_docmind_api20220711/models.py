@@ -1217,6 +1217,7 @@ class QueryDocParserStatusResponseBodyData(TeaModel):
         number_of_successful_parsing: int = None,
         page_count_estimate: int = None,
         paragraph_count: int = None,
+        processing: float = None,
         status: str = None,
         table_count: int = None,
         tokens: int = None,
@@ -1225,6 +1226,7 @@ class QueryDocParserStatusResponseBodyData(TeaModel):
         self.number_of_successful_parsing = number_of_successful_parsing
         self.page_count_estimate = page_count_estimate
         self.paragraph_count = paragraph_count
+        self.processing = processing
         self.status = status
         self.table_count = table_count
         self.tokens = tokens
@@ -1246,6 +1248,8 @@ class QueryDocParserStatusResponseBodyData(TeaModel):
             result['PageCountEstimate'] = self.page_count_estimate
         if self.paragraph_count is not None:
             result['ParagraphCount'] = self.paragraph_count
+        if self.processing is not None:
+            result['Processing'] = self.processing
         if self.status is not None:
             result['Status'] = self.status
         if self.table_count is not None:
@@ -1264,6 +1268,8 @@ class QueryDocParserStatusResponseBodyData(TeaModel):
             self.page_count_estimate = m.get('PageCountEstimate')
         if m.get('ParagraphCount') is not None:
             self.paragraph_count = m.get('ParagraphCount')
+        if m.get('Processing') is not None:
+            self.processing = m.get('Processing')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('TableCount') is not None:
@@ -3365,16 +3371,20 @@ class SubmitDocParserJobRequest(TeaModel):
         file_url: str = None,
         formula_enhancement: bool = None,
         llm_enhancement: bool = None,
+        option: str = None,
         oss_bucket: str = None,
         oss_endpoint: str = None,
+        page_index: str = None,
     ):
         self.file_name = file_name
         self.file_name_extension = file_name_extension
         self.file_url = file_url
         self.formula_enhancement = formula_enhancement
         self.llm_enhancement = llm_enhancement
+        self.option = option
         self.oss_bucket = oss_bucket
         self.oss_endpoint = oss_endpoint
+        self.page_index = page_index
 
     def validate(self):
         pass
@@ -3395,10 +3405,14 @@ class SubmitDocParserJobRequest(TeaModel):
             result['FormulaEnhancement'] = self.formula_enhancement
         if self.llm_enhancement is not None:
             result['LlmEnhancement'] = self.llm_enhancement
+        if self.option is not None:
+            result['Option'] = self.option
         if self.oss_bucket is not None:
             result['OssBucket'] = self.oss_bucket
         if self.oss_endpoint is not None:
             result['OssEndpoint'] = self.oss_endpoint
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
         return result
 
     def from_map(self, m: dict = None):
@@ -3413,10 +3427,14 @@ class SubmitDocParserJobRequest(TeaModel):
             self.formula_enhancement = m.get('FormulaEnhancement')
         if m.get('LlmEnhancement') is not None:
             self.llm_enhancement = m.get('LlmEnhancement')
+        if m.get('Option') is not None:
+            self.option = m.get('Option')
         if m.get('OssBucket') is not None:
             self.oss_bucket = m.get('OssBucket')
         if m.get('OssEndpoint') is not None:
             self.oss_endpoint = m.get('OssEndpoint')
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
         return self
 
 
@@ -3428,16 +3446,20 @@ class SubmitDocParserJobAdvanceRequest(TeaModel):
         file_url_object: BinaryIO = None,
         formula_enhancement: bool = None,
         llm_enhancement: bool = None,
+        option: str = None,
         oss_bucket: str = None,
         oss_endpoint: str = None,
+        page_index: str = None,
     ):
         self.file_name = file_name
         self.file_name_extension = file_name_extension
         self.file_url_object = file_url_object
         self.formula_enhancement = formula_enhancement
         self.llm_enhancement = llm_enhancement
+        self.option = option
         self.oss_bucket = oss_bucket
         self.oss_endpoint = oss_endpoint
+        self.page_index = page_index
 
     def validate(self):
         pass
@@ -3458,10 +3480,14 @@ class SubmitDocParserJobAdvanceRequest(TeaModel):
             result['FormulaEnhancement'] = self.formula_enhancement
         if self.llm_enhancement is not None:
             result['LlmEnhancement'] = self.llm_enhancement
+        if self.option is not None:
+            result['Option'] = self.option
         if self.oss_bucket is not None:
             result['OssBucket'] = self.oss_bucket
         if self.oss_endpoint is not None:
             result['OssEndpoint'] = self.oss_endpoint
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
         return result
 
     def from_map(self, m: dict = None):
@@ -3476,10 +3502,14 @@ class SubmitDocParserJobAdvanceRequest(TeaModel):
             self.formula_enhancement = m.get('FormulaEnhancement')
         if m.get('LlmEnhancement') is not None:
             self.llm_enhancement = m.get('LlmEnhancement')
+        if m.get('Option') is not None:
+            self.option = m.get('Option')
         if m.get('OssBucket') is not None:
             self.oss_bucket = m.get('OssBucket')
         if m.get('OssEndpoint') is not None:
             self.oss_endpoint = m.get('OssEndpoint')
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
         return self
 
 
@@ -3608,6 +3638,7 @@ class SubmitDocStructureJobRequest(TeaModel):
         formula_enhancement: bool = None,
         oss_bucket: str = None,
         oss_endpoint: str = None,
+        page_index: str = None,
         structure_type: str = None,
     ):
         self.allow_ppt_format = allow_ppt_format
@@ -3617,6 +3648,7 @@ class SubmitDocStructureJobRequest(TeaModel):
         self.formula_enhancement = formula_enhancement
         self.oss_bucket = oss_bucket
         self.oss_endpoint = oss_endpoint
+        self.page_index = page_index
         self.structure_type = structure_type
 
     def validate(self):
@@ -3642,6 +3674,8 @@ class SubmitDocStructureJobRequest(TeaModel):
             result['OssBucket'] = self.oss_bucket
         if self.oss_endpoint is not None:
             result['OssEndpoint'] = self.oss_endpoint
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
         if self.structure_type is not None:
             result['StructureType'] = self.structure_type
         return result
@@ -3662,6 +3696,8 @@ class SubmitDocStructureJobRequest(TeaModel):
             self.oss_bucket = m.get('OssBucket')
         if m.get('OssEndpoint') is not None:
             self.oss_endpoint = m.get('OssEndpoint')
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
         if m.get('StructureType') is not None:
             self.structure_type = m.get('StructureType')
         return self
@@ -3677,6 +3713,7 @@ class SubmitDocStructureJobAdvanceRequest(TeaModel):
         formula_enhancement: bool = None,
         oss_bucket: str = None,
         oss_endpoint: str = None,
+        page_index: str = None,
         structure_type: str = None,
     ):
         self.allow_ppt_format = allow_ppt_format
@@ -3686,6 +3723,7 @@ class SubmitDocStructureJobAdvanceRequest(TeaModel):
         self.formula_enhancement = formula_enhancement
         self.oss_bucket = oss_bucket
         self.oss_endpoint = oss_endpoint
+        self.page_index = page_index
         self.structure_type = structure_type
 
     def validate(self):
@@ -3711,6 +3749,8 @@ class SubmitDocStructureJobAdvanceRequest(TeaModel):
             result['OssBucket'] = self.oss_bucket
         if self.oss_endpoint is not None:
             result['OssEndpoint'] = self.oss_endpoint
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
         if self.structure_type is not None:
             result['StructureType'] = self.structure_type
         return result
@@ -3731,6 +3771,8 @@ class SubmitDocStructureJobAdvanceRequest(TeaModel):
             self.oss_bucket = m.get('OssBucket')
         if m.get('OssEndpoint') is not None:
             self.oss_endpoint = m.get('OssEndpoint')
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
         if m.get('StructureType') is not None:
             self.structure_type = m.get('StructureType')
         return self
