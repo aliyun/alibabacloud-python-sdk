@@ -1,3 +1,6 @@
+2025-05-22 Version: 1.4.7
+- Generated python 2022-07-11 for docmind-api.
+
 2025-05-22 Version: 1.4.6
 - Update API QueryDocParserStatus: add response parameters Body.Data.Processing.
 - Update API SubmitDocParserJob: add request parameters Option.
