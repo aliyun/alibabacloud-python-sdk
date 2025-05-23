@@ -1,3 +1,7 @@
+2025-05-23 Version: 7.0.6
+- Update API DescribeInstanceTypes: add response parameters Body.InstanceTypes.$.Clock.
+
+
 2025-05-21 Version: 7.0.5
 - Update API CreateNetworkInterface: add request parameters EnhancedNetwork.VirtualFunctionQuantity.
 - Update API CreateNetworkInterface: add request parameters EnhancedNetwork.VirtualFunctionTotalQueueNumber.
