@@ -9312,6 +9312,7 @@ class GetGeneratedContentResponseBodyData(TeaModel):
         create_user: str = None,
         device_id: str = None,
         id: int = None,
+        ignore_content_audit_words: str = None,
         keyword_list: List[str] = None,
         keywords: str = None,
         prompt: str = None,
@@ -9328,6 +9329,7 @@ class GetGeneratedContentResponseBodyData(TeaModel):
         self.create_user = create_user
         self.device_id = device_id
         self.id = id
+        self.ignore_content_audit_words = ignore_content_audit_words
         self.keyword_list = keyword_list
         self.keywords = keywords
         self.prompt = prompt
@@ -9360,6 +9362,8 @@ class GetGeneratedContentResponseBodyData(TeaModel):
             result['DeviceId'] = self.device_id
         if self.id is not None:
             result['Id'] = self.id
+        if self.ignore_content_audit_words is not None:
+            result['IgnoreContentAuditWords'] = self.ignore_content_audit_words
         if self.keyword_list is not None:
             result['KeywordList'] = self.keyword_list
         if self.keywords is not None:
@@ -9394,6 +9398,8 @@ class GetGeneratedContentResponseBodyData(TeaModel):
             self.device_id = m.get('DeviceId')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('IgnoreContentAuditWords') is not None:
+            self.ignore_content_audit_words = m.get('IgnoreContentAuditWords')
         if m.get('KeywordList') is not None:
             self.keyword_list = m.get('KeywordList')
         if m.get('Keywords') is not None:

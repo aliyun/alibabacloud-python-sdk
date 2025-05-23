@@ -1,3 +1,7 @@
+2025-05-23 Version: 1.26.2
+- Update API GetGeneratedContent: add response parameters Body.Data.IgnoreContentAuditWords.
+
+
 2025-05-16 Version: 1.26.1
 - Generated python 2023-08-01 for AiMiaoBi.
 
