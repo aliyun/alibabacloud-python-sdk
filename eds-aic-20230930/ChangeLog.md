@@ -1,3 +1,8 @@
+2025-05-23 Version: 4.7.1
+- Update API DescribeAndroidInstances: add request parameters AppManagePolicyId.
+- Update API DescribeAndroidInstances: add response parameters Body.InstanceModel.$.AppManagePolicy.
+
+
 2025-05-14 Version: 4.7.0
 - Support API DescribeDisplayConfig.
 - Support API ModifyDisplayConfig.

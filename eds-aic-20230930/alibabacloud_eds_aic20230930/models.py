@@ -4719,6 +4719,7 @@ class DescribeAndroidInstancesRequest(TeaModel):
         self,
         android_instance_ids: List[str] = None,
         android_instance_name: str = None,
+        app_manage_policy_id: str = None,
         authorized_user_id: str = None,
         biz_region_id: str = None,
         charge_type: str = None,
@@ -4740,6 +4741,7 @@ class DescribeAndroidInstancesRequest(TeaModel):
         self.android_instance_ids = android_instance_ids
         # The name of the instance.
         self.android_instance_name = android_instance_name
+        self.app_manage_policy_id = app_manage_policy_id
         self.authorized_user_id = authorized_user_id
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/2807298.html) operation to query the regions where Cloud Phone is supported.
         self.biz_region_id = biz_region_id
@@ -4814,6 +4816,8 @@ class DescribeAndroidInstancesRequest(TeaModel):
             result['AndroidInstanceIds'] = self.android_instance_ids
         if self.android_instance_name is not None:
             result['AndroidInstanceName'] = self.android_instance_name
+        if self.app_manage_policy_id is not None:
+            result['AppManagePolicyId'] = self.app_manage_policy_id
         if self.authorized_user_id is not None:
             result['AuthorizedUserId'] = self.authorized_user_id
         if self.biz_region_id is not None:
@@ -4856,6 +4860,8 @@ class DescribeAndroidInstancesRequest(TeaModel):
             self.android_instance_ids = m.get('AndroidInstanceIds')
         if m.get('AndroidInstanceName') is not None:
             self.android_instance_name = m.get('AndroidInstanceName')
+        if m.get('AppManagePolicyId') is not None:
+            self.app_manage_policy_id = m.get('AppManagePolicyId')
         if m.get('AuthorizedUserId') is not None:
             self.authorized_user_id = m.get('AuthorizedUserId')
         if m.get('BizRegionId') is not None:
@@ -4891,6 +4897,39 @@ class DescribeAndroidInstancesRequest(TeaModel):
             for k in m.get('Tag'):
                 temp_model = DescribeAndroidInstancesRequestTag()
                 self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeAndroidInstancesResponseBodyInstanceModelAppManagePolicy(TeaModel):
+    def __init__(
+        self,
+        app_manage_policy_id: str = None,
+        app_manage_policy_name: str = None,
+    ):
+        self.app_manage_policy_id = app_manage_policy_id
+        self.app_manage_policy_name = app_manage_policy_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_manage_policy_id is not None:
+            result['AppManagePolicyId'] = self.app_manage_policy_id
+        if self.app_manage_policy_name is not None:
+            result['AppManagePolicyName'] = self.app_manage_policy_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppManagePolicyId') is not None:
+            self.app_manage_policy_id = m.get('AppManagePolicyId')
+        if m.get('AppManagePolicyName') is not None:
+            self.app_manage_policy_name = m.get('AppManagePolicyName')
         return self
 
 
@@ -5025,6 +5064,7 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         android_instance_status: str = None,
         app_instance_group_id: str = None,
         app_instance_id: str = None,
+        app_manage_policy: DescribeAndroidInstancesResponseBodyInstanceModelAppManagePolicy = None,
         authorized_user_id: str = None,
         bind_user_id: str = None,
         charge_type: str = None,
@@ -5068,6 +5108,7 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         self.app_instance_group_id = app_instance_group_id
         # The ID of the physical instance.
         self.app_instance_id = app_instance_id
+        self.app_manage_policy = app_manage_policy
         # The ID of the user to whom the instance is assigned.
         self.authorized_user_id = authorized_user_id
         # The ID of the bound user.
@@ -5128,6 +5169,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         self.tags = tags
 
     def validate(self):
+        if self.app_manage_policy:
+            self.app_manage_policy.validate()
         if self.disks:
             for k in self.disks:
                 if k:
@@ -5159,6 +5202,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             result['AppInstanceGroupId'] = self.app_instance_group_id
         if self.app_instance_id is not None:
             result['AppInstanceId'] = self.app_instance_id
+        if self.app_manage_policy is not None:
+            result['AppManagePolicy'] = self.app_manage_policy.to_map()
         if self.authorized_user_id is not None:
             result['AuthorizedUserId'] = self.authorized_user_id
         if self.bind_user_id is not None:
@@ -5237,6 +5282,9 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             self.app_instance_group_id = m.get('AppInstanceGroupId')
         if m.get('AppInstanceId') is not None:
             self.app_instance_id = m.get('AppInstanceId')
+        if m.get('AppManagePolicy') is not None:
+            temp_model = DescribeAndroidInstancesResponseBodyInstanceModelAppManagePolicy()
+            self.app_manage_policy = temp_model.from_map(m['AppManagePolicy'])
         if m.get('AuthorizedUserId') is not None:
             self.authorized_user_id = m.get('AuthorizedUserId')
         if m.get('BindUserId') is not None:

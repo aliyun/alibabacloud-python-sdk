@@ -2536,6 +2536,8 @@ class Client(OpenApiClient):
             query['AndroidInstanceIds'] = request.android_instance_ids
         if not UtilClient.is_unset(request.android_instance_name):
             query['AndroidInstanceName'] = request.android_instance_name
+        if not UtilClient.is_unset(request.app_manage_policy_id):
+            query['AppManagePolicyId'] = request.app_manage_policy_id
         if not UtilClient.is_unset(request.authorized_user_id):
             query['AuthorizedUserId'] = request.authorized_user_id
         if not UtilClient.is_unset(request.biz_region_id):
@@ -2605,6 +2607,8 @@ class Client(OpenApiClient):
             query['AndroidInstanceIds'] = request.android_instance_ids
         if not UtilClient.is_unset(request.android_instance_name):
             query['AndroidInstanceName'] = request.android_instance_name
+        if not UtilClient.is_unset(request.app_manage_policy_id):
+            query['AppManagePolicyId'] = request.app_manage_policy_id
         if not UtilClient.is_unset(request.authorized_user_id):
             query['AuthorizedUserId'] = request.authorized_user_id
         if not UtilClient.is_unset(request.biz_region_id):
