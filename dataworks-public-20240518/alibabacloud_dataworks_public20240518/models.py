@@ -4824,6 +4824,162 @@ class CreateAlertRuleResponse(TeaModel):
         return self
 
 
+class CreateBusinessRequest(TeaModel):
+    def __init__(
+        self,
+        business_name: str = None,
+        description: str = None,
+        owner: str = None,
+        project_id: int = None,
+        project_identifier: str = None,
+        use_type: str = None,
+    ):
+        # This parameter is required.
+        self.business_name = business_name
+        self.description = description
+        self.owner = owner
+        self.project_id = project_id
+        self.project_identifier = project_identifier
+        self.use_type = use_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_name is not None:
+            result['BusinessName'] = self.business_name
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.project_identifier is not None:
+            result['ProjectIdentifier'] = self.project_identifier
+        if self.use_type is not None:
+            result['UseType'] = self.use_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BusinessName') is not None:
+            self.business_name = m.get('BusinessName')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ProjectIdentifier') is not None:
+            self.project_identifier = m.get('ProjectIdentifier')
+        if m.get('UseType') is not None:
+            self.use_type = m.get('UseType')
+        return self
+
+
+class CreateBusinessResponseBody(TeaModel):
+    def __init__(
+        self,
+        business_id: int = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.business_id = business_id
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_id is not None:
+            result['BusinessId'] = self.business_id
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BusinessId') is not None:
+            self.business_id = m.get('BusinessId')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateBusinessResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateBusinessResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateBusinessResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateDIAlarmRuleRequestNotificationSettingsNotificationChannels(TeaModel):
     def __init__(
         self,
@@ -9389,6 +9545,469 @@ class CreateDataSourceSharedRuleResponse(TeaModel):
         return self
 
 
+class CreateFileRequest(TeaModel):
+    def __init__(
+        self,
+        advanced_settings: str = None,
+        apply_schedule_immediately: bool = None,
+        auto_parsing: bool = None,
+        auto_rerun_interval_millis: int = None,
+        auto_rerun_times: int = None,
+        connection_name: str = None,
+        content: str = None,
+        create_folder_if_not_exists: bool = None,
+        cron_express: str = None,
+        cycle_type: str = None,
+        dependent_node_id_list: str = None,
+        dependent_type: str = None,
+        end_effect_date: int = None,
+        file_description: str = None,
+        file_folder_path: str = None,
+        file_name: str = None,
+        file_type: int = None,
+        ignore_parent_skip_running_property: bool = None,
+        image_id: str = None,
+        input_list: str = None,
+        input_parameters: str = None,
+        output_parameters: str = None,
+        owner: str = None,
+        para_value: str = None,
+        project_id: int = None,
+        project_identifier: str = None,
+        rerun_mode: str = None,
+        resource_group_id: int = None,
+        resource_group_identifier: str = None,
+        scheduler_type: str = None,
+        start_effect_date: int = None,
+        start_immediately: bool = None,
+        stop: bool = None,
+        timeout: int = None,
+    ):
+        self.advanced_settings = advanced_settings
+        self.apply_schedule_immediately = apply_schedule_immediately
+        self.auto_parsing = auto_parsing
+        self.auto_rerun_interval_millis = auto_rerun_interval_millis
+        self.auto_rerun_times = auto_rerun_times
+        self.connection_name = connection_name
+        self.content = content
+        self.create_folder_if_not_exists = create_folder_if_not_exists
+        self.cron_express = cron_express
+        self.cycle_type = cycle_type
+        self.dependent_node_id_list = dependent_node_id_list
+        self.dependent_type = dependent_type
+        self.end_effect_date = end_effect_date
+        self.file_description = file_description
+        self.file_folder_path = file_folder_path
+        # This parameter is required.
+        self.file_name = file_name
+        # This parameter is required.
+        self.file_type = file_type
+        self.ignore_parent_skip_running_property = ignore_parent_skip_running_property
+        self.image_id = image_id
+        self.input_list = input_list
+        self.input_parameters = input_parameters
+        self.output_parameters = output_parameters
+        self.owner = owner
+        self.para_value = para_value
+        self.project_id = project_id
+        self.project_identifier = project_identifier
+        self.rerun_mode = rerun_mode
+        self.resource_group_id = resource_group_id
+        self.resource_group_identifier = resource_group_identifier
+        self.scheduler_type = scheduler_type
+        self.start_effect_date = start_effect_date
+        self.start_immediately = start_immediately
+        self.stop = stop
+        self.timeout = timeout
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advanced_settings is not None:
+            result['AdvancedSettings'] = self.advanced_settings
+        if self.apply_schedule_immediately is not None:
+            result['ApplyScheduleImmediately'] = self.apply_schedule_immediately
+        if self.auto_parsing is not None:
+            result['AutoParsing'] = self.auto_parsing
+        if self.auto_rerun_interval_millis is not None:
+            result['AutoRerunIntervalMillis'] = self.auto_rerun_interval_millis
+        if self.auto_rerun_times is not None:
+            result['AutoRerunTimes'] = self.auto_rerun_times
+        if self.connection_name is not None:
+            result['ConnectionName'] = self.connection_name
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.create_folder_if_not_exists is not None:
+            result['CreateFolderIfNotExists'] = self.create_folder_if_not_exists
+        if self.cron_express is not None:
+            result['CronExpress'] = self.cron_express
+        if self.cycle_type is not None:
+            result['CycleType'] = self.cycle_type
+        if self.dependent_node_id_list is not None:
+            result['DependentNodeIdList'] = self.dependent_node_id_list
+        if self.dependent_type is not None:
+            result['DependentType'] = self.dependent_type
+        if self.end_effect_date is not None:
+            result['EndEffectDate'] = self.end_effect_date
+        if self.file_description is not None:
+            result['FileDescription'] = self.file_description
+        if self.file_folder_path is not None:
+            result['FileFolderPath'] = self.file_folder_path
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
+        if self.ignore_parent_skip_running_property is not None:
+            result['IgnoreParentSkipRunningProperty'] = self.ignore_parent_skip_running_property
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.input_list is not None:
+            result['InputList'] = self.input_list
+        if self.input_parameters is not None:
+            result['InputParameters'] = self.input_parameters
+        if self.output_parameters is not None:
+            result['OutputParameters'] = self.output_parameters
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.para_value is not None:
+            result['ParaValue'] = self.para_value
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.project_identifier is not None:
+            result['ProjectIdentifier'] = self.project_identifier
+        if self.rerun_mode is not None:
+            result['RerunMode'] = self.rerun_mode
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_group_identifier is not None:
+            result['ResourceGroupIdentifier'] = self.resource_group_identifier
+        if self.scheduler_type is not None:
+            result['SchedulerType'] = self.scheduler_type
+        if self.start_effect_date is not None:
+            result['StartEffectDate'] = self.start_effect_date
+        if self.start_immediately is not None:
+            result['StartImmediately'] = self.start_immediately
+        if self.stop is not None:
+            result['Stop'] = self.stop
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdvancedSettings') is not None:
+            self.advanced_settings = m.get('AdvancedSettings')
+        if m.get('ApplyScheduleImmediately') is not None:
+            self.apply_schedule_immediately = m.get('ApplyScheduleImmediately')
+        if m.get('AutoParsing') is not None:
+            self.auto_parsing = m.get('AutoParsing')
+        if m.get('AutoRerunIntervalMillis') is not None:
+            self.auto_rerun_interval_millis = m.get('AutoRerunIntervalMillis')
+        if m.get('AutoRerunTimes') is not None:
+            self.auto_rerun_times = m.get('AutoRerunTimes')
+        if m.get('ConnectionName') is not None:
+            self.connection_name = m.get('ConnectionName')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('CreateFolderIfNotExists') is not None:
+            self.create_folder_if_not_exists = m.get('CreateFolderIfNotExists')
+        if m.get('CronExpress') is not None:
+            self.cron_express = m.get('CronExpress')
+        if m.get('CycleType') is not None:
+            self.cycle_type = m.get('CycleType')
+        if m.get('DependentNodeIdList') is not None:
+            self.dependent_node_id_list = m.get('DependentNodeIdList')
+        if m.get('DependentType') is not None:
+            self.dependent_type = m.get('DependentType')
+        if m.get('EndEffectDate') is not None:
+            self.end_effect_date = m.get('EndEffectDate')
+        if m.get('FileDescription') is not None:
+            self.file_description = m.get('FileDescription')
+        if m.get('FileFolderPath') is not None:
+            self.file_folder_path = m.get('FileFolderPath')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
+        if m.get('IgnoreParentSkipRunningProperty') is not None:
+            self.ignore_parent_skip_running_property = m.get('IgnoreParentSkipRunningProperty')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('InputList') is not None:
+            self.input_list = m.get('InputList')
+        if m.get('InputParameters') is not None:
+            self.input_parameters = m.get('InputParameters')
+        if m.get('OutputParameters') is not None:
+            self.output_parameters = m.get('OutputParameters')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('ParaValue') is not None:
+            self.para_value = m.get('ParaValue')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ProjectIdentifier') is not None:
+            self.project_identifier = m.get('ProjectIdentifier')
+        if m.get('RerunMode') is not None:
+            self.rerun_mode = m.get('RerunMode')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceGroupIdentifier') is not None:
+            self.resource_group_identifier = m.get('ResourceGroupIdentifier')
+        if m.get('SchedulerType') is not None:
+            self.scheduler_type = m.get('SchedulerType')
+        if m.get('StartEffectDate') is not None:
+            self.start_effect_date = m.get('StartEffectDate')
+        if m.get('StartImmediately') is not None:
+            self.start_immediately = m.get('StartImmediately')
+        if m.get('Stop') is not None:
+            self.stop = m.get('Stop')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        return self
+
+
+class CreateFileResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: int = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateFileResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateFileResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateFileResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateFolderRequest(TeaModel):
+    def __init__(
+        self,
+        folder_path: str = None,
+        project_id: int = None,
+        project_identifier: str = None,
+    ):
+        # This parameter is required.
+        self.folder_path = folder_path
+        self.project_id = project_id
+        self.project_identifier = project_identifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.folder_path is not None:
+            result['FolderPath'] = self.folder_path
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.project_identifier is not None:
+            result['ProjectIdentifier'] = self.project_identifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FolderPath') is not None:
+            self.folder_path = m.get('FolderPath')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ProjectIdentifier') is not None:
+            self.project_identifier = m.get('ProjectIdentifier')
+        return self
+
+
+class CreateFolderResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateFolderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateFolderResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateFolderResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateFunctionRequest(TeaModel):
     def __init__(
         self,
@@ -10930,6 +11549,278 @@ class CreateResourceResponse(TeaModel):
         return self
 
 
+class CreateResourceFileRequest(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        file_description: str = None,
+        file_folder_path: str = None,
+        file_name: str = None,
+        file_type: int = None,
+        origin_resource_name: str = None,
+        owner: str = None,
+        project_id: int = None,
+        register_to_calc_engine: bool = None,
+        resource_file: str = None,
+        storage_url: str = None,
+        upload_mode: bool = None,
+    ):
+        self.content = content
+        self.file_description = file_description
+        # This parameter is required.
+        self.file_folder_path = file_folder_path
+        # This parameter is required.
+        self.file_name = file_name
+        # This parameter is required.
+        self.file_type = file_type
+        # This parameter is required.
+        self.origin_resource_name = origin_resource_name
+        self.owner = owner
+        # This parameter is required.
+        self.project_id = project_id
+        # This parameter is required.
+        self.register_to_calc_engine = register_to_calc_engine
+        self.resource_file = resource_file
+        self.storage_url = storage_url
+        self.upload_mode = upload_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.file_description is not None:
+            result['FileDescription'] = self.file_description
+        if self.file_folder_path is not None:
+            result['FileFolderPath'] = self.file_folder_path
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
+        if self.origin_resource_name is not None:
+            result['OriginResourceName'] = self.origin_resource_name
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.register_to_calc_engine is not None:
+            result['RegisterToCalcEngine'] = self.register_to_calc_engine
+        if self.resource_file is not None:
+            result['ResourceFile'] = self.resource_file
+        if self.storage_url is not None:
+            result['StorageURL'] = self.storage_url
+        if self.upload_mode is not None:
+            result['UploadMode'] = self.upload_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('FileDescription') is not None:
+            self.file_description = m.get('FileDescription')
+        if m.get('FileFolderPath') is not None:
+            self.file_folder_path = m.get('FileFolderPath')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
+        if m.get('OriginResourceName') is not None:
+            self.origin_resource_name = m.get('OriginResourceName')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RegisterToCalcEngine') is not None:
+            self.register_to_calc_engine = m.get('RegisterToCalcEngine')
+        if m.get('ResourceFile') is not None:
+            self.resource_file = m.get('ResourceFile')
+        if m.get('StorageURL') is not None:
+            self.storage_url = m.get('StorageURL')
+        if m.get('UploadMode') is not None:
+            self.upload_mode = m.get('UploadMode')
+        return self
+
+
+class CreateResourceFileAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        file_description: str = None,
+        file_folder_path: str = None,
+        file_name: str = None,
+        file_type: int = None,
+        origin_resource_name: str = None,
+        owner: str = None,
+        project_id: int = None,
+        register_to_calc_engine: bool = None,
+        resource_file_object: BinaryIO = None,
+        storage_url: str = None,
+        upload_mode: bool = None,
+    ):
+        self.content = content
+        self.file_description = file_description
+        # This parameter is required.
+        self.file_folder_path = file_folder_path
+        # This parameter is required.
+        self.file_name = file_name
+        # This parameter is required.
+        self.file_type = file_type
+        # This parameter is required.
+        self.origin_resource_name = origin_resource_name
+        self.owner = owner
+        # This parameter is required.
+        self.project_id = project_id
+        # This parameter is required.
+        self.register_to_calc_engine = register_to_calc_engine
+        self.resource_file_object = resource_file_object
+        self.storage_url = storage_url
+        self.upload_mode = upload_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.file_description is not None:
+            result['FileDescription'] = self.file_description
+        if self.file_folder_path is not None:
+            result['FileFolderPath'] = self.file_folder_path
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
+        if self.origin_resource_name is not None:
+            result['OriginResourceName'] = self.origin_resource_name
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.register_to_calc_engine is not None:
+            result['RegisterToCalcEngine'] = self.register_to_calc_engine
+        if self.resource_file_object is not None:
+            result['ResourceFile'] = self.resource_file_object
+        if self.storage_url is not None:
+            result['StorageURL'] = self.storage_url
+        if self.upload_mode is not None:
+            result['UploadMode'] = self.upload_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('FileDescription') is not None:
+            self.file_description = m.get('FileDescription')
+        if m.get('FileFolderPath') is not None:
+            self.file_folder_path = m.get('FileFolderPath')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
+        if m.get('OriginResourceName') is not None:
+            self.origin_resource_name = m.get('OriginResourceName')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RegisterToCalcEngine') is not None:
+            self.register_to_calc_engine = m.get('RegisterToCalcEngine')
+        if m.get('ResourceFile') is not None:
+            self.resource_file_object = m.get('ResourceFile')
+        if m.get('StorageURL') is not None:
+            self.storage_url = m.get('StorageURL')
+        if m.get('UploadMode') is not None:
+            self.upload_mode = m.get('UploadMode')
+        return self
+
+
+class CreateResourceFileResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: int = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateResourceFileResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateResourceFileResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateResourceFileResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateResourceGroupRequestAliyunResourceTags(TeaModel):
     def __init__(
         self,
@@ -11455,6 +12346,208 @@ class CreateRouteResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateRouteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateUdfFileRequest(TeaModel):
+    def __init__(
+        self,
+        class_name: str = None,
+        cmd_description: str = None,
+        create_folder_if_not_exists: bool = None,
+        example: str = None,
+        file_folder_path: str = None,
+        file_name: str = None,
+        function_type: str = None,
+        parameter_description: str = None,
+        project_id: int = None,
+        project_identifier: str = None,
+        resources: str = None,
+        return_value: str = None,
+        udf_description: str = None,
+    ):
+        # This parameter is required.
+        self.class_name = class_name
+        self.cmd_description = cmd_description
+        self.create_folder_if_not_exists = create_folder_if_not_exists
+        self.example = example
+        # This parameter is required.
+        self.file_folder_path = file_folder_path
+        # This parameter is required.
+        self.file_name = file_name
+        # This parameter is required.
+        self.function_type = function_type
+        self.parameter_description = parameter_description
+        self.project_id = project_id
+        self.project_identifier = project_identifier
+        # This parameter is required.
+        self.resources = resources
+        self.return_value = return_value
+        self.udf_description = udf_description
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.class_name is not None:
+            result['ClassName'] = self.class_name
+        if self.cmd_description is not None:
+            result['CmdDescription'] = self.cmd_description
+        if self.create_folder_if_not_exists is not None:
+            result['CreateFolderIfNotExists'] = self.create_folder_if_not_exists
+        if self.example is not None:
+            result['Example'] = self.example
+        if self.file_folder_path is not None:
+            result['FileFolderPath'] = self.file_folder_path
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.function_type is not None:
+            result['FunctionType'] = self.function_type
+        if self.parameter_description is not None:
+            result['ParameterDescription'] = self.parameter_description
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.project_identifier is not None:
+            result['ProjectIdentifier'] = self.project_identifier
+        if self.resources is not None:
+            result['Resources'] = self.resources
+        if self.return_value is not None:
+            result['ReturnValue'] = self.return_value
+        if self.udf_description is not None:
+            result['UdfDescription'] = self.udf_description
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClassName') is not None:
+            self.class_name = m.get('ClassName')
+        if m.get('CmdDescription') is not None:
+            self.cmd_description = m.get('CmdDescription')
+        if m.get('CreateFolderIfNotExists') is not None:
+            self.create_folder_if_not_exists = m.get('CreateFolderIfNotExists')
+        if m.get('Example') is not None:
+            self.example = m.get('Example')
+        if m.get('FileFolderPath') is not None:
+            self.file_folder_path = m.get('FileFolderPath')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FunctionType') is not None:
+            self.function_type = m.get('FunctionType')
+        if m.get('ParameterDescription') is not None:
+            self.parameter_description = m.get('ParameterDescription')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ProjectIdentifier') is not None:
+            self.project_identifier = m.get('ProjectIdentifier')
+        if m.get('Resources') is not None:
+            self.resources = m.get('Resources')
+        if m.get('ReturnValue') is not None:
+            self.return_value = m.get('ReturnValue')
+        if m.get('UdfDescription') is not None:
+            self.udf_description = m.get('UdfDescription')
+        return self
+
+
+class CreateUdfFileResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: int = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateUdfFileResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateUdfFileResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateUdfFileResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12329,6 +13422,138 @@ class DeleteAlertRuleResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteAlertRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteBusinessRequest(TeaModel):
+    def __init__(
+        self,
+        business_id: int = None,
+        project_id: int = None,
+        project_identifier: str = None,
+    ):
+        # This parameter is required.
+        self.business_id = business_id
+        self.project_id = project_id
+        self.project_identifier = project_identifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_id is not None:
+            result['BusinessId'] = self.business_id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.project_identifier is not None:
+            result['ProjectIdentifier'] = self.project_identifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BusinessId') is not None:
+            self.business_id = m.get('BusinessId')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ProjectIdentifier') is not None:
+            self.project_identifier = m.get('ProjectIdentifier')
+        return self
+
+
+class DeleteBusinessResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteBusinessResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteBusinessResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteBusinessResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -13388,6 +14613,276 @@ class DeleteDataSourceSharedRuleResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteDataSourceSharedRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteFileRequest(TeaModel):
+    def __init__(
+        self,
+        file_id: int = None,
+        project_id: int = None,
+        project_identifier: str = None,
+    ):
+        # This parameter is required.
+        self.file_id = file_id
+        self.project_id = project_id
+        self.project_identifier = project_identifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.project_identifier is not None:
+            result['ProjectIdentifier'] = self.project_identifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ProjectIdentifier') is not None:
+            self.project_identifier = m.get('ProjectIdentifier')
+        return self
+
+
+class DeleteFileResponseBody(TeaModel):
+    def __init__(
+        self,
+        deployment_id: int = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.deployment_id = deployment_id
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.deployment_id is not None:
+            result['DeploymentId'] = self.deployment_id
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeploymentId') is not None:
+            self.deployment_id = m.get('DeploymentId')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteFileResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteFileResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteFileResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteFolderRequest(TeaModel):
+    def __init__(
+        self,
+        folder_id: str = None,
+        project_id: int = None,
+        project_identifier: str = None,
+    ):
+        # This parameter is required.
+        self.folder_id = folder_id
+        self.project_id = project_id
+        self.project_identifier = project_identifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.folder_id is not None:
+            result['FolderId'] = self.folder_id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.project_identifier is not None:
+            result['ProjectIdentifier'] = self.project_identifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FolderId') is not None:
+            self.folder_id = m.get('FolderId')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ProjectIdentifier') is not None:
+            self.project_identifier = m.get('ProjectIdentifier')
+        return self
+
+
+class DeleteFolderResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteFolderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteFolderResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteFolderResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -14833,6 +16328,155 @@ class DeleteWorkflowDefinitionResponse(TeaModel):
         return self
 
 
+class DeployFileRequest(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        file_id: int = None,
+        node_id: int = None,
+        project_id: int = None,
+        project_identifier: str = None,
+    ):
+        self.comment = comment
+        self.file_id = file_id
+        self.node_id = node_id
+        self.project_id = project_id
+        self.project_identifier = project_identifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.project_identifier is not None:
+            result['ProjectIdentifier'] = self.project_identifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ProjectIdentifier') is not None:
+            self.project_identifier = m.get('ProjectIdentifier')
+        return self
+
+
+class DeployFileResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: int = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeployFileResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeployFileResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeployFileResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DetachDataQualityRulesFromEvaluationTaskRequest(TeaModel):
     def __init__(
         self,
@@ -15118,6 +16762,151 @@ class DissociateProjectFromResourceGroupResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DissociateProjectFromResourceGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EstablishRelationTableToBusinessRequest(TeaModel):
+    def __init__(
+        self,
+        business_id: str = None,
+        folder_id: str = None,
+        project_id: int = None,
+        project_identifier: str = None,
+        table_guid: str = None,
+    ):
+        # This parameter is required.
+        self.business_id = business_id
+        self.folder_id = folder_id
+        self.project_id = project_id
+        self.project_identifier = project_identifier
+        # This parameter is required.
+        self.table_guid = table_guid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_id is not None:
+            result['BusinessId'] = self.business_id
+        if self.folder_id is not None:
+            result['FolderId'] = self.folder_id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.project_identifier is not None:
+            result['ProjectIdentifier'] = self.project_identifier
+        if self.table_guid is not None:
+            result['TableGuid'] = self.table_guid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BusinessId') is not None:
+            self.business_id = m.get('BusinessId')
+        if m.get('FolderId') is not None:
+            self.folder_id = m.get('FolderId')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ProjectIdentifier') is not None:
+            self.project_identifier = m.get('ProjectIdentifier')
+        if m.get('TableGuid') is not None:
+            self.table_guid = m.get('TableGuid')
+        return self
+
+
+class EstablishRelationTableToBusinessResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class EstablishRelationTableToBusinessResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EstablishRelationTableToBusinessResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EstablishRelationTableToBusinessResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -16697,6 +18486,203 @@ class GetAlertRuleResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAlertRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetBusinessRequest(TeaModel):
+    def __init__(
+        self,
+        business_id: int = None,
+        project_id: int = None,
+        project_identifier: str = None,
+    ):
+        # This parameter is required.
+        self.business_id = business_id
+        self.project_id = project_id
+        self.project_identifier = project_identifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_id is not None:
+            result['BusinessId'] = self.business_id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.project_identifier is not None:
+            result['ProjectIdentifier'] = self.project_identifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BusinessId') is not None:
+            self.business_id = m.get('BusinessId')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ProjectIdentifier') is not None:
+            self.project_identifier = m.get('ProjectIdentifier')
+        return self
+
+
+class GetBusinessResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        business_id: int = None,
+        business_name: str = None,
+        description: str = None,
+        owner: str = None,
+        project_id: str = None,
+        use_type: str = None,
+    ):
+        self.business_id = business_id
+        self.business_name = business_name
+        self.description = description
+        self.owner = owner
+        self.project_id = project_id
+        self.use_type = use_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_id is not None:
+            result['BusinessId'] = self.business_id
+        if self.business_name is not None:
+            result['BusinessName'] = self.business_name
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.use_type is not None:
+            result['UseType'] = self.use_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BusinessId') is not None:
+            self.business_id = m.get('BusinessId')
+        if m.get('BusinessName') is not None:
+            self.business_name = m.get('BusinessName')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('UseType') is not None:
+            self.use_type = m.get('UseType')
+        return self
+
+
+class GetBusinessResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetBusinessResponseBodyData = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = GetBusinessResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetBusinessResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetBusinessResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetBusinessResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -21446,6 +23432,1444 @@ class GetDatabaseResponse(TeaModel):
         return self
 
 
+class GetDeploymentPackageRequest(TeaModel):
+    def __init__(
+        self,
+        deployment_id: int = None,
+        project_id: int = None,
+        project_identifier: str = None,
+    ):
+        # This parameter is required.
+        self.deployment_id = deployment_id
+        self.project_id = project_id
+        self.project_identifier = project_identifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.deployment_id is not None:
+            result['DeploymentId'] = self.deployment_id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.project_identifier is not None:
+            result['ProjectIdentifier'] = self.project_identifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeploymentId') is not None:
+            self.deployment_id = m.get('DeploymentId')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ProjectIdentifier') is not None:
+            self.project_identifier = m.get('ProjectIdentifier')
+        return self
+
+
+class GetDeploymentPackageResponseBodyDataDeployedItems(TeaModel):
+    def __init__(
+        self,
+        file_id: int = None,
+        file_version: int = None,
+        status: int = None,
+    ):
+        self.file_id = file_id
+        self.file_version = file_version
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
+        if self.file_version is not None:
+            result['FileVersion'] = self.file_version
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
+        if m.get('FileVersion') is not None:
+            self.file_version = m.get('FileVersion')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetDeploymentPackageResponseBodyDataDeployment(TeaModel):
+    def __init__(
+        self,
+        checking_status: int = None,
+        create_time: int = None,
+        creator_id: str = None,
+        error_message: str = None,
+        execute_time: int = None,
+        from_environment: int = None,
+        handler_id: str = None,
+        name: str = None,
+        status: int = None,
+        to_environment: int = None,
+    ):
+        self.checking_status = checking_status
+        self.create_time = create_time
+        self.creator_id = creator_id
+        self.error_message = error_message
+        self.execute_time = execute_time
+        self.from_environment = from_environment
+        self.handler_id = handler_id
+        self.name = name
+        self.status = status
+        self.to_environment = to_environment
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.checking_status is not None:
+            result['CheckingStatus'] = self.checking_status
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.creator_id is not None:
+            result['CreatorId'] = self.creator_id
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.execute_time is not None:
+            result['ExecuteTime'] = self.execute_time
+        if self.from_environment is not None:
+            result['FromEnvironment'] = self.from_environment
+        if self.handler_id is not None:
+            result['HandlerId'] = self.handler_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.to_environment is not None:
+            result['ToEnvironment'] = self.to_environment
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckingStatus') is not None:
+            self.checking_status = m.get('CheckingStatus')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreatorId') is not None:
+            self.creator_id = m.get('CreatorId')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('ExecuteTime') is not None:
+            self.execute_time = m.get('ExecuteTime')
+        if m.get('FromEnvironment') is not None:
+            self.from_environment = m.get('FromEnvironment')
+        if m.get('HandlerId') is not None:
+            self.handler_id = m.get('HandlerId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('ToEnvironment') is not None:
+            self.to_environment = m.get('ToEnvironment')
+        return self
+
+
+class GetDeploymentPackageResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        deployed_items: List[GetDeploymentPackageResponseBodyDataDeployedItems] = None,
+        deployment: GetDeploymentPackageResponseBodyDataDeployment = None,
+    ):
+        self.deployed_items = deployed_items
+        self.deployment = deployment
+
+    def validate(self):
+        if self.deployed_items:
+            for k in self.deployed_items:
+                if k:
+                    k.validate()
+        if self.deployment:
+            self.deployment.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DeployedItems'] = []
+        if self.deployed_items is not None:
+            for k in self.deployed_items:
+                result['DeployedItems'].append(k.to_map() if k else None)
+        if self.deployment is not None:
+            result['Deployment'] = self.deployment.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.deployed_items = []
+        if m.get('DeployedItems') is not None:
+            for k in m.get('DeployedItems'):
+                temp_model = GetDeploymentPackageResponseBodyDataDeployedItems()
+                self.deployed_items.append(temp_model.from_map(k))
+        if m.get('Deployment') is not None:
+            temp_model = GetDeploymentPackageResponseBodyDataDeployment()
+            self.deployment = temp_model.from_map(m['Deployment'])
+        return self
+
+
+class GetDeploymentPackageResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetDeploymentPackageResponseBodyData = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = GetDeploymentPackageResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetDeploymentPackageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDeploymentPackageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDeploymentPackageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetFileRequest(TeaModel):
+    def __init__(
+        self,
+        file_id: int = None,
+        node_id: int = None,
+        project_id: int = None,
+        project_identifier: str = None,
+    ):
+        self.file_id = file_id
+        self.node_id = node_id
+        self.project_id = project_id
+        self.project_identifier = project_identifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.project_identifier is not None:
+            result['ProjectIdentifier'] = self.project_identifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ProjectIdentifier') is not None:
+            self.project_identifier = m.get('ProjectIdentifier')
+        return self
+
+
+class GetFileResponseBodyDataFile(TeaModel):
+    def __init__(
+        self,
+        advanced_settings: str = None,
+        auto_parsing: bool = None,
+        biz_id: int = None,
+        business_id: int = None,
+        commit_status: int = None,
+        connection_name: str = None,
+        content: str = None,
+        create_time: int = None,
+        create_user: str = None,
+        current_version: int = None,
+        deleted_status: str = None,
+        file_description: str = None,
+        file_folder_id: str = None,
+        file_id: int = None,
+        file_name: str = None,
+        file_type: int = None,
+        is_max_compute: bool = None,
+        last_edit_time: int = None,
+        last_edit_user: str = None,
+        node_id: int = None,
+        owner: str = None,
+        parent_id: int = None,
+        use_type: str = None,
+    ):
+        self.advanced_settings = advanced_settings
+        self.auto_parsing = auto_parsing
+        self.biz_id = biz_id
+        self.business_id = business_id
+        self.commit_status = commit_status
+        self.connection_name = connection_name
+        self.content = content
+        self.create_time = create_time
+        self.create_user = create_user
+        self.current_version = current_version
+        self.deleted_status = deleted_status
+        self.file_description = file_description
+        self.file_folder_id = file_folder_id
+        self.file_id = file_id
+        self.file_name = file_name
+        self.file_type = file_type
+        self.is_max_compute = is_max_compute
+        self.last_edit_time = last_edit_time
+        self.last_edit_user = last_edit_user
+        self.node_id = node_id
+        self.owner = owner
+        self.parent_id = parent_id
+        self.use_type = use_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advanced_settings is not None:
+            result['AdvancedSettings'] = self.advanced_settings
+        if self.auto_parsing is not None:
+            result['AutoParsing'] = self.auto_parsing
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+        if self.business_id is not None:
+            result['BusinessId'] = self.business_id
+        if self.commit_status is not None:
+            result['CommitStatus'] = self.commit_status
+        if self.connection_name is not None:
+            result['ConnectionName'] = self.connection_name
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
+        if self.current_version is not None:
+            result['CurrentVersion'] = self.current_version
+        if self.deleted_status is not None:
+            result['DeletedStatus'] = self.deleted_status
+        if self.file_description is not None:
+            result['FileDescription'] = self.file_description
+        if self.file_folder_id is not None:
+            result['FileFolderId'] = self.file_folder_id
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
+        if self.is_max_compute is not None:
+            result['IsMaxCompute'] = self.is_max_compute
+        if self.last_edit_time is not None:
+            result['LastEditTime'] = self.last_edit_time
+        if self.last_edit_user is not None:
+            result['LastEditUser'] = self.last_edit_user
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.parent_id is not None:
+            result['ParentId'] = self.parent_id
+        if self.use_type is not None:
+            result['UseType'] = self.use_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdvancedSettings') is not None:
+            self.advanced_settings = m.get('AdvancedSettings')
+        if m.get('AutoParsing') is not None:
+            self.auto_parsing = m.get('AutoParsing')
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+        if m.get('BusinessId') is not None:
+            self.business_id = m.get('BusinessId')
+        if m.get('CommitStatus') is not None:
+            self.commit_status = m.get('CommitStatus')
+        if m.get('ConnectionName') is not None:
+            self.connection_name = m.get('ConnectionName')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
+        if m.get('CurrentVersion') is not None:
+            self.current_version = m.get('CurrentVersion')
+        if m.get('DeletedStatus') is not None:
+            self.deleted_status = m.get('DeletedStatus')
+        if m.get('FileDescription') is not None:
+            self.file_description = m.get('FileDescription')
+        if m.get('FileFolderId') is not None:
+            self.file_folder_id = m.get('FileFolderId')
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
+        if m.get('IsMaxCompute') is not None:
+            self.is_max_compute = m.get('IsMaxCompute')
+        if m.get('LastEditTime') is not None:
+            self.last_edit_time = m.get('LastEditTime')
+        if m.get('LastEditUser') is not None:
+            self.last_edit_user = m.get('LastEditUser')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('ParentId') is not None:
+            self.parent_id = m.get('ParentId')
+        if m.get('UseType') is not None:
+            self.use_type = m.get('UseType')
+        return self
+
+
+class GetFileResponseBodyDataNodeConfigurationInputList(TeaModel):
+    def __init__(
+        self,
+        input: str = None,
+        parse_type: str = None,
+    ):
+        self.input = input
+        self.parse_type = parse_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input is not None:
+            result['Input'] = self.input
+        if self.parse_type is not None:
+            result['ParseType'] = self.parse_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Input') is not None:
+            self.input = m.get('Input')
+        if m.get('ParseType') is not None:
+            self.parse_type = m.get('ParseType')
+        return self
+
+
+class GetFileResponseBodyDataNodeConfigurationInputParameters(TeaModel):
+    def __init__(
+        self,
+        parameter_name: str = None,
+        value_source: str = None,
+    ):
+        self.parameter_name = parameter_name
+        self.value_source = value_source
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.parameter_name is not None:
+            result['ParameterName'] = self.parameter_name
+        if self.value_source is not None:
+            result['ValueSource'] = self.value_source
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ParameterName') is not None:
+            self.parameter_name = m.get('ParameterName')
+        if m.get('ValueSource') is not None:
+            self.value_source = m.get('ValueSource')
+        return self
+
+
+class GetFileResponseBodyDataNodeConfigurationOutputList(TeaModel):
+    def __init__(
+        self,
+        output: str = None,
+        ref_table_name: str = None,
+    ):
+        self.output = output
+        self.ref_table_name = ref_table_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.output is not None:
+            result['Output'] = self.output
+        if self.ref_table_name is not None:
+            result['RefTableName'] = self.ref_table_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Output') is not None:
+            self.output = m.get('Output')
+        if m.get('RefTableName') is not None:
+            self.ref_table_name = m.get('RefTableName')
+        return self
+
+
+class GetFileResponseBodyDataNodeConfigurationOutputParameters(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        parameter_name: str = None,
+        type: str = None,
+        value: str = None,
+    ):
+        self.description = description
+        self.parameter_name = parameter_name
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.parameter_name is not None:
+            result['ParameterName'] = self.parameter_name
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ParameterName') is not None:
+            self.parameter_name = m.get('ParameterName')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetFileResponseBodyDataNodeConfiguration(TeaModel):
+    def __init__(
+        self,
+        apply_schedule_immediately: str = None,
+        auto_rerun_interval_millis: int = None,
+        auto_rerun_times: int = None,
+        cron_express: str = None,
+        cycle_type: str = None,
+        dependent_node_id_list: str = None,
+        dependent_type: str = None,
+        end_effect_date: int = None,
+        ignore_parent_skip_running_property: str = None,
+        image_id: str = None,
+        input_list: List[GetFileResponseBodyDataNodeConfigurationInputList] = None,
+        input_parameters: List[GetFileResponseBodyDataNodeConfigurationInputParameters] = None,
+        output_list: List[GetFileResponseBodyDataNodeConfigurationOutputList] = None,
+        output_parameters: List[GetFileResponseBodyDataNodeConfigurationOutputParameters] = None,
+        para_value: str = None,
+        rerun_mode: str = None,
+        resource_group_id: int = None,
+        scheduler_type: str = None,
+        start_effect_date: int = None,
+        start_immediately: bool = None,
+        stop: bool = None,
+        timeout: int = None,
+    ):
+        self.apply_schedule_immediately = apply_schedule_immediately
+        self.auto_rerun_interval_millis = auto_rerun_interval_millis
+        self.auto_rerun_times = auto_rerun_times
+        self.cron_express = cron_express
+        self.cycle_type = cycle_type
+        self.dependent_node_id_list = dependent_node_id_list
+        self.dependent_type = dependent_type
+        self.end_effect_date = end_effect_date
+        self.ignore_parent_skip_running_property = ignore_parent_skip_running_property
+        self.image_id = image_id
+        self.input_list = input_list
+        self.input_parameters = input_parameters
+        self.output_list = output_list
+        self.output_parameters = output_parameters
+        self.para_value = para_value
+        self.rerun_mode = rerun_mode
+        self.resource_group_id = resource_group_id
+        self.scheduler_type = scheduler_type
+        self.start_effect_date = start_effect_date
+        self.start_immediately = start_immediately
+        self.stop = stop
+        self.timeout = timeout
+
+    def validate(self):
+        if self.input_list:
+            for k in self.input_list:
+                if k:
+                    k.validate()
+        if self.input_parameters:
+            for k in self.input_parameters:
+                if k:
+                    k.validate()
+        if self.output_list:
+            for k in self.output_list:
+                if k:
+                    k.validate()
+        if self.output_parameters:
+            for k in self.output_parameters:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.apply_schedule_immediately is not None:
+            result['ApplyScheduleImmediately'] = self.apply_schedule_immediately
+        if self.auto_rerun_interval_millis is not None:
+            result['AutoRerunIntervalMillis'] = self.auto_rerun_interval_millis
+        if self.auto_rerun_times is not None:
+            result['AutoRerunTimes'] = self.auto_rerun_times
+        if self.cron_express is not None:
+            result['CronExpress'] = self.cron_express
+        if self.cycle_type is not None:
+            result['CycleType'] = self.cycle_type
+        if self.dependent_node_id_list is not None:
+            result['DependentNodeIdList'] = self.dependent_node_id_list
+        if self.dependent_type is not None:
+            result['DependentType'] = self.dependent_type
+        if self.end_effect_date is not None:
+            result['EndEffectDate'] = self.end_effect_date
+        if self.ignore_parent_skip_running_property is not None:
+            result['IgnoreParentSkipRunningProperty'] = self.ignore_parent_skip_running_property
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        result['InputList'] = []
+        if self.input_list is not None:
+            for k in self.input_list:
+                result['InputList'].append(k.to_map() if k else None)
+        result['InputParameters'] = []
+        if self.input_parameters is not None:
+            for k in self.input_parameters:
+                result['InputParameters'].append(k.to_map() if k else None)
+        result['OutputList'] = []
+        if self.output_list is not None:
+            for k in self.output_list:
+                result['OutputList'].append(k.to_map() if k else None)
+        result['OutputParameters'] = []
+        if self.output_parameters is not None:
+            for k in self.output_parameters:
+                result['OutputParameters'].append(k.to_map() if k else None)
+        if self.para_value is not None:
+            result['ParaValue'] = self.para_value
+        if self.rerun_mode is not None:
+            result['RerunMode'] = self.rerun_mode
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.scheduler_type is not None:
+            result['SchedulerType'] = self.scheduler_type
+        if self.start_effect_date is not None:
+            result['StartEffectDate'] = self.start_effect_date
+        if self.start_immediately is not None:
+            result['StartImmediately'] = self.start_immediately
+        if self.stop is not None:
+            result['Stop'] = self.stop
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplyScheduleImmediately') is not None:
+            self.apply_schedule_immediately = m.get('ApplyScheduleImmediately')
+        if m.get('AutoRerunIntervalMillis') is not None:
+            self.auto_rerun_interval_millis = m.get('AutoRerunIntervalMillis')
+        if m.get('AutoRerunTimes') is not None:
+            self.auto_rerun_times = m.get('AutoRerunTimes')
+        if m.get('CronExpress') is not None:
+            self.cron_express = m.get('CronExpress')
+        if m.get('CycleType') is not None:
+            self.cycle_type = m.get('CycleType')
+        if m.get('DependentNodeIdList') is not None:
+            self.dependent_node_id_list = m.get('DependentNodeIdList')
+        if m.get('DependentType') is not None:
+            self.dependent_type = m.get('DependentType')
+        if m.get('EndEffectDate') is not None:
+            self.end_effect_date = m.get('EndEffectDate')
+        if m.get('IgnoreParentSkipRunningProperty') is not None:
+            self.ignore_parent_skip_running_property = m.get('IgnoreParentSkipRunningProperty')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        self.input_list = []
+        if m.get('InputList') is not None:
+            for k in m.get('InputList'):
+                temp_model = GetFileResponseBodyDataNodeConfigurationInputList()
+                self.input_list.append(temp_model.from_map(k))
+        self.input_parameters = []
+        if m.get('InputParameters') is not None:
+            for k in m.get('InputParameters'):
+                temp_model = GetFileResponseBodyDataNodeConfigurationInputParameters()
+                self.input_parameters.append(temp_model.from_map(k))
+        self.output_list = []
+        if m.get('OutputList') is not None:
+            for k in m.get('OutputList'):
+                temp_model = GetFileResponseBodyDataNodeConfigurationOutputList()
+                self.output_list.append(temp_model.from_map(k))
+        self.output_parameters = []
+        if m.get('OutputParameters') is not None:
+            for k in m.get('OutputParameters'):
+                temp_model = GetFileResponseBodyDataNodeConfigurationOutputParameters()
+                self.output_parameters.append(temp_model.from_map(k))
+        if m.get('ParaValue') is not None:
+            self.para_value = m.get('ParaValue')
+        if m.get('RerunMode') is not None:
+            self.rerun_mode = m.get('RerunMode')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SchedulerType') is not None:
+            self.scheduler_type = m.get('SchedulerType')
+        if m.get('StartEffectDate') is not None:
+            self.start_effect_date = m.get('StartEffectDate')
+        if m.get('StartImmediately') is not None:
+            self.start_immediately = m.get('StartImmediately')
+        if m.get('Stop') is not None:
+            self.stop = m.get('Stop')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        return self
+
+
+class GetFileResponseBodyDataResourceDownloadLink(TeaModel):
+    def __init__(
+        self,
+        download_link: str = None,
+    ):
+        self.download_link = download_link
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.download_link is not None:
+            result['downloadLink'] = self.download_link
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('downloadLink') is not None:
+            self.download_link = m.get('downloadLink')
+        return self
+
+
+class GetFileResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        file: GetFileResponseBodyDataFile = None,
+        node_configuration: GetFileResponseBodyDataNodeConfiguration = None,
+        resource_download_link: GetFileResponseBodyDataResourceDownloadLink = None,
+    ):
+        self.file = file
+        self.node_configuration = node_configuration
+        self.resource_download_link = resource_download_link
+
+    def validate(self):
+        if self.file:
+            self.file.validate()
+        if self.node_configuration:
+            self.node_configuration.validate()
+        if self.resource_download_link:
+            self.resource_download_link.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file is not None:
+            result['File'] = self.file.to_map()
+        if self.node_configuration is not None:
+            result['NodeConfiguration'] = self.node_configuration.to_map()
+        if self.resource_download_link is not None:
+            result['ResourceDownloadLink'] = self.resource_download_link.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('File') is not None:
+            temp_model = GetFileResponseBodyDataFile()
+            self.file = temp_model.from_map(m['File'])
+        if m.get('NodeConfiguration') is not None:
+            temp_model = GetFileResponseBodyDataNodeConfiguration()
+            self.node_configuration = temp_model.from_map(m['NodeConfiguration'])
+        if m.get('ResourceDownloadLink') is not None:
+            temp_model = GetFileResponseBodyDataResourceDownloadLink()
+            self.resource_download_link = temp_model.from_map(m['ResourceDownloadLink'])
+        return self
+
+
+class GetFileResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetFileResponseBodyData = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = GetFileResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetFileResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetFileResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetFileResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetFileVersionRequest(TeaModel):
+    def __init__(
+        self,
+        file_id: int = None,
+        file_version: int = None,
+        project_id: int = None,
+        project_identifier: str = None,
+    ):
+        # This parameter is required.
+        self.file_id = file_id
+        # This parameter is required.
+        self.file_version = file_version
+        self.project_id = project_id
+        self.project_identifier = project_identifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
+        if self.file_version is not None:
+            result['FileVersion'] = self.file_version
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.project_identifier is not None:
+            result['ProjectIdentifier'] = self.project_identifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
+        if m.get('FileVersion') is not None:
+            self.file_version = m.get('FileVersion')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ProjectIdentifier') is not None:
+            self.project_identifier = m.get('ProjectIdentifier')
+        return self
+
+
+class GetFileVersionResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        change_type: str = None,
+        comment: str = None,
+        commit_time: int = None,
+        commit_user: str = None,
+        file_content: str = None,
+        file_name: str = None,
+        file_property_content: str = None,
+        file_version: int = None,
+        is_current_prod: bool = None,
+        node_content: str = None,
+        node_id: int = None,
+        status: str = None,
+        use_type: str = None,
+    ):
+        self.change_type = change_type
+        self.comment = comment
+        self.commit_time = commit_time
+        self.commit_user = commit_user
+        self.file_content = file_content
+        self.file_name = file_name
+        self.file_property_content = file_property_content
+        self.file_version = file_version
+        self.is_current_prod = is_current_prod
+        self.node_content = node_content
+        self.node_id = node_id
+        self.status = status
+        self.use_type = use_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.change_type is not None:
+            result['ChangeType'] = self.change_type
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.commit_time is not None:
+            result['CommitTime'] = self.commit_time
+        if self.commit_user is not None:
+            result['CommitUser'] = self.commit_user
+        if self.file_content is not None:
+            result['FileContent'] = self.file_content
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_property_content is not None:
+            result['FilePropertyContent'] = self.file_property_content
+        if self.file_version is not None:
+            result['FileVersion'] = self.file_version
+        if self.is_current_prod is not None:
+            result['IsCurrentProd'] = self.is_current_prod
+        if self.node_content is not None:
+            result['NodeContent'] = self.node_content
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.use_type is not None:
+            result['UseType'] = self.use_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChangeType') is not None:
+            self.change_type = m.get('ChangeType')
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('CommitTime') is not None:
+            self.commit_time = m.get('CommitTime')
+        if m.get('CommitUser') is not None:
+            self.commit_user = m.get('CommitUser')
+        if m.get('FileContent') is not None:
+            self.file_content = m.get('FileContent')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FilePropertyContent') is not None:
+            self.file_property_content = m.get('FilePropertyContent')
+        if m.get('FileVersion') is not None:
+            self.file_version = m.get('FileVersion')
+        if m.get('IsCurrentProd') is not None:
+            self.is_current_prod = m.get('IsCurrentProd')
+        if m.get('NodeContent') is not None:
+            self.node_content = m.get('NodeContent')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UseType') is not None:
+            self.use_type = m.get('UseType')
+        return self
+
+
+class GetFileVersionResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetFileVersionResponseBodyData = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = GetFileVersionResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetFileVersionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetFileVersionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetFileVersionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetFolderRequest(TeaModel):
+    def __init__(
+        self,
+        folder_id: str = None,
+        folder_path: str = None,
+        project_id: int = None,
+        project_identifier: str = None,
+    ):
+        self.folder_id = folder_id
+        self.folder_path = folder_path
+        self.project_id = project_id
+        self.project_identifier = project_identifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.folder_id is not None:
+            result['FolderId'] = self.folder_id
+        if self.folder_path is not None:
+            result['FolderPath'] = self.folder_path
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.project_identifier is not None:
+            result['ProjectIdentifier'] = self.project_identifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FolderId') is not None:
+            self.folder_id = m.get('FolderId')
+        if m.get('FolderPath') is not None:
+            self.folder_path = m.get('FolderPath')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ProjectIdentifier') is not None:
+            self.project_identifier = m.get('ProjectIdentifier')
+        return self
+
+
+class GetFolderResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        folder_id: str = None,
+        folder_path: str = None,
+    ):
+        self.folder_id = folder_id
+        self.folder_path = folder_path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.folder_id is not None:
+            result['FolderId'] = self.folder_id
+        if self.folder_path is not None:
+            result['FolderPath'] = self.folder_path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FolderId') is not None:
+            self.folder_id = m.get('FolderId')
+        if m.get('FolderPath') is not None:
+            self.folder_path = m.get('FolderPath')
+        return self
+
+
+class GetFolderResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetFolderResponseBodyData = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = GetFolderResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetFolderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetFolderResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetFolderResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetFunctionRequest(TeaModel):
     def __init__(
         self,
@@ -21629,6 +25053,752 @@ class GetFunctionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetFunctionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetIDEEventDetailRequest(TeaModel):
+    def __init__(
+        self,
+        message_id: str = None,
+        project_id: int = None,
+    ):
+        # This parameter is required.
+        self.message_id = message_id
+        # This parameter is required.
+        self.project_id = project_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message_id is not None:
+            result['MessageId'] = self.message_id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MessageId') is not None:
+            self.message_id = m.get('MessageId')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class GetIDEEventDetailResponseBodyEventDetailCommittedFileFilePropertyContent(TeaModel):
+    def __init__(
+        self,
+        business_id: int = None,
+        current_version: int = None,
+        data_source_name: str = None,
+        folder_id: str = None,
+        owner: str = None,
+        parent_file_id: int = None,
+    ):
+        self.business_id = business_id
+        self.current_version = current_version
+        self.data_source_name = data_source_name
+        self.folder_id = folder_id
+        self.owner = owner
+        self.parent_file_id = parent_file_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_id is not None:
+            result['BusinessId'] = self.business_id
+        if self.current_version is not None:
+            result['CurrentVersion'] = self.current_version
+        if self.data_source_name is not None:
+            result['DataSourceName'] = self.data_source_name
+        if self.folder_id is not None:
+            result['FolderId'] = self.folder_id
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.parent_file_id is not None:
+            result['ParentFileId'] = self.parent_file_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BusinessId') is not None:
+            self.business_id = m.get('BusinessId')
+        if m.get('CurrentVersion') is not None:
+            self.current_version = m.get('CurrentVersion')
+        if m.get('DataSourceName') is not None:
+            self.data_source_name = m.get('DataSourceName')
+        if m.get('FolderId') is not None:
+            self.folder_id = m.get('FolderId')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('ParentFileId') is not None:
+            self.parent_file_id = m.get('ParentFileId')
+        return self
+
+
+class GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfigurationInputList(TeaModel):
+    def __init__(
+        self,
+        input: str = None,
+        parse_type: str = None,
+    ):
+        self.input = input
+        self.parse_type = parse_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input is not None:
+            result['Input'] = self.input
+        if self.parse_type is not None:
+            result['ParseType'] = self.parse_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Input') is not None:
+            self.input = m.get('Input')
+        if m.get('ParseType') is not None:
+            self.parse_type = m.get('ParseType')
+        return self
+
+
+class GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfigurationOutputList(TeaModel):
+    def __init__(
+        self,
+        output: str = None,
+        ref_table_name: str = None,
+    ):
+        self.output = output
+        self.ref_table_name = ref_table_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.output is not None:
+            result['Output'] = self.output
+        if self.ref_table_name is not None:
+            result['RefTableName'] = self.ref_table_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Output') is not None:
+            self.output = m.get('Output')
+        if m.get('RefTableName') is not None:
+            self.ref_table_name = m.get('RefTableName')
+        return self
+
+
+class GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration(TeaModel):
+    def __init__(
+        self,
+        auto_rerun_interval_millis: int = None,
+        auto_rerun_times: int = None,
+        cron_express: str = None,
+        cycle_type: str = None,
+        dependent_node_id_list: str = None,
+        dependent_type: str = None,
+        input_list: List[GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfigurationInputList] = None,
+        output_list: List[GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfigurationOutputList] = None,
+        para_value: str = None,
+        rerun_mode: str = None,
+        resource_group_id: int = None,
+        scheduler_type: str = None,
+    ):
+        self.auto_rerun_interval_millis = auto_rerun_interval_millis
+        self.auto_rerun_times = auto_rerun_times
+        self.cron_express = cron_express
+        self.cycle_type = cycle_type
+        self.dependent_node_id_list = dependent_node_id_list
+        self.dependent_type = dependent_type
+        self.input_list = input_list
+        self.output_list = output_list
+        self.para_value = para_value
+        self.rerun_mode = rerun_mode
+        self.resource_group_id = resource_group_id
+        self.scheduler_type = scheduler_type
+
+    def validate(self):
+        if self.input_list:
+            for k in self.input_list:
+                if k:
+                    k.validate()
+        if self.output_list:
+            for k in self.output_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_rerun_interval_millis is not None:
+            result['AutoRerunIntervalMillis'] = self.auto_rerun_interval_millis
+        if self.auto_rerun_times is not None:
+            result['AutoRerunTimes'] = self.auto_rerun_times
+        if self.cron_express is not None:
+            result['CronExpress'] = self.cron_express
+        if self.cycle_type is not None:
+            result['CycleType'] = self.cycle_type
+        if self.dependent_node_id_list is not None:
+            result['DependentNodeIdList'] = self.dependent_node_id_list
+        if self.dependent_type is not None:
+            result['DependentType'] = self.dependent_type
+        result['InputList'] = []
+        if self.input_list is not None:
+            for k in self.input_list:
+                result['InputList'].append(k.to_map() if k else None)
+        result['OutputList'] = []
+        if self.output_list is not None:
+            for k in self.output_list:
+                result['OutputList'].append(k.to_map() if k else None)
+        if self.para_value is not None:
+            result['ParaValue'] = self.para_value
+        if self.rerun_mode is not None:
+            result['RerunMode'] = self.rerun_mode
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.scheduler_type is not None:
+            result['SchedulerType'] = self.scheduler_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoRerunIntervalMillis') is not None:
+            self.auto_rerun_interval_millis = m.get('AutoRerunIntervalMillis')
+        if m.get('AutoRerunTimes') is not None:
+            self.auto_rerun_times = m.get('AutoRerunTimes')
+        if m.get('CronExpress') is not None:
+            self.cron_express = m.get('CronExpress')
+        if m.get('CycleType') is not None:
+            self.cycle_type = m.get('CycleType')
+        if m.get('DependentNodeIdList') is not None:
+            self.dependent_node_id_list = m.get('DependentNodeIdList')
+        if m.get('DependentType') is not None:
+            self.dependent_type = m.get('DependentType')
+        self.input_list = []
+        if m.get('InputList') is not None:
+            for k in m.get('InputList'):
+                temp_model = GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfigurationInputList()
+                self.input_list.append(temp_model.from_map(k))
+        self.output_list = []
+        if m.get('OutputList') is not None:
+            for k in m.get('OutputList'):
+                temp_model = GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfigurationOutputList()
+                self.output_list.append(temp_model.from_map(k))
+        if m.get('ParaValue') is not None:
+            self.para_value = m.get('ParaValue')
+        if m.get('RerunMode') is not None:
+            self.rerun_mode = m.get('RerunMode')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SchedulerType') is not None:
+            self.scheduler_type = m.get('SchedulerType')
+        return self
+
+
+class GetIDEEventDetailResponseBodyEventDetailCommittedFile(TeaModel):
+    def __init__(
+        self,
+        change_type: str = None,
+        comment: str = None,
+        committor: str = None,
+        content: str = None,
+        file_id: int = None,
+        file_name: str = None,
+        file_property_content: GetIDEEventDetailResponseBodyEventDetailCommittedFileFilePropertyContent = None,
+        file_type: int = None,
+        node_configuration: GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration = None,
+        node_id: int = None,
+        use_type: str = None,
+    ):
+        self.change_type = change_type
+        self.comment = comment
+        self.committor = committor
+        self.content = content
+        self.file_id = file_id
+        self.file_name = file_name
+        self.file_property_content = file_property_content
+        self.file_type = file_type
+        self.node_configuration = node_configuration
+        self.node_id = node_id
+        self.use_type = use_type
+
+    def validate(self):
+        if self.file_property_content:
+            self.file_property_content.validate()
+        if self.node_configuration:
+            self.node_configuration.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.change_type is not None:
+            result['ChangeType'] = self.change_type
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.committor is not None:
+            result['Committor'] = self.committor
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_property_content is not None:
+            result['FilePropertyContent'] = self.file_property_content.to_map()
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
+        if self.node_configuration is not None:
+            result['NodeConfiguration'] = self.node_configuration.to_map()
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.use_type is not None:
+            result['UseType'] = self.use_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChangeType') is not None:
+            self.change_type = m.get('ChangeType')
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('Committor') is not None:
+            self.committor = m.get('Committor')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FilePropertyContent') is not None:
+            temp_model = GetIDEEventDetailResponseBodyEventDetailCommittedFileFilePropertyContent()
+            self.file_property_content = temp_model.from_map(m['FilePropertyContent'])
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
+        if m.get('NodeConfiguration') is not None:
+            temp_model = GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration()
+            self.node_configuration = temp_model.from_map(m['NodeConfiguration'])
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('UseType') is not None:
+            self.use_type = m.get('UseType')
+        return self
+
+
+class GetIDEEventDetailResponseBodyEventDetailDeletedFile(TeaModel):
+    def __init__(
+        self,
+        business_id: int = None,
+        content: str = None,
+        current_version: int = None,
+        data_source_name: str = None,
+        file_id: int = None,
+        file_name: str = None,
+        file_type: int = None,
+        folder_id: str = None,
+        node_id: int = None,
+        owner: str = None,
+        parent_file_id: int = None,
+        use_type: str = None,
+    ):
+        self.business_id = business_id
+        self.content = content
+        self.current_version = current_version
+        self.data_source_name = data_source_name
+        self.file_id = file_id
+        self.file_name = file_name
+        self.file_type = file_type
+        self.folder_id = folder_id
+        self.node_id = node_id
+        self.owner = owner
+        self.parent_file_id = parent_file_id
+        self.use_type = use_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_id is not None:
+            result['BusinessId'] = self.business_id
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.current_version is not None:
+            result['CurrentVersion'] = self.current_version
+        if self.data_source_name is not None:
+            result['DataSourceName'] = self.data_source_name
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
+        if self.folder_id is not None:
+            result['FolderId'] = self.folder_id
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.parent_file_id is not None:
+            result['ParentFileId'] = self.parent_file_id
+        if self.use_type is not None:
+            result['UseType'] = self.use_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BusinessId') is not None:
+            self.business_id = m.get('BusinessId')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('CurrentVersion') is not None:
+            self.current_version = m.get('CurrentVersion')
+        if m.get('DataSourceName') is not None:
+            self.data_source_name = m.get('DataSourceName')
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
+        if m.get('FolderId') is not None:
+            self.folder_id = m.get('FolderId')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('ParentFileId') is not None:
+            self.parent_file_id = m.get('ParentFileId')
+        if m.get('UseType') is not None:
+            self.use_type = m.get('UseType')
+        return self
+
+
+class GetIDEEventDetailResponseBodyEventDetailFileExecutionCommand(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        data_source_name: str = None,
+        file_id: int = None,
+        file_type: int = None,
+    ):
+        self.content = content
+        self.data_source_name = data_source_name
+        self.file_id = file_id
+        self.file_type = file_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.data_source_name is not None:
+            result['DataSourceName'] = self.data_source_name
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('DataSourceName') is not None:
+            self.data_source_name = m.get('DataSourceName')
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
+        return self
+
+
+class GetIDEEventDetailResponseBodyEventDetailTableModelColumns(TeaModel):
+    def __init__(
+        self,
+        column_name: str = None,
+        column_type: str = None,
+        comment: str = None,
+        is_partition_column: bool = None,
+    ):
+        self.column_name = column_name
+        self.column_type = column_type
+        self.comment = comment
+        self.is_partition_column = is_partition_column
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.column_name is not None:
+            result['ColumnName'] = self.column_name
+        if self.column_type is not None:
+            result['ColumnType'] = self.column_type
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.is_partition_column is not None:
+            result['IsPartitionColumn'] = self.is_partition_column
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ColumnName') is not None:
+            self.column_name = m.get('ColumnName')
+        if m.get('ColumnType') is not None:
+            self.column_type = m.get('ColumnType')
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('IsPartitionColumn') is not None:
+            self.is_partition_column = m.get('IsPartitionColumn')
+        return self
+
+
+class GetIDEEventDetailResponseBodyEventDetailTableModel(TeaModel):
+    def __init__(
+        self,
+        columns: List[GetIDEEventDetailResponseBodyEventDetailTableModelColumns] = None,
+        comment: str = None,
+        data_source_name: str = None,
+        env: str = None,
+        life_cycle: int = None,
+        location: str = None,
+        table_name: str = None,
+    ):
+        self.columns = columns
+        self.comment = comment
+        self.data_source_name = data_source_name
+        self.env = env
+        self.life_cycle = life_cycle
+        self.location = location
+        self.table_name = table_name
+
+    def validate(self):
+        if self.columns:
+            for k in self.columns:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Columns'] = []
+        if self.columns is not None:
+            for k in self.columns:
+                result['Columns'].append(k.to_map() if k else None)
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.data_source_name is not None:
+            result['DataSourceName'] = self.data_source_name
+        if self.env is not None:
+            result['Env'] = self.env
+        if self.life_cycle is not None:
+            result['LifeCycle'] = self.life_cycle
+        if self.location is not None:
+            result['Location'] = self.location
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.columns = []
+        if m.get('Columns') is not None:
+            for k in m.get('Columns'):
+                temp_model = GetIDEEventDetailResponseBodyEventDetailTableModelColumns()
+                self.columns.append(temp_model.from_map(k))
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('DataSourceName') is not None:
+            self.data_source_name = m.get('DataSourceName')
+        if m.get('Env') is not None:
+            self.env = m.get('Env')
+        if m.get('LifeCycle') is not None:
+            self.life_cycle = m.get('LifeCycle')
+        if m.get('Location') is not None:
+            self.location = m.get('Location')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        return self
+
+
+class GetIDEEventDetailResponseBodyEventDetail(TeaModel):
+    def __init__(
+        self,
+        committed_file: GetIDEEventDetailResponseBodyEventDetailCommittedFile = None,
+        deleted_file: GetIDEEventDetailResponseBodyEventDetailDeletedFile = None,
+        file_execution_command: GetIDEEventDetailResponseBodyEventDetailFileExecutionCommand = None,
+        table_model: GetIDEEventDetailResponseBodyEventDetailTableModel = None,
+    ):
+        self.committed_file = committed_file
+        self.deleted_file = deleted_file
+        self.file_execution_command = file_execution_command
+        self.table_model = table_model
+
+    def validate(self):
+        if self.committed_file:
+            self.committed_file.validate()
+        if self.deleted_file:
+            self.deleted_file.validate()
+        if self.file_execution_command:
+            self.file_execution_command.validate()
+        if self.table_model:
+            self.table_model.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.committed_file is not None:
+            result['CommittedFile'] = self.committed_file.to_map()
+        if self.deleted_file is not None:
+            result['DeletedFile'] = self.deleted_file.to_map()
+        if self.file_execution_command is not None:
+            result['FileExecutionCommand'] = self.file_execution_command.to_map()
+        if self.table_model is not None:
+            result['TableModel'] = self.table_model.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommittedFile') is not None:
+            temp_model = GetIDEEventDetailResponseBodyEventDetailCommittedFile()
+            self.committed_file = temp_model.from_map(m['CommittedFile'])
+        if m.get('DeletedFile') is not None:
+            temp_model = GetIDEEventDetailResponseBodyEventDetailDeletedFile()
+            self.deleted_file = temp_model.from_map(m['DeletedFile'])
+        if m.get('FileExecutionCommand') is not None:
+            temp_model = GetIDEEventDetailResponseBodyEventDetailFileExecutionCommand()
+            self.file_execution_command = temp_model.from_map(m['FileExecutionCommand'])
+        if m.get('TableModel') is not None:
+            temp_model = GetIDEEventDetailResponseBodyEventDetailTableModel()
+            self.table_model = temp_model.from_map(m['TableModel'])
+        return self
+
+
+class GetIDEEventDetailResponseBody(TeaModel):
+    def __init__(
+        self,
+        event_detail: GetIDEEventDetailResponseBodyEventDetail = None,
+        request_id: str = None,
+    ):
+        self.event_detail = event_detail
+        self.request_id = request_id
+
+    def validate(self):
+        if self.event_detail:
+            self.event_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_detail is not None:
+            result['EventDetail'] = self.event_detail.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventDetail') is not None:
+            temp_model = GetIDEEventDetailResponseBodyEventDetail()
+            self.event_detail = temp_model.from_map(m['EventDetail'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetIDEEventDetailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetIDEEventDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetIDEEventDetailResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -29235,6 +33405,269 @@ class ListAlertRulesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListAlertRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListBusinessRequest(TeaModel):
+    def __init__(
+        self,
+        keyword: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        project_id: int = None,
+        project_identifier: str = None,
+    ):
+        self.keyword = keyword
+        # This parameter is required.
+        self.page_number = page_number
+        # This parameter is required.
+        self.page_size = page_size
+        self.project_id = project_id
+        self.project_identifier = project_identifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.project_identifier is not None:
+            result['ProjectIdentifier'] = self.project_identifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ProjectIdentifier') is not None:
+            self.project_identifier = m.get('ProjectIdentifier')
+        return self
+
+
+class ListBusinessResponseBodyDataBusiness(TeaModel):
+    def __init__(
+        self,
+        business_id: int = None,
+        business_name: str = None,
+        description: str = None,
+        owner: str = None,
+        project_id: int = None,
+        use_type: str = None,
+    ):
+        self.business_id = business_id
+        self.business_name = business_name
+        self.description = description
+        self.owner = owner
+        self.project_id = project_id
+        self.use_type = use_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_id is not None:
+            result['BusinessId'] = self.business_id
+        if self.business_name is not None:
+            result['BusinessName'] = self.business_name
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.use_type is not None:
+            result['UseType'] = self.use_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BusinessId') is not None:
+            self.business_id = m.get('BusinessId')
+        if m.get('BusinessName') is not None:
+            self.business_name = m.get('BusinessName')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('UseType') is not None:
+            self.use_type = m.get('UseType')
+        return self
+
+
+class ListBusinessResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        business: List[ListBusinessResponseBodyDataBusiness] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.business = business
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.business:
+            for k in self.business:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Business'] = []
+        if self.business is not None:
+            for k in self.business:
+                result['Business'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.business = []
+        if m.get('Business') is not None:
+            for k in m.get('Business'):
+                temp_model = ListBusinessResponseBodyDataBusiness()
+                self.business.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListBusinessResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ListBusinessResponseBodyData = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = ListBusinessResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListBusinessResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListBusinessResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListBusinessResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -36872,6 +41305,731 @@ class ListDatabasesResponse(TeaModel):
         return self
 
 
+class ListDeploymentPackageFilesRequest(TeaModel):
+    def __init__(
+        self,
+        business_id: int = None,
+        change_type: int = None,
+        commit_from: str = None,
+        commit_to: str = None,
+        commit_user_id: str = None,
+        file_ids: List[str] = None,
+        file_name: str = None,
+        file_type: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        project_id: int = None,
+        solution_id: int = None,
+    ):
+        self.business_id = business_id
+        self.change_type = change_type
+        self.commit_from = commit_from
+        self.commit_to = commit_to
+        self.commit_user_id = commit_user_id
+        self.file_ids = file_ids
+        self.file_name = file_name
+        self.file_type = file_type
+        self.page_number = page_number
+        self.page_size = page_size
+        # This parameter is required.
+        self.project_id = project_id
+        self.solution_id = solution_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_id is not None:
+            result['BusinessId'] = self.business_id
+        if self.change_type is not None:
+            result['ChangeType'] = self.change_type
+        if self.commit_from is not None:
+            result['CommitFrom'] = self.commit_from
+        if self.commit_to is not None:
+            result['CommitTo'] = self.commit_to
+        if self.commit_user_id is not None:
+            result['CommitUserId'] = self.commit_user_id
+        if self.file_ids is not None:
+            result['FileIds'] = self.file_ids
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.solution_id is not None:
+            result['SolutionId'] = self.solution_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BusinessId') is not None:
+            self.business_id = m.get('BusinessId')
+        if m.get('ChangeType') is not None:
+            self.change_type = m.get('ChangeType')
+        if m.get('CommitFrom') is not None:
+            self.commit_from = m.get('CommitFrom')
+        if m.get('CommitTo') is not None:
+            self.commit_to = m.get('CommitTo')
+        if m.get('CommitUserId') is not None:
+            self.commit_user_id = m.get('CommitUserId')
+        if m.get('FileIds') is not None:
+            self.file_ids = m.get('FileIds')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('SolutionId') is not None:
+            self.solution_id = m.get('SolutionId')
+        return self
+
+
+class ListDeploymentPackageFilesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        business_id: int = None,
+        change_type: int = None,
+        commit_from: str = None,
+        commit_to: str = None,
+        commit_user_id: str = None,
+        file_ids_shrink: str = None,
+        file_name: str = None,
+        file_type: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        project_id: int = None,
+        solution_id: int = None,
+    ):
+        self.business_id = business_id
+        self.change_type = change_type
+        self.commit_from = commit_from
+        self.commit_to = commit_to
+        self.commit_user_id = commit_user_id
+        self.file_ids_shrink = file_ids_shrink
+        self.file_name = file_name
+        self.file_type = file_type
+        self.page_number = page_number
+        self.page_size = page_size
+        # This parameter is required.
+        self.project_id = project_id
+        self.solution_id = solution_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_id is not None:
+            result['BusinessId'] = self.business_id
+        if self.change_type is not None:
+            result['ChangeType'] = self.change_type
+        if self.commit_from is not None:
+            result['CommitFrom'] = self.commit_from
+        if self.commit_to is not None:
+            result['CommitTo'] = self.commit_to
+        if self.commit_user_id is not None:
+            result['CommitUserId'] = self.commit_user_id
+        if self.file_ids_shrink is not None:
+            result['FileIds'] = self.file_ids_shrink
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.solution_id is not None:
+            result['SolutionId'] = self.solution_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BusinessId') is not None:
+            self.business_id = m.get('BusinessId')
+        if m.get('ChangeType') is not None:
+            self.change_type = m.get('ChangeType')
+        if m.get('CommitFrom') is not None:
+            self.commit_from = m.get('CommitFrom')
+        if m.get('CommitTo') is not None:
+            self.commit_to = m.get('CommitTo')
+        if m.get('CommitUserId') is not None:
+            self.commit_user_id = m.get('CommitUserId')
+        if m.get('FileIds') is not None:
+            self.file_ids_shrink = m.get('FileIds')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('SolutionId') is not None:
+            self.solution_id = m.get('SolutionId')
+        return self
+
+
+class ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles(TeaModel):
+    def __init__(
+        self,
+        change_type: int = None,
+        comment: str = None,
+        commit_time: str = None,
+        commit_user: str = None,
+        commit_user_name: str = None,
+        file_id: int = None,
+        file_name: str = None,
+        file_type: int = None,
+        file_version: int = None,
+        id: int = None,
+        is_same_as_production_version: bool = None,
+        node_configuration: str = None,
+        node_id: int = None,
+        project_id: int = None,
+        smoke_test_status: str = None,
+        status: int = None,
+        tenant_id: int = None,
+        use_type: str = None,
+    ):
+        self.change_type = change_type
+        self.comment = comment
+        self.commit_time = commit_time
+        self.commit_user = commit_user
+        self.commit_user_name = commit_user_name
+        self.file_id = file_id
+        self.file_name = file_name
+        self.file_type = file_type
+        self.file_version = file_version
+        self.id = id
+        self.is_same_as_production_version = is_same_as_production_version
+        self.node_configuration = node_configuration
+        self.node_id = node_id
+        self.project_id = project_id
+        self.smoke_test_status = smoke_test_status
+        self.status = status
+        self.tenant_id = tenant_id
+        self.use_type = use_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.change_type is not None:
+            result['ChangeType'] = self.change_type
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.commit_time is not None:
+            result['CommitTime'] = self.commit_time
+        if self.commit_user is not None:
+            result['CommitUser'] = self.commit_user
+        if self.commit_user_name is not None:
+            result['CommitUserName'] = self.commit_user_name
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
+        if self.file_version is not None:
+            result['FileVersion'] = self.file_version
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.is_same_as_production_version is not None:
+            result['IsSameAsProductionVersion'] = self.is_same_as_production_version
+        if self.node_configuration is not None:
+            result['NodeConfiguration'] = self.node_configuration
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.smoke_test_status is not None:
+            result['SmokeTestStatus'] = self.smoke_test_status
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.use_type is not None:
+            result['UseType'] = self.use_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChangeType') is not None:
+            self.change_type = m.get('ChangeType')
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('CommitTime') is not None:
+            self.commit_time = m.get('CommitTime')
+        if m.get('CommitUser') is not None:
+            self.commit_user = m.get('CommitUser')
+        if m.get('CommitUserName') is not None:
+            self.commit_user_name = m.get('CommitUserName')
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
+        if m.get('FileVersion') is not None:
+            self.file_version = m.get('FileVersion')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('IsSameAsProductionVersion') is not None:
+            self.is_same_as_production_version = m.get('IsSameAsProductionVersion')
+        if m.get('NodeConfiguration') is not None:
+            self.node_configuration = m.get('NodeConfiguration')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('SmokeTestStatus') is not None:
+            self.smoke_test_status = m.get('SmokeTestStatus')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('UseType') is not None:
+            self.use_type = m.get('UseType')
+        return self
+
+
+class ListDeploymentPackageFilesResponseBodyPagingInfo(TeaModel):
+    def __init__(
+        self,
+        deployment_package_files: List[ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.deployment_package_files = deployment_package_files
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.deployment_package_files:
+            for k in self.deployment_package_files:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DeploymentPackageFiles'] = []
+        if self.deployment_package_files is not None:
+            for k in self.deployment_package_files:
+                result['DeploymentPackageFiles'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.deployment_package_files = []
+        if m.get('DeploymentPackageFiles') is not None:
+            for k in m.get('DeploymentPackageFiles'):
+                temp_model = ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles()
+                self.deployment_package_files.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListDeploymentPackageFilesResponseBody(TeaModel):
+    def __init__(
+        self,
+        paging_info: ListDeploymentPackageFilesResponseBodyPagingInfo = None,
+        request_id: str = None,
+    ):
+        self.paging_info = paging_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.paging_info:
+            self.paging_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.paging_info is not None:
+            result['PagingInfo'] = self.paging_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PagingInfo') is not None:
+            temp_model = ListDeploymentPackageFilesResponseBodyPagingInfo()
+            self.paging_info = temp_model.from_map(m['PagingInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListDeploymentPackageFilesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDeploymentPackageFilesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDeploymentPackageFilesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDeploymentPackagesRequest(TeaModel):
+    def __init__(
+        self,
+        creator: str = None,
+        end_create_time: int = None,
+        end_execute_time: int = None,
+        executor: str = None,
+        keyword: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        project_id: int = None,
+        project_identifier: str = None,
+        status: int = None,
+    ):
+        self.creator = creator
+        self.end_create_time = end_create_time
+        self.end_execute_time = end_execute_time
+        self.executor = executor
+        self.keyword = keyword
+        self.page_number = page_number
+        self.page_size = page_size
+        self.project_id = project_id
+        self.project_identifier = project_identifier
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        if self.end_create_time is not None:
+            result['EndCreateTime'] = self.end_create_time
+        if self.end_execute_time is not None:
+            result['EndExecuteTime'] = self.end_execute_time
+        if self.executor is not None:
+            result['Executor'] = self.executor
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.project_identifier is not None:
+            result['ProjectIdentifier'] = self.project_identifier
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        if m.get('EndCreateTime') is not None:
+            self.end_create_time = m.get('EndCreateTime')
+        if m.get('EndExecuteTime') is not None:
+            self.end_execute_time = m.get('EndExecuteTime')
+        if m.get('Executor') is not None:
+            self.executor = m.get('Executor')
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ProjectIdentifier') is not None:
+            self.project_identifier = m.get('ProjectIdentifier')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListDeploymentPackagesResponseBodyDataDeployments(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        creator: str = None,
+        error_message: str = None,
+        execute_time: int = None,
+        executor: str = None,
+        id: int = None,
+        name: str = None,
+        status: int = None,
+    ):
+        self.create_time = create_time
+        self.creator = creator
+        self.error_message = error_message
+        self.execute_time = execute_time
+        self.executor = executor
+        self.id = id
+        self.name = name
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.execute_time is not None:
+            result['ExecuteTime'] = self.execute_time
+        if self.executor is not None:
+            result['Executor'] = self.executor
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('ExecuteTime') is not None:
+            self.execute_time = m.get('ExecuteTime')
+        if m.get('Executor') is not None:
+            self.executor = m.get('Executor')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListDeploymentPackagesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        deployments: List[ListDeploymentPackagesResponseBodyDataDeployments] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.deployments = deployments
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.deployments:
+            for k in self.deployments:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Deployments'] = []
+        if self.deployments is not None:
+            for k in self.deployments:
+                result['Deployments'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.deployments = []
+        if m.get('Deployments') is not None:
+            for k in m.get('Deployments'):
+                temp_model = ListDeploymentPackagesResponseBodyDataDeployments()
+                self.deployments.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListDeploymentPackagesResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ListDeploymentPackagesResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = ListDeploymentPackagesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListDeploymentPackagesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDeploymentPackagesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDeploymentPackagesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListDownstreamTaskInstancesRequest(TeaModel):
     def __init__(
         self,
@@ -39109,6 +44267,973 @@ class ListEntitiesInMetaCollectionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListEntitiesInMetaCollectionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListFileVersionsRequest(TeaModel):
+    def __init__(
+        self,
+        file_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        project_id: int = None,
+        project_identifier: str = None,
+    ):
+        # This parameter is required.
+        self.file_id = file_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.project_id = project_id
+        self.project_identifier = project_identifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.project_identifier is not None:
+            result['ProjectIdentifier'] = self.project_identifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ProjectIdentifier') is not None:
+            self.project_identifier = m.get('ProjectIdentifier')
+        return self
+
+
+class ListFileVersionsResponseBodyDataFileVersions(TeaModel):
+    def __init__(
+        self,
+        change_type: str = None,
+        comment: str = None,
+        commit_time: int = None,
+        commit_user: str = None,
+        file_content: str = None,
+        file_name: str = None,
+        file_property_content: str = None,
+        file_version: int = None,
+        is_current_prod: bool = None,
+        node_content: str = None,
+        node_id: int = None,
+        status: str = None,
+        use_type: str = None,
+    ):
+        self.change_type = change_type
+        self.comment = comment
+        self.commit_time = commit_time
+        self.commit_user = commit_user
+        self.file_content = file_content
+        self.file_name = file_name
+        self.file_property_content = file_property_content
+        self.file_version = file_version
+        self.is_current_prod = is_current_prod
+        self.node_content = node_content
+        self.node_id = node_id
+        self.status = status
+        self.use_type = use_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.change_type is not None:
+            result['ChangeType'] = self.change_type
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.commit_time is not None:
+            result['CommitTime'] = self.commit_time
+        if self.commit_user is not None:
+            result['CommitUser'] = self.commit_user
+        if self.file_content is not None:
+            result['FileContent'] = self.file_content
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_property_content is not None:
+            result['FilePropertyContent'] = self.file_property_content
+        if self.file_version is not None:
+            result['FileVersion'] = self.file_version
+        if self.is_current_prod is not None:
+            result['IsCurrentProd'] = self.is_current_prod
+        if self.node_content is not None:
+            result['NodeContent'] = self.node_content
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.use_type is not None:
+            result['UseType'] = self.use_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChangeType') is not None:
+            self.change_type = m.get('ChangeType')
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('CommitTime') is not None:
+            self.commit_time = m.get('CommitTime')
+        if m.get('CommitUser') is not None:
+            self.commit_user = m.get('CommitUser')
+        if m.get('FileContent') is not None:
+            self.file_content = m.get('FileContent')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FilePropertyContent') is not None:
+            self.file_property_content = m.get('FilePropertyContent')
+        if m.get('FileVersion') is not None:
+            self.file_version = m.get('FileVersion')
+        if m.get('IsCurrentProd') is not None:
+            self.is_current_prod = m.get('IsCurrentProd')
+        if m.get('NodeContent') is not None:
+            self.node_content = m.get('NodeContent')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UseType') is not None:
+            self.use_type = m.get('UseType')
+        return self
+
+
+class ListFileVersionsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        file_versions: List[ListFileVersionsResponseBodyDataFileVersions] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.file_versions = file_versions
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.file_versions:
+            for k in self.file_versions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['FileVersions'] = []
+        if self.file_versions is not None:
+            for k in self.file_versions:
+                result['FileVersions'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.file_versions = []
+        if m.get('FileVersions') is not None:
+            for k in m.get('FileVersions'):
+                temp_model = ListFileVersionsResponseBodyDataFileVersions()
+                self.file_versions.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListFileVersionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ListFileVersionsResponseBodyData = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = ListFileVersionsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListFileVersionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListFileVersionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListFileVersionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListFilesRequest(TeaModel):
+    def __init__(
+        self,
+        commit_status: int = None,
+        exact_file_name: str = None,
+        file_folder_path: str = None,
+        file_id_in: str = None,
+        file_types: str = None,
+        keyword: str = None,
+        last_edit_user: str = None,
+        need_absolute_folder_path: bool = None,
+        need_content: bool = None,
+        node_id: int = None,
+        owner: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        project_id: int = None,
+        project_identifier: str = None,
+        use_type: str = None,
+    ):
+        self.commit_status = commit_status
+        self.exact_file_name = exact_file_name
+        self.file_folder_path = file_folder_path
+        self.file_id_in = file_id_in
+        self.file_types = file_types
+        self.keyword = keyword
+        self.last_edit_user = last_edit_user
+        self.need_absolute_folder_path = need_absolute_folder_path
+        self.need_content = need_content
+        self.node_id = node_id
+        self.owner = owner
+        self.page_number = page_number
+        self.page_size = page_size
+        self.project_id = project_id
+        self.project_identifier = project_identifier
+        self.use_type = use_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.commit_status is not None:
+            result['CommitStatus'] = self.commit_status
+        if self.exact_file_name is not None:
+            result['ExactFileName'] = self.exact_file_name
+        if self.file_folder_path is not None:
+            result['FileFolderPath'] = self.file_folder_path
+        if self.file_id_in is not None:
+            result['FileIdIn'] = self.file_id_in
+        if self.file_types is not None:
+            result['FileTypes'] = self.file_types
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.last_edit_user is not None:
+            result['LastEditUser'] = self.last_edit_user
+        if self.need_absolute_folder_path is not None:
+            result['NeedAbsoluteFolderPath'] = self.need_absolute_folder_path
+        if self.need_content is not None:
+            result['NeedContent'] = self.need_content
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.project_identifier is not None:
+            result['ProjectIdentifier'] = self.project_identifier
+        if self.use_type is not None:
+            result['UseType'] = self.use_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommitStatus') is not None:
+            self.commit_status = m.get('CommitStatus')
+        if m.get('ExactFileName') is not None:
+            self.exact_file_name = m.get('ExactFileName')
+        if m.get('FileFolderPath') is not None:
+            self.file_folder_path = m.get('FileFolderPath')
+        if m.get('FileIdIn') is not None:
+            self.file_id_in = m.get('FileIdIn')
+        if m.get('FileTypes') is not None:
+            self.file_types = m.get('FileTypes')
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('LastEditUser') is not None:
+            self.last_edit_user = m.get('LastEditUser')
+        if m.get('NeedAbsoluteFolderPath') is not None:
+            self.need_absolute_folder_path = m.get('NeedAbsoluteFolderPath')
+        if m.get('NeedContent') is not None:
+            self.need_content = m.get('NeedContent')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ProjectIdentifier') is not None:
+            self.project_identifier = m.get('ProjectIdentifier')
+        if m.get('UseType') is not None:
+            self.use_type = m.get('UseType')
+        return self
+
+
+class ListFilesResponseBodyDataFiles(TeaModel):
+    def __init__(
+        self,
+        absolute_folder_path: str = None,
+        auto_parsing: bool = None,
+        biz_id: int = None,
+        business_id: int = None,
+        commit_status: int = None,
+        connection_name: str = None,
+        content: str = None,
+        create_time: int = None,
+        create_user: str = None,
+        current_version: int = None,
+        file_description: str = None,
+        file_folder_id: str = None,
+        file_id: int = None,
+        file_name: str = None,
+        file_type: int = None,
+        is_max_compute: bool = None,
+        last_edit_time: int = None,
+        last_edit_user: str = None,
+        node_id: int = None,
+        owner: str = None,
+        parent_id: int = None,
+        use_type: str = None,
+    ):
+        self.absolute_folder_path = absolute_folder_path
+        self.auto_parsing = auto_parsing
+        self.biz_id = biz_id
+        self.business_id = business_id
+        self.commit_status = commit_status
+        self.connection_name = connection_name
+        self.content = content
+        self.create_time = create_time
+        self.create_user = create_user
+        self.current_version = current_version
+        self.file_description = file_description
+        self.file_folder_id = file_folder_id
+        self.file_id = file_id
+        self.file_name = file_name
+        self.file_type = file_type
+        self.is_max_compute = is_max_compute
+        self.last_edit_time = last_edit_time
+        self.last_edit_user = last_edit_user
+        self.node_id = node_id
+        self.owner = owner
+        self.parent_id = parent_id
+        self.use_type = use_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.absolute_folder_path is not None:
+            result['AbsoluteFolderPath'] = self.absolute_folder_path
+        if self.auto_parsing is not None:
+            result['AutoParsing'] = self.auto_parsing
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+        if self.business_id is not None:
+            result['BusinessId'] = self.business_id
+        if self.commit_status is not None:
+            result['CommitStatus'] = self.commit_status
+        if self.connection_name is not None:
+            result['ConnectionName'] = self.connection_name
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
+        if self.current_version is not None:
+            result['CurrentVersion'] = self.current_version
+        if self.file_description is not None:
+            result['FileDescription'] = self.file_description
+        if self.file_folder_id is not None:
+            result['FileFolderId'] = self.file_folder_id
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
+        if self.is_max_compute is not None:
+            result['IsMaxCompute'] = self.is_max_compute
+        if self.last_edit_time is not None:
+            result['LastEditTime'] = self.last_edit_time
+        if self.last_edit_user is not None:
+            result['LastEditUser'] = self.last_edit_user
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.parent_id is not None:
+            result['ParentId'] = self.parent_id
+        if self.use_type is not None:
+            result['UseType'] = self.use_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AbsoluteFolderPath') is not None:
+            self.absolute_folder_path = m.get('AbsoluteFolderPath')
+        if m.get('AutoParsing') is not None:
+            self.auto_parsing = m.get('AutoParsing')
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+        if m.get('BusinessId') is not None:
+            self.business_id = m.get('BusinessId')
+        if m.get('CommitStatus') is not None:
+            self.commit_status = m.get('CommitStatus')
+        if m.get('ConnectionName') is not None:
+            self.connection_name = m.get('ConnectionName')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
+        if m.get('CurrentVersion') is not None:
+            self.current_version = m.get('CurrentVersion')
+        if m.get('FileDescription') is not None:
+            self.file_description = m.get('FileDescription')
+        if m.get('FileFolderId') is not None:
+            self.file_folder_id = m.get('FileFolderId')
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
+        if m.get('IsMaxCompute') is not None:
+            self.is_max_compute = m.get('IsMaxCompute')
+        if m.get('LastEditTime') is not None:
+            self.last_edit_time = m.get('LastEditTime')
+        if m.get('LastEditUser') is not None:
+            self.last_edit_user = m.get('LastEditUser')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('ParentId') is not None:
+            self.parent_id = m.get('ParentId')
+        if m.get('UseType') is not None:
+            self.use_type = m.get('UseType')
+        return self
+
+
+class ListFilesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        files: List[ListFilesResponseBodyDataFiles] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.files = files
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.files:
+            for k in self.files:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Files'] = []
+        if self.files is not None:
+            for k in self.files:
+                result['Files'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.files = []
+        if m.get('Files') is not None:
+            for k in m.get('Files'):
+                temp_model = ListFilesResponseBodyDataFiles()
+                self.files.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListFilesResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ListFilesResponseBodyData = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = ListFilesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListFilesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListFilesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListFilesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListFoldersRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        parent_folder_path: str = None,
+        project_id: int = None,
+        project_identifier: str = None,
+    ):
+        # This parameter is required.
+        self.page_number = page_number
+        # This parameter is required.
+        self.page_size = page_size
+        # This parameter is required.
+        self.parent_folder_path = parent_folder_path
+        self.project_id = project_id
+        self.project_identifier = project_identifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.parent_folder_path is not None:
+            result['ParentFolderPath'] = self.parent_folder_path
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.project_identifier is not None:
+            result['ProjectIdentifier'] = self.project_identifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ParentFolderPath') is not None:
+            self.parent_folder_path = m.get('ParentFolderPath')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ProjectIdentifier') is not None:
+            self.project_identifier = m.get('ProjectIdentifier')
+        return self
+
+
+class ListFoldersResponseBodyDataFolders(TeaModel):
+    def __init__(
+        self,
+        folder_id: str = None,
+        folder_path: str = None,
+    ):
+        self.folder_id = folder_id
+        self.folder_path = folder_path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.folder_id is not None:
+            result['FolderId'] = self.folder_id
+        if self.folder_path is not None:
+            result['FolderPath'] = self.folder_path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FolderId') is not None:
+            self.folder_id = m.get('FolderId')
+        if m.get('FolderPath') is not None:
+            self.folder_path = m.get('FolderPath')
+        return self
+
+
+class ListFoldersResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        folders: List[ListFoldersResponseBodyDataFolders] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.folders = folders
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.folders:
+            for k in self.folders:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Folders'] = []
+        if self.folders is not None:
+            for k in self.folders:
+                result['Folders'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.folders = []
+        if m.get('Folders') is not None:
+            for k in m.get('Folders'):
+                temp_model = ListFoldersResponseBodyDataFolders()
+                self.folders.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListFoldersResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ListFoldersResponseBodyData = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = ListFoldersResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListFoldersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListFoldersResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListFoldersResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -43196,6 +49321,262 @@ class ListPartitionsResponse(TeaModel):
         return self
 
 
+class ListPipelineRunItemsRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        pipeline_run_id: str = None,
+        project_id: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        # This parameter is required.
+        self.pipeline_run_id = pipeline_run_id
+        # This parameter is required.
+        self.project_id = project_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.pipeline_run_id is not None:
+            result['PipelineRunId'] = self.pipeline_run_id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('PipelineRunId') is not None:
+            self.pipeline_run_id = m.get('PipelineRunId')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class ListPipelineRunItemsResponseBodyPagingInfoPipelineRunItems(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        id: int = None,
+        message: str = None,
+        modify_time: int = None,
+        name: str = None,
+        spec: str = None,
+        status: str = None,
+        type: str = None,
+        version: int = None,
+    ):
+        # 发布包创建时间戳
+        self.create_time = create_time
+        self.id = id
+        # 创建人
+        self.message = message
+        # 修改时间
+        self.modify_time = modify_time
+        self.name = name
+        self.spec = spec
+        # 发布流程状态
+        self.status = status
+        self.type = type
+        # 项目Id
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.spec is not None:
+            result['Spec'] = self.spec
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Spec') is not None:
+            self.spec = m.get('Spec')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class ListPipelineRunItemsResponseBodyPagingInfo(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        pipeline_run_items: List[ListPipelineRunItemsResponseBodyPagingInfoPipelineRunItems] = None,
+        total_count: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.pipeline_run_items = pipeline_run_items
+        self.total_count = total_count
+
+    def validate(self):
+        if self.pipeline_run_items:
+            for k in self.pipeline_run_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        result['PipelineRunItems'] = []
+        if self.pipeline_run_items is not None:
+            for k in self.pipeline_run_items:
+                result['PipelineRunItems'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        self.pipeline_run_items = []
+        if m.get('PipelineRunItems') is not None:
+            for k in m.get('PipelineRunItems'):
+                temp_model = ListPipelineRunItemsResponseBodyPagingInfoPipelineRunItems()
+                self.pipeline_run_items.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListPipelineRunItemsResponseBody(TeaModel):
+    def __init__(
+        self,
+        paging_info: ListPipelineRunItemsResponseBodyPagingInfo = None,
+        request_id: str = None,
+    ):
+        self.paging_info = paging_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.paging_info:
+            self.paging_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.paging_info is not None:
+            result['PagingInfo'] = self.paging_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PagingInfo') is not None:
+            temp_model = ListPipelineRunItemsResponseBodyPagingInfo()
+            self.paging_info = temp_model.from_map(m['PagingInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListPipelineRunItemsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListPipelineRunItemsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListPipelineRunItemsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListPipelineRunsRequest(TeaModel):
     def __init__(
         self,
@@ -46965,6 +53346,7 @@ class ListTaskInstancesRequest(TeaModel):
         project_id: int = None,
         runtime_resource: str = None,
         sort_by: str = None,
+        status: str = None,
         task_id: int = None,
         task_ids: List[int] = None,
         task_name: str = None,
@@ -47014,6 +53396,7 @@ class ListTaskInstancesRequest(TeaModel):
         # 
         #     Default value: `Id Desc`.
         self.sort_by = sort_by
+        self.status = status
         # The ID of the task for which the instance is generated.
         self.task_id = task_id
         # The IDs of the tasks. You can query multiple instances at a time by task ID.
@@ -47075,6 +53458,8 @@ class ListTaskInstancesRequest(TeaModel):
             result['RuntimeResource'] = self.runtime_resource
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
+        if self.status is not None:
+            result['Status'] = self.status
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         if self.task_ids is not None:
@@ -47117,6 +53502,8 @@ class ListTaskInstancesRequest(TeaModel):
             self.runtime_resource = m.get('RuntimeResource')
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         if m.get('TaskIds') is not None:
@@ -47151,6 +53538,7 @@ class ListTaskInstancesShrinkRequest(TeaModel):
         project_id: int = None,
         runtime_resource: str = None,
         sort_by: str = None,
+        status: str = None,
         task_id: int = None,
         task_ids_shrink: str = None,
         task_name: str = None,
@@ -47200,6 +53588,7 @@ class ListTaskInstancesShrinkRequest(TeaModel):
         # 
         #     Default value: `Id Desc`.
         self.sort_by = sort_by
+        self.status = status
         # The ID of the task for which the instance is generated.
         self.task_id = task_id
         # The IDs of the tasks. You can query multiple instances at a time by task ID.
@@ -47261,6 +53650,8 @@ class ListTaskInstancesShrinkRequest(TeaModel):
             result['RuntimeResource'] = self.runtime_resource
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
+        if self.status is not None:
+            result['Status'] = self.status
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         if self.task_ids_shrink is not None:
@@ -47303,6 +53694,8 @@ class ListTaskInstancesShrinkRequest(TeaModel):
             self.runtime_resource = m.get('RuntimeResource')
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         if m.get('TaskIds') is not None:
@@ -55018,6 +61411,156 @@ class StopWorkflowInstancesResponse(TeaModel):
         return self
 
 
+class SubmitFileRequest(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        file_id: int = None,
+        project_id: int = None,
+        project_identifier: str = None,
+        skip_all_deploy_file_extensions: bool = None,
+    ):
+        self.comment = comment
+        # This parameter is required.
+        self.file_id = file_id
+        self.project_id = project_id
+        self.project_identifier = project_identifier
+        self.skip_all_deploy_file_extensions = skip_all_deploy_file_extensions
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.project_identifier is not None:
+            result['ProjectIdentifier'] = self.project_identifier
+        if self.skip_all_deploy_file_extensions is not None:
+            result['SkipAllDeployFileExtensions'] = self.skip_all_deploy_file_extensions
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ProjectIdentifier') is not None:
+            self.project_identifier = m.get('ProjectIdentifier')
+        if m.get('SkipAllDeployFileExtensions') is not None:
+            self.skip_all_deploy_file_extensions = m.get('SkipAllDeployFileExtensions')
+        return self
+
+
+class SubmitFileResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: int = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SubmitFileResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitFileResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitFileResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SuspendTaskInstancesRequest(TeaModel):
     def __init__(
         self,
@@ -56836,6 +63379,156 @@ class UpdateAlertRuleResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateAlertRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateBusinessRequest(TeaModel):
+    def __init__(
+        self,
+        business_id: int = None,
+        business_name: str = None,
+        description: str = None,
+        owner: str = None,
+        project_id: int = None,
+        project_identifier: str = None,
+    ):
+        # This parameter is required.
+        self.business_id = business_id
+        self.business_name = business_name
+        self.description = description
+        self.owner = owner
+        self.project_id = project_id
+        self.project_identifier = project_identifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_id is not None:
+            result['BusinessId'] = self.business_id
+        if self.business_name is not None:
+            result['BusinessName'] = self.business_name
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.project_identifier is not None:
+            result['ProjectIdentifier'] = self.project_identifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BusinessId') is not None:
+            self.business_id = m.get('BusinessId')
+        if m.get('BusinessName') is not None:
+            self.business_name = m.get('BusinessName')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ProjectIdentifier') is not None:
+            self.project_identifier = m.get('ProjectIdentifier')
+        return self
+
+
+class UpdateBusinessResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateBusinessResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateBusinessResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateBusinessResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -60757,6 +67450,457 @@ class UpdateDataSourceResponse(TeaModel):
         return self
 
 
+class UpdateFileRequest(TeaModel):
+    def __init__(
+        self,
+        advanced_settings: str = None,
+        apply_schedule_immediately: bool = None,
+        auto_parsing: bool = None,
+        auto_rerun_interval_millis: int = None,
+        auto_rerun_times: int = None,
+        connection_name: str = None,
+        content: str = None,
+        cron_express: str = None,
+        cycle_type: str = None,
+        dependent_node_id_list: str = None,
+        dependent_type: str = None,
+        end_effect_date: int = None,
+        file_description: str = None,
+        file_folder_path: str = None,
+        file_id: int = None,
+        file_name: str = None,
+        ignore_parent_skip_running_property: bool = None,
+        image_id: str = None,
+        input_list: str = None,
+        input_parameters: str = None,
+        output_list: str = None,
+        output_parameters: str = None,
+        owner: str = None,
+        para_value: str = None,
+        project_id: int = None,
+        project_identifier: str = None,
+        rerun_mode: str = None,
+        resource_group_identifier: str = None,
+        scheduler_type: str = None,
+        start_effect_date: int = None,
+        start_immediately: bool = None,
+        stop: bool = None,
+        timeout: int = None,
+    ):
+        self.advanced_settings = advanced_settings
+        self.apply_schedule_immediately = apply_schedule_immediately
+        self.auto_parsing = auto_parsing
+        self.auto_rerun_interval_millis = auto_rerun_interval_millis
+        self.auto_rerun_times = auto_rerun_times
+        self.connection_name = connection_name
+        self.content = content
+        self.cron_express = cron_express
+        self.cycle_type = cycle_type
+        self.dependent_node_id_list = dependent_node_id_list
+        self.dependent_type = dependent_type
+        self.end_effect_date = end_effect_date
+        self.file_description = file_description
+        self.file_folder_path = file_folder_path
+        # This parameter is required.
+        self.file_id = file_id
+        self.file_name = file_name
+        self.ignore_parent_skip_running_property = ignore_parent_skip_running_property
+        self.image_id = image_id
+        self.input_list = input_list
+        self.input_parameters = input_parameters
+        self.output_list = output_list
+        self.output_parameters = output_parameters
+        self.owner = owner
+        self.para_value = para_value
+        self.project_id = project_id
+        self.project_identifier = project_identifier
+        self.rerun_mode = rerun_mode
+        self.resource_group_identifier = resource_group_identifier
+        self.scheduler_type = scheduler_type
+        self.start_effect_date = start_effect_date
+        self.start_immediately = start_immediately
+        self.stop = stop
+        self.timeout = timeout
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advanced_settings is not None:
+            result['AdvancedSettings'] = self.advanced_settings
+        if self.apply_schedule_immediately is not None:
+            result['ApplyScheduleImmediately'] = self.apply_schedule_immediately
+        if self.auto_parsing is not None:
+            result['AutoParsing'] = self.auto_parsing
+        if self.auto_rerun_interval_millis is not None:
+            result['AutoRerunIntervalMillis'] = self.auto_rerun_interval_millis
+        if self.auto_rerun_times is not None:
+            result['AutoRerunTimes'] = self.auto_rerun_times
+        if self.connection_name is not None:
+            result['ConnectionName'] = self.connection_name
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.cron_express is not None:
+            result['CronExpress'] = self.cron_express
+        if self.cycle_type is not None:
+            result['CycleType'] = self.cycle_type
+        if self.dependent_node_id_list is not None:
+            result['DependentNodeIdList'] = self.dependent_node_id_list
+        if self.dependent_type is not None:
+            result['DependentType'] = self.dependent_type
+        if self.end_effect_date is not None:
+            result['EndEffectDate'] = self.end_effect_date
+        if self.file_description is not None:
+            result['FileDescription'] = self.file_description
+        if self.file_folder_path is not None:
+            result['FileFolderPath'] = self.file_folder_path
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.ignore_parent_skip_running_property is not None:
+            result['IgnoreParentSkipRunningProperty'] = self.ignore_parent_skip_running_property
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.input_list is not None:
+            result['InputList'] = self.input_list
+        if self.input_parameters is not None:
+            result['InputParameters'] = self.input_parameters
+        if self.output_list is not None:
+            result['OutputList'] = self.output_list
+        if self.output_parameters is not None:
+            result['OutputParameters'] = self.output_parameters
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.para_value is not None:
+            result['ParaValue'] = self.para_value
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.project_identifier is not None:
+            result['ProjectIdentifier'] = self.project_identifier
+        if self.rerun_mode is not None:
+            result['RerunMode'] = self.rerun_mode
+        if self.resource_group_identifier is not None:
+            result['ResourceGroupIdentifier'] = self.resource_group_identifier
+        if self.scheduler_type is not None:
+            result['SchedulerType'] = self.scheduler_type
+        if self.start_effect_date is not None:
+            result['StartEffectDate'] = self.start_effect_date
+        if self.start_immediately is not None:
+            result['StartImmediately'] = self.start_immediately
+        if self.stop is not None:
+            result['Stop'] = self.stop
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdvancedSettings') is not None:
+            self.advanced_settings = m.get('AdvancedSettings')
+        if m.get('ApplyScheduleImmediately') is not None:
+            self.apply_schedule_immediately = m.get('ApplyScheduleImmediately')
+        if m.get('AutoParsing') is not None:
+            self.auto_parsing = m.get('AutoParsing')
+        if m.get('AutoRerunIntervalMillis') is not None:
+            self.auto_rerun_interval_millis = m.get('AutoRerunIntervalMillis')
+        if m.get('AutoRerunTimes') is not None:
+            self.auto_rerun_times = m.get('AutoRerunTimes')
+        if m.get('ConnectionName') is not None:
+            self.connection_name = m.get('ConnectionName')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('CronExpress') is not None:
+            self.cron_express = m.get('CronExpress')
+        if m.get('CycleType') is not None:
+            self.cycle_type = m.get('CycleType')
+        if m.get('DependentNodeIdList') is not None:
+            self.dependent_node_id_list = m.get('DependentNodeIdList')
+        if m.get('DependentType') is not None:
+            self.dependent_type = m.get('DependentType')
+        if m.get('EndEffectDate') is not None:
+            self.end_effect_date = m.get('EndEffectDate')
+        if m.get('FileDescription') is not None:
+            self.file_description = m.get('FileDescription')
+        if m.get('FileFolderPath') is not None:
+            self.file_folder_path = m.get('FileFolderPath')
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('IgnoreParentSkipRunningProperty') is not None:
+            self.ignore_parent_skip_running_property = m.get('IgnoreParentSkipRunningProperty')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('InputList') is not None:
+            self.input_list = m.get('InputList')
+        if m.get('InputParameters') is not None:
+            self.input_parameters = m.get('InputParameters')
+        if m.get('OutputList') is not None:
+            self.output_list = m.get('OutputList')
+        if m.get('OutputParameters') is not None:
+            self.output_parameters = m.get('OutputParameters')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('ParaValue') is not None:
+            self.para_value = m.get('ParaValue')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ProjectIdentifier') is not None:
+            self.project_identifier = m.get('ProjectIdentifier')
+        if m.get('RerunMode') is not None:
+            self.rerun_mode = m.get('RerunMode')
+        if m.get('ResourceGroupIdentifier') is not None:
+            self.resource_group_identifier = m.get('ResourceGroupIdentifier')
+        if m.get('SchedulerType') is not None:
+            self.scheduler_type = m.get('SchedulerType')
+        if m.get('StartEffectDate') is not None:
+            self.start_effect_date = m.get('StartEffectDate')
+        if m.get('StartImmediately') is not None:
+            self.start_immediately = m.get('StartImmediately')
+        if m.get('Stop') is not None:
+            self.stop = m.get('Stop')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        return self
+
+
+class UpdateFileResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateFileResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateFileResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateFileResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateFolderRequest(TeaModel):
+    def __init__(
+        self,
+        folder_id: str = None,
+        folder_name: str = None,
+        project_id: int = None,
+        project_identifier: str = None,
+    ):
+        # This parameter is required.
+        self.folder_id = folder_id
+        # This parameter is required.
+        self.folder_name = folder_name
+        self.project_id = project_id
+        self.project_identifier = project_identifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.folder_id is not None:
+            result['FolderId'] = self.folder_id
+        if self.folder_name is not None:
+            result['FolderName'] = self.folder_name
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.project_identifier is not None:
+            result['ProjectIdentifier'] = self.project_identifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FolderId') is not None:
+            self.folder_id = m.get('FolderId')
+        if m.get('FolderName') is not None:
+            self.folder_name = m.get('FolderName')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ProjectIdentifier') is not None:
+            self.project_identifier = m.get('ProjectIdentifier')
+        return self
+
+
+class UpdateFolderResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateFolderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateFolderResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateFolderResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateFunctionRequest(TeaModel):
     def __init__(
         self,
@@ -60881,6 +68025,120 @@ class UpdateFunctionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateFunctionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateIDEEventResultRequest(TeaModel):
+    def __init__(
+        self,
+        check_result: str = None,
+        check_result_tip: str = None,
+        extension_code: str = None,
+        message_id: str = None,
+    ):
+        self.check_result = check_result
+        self.check_result_tip = check_result_tip
+        self.extension_code = extension_code
+        # 扩展点消息UUID
+        self.message_id = message_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_result is not None:
+            result['CheckResult'] = self.check_result
+        if self.check_result_tip is not None:
+            result['CheckResultTip'] = self.check_result_tip
+        if self.extension_code is not None:
+            result['ExtensionCode'] = self.extension_code
+        if self.message_id is not None:
+            result['MessageId'] = self.message_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckResult') is not None:
+            self.check_result = m.get('CheckResult')
+        if m.get('CheckResultTip') is not None:
+            self.check_result_tip = m.get('CheckResultTip')
+        if m.get('ExtensionCode') is not None:
+            self.extension_code = m.get('ExtensionCode')
+        if m.get('MessageId') is not None:
+            self.message_id = m.get('MessageId')
+        return self
+
+
+class UpdateIDEEventResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateIDEEventResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateIDEEventResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateIDEEventResultResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -63043,6 +70301,195 @@ class UpdateTaskInstancesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateTaskInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateUdfFileRequest(TeaModel):
+    def __init__(
+        self,
+        class_name: str = None,
+        cmd_description: str = None,
+        example: str = None,
+        file_folder_path: str = None,
+        file_id: str = None,
+        function_type: str = None,
+        parameter_description: str = None,
+        project_id: int = None,
+        project_identifier: str = None,
+        resources: str = None,
+        return_value: str = None,
+        udf_description: str = None,
+    ):
+        # This parameter is required.
+        self.class_name = class_name
+        self.cmd_description = cmd_description
+        self.example = example
+        self.file_folder_path = file_folder_path
+        # This parameter is required.
+        self.file_id = file_id
+        # This parameter is required.
+        self.function_type = function_type
+        self.parameter_description = parameter_description
+        self.project_id = project_id
+        self.project_identifier = project_identifier
+        # This parameter is required.
+        self.resources = resources
+        self.return_value = return_value
+        self.udf_description = udf_description
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.class_name is not None:
+            result['ClassName'] = self.class_name
+        if self.cmd_description is not None:
+            result['CmdDescription'] = self.cmd_description
+        if self.example is not None:
+            result['Example'] = self.example
+        if self.file_folder_path is not None:
+            result['FileFolderPath'] = self.file_folder_path
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
+        if self.function_type is not None:
+            result['FunctionType'] = self.function_type
+        if self.parameter_description is not None:
+            result['ParameterDescription'] = self.parameter_description
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.project_identifier is not None:
+            result['ProjectIdentifier'] = self.project_identifier
+        if self.resources is not None:
+            result['Resources'] = self.resources
+        if self.return_value is not None:
+            result['ReturnValue'] = self.return_value
+        if self.udf_description is not None:
+            result['UdfDescription'] = self.udf_description
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClassName') is not None:
+            self.class_name = m.get('ClassName')
+        if m.get('CmdDescription') is not None:
+            self.cmd_description = m.get('CmdDescription')
+        if m.get('Example') is not None:
+            self.example = m.get('Example')
+        if m.get('FileFolderPath') is not None:
+            self.file_folder_path = m.get('FileFolderPath')
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
+        if m.get('FunctionType') is not None:
+            self.function_type = m.get('FunctionType')
+        if m.get('ParameterDescription') is not None:
+            self.parameter_description = m.get('ParameterDescription')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ProjectIdentifier') is not None:
+            self.project_identifier = m.get('ProjectIdentifier')
+        if m.get('Resources') is not None:
+            self.resources = m.get('Resources')
+        if m.get('ReturnValue') is not None:
+            self.return_value = m.get('ReturnValue')
+        if m.get('UdfDescription') is not None:
+            self.udf_description = m.get('UdfDescription')
+        return self
+
+
+class UpdateUdfFileResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateUdfFileResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateUdfFileResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateUdfFileResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

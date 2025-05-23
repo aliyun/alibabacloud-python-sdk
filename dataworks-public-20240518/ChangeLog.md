@@ -1,3 +1,36 @@
+2025-05-23 Version: 7.1.0
+- Support API CreateBusiness.
+- Support API CreateFile.
+- Support API CreateFolder.
+- Support API CreateResourceFile.
+- Support API CreateUdfFile.
+- Support API DeleteBusiness.
+- Support API DeleteFile.
+- Support API DeleteFolder.
+- Support API DeployFile.
+- Support API EstablishRelationTableToBusiness.
+- Support API GetBusiness.
+- Support API GetDeploymentPackage.
+- Support API GetFile.
+- Support API GetFileVersion.
+- Support API GetFolder.
+- Support API GetIDEEventDetail.
+- Support API ListBusiness.
+- Support API ListDeploymentPackageFiles.
+- Support API ListDeploymentPackages.
+- Support API ListFileVersions.
+- Support API ListFiles.
+- Support API ListFolders.
+- Support API ListPipelineRunItems.
+- Support API SubmitFile.
+- Support API UpdateBusiness.
+- Support API UpdateFile.
+- Support API UpdateFolder.
+- Support API UpdateIDEEventResult.
+- Support API UpdateUdfFile.
+- Update API ListTaskInstances: add request parameters Status.
+
+
 2025-05-15 Version: 7.0.1
 - Update API UpdateWorkflow: add request parameters InstanceMode.
 

@@ -861,6 +861,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_alert_rule_with_options_async(request, runtime)
 
+    def create_business_with_options(
+        self,
+        request: dataworks_public_20240518_models.CreateBusinessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateBusinessResponse:
+        """
+        @param request: CreateBusinessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBusinessResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.business_name):
+            body['BusinessName'] = request.business_name
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.owner):
+            body['Owner'] = request.owner
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        if not UtilClient.is_unset(request.use_type):
+            body['UseType'] = request.use_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateBusiness',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateBusinessResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_business_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.CreateBusinessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateBusinessResponse:
+        """
+        @param request: CreateBusinessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBusinessResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.business_name):
+            body['BusinessName'] = request.business_name
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.owner):
+            body['Owner'] = request.owner
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        if not UtilClient.is_unset(request.use_type):
+            body['UseType'] = request.use_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateBusiness',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateBusinessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_business(
+        self,
+        request: dataworks_public_20240518_models.CreateBusinessRequest,
+    ) -> dataworks_public_20240518_models.CreateBusinessResponse:
+        """
+        @param request: CreateBusinessRequest
+        @return: CreateBusinessResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_business_with_options(request, runtime)
+
+    async def create_business_async(
+        self,
+        request: dataworks_public_20240518_models.CreateBusinessRequest,
+    ) -> dataworks_public_20240518_models.CreateBusinessResponse:
+        """
+        @param request: CreateBusinessRequest
+        @return: CreateBusinessResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_business_with_options_async(request, runtime)
+
     def create_dialarm_rule_with_options(
         self,
         tmp_req: dataworks_public_20240518_models.CreateDIAlarmRuleRequest,
@@ -2044,6 +2152,322 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_data_source_shared_rule_with_options_async(request, runtime)
+
+    def create_file_with_options(
+        self,
+        request: dataworks_public_20240518_models.CreateFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateFileResponse:
+        """
+        @param request: CreateFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFileResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.advanced_settings):
+            body['AdvancedSettings'] = request.advanced_settings
+        if not UtilClient.is_unset(request.apply_schedule_immediately):
+            body['ApplyScheduleImmediately'] = request.apply_schedule_immediately
+        if not UtilClient.is_unset(request.auto_parsing):
+            body['AutoParsing'] = request.auto_parsing
+        if not UtilClient.is_unset(request.auto_rerun_interval_millis):
+            body['AutoRerunIntervalMillis'] = request.auto_rerun_interval_millis
+        if not UtilClient.is_unset(request.auto_rerun_times):
+            body['AutoRerunTimes'] = request.auto_rerun_times
+        if not UtilClient.is_unset(request.connection_name):
+            body['ConnectionName'] = request.connection_name
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        if not UtilClient.is_unset(request.create_folder_if_not_exists):
+            body['CreateFolderIfNotExists'] = request.create_folder_if_not_exists
+        if not UtilClient.is_unset(request.cron_express):
+            body['CronExpress'] = request.cron_express
+        if not UtilClient.is_unset(request.cycle_type):
+            body['CycleType'] = request.cycle_type
+        if not UtilClient.is_unset(request.dependent_node_id_list):
+            body['DependentNodeIdList'] = request.dependent_node_id_list
+        if not UtilClient.is_unset(request.dependent_type):
+            body['DependentType'] = request.dependent_type
+        if not UtilClient.is_unset(request.end_effect_date):
+            body['EndEffectDate'] = request.end_effect_date
+        if not UtilClient.is_unset(request.file_description):
+            body['FileDescription'] = request.file_description
+        if not UtilClient.is_unset(request.file_folder_path):
+            body['FileFolderPath'] = request.file_folder_path
+        if not UtilClient.is_unset(request.file_name):
+            body['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_type):
+            body['FileType'] = request.file_type
+        if not UtilClient.is_unset(request.ignore_parent_skip_running_property):
+            body['IgnoreParentSkipRunningProperty'] = request.ignore_parent_skip_running_property
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.input_list):
+            body['InputList'] = request.input_list
+        if not UtilClient.is_unset(request.input_parameters):
+            body['InputParameters'] = request.input_parameters
+        if not UtilClient.is_unset(request.output_parameters):
+            body['OutputParameters'] = request.output_parameters
+        if not UtilClient.is_unset(request.owner):
+            body['Owner'] = request.owner
+        if not UtilClient.is_unset(request.para_value):
+            body['ParaValue'] = request.para_value
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        if not UtilClient.is_unset(request.rerun_mode):
+            body['RerunMode'] = request.rerun_mode
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_group_identifier):
+            body['ResourceGroupIdentifier'] = request.resource_group_identifier
+        if not UtilClient.is_unset(request.scheduler_type):
+            body['SchedulerType'] = request.scheduler_type
+        if not UtilClient.is_unset(request.start_effect_date):
+            body['StartEffectDate'] = request.start_effect_date
+        if not UtilClient.is_unset(request.start_immediately):
+            body['StartImmediately'] = request.start_immediately
+        if not UtilClient.is_unset(request.stop):
+            body['Stop'] = request.stop
+        if not UtilClient.is_unset(request.timeout):
+            body['Timeout'] = request.timeout
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateFile',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_file_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.CreateFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateFileResponse:
+        """
+        @param request: CreateFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFileResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.advanced_settings):
+            body['AdvancedSettings'] = request.advanced_settings
+        if not UtilClient.is_unset(request.apply_schedule_immediately):
+            body['ApplyScheduleImmediately'] = request.apply_schedule_immediately
+        if not UtilClient.is_unset(request.auto_parsing):
+            body['AutoParsing'] = request.auto_parsing
+        if not UtilClient.is_unset(request.auto_rerun_interval_millis):
+            body['AutoRerunIntervalMillis'] = request.auto_rerun_interval_millis
+        if not UtilClient.is_unset(request.auto_rerun_times):
+            body['AutoRerunTimes'] = request.auto_rerun_times
+        if not UtilClient.is_unset(request.connection_name):
+            body['ConnectionName'] = request.connection_name
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        if not UtilClient.is_unset(request.create_folder_if_not_exists):
+            body['CreateFolderIfNotExists'] = request.create_folder_if_not_exists
+        if not UtilClient.is_unset(request.cron_express):
+            body['CronExpress'] = request.cron_express
+        if not UtilClient.is_unset(request.cycle_type):
+            body['CycleType'] = request.cycle_type
+        if not UtilClient.is_unset(request.dependent_node_id_list):
+            body['DependentNodeIdList'] = request.dependent_node_id_list
+        if not UtilClient.is_unset(request.dependent_type):
+            body['DependentType'] = request.dependent_type
+        if not UtilClient.is_unset(request.end_effect_date):
+            body['EndEffectDate'] = request.end_effect_date
+        if not UtilClient.is_unset(request.file_description):
+            body['FileDescription'] = request.file_description
+        if not UtilClient.is_unset(request.file_folder_path):
+            body['FileFolderPath'] = request.file_folder_path
+        if not UtilClient.is_unset(request.file_name):
+            body['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_type):
+            body['FileType'] = request.file_type
+        if not UtilClient.is_unset(request.ignore_parent_skip_running_property):
+            body['IgnoreParentSkipRunningProperty'] = request.ignore_parent_skip_running_property
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.input_list):
+            body['InputList'] = request.input_list
+        if not UtilClient.is_unset(request.input_parameters):
+            body['InputParameters'] = request.input_parameters
+        if not UtilClient.is_unset(request.output_parameters):
+            body['OutputParameters'] = request.output_parameters
+        if not UtilClient.is_unset(request.owner):
+            body['Owner'] = request.owner
+        if not UtilClient.is_unset(request.para_value):
+            body['ParaValue'] = request.para_value
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        if not UtilClient.is_unset(request.rerun_mode):
+            body['RerunMode'] = request.rerun_mode
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_group_identifier):
+            body['ResourceGroupIdentifier'] = request.resource_group_identifier
+        if not UtilClient.is_unset(request.scheduler_type):
+            body['SchedulerType'] = request.scheduler_type
+        if not UtilClient.is_unset(request.start_effect_date):
+            body['StartEffectDate'] = request.start_effect_date
+        if not UtilClient.is_unset(request.start_immediately):
+            body['StartImmediately'] = request.start_immediately
+        if not UtilClient.is_unset(request.stop):
+            body['Stop'] = request.stop
+        if not UtilClient.is_unset(request.timeout):
+            body['Timeout'] = request.timeout
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateFile',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_file(
+        self,
+        request: dataworks_public_20240518_models.CreateFileRequest,
+    ) -> dataworks_public_20240518_models.CreateFileResponse:
+        """
+        @param request: CreateFileRequest
+        @return: CreateFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_file_with_options(request, runtime)
+
+    async def create_file_async(
+        self,
+        request: dataworks_public_20240518_models.CreateFileRequest,
+    ) -> dataworks_public_20240518_models.CreateFileResponse:
+        """
+        @param request: CreateFileRequest
+        @return: CreateFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_file_with_options_async(request, runtime)
+
+    def create_folder_with_options(
+        self,
+        request: dataworks_public_20240518_models.CreateFolderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateFolderResponse:
+        """
+        @param request: CreateFolderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFolderResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.folder_path):
+            body['FolderPath'] = request.folder_path
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateFolder',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateFolderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_folder_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.CreateFolderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateFolderResponse:
+        """
+        @param request: CreateFolderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFolderResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.folder_path):
+            body['FolderPath'] = request.folder_path
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateFolder',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateFolderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_folder(
+        self,
+        request: dataworks_public_20240518_models.CreateFolderRequest,
+    ) -> dataworks_public_20240518_models.CreateFolderResponse:
+        """
+        @param request: CreateFolderRequest
+        @return: CreateFolderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_folder_with_options(request, runtime)
+
+    async def create_folder_async(
+        self,
+        request: dataworks_public_20240518_models.CreateFolderRequest,
+    ) -> dataworks_public_20240518_models.CreateFolderResponse:
+        """
+        @param request: CreateFolderRequest
+        @return: CreateFolderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_folder_with_options_async(request, runtime)
 
     def create_function_with_options(
         self,
@@ -3245,6 +3669,290 @@ class Client(OpenApiClient):
         create_resource_resp = await self.create_resource_with_options_async(create_resource_req, runtime)
         return create_resource_resp
 
+    def create_resource_file_with_options(
+        self,
+        request: dataworks_public_20240518_models.CreateResourceFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateResourceFileResponse:
+        """
+        @summary 支持用户指定自己的文件（比如jar，py，arhive，file等）创建数据开发资源文件
+        
+        @param request: CreateResourceFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateResourceFileResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        if not UtilClient.is_unset(request.file_description):
+            body['FileDescription'] = request.file_description
+        if not UtilClient.is_unset(request.file_folder_path):
+            body['FileFolderPath'] = request.file_folder_path
+        if not UtilClient.is_unset(request.file_name):
+            body['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_type):
+            body['FileType'] = request.file_type
+        if not UtilClient.is_unset(request.origin_resource_name):
+            body['OriginResourceName'] = request.origin_resource_name
+        if not UtilClient.is_unset(request.owner):
+            body['Owner'] = request.owner
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.register_to_calc_engine):
+            body['RegisterToCalcEngine'] = request.register_to_calc_engine
+        if not UtilClient.is_unset(request.resource_file):
+            body['ResourceFile'] = request.resource_file
+        if not UtilClient.is_unset(request.storage_url):
+            body['StorageURL'] = request.storage_url
+        if not UtilClient.is_unset(request.upload_mode):
+            body['UploadMode'] = request.upload_mode
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateResourceFile',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateResourceFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_resource_file_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.CreateResourceFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateResourceFileResponse:
+        """
+        @summary 支持用户指定自己的文件（比如jar，py，arhive，file等）创建数据开发资源文件
+        
+        @param request: CreateResourceFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateResourceFileResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        if not UtilClient.is_unset(request.file_description):
+            body['FileDescription'] = request.file_description
+        if not UtilClient.is_unset(request.file_folder_path):
+            body['FileFolderPath'] = request.file_folder_path
+        if not UtilClient.is_unset(request.file_name):
+            body['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_type):
+            body['FileType'] = request.file_type
+        if not UtilClient.is_unset(request.origin_resource_name):
+            body['OriginResourceName'] = request.origin_resource_name
+        if not UtilClient.is_unset(request.owner):
+            body['Owner'] = request.owner
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.register_to_calc_engine):
+            body['RegisterToCalcEngine'] = request.register_to_calc_engine
+        if not UtilClient.is_unset(request.resource_file):
+            body['ResourceFile'] = request.resource_file
+        if not UtilClient.is_unset(request.storage_url):
+            body['StorageURL'] = request.storage_url
+        if not UtilClient.is_unset(request.upload_mode):
+            body['UploadMode'] = request.upload_mode
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateResourceFile',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateResourceFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_resource_file(
+        self,
+        request: dataworks_public_20240518_models.CreateResourceFileRequest,
+    ) -> dataworks_public_20240518_models.CreateResourceFileResponse:
+        """
+        @summary 支持用户指定自己的文件（比如jar，py，arhive，file等）创建数据开发资源文件
+        
+        @param request: CreateResourceFileRequest
+        @return: CreateResourceFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_resource_file_with_options(request, runtime)
+
+    async def create_resource_file_async(
+        self,
+        request: dataworks_public_20240518_models.CreateResourceFileRequest,
+    ) -> dataworks_public_20240518_models.CreateResourceFileResponse:
+        """
+        @summary 支持用户指定自己的文件（比如jar，py，arhive，file等）创建数据开发资源文件
+        
+        @param request: CreateResourceFileRequest
+        @return: CreateResourceFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_resource_file_with_options_async(request, runtime)
+
+    def create_resource_file_advance(
+        self,
+        request: dataworks_public_20240518_models.CreateResourceFileAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateResourceFileResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.empty(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='dataworks-public',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = OSSClient(oss_config)
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        create_resource_file_req = dataworks_public_20240518_models.CreateResourceFileRequest()
+        OpenApiUtilClient.convert(request, create_resource_file_req)
+        if not UtilClient.is_unset(request.resource_file_object):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.body.object_key,
+                content=request.resource_file_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.body.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            create_resource_file_req.resource_file = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+        create_resource_file_resp = self.create_resource_file_with_options(create_resource_file_req, runtime)
+        return create_resource_file_resp
+
+    async def create_resource_file_advance_async(
+        self,
+        request: dataworks_public_20240518_models.CreateResourceFileAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateResourceFileResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.empty(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='dataworks-public',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = OSSClient(oss_config)
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        create_resource_file_req = dataworks_public_20240518_models.CreateResourceFileRequest()
+        OpenApiUtilClient.convert(request, create_resource_file_req)
+        if not UtilClient.is_unset(request.resource_file_object):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.body.object_key,
+                content=request.resource_file_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.body.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            create_resource_file_req.resource_file = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+        create_resource_file_resp = await self.create_resource_file_with_options_async(create_resource_file_req, runtime)
+        return create_resource_file_resp
+
     def create_resource_group_with_options(
         self,
         tmp_req: dataworks_public_20240518_models.CreateResourceGroupRequest,
@@ -3516,6 +4224,142 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_route_with_options_async(request, runtime)
+
+    def create_udf_file_with_options(
+        self,
+        request: dataworks_public_20240518_models.CreateUdfFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateUdfFileResponse:
+        """
+        @param request: CreateUdfFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUdfFileResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.class_name):
+            body['ClassName'] = request.class_name
+        if not UtilClient.is_unset(request.cmd_description):
+            body['CmdDescription'] = request.cmd_description
+        if not UtilClient.is_unset(request.create_folder_if_not_exists):
+            body['CreateFolderIfNotExists'] = request.create_folder_if_not_exists
+        if not UtilClient.is_unset(request.example):
+            body['Example'] = request.example
+        if not UtilClient.is_unset(request.file_folder_path):
+            body['FileFolderPath'] = request.file_folder_path
+        if not UtilClient.is_unset(request.file_name):
+            body['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.function_type):
+            body['FunctionType'] = request.function_type
+        if not UtilClient.is_unset(request.parameter_description):
+            body['ParameterDescription'] = request.parameter_description
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        if not UtilClient.is_unset(request.resources):
+            body['Resources'] = request.resources
+        if not UtilClient.is_unset(request.return_value):
+            body['ReturnValue'] = request.return_value
+        if not UtilClient.is_unset(request.udf_description):
+            body['UdfDescription'] = request.udf_description
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateUdfFile',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateUdfFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_udf_file_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.CreateUdfFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateUdfFileResponse:
+        """
+        @param request: CreateUdfFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUdfFileResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.class_name):
+            body['ClassName'] = request.class_name
+        if not UtilClient.is_unset(request.cmd_description):
+            body['CmdDescription'] = request.cmd_description
+        if not UtilClient.is_unset(request.create_folder_if_not_exists):
+            body['CreateFolderIfNotExists'] = request.create_folder_if_not_exists
+        if not UtilClient.is_unset(request.example):
+            body['Example'] = request.example
+        if not UtilClient.is_unset(request.file_folder_path):
+            body['FileFolderPath'] = request.file_folder_path
+        if not UtilClient.is_unset(request.file_name):
+            body['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.function_type):
+            body['FunctionType'] = request.function_type
+        if not UtilClient.is_unset(request.parameter_description):
+            body['ParameterDescription'] = request.parameter_description
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        if not UtilClient.is_unset(request.resources):
+            body['Resources'] = request.resources
+        if not UtilClient.is_unset(request.return_value):
+            body['ReturnValue'] = request.return_value
+        if not UtilClient.is_unset(request.udf_description):
+            body['UdfDescription'] = request.udf_description
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateUdfFile',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateUdfFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_udf_file(
+        self,
+        request: dataworks_public_20240518_models.CreateUdfFileRequest,
+    ) -> dataworks_public_20240518_models.CreateUdfFileResponse:
+        """
+        @param request: CreateUdfFileRequest
+        @return: CreateUdfFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_udf_file_with_options(request, runtime)
+
+    async def create_udf_file_async(
+        self,
+        request: dataworks_public_20240518_models.CreateUdfFileRequest,
+    ) -> dataworks_public_20240518_models.CreateUdfFileResponse:
+        """
+        @param request: CreateUdfFileRequest
+        @return: CreateUdfFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_udf_file_with_options_async(request, runtime)
 
     def create_workflow_definition_with_options(
         self,
@@ -3860,6 +4704,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_alert_rule_with_options_async(request, runtime)
+
+    def delete_business_with_options(
+        self,
+        request: dataworks_public_20240518_models.DeleteBusinessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteBusinessResponse:
+        """
+        @param request: DeleteBusinessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBusinessResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.business_id):
+            body['BusinessId'] = request.business_id
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteBusiness',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteBusinessResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_business_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteBusinessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteBusinessResponse:
+        """
+        @param request: DeleteBusinessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBusinessResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.business_id):
+            body['BusinessId'] = request.business_id
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteBusiness',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteBusinessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_business(
+        self,
+        request: dataworks_public_20240518_models.DeleteBusinessRequest,
+    ) -> dataworks_public_20240518_models.DeleteBusinessResponse:
+        """
+        @param request: DeleteBusinessRequest
+        @return: DeleteBusinessResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_business_with_options(request, runtime)
+
+    async def delete_business_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteBusinessRequest,
+    ) -> dataworks_public_20240518_models.DeleteBusinessResponse:
+        """
+        @param request: DeleteBusinessRequest
+        @return: DeleteBusinessResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_business_with_options_async(request, runtime)
 
     def delete_certificate_with_options(
         self,
@@ -4800,6 +5740,198 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_data_source_shared_rule_with_options_async(request, runtime)
+
+    def delete_file_with_options(
+        self,
+        request: dataworks_public_20240518_models.DeleteFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteFileResponse:
+        """
+        @param request: DeleteFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFileResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_id):
+            body['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteFile',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_file_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteFileResponse:
+        """
+        @param request: DeleteFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFileResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_id):
+            body['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteFile',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_file(
+        self,
+        request: dataworks_public_20240518_models.DeleteFileRequest,
+    ) -> dataworks_public_20240518_models.DeleteFileResponse:
+        """
+        @param request: DeleteFileRequest
+        @return: DeleteFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_file_with_options(request, runtime)
+
+    async def delete_file_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteFileRequest,
+    ) -> dataworks_public_20240518_models.DeleteFileResponse:
+        """
+        @param request: DeleteFileRequest
+        @return: DeleteFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_file_with_options_async(request, runtime)
+
+    def delete_folder_with_options(
+        self,
+        request: dataworks_public_20240518_models.DeleteFolderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteFolderResponse:
+        """
+        @param request: DeleteFolderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFolderResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.folder_id):
+            body['FolderId'] = request.folder_id
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteFolder',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteFolderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_folder_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteFolderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteFolderResponse:
+        """
+        @param request: DeleteFolderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFolderResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.folder_id):
+            body['FolderId'] = request.folder_id
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteFolder',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteFolderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_folder(
+        self,
+        request: dataworks_public_20240518_models.DeleteFolderRequest,
+    ) -> dataworks_public_20240518_models.DeleteFolderResponse:
+        """
+        @param request: DeleteFolderRequest
+        @return: DeleteFolderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_folder_with_options(request, runtime)
+
+    async def delete_folder_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteFolderRequest,
+    ) -> dataworks_public_20240518_models.DeleteFolderResponse:
+        """
+        @param request: DeleteFolderRequest
+        @return: DeleteFolderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_folder_with_options_async(request, runtime)
 
     def delete_function_with_options(
         self,
@@ -6177,6 +7309,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_workflow_definition_with_options_async(request, runtime)
 
+    def deploy_file_with_options(
+        self,
+        request: dataworks_public_20240518_models.DeployFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeployFileResponse:
+        """
+        @param request: DeployFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeployFileResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.comment):
+            body['Comment'] = request.comment
+        if not UtilClient.is_unset(request.file_id):
+            body['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.node_id):
+            body['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeployFile',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeployFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def deploy_file_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.DeployFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeployFileResponse:
+        """
+        @param request: DeployFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeployFileResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.comment):
+            body['Comment'] = request.comment
+        if not UtilClient.is_unset(request.file_id):
+            body['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.node_id):
+            body['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeployFile',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeployFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def deploy_file(
+        self,
+        request: dataworks_public_20240518_models.DeployFileRequest,
+    ) -> dataworks_public_20240518_models.DeployFileResponse:
+        """
+        @param request: DeployFileRequest
+        @return: DeployFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.deploy_file_with_options(request, runtime)
+
+    async def deploy_file_async(
+        self,
+        request: dataworks_public_20240518_models.DeployFileRequest,
+    ) -> dataworks_public_20240518_models.DeployFileResponse:
+        """
+        @param request: DeployFileRequest
+        @return: DeployFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.deploy_file_with_options_async(request, runtime)
+
     def detach_data_quality_rules_from_evaluation_task_with_options(
         self,
         tmp_req: dataworks_public_20240518_models.DetachDataQualityRulesFromEvaluationTaskRequest,
@@ -6404,6 +7640,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.dissociate_project_from_resource_group_with_options_async(request, runtime)
+
+    def establish_relation_table_to_business_with_options(
+        self,
+        request: dataworks_public_20240518_models.EstablishRelationTableToBusinessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.EstablishRelationTableToBusinessResponse:
+        """
+        @param request: EstablishRelationTableToBusinessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EstablishRelationTableToBusinessResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.business_id):
+            body['BusinessId'] = request.business_id
+        if not UtilClient.is_unset(request.folder_id):
+            body['FolderId'] = request.folder_id
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        if not UtilClient.is_unset(request.table_guid):
+            body['TableGuid'] = request.table_guid
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='EstablishRelationTableToBusiness',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.EstablishRelationTableToBusinessResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def establish_relation_table_to_business_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.EstablishRelationTableToBusinessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.EstablishRelationTableToBusinessResponse:
+        """
+        @param request: EstablishRelationTableToBusinessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EstablishRelationTableToBusinessResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.business_id):
+            body['BusinessId'] = request.business_id
+        if not UtilClient.is_unset(request.folder_id):
+            body['FolderId'] = request.folder_id
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        if not UtilClient.is_unset(request.table_guid):
+            body['TableGuid'] = request.table_guid
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='EstablishRelationTableToBusiness',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.EstablishRelationTableToBusinessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def establish_relation_table_to_business(
+        self,
+        request: dataworks_public_20240518_models.EstablishRelationTableToBusinessRequest,
+    ) -> dataworks_public_20240518_models.EstablishRelationTableToBusinessResponse:
+        """
+        @param request: EstablishRelationTableToBusinessRequest
+        @return: EstablishRelationTableToBusinessResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.establish_relation_table_to_business_with_options(request, runtime)
+
+    async def establish_relation_table_to_business_async(
+        self,
+        request: dataworks_public_20240518_models.EstablishRelationTableToBusinessRequest,
+    ) -> dataworks_public_20240518_models.EstablishRelationTableToBusinessResponse:
+        """
+        @param request: EstablishRelationTableToBusinessRequest
+        @return: EstablishRelationTableToBusinessResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.establish_relation_table_to_business_with_options_async(request, runtime)
 
     def exec_pipeline_run_stage_with_options(
         self,
@@ -6748,6 +8088,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_alert_rule_with_options_async(request, runtime)
+
+    def get_business_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetBusinessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetBusinessResponse:
+        """
+        @param request: GetBusinessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBusinessResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.business_id):
+            body['BusinessId'] = request.business_id
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetBusiness',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetBusinessResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_business_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetBusinessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetBusinessResponse:
+        """
+        @param request: GetBusinessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBusinessResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.business_id):
+            body['BusinessId'] = request.business_id
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetBusiness',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetBusinessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_business(
+        self,
+        request: dataworks_public_20240518_models.GetBusinessRequest,
+    ) -> dataworks_public_20240518_models.GetBusinessResponse:
+        """
+        @param request: GetBusinessRequest
+        @return: GetBusinessResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_business_with_options(request, runtime)
+
+    async def get_business_async(
+        self,
+        request: dataworks_public_20240518_models.GetBusinessRequest,
+    ) -> dataworks_public_20240518_models.GetBusinessResponse:
+        """
+        @param request: GetBusinessRequest
+        @return: GetBusinessResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_business_with_options_async(request, runtime)
 
     def get_catalog_with_options(
         self,
@@ -7921,6 +9357,402 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_database_with_options_async(request, runtime)
 
+    def get_deployment_package_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetDeploymentPackageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetDeploymentPackageResponse:
+        """
+        @param request: GetDeploymentPackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDeploymentPackageResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.deployment_id):
+            body['DeploymentId'] = request.deployment_id
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDeploymentPackage',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDeploymentPackageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_deployment_package_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetDeploymentPackageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetDeploymentPackageResponse:
+        """
+        @param request: GetDeploymentPackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDeploymentPackageResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.deployment_id):
+            body['DeploymentId'] = request.deployment_id
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDeploymentPackage',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDeploymentPackageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_deployment_package(
+        self,
+        request: dataworks_public_20240518_models.GetDeploymentPackageRequest,
+    ) -> dataworks_public_20240518_models.GetDeploymentPackageResponse:
+        """
+        @param request: GetDeploymentPackageRequest
+        @return: GetDeploymentPackageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_deployment_package_with_options(request, runtime)
+
+    async def get_deployment_package_async(
+        self,
+        request: dataworks_public_20240518_models.GetDeploymentPackageRequest,
+    ) -> dataworks_public_20240518_models.GetDeploymentPackageResponse:
+        """
+        @param request: GetDeploymentPackageRequest
+        @return: GetDeploymentPackageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_deployment_package_with_options_async(request, runtime)
+
+    def get_file_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetFileResponse:
+        """
+        @param request: GetFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFileResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_id):
+            body['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.node_id):
+            body['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetFile',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_file_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetFileResponse:
+        """
+        @param request: GetFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFileResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_id):
+            body['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.node_id):
+            body['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetFile',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_file(
+        self,
+        request: dataworks_public_20240518_models.GetFileRequest,
+    ) -> dataworks_public_20240518_models.GetFileResponse:
+        """
+        @param request: GetFileRequest
+        @return: GetFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_file_with_options(request, runtime)
+
+    async def get_file_async(
+        self,
+        request: dataworks_public_20240518_models.GetFileRequest,
+    ) -> dataworks_public_20240518_models.GetFileResponse:
+        """
+        @param request: GetFileRequest
+        @return: GetFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_file_with_options_async(request, runtime)
+
+    def get_file_version_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetFileVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetFileVersionResponse:
+        """
+        @param request: GetFileVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFileVersionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_id):
+            body['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.file_version):
+            body['FileVersion'] = request.file_version
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetFileVersion',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetFileVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_file_version_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetFileVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetFileVersionResponse:
+        """
+        @param request: GetFileVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFileVersionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_id):
+            body['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.file_version):
+            body['FileVersion'] = request.file_version
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetFileVersion',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetFileVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_file_version(
+        self,
+        request: dataworks_public_20240518_models.GetFileVersionRequest,
+    ) -> dataworks_public_20240518_models.GetFileVersionResponse:
+        """
+        @param request: GetFileVersionRequest
+        @return: GetFileVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_file_version_with_options(request, runtime)
+
+    async def get_file_version_async(
+        self,
+        request: dataworks_public_20240518_models.GetFileVersionRequest,
+    ) -> dataworks_public_20240518_models.GetFileVersionResponse:
+        """
+        @param request: GetFileVersionRequest
+        @return: GetFileVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_file_version_with_options_async(request, runtime)
+
+    def get_folder_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetFolderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetFolderResponse:
+        """
+        @param request: GetFolderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFolderResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.folder_id):
+            body['FolderId'] = request.folder_id
+        if not UtilClient.is_unset(request.folder_path):
+            body['FolderPath'] = request.folder_path
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetFolder',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetFolderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_folder_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetFolderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetFolderResponse:
+        """
+        @param request: GetFolderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFolderResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.folder_id):
+            body['FolderId'] = request.folder_id
+        if not UtilClient.is_unset(request.folder_path):
+            body['FolderPath'] = request.folder_path
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetFolder',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetFolderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_folder(
+        self,
+        request: dataworks_public_20240518_models.GetFolderRequest,
+    ) -> dataworks_public_20240518_models.GetFolderResponse:
+        """
+        @param request: GetFolderRequest
+        @return: GetFolderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_folder_with_options(request, runtime)
+
+    async def get_folder_async(
+        self,
+        request: dataworks_public_20240518_models.GetFolderRequest,
+    ) -> dataworks_public_20240518_models.GetFolderResponse:
+        """
+        @param request: GetFolderRequest
+        @return: GetFolderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_folder_with_options_async(request, runtime)
+
     def get_function_with_options(
         self,
         request: dataworks_public_20240518_models.GetFunctionRequest,
@@ -8012,6 +9844,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_function_with_options_async(request, runtime)
+
+    def get_ideevent_detail_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetIDEEventDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetIDEEventDetailResponse:
+        """
+        @summary 获取扩展点触发时的数据快照
+        
+        @param request: GetIDEEventDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIDEEventDetailResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.message_id):
+            body['MessageId'] = request.message_id
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetIDEEventDetail',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetIDEEventDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_ideevent_detail_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetIDEEventDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetIDEEventDetailResponse:
+        """
+        @summary 获取扩展点触发时的数据快照
+        
+        @param request: GetIDEEventDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIDEEventDetailResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.message_id):
+            body['MessageId'] = request.message_id
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetIDEEventDetail',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetIDEEventDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_ideevent_detail(
+        self,
+        request: dataworks_public_20240518_models.GetIDEEventDetailRequest,
+    ) -> dataworks_public_20240518_models.GetIDEEventDetailResponse:
+        """
+        @summary 获取扩展点触发时的数据快照
+        
+        @param request: GetIDEEventDetailRequest
+        @return: GetIDEEventDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_ideevent_detail_with_options(request, runtime)
+
+    async def get_ideevent_detail_async(
+        self,
+        request: dataworks_public_20240518_models.GetIDEEventDetailRequest,
+    ) -> dataworks_public_20240518_models.GetIDEEventDetailResponse:
+        """
+        @summary 获取扩展点触发时的数据快照
+        
+        @param request: GetIDEEventDetailRequest
+        @return: GetIDEEventDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_ideevent_detail_with_options_async(request, runtime)
 
     def get_job_status_with_options(
         self,
@@ -10661,6 +12593,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_alert_rules_with_options_async(request, runtime)
 
+    def list_business_with_options(
+        self,
+        request: dataworks_public_20240518_models.ListBusinessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListBusinessResponse:
+        """
+        @param request: ListBusinessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBusinessResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.keyword):
+            body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListBusiness',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListBusinessResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_business_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.ListBusinessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListBusinessResponse:
+        """
+        @param request: ListBusinessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBusinessResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.keyword):
+            body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListBusiness',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListBusinessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_business(
+        self,
+        request: dataworks_public_20240518_models.ListBusinessRequest,
+    ) -> dataworks_public_20240518_models.ListBusinessResponse:
+        """
+        @param request: ListBusinessRequest
+        @return: ListBusinessResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_business_with_options(request, runtime)
+
+    async def list_business_async(
+        self,
+        request: dataworks_public_20240518_models.ListBusinessRequest,
+    ) -> dataworks_public_20240518_models.ListBusinessResponse:
+        """
+        @param request: ListBusinessRequest
+        @return: ListBusinessResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_business_with_options_async(request, runtime)
+
     def list_catalogs_with_options(
         self,
         tmp_req: dataworks_public_20240518_models.ListCatalogsRequest,
@@ -12543,6 +14579,286 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_databases_with_options_async(request, runtime)
 
+    def list_deployment_package_files_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.ListDeploymentPackageFilesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListDeploymentPackageFilesResponse:
+        """
+        @summary 获取待发布的文件版本列表
+        
+        @param tmp_req: ListDeploymentPackageFilesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDeploymentPackageFilesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.ListDeploymentPackageFilesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.file_ids):
+            request.file_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.file_ids, 'FileIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.business_id):
+            query['BusinessId'] = request.business_id
+        if not UtilClient.is_unset(request.change_type):
+            query['ChangeType'] = request.change_type
+        if not UtilClient.is_unset(request.commit_from):
+            query['CommitFrom'] = request.commit_from
+        if not UtilClient.is_unset(request.commit_to):
+            query['CommitTo'] = request.commit_to
+        if not UtilClient.is_unset(request.commit_user_id):
+            query['CommitUserId'] = request.commit_user_id
+        if not UtilClient.is_unset(request.file_ids_shrink):
+            query['FileIds'] = request.file_ids_shrink
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_type):
+            query['FileType'] = request.file_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.solution_id):
+            query['SolutionId'] = request.solution_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDeploymentPackageFiles',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDeploymentPackageFilesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_deployment_package_files_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.ListDeploymentPackageFilesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListDeploymentPackageFilesResponse:
+        """
+        @summary 获取待发布的文件版本列表
+        
+        @param tmp_req: ListDeploymentPackageFilesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDeploymentPackageFilesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.ListDeploymentPackageFilesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.file_ids):
+            request.file_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.file_ids, 'FileIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.business_id):
+            query['BusinessId'] = request.business_id
+        if not UtilClient.is_unset(request.change_type):
+            query['ChangeType'] = request.change_type
+        if not UtilClient.is_unset(request.commit_from):
+            query['CommitFrom'] = request.commit_from
+        if not UtilClient.is_unset(request.commit_to):
+            query['CommitTo'] = request.commit_to
+        if not UtilClient.is_unset(request.commit_user_id):
+            query['CommitUserId'] = request.commit_user_id
+        if not UtilClient.is_unset(request.file_ids_shrink):
+            query['FileIds'] = request.file_ids_shrink
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_type):
+            query['FileType'] = request.file_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.solution_id):
+            query['SolutionId'] = request.solution_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDeploymentPackageFiles',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDeploymentPackageFilesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_deployment_package_files(
+        self,
+        request: dataworks_public_20240518_models.ListDeploymentPackageFilesRequest,
+    ) -> dataworks_public_20240518_models.ListDeploymentPackageFilesResponse:
+        """
+        @summary 获取待发布的文件版本列表
+        
+        @param request: ListDeploymentPackageFilesRequest
+        @return: ListDeploymentPackageFilesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_deployment_package_files_with_options(request, runtime)
+
+    async def list_deployment_package_files_async(
+        self,
+        request: dataworks_public_20240518_models.ListDeploymentPackageFilesRequest,
+    ) -> dataworks_public_20240518_models.ListDeploymentPackageFilesResponse:
+        """
+        @summary 获取待发布的文件版本列表
+        
+        @param request: ListDeploymentPackageFilesRequest
+        @return: ListDeploymentPackageFilesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_deployment_package_files_with_options_async(request, runtime)
+
+    def list_deployment_packages_with_options(
+        self,
+        request: dataworks_public_20240518_models.ListDeploymentPackagesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListDeploymentPackagesResponse:
+        """
+        @summary 查询发布包列表
+        
+        @param request: ListDeploymentPackagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDeploymentPackagesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.creator):
+            body['Creator'] = request.creator
+        if not UtilClient.is_unset(request.end_create_time):
+            body['EndCreateTime'] = request.end_create_time
+        if not UtilClient.is_unset(request.end_execute_time):
+            body['EndExecuteTime'] = request.end_execute_time
+        if not UtilClient.is_unset(request.executor):
+            body['Executor'] = request.executor
+        if not UtilClient.is_unset(request.keyword):
+            body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDeploymentPackages',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDeploymentPackagesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_deployment_packages_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.ListDeploymentPackagesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListDeploymentPackagesResponse:
+        """
+        @summary 查询发布包列表
+        
+        @param request: ListDeploymentPackagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDeploymentPackagesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.creator):
+            body['Creator'] = request.creator
+        if not UtilClient.is_unset(request.end_create_time):
+            body['EndCreateTime'] = request.end_create_time
+        if not UtilClient.is_unset(request.end_execute_time):
+            body['EndExecuteTime'] = request.end_execute_time
+        if not UtilClient.is_unset(request.executor):
+            body['Executor'] = request.executor
+        if not UtilClient.is_unset(request.keyword):
+            body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDeploymentPackages',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDeploymentPackagesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_deployment_packages(
+        self,
+        request: dataworks_public_20240518_models.ListDeploymentPackagesRequest,
+    ) -> dataworks_public_20240518_models.ListDeploymentPackagesResponse:
+        """
+        @summary 查询发布包列表
+        
+        @param request: ListDeploymentPackagesRequest
+        @return: ListDeploymentPackagesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_deployment_packages_with_options(request, runtime)
+
+    async def list_deployment_packages_async(
+        self,
+        request: dataworks_public_20240518_models.ListDeploymentPackagesRequest,
+    ) -> dataworks_public_20240518_models.ListDeploymentPackagesResponse:
+        """
+        @summary 查询发布包列表
+        
+        @param request: ListDeploymentPackagesRequest
+        @return: ListDeploymentPackagesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_deployment_packages_with_options_async(request, runtime)
+
     def list_downstream_task_instances_with_options(
         self,
         request: dataworks_public_20240518_models.ListDownstreamTaskInstancesRequest,
@@ -12826,6 +15142,362 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_entities_in_meta_collection_with_options_async(request, runtime)
+
+    def list_file_versions_with_options(
+        self,
+        request: dataworks_public_20240518_models.ListFileVersionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListFileVersionsResponse:
+        """
+        @param request: ListFileVersionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFileVersionsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_id):
+            body['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListFileVersions',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListFileVersionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_file_versions_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.ListFileVersionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListFileVersionsResponse:
+        """
+        @param request: ListFileVersionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFileVersionsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_id):
+            body['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListFileVersions',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListFileVersionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_file_versions(
+        self,
+        request: dataworks_public_20240518_models.ListFileVersionsRequest,
+    ) -> dataworks_public_20240518_models.ListFileVersionsResponse:
+        """
+        @param request: ListFileVersionsRequest
+        @return: ListFileVersionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_file_versions_with_options(request, runtime)
+
+    async def list_file_versions_async(
+        self,
+        request: dataworks_public_20240518_models.ListFileVersionsRequest,
+    ) -> dataworks_public_20240518_models.ListFileVersionsResponse:
+        """
+        @param request: ListFileVersionsRequest
+        @return: ListFileVersionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_file_versions_with_options_async(request, runtime)
+
+    def list_files_with_options(
+        self,
+        request: dataworks_public_20240518_models.ListFilesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListFilesResponse:
+        """
+        @param request: ListFilesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFilesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.commit_status):
+            body['CommitStatus'] = request.commit_status
+        if not UtilClient.is_unset(request.exact_file_name):
+            body['ExactFileName'] = request.exact_file_name
+        if not UtilClient.is_unset(request.file_folder_path):
+            body['FileFolderPath'] = request.file_folder_path
+        if not UtilClient.is_unset(request.file_id_in):
+            body['FileIdIn'] = request.file_id_in
+        if not UtilClient.is_unset(request.file_types):
+            body['FileTypes'] = request.file_types
+        if not UtilClient.is_unset(request.keyword):
+            body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.last_edit_user):
+            body['LastEditUser'] = request.last_edit_user
+        if not UtilClient.is_unset(request.need_absolute_folder_path):
+            body['NeedAbsoluteFolderPath'] = request.need_absolute_folder_path
+        if not UtilClient.is_unset(request.need_content):
+            body['NeedContent'] = request.need_content
+        if not UtilClient.is_unset(request.node_id):
+            body['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.owner):
+            body['Owner'] = request.owner
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        if not UtilClient.is_unset(request.use_type):
+            body['UseType'] = request.use_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListFiles',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListFilesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_files_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.ListFilesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListFilesResponse:
+        """
+        @param request: ListFilesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFilesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.commit_status):
+            body['CommitStatus'] = request.commit_status
+        if not UtilClient.is_unset(request.exact_file_name):
+            body['ExactFileName'] = request.exact_file_name
+        if not UtilClient.is_unset(request.file_folder_path):
+            body['FileFolderPath'] = request.file_folder_path
+        if not UtilClient.is_unset(request.file_id_in):
+            body['FileIdIn'] = request.file_id_in
+        if not UtilClient.is_unset(request.file_types):
+            body['FileTypes'] = request.file_types
+        if not UtilClient.is_unset(request.keyword):
+            body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.last_edit_user):
+            body['LastEditUser'] = request.last_edit_user
+        if not UtilClient.is_unset(request.need_absolute_folder_path):
+            body['NeedAbsoluteFolderPath'] = request.need_absolute_folder_path
+        if not UtilClient.is_unset(request.need_content):
+            body['NeedContent'] = request.need_content
+        if not UtilClient.is_unset(request.node_id):
+            body['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.owner):
+            body['Owner'] = request.owner
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        if not UtilClient.is_unset(request.use_type):
+            body['UseType'] = request.use_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListFiles',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListFilesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_files(
+        self,
+        request: dataworks_public_20240518_models.ListFilesRequest,
+    ) -> dataworks_public_20240518_models.ListFilesResponse:
+        """
+        @param request: ListFilesRequest
+        @return: ListFilesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_files_with_options(request, runtime)
+
+    async def list_files_async(
+        self,
+        request: dataworks_public_20240518_models.ListFilesRequest,
+    ) -> dataworks_public_20240518_models.ListFilesResponse:
+        """
+        @param request: ListFilesRequest
+        @return: ListFilesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_files_with_options_async(request, runtime)
+
+    def list_folders_with_options(
+        self,
+        request: dataworks_public_20240518_models.ListFoldersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListFoldersResponse:
+        """
+        @param request: ListFoldersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFoldersResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.parent_folder_path):
+            body['ParentFolderPath'] = request.parent_folder_path
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListFolders',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListFoldersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_folders_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.ListFoldersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListFoldersResponse:
+        """
+        @param request: ListFoldersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFoldersResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.parent_folder_path):
+            body['ParentFolderPath'] = request.parent_folder_path
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListFolders',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListFoldersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_folders(
+        self,
+        request: dataworks_public_20240518_models.ListFoldersRequest,
+    ) -> dataworks_public_20240518_models.ListFoldersResponse:
+        """
+        @param request: ListFoldersRequest
+        @return: ListFoldersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_folders_with_options(request, runtime)
+
+    async def list_folders_async(
+        self,
+        request: dataworks_public_20240518_models.ListFoldersRequest,
+    ) -> dataworks_public_20240518_models.ListFoldersResponse:
+        """
+        @param request: ListFoldersRequest
+        @return: ListFoldersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_folders_with_options_async(request, runtime)
 
     def list_functions_with_options(
         self,
@@ -13570,6 +16242,98 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_partitions_with_options_async(request, runtime)
+
+    def list_pipeline_run_items_with_options(
+        self,
+        request: dataworks_public_20240518_models.ListPipelineRunItemsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListPipelineRunItemsResponse:
+        """
+        @summary 通过发布流程的ID获取发布内容
+        
+        @param request: ListPipelineRunItemsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPipelineRunItemsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPipelineRunItems',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListPipelineRunItemsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_pipeline_run_items_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.ListPipelineRunItemsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListPipelineRunItemsResponse:
+        """
+        @summary 通过发布流程的ID获取发布内容
+        
+        @param request: ListPipelineRunItemsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPipelineRunItemsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPipelineRunItems',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListPipelineRunItemsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_pipeline_run_items(
+        self,
+        request: dataworks_public_20240518_models.ListPipelineRunItemsRequest,
+    ) -> dataworks_public_20240518_models.ListPipelineRunItemsResponse:
+        """
+        @summary 通过发布流程的ID获取发布内容
+        
+        @param request: ListPipelineRunItemsRequest
+        @return: ListPipelineRunItemsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_pipeline_run_items_with_options(request, runtime)
+
+    async def list_pipeline_run_items_async(
+        self,
+        request: dataworks_public_20240518_models.ListPipelineRunItemsRequest,
+    ) -> dataworks_public_20240518_models.ListPipelineRunItemsResponse:
+        """
+        @summary 通过发布流程的ID获取发布内容
+        
+        @param request: ListPipelineRunItemsRequest
+        @return: ListPipelineRunItemsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_pipeline_run_items_with_options_async(request, runtime)
 
     def list_pipeline_runs_with_options(
         self,
@@ -14725,6 +17489,8 @@ class Client(OpenApiClient):
             body['RuntimeResource'] = request.runtime_resource
         if not UtilClient.is_unset(request.sort_by):
             body['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
         if not UtilClient.is_unset(request.task_id):
             body['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.task_ids_shrink):
@@ -14804,6 +17570,8 @@ class Client(OpenApiClient):
             body['RuntimeResource'] = request.runtime_resource
         if not UtilClient.is_unset(request.sort_by):
             body['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
         if not UtilClient.is_unset(request.task_id):
             body['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.task_ids_shrink):
@@ -17783,6 +20551,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.stop_workflow_instances_with_options_async(request, runtime)
 
+    def submit_file_with_options(
+        self,
+        request: dataworks_public_20240518_models.SubmitFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.SubmitFileResponse:
+        """
+        @param request: SubmitFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitFileResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.comment):
+            body['Comment'] = request.comment
+        if not UtilClient.is_unset(request.file_id):
+            body['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        if not UtilClient.is_unset(request.skip_all_deploy_file_extensions):
+            body['SkipAllDeployFileExtensions'] = request.skip_all_deploy_file_extensions
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitFile',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.SubmitFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_file_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.SubmitFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.SubmitFileResponse:
+        """
+        @param request: SubmitFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitFileResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.comment):
+            body['Comment'] = request.comment
+        if not UtilClient.is_unset(request.file_id):
+            body['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        if not UtilClient.is_unset(request.skip_all_deploy_file_extensions):
+            body['SkipAllDeployFileExtensions'] = request.skip_all_deploy_file_extensions
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitFile',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.SubmitFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_file(
+        self,
+        request: dataworks_public_20240518_models.SubmitFileRequest,
+    ) -> dataworks_public_20240518_models.SubmitFileResponse:
+        """
+        @param request: SubmitFileRequest
+        @return: SubmitFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_file_with_options(request, runtime)
+
+    async def submit_file_async(
+        self,
+        request: dataworks_public_20240518_models.SubmitFileRequest,
+    ) -> dataworks_public_20240518_models.SubmitFileResponse:
+        """
+        @param request: SubmitFileRequest
+        @return: SubmitFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_file_with_options_async(request, runtime)
+
     def suspend_task_instances_with_options(
         self,
         tmp_req: dataworks_public_20240518_models.SuspendTaskInstancesRequest,
@@ -18526,6 +21398,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_alert_rule_with_options_async(request, runtime)
+
+    def update_business_with_options(
+        self,
+        request: dataworks_public_20240518_models.UpdateBusinessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateBusinessResponse:
+        """
+        @param request: UpdateBusinessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateBusinessResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.business_id):
+            body['BusinessId'] = request.business_id
+        if not UtilClient.is_unset(request.business_name):
+            body['BusinessName'] = request.business_name
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.owner):
+            body['Owner'] = request.owner
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateBusiness',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateBusinessResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_business_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateBusinessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateBusinessResponse:
+        """
+        @param request: UpdateBusinessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateBusinessResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.business_id):
+            body['BusinessId'] = request.business_id
+        if not UtilClient.is_unset(request.business_name):
+            body['BusinessName'] = request.business_name
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.owner):
+            body['Owner'] = request.owner
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateBusiness',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateBusinessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_business(
+        self,
+        request: dataworks_public_20240518_models.UpdateBusinessRequest,
+    ) -> dataworks_public_20240518_models.UpdateBusinessResponse:
+        """
+        @param request: UpdateBusinessRequest
+        @return: UpdateBusinessResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_business_with_options(request, runtime)
+
+    async def update_business_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateBusinessRequest,
+    ) -> dataworks_public_20240518_models.UpdateBusinessResponse:
+        """
+        @param request: UpdateBusinessRequest
+        @return: UpdateBusinessResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_business_with_options_async(request, runtime)
 
     def update_column_business_metadata_with_options(
         self,
@@ -19559,6 +22539,322 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_data_source_with_options_async(request, runtime)
 
+    def update_file_with_options(
+        self,
+        request: dataworks_public_20240518_models.UpdateFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateFileResponse:
+        """
+        @param request: UpdateFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFileResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.advanced_settings):
+            body['AdvancedSettings'] = request.advanced_settings
+        if not UtilClient.is_unset(request.apply_schedule_immediately):
+            body['ApplyScheduleImmediately'] = request.apply_schedule_immediately
+        if not UtilClient.is_unset(request.auto_parsing):
+            body['AutoParsing'] = request.auto_parsing
+        if not UtilClient.is_unset(request.auto_rerun_interval_millis):
+            body['AutoRerunIntervalMillis'] = request.auto_rerun_interval_millis
+        if not UtilClient.is_unset(request.auto_rerun_times):
+            body['AutoRerunTimes'] = request.auto_rerun_times
+        if not UtilClient.is_unset(request.connection_name):
+            body['ConnectionName'] = request.connection_name
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        if not UtilClient.is_unset(request.cron_express):
+            body['CronExpress'] = request.cron_express
+        if not UtilClient.is_unset(request.cycle_type):
+            body['CycleType'] = request.cycle_type
+        if not UtilClient.is_unset(request.dependent_node_id_list):
+            body['DependentNodeIdList'] = request.dependent_node_id_list
+        if not UtilClient.is_unset(request.dependent_type):
+            body['DependentType'] = request.dependent_type
+        if not UtilClient.is_unset(request.end_effect_date):
+            body['EndEffectDate'] = request.end_effect_date
+        if not UtilClient.is_unset(request.file_description):
+            body['FileDescription'] = request.file_description
+        if not UtilClient.is_unset(request.file_folder_path):
+            body['FileFolderPath'] = request.file_folder_path
+        if not UtilClient.is_unset(request.file_id):
+            body['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.file_name):
+            body['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.ignore_parent_skip_running_property):
+            body['IgnoreParentSkipRunningProperty'] = request.ignore_parent_skip_running_property
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.input_list):
+            body['InputList'] = request.input_list
+        if not UtilClient.is_unset(request.input_parameters):
+            body['InputParameters'] = request.input_parameters
+        if not UtilClient.is_unset(request.output_list):
+            body['OutputList'] = request.output_list
+        if not UtilClient.is_unset(request.output_parameters):
+            body['OutputParameters'] = request.output_parameters
+        if not UtilClient.is_unset(request.owner):
+            body['Owner'] = request.owner
+        if not UtilClient.is_unset(request.para_value):
+            body['ParaValue'] = request.para_value
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        if not UtilClient.is_unset(request.rerun_mode):
+            body['RerunMode'] = request.rerun_mode
+        if not UtilClient.is_unset(request.resource_group_identifier):
+            body['ResourceGroupIdentifier'] = request.resource_group_identifier
+        if not UtilClient.is_unset(request.scheduler_type):
+            body['SchedulerType'] = request.scheduler_type
+        if not UtilClient.is_unset(request.start_effect_date):
+            body['StartEffectDate'] = request.start_effect_date
+        if not UtilClient.is_unset(request.start_immediately):
+            body['StartImmediately'] = request.start_immediately
+        if not UtilClient.is_unset(request.stop):
+            body['Stop'] = request.stop
+        if not UtilClient.is_unset(request.timeout):
+            body['Timeout'] = request.timeout
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateFile',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_file_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateFileResponse:
+        """
+        @param request: UpdateFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFileResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.advanced_settings):
+            body['AdvancedSettings'] = request.advanced_settings
+        if not UtilClient.is_unset(request.apply_schedule_immediately):
+            body['ApplyScheduleImmediately'] = request.apply_schedule_immediately
+        if not UtilClient.is_unset(request.auto_parsing):
+            body['AutoParsing'] = request.auto_parsing
+        if not UtilClient.is_unset(request.auto_rerun_interval_millis):
+            body['AutoRerunIntervalMillis'] = request.auto_rerun_interval_millis
+        if not UtilClient.is_unset(request.auto_rerun_times):
+            body['AutoRerunTimes'] = request.auto_rerun_times
+        if not UtilClient.is_unset(request.connection_name):
+            body['ConnectionName'] = request.connection_name
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        if not UtilClient.is_unset(request.cron_express):
+            body['CronExpress'] = request.cron_express
+        if not UtilClient.is_unset(request.cycle_type):
+            body['CycleType'] = request.cycle_type
+        if not UtilClient.is_unset(request.dependent_node_id_list):
+            body['DependentNodeIdList'] = request.dependent_node_id_list
+        if not UtilClient.is_unset(request.dependent_type):
+            body['DependentType'] = request.dependent_type
+        if not UtilClient.is_unset(request.end_effect_date):
+            body['EndEffectDate'] = request.end_effect_date
+        if not UtilClient.is_unset(request.file_description):
+            body['FileDescription'] = request.file_description
+        if not UtilClient.is_unset(request.file_folder_path):
+            body['FileFolderPath'] = request.file_folder_path
+        if not UtilClient.is_unset(request.file_id):
+            body['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.file_name):
+            body['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.ignore_parent_skip_running_property):
+            body['IgnoreParentSkipRunningProperty'] = request.ignore_parent_skip_running_property
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.input_list):
+            body['InputList'] = request.input_list
+        if not UtilClient.is_unset(request.input_parameters):
+            body['InputParameters'] = request.input_parameters
+        if not UtilClient.is_unset(request.output_list):
+            body['OutputList'] = request.output_list
+        if not UtilClient.is_unset(request.output_parameters):
+            body['OutputParameters'] = request.output_parameters
+        if not UtilClient.is_unset(request.owner):
+            body['Owner'] = request.owner
+        if not UtilClient.is_unset(request.para_value):
+            body['ParaValue'] = request.para_value
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        if not UtilClient.is_unset(request.rerun_mode):
+            body['RerunMode'] = request.rerun_mode
+        if not UtilClient.is_unset(request.resource_group_identifier):
+            body['ResourceGroupIdentifier'] = request.resource_group_identifier
+        if not UtilClient.is_unset(request.scheduler_type):
+            body['SchedulerType'] = request.scheduler_type
+        if not UtilClient.is_unset(request.start_effect_date):
+            body['StartEffectDate'] = request.start_effect_date
+        if not UtilClient.is_unset(request.start_immediately):
+            body['StartImmediately'] = request.start_immediately
+        if not UtilClient.is_unset(request.stop):
+            body['Stop'] = request.stop
+        if not UtilClient.is_unset(request.timeout):
+            body['Timeout'] = request.timeout
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateFile',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_file(
+        self,
+        request: dataworks_public_20240518_models.UpdateFileRequest,
+    ) -> dataworks_public_20240518_models.UpdateFileResponse:
+        """
+        @param request: UpdateFileRequest
+        @return: UpdateFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_file_with_options(request, runtime)
+
+    async def update_file_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateFileRequest,
+    ) -> dataworks_public_20240518_models.UpdateFileResponse:
+        """
+        @param request: UpdateFileRequest
+        @return: UpdateFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_file_with_options_async(request, runtime)
+
+    def update_folder_with_options(
+        self,
+        request: dataworks_public_20240518_models.UpdateFolderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateFolderResponse:
+        """
+        @param request: UpdateFolderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFolderResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.folder_id):
+            body['FolderId'] = request.folder_id
+        if not UtilClient.is_unset(request.folder_name):
+            body['FolderName'] = request.folder_name
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateFolder',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateFolderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_folder_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateFolderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateFolderResponse:
+        """
+        @param request: UpdateFolderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFolderResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.folder_id):
+            body['FolderId'] = request.folder_id
+        if not UtilClient.is_unset(request.folder_name):
+            body['FolderName'] = request.folder_name
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateFolder',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateFolderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_folder(
+        self,
+        request: dataworks_public_20240518_models.UpdateFolderRequest,
+    ) -> dataworks_public_20240518_models.UpdateFolderResponse:
+        """
+        @param request: UpdateFolderRequest
+        @return: UpdateFolderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_folder_with_options(request, runtime)
+
+    async def update_folder_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateFolderRequest,
+    ) -> dataworks_public_20240518_models.UpdateFolderResponse:
+        """
+        @param request: UpdateFolderRequest
+        @return: UpdateFolderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_folder_with_options_async(request, runtime)
+
     def update_function_with_options(
         self,
         request: dataworks_public_20240518_models.UpdateFunctionRequest,
@@ -19662,6 +22958,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_function_with_options_async(request, runtime)
+
+    def update_ideevent_result_with_options(
+        self,
+        request: dataworks_public_20240518_models.UpdateIDEEventResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateIDEEventResultResponse:
+        """
+        @summary 回调扩展点消息的检查结果
+        
+        @param request: UpdateIDEEventResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateIDEEventResultResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.check_result):
+            body['CheckResult'] = request.check_result
+        if not UtilClient.is_unset(request.check_result_tip):
+            body['CheckResultTip'] = request.check_result_tip
+        if not UtilClient.is_unset(request.extension_code):
+            body['ExtensionCode'] = request.extension_code
+        if not UtilClient.is_unset(request.message_id):
+            body['MessageId'] = request.message_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateIDEEventResult',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateIDEEventResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_ideevent_result_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateIDEEventResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateIDEEventResultResponse:
+        """
+        @summary 回调扩展点消息的检查结果
+        
+        @param request: UpdateIDEEventResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateIDEEventResultResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.check_result):
+            body['CheckResult'] = request.check_result
+        if not UtilClient.is_unset(request.check_result_tip):
+            body['CheckResultTip'] = request.check_result_tip
+        if not UtilClient.is_unset(request.extension_code):
+            body['ExtensionCode'] = request.extension_code
+        if not UtilClient.is_unset(request.message_id):
+            body['MessageId'] = request.message_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateIDEEventResult',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateIDEEventResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_ideevent_result(
+        self,
+        request: dataworks_public_20240518_models.UpdateIDEEventResultRequest,
+    ) -> dataworks_public_20240518_models.UpdateIDEEventResultResponse:
+        """
+        @summary 回调扩展点消息的检查结果
+        
+        @param request: UpdateIDEEventResultRequest
+        @return: UpdateIDEEventResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_ideevent_result_with_options(request, runtime)
+
+    async def update_ideevent_result_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateIDEEventResultRequest,
+    ) -> dataworks_public_20240518_models.UpdateIDEEventResultResponse:
+        """
+        @summary 回调扩展点消息的检查结果
+        
+        @param request: UpdateIDEEventResultRequest
+        @return: UpdateIDEEventResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_ideevent_result_with_options_async(request, runtime)
 
     def update_meta_collection_with_options(
         self,
@@ -20898,6 +24302,138 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_task_instances_with_options_async(request, runtime)
+
+    def update_udf_file_with_options(
+        self,
+        request: dataworks_public_20240518_models.UpdateUdfFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateUdfFileResponse:
+        """
+        @param request: UpdateUdfFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUdfFileResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.class_name):
+            body['ClassName'] = request.class_name
+        if not UtilClient.is_unset(request.cmd_description):
+            body['CmdDescription'] = request.cmd_description
+        if not UtilClient.is_unset(request.example):
+            body['Example'] = request.example
+        if not UtilClient.is_unset(request.file_folder_path):
+            body['FileFolderPath'] = request.file_folder_path
+        if not UtilClient.is_unset(request.file_id):
+            body['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.function_type):
+            body['FunctionType'] = request.function_type
+        if not UtilClient.is_unset(request.parameter_description):
+            body['ParameterDescription'] = request.parameter_description
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        if not UtilClient.is_unset(request.resources):
+            body['Resources'] = request.resources
+        if not UtilClient.is_unset(request.return_value):
+            body['ReturnValue'] = request.return_value
+        if not UtilClient.is_unset(request.udf_description):
+            body['UdfDescription'] = request.udf_description
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateUdfFile',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateUdfFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_udf_file_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateUdfFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateUdfFileResponse:
+        """
+        @param request: UpdateUdfFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUdfFileResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.class_name):
+            body['ClassName'] = request.class_name
+        if not UtilClient.is_unset(request.cmd_description):
+            body['CmdDescription'] = request.cmd_description
+        if not UtilClient.is_unset(request.example):
+            body['Example'] = request.example
+        if not UtilClient.is_unset(request.file_folder_path):
+            body['FileFolderPath'] = request.file_folder_path
+        if not UtilClient.is_unset(request.file_id):
+            body['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.function_type):
+            body['FunctionType'] = request.function_type
+        if not UtilClient.is_unset(request.parameter_description):
+            body['ParameterDescription'] = request.parameter_description
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            body['ProjectIdentifier'] = request.project_identifier
+        if not UtilClient.is_unset(request.resources):
+            body['Resources'] = request.resources
+        if not UtilClient.is_unset(request.return_value):
+            body['ReturnValue'] = request.return_value
+        if not UtilClient.is_unset(request.udf_description):
+            body['UdfDescription'] = request.udf_description
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateUdfFile',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateUdfFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_udf_file(
+        self,
+        request: dataworks_public_20240518_models.UpdateUdfFileRequest,
+    ) -> dataworks_public_20240518_models.UpdateUdfFileResponse:
+        """
+        @param request: UpdateUdfFileRequest
+        @return: UpdateUdfFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_udf_file_with_options(request, runtime)
+
+    async def update_udf_file_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateUdfFileRequest,
+    ) -> dataworks_public_20240518_models.UpdateUdfFileResponse:
+        """
+        @param request: UpdateUdfFileRequest
+        @return: UpdateUdfFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_udf_file_with_options_async(request, runtime)
 
     def update_workflow_with_options(
         self,
