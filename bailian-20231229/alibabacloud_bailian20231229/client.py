@@ -2648,6 +2648,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.category_name):
+            body['CategoryName'] = request.category_name
         if not UtilClient.is_unset(request.category_type):
             body['CategoryType'] = request.category_type
         if not UtilClient.is_unset(request.max_results):
@@ -2693,6 +2695,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.category_name):
+            body['CategoryName'] = request.category_name
         if not UtilClient.is_unset(request.category_type):
             body['CategoryType'] = request.category_type
         if not UtilClient.is_unset(request.max_results):

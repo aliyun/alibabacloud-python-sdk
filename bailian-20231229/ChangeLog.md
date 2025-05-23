@@ -1,3 +1,7 @@
+2025-05-23 Version: 2.0.7
+- Update API ListCategory: add request parameters CategoryName.
+
+
 2025-05-08 Version: 2.0.6
 - Update API AddFile: add request parameters OriginalFileUrl.
 

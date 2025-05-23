@@ -4617,11 +4617,13 @@ class GetPublishedAgentResponse(TeaModel):
 class ListCategoryRequest(TeaModel):
     def __init__(
         self,
+        category_name: str = None,
         category_type: str = None,
         max_results: int = None,
         next_token: str = None,
         parent_category_id: str = None,
     ):
+        self.category_name = category_name
         # This parameter is required.
         self.category_type = category_type
         self.max_results = max_results
@@ -4637,6 +4639,8 @@ class ListCategoryRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.category_name is not None:
+            result['CategoryName'] = self.category_name
         if self.category_type is not None:
             result['CategoryType'] = self.category_type
         if self.max_results is not None:
@@ -4649,6 +4653,8 @@ class ListCategoryRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CategoryName') is not None:
+            self.category_name = m.get('CategoryName')
         if m.get('CategoryType') is not None:
             self.category_type = m.get('CategoryType')
         if m.get('MaxResults') is not None:
