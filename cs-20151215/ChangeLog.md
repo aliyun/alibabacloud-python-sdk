@@ -1,3 +1,7 @@
+2025-05-23 Version: 4.9.1
+- Update API CreateCluster: add request parameters body.audit_log_config.
+
+
 2025-05-14 Version: 4.9.0
 - Support API CreateClusterInspectConfig.
 - Support API DeleteClusterInspectConfig.
