@@ -1,3 +1,15 @@
+2025-05-26 Version: 3.1.0
+- Support API DescribeAdbMySqlIndexes.
+- Support API DescribeAdbMySqlTableMeta.
+- Support API DescribeLLMAnswer.
+- Support API DescribeLLMSimilarQuestions.
+- Support API DescribeSQLWebSocketDomain.
+- Support API DescribeTableStatistics.
+- Update API DescribeBackups: add request parameters Remote.
+- Update API DescribeBackups: add response parameters Body.Items.$.BackupRegion.
+- Update API DescribeBackups: add response parameters Body.Items.$.ParentBackupId.
+
+
 2025-04-18 Version: 3.0.3
 - Update API DescribeDiagnosisSQLInfo: add response parameters Body.StageInfos.$.ExecutionType.
 

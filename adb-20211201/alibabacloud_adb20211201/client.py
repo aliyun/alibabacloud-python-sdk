@@ -5299,6 +5299,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_adb_my_sql_columns_with_options_async(request, runtime)
 
+    def describe_adb_my_sql_indexes_with_options(
+        self,
+        request: adb_20211201_models.DescribeAdbMySqlIndexesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeAdbMySqlIndexesResponse:
+        """
+        @summary 用于查看表索引信息
+        
+        @param request: DescribeAdbMySqlIndexesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAdbMySqlIndexesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.schema):
+            query['Schema'] = request.schema
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAdbMySqlIndexes',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeAdbMySqlIndexesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_adb_my_sql_indexes_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeAdbMySqlIndexesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeAdbMySqlIndexesResponse:
+        """
+        @summary 用于查看表索引信息
+        
+        @param request: DescribeAdbMySqlIndexesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAdbMySqlIndexesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.schema):
+            query['Schema'] = request.schema
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAdbMySqlIndexes',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeAdbMySqlIndexesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_adb_my_sql_indexes(
+        self,
+        request: adb_20211201_models.DescribeAdbMySqlIndexesRequest,
+    ) -> adb_20211201_models.DescribeAdbMySqlIndexesResponse:
+        """
+        @summary 用于查看表索引信息
+        
+        @param request: DescribeAdbMySqlIndexesRequest
+        @return: DescribeAdbMySqlIndexesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_adb_my_sql_indexes_with_options(request, runtime)
+
+    async def describe_adb_my_sql_indexes_async(
+        self,
+        request: adb_20211201_models.DescribeAdbMySqlIndexesRequest,
+    ) -> adb_20211201_models.DescribeAdbMySqlIndexesResponse:
+        """
+        @summary 用于查看表索引信息
+        
+        @param request: DescribeAdbMySqlIndexesRequest
+        @return: DescribeAdbMySqlIndexesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_adb_my_sql_indexes_with_options_async(request, runtime)
+
     def describe_adb_my_sql_schemas_with_options(
         self,
         request: adb_20211201_models.DescribeAdbMySqlSchemasRequest,
@@ -5410,6 +5518,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_adb_my_sql_schemas_with_options_async(request, runtime)
+
+    def describe_adb_my_sql_table_meta_with_options(
+        self,
+        request: adb_20211201_models.DescribeAdbMySqlTableMetaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeAdbMySqlTableMetaResponse:
+        """
+        @summary 用于查看表元数据信息
+        
+        @param request: DescribeAdbMySqlTableMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAdbMySqlTableMetaResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.schema):
+            query['Schema'] = request.schema
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAdbMySqlTableMeta',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeAdbMySqlTableMetaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_adb_my_sql_table_meta_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeAdbMySqlTableMetaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeAdbMySqlTableMetaResponse:
+        """
+        @summary 用于查看表元数据信息
+        
+        @param request: DescribeAdbMySqlTableMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAdbMySqlTableMetaResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.schema):
+            query['Schema'] = request.schema
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAdbMySqlTableMeta',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeAdbMySqlTableMetaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_adb_my_sql_table_meta(
+        self,
+        request: adb_20211201_models.DescribeAdbMySqlTableMetaRequest,
+    ) -> adb_20211201_models.DescribeAdbMySqlTableMetaResponse:
+        """
+        @summary 用于查看表元数据信息
+        
+        @param request: DescribeAdbMySqlTableMetaRequest
+        @return: DescribeAdbMySqlTableMetaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_adb_my_sql_table_meta_with_options(request, runtime)
+
+    async def describe_adb_my_sql_table_meta_async(
+        self,
+        request: adb_20211201_models.DescribeAdbMySqlTableMetaRequest,
+    ) -> adb_20211201_models.DescribeAdbMySqlTableMetaResponse:
+        """
+        @summary 用于查看表元数据信息
+        
+        @param request: DescribeAdbMySqlTableMetaRequest
+        @return: DescribeAdbMySqlTableMetaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_adb_my_sql_table_meta_with_options_async(request, runtime)
 
     def describe_adb_my_sql_tables_with_options(
         self,
@@ -7381,6 +7597,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeBackupsResponse:
         """
+        @summary 查询实例备份集
+        
         @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DescribeBackupsRequest
@@ -7403,6 +7621,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.remote):
+            query['Remote'] = request.remote
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -7434,6 +7654,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeBackupsResponse:
         """
+        @summary 查询实例备份集
+        
         @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DescribeBackupsRequest
@@ -7456,6 +7678,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.remote):
+            query['Remote'] = request.remote
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -7486,6 +7710,8 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeBackupsRequest,
     ) -> adb_20211201_models.DescribeBackupsResponse:
         """
+        @summary 查询实例备份集
+        
         @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DescribeBackupsRequest
@@ -7499,6 +7725,8 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeBackupsRequest,
     ) -> adb_20211201_models.DescribeBackupsResponse:
         """
+        @summary 查询实例备份集
+        
         @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DescribeBackupsRequest
@@ -10949,7 +11177,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeInclinedTablesResponse:
         """
-        @summary 查看表倾斜诊断结果
+        @summary Queries the information about skewed tables for an AnalyticDB for MySQL cluster.
         
         @param request: DescribeInclinedTablesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10996,7 +11224,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeInclinedTablesResponse:
         """
-        @summary 查看表倾斜诊断结果
+        @summary Queries the information about skewed tables for an AnalyticDB for MySQL cluster.
         
         @param request: DescribeInclinedTablesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11042,7 +11270,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeInclinedTablesRequest,
     ) -> adb_20211201_models.DescribeInclinedTablesResponse:
         """
-        @summary 查看表倾斜诊断结果
+        @summary Queries the information about skewed tables for an AnalyticDB for MySQL cluster.
         
         @param request: DescribeInclinedTablesRequest
         @return: DescribeInclinedTablesResponse
@@ -11055,7 +11283,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeInclinedTablesRequest,
     ) -> adb_20211201_models.DescribeInclinedTablesResponse:
         """
-        @summary 查看表倾斜诊断结果
+        @summary Queries the information about skewed tables for an AnalyticDB for MySQL cluster.
         
         @param request: DescribeInclinedTablesRequest
         @return: DescribeInclinedTablesResponse
@@ -11290,6 +11518,238 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_kernel_version_with_options_async(request, runtime)
+
+    def describe_llmanswer_with_options(
+        self,
+        request: adb_20211201_models.DescribeLLMAnswerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeLLMAnswerResponse:
+        """
+        @summary Queries the answer by a large language model (LLM) to a user question about the use of AnalyticDB for MySQL.
+        
+        @param request: DescribeLLMAnswerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLLMAnswerResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLLMAnswer',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeLLMAnswerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_llmanswer_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeLLMAnswerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeLLMAnswerResponse:
+        """
+        @summary Queries the answer by a large language model (LLM) to a user question about the use of AnalyticDB for MySQL.
+        
+        @param request: DescribeLLMAnswerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLLMAnswerResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLLMAnswer',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeLLMAnswerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_llmanswer(
+        self,
+        request: adb_20211201_models.DescribeLLMAnswerRequest,
+    ) -> adb_20211201_models.DescribeLLMAnswerResponse:
+        """
+        @summary Queries the answer by a large language model (LLM) to a user question about the use of AnalyticDB for MySQL.
+        
+        @param request: DescribeLLMAnswerRequest
+        @return: DescribeLLMAnswerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_llmanswer_with_options(request, runtime)
+
+    async def describe_llmanswer_async(
+        self,
+        request: adb_20211201_models.DescribeLLMAnswerRequest,
+    ) -> adb_20211201_models.DescribeLLMAnswerResponse:
+        """
+        @summary Queries the answer by a large language model (LLM) to a user question about the use of AnalyticDB for MySQL.
+        
+        @param request: DescribeLLMAnswerRequest
+        @return: DescribeLLMAnswerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_llmanswer_with_options_async(request, runtime)
+
+    def describe_llmsimilar_questions_with_options(
+        self,
+        request: adb_20211201_models.DescribeLLMSimilarQuestionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeLLMSimilarQuestionsResponse:
+        """
+        @param request: DescribeLLMSimilarQuestionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLLMSimilarQuestionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLLMSimilarQuestions',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeLLMSimilarQuestionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_llmsimilar_questions_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeLLMSimilarQuestionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeLLMSimilarQuestionsResponse:
+        """
+        @param request: DescribeLLMSimilarQuestionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLLMSimilarQuestionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLLMSimilarQuestions',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeLLMSimilarQuestionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_llmsimilar_questions(
+        self,
+        request: adb_20211201_models.DescribeLLMSimilarQuestionsRequest,
+    ) -> adb_20211201_models.DescribeLLMSimilarQuestionsResponse:
+        """
+        @param request: DescribeLLMSimilarQuestionsRequest
+        @return: DescribeLLMSimilarQuestionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_llmsimilar_questions_with_options(request, runtime)
+
+    async def describe_llmsimilar_questions_async(
+        self,
+        request: adb_20211201_models.DescribeLLMSimilarQuestionsRequest,
+    ) -> adb_20211201_models.DescribeLLMSimilarQuestionsResponse:
+        """
+        @param request: DescribeLLMSimilarQuestionsRequest
+        @return: DescribeLLMSimilarQuestionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_llmsimilar_questions_with_options_async(request, runtime)
 
     def describe_lake_cache_size_with_options(
         self,
@@ -12133,7 +12593,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeResourceGroupSpecResponse:
         """
-        @summary 查询资源组规格相关信息
+        @summary Queries the information about resource group specifications.
+        
+        @description ### [](#)
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-mysql/developer-reference/api-adb-2021-12-01-endpoint?spm=a2c63.p38356.help-menu-92664.d_5_3_1.57da5837J23pkx).
         
         @param request: DescribeResourceGroupSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12172,7 +12635,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeResourceGroupSpecResponse:
         """
-        @summary 查询资源组规格相关信息
+        @summary Queries the information about resource group specifications.
+        
+        @description ### [](#)
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-mysql/developer-reference/api-adb-2021-12-01-endpoint?spm=a2c63.p38356.help-menu-92664.d_5_3_1.57da5837J23pkx).
         
         @param request: DescribeResourceGroupSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12210,7 +12676,10 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeResourceGroupSpecRequest,
     ) -> adb_20211201_models.DescribeResourceGroupSpecResponse:
         """
-        @summary 查询资源组规格相关信息
+        @summary Queries the information about resource group specifications.
+        
+        @description ### [](#)
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-mysql/developer-reference/api-adb-2021-12-01-endpoint?spm=a2c63.p38356.help-menu-92664.d_5_3_1.57da5837J23pkx).
         
         @param request: DescribeResourceGroupSpecRequest
         @return: DescribeResourceGroupSpecResponse
@@ -12223,7 +12692,10 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeResourceGroupSpecRequest,
     ) -> adb_20211201_models.DescribeResourceGroupSpecResponse:
         """
-        @summary 查询资源组规格相关信息
+        @summary Queries the information about resource group specifications.
+        
+        @description ### [](#)
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-mysql/developer-reference/api-adb-2021-12-01-endpoint?spm=a2c63.p38356.help-menu-92664.d_5_3_1.57da5837J23pkx).
         
         @param request: DescribeResourceGroupSpecRequest
         @return: DescribeResourceGroupSpecResponse
@@ -12374,6 +12846,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_sqlpatterns_with_options_async(request, runtime)
+
+    def describe_sqlweb_socket_domain_with_options(
+        self,
+        request: adb_20211201_models.DescribeSQLWebSocketDomainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeSQLWebSocketDomainResponse:
+        """
+        @summary 查看注册的WebSocket域名
+        
+        @param request: DescribeSQLWebSocketDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSQLWebSocketDomainResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSQLWebSocketDomain',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeSQLWebSocketDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_sqlweb_socket_domain_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeSQLWebSocketDomainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeSQLWebSocketDomainResponse:
+        """
+        @summary 查看注册的WebSocket域名
+        
+        @param request: DescribeSQLWebSocketDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSQLWebSocketDomainResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSQLWebSocketDomain',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeSQLWebSocketDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_sqlweb_socket_domain(
+        self,
+        request: adb_20211201_models.DescribeSQLWebSocketDomainRequest,
+    ) -> adb_20211201_models.DescribeSQLWebSocketDomainResponse:
+        """
+        @summary 查看注册的WebSocket域名
+        
+        @param request: DescribeSQLWebSocketDomainRequest
+        @return: DescribeSQLWebSocketDomainResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_sqlweb_socket_domain_with_options(request, runtime)
+
+    async def describe_sqlweb_socket_domain_async(
+        self,
+        request: adb_20211201_models.DescribeSQLWebSocketDomainRequest,
+    ) -> adb_20211201_models.DescribeSQLWebSocketDomainResponse:
+        """
+        @summary 查看注册的WebSocket域名
+        
+        @param request: DescribeSQLWebSocketDomainRequest
+        @return: DescribeSQLWebSocketDomainResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_sqlweb_socket_domain_with_options_async(request, runtime)
 
     def describe_schemas_with_options(
         self,
@@ -13879,6 +14451,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_table_partition_diagnose_with_options_async(request, runtime)
 
+    def describe_table_statistics_with_options(
+        self,
+        request: adb_20211201_models.DescribeTableStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeTableStatisticsResponse:
+        """
+        @summary 查询表统计信息
+        
+        @param request: DescribeTableStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTableStatisticsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTableStatistics',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeTableStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_table_statistics_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeTableStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeTableStatisticsResponse:
+        """
+        @summary 查询表统计信息
+        
+        @param request: DescribeTableStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTableStatisticsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTableStatistics',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeTableStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_table_statistics(
+        self,
+        request: adb_20211201_models.DescribeTableStatisticsRequest,
+    ) -> adb_20211201_models.DescribeTableStatisticsResponse:
+        """
+        @summary 查询表统计信息
+        
+        @param request: DescribeTableStatisticsRequest
+        @return: DescribeTableStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_table_statistics_with_options(request, runtime)
+
+    async def describe_table_statistics_async(
+        self,
+        request: adb_20211201_models.DescribeTableStatisticsRequest,
+    ) -> adb_20211201_models.DescribeTableStatisticsResponse:
+        """
+        @summary 查询表统计信息
+        
+        @param request: DescribeTableStatisticsRequest
+        @return: DescribeTableStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_table_statistics_with_options_async(request, runtime)
+
     def describe_tables_with_options(
         self,
         request: adb_20211201_models.DescribeTablesRequest,
@@ -15249,6 +15941,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ExistRunningSQLEngineResponse:
         """
+        @deprecated OpenAPI ExistRunningSQLEngine is deprecated
+        
         @summary Queries whether a running SQL engine exists.
         
         @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
@@ -15258,6 +15952,7 @@ class Client(OpenApiClient):
         @param request: ExistRunningSQLEngineRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ExistRunningSQLEngineResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         body = {}
@@ -15290,6 +15985,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ExistRunningSQLEngineResponse:
         """
+        @deprecated OpenAPI ExistRunningSQLEngine is deprecated
+        
         @summary Queries whether a running SQL engine exists.
         
         @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
@@ -15299,6 +15996,7 @@ class Client(OpenApiClient):
         @param request: ExistRunningSQLEngineRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ExistRunningSQLEngineResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         body = {}
@@ -15330,6 +16028,8 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ExistRunningSQLEngineRequest,
     ) -> adb_20211201_models.ExistRunningSQLEngineResponse:
         """
+        @deprecated OpenAPI ExistRunningSQLEngine is deprecated
+        
         @summary Queries whether a running SQL engine exists.
         
         @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
@@ -15338,6 +16038,7 @@ class Client(OpenApiClient):
         
         @param request: ExistRunningSQLEngineRequest
         @return: ExistRunningSQLEngineResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.exist_running_sqlengine_with_options(request, runtime)
@@ -15347,6 +16048,8 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ExistRunningSQLEngineRequest,
     ) -> adb_20211201_models.ExistRunningSQLEngineResponse:
         """
+        @deprecated OpenAPI ExistRunningSQLEngine is deprecated
+        
         @summary Queries whether a running SQL engine exists.
         
         @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
@@ -15355,6 +16058,7 @@ class Client(OpenApiClient):
         
         @param request: ExistRunningSQLEngineRequest
         @return: ExistRunningSQLEngineResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.exist_running_sqlengine_with_options_async(request, runtime)
@@ -23937,6 +24641,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.StartSparkSQLEngineResponse:
         """
+        @deprecated OpenAPI StartSparkSQLEngine is deprecated
+        
         @summary Starts the Spark SQL engine.
         
         @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
@@ -23946,6 +24652,7 @@ class Client(OpenApiClient):
         @param request: StartSparkSQLEngineRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: StartSparkSQLEngineResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         body = {}
@@ -23988,6 +24695,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.StartSparkSQLEngineResponse:
         """
+        @deprecated OpenAPI StartSparkSQLEngine is deprecated
+        
         @summary Starts the Spark SQL engine.
         
         @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
@@ -23997,6 +24706,7 @@ class Client(OpenApiClient):
         @param request: StartSparkSQLEngineRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: StartSparkSQLEngineResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         body = {}
@@ -24038,6 +24748,8 @@ class Client(OpenApiClient):
         request: adb_20211201_models.StartSparkSQLEngineRequest,
     ) -> adb_20211201_models.StartSparkSQLEngineResponse:
         """
+        @deprecated OpenAPI StartSparkSQLEngine is deprecated
+        
         @summary Starts the Spark SQL engine.
         
         @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
@@ -24046,6 +24758,7 @@ class Client(OpenApiClient):
         
         @param request: StartSparkSQLEngineRequest
         @return: StartSparkSQLEngineResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.start_spark_sqlengine_with_options(request, runtime)
@@ -24055,6 +24768,8 @@ class Client(OpenApiClient):
         request: adb_20211201_models.StartSparkSQLEngineRequest,
     ) -> adb_20211201_models.StartSparkSQLEngineResponse:
         """
+        @deprecated OpenAPI StartSparkSQLEngine is deprecated
+        
         @summary Starts the Spark SQL engine.
         
         @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
@@ -24063,6 +24778,7 @@ class Client(OpenApiClient):
         
         @param request: StartSparkSQLEngineRequest
         @return: StartSparkSQLEngineResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.start_spark_sqlengine_with_options_async(request, runtime)
