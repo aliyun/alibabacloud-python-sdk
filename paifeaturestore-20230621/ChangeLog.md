@@ -1,3 +1,8 @@
+2025-05-26 Version: 6.0.0
+- Update API GetFeatureView: update response parameters Body.Fields.$.Transform' type has changed.
+- Update API GetFeatureView: delete response parameters Body.Fields.$.Transform.
+
+
 2025-05-19 Version: 5.1.0
 - Support API CheckModelFeatureFGFeature.
 - Support API CreateLLMConfig.

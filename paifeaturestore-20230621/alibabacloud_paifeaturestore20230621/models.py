@@ -2872,7 +2872,7 @@ class GetFeatureViewResponseBodyFields(TeaModel):
         self,
         attributes: List[str] = None,
         name: str = None,
-        transform: GetFeatureViewResponseBodyFieldsTransform = None,
+        transform: List[GetFeatureViewResponseBodyFieldsTransform] = None,
         type: str = None,
     ):
         self.attributes = attributes
@@ -2882,7 +2882,9 @@ class GetFeatureViewResponseBodyFields(TeaModel):
 
     def validate(self):
         if self.transform:
-            self.transform.validate()
+            for k in self.transform:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2894,8 +2896,10 @@ class GetFeatureViewResponseBodyFields(TeaModel):
             result['Attributes'] = self.attributes
         if self.name is not None:
             result['Name'] = self.name
+        result['Transform'] = []
         if self.transform is not None:
-            result['Transform'] = self.transform.to_map()
+            for k in self.transform:
+                result['Transform'].append(k.to_map() if k else None)
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -2906,9 +2910,11 @@ class GetFeatureViewResponseBodyFields(TeaModel):
             self.attributes = m.get('Attributes')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        self.transform = []
         if m.get('Transform') is not None:
-            temp_model = GetFeatureViewResponseBodyFieldsTransform()
-            self.transform = temp_model.from_map(m['Transform'])
+            for k in m.get('Transform'):
+                temp_model = GetFeatureViewResponseBodyFieldsTransform()
+                self.transform.append(temp_model.from_map(k))
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
