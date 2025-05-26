@@ -47,7 +47,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.AddIpfilterResponse:
         """
-        @summary 添加IP防护信息
+        @summary Add IP Protection Information
         
         @param request: AddIpfilterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -88,7 +88,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.AddIpfilterResponse:
         """
-        @summary 添加IP防护信息
+        @summary Add IP Protection Information
         
         @param request: AddIpfilterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -128,7 +128,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.AddIpfilterRequest,
     ) -> dm_20151123_models.AddIpfilterResponse:
         """
-        @summary 添加IP防护信息
+        @summary Add IP Protection Information
         
         @param request: AddIpfilterRequest
         @return: AddIpfilterResponse
@@ -141,7 +141,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.AddIpfilterRequest,
     ) -> dm_20151123_models.AddIpfilterResponse:
         """
-        @summary 添加IP防护信息
+        @summary Add IP Protection Information
         
         @param request: AddIpfilterRequest
         @return: AddIpfilterResponse
@@ -155,7 +155,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.ApproveReplyMailAddressResponse:
         """
-        @summary 验证回信地址
+        @summary Verify Reply Address
         
         @param request: ApproveReplyMailAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -196,7 +196,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.ApproveReplyMailAddressResponse:
         """
-        @summary 验证回信地址
+        @summary Verify Reply Address
         
         @param request: ApproveReplyMailAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -236,7 +236,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.ApproveReplyMailAddressRequest,
     ) -> dm_20151123_models.ApproveReplyMailAddressResponse:
         """
-        @summary 验证回信地址
+        @summary Verify Reply Address
         
         @param request: ApproveReplyMailAddressRequest
         @return: ApproveReplyMailAddressResponse
@@ -249,7 +249,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.ApproveReplyMailAddressRequest,
     ) -> dm_20151123_models.ApproveReplyMailAddressResponse:
         """
-        @summary 验证回信地址
+        @summary Verify Reply Address
         
         @param request: ApproveReplyMailAddressRequest
         @return: ApproveReplyMailAddressResponse
@@ -263,7 +263,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.BatchSendMailResponse:
         """
-        @summary 批量发送邮件
+        @summary Batch Send Emails
         
         @param request: BatchSendMailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -324,7 +324,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.BatchSendMailResponse:
         """
-        @summary 批量发送邮件
+        @summary Batch Send Emails
         
         @param request: BatchSendMailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -384,7 +384,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.BatchSendMailRequest,
     ) -> dm_20151123_models.BatchSendMailResponse:
         """
-        @summary 批量发送邮件
+        @summary Batch Send Emails
         
         @param request: BatchSendMailRequest
         @return: BatchSendMailResponse
@@ -397,7 +397,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.BatchSendMailRequest,
     ) -> dm_20151123_models.BatchSendMailResponse:
         """
-        @summary 批量发送邮件
+        @summary Batch Send Emails
         
         @param request: BatchSendMailRequest
         @return: BatchSendMailResponse
@@ -411,7 +411,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.CheckDomainResponse:
         """
-        @summary 校验域名状态
+        @summary Check Domain Status
         
         @param request: CheckDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -452,7 +452,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.CheckDomainResponse:
         """
-        @summary 校验域名状态
+        @summary Check Domain Status
         
         @param request: CheckDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -492,7 +492,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.CheckDomainRequest,
     ) -> dm_20151123_models.CheckDomainResponse:
         """
-        @summary 校验域名状态
+        @summary Check Domain Status
         
         @param request: CheckDomainRequest
         @return: CheckDomainResponse
@@ -505,7 +505,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.CheckDomainRequest,
     ) -> dm_20151123_models.CheckDomainResponse:
         """
-        @summary 校验域名状态
+        @summary Check Domain Status
         
         @param request: CheckDomainRequest
         @return: CheckDomainResponse
@@ -519,7 +519,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.CheckReplyToMailAddressResponse:
         """
-        @summary 校验回信地址
+        @summary Validate Reply-To Address
         
         @param request: CheckReplyToMailAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -564,7 +564,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.CheckReplyToMailAddressResponse:
         """
-        @summary 校验回信地址
+        @summary Validate Reply-To Address
         
         @param request: CheckReplyToMailAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -608,7 +608,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.CheckReplyToMailAddressRequest,
     ) -> dm_20151123_models.CheckReplyToMailAddressResponse:
         """
-        @summary 校验回信地址
+        @summary Validate Reply-To Address
         
         @param request: CheckReplyToMailAddressRequest
         @return: CheckReplyToMailAddressResponse
@@ -621,7 +621,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.CheckReplyToMailAddressRequest,
     ) -> dm_20151123_models.CheckReplyToMailAddressResponse:
         """
-        @summary 校验回信地址
+        @summary Validate Reply-To Address
         
         @param request: CheckReplyToMailAddressRequest
         @return: CheckReplyToMailAddressResponse
@@ -635,7 +635,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.CreateDomainResponse:
         """
-        @summary 创建域名
+        @summary Create Domain
         
         @param request: CreateDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -651,6 +651,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.dkim_selector):
+            query['dkimSelector'] = request.dkim_selector
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -676,7 +678,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.CreateDomainResponse:
         """
-        @summary 创建域名
+        @summary Create Domain
         
         @param request: CreateDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -692,6 +694,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.dkim_selector):
+            query['dkimSelector'] = request.dkim_selector
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -716,7 +720,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.CreateDomainRequest,
     ) -> dm_20151123_models.CreateDomainResponse:
         """
-        @summary 创建域名
+        @summary Create Domain
         
         @param request: CreateDomainRequest
         @return: CreateDomainResponse
@@ -729,7 +733,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.CreateDomainRequest,
     ) -> dm_20151123_models.CreateDomainResponse:
         """
-        @summary 创建域名
+        @summary Create Domain
         
         @param request: CreateDomainRequest
         @return: CreateDomainResponse
@@ -743,6 +747,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.CreateMailAddressResponse:
         """
+        @summary Create a mail address.
+        
         @param request: CreateMailAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateMailAddressResponse
@@ -786,6 +792,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.CreateMailAddressResponse:
         """
+        @summary Create a mail address.
+        
         @param request: CreateMailAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateMailAddressResponse
@@ -828,6 +836,8 @@ class Client(OpenApiClient):
         request: dm_20151123_models.CreateMailAddressRequest,
     ) -> dm_20151123_models.CreateMailAddressResponse:
         """
+        @summary Create a mail address.
+        
         @param request: CreateMailAddressRequest
         @return: CreateMailAddressResponse
         """
@@ -839,6 +849,8 @@ class Client(OpenApiClient):
         request: dm_20151123_models.CreateMailAddressRequest,
     ) -> dm_20151123_models.CreateMailAddressResponse:
         """
+        @summary Create a mail address.
+        
         @param request: CreateMailAddressRequest
         @return: CreateMailAddressResponse
         """
@@ -851,7 +863,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.CreateReceiverResponse:
         """
-        @summary 创建收件人列表
+        @summary Create Receiver List
         
         @param request: CreateReceiverRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -896,7 +908,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.CreateReceiverResponse:
         """
-        @summary 创建收件人列表
+        @summary Create Receiver List
         
         @param request: CreateReceiverRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -940,7 +952,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.CreateReceiverRequest,
     ) -> dm_20151123_models.CreateReceiverResponse:
         """
-        @summary 创建收件人列表
+        @summary Create Receiver List
         
         @param request: CreateReceiverRequest
         @return: CreateReceiverResponse
@@ -953,7 +965,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.CreateReceiverRequest,
     ) -> dm_20151123_models.CreateReceiverResponse:
         """
-        @summary 创建收件人列表
+        @summary Create Receiver List
         
         @param request: CreateReceiverRequest
         @return: CreateReceiverResponse
@@ -967,7 +979,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.CreateTagResponse:
         """
-        @summary 创建标签
+        @summary Create Tag
         
         @param request: CreateTagRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1010,7 +1022,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.CreateTagResponse:
         """
-        @summary 创建标签
+        @summary Create Tag
         
         @param request: CreateTagRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1052,7 +1064,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.CreateTagRequest,
     ) -> dm_20151123_models.CreateTagResponse:
         """
-        @summary 创建标签
+        @summary Create Tag
         
         @param request: CreateTagRequest
         @return: CreateTagResponse
@@ -1065,7 +1077,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.CreateTagRequest,
     ) -> dm_20151123_models.CreateTagResponse:
         """
-        @summary 创建标签
+        @summary Create Tag
         
         @param request: CreateTagRequest
         @return: CreateTagResponse
@@ -1187,7 +1199,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.DeleteDomainResponse:
         """
-        @summary 删除域名
+        @summary Delete Domain
         
         @param request: DeleteDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1228,7 +1240,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.DeleteDomainResponse:
         """
-        @summary 删除域名
+        @summary Delete Domain
         
         @param request: DeleteDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1268,7 +1280,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.DeleteDomainRequest,
     ) -> dm_20151123_models.DeleteDomainResponse:
         """
-        @summary 删除域名
+        @summary Delete Domain
         
         @param request: DeleteDomainRequest
         @return: DeleteDomainResponse
@@ -1281,7 +1293,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.DeleteDomainRequest,
     ) -> dm_20151123_models.DeleteDomainResponse:
         """
-        @summary 删除域名
+        @summary Delete Domain
         
         @param request: DeleteDomainRequest
         @return: DeleteDomainResponse
@@ -1295,7 +1307,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.DeleteInvalidAddressResponse:
         """
-        @summary 从无效地址库删除无效地址
+        @summary Remove invalid addresses from the invalid address database
         
         @param request: DeleteInvalidAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1336,7 +1348,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.DeleteInvalidAddressResponse:
         """
-        @summary 从无效地址库删除无效地址
+        @summary Remove invalid addresses from the invalid address database
         
         @param request: DeleteInvalidAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1376,7 +1388,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.DeleteInvalidAddressRequest,
     ) -> dm_20151123_models.DeleteInvalidAddressResponse:
         """
-        @summary 从无效地址库删除无效地址
+        @summary Remove invalid addresses from the invalid address database
         
         @param request: DeleteInvalidAddressRequest
         @return: DeleteInvalidAddressResponse
@@ -1389,7 +1401,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.DeleteInvalidAddressRequest,
     ) -> dm_20151123_models.DeleteInvalidAddressResponse:
         """
-        @summary 从无效地址库删除无效地址
+        @summary Remove invalid addresses from the invalid address database
         
         @param request: DeleteInvalidAddressRequest
         @return: DeleteInvalidAddressResponse
@@ -1403,7 +1415,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.DeleteIpfilterByEdmIdResponse:
         """
-        @summary 删除IP保护信息
+        @summary Delete IP Protection Information
         
         @param request: DeleteIpfilterByEdmIdRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1446,7 +1458,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.DeleteIpfilterByEdmIdResponse:
         """
-        @summary 删除IP保护信息
+        @summary Delete IP Protection Information
         
         @param request: DeleteIpfilterByEdmIdRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1488,7 +1500,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.DeleteIpfilterByEdmIdRequest,
     ) -> dm_20151123_models.DeleteIpfilterByEdmIdResponse:
         """
-        @summary 删除IP保护信息
+        @summary Delete IP Protection Information
         
         @param request: DeleteIpfilterByEdmIdRequest
         @return: DeleteIpfilterByEdmIdResponse
@@ -1501,7 +1513,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.DeleteIpfilterByEdmIdRequest,
     ) -> dm_20151123_models.DeleteIpfilterByEdmIdResponse:
         """
-        @summary 删除IP保护信息
+        @summary Delete IP Protection Information
         
         @param request: DeleteIpfilterByEdmIdRequest
         @return: DeleteIpfilterByEdmIdResponse
@@ -1515,7 +1527,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.DeleteMailAddressResponse:
         """
-        @summary 删除发信地址
+        @summary Delete Mail Address
         
         @param request: DeleteMailAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1556,7 +1568,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.DeleteMailAddressResponse:
         """
-        @summary 删除发信地址
+        @summary Delete Mail Address
         
         @param request: DeleteMailAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1596,7 +1608,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.DeleteMailAddressRequest,
     ) -> dm_20151123_models.DeleteMailAddressResponse:
         """
-        @summary 删除发信地址
+        @summary Delete Mail Address
         
         @param request: DeleteMailAddressRequest
         @return: DeleteMailAddressResponse
@@ -1609,7 +1621,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.DeleteMailAddressRequest,
     ) -> dm_20151123_models.DeleteMailAddressResponse:
         """
-        @summary 删除发信地址
+        @summary Delete Mail Address
         
         @param request: DeleteMailAddressRequest
         @return: DeleteMailAddressResponse
@@ -1623,7 +1635,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.DeleteReceiverResponse:
         """
-        @summary 删除收件人列表
+        @summary Delete Receiver List
         
         @param request: DeleteReceiverRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1664,7 +1676,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.DeleteReceiverResponse:
         """
-        @summary 删除收件人列表
+        @summary Delete Receiver List
         
         @param request: DeleteReceiverRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1704,7 +1716,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.DeleteReceiverRequest,
     ) -> dm_20151123_models.DeleteReceiverResponse:
         """
-        @summary 删除收件人列表
+        @summary Delete Receiver List
         
         @param request: DeleteReceiverRequest
         @return: DeleteReceiverResponse
@@ -1717,7 +1729,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.DeleteReceiverRequest,
     ) -> dm_20151123_models.DeleteReceiverResponse:
         """
-        @summary 删除收件人列表
+        @summary Delete Receiver List
         
         @param request: DeleteReceiverRequest
         @return: DeleteReceiverResponse
@@ -1731,7 +1743,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.DeleteReceiverDetailResponse:
         """
-        @summary 删除单个收件人
+        @summary Delete a Single Recipient
         
         @param request: DeleteReceiverDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1774,7 +1786,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.DeleteReceiverDetailResponse:
         """
-        @summary 删除单个收件人
+        @summary Delete a Single Recipient
         
         @param request: DeleteReceiverDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1816,7 +1828,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.DeleteReceiverDetailRequest,
     ) -> dm_20151123_models.DeleteReceiverDetailResponse:
         """
-        @summary 删除单个收件人
+        @summary Delete a Single Recipient
         
         @param request: DeleteReceiverDetailRequest
         @return: DeleteReceiverDetailResponse
@@ -1829,7 +1841,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.DeleteReceiverDetailRequest,
     ) -> dm_20151123_models.DeleteReceiverDetailResponse:
         """
-        @summary 删除单个收件人
+        @summary Delete a Single Recipient
         
         @param request: DeleteReceiverDetailRequest
         @return: DeleteReceiverDetailResponse
@@ -1843,7 +1855,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.DeleteTagResponse:
         """
-        @summary 删除标签
+        @summary Delete Tag
         
         @param request: DeleteTagRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1884,7 +1896,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.DeleteTagResponse:
         """
-        @summary 删除标签
+        @summary Delete Tag
         
         @param request: DeleteTagRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1924,7 +1936,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.DeleteTagRequest,
     ) -> dm_20151123_models.DeleteTagResponse:
         """
-        @summary 删除标签
+        @summary Delete Tag
         
         @param request: DeleteTagRequest
         @return: DeleteTagResponse
@@ -1937,7 +1949,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.DeleteTagRequest,
     ) -> dm_20151123_models.DeleteTagResponse:
         """
-        @summary 删除标签
+        @summary Delete Tag
         
         @param request: DeleteTagRequest
         @return: DeleteTagResponse
@@ -2055,7 +2067,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.DescDomainResponse:
         """
-        @summary 获取域名详情
+        @summary Get Domain Details
         
         @param request: DescDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2098,7 +2110,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.DescDomainResponse:
         """
-        @summary 获取域名详情
+        @summary Get Domain Details
         
         @param request: DescDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2140,7 +2152,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.DescDomainRequest,
     ) -> dm_20151123_models.DescDomainResponse:
         """
-        @summary 获取域名详情
+        @summary Get Domain Details
         
         @param request: DescDomainRequest
         @return: DescDomainResponse
@@ -2153,7 +2165,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.DescDomainRequest,
     ) -> dm_20151123_models.DescDomainResponse:
         """
-        @summary 获取域名详情
+        @summary Get Domain Details
         
         @param request: DescDomainRequest
         @return: DescDomainResponse
@@ -2167,7 +2179,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.GetIpProtectionResponse:
         """
-        @summary 获取IP保护信息
+        @summary Get IP Protection Information
         
         @param request: GetIpProtectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2206,7 +2218,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.GetIpProtectionResponse:
         """
-        @summary 获取IP保护信息
+        @summary Get IP Protection Information
         
         @param request: GetIpProtectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2244,7 +2256,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.GetIpProtectionRequest,
     ) -> dm_20151123_models.GetIpProtectionResponse:
         """
-        @summary 获取IP保护信息
+        @summary Get IP Protection Information
         
         @param request: GetIpProtectionRequest
         @return: GetIpProtectionResponse
@@ -2257,7 +2269,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.GetIpProtectionRequest,
     ) -> dm_20151123_models.GetIpProtectionResponse:
         """
-        @summary 获取IP保护信息
+        @summary Get IP Protection Information
         
         @param request: GetIpProtectionRequest
         @return: GetIpProtectionResponse
@@ -2271,7 +2283,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.GetIpfilterListResponse:
         """
-        @summary 获取IP防护信息
+        @summary Retrieve IP Protection Information
         
         @param request: GetIpfilterListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2310,7 +2322,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.GetIpfilterListResponse:
         """
-        @summary 获取IP防护信息
+        @summary Retrieve IP Protection Information
         
         @param request: GetIpfilterListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2348,7 +2360,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.GetIpfilterListRequest,
     ) -> dm_20151123_models.GetIpfilterListResponse:
         """
-        @summary 获取IP防护信息
+        @summary Retrieve IP Protection Information
         
         @param request: GetIpfilterListRequest
         @return: GetIpfilterListResponse
@@ -2361,7 +2373,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.GetIpfilterListRequest,
     ) -> dm_20151123_models.GetIpfilterListResponse:
         """
-        @summary 获取IP防护信息
+        @summary Retrieve IP Protection Information
         
         @param request: GetIpfilterListRequest
         @return: GetIpfilterListResponse
@@ -2479,7 +2491,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.GetTrackListResponse:
         """
-        @summary 获取跟踪信息
+        @summary Get tracking information
         
         @param request: GetTrackListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2538,7 +2550,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.GetTrackListResponse:
         """
-        @summary 获取跟踪信息
+        @summary Get tracking information
         
         @param request: GetTrackListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2596,7 +2608,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.GetTrackListRequest,
     ) -> dm_20151123_models.GetTrackListResponse:
         """
-        @summary 获取跟踪信息
+        @summary Get tracking information
         
         @param request: GetTrackListRequest
         @return: GetTrackListResponse
@@ -2609,7 +2621,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.GetTrackListRequest,
     ) -> dm_20151123_models.GetTrackListResponse:
         """
-        @summary 获取跟踪信息
+        @summary Get tracking information
         
         @param request: GetTrackListRequest
         @return: GetTrackListResponse
@@ -2623,7 +2635,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.GetTrackListByMailFromAndTagNameResponse:
         """
-        @summary 根据发信地址和Tag名称获取跟踪信息
+        @summary Get tracking information based on the sender address and tag name
         
         @param request: GetTrackListByMailFromAndTagNameRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2682,7 +2694,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.GetTrackListByMailFromAndTagNameResponse:
         """
-        @summary 根据发信地址和Tag名称获取跟踪信息
+        @summary Get tracking information based on the sender address and tag name
         
         @param request: GetTrackListByMailFromAndTagNameRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2740,7 +2752,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.GetTrackListByMailFromAndTagNameRequest,
     ) -> dm_20151123_models.GetTrackListByMailFromAndTagNameResponse:
         """
-        @summary 根据发信地址和Tag名称获取跟踪信息
+        @summary Get tracking information based on the sender address and tag name
         
         @param request: GetTrackListByMailFromAndTagNameRequest
         @return: GetTrackListByMailFromAndTagNameResponse
@@ -2753,7 +2765,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.GetTrackListByMailFromAndTagNameRequest,
     ) -> dm_20151123_models.GetTrackListByMailFromAndTagNameResponse:
         """
-        @summary 根据发信地址和Tag名称获取跟踪信息
+        @summary Get tracking information based on the sender address and tag name
         
         @param request: GetTrackListByMailFromAndTagNameRequest
         @return: GetTrackListByMailFromAndTagNameResponse
@@ -2973,7 +2985,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.ModifyMailAddressResponse:
         """
-        @summary 修改发信地址
+        @summary Modify the sending address
         
         @param request: ModifyMailAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3018,7 +3030,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.ModifyMailAddressResponse:
         """
-        @summary 修改发信地址
+        @summary Modify the sending address
         
         @param request: ModifyMailAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3062,7 +3074,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.ModifyMailAddressRequest,
     ) -> dm_20151123_models.ModifyMailAddressResponse:
         """
-        @summary 修改发信地址
+        @summary Modify the sending address
         
         @param request: ModifyMailAddressRequest
         @return: ModifyMailAddressResponse
@@ -3075,7 +3087,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.ModifyMailAddressRequest,
     ) -> dm_20151123_models.ModifyMailAddressResponse:
         """
-        @summary 修改发信地址
+        @summary Modify the sending address
         
         @param request: ModifyMailAddressRequest
         @return: ModifyMailAddressResponse
@@ -3089,7 +3101,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.ModifyPWByDomainResponse:
         """
-        @summary 修改域级别密码
+        @summary Modify the domain-level password
         
         @param request: ModifyPWByDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3132,7 +3144,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.ModifyPWByDomainResponse:
         """
-        @summary 修改域级别密码
+        @summary Modify the domain-level password
         
         @param request: ModifyPWByDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3174,7 +3186,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.ModifyPWByDomainRequest,
     ) -> dm_20151123_models.ModifyPWByDomainResponse:
         """
-        @summary 修改域级别密码
+        @summary Modify the domain-level password
         
         @param request: ModifyPWByDomainRequest
         @return: ModifyPWByDomainResponse
@@ -3187,7 +3199,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.ModifyPWByDomainRequest,
     ) -> dm_20151123_models.ModifyPWByDomainResponse:
         """
-        @summary 修改域级别密码
+        @summary Modify the domain-level password
         
         @param request: ModifyPWByDomainRequest
         @return: ModifyPWByDomainResponse
@@ -3201,7 +3213,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.ModifyTagResponse:
         """
-        @summary 修改标签
+        @summary Modify Tag
         
         @param request: ModifyTagRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3246,7 +3258,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.ModifyTagResponse:
         """
-        @summary 修改标签
+        @summary Modify Tag
         
         @param request: ModifyTagRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3290,7 +3302,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.ModifyTagRequest,
     ) -> dm_20151123_models.ModifyTagResponse:
         """
-        @summary 修改标签
+        @summary Modify Tag
         
         @param request: ModifyTagRequest
         @return: ModifyTagResponse
@@ -3303,7 +3315,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.ModifyTagRequest,
     ) -> dm_20151123_models.ModifyTagResponse:
         """
-        @summary 修改标签
+        @summary Modify Tag
         
         @param request: ModifyTagRequest
         @return: ModifyTagResponse
@@ -3317,7 +3329,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.QueryDomainByParamResponse:
         """
-        @summary 查询域名信息
+        @summary Query domain information
         
         @param request: QueryDomainByParamRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3364,7 +3376,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.QueryDomainByParamResponse:
         """
-        @summary 查询域名信息
+        @summary Query domain information
         
         @param request: QueryDomainByParamRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3410,7 +3422,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.QueryDomainByParamRequest,
     ) -> dm_20151123_models.QueryDomainByParamResponse:
         """
-        @summary 查询域名信息
+        @summary Query domain information
         
         @param request: QueryDomainByParamRequest
         @return: QueryDomainByParamResponse
@@ -3423,7 +3435,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.QueryDomainByParamRequest,
     ) -> dm_20151123_models.QueryDomainByParamResponse:
         """
-        @summary 查询域名信息
+        @summary Query domain information
         
         @param request: QueryDomainByParamRequest
         @return: QueryDomainByParamResponse
@@ -3437,7 +3449,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.QueryInvalidAddressResponse:
         """
-        @summary NextStart修改为string
+        @summary NextStart changed to string
+        
+        @description Retrieve deduplicated invalid address information. If an email is sent to the same invalid address multiple times, only the first occurrence will be recorded. The query should be based on the time when the address was first classified as invalid.
         
         @param request: QueryInvalidAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3486,7 +3500,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.QueryInvalidAddressResponse:
         """
-        @summary NextStart修改为string
+        @summary NextStart changed to string
+        
+        @description Retrieve deduplicated invalid address information. If an email is sent to the same invalid address multiple times, only the first occurrence will be recorded. The query should be based on the time when the address was first classified as invalid.
         
         @param request: QueryInvalidAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3534,7 +3550,9 @@ class Client(OpenApiClient):
         request: dm_20151123_models.QueryInvalidAddressRequest,
     ) -> dm_20151123_models.QueryInvalidAddressResponse:
         """
-        @summary NextStart修改为string
+        @summary NextStart changed to string
+        
+        @description Retrieve deduplicated invalid address information. If an email is sent to the same invalid address multiple times, only the first occurrence will be recorded. The query should be based on the time when the address was first classified as invalid.
         
         @param request: QueryInvalidAddressRequest
         @return: QueryInvalidAddressResponse
@@ -3547,7 +3565,9 @@ class Client(OpenApiClient):
         request: dm_20151123_models.QueryInvalidAddressRequest,
     ) -> dm_20151123_models.QueryInvalidAddressResponse:
         """
-        @summary NextStart修改为string
+        @summary NextStart changed to string
+        
+        @description Retrieve deduplicated invalid address information. If an email is sent to the same invalid address multiple times, only the first occurrence will be recorded. The query should be based on the time when the address was first classified as invalid.
         
         @param request: QueryInvalidAddressRequest
         @return: QueryInvalidAddressResponse
@@ -3561,6 +3581,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.QueryMailAddressByParamResponse:
         """
+        @summary Query the list of mail addresses.
+        
         @param request: QueryMailAddressByParamRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryMailAddressByParamResponse
@@ -3606,6 +3628,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.QueryMailAddressByParamResponse:
         """
+        @summary Query the list of mail addresses.
+        
         @param request: QueryMailAddressByParamRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryMailAddressByParamResponse
@@ -3650,6 +3674,8 @@ class Client(OpenApiClient):
         request: dm_20151123_models.QueryMailAddressByParamRequest,
     ) -> dm_20151123_models.QueryMailAddressByParamResponse:
         """
+        @summary Query the list of mail addresses.
+        
         @param request: QueryMailAddressByParamRequest
         @return: QueryMailAddressByParamResponse
         """
@@ -3661,6 +3687,8 @@ class Client(OpenApiClient):
         request: dm_20151123_models.QueryMailAddressByParamRequest,
     ) -> dm_20151123_models.QueryMailAddressByParamResponse:
         """
+        @summary Query the list of mail addresses.
+        
         @param request: QueryMailAddressByParamRequest
         @return: QueryMailAddressByParamResponse
         """
@@ -3673,7 +3701,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.QueryReceiverByParamResponse:
         """
-        @summary 查询收信人列表详情
+        @summary Query the details of the recipient list
         
         @param request: QueryReceiverByParamRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3720,7 +3748,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.QueryReceiverByParamResponse:
         """
-        @summary 查询收信人列表详情
+        @summary Query the details of the recipient list
         
         @param request: QueryReceiverByParamRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3766,7 +3794,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.QueryReceiverByParamRequest,
     ) -> dm_20151123_models.QueryReceiverByParamResponse:
         """
-        @summary 查询收信人列表详情
+        @summary Query the details of the recipient list
         
         @param request: QueryReceiverByParamRequest
         @return: QueryReceiverByParamResponse
@@ -3779,7 +3807,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.QueryReceiverByParamRequest,
     ) -> dm_20151123_models.QueryReceiverByParamResponse:
         """
-        @summary 查询收信人列表详情
+        @summary Query the details of the recipient list
         
         @param request: QueryReceiverByParamRequest
         @return: QueryReceiverByParamResponse
@@ -3793,7 +3821,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.QueryReceiverDetailResponse:
         """
-        @summary 查询收信人列表详情信息
+        @summary Retrieve detailed information about a recipient list
         
         @param request: QueryReceiverDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3840,7 +3868,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.QueryReceiverDetailResponse:
         """
-        @summary 查询收信人列表详情信息
+        @summary Retrieve detailed information about a recipient list
         
         @param request: QueryReceiverDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3886,7 +3914,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.QueryReceiverDetailRequest,
     ) -> dm_20151123_models.QueryReceiverDetailResponse:
         """
-        @summary 查询收信人列表详情信息
+        @summary Retrieve detailed information about a recipient list
         
         @param request: QueryReceiverDetailRequest
         @return: QueryReceiverDetailResponse
@@ -3899,7 +3927,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.QueryReceiverDetailRequest,
     ) -> dm_20151123_models.QueryReceiverDetailResponse:
         """
-        @summary 查询收信人列表详情信息
+        @summary Retrieve detailed information about a recipient list
         
         @param request: QueryReceiverDetailRequest
         @return: QueryReceiverDetailResponse
@@ -3913,6 +3941,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.QueryTagByParamResponse:
         """
+        @summary Call QueryTagByParam to retrieve tags.
+        
         @param request: QueryTagByParamRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryTagByParamResponse
@@ -3956,6 +3986,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.QueryTagByParamResponse:
         """
+        @summary Call QueryTagByParam to retrieve tags.
+        
         @param request: QueryTagByParamRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryTagByParamResponse
@@ -3998,6 +4030,8 @@ class Client(OpenApiClient):
         request: dm_20151123_models.QueryTagByParamRequest,
     ) -> dm_20151123_models.QueryTagByParamResponse:
         """
+        @summary Call QueryTagByParam to retrieve tags.
+        
         @param request: QueryTagByParamRequest
         @return: QueryTagByParamResponse
         """
@@ -4009,6 +4043,8 @@ class Client(OpenApiClient):
         request: dm_20151123_models.QueryTagByParamRequest,
     ) -> dm_20151123_models.QueryTagByParamResponse:
         """
+        @summary Call QueryTagByParam to retrieve tags.
+        
         @param request: QueryTagByParamRequest
         @return: QueryTagByParamResponse
         """
@@ -4021,6 +4057,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.QueryTaskByParamResponse:
         """
+        @summary Query task.
+        
         @param request: QueryTaskByParamRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryTaskByParamResponse
@@ -4066,6 +4104,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.QueryTaskByParamResponse:
         """
+        @summary Query task.
+        
         @param request: QueryTaskByParamRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryTaskByParamResponse
@@ -4110,6 +4150,8 @@ class Client(OpenApiClient):
         request: dm_20151123_models.QueryTaskByParamRequest,
     ) -> dm_20151123_models.QueryTaskByParamResponse:
         """
+        @summary Query task.
+        
         @param request: QueryTaskByParamRequest
         @return: QueryTaskByParamResponse
         """
@@ -4121,6 +4163,8 @@ class Client(OpenApiClient):
         request: dm_20151123_models.QueryTaskByParamRequest,
     ) -> dm_20151123_models.QueryTaskByParamResponse:
         """
+        @summary Query task.
+        
         @param request: QueryTaskByParamRequest
         @return: QueryTaskByParamResponse
         """
@@ -4241,7 +4285,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.SaveReceiverDetailResponse:
         """
-        @summary 建单个收件人
+        @summary Create a Single Recipient
         
         @param request: SaveReceiverDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4284,7 +4328,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.SaveReceiverDetailResponse:
         """
-        @summary 建单个收件人
+        @summary Create a Single Recipient
         
         @param request: SaveReceiverDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4326,7 +4370,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.SaveReceiverDetailRequest,
     ) -> dm_20151123_models.SaveReceiverDetailResponse:
         """
-        @summary 建单个收件人
+        @summary Create a Single Recipient
         
         @param request: SaveReceiverDetailRequest
         @return: SaveReceiverDetailResponse
@@ -4339,7 +4383,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.SaveReceiverDetailRequest,
     ) -> dm_20151123_models.SaveReceiverDetailResponse:
         """
-        @summary 建单个收件人
+        @summary Create a Single Recipient
         
         @param request: SaveReceiverDetailRequest
         @return: SaveReceiverDetailResponse
@@ -4353,7 +4397,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.SendTestByTemplateResponse:
         """
-        @summary 发送模板测试邮件
+        @summary Send Template Test Email
         
         @param request: SendTestByTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4408,7 +4452,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.SendTestByTemplateResponse:
         """
-        @summary 发送模板测试邮件
+        @summary Send Template Test Email
         
         @param request: SendTestByTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4462,7 +4506,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.SendTestByTemplateRequest,
     ) -> dm_20151123_models.SendTestByTemplateResponse:
         """
-        @summary 发送模板测试邮件
+        @summary Send Template Test Email
         
         @param request: SendTestByTemplateRequest
         @return: SendTestByTemplateResponse
@@ -4475,7 +4519,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.SendTestByTemplateRequest,
     ) -> dm_20151123_models.SendTestByTemplateResponse:
         """
-        @summary 发送模板测试邮件
+        @summary Send Template Test Email
         
         @param request: SendTestByTemplateRequest
         @return: SendTestByTemplateResponse
@@ -4489,7 +4533,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.SenderStatisticsByTagNameAndBatchIDResponse:
         """
-        @summary 获取指定条件下的发送数据
+        @summary Retrieve Sending Data under Specified Conditions
         
         @param request: SenderStatisticsByTagNameAndBatchIDRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4536,7 +4580,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.SenderStatisticsByTagNameAndBatchIDResponse:
         """
-        @summary 获取指定条件下的发送数据
+        @summary Retrieve Sending Data under Specified Conditions
         
         @param request: SenderStatisticsByTagNameAndBatchIDRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4582,7 +4626,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.SenderStatisticsByTagNameAndBatchIDRequest,
     ) -> dm_20151123_models.SenderStatisticsByTagNameAndBatchIDResponse:
         """
-        @summary 获取指定条件下的发送数据
+        @summary Retrieve Sending Data under Specified Conditions
         
         @param request: SenderStatisticsByTagNameAndBatchIDRequest
         @return: SenderStatisticsByTagNameAndBatchIDResponse
@@ -4595,7 +4639,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.SenderStatisticsByTagNameAndBatchIDRequest,
     ) -> dm_20151123_models.SenderStatisticsByTagNameAndBatchIDResponse:
         """
-        @summary 获取指定条件下的发送数据
+        @summary Retrieve Sending Data under Specified Conditions
         
         @param request: SenderStatisticsByTagNameAndBatchIDRequest
         @return: SenderStatisticsByTagNameAndBatchIDResponse
@@ -4609,7 +4653,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.SenderStatisticsDetailByParamResponse:
         """
-        @summary 查询投递结果详情
+        @summary Query Delivery Result Details
         
         @param request: SenderStatisticsDetailByParamRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4664,7 +4708,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.SenderStatisticsDetailByParamResponse:
         """
-        @summary 查询投递结果详情
+        @summary Query Delivery Result Details
         
         @param request: SenderStatisticsDetailByParamRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4718,7 +4762,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.SenderStatisticsDetailByParamRequest,
     ) -> dm_20151123_models.SenderStatisticsDetailByParamResponse:
         """
-        @summary 查询投递结果详情
+        @summary Query Delivery Result Details
         
         @param request: SenderStatisticsDetailByParamRequest
         @return: SenderStatisticsDetailByParamResponse
@@ -4731,7 +4775,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.SenderStatisticsDetailByParamRequest,
     ) -> dm_20151123_models.SenderStatisticsDetailByParamResponse:
         """
-        @summary 查询投递结果详情
+        @summary Query Delivery Result Details
         
         @param request: SenderStatisticsDetailByParamRequest
         @return: SenderStatisticsDetailByParamResponse
@@ -4853,7 +4897,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.SingleSendMailResponse:
         """
-        @summary API发信
+        @summary API for Sending Emails
         
         @param request: SingleSendMailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4922,7 +4966,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.SingleSendMailResponse:
         """
-        @summary API发信
+        @summary API for Sending Emails
         
         @param request: SingleSendMailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4990,7 +5034,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.SingleSendMailRequest,
     ) -> dm_20151123_models.SingleSendMailResponse:
         """
-        @summary API发信
+        @summary API for Sending Emails
         
         @param request: SingleSendMailRequest
         @return: SingleSendMailResponse
@@ -5003,7 +5047,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.SingleSendMailRequest,
     ) -> dm_20151123_models.SingleSendMailResponse:
         """
-        @summary API发信
+        @summary API for Sending Emails
         
         @param request: SingleSendMailRequest
         @return: SingleSendMailResponse
@@ -5017,7 +5061,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.UpdateIpProtectionResponse:
         """
-        @summary 更新IP防护API
+        @summary Update IP Protection API
         
         @param request: UpdateIpProtectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5058,7 +5102,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.UpdateIpProtectionResponse:
         """
-        @summary 更新IP防护API
+        @summary Update IP Protection API
         
         @param request: UpdateIpProtectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5098,7 +5142,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.UpdateIpProtectionRequest,
     ) -> dm_20151123_models.UpdateIpProtectionResponse:
         """
-        @summary 更新IP防护API
+        @summary Update IP Protection API
         
         @param request: UpdateIpProtectionRequest
         @return: UpdateIpProtectionResponse
@@ -5111,7 +5155,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.UpdateIpProtectionRequest,
     ) -> dm_20151123_models.UpdateIpProtectionResponse:
         """
-        @summary 更新IP防护API
+        @summary Update IP Protection API
         
         @param request: UpdateIpProtectionRequest
         @return: UpdateIpProtectionResponse

@@ -1,3 +1,7 @@
+2025-05-26 Version: 1.2.4
+- Update API CreateDomain: add request parameters dkimSelector.
+
+
 2025-01-10 Version: 1.2.3
 - Update API BatchSendMail: add param Headers.
 - Update API SingleSendMail: add param Headers.

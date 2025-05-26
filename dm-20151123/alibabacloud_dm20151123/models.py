@@ -12,6 +12,8 @@ class AddIpfilterRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # IP Address/IP Range/IP Segment
+        # 
         # This parameter is required.
         self.ip_address = ip_address
         self.owner_id = owner_id
@@ -56,7 +58,9 @@ class AddIpfilterResponseBody(TeaModel):
         ip_filter_id: str = None,
         request_id: str = None,
     ):
+        # ID corresponding to the IP
         self.ip_filter_id = ip_filter_id
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -135,6 +139,8 @@ class ApproveReplyMailAddressRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Email address Ticket credential, part of the string in the verification email\\"s URL.
+        # 
         # This parameter is required.
         self.ticket = ticket
 
@@ -175,6 +181,7 @@ class ApproveReplyMailAddressResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -256,23 +263,51 @@ class BatchSendMailRequest(TeaModel):
         un_subscribe_filter_level: str = None,
         un_subscribe_link_type: str = None,
     ):
+        # The sending address configured in the management console.
+        # 
         # This parameter is required.
         self.account_name = account_name
+        # - 0: Random account
+        # - 1: Sending address
+        # 
         # This parameter is required.
         self.address_type = address_type
+        # - 1: Enable data tracking function
+        # - 0 (default): Disable data tracking function
         self.click_trace = click_trace
+        # Currently, the standard fields that can be added to the email header are Message-ID, List-Unsubscribe, and List-Unsubscribe-Post. Standard fields will overwrite the existing values in the email header, while non-standard fields need to start with X-User- and will be appended to the email header. Currently, up to 10 headers can be passed in JSON format, and both standard and non-standard fields must comply with the syntax requirements for headers.
         self.headers = headers
         self.owner_id = owner_id
+        # The name of the recipient list that has been created and uploaded. Note: The recipient list should not be deleted until at least 10 minutes after the task is triggered, otherwise it may cause sending failure.
+        # 
         # This parameter is required.
         self.receivers_name = receivers_name
+        # Reply address
         self.reply_address = reply_address
+        # Alias for the reply address
         self.reply_address_alias = reply_address_alias
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Email tag name.
         self.tag_name = tag_name
+        # The name of a pre-created and approved template.
+        # 
         # This parameter is required.
         self.template_name = template_name
+        # Filter level. Refer to the [Unsubscribe Function Link Generation and Filtering Mechanism](https://help.aliyun.com/document_detail/2689048.html) document.
+        # - disabled: No filtering
+        # - default: Use the default strategy, bulk addresses use sender address level filtering
+        # - mailfrom: Sender address level filtering
+        # - mailfrom_domain: Sender domain level filtering
+        # - edm_id: Account level filtering
         self.un_subscribe_filter_level = un_subscribe_filter_level
+        # Type of generated unsubscribe link. Refer to the [Unsubscribe Function Link Generation and Filtering Mechanism](https://help.aliyun.com/document_detail/2689048.html) document.
+        # - disabled: Not generated
+        # - default: Use the default strategy: Generate an unsubscribe link when sending from a bulk email address to specific domains, such as those containing keywords like "gmail", "yahoo",
+        # "google", "aol.com", "hotmail",
+        # "outlook", "ymail.com", etc.
+        # - zh-cn: Generated, for future content preparation
+        # - en-us: Generated, for future content preparation
         self.un_subscribe_link_type = un_subscribe_link_type
 
     def validate(self):
@@ -353,7 +388,9 @@ class BatchSendMailResponseBody(TeaModel):
         env_id: str = None,
         request_id: str = None,
     ):
+        # Event ID
         self.env_id = env_id
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -429,7 +466,7 @@ class CheckDomainRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the domain name.
+        # Domain ID.
         # 
         # This parameter is required.
         self.domain_id = domain_id
@@ -475,15 +512,12 @@ class CheckDomainResponseBody(TeaModel):
         domain_status: int = None,
         request_id: str = None,
     ):
-        # The status of the domain name. Indicates whether the domain name is verified and available.
+        # Domain status. Indicates whether the verification was successful, with values as follows:
         # 
-        # *   0: indicates that the domain name is verified and available.
-        # *   1: indicates that the domain name fails to be verified and is unavailable.
-        # *   2: indicates that the domain name is available, but not filed or configured with a CNAME record.
-        # *   3: indicates that the domain name is available but not filed.
-        # *   4: indicates that the domain name is available but not configured with a CNAME record.
+        # - **0**: Available, verified successfully
+        # - **1**: Unavailable, verification failed
         self.domain_status = domain_status
-        # The ID of the request.
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -561,10 +595,16 @@ class CheckReplyToMailAddressRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # Language.
+        # 
+        # en is English, and any other value or an empty value defaults to Chinese.
         self.lang = lang
+        # Sender Address ID
+        # 
         # This parameter is required.
         self.mail_address_id = mail_address_id
         self.owner_id = owner_id
+        # Region
         self.region = region
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -614,6 +654,7 @@ class CheckReplyToMailAddressResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -684,12 +725,23 @@ class CreateDomainRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        dkim_selector: str = None,
     ):
+        # Domain name, length 1-50, can include numbers, uppercase letters, lowercase letters, ., and -.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The selector field in the DKIM protocol, used to identify a specific public key. It is recommended to leave it blank, as the system will automatically generate it based on cluster information. If the user specifies it manually, for example, if the sending domain is "sub.example.com" and dkimSelector is set to "default", then the host record will be "default._domainkey.sub"
+        # Constraints: 
+        # 1. The length must not exceed 60 characters. 
+        # 2. It must consist of visible characters only. 
+        # 3. It cannot start with a hyphen (-). 
+        # 4. It cannot end with a hyphen (-). 
+        # 5. It cannot contain any of the following characters: _ :;/!*~.@#$%^&()+=[{]}|?<>,\\""
+        self.dkim_selector = dkim_selector
 
     def validate(self):
         pass
@@ -708,6 +760,8 @@ class CreateDomainRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.dkim_selector is not None:
+            result['dkimSelector'] = self.dkim_selector
         return result
 
     def from_map(self, m: dict = None):
@@ -720,6 +774,8 @@ class CreateDomainRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('dkimSelector') is not None:
+            self.dkim_selector = m.get('dkimSelector')
         return self
 
 
@@ -729,7 +785,9 @@ class CreateDomainResponseBody(TeaModel):
         domain_id: str = None,
         request_id: str = None,
     ):
+        # Domain ID
         self.domain_id = domain_id
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -807,12 +865,21 @@ class CreateMailAddressRequest(TeaModel):
         resource_owner_id: int = None,
         sendtype: str = None,
     ):
+        # Sender\\"s email address
+        # 
         # This parameter is required.
         self.account_name = account_name
         self.owner_id = owner_id
+        # Reply-to address
         self.reply_address = reply_address
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Type of sending. Values:
+        # 
+        # - batch: Bulk emails
+        # 
+        # - trigger: Triggered emails
+        # 
         # This parameter is required.
         self.sendtype = sendtype
 
@@ -862,7 +929,9 @@ class CreateMailAddressResponseBody(TeaModel):
         mail_address_id: str = None,
         request_id: str = None,
     ):
+        # Mail address ID
         self.mail_address_id = mail_address_id
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -940,10 +1009,15 @@ class CreateReceiverRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # List description.
         self.desc = desc
         self.owner_id = owner_id
+        # List alias, an email address less than 30 characters long.
+        # 
         # This parameter is required.
         self.receivers_alias = receivers_alias
+        # List name, must be unique, with a length of 1-30 characters.
+        # 
         # This parameter is required.
         self.receivers_name = receivers_name
         self.resource_owner_account = resource_owner_account
@@ -995,7 +1069,9 @@ class CreateReceiverResponseBody(TeaModel):
         receiver_id: str = None,
         request_id: str = None,
     ):
+        # Receiver list ID
         self.receiver_id = receiver_id
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -1075,7 +1151,10 @@ class CreateTagRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Tag description
         self.tag_description = tag_description
+        # Tag name. Limitations: 1-50 characters, allowing English letters, numbers, and underscores.
+        # 
         # This parameter is required.
         self.tag_name = tag_name
 
@@ -1121,7 +1200,9 @@ class CreateTagResponseBody(TeaModel):
         request_id: str = None,
         tag_id: str = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Tag ID
         self.tag_id = tag_id
 
     def validate(self):
@@ -1319,6 +1400,8 @@ class DeleteDomainRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # Domain ID.
+        # 
         # This parameter is required.
         self.domain_id = domain_id
         self.owner_id = owner_id
@@ -1362,6 +1445,7 @@ class DeleteDomainResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1436,6 +1520,7 @@ class DeleteInvalidAddressRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Target address
         self.to_address = to_address
 
     def validate(self):
@@ -1475,6 +1560,7 @@ class DeleteInvalidAddressResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -1547,7 +1633,9 @@ class DeleteIpfilterByEdmIdRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # Deprecated, kept for historical compatibility.
         self.from_type = from_type
+        # Record ID
         self.id = id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -1594,6 +1682,7 @@ class DeleteIpfilterByEdmIdResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1665,6 +1754,8 @@ class DeleteMailAddressRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # Mail Address ID
+        # 
         # This parameter is required.
         self.mail_address_id = mail_address_id
         self.owner_id = owner_id
@@ -1708,6 +1799,7 @@ class DeleteMailAddressResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -1780,7 +1872,7 @@ class DeleteReceiverRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         self.owner_id = owner_id
-        # The ID of the recipient list.
+        # Receiver list ID
         # 
         # This parameter is required.
         self.receiver_id = receiver_id
@@ -1824,7 +1916,7 @@ class DeleteReceiverResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -1897,8 +1989,11 @@ class DeleteReceiverDetailRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The single recipient to be deleted from the recipient list
         self.email = email
         self.owner_id = owner_id
+        # Recipient list ID
+        # 
         # This parameter is required.
         self.receiver_id = receiver_id
         self.resource_owner_account = resource_owner_account
@@ -1945,6 +2040,7 @@ class DeleteReceiverDetailResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -2019,7 +2115,7 @@ class DeleteTagRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the tag.
+        # The ID of the tag
         # 
         # This parameter is required.
         self.tag_id = tag_id
@@ -2061,7 +2157,7 @@ class DeleteTagResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -2365,12 +2461,12 @@ class DescDomainRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the domain name.
+        # Domain ID. Can be obtained through QueryDomainByParam.
         # 
         # This parameter is required.
         self.domain_id = domain_id
         self.owner_id = owner_id
-        # Determine whether to perform real-time DNS resolution
+        # Determines whether to perform real-time DNS resolution
         self.require_real_time_dns_records = require_real_time_dns_records
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -2444,73 +2540,68 @@ class DescDomainResponseBody(TeaModel):
         tl_domain_name: str = None,
         tracef_record: str = None,
     ):
-        # Track verification
+        # CNAME verification flag, 0 for success, 1 for failure.
         self.cname_auth_status = cname_auth_status
-        # CName verification flag, success: 0, failure: 1.
+        # Indicates whether the CNAME host record has been modified, 1 for modified (reverting to the original value also counts as modification), 0 for not modified.
         self.cname_confirm_status = cname_confirm_status
-        # CNAME records
+        # Custom part of the CNAME host record
         self.cname_record = cname_record
         # Creation time
         self.create_time = create_time
-        # Default domain name
+        # Whether it is the default domain,
+        # 
+        # Value: 0 No (this field is deprecated)
         self.default_domain = default_domain
-        # DKIM validation flag, success: 0, failure: 1.
+        # DKIM verification flag, indicating whether the DKIM record set by the user in DNS has passed validation, 0: Passed, 1: Not passed
         self.dkim_auth_status = dkim_auth_status
-        # DKIM public key
+        # DKIM public key value, the value that users need to set for the DKIM record in DNS
         self.dkim_public_key = dkim_public_key
-        # DKIM HostRecord
+        # DKIM host record, the key that the user needs to set in the DNS for the DKIM record
         self.dkim_rr = dkim_rr
-        # DMARC validation flag, success: 0, failure: 1.
+        # DMARC verification flag, indicating whether the DMARC record set by the user in DNS has passed validation, 0: Passed, 1: Not passed
         self.dmarc_auth_status = dmarc_auth_status
-        # DMARC host record
+        # DMARC host record value
         self.dmarc_host_record = dmarc_host_record
-        # DMARC record
+        # DMARC record value
         self.dmarc_record = dmarc_record
-        # dmarc record value resolved through public DNS
+        # DMARC record value resolved through the public domain name
         self.dns_dmarc = dns_dmarc
-        # MX record value resolved through public DNS
+        # MX record value resolved from the public network domain
         self.dns_mx = dns_mx
-        # SPF record value resolved through public DNS
+        # SPF record value resolved from the public network domain
         self.dns_spf = dns_spf
-        # TXT record value resolved through public DNS.
+        # Ownership record value resolved from the public network domain
         self.dns_txt = dns_txt
-        # The ID of the domain name.
+        # Domain ID
         self.domain_id = domain_id
-        # domain
+        # Domain name
         self.domain_name = domain_name
-        # The status of the domain name. Indicates whether the domain name is verified and available. Valid values:
+        # Domain status. Indicates whether the verification was successful, with values:
         # 
-        # 0: indicates that the domain name is verified and available.
-        # 
-        # 1: indicates that the domain name fails to be verified and is unavailable.
-        # 
-        # 2: indicates that the domain name is available, but not filed or configured with a CNAME record.
-        # 
-        # 3: indicates that the domain name is available but not filed.
-        # 
-        # 4: indicates that the domain name is available but not configured with a CNAME record.
+        # - **0**: Available, verified successfully
+        # - **1**: Unavailable, verification failed
         self.domain_status = domain_status
-        # TXT records provided by the Direct Mail console.
+        # Ownership record provided by the email push console
         self.domain_type = domain_type
-        # host record
+        # Host record
         self.host_record = host_record
-        # Filing status. 1 indicates that it has been filed, and 0 indicates that it has not been filed.
+        # Filing status. **1** indicates filed, **0** indicates not filed.
         self.icp_status = icp_status
-        # MX validation flag, success: 0, failure: 1.
+        # MX verification flag, 0 for success, 1 for failure.
         self.mx_auth_status = mx_auth_status
-        # MX record
+        # MX record value provided by the email push console
         self.mx_record = mx_record
-        # The ID of the request.
+        # Request ID
         self.request_id = request_id
-        # SPF validation flag, success: 0, failure: 1.
+        # SPF verification flag, 0 for success, 1 for failure.
         self.spf_auth_status = spf_auth_status
-        # Spf record
+        # SPF record value provided by the email push console
         self.spf_record = spf_record
-        # SpfRecord
+        # SPF record. Previously, the SPF display content needed to be calculated by the calling end based on the spfRecord in the response. The new field spfRecordV2 replaces spfRecord, and the calling end can directly display this field after obtaining it;
         self.spf_record_v2 = spf_record_v2
-        # The primary domain name.
+        # Primary domain
         self.tl_domain_name = tl_domain_name
-        # The CNAME verification record provided by the Direct Mail console.
+        # CNAME record value provided by the email push console
         self.tracef_record = tracef_record
 
     def validate(self):
@@ -2731,7 +2822,9 @@ class GetIpProtectionResponseBody(TeaModel):
         ip_protection: str = None,
         request_id: str = None,
     ):
+        # IP protection switch, On: 1 Off: 0
         self.ip_protection = ip_protection
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -2845,8 +2938,11 @@ class GetIpfilterListResponseBodyDataIpfilters(TeaModel):
         id: str = None,
         ip_address: str = None,
     ):
+        # timestamp
         self.create_time = create_time
+        # Record ID
         self.id = id
+        # IP address/IP range/IP segment
         self.ip_address = ip_address
 
     def validate(self):
@@ -2921,10 +3017,15 @@ class GetIpfilterListResponseBody(TeaModel):
         total_count: int = None,
         data: GetIpfilterListResponseBodyData = None,
     ):
+        # Current page number
         self.page_number = page_number
+        # Number of items per page
         self.page_size = page_size
+        # Request ID
         self.request_id = request_id
+        # Total count
         self.total_count = total_count
+        # Data records
         self.data = data
 
     def validate(self):
@@ -3136,20 +3237,34 @@ class GetTrackListRequest(TeaModel):
         tag_name: str = None,
         total: str = None,
     ):
+        # Sender address.
+        # 
+        # > If not filled, it represents all addresses; if TagName is provided, this parameter must not be empty.
         self.account_name = account_name
+        # End time, the span between start and end time cannot exceed 7 days. Format: yyyy-MM-dd.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # For the first query, set to 0; for subsequent queries, fixed at 1. 1 indicates pagination in ascending order by time. (This field is deprecated)
         self.offset = offset
+        # Used for pagination. Not set for the first query, but for subsequent queries, it should be set to the value of OffsetCreateTime from the previous response. (This field is deprecated)
         self.offset_create_time = offset_create_time
+        # (This field is deprecated)
         self.offset_create_time_desc = offset_create_time_desc
         self.owner_id = owner_id
+        # Page number
         self.page_number = page_number
+        # Page size
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Start time, which cannot be earlier than 30 days. Format: yyyy-MM-dd.
+        # 
         # This parameter is required.
         self.start_time = start_time
+        # Tag name
         self.tag_name = tag_name
+        # (This field is deprecated)
         self.total = total
 
     def validate(self):
@@ -3234,15 +3349,25 @@ class GetTrackListResponseBodyDataStat(TeaModel):
         rcpt_unique_open_rate: str = None,
         total_number: str = None,
     ):
+        # Creation time
         self.create_time = create_time
+        # Click count
         self.rcpt_click_count = rcpt_click_count
+        # Click rate
         self.rcpt_click_rate = rcpt_click_rate
+        # Number of Opens
         self.rcpt_open_count = rcpt_open_count
+        # Open rate
         self.rcpt_open_rate = rcpt_open_rate
+        # Unique click count
         self.rcpt_unique_click_count = rcpt_unique_click_count
+        # Unique click rate
         self.rcpt_unique_click_rate = rcpt_unique_click_rate
+        # Unique open count
         self.rcpt_unique_open_count = rcpt_unique_open_count
+        # Unique open rate
         self.rcpt_unique_open_rate = rcpt_unique_open_rate
+        # Total number
         self.total_number = total_number
 
     def validate(self):
@@ -3347,12 +3472,19 @@ class GetTrackListResponseBody(TeaModel):
         total: int = None,
         data: GetTrackListResponseBodyData = None,
     ):
+        # Used for pagination. Not set for the first query, but for subsequent queries, it should be set to the value of OffsetCreateTime from the previous response. (This field is deprecated)
         self.offset_create_time = offset_create_time
+        # (This field is deprecated)
         self.offset_create_time_desc = offset_create_time_desc
+        # Current page number
         self.page_no = page_no
+        # Number of items per page
         self.page_size = page_size
+        # Request ID
         self.request_id = request_id
+        # Total number of items
         self.total = total
+        # Tracking data records
         self.data = data
 
     def validate(self):
@@ -3459,20 +3591,34 @@ class GetTrackListByMailFromAndTagNameRequest(TeaModel):
         tag_name: str = None,
         total: str = None,
     ):
+        # Sender address.
+        # 
+        # > If not filled, it represents all addresses; if there is a TagName, this parameter must not be empty.
         self.account_name = account_name
+        # End time, with a span from the start time that cannot exceed 15 days. Format: yyyy-MM-dd.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # For the first query, set to 0; for subsequent queries, fixed at 1. 1 indicates pagination in ascending order by time. (This field is deprecated)
         self.offset = offset
+        # Used for pagination. Not set for the first query; for subsequent queries, set to the value of OffsetCreateTime from the previous response. (This field is deprecated)
         self.offset_create_time = offset_create_time
+        # (This field is deprecated)
         self.offset_create_time_desc = offset_create_time_desc
         self.owner_id = owner_id
+        # Current page number
         self.page_number = page_number
+        # Page size
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Start time, which cannot be earlier than 30 days. Format: yyyy-MM-dd.
+        # 
         # This parameter is required.
         self.start_time = start_time
+        # Email tag. If not filled, it represents all tags.
         self.tag_name = tag_name
+        # (This field is deprecated)
         self.total = total
 
     def validate(self):
@@ -3557,15 +3703,25 @@ class GetTrackListByMailFromAndTagNameResponseBodyTrackListStat(TeaModel):
         rcpt_unique_open_rate: str = None,
         total_number: str = None,
     ):
+        # Creation time
         self.create_time = create_time
+        # Click count
         self.rcpt_click_count = rcpt_click_count
+        # Click rate
         self.rcpt_click_rate = rcpt_click_rate
+        # Number of opens
         self.rcpt_open_count = rcpt_open_count
+        # Open rate
         self.rcpt_open_rate = rcpt_open_rate
+        # Unique click count
         self.rcpt_unique_click_count = rcpt_unique_click_count
+        # Unique click rate
         self.rcpt_unique_click_rate = rcpt_unique_click_rate
+        # Unique open count
         self.rcpt_unique_open_count = rcpt_unique_open_count
+        # Unique open rate
         self.rcpt_unique_open_rate = rcpt_unique_open_rate
+        # Total number
         self.total_number = total_number
 
     def validate(self):
@@ -3670,12 +3826,19 @@ class GetTrackListByMailFromAndTagNameResponseBody(TeaModel):
         total: int = None,
         track_list: GetTrackListByMailFromAndTagNameResponseBodyTrackList = None,
     ):
+        # Used for pagination. Not set for the first query; for subsequent queries, set to the value of OffsetCreateTime from the previous response. (This field is deprecated)
         self.offset_create_time = offset_create_time
+        # (This field is deprecated)
         self.offset_create_time_desc = offset_create_time_desc
+        # Current page number
         self.page_no = page_no
+        # Page size
         self.page_size = page_size
+        # Request ID
         self.request_id = request_id
+        # (This field is deprecated)
         self.total = total
+        # Tracking data records
         self.track_list = track_list
 
     def validate(self):
@@ -4161,10 +4324,18 @@ class ModifyMailAddressRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # Sending address ID
+        # 
         # This parameter is required.
         self.mail_address_id = mail_address_id
         self.owner_id = owner_id
+        # - Length should be 10 to 20 characters, and must include numbers, uppercase letters, and lowercase letters.
+        # 
+        # - Must contain at least 2 digits, 2 uppercase letters, and 2 lowercase letters, and neither the digits nor the letters can consist of a single character repeated.
+        # 
+        # - Cannot be the same as the last set password.
         self.password = password
+        # Reply address
         self.reply_address = reply_address
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -4214,6 +4385,7 @@ class ModifyMailAddressResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -4286,9 +4458,17 @@ class ModifyPWByDomainRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # Domain name, length 1-50, can include numbers, uppercase letters, lowercase letters, ., and -.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
+        # - Length should be between 10 to 20 characters, and must contain numbers, uppercase letters, and lowercase letters.
+        # 
+        # - At least 2 digits, 2 uppercase letters, and 2 lowercase letters are required, and neither digits nor letters can consist of a single character repeated.
+        # 
+        # - Cannot be the same as the last set password.
+        # 
         # This parameter is required.
         self.password = password
         self.resource_owner_account = resource_owner_account
@@ -4338,9 +4518,13 @@ class ModifyPWByDomainResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Description of the status code
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Whether it was successful
         self.success = success
 
     def validate(self):
@@ -4429,12 +4613,13 @@ class ModifyTagRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Tag Description
         self.tag_description = tag_description
-        # The ID of the tag.
+        # Tag ID
         # 
         # This parameter is required.
         self.tag_id = tag_id
-        # The name of the tag.
+        # Tag Name
         # 
         # This parameter is required.
         self.tag_name = tag_name
@@ -4484,7 +4669,7 @@ class ModifyTagResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -4559,12 +4744,17 @@ class QueryDomainByParamRequest(TeaModel):
         resource_owner_id: int = None,
         status: int = None,
     ):
+        # Domain name, length 1-50, can include numbers, uppercase and lowercase letters, ., -.
         self.key_word = key_word
         self.owner_id = owner_id
+        # Current page number. Default: 1
         self.page_no = page_no
+        # Number of items per page, default: 10
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # - 0 indicates normal
+        # - 1 indicates abnormal
         self.status = status
 
     def validate(self):
@@ -4626,16 +4816,33 @@ class QueryDomainByParamResponseBodyDataDomain(TeaModel):
         spf_auth_status: str = None,
         utc_create_time: int = None,
     ):
+        # Track verification
         self.cname_auth_status = cname_auth_status
+        # CName verification status, success: 0; failure: 1
         self.confirm_status = confirm_status
+        # Creation time
         self.create_time = create_time
+        # Domain ID
         self.domain_id = domain_id
+        # Domain name
         self.domain_name = domain_name
+        # Domain record
         self.domain_record = domain_record
+        # Domain status.
+        # 
+        # - 0: Available, verified
+        # - 1: Unavailable, verification failed
         self.domain_status = domain_status
+        # ICP filing status.
+        # 
+        # - 1 indicates filed
+        # - 0 indicates not filed
         self.icp_status = icp_status
+        # MX authentication status, success: 0, failure: 1.
         self.mx_auth_status = mx_auth_status
+        # SPF authentication status, success: 0, failure: 1.
         self.spf_auth_status = spf_auth_status
+        # Creation time in UTC format.
         self.utc_create_time = utc_create_time
 
     def validate(self):
@@ -4742,10 +4949,15 @@ class QueryDomainByParamResponseBody(TeaModel):
         total_count: int = None,
         data: QueryDomainByParamResponseBodyData = None,
     ):
+        # Current page number
         self.page_number = page_number
+        # Page size
         self.page_size = page_size
+        # Request ID
         self.request_id = request_id
+        # Total count
         self.total_count = total_count
+        # List of domains
         self.data = data
 
     def validate(self):
@@ -4839,13 +5051,18 @@ class QueryInvalidAddressRequest(TeaModel):
         resource_owner_id: int = None,
         start_time: str = None,
     ):
+        # End time, with a span from the start time that cannot exceed 30 days, in the format yyyy-MM-dd.
         self.end_time = end_time
+        # Keyword. If not provided, it represents all invalid addresses.
         self.key_word = key_word
+        # Number of items per request.
         self.length = length
+        # Request starting position.
         self.next_start = next_start
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Start time, which cannot be earlier than 30 days ago, in the format yyyy-MM-dd.
         self.start_time = start_time
 
     def validate(self):
@@ -4903,8 +5120,11 @@ class QueryInvalidAddressResponseBodyDataMailDetail(TeaModel):
         to_address: str = None,
         utc_last_update_time: int = None,
     ):
+        # Update time.
         self.last_update_time = last_update_time
+        # Recipient address.
         self.to_address = to_address
+        # Update time (in timestamp format).
         self.utc_last_update_time = utc_last_update_time
 
     def validate(self):
@@ -4978,9 +5198,13 @@ class QueryInvalidAddressResponseBody(TeaModel):
         total_count: int = None,
         data: QueryInvalidAddressResponseBodyData = None,
     ):
+        # Next request starting position.
         self.next_start = next_start
+        # Request ID.
         self.request_id = request_id
+        # Total count.
         self.total_count = total_count
+        # Records.
         self.data = data
 
     def validate(self):
@@ -5069,12 +5293,19 @@ class QueryMailAddressByParamRequest(TeaModel):
         resource_owner_id: int = None,
         sendtype: str = None,
     ):
+        # Email address, length 1-60, supports numbers, letters, ., -, @.
         self.key_word = key_word
         self.owner_id = owner_id
+        # Current page number, default: 1
         self.page_no = page_no
+        # Page size, default: 10
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Type of sending address. Values:
+        # 
+        # - batch: bulk email
+        # - trigger: triggered email
         self.sendtype = sendtype
 
     def validate(self):
@@ -5137,17 +5368,32 @@ class QueryMailAddressByParamResponseBodyDataMailAddress(TeaModel):
         reply_status: str = None,
         sendtype: str = None,
     ):
+        # Sending address
         self.account_name = account_name
+        # Account status, frozen: 1, normal: 0.
         self.account_status = account_status
+        # Creation time
         self.create_time = create_time
+        # Daily quota limit
         self.daily_count = daily_count
+        # Daily quota
         self.daily_req_count = daily_req_count
+        # Domain status, 0 indicates normal, 1 indicates abnormal.
         self.domain_status = domain_status
+        # Mail address ID
         self.mail_address_id = mail_address_id
+        # Monthly quota limit
         self.month_count = month_count
+        # Monthly quota
         self.month_req_count = month_req_count
+        # Reply address
         self.reply_address = reply_address
+        # Reply address status
         self.reply_status = reply_status
+        # Type of sending address. Values:
+        # 
+        # - batch: bulk email
+        # - trigger: triggered email
         self.sendtype = sendtype
 
     def validate(self):
@@ -5258,10 +5504,15 @@ class QueryMailAddressByParamResponseBody(TeaModel):
         total_count: int = None,
         data: QueryMailAddressByParamResponseBodyData = None,
     ):
+        # Current page number
         self.page_number = page_number
+        # Page size
         self.page_size = page_size
+        # Request ID
         self.request_id = request_id
+        # Total count
         self.total_count = total_count
+        # List of mail addresses
         self.data = data
 
     def validate(self):
@@ -5354,12 +5605,21 @@ class QueryReceiverByParamRequest(TeaModel):
         resource_owner_id: int = None,
         status: int = None,
     ):
+        # Keyword, defaults to all information if not specified
         self.key_word = key_word
         self.owner_id = owner_id
+        # Current page number
         self.page_no = page_no
+        # Number of items per page, default: 10
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Delivery result. If not filled, it represents all statuses. Values:
+        # 
+        # - 0: Success
+        # - 2: Invalid address
+        # - 3: Spam
+        # - 4: Failure
         self.status = status
 
     def validate(self):
@@ -5418,13 +5678,24 @@ class QueryReceiverByParamResponseBodyDataReceiver(TeaModel):
         receivers_status: str = None,
         utc_create_time: int = None,
     ):
+        # Total number of recipient addresses
         self.count = count
+        # Creation time
         self.create_time = create_time
+        # Description
         self.desc = desc
+        # Recipient list ID
         self.receiver_id = receiver_id
+        # Recipient list alias
         self.receivers_alias = receivers_alias
+        # Recipient list name
         self.receivers_name = receivers_name
+        # List status. Values:
+        # 
+        # - 0: Uploading
+        # - 1: Upload completed
         self.receivers_status = receivers_status
+        # UTC formatted creation time
         self.utc_create_time = utc_create_time
 
     def validate(self):
@@ -5519,10 +5790,15 @@ class QueryReceiverByParamResponseBody(TeaModel):
         total_count: int = None,
         data: QueryReceiverByParamResponseBodyData = None,
     ):
+        # Used for pagination. If there are more results, set this returned value to the NextStart in the next request.
         self.next_start = next_start
+        # Number of items displayed per page.
         self.page_size = page_size
+        # Request ID
         self.request_id = request_id
+        # Total count
         self.total_count = total_count
+        # Detailed information of the recipient list
         self.data = data
 
     def validate(self):
@@ -5615,10 +5891,15 @@ class QueryReceiverDetailRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # Recipient address, length 0-50
         self.key_word = key_word
+        # Starting position for the next item, default: 0
         self.next_start = next_start
         self.owner_id = owner_id
+        # Number of items per page, default: 10
         self.page_size = page_size
+        # Recipient list ID (returned when creating a recipient list using the CreateReceiver API).
+        # 
         # This parameter is required.
         self.receiver_id = receiver_id
         self.resource_owner_account = resource_owner_account
@@ -5676,9 +5957,13 @@ class QueryReceiverDetailResponseBodyDataDetail(TeaModel):
         email: str = None,
         utc_create_time: int = None,
     ):
+        # Creation Time
         self.create_time = create_time
+        # Content
         self.data = data
+        # Recipient address
         self.email = email
+        # Creation time in UTC format
         self.utc_create_time = utc_create_time
 
     def validate(self):
@@ -5757,10 +6042,15 @@ class QueryReceiverDetailResponseBody(TeaModel):
         total_count: int = None,
         data: QueryReceiverDetailResponseBodyData = None,
     ):
+        # Field name for the Data of recipients
         self.data_schema = data_schema
+        # Used for pagination. If there are more results, set this returned value to the NextStart in the next request.
         self.next_start = next_start
+        # Request ID
         self.request_id = request_id
+        # Total count (deprecated field, kept for historical compatibility)
         self.total_count = total_count
+        # Detailed information
         self.data = data
 
     def validate(self):
@@ -5852,9 +6142,12 @@ class QueryTagByParamRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # Tag name, length 1-50, defaults to all tags if not specified.
         self.key_word = key_word
         self.owner_id = owner_id
+        # Page number
         self.page_no = page_no
+        # Page size
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -5906,8 +6199,11 @@ class QueryTagByParamResponseBodyDataTag(TeaModel):
         tag_id: str = None,
         tag_name: str = None,
     ):
+        # Tag description
         self.tag_description = tag_description
+        # Tag ID
         self.tag_id = tag_id
+        # Tag name
         self.tag_name = tag_name
 
     def validate(self):
@@ -5982,10 +6278,15 @@ class QueryTagByParamResponseBody(TeaModel):
         total_count: int = None,
         data: QueryTagByParamResponseBodyData = None,
     ):
+        # Current page number
         self.page_number = page_number
+        # Page size
         self.page_size = page_size
+        # Request ID
         self.request_id = request_id
+        # Total count
         self.total_count = total_count
+        # Data records
         self.data = data
 
     def validate(self):
@@ -6078,12 +6379,16 @@ class QueryTaskByParamRequest(TeaModel):
         resource_owner_id: int = None,
         status: int = None,
     ):
+        # Keyword, defaults to all information.
         self.key_word = key_word
         self.owner_id = owner_id
+        # Current page number, default is 1.
         self.page_no = page_no
+        # Page size, default is 10.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Status, defaults to all statuses.
         self.status = status
 
     def validate(self):
@@ -6143,14 +6448,23 @@ class QueryTaskByParamResponseBodyDataTask(TeaModel):
         template_name: str = None,
         utc_create_time: int = None,
     ):
+        # Address type, sending address: 1; random address: 0;
         self.address_type = address_type
+        # Creation time.
         self.create_time = create_time
+        # Receiver\\"s name.
         self.receivers_name = receivers_name
+        # Request count.
         self.request_count = request_count
+        # Tag.
         self.tag_name = tag_name
+        # Task ID.
         self.task_id = task_id
+        # Task status, sent successfully: 1.
         self.task_status = task_status
+        # Template name.
         self.template_name = template_name
+        # Creation time in UTC format.
         self.utc_create_time = utc_create_time
 
     def validate(self):
@@ -6249,10 +6563,15 @@ class QueryTaskByParamResponseBody(TeaModel):
         total_count: int = None,
         data: QueryTaskByParamResponseBodyData = None,
     ):
+        # Current page number.
         self.page_number = page_number
+        # Page size.
         self.page_size = page_size
+        # Request ID.
         self.request_id = request_id
+        # Total count.
         self.total_count = total_count
+        # Returned results.
         self.data = data
 
     def validate(self):
@@ -6456,9 +6775,19 @@ class SaveReceiverDetailRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # Content, supports uploading multiple recipients at once, with a limit of 500 records per upload. Each record is separated by {} and commas, example:
+        # 
+        # [{ },{ },{ }...], the format within {} is as follows:
+        # 
+        # [{"b":"birthday","e":"xxx@example.net","g":"gender","m":"mobile","n":"nickname","u":"name"}], when passing values, pass it as a string, not a list.
+        # 
+        # If a duplicate recipient address is inserted, it will return "ErrorCount": 1
+        # 
         # This parameter is required.
         self.detail = detail
         self.owner_id = owner_id
+        # Recipient list ID
+        # 
         # This parameter is required.
         self.receiver_id = receiver_id
         self.resource_owner_account = resource_owner_account
@@ -6505,6 +6834,7 @@ class SaveReceiverDetailResponseBodyDataDetail(TeaModel):
         self,
         email: str = None,
     ):
+        # Recipient address.
         self.email = email
 
     def validate(self):
@@ -6570,9 +6900,13 @@ class SaveReceiverDetailResponseBody(TeaModel):
         request_id: str = None,
         success_count: int = None,
     ):
+        # List of recipient addresses that failed to upload.
         self.data = data
+        # Number of errors.
         self.error_count = error_count
+        # Request ID
         self.request_id = request_id
+        # Number of successes.
         self.success_count = success_count
 
     def validate(self):
@@ -6665,19 +6999,30 @@ class SendTestByTemplateRequest(TeaModel):
         template_id: int = None,
         user_name: str = None,
     ):
+        # Sender address, with a maximum length of 60 characters
+        # 
         # This parameter is required.
         self.account_name = account_name
+        # Birthday, with a maximum length of 30 characters
         self.birthday = birthday
+        # Recipient address, with a maximum length of 60 characters
+        # 
         # This parameter is required.
         self.email = email
+        # Gender, with a maximum length of 30 characters
         self.gender = gender
+        # Mobile, with a maximum length of 30 characters
         self.mobile = mobile
+        # NickName, with a maximum length of 30 characters
         self.nick_name = nick_name
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Template ID
+        # 
         # This parameter is required.
         self.template_id = template_id
+        # UserName, with a maximum length of 30 characters
         self.user_name = user_name
 
     def validate(self):
@@ -6745,6 +7090,7 @@ class SendTestByTemplateResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -6819,14 +7165,20 @@ class SenderStatisticsByTagNameAndBatchIDRequest(TeaModel):
         start_time: str = None,
         tag_name: str = None,
     ):
+        # Sending address. If not filled, it represents all addresses.
         self.account_name = account_name
+        # End time, which cannot exceed 7 days from the start time, in the format yyyy-MM-dd.
+        # 
         # This parameter is required.
         self.end_time = end_time
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Start time, in the format yyyy-MM-dd.
+        # 
         # This parameter is required.
         self.start_time = start_time
+        # Email tag. If not filled, it represents all tags.
         self.tag_name = tag_name
 
     def validate(self):
@@ -6884,12 +7236,19 @@ class SenderStatisticsByTagNameAndBatchIDResponseBodyDataStat(TeaModel):
         unavailable_count: str = None,
         unavailable_percent: str = None,
     ):
+        # Creation time
         self.create_time = create_time
+        # Failure count
         self.faild_count = faild_count
+        # Request count
         self.request_count = request_count
+        # Success rate
         self.succeeded_percent = succeeded_percent
+        # Success count
         self.success_count = success_count
+        # Invalid count
         self.unavailable_count = unavailable_count
+        # Unavailability rate
         self.unavailable_percent = unavailable_percent
 
     def validate(self):
@@ -6978,8 +7337,11 @@ class SenderStatisticsByTagNameAndBatchIDResponseBody(TeaModel):
         total_count: int = None,
         data: SenderStatisticsByTagNameAndBatchIDResponseBodyData = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Total count
         self.total_count = total_count
+        # Data records
         self.data = data
 
     def validate(self):
@@ -7068,24 +7430,31 @@ class SenderStatisticsDetailByParamRequest(TeaModel):
         tag_name: str = None,
         to_address: str = None,
     ):
-        # Sending address. Not filled in represents all addresses.
+        # Sending address. If not filled, it represents all addresses.
+        # 
+        # > **AccountName**, **TagName**, and **ToAddress** can all be left unfilled. If any are filled, only one of these parameters can be passed; you cannot pass a combination of two or more.
         self.account_name = account_name
-        # The end time. The difference between the start time and the end time cannot exceed 30 days. Format: yyyy-MM-dd.
+        # End time. The span between start and end times cannot exceed 30 days, format: yyyy-MM-dd HH:mm.
         self.end_time = end_time
-        # The number of entries to return in the request. Valid values: 1 to 100.
+        # Specifies the number of results to return in this request. Range is 1~100.
         self.length = length
-        # The start position of the next page. The offset for the request. If you want to obtain more records, specify the return value of the NextStart parameter for this parameter.
+        # Used for pagination. Specifies the offset for this request. If there are more results, set this returned value to the NextStart in the next request.
         self.next_start = next_start
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The start time. The start time can be up to 30 days earlier than the current time. Format: yyyy-MM-dd.
+        # Start time. The span between start and end times cannot exceed 30 days, format: yyyy-MM-dd HH:mm
         self.start_time = start_time
-        # The delivery status. If you leave this parameter empty, all states are included. Valid values: 0: successful, 2 invalid email address, 3: spam, and 4: failed.
+        # Delivery result. If not filled, it represents all statuses. Values:
+        # 
+        # - 0: Success
+        # - 2: Invalid Address
+        # - 3: Spam
+        # - 4: Failure
         self.status = status
-        # The email tag. If you leave this parameter empty, all email tags are included.
+        # Email tag. If not filled, it represents all tags.
         self.tag_name = tag_name
-        # The recipient address. If you leave this parameter empty, all recipient addresses are included.
+        # Recipient address. If not filled, it represents all recipient addresses.
         self.to_address = to_address
 
     def validate(self):
@@ -7160,26 +7529,22 @@ class SenderStatisticsDetailByParamResponseBodyDataMailDetail(TeaModel):
         to_address: str = None,
         utc_last_update_time: str = None,
     ):
-        # The sender address.
+        # Sending address
         self.account_name = account_name
-        # Detailed classification of error causes:
-        # 
-        # - SendOk
-        # - SmtpNxBox
-        # 
+        # Detailed classification of error reasons: - SendOk - SmtpNxBox
         # etc.
         self.error_classification = error_classification
-        # The most recent update time.
+        # Update time
         self.last_update_time = last_update_time
-        # The details of the email.
+        # Delivery detail information
         self.message = message
-        # The delivery status. Valid values: 0: successful, 2 invalid email address, 3: spam, and 4: failed.
+        # Delivery status: 0 Success, 2 Invalid Address, 3 Spam, 4 Other Failures
         self.status = status
-        # the subject of email.
+        # Email subject
         self.subject = subject
-        # The recipient address.
+        # Recipient address
         self.to_address = to_address
-        # The most recent update time (timestamp format)
+        # UTC formatted update time
         self.utc_last_update_time = utc_last_update_time
 
     def validate(self):
@@ -7272,11 +7637,11 @@ class SenderStatisticsDetailByParamResponseBody(TeaModel):
         request_id: str = None,
         data: SenderStatisticsDetailByParamResponseBodyData = None,
     ):
-        # The start position of the next page. The return value of the NextStart parameter indicates the start position of the next page. If you want to obtain more records, specify the return value in the next request.
+        # Used for pagination. If there are more results, set this returned value to the NextStart in the next request.
         self.next_start = next_start
-        # The ID of the request.
+        # Request ID
         self.request_id = request_id
-        # The response parameters.
+        # Detailed records
         self.data = data
 
     def validate(self):
@@ -7491,28 +7856,79 @@ class SingleSendMailRequest(TeaModel):
         un_subscribe_filter_level: str = None,
         un_subscribe_link_type: str = None,
     ):
+        # The sending address configured in the management console.
+        # 
         # This parameter is required.
         self.account_name = account_name
+        # Address type. Values:
+        # 
+        # 0: Random account
+        # 
+        # 1: Sending address
+        # 
         # This parameter is required.
         self.address_type = address_type
+        # 1: Enable data tracking function
+        # 
+        # 0 (default): Disable data tracking function.
         self.click_trace = click_trace
+        # Sender nickname, with a maximum length of 15 characters.
+        # 
+        # For example, if the sender\\"s nickname is set to "Xiaohong" and the sending address is test***@example.net, the recipient will see the sending address as "Xiaohong" <test***@example.net>.
         self.from_alias = from_alias
+        # Standard fields that can currently be added to the email header include Message-ID, List-Unsubscribe, and List-Unsubscribe-Post. Standard fields will overwrite existing values in the email header, while non-standard fields need to start with X-User- and will be appended to the email header.
+        # Currently, up to 10 headers can be passed in JSON format, and both standard and non-standard fields must comply with the syntax requirements for headers.
         self.headers = headers
+        # Email HTML body, limited to 80K by the SDK. Note: HtmlBody and TextBody are for different types of email content, and one of them must be provided.
         self.html_body = html_body
         self.owner_id = owner_id
+        # Reply-to address
         self.reply_address = reply_address
+        # Reply-to address nickname
         self.reply_address_alias = reply_address_alias
+        # Whether to enable the reply-to address configured in the management console (the status must be verified). The value range is the string `true` or `false` (not a boolean value).
+        # 
         # This parameter is required.
         self.reply_to_address = reply_to_address
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Email subject, with a maximum length of 100 characters.
+        # 
         # This parameter is required.
         self.subject = subject
+        # A tag created in the email push console, used to categorize batches of emails sent. You can use tags to query the sending status of each batch. Additionally, if the email tracking feature is enabled, you must use an email tag when sending emails.
         self.tag_name = tag_name
+        # Email text body, limited to 80K by the SDK. Note: HtmlBody and TextBody are for different types of email content, and one of them must be provided.
         self.text_body = text_body
+        # Recipient addresses. Multiple email addresses can be separated by commas, with a maximum of 100 addresses (supports mailing lists).
+        # 
         # This parameter is required.
         self.to_address = to_address
+        # Filtering level. Refer to the [Unsubscribe Function Link Generation and Filtering Mechanism](https://help.aliyun.com/document_detail/2689048.html) document.
+        # 
+        # disabled: No filtering
+        # 
+        # default: Use the default strategy, bulk addresses use the sending address level filtering
+        # 
+        # mailfrom: Sending address level filtering
+        # 
+        # mailfrom_domain: Sending domain level filtering
+        # 
+        # edm_id: Account level filtering
         self.un_subscribe_filter_level = un_subscribe_filter_level
+        # Type of the generated unsubscribe link. Refer to the [Unsubscribe Function Link Generation and Filtering Mechanism](https://help.aliyun.com/document_detail/2689048.html) document.
+        # 
+        # disabled: Do not generate
+        # 
+        # default: Use the default strategy: Generate unsubscribe links for bulk-type sending addresses when sending to specific domains, such as those containing keywords like "gmail", "yahoo",
+        # 
+        # "google", "aol.com", "hotmail",
+        # 
+        # "outlook", "ymail.com", etc.
+        # 
+        # zh-cn: Generate, for future content preparation
+        # 
+        # en-us: Generate, for future content preparation
         self.un_subscribe_link_type = un_subscribe_link_type
 
     def validate(self):
@@ -7609,7 +8025,9 @@ class SingleSendMailResponseBody(TeaModel):
         env_id: str = None,
         request_id: str = None,
     ):
+        # Event ID
         self.env_id = env_id
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -7685,6 +8103,7 @@ class UpdateIpProtectionRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # IP protection switch, On: 1 Off: 0
         self.ip_protection = ip_protection
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -7727,6 +8146,7 @@ class UpdateIpProtectionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
