@@ -6106,6 +6106,110 @@ class TargetVideoFilterVideoDelogos(TeaModel):
         return self
 
 
+class TargetVideoFilterVideoDesensitizationFace(TeaModel):
+    def __init__(
+        self,
+        confidence: float = None,
+        min_size: int = None,
+    ):
+        self.confidence = confidence
+        self.min_size = min_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.confidence is not None:
+            result['Confidence'] = self.confidence
+        if self.min_size is not None:
+            result['MinSize'] = self.min_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Confidence') is not None:
+            self.confidence = m.get('Confidence')
+        if m.get('MinSize') is not None:
+            self.min_size = m.get('MinSize')
+        return self
+
+
+class TargetVideoFilterVideoDesensitizationLicensePlate(TeaModel):
+    def __init__(
+        self,
+        confidence: float = None,
+        min_size: int = None,
+    ):
+        self.confidence = confidence
+        self.min_size = min_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.confidence is not None:
+            result['Confidence'] = self.confidence
+        if self.min_size is not None:
+            result['MinSize'] = self.min_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Confidence') is not None:
+            self.confidence = m.get('Confidence')
+        if m.get('MinSize') is not None:
+            self.min_size = m.get('MinSize')
+        return self
+
+
+class TargetVideoFilterVideoDesensitization(TeaModel):
+    def __init__(
+        self,
+        face: TargetVideoFilterVideoDesensitizationFace = None,
+        license_plate: TargetVideoFilterVideoDesensitizationLicensePlate = None,
+    ):
+        self.face = face
+        self.license_plate = license_plate
+
+    def validate(self):
+        if self.face:
+            self.face.validate()
+        if self.license_plate:
+            self.license_plate.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.face is not None:
+            result['Face'] = self.face.to_map()
+        if self.license_plate is not None:
+            result['LicensePlate'] = self.license_plate.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Face') is not None:
+            temp_model = TargetVideoFilterVideoDesensitizationFace()
+            self.face = temp_model.from_map(m['Face'])
+        if m.get('LicensePlate') is not None:
+            temp_model = TargetVideoFilterVideoDesensitizationLicensePlate()
+            self.license_plate = temp_model.from_map(m['LicensePlate'])
+        return self
+
+
 class TargetVideoFilterVideoWatermarks(TeaModel):
     def __init__(
         self,
@@ -6227,9 +6331,13 @@ class TargetVideoFilterVideo(TeaModel):
     def __init__(
         self,
         delogos: List[TargetVideoFilterVideoDelogos] = None,
+        desensitization: TargetVideoFilterVideoDesensitization = None,
+        speed: float = None,
         watermarks: List[TargetVideoFilterVideoWatermarks] = None,
     ):
         self.delogos = delogos
+        self.desensitization = desensitization
+        self.speed = speed
         self.watermarks = watermarks
 
     def validate(self):
@@ -6237,6 +6345,8 @@ class TargetVideoFilterVideo(TeaModel):
             for k in self.delogos:
                 if k:
                     k.validate()
+        if self.desensitization:
+            self.desensitization.validate()
         if self.watermarks:
             for k in self.watermarks:
                 if k:
@@ -6252,6 +6362,10 @@ class TargetVideoFilterVideo(TeaModel):
         if self.delogos is not None:
             for k in self.delogos:
                 result['Delogos'].append(k.to_map() if k else None)
+        if self.desensitization is not None:
+            result['Desensitization'] = self.desensitization.to_map()
+        if self.speed is not None:
+            result['Speed'] = self.speed
         result['Watermarks'] = []
         if self.watermarks is not None:
             for k in self.watermarks:
@@ -6265,6 +6379,11 @@ class TargetVideoFilterVideo(TeaModel):
             for k in m.get('Delogos'):
                 temp_model = TargetVideoFilterVideoDelogos()
                 self.delogos.append(temp_model.from_map(k))
+        if m.get('Desensitization') is not None:
+            temp_model = TargetVideoFilterVideoDesensitization()
+            self.desensitization = temp_model.from_map(m['Desensitization'])
+        if m.get('Speed') is not None:
+            self.speed = m.get('Speed')
         self.watermarks = []
         if m.get('Watermarks') is not None:
             for k in m.get('Watermarks'):
