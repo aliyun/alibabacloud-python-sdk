@@ -1,3 +1,9 @@
+2025-05-26 Version: 2.3.1
+- Update API CreateApplication: add request parameters StartupProbe.
+- Update API DeployApplication: add request parameters StartupProbe.
+- Update API DescribeApplicationConfig: add response parameters Body.Data.StartupProbe.
+
+
 2025-05-22 Version: 2.3.0
 - Support API DeleteInstances.
 - Update API CreateApplication: add request parameters GpuConfig.

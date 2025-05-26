@@ -825,6 +825,8 @@ class Client(OpenApiClient):
             query['SecurityGroupId'] = request.security_group_id
         if not UtilClient.is_unset(request.sls_configs):
             query['SlsConfigs'] = request.sls_configs
+        if not UtilClient.is_unset(request.startup_probe):
+            query['StartupProbe'] = request.startup_probe
         if not UtilClient.is_unset(request.termination_grace_period_seconds):
             query['TerminationGracePeriodSeconds'] = request.termination_grace_period_seconds
         if not UtilClient.is_unset(request.timezone):
@@ -1017,6 +1019,8 @@ class Client(OpenApiClient):
             query['SecurityGroupId'] = request.security_group_id
         if not UtilClient.is_unset(request.sls_configs):
             query['SlsConfigs'] = request.sls_configs
+        if not UtilClient.is_unset(request.startup_probe):
+            query['StartupProbe'] = request.startup_probe
         if not UtilClient.is_unset(request.termination_grace_period_seconds):
             query['TerminationGracePeriodSeconds'] = request.termination_grace_period_seconds
         if not UtilClient.is_unset(request.timezone):
@@ -4431,6 +4435,8 @@ class Client(OpenApiClient):
             query['SecurityGroupId'] = request.security_group_id
         if not UtilClient.is_unset(request.sls_configs):
             query['SlsConfigs'] = request.sls_configs
+        if not UtilClient.is_unset(request.startup_probe):
+            query['StartupProbe'] = request.startup_probe
         if not UtilClient.is_unset(request.termination_grace_period_seconds):
             query['TerminationGracePeriodSeconds'] = request.termination_grace_period_seconds
         if not UtilClient.is_unset(request.timezone):
@@ -4621,6 +4627,8 @@ class Client(OpenApiClient):
             query['SecurityGroupId'] = request.security_group_id
         if not UtilClient.is_unset(request.sls_configs):
             query['SlsConfigs'] = request.sls_configs
+        if not UtilClient.is_unset(request.startup_probe):
+            query['StartupProbe'] = request.startup_probe
         if not UtilClient.is_unset(request.termination_grace_period_seconds):
             query['TerminationGracePeriodSeconds'] = request.termination_grace_period_seconds
         if not UtilClient.is_unset(request.timezone):
