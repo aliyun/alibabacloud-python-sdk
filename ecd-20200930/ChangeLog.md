@@ -1,3 +1,20 @@
+2025-05-26 Version: 4.8.0
+- Support API CreateTemplate.
+- Support API DeleteTemplates.
+- Support API DescribeTemplates.
+- Support API ModifyTemplate.
+- Support API ModifyTemplateBaseInfo.
+- Update API AddUserToDesktopGroup: add request parameters UserGroupName.
+- Update API CreateConfigGroup: add request parameters ConfigTimers.$.SegmentTimers.
+- Update API CreateDesktopGroup: add request parameters UserGroupName.
+- Update API CreateDesktops: add request parameters AppRuleId.
+- Update API DescribeDesktopGroups: add response parameters Body.DesktopGroups.$.UserGroupName.
+- Update API DescribeTimerGroup: add response parameters Body.Data.ConfigTimers.$.SegmentTimers.
+- Update API DescribeUsersInGroup: add response parameters Body.UserGroupName.
+- Update API ModifyTimerGroup: add request parameters ConfigTimers.$.SegmentTimers.
+- Update API RemoveUserFromDesktopGroup: add request parameters UserGroupName.
+
+
 2025-05-12 Version: 4.7.8
 - Update API DescribeModificationPrice: add request parameters ResourceSpecs.
 

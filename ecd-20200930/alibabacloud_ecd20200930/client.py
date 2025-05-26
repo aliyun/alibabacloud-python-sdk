@@ -530,6 +530,8 @@ class Client(OpenApiClient):
             query['EndUserIds'] = request.end_user_ids
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.user_group_name):
+            query['UserGroupName'] = request.user_group_name
         if not UtilClient.is_unset(request.user_ou_path):
             query['UserOuPath'] = request.user_ou_path
         req = open_api_models.OpenApiRequest(
@@ -575,6 +577,8 @@ class Client(OpenApiClient):
             query['EndUserIds'] = request.end_user_ids
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.user_group_name):
+            query['UserGroupName'] = request.user_group_name
         if not UtilClient.is_unset(request.user_ou_path):
             query['UserOuPath'] = request.user_ou_path
         req = open_api_models.OpenApiRequest(
@@ -5015,6 +5019,8 @@ class Client(OpenApiClient):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.timer_group_id):
             query['TimerGroupId'] = request.timer_group_id
+        if not UtilClient.is_unset(request.user_group_name):
+            query['UserGroupName'] = request.user_group_name
         if not UtilClient.is_unset(request.user_ou_path):
             query['UserOuPath'] = request.user_ou_path
         if not UtilClient.is_unset(request.volume_encryption_enabled):
@@ -5167,6 +5173,8 @@ class Client(OpenApiClient):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.timer_group_id):
             query['TimerGroupId'] = request.timer_group_id
+        if not UtilClient.is_unset(request.user_group_name):
+            query['UserGroupName'] = request.user_group_name
         if not UtilClient.is_unset(request.user_ou_path):
             query['UserOuPath'] = request.user_ou_path
         if not UtilClient.is_unset(request.volume_encryption_enabled):
@@ -5410,6 +5418,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.amount):
             query['Amount'] = request.amount
+        if not UtilClient.is_unset(request.app_rule_id):
+            query['AppRuleId'] = request.app_rule_id
         if not UtilClient.is_unset(request.auto_pay):
             query['AutoPay'] = request.auto_pay
         if not UtilClient.is_unset(request.auto_renew):
@@ -5525,6 +5535,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.amount):
             query['Amount'] = request.amount
+        if not UtilClient.is_unset(request.app_rule_id):
+            query['AppRuleId'] = request.app_rule_id
         if not UtilClient.is_unset(request.auto_pay):
             query['AutoPay'] = request.auto_pay
         if not UtilClient.is_unset(request.auto_renew):
@@ -6905,6 +6917,164 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_snapshot_with_options_async(request, runtime)
+
+    def create_template_with_options(
+        self,
+        request: ecd_20200930_models.CreateTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.CreateTemplateResponse:
+        """
+        @summary 创建模板
+        
+        @param request: CreateTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.biz_type):
+            body['BizType'] = request.biz_type
+        body_flat = {}
+        if not UtilClient.is_unset(request.data_disk_list):
+            body_flat['DataDiskList'] = request.data_disk_list
+        if not UtilClient.is_unset(request.default_language):
+            body['DefaultLanguage'] = request.default_language
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.policy_group_id):
+            body['PolicyGroupId'] = request.policy_group_id
+        if not UtilClient.is_unset(request.product_type):
+            body['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.region_config_list):
+            body_flat['RegionConfigList'] = request.region_config_list
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_tag_list):
+            body_flat['ResourceTagList'] = request.resource_tag_list
+        if not UtilClient.is_unset(request.site_config_list):
+            body_flat['SiteConfigList'] = request.site_config_list
+        if not UtilClient.is_unset(request.system_disk_performance_level):
+            body['SystemDiskPerformanceLevel'] = request.system_disk_performance_level
+        if not UtilClient.is_unset(request.system_disk_size):
+            body['SystemDiskSize'] = request.system_disk_size
+        if not UtilClient.is_unset(request.template_name):
+            body['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.timer_group_id):
+            body['TimerGroupId'] = request.timer_group_id
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTemplate',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.CreateTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_template_with_options_async(
+        self,
+        request: ecd_20200930_models.CreateTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.CreateTemplateResponse:
+        """
+        @summary 创建模板
+        
+        @param request: CreateTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.biz_type):
+            body['BizType'] = request.biz_type
+        body_flat = {}
+        if not UtilClient.is_unset(request.data_disk_list):
+            body_flat['DataDiskList'] = request.data_disk_list
+        if not UtilClient.is_unset(request.default_language):
+            body['DefaultLanguage'] = request.default_language
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.policy_group_id):
+            body['PolicyGroupId'] = request.policy_group_id
+        if not UtilClient.is_unset(request.product_type):
+            body['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.region_config_list):
+            body_flat['RegionConfigList'] = request.region_config_list
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_tag_list):
+            body_flat['ResourceTagList'] = request.resource_tag_list
+        if not UtilClient.is_unset(request.site_config_list):
+            body_flat['SiteConfigList'] = request.site_config_list
+        if not UtilClient.is_unset(request.system_disk_performance_level):
+            body['SystemDiskPerformanceLevel'] = request.system_disk_performance_level
+        if not UtilClient.is_unset(request.system_disk_size):
+            body['SystemDiskSize'] = request.system_disk_size
+        if not UtilClient.is_unset(request.template_name):
+            body['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.timer_group_id):
+            body['TimerGroupId'] = request.timer_group_id
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTemplate',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.CreateTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_template(
+        self,
+        request: ecd_20200930_models.CreateTemplateRequest,
+    ) -> ecd_20200930_models.CreateTemplateResponse:
+        """
+        @summary 创建模板
+        
+        @param request: CreateTemplateRequest
+        @return: CreateTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_template_with_options(request, runtime)
+
+    async def create_template_async(
+        self,
+        request: ecd_20200930_models.CreateTemplateRequest,
+    ) -> ecd_20200930_models.CreateTemplateResponse:
+        """
+        @summary 创建模板
+        
+        @param request: CreateTemplateRequest
+        @return: CreateTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_template_with_options_async(request, runtime)
 
     def delete_auto_snapshot_policy_with_options(
         self,
@@ -8845,6 +9015,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_snapshot_with_options_async(request, runtime)
+
+    def delete_templates_with_options(
+        self,
+        request: ecd_20200930_models.DeleteTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DeleteTemplatesResponse:
+        """
+        @summary Deletes custom cloud computer templates.
+        
+        @description Deleting a template does not affect cloud computers created from it or the associated resources.
+        
+        @param request: DeleteTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTemplatesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.biz_type):
+            body['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.template_ids):
+            body['TemplateIds'] = request.template_ids
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteTemplates',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DeleteTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_templates_with_options_async(
+        self,
+        request: ecd_20200930_models.DeleteTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DeleteTemplatesResponse:
+        """
+        @summary Deletes custom cloud computer templates.
+        
+        @description Deleting a template does not affect cloud computers created from it or the associated resources.
+        
+        @param request: DeleteTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTemplatesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.biz_type):
+            body['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.template_ids):
+            body['TemplateIds'] = request.template_ids
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteTemplates',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DeleteTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_templates(
+        self,
+        request: ecd_20200930_models.DeleteTemplatesRequest,
+    ) -> ecd_20200930_models.DeleteTemplatesResponse:
+        """
+        @summary Deletes custom cloud computer templates.
+        
+        @description Deleting a template does not affect cloud computers created from it or the associated resources.
+        
+        @param request: DeleteTemplatesRequest
+        @return: DeleteTemplatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_templates_with_options(request, runtime)
+
+    async def delete_templates_async(
+        self,
+        request: ecd_20200930_models.DeleteTemplatesRequest,
+    ) -> ecd_20200930_models.DeleteTemplatesResponse:
+        """
+        @summary Deletes custom cloud computer templates.
+        
+        @description Deleting a template does not affect cloud computers created from it or the associated resources.
+        
+        @param request: DeleteTemplatesRequest
+        @return: DeleteTemplatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_templates_with_options_async(request, runtime)
 
     def delete_virtual_mfadevice_with_options(
         self,
@@ -15245,6 +15523,138 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_snapshots_with_options_async(request, runtime)
+
+    def describe_templates_with_options(
+        self,
+        request: ecd_20200930_models.DescribeTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeTemplatesResponse:
+        """
+        @summary 查询模板列表
+        
+        @param request: DescribeTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTemplatesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.biz_region_id):
+            body['BizRegionId'] = request.biz_region_id
+        if not UtilClient.is_unset(request.biz_type):
+            body['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.keyword):
+            body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_type):
+            body['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.template_ids):
+            body['TemplateIds'] = request.template_ids
+        if not UtilClient.is_unset(request.template_name):
+            body['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.template_type):
+            body['TemplateType'] = request.template_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeTemplates',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_templates_with_options_async(
+        self,
+        request: ecd_20200930_models.DescribeTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeTemplatesResponse:
+        """
+        @summary 查询模板列表
+        
+        @param request: DescribeTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTemplatesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.biz_region_id):
+            body['BizRegionId'] = request.biz_region_id
+        if not UtilClient.is_unset(request.biz_type):
+            body['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.keyword):
+            body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_type):
+            body['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.template_ids):
+            body['TemplateIds'] = request.template_ids
+        if not UtilClient.is_unset(request.template_name):
+            body['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.template_type):
+            body['TemplateType'] = request.template_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeTemplates',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_templates(
+        self,
+        request: ecd_20200930_models.DescribeTemplatesRequest,
+    ) -> ecd_20200930_models.DescribeTemplatesResponse:
+        """
+        @summary 查询模板列表
+        
+        @param request: DescribeTemplatesRequest
+        @return: DescribeTemplatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_templates_with_options(request, runtime)
+
+    async def describe_templates_async(
+        self,
+        request: ecd_20200930_models.DescribeTemplatesRequest,
+    ) -> ecd_20200930_models.DescribeTemplatesResponse:
+        """
+        @summary 查询模板列表
+        
+        @param request: DescribeTemplatesRequest
+        @return: DescribeTemplatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_templates_with_options_async(request, runtime)
 
     def describe_timer_group_with_options(
         self,
@@ -24314,6 +24724,272 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_resource_center_policy_with_options_async(request, runtime)
 
+    def modify_template_with_options(
+        self,
+        request: ecd_20200930_models.ModifyTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.ModifyTemplateResponse:
+        """
+        @summary 模板全量更新
+        
+        @param request: ModifyTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.site_config_list):
+            query['SiteConfigList'] = request.site_config_list
+        body = {}
+        if not UtilClient.is_unset(request.default_language):
+            body['DefaultLanguage'] = request.default_language
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.policy_group_id):
+            body['PolicyGroupId'] = request.policy_group_id
+        body_flat = {}
+        if not UtilClient.is_unset(request.region_config_list):
+            body_flat['RegionConfigList'] = request.region_config_list
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_tag_list):
+            body_flat['ResourceTagList'] = request.resource_tag_list
+        if not UtilClient.is_unset(request.system_disk_performance_level):
+            body['SystemDiskPerformanceLevel'] = request.system_disk_performance_level
+        if not UtilClient.is_unset(request.system_disk_size):
+            body['SystemDiskSize'] = request.system_disk_size
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_name):
+            body['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.timer_group_id):
+            body['TimerGroupId'] = request.timer_group_id
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyTemplate',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.ModifyTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_template_with_options_async(
+        self,
+        request: ecd_20200930_models.ModifyTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.ModifyTemplateResponse:
+        """
+        @summary 模板全量更新
+        
+        @param request: ModifyTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.site_config_list):
+            query['SiteConfigList'] = request.site_config_list
+        body = {}
+        if not UtilClient.is_unset(request.default_language):
+            body['DefaultLanguage'] = request.default_language
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.policy_group_id):
+            body['PolicyGroupId'] = request.policy_group_id
+        body_flat = {}
+        if not UtilClient.is_unset(request.region_config_list):
+            body_flat['RegionConfigList'] = request.region_config_list
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_tag_list):
+            body_flat['ResourceTagList'] = request.resource_tag_list
+        if not UtilClient.is_unset(request.system_disk_performance_level):
+            body['SystemDiskPerformanceLevel'] = request.system_disk_performance_level
+        if not UtilClient.is_unset(request.system_disk_size):
+            body['SystemDiskSize'] = request.system_disk_size
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_name):
+            body['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.timer_group_id):
+            body['TimerGroupId'] = request.timer_group_id
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyTemplate',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.ModifyTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_template(
+        self,
+        request: ecd_20200930_models.ModifyTemplateRequest,
+    ) -> ecd_20200930_models.ModifyTemplateResponse:
+        """
+        @summary 模板全量更新
+        
+        @param request: ModifyTemplateRequest
+        @return: ModifyTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_template_with_options(request, runtime)
+
+    async def modify_template_async(
+        self,
+        request: ecd_20200930_models.ModifyTemplateRequest,
+    ) -> ecd_20200930_models.ModifyTemplateResponse:
+        """
+        @summary 模板全量更新
+        
+        @param request: ModifyTemplateRequest
+        @return: ModifyTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_template_with_options_async(request, runtime)
+
+    def modify_template_base_info_with_options(
+        self,
+        request: ecd_20200930_models.ModifyTemplateBaseInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.ModifyTemplateBaseInfoResponse:
+        """
+        @summary Modifies the basic information of a custom cloud computer template, including the template name and template description.
+        
+        @description You can use this operation to modify only the name and description of a custom cloud computer template. To change other parameters of the template, use the [ModifyTemplate](~~ModifyTemplate~~) operation.
+        
+        @param request: ModifyTemplateBaseInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTemplateBaseInfoResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_name):
+            body['TemplateName'] = request.template_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyTemplateBaseInfo',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.ModifyTemplateBaseInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_template_base_info_with_options_async(
+        self,
+        request: ecd_20200930_models.ModifyTemplateBaseInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.ModifyTemplateBaseInfoResponse:
+        """
+        @summary Modifies the basic information of a custom cloud computer template, including the template name and template description.
+        
+        @description You can use this operation to modify only the name and description of a custom cloud computer template. To change other parameters of the template, use the [ModifyTemplate](~~ModifyTemplate~~) operation.
+        
+        @param request: ModifyTemplateBaseInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTemplateBaseInfoResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_name):
+            body['TemplateName'] = request.template_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyTemplateBaseInfo',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.ModifyTemplateBaseInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_template_base_info(
+        self,
+        request: ecd_20200930_models.ModifyTemplateBaseInfoRequest,
+    ) -> ecd_20200930_models.ModifyTemplateBaseInfoResponse:
+        """
+        @summary Modifies the basic information of a custom cloud computer template, including the template name and template description.
+        
+        @description You can use this operation to modify only the name and description of a custom cloud computer template. To change other parameters of the template, use the [ModifyTemplate](~~ModifyTemplate~~) operation.
+        
+        @param request: ModifyTemplateBaseInfoRequest
+        @return: ModifyTemplateBaseInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_template_base_info_with_options(request, runtime)
+
+    async def modify_template_base_info_async(
+        self,
+        request: ecd_20200930_models.ModifyTemplateBaseInfoRequest,
+    ) -> ecd_20200930_models.ModifyTemplateBaseInfoResponse:
+        """
+        @summary Modifies the basic information of a custom cloud computer template, including the template name and template description.
+        
+        @description You can use this operation to modify only the name and description of a custom cloud computer template. To change other parameters of the template, use the [ModifyTemplate](~~ModifyTemplate~~) operation.
+        
+        @param request: ModifyTemplateBaseInfoRequest
+        @return: ModifyTemplateBaseInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_template_base_info_with_options_async(request, runtime)
+
     def modify_timer_group_with_options(
         self,
         request: ecd_20200930_models.ModifyTimerGroupRequest,
@@ -25172,6 +25848,8 @@ class Client(OpenApiClient):
             query['EndUserIds'] = request.end_user_ids
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.user_group_name):
+            query['UserGroupName'] = request.user_group_name
         if not UtilClient.is_unset(request.user_ou_path):
             query['UserOuPath'] = request.user_ou_path
         req = open_api_models.OpenApiRequest(
@@ -25215,6 +25893,8 @@ class Client(OpenApiClient):
             query['EndUserIds'] = request.end_user_ids
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.user_group_name):
+            query['UserGroupName'] = request.user_group_name
         if not UtilClient.is_unset(request.user_ou_path):
             query['UserOuPath'] = request.user_ou_path
         req = open_api_models.OpenApiRequest(

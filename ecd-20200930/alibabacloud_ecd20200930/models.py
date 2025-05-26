@@ -1132,6 +1132,7 @@ class AddUserToDesktopGroupRequest(TeaModel):
         desktop_group_ids: List[str] = None,
         end_user_ids: List[str] = None,
         region_id: str = None,
+        user_group_name: str = None,
         user_ou_path: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence of a request](https://help.aliyun.com/document_detail/25693.html).
@@ -1146,6 +1147,7 @@ class AddUserToDesktopGroupRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.user_group_name = user_group_name
         self.user_ou_path = user_ou_path
 
     def validate(self):
@@ -1167,6 +1169,8 @@ class AddUserToDesktopGroupRequest(TeaModel):
             result['EndUserIds'] = self.end_user_ids
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.user_group_name is not None:
+            result['UserGroupName'] = self.user_group_name
         if self.user_ou_path is not None:
             result['UserOuPath'] = self.user_ou_path
         return result
@@ -1183,6 +1187,8 @@ class AddUserToDesktopGroupRequest(TeaModel):
             self.end_user_ids = m.get('EndUserIds')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('UserGroupName') is not None:
+            self.user_group_name = m.get('UserGroupName')
         if m.get('UserOuPath') is not None:
             self.user_ou_path = m.get('UserOuPath')
         return self
@@ -8484,6 +8490,93 @@ class CreateCloudDriveUsersResponse(TeaModel):
         return self
 
 
+class CreateConfigGroupRequestConfigTimersSegmentTimers(TeaModel):
+    def __init__(
+        self,
+        end_cron_expression: str = None,
+        enforce: bool = None,
+        interval: int = None,
+        notification_time: int = None,
+        operation_type: str = None,
+        process_whitelist: List[str] = None,
+        reset_type: str = None,
+        start_cron_expression: str = None,
+        timer_order: int = None,
+        timezone: str = None,
+        trigger_type: str = None,
+    ):
+        self.end_cron_expression = end_cron_expression
+        self.enforce = enforce
+        self.interval = interval
+        self.notification_time = notification_time
+        self.operation_type = operation_type
+        self.process_whitelist = process_whitelist
+        self.reset_type = reset_type
+        self.start_cron_expression = start_cron_expression
+        self.timer_order = timer_order
+        self.timezone = timezone
+        self.trigger_type = trigger_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_cron_expression is not None:
+            result['EndCronExpression'] = self.end_cron_expression
+        if self.enforce is not None:
+            result['Enforce'] = self.enforce
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.notification_time is not None:
+            result['NotificationTime'] = self.notification_time
+        if self.operation_type is not None:
+            result['OperationType'] = self.operation_type
+        if self.process_whitelist is not None:
+            result['ProcessWhitelist'] = self.process_whitelist
+        if self.reset_type is not None:
+            result['ResetType'] = self.reset_type
+        if self.start_cron_expression is not None:
+            result['StartCronExpression'] = self.start_cron_expression
+        if self.timer_order is not None:
+            result['TimerOrder'] = self.timer_order
+        if self.timezone is not None:
+            result['Timezone'] = self.timezone
+        if self.trigger_type is not None:
+            result['TriggerType'] = self.trigger_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndCronExpression') is not None:
+            self.end_cron_expression = m.get('EndCronExpression')
+        if m.get('Enforce') is not None:
+            self.enforce = m.get('Enforce')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('NotificationTime') is not None:
+            self.notification_time = m.get('NotificationTime')
+        if m.get('OperationType') is not None:
+            self.operation_type = m.get('OperationType')
+        if m.get('ProcessWhitelist') is not None:
+            self.process_whitelist = m.get('ProcessWhitelist')
+        if m.get('ResetType') is not None:
+            self.reset_type = m.get('ResetType')
+        if m.get('StartCronExpression') is not None:
+            self.start_cron_expression = m.get('StartCronExpression')
+        if m.get('TimerOrder') is not None:
+            self.timer_order = m.get('TimerOrder')
+        if m.get('Timezone') is not None:
+            self.timezone = m.get('Timezone')
+        if m.get('TriggerType') is not None:
+            self.trigger_type = m.get('TriggerType')
+        return self
+
+
 class CreateConfigGroupRequestConfigTimers(TeaModel):
     def __init__(
         self,
@@ -8495,6 +8588,7 @@ class CreateConfigGroupRequestConfigTimers(TeaModel):
         operation_type: str = None,
         process_whitelist: List[str] = None,
         reset_type: str = None,
+        segment_timers: List[CreateConfigGroupRequestConfigTimersSegmentTimers] = None,
         timer_type: str = None,
         trigger_type: str = None,
     ):
@@ -8526,6 +8620,7 @@ class CreateConfigGroupRequestConfigTimers(TeaModel):
         # *   RESET_TYPE_USER_DISK: resets only the data disk.
         # *   RESET_TYPE_BOTH: resets the system and data disks.
         self.reset_type = reset_type
+        self.segment_timers = segment_timers
         # The scheduled task type.
         # 
         # Valid values:
@@ -8551,7 +8646,10 @@ class CreateConfigGroupRequestConfigTimers(TeaModel):
         self.trigger_type = trigger_type
 
     def validate(self):
-        pass
+        if self.segment_timers:
+            for k in self.segment_timers:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -8575,6 +8673,10 @@ class CreateConfigGroupRequestConfigTimers(TeaModel):
             result['ProcessWhitelist'] = self.process_whitelist
         if self.reset_type is not None:
             result['ResetType'] = self.reset_type
+        result['SegmentTimers'] = []
+        if self.segment_timers is not None:
+            for k in self.segment_timers:
+                result['SegmentTimers'].append(k.to_map() if k else None)
         if self.timer_type is not None:
             result['TimerType'] = self.timer_type
         if self.trigger_type is not None:
@@ -8599,6 +8701,11 @@ class CreateConfigGroupRequestConfigTimers(TeaModel):
             self.process_whitelist = m.get('ProcessWhitelist')
         if m.get('ResetType') is not None:
             self.reset_type = m.get('ResetType')
+        self.segment_timers = []
+        if m.get('SegmentTimers') is not None:
+            for k in m.get('SegmentTimers'):
+                temp_model = CreateConfigGroupRequestConfigTimersSegmentTimers()
+                self.segment_timers.append(temp_model.from_map(k))
         if m.get('TimerType') is not None:
             self.timer_type = m.get('TimerType')
         if m.get('TriggerType') is not None:
@@ -8870,6 +8977,7 @@ class CreateDesktopGroupRequest(TeaModel):
         system_disk_size: int = None,
         tag: List[CreateDesktopGroupRequestTag] = None,
         timer_group_id: str = None,
+        user_group_name: str = None,
         user_ou_path: str = None,
         volume_encryption_enabled: bool = None,
         volume_encryption_key: str = None,
@@ -9133,6 +9241,7 @@ class CreateDesktopGroupRequest(TeaModel):
         self.tag = tag
         # The ID of the timer group.
         self.timer_group_id = timer_group_id
+        self.user_group_name = user_group_name
         self.user_ou_path = user_ou_path
         # Specifies whether to enable disk encryption.
         self.volume_encryption_enabled = volume_encryption_enabled
@@ -9265,6 +9374,8 @@ class CreateDesktopGroupRequest(TeaModel):
                 result['Tag'].append(k.to_map() if k else None)
         if self.timer_group_id is not None:
             result['TimerGroupId'] = self.timer_group_id
+        if self.user_group_name is not None:
+            result['UserGroupName'] = self.user_group_name
         if self.user_ou_path is not None:
             result['UserOuPath'] = self.user_ou_path
         if self.volume_encryption_enabled is not None:
@@ -9388,6 +9499,8 @@ class CreateDesktopGroupRequest(TeaModel):
                 self.tag.append(temp_model.from_map(k))
         if m.get('TimerGroupId') is not None:
             self.timer_group_id = m.get('TimerGroupId')
+        if m.get('UserGroupName') is not None:
+            self.user_group_name = m.get('UserGroupName')
         if m.get('UserOuPath') is not None:
             self.user_ou_path = m.get('UserOuPath')
         if m.get('VolumeEncryptionEnabled') is not None:
@@ -10194,6 +10307,7 @@ class CreateDesktopsRequest(TeaModel):
     def __init__(
         self,
         amount: int = None,
+        app_rule_id: str = None,
         auto_pay: bool = None,
         auto_renew: bool = None,
         bundle_id: str = None,
@@ -10231,6 +10345,7 @@ class CreateDesktopsRequest(TeaModel):
     ):
         # The number of cloud computers that you want to create. Valid values: 1 to 300. Default value: 1.
         self.amount = amount
+        self.app_rule_id = app_rule_id
         # Specifies whether to enable automatic payment.
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal. This parameter takes effect only when the ChargeType parameter is set to PrePaid.
@@ -10418,6 +10533,8 @@ class CreateDesktopsRequest(TeaModel):
         result = dict()
         if self.amount is not None:
             result['Amount'] = self.amount
+        if self.app_rule_id is not None:
+            result['AppRuleId'] = self.app_rule_id
         if self.auto_pay is not None:
             result['AutoPay'] = self.auto_pay
         if self.auto_renew is not None:
@@ -10500,6 +10617,8 @@ class CreateDesktopsRequest(TeaModel):
         m = m or dict()
         if m.get('Amount') is not None:
             self.amount = m.get('Amount')
+        if m.get('AppRuleId') is not None:
+            self.app_rule_id = m.get('AppRuleId')
         if m.get('AutoPay') is not None:
             self.auto_pay = m.get('AutoPay')
         if m.get('AutoRenew') is not None:
@@ -10963,6 +11082,7 @@ class CreateDesktopsShrinkRequest(TeaModel):
     def __init__(
         self,
         amount: int = None,
+        app_rule_id: str = None,
         auto_pay: bool = None,
         auto_renew: bool = None,
         bundle_id: str = None,
@@ -11000,6 +11120,7 @@ class CreateDesktopsShrinkRequest(TeaModel):
     ):
         # The number of cloud computers that you want to create. Valid values: 1 to 300. Default value: 1.
         self.amount = amount
+        self.app_rule_id = app_rule_id
         # Specifies whether to enable automatic payment.
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal. This parameter takes effect only when the ChargeType parameter is set to PrePaid.
@@ -11185,6 +11306,8 @@ class CreateDesktopsShrinkRequest(TeaModel):
         result = dict()
         if self.amount is not None:
             result['Amount'] = self.amount
+        if self.app_rule_id is not None:
+            result['AppRuleId'] = self.app_rule_id
         if self.auto_pay is not None:
             result['AutoPay'] = self.auto_pay
         if self.auto_renew is not None:
@@ -11267,6 +11390,8 @@ class CreateDesktopsShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('Amount') is not None:
             self.amount = m.get('Amount')
+        if m.get('AppRuleId') is not None:
+            self.app_rule_id = m.get('AppRuleId')
         if m.get('AutoPay') is not None:
             self.auto_pay = m.get('AutoPay')
         if m.get('AutoRenew') is not None:
@@ -14191,6 +14316,413 @@ class CreateSnapshotResponse(TeaModel):
         return self
 
 
+class CreateTemplateRequestDataDiskList(TeaModel):
+    def __init__(
+        self,
+        performance_level: str = None,
+        size: int = None,
+    ):
+        self.performance_level = performance_level
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.performance_level is not None:
+            result['PerformanceLevel'] = self.performance_level
+        if self.size is not None:
+            result['Size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PerformanceLevel') is not None:
+            self.performance_level = m.get('PerformanceLevel')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        return self
+
+
+class CreateTemplateRequestRegionConfigList(TeaModel):
+    def __init__(
+        self,
+        office_site_id: str = None,
+        region_id: str = None,
+        resource_instance_type: str = None,
+        snapshot_policy_id: str = None,
+        subnet_id: str = None,
+        volume_encryption_enable: bool = None,
+        volume_encryption_key: str = None,
+    ):
+        self.office_site_id = office_site_id
+        self.region_id = region_id
+        self.resource_instance_type = resource_instance_type
+        self.snapshot_policy_id = snapshot_policy_id
+        self.subnet_id = subnet_id
+        self.volume_encryption_enable = volume_encryption_enable
+        self.volume_encryption_key = volume_encryption_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.office_site_id is not None:
+            result['OfficeSiteId'] = self.office_site_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_instance_type is not None:
+            result['ResourceInstanceType'] = self.resource_instance_type
+        if self.snapshot_policy_id is not None:
+            result['SnapshotPolicyId'] = self.snapshot_policy_id
+        if self.subnet_id is not None:
+            result['SubnetId'] = self.subnet_id
+        if self.volume_encryption_enable is not None:
+            result['VolumeEncryptionEnable'] = self.volume_encryption_enable
+        if self.volume_encryption_key is not None:
+            result['VolumeEncryptionKey'] = self.volume_encryption_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OfficeSiteId') is not None:
+            self.office_site_id = m.get('OfficeSiteId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceInstanceType') is not None:
+            self.resource_instance_type = m.get('ResourceInstanceType')
+        if m.get('SnapshotPolicyId') is not None:
+            self.snapshot_policy_id = m.get('SnapshotPolicyId')
+        if m.get('SubnetId') is not None:
+            self.subnet_id = m.get('SubnetId')
+        if m.get('VolumeEncryptionEnable') is not None:
+            self.volume_encryption_enable = m.get('VolumeEncryptionEnable')
+        if m.get('VolumeEncryptionKey') is not None:
+            self.volume_encryption_key = m.get('VolumeEncryptionKey')
+        return self
+
+
+class CreateTemplateRequestResourceTagList(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateTemplateRequestSiteConfigList(TeaModel):
+    def __init__(
+        self,
+        app_rule_id: str = None,
+        site_id: str = None,
+    ):
+        self.app_rule_id = app_rule_id
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_rule_id is not None:
+            result['AppRuleId'] = self.app_rule_id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppRuleId') is not None:
+            self.app_rule_id = m.get('AppRuleId')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class CreateTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        biz_type: str = None,
+        data_disk_list: List[CreateTemplateRequestDataDiskList] = None,
+        default_language: str = None,
+        description: str = None,
+        image_id: str = None,
+        policy_group_id: str = None,
+        product_type: str = None,
+        region_config_list: List[CreateTemplateRequestRegionConfigList] = None,
+        resource_group_id: str = None,
+        resource_tag_list: List[CreateTemplateRequestResourceTagList] = None,
+        site_config_list: List[CreateTemplateRequestSiteConfigList] = None,
+        system_disk_performance_level: str = None,
+        system_disk_size: int = None,
+        template_name: str = None,
+        timer_group_id: str = None,
+    ):
+        self.biz_type = biz_type
+        self.data_disk_list = data_disk_list
+        self.default_language = default_language
+        self.description = description
+        self.image_id = image_id
+        self.policy_group_id = policy_group_id
+        self.product_type = product_type
+        self.region_config_list = region_config_list
+        self.resource_group_id = resource_group_id
+        self.resource_tag_list = resource_tag_list
+        self.site_config_list = site_config_list
+        self.system_disk_performance_level = system_disk_performance_level
+        self.system_disk_size = system_disk_size
+        # This parameter is required.
+        self.template_name = template_name
+        self.timer_group_id = timer_group_id
+
+    def validate(self):
+        if self.data_disk_list:
+            for k in self.data_disk_list:
+                if k:
+                    k.validate()
+        if self.region_config_list:
+            for k in self.region_config_list:
+                if k:
+                    k.validate()
+        if self.resource_tag_list:
+            for k in self.resource_tag_list:
+                if k:
+                    k.validate()
+        if self.site_config_list:
+            for k in self.site_config_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_type is not None:
+            result['BizType'] = self.biz_type
+        result['DataDiskList'] = []
+        if self.data_disk_list is not None:
+            for k in self.data_disk_list:
+                result['DataDiskList'].append(k.to_map() if k else None)
+        if self.default_language is not None:
+            result['DefaultLanguage'] = self.default_language
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.policy_group_id is not None:
+            result['PolicyGroupId'] = self.policy_group_id
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        result['RegionConfigList'] = []
+        if self.region_config_list is not None:
+            for k in self.region_config_list:
+                result['RegionConfigList'].append(k.to_map() if k else None)
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['ResourceTagList'] = []
+        if self.resource_tag_list is not None:
+            for k in self.resource_tag_list:
+                result['ResourceTagList'].append(k.to_map() if k else None)
+        result['SiteConfigList'] = []
+        if self.site_config_list is not None:
+            for k in self.site_config_list:
+                result['SiteConfigList'].append(k.to_map() if k else None)
+        if self.system_disk_performance_level is not None:
+            result['SystemDiskPerformanceLevel'] = self.system_disk_performance_level
+        if self.system_disk_size is not None:
+            result['SystemDiskSize'] = self.system_disk_size
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        if self.timer_group_id is not None:
+            result['TimerGroupId'] = self.timer_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizType') is not None:
+            self.biz_type = m.get('BizType')
+        self.data_disk_list = []
+        if m.get('DataDiskList') is not None:
+            for k in m.get('DataDiskList'):
+                temp_model = CreateTemplateRequestDataDiskList()
+                self.data_disk_list.append(temp_model.from_map(k))
+        if m.get('DefaultLanguage') is not None:
+            self.default_language = m.get('DefaultLanguage')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('PolicyGroupId') is not None:
+            self.policy_group_id = m.get('PolicyGroupId')
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        self.region_config_list = []
+        if m.get('RegionConfigList') is not None:
+            for k in m.get('RegionConfigList'):
+                temp_model = CreateTemplateRequestRegionConfigList()
+                self.region_config_list.append(temp_model.from_map(k))
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.resource_tag_list = []
+        if m.get('ResourceTagList') is not None:
+            for k in m.get('ResourceTagList'):
+                temp_model = CreateTemplateRequestResourceTagList()
+                self.resource_tag_list.append(temp_model.from_map(k))
+        self.site_config_list = []
+        if m.get('SiteConfigList') is not None:
+            for k in m.get('SiteConfigList'):
+                temp_model = CreateTemplateRequestSiteConfigList()
+                self.site_config_list.append(temp_model.from_map(k))
+        if m.get('SystemDiskPerformanceLevel') is not None:
+            self.system_disk_performance_level = m.get('SystemDiskPerformanceLevel')
+        if m.get('SystemDiskSize') is not None:
+            self.system_disk_size = m.get('SystemDiskSize')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        if m.get('TimerGroupId') is not None:
+            self.timer_group_id = m.get('TimerGroupId')
+        return self
+
+
+class CreateTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteAutoSnapshotPolicyRequest(TeaModel):
     def __init__(
         self,
@@ -16324,6 +16856,150 @@ class DeleteSnapshotResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteSnapshotResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteTemplatesRequest(TeaModel):
+    def __init__(
+        self,
+        biz_type: str = None,
+        template_ids: List[str] = None,
+    ):
+        # >  This parameter is not publicly available.
+        self.biz_type = biz_type
+        # The IDs of the templates that you want to delete.
+        self.template_ids = template_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_type is not None:
+            result['BizType'] = self.biz_type
+        if self.template_ids is not None:
+            result['TemplateIds'] = self.template_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizType') is not None:
+            self.biz_type = m.get('BizType')
+        if m.get('TemplateIds') is not None:
+            self.template_ids = m.get('TemplateIds')
+        return self
+
+
+class DeleteTemplatesResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The information about the request denial..
+        self.access_denied_detail = access_denied_detail
+        # The modification result. If the request was successful, `success` is returned. If the request failed, an error message is returned.
+        self.code = code
+        # The description of the error code.
+        self.http_status_code = http_status_code
+        # The error message returned. This parameter is not returned if the value of Code is `success`.
+        self.message = message
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # Valid values:
+        # 
+        # *   true: The request is successful.
+        # *   false: The request failed.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteTemplatesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteTemplatesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteTemplatesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -22180,6 +22856,7 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         system_disk_category: str = None,
         system_disk_size: int = None,
         tags: List[DescribeDesktopGroupsResponseBodyDesktopGroupsTags] = None,
+        user_group_name: str = None,
         user_ou_path: str = None,
         version: int = None,
         volume_encryption_enabled: bool = None,
@@ -22367,6 +23044,7 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         self.system_disk_size = system_disk_size
         # The tags.
         self.tags = tags
+        self.user_group_name = user_group_name
         # The user\\"s organizational unit path.
         self.user_ou_path = user_ou_path
         # The version number of the cloud computer share.
@@ -22488,6 +23166,8 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         if self.tags is not None:
             for k in self.tags:
                 result['Tags'].append(k.to_map() if k else None)
+        if self.user_group_name is not None:
+            result['UserGroupName'] = self.user_group_name
         if self.user_ou_path is not None:
             result['UserOuPath'] = self.user_ou_path
         if self.version is not None:
@@ -22598,6 +23278,8 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
             for k in m.get('Tags'):
                 temp_model = DescribeDesktopGroupsResponseBodyDesktopGroupsTags()
                 self.tags.append(temp_model.from_map(k))
+        if m.get('UserGroupName') is not None:
+            self.user_group_name = m.get('UserGroupName')
         if m.get('UserOuPath') is not None:
             self.user_ou_path = m.get('UserOuPath')
         if m.get('Version') is not None:
@@ -37734,6 +38416,567 @@ class DescribeSnapshotsResponse(TeaModel):
         return self
 
 
+class DescribeTemplatesRequest(TeaModel):
+    def __init__(
+        self,
+        biz_region_id: str = None,
+        biz_type: str = None,
+        image_id: str = None,
+        keyword: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        product_type: str = None,
+        template_ids: List[str] = None,
+        template_name: str = None,
+        template_type: str = None,
+    ):
+        self.biz_region_id = biz_region_id
+        self.biz_type = biz_type
+        self.image_id = image_id
+        self.keyword = keyword
+        self.page_number = page_number
+        self.page_size = page_size
+        self.product_type = product_type
+        self.template_ids = template_ids
+        self.template_name = template_name
+        self.template_type = template_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_region_id is not None:
+            result['BizRegionId'] = self.biz_region_id
+        if self.biz_type is not None:
+            result['BizType'] = self.biz_type
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        if self.template_ids is not None:
+            result['TemplateIds'] = self.template_ids
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        if self.template_type is not None:
+            result['TemplateType'] = self.template_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizRegionId') is not None:
+            self.biz_region_id = m.get('BizRegionId')
+        if m.get('BizType') is not None:
+            self.biz_type = m.get('BizType')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        if m.get('TemplateIds') is not None:
+            self.template_ids = m.get('TemplateIds')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        if m.get('TemplateType') is not None:
+            self.template_type = m.get('TemplateType')
+        return self
+
+
+class DescribeTemplatesResponseBodyDataDataDiskList(TeaModel):
+    def __init__(
+        self,
+        performance_level: str = None,
+        size: str = None,
+    ):
+        self.performance_level = performance_level
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.performance_level is not None:
+            result['PerformanceLevel'] = self.performance_level
+        if self.size is not None:
+            result['Size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PerformanceLevel') is not None:
+            self.performance_level = m.get('PerformanceLevel')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        return self
+
+
+class DescribeTemplatesResponseBodyDataRegionConfigList(TeaModel):
+    def __init__(
+        self,
+        cpu_count: int = None,
+        gpu_spec: str = None,
+        memory_size: int = None,
+        office_site_id: str = None,
+        region_id: str = None,
+        resource_instance_type: str = None,
+        snapshot_policy_id: str = None,
+        subnet_id: str = None,
+        volume_encryption_enable: bool = None,
+        volume_encryption_key: str = None,
+    ):
+        self.cpu_count = cpu_count
+        self.gpu_spec = gpu_spec
+        self.memory_size = memory_size
+        self.office_site_id = office_site_id
+        self.region_id = region_id
+        self.resource_instance_type = resource_instance_type
+        self.snapshot_policy_id = snapshot_policy_id
+        self.subnet_id = subnet_id
+        self.volume_encryption_enable = volume_encryption_enable
+        self.volume_encryption_key = volume_encryption_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu_count is not None:
+            result['CpuCount'] = self.cpu_count
+        if self.gpu_spec is not None:
+            result['GpuSpec'] = self.gpu_spec
+        if self.memory_size is not None:
+            result['MemorySize'] = self.memory_size
+        if self.office_site_id is not None:
+            result['OfficeSiteId'] = self.office_site_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_instance_type is not None:
+            result['ResourceInstanceType'] = self.resource_instance_type
+        if self.snapshot_policy_id is not None:
+            result['SnapshotPolicyId'] = self.snapshot_policy_id
+        if self.subnet_id is not None:
+            result['SubnetId'] = self.subnet_id
+        if self.volume_encryption_enable is not None:
+            result['VolumeEncryptionEnable'] = self.volume_encryption_enable
+        if self.volume_encryption_key is not None:
+            result['VolumeEncryptionKey'] = self.volume_encryption_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CpuCount') is not None:
+            self.cpu_count = m.get('CpuCount')
+        if m.get('GpuSpec') is not None:
+            self.gpu_spec = m.get('GpuSpec')
+        if m.get('MemorySize') is not None:
+            self.memory_size = m.get('MemorySize')
+        if m.get('OfficeSiteId') is not None:
+            self.office_site_id = m.get('OfficeSiteId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceInstanceType') is not None:
+            self.resource_instance_type = m.get('ResourceInstanceType')
+        if m.get('SnapshotPolicyId') is not None:
+            self.snapshot_policy_id = m.get('SnapshotPolicyId')
+        if m.get('SubnetId') is not None:
+            self.subnet_id = m.get('SubnetId')
+        if m.get('VolumeEncryptionEnable') is not None:
+            self.volume_encryption_enable = m.get('VolumeEncryptionEnable')
+        if m.get('VolumeEncryptionKey') is not None:
+            self.volume_encryption_key = m.get('VolumeEncryptionKey')
+        return self
+
+
+class DescribeTemplatesResponseBodyDataResourceTagList(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeTemplatesResponseBodyDataSiteConfigList(TeaModel):
+    def __init__(
+        self,
+        app_rule_id: str = None,
+        site_id: str = None,
+    ):
+        self.app_rule_id = app_rule_id
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_rule_id is not None:
+            result['AppRuleId'] = self.app_rule_id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppRuleId') is not None:
+            self.app_rule_id = m.get('AppRuleId')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class DescribeTemplatesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        data_disk_list: List[DescribeTemplatesResponseBodyDataDataDiskList] = None,
+        default_language: str = None,
+        description: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        image_id: str = None,
+        image_type: str = None,
+        policy_group_id: str = None,
+        product_type: str = None,
+        region_config_list: List[DescribeTemplatesResponseBodyDataRegionConfigList] = None,
+        request_id: str = None,
+        resource_group_id: str = None,
+        resource_tag_list: List[DescribeTemplatesResponseBodyDataResourceTagList] = None,
+        site_config_list: List[DescribeTemplatesResponseBodyDataSiteConfigList] = None,
+        system_disk_performance_level: str = None,
+        system_disk_size: int = None,
+        template_id: str = None,
+        template_name: str = None,
+        template_type: str = None,
+        timer_group_id: str = None,
+    ):
+        self.data_disk_list = data_disk_list
+        self.default_language = default_language
+        self.description = description
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.image_id = image_id
+        self.image_type = image_type
+        self.policy_group_id = policy_group_id
+        self.product_type = product_type
+        self.region_config_list = region_config_list
+        self.request_id = request_id
+        self.resource_group_id = resource_group_id
+        self.resource_tag_list = resource_tag_list
+        self.site_config_list = site_config_list
+        self.system_disk_performance_level = system_disk_performance_level
+        self.system_disk_size = system_disk_size
+        self.template_id = template_id
+        self.template_name = template_name
+        self.template_type = template_type
+        self.timer_group_id = timer_group_id
+
+    def validate(self):
+        if self.data_disk_list:
+            for k in self.data_disk_list:
+                if k:
+                    k.validate()
+        if self.region_config_list:
+            for k in self.region_config_list:
+                if k:
+                    k.validate()
+        if self.resource_tag_list:
+            for k in self.resource_tag_list:
+                if k:
+                    k.validate()
+        if self.site_config_list:
+            for k in self.site_config_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DataDiskList'] = []
+        if self.data_disk_list is not None:
+            for k in self.data_disk_list:
+                result['DataDiskList'].append(k.to_map() if k else None)
+        if self.default_language is not None:
+            result['DefaultLanguage'] = self.default_language
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.image_type is not None:
+            result['ImageType'] = self.image_type
+        if self.policy_group_id is not None:
+            result['PolicyGroupId'] = self.policy_group_id
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        result['RegionConfigList'] = []
+        if self.region_config_list is not None:
+            for k in self.region_config_list:
+                result['RegionConfigList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['ResourceTagList'] = []
+        if self.resource_tag_list is not None:
+            for k in self.resource_tag_list:
+                result['ResourceTagList'].append(k.to_map() if k else None)
+        result['SiteConfigList'] = []
+        if self.site_config_list is not None:
+            for k in self.site_config_list:
+                result['SiteConfigList'].append(k.to_map() if k else None)
+        if self.system_disk_performance_level is not None:
+            result['SystemDiskPerformanceLevel'] = self.system_disk_performance_level
+        if self.system_disk_size is not None:
+            result['SystemDiskSize'] = self.system_disk_size
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        if self.template_type is not None:
+            result['TemplateType'] = self.template_type
+        if self.timer_group_id is not None:
+            result['TimerGroupId'] = self.timer_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data_disk_list = []
+        if m.get('DataDiskList') is not None:
+            for k in m.get('DataDiskList'):
+                temp_model = DescribeTemplatesResponseBodyDataDataDiskList()
+                self.data_disk_list.append(temp_model.from_map(k))
+        if m.get('DefaultLanguage') is not None:
+            self.default_language = m.get('DefaultLanguage')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('ImageType') is not None:
+            self.image_type = m.get('ImageType')
+        if m.get('PolicyGroupId') is not None:
+            self.policy_group_id = m.get('PolicyGroupId')
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        self.region_config_list = []
+        if m.get('RegionConfigList') is not None:
+            for k in m.get('RegionConfigList'):
+                temp_model = DescribeTemplatesResponseBodyDataRegionConfigList()
+                self.region_config_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.resource_tag_list = []
+        if m.get('ResourceTagList') is not None:
+            for k in m.get('ResourceTagList'):
+                temp_model = DescribeTemplatesResponseBodyDataResourceTagList()
+                self.resource_tag_list.append(temp_model.from_map(k))
+        self.site_config_list = []
+        if m.get('SiteConfigList') is not None:
+            for k in m.get('SiteConfigList'):
+                temp_model = DescribeTemplatesResponseBodyDataSiteConfigList()
+                self.site_config_list.append(temp_model.from_map(k))
+        if m.get('SystemDiskPerformanceLevel') is not None:
+            self.system_disk_performance_level = m.get('SystemDiskPerformanceLevel')
+        if m.get('SystemDiskSize') is not None:
+            self.system_disk_size = m.get('SystemDiskSize')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        if m.get('TemplateType') is not None:
+            self.template_type = m.get('TemplateType')
+        if m.get('TimerGroupId') is not None:
+            self.timer_group_id = m.get('TimerGroupId')
+        return self
+
+
+class DescribeTemplatesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[DescribeTemplatesResponseBodyData] = None,
+        http_status_code: int = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = DescribeTemplatesResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeTemplatesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeTemplatesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeTemplatesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeTimerGroupRequest(TeaModel):
     def __init__(
         self,
@@ -37771,6 +39014,93 @@ class DescribeTimerGroupRequest(TeaModel):
         return self
 
 
+class DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers(TeaModel):
+    def __init__(
+        self,
+        end_cron_expression: str = None,
+        enforce: bool = None,
+        interval: int = None,
+        notification_time: int = None,
+        operation_type: str = None,
+        process_whitelist: List[str] = None,
+        reset_type: str = None,
+        start_cron_expression: str = None,
+        timer_order: int = None,
+        timezone: str = None,
+        trigger_type: str = None,
+    ):
+        self.end_cron_expression = end_cron_expression
+        self.enforce = enforce
+        self.interval = interval
+        self.notification_time = notification_time
+        self.operation_type = operation_type
+        self.process_whitelist = process_whitelist
+        self.reset_type = reset_type
+        self.start_cron_expression = start_cron_expression
+        self.timer_order = timer_order
+        self.timezone = timezone
+        self.trigger_type = trigger_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_cron_expression is not None:
+            result['EndCronExpression'] = self.end_cron_expression
+        if self.enforce is not None:
+            result['Enforce'] = self.enforce
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.notification_time is not None:
+            result['NotificationTime'] = self.notification_time
+        if self.operation_type is not None:
+            result['OperationType'] = self.operation_type
+        if self.process_whitelist is not None:
+            result['ProcessWhitelist'] = self.process_whitelist
+        if self.reset_type is not None:
+            result['ResetType'] = self.reset_type
+        if self.start_cron_expression is not None:
+            result['StartCronExpression'] = self.start_cron_expression
+        if self.timer_order is not None:
+            result['TimerOrder'] = self.timer_order
+        if self.timezone is not None:
+            result['Timezone'] = self.timezone
+        if self.trigger_type is not None:
+            result['TriggerType'] = self.trigger_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndCronExpression') is not None:
+            self.end_cron_expression = m.get('EndCronExpression')
+        if m.get('Enforce') is not None:
+            self.enforce = m.get('Enforce')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('NotificationTime') is not None:
+            self.notification_time = m.get('NotificationTime')
+        if m.get('OperationType') is not None:
+            self.operation_type = m.get('OperationType')
+        if m.get('ProcessWhitelist') is not None:
+            self.process_whitelist = m.get('ProcessWhitelist')
+        if m.get('ResetType') is not None:
+            self.reset_type = m.get('ResetType')
+        if m.get('StartCronExpression') is not None:
+            self.start_cron_expression = m.get('StartCronExpression')
+        if m.get('TimerOrder') is not None:
+            self.timer_order = m.get('TimerOrder')
+        if m.get('Timezone') is not None:
+            self.timezone = m.get('Timezone')
+        if m.get('TriggerType') is not None:
+            self.trigger_type = m.get('TriggerType')
+        return self
+
+
 class DescribeTimerGroupResponseBodyDataConfigTimers(TeaModel):
     def __init__(
         self,
@@ -37782,6 +39112,7 @@ class DescribeTimerGroupResponseBodyDataConfigTimers(TeaModel):
         operation_type: str = None,
         process_whitelist: List[str] = None,
         reset_type: str = None,
+        segment_timers: List[DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers] = None,
         timer_type: str = None,
         trigger_type: str = None,
     ):
@@ -37811,6 +39142,7 @@ class DescribeTimerGroupResponseBodyDataConfigTimers(TeaModel):
         # *   RESET_TYPE_USER_DISK: resets the data disk.
         # *   RESET_TYPE_BOTH: resets the system disk and data disk.
         self.reset_type = reset_type
+        self.segment_timers = segment_timers
         # The type of the scheduled task.
         # 
         # Valid values:
@@ -37834,7 +39166,10 @@ class DescribeTimerGroupResponseBodyDataConfigTimers(TeaModel):
         self.trigger_type = trigger_type
 
     def validate(self):
-        pass
+        if self.segment_timers:
+            for k in self.segment_timers:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -37858,6 +39193,10 @@ class DescribeTimerGroupResponseBodyDataConfigTimers(TeaModel):
             result['ProcessWhitelist'] = self.process_whitelist
         if self.reset_type is not None:
             result['ResetType'] = self.reset_type
+        result['SegmentTimers'] = []
+        if self.segment_timers is not None:
+            for k in self.segment_timers:
+                result['SegmentTimers'].append(k.to_map() if k else None)
         if self.timer_type is not None:
             result['TimerType'] = self.timer_type
         if self.trigger_type is not None:
@@ -37882,6 +39221,11 @@ class DescribeTimerGroupResponseBodyDataConfigTimers(TeaModel):
             self.process_whitelist = m.get('ProcessWhitelist')
         if m.get('ResetType') is not None:
             self.reset_type = m.get('ResetType')
+        self.segment_timers = []
+        if m.get('SegmentTimers') is not None:
+            for k in m.get('SegmentTimers'):
+                temp_model = DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers()
+                self.segment_timers.append(temp_model.from_map(k))
         if m.get('TimerType') is not None:
             self.timer_type = m.get('TimerType')
         if m.get('TriggerType') is not None:
@@ -39350,6 +40694,7 @@ class DescribeUsersInGroupResponseBody(TeaModel):
         next_token: str = None,
         online_users_count: int = None,
         request_id: str = None,
+        user_group_name: str = None,
         user_ou_path: str = None,
         users_count: int = None,
     ):
@@ -39361,6 +40706,7 @@ class DescribeUsersInGroupResponseBody(TeaModel):
         self.online_users_count = online_users_count
         # The ID of the request.
         self.request_id = request_id
+        self.user_group_name = user_group_name
         self.user_ou_path = user_ou_path
         # The total number of authorized users of the cloud computer share.
         self.users_count = users_count
@@ -39387,6 +40733,8 @@ class DescribeUsersInGroupResponseBody(TeaModel):
             result['OnlineUsersCount'] = self.online_users_count
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.user_group_name is not None:
+            result['UserGroupName'] = self.user_group_name
         if self.user_ou_path is not None:
             result['UserOuPath'] = self.user_ou_path
         if self.users_count is not None:
@@ -39406,6 +40754,8 @@ class DescribeUsersInGroupResponseBody(TeaModel):
             self.online_users_count = m.get('OnlineUsersCount')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('UserGroupName') is not None:
+            self.user_group_name = m.get('UserGroupName')
         if m.get('UserOuPath') is not None:
             self.user_ou_path = m.get('UserOuPath')
         if m.get('UsersCount') is not None:
@@ -55231,6 +56581,581 @@ class ModifyResourceCenterPolicyResponse(TeaModel):
         return self
 
 
+class ModifyTemplateRequestRegionConfigList(TeaModel):
+    def __init__(
+        self,
+        office_site_id: str = None,
+        region_id: str = None,
+        resource_instance_type: str = None,
+        snapshot_policy_id: str = None,
+        subnet_id: str = None,
+        volume_encryption_enable: bool = None,
+        volume_encryption_key: str = None,
+    ):
+        self.office_site_id = office_site_id
+        self.region_id = region_id
+        self.resource_instance_type = resource_instance_type
+        self.snapshot_policy_id = snapshot_policy_id
+        self.subnet_id = subnet_id
+        self.volume_encryption_enable = volume_encryption_enable
+        self.volume_encryption_key = volume_encryption_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.office_site_id is not None:
+            result['OfficeSiteId'] = self.office_site_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_instance_type is not None:
+            result['ResourceInstanceType'] = self.resource_instance_type
+        if self.snapshot_policy_id is not None:
+            result['SnapshotPolicyId'] = self.snapshot_policy_id
+        if self.subnet_id is not None:
+            result['SubnetId'] = self.subnet_id
+        if self.volume_encryption_enable is not None:
+            result['VolumeEncryptionEnable'] = self.volume_encryption_enable
+        if self.volume_encryption_key is not None:
+            result['VolumeEncryptionKey'] = self.volume_encryption_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OfficeSiteId') is not None:
+            self.office_site_id = m.get('OfficeSiteId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceInstanceType') is not None:
+            self.resource_instance_type = m.get('ResourceInstanceType')
+        if m.get('SnapshotPolicyId') is not None:
+            self.snapshot_policy_id = m.get('SnapshotPolicyId')
+        if m.get('SubnetId') is not None:
+            self.subnet_id = m.get('SubnetId')
+        if m.get('VolumeEncryptionEnable') is not None:
+            self.volume_encryption_enable = m.get('VolumeEncryptionEnable')
+        if m.get('VolumeEncryptionKey') is not None:
+            self.volume_encryption_key = m.get('VolumeEncryptionKey')
+        return self
+
+
+class ModifyTemplateRequestResourceTagList(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ModifyTemplateRequestSiteConfigList(TeaModel):
+    def __init__(
+        self,
+        app_rule_id: str = None,
+        site_id: str = None,
+    ):
+        self.app_rule_id = app_rule_id
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_rule_id is not None:
+            result['AppRuleId'] = self.app_rule_id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppRuleId') is not None:
+            self.app_rule_id = m.get('AppRuleId')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class ModifyTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        default_language: str = None,
+        description: str = None,
+        image_id: str = None,
+        policy_group_id: str = None,
+        region_config_list: List[ModifyTemplateRequestRegionConfigList] = None,
+        resource_group_id: str = None,
+        resource_tag_list: List[ModifyTemplateRequestResourceTagList] = None,
+        site_config_list: List[ModifyTemplateRequestSiteConfigList] = None,
+        system_disk_performance_level: str = None,
+        system_disk_size: int = None,
+        template_id: str = None,
+        template_name: str = None,
+        timer_group_id: str = None,
+    ):
+        self.default_language = default_language
+        self.description = description
+        self.image_id = image_id
+        self.policy_group_id = policy_group_id
+        self.region_config_list = region_config_list
+        self.resource_group_id = resource_group_id
+        self.resource_tag_list = resource_tag_list
+        self.site_config_list = site_config_list
+        self.system_disk_performance_level = system_disk_performance_level
+        self.system_disk_size = system_disk_size
+        # This parameter is required.
+        self.template_id = template_id
+        self.template_name = template_name
+        self.timer_group_id = timer_group_id
+
+    def validate(self):
+        if self.region_config_list:
+            for k in self.region_config_list:
+                if k:
+                    k.validate()
+        if self.resource_tag_list:
+            for k in self.resource_tag_list:
+                if k:
+                    k.validate()
+        if self.site_config_list:
+            for k in self.site_config_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.default_language is not None:
+            result['DefaultLanguage'] = self.default_language
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.policy_group_id is not None:
+            result['PolicyGroupId'] = self.policy_group_id
+        result['RegionConfigList'] = []
+        if self.region_config_list is not None:
+            for k in self.region_config_list:
+                result['RegionConfigList'].append(k.to_map() if k else None)
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['ResourceTagList'] = []
+        if self.resource_tag_list is not None:
+            for k in self.resource_tag_list:
+                result['ResourceTagList'].append(k.to_map() if k else None)
+        result['SiteConfigList'] = []
+        if self.site_config_list is not None:
+            for k in self.site_config_list:
+                result['SiteConfigList'].append(k.to_map() if k else None)
+        if self.system_disk_performance_level is not None:
+            result['SystemDiskPerformanceLevel'] = self.system_disk_performance_level
+        if self.system_disk_size is not None:
+            result['SystemDiskSize'] = self.system_disk_size
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        if self.timer_group_id is not None:
+            result['TimerGroupId'] = self.timer_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DefaultLanguage') is not None:
+            self.default_language = m.get('DefaultLanguage')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('PolicyGroupId') is not None:
+            self.policy_group_id = m.get('PolicyGroupId')
+        self.region_config_list = []
+        if m.get('RegionConfigList') is not None:
+            for k in m.get('RegionConfigList'):
+                temp_model = ModifyTemplateRequestRegionConfigList()
+                self.region_config_list.append(temp_model.from_map(k))
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.resource_tag_list = []
+        if m.get('ResourceTagList') is not None:
+            for k in m.get('ResourceTagList'):
+                temp_model = ModifyTemplateRequestResourceTagList()
+                self.resource_tag_list.append(temp_model.from_map(k))
+        self.site_config_list = []
+        if m.get('SiteConfigList') is not None:
+            for k in m.get('SiteConfigList'):
+                temp_model = ModifyTemplateRequestSiteConfigList()
+                self.site_config_list.append(temp_model.from_map(k))
+        if m.get('SystemDiskPerformanceLevel') is not None:
+            self.system_disk_performance_level = m.get('SystemDiskPerformanceLevel')
+        if m.get('SystemDiskSize') is not None:
+            self.system_disk_size = m.get('SystemDiskSize')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        if m.get('TimerGroupId') is not None:
+            self.timer_group_id = m.get('TimerGroupId')
+        return self
+
+
+class ModifyTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyTemplateBaseInfoRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        template_id: str = None,
+        template_name: str = None,
+    ):
+        # The template description.
+        self.description = description
+        # The template ID.
+        # 
+        # This parameter is required.
+        self.template_id = template_id
+        # The template name.
+        self.template_name = template_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        return self
+
+
+class ModifyTemplateBaseInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The execution result of the operation. If the request was successful, `success` is returned. If the request failed, an error message is returned.
+        self.code = code
+        # The HTTP status code.
+        self.http_status_code = http_status_code
+        # The error message. This parameter is not returned if the value of Code is `success`.
+        self.message = message
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether the request was successful.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyTemplateBaseInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyTemplateBaseInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyTemplateBaseInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyTimerGroupRequestConfigTimersSegmentTimers(TeaModel):
+    def __init__(
+        self,
+        end_cron_expression: str = None,
+        enforce: bool = None,
+        interval: int = None,
+        notification_time: int = None,
+        operation_type: str = None,
+        process_whitelist: List[str] = None,
+        reset_type: str = None,
+        start_cron_expression: str = None,
+        timer_order: int = None,
+        timezone: str = None,
+        trigger_type: str = None,
+    ):
+        self.end_cron_expression = end_cron_expression
+        self.enforce = enforce
+        self.interval = interval
+        self.notification_time = notification_time
+        self.operation_type = operation_type
+        self.process_whitelist = process_whitelist
+        self.reset_type = reset_type
+        self.start_cron_expression = start_cron_expression
+        self.timer_order = timer_order
+        self.timezone = timezone
+        self.trigger_type = trigger_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_cron_expression is not None:
+            result['EndCronExpression'] = self.end_cron_expression
+        if self.enforce is not None:
+            result['Enforce'] = self.enforce
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.notification_time is not None:
+            result['NotificationTime'] = self.notification_time
+        if self.operation_type is not None:
+            result['OperationType'] = self.operation_type
+        if self.process_whitelist is not None:
+            result['ProcessWhitelist'] = self.process_whitelist
+        if self.reset_type is not None:
+            result['ResetType'] = self.reset_type
+        if self.start_cron_expression is not None:
+            result['StartCronExpression'] = self.start_cron_expression
+        if self.timer_order is not None:
+            result['TimerOrder'] = self.timer_order
+        if self.timezone is not None:
+            result['Timezone'] = self.timezone
+        if self.trigger_type is not None:
+            result['TriggerType'] = self.trigger_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndCronExpression') is not None:
+            self.end_cron_expression = m.get('EndCronExpression')
+        if m.get('Enforce') is not None:
+            self.enforce = m.get('Enforce')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('NotificationTime') is not None:
+            self.notification_time = m.get('NotificationTime')
+        if m.get('OperationType') is not None:
+            self.operation_type = m.get('OperationType')
+        if m.get('ProcessWhitelist') is not None:
+            self.process_whitelist = m.get('ProcessWhitelist')
+        if m.get('ResetType') is not None:
+            self.reset_type = m.get('ResetType')
+        if m.get('StartCronExpression') is not None:
+            self.start_cron_expression = m.get('StartCronExpression')
+        if m.get('TimerOrder') is not None:
+            self.timer_order = m.get('TimerOrder')
+        if m.get('Timezone') is not None:
+            self.timezone = m.get('Timezone')
+        if m.get('TriggerType') is not None:
+            self.trigger_type = m.get('TriggerType')
+        return self
+
+
 class ModifyTimerGroupRequestConfigTimers(TeaModel):
     def __init__(
         self,
@@ -55242,6 +57167,7 @@ class ModifyTimerGroupRequestConfigTimers(TeaModel):
         operation_type: str = None,
         process_whitelist: List[str] = None,
         reset_type: str = None,
+        segment_timers: List[ModifyTimerGroupRequestConfigTimersSegmentTimers] = None,
         timer_type: str = None,
         trigger_type: str = None,
     ):
@@ -55273,6 +57199,7 @@ class ModifyTimerGroupRequestConfigTimers(TeaModel):
         # *   RESET_TYPE_USER_DISK: resets the data disk.
         # *   RESET_TYPE_BOTH: resets the system disk and data disk.
         self.reset_type = reset_type
+        self.segment_timers = segment_timers
         # The scheduled task type.
         # 
         # Valid value:
@@ -55296,7 +57223,10 @@ class ModifyTimerGroupRequestConfigTimers(TeaModel):
         self.trigger_type = trigger_type
 
     def validate(self):
-        pass
+        if self.segment_timers:
+            for k in self.segment_timers:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -55320,6 +57250,10 @@ class ModifyTimerGroupRequestConfigTimers(TeaModel):
             result['ProcessWhitelist'] = self.process_whitelist
         if self.reset_type is not None:
             result['ResetType'] = self.reset_type
+        result['SegmentTimers'] = []
+        if self.segment_timers is not None:
+            for k in self.segment_timers:
+                result['SegmentTimers'].append(k.to_map() if k else None)
         if self.timer_type is not None:
             result['TimerType'] = self.timer_type
         if self.trigger_type is not None:
@@ -55344,6 +57278,11 @@ class ModifyTimerGroupRequestConfigTimers(TeaModel):
             self.process_whitelist = m.get('ProcessWhitelist')
         if m.get('ResetType') is not None:
             self.reset_type = m.get('ResetType')
+        self.segment_timers = []
+        if m.get('SegmentTimers') is not None:
+            for k in m.get('SegmentTimers'):
+                temp_model = ModifyTimerGroupRequestConfigTimersSegmentTimers()
+                self.segment_timers.append(temp_model.from_map(k))
         if m.get('TimerType') is not None:
             self.timer_type = m.get('TimerType')
         if m.get('TriggerType') is not None:
@@ -56850,6 +58789,7 @@ class RemoveUserFromDesktopGroupRequest(TeaModel):
         desktop_group_ids: List[str] = None,
         end_user_ids: List[str] = None,
         region_id: str = None,
+        user_group_name: str = None,
         user_ou_path: str = None,
     ):
         # The ID of the cloud computer share.
@@ -56862,6 +58802,7 @@ class RemoveUserFromDesktopGroupRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.user_group_name = user_group_name
         self.user_ou_path = user_ou_path
 
     def validate(self):
@@ -56881,6 +58822,8 @@ class RemoveUserFromDesktopGroupRequest(TeaModel):
             result['EndUserIds'] = self.end_user_ids
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.user_group_name is not None:
+            result['UserGroupName'] = self.user_group_name
         if self.user_ou_path is not None:
             result['UserOuPath'] = self.user_ou_path
         return result
@@ -56895,6 +58838,8 @@ class RemoveUserFromDesktopGroupRequest(TeaModel):
             self.end_user_ids = m.get('EndUserIds')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('UserGroupName') is not None:
+            self.user_group_name = m.get('UserGroupName')
         if m.get('UserOuPath') is not None:
             self.user_ou_path = m.get('UserOuPath')
         return self
