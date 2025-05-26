@@ -4,6 +4,208 @@ from Tea.model import TeaModel
 from typing import Dict, List, BinaryIO
 
 
+class BankMetaVerifyIntlRequest(TeaModel):
+    def __init__(
+        self,
+        bank_card: str = None,
+        identify_num: str = None,
+        identity_type: str = None,
+        mobile: str = None,
+        param_type: str = None,
+        product_code: str = None,
+        product_type: str = None,
+        user_name: str = None,
+        verify_mode: str = None,
+    ):
+        # This parameter is required.
+        self.bank_card = bank_card
+        self.identify_num = identify_num
+        self.identity_type = identity_type
+        self.mobile = mobile
+        # This parameter is required.
+        self.param_type = param_type
+        # This parameter is required.
+        self.product_code = product_code
+        # This parameter is required.
+        self.product_type = product_type
+        # This parameter is required.
+        self.user_name = user_name
+        # This parameter is required.
+        self.verify_mode = verify_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bank_card is not None:
+            result['BankCard'] = self.bank_card
+        if self.identify_num is not None:
+            result['IdentifyNum'] = self.identify_num
+        if self.identity_type is not None:
+            result['IdentityType'] = self.identity_type
+        if self.mobile is not None:
+            result['Mobile'] = self.mobile
+        if self.param_type is not None:
+            result['ParamType'] = self.param_type
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        if self.verify_mode is not None:
+            result['VerifyMode'] = self.verify_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BankCard') is not None:
+            self.bank_card = m.get('BankCard')
+        if m.get('IdentifyNum') is not None:
+            self.identify_num = m.get('IdentifyNum')
+        if m.get('IdentityType') is not None:
+            self.identity_type = m.get('IdentityType')
+        if m.get('Mobile') is not None:
+            self.mobile = m.get('Mobile')
+        if m.get('ParamType') is not None:
+            self.param_type = m.get('ParamType')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        if m.get('VerifyMode') is not None:
+            self.verify_mode = m.get('VerifyMode')
+        return self
+
+
+class BankMetaVerifyIntlResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        sub_code: str = None,
+    ):
+        self.biz_code = biz_code
+        self.sub_code = sub_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.sub_code is not None:
+            result['SubCode'] = self.sub_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('SubCode') is not None:
+            self.sub_code = m.get('SubCode')
+        return self
+
+
+class BankMetaVerifyIntlResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result_object: BankMetaVerifyIntlResponseBodyResultObject = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.result_object = result_object
+
+    def validate(self):
+        if self.result_object:
+            self.result_object.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            temp_model = BankMetaVerifyIntlResponseBodyResultObject()
+            self.result_object = temp_model.from_map(m['ResultObject'])
+        return self
+
+
+class BankMetaVerifyIntlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BankMetaVerifyIntlResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BankMetaVerifyIntlResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CardOcrRequest(TeaModel):
     def __init__(
         self,

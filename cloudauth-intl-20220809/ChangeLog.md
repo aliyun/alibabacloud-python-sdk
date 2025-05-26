@@ -1,3 +1,7 @@
+2025-05-26 Version: 3.7.0
+- Support API BankMetaVerifyIntl.
+
+
 2025-05-20 Version: 3.6.1
 - Update API Initialize: add response parameters Body.Result.Protocol.
 

@@ -47,6 +47,134 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def bank_meta_verify_intl_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.BankMetaVerifyIntlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.BankMetaVerifyIntlResponse:
+        """
+        @summary 银行卡核验
+        
+        @param request: BankMetaVerifyIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BankMetaVerifyIntlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bank_card):
+            query['BankCard'] = request.bank_card
+        if not UtilClient.is_unset(request.identify_num):
+            query['IdentifyNum'] = request.identify_num
+        if not UtilClient.is_unset(request.identity_type):
+            query['IdentityType'] = request.identity_type
+        if not UtilClient.is_unset(request.mobile):
+            query['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.param_type):
+            query['ParamType'] = request.param_type
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.verify_mode):
+            query['VerifyMode'] = request.verify_mode
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BankMetaVerifyIntl',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.BankMetaVerifyIntlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def bank_meta_verify_intl_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.BankMetaVerifyIntlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.BankMetaVerifyIntlResponse:
+        """
+        @summary 银行卡核验
+        
+        @param request: BankMetaVerifyIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BankMetaVerifyIntlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bank_card):
+            query['BankCard'] = request.bank_card
+        if not UtilClient.is_unset(request.identify_num):
+            query['IdentifyNum'] = request.identify_num
+        if not UtilClient.is_unset(request.identity_type):
+            query['IdentityType'] = request.identity_type
+        if not UtilClient.is_unset(request.mobile):
+            query['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.param_type):
+            query['ParamType'] = request.param_type
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.verify_mode):
+            query['VerifyMode'] = request.verify_mode
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BankMetaVerifyIntl',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.BankMetaVerifyIntlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def bank_meta_verify_intl(
+        self,
+        request: cloudauth_intl_20220809_models.BankMetaVerifyIntlRequest,
+    ) -> cloudauth_intl_20220809_models.BankMetaVerifyIntlResponse:
+        """
+        @summary 银行卡核验
+        
+        @param request: BankMetaVerifyIntlRequest
+        @return: BankMetaVerifyIntlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.bank_meta_verify_intl_with_options(request, runtime)
+
+    async def bank_meta_verify_intl_async(
+        self,
+        request: cloudauth_intl_20220809_models.BankMetaVerifyIntlRequest,
+    ) -> cloudauth_intl_20220809_models.BankMetaVerifyIntlResponse:
+        """
+        @summary 银行卡核验
+        
+        @param request: BankMetaVerifyIntlRequest
+        @return: BankMetaVerifyIntlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.bank_meta_verify_intl_with_options_async(request, runtime)
+
     def card_ocr_with_options(
         self,
         request: cloudauth_intl_20220809_models.CardOcrRequest,
