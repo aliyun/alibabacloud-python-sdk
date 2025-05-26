@@ -2136,6 +2136,7 @@ class JobSpec(TeaModel):
         image: str = None,
         image_config: ImageConfig = None,
         is_cheif: bool = None,
+        is_chief: bool = None,
         local_mount_specs: List[LocalMountSpec] = None,
         pod_count: int = None,
         resource_config: ResourceConfig = None,
@@ -2152,6 +2153,7 @@ class JobSpec(TeaModel):
         self.image = image
         self.image_config = image_config
         self.is_cheif = is_cheif
+        self.is_chief = is_chief
         self.local_mount_specs = local_mount_specs
         self.pod_count = pod_count
         self.resource_config = resource_config
@@ -2201,6 +2203,8 @@ class JobSpec(TeaModel):
             result['ImageConfig'] = self.image_config.to_map()
         if self.is_cheif is not None:
             result['IsCheif'] = self.is_cheif
+        if self.is_chief is not None:
+            result['IsChief'] = self.is_chief
         result['LocalMountSpecs'] = []
         if self.local_mount_specs is not None:
             for k in self.local_mount_specs:
@@ -2241,6 +2245,8 @@ class JobSpec(TeaModel):
             self.image_config = temp_model.from_map(m['ImageConfig'])
         if m.get('IsCheif') is not None:
             self.is_cheif = m.get('IsCheif')
+        if m.get('IsChief') is not None:
+            self.is_chief = m.get('IsChief')
         self.local_mount_specs = []
         if m.get('LocalMountSpecs') is not None:
             for k in m.get('LocalMountSpecs'):
