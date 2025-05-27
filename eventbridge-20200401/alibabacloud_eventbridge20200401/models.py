@@ -11005,6 +11005,423 @@ class DisableRuleResponse(TeaModel):
         return self
 
 
+class DiscoverEventSourceRequestSourceMySQLParameters(TeaModel):
+    def __init__(
+        self,
+        database_name: str = None,
+        host_name: str = None,
+        limit: str = None,
+        network_type: str = None,
+        offset: str = None,
+        password: str = None,
+        port: int = None,
+        region_id: str = None,
+        security_group_id: str = None,
+        table_name: str = None,
+        user: str = None,
+        v_switch_ids: str = None,
+        vpc_id: str = None,
+    ):
+        self.database_name = database_name
+        self.host_name = host_name
+        self.limit = limit
+        self.network_type = network_type
+        self.offset = offset
+        self.password = password
+        self.port = port
+        self.region_id = region_id
+        self.security_group_id = security_group_id
+        self.table_name = table_name
+        self.user = user
+        self.v_switch_ids = v_switch_ids
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.database_name is not None:
+            result['DatabaseName'] = self.database_name
+        if self.host_name is not None:
+            result['HostName'] = self.host_name
+        if self.limit is not None:
+            result['Limit'] = self.limit
+        if self.network_type is not None:
+            result['NetworkType'] = self.network_type
+        if self.offset is not None:
+            result['Offset'] = self.offset
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.user is not None:
+            result['User'] = self.user
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatabaseName') is not None:
+            self.database_name = m.get('DatabaseName')
+        if m.get('HostName') is not None:
+            self.host_name = m.get('HostName')
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+        if m.get('NetworkType') is not None:
+            self.network_type = m.get('NetworkType')
+        if m.get('Offset') is not None:
+            self.offset = m.get('Offset')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('User') is not None:
+            self.user = m.get('User')
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class DiscoverEventSourceRequest(TeaModel):
+    def __init__(
+        self,
+        source_my_sqlparameters: DiscoverEventSourceRequestSourceMySQLParameters = None,
+    ):
+        self.source_my_sqlparameters = source_my_sqlparameters
+
+    def validate(self):
+        if self.source_my_sqlparameters:
+            self.source_my_sqlparameters.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source_my_sqlparameters is not None:
+            result['SourceMySQLParameters'] = self.source_my_sqlparameters.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceMySQLParameters') is not None:
+            temp_model = DiscoverEventSourceRequestSourceMySQLParameters()
+            self.source_my_sqlparameters = temp_model.from_map(m['SourceMySQLParameters'])
+        return self
+
+
+class DiscoverEventSourceShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        source_my_sqlparameters_shrink: str = None,
+    ):
+        self.source_my_sqlparameters_shrink = source_my_sqlparameters_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source_my_sqlparameters_shrink is not None:
+            result['SourceMySQLParameters'] = self.source_my_sqlparameters_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceMySQLParameters') is not None:
+            self.source_my_sqlparameters_shrink = m.get('SourceMySQLParameters')
+        return self
+
+
+class DiscoverEventSourceResponseBodyDataSourceMySQLDiscoveryTableSchemaColumns(TeaModel):
+    def __init__(
+        self,
+        extra: str = None,
+        field: str = None,
+        is_null: str = None,
+        key: str = None,
+        type: str = None,
+    ):
+        self.extra = extra
+        self.field = field
+        self.is_null = is_null
+        self.key = key
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.extra is not None:
+            result['Extra'] = self.extra
+        if self.field is not None:
+            result['Field'] = self.field
+        if self.is_null is not None:
+            result['IsNull'] = self.is_null
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Extra') is not None:
+            self.extra = m.get('Extra')
+        if m.get('Field') is not None:
+            self.field = m.get('Field')
+        if m.get('IsNull') is not None:
+            self.is_null = m.get('IsNull')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DiscoverEventSourceResponseBodyDataSourceMySQLDiscoveryTableSchema(TeaModel):
+    def __init__(
+        self,
+        columns: List[DiscoverEventSourceResponseBodyDataSourceMySQLDiscoveryTableSchemaColumns] = None,
+        table_name: str = None,
+    ):
+        self.columns = columns
+        self.table_name = table_name
+
+    def validate(self):
+        if self.columns:
+            for k in self.columns:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Columns'] = []
+        if self.columns is not None:
+            for k in self.columns:
+                result['Columns'].append(k.to_map() if k else None)
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.columns = []
+        if m.get('Columns') is not None:
+            for k in m.get('Columns'):
+                temp_model = DiscoverEventSourceResponseBodyDataSourceMySQLDiscoveryTableSchemaColumns()
+                self.columns.append(temp_model.from_map(k))
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        return self
+
+
+class DiscoverEventSourceResponseBodyDataSourceMySQLDiscovery(TeaModel):
+    def __init__(
+        self,
+        database_names: List[str] = None,
+        simple_data: str = None,
+        table_names: List[str] = None,
+        table_schema: DiscoverEventSourceResponseBodyDataSourceMySQLDiscoveryTableSchema = None,
+    ):
+        self.database_names = database_names
+        self.simple_data = simple_data
+        self.table_names = table_names
+        self.table_schema = table_schema
+
+    def validate(self):
+        if self.table_schema:
+            self.table_schema.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.database_names is not None:
+            result['DatabaseNames'] = self.database_names
+        if self.simple_data is not None:
+            result['SimpleData'] = self.simple_data
+        if self.table_names is not None:
+            result['TableNames'] = self.table_names
+        if self.table_schema is not None:
+            result['TableSchema'] = self.table_schema.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatabaseNames') is not None:
+            self.database_names = m.get('DatabaseNames')
+        if m.get('SimpleData') is not None:
+            self.simple_data = m.get('SimpleData')
+        if m.get('TableNames') is not None:
+            self.table_names = m.get('TableNames')
+        if m.get('TableSchema') is not None:
+            temp_model = DiscoverEventSourceResponseBodyDataSourceMySQLDiscoveryTableSchema()
+            self.table_schema = temp_model.from_map(m['TableSchema'])
+        return self
+
+
+class DiscoverEventSourceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        source_my_sqldiscovery: DiscoverEventSourceResponseBodyDataSourceMySQLDiscovery = None,
+    ):
+        self.source_my_sqldiscovery = source_my_sqldiscovery
+
+    def validate(self):
+        if self.source_my_sqldiscovery:
+            self.source_my_sqldiscovery.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source_my_sqldiscovery is not None:
+            result['SourceMySQLDiscovery'] = self.source_my_sqldiscovery.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceMySQLDiscovery') is not None:
+            temp_model = DiscoverEventSourceResponseBodyDataSourceMySQLDiscovery()
+            self.source_my_sqldiscovery = temp_model.from_map(m['SourceMySQLDiscovery'])
+        return self
+
+
+class DiscoverEventSourceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: DiscoverEventSourceResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = DiscoverEventSourceResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DiscoverEventSourceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DiscoverEventSourceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DiscoverEventSourceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class EnableRuleRequest(TeaModel):
     def __init__(
         self,
@@ -30276,6 +30693,289 @@ class TestEventPatternResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = TestEventPatternResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class TestEventSourceConfigRequestSourceMySQLParameters(TeaModel):
+    def __init__(
+        self,
+        database_name: str = None,
+        host_name: str = None,
+        network_type: str = None,
+        password: str = None,
+        port: int = None,
+        region_id: str = None,
+        security_group_id: str = None,
+        table_names: str = None,
+        user: str = None,
+        v_switch_ids: str = None,
+        vpc_id: str = None,
+    ):
+        self.database_name = database_name
+        self.host_name = host_name
+        self.network_type = network_type
+        self.password = password
+        self.port = port
+        self.region_id = region_id
+        self.security_group_id = security_group_id
+        self.table_names = table_names
+        self.user = user
+        self.v_switch_ids = v_switch_ids
+        # VPC ID。
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.database_name is not None:
+            result['DatabaseName'] = self.database_name
+        if self.host_name is not None:
+            result['HostName'] = self.host_name
+        if self.network_type is not None:
+            result['NetworkType'] = self.network_type
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.table_names is not None:
+            result['TableNames'] = self.table_names
+        if self.user is not None:
+            result['User'] = self.user
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatabaseName') is not None:
+            self.database_name = m.get('DatabaseName')
+        if m.get('HostName') is not None:
+            self.host_name = m.get('HostName')
+        if m.get('NetworkType') is not None:
+            self.network_type = m.get('NetworkType')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('TableNames') is not None:
+            self.table_names = m.get('TableNames')
+        if m.get('User') is not None:
+            self.user = m.get('User')
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class TestEventSourceConfigRequest(TeaModel):
+    def __init__(
+        self,
+        source_my_sqlparameters: TestEventSourceConfigRequestSourceMySQLParameters = None,
+    ):
+        self.source_my_sqlparameters = source_my_sqlparameters
+
+    def validate(self):
+        if self.source_my_sqlparameters:
+            self.source_my_sqlparameters.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source_my_sqlparameters is not None:
+            result['SourceMySQLParameters'] = self.source_my_sqlparameters.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceMySQLParameters') is not None:
+            temp_model = TestEventSourceConfigRequestSourceMySQLParameters()
+            self.source_my_sqlparameters = temp_model.from_map(m['SourceMySQLParameters'])
+        return self
+
+
+class TestEventSourceConfigShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        source_my_sqlparameters_shrink: str = None,
+    ):
+        self.source_my_sqlparameters_shrink = source_my_sqlparameters_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source_my_sqlparameters_shrink is not None:
+            result['SourceMySQLParameters'] = self.source_my_sqlparameters_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceMySQLParameters') is not None:
+            self.source_my_sqlparameters_shrink = m.get('SourceMySQLParameters')
+        return self
+
+
+class TestEventSourceConfigResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        check_item: str = None,
+        error_msg: str = None,
+        is_succeed: str = None,
+    ):
+        self.check_item = check_item
+        self.error_msg = error_msg
+        self.is_succeed = is_succeed
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_item is not None:
+            result['CheckItem'] = self.check_item
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.is_succeed is not None:
+            result['IsSucceed'] = self.is_succeed
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckItem') is not None:
+            self.check_item = m.get('CheckItem')
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('IsSucceed') is not None:
+            self.is_succeed = m.get('IsSucceed')
+        return self
+
+
+class TestEventSourceConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[TestEventSourceConfigResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = TestEventSourceConfigResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class TestEventSourceConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TestEventSourceConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TestEventSourceConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

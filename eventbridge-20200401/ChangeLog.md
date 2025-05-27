@@ -1,3 +1,8 @@
+2025-05-27 Version: 6.2.0
+- Support API DiscoverEventSource.
+- Support API TestEventSourceConfig.
+
+
 2025-05-27 Version: 6.1.2
 - Generated python 2020-04-01 for eventbridge.
 

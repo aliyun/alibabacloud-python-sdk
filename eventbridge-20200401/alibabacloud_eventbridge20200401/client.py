@@ -1933,6 +1933,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.disable_rule_with_options_async(request, runtime)
 
+    def discover_event_source_with_options(
+        self,
+        tmp_req: eventbridge_20200401_models.DiscoverEventSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eventbridge_20200401_models.DiscoverEventSourceResponse:
+        """
+        @summary 发现EventSource(例如：Mysql)的Schema和SimpleData
+        
+        @param tmp_req: DiscoverEventSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DiscoverEventSourceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eventbridge_20200401_models.DiscoverEventSourceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.source_my_sqlparameters):
+            request.source_my_sqlparameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_my_sqlparameters, 'SourceMySQLParameters', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.source_my_sqlparameters_shrink):
+            body['SourceMySQLParameters'] = request.source_my_sqlparameters_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DiscoverEventSource',
+            version='2020-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.DiscoverEventSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def discover_event_source_with_options_async(
+        self,
+        tmp_req: eventbridge_20200401_models.DiscoverEventSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eventbridge_20200401_models.DiscoverEventSourceResponse:
+        """
+        @summary 发现EventSource(例如：Mysql)的Schema和SimpleData
+        
+        @param tmp_req: DiscoverEventSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DiscoverEventSourceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eventbridge_20200401_models.DiscoverEventSourceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.source_my_sqlparameters):
+            request.source_my_sqlparameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_my_sqlparameters, 'SourceMySQLParameters', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.source_my_sqlparameters_shrink):
+            body['SourceMySQLParameters'] = request.source_my_sqlparameters_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DiscoverEventSource',
+            version='2020-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.DiscoverEventSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def discover_event_source(
+        self,
+        request: eventbridge_20200401_models.DiscoverEventSourceRequest,
+    ) -> eventbridge_20200401_models.DiscoverEventSourceResponse:
+        """
+        @summary 发现EventSource(例如：Mysql)的Schema和SimpleData
+        
+        @param request: DiscoverEventSourceRequest
+        @return: DiscoverEventSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.discover_event_source_with_options(request, runtime)
+
+    async def discover_event_source_async(
+        self,
+        request: eventbridge_20200401_models.DiscoverEventSourceRequest,
+    ) -> eventbridge_20200401_models.DiscoverEventSourceResponse:
+        """
+        @summary 发现EventSource(例如：Mysql)的Schema和SimpleData
+        
+        @param request: DiscoverEventSourceRequest
+        @return: DiscoverEventSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.discover_event_source_with_options_async(request, runtime)
+
     def enable_rule_with_options(
         self,
         request: eventbridge_20200401_models.EnableRuleRequest,
@@ -4474,6 +4578,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.test_event_pattern_with_options_async(request, runtime)
+
+    def test_event_source_config_with_options(
+        self,
+        tmp_req: eventbridge_20200401_models.TestEventSourceConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eventbridge_20200401_models.TestEventSourceConfigResponse:
+        """
+        @summary 检查EventSource配置是否可用
+        
+        @param tmp_req: TestEventSourceConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TestEventSourceConfigResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eventbridge_20200401_models.TestEventSourceConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.source_my_sqlparameters):
+            request.source_my_sqlparameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_my_sqlparameters, 'SourceMySQLParameters', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.source_my_sqlparameters_shrink):
+            body['SourceMySQLParameters'] = request.source_my_sqlparameters_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TestEventSourceConfig',
+            version='2020-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.TestEventSourceConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def test_event_source_config_with_options_async(
+        self,
+        tmp_req: eventbridge_20200401_models.TestEventSourceConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eventbridge_20200401_models.TestEventSourceConfigResponse:
+        """
+        @summary 检查EventSource配置是否可用
+        
+        @param tmp_req: TestEventSourceConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TestEventSourceConfigResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eventbridge_20200401_models.TestEventSourceConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.source_my_sqlparameters):
+            request.source_my_sqlparameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_my_sqlparameters, 'SourceMySQLParameters', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.source_my_sqlparameters_shrink):
+            body['SourceMySQLParameters'] = request.source_my_sqlparameters_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TestEventSourceConfig',
+            version='2020-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.TestEventSourceConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def test_event_source_config(
+        self,
+        request: eventbridge_20200401_models.TestEventSourceConfigRequest,
+    ) -> eventbridge_20200401_models.TestEventSourceConfigResponse:
+        """
+        @summary 检查EventSource配置是否可用
+        
+        @param request: TestEventSourceConfigRequest
+        @return: TestEventSourceConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.test_event_source_config_with_options(request, runtime)
+
+    async def test_event_source_config_async(
+        self,
+        request: eventbridge_20200401_models.TestEventSourceConfigRequest,
+    ) -> eventbridge_20200401_models.TestEventSourceConfigResponse:
+        """
+        @summary 检查EventSource配置是否可用
+        
+        @param request: TestEventSourceConfigRequest
+        @return: TestEventSourceConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.test_event_source_config_with_options_async(request, runtime)
 
     def update_api_destination_with_options(
         self,
