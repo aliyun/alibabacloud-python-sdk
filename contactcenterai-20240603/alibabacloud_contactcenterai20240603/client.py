@@ -499,6 +499,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.call_back_url):
+            body['callBackUrl'] = request.call_back_url
         if not UtilClient.is_unset(request.category_tags):
             body['categoryTags'] = request.category_tags
         if not UtilClient.is_unset(request.custom_prompt):
@@ -563,6 +565,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.call_back_url):
+            body['callBackUrl'] = request.call_back_url
         if not UtilClient.is_unset(request.category_tags):
             body['categoryTags'] = request.category_tags
         if not UtilClient.is_unset(request.custom_prompt):

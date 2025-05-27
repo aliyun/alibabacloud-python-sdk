@@ -1834,6 +1834,7 @@ class CreateTaskRequestVariables(TeaModel):
 class CreateTaskRequest(TeaModel):
     def __init__(
         self,
+        call_back_url: str = None,
         category_tags: List[CreateTaskRequestCategoryTags] = None,
         custom_prompt: str = None,
         dialogue: CreateTaskRequestDialogue = None,
@@ -1848,6 +1849,7 @@ class CreateTaskRequest(TeaModel):
         transcription: CreateTaskRequestTranscription = None,
         variables: List[CreateTaskRequestVariables] = None,
     ):
+        self.call_back_url = call_back_url
         self.category_tags = category_tags
         self.custom_prompt = custom_prompt
         self.dialogue = dialogue
@@ -1892,6 +1894,8 @@ class CreateTaskRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.call_back_url is not None:
+            result['callBackUrl'] = self.call_back_url
         result['categoryTags'] = []
         if self.category_tags is not None:
             for k in self.category_tags:
@@ -1928,6 +1932,8 @@ class CreateTaskRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('callBackUrl') is not None:
+            self.call_back_url = m.get('callBackUrl')
         self.category_tags = []
         if m.get('categoryTags') is not None:
             for k in m.get('categoryTags'):
