@@ -350,6 +350,619 @@ class CreateLabSessionResponse(TeaModel):
         return self
 
 
+class DescribeCourseRequest(TeaModel):
+    def __init__(
+        self,
+        course_id: int = None,
+    ):
+        # This parameter is required.
+        self.course_id = course_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.course_id is not None:
+            result['CourseId'] = self.course_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CourseId') is not None:
+            self.course_id = m.get('CourseId')
+        return self
+
+
+class DescribeCourseResponseBodyCourseChaptersLessons(TeaModel):
+    def __init__(
+        self,
+        duration: int = None,
+        id: int = None,
+        title: str = None,
+        type: str = None,
+    ):
+        self.duration = duration
+        self.id = id
+        self.title = title
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeCourseResponseBodyCourseChaptersUnitLessons(TeaModel):
+    def __init__(
+        self,
+        duration: int = None,
+        id: int = None,
+        title: str = None,
+        type: str = None,
+    ):
+        self.duration = duration
+        self.id = id
+        self.title = title
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeCourseResponseBodyCourseChaptersUnit(TeaModel):
+    def __init__(
+        self,
+        lessons: List[DescribeCourseResponseBodyCourseChaptersUnitLessons] = None,
+        number: int = None,
+        title: str = None,
+    ):
+        self.lessons = lessons
+        self.number = number
+        self.title = title
+
+    def validate(self):
+        if self.lessons:
+            for k in self.lessons:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Lessons'] = []
+        if self.lessons is not None:
+            for k in self.lessons:
+                result['Lessons'].append(k.to_map() if k else None)
+        if self.number is not None:
+            result['Number'] = self.number
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.lessons = []
+        if m.get('Lessons') is not None:
+            for k in m.get('Lessons'):
+                temp_model = DescribeCourseResponseBodyCourseChaptersUnitLessons()
+                self.lessons.append(temp_model.from_map(k))
+        if m.get('Number') is not None:
+            self.number = m.get('Number')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class DescribeCourseResponseBodyCourseChapters(TeaModel):
+    def __init__(
+        self,
+        lessons: List[DescribeCourseResponseBodyCourseChaptersLessons] = None,
+        number: int = None,
+        title: str = None,
+        unit: List[DescribeCourseResponseBodyCourseChaptersUnit] = None,
+    ):
+        self.lessons = lessons
+        self.number = number
+        self.title = title
+        self.unit = unit
+
+    def validate(self):
+        if self.lessons:
+            for k in self.lessons:
+                if k:
+                    k.validate()
+        if self.unit:
+            for k in self.unit:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Lessons'] = []
+        if self.lessons is not None:
+            for k in self.lessons:
+                result['Lessons'].append(k.to_map() if k else None)
+        if self.number is not None:
+            result['Number'] = self.number
+        if self.title is not None:
+            result['Title'] = self.title
+        result['Unit'] = []
+        if self.unit is not None:
+            for k in self.unit:
+                result['Unit'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.lessons = []
+        if m.get('Lessons') is not None:
+            for k in m.get('Lessons'):
+                temp_model = DescribeCourseResponseBodyCourseChaptersLessons()
+                self.lessons.append(temp_model.from_map(k))
+        if m.get('Number') is not None:
+            self.number = m.get('Number')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        self.unit = []
+        if m.get('Unit') is not None:
+            for k in m.get('Unit'):
+                temp_model = DescribeCourseResponseBodyCourseChaptersUnit()
+                self.unit.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeCourseResponseBodyCourseLessons(TeaModel):
+    def __init__(
+        self,
+        duration: int = None,
+        id: int = None,
+        title: str = None,
+        type: str = None,
+    ):
+        self.duration = duration
+        self.id = id
+        self.title = title
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeCourseResponseBodyCourse(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        chapters: List[DescribeCourseResponseBodyCourseChapters] = None,
+        id: str = None,
+        introduction: str = None,
+        lesson_num: int = None,
+        lessons: List[DescribeCourseResponseBodyCourseLessons] = None,
+        picture_url: str = None,
+        tags: str = None,
+        title: str = None,
+    ):
+        self.category = category
+        self.chapters = chapters
+        self.id = id
+        self.introduction = introduction
+        self.lesson_num = lesson_num
+        self.lessons = lessons
+        self.picture_url = picture_url
+        self.tags = tags
+        self.title = title
+
+    def validate(self):
+        if self.chapters:
+            for k in self.chapters:
+                if k:
+                    k.validate()
+        if self.lessons:
+            for k in self.lessons:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        result['Chapters'] = []
+        if self.chapters is not None:
+            for k in self.chapters:
+                result['Chapters'].append(k.to_map() if k else None)
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.introduction is not None:
+            result['Introduction'] = self.introduction
+        if self.lesson_num is not None:
+            result['LessonNum'] = self.lesson_num
+        result['Lessons'] = []
+        if self.lessons is not None:
+            for k in self.lessons:
+                result['Lessons'].append(k.to_map() if k else None)
+        if self.picture_url is not None:
+            result['PictureUrl'] = self.picture_url
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        self.chapters = []
+        if m.get('Chapters') is not None:
+            for k in m.get('Chapters'):
+                temp_model = DescribeCourseResponseBodyCourseChapters()
+                self.chapters.append(temp_model.from_map(k))
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Introduction') is not None:
+            self.introduction = m.get('Introduction')
+        if m.get('LessonNum') is not None:
+            self.lesson_num = m.get('LessonNum')
+        self.lessons = []
+        if m.get('Lessons') is not None:
+            for k in m.get('Lessons'):
+                temp_model = DescribeCourseResponseBodyCourseLessons()
+                self.lessons.append(temp_model.from_map(k))
+        if m.get('PictureUrl') is not None:
+            self.picture_url = m.get('PictureUrl')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class DescribeCourseResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        course: DescribeCourseResponseBodyCourse = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.course = course
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.course:
+            self.course.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.course is not None:
+            result['Course'] = self.course.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Course') is not None:
+            temp_model = DescribeCourseResponseBodyCourse()
+            self.course = temp_model.from_map(m['Course'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DescribeCourseResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCourseResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCourseResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeCourseLessonRequest(TeaModel):
+    def __init__(
+        self,
+        lesson_id: int = None,
+    ):
+        # This parameter is required.
+        self.lesson_id = lesson_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lesson_id is not None:
+            result['LessonId'] = self.lesson_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LessonId') is not None:
+            self.lesson_id = m.get('LessonId')
+        return self
+
+
+class DescribeCourseLessonResponseBodyCourseLesson(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        url: str = None,
+    ):
+        self.content = content
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class DescribeCourseLessonResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        course_lesson: DescribeCourseLessonResponseBodyCourseLesson = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.course_lesson = course_lesson
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.course_lesson:
+            self.course_lesson.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.course_lesson is not None:
+            result['CourseLesson'] = self.course_lesson.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('CourseLesson') is not None:
+            temp_model = DescribeCourseLessonResponseBodyCourseLesson()
+            self.course_lesson = temp_model.from_map(m['CourseLesson'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DescribeCourseLessonResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCourseLessonResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCourseLessonResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeLabRequest(TeaModel):
     def __init__(
         self,
@@ -885,6 +1498,226 @@ class DescribeLabSessionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeLabSessionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListCoursesRequest(TeaModel):
+    def __init__(
+        self,
+        id: List[int] = None,
+        page: int = None,
+        page_size: int = None,
+    ):
+        self.id = id
+        self.page = page
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.page is not None:
+            result['Page'] = self.page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Page') is not None:
+            self.page = m.get('Page')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListCoursesResponseBodyCourses(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        id: str = None,
+        introduction: str = None,
+        lesson_num: int = None,
+        picture_url: str = None,
+        tags: str = None,
+        title: str = None,
+    ):
+        self.category = category
+        self.id = id
+        self.introduction = introduction
+        self.lesson_num = lesson_num
+        self.picture_url = picture_url
+        self.tags = tags
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.introduction is not None:
+            result['Introduction'] = self.introduction
+        if self.lesson_num is not None:
+            result['LessonNum'] = self.lesson_num
+        if self.picture_url is not None:
+            result['PictureUrl'] = self.picture_url
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Introduction') is not None:
+            self.introduction = m.get('Introduction')
+        if m.get('LessonNum') is not None:
+            self.lesson_num = m.get('LessonNum')
+        if m.get('PictureUrl') is not None:
+            self.picture_url = m.get('PictureUrl')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class ListCoursesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        courses: List[ListCoursesResponseBodyCourses] = None,
+        message: str = None,
+        page: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.code = code
+        self.courses = courses
+        self.message = message
+        self.page = page
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.courses:
+            for k in self.courses:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Courses'] = []
+        if self.courses is not None:
+            for k in self.courses:
+                result['Courses'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page is not None:
+            result['Page'] = self.page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.courses = []
+        if m.get('Courses') is not None:
+            for k in m.get('Courses'):
+                temp_model = ListCoursesResponseBodyCourses()
+                self.courses.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Page') is not None:
+            self.page = m.get('Page')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListCoursesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListCoursesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListCoursesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

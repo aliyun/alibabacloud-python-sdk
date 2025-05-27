@@ -257,6 +257,198 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_lab_session_with_options_async(request, runtime)
 
+    def describe_course_with_options(
+        self,
+        request: edu_embed_20240101_models.DescribeCourseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> edu_embed_20240101_models.DescribeCourseResponse:
+        """
+        @summary 查看课程详情
+        
+        @param request: DescribeCourseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCourseResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.course_id):
+            query['CourseId'] = request.course_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCourse',
+            version='2024-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            edu_embed_20240101_models.DescribeCourseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_course_with_options_async(
+        self,
+        request: edu_embed_20240101_models.DescribeCourseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> edu_embed_20240101_models.DescribeCourseResponse:
+        """
+        @summary 查看课程详情
+        
+        @param request: DescribeCourseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCourseResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.course_id):
+            query['CourseId'] = request.course_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCourse',
+            version='2024-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            edu_embed_20240101_models.DescribeCourseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_course(
+        self,
+        request: edu_embed_20240101_models.DescribeCourseRequest,
+    ) -> edu_embed_20240101_models.DescribeCourseResponse:
+        """
+        @summary 查看课程详情
+        
+        @param request: DescribeCourseRequest
+        @return: DescribeCourseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_course_with_options(request, runtime)
+
+    async def describe_course_async(
+        self,
+        request: edu_embed_20240101_models.DescribeCourseRequest,
+    ) -> edu_embed_20240101_models.DescribeCourseResponse:
+        """
+        @summary 查看课程详情
+        
+        @param request: DescribeCourseRequest
+        @return: DescribeCourseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_course_with_options_async(request, runtime)
+
+    def describe_course_lesson_with_options(
+        self,
+        request: edu_embed_20240101_models.DescribeCourseLessonRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> edu_embed_20240101_models.DescribeCourseLessonResponse:
+        """
+        @summary 查看课程课时详情
+        
+        @param request: DescribeCourseLessonRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCourseLessonResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lesson_id):
+            query['LessonId'] = request.lesson_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCourseLesson',
+            version='2024-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            edu_embed_20240101_models.DescribeCourseLessonResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_course_lesson_with_options_async(
+        self,
+        request: edu_embed_20240101_models.DescribeCourseLessonRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> edu_embed_20240101_models.DescribeCourseLessonResponse:
+        """
+        @summary 查看课程课时详情
+        
+        @param request: DescribeCourseLessonRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCourseLessonResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lesson_id):
+            query['LessonId'] = request.lesson_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCourseLesson',
+            version='2024-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            edu_embed_20240101_models.DescribeCourseLessonResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_course_lesson(
+        self,
+        request: edu_embed_20240101_models.DescribeCourseLessonRequest,
+    ) -> edu_embed_20240101_models.DescribeCourseLessonResponse:
+        """
+        @summary 查看课程课时详情
+        
+        @param request: DescribeCourseLessonRequest
+        @return: DescribeCourseLessonResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_course_lesson_with_options(request, runtime)
+
+    async def describe_course_lesson_async(
+        self,
+        request: edu_embed_20240101_models.DescribeCourseLessonRequest,
+    ) -> edu_embed_20240101_models.DescribeCourseLessonResponse:
+        """
+        @summary 查看课程课时详情
+        
+        @param request: DescribeCourseLessonRequest
+        @return: DescribeCourseLessonResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_course_lesson_with_options_async(request, runtime)
+
     def describe_lab_with_options(
         self,
         request: edu_embed_20240101_models.DescribeLabRequest,
@@ -532,6 +724,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_lab_session_with_options_async(request, runtime)
+
+    def list_courses_with_options(
+        self,
+        request: edu_embed_20240101_models.ListCoursesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> edu_embed_20240101_models.ListCoursesResponse:
+        """
+        @summary 查看课程列表
+        
+        @param request: ListCoursesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCoursesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.page):
+            query['Page'] = request.page
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCourses',
+            version='2024-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            edu_embed_20240101_models.ListCoursesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_courses_with_options_async(
+        self,
+        request: edu_embed_20240101_models.ListCoursesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> edu_embed_20240101_models.ListCoursesResponse:
+        """
+        @summary 查看课程列表
+        
+        @param request: ListCoursesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCoursesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.page):
+            query['Page'] = request.page
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCourses',
+            version='2024-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            edu_embed_20240101_models.ListCoursesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_courses(
+        self,
+        request: edu_embed_20240101_models.ListCoursesRequest,
+    ) -> edu_embed_20240101_models.ListCoursesResponse:
+        """
+        @summary 查看课程列表
+        
+        @param request: ListCoursesRequest
+        @return: ListCoursesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_courses_with_options(request, runtime)
+
+    async def list_courses_async(
+        self,
+        request: edu_embed_20240101_models.ListCoursesRequest,
+    ) -> edu_embed_20240101_models.ListCoursesResponse:
+        """
+        @summary 查看课程列表
+        
+        @param request: ListCoursesRequest
+        @return: ListCoursesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_courses_with_options_async(request, runtime)
 
     def page_list_lab_reservations_with_options(
         self,
