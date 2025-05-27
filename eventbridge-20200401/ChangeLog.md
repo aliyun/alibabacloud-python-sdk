@@ -1,3 +1,6 @@
+2025-05-27 Version: 6.1.2
+- Generated python 2020-04-01 for eventbridge.
+
 2025-05-27 Version: 6.1.1
 - Update API CreateEventStreaming: add request parameters RunOptions.Throttling.
 - Update API CreateRule: add request parameters EventTargets.$.DeadLetterQueue.Network.
