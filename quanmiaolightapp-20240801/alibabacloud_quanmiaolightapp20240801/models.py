@@ -3277,10 +3277,12 @@ class ListAnalysisTagDetailByTaskIdResponseBodyData(TeaModel):
         content: str = None,
         content_tags: List[ListAnalysisTagDetailByTaskIdResponseBodyDataContentTags] = None,
         origin_response: str = None,
+        source_list: List[str] = None,
     ):
         self.content = content
         self.content_tags = content_tags
         self.origin_response = origin_response
+        self.source_list = source_list
 
     def validate(self):
         if self.content_tags:
@@ -3302,6 +3304,8 @@ class ListAnalysisTagDetailByTaskIdResponseBodyData(TeaModel):
                 result['contentTags'].append(k.to_map() if k else None)
         if self.origin_response is not None:
             result['originResponse'] = self.origin_response
+        if self.source_list is not None:
+            result['sourceList'] = self.source_list
         return result
 
     def from_map(self, m: dict = None):
@@ -3315,6 +3319,8 @@ class ListAnalysisTagDetailByTaskIdResponseBodyData(TeaModel):
                 self.content_tags.append(temp_model.from_map(k))
         if m.get('originResponse') is not None:
             self.origin_response = m.get('originResponse')
+        if m.get('sourceList') is not None:
+            self.source_list = m.get('sourceList')
         return self
 
 
@@ -3928,6 +3934,7 @@ class RunEnterpriseVocAnalysisRequest(TeaModel):
         filter_tags: List[RunEnterpriseVocAnalysisRequestFilterTags] = None,
         model_id: str = None,
         output_format: str = None,
+        source_trace: bool = None,
         tags: List[RunEnterpriseVocAnalysisRequestTags] = None,
         task_description: str = None,
     ):
@@ -3941,6 +3948,7 @@ class RunEnterpriseVocAnalysisRequest(TeaModel):
         self.model_id = model_id
         # 指定返回结果的格式，支持json或text
         self.output_format = output_format
+        self.source_trace = source_trace
         # 业务标签体系，用于对文本内容进行分类和分析。
         self.tags = tags
         self.task_description = task_description
@@ -3977,6 +3985,8 @@ class RunEnterpriseVocAnalysisRequest(TeaModel):
             result['modelId'] = self.model_id
         if self.output_format is not None:
             result['outputFormat'] = self.output_format
+        if self.source_trace is not None:
+            result['sourceTrace'] = self.source_trace
         result['tags'] = []
         if self.tags is not None:
             for k in self.tags:
@@ -4004,6 +4014,8 @@ class RunEnterpriseVocAnalysisRequest(TeaModel):
             self.model_id = m.get('modelId')
         if m.get('outputFormat') is not None:
             self.output_format = m.get('outputFormat')
+        if m.get('sourceTrace') is not None:
+            self.source_trace = m.get('sourceTrace')
         self.tags = []
         if m.get('tags') is not None:
             for k in m.get('tags'):
@@ -4024,6 +4036,7 @@ class RunEnterpriseVocAnalysisShrinkRequest(TeaModel):
         filter_tags_shrink: str = None,
         model_id: str = None,
         output_format: str = None,
+        source_trace: bool = None,
         tags_shrink: str = None,
         task_description: str = None,
     ):
@@ -4037,6 +4050,7 @@ class RunEnterpriseVocAnalysisShrinkRequest(TeaModel):
         self.model_id = model_id
         # 指定返回结果的格式，支持json或text
         self.output_format = output_format
+        self.source_trace = source_trace
         # 业务标签体系，用于对文本内容进行分类和分析。
         self.tags_shrink = tags_shrink
         self.task_description = task_description
@@ -4064,6 +4078,8 @@ class RunEnterpriseVocAnalysisShrinkRequest(TeaModel):
             result['modelId'] = self.model_id
         if self.output_format is not None:
             result['outputFormat'] = self.output_format
+        if self.source_trace is not None:
+            result['sourceTrace'] = self.source_trace
         if self.tags_shrink is not None:
             result['tags'] = self.tags_shrink
         if self.task_description is not None:
@@ -4086,6 +4102,8 @@ class RunEnterpriseVocAnalysisShrinkRequest(TeaModel):
             self.model_id = m.get('modelId')
         if m.get('outputFormat') is not None:
             self.output_format = m.get('outputFormat')
+        if m.get('sourceTrace') is not None:
+            self.source_trace = m.get('sourceTrace')
         if m.get('tags') is not None:
             self.tags_shrink = m.get('tags')
         if m.get('taskDescription') is not None:
@@ -4228,9 +4246,11 @@ class RunEnterpriseVocAnalysisResponseBodyPayloadOutput(TeaModel):
     def __init__(
         self,
         filter_result: RunEnterpriseVocAnalysisResponseBodyPayloadOutputFilterResult = None,
+        reason_content: str = None,
         text: str = None,
     ):
         self.filter_result = filter_result
+        self.reason_content = reason_content
         self.text = text
 
     def validate(self):
@@ -4245,6 +4265,8 @@ class RunEnterpriseVocAnalysisResponseBodyPayloadOutput(TeaModel):
         result = dict()
         if self.filter_result is not None:
             result['filterResult'] = self.filter_result.to_map()
+        if self.reason_content is not None:
+            result['reasonContent'] = self.reason_content
         if self.text is not None:
             result['text'] = self.text
         return result
@@ -4254,6 +4276,8 @@ class RunEnterpriseVocAnalysisResponseBodyPayloadOutput(TeaModel):
         if m.get('filterResult') is not None:
             temp_model = RunEnterpriseVocAnalysisResponseBodyPayloadOutputFilterResult()
             self.filter_result = temp_model.from_map(m['filterResult'])
+        if m.get('reasonContent') is not None:
+            self.reason_content = m.get('reasonContent')
         if m.get('text') is not None:
             self.text = m.get('text')
         return self
@@ -10596,6 +10620,7 @@ class SubmitEnterpriseVocAnalysisTaskRequest(TeaModel):
         filter_tags: List[SubmitEnterpriseVocAnalysisTaskRequestFilterTags] = None,
         model_id: str = None,
         output_format: str = None,
+        source_trace: bool = None,
         tags: List[SubmitEnterpriseVocAnalysisTaskRequestTags] = None,
         task_description: str = None,
         url: str = None,
@@ -10607,6 +10632,7 @@ class SubmitEnterpriseVocAnalysisTaskRequest(TeaModel):
         self.filter_tags = filter_tags
         self.model_id = model_id
         self.output_format = output_format
+        self.source_trace = source_trace
         self.tags = tags
         self.task_description = task_description
         self.url = url
@@ -10649,6 +10675,8 @@ class SubmitEnterpriseVocAnalysisTaskRequest(TeaModel):
             result['modelId'] = self.model_id
         if self.output_format is not None:
             result['outputFormat'] = self.output_format
+        if self.source_trace is not None:
+            result['sourceTrace'] = self.source_trace
         result['tags'] = []
         if self.tags is not None:
             for k in self.tags:
@@ -10681,6 +10709,8 @@ class SubmitEnterpriseVocAnalysisTaskRequest(TeaModel):
             self.model_id = m.get('modelId')
         if m.get('outputFormat') is not None:
             self.output_format = m.get('outputFormat')
+        if m.get('sourceTrace') is not None:
+            self.source_trace = m.get('sourceTrace')
         self.tags = []
         if m.get('tags') is not None:
             for k in m.get('tags'):
@@ -10703,6 +10733,7 @@ class SubmitEnterpriseVocAnalysisTaskShrinkRequest(TeaModel):
         filter_tags_shrink: str = None,
         model_id: str = None,
         output_format: str = None,
+        source_trace: bool = None,
         tags_shrink: str = None,
         task_description: str = None,
         url: str = None,
@@ -10714,6 +10745,7 @@ class SubmitEnterpriseVocAnalysisTaskShrinkRequest(TeaModel):
         self.filter_tags_shrink = filter_tags_shrink
         self.model_id = model_id
         self.output_format = output_format
+        self.source_trace = source_trace
         self.tags_shrink = tags_shrink
         self.task_description = task_description
         self.url = url
@@ -10741,6 +10773,8 @@ class SubmitEnterpriseVocAnalysisTaskShrinkRequest(TeaModel):
             result['modelId'] = self.model_id
         if self.output_format is not None:
             result['outputFormat'] = self.output_format
+        if self.source_trace is not None:
+            result['sourceTrace'] = self.source_trace
         if self.tags_shrink is not None:
             result['tags'] = self.tags_shrink
         if self.task_description is not None:
@@ -10765,6 +10799,8 @@ class SubmitEnterpriseVocAnalysisTaskShrinkRequest(TeaModel):
             self.model_id = m.get('modelId')
         if m.get('outputFormat') is not None:
             self.output_format = m.get('outputFormat')
+        if m.get('sourceTrace') is not None:
+            self.source_trace = m.get('sourceTrace')
         if m.get('tags') is not None:
             self.tags_shrink = m.get('tags')
         if m.get('taskDescription') is not None:

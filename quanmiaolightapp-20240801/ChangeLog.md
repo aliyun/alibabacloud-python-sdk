@@ -1,3 +1,10 @@
+2025-05-27 Version: 2.9.1
+- Update API ListAnalysisTagDetailByTaskId: add response parameters Body.data.$.sourceList.
+- Update API RunEnterpriseVocAnalysis: add request parameters sourceTrace.
+- Update API RunEnterpriseVocAnalysis: add response parameters Body.payload.output.reasonContent.
+- Update API SubmitEnterpriseVocAnalysisTask: add request parameters sourceTrace.
+
+
 2025-05-22 Version: 2.9.0
 - Support API HotNewsRecommend.
 

@@ -1312,6 +1312,8 @@ class Client(OpenApiClient):
             body['modelId'] = request.model_id
         if not UtilClient.is_unset(request.output_format):
             body['outputFormat'] = request.output_format
+        if not UtilClient.is_unset(request.source_trace):
+            body['sourceTrace'] = request.source_trace
         if not UtilClient.is_unset(request.tags_shrink):
             body['tags'] = request.tags_shrink
         if not UtilClient.is_unset(request.task_description):
@@ -1373,6 +1375,8 @@ class Client(OpenApiClient):
             body['modelId'] = request.model_id
         if not UtilClient.is_unset(request.output_format):
             body['outputFormat'] = request.output_format
+        if not UtilClient.is_unset(request.source_trace):
+            body['sourceTrace'] = request.source_trace
         if not UtilClient.is_unset(request.tags_shrink):
             body['tags'] = request.tags_shrink
         if not UtilClient.is_unset(request.task_description):
@@ -3138,6 +3142,8 @@ class Client(OpenApiClient):
             body['modelId'] = request.model_id
         if not UtilClient.is_unset(request.output_format):
             body['outputFormat'] = request.output_format
+        if not UtilClient.is_unset(request.source_trace):
+            body['sourceTrace'] = request.source_trace
         if not UtilClient.is_unset(request.tags_shrink):
             body['tags'] = request.tags_shrink
         if not UtilClient.is_unset(request.task_description):
@@ -3203,6 +3209,8 @@ class Client(OpenApiClient):
             body['modelId'] = request.model_id
         if not UtilClient.is_unset(request.output_format):
             body['outputFormat'] = request.output_format
+        if not UtilClient.is_unset(request.source_trace):
+            body['sourceTrace'] = request.source_trace
         if not UtilClient.is_unset(request.tags_shrink):
             body['tags'] = request.tags_shrink
         if not UtilClient.is_unset(request.task_description):
