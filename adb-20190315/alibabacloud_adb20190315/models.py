@@ -12894,6 +12894,7 @@ class DescribeDBClustersRequest(TeaModel):
         dbcluster_description: str = None,
         dbcluster_ids: str = None,
         dbcluster_status: str = None,
+        dbcluster_version: str = None,
         dbversion: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -12925,6 +12926,7 @@ class DescribeDBClustersRequest(TeaModel):
         # *   **NetAddressCreating**: A network connection is being created.
         # *   **NetAddressDeleting**: A network connection is being deleted.
         self.dbcluster_status = dbcluster_status
+        self.dbcluster_version = dbcluster_version
         # The version of the cluster. Set the value to **3.0**.
         self.dbversion = dbversion
         self.owner_account = owner_account
@@ -12968,6 +12970,8 @@ class DescribeDBClustersRequest(TeaModel):
             result['DBClusterIds'] = self.dbcluster_ids
         if self.dbcluster_status is not None:
             result['DBClusterStatus'] = self.dbcluster_status
+        if self.dbcluster_version is not None:
+            result['DBClusterVersion'] = self.dbcluster_version
         if self.dbversion is not None:
             result['DBVersion'] = self.dbversion
         if self.owner_account is not None:
@@ -13000,6 +13004,8 @@ class DescribeDBClustersRequest(TeaModel):
             self.dbcluster_ids = m.get('DBClusterIds')
         if m.get('DBClusterStatus') is not None:
             self.dbcluster_status = m.get('DBClusterStatus')
+        if m.get('DBClusterVersion') is not None:
+            self.dbcluster_version = m.get('DBClusterVersion')
         if m.get('DBVersion') is not None:
             self.dbversion = m.get('DBVersion')
         if m.get('OwnerAccount') is not None:
@@ -18339,9 +18345,9 @@ class DescribeInclinedTablesRequest(TeaModel):
         self.page_number = page_number
         # The number of entries per page. Valid values:
         # 
-        # - 30；
-        # - 50；
-        # - 100；
+        # - 30
+        # - 50
+        # - 100
         # 
         # Default value: 30.
         self.page_size = page_size

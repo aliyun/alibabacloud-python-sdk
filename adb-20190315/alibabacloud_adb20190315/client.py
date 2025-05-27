@@ -6467,6 +6467,8 @@ class Client(OpenApiClient):
             query['DBClusterIds'] = request.dbcluster_ids
         if not UtilClient.is_unset(request.dbcluster_status):
             query['DBClusterStatus'] = request.dbcluster_status
+        if not UtilClient.is_unset(request.dbcluster_version):
+            query['DBClusterVersion'] = request.dbcluster_version
         if not UtilClient.is_unset(request.dbversion):
             query['DBVersion'] = request.dbversion
         if not UtilClient.is_unset(request.owner_account):
@@ -6526,6 +6528,8 @@ class Client(OpenApiClient):
             query['DBClusterIds'] = request.dbcluster_ids
         if not UtilClient.is_unset(request.dbcluster_status):
             query['DBClusterStatus'] = request.dbcluster_status
+        if not UtilClient.is_unset(request.dbcluster_version):
+            query['DBClusterVersion'] = request.dbcluster_version
         if not UtilClient.is_unset(request.dbversion):
             query['DBVersion'] = request.dbversion
         if not UtilClient.is_unset(request.owner_account):

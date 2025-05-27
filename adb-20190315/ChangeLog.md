@@ -1,3 +1,7 @@
+2025-05-27 Version: 5.0.3
+- Update API DescribeDBClusters: add request parameters DBClusterVersion.
+
+
 2025-05-21 Version: 5.0.2
 - Update API DescribeEIURange: add response parameters Body.EIUInfo.DefaultReservedNodeSize.
 - Update API DescribeEIURange: add response parameters Body.EIUInfo.ReservedNodeSizeRange.
