@@ -1,3 +1,75 @@
+2025-05-27 Version: 5.0.0
+- Support API ListEntities.
+- Delete API AddUser.
+- Delete API BatchJobSubmit.
+- Delete API DeleteUser.
+- Delete API DescribeAttackTimeLine.
+- Delete API DescribeCsImportedProdStatusByUser.
+- Delete API DescribeJobStatus.
+- Delete API DescribeLogStore.
+- Delete API DoQuickField.
+- Delete API DoSelfDelegate.
+- Delete API GetHistograms.
+- Delete API GetLogs.
+- Delete API GetQuickQuery.
+- Delete API ListOperation.
+- Delete API ListQuickQuery.
+- Delete API ListUserProdLogs.
+- Delete API ListUsersByProd.
+- Delete API SaveQuickQuery.
+- Delete API ShowQuickAnalysis.
+- Delete API SubmitJobs.
+- Update API DescribeAlerts: add request parameters AlertName.
+- Update API DescribeAlerts: add request parameters AlertType.
+- Update API DescribeAlerts: add request parameters AssetId.
+- Update API DescribeAlerts: add request parameters AssetName.
+- Update API DescribeAlerts: add request parameters EntityId.
+- Update API DescribeAlerts: add request parameters EntityName.
+- Update API DescribeAlerts: add request parameters LabelType.
+- Update API DescribeAlerts: add response parameters Body.Data.ResponseData.$.EntityList.
+- Update API DescribeAlerts: add response parameters Body.Data.ResponseData.$.ExtendContent.
+- Update API DescribeAlerts: add response parameters Body.Data.ResponseData.$.SubUserName.
+- Update API DescribeAlertsCount: add request parameters QueryType.
+- Update API DescribeAlertsCount: add response parameters Body.Data.CountMap.
+- Update API DescribeAlertsWithEntity: add request parameters EndTime.
+- Update API DescribeAlertsWithEntity: add request parameters EntityUuid.
+- Update API DescribeAlertsWithEntity: add request parameters StartTime.
+- Update API DescribeAlertsWithEntity: add response parameters Body.Data.ResponseData.$.EntityList.
+- Update API DescribeAlertsWithEntity: add response parameters Body.Data.ResponseData.$.SubUserName.
+- Update API DescribeAlertsWithEvent: add request parameters AlertName.
+- Update API DescribeAlertsWithEvent: add request parameters AlertType.
+- Update API DescribeAlertsWithEvent: add request parameters AssetId.
+- Update API DescribeAlertsWithEvent: add request parameters AssetName.
+- Update API DescribeAlertsWithEvent: add request parameters EndTime.
+- Update API DescribeAlertsWithEvent: add request parameters EntityId.
+- Update API DescribeAlertsWithEvent: add request parameters EntityName.
+- Update API DescribeAlertsWithEvent: add request parameters StartTime.
+- Update API DescribeAlertsWithEvent: add response parameters Body.Data.ResponseData.$.ExtendContent.
+- Update API DescribeAlertsWithEvent: add response parameters Body.Data.ResponseData.$.SubUserName.
+- Update API DescribeCloudSiemAssets: add request parameters AssetName.
+- Update API DescribeCloudSiemAssets: add request parameters AssetUuid.
+- Update API DescribeCloudSiemEventDetail: add response parameters Body.Data.AttckStages.
+- Update API DescribeCloudSiemEventDetail: add response parameters Body.Data.IncidentType.
+- Update API DescribeCloudSiemEventDetail: add response parameters Body.Data.RuleId.
+- Update API DescribeCloudSiemEvents: add request parameters EntityUuid.
+- Update API DescribeCloudSiemEvents: add response parameters Body.Data.ResponseData.$.AttckStages.
+- Update API DescribeCloudSiemEvents: add response parameters Body.Data.ResponseData.$.IncidentType.
+- Update API DescribeCloudSiemEvents: add response parameters Body.Data.ResponseData.$.RuleId.
+- Update API DescribeDisposeAndPlaybook: add request parameters EntityUuid.
+- Update API DescribeDisposeAndPlaybook: add response parameters Body.Data.ResponseData.$.EntityType.
+- Update API DescribeDisposeAndPlaybook: add response parameters Body.Data.ResponseData.$.PlaybookList.$.Available.
+- Update API DescribeDisposeAndPlaybook: add response parameters Body.Data.ResponseData.$.PlaybookList.$.Uuid.
+- Update API ListCustomizeRuleTestResult: add request parameters DetectionRuleId.
+- Update API ListCustomizeRuleTestResult: add request parameters EndTime.
+- Update API ListCustomizeRuleTestResult: add request parameters StartTime.
+- Update API ListCustomizeRuleTestResult: add request parameters VerifyType.
+- Update API ListCustomizeRuleTestResult: add response parameters Body.Data.PageInfo.VerifiedCount.
+- Update API ListCustomizeRuleTestResult: add response parameters Body.Data.ResponseData.$.VerifyType.
+- Update API ListDisposeStrategy: add request parameters IncidentUuid.
+- Update API ListDisposeStrategy: add response parameters Body.Data.ResponseData.$.TaskUrl.
+- Update API PostEventDisposeAndWhiteruleList: add request parameters ThreatLevel.
+
+
 2024-08-13 Version: 4.0.1
 - Update API DescribeProdCount: update param RoleType.
 - Update API DescribeProdCount: update response param.

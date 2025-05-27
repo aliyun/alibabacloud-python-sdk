@@ -277,106 +277,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_data_source_log_with_options_async(request, runtime)
 
-    def add_user_with_options(
-        self,
-        request: cloud_siem_20220616_models.AddUserRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.AddUserResponse:
-        """
-        @summary Adds a cloud account to the threat analysis feature for centralized management. After you add the account, you can use the account to perform operations that are supported by the threat analysis feature. For example, you can add logs of the account to the threat analysis feature.
-        
-        @param request: AddUserRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AddUserResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.added_user_id):
-            body['AddedUserId'] = request.added_user_id
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='AddUser',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.AddUserResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def add_user_with_options_async(
-        self,
-        request: cloud_siem_20220616_models.AddUserRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.AddUserResponse:
-        """
-        @summary Adds a cloud account to the threat analysis feature for centralized management. After you add the account, you can use the account to perform operations that are supported by the threat analysis feature. For example, you can add logs of the account to the threat analysis feature.
-        
-        @param request: AddUserRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AddUserResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.added_user_id):
-            body['AddedUserId'] = request.added_user_id
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='AddUser',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.AddUserResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def add_user(
-        self,
-        request: cloud_siem_20220616_models.AddUserRequest,
-    ) -> cloud_siem_20220616_models.AddUserResponse:
-        """
-        @summary Adds a cloud account to the threat analysis feature for centralized management. After you add the account, you can use the account to perform operations that are supported by the threat analysis feature. For example, you can add logs of the account to the threat analysis feature.
-        
-        @param request: AddUserRequest
-        @return: AddUserResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.add_user_with_options(request, runtime)
-
-    async def add_user_async(
-        self,
-        request: cloud_siem_20220616_models.AddUserRequest,
-    ) -> cloud_siem_20220616_models.AddUserResponse:
-        """
-        @summary Adds a cloud account to the threat analysis feature for centralized management. After you add the account, you can use the account to perform operations that are supported by the threat analysis feature. For example, you can add logs of the account to the threat analysis feature.
-        
-        @param request: AddUserRequest
-        @return: AddUserResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.add_user_with_options_async(request, runtime)
-
     def add_user_source_log_config_with_options(
         self,
         request: cloud_siem_20220616_models.AddUserSourceLogConfigRequest,
@@ -496,106 +396,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.add_user_source_log_config_with_options_async(request, runtime)
-
-    def batch_job_submit_with_options(
-        self,
-        request: cloud_siem_20220616_models.BatchJobSubmitRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.BatchJobSubmitResponse:
-        """
-        @summary Configures log collection tasks based on resource directories.
-        
-        @param request: BatchJobSubmitRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: BatchJobSubmitResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.json_config):
-            body['JsonConfig'] = request.json_config
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='BatchJobSubmit',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.BatchJobSubmitResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def batch_job_submit_with_options_async(
-        self,
-        request: cloud_siem_20220616_models.BatchJobSubmitRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.BatchJobSubmitResponse:
-        """
-        @summary Configures log collection tasks based on resource directories.
-        
-        @param request: BatchJobSubmitRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: BatchJobSubmitResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.json_config):
-            body['JsonConfig'] = request.json_config
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='BatchJobSubmit',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.BatchJobSubmitResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def batch_job_submit(
-        self,
-        request: cloud_siem_20220616_models.BatchJobSubmitRequest,
-    ) -> cloud_siem_20220616_models.BatchJobSubmitResponse:
-        """
-        @summary Configures log collection tasks based on resource directories.
-        
-        @param request: BatchJobSubmitRequest
-        @return: BatchJobSubmitResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.batch_job_submit_with_options(request, runtime)
-
-    async def batch_job_submit_async(
-        self,
-        request: cloud_siem_20220616_models.BatchJobSubmitRequest,
-    ) -> cloud_siem_20220616_models.BatchJobSubmitResponse:
-        """
-        @summary Configures log collection tasks based on resource directories.
-        
-        @param request: BatchJobSubmitRequest
-        @return: BatchJobSubmitResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.batch_job_submit_with_options_async(request, runtime)
 
     def bind_account_with_options(
         self,
@@ -1385,106 +1185,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_data_source_log_with_options_async(request, runtime)
 
-    def delete_user_with_options(
-        self,
-        request: cloud_siem_20220616_models.DeleteUserRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.DeleteUserResponse:
-        """
-        @summary Removes an Alibaba Cloud account that is added to the threat analysis feature for centralized management. You can add the account to the feature again if required.
-        
-        @param request: DeleteUserRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteUserResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.added_user_id):
-            body['AddedUserId'] = request.added_user_id
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DeleteUser',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.DeleteUserResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_user_with_options_async(
-        self,
-        request: cloud_siem_20220616_models.DeleteUserRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.DeleteUserResponse:
-        """
-        @summary Removes an Alibaba Cloud account that is added to the threat analysis feature for centralized management. You can add the account to the feature again if required.
-        
-        @param request: DeleteUserRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteUserResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.added_user_id):
-            body['AddedUserId'] = request.added_user_id
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DeleteUser',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.DeleteUserResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_user(
-        self,
-        request: cloud_siem_20220616_models.DeleteUserRequest,
-    ) -> cloud_siem_20220616_models.DeleteUserResponse:
-        """
-        @summary Removes an Alibaba Cloud account that is added to the threat analysis feature for centralized management. You can add the account to the feature again if required.
-        
-        @param request: DeleteUserRequest
-        @return: DeleteUserResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.delete_user_with_options(request, runtime)
-
-    async def delete_user_async(
-        self,
-        request: cloud_siem_20220616_models.DeleteUserRequest,
-    ) -> cloud_siem_20220616_models.DeleteUserResponse:
-        """
-        @summary Removes an Alibaba Cloud account that is added to the threat analysis feature for centralized management. You can add the account to the feature again if required.
-        
-        @param request: DeleteUserRequest
-        @return: DeleteUserResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_user_with_options_async(request, runtime)
-
     def delete_white_rule_list_with_options(
         self,
         request: cloud_siem_20220616_models.DeleteWhiteRuleListRequest,
@@ -2255,16 +1955,30 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.alert_name):
+            body['AlertName'] = request.alert_name
         if not UtilClient.is_unset(request.alert_title):
             body['AlertTitle'] = request.alert_title
+        if not UtilClient.is_unset(request.alert_type):
+            body['AlertType'] = request.alert_type
         if not UtilClient.is_unset(request.alert_uuid):
             body['AlertUuid'] = request.alert_uuid
+        if not UtilClient.is_unset(request.asset_id):
+            body['AssetId'] = request.asset_id
+        if not UtilClient.is_unset(request.asset_name):
+            body['AssetName'] = request.asset_name
         if not UtilClient.is_unset(request.current_page):
             body['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.end_time):
             body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.entity_id):
+            body['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.entity_name):
+            body['EntityName'] = request.entity_name
         if not UtilClient.is_unset(request.is_defend):
             body['IsDefend'] = request.is_defend
+        if not UtilClient.is_unset(request.label_type):
+            body['LabelType'] = request.label_type
         if not UtilClient.is_unset(request.level):
             body['Level'] = request.level
         if not UtilClient.is_unset(request.page_size):
@@ -2314,16 +2028,30 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.alert_name):
+            body['AlertName'] = request.alert_name
         if not UtilClient.is_unset(request.alert_title):
             body['AlertTitle'] = request.alert_title
+        if not UtilClient.is_unset(request.alert_type):
+            body['AlertType'] = request.alert_type
         if not UtilClient.is_unset(request.alert_uuid):
             body['AlertUuid'] = request.alert_uuid
+        if not UtilClient.is_unset(request.asset_id):
+            body['AssetId'] = request.asset_id
+        if not UtilClient.is_unset(request.asset_name):
+            body['AssetName'] = request.asset_name
         if not UtilClient.is_unset(request.current_page):
             body['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.end_time):
             body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.entity_id):
+            body['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.entity_name):
+            body['EntityName'] = request.entity_name
         if not UtilClient.is_unset(request.is_defend):
             body['IsDefend'] = request.is_defend
+        if not UtilClient.is_unset(request.label_type):
+            body['LabelType'] = request.label_type
         if not UtilClient.is_unset(request.level):
             body['Level'] = request.level
         if not UtilClient.is_unset(request.page_size):
@@ -2401,6 +2129,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.end_time):
             body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.query_type):
+            body['QueryType'] = request.query_type
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.role_for):
@@ -2444,6 +2174,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.end_time):
             body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.query_type):
+            body['QueryType'] = request.query_type
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.role_for):
@@ -2513,8 +2245,12 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.current_page):
             body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.entity_id):
             body['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.entity_uuid):
+            body['EntityUuid'] = request.entity_uuid
         if not UtilClient.is_unset(request.incident_uuid):
             body['IncidentUuid'] = request.incident_uuid
         if not UtilClient.is_unset(request.page_size):
@@ -2527,6 +2263,8 @@ class Client(OpenApiClient):
             body['RoleType'] = request.role_type
         if not UtilClient.is_unset(request.sophon_task_id):
             body['SophonTaskId'] = request.sophon_task_id
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -2562,8 +2300,12 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.current_page):
             body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.entity_id):
             body['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.entity_uuid):
+            body['EntityUuid'] = request.entity_uuid
         if not UtilClient.is_unset(request.incident_uuid):
             body['IncidentUuid'] = request.incident_uuid
         if not UtilClient.is_unset(request.page_size):
@@ -2576,6 +2318,8 @@ class Client(OpenApiClient):
             body['RoleType'] = request.role_type
         if not UtilClient.is_unset(request.sophon_task_id):
             body['SophonTaskId'] = request.sophon_task_id
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -2635,10 +2379,24 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.alert_name):
+            body['AlertName'] = request.alert_name
         if not UtilClient.is_unset(request.alert_title):
             body['AlertTitle'] = request.alert_title
+        if not UtilClient.is_unset(request.alert_type):
+            body['AlertType'] = request.alert_type
+        if not UtilClient.is_unset(request.asset_id):
+            body['AssetId'] = request.asset_id
+        if not UtilClient.is_unset(request.asset_name):
+            body['AssetName'] = request.asset_name
         if not UtilClient.is_unset(request.current_page):
             body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.entity_id):
+            body['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.entity_name):
+            body['EntityName'] = request.entity_name
         if not UtilClient.is_unset(request.incident_uuid):
             body['IncidentUuid'] = request.incident_uuid
         if not UtilClient.is_unset(request.is_defend):
@@ -2655,6 +2413,8 @@ class Client(OpenApiClient):
             body['RoleType'] = request.role_type
         if not UtilClient.is_unset(request.source):
             body['Source'] = request.source
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.sub_user_id):
             body['SubUserId'] = request.sub_user_id
         req = open_api_models.OpenApiRequest(
@@ -2690,10 +2450,24 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.alert_name):
+            body['AlertName'] = request.alert_name
         if not UtilClient.is_unset(request.alert_title):
             body['AlertTitle'] = request.alert_title
+        if not UtilClient.is_unset(request.alert_type):
+            body['AlertType'] = request.alert_type
+        if not UtilClient.is_unset(request.asset_id):
+            body['AssetId'] = request.asset_id
+        if not UtilClient.is_unset(request.asset_name):
+            body['AssetName'] = request.asset_name
         if not UtilClient.is_unset(request.current_page):
             body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.entity_id):
+            body['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.entity_name):
+            body['EntityName'] = request.entity_name
         if not UtilClient.is_unset(request.incident_uuid):
             body['IncidentUuid'] = request.incident_uuid
         if not UtilClient.is_unset(request.is_defend):
@@ -2710,6 +2484,8 @@ class Client(OpenApiClient):
             body['RoleType'] = request.role_type
         if not UtilClient.is_unset(request.source):
             body['Source'] = request.source
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.sub_user_id):
             body['SubUserId'] = request.sub_user_id
         req = open_api_models.OpenApiRequest(
@@ -2756,126 +2532,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_alerts_with_event_with_options_async(request, runtime)
-
-    def describe_attack_time_line_with_options(
-        self,
-        request: cloud_siem_20220616_models.DescribeAttackTimeLineRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.DescribeAttackTimeLineResponse:
-        """
-        @summary Queries the timeline of the alerts that are associated with an event.
-        
-        @param request: DescribeAttackTimeLineRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeAttackTimeLineResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.asset_name):
-            body['AssetName'] = request.asset_name
-        if not UtilClient.is_unset(request.end_time):
-            body['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.incident_uuid):
-            body['IncidentUuid'] = request.incident_uuid
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.role_for):
-            body['RoleFor'] = request.role_for
-        if not UtilClient.is_unset(request.role_type):
-            body['RoleType'] = request.role_type
-        if not UtilClient.is_unset(request.start_time):
-            body['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DescribeAttackTimeLine',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.DescribeAttackTimeLineResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_attack_time_line_with_options_async(
-        self,
-        request: cloud_siem_20220616_models.DescribeAttackTimeLineRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.DescribeAttackTimeLineResponse:
-        """
-        @summary Queries the timeline of the alerts that are associated with an event.
-        
-        @param request: DescribeAttackTimeLineRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeAttackTimeLineResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.asset_name):
-            body['AssetName'] = request.asset_name
-        if not UtilClient.is_unset(request.end_time):
-            body['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.incident_uuid):
-            body['IncidentUuid'] = request.incident_uuid
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.role_for):
-            body['RoleFor'] = request.role_for
-        if not UtilClient.is_unset(request.role_type):
-            body['RoleType'] = request.role_type
-        if not UtilClient.is_unset(request.start_time):
-            body['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DescribeAttackTimeLine',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.DescribeAttackTimeLineResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_attack_time_line(
-        self,
-        request: cloud_siem_20220616_models.DescribeAttackTimeLineRequest,
-    ) -> cloud_siem_20220616_models.DescribeAttackTimeLineResponse:
-        """
-        @summary Queries the timeline of the alerts that are associated with an event.
-        
-        @param request: DescribeAttackTimeLineRequest
-        @return: DescribeAttackTimeLineResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.describe_attack_time_line_with_options(request, runtime)
-
-    async def describe_attack_time_line_async(
-        self,
-        request: cloud_siem_20220616_models.DescribeAttackTimeLineRequest,
-    ) -> cloud_siem_20220616_models.DescribeAttackTimeLineResponse:
-        """
-        @summary Queries the timeline of the alerts that are associated with an event.
-        
-        @param request: DescribeAttackTimeLineRequest
-        @return: DescribeAttackTimeLineResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_attack_time_line_with_options_async(request, runtime)
 
     def describe_auth_with_options(
         self,
@@ -3311,8 +2967,12 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.asset_name):
+            body['AssetName'] = request.asset_name
         if not UtilClient.is_unset(request.asset_type):
             body['AssetType'] = request.asset_type
+        if not UtilClient.is_unset(request.asset_uuid):
+            body['AssetUuid'] = request.asset_uuid
         if not UtilClient.is_unset(request.current_page):
             body['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.incident_uuid):
@@ -3358,8 +3018,12 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.asset_name):
+            body['AssetName'] = request.asset_name
         if not UtilClient.is_unset(request.asset_type):
             body['AssetType'] = request.asset_type
+        if not UtilClient.is_unset(request.asset_uuid):
+            body['AssetUuid'] = request.asset_uuid
         if not UtilClient.is_unset(request.current_page):
             body['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.incident_uuid):
@@ -3653,6 +3317,8 @@ class Client(OpenApiClient):
             body['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.end_time):
             body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.entity_uuid):
+            body['EntityUuid'] = request.entity_uuid
         if not UtilClient.is_unset(request.event_name):
             body['EventName'] = request.event_name
         if not UtilClient.is_unset(request.incident_uuid):
@@ -3714,6 +3380,8 @@ class Client(OpenApiClient):
             body['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.end_time):
             body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.entity_uuid):
+            body['EntityUuid'] = request.entity_uuid
         if not UtilClient.is_unset(request.event_name):
             body['EventName'] = request.event_name
         if not UtilClient.is_unset(request.incident_uuid):
@@ -3780,110 +3448,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cloud_siem_events_with_options_async(request, runtime)
-
-    def describe_cs_imported_prod_status_by_user_with_options(
-        self,
-        request: cloud_siem_20220616_models.DescribeCsImportedProdStatusByUserRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.DescribeCsImportedProdStatusByUserResponse:
-        """
-        @summary Checks whether an Alibaba Cloud service is activated for an Alibaba Cloud account.
-        
-        @param request: DescribeCsImportedProdStatusByUserRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeCsImportedProdStatusByUserResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.source_log_prod):
-            body['SourceLogProd'] = request.source_log_prod
-        if not UtilClient.is_unset(request.user_id):
-            body['UserId'] = request.user_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DescribeCsImportedProdStatusByUser',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.DescribeCsImportedProdStatusByUserResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_cs_imported_prod_status_by_user_with_options_async(
-        self,
-        request: cloud_siem_20220616_models.DescribeCsImportedProdStatusByUserRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.DescribeCsImportedProdStatusByUserResponse:
-        """
-        @summary Checks whether an Alibaba Cloud service is activated for an Alibaba Cloud account.
-        
-        @param request: DescribeCsImportedProdStatusByUserRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeCsImportedProdStatusByUserResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.source_log_prod):
-            body['SourceLogProd'] = request.source_log_prod
-        if not UtilClient.is_unset(request.user_id):
-            body['UserId'] = request.user_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DescribeCsImportedProdStatusByUser',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.DescribeCsImportedProdStatusByUserResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_cs_imported_prod_status_by_user(
-        self,
-        request: cloud_siem_20220616_models.DescribeCsImportedProdStatusByUserRequest,
-    ) -> cloud_siem_20220616_models.DescribeCsImportedProdStatusByUserResponse:
-        """
-        @summary Checks whether an Alibaba Cloud service is activated for an Alibaba Cloud account.
-        
-        @param request: DescribeCsImportedProdStatusByUserRequest
-        @return: DescribeCsImportedProdStatusByUserResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.describe_cs_imported_prod_status_by_user_with_options(request, runtime)
-
-    async def describe_cs_imported_prod_status_by_user_async(
-        self,
-        request: cloud_siem_20220616_models.DescribeCsImportedProdStatusByUserRequest,
-    ) -> cloud_siem_20220616_models.DescribeCsImportedProdStatusByUserResponse:
-        """
-        @summary Checks whether an Alibaba Cloud service is activated for an Alibaba Cloud account.
-        
-        @param request: DescribeCsImportedProdStatusByUserRequest
-        @return: DescribeCsImportedProdStatusByUserResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_cs_imported_prod_status_by_user_with_options_async(request, runtime)
 
     def describe_customize_rule_count_with_options(
         self,
@@ -4435,6 +3999,8 @@ class Client(OpenApiClient):
             body['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.entity_type):
             body['EntityType'] = request.entity_type
+        if not UtilClient.is_unset(request.entity_uuid):
+            body['EntityUuid'] = request.entity_uuid
         if not UtilClient.is_unset(request.incident_uuid):
             body['IncidentUuid'] = request.incident_uuid
         if not UtilClient.is_unset(request.page_size):
@@ -4482,6 +4048,8 @@ class Client(OpenApiClient):
             body['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.entity_type):
             body['EntityType'] = request.entity_type
+        if not UtilClient.is_unset(request.entity_uuid):
+            body['EntityUuid'] = request.entity_uuid
         if not UtilClient.is_unset(request.incident_uuid):
             body['IncidentUuid'] = request.incident_uuid
         if not UtilClient.is_unset(request.page_size):
@@ -5101,106 +4669,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_imported_log_count_with_options_async(request, runtime)
 
-    def describe_job_status_with_options(
-        self,
-        request: cloud_siem_20220616_models.DescribeJobStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.DescribeJobStatusResponse:
-        """
-        @summary Queries the status of collection tasks by using the submitId parameter of the tasks.
-        
-        @param request: DescribeJobStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeJobStatusResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.submit_id):
-            body['SubmitId'] = request.submit_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DescribeJobStatus',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.DescribeJobStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_job_status_with_options_async(
-        self,
-        request: cloud_siem_20220616_models.DescribeJobStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.DescribeJobStatusResponse:
-        """
-        @summary Queries the status of collection tasks by using the submitId parameter of the tasks.
-        
-        @param request: DescribeJobStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeJobStatusResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.submit_id):
-            body['SubmitId'] = request.submit_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DescribeJobStatus',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.DescribeJobStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_job_status(
-        self,
-        request: cloud_siem_20220616_models.DescribeJobStatusRequest,
-    ) -> cloud_siem_20220616_models.DescribeJobStatusResponse:
-        """
-        @summary Queries the status of collection tasks by using the submitId parameter of the tasks.
-        
-        @param request: DescribeJobStatusRequest
-        @return: DescribeJobStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.describe_job_status_with_options(request, runtime)
-
-    async def describe_job_status_async(
-        self,
-        request: cloud_siem_20220616_models.DescribeJobStatusRequest,
-    ) -> cloud_siem_20220616_models.DescribeJobStatusResponse:
-        """
-        @summary Queries the status of collection tasks by using the submitId parameter of the tasks.
-        
-        @param request: DescribeJobStatusRequest
-        @return: DescribeJobStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_job_status_with_options_async(request, runtime)
-
     def describe_log_fields_with_options(
         self,
         request: cloud_siem_20220616_models.DescribeLogFieldsRequest,
@@ -5420,102 +4888,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_log_source_with_options_async(request, runtime)
-
-    def describe_log_store_with_options(
-        self,
-        request: cloud_siem_20220616_models.DescribeLogStoreRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.DescribeLogStoreResponse:
-        """
-        @summary Queries the information about a Logstore that is used in the threat analysis feature of Simple Log Service on the user side. The information may be the Logstore name or the time-to-live (TTL) period of data in the Logstore.
-        
-        @param request: DescribeLogStoreRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeLogStoreResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DescribeLogStore',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.DescribeLogStoreResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_log_store_with_options_async(
-        self,
-        request: cloud_siem_20220616_models.DescribeLogStoreRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.DescribeLogStoreResponse:
-        """
-        @summary Queries the information about a Logstore that is used in the threat analysis feature of Simple Log Service on the user side. The information may be the Logstore name or the time-to-live (TTL) period of data in the Logstore.
-        
-        @param request: DescribeLogStoreRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeLogStoreResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DescribeLogStore',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.DescribeLogStoreResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_log_store(
-        self,
-        request: cloud_siem_20220616_models.DescribeLogStoreRequest,
-    ) -> cloud_siem_20220616_models.DescribeLogStoreResponse:
-        """
-        @summary Queries the information about a Logstore that is used in the threat analysis feature of Simple Log Service on the user side. The information may be the Logstore name or the time-to-live (TTL) period of data in the Logstore.
-        
-        @param request: DescribeLogStoreRequest
-        @return: DescribeLogStoreResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.describe_log_store_with_options(request, runtime)
-
-    async def describe_log_store_async(
-        self,
-        request: cloud_siem_20220616_models.DescribeLogStoreRequest,
-    ) -> cloud_siem_20220616_models.DescribeLogStoreResponse:
-        """
-        @summary Queries the information about a Logstore that is used in the threat analysis feature of Simple Log Service on the user side. The information may be the Logstore name or the time-to-live (TTL) period of data in the Logstore.
-        
-        @param request: DescribeLogStoreRequest
-        @return: DescribeLogStoreResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_log_store_with_options_async(request, runtime)
 
     def describe_log_type_with_options(
         self,
@@ -6469,230 +5841,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_white_rule_list_with_options_async(request, runtime)
 
-    def do_quick_field_with_options(
-        self,
-        request: cloud_siem_20220616_models.DoQuickFieldRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.DoQuickFieldResponse:
-        """
-        @summary Queries and analyzes the distribution of specific fields by using quick analysis.
-        
-        @param request: DoQuickFieldRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DoQuickFieldResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.from_):
-            body['From'] = request.from_
-        if not UtilClient.is_unset(request.index):
-            body['Index'] = request.index
-        if not UtilClient.is_unset(request.page):
-            body['Page'] = request.page
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.reverse):
-            body['Reverse'] = request.reverse
-        if not UtilClient.is_unset(request.size):
-            body['Size'] = request.size
-        if not UtilClient.is_unset(request.to):
-            body['To'] = request.to
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DoQuickField',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.DoQuickFieldResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def do_quick_field_with_options_async(
-        self,
-        request: cloud_siem_20220616_models.DoQuickFieldRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.DoQuickFieldResponse:
-        """
-        @summary Queries and analyzes the distribution of specific fields by using quick analysis.
-        
-        @param request: DoQuickFieldRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DoQuickFieldResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.from_):
-            body['From'] = request.from_
-        if not UtilClient.is_unset(request.index):
-            body['Index'] = request.index
-        if not UtilClient.is_unset(request.page):
-            body['Page'] = request.page
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.reverse):
-            body['Reverse'] = request.reverse
-        if not UtilClient.is_unset(request.size):
-            body['Size'] = request.size
-        if not UtilClient.is_unset(request.to):
-            body['To'] = request.to
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DoQuickField',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.DoQuickFieldResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def do_quick_field(
-        self,
-        request: cloud_siem_20220616_models.DoQuickFieldRequest,
-    ) -> cloud_siem_20220616_models.DoQuickFieldResponse:
-        """
-        @summary Queries and analyzes the distribution of specific fields by using quick analysis.
-        
-        @param request: DoQuickFieldRequest
-        @return: DoQuickFieldResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.do_quick_field_with_options(request, runtime)
-
-    async def do_quick_field_async(
-        self,
-        request: cloud_siem_20220616_models.DoQuickFieldRequest,
-    ) -> cloud_siem_20220616_models.DoQuickFieldResponse:
-        """
-        @summary Queries and analyzes the distribution of specific fields by using quick analysis.
-        
-        @param request: DoQuickFieldRequest
-        @return: DoQuickFieldResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.do_quick_field_with_options_async(request, runtime)
-
-    def do_self_delegate_with_options(
-        self,
-        request: cloud_siem_20220616_models.DoSelfDelegateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.DoSelfDelegateResponse:
-        """
-        @summary Grants permissions to or revokes permissions from a regular member on the threat analysis feature. This helps manage the authorization to view information such as log analysis and alerts.
-        
-        @param request: DoSelfDelegateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DoSelfDelegateResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.ali_uid):
-            body['AliUid'] = request.ali_uid
-        if not UtilClient.is_unset(request.delegate_or_not):
-            body['DelegateOrNot'] = request.delegate_or_not
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DoSelfDelegate',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.DoSelfDelegateResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def do_self_delegate_with_options_async(
-        self,
-        request: cloud_siem_20220616_models.DoSelfDelegateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.DoSelfDelegateResponse:
-        """
-        @summary Grants permissions to or revokes permissions from a regular member on the threat analysis feature. This helps manage the authorization to view information such as log analysis and alerts.
-        
-        @param request: DoSelfDelegateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DoSelfDelegateResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.ali_uid):
-            body['AliUid'] = request.ali_uid
-        if not UtilClient.is_unset(request.delegate_or_not):
-            body['DelegateOrNot'] = request.delegate_or_not
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DoSelfDelegate',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.DoSelfDelegateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def do_self_delegate(
-        self,
-        request: cloud_siem_20220616_models.DoSelfDelegateRequest,
-    ) -> cloud_siem_20220616_models.DoSelfDelegateResponse:
-        """
-        @summary Grants permissions to or revokes permissions from a regular member on the threat analysis feature. This helps manage the authorization to view information such as log analysis and alerts.
-        
-        @param request: DoSelfDelegateRequest
-        @return: DoSelfDelegateResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.do_self_delegate_with_options(request, runtime)
-
-    async def do_self_delegate_async(
-        self,
-        request: cloud_siem_20220616_models.DoSelfDelegateRequest,
-    ) -> cloud_siem_20220616_models.DoSelfDelegateResponse:
-        """
-        @summary Grants permissions to or revokes permissions from a regular member on the threat analysis feature. This helps manage the authorization to view information such as log analysis and alerts.
-        
-        @param request: DoSelfDelegateRequest
-        @return: DoSelfDelegateResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.do_self_delegate_with_options_async(request, runtime)
-
     def enable_access_for_cloud_siem_with_options(
         self,
         request: cloud_siem_20220616_models.EnableAccessForCloudSiemRequest,
@@ -7000,338 +6148,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_capacity_with_options_async(request, runtime)
-
-    def get_histograms_with_options(
-        self,
-        request: cloud_siem_20220616_models.GetHistogramsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.GetHistogramsResponse:
-        """
-        @summary Queries the results of of search statements that are displayed in histograms.
-        
-        @param request: GetHistogramsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetHistogramsResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.from_):
-            body['From'] = request.from_
-        if not UtilClient.is_unset(request.query):
-            body['Query'] = request.query
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.to):
-            body['To'] = request.to
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='GetHistograms',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.GetHistogramsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_histograms_with_options_async(
-        self,
-        request: cloud_siem_20220616_models.GetHistogramsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.GetHistogramsResponse:
-        """
-        @summary Queries the results of of search statements that are displayed in histograms.
-        
-        @param request: GetHistogramsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetHistogramsResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.from_):
-            body['From'] = request.from_
-        if not UtilClient.is_unset(request.query):
-            body['Query'] = request.query
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.to):
-            body['To'] = request.to
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='GetHistograms',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.GetHistogramsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_histograms(
-        self,
-        request: cloud_siem_20220616_models.GetHistogramsRequest,
-    ) -> cloud_siem_20220616_models.GetHistogramsResponse:
-        """
-        @summary Queries the results of of search statements that are displayed in histograms.
-        
-        @param request: GetHistogramsRequest
-        @return: GetHistogramsResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.get_histograms_with_options(request, runtime)
-
-    async def get_histograms_async(
-        self,
-        request: cloud_siem_20220616_models.GetHistogramsRequest,
-    ) -> cloud_siem_20220616_models.GetHistogramsResponse:
-        """
-        @summary Queries the results of of search statements that are displayed in histograms.
-        
-        @param request: GetHistogramsRequest
-        @return: GetHistogramsResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.get_histograms_with_options_async(request, runtime)
-
-    def get_logs_with_options(
-        self,
-        request: cloud_siem_20220616_models.GetLogsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.GetLogsResponse:
-        """
-        @summary Queries the results of a log query by using SQL statements.
-        
-        @param request: GetLogsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetLogsResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.from_):
-            body['From'] = request.from_
-        if not UtilClient.is_unset(request.page_index):
-            body['PageIndex'] = request.page_index
-        if not UtilClient.is_unset(request.page_size):
-            body['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.query):
-            body['Query'] = request.query
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.reverse_or_not):
-            body['ReverseOrNot'] = request.reverse_or_not
-        if not UtilClient.is_unset(request.to):
-            body['To'] = request.to
-        if not UtilClient.is_unset(request.total):
-            body['Total'] = request.total
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='GetLogs',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.GetLogsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_logs_with_options_async(
-        self,
-        request: cloud_siem_20220616_models.GetLogsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.GetLogsResponse:
-        """
-        @summary Queries the results of a log query by using SQL statements.
-        
-        @param request: GetLogsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetLogsResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.from_):
-            body['From'] = request.from_
-        if not UtilClient.is_unset(request.page_index):
-            body['PageIndex'] = request.page_index
-        if not UtilClient.is_unset(request.page_size):
-            body['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.query):
-            body['Query'] = request.query
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.reverse_or_not):
-            body['ReverseOrNot'] = request.reverse_or_not
-        if not UtilClient.is_unset(request.to):
-            body['To'] = request.to
-        if not UtilClient.is_unset(request.total):
-            body['Total'] = request.total
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='GetLogs',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.GetLogsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_logs(
-        self,
-        request: cloud_siem_20220616_models.GetLogsRequest,
-    ) -> cloud_siem_20220616_models.GetLogsResponse:
-        """
-        @summary Queries the results of a log query by using SQL statements.
-        
-        @param request: GetLogsRequest
-        @return: GetLogsResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.get_logs_with_options(request, runtime)
-
-    async def get_logs_async(
-        self,
-        request: cloud_siem_20220616_models.GetLogsRequest,
-    ) -> cloud_siem_20220616_models.GetLogsResponse:
-        """
-        @summary Queries the results of a log query by using SQL statements.
-        
-        @param request: GetLogsRequest
-        @return: GetLogsResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.get_logs_with_options_async(request, runtime)
-
-    def get_quick_query_with_options(
-        self,
-        request: cloud_siem_20220616_models.GetQuickQueryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.GetQuickQueryResponse:
-        """
-        @summary Queries a query statement that is saved as a saved search in log analysis by name.
-        
-        @param request: GetQuickQueryRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetQuickQueryResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.search_name):
-            body['SearchName'] = request.search_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='GetQuickQuery',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.GetQuickQueryResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_quick_query_with_options_async(
-        self,
-        request: cloud_siem_20220616_models.GetQuickQueryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.GetQuickQueryResponse:
-        """
-        @summary Queries a query statement that is saved as a saved search in log analysis by name.
-        
-        @param request: GetQuickQueryRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetQuickQueryResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.search_name):
-            body['SearchName'] = request.search_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='GetQuickQuery',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.GetQuickQueryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_quick_query(
-        self,
-        request: cloud_siem_20220616_models.GetQuickQueryRequest,
-    ) -> cloud_siem_20220616_models.GetQuickQueryResponse:
-        """
-        @summary Queries a query statement that is saved as a saved search in log analysis by name.
-        
-        @param request: GetQuickQueryRequest
-        @return: GetQuickQueryResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.get_quick_query_with_options(request, runtime)
-
-    async def get_quick_query_async(
-        self,
-        request: cloud_siem_20220616_models.GetQuickQueryRequest,
-    ) -> cloud_siem_20220616_models.GetQuickQueryResponse:
-        """
-        @summary Queries a query statement that is saved as a saved search in log analysis by name.
-        
-        @param request: GetQuickQueryRequest
-        @return: GetQuickQueryResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.get_quick_query_with_options_async(request, runtime)
 
     def get_storage_with_options(
         self,
@@ -8449,6 +7265,10 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.current_page):
             body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.detection_rule_id):
+            body['DetectionRuleId'] = request.detection_rule_id
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.id):
             body['Id'] = request.id
         if not UtilClient.is_unset(request.page_size):
@@ -8459,6 +7279,10 @@ class Client(OpenApiClient):
             body['RoleFor'] = request.role_for
         if not UtilClient.is_unset(request.role_type):
             body['RoleType'] = request.role_type
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.verify_type):
+            body['VerifyType'] = request.verify_type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -8494,6 +7318,10 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.current_page):
             body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.detection_rule_id):
+            body['DetectionRuleId'] = request.detection_rule_id
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.id):
             body['Id'] = request.id
         if not UtilClient.is_unset(request.page_size):
@@ -8504,6 +7332,10 @@ class Client(OpenApiClient):
             body['RoleFor'] = request.role_for
         if not UtilClient.is_unset(request.role_type):
             body['RoleType'] = request.role_type
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.verify_type):
+            body['VerifyType'] = request.verify_type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -8885,6 +7717,8 @@ class Client(OpenApiClient):
             body['EntityIdentity'] = request.entity_identity
         if not UtilClient.is_unset(request.entity_type):
             body['EntityType'] = request.entity_type
+        if not UtilClient.is_unset(request.incident_uuid):
+            body['IncidentUuid'] = request.incident_uuid
         if not UtilClient.is_unset(request.order):
             body['Order'] = request.order
         if not UtilClient.is_unset(request.order_field):
@@ -8950,6 +7784,8 @@ class Client(OpenApiClient):
             body['EntityIdentity'] = request.entity_identity
         if not UtilClient.is_unset(request.entity_type):
             body['EntityType'] = request.entity_type
+        if not UtilClient.is_unset(request.incident_uuid):
+            body['IncidentUuid'] = request.incident_uuid
         if not UtilClient.is_unset(request.order):
             body['Order'] = request.order
         if not UtilClient.is_unset(request.order_field):
@@ -9016,6 +7852,142 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_dispose_strategy_with_options_async(request, runtime)
+
+    def list_entities_with_options(
+        self,
+        request: cloud_siem_20220616_models.ListEntitiesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_siem_20220616_models.ListEntitiesResponse:
+        """
+        @summary 查询实体列表
+        
+        @param request: ListEntitiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEntitiesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.entity_name):
+            body['EntityName'] = request.entity_name
+        if not UtilClient.is_unset(request.entity_type):
+            body['EntityType'] = request.entity_type
+        if not UtilClient.is_unset(request.entity_uuid):
+            body['EntityUuid'] = request.entity_uuid
+        if not UtilClient.is_unset(request.incident_uuid):
+            body['IncidentUuid'] = request.incident_uuid
+        if not UtilClient.is_unset(request.is_malware_entity):
+            body['IsMalwareEntity'] = request.is_malware_entity
+        if not UtilClient.is_unset(request.malware_type):
+            body['MalwareType'] = request.malware_type
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not UtilClient.is_unset(request.role_type):
+            body['RoleType'] = request.role_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListEntities',
+            version='2022-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_siem_20220616_models.ListEntitiesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_entities_with_options_async(
+        self,
+        request: cloud_siem_20220616_models.ListEntitiesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_siem_20220616_models.ListEntitiesResponse:
+        """
+        @summary 查询实体列表
+        
+        @param request: ListEntitiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEntitiesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.entity_name):
+            body['EntityName'] = request.entity_name
+        if not UtilClient.is_unset(request.entity_type):
+            body['EntityType'] = request.entity_type
+        if not UtilClient.is_unset(request.entity_uuid):
+            body['EntityUuid'] = request.entity_uuid
+        if not UtilClient.is_unset(request.incident_uuid):
+            body['IncidentUuid'] = request.incident_uuid
+        if not UtilClient.is_unset(request.is_malware_entity):
+            body['IsMalwareEntity'] = request.is_malware_entity
+        if not UtilClient.is_unset(request.malware_type):
+            body['MalwareType'] = request.malware_type
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not UtilClient.is_unset(request.role_type):
+            body['RoleType'] = request.role_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListEntities',
+            version='2022-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_siem_20220616_models.ListEntitiesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_entities(
+        self,
+        request: cloud_siem_20220616_models.ListEntitiesRequest,
+    ) -> cloud_siem_20220616_models.ListEntitiesResponse:
+        """
+        @summary 查询实体列表
+        
+        @param request: ListEntitiesRequest
+        @return: ListEntitiesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_entities_with_options(request, runtime)
+
+    async def list_entities_async(
+        self,
+        request: cloud_siem_20220616_models.ListEntitiesRequest,
+    ) -> cloud_siem_20220616_models.ListEntitiesResponse:
+        """
+        @summary 查询实体列表
+        
+        @param request: ListEntitiesRequest
+        @return: ListEntitiesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_entities_with_options_async(request, runtime)
 
     def list_imported_logs_by_prod_with_options(
         self,
@@ -9129,102 +8101,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_imported_logs_by_prod_with_options_async(request, runtime)
 
-    def list_operation_with_options(
-        self,
-        request: cloud_siem_20220616_models.ListOperationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.ListOperationResponse:
-        """
-        @summary Queries the resource-related permissions granted to the current user. The threat analysis feature supports two types of identities: administrators and common members. An administrator is granted all permissions, and a common member is granted permissions to access only specific resources.
-        
-        @param request: ListOperationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListOperationResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ListOperation',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.ListOperationResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_operation_with_options_async(
-        self,
-        request: cloud_siem_20220616_models.ListOperationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.ListOperationResponse:
-        """
-        @summary Queries the resource-related permissions granted to the current user. The threat analysis feature supports two types of identities: administrators and common members. An administrator is granted all permissions, and a common member is granted permissions to access only specific resources.
-        
-        @param request: ListOperationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListOperationResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ListOperation',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.ListOperationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_operation(
-        self,
-        request: cloud_siem_20220616_models.ListOperationRequest,
-    ) -> cloud_siem_20220616_models.ListOperationResponse:
-        """
-        @summary Queries the resource-related permissions granted to the current user. The threat analysis feature supports two types of identities: administrators and common members. An administrator is granted all permissions, and a common member is granted permissions to access only specific resources.
-        
-        @param request: ListOperationRequest
-        @return: ListOperationResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.list_operation_with_options(request, runtime)
-
-    async def list_operation_async(
-        self,
-        request: cloud_siem_20220616_models.ListOperationRequest,
-    ) -> cloud_siem_20220616_models.ListOperationResponse:
-        """
-        @summary Queries the resource-related permissions granted to the current user. The threat analysis feature supports two types of identities: administrators and common members. An administrator is granted all permissions, and a common member is granted permissions to access only specific resources.
-        
-        @param request: ListOperationRequest
-        @return: ListOperationResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.list_operation_with_options_async(request, runtime)
-
     def list_project_log_stores_with_options(
         self,
         request: cloud_siem_20220616_models.ListProjectLogStoresRequest,
@@ -9333,110 +8209,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_project_log_stores_with_options_async(request, runtime)
 
-    def list_quick_query_with_options(
-        self,
-        request: cloud_siem_20220616_models.ListQuickQueryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.ListQuickQueryResponse:
-        """
-        @summary Queries the saved searches of the Logstore.
-        
-        @param request: ListQuickQueryRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListQuickQueryResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.offset):
-            body['Offset'] = request.offset
-        if not UtilClient.is_unset(request.page_size):
-            body['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ListQuickQuery',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.ListQuickQueryResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_quick_query_with_options_async(
-        self,
-        request: cloud_siem_20220616_models.ListQuickQueryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.ListQuickQueryResponse:
-        """
-        @summary Queries the saved searches of the Logstore.
-        
-        @param request: ListQuickQueryRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListQuickQueryResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.offset):
-            body['Offset'] = request.offset
-        if not UtilClient.is_unset(request.page_size):
-            body['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ListQuickQuery',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.ListQuickQueryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_quick_query(
-        self,
-        request: cloud_siem_20220616_models.ListQuickQueryRequest,
-    ) -> cloud_siem_20220616_models.ListQuickQueryResponse:
-        """
-        @summary Queries the saved searches of the Logstore.
-        
-        @param request: ListQuickQueryRequest
-        @return: ListQuickQueryResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.list_quick_query_with_options(request, runtime)
-
-    async def list_quick_query_async(
-        self,
-        request: cloud_siem_20220616_models.ListQuickQueryRequest,
-    ) -> cloud_siem_20220616_models.ListQuickQueryResponse:
-        """
-        @summary Queries the saved searches of the Logstore.
-        
-        @param request: ListQuickQueryRequest
-        @return: ListQuickQueryResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.list_quick_query_with_options_async(request, runtime)
-
     def list_rd_users_with_options(
         self,
         request: cloud_siem_20220616_models.ListRdUsersRequest,
@@ -9532,226 +8304,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_rd_users_with_options_async(request, runtime)
-
-    def list_user_prod_logs_with_options(
-        self,
-        request: cloud_siem_20220616_models.ListUserProdLogsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.ListUserProdLogsResponse:
-        """
-        @summary Queries a list of logs that are added to the threat analysis feature by cloud service.
-        
-        @param request: ListUserProdLogsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListUserProdLogsResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.role_for):
-            body['RoleFor'] = request.role_for
-        if not UtilClient.is_unset(request.role_type):
-            body['RoleType'] = request.role_type
-        if not UtilClient.is_unset(request.source_log_code):
-            body['SourceLogCode'] = request.source_log_code
-        if not UtilClient.is_unset(request.source_prod_code):
-            body['SourceProdCode'] = request.source_prod_code
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ListUserProdLogs',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.ListUserProdLogsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_user_prod_logs_with_options_async(
-        self,
-        request: cloud_siem_20220616_models.ListUserProdLogsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.ListUserProdLogsResponse:
-        """
-        @summary Queries a list of logs that are added to the threat analysis feature by cloud service.
-        
-        @param request: ListUserProdLogsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListUserProdLogsResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.role_for):
-            body['RoleFor'] = request.role_for
-        if not UtilClient.is_unset(request.role_type):
-            body['RoleType'] = request.role_type
-        if not UtilClient.is_unset(request.source_log_code):
-            body['SourceLogCode'] = request.source_log_code
-        if not UtilClient.is_unset(request.source_prod_code):
-            body['SourceProdCode'] = request.source_prod_code
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ListUserProdLogs',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.ListUserProdLogsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_user_prod_logs(
-        self,
-        request: cloud_siem_20220616_models.ListUserProdLogsRequest,
-    ) -> cloud_siem_20220616_models.ListUserProdLogsResponse:
-        """
-        @summary Queries a list of logs that are added to the threat analysis feature by cloud service.
-        
-        @param request: ListUserProdLogsRequest
-        @return: ListUserProdLogsResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.list_user_prod_logs_with_options(request, runtime)
-
-    async def list_user_prod_logs_async(
-        self,
-        request: cloud_siem_20220616_models.ListUserProdLogsRequest,
-    ) -> cloud_siem_20220616_models.ListUserProdLogsResponse:
-        """
-        @summary Queries a list of logs that are added to the threat analysis feature by cloud service.
-        
-        @param request: ListUserProdLogsRequest
-        @return: ListUserProdLogsResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.list_user_prod_logs_with_options_async(request, runtime)
-
-    def list_users_by_prod_with_options(
-        self,
-        request: cloud_siem_20220616_models.ListUsersByProdRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.ListUsersByProdResponse:
-        """
-        @summary Queries the details of the logs that are added to the threat analysis feature by cloud service.
-        
-        @param request: ListUsersByProdRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListUsersByProdResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.role_for):
-            body['RoleFor'] = request.role_for
-        if not UtilClient.is_unset(request.role_type):
-            body['RoleType'] = request.role_type
-        if not UtilClient.is_unset(request.source_prod_code):
-            body['SourceProdCode'] = request.source_prod_code
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ListUsersByProd',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.ListUsersByProdResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_users_by_prod_with_options_async(
-        self,
-        request: cloud_siem_20220616_models.ListUsersByProdRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.ListUsersByProdResponse:
-        """
-        @summary Queries the details of the logs that are added to the threat analysis feature by cloud service.
-        
-        @param request: ListUsersByProdRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListUsersByProdResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.role_for):
-            body['RoleFor'] = request.role_for
-        if not UtilClient.is_unset(request.role_type):
-            body['RoleType'] = request.role_type
-        if not UtilClient.is_unset(request.source_prod_code):
-            body['SourceProdCode'] = request.source_prod_code
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ListUsersByProd',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.ListUsersByProdResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_users_by_prod(
-        self,
-        request: cloud_siem_20220616_models.ListUsersByProdRequest,
-    ) -> cloud_siem_20220616_models.ListUsersByProdResponse:
-        """
-        @summary Queries the details of the logs that are added to the threat analysis feature by cloud service.
-        
-        @param request: ListUsersByProdRequest
-        @return: ListUsersByProdResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.list_users_by_prod_with_options(request, runtime)
-
-    async def list_users_by_prod_async(
-        self,
-        request: cloud_siem_20220616_models.ListUsersByProdRequest,
-    ) -> cloud_siem_20220616_models.ListUsersByProdResponse:
-        """
-        @summary Queries the details of the logs that are added to the threat analysis feature by cloud service.
-        
-        @param request: ListUsersByProdRequest
-        @return: ListUsersByProdResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.list_users_by_prod_with_options_async(request, runtime)
 
     def modify_bind_account_with_options(
         self,
@@ -10691,6 +9243,8 @@ class Client(OpenApiClient):
             body['RoleType'] = request.role_type
         if not UtilClient.is_unset(request.status):
             body['Status'] = request.status
+        if not UtilClient.is_unset(request.threat_level):
+            body['ThreatLevel'] = request.threat_level
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -10740,6 +9294,8 @@ class Client(OpenApiClient):
             body['RoleType'] = request.role_type
         if not UtilClient.is_unset(request.status):
             body['Status'] = request.status
+        if not UtilClient.is_unset(request.threat_level):
+            body['ThreatLevel'] = request.threat_level
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -11225,110 +9781,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.restore_capacity_with_options_async(request, runtime)
 
-    def save_quick_query_with_options(
-        self,
-        request: cloud_siem_20220616_models.SaveQuickQueryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.SaveQuickQueryResponse:
-        """
-        @summary Saves a query statement in log analysis as a saved search. This helps save the time required to write the query statement.
-        
-        @param request: SaveQuickQueryRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SaveQuickQueryResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.display_name):
-            body['DisplayName'] = request.display_name
-        if not UtilClient.is_unset(request.query):
-            body['Query'] = request.query
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='SaveQuickQuery',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.SaveQuickQueryResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def save_quick_query_with_options_async(
-        self,
-        request: cloud_siem_20220616_models.SaveQuickQueryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.SaveQuickQueryResponse:
-        """
-        @summary Saves a query statement in log analysis as a saved search. This helps save the time required to write the query statement.
-        
-        @param request: SaveQuickQueryRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SaveQuickQueryResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.display_name):
-            body['DisplayName'] = request.display_name
-        if not UtilClient.is_unset(request.query):
-            body['Query'] = request.query
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='SaveQuickQuery',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.SaveQuickQueryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def save_quick_query(
-        self,
-        request: cloud_siem_20220616_models.SaveQuickQueryRequest,
-    ) -> cloud_siem_20220616_models.SaveQuickQueryResponse:
-        """
-        @summary Saves a query statement in log analysis as a saved search. This helps save the time required to write the query statement.
-        
-        @param request: SaveQuickQueryRequest
-        @return: SaveQuickQueryResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.save_quick_query_with_options(request, runtime)
-
-    async def save_quick_query_async(
-        self,
-        request: cloud_siem_20220616_models.SaveQuickQueryRequest,
-    ) -> cloud_siem_20220616_models.SaveQuickQueryResponse:
-        """
-        @summary Saves a query statement in log analysis as a saved search. This helps save the time required to write the query statement.
-        
-        @param request: SaveQuickQueryRequest
-        @return: SaveQuickQueryResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.save_quick_query_with_options_async(request, runtime)
-
     def set_storage_with_options(
         self,
         request: cloud_siem_20220616_models.SetStorageRequest,
@@ -11440,102 +9892,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.set_storage_with_options_async(request, runtime)
-
-    def show_quick_analysis_with_options(
-        self,
-        request: cloud_siem_20220616_models.ShowQuickAnalysisRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.ShowQuickAnalysisResponse:
-        """
-        @summary Configures index fields to display in log analysis. The index fields can be used for quick analysis.
-        
-        @param request: ShowQuickAnalysisRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ShowQuickAnalysisResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ShowQuickAnalysis',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.ShowQuickAnalysisResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def show_quick_analysis_with_options_async(
-        self,
-        request: cloud_siem_20220616_models.ShowQuickAnalysisRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.ShowQuickAnalysisResponse:
-        """
-        @summary Configures index fields to display in log analysis. The index fields can be used for quick analysis.
-        
-        @param request: ShowQuickAnalysisRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ShowQuickAnalysisResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ShowQuickAnalysis',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.ShowQuickAnalysisResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def show_quick_analysis(
-        self,
-        request: cloud_siem_20220616_models.ShowQuickAnalysisRequest,
-    ) -> cloud_siem_20220616_models.ShowQuickAnalysisResponse:
-        """
-        @summary Configures index fields to display in log analysis. The index fields can be used for quick analysis.
-        
-        @param request: ShowQuickAnalysisRequest
-        @return: ShowQuickAnalysisResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.show_quick_analysis_with_options(request, runtime)
-
-    async def show_quick_analysis_async(
-        self,
-        request: cloud_siem_20220616_models.ShowQuickAnalysisRequest,
-    ) -> cloud_siem_20220616_models.ShowQuickAnalysisResponse:
-        """
-        @summary Configures index fields to display in log analysis. The index fields can be used for quick analysis.
-        
-        @param request: ShowQuickAnalysisRequest
-        @return: ShowQuickAnalysisResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.show_quick_analysis_with_options_async(request, runtime)
 
     def submit_import_log_tasks_with_options(
         self,
@@ -11660,106 +10016,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.submit_import_log_tasks_with_options_async(request, runtime)
-
-    def submit_jobs_with_options(
-        self,
-        request: cloud_siem_20220616_models.SubmitJobsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.SubmitJobsResponse:
-        """
-        @summary Submits multiple tasks that add logs to the threat analysis feature at a time. After the logs are added, you can perform alert and event analysis.
-        
-        @param request: SubmitJobsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SubmitJobsResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.json_param):
-            body['JsonParam'] = request.json_param
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='SubmitJobs',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.SubmitJobsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def submit_jobs_with_options_async(
-        self,
-        request: cloud_siem_20220616_models.SubmitJobsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.SubmitJobsResponse:
-        """
-        @summary Submits multiple tasks that add logs to the threat analysis feature at a time. After the logs are added, you can perform alert and event analysis.
-        
-        @param request: SubmitJobsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SubmitJobsResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.json_param):
-            body['JsonParam'] = request.json_param
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='SubmitJobs',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.SubmitJobsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def submit_jobs(
-        self,
-        request: cloud_siem_20220616_models.SubmitJobsRequest,
-    ) -> cloud_siem_20220616_models.SubmitJobsResponse:
-        """
-        @summary Submits multiple tasks that add logs to the threat analysis feature at a time. After the logs are added, you can perform alert and event analysis.
-        
-        @param request: SubmitJobsRequest
-        @return: SubmitJobsResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.submit_jobs_with_options(request, runtime)
-
-    async def submit_jobs_async(
-        self,
-        request: cloud_siem_20220616_models.SubmitJobsRequest,
-    ) -> cloud_siem_20220616_models.SubmitJobsResponse:
-        """
-        @summary Submits multiple tasks that add logs to the threat analysis feature at a time. After the logs are added, you can perform alert and event analysis.
-        
-        @param request: SubmitJobsRequest
-        @return: SubmitJobsResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.submit_jobs_with_options_async(request, runtime)
 
     def update_automate_response_config_status_with_options(
         self,
