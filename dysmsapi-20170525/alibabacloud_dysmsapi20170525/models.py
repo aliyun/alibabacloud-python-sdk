@@ -7072,9 +7072,11 @@ class QueryExtCodeSignResponse(TeaModel):
 class QueryMobilesCardSupportRequest(TeaModel):
     def __init__(
         self,
+        encrypt_type: str = None,
         mobiles: List[Dict[str, Any]] = None,
         template_code: str = None,
     ):
+        self.encrypt_type = encrypt_type
         # The list of mobile phone numbers.
         # 
         # This parameter is required.
@@ -7095,6 +7097,8 @@ class QueryMobilesCardSupportRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.encrypt_type is not None:
+            result['EncryptType'] = self.encrypt_type
         if self.mobiles is not None:
             result['Mobiles'] = self.mobiles
         if self.template_code is not None:
@@ -7103,6 +7107,8 @@ class QueryMobilesCardSupportRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EncryptType') is not None:
+            self.encrypt_type = m.get('EncryptType')
         if m.get('Mobiles') is not None:
             self.mobiles = m.get('Mobiles')
         if m.get('TemplateCode') is not None:
@@ -7113,9 +7119,11 @@ class QueryMobilesCardSupportRequest(TeaModel):
 class QueryMobilesCardSupportShrinkRequest(TeaModel):
     def __init__(
         self,
+        encrypt_type: str = None,
         mobiles_shrink: str = None,
         template_code: str = None,
     ):
+        self.encrypt_type = encrypt_type
         # The list of mobile phone numbers.
         # 
         # This parameter is required.
@@ -7136,6 +7144,8 @@ class QueryMobilesCardSupportShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.encrypt_type is not None:
+            result['EncryptType'] = self.encrypt_type
         if self.mobiles_shrink is not None:
             result['Mobiles'] = self.mobiles_shrink
         if self.template_code is not None:
@@ -7144,6 +7154,8 @@ class QueryMobilesCardSupportShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EncryptType') is not None:
+            self.encrypt_type = m.get('EncryptType')
         if m.get('Mobiles') is not None:
             self.mobiles_shrink = m.get('Mobiles')
         if m.get('TemplateCode') is not None:

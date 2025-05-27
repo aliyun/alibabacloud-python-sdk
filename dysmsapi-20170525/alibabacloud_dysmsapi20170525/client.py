@@ -4129,6 +4129,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.mobiles):
             request.mobiles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.mobiles, 'Mobiles', 'json')
         query = {}
+        if not UtilClient.is_unset(request.encrypt_type):
+            query['EncryptType'] = request.encrypt_type
         if not UtilClient.is_unset(request.mobiles_shrink):
             query['Mobiles'] = request.mobiles_shrink
         if not UtilClient.is_unset(request.template_code):
@@ -4170,6 +4172,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.mobiles):
             request.mobiles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.mobiles, 'Mobiles', 'json')
         query = {}
+        if not UtilClient.is_unset(request.encrypt_type):
+            query['EncryptType'] = request.encrypt_type
         if not UtilClient.is_unset(request.mobiles_shrink):
             query['Mobiles'] = request.mobiles_shrink
         if not UtilClient.is_unset(request.template_code):

@@ -1,3 +1,7 @@
+2025-05-27 Version: 4.1.1
+- Update API QueryMobilesCardSupport: add request parameters EncryptType.
+
+
 2025-04-23 Version: 4.1.0
 - Support API DeleteSmsQualification.
 - Support API QuerySingleSmsQualification.
