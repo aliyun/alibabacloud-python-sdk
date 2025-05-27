@@ -1,3 +1,7 @@
+2025-05-27 Version: 7.1.2
+- Update API GetServiceProvisions: add response parameters Body.ServiceProvisions.$.CommodityProvisions.
+
+
 2025-05-22 Version: 7.1.1
 - Update API UpdateServiceInstanceAttribute: add request parameters LicenseData.ResponseInfo.
 
