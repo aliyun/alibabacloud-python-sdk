@@ -1,3 +1,7 @@
+2025-05-27 Version: 4.1.1
+- Update API GetServiceProvisions: add response parameters Body.ServiceProvisions.$.CommodityProvisions.
+
+
 2025-05-15 Version: 4.1.0
 - Support API ListServiceInstanceBill.
 - Update API ListServices: add response parameters Body.Services.$.ServiceInfos.$.Softwares.

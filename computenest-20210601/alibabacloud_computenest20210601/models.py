@@ -5526,6 +5526,45 @@ class GetServiceProvisionsShrinkRequest(TeaModel):
         return self
 
 
+class GetServiceProvisionsResponseBodyServiceProvisionsCommodityProvisions(TeaModel):
+    def __init__(
+        self,
+        commodity_code: str = None,
+        enable_url: str = None,
+        status: str = None,
+    ):
+        self.commodity_code = commodity_code
+        self.enable_url = enable_url
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.commodity_code is not None:
+            result['CommodityCode'] = self.commodity_code
+        if self.enable_url is not None:
+            result['EnableURL'] = self.enable_url
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommodityCode') is not None:
+            self.commodity_code = m.get('CommodityCode')
+        if m.get('EnableURL') is not None:
+            self.enable_url = m.get('EnableURL')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
 class GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRolesApiForCreation(TeaModel):
     def __init__(
         self,
@@ -5681,6 +5720,7 @@ class GetServiceProvisionsResponseBodyServiceProvisions(TeaModel):
     def __init__(
         self,
         auto_enable_service: bool = None,
+        commodity_provisions: List[GetServiceProvisionsResponseBodyServiceProvisionsCommodityProvisions] = None,
         enable_url: str = None,
         role_provision: GetServiceProvisionsResponseBodyServiceProvisionsRoleProvision = None,
         service_name: str = None,
@@ -5692,6 +5732,7 @@ class GetServiceProvisionsResponseBodyServiceProvisions(TeaModel):
         # *   true: Automatic activation for the service is defined in the template.
         # *   false: Manual activation for the service is defined in the template.
         self.auto_enable_service = auto_enable_service
+        self.commodity_provisions = commodity_provisions
         # The URL that points to the activation page of the service.
         # 
         # > This parameter is returned if Status is set to Disabled.
@@ -5712,6 +5753,10 @@ class GetServiceProvisionsResponseBodyServiceProvisions(TeaModel):
         self.status_reason = status_reason
 
     def validate(self):
+        if self.commodity_provisions:
+            for k in self.commodity_provisions:
+                if k:
+                    k.validate()
         if self.role_provision:
             self.role_provision.validate()
 
@@ -5723,6 +5768,10 @@ class GetServiceProvisionsResponseBodyServiceProvisions(TeaModel):
         result = dict()
         if self.auto_enable_service is not None:
             result['AutoEnableService'] = self.auto_enable_service
+        result['CommodityProvisions'] = []
+        if self.commodity_provisions is not None:
+            for k in self.commodity_provisions:
+                result['CommodityProvisions'].append(k.to_map() if k else None)
         if self.enable_url is not None:
             result['EnableURL'] = self.enable_url
         if self.role_provision is not None:
@@ -5739,6 +5788,11 @@ class GetServiceProvisionsResponseBodyServiceProvisions(TeaModel):
         m = m or dict()
         if m.get('AutoEnableService') is not None:
             self.auto_enable_service = m.get('AutoEnableService')
+        self.commodity_provisions = []
+        if m.get('CommodityProvisions') is not None:
+            for k in m.get('CommodityProvisions'):
+                temp_model = GetServiceProvisionsResponseBodyServiceProvisionsCommodityProvisions()
+                self.commodity_provisions.append(temp_model.from_map(k))
         if m.get('EnableURL') is not None:
             self.enable_url = m.get('EnableURL')
         if m.get('RoleProvision') is not None:
