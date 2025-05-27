@@ -10084,6 +10084,234 @@ class GetTopicSubscribeStatusResponse(TeaModel):
         return self
 
 
+class ListRebalanceInfoRequest(TeaModel):
+    def __init__(
+        self,
+        consumer_id: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.consumer_id = consumer_id
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.consumer_id is not None:
+            result['ConsumerId'] = self.consumer_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConsumerId') is not None:
+            self.consumer_id = m.get('ConsumerId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ListRebalanceInfoResponseBodyDataRebalanceInfoList(TeaModel):
+    def __init__(
+        self,
+        generation: int = None,
+        group_id: str = None,
+        last_rebalance_timestamp: int = None,
+        reason: str = None,
+        rebalance_success: bool = None,
+        rebalance_time_consuming: int = None,
+    ):
+        self.generation = generation
+        self.group_id = group_id
+        self.last_rebalance_timestamp = last_rebalance_timestamp
+        self.reason = reason
+        self.rebalance_success = rebalance_success
+        self.rebalance_time_consuming = rebalance_time_consuming
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.generation is not None:
+            result['Generation'] = self.generation
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.last_rebalance_timestamp is not None:
+            result['LastRebalanceTimestamp'] = self.last_rebalance_timestamp
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.rebalance_success is not None:
+            result['RebalanceSuccess'] = self.rebalance_success
+        if self.rebalance_time_consuming is not None:
+            result['RebalanceTimeConsuming'] = self.rebalance_time_consuming
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Generation') is not None:
+            self.generation = m.get('Generation')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('LastRebalanceTimestamp') is not None:
+            self.last_rebalance_timestamp = m.get('LastRebalanceTimestamp')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('RebalanceSuccess') is not None:
+            self.rebalance_success = m.get('RebalanceSuccess')
+        if m.get('RebalanceTimeConsuming') is not None:
+            self.rebalance_time_consuming = m.get('RebalanceTimeConsuming')
+        return self
+
+
+class ListRebalanceInfoResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        rebalance_info_list: List[ListRebalanceInfoResponseBodyDataRebalanceInfoList] = None,
+    ):
+        self.rebalance_info_list = rebalance_info_list
+
+    def validate(self):
+        if self.rebalance_info_list:
+            for k in self.rebalance_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['RebalanceInfoList'] = []
+        if self.rebalance_info_list is not None:
+            for k in self.rebalance_info_list:
+                result['RebalanceInfoList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.rebalance_info_list = []
+        if m.get('RebalanceInfoList') is not None:
+            for k in m.get('RebalanceInfoList'):
+                temp_model = ListRebalanceInfoResponseBodyDataRebalanceInfoList()
+                self.rebalance_info_list.append(temp_model.from_map(k))
+        return self
+
+
+class ListRebalanceInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: ListRebalanceInfoResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ListRebalanceInfoResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListRebalanceInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListRebalanceInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListRebalanceInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListTagResourcesRequestTag(TeaModel):
     def __init__(
         self,

@@ -1,3 +1,7 @@
+2025-05-27 Version: 2.11.0
+- Support API ListRebalanceInfo.
+
+
 2025-04-23 Version: 2.10.2
 - Update API GetConsumerProgress: add response parameters Body.ConsumerProgress.state.
 
