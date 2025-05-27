@@ -1,3 +1,13 @@
+2025-05-27 Version: 7.0.7
+- Update API CreateLaunchTemplate: add request parameters SystemDisk.KMSKeyId.
+- Update API CreateLaunchTemplate: add request parameters DataDisk.$.KMSKeyId.
+- Update API CreateLaunchTemplateVersion: add request parameters SystemDisk.KMSKeyId.
+- Update API CreateLaunchTemplateVersion: add request parameters DataDisk.$.KMSKeyId.
+- Update API CreateStorageSet: add request parameters ResourceGroupId.
+- Update API DescribeLaunchTemplateVersions: add response parameters Body.LaunchTemplateVersionSets.$.LaunchTemplateData.SystemDisk.KMSKeyId.
+- Update API DescribeLaunchTemplateVersions: add response parameters Body.LaunchTemplateVersionSets.$.LaunchTemplateData.DataDisks.$.KMSKeyId.
+
+
 2025-05-23 Version: 7.0.6
 - Update API DescribeInstanceTypes: add response parameters Body.InstanceTypes.$.Clock.
 

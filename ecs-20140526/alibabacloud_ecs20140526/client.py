@@ -11341,6 +11341,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -11401,6 +11403,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -15916,7 +15920,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteSnapshotResponse:
         """
-        @summary Deletes a snapshot. If you call this operation to delete a snapshot that is being created, the snapshot creation task is canceled.
+        @summary Deletes a specified snapshot. If you call this operation to delete a snapshot that is being created, the associated snapshot creation task is also canceled.
         
         @description Take note of the following items:
         If the snapshot does not exist, the request is ignored.
@@ -15966,7 +15970,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteSnapshotResponse:
         """
-        @summary Deletes a snapshot. If you call this operation to delete a snapshot that is being created, the snapshot creation task is canceled.
+        @summary Deletes a specified snapshot. If you call this operation to delete a snapshot that is being created, the associated snapshot creation task is also canceled.
         
         @description Take note of the following items:
         If the snapshot does not exist, the request is ignored.
@@ -16015,7 +16019,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteSnapshotRequest,
     ) -> ecs_20140526_models.DeleteSnapshotResponse:
         """
-        @summary Deletes a snapshot. If you call this operation to delete a snapshot that is being created, the snapshot creation task is canceled.
+        @summary Deletes a specified snapshot. If you call this operation to delete a snapshot that is being created, the associated snapshot creation task is also canceled.
         
         @description Take note of the following items:
         If the snapshot does not exist, the request is ignored.
@@ -16033,7 +16037,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteSnapshotRequest,
     ) -> ecs_20140526_models.DeleteSnapshotResponse:
         """
-        @summary Deletes a snapshot. If you call this operation to delete a snapshot that is being created, the snapshot creation task is canceled.
+        @summary Deletes a specified snapshot. If you call this operation to delete a snapshot that is being created, the associated snapshot creation task is also canceled.
         
         @description Take note of the following items:
         If the snapshot does not exist, the request is ignored.
