@@ -1,3 +1,22 @@
+2025-05-27 Version: 6.1.1
+- Update API CreateEventStreaming: add request parameters RunOptions.Throttling.
+- Update API CreateRule: add request parameters EventTargets.$.DeadLetterQueue.Network.
+- Update API CreateRule: add request parameters EventTargets.$.DeadLetterQueue.SecurityGroupId.
+- Update API CreateRule: add request parameters EventTargets.$.DeadLetterQueue.VSwitchIds.
+- Update API CreateRule: add request parameters EventTargets.$.DeadLetterQueue.VpcId.
+- Update API GetEventStreaming: add response parameters Body.Data.RunOptions.Throttling.
+- Update API GetRule: add response parameters Body.Data.Targets.$.DeadLetterQueue.Network.
+- Update API GetRule: add response parameters Body.Data.Targets.$.DeadLetterQueue.SecurityGroupId.
+- Update API GetRule: add response parameters Body.Data.Targets.$.DeadLetterQueue.VSwitchIds.
+- Update API GetRule: add response parameters Body.Data.Targets.$.DeadLetterQueue.VpcId.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.RunOptions.Throttling.
+- Update API PutTargets: add request parameters Targets.$.DeadLetterQueue.Network.
+- Update API PutTargets: add request parameters Targets.$.DeadLetterQueue.SecurityGroupId.
+- Update API PutTargets: add request parameters Targets.$.DeadLetterQueue.VSwitchIds.
+- Update API PutTargets: add request parameters Targets.$.DeadLetterQueue.VpcId.
+- Update API UpdateEventStreaming: add request parameters RunOptions.Throttling.
+
+
 2025-04-25 Version: 6.1.0
 - Support API CheckServiceLinkedRoleForProduct.
 - Update API CreateEventStreaming: add request parameters Sink.SinkBaiLianParameters.

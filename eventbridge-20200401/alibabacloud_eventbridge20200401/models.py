@@ -2699,6 +2699,7 @@ class CreateEventStreamingRequestRunOptions(TeaModel):
         errors_tolerance: str = None,
         maximum_tasks: int = None,
         retry_strategy: CreateEventStreamingRequestRunOptionsRetryStrategy = None,
+        throttling: int = None,
     ):
         # The batch window.
         self.batch_window = batch_window
@@ -2713,6 +2714,7 @@ class CreateEventStreamingRequestRunOptions(TeaModel):
         self.maximum_tasks = maximum_tasks
         # The retry policy that you want to use if events fail to be pushed.
         self.retry_strategy = retry_strategy
+        self.throttling = throttling
 
     def validate(self):
         if self.batch_window:
@@ -2738,6 +2740,8 @@ class CreateEventStreamingRequestRunOptions(TeaModel):
             result['MaximumTasks'] = self.maximum_tasks
         if self.retry_strategy is not None:
             result['RetryStrategy'] = self.retry_strategy.to_map()
+        if self.throttling is not None:
+            result['Throttling'] = self.throttling
         return result
 
     def from_map(self, m: dict = None):
@@ -2755,6 +2759,8 @@ class CreateEventStreamingRequestRunOptions(TeaModel):
         if m.get('RetryStrategy') is not None:
             temp_model = CreateEventStreamingRequestRunOptionsRetryStrategy()
             self.retry_strategy = temp_model.from_map(m['RetryStrategy'])
+        if m.get('Throttling') is not None:
+            self.throttling = m.get('Throttling')
         return self
 
 
@@ -9273,9 +9279,17 @@ class CreateRuleRequestEventTargetsDeadLetterQueue(TeaModel):
     def __init__(
         self,
         arn: str = None,
+        network: str = None,
+        security_group_id: str = None,
+        v_switch_ids: str = None,
+        vpc_id: str = None,
     ):
         # The Alibaba Cloud Resource Name (ARN) of the dead-letter queue. Events that are not processed or whose maximum retries are exceeded are written to the dead-letter queue. The ARN feature is supported by the following queue types: MNS and Message Queue for Apache RocketMQ.
         self.arn = arn
+        self.network = network
+        self.security_group_id = security_group_id
+        self.v_switch_ids = v_switch_ids
+        self.vpc_id = vpc_id
 
     def validate(self):
         pass
@@ -9288,12 +9302,28 @@ class CreateRuleRequestEventTargetsDeadLetterQueue(TeaModel):
         result = dict()
         if self.arn is not None:
             result['Arn'] = self.arn
+        if self.network is not None:
+            result['Network'] = self.network
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Arn') is not None:
             self.arn = m.get('Arn')
+        if m.get('Network') is not None:
+            self.network = m.get('Network')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         return self
 
 
@@ -13100,6 +13130,7 @@ class GetEventStreamingResponseBodyDataRunOptions(TeaModel):
         errors_tolerance: str = None,
         maximum_tasks: int = None,
         retry_strategy: GetEventStreamingResponseBodyDataRunOptionsRetryStrategy = None,
+        throttling: int = None,
     ):
         # The batch window.
         self.batch_window = batch_window
@@ -13111,6 +13142,7 @@ class GetEventStreamingResponseBodyDataRunOptions(TeaModel):
         self.maximum_tasks = maximum_tasks
         # The information about the retry policy that is used if the event fails to be pushed.
         self.retry_strategy = retry_strategy
+        self.throttling = throttling
 
     def validate(self):
         if self.batch_window:
@@ -13136,6 +13168,8 @@ class GetEventStreamingResponseBodyDataRunOptions(TeaModel):
             result['MaximumTasks'] = self.maximum_tasks
         if self.retry_strategy is not None:
             result['RetryStrategy'] = self.retry_strategy.to_map()
+        if self.throttling is not None:
+            result['Throttling'] = self.throttling
         return result
 
     def from_map(self, m: dict = None):
@@ -13153,6 +13187,8 @@ class GetEventStreamingResponseBodyDataRunOptions(TeaModel):
         if m.get('RetryStrategy') is not None:
             temp_model = GetEventStreamingResponseBodyDataRunOptionsRetryStrategy()
             self.retry_strategy = temp_model.from_map(m['RetryStrategy'])
+        if m.get('Throttling') is not None:
+            self.throttling = m.get('Throttling')
         return self
 
 
@@ -18876,9 +18912,17 @@ class GetRuleResponseBodyDataTargetsDeadLetterQueue(TeaModel):
     def __init__(
         self,
         arn: str = None,
+        network: str = None,
+        security_group_id: str = None,
+        v_switch_ids: str = None,
+        vpc_id: str = None,
     ):
         # The Alibaba Cloud Resource Name (ARN) of the dead-letter queue.
         self.arn = arn
+        self.network = network
+        self.security_group_id = security_group_id
+        self.v_switch_ids = v_switch_ids
+        self.vpc_id = vpc_id
 
     def validate(self):
         pass
@@ -18891,12 +18935,28 @@ class GetRuleResponseBodyDataTargetsDeadLetterQueue(TeaModel):
         result = dict()
         if self.arn is not None:
             result['Arn'] = self.arn
+        if self.network is not None:
+            result['Network'] = self.network
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Arn') is not None:
             self.arn = m.get('Arn')
+        if m.get('Network') is not None:
+            self.network = m.get('Network')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         return self
 
 
@@ -21040,6 +21100,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsRunOptions(TeaModel):
         errors_tolerance: str = None,
         maximum_tasks: int = None,
         retry_strategy: ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsRetryStrategy = None,
+        throttling: int = None,
     ):
         # The batch window.
         self.batch_window = batch_window
@@ -21051,6 +21112,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsRunOptions(TeaModel):
         self.maximum_tasks = maximum_tasks
         # The retry policy that is used if events fail to be pushed.
         self.retry_strategy = retry_strategy
+        self.throttling = throttling
 
     def validate(self):
         if self.batch_window:
@@ -21076,6 +21138,8 @@ class ListEventStreamingsResponseBodyDataEventStreamingsRunOptions(TeaModel):
             result['MaximumTasks'] = self.maximum_tasks
         if self.retry_strategy is not None:
             result['RetryStrategy'] = self.retry_strategy.to_map()
+        if self.throttling is not None:
+            result['Throttling'] = self.throttling
         return result
 
     def from_map(self, m: dict = None):
@@ -21093,6 +21157,8 @@ class ListEventStreamingsResponseBodyDataEventStreamingsRunOptions(TeaModel):
         if m.get('RetryStrategy') is not None:
             temp_model = ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsRetryStrategy()
             self.retry_strategy = temp_model.from_map(m['RetryStrategy'])
+        if m.get('Throttling') is not None:
+            self.throttling = m.get('Throttling')
         return self
 
 
@@ -28480,9 +28546,17 @@ class PutTargetsRequestTargetsDeadLetterQueue(TeaModel):
     def __init__(
         self,
         arn: str = None,
+        network: str = None,
+        security_group_id: str = None,
+        v_switch_ids: str = None,
+        vpc_id: str = None,
     ):
         # The Alibaba Cloud Resource Name (ARN) of the dead-letter queue. Events that are not processed or whose maximum retries have been exceeded are written to the dead-letter queue.
         self.arn = arn
+        self.network = network
+        self.security_group_id = security_group_id
+        self.v_switch_ids = v_switch_ids
+        self.vpc_id = vpc_id
 
     def validate(self):
         pass
@@ -28495,12 +28569,28 @@ class PutTargetsRequestTargetsDeadLetterQueue(TeaModel):
         result = dict()
         if self.arn is not None:
             result['Arn'] = self.arn
+        if self.network is not None:
+            result['Network'] = self.network
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Arn') is not None:
             self.arn = m.get('Arn')
+        if m.get('Network') is not None:
+            self.network = m.get('Network')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         return self
 
 
@@ -32207,6 +32297,7 @@ class UpdateEventStreamingRequestRunOptions(TeaModel):
         errors_tolerance: str = None,
         maximum_tasks: int = None,
         retry_strategy: UpdateEventStreamingRequestRunOptionsRetryStrategy = None,
+        throttling: int = None,
     ):
         # The batch window.
         self.batch_window = batch_window
@@ -32218,6 +32309,7 @@ class UpdateEventStreamingRequestRunOptions(TeaModel):
         self.maximum_tasks = maximum_tasks
         # The retry policy that you want to use if events fail to be pushed.
         self.retry_strategy = retry_strategy
+        self.throttling = throttling
 
     def validate(self):
         if self.batch_window:
@@ -32243,6 +32335,8 @@ class UpdateEventStreamingRequestRunOptions(TeaModel):
             result['MaximumTasks'] = self.maximum_tasks
         if self.retry_strategy is not None:
             result['RetryStrategy'] = self.retry_strategy.to_map()
+        if self.throttling is not None:
+            result['Throttling'] = self.throttling
         return result
 
     def from_map(self, m: dict = None):
@@ -32260,6 +32354,8 @@ class UpdateEventStreamingRequestRunOptions(TeaModel):
         if m.get('RetryStrategy') is not None:
             temp_model = UpdateEventStreamingRequestRunOptionsRetryStrategy()
             self.retry_strategy = temp_model.from_map(m['RetryStrategy'])
+        if m.get('Throttling') is not None:
+            self.throttling = m.get('Throttling')
         return self
 
 
