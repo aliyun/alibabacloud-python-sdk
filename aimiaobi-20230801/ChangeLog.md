@@ -1,3 +1,7 @@
+2025-05-27 Version: 1.26.3
+- Update API RunDocSummary: add request parameters ModelName.
+
+
 2025-05-23 Version: 1.26.2
 - Update API GetGeneratedContent: add response parameters Body.Data.IgnoreContentAuditWords.
 

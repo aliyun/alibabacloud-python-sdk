@@ -11495,6 +11495,8 @@ class Client(OpenApiClient):
             body['CleanCache'] = request.clean_cache
         if not UtilClient.is_unset(request.doc_id):
             body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.model_name):
+            body['ModelName'] = request.model_name
         if not UtilClient.is_unset(request.query):
             body['Query'] = request.query
         if not UtilClient.is_unset(request.recommend_content):
@@ -11540,6 +11542,8 @@ class Client(OpenApiClient):
             body['CleanCache'] = request.clean_cache
         if not UtilClient.is_unset(request.doc_id):
             body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.model_name):
+            body['ModelName'] = request.model_name
         if not UtilClient.is_unset(request.query):
             body['Query'] = request.query
         if not UtilClient.is_unset(request.recommend_content):

@@ -30901,6 +30901,7 @@ class RunDocSummaryRequest(TeaModel):
         self,
         clean_cache: bool = None,
         doc_id: str = None,
+        model_name: str = None,
         query: str = None,
         recommend_content: str = None,
         session_id: str = None,
@@ -30908,6 +30909,7 @@ class RunDocSummaryRequest(TeaModel):
     ):
         self.clean_cache = clean_cache
         self.doc_id = doc_id
+        self.model_name = model_name
         self.query = query
         self.recommend_content = recommend_content
         # This parameter is required.
@@ -30928,6 +30930,8 @@ class RunDocSummaryRequest(TeaModel):
             result['CleanCache'] = self.clean_cache
         if self.doc_id is not None:
             result['DocId'] = self.doc_id
+        if self.model_name is not None:
+            result['ModelName'] = self.model_name
         if self.query is not None:
             result['Query'] = self.query
         if self.recommend_content is not None:
@@ -30944,6 +30948,8 @@ class RunDocSummaryRequest(TeaModel):
             self.clean_cache = m.get('CleanCache')
         if m.get('DocId') is not None:
             self.doc_id = m.get('DocId')
+        if m.get('ModelName') is not None:
+            self.model_name = m.get('ModelName')
         if m.get('Query') is not None:
             self.query = m.get('Query')
         if m.get('RecommendContent') is not None:
