@@ -1,3 +1,9 @@
+2025-05-28 Version: 3.1.1
+- Update API CreateConsumerGroup: add request parameters body.consumeRetryPolicy.fixedIntervalRetryTime.
+- Update API GetConsumerGroup: add response parameters Body.data.consumeRetryPolicy.fixedIntervalRetryTime.
+- Update API UpdateConsumerGroup: add request parameters body.consumeRetryPolicy.fixedIntervalRetryTime.
+
+
 2025-04-15 Version: 3.1.0
 - Support API CreateDisasterRecoveryPlan.
 - Support API DeleteDisasterRecoveryItem.

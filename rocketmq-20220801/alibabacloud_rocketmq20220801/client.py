@@ -75,16 +75,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.AddDisasterRecoveryItemResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.AddDisasterRecoveryItemResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.AddDisasterRecoveryItemResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def add_disaster_recovery_item_with_options_async(
         self,
@@ -120,16 +114,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.AddDisasterRecoveryItemResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.AddDisasterRecoveryItemResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.AddDisasterRecoveryItemResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def add_disaster_recovery_item(
         self,
@@ -200,16 +188,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ChangeResourceGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ChangeResourceGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ChangeResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def change_resource_group_with_options_async(
         self,
@@ -250,16 +232,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ChangeResourceGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ChangeResourceGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ChangeResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def change_resource_group(
         self,
@@ -336,16 +312,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.CreateConsumerGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.CreateConsumerGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.CreateConsumerGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_consumer_group_with_options_async(
         self,
@@ -394,16 +364,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.CreateConsumerGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.CreateConsumerGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.CreateConsumerGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_consumer_group(
         self,
@@ -492,16 +456,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.CreateDisasterRecoveryPlanResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.CreateDisasterRecoveryPlanResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.CreateDisasterRecoveryPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_disaster_recovery_plan_with_options_async(
         self,
@@ -546,16 +504,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.CreateDisasterRecoveryPlanResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.CreateDisasterRecoveryPlanResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.CreateDisasterRecoveryPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_disaster_recovery_plan(
         self,
@@ -652,16 +604,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.CreateInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.CreateInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.CreateInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_instance_with_options_async(
         self,
@@ -730,16 +676,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.CreateInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.CreateInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.CreateInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_instance(
         self,
@@ -809,16 +749,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.CreateInstanceAccountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.CreateInstanceAccountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.CreateInstanceAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_instance_account_with_options_async(
         self,
@@ -856,16 +790,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.CreateInstanceAccountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.CreateInstanceAccountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.CreateInstanceAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_instance_account(
         self,
@@ -940,16 +868,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.CreateInstanceAclResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.CreateInstanceAclResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.CreateInstanceAclResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_instance_acl_with_options_async(
         self,
@@ -994,16 +916,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.CreateInstanceAclResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.CreateInstanceAclResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.CreateInstanceAclResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_instance_acl(
         self,
@@ -1071,16 +987,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.CreateInstanceIpWhitelistResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.CreateInstanceIpWhitelistResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.CreateInstanceIpWhitelistResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_instance_ip_whitelist_with_options_async(
         self,
@@ -1116,16 +1026,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.CreateInstanceIpWhitelistResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.CreateInstanceIpWhitelistResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.CreateInstanceIpWhitelistResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_instance_ip_whitelist(
         self,
@@ -1196,16 +1100,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.CreateTopicResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.CreateTopicResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.CreateTopicResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_topic_with_options_async(
         self,
@@ -1246,16 +1144,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.CreateTopicResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.CreateTopicResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.CreateTopicResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_topic(
         self,
@@ -1320,16 +1212,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.DeleteConsumerGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.DeleteConsumerGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.DeleteConsumerGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_consumer_group_with_options_async(
         self,
@@ -1362,16 +1248,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.DeleteConsumerGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.DeleteConsumerGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.DeleteConsumerGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_consumer_group(
         self,
@@ -1446,16 +1326,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.DeleteConsumerGroupSubscriptionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.DeleteConsumerGroupSubscriptionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.DeleteConsumerGroupSubscriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_consumer_group_subscription_with_options_async(
         self,
@@ -1496,16 +1370,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.DeleteConsumerGroupSubscriptionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.DeleteConsumerGroupSubscriptionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.DeleteConsumerGroupSubscriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_consumer_group_subscription(
         self,
@@ -1567,16 +1435,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.DeleteDisasterRecoveryItemResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.DeleteDisasterRecoveryItemResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.DeleteDisasterRecoveryItemResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_disaster_recovery_item_with_options_async(
         self,
@@ -1606,16 +1468,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.DeleteDisasterRecoveryItemResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.DeleteDisasterRecoveryItemResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.DeleteDisasterRecoveryItemResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_disaster_recovery_item(
         self,
@@ -1672,16 +1528,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.DeleteDisasterRecoveryPlanResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.DeleteDisasterRecoveryPlanResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.DeleteDisasterRecoveryPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_disaster_recovery_plan_with_options_async(
         self,
@@ -1710,16 +1560,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.DeleteDisasterRecoveryPlanResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.DeleteDisasterRecoveryPlanResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.DeleteDisasterRecoveryPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_disaster_recovery_plan(
         self,
@@ -1778,16 +1622,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.DeleteInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.DeleteInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.DeleteInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_instance_with_options_async(
         self,
@@ -1820,16 +1658,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.DeleteInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.DeleteInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.DeleteInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_instance(
         self,
@@ -1893,16 +1725,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.DeleteInstanceAccountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.DeleteInstanceAccountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.DeleteInstanceAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_instance_account_with_options_async(
         self,
@@ -1932,16 +1758,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.DeleteInstanceAccountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.DeleteInstanceAccountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.DeleteInstanceAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_instance_account(
         self,
@@ -2008,16 +1828,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.DeleteInstanceAclResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.DeleteInstanceAclResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.DeleteInstanceAclResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_instance_acl_with_options_async(
         self,
@@ -2056,16 +1870,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.DeleteInstanceAclResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.DeleteInstanceAclResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.DeleteInstanceAclResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_instance_acl(
         self,
@@ -2139,16 +1947,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.DeleteInstanceIpWhitelistResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.DeleteInstanceIpWhitelistResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.DeleteInstanceIpWhitelistResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_instance_ip_whitelist_with_options_async(
         self,
@@ -2190,16 +1992,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.DeleteInstanceIpWhitelistResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.DeleteInstanceIpWhitelistResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.DeleteInstanceIpWhitelistResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_instance_ip_whitelist(
         self,
@@ -2261,16 +2057,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.DeleteTopicResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.DeleteTopicResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.DeleteTopicResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_topic_with_options_async(
         self,
@@ -2302,16 +2092,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.DeleteTopicResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.DeleteTopicResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.DeleteTopicResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_topic(
         self,
@@ -2375,16 +2159,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetConsumerGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetConsumerGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetConsumerGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_consumer_group_with_options_async(
         self,
@@ -2416,16 +2194,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetConsumerGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetConsumerGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetConsumerGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_consumer_group(
         self,
@@ -2494,16 +2266,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetConsumerGroupLagResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetConsumerGroupLagResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetConsumerGroupLagResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_consumer_group_lag_with_options_async(
         self,
@@ -2540,16 +2306,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetConsumerGroupLagResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetConsumerGroupLagResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetConsumerGroupLagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_consumer_group_lag(
         self,
@@ -2612,16 +2372,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetConsumerGroupSubscriptionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetConsumerGroupSubscriptionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetConsumerGroupSubscriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_consumer_group_subscription_with_options_async(
         self,
@@ -2652,16 +2406,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetConsumerGroupSubscriptionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetConsumerGroupSubscriptionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetConsumerGroupSubscriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_consumer_group_subscription(
         self,
@@ -2728,16 +2476,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetConsumerStackResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetConsumerStackResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetConsumerStackResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_consumer_stack_with_options_async(
         self,
@@ -2774,16 +2516,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetConsumerStackResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetConsumerStackResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetConsumerStackResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_consumer_stack(
         self,
@@ -2845,16 +2581,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetDisasterRecoveryItemResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetDisasterRecoveryItemResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetDisasterRecoveryItemResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_disaster_recovery_item_with_options_async(
         self,
@@ -2884,16 +2614,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetDisasterRecoveryItemResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetDisasterRecoveryItemResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetDisasterRecoveryItemResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_disaster_recovery_item(
         self,
@@ -2950,16 +2674,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetDisasterRecoveryPlanResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetDisasterRecoveryPlanResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetDisasterRecoveryPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_disaster_recovery_plan_with_options_async(
         self,
@@ -2988,16 +2706,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetDisasterRecoveryPlanResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetDisasterRecoveryPlanResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetDisasterRecoveryPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_disaster_recovery_plan(
         self,
@@ -3054,16 +2766,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_instance_with_options_async(
         self,
@@ -3094,16 +2800,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_instance(
         self,
@@ -3169,16 +2869,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetInstanceAccountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetInstanceAccountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetInstanceAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_instance_account_with_options_async(
         self,
@@ -3214,16 +2908,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetInstanceAccountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetInstanceAccountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetInstanceAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_instance_account(
         self,
@@ -3292,16 +2980,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetInstanceAclResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetInstanceAclResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetInstanceAclResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_instance_acl_with_options_async(
         self,
@@ -3340,16 +3022,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetInstanceAclResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetInstanceAclResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetInstanceAclResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_instance_acl(
         self,
@@ -3421,16 +3097,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetInstanceIpWhitelistResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetInstanceIpWhitelistResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetInstanceIpWhitelistResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_instance_ip_whitelist_with_options_async(
         self,
@@ -3470,16 +3140,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetInstanceIpWhitelistResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetInstanceIpWhitelistResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetInstanceIpWhitelistResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_instance_ip_whitelist(
         self,
@@ -3540,16 +3204,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetMessageDetailResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetMessageDetailResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetMessageDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_message_detail_with_options_async(
         self,
@@ -3580,16 +3238,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetMessageDetailResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetMessageDetailResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetMessageDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_message_detail(
         self,
@@ -3649,16 +3301,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetTopicResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetTopicResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetTopicResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_topic_with_options_async(
         self,
@@ -3688,16 +3334,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetTopicResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetTopicResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetTopicResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_topic(
         self,
@@ -3756,16 +3396,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetTraceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetTraceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetTraceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_trace_with_options_async(
         self,
@@ -3796,16 +3430,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetTraceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.GetTraceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetTraceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_trace(
         self,
@@ -3863,16 +3491,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListAvailableZonesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListAvailableZonesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListAvailableZonesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_available_zones_with_options_async(
         self,
@@ -3900,16 +3522,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListAvailableZonesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListAvailableZonesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListAvailableZonesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_available_zones(self) -> rocket_mq20220801_models.ListAvailableZonesResponse:
         """
@@ -3959,16 +3575,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListConsumerConnectionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListConsumerConnectionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListConsumerConnectionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_consumer_connections_with_options_async(
         self,
@@ -3998,16 +3608,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListConsumerConnectionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListConsumerConnectionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListConsumerConnectionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_consumer_connections(
         self,
@@ -4072,16 +3676,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListConsumerGroupSubscriptionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListConsumerGroupSubscriptionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListConsumerGroupSubscriptionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_consumer_group_subscriptions_with_options_async(
         self,
@@ -4118,16 +3716,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListConsumerGroupSubscriptionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListConsumerGroupSubscriptionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListConsumerGroupSubscriptionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_consumer_group_subscriptions(
         self,
@@ -4201,16 +3793,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListConsumerGroupsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListConsumerGroupsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListConsumerGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_consumer_groups_with_options_async(
         self,
@@ -4252,16 +3838,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListConsumerGroupsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListConsumerGroupsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListConsumerGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_consumer_groups(
         self,
@@ -4338,16 +3918,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListDisasterRecoveryCheckpointsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListDisasterRecoveryCheckpointsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListDisasterRecoveryCheckpointsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_disaster_recovery_checkpoints_with_options_async(
         self,
@@ -4390,16 +3964,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListDisasterRecoveryCheckpointsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListDisasterRecoveryCheckpointsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListDisasterRecoveryCheckpointsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_disaster_recovery_checkpoints(
         self,
@@ -4473,16 +4041,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListDisasterRecoveryItemsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListDisasterRecoveryItemsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListDisasterRecoveryItemsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_disaster_recovery_items_with_options_async(
         self,
@@ -4524,16 +4086,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListDisasterRecoveryItemsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListDisasterRecoveryItemsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListDisasterRecoveryItemsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_disaster_recovery_items(
         self,
@@ -4604,16 +4160,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListDisasterRecoveryPlansResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListDisasterRecoveryPlansResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListDisasterRecoveryPlansResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_disaster_recovery_plans_with_options_async(
         self,
@@ -4654,16 +4204,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListDisasterRecoveryPlansResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListDisasterRecoveryPlansResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListDisasterRecoveryPlansResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_disaster_recovery_plans(
         self,
@@ -4735,16 +4279,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListInstanceAccountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListInstanceAccountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListInstanceAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_instance_account_with_options_async(
         self,
@@ -4788,16 +4326,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListInstanceAccountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListInstanceAccountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListInstanceAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_instance_account(
         self,
@@ -4867,16 +4399,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListInstanceAclResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListInstanceAclResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListInstanceAclResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_instance_acl_with_options_async(
         self,
@@ -4916,16 +4442,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListInstanceAclResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListInstanceAclResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListInstanceAclResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_instance_acl(
         self,
@@ -4995,16 +4515,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListInstanceIpWhitelistResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListInstanceIpWhitelistResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListInstanceIpWhitelistResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_instance_ip_whitelist_with_options_async(
         self,
@@ -5044,16 +4558,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListInstanceIpWhitelistResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListInstanceIpWhitelistResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListInstanceIpWhitelistResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_instance_ip_whitelist(
         self,
@@ -5136,16 +4644,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_instances_with_options_async(
         self,
@@ -5198,16 +4700,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_instances(
         self,
@@ -5288,16 +4784,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListMessagesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListMessagesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListMessagesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_messages_with_options_async(
         self,
@@ -5346,16 +4836,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListMessagesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListMessagesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListMessagesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_messages(
         self,
@@ -5424,16 +4908,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListMetricMetaResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListMetricMetaResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListMetricMetaResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_metric_meta_with_options_async(
         self,
@@ -5470,16 +4948,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListMetricMetaResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListMetricMetaResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListMetricMetaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_metric_meta(
         self,
@@ -5535,16 +5007,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListRegionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListRegionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_regions_with_options_async(
         self,
@@ -5572,16 +5038,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListRegionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListRegionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_regions(self) -> rocket_mq20220801_models.ListRegionsResponse:
         """
@@ -5646,16 +5106,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListTagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListTagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_tag_resources_with_options_async(
         self,
@@ -5700,16 +5154,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListTagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListTagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_tag_resources(
         self,
@@ -5767,16 +5215,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListTopicSubscriptionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListTopicSubscriptionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListTopicSubscriptionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_topic_subscriptions_with_options_async(
         self,
@@ -5806,16 +5248,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListTopicSubscriptionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListTopicSubscriptionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListTopicSubscriptionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_topic_subscriptions(
         self,
@@ -5889,16 +5325,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListTopicsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListTopicsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListTopicsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_topics_with_options_async(
         self,
@@ -5944,16 +5374,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListTopicsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListTopicsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListTopicsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_topics(
         self,
@@ -6032,16 +5456,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListTracesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListTracesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListTracesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_traces_with_options_async(
         self,
@@ -6090,16 +5508,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListTracesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ListTracesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListTracesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_traces(
         self,
@@ -6171,16 +5583,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ResetConsumeOffsetResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ResetConsumeOffsetResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ResetConsumeOffsetResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def reset_consume_offset_with_options_async(
         self,
@@ -6220,16 +5626,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ResetConsumeOffsetResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.ResetConsumeOffsetResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ResetConsumeOffsetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def reset_consume_offset(
         self,
@@ -6293,16 +5693,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.StartDisasterRecoveryItemResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.StartDisasterRecoveryItemResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.StartDisasterRecoveryItemResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def start_disaster_recovery_item_with_options_async(
         self,
@@ -6332,16 +5726,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.StartDisasterRecoveryItemResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.StartDisasterRecoveryItemResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.StartDisasterRecoveryItemResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def start_disaster_recovery_item(
         self,
@@ -6399,16 +5787,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.StopDisasterRecoveryItemResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.StopDisasterRecoveryItemResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.StopDisasterRecoveryItemResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def stop_disaster_recovery_item_with_options_async(
         self,
@@ -6438,16 +5820,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.StopDisasterRecoveryItemResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.StopDisasterRecoveryItemResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.StopDisasterRecoveryItemResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def stop_disaster_recovery_item(
         self,
@@ -6506,16 +5882,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.SyncDisasterRecoveryCheckpointResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.SyncDisasterRecoveryCheckpointResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.SyncDisasterRecoveryCheckpointResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def sync_disaster_recovery_checkpoint_with_options_async(
         self,
@@ -6546,16 +5916,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.SyncDisasterRecoveryCheckpointResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.SyncDisasterRecoveryCheckpointResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.SyncDisasterRecoveryCheckpointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def sync_disaster_recovery_checkpoint(
         self,
@@ -6626,16 +5990,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.TagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.TagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def tag_resources_with_options_async(
         self,
@@ -6676,16 +6034,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.TagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.TagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def tag_resources(
         self,
@@ -6756,16 +6108,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.UntagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.UntagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def untag_resources_with_options_async(
         self,
@@ -6808,16 +6154,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.UntagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.UntagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.UntagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def untag_resources(
         self,
@@ -6890,16 +6230,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.UpdateConsumerGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.UpdateConsumerGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.UpdateConsumerGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_consumer_group_with_options_async(
         self,
@@ -6944,16 +6278,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.UpdateConsumerGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.UpdateConsumerGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.UpdateConsumerGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_consumer_group(
         self,
@@ -7026,16 +6354,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.UpdateDisasterRecoveryItemResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.UpdateDisasterRecoveryItemResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.UpdateDisasterRecoveryItemResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_disaster_recovery_item_with_options_async(
         self,
@@ -7072,16 +6394,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.UpdateDisasterRecoveryItemResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.UpdateDisasterRecoveryItemResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.UpdateDisasterRecoveryItemResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_disaster_recovery_item(
         self,
@@ -7159,16 +6475,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.UpdateDisasterRecoveryPlanResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.UpdateDisasterRecoveryPlanResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.UpdateDisasterRecoveryPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_disaster_recovery_plan_with_options_async(
         self,
@@ -7214,16 +6524,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.UpdateDisasterRecoveryPlanResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.UpdateDisasterRecoveryPlanResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.UpdateDisasterRecoveryPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_disaster_recovery_plan(
         self,
@@ -7299,16 +6603,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.UpdateInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.UpdateInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.UpdateInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_instance_with_options_async(
         self,
@@ -7354,16 +6652,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.UpdateInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.UpdateInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.UpdateInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_instance(
         self,
@@ -7436,16 +6728,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.UpdateInstanceAccountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.UpdateInstanceAccountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.UpdateInstanceAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_instance_account_with_options_async(
         self,
@@ -7484,16 +6770,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.UpdateInstanceAccountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.UpdateInstanceAccountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.UpdateInstanceAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_instance_account(
         self,
@@ -7570,16 +6850,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.UpdateInstanceAclResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.UpdateInstanceAclResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.UpdateInstanceAclResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_instance_acl_with_options_async(
         self,
@@ -7624,16 +6898,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.UpdateInstanceAclResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.UpdateInstanceAclResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.UpdateInstanceAclResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_instance_acl(
         self,
@@ -7704,16 +6972,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.UpdateTopicResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.UpdateTopicResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.UpdateTopicResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_topic_with_options_async(
         self,
@@ -7752,16 +7014,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.UpdateTopicResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.UpdateTopicResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.UpdateTopicResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_topic(
         self,
@@ -7833,16 +7089,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.VerifyConsumeMessageResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.VerifyConsumeMessageResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.VerifyConsumeMessageResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def verify_consume_message_with_options_async(
         self,
@@ -7882,16 +7132,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.VerifyConsumeMessageResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.VerifyConsumeMessageResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.VerifyConsumeMessageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def verify_consume_message(
         self,
@@ -7966,16 +7210,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.VerifySendMessageResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.VerifySendMessageResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.VerifySendMessageResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def verify_send_message_with_options_async(
         self,
@@ -8016,16 +7254,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                rocket_mq20220801_models.VerifySendMessageResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                rocket_mq20220801_models.VerifySendMessageResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.VerifySendMessageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def verify_send_message(
         self,

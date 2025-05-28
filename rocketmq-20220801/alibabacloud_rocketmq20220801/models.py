@@ -464,6 +464,7 @@ class CreateConsumerGroupRequestConsumeRetryPolicy(TeaModel):
     def __init__(
         self,
         dead_letter_target_topic: str = None,
+        fixed_interval_retry_time: int = None,
         max_retry_times: int = None,
         retry_policy: str = None,
     ):
@@ -471,6 +472,7 @@ class CreateConsumerGroupRequestConsumeRetryPolicy(TeaModel):
         # 
         # If a consumer still fails to consume a message after the message is retried for a specified number of times, the message is delivered to a dead-letter topic for subsequent business recovery or troubleshooting. For more information, see [Consumption retry and dead-letter messages](https://help.aliyun.com/document_detail/440356.html).
         self.dead_letter_target_topic = dead_letter_target_topic
+        self.fixed_interval_retry_time = fixed_interval_retry_time
         # The maximum number of retries.
         self.max_retry_times = max_retry_times
         # The retry policy. For more information, see [Message retry](https://help.aliyun.com/document_detail/440356.html).
@@ -494,6 +496,8 @@ class CreateConsumerGroupRequestConsumeRetryPolicy(TeaModel):
         result = dict()
         if self.dead_letter_target_topic is not None:
             result['deadLetterTargetTopic'] = self.dead_letter_target_topic
+        if self.fixed_interval_retry_time is not None:
+            result['fixedIntervalRetryTime'] = self.fixed_interval_retry_time
         if self.max_retry_times is not None:
             result['maxRetryTimes'] = self.max_retry_times
         if self.retry_policy is not None:
@@ -504,6 +508,8 @@ class CreateConsumerGroupRequestConsumeRetryPolicy(TeaModel):
         m = m or dict()
         if m.get('deadLetterTargetTopic') is not None:
             self.dead_letter_target_topic = m.get('deadLetterTargetTopic')
+        if m.get('fixedIntervalRetryTime') is not None:
+            self.fixed_interval_retry_time = m.get('fixedIntervalRetryTime')
         if m.get('maxRetryTimes') is not None:
             self.max_retry_times = m.get('maxRetryTimes')
         if m.get('retryPolicy') is not None:
@@ -3675,6 +3681,7 @@ class GetConsumerGroupResponseBodyDataConsumeRetryPolicy(TeaModel):
     def __init__(
         self,
         dead_letter_target_topic: str = None,
+        fixed_interval_retry_time: int = None,
         max_retry_times: int = None,
         retry_policy: str = None,
     ):
@@ -3682,6 +3689,7 @@ class GetConsumerGroupResponseBodyDataConsumeRetryPolicy(TeaModel):
         # 
         # If a consumer still fails to consume a message after the message is retried for a specified number of times, the message is delivered to a dead-letter topic for subsequent business recovery or troubleshooting. For more information, see [Consumption retry and dead-letter messages](https://help.aliyun.com/document_detail/440356.html).
         self.dead_letter_target_topic = dead_letter_target_topic
+        self.fixed_interval_retry_time = fixed_interval_retry_time
         # The maximum number of retries.
         self.max_retry_times = max_retry_times
         # The retry policy.
@@ -3728,6 +3736,8 @@ class GetConsumerGroupResponseBodyDataConsumeRetryPolicy(TeaModel):
         result = dict()
         if self.dead_letter_target_topic is not None:
             result['deadLetterTargetTopic'] = self.dead_letter_target_topic
+        if self.fixed_interval_retry_time is not None:
+            result['fixedIntervalRetryTime'] = self.fixed_interval_retry_time
         if self.max_retry_times is not None:
             result['maxRetryTimes'] = self.max_retry_times
         if self.retry_policy is not None:
@@ -3738,6 +3748,8 @@ class GetConsumerGroupResponseBodyDataConsumeRetryPolicy(TeaModel):
         m = m or dict()
         if m.get('deadLetterTargetTopic') is not None:
             self.dead_letter_target_topic = m.get('deadLetterTargetTopic')
+        if m.get('fixedIntervalRetryTime') is not None:
+            self.fixed_interval_retry_time = m.get('fixedIntervalRetryTime')
         if m.get('maxRetryTimes') is not None:
             self.max_retry_times = m.get('maxRetryTimes')
         if m.get('retryPolicy') is not None:
@@ -15314,6 +15326,7 @@ class UpdateConsumerGroupRequestConsumeRetryPolicy(TeaModel):
     def __init__(
         self,
         dead_letter_target_topic: str = None,
+        fixed_interval_retry_time: int = None,
         max_retry_times: int = None,
         retry_policy: str = None,
     ):
@@ -15321,6 +15334,7 @@ class UpdateConsumerGroupRequestConsumeRetryPolicy(TeaModel):
         # 
         # If a consumer still fails to consume a message after the maximum number of retries specified for the message is reached, the message is delivered to the dead-letter topic for subsequent business recovery or troubleshooting. For more information, see [Consumption retry and dead-letter messages](https://help.aliyun.com/document_detail/440356.html).
         self.dead_letter_target_topic = dead_letter_target_topic
+        self.fixed_interval_retry_time = fixed_interval_retry_time
         # The maximum number of retries.
         self.max_retry_times = max_retry_times
         # The retry policy. For more information, see [Message retry](https://help.aliyun.com/document_detail/440356.html).
@@ -15344,6 +15358,8 @@ class UpdateConsumerGroupRequestConsumeRetryPolicy(TeaModel):
         result = dict()
         if self.dead_letter_target_topic is not None:
             result['deadLetterTargetTopic'] = self.dead_letter_target_topic
+        if self.fixed_interval_retry_time is not None:
+            result['fixedIntervalRetryTime'] = self.fixed_interval_retry_time
         if self.max_retry_times is not None:
             result['maxRetryTimes'] = self.max_retry_times
         if self.retry_policy is not None:
@@ -15354,6 +15370,8 @@ class UpdateConsumerGroupRequestConsumeRetryPolicy(TeaModel):
         m = m or dict()
         if m.get('deadLetterTargetTopic') is not None:
             self.dead_letter_target_topic = m.get('deadLetterTargetTopic')
+        if m.get('fixedIntervalRetryTime') is not None:
+            self.fixed_interval_retry_time = m.get('fixedIntervalRetryTime')
         if m.get('maxRetryTimes') is not None:
             self.max_retry_times = m.get('maxRetryTimes')
         if m.get('retryPolicy') is not None:
