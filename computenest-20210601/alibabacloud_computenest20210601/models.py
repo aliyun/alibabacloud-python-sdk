@@ -2993,6 +2993,33 @@ class GetServiceResponseBodyCommodity(TeaModel):
         return self
 
 
+class GetServiceResponseBodyComplianceMetadata(TeaModel):
+    def __init__(
+        self,
+        compliance_packs: List[str] = None,
+    ):
+        self.compliance_packs = compliance_packs
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.compliance_packs is not None:
+            result['CompliancePacks'] = self.compliance_packs
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CompliancePacks') is not None:
+            self.compliance_packs = m.get('CompliancePacks')
+        return self
+
+
 class GetServiceResponseBodyInstanceRoleInfos(TeaModel):
     def __init__(
         self,
@@ -3313,6 +3340,7 @@ class GetServiceResponseBody(TeaModel):
         alarm_metadata: str = None,
         categories: str = None,
         commodity: GetServiceResponseBodyCommodity = None,
+        compliance_metadata: GetServiceResponseBodyComplianceMetadata = None,
         deploy_from: str = None,
         deploy_metadata: str = None,
         deploy_type: str = None,
@@ -3354,6 +3382,7 @@ class GetServiceResponseBody(TeaModel):
         self.categories = categories
         # The information about the order placed in Alibaba Cloud Marketplace.
         self.commodity = commodity
+        self.compliance_metadata = compliance_metadata
         # Service deployment approach, Valid values：
         # 
         # - NoWhere
@@ -3461,6 +3490,8 @@ class GetServiceResponseBody(TeaModel):
     def validate(self):
         if self.commodity:
             self.commodity.validate()
+        if self.compliance_metadata:
+            self.compliance_metadata.validate()
         if self.instance_role_infos:
             for k in self.instance_role_infos:
                 if k:
@@ -3494,6 +3525,8 @@ class GetServiceResponseBody(TeaModel):
             result['Categories'] = self.categories
         if self.commodity is not None:
             result['Commodity'] = self.commodity.to_map()
+        if self.compliance_metadata is not None:
+            result['ComplianceMetadata'] = self.compliance_metadata.to_map()
         if self.deploy_from is not None:
             result['DeployFrom'] = self.deploy_from
         if self.deploy_metadata is not None:
@@ -3579,6 +3612,9 @@ class GetServiceResponseBody(TeaModel):
         if m.get('Commodity') is not None:
             temp_model = GetServiceResponseBodyCommodity()
             self.commodity = temp_model.from_map(m['Commodity'])
+        if m.get('ComplianceMetadata') is not None:
+            temp_model = GetServiceResponseBodyComplianceMetadata()
+            self.compliance_metadata = temp_model.from_map(m['ComplianceMetadata'])
         if m.get('DeployFrom') is not None:
             self.deploy_from = m.get('DeployFrom')
         if m.get('DeployMetadata') is not None:
