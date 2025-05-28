@@ -1,3 +1,11 @@
+2025-05-28 Version: 1.10.0
+- Support API DataInterpretation.
+- Update API QueryDatasetInfo: add response parameters Body.Result.DimensionList.$.ExpressionV2.
+- Update API QueryDatasetInfo: add response parameters Body.Result.MeasureList.$.ExpressionV2.
+- Update API SmartqAuthorize: add request parameters CubeIds.
+- Update API SmartqQueryAbility: add response parameters Body.Result.MetaType.$.Type.
+
+
 2025-04-14 Version: 1.9.2
 - Update API SmartqQueryAbility: add response parameters Body.Result.ConclusionText.
 - Update API SmartqQueryAbility: add response parameters Body.Result.LogicSql.

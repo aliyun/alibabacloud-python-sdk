@@ -436,14 +436,47 @@ class AddUserRequest(TeaModel):
         role_ids: str = None,
         user_type: int = None,
     ):
+        # Aliyun account ID.
+        # >Warning: For versions of Quick BI released after December 31, 2024, AccountId will be a required parameter. Please modify your API before this date.
+        # 
+        # <props="china">Published only on the China site
         self.account_id = account_id
+        # Aliyun account name.
+        # 
+        # - Note: If it is a sub-account, the format should be \\"primary account: sub-account\\". For example: master_test@aliyun.com:subaccount
+        # - Format check: Maximum length of 50 characters.
         self.account_name = account_name
-        # Add organization members.
+        # Whether to assign the organization administrator role. Value range: 
+        # 
+        # - true: Yes 
+        # - false: No
+        # 
+        # <notice>This parameter is deprecated and not recommended for use. It is invalid when RoleIds is provided.</notice>
         self.admin_user = admin_user
+        # Whether to assign the organization permission administrator role. Value range: 
+        # 
+        # - true: Yes 
+        # - false: No
+        # 
+        # <notice>This parameter is deprecated and not recommended for use. It is invalid when RoleIds is provided.</notice>
         self.auth_admin_user = auth_admin_user
+        # Aliyun account nickname.
+        # 
+        # - Format check: Maximum length of 50 characters.
+        # - Special format validation: Chinese and English characters, numbers, _ \\ / | () ] [
+        # 
         # This parameter is required.
         self.nick_name = nick_name
+        # Preset or custom organization role IDs bound to the user, separated by commas, with a maximum of 3. Value range:
+        # - Organization Administrator (preset role): 111111111
+        # - Permission Administrator (preset role): 111111112
+        # - Regular User (preset role): 111111113
         self.role_ids = role_ids
+        # The user type of the organization member. Value range:
+        # - 1: Developer
+        # - 2: Visitor
+        # - 3: Analyst
+        # 
         # This parameter is required.
         self.user_type = user_type
 
@@ -502,12 +535,32 @@ class AddUserResponseBodyResult(TeaModel):
         user_id: str = None,
         user_type: int = None,
     ):
+        # Aliyun account.
         self.account_name = account_name
+        # Whether the organization administrator role is assigned. Value range: 
+        # 
+        # - true: Yes
+        # - false: No
+        # 
+        # <notice>This parameter is deprecated and not recommended for use. It is invalid when RoleIdList is provided.</notice>
         self.admin_user = admin_user
+        # Whether the permission administrator role is assigned. Value range: 
+        # 
+        # - true: Yes
+        # - false: No
+        # 
+        # <notice>This parameter is deprecated and not recommended for use. It is invalid when RoleIdList is provided.</notice>
         self.auth_admin_user = auth_admin_user
+        # Aliyun account nickname.
         self.nick_name = nick_name
+        # List of organization role IDs bound to the user.
         self.role_id_list = role_id_list
+        # UserID in Quick BI.
         self.user_id = user_id
+        # User type of the organization member. Value range: 
+        # - 1: Developer 
+        # - 2: Visitor 
+        # - 3: Analyst
         self.user_type = user_type
 
     def validate(self):
@@ -561,8 +614,14 @@ class AddUserResponseBody(TeaModel):
         result: AddUserResponseBodyResult = None,
         success: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returns detailed information about the newly added Aliyun user.
         self.result = result
+        # Indicates whether the request was successful. Possible values:
+        # 
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -642,17 +701,11 @@ class AddUserGroupMemberRequest(TeaModel):
         user_group_id: str = None,
         user_id_list: str = None,
     ):
-        # The result of adding members to a user group is returned. Valid values:
-        # 
-        # *   true: The task is added.
-        # *   false: The tag failed to be added.
+        # The ID of the user group.
         # 
         # This parameter is required.
         self.user_group_id = user_group_id
-        # Indicates whether the request is successful. Valid values:
-        # 
-        # *   true: The request was successful.
-        # *   false: The request failed.
+        # The ID of the Quick BI user. Separate multiple IDs with commas (,). Example: abc,efg. You can enter a maximum of 1000 entries.
         # 
         # This parameter is required.
         self.user_id_list = user_id_list
@@ -688,8 +741,17 @@ class AddUserGroupMemberResponseBody(TeaModel):
         result: bool = None,
         success: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The result of adding members to a user group is returned. Valid values:
+        # 
+        # *   true: The task is added.
+        # *   false: The tag failed to be added.
         self.result = result
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   true: The request was successful.
+        # *   false: The request failed.
         self.success = success
 
     def validate(self):
@@ -895,7 +957,12 @@ class AddUserTagMetaRequest(TeaModel):
         tag_description: str = None,
         tag_name: str = None,
     ):
+        # Tag description. Format check: maximum length of 255 characters.
         self.tag_description = tag_description
+        # Tag name. Format check:
+        # - Maximum length of 50 characters.
+        # - Only Chinese, English, numbers, and /\\|[]() symbols are allowed.
+        # 
         # This parameter is required.
         self.tag_name = tag_name
 
@@ -930,8 +997,13 @@ class AddUserTagMetaResponseBody(TeaModel):
         result: str = None,
         success: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returns the ID of the successfully added tag.
         self.result = result
+        # Indicates whether the request was successful. Value range:
+        # - true: The request succeeded 
+        # - false: The request failed
         self.success = success
 
     def validate(self):
@@ -1010,10 +1082,20 @@ class AddUserToWorkspaceRequest(TeaModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
+        # The preset space role ID. Value range:
+        # - 25: Space Administrator
+        # - 26: Space Developer
+        # - 27: Space Analyst
+        # - 30: Space Viewer
+        # 
         # This parameter is required.
         self.role_id = role_id
+        # The ID of the Quick BI user to be added.
+        # 
         # This parameter is required.
         self.user_id = user_id
+        # The ID of the workspace.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -1052,8 +1134,17 @@ class AddUserToWorkspaceResponseBody(TeaModel):
         result: bool = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Returns the result of the interface execution. Value range:
+        # 
+        # - true: Execution successful
+        # - false: Execution failed
         self.result = result
+        # Indicates whether the request was successful. Value range:
+        # 
+        # - true: Request successful
+        # - false: Request failed
         self.success = success
 
     def validate(self):
@@ -1132,10 +1223,22 @@ class AddWorkspaceUsersRequest(TeaModel):
         user_ids: str = None,
         workspace_id: str = None,
     ):
+        # Preset space role ID. Value range:
+        # - 25: Space Administrator
+        # - 26: Space Developer
+        # - 27: Space Analyst
+        # - 30: Space Viewer
+        # 
         # This parameter is required.
         self.role_id = role_id
+        # User ID. This is the UserID for Quick BI, not the Alibaba Cloud UID.
+        # 
+        # - Supports batch parameters, with user IDs separated by commas (,).
+        # 
         # This parameter is required.
         self.user_ids = user_ids
+        # Workspace ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -1175,9 +1278,13 @@ class AddWorkspaceUsersResponseBodyResult(TeaModel):
         success: int = None,
         total: int = None,
     ):
+        # Number of users that failed to be added.
         self.failure = failure
+        # Reasons for the failures.
         self.failure_detail = failure_detail
+        # Number of users that were added successfully.
         self.success = success
+        # Total number of users being added.
         self.total = total
 
     def validate(self):
@@ -1219,8 +1326,13 @@ class AddWorkspaceUsersResponseBody(TeaModel):
         result: AddWorkspaceUsersResponseBodyResult = None,
         success: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returns the result of the API execution.
         self.result = result
+        # Indicates whether the request was successful. Value range:
+        # - true: The request was successful. There may be cases where some members are added successfully and others fail. For the reasons of failure, refer to the FailureDetail in the response.
+        # - false: The request failed, and no data will be persisted.
         self.success = success
 
     def validate(self):
@@ -1299,6 +1411,8 @@ class AllotDatasetAccelerationTaskRequest(TeaModel):
         self,
         cube_id: str = None,
     ):
+        # The dataset ID.
+        # 
         # This parameter is required.
         self.cube_id = cube_id
 
@@ -1329,8 +1443,17 @@ class AllotDatasetAccelerationTaskResponseBody(TeaModel):
         result: bool = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the IP address whitelist is updated. Valid values:
+        # 
+        # *   true: The task is triggered.
+        # *   false: The task fails to be triggered.
         self.result = result
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true: The request was successful.
+        # *   false: The request failed.
         self.success = success
 
     def validate(self):
@@ -1821,11 +1944,24 @@ class CancelAuthorizationMenuRequest(TeaModel):
         user_group_ids: str = None,
         user_ids: str = None,
     ):
+        # The ID of the data portal.
+        # 
         # This parameter is required.
         self.data_portal_id = data_portal_id
+        # The leaf node menu IDs of the data portal.
+        # 
+        # - Supports batch parameters, with IDs separated by commas (,). The maximum number for batch modification is 100.
+        # 
         # This parameter is required.
         self.menu_ids = menu_ids
+        # List of user group IDs.
+        # 
+        # - Supports batch parameters, with IDs separated by commas (,). The maximum number for batch modification is 200.
+        # - UserGroupIds and UserIds cannot both be empty.
         self.user_group_ids = user_group_ids
+        # List of user IDs. These are Quick BI UserIDs, not Alibaba Cloud UIDs.
+        # 
+        # - Supports batch parameters, with IDs separated by commas (,). The maximum number for batch modification is 200.
         self.user_ids = user_ids
 
     def validate(self):
@@ -1867,8 +2003,14 @@ class CancelAuthorizationMenuResponseBody(TeaModel):
         result: int = None,
         success: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Number of menus successfully unauthorized.
         self.result = result
+        # Indicates whether the request was successful. Possible values:
+        # 
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -2220,17 +2362,22 @@ class ChangeVisibilityModelRequest(TeaModel):
         menu_ids: str = None,
         show_only_with_access: bool = None,
     ):
-        # The number of menus that are successfully modified.
+        # The ID of the BI portal.
         # 
         # This parameter is required.
         self.data_portal_id = data_portal_id
-        # Indicates whether the request is successful. Valid values:
+        # The menu ID of the BI portal leaf node.
         # 
-        # *   true: The request was successful.
-        # *   false: The request failed.
+        # *   The directory menu cannot be authorized.
+        # *   You can upload multiple parameters at a time. Separate multiple IDs with commas (,). The maximum number of parameters that can be modified at a time is 100.
         # 
         # This parameter is required.
         self.menu_ids = menu_ids
+        # Whether only authorization is visible. Valid values:
+        # 
+        # *   true: Only the authorization is visible.
+        # *   false: Both are visible.
+        # 
         # This parameter is required.
         self.show_only_with_access = show_only_with_access
 
@@ -2269,8 +2416,14 @@ class ChangeVisibilityModelResponseBody(TeaModel):
         result: int = None,
         success: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The number of menus that are successfully modified.
         self.result = result
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   true: The request was successful.
+        # *   false: The request failed.
         self.success = success
 
     def validate(self):
@@ -2486,7 +2639,7 @@ class CreateTicketRequest(TeaModel):
         # The user\\"s account name.
         # 
         # - If the user is an Alibaba Cloud primary account **wangwu**, the format is **[Primary Account]**, for example, **wangwu**.
-        # - If the user is a RAM account **zhangsan**@aliyun.cn, the format is **[Primary Account: Sub-account]**, for example, **wangwu:zhangsan**.
+        # - If the user is a RAM account **zhangsan**@aliyun.cn**, the format is **[Primary Account: Sub-Account]**, for example, **wangwu:zhangsan**.
         # 
         # > Only one of UserId and AccountName needs to be filled in. If neither is filled in, it will default to binding the report\\"s Owner, and the report will be accessed with that user\\"s identity. If you need to configure row-level permissions, please refer to [Row-Level Permissions](https://help.aliyun.com/document_detail/322783.html).
         self.account_name = account_name
@@ -2500,7 +2653,7 @@ class CreateTicketRequest(TeaModel):
         # > If AccountName is not empty, then AccountType must also not be empty.
         self.account_type = account_type
         # Component ID. This is the ID of a component within the above-mentioned dashboard; other types of works do not support this.
-        # Refer to the [QueryWorksBloodRelationship](https://next.api.aliyun.com/api/quickbi-public/2022-01-01/QueryWorksBloodRelationship?spm=a2c4g.11186623.0.0.15615d7aWVvWAl&params={}&lang=JAVA&tab=DOC&sdkStyle=old) API for obtaining the component ID.
+        # Refer to [QueryWorksBloodRelationship](https://next.api.aliyun.com/api/quickbi-public/2022-01-01/QueryWorksBloodRelationship?spm=a2c4g.11186623.0.0.15615d7aWVvWAl&params={}&lang=JAVA&tab=DOC&sdkStyle=old) for the API to get the component ID.
         self.cmpt_id = cmpt_id
         # Expiration time
         # - Unit: minutes
@@ -2517,7 +2670,7 @@ class CreateTicketRequest(TeaModel):
         # - Maximum value: 99999
         self.ticket_num = ticket_num
         # Quick BI\\"s UserId, which is not your Alibaba Cloud account ID.
-        # You can call the [QueryUserInfoByAccount](https://next.api.aliyun.com/api/quickbi-public/2022-01-01/QueryUserInfoByAccount?spm=a2c4g.11186623.0.0.15615d7aWVvWAl&params={}&tab=DOC&sdkStyle=old) API to obtain the UserId. An example of a UserId is fe67f61a35a94b7da1a34ba174a7****.
+        # You can call the [QueryUserInfoByAccount](https://next.api.aliyun.com/api/quickbi-public/2022-01-01/QueryUserInfoByAccount?spm=a2c4g.11186623.0.0.15615d7aWVvWAl&params={}&tab=DOC&sdkStyle=old) interface to obtain the UserId. An example of a UserId is fe67f61a35a94b7da1a34ba174a7****.
         # 
         # > Only one of UserId and AccountName needs to be filled in. If neither is filled in, it will default to binding the report\\"s Owner, and the report will be accessed with that user\\"s identity. If you need to configure row-level permissions, please refer to [Row-Level Permissions](https://help.aliyun.com/document_detail/322783.html).
         self.user_id = user_id
@@ -2593,9 +2746,9 @@ class CreateTicketResponseBody(TeaModel):
         self.request_id = request_id
         # The generated ticket value.
         self.result = result
-        # 是否请求成功。取值范围：
-        # - true：请求成功
-        # - false：请求失败
+        # Indicates whether the request was successful. Value range: 
+        # - true: Request succeeded 
+        # - false: Request failed
         self.success = success
 
     def validate(self):
@@ -2677,12 +2830,52 @@ class CreateTicket4CopilotRequest(TeaModel):
         ticket_num: int = None,
         user_id: str = None,
     ):
+        # User\\"s account name.
+        # <notice>Note: Only one of userId and accountName needs to be filled in. If neither is provided, it will default to the report owner, and the report will be accessed with that user\\"s identity.</notice>
         self.account_name = account_name
+        # User\\"s account type:
+        # 
+        # - 1: Alibaba Cloud Primary Account
+        # 
+        # - 3: QuickBI Self-built Account
+        # 
+        # - 4: DingTalk
+        # 
+        # - 5: Alibaba Cloud RAM Account
+        # 
+        # - 6: Third-party Account (SAML, OAuth, etc.)
+        # 
+        # - 9: WeCom
+        # 
+        # - 10: Feishu
+        # 
+        # <notice>Note: If accountName is not empty, then accountType must also be provided.</notice>
         self.account_type = account_type
+        # ID of the Smart Q module to be embedded.
+        # 
         # This parameter is required.
         self.copilot_id = copilot_id
+        # Expiration time.
+        # 
+        # - Unit: minutes, maximum 240 (4 hours).
+        # 
+        # - Default: 240.
         self.expire_time = expire_time
+        # Range of ticket quantity:
+        # 
+        # - Default value is 1.
+        # 
+        # - Recommended value is 1.
+        # 
+        # - Maximum value is 99999.
+        # 
+        # Each time a ticket is used, the ticket count decreases by 1.
         self.ticket_num = ticket_num
+        # Quick BI\\"s UserId.
+        # 
+        # - You can obtain this by calling [3.1.7 Get User Details Based on Third-Party Account] or other relevant APIs.
+        # 
+        # <notice>Note: Only one of userId and accountName needs to be filled in. If neither is provided, it will default to the report owner, and the report will be accessed with that user\\"s identity.</notice>
         self.user_id = user_id
 
     def validate(self):
@@ -2732,8 +2925,13 @@ class CreateTicket4CopilotResponseBody(TeaModel):
         result: str = None,
         success: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # ID of the Smart Q module to be embedded.
         self.result = result
+        # Indicates whether the request was successful. Possible values:
+        # - true: The request succeeded
+        # - false: The request failed
         self.success = success
 
     def validate(self):
@@ -2956,6 +3154,138 @@ class CreateUserGroupResponse(TeaModel):
         return self
 
 
+class DataInterpretationRequest(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+        model_code: str = None,
+        prompt_force_override: bool = None,
+        user_prompt: str = None,
+        user_question: str = None,
+    ):
+        # This parameter is required.
+        self.data = data
+        self.model_code = model_code
+        self.prompt_force_override = prompt_force_override
+        self.user_prompt = user_prompt
+        self.user_question = user_question
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.model_code is not None:
+            result['ModelCode'] = self.model_code
+        if self.prompt_force_override is not None:
+            result['PromptForceOverride'] = self.prompt_force_override
+        if self.user_prompt is not None:
+            result['UserPrompt'] = self.user_prompt
+        if self.user_question is not None:
+            result['UserQuestion'] = self.user_question
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ModelCode') is not None:
+            self.model_code = m.get('ModelCode')
+        if m.get('PromptForceOverride') is not None:
+            self.prompt_force_override = m.get('PromptForceOverride')
+        if m.get('UserPrompt') is not None:
+            self.user_prompt = m.get('UserPrompt')
+        if m.get('UserQuestion') is not None:
+            self.user_question = m.get('UserQuestion')
+        return self
+
+
+class DataInterpretationResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DataInterpretationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DataInterpretationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DataInterpretationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DataSetBloodRequest(TeaModel):
     def __init__(
         self,
@@ -3146,6 +3476,8 @@ class DataSourceBloodRequest(TeaModel):
         self,
         data_source_id: str = None,
     ):
+        # Data source ID.
+        # 
         # This parameter is required.
         self.data_source_id = data_source_id
 
@@ -3176,8 +3508,13 @@ class DataSourceBloodResponseBody(TeaModel):
         result: List[str] = None,
         success: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Array of dataset IDs.
         self.result = result
+        # Indicates whether the request was successful. Possible values:
+        # - true: The request was successful
+        # - false: The request failed
         self.success = success
 
     def validate(self):
@@ -3608,7 +3945,7 @@ class DeleteTicketRequest(TeaModel):
         self,
         ticket: str = None,
     ):
-        # Deletes a specified ticket from an embedded report.
+        # The value of the third-party embedded ticket, which is the `accessTicket` in the URL.
         # 
         # This parameter is required.
         self.ticket = ticket
@@ -3640,8 +3977,15 @@ class DeleteTicketResponseBody(TeaModel):
         result: bool = None,
         success: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the deletion was successful. Possible values:
+        # - true: The request was successful
+        # - false: The request failed
         self.result = result
+        # Indicates whether the request was successful. Possible values:
+        # - true: The request was successful
+        # - false: The request failed
         self.success = success
 
     def validate(self):
@@ -3719,8 +4063,12 @@ class DeleteUserRequest(TeaModel):
         transfer_user_id: str = None,
         user_id: str = None,
     ):
+        # The ID of the successor. If not empty, the report resources in the workspace of the deleted user will be transferred to the successor; otherwise, they will be transferred to the space owner.
+        # - The successor cannot be an organization visitor
+        # - The permissions of the successor in the workspace must not be less than those of the deleted user, with management permissions > development permissions > sharing permissions > viewing permissions
+        # - If the successor is not in the workspace, they will be automatically added to the workspace
         self.transfer_user_id = transfer_user_id
-        # Deletes a user from a specified organization.
+        # The ID of the user to be deleted. This user ID is the Quick BI UserID, not the Alibaba Cloud UID.
         # 
         # This parameter is required.
         self.user_id = user_id
@@ -3756,8 +4104,15 @@ class DeleteUserResponseBody(TeaModel):
         result: bool = None,
         success: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returns the execution result of the interface. Possible values:
+        # 
+        # - true: Execution succeeded
+        # - false: Execution failed
         self.result = result
+        # Indicates whether the request was successful. Possible values:
+        # - true: The request was successful - false: The request failed
         self.success = success
 
     def validate(self):
@@ -3835,8 +4190,12 @@ class DeleteUserFromWorkspaceRequest(TeaModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
+        # The ID of the user to be deleted. Note that this UserID is for Quick BI, not the Alibaba Cloud UID.
+        # 
         # This parameter is required.
         self.user_id = user_id
+        # The ID of the workspace.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -3871,8 +4230,15 @@ class DeleteUserFromWorkspaceResponseBody(TeaModel):
         result: bool = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Returns the result of the API execution. Possible values:
+        # 
+        # - true: Execution succeeded
+        # - false: Execution failed
         self.result = result
+        # Indicates whether the request was successful. Value range:
+        # - true: The request succeeded - false: The request failed
         self.success = success
 
     def validate(self):
@@ -4887,7 +5253,7 @@ class GetUserGroupInfoRequest(TeaModel):
         self,
         keyword: str = None,
     ):
-        # The ID of the user group.
+        # Keyword of the user group name.
         # 
         # This parameter is required.
         self.keyword = keyword
@@ -4925,14 +5291,23 @@ class GetUserGroupInfoResponseBodyResult(TeaModel):
         usergroup_id: str = None,
         usergroup_name: str = None,
     ):
+        # Creation time of the user group.
         self.create_time = create_time
+        # Creator of the sub-user group. This is the UserID in Quick BI, not the UID in Alibaba Cloud.
         self.create_user = create_user
+        # Directory level of the user group.
         self.identified_path = identified_path
+        # Last modified time of the user group.
         self.modified_time = modified_time
+        # Modifier of the user group. This is the UserID in Quick BI, not the UID in Alibaba Cloud.
         self.modify_user = modify_user
+        # Parent user group ID.
         self.parent_usergroup_id = parent_usergroup_id
+        # Description of the user group.
         self.usergroup_desc = usergroup_desc
+        # User group ID.
         self.usergroup_id = usergroup_id
+        # Name of the user group.
         self.usergroup_name = usergroup_name
 
     def validate(self):
@@ -4994,8 +5369,14 @@ class GetUserGroupInfoResponseBody(TeaModel):
         result: List[GetUserGroupInfoResponseBodyResult] = None,
         success: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # User group information.
         self.result = result
+        # Indicates whether the request was successful. Possible values:
+        # 
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -5093,11 +5474,11 @@ class GetWorksEmbedListRequest(TeaModel):
         # Report type
         # 
         # - page, Dashboard
-        # - screen, Visualization Screen
-        # - report, Workbooks
-        # - ANALYSIS, Ad Hoc Analysis
-        # - dashboardOfflineQuery, Downloads
-        # - dataForm, Forms
+        # - screen, Data Screen
+        # - report, Spreadsheet
+        # - ANALYSIS, Ad-hoc Analysis
+        # - dashboardOfflineQuery, Self-service Data Retrieval
+        # - dataForm, Data Entry Form
         self.works_type = works_type
         # Workspace ID
         self.ws_id = ws_id
@@ -5768,6 +6149,7 @@ class ListByUserGroupIdResponseBodyResult(TeaModel):
         failed_user_group_ids: List[str] = None,
         user_group_models: List[ListByUserGroupIdResponseBodyResultUserGroupModels] = None,
     ):
+        # List of failed user groups.
         self.failed_user_group_ids = failed_user_group_ids
         # The details of the user group that was queried.
         self.user_group_models = user_group_models
@@ -6210,8 +6592,15 @@ class ListDataLevelPermissionWhiteListRequest(TeaModel):
         cube_id: str = None,
         rule_type: str = None,
     ):
+        # Dataset ID.
+        # 
         # This parameter is required.
         self.cube_id = cube_id
+        # Type of row and column permission that the whitelist belongs to:
+        # 
+        # - ROW_LEVEL: Row-level permission
+        # - COLUMN_LEVEL: Column-level permission
+        # 
         # This parameter is required.
         self.rule_type = rule_type
 
@@ -6245,7 +6634,9 @@ class ListDataLevelPermissionWhiteListResponseBodyResultUsersModel(TeaModel):
         user_groups: List[str] = None,
         users: List[str] = None,
     ):
+        # UserGroups.
         self.user_groups = user_groups
+        # Users.
         self.users = users
 
     def validate(self):
@@ -6279,8 +6670,14 @@ class ListDataLevelPermissionWhiteListResponseBodyResult(TeaModel):
         rule_type: str = None,
         users_model: ListDataLevelPermissionWhiteListResponseBodyResultUsersModel = None,
     ):
+        # Dataset ID.
         self.cube_id = cube_id
+        # Type of dataset row and column permissions. Possible values:
+        # 
+        # - ROW_LEVEL: Row-level permission
+        # - COLUMN_LEVEL: Column-level permission
         self.rule_type = rule_type
+        # Whitelist information.
         self.users_model = users_model
 
     def validate(self):
@@ -6320,8 +6717,14 @@ class ListDataLevelPermissionWhiteListResponseBody(TeaModel):
         result: ListDataLevelPermissionWhiteListResponseBodyResult = None,
         success: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Whitelist for the specified row-level permission type.
         self.result = result
+        # Indicates whether the request was successful. Possible values:
+        # 
+        # - true: Request succeeded
+        # - false: Request failed
         self.success = success
 
     def validate(self):
@@ -6608,9 +7011,19 @@ class ListFavoriteReportsRequest(TeaModel):
         tree_type: str = None,
         user_id: str = None,
     ):
+        # Keyword of the work name.
         self.keyword = keyword
+        # Number of rows in the work list to be queried:
+        # Default value: 10
+        # Maximum value: 9999
         self.page_size = page_size
+        # Type of the work to be queried (leave blank to query all types). Value range:
+        # - DATAPRODUCT: Data Portal
+        # - PAGE: Dashboard
+        # - REPORT: Spreadsheet
         self.tree_type = tree_type
+        # The UserID of the user in Quick BI to be queried.
+        # 
         # This parameter is required.
         self.user_id = user_id
 
@@ -6664,19 +7077,40 @@ class ListFavoriteReportsResponseBodyResultData(TeaModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
+        # Indicates whether the user has favorited the work.
         self.favorite = favorite
+        # The timestamp when the work was favorited.
         self.favorite_date = favorite_date
+        # Timestamp of the work creation.
         self.gmt_create = gmt_create
+        # Timestamp of the work modification.
         self.gmt_modified = gmt_modified
+        # Indicates whether the user has edit permission for the work.
         self.has_edit_auth = has_edit_auth
+        # Check if the user has the permission to view the work.
         self.has_view_auth = has_view_auth
+        # Name of the work.
         self.name = name
+        # Alibaba Cloud account name of the work owner.
         self.owner_name = owner_name
+        # UserID of the work owner.
         self.owner_num = owner_num
+        # Publication status of the work. Value range:
+        # - 0: Not published
+        # - 1: Published
+        # - 2: Saved with modifications, not published
+        # - 3: Offline
         self.publish_status = publish_status
+        # Work ID.
         self.tree_id = tree_id
+        # Type of the work. Value range:
+        # - DATAPRODUCT: Data Portal
+        # - PAGE: Dashboard
+        # - REPORT: Spreadsheet
         self.type = type
+        # The ID of the workspace to which the work belongs.
         self.workspace_id = workspace_id
+        # The name of the workspace to which the work belongs.
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -6760,10 +7194,15 @@ class ListFavoriteReportsResponseBodyResult(TeaModel):
         total_num: int = None,
         total_pages: int = None,
     ):
+        # List of works queried.
         self.data = data
+        # Page number.
         self.page_num = page_num
+        # Number of rows per page set when requesting the interface.
         self.page_size = page_size
+        # Total number of rows.
         self.total_num = total_num
+        # Total number of pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -6817,8 +7256,13 @@ class ListFavoriteReportsResponseBody(TeaModel):
         result: ListFavoriteReportsResponseBodyResult = None,
         success: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returns the query result.
         self.result = result
+        # Indicates whether the request was successful. Possible values:
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -7148,7 +7592,7 @@ class ListOrganizationRolesResponseBodyResultAuthConfigList(TeaModel):
         # - offline_download: Self-service data retrieval
         # - resource_package: Resource package management
         # - organization_ask: Organization identification code (AK/SK)
-        # - developer_openapi: Open API
+        # - developer_openapi: OpenAPI
         # - data_service: Data service
         # - admin_authorize3rd: Embedded analysis
         # - component_manage: Custom component
@@ -7699,11 +8143,28 @@ class ListRecentViewReportsRequest(TeaModel):
         tree_type: str = None,
         user_id: str = None,
     ):
+        # Keyword of the name of the work.
         self.keyword = keyword
+        # The number of days to query data in the last few days. Default value: 10.
         self.offset_day = offset_day
+        # Query the number of rows in the work list:
+        # 
+        # *   Default value: 10.
+        # *   Maximum value: 9999
         self.page_size = page_size
+        # The query mode. Valid values:
+        # 
+        # *   1: Sort by number of visits
+        # *   2: Sort by Last Access Time
         self.query_mode = query_mode
+        # Query the type of the work (fill in the blank to query all types). Valid values:
+        # 
+        # *   DATAPRODUCT: BI portal
+        # *   PAGE: Dashboard
+        # *   REPORT: workbook
         self.tree_type = tree_type
+        # The UserID of the user in the Quick BI.
+        # 
         # This parameter is required.
         self.user_id = user_id
 
@@ -7766,20 +8227,44 @@ class ListRecentViewReportsResponseBodyResultData(TeaModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
+        # Queries whether the user has collected the work.
         self.favorite = favorite
+        # The timestamp when the work was created.
         self.gmt_create = gmt_create
+        # The timestamp when the work was modified.
         self.gmt_modified = gmt_modified
+        # The query user has the editing rights of the work.
         self.has_edit_auth = has_edit_auth
+        # The query user has the permission to view the work.
         self.has_view_auth = has_view_auth
+        # The timestamp when the work was last accessed.
         self.latest_view_time = latest_view_time
+        # The name of the work.
         self.name = name
+        # The Alibaba Cloud account name of the work owner.
         self.owner_name = owner_name
+        # The UserID of the work owner.
         self.owner_num = owner_num
+        # The publication status of the work. Valid values:
+        # 
+        # *   0: unpublished
+        # *   1: published
+        # *   2: modified and saved but not published.
+        # *   3: unpublished
         self.publish_status = publish_status
+        # The ID of the work.
         self.tree_id = tree_id
+        # The type of the work. Valid values:
+        # 
+        # *   DATAPRODUCT: BI portal
+        # *   PAGE: Dashboard
+        # *   REPORT: workbook
         self.type = type
+        # The number of times the work was accessed.
         self.view_count = view_count
+        # The ID of the workspace to which the work belongs.
         self.workspace_id = workspace_id
+        # The name of the workspace to which the work belongs.
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -7868,11 +8353,20 @@ class ListRecentViewReportsResponseBodyResult(TeaModel):
         total_num: int = None,
         total_pages: int = None,
     ):
+        # Attention
         self.attention = attention
+        # The list of queried works.
         self.data = data
+        # The page number of the returned page.
         self.page_num = page_num
+        # The number of entries returned per page.
+        # 
+        # *   Default value: 10.
+        # *   Maximum of 100 articles
         self.page_size = page_size
+        # The total number of rows in the table.
         self.total_num = total_num
+        # The total number of pages returned.
         self.total_pages = total_pages
 
     def validate(self):
@@ -7930,8 +8424,14 @@ class ListRecentViewReportsResponseBody(TeaModel):
         result: ListRecentViewReportsResponseBodyResult = None,
         success: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The query results are returned.
         self.result = result
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   true: The request was successful.
+        # *   false: The request failed.
         self.success = success
 
     def validate(self):
@@ -8013,9 +8513,21 @@ class ListSharedReportsRequest(TeaModel):
         tree_type: str = None,
         user_id: str = None,
     ):
+        # Keyword of the name of the work.
         self.keyword = keyword
+        # Query the number of rows in the work list:
+        # 
+        # *   Default value: 10.
+        # *   Maximum value: 9999
         self.page_size = page_size
+        # Query the type of the work (fill in the blank to query all types). Valid values:
+        # 
+        # *   DATAPRODUCT: BI portal
+        # *   PAGE: Dashboard
+        # *   REPORT: workbook
         self.tree_type = tree_type
+        # The UserID of the user to be queried in the Quick BI.
+        # 
         # This parameter is required.
         self.user_id = user_id
 
@@ -8068,18 +8580,40 @@ class ListSharedReportsResponseBodyResultData(TeaModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
+        # Queries whether the user has collected the work.
         self.favorite = favorite
+        # The timestamp when the work was created.
         self.gmt_create = gmt_create
+        # The timestamp when the work was modified.
         self.gmt_modified = gmt_modified
+        # The query user has the editing rights of the work.
         self.has_edit_auth = has_edit_auth
+        # The query user has the permission to view the work.
         self.has_view_auth = has_view_auth
+        # The name of the work.
         self.name = name
+        # The Alibaba Cloud account name of the work owner.
         self.owner_name = owner_name
+        # The UserID of the work owner.
         self.owner_num = owner_num
+        # The publication status of the work. Valid values:
+        # 
+        # *   0: unpublished
+        # *   1: published
+        # *   2: modified and saved but not published.
+        # *   3: unpublished
         self.publish_status = publish_status
+        # The ID of the work.
         self.tree_id = tree_id
+        # The type of the work. Valid values:
+        # 
+        # *   DATAPRODUCT: BI portal
+        # *   PAGE: Dashboard
+        # *   REPORT: workbook
         self.type = type
+        # The ID of the workspace to which the work belongs.
         self.workspace_id = workspace_id
+        # The name of the workspace to which the work belongs.
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -8159,10 +8693,15 @@ class ListSharedReportsResponseBodyResult(TeaModel):
         total_num: int = None,
         total_pages: int = None,
     ):
+        # The list of queried works.
         self.data = data
+        # The page number of the returned page.
         self.page_num = page_num
+        # The number of rows per page set when the interface is requested.
         self.page_size = page_size
+        # The total number of rows in the table.
         self.total_num = total_num
+        # The total number of pages returned.
         self.total_pages = total_pages
 
     def validate(self):
@@ -8216,8 +8755,14 @@ class ListSharedReportsResponseBody(TeaModel):
         result: ListSharedReportsResponseBodyResult = None,
         success: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The query results are returned.
         self.result = result
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   true: The request was successful.
+        # *   false: The request failed.
         self.success = success
 
     def validate(self):
@@ -8296,7 +8841,7 @@ class ListUserGroupsByUserIdRequest(TeaModel):
         self,
         user_id: str = None,
     ):
-        # The ID of the user group.
+        # The ID of the user. The UserID of the Quick BI is used instead of the UID of Alibaba Cloud.
         # 
         # This parameter is required.
         self.user_id = user_id
@@ -8334,14 +8879,23 @@ class ListUserGroupsByUserIdResponseBodyResult(TeaModel):
         usergroup_id: str = None,
         usergroup_name: str = None,
     ):
+        # The time when the user group was created.
         self.create_time = create_time
+        # The user group creator. The UserID of the Quick BI is used instead of the UID of Alibaba Cloud.
         self.create_user = create_user
+        # Directory level of the user group.
         self.identified_path = identified_path
+        # The time when the user group was last modified.
         self.modified_time = modified_time
+        # The user group modifier. The UserID of the Quick BI is used instead of the UID of Alibaba Cloud.
         self.modify_user = modify_user
+        # The ID of the user group.
         self.parent_usergroup_id = parent_usergroup_id
+        # The description of the user group.
         self.usergroup_desc = usergroup_desc
+        # The ID of the user group.
         self.usergroup_id = usergroup_id
+        # The name of the user group.
         self.usergroup_name = usergroup_name
 
     def validate(self):
@@ -8403,9 +8957,14 @@ class ListUserGroupsByUserIdResponseBody(TeaModel):
         result: List[ListUserGroupsByUserIdResponseBodyResult] = None,
         success: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the group.
         self.result = result
-        # The user group modifier. The UserID of the Quick BI is used instead of the UID of Alibaba Cloud.
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   true: The request was successful.
+        # *   false: The request failed.
         self.success = success
 
     def validate(self):
@@ -8516,7 +9075,7 @@ class ListWorkspaceRoleUsersRequest(TeaModel):
         # 
         # This parameter is required.
         self.role_id = role_id
-        # Workspace ID.
+        # The ID of the workspace. This parameter is optional. If you do not set this parameter, the roles of all workspaces are returned.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -8679,9 +9238,9 @@ class ListWorkspaceRoleUsersResponseBody(TeaModel):
         self.request_id = request_id
         # Returns the list of users under the specified workspace role.
         self.result = result
-        # 是否请求成功。取值范围：
-        # - true：请求成功
-        # - false：请求失败
+        # Indicates whether the request was successful. Possible values:
+        # - true: The request was successful. 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -9252,10 +9811,16 @@ class ModifyCopilotEmbedConfigRequest(TeaModel):
         data_range: str = None,
         module_name: str = None,
     ):
+        # Agent nickname.
         self.agent_name = agent_name
+        # Embedding ID.
+        # 
         # This parameter is required.
         self.copilot_id = copilot_id
+        # Data range.
+        # >Notice: The parameter type is jsonString, and only one switch between analysis themes and query resources can be effective. When the all-select switch is true, it takes precedence. It is recommended to pass only one parameter, with other notes
         self.data_range = data_range
+        # Module name.
         self.module_name = module_name
 
     def validate(self):
@@ -9297,8 +9862,15 @@ class ModifyCopilotEmbedConfigResponseBody(TeaModel):
         result: bool = None,
         success: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returns the result of the API execution. Possible values:
+        # - true: Execution succeeded
+        # - false: Execution failed
         self.result = result
+        # Indicates whether the request was successful. Possible values:
+        # - true: The request was successful
+        # - false: The request failed
         self.success = success
 
     def validate(self):
@@ -9732,15 +10304,30 @@ class QueryAuditLogRequest(TeaModel):
         start_date: str = None,
         workspace_id: str = None,
     ):
+        # End date of the query, format ("yyyyMMdd").
+        # 
         # This parameter is required.
         self.end_date = end_date
+        # Log type:
+        # - dataView - Access
+        # - function - Operation
+        # - permission - Permission
+        # 
         # This parameter is required.
         self.log_type = log_type
+        # Operator\\"s user ID.
         self.operator_id = operator_id
+        # Permission/Access/Operation type, empty - default all;
+        # 
+        # Refer to the audit log code values, send multiple values separated by English commas.
         self.operator_types = operator_types
+        # Resource type, refer to the work type.
         self.resource_type = resource_type
+        # Start date of the query, format ("yyyyMMdd"), cannot be earlier than 90 days from the current time.
+        # 
         # This parameter is required.
         self.start_date = start_date
+        # Workspace ID, the ID of the workspace to which the logs to be queried belong.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -9799,13 +10386,21 @@ class QueryAuditLogResponseBodyResult(TeaModel):
         target_type: str = None,
         workspace_id: str = None,
     ):
+        # Log time.
         self.gmt_create = gmt_create
+        # Operator account.
         self.operator_account_name = operator_account_name
+        # Operator\\"s nickname.
         self.operator_name = operator_name
+        # Operation type.
         self.operator_type = operator_type
+        # Target ID.
         self.target_id = target_id
+        # Target name.
         self.target_name = target_name
+        # Target type.
         self.target_type = target_type
+        # Workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -9863,8 +10458,13 @@ class QueryAuditLogResponseBody(TeaModel):
         result: List[QueryAuditLogResponseBodyResult] = None,
         success: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Array of logs.
         self.result = result
+        # Indicates whether the request was successful. Possible values: 
+        # - true: The request succeeded 
+        # - false: The request failed
         self.success = success
 
     def validate(self):
@@ -10226,6 +10826,7 @@ class QueryComponentPerformanceResponseBody(TeaModel):
     ):
         # The request ID.
         self.request_id = request_id
+        # The result returned.
         self.result = result
         # Indicates whether the request was successful. Valid values:
         # 
@@ -10315,6 +10916,7 @@ class QueryCopilotEmbedConfigRequest(TeaModel):
         self,
         keyword: str = None,
     ):
+        # Name of the embedded configuration module, supports fuzzy search.
         self.keyword = keyword
 
     def validate(self):
@@ -10345,9 +10947,13 @@ class QueryCopilotEmbedConfigResponseBodyResultDataRange(TeaModel):
         llm_cubes: List[str] = None,
         themes: List[str] = None,
     ):
+        # Whether all question resources are selected.
         self.all_cube = all_cube
+        # Whether all analysis themes are selected.
         self.all_theme = all_theme
+        # Collection of question resource IDs.
         self.llm_cubes = llm_cubes
+        # Collection of analysis theme IDs.
         self.themes = themes
 
     def validate(self):
@@ -10394,13 +11000,21 @@ class QueryCopilotEmbedConfigResponseBodyResult(TeaModel):
         module_name: str = None,
         show_name: str = None,
     ):
+        # Robot\\"s nickname.
         self.agent_name = agent_name
+        # Embedding ID.
         self.copilot_id = copilot_id
+        # ID of the creator.
         self.create_user = create_user
+        # Nickname of the creator.
         self.create_user_name = create_user_name
+        # Data range (analysis themes and question resources).
         self.data_range = data_range
+        # ID of the modifier.
         self.modify_user = modify_user
+        # Module name.
         self.module_name = module_name
+        # Name of the embedded module.
         self.show_name = show_name
 
     def validate(self):
@@ -10460,8 +11074,14 @@ class QueryCopilotEmbedConfigResponseBody(TeaModel):
         result: List[QueryCopilotEmbedConfigResponseBodyResult] = None,
         success: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # List of embedded configurations.
         self.result = result
+        # Indicates whether the request was successful. Possible values:
+        # 
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -10789,6 +11409,7 @@ class QueryCubeOptimizationResponseBody(TeaModel):
     ):
         # The request ID.
         self.request_id = request_id
+        # The query results are returned.
         self.result = result
         # Indicates whether the request was successful. Valid values:
         # 
@@ -10883,12 +11504,30 @@ class QueryCubePerformanceRequest(TeaModel):
         query_type: str = None,
         workspace_id: str = None,
     ):
+        # The average duration (minutes).
         self.cost_time_avg_min = cost_time_avg_min
+        # The dataset ID.
         self.cube_id = cube_id
+        # The current page number of the workspace member list:
+        # 
+        # *   Pages start from page 1.
+        # *   Default value: 1.
         self.page_num = page_num
+        # The number of rows per page in a paged query.
+        # 
+        # *   Default value: 10.
+        # *   Maximum value: 1,000.
         self.page_size = page_size
+        # The query type. Valid values:
+        # 
+        # *   **lastDay**: Yesterday
+        # *   **sevenDays**: Within seven days
+        # *   **thirtyDays**: Within 30 days
+        # 
         # This parameter is required.
         self.query_type = query_type
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -10957,26 +11596,47 @@ class QueryCubePerformanceResponseBodyResult(TeaModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
+        # The average duration of cache hits.
         self.cache_cost_time_avg = cache_cost_time_avg
+        # The number of cache hits.
         self.cache_query_count = cache_query_count
+        # The average query duration associated with the SQL pattern.
         self.cost_time_avg = cost_time_avg
+        # The dataset ID.
         self.cube_id = cube_id
+        # The name of the dataset.
         self.cube_name = cube_name
+        # The number of queries.
         self.query_count = query_count
+        # The average number of queries.
         self.query_count_avg = query_count_avg
+        # The percentage of the number of queries that exceed the 5S.
         self.query_over_five_percent_num = query_over_five_percent_num
+        # Query the proportion of more than 5S.
         self.query_over_five_sec_percent = query_over_five_sec_percent
+        # The percentage of queries that exceed 10s.
         self.query_over_ten_sec_percent = query_over_ten_sec_percent
+        # The percentage of queries that exceed 10s.
         self.query_over_ten_sec_percent_num = query_over_ten_sec_percent_num
+        # The number of times that the chart query times out.
         self.query_timeout_count = query_timeout_count
+        # The percentage of timeout times for chart queries.
         self.query_timeout_count_percent = query_timeout_count_percent
+        # The average time consumed by the Quick engine query.
         self.quick_index_cost_time_avg = quick_index_cost_time_avg
+        # The number of times that the Quick engine is hit.
         self.quick_index_query_count = quick_index_query_count
+        # The proportion of duplicate queries.
         self.repeat_query_percent = repeat_query_percent
+        # The number of duplicate queries.
         self.repeat_query_percent_num = repeat_query_percent_num
+        # The number of times the query is repeated.
         self.repeat_sql_query_count = repeat_sql_query_count
+        # The proportion of duplicate queries.
         self.repeat_sql_query_percent = repeat_sql_query_percent
+        # The ID of the workspace to which the work belongs.
         self.workspace_id = workspace_id
+        # The name of the group.
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -11086,8 +11746,14 @@ class QueryCubePerformanceResponseBody(TeaModel):
         result: List[QueryCubePerformanceResponseBodyResult] = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Array of report objects
         self.result = result
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true: The request was successful.
+        # *   false: The request failed.
         self.success = success
 
     def validate(self):
@@ -11269,12 +11935,7 @@ class QueryDataResponseBodyResultHeaders(TeaModel):
         self.aggregator = aggregator
         # Field name, corresponding to the physical table field name.
         self.column = column
-        # 字段的数据类型。一般有：
-        # - number：数值
-        # - string：字符串
-        # - date：日期
-        # - time：时间
-        # - datetime：日期时间
+        # The keyword of the sensitive field type.
         self.data_type = data_type
         # The granularity of the dimension field.
         # This field is returned only when the requested field is a date or geographic dimension, with the following possible values:
@@ -11478,7 +12139,13 @@ class QueryDataRangeRequest(TeaModel):
         keyword: str = None,
         type: str = None,
     ):
+        # Name, for fuzzy search.
         self.keyword = keyword
+        # Data range type:
+        # 
+        # - llmCube: LlmCube resource.
+        # - llmCubeTheme: Analysis theme.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -11513,8 +12180,11 @@ class QueryDataRangeResponseBodyResultApiCopilotLlmCubeModels(TeaModel):
         create_user: str = None,
         llm_cube_id: str = None,
     ):
+        # Alias of the LlmCube resource.
         self.alias = alias
+        # Nickname of the creator.
         self.create_user = create_user
+        # LlmCube resource ID.
         self.llm_cube_id = llm_cube_id
 
     def validate(self):
@@ -11552,8 +12222,11 @@ class QueryDataRangeResponseBodyResultApiCopilotThemeModelsApiCopilotLlmCubeMode
         create_user: str = None,
         llm_cube_id: str = None,
     ):
+        # Alias of the LLM cube resource.
         self.alias = alias
+        # Nickname of the creator.
         self.create_user = create_user
+        # LlmCube resource ID.
         self.llm_cube_id = llm_cube_id
 
     def validate(self):
@@ -11592,9 +12265,13 @@ class QueryDataRangeResponseBodyResultApiCopilotThemeModels(TeaModel):
         theme_id: str = None,
         theme_name: str = None,
     ):
+        # Array of LlmCube resources.
         self.api_copilot_llm_cube_models = api_copilot_llm_cube_models
+        # Nickname of the creator.
         self.create_user = create_user
+        # Analysis theme ID.
         self.theme_id = theme_id
+        # Nickname of the analysis theme.
         self.theme_name = theme_name
 
     def validate(self):
@@ -11643,7 +12320,9 @@ class QueryDataRangeResponseBodyResult(TeaModel):
         api_copilot_llm_cube_models: List[QueryDataRangeResponseBodyResultApiCopilotLlmCubeModels] = None,
         api_copilot_theme_models: List[QueryDataRangeResponseBodyResultApiCopilotThemeModels] = None,
     ):
+        # Array of LlmCube resources.
         self.api_copilot_llm_cube_models = api_copilot_llm_cube_models
+        # Array of analysis themes.
         self.api_copilot_theme_models = api_copilot_theme_models
 
     def validate(self):
@@ -11694,8 +12373,13 @@ class QueryDataRangeResponseBody(TeaModel):
         result: QueryDataRangeResponseBodyResult = None,
         success: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Data range object.
         self.result = result
+        # Indicates whether the request was successful. Possible values:
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -12880,6 +13564,7 @@ class QueryDatasetInfoResponseBodyResultDimensionList(TeaModel):
         data_type: str = None,
         dimension_type: str = None,
         expression: str = None,
+        expression_v2: str = None,
         fact_column: str = None,
         field_description: str = None,
         granularity: str = None,
@@ -12899,6 +13584,7 @@ class QueryDatasetInfoResponseBodyResultDimensionList(TeaModel):
         # *   number: a number
         # *   datetime: time
         self.expression = expression
+        self.expression_v2 = expression_v2
         # Expression for a calculated dimension; valid only for calculated dimensions.
         self.fact_column = fact_column
         self.field_description = field_description
@@ -12932,6 +13618,8 @@ class QueryDatasetInfoResponseBodyResultDimensionList(TeaModel):
             result['DimensionType'] = self.dimension_type
         if self.expression is not None:
             result['Expression'] = self.expression
+        if self.expression_v2 is not None:
+            result['ExpressionV2'] = self.expression_v2
         if self.fact_column is not None:
             result['FactColumn'] = self.fact_column
         if self.field_description is not None:
@@ -12956,6 +13644,8 @@ class QueryDatasetInfoResponseBodyResultDimensionList(TeaModel):
             self.dimension_type = m.get('DimensionType')
         if m.get('Expression') is not None:
             self.expression = m.get('Expression')
+        if m.get('ExpressionV2') is not None:
+            self.expression_v2 = m.get('ExpressionV2')
         if m.get('FactColumn') is not None:
             self.fact_column = m.get('FactColumn')
         if m.get('FieldDescription') is not None:
@@ -13026,6 +13716,7 @@ class QueryDatasetInfoResponseBodyResultMeasureList(TeaModel):
         caption: str = None,
         data_type: str = None,
         expression: str = None,
+        expression_v2: str = None,
         fact_column: str = None,
         field_description: str = None,
         measure_type: str = None,
@@ -13042,6 +13733,7 @@ class QueryDatasetInfoResponseBodyResultMeasureList(TeaModel):
         # *   number: a number
         # *   datetime: time
         self.expression = expression
+        self.expression_v2 = expression_v2
         # The type of the measure. Valid values:
         # 
         # *   standard_measure: General Metrics
@@ -13070,6 +13762,8 @@ class QueryDatasetInfoResponseBodyResultMeasureList(TeaModel):
             result['DataType'] = self.data_type
         if self.expression is not None:
             result['Expression'] = self.expression
+        if self.expression_v2 is not None:
+            result['ExpressionV2'] = self.expression_v2
         if self.fact_column is not None:
             result['FactColumn'] = self.fact_column
         if self.field_description is not None:
@@ -13090,6 +13784,8 @@ class QueryDatasetInfoResponseBodyResultMeasureList(TeaModel):
             self.data_type = m.get('DataType')
         if m.get('Expression') is not None:
             self.expression = m.get('Expression')
+        if m.get('ExpressionV2') is not None:
+            self.expression_v2 = m.get('ExpressionV2')
         if m.get('FactColumn') is not None:
             self.fact_column = m.get('FactColumn')
         if m.get('FieldDescription') is not None:
@@ -13820,6 +14516,8 @@ class QueryDatasetSmartqStatusRequest(TeaModel):
         self,
         cube_id: str = None,
     ):
+        # Dataset ID.
+        # 
         # This parameter is required.
         self.cube_id = cube_id
 
@@ -13850,8 +14548,16 @@ class QueryDatasetSmartqStatusResponseBody(TeaModel):
         result: bool = None,
         success: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Result of the API execution. Possible values:
+        # - true: Request succeeded
+        # - false: Request failed
         self.result = result
+        # 是否请求成功。取值范围：
+        # 
+        # - true：请求成功
+        # - false：请求失败
         self.success = success
 
     def validate(self):
@@ -14079,8 +14785,11 @@ class QueryEmbeddedInfoResponseBodyResultDetail(TeaModel):
         page: int = None,
         report: int = None,
     ):
+        # The number of embedded self-service fetching.
         self.dashboard_offline_query = dashboard_offline_query
+        # The number of embedded dashboards.
         self.page = page
+        # The number of embedded spreadsheets.
         self.report = report
 
     def validate(self):
@@ -14118,8 +14827,11 @@ class QueryEmbeddedInfoResponseBodyResult(TeaModel):
         embedded_count: int = None,
         max_count: int = None,
     ):
+        # Embed the statistics of the work.
         self.detail = detail
+        # The number of reports that are currently embedded.
         self.embedded_count = embedded_count
+        # The maximum number of reports that can be embedded.
         self.max_count = max_count
 
     def validate(self):
@@ -14159,7 +14871,9 @@ class QueryEmbeddedInfoResponseBody(TeaModel):
         result: QueryEmbeddedInfoResponseBodyResult = None,
         success: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The embedded information of the reports under the organization.
         self.result = result
         # Indicates whether the request is successful. Valid values:
         # 
@@ -14362,6 +15076,8 @@ class QueryLlmCubeWithThemeListByUserIdRequest(TeaModel):
         self,
         user_id: str = None,
     ):
+        # User ID.
+        # 
         # This parameter is required.
         self.user_id = user_id
 
@@ -14391,7 +15107,14 @@ class QueryLlmCubeWithThemeListByUserIdResponseBodyResult(TeaModel):
         cube_ids: Dict[str, str] = None,
         theme_ids: Dict[str, str] = None,
     ):
+        # Dataset map.
+        # 
+        # - key - Dataset ID
+        # - value - Dataset name
         self.cube_ids = cube_ids
+        # Analysis theme map.
+        # - key - Analysis theme ID 
+        # - value - Analysis theme name
         self.theme_ids = theme_ids
 
     def validate(self):
@@ -14425,8 +15148,14 @@ class QueryLlmCubeWithThemeListByUserIdResponseBody(TeaModel):
         result: QueryLlmCubeWithThemeListByUserIdResponseBodyResult = None,
         success: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # List of datasets and analysis themes.
         self.result = result
+        # Indicates whether the request was successful. Possible values:
+        # 
+        # - true: The request was successful
+        # - false: The request failed
         self.success = success
 
     def validate(self):
@@ -14546,7 +15275,7 @@ class QueryOrganizationRoleConfigResponseBodyResultAuthConfigList(TeaModel):
         # - offline_download: Self-service Data Retrieval
         # - resource_package: Resource Package Management
         # - organization_ask: Organization Access Key/Secret (AK/SK)
-        # - developer_openapi: Open API
+        # - developer_openapi: OpenAPI
         # - data_service: Data Service
         # - admin_authorize3rd: Embedded Analysis
         # - component_manage: Custom Component
@@ -14736,9 +15465,19 @@ class QueryOrganizationWorkspaceListRequest(TeaModel):
         page_size: int = None,
         user_id: str = None,
     ):
+        # Keyword for the workspace name.
         self.keyword = keyword
+        # Current page number of the workspace list:
+        # 
+        # - Starting value: 1
+        # - Default value: 1
         self.page_num = page_num
+        # Number of rows per page in a paginated query:
+        # 
+        # - Default value: 10
+        # - Maximum value: 1000
         self.page_size = page_size
+        # User ID in Quick BI.
         self.user_id = user_id
 
     def validate(self):
@@ -14791,19 +15530,39 @@ class QueryOrganizationWorkspaceListResponseBodyResultData(TeaModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
+        # Whether the work can be made public. Value range:
+        # 
+        # - true: Public
+        # - false: Not public
         self.allow_publish_operation = allow_publish_operation
+        # Indicates whether the work can be authorized for sharing. Possible values:
+        # 
+        # - true: Authorized
+        # - false: Not authorized
         self.allow_share_operation = allow_share_operation
+        # Creation time of the workspace.
         self.create_time = create_time
+        # Quick BI user ID of the creator.
         self.create_user = create_user
+        # Aliyun account name of the creator.
         self.create_user_account_name = create_user_account_name
+        # Last modified time of the workspace.
         self.modified_time = modified_time
+        # ID of the Quick BI user who modified the workspace.
         self.modify_user = modify_user
+        # Aliyun account name of the modifier.
         self.modify_user_account_name = modify_user_account_name
+        # ID of the organization to which the workspace belongs.
         self.organization_id = organization_id
+        # Quick BI user ID of the workspace owner.
         self.owner = owner
+        # Aliyun account name of the workspace owner.
         self.owner_account_name = owner_account_name
+        # Workspace description.
         self.workspace_description = workspace_description
+        # Workspace ID.
         self.workspace_id = workspace_id
+        # Name of the workspace.
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -14887,10 +15646,15 @@ class QueryOrganizationWorkspaceListResponseBodyResult(TeaModel):
         total_num: int = None,
         total_pages: int = None,
     ):
+        # List of workspaces.
         self.data = data
+        # Page number.
         self.page_num = page_num
+        # Number of rows per page as set in the request.
         self.page_size = page_size
+        # Total number of rows.
         self.total_num = total_num
+        # Total number of pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -14944,8 +15708,14 @@ class QueryOrganizationWorkspaceListResponseBody(TeaModel):
         result: QueryOrganizationWorkspaceListResponseBodyResult = None,
         success: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returns the paginated result of the workspace list, with detailed information about the workspaces stored in the Data parameter.
         self.result = result
+        # Indicates whether the request was successful. Possible values:
+        # 
+        # - true: Request succeeded
+        # - false: Request failed
         self.success = success
 
     def validate(self):
@@ -15057,9 +15827,13 @@ class QueryReadableResourcesListByUserIdResponseBodyResultDirectory(TeaModel):
         path_id: str = None,
         path_name: str = None,
     ):
+        # The ID of the directory.
         self.id = id
+        # The name of the directory.
         self.name = name
+        # The hierarchical structure of the directory ID, which is separated with \\"/\\".
         self.path_id = path_id
+        # The hierarchical structure of the directory name, which is separated with \\"/\\".
         self.path_name = path_name
 
     def validate(self):
@@ -15117,9 +15891,11 @@ class QueryReadableResourcesListByUserIdResponseBodyResult(TeaModel):
         self.create_time = create_time
         # Remarks on the work.
         self.description = description
+        # The directory structure in which the work is located.
         self.directory = directory
         # The name of the Alibaba Cloud account to which the modifier belongs.
         self.modify_name = modify_name
+        # The timestamp of the modification time in milliseconds.
         self.modify_time = modify_time
         # The Quick BI UserID of the work owner.
         self.owner_id = owner_id
@@ -15619,6 +16395,7 @@ class QueryReportPerformanceResponseBody(TeaModel):
     ):
         # The request ID.
         self.request_id = request_id
+        # The returned results.
         self.result = result
         # Indicates whether the request was successful. Valid values:
         # 
@@ -15708,15 +16485,7 @@ class QueryShareListRequest(TeaModel):
         self,
         report_id: str = None,
     ):
-        # The type of work being shared. Valid values:
-        # 
-        # *   product: BI portal
-        # *   dashboard: dashboard
-        # *   worksheet: workbook
-        # *   dashboardOfflineQuery: self-service data retrieval
-        # *   Analysis: Ad hoc analysis
-        # *   DATAFORM
-        # *   SCREEN: Data dashboard
+        # The ID of the work. The works include data portal, dashboard, spreadsheet, self-service data retrieval, ad-hoc analysis, data entry, and data screen.
         # 
         # This parameter is required.
         self.report_id = report_id
@@ -15753,13 +16522,38 @@ class QueryShareListResponseBodyResult(TeaModel):
         share_to_type: int = None,
         share_type: str = None,
     ):
+        # Sharing permissions. Possible values:
+        # 
+        # - 1: View only
+        # - 3: View and export
         self.auth_point = auth_point
+        # The timestamp in milliseconds indicating the expiration time of the authorization.
         self.expire_date = expire_date
+        # The ID of the work.
         self.report_id = report_id
+        # The ID of the sharing configuration.
         self.share_id = share_id
+        # The ID of the sharing target, which could be a user ID or a group ID in Quick BI.
+        # 
+        # - When ShareToType=2 (all members within an organization), ShareToId is the organization ID.
         self.share_to_id = share_to_id
+        # The name of the sharing target.
         self.share_to_name = share_to_name
+        # The type of sharing. Possible values:
+        # 
+        # - 0: User
+        # - 1: Group
+        # - 2: Organization
+        # - 3: Space
         self.share_to_type = share_to_type
+        # The type of the shared work. The value range includes: 
+        # - dataProduct: Data Portal 
+        # - dashboard: Dashboard 
+        # - report: Spreadsheet 
+        # - dashboardOfflineQuery: Self-service Data Extraction 
+        # - ANALYSIS: Ad-hoc Analysis 
+        # - DATAFORM: Data Entry 
+        # - SCREEN: Data Visualization Screen
         self.share_type = share_type
 
     def validate(self):
@@ -15817,8 +16611,14 @@ class QueryShareListResponseBody(TeaModel):
         result: List[QueryShareListResponseBodyResult] = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Returns the list of objects to which the work has been shared.
         self.result = result
+        # Indicates whether the request was successful. Possible values:
+        # 
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -16229,8 +17029,12 @@ class QuerySmartqPermissionByCubeIdRequest(TeaModel):
         cube_id: str = None,
         user_id: str = None,
     ):
+        # Dataset ID.
+        # 
         # This parameter is required.
         self.cube_id = cube_id
+        # User ID.
+        # 
         # This parameter is required.
         self.user_id = user_id
 
@@ -16265,8 +17069,11 @@ class QuerySmartqPermissionByCubeIdResponseBodyResult(TeaModel):
         cube_name: str = None,
         has_perssion: bool = None,
     ):
+        # Dataset ID.
         self.cube_id = cube_id
+        # Dataset name.
         self.cube_name = cube_name
+        # Whether the current user has permission for the smart question. Note: \\"HasPerssion\\" seems to be a typo, it should probably be \\"HasPermission\\".
         self.has_perssion = has_perssion
 
     def validate(self):
@@ -16304,8 +17111,14 @@ class QuerySmartqPermissionByCubeIdResponseBody(TeaModel):
         result: QuerySmartqPermissionByCubeIdResponseBodyResult = None,
         success: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Basic information of the dataset.
         self.result = result
+        # Indicates whether the request was successful. Possible values:
+        # 
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -16384,7 +17197,7 @@ class QueryTicketInfoRequest(TeaModel):
         self,
         ticket: str = None,
     ):
-        # Obtains the details of a specified ticket for a report that is not embedded in the report.
+        # The value of the bill.
         # 
         # This parameter is required.
         self.ticket = ticket
@@ -16424,16 +17237,27 @@ class QueryTicketInfoResponseBodyResult(TeaModel):
         watermark_param: str = None,
         works_id: str = None,
     ):
+        # Notes.
         self.access_ticket = access_ticket
+        # The ID of the component in the report.
         self.cmpt_id = cmpt_id
+        # Global parameters.
         self.global_param = global_param
+        # Expiration time of the note.
         self.invalid_time = invalid_time
+        # The maximum number of supported bills.
         self.max_ticket_num = max_ticket_num
+        # The ID of the organization.
         self.organization_id = organization_id
+        # The registration time of the ticket.
         self.register_time = register_time
+        # The number of bills that have been consumed.
         self.used_ticket_num = used_ticket_num
+        # The user ID of the Quick BI.
         self.user_id = user_id
+        # Set the watermarking parameters.
         self.watermark_param = watermark_param
+        # The ID of the operations report.
         self.works_id = works_id
 
     def validate(self):
@@ -16503,8 +17327,14 @@ class QueryTicketInfoResponseBody(TeaModel):
         result: QueryTicketInfoResponseBodyResult = None,
         success: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the generated ticket.
         self.result = result
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   true: The request was successful.
+        # *   false: The request failed.
         self.success = success
 
     def validate(self):
@@ -16795,7 +17625,10 @@ class QueryUserGroupMemberRequest(TeaModel):
         keyword: str = None,
         user_group_id: str = None,
     ):
+        # Keyword for the username or nickname of the user group member.
         self.keyword = keyword
+        # User group ID.
+        # 
         # This parameter is required.
         self.user_group_id = user_group_id
 
@@ -16832,10 +17665,18 @@ class QueryUserGroupMemberResponseBodyResult(TeaModel):
         parent_user_group_id: str = None,
         parent_user_group_name: str = None,
     ):
+        # ID of the user group or the user group member.
         self.id = id
+        # Indicates whether it is a user group. Possible values:
+        # 
+        # - true: It is a user group.
+        # - false: It is a user.
         self.is_user_group = is_user_group
+        # Name or nickname of the user group or its member.
         self.name = name
+        # ID of the parent user group.
         self.parent_user_group_id = parent_user_group_id
+        # Name of the parent user group.
         self.parent_user_group_name = parent_user_group_name
 
     def validate(self):
@@ -16881,8 +17722,14 @@ class QueryUserGroupMemberResponseBody(TeaModel):
         result: List[QueryUserGroupMemberResponseBodyResult] = None,
         success: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # The result of the request for the user group member list.
         self.result = result
+        # Indicates whether the request was successful. Possible values:
+        # 
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -17423,8 +18270,17 @@ class QueryUserListRequest(TeaModel):
         page_num: int = None,
         page_size: int = None,
     ):
+        # The keyword of the username or nickname of the organization member.
         self.keyword = keyword
+        # Current page number for organization member list:
+        # 
+        # *   Pages start from page 1.
+        # *   Default value: 1.
         self.page_num = page_num
+        # The number of rows per page in a paged query.
+        # 
+        # *   Default value: 10.
+        # *   Maximum value: 1,000.
         self.page_size = page_size
 
     def validate(self):
@@ -17470,16 +18326,39 @@ class QueryUserListResponseBodyResultData(TeaModel):
         user_id: str = None,
         user_type: int = None,
     ):
+        # The ID of the Alibaba Cloud account.
         self.account_id = account_id
+        # The name of the Alibaba Cloud account that corresponds to the member.
         self.account_name = account_name
+        # Indicates whether the organization administrator. Valid values:
+        # 
+        # *   true
+        # *   false
         self.admin_user = admin_user
+        # Indicate whether the RAM user is a permission administrator. Valid values:
+        # 
+        # *   true
+        # *   false
         self.auth_admin_user = auth_admin_user
+        # User status: 
+        # - Active - false 
+        # - Inactive - true
         self.is_deleted = is_deleted
+        # Join Date
         self.joined_date = joined_date
+        # Last login time.
         self.last_login_time = last_login_time
+        # The nickname of the organization member.
         self.nick_name = nick_name
+        # List of organization role IDs bound to the user.
         self.role_id_list = role_id_list
+        # The UserID in the Quick BI.
         self.user_id = user_id
+        # The role type of the organization member. Valid values:
+        # 
+        # *   1 : developer
+        # *   2 : visitors
+        # *   3 : Analyst
         self.user_type = user_type
 
     def validate(self):
@@ -17551,10 +18430,15 @@ class QueryUserListResponseBodyResult(TeaModel):
         total_num: int = None,
         total_pages: int = None,
     ):
+        # Returns the list of requested users.
         self.data = data
+        # The page number of the returned page.
         self.page_num = page_num
+        # The number of rows per page set when the interface is requested.
         self.page_size = page_size
+        # The total number of rows in the table.
         self.total_num = total_num
+        # The total number of pages returned.
         self.total_pages = total_pages
 
     def validate(self):
@@ -17608,8 +18492,14 @@ class QueryUserListResponseBody(TeaModel):
         result: QueryUserListResponseBodyResult = None,
         success: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The pagination result of the user list is returned. The detailed information list of organization members is stored in the response parameter Data.
         self.result = result
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   true: The request was successful.
+        # *   false: The request failed.
         self.success = success
 
     def validate(self):
@@ -17689,8 +18579,12 @@ class QueryUserRoleInfoInWorkspaceRequest(TeaModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
+        # Quick BI user ID.
+        # 
         # This parameter is required.
         self.user_id = user_id
+        # Workspace ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -17725,8 +18619,15 @@ class QueryUserRoleInfoInWorkspaceResponseBodyResult(TeaModel):
         role_id: int = None,
         role_name: str = None,
     ):
+        # Preset role code.
         self.role_code = role_code
+        # Preset role ID. Possible values:
+        # - 25: Space Administrator
+        # - 26: Space Developer
+        # - 27: Space Analyst
+        # - 30: Space Viewer
         self.role_id = role_id
+        # Preset role name.
         self.role_name = role_name
 
     def validate(self):
@@ -17764,8 +18665,14 @@ class QueryUserRoleInfoInWorkspaceResponseBody(TeaModel):
         result: QueryUserRoleInfoInWorkspaceResponseBodyResult = None,
         success: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Preset space role information of the user.
         self.result = result
+        # Indicates whether the request was successful. Possible values:
+        # 
+        # - true: The request succeeded.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -18146,6 +19053,8 @@ class QueryWorksRequest(TeaModel):
         self,
         works_id: str = None,
     ):
+        # Report ID
+        # 
         # This parameter is required.
         self.works_id = works_id
 
@@ -18177,9 +19086,13 @@ class QueryWorksResponseBodyResultDirectory(TeaModel):
         path_id: str = None,
         path_name: str = None,
     ):
+        # The ID of the directory.
         self.id = id
+        # The name of the directory.
         self.name = name
+        # The hierarchical structure of the directory ID to which the directory belongs. Separate the hierarchical structure with a /.
         self.path_id = path_id
+        # The hierarchical structure of the directory to which the directory belongs. Separate the hierarchical structure with a (/).
         self.path_name = path_name
 
     def validate(self):
@@ -18235,22 +19148,63 @@ class QueryWorksResponseBodyResult(TeaModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
+        # Third-party embedding status. Valid values:
+        # 
+        # *   0: The embed service is not enabled.
+        # *   1: Embed is enabled.
         self.auth_3rd_flag = auth_3rd_flag
+        # Remarks on the work.
         self.description = description
+        # The directory to which the work belongs.
         self.directory = directory
+        # The timestamp of the creation of the work in milliseconds.
         self.gmt_create = gmt_create
+        # The timestamp of the modification of the work in milliseconds.
         self.gmt_modify = gmt_modify
+        # The Alibaba Cloud account name of the person who modified the work.
         self.modify_name = modify_name
+        # The user ID of the work owner in the Quick BI.
         self.owner_id = owner_id
+        # The Alibaba Cloud account name of the work owner.
         self.owner_name = owner_name
+        # Is it public
         self.public_flag = public_flag
+        # Deadline for the public release of the report
         self.public_invalid_time = public_invalid_time
+        # Security policies for collaborative authorization of works. Valid values:
+        # 
+        # *   0: private
+        # *   12: Authorize specified members
+        # *   1 or 11: Authorize all workspace members
+        # 
+        # > 
+        # 
+        # *   If you use legacy permissions, the return value is 1.
+        # 
+        # *   If you use the new permissions, the return value is 11.
         self.security_level = security_level
+        # The status of the report. Valid values:
+        # 
+        # *   0: unpublished
+        # *   1: published
+        # *   2: modified but not published
+        # *   3: unpublished
         self.status = status
+        # The name of the work.
         self.work_name = work_name
+        # Queries the types of works. Fill in the blanks to query all types. Valid values:
+        # 
+        # *   DATAPRODUCT: BI portal
+        # *   PAGE: Dashboard
+        # *   FULLPAGE: full-screen dashboards
+        # *   REPORT: workbook
+        # *   dashboardOfflineQuery: self-service data retrieval
         self.work_type = work_type
+        # The ID of the work.
         self.works_id = works_id
+        # The ID of the workspace to which the work belongs.
         self.workspace_id = workspace_id
+        # The name of the workspace to which the work belongs.
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -18346,8 +19300,14 @@ class QueryWorksResponseBody(TeaModel):
         result: QueryWorksResponseBodyResult = None,
         success: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the work.
         self.result = result
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   true: The request was successful.
+        # *   false: The request failed.
         self.success = success
 
     def validate(self):
@@ -18426,7 +19386,7 @@ class QueryWorksBloodRelationshipRequest(TeaModel):
         self,
         works_id: str = None,
     ):
-        # Obtains the kinship of a data work, including the datasets referenced by each component and query field information. Currently, only supported data works include dashboards, workbooks, and self-service data retrieval.
+        # The ID of the data work.
         # 
         # This parameter is required.
         self.works_id = works_id
@@ -18463,17 +19423,12 @@ class QueryWorksBloodRelationshipResponseBodyResultQueryParams(TeaModel):
         path_id: str = None,
         uid: str = None,
     ):
-        # Indices whether the metric. Valid values:
-        # 
-        # true false
-        self.area_id = area_id
         # The ID of the owning location.
+        self.area_id = area_id
+        # The name of the owning location.
         self.area_name = area_name
-        # The globally unique PathId.
-        self.caption = caption
         # The display name of the field.
-        self.data_type = data_type
-        self.expression = expression
+        self.caption = caption
         # The type of the field. Valid values:
         # 
         # *   string: string type
@@ -18486,10 +19441,16 @@ class QueryWorksBloodRelationshipResponseBodyResultQueryParams(TeaModel):
         # *   url: string type
         # *   imageUrl: the type of the image link.
         # *   multivalue: a multi-value column
+        self.data_type = data_type
+        # Calculate field expression.
+        self.expression = expression
+        # Indices whether the metric. Valid values:
+        # 
+        # true false
         self.is_measure = is_measure
-        # The unique ID of the field.
+        # The globally unique PathId.
         self.path_id = path_id
-        # A list of query parameter reference columns.
+        # The unique ID of the field.
         self.uid = uid
 
     def validate(self):
@@ -18551,18 +19512,19 @@ class QueryWorksBloodRelationshipResponseBodyResult(TeaModel):
         dataset_id: str = None,
         query_params: List[QueryWorksBloodRelationshipResponseBodyResultQueryParams] = None,
     ):
-        # List of work blood information.
-        self.component_id = component_id
         # The ID of the component that you want to modify.
+        self.component_id = component_id
+        # The name of the component.
         self.component_name = component_name
-        # Line
-        self.component_type = component_type
-        self.component_type_cn_name = component_type_cn_name
         # The type of the image component.
-        self.component_type_name = component_type_name
-        # Column (Measure)
-        self.dataset_id = dataset_id
+        self.component_type = component_type
+        # Chinese name of the component type
+        self.component_type_cn_name = component_type_cn_name
         # The name of the component type.
+        self.component_type_name = component_type_name
+        # The ID of the training dataset that you want to remove from the specified custom linguistic model.
+        self.dataset_id = dataset_id
+        # A list of query parameter reference columns.
         self.query_params = query_params
 
     def validate(self):
@@ -18624,14 +19586,14 @@ class QueryWorksBloodRelationshipResponseBody(TeaModel):
         result: List[QueryWorksBloodRelationshipResponseBodyResult] = None,
         success: bool = None,
     ):
+        # The ID of the request.
+        self.request_id = request_id
+        # List of work blood information.
+        self.result = result
         # Indicates whether the request is successful. Valid values:
         # 
         # *   true: The request was successful.
         # *   false: The request failed.
-        self.request_id = request_id
-        # The ID of the request.
-        self.result = result
-        # The response.
         self.success = success
 
     def validate(self):
@@ -18720,15 +19682,32 @@ class QueryWorksByOrganizationRequest(TeaModel):
         third_part_auth_flag: int = None,
         works_type: str = None,
     ):
-        # The page number of the returned page.
+        # Page number.
+        # 
+        # - Default value is 1.
         self.page_num = page_num
-        # The number of rows per page set when the interface is requested.
+        # Number of items per page.
+        # 
+        # - Default value is 10.
         self.page_size = page_size
-        # Returns a list of all works in the organization that meet the requested criteria.
+        # The status of the work to query. Possible values:
+        # 
+        # - 0: Unpublished
+        # - 1: Published
+        # - 2: Modified but not published
+        # - 3: Offline
         self.status = status
-        # The total number of pages returned.
+        # Third-party embedding status. Possible values:
+        # 
+        # - 0: Embedding not enabled
+        # - 1: Embedding enabled
         self.third_part_auth_flag = third_part_auth_flag
-        # The ID of the request.
+        # The type of work to query. Leave blank to query all types. Possible values:
+        # 
+        # - DATAPRODUCT: Data Portal
+        # - PAGE: Dashboard
+        # - REPORT: Spreadsheet
+        # - dashboardOfflineQuery: Self-service Data Retrieval
         self.works_type = works_type
 
     def validate(self):
@@ -18775,9 +19754,13 @@ class QueryWorksByOrganizationResponseBodyResultDataDirectory(TeaModel):
         path_id: str = None,
         path_name: str = None,
     ):
+        # ID of the directory to which it belongs.
         self.id = id
+        # Name of the directory to which it belongs.
         self.name = name
+        # Hierarchical structure of the directory ID, separated by『/』.
         self.path_id = path_id
+        # Hierarchical structure of the directory name, separated by『/』.
         self.path_name = path_name
 
     def validate(self):
@@ -18833,47 +19816,58 @@ class QueryWorksByOrganizationResponseBodyResultData(TeaModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
-        # The name of the workspace to which the work belongs.
+        # Third-party embedding status. Possible values:
+        # 
+        # - 0: Embedding not enabled
+        # - 1: Embedding enabled
         self.auth_3rd_flag = auth_3rd_flag
-        # The hierarchical structure of the directory ID to which the directory belongs. Separate the hierarchical structure with a /.
+        # Notes for the work.
         self.description = description
-        # The ID of the directory.
+        # Directory to which the work belongs.
         self.directory = directory
-        # Test directory
+        # Timestamp (in milliseconds) when the work was created.
         self.gmt_create = gmt_create
-        # Test Workspace
+        # 作品修改的毫秒级时间戳。
         self.gmt_modify = gmt_modify
-        # Description
+        # 作品修改者的阿里云账户名。
         self.modify_name = modify_name
-        # Security policies for collaborative authorization of works. Valid values:
-        # 
-        # *   0: private
-        # *   12: Authorize specified members
-        # *   1 or 11: Authorize all workspace members
-        # 
-        # > 
-        # 
-        # *   If you use legacy permissions, the return value is 1.
-        # 
-        # *   If you use the new permissions, the return value is 11.
+        # The UserID of the work\\"s owner in Quick BI.
         self.owner_id = owner_id
-        # The Alibaba Cloud account name of the person who modified the work.
+        # The Alibaba Cloud account name of the work\\"s owner.
         self.owner_name = owner_name
+        # Whether it is public
         self.public_flag = public_flag
+        # The expiration date for the report to be made public
         self.public_invalid_time = public_invalid_time
-        # The directory to which the work belongs.
+        # The security policy for collaborative authorization of the work. Values:
+        # - 0: Private
+        # - 12: Authorize specific members
+        # - 1 or 11: Authorize all space members
+        # 
+        # >- If you are using the old version of permissions, the returned value is 1.
+        # >- If you are using the new version of permissions, the returned value is 11.
         self.security_level = security_level
-        # Li Si
+        # The status of the report. Value range:
+        # 
+        # - 0: Unpublished
+        # - 1: Published
+        # - 2: Modified but not published
+        # - 3: Offline
         self.status = status
-        # Test directory
+        # The name of the work.
         self.work_name = work_name
-        # The name of the workspace to which the work belongs.
+        # The type of the work. Value range:
+        # 
+        # - DATAPRODUCT: Data portal
+        # - PAGE: Dashboard
+        # - REPORT: Spreadsheet
+        # - dashboardOfflineQuery: Self-service data retrieval
         self.work_type = work_type
-        # The user ID of the work owner in the Quick BI.
+        # The ID of the work.
         self.works_id = works_id
-        # Test report
-        self.workspace_id = workspace_id
         # The ID of the workspace to which the work belongs.
+        self.workspace_id = workspace_id
+        # The name of the workspace to which the work belongs.
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -18971,23 +19965,15 @@ class QueryWorksByOrganizationResponseBodyResult(TeaModel):
         total_num: int = None,
         total_pages: int = None,
     ):
-        # The Alibaba Cloud account name of the work owner.
+        # Details of the work list.
         self.data = data
-        # The timestamp of the modification of the work in milliseconds.
+        # Page number.
         self.page_num = page_num
-        # The ID of the work.
+        # The number of rows per page set when requesting the interface.
         self.page_size = page_size
-        # The type of the work. Valid values:
-        # 
-        # *   DATAPRODUCT: BI portal
-        # *   PAGE: Dashboard
-        # *   FULLPAGE: full-screen dashboards
-        # *   REPORT: workbook
+        # Total number of rows.
         self.total_num = total_num
-        # Third-party embedding status. Valid values:
-        # 
-        # *   0: The embed service is not enabled.
-        # *   1: Embed is enabled.
+        # Total number of pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -19041,16 +20027,14 @@ class QueryWorksByOrganizationResponseBody(TeaModel):
         result: QueryWorksByOrganizationResponseBodyResult = None,
         success: bool = None,
     ):
-        # The details of the list of works.
+        # Request ID.
         self.request_id = request_id
-        # The status of the report. Valid values:
-        # 
-        # *   0: unpublished
-        # *   1: published
-        # *   2: modified but not published
-        # *   3: unpublished
+        # Returns a list of all works under the organization that meet the request criteria.
         self.result = result
-        # The total number of rows in the table.
+        # Indicates whether the request was successful. Possible values:
+        # 
+        # - true: Request succeeded
+        # - false: Request failed
         self.success = success
 
     def validate(self):
@@ -19214,7 +20198,9 @@ class QueryWorksByWorkspaceResponseBodyResultDataDirectory(TeaModel):
         path_id: str = None,
         path_name: str = None,
     ):
+        # The ID of the directory.
         self.id = id
+        # The name of the directory.
         self.name = name
         # The hierarchical structure of the directory ID to which the directory belongs. Separate the hierarchical structure with a /.
         self.path_id = path_id
@@ -19293,7 +20279,9 @@ class QueryWorksByWorkspaceResponseBodyResultData(TeaModel):
         self.owner_id = owner_id
         # The nickname of the work owner.
         self.owner_name = owner_name
+        # Is it public
         self.public_flag = public_flag
+        # Deadline for the public release of the report
         self.public_invalid_time = public_invalid_time
         # Security policies for collaborative authorization of works. Valid values:
         # 
@@ -19729,10 +20717,10 @@ class QueryWorkspaceRoleConfigResponseBody(TeaModel):
         self.request_id = request_id
         # Returns the query result of the interface.
         self.result = result
-        # 是否请求成功。取值范围：
+        # Indicates whether the request is successful. Valid values:
         # 
-        # - true：请求成功
-        # - false：请求失败
+        # *   true: The request was successful.
+        # *   false: The request failed.
         self.success = success
 
     def validate(self):
@@ -19814,9 +20802,20 @@ class QueryWorkspaceUserListRequest(TeaModel):
         page_size: int = None,
         workspace_id: str = None,
     ):
+        # Keyword for the username of the workspace member.
         self.keyword = keyword
+        # Current page number of the workspace member list:
+        # 
+        # - Starting value: 1
+        # - Default value: 1
         self.page_num = page_num
+        # Number of rows per page in a paginated query:
+        # 
+        # - Default value: 10
+        # - Maximum value: 1000
         self.page_size = page_size
+        # Workspace ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -19859,8 +20858,16 @@ class QueryWorkspaceUserListResponseBodyResultDataRole(TeaModel):
         role_id: int = None,
         role_name: str = None,
     ):
+        # Code corresponding to the preset role.
         self.role_code = role_code
+        # Preset role ID. Possible values:
+        # 
+        # - 25: Workspace Administrator
+        # - 26: Workspace Developer
+        # - 27: Workspace Analyst
+        # - 30: Workspace Viewer
         self.role_id = role_id
+        # Name of the preset role.
         self.role_name = role_name
 
     def validate(self):
@@ -19900,10 +20907,15 @@ class QueryWorkspaceUserListResponseBodyResultData(TeaModel):
         role: QueryWorkspaceUserListResponseBodyResultDataRole = None,
         user_id: str = None,
     ):
+        # Alibaba Cloud account ID.
         self.account_id = account_id
+        # Alibaba Cloud account name.
         self.account_name = account_name
+        # Nickname.
         self.nick_name = nick_name
+        # Preset role information for the workspace member.
         self.role = role
+        # Quick BI user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -19953,10 +20965,15 @@ class QueryWorkspaceUserListResponseBodyResult(TeaModel):
         total_num: int = None,
         total_pages: int = None,
     ):
+        # Information about the workspace members.
         self.data = data
+        # Page number.
         self.page_num = page_num
+        # Number of rows per page as set in the request.
         self.page_size = page_size
+        # Total number of rows.
         self.total_num = total_num
+        # Total number of pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -20010,8 +21027,14 @@ class QueryWorkspaceUserListResponseBody(TeaModel):
         result: QueryWorkspaceUserListResponseBodyResult = None,
         success: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returns the paginated result of the member list, with detailed information about the members stored in the Data parameter of the response.
         self.result = result
+        # Indicates whether the request was successful. Possible values:
+        # 
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -20231,11 +21254,11 @@ class SaveFavoritesRequest(TeaModel):
         user_id: str = None,
         works_id: str = None,
     ):
-        # The user ID of the collection. The user ID is the UserID of the Quick BI, not the UID of Alibaba Cloud.
+        # The user ID of the person who favorites the work. This user ID is the UserID of Quick BI, not the UID of Alibaba Cloud.
         # 
         # This parameter is required.
         self.user_id = user_id
-        # The ID of the collection.
+        # The ID of the work being favorited.
         # 
         # This parameter is required.
         self.works_id = works_id
@@ -20271,17 +21294,17 @@ class SaveFavoritesResponseBody(TeaModel):
         result: bool = None,
         success: bool = None,
     ):
-        # The ID of the request.
+        # Request ID.
         self.request_id = request_id
-        # The execution result of the interface is returned. Valid values:
+        # Returns the result of the interface execution. Possible values:
         # 
-        # *   true: The request was successful.
-        # *   false: The request fails.
+        # - true: Execution successful
+        # - false: Execution failed
         self.result = result
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the request was successful. Possible values:
         # 
-        # *   true: The request was successful.
-        # *   false: The request failed.
+        # - true: Request successful
+        # - false: Request failed
         self.success = success
 
     def validate(self):
@@ -20708,8 +21731,13 @@ class SmartqAuthTransferRequest(TeaModel):
         origin_user_id: str = None,
         target_user_ids: str = None,
     ):
+        # Source user ID.
+        # 
         # This parameter is required.
         self.origin_user_id = origin_user_id
+        # Target user ID array, separated by English commas.
+        # >Warning: The number of user IDs cannot exceed 100.
+        # 
         # This parameter is required.
         self.target_user_ids = target_user_ids
 
@@ -20744,8 +21772,16 @@ class SmartqAuthTransferResponseBody(TeaModel):
         result: bool = None,
         success: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # API execution result. Possible values:
+        # 
+        # - true: Request succeeded
+        # - false: Request failed
         self.result = result
+        # Indicates whether the request was successful. Possible values:
+        # - true: Request succeeded
+        # - false: Request failed
         self.success = success
 
     def validate(self):
@@ -20820,17 +21856,30 @@ class SmartqAuthTransferResponse(TeaModel):
 class SmartqAuthorizeRequest(TeaModel):
     def __init__(
         self,
+        cube_ids: str = None,
         expire_day: str = None,
         llm_cube_themes: str = None,
         llm_cubes: str = None,
         operation_type: int = None,
         user_ids: str = None,
     ):
+        self.cube_ids = cube_ids
+        # Expiration time, with a default of seven days.
+        # Format: 2099-12-31
         self.expire_day = expire_day
+        # Array of analysis theme IDs, separated by English commas.
         self.llm_cube_themes = llm_cube_themes
+        # Array of Q&A resource IDs, separated by English commas.
         self.llm_cubes = llm_cubes
+        # Operation type. The values are as follows:
+        # - 0: Add authorization
+        # - 1: Remove authorization
+        # 
         # This parameter is required.
         self.operation_type = operation_type
+        # Array of user IDs, separated by English commas.
+        # >Notice: The number of user IDs per request * (number of Q&A resources + number of analysis themes) cannot exceed 100.
+        # 
         # This parameter is required.
         self.user_ids = user_ids
 
@@ -20843,6 +21892,8 @@ class SmartqAuthorizeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.cube_ids is not None:
+            result['CubeIds'] = self.cube_ids
         if self.expire_day is not None:
             result['ExpireDay'] = self.expire_day
         if self.llm_cube_themes is not None:
@@ -20857,6 +21908,8 @@ class SmartqAuthorizeRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CubeIds') is not None:
+            self.cube_ids = m.get('CubeIds')
         if m.get('ExpireDay') is not None:
             self.expire_day = m.get('ExpireDay')
         if m.get('LlmCubeThemes') is not None:
@@ -20878,9 +21931,13 @@ class SmartqAuthorizeResponseBodyResult(TeaModel):
         llm_cube_theme: str = None,
         user_id: str = None,
     ):
+        # Reason for failure.
         self.detail_message = detail_message
+        # Q&A resource ID.
         self.llm_cube = llm_cube
+        # Analysis theme ID.
         self.llm_cube_theme = llm_cube_theme
+        # User ID.
         self.user_id = user_id
 
     def validate(self):
@@ -20922,8 +21979,14 @@ class SmartqAuthorizeResponseBody(TeaModel):
         result: List[SmartqAuthorizeResponseBodyResult] = None,
         success: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Array of failed user information.
         self.result = result
+        # Indicates whether the request was successful. The value range is as follows:
+        # 
+        # - true: Request succeeded
+        # - false: Request failed
         self.success = success
 
     def validate(self):
@@ -21010,9 +22073,15 @@ class SmartqQueryAbilityRequest(TeaModel):
         user_id: str = None,
         user_question: str = None,
     ):
+        # Dataset ID.
+        # 
         # This parameter is required.
         self.cube_id = cube_id
+        # User ID.
+        # >Notice: If this field is not filled, the data will be queried by default as the organization owner.
         self.user_id = user_id
+        # Question text.
+        # 
         # This parameter is required.
         self.user_question = user_question
 
@@ -21048,9 +22117,13 @@ class SmartqQueryAbilityResponseBodyResultMetaType(TeaModel):
     def __init__(
         self,
         key: str = None,
+        type: str = None,
         value: str = None,
     ):
+        # Column tuple name.
         self.key = key
+        self.type = type
+        # Column tuple type.
         self.value = value
 
     def validate(self):
@@ -21064,6 +22137,8 @@ class SmartqQueryAbilityResponseBodyResultMetaType(TeaModel):
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
+        if self.type is not None:
+            result['Type'] = self.type
         if self.value is not None:
             result['Value'] = self.value
         return result
@@ -21072,6 +22147,8 @@ class SmartqQueryAbilityResponseBodyResultMetaType(TeaModel):
         m = m or dict()
         if m.get('Key') is not None:
             self.key = m.get('Key')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         if m.get('Value') is not None:
             self.value = m.get('Value')
         return self
@@ -21082,6 +22159,7 @@ class SmartqQueryAbilityResponseBodyResultValues(TeaModel):
         self,
         row: List[str] = None,
     ):
+        # Data values for each row.
         self.row = row
 
     def validate(self):
@@ -21113,10 +22191,15 @@ class SmartqQueryAbilityResponseBodyResult(TeaModel):
         meta_type: List[SmartqQueryAbilityResponseBodyResultMetaType] = None,
         values: List[SmartqQueryAbilityResponseBodyResultValues] = None,
     ):
+        # Suggested chart type.
         self.chart_type = chart_type
+        # Summary information.
         self.conclusion_text = conclusion_text
+        # Visualized logical SQL.
         self.logic_sql = logic_sql
+        # List of column tuple types.
         self.meta_type = meta_type
+        # Array of data value lists.
         self.values = values
 
     def validate(self):
@@ -21179,8 +22262,12 @@ class SmartqQueryAbilityResponseBody(TeaModel):
         result: SmartqQueryAbilityResponseBodyResult = None,
         success: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return result.
         self.result = result
+        # Whether the operation was successful.
+        # 
         # This parameter is required.
         self.success = success
 
@@ -21385,8 +22472,17 @@ class UpdateEmbeddedStatusRequest(TeaModel):
         third_part_auth_flag: bool = None,
         works_id: str = None,
     ):
+        # Whether to enable the embedding feature for the work. Valid values:
+        # 
+        # *   true: enables embedding.
+        # *   false: disables embedding.
+        # 
         # This parameter is required.
         self.third_part_auth_flag = third_part_auth_flag
+        # The ID of the work.
+        # 
+        # *   Batch modification is supported. Separate multiple values with commas (,).
+        # 
         # This parameter is required.
         self.works_id = works_id
 
@@ -21421,8 +22517,14 @@ class UpdateEmbeddedStatusResponseBody(TeaModel):
         result: int = None,
         success: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The number of works that are opened or closed.
         self.result = result
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   true: The request was successful.
+        # *   false: The request failed.
         self.success = success
 
     def validate(self):
@@ -21500,8 +22602,14 @@ class UpdateTicketNumRequest(TeaModel):
         ticket: str = None,
         ticket_num: int = None,
     ):
+        # The value of the third-party embedded ticket, that is, the accessTicket value in the URL.
+        # 
         # This parameter is required.
         self.ticket = ticket
+        # The number of bills.
+        # 
+        # *   Valid values: 1 to 99998. Recommended value: 1.
+        # 
         # This parameter is required.
         self.ticket_num = ticket_num
 
@@ -21536,8 +22644,17 @@ class UpdateTicketNumResponseBody(TeaModel):
         result: bool = None,
         success: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the update is successful. Valid values:
+        # 
+        # *   true: The request was successful.
+        # *   false: The request failed.
         self.result = result
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   true: The request was successful.
+        # *   false: The request failed.
         self.success = success
 
     def validate(self):
@@ -21630,18 +22747,22 @@ class UpdateUserRequest(TeaModel):
         # *   true
         # *   false
         self.auth_admin_user = auth_admin_user
+        # User status: 
+        # * **false**: Active
+        #  * **true**: Inactive
         self.is_deleted = is_deleted
         # The nickname of the account.
         # 
         # *   Format check: The value can be up to 50 characters in length.
         # *   Special format verification: Chinese and English digits_ \\ / | () ] [
         self.nick_name = nick_name
+        # The IDs of the preset or custom organization roles bound to the user, separated by English commas \\",\\", with a maximum of 3. The value range is as follows: - Organization Administrator (preset role): 111111111 - Permission Administrator (preset role): 111111112 - Regular User (preset role): 111111113
         self.role_ids = role_ids
         # The ID of the user to be updated. The user ID is the UserID of the Quick BI, not the UID of Alibaba Cloud.
         # 
         # This parameter is required.
         self.user_id = user_id
-        # The role type of the organization member. Valid values:
+        # The type of user who is a member of the organization. Valid values:
         # 
         # *   1 : developer
         # *   2 : visitors
@@ -22206,10 +23327,21 @@ class UpdateWorkspaceUserRoleRequest(TeaModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
+        # Preset workspace role ID, existing roles will be overwritten. Value range:
+        # - 25: Workspace Administrator
+        # - 26: Workspace Developer
+        # - 27: Workspace Analyst
+        # - 30: Workspace Viewer
         self.role_id = role_id
+        # Multiple workspace role IDs, separated by commas. If this value is provided, it takes precedence.
+        # >Notice: roleId and roleIds cannot both be empty
         self.role_ids = role_ids
+        # Quick BI user ID.
+        # 
         # This parameter is required.
         self.user_id = user_id
+        # Workspace ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -22252,8 +23384,17 @@ class UpdateWorkspaceUserRoleResponseBody(TeaModel):
         result: bool = None,
         success: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returns the result of the interface execution. Value range:
+        # 
+        # - true: Execution successful
+        # - false: Execution failed
         self.result = result
+        # Indicates whether the request was successful. Value range:
+        # 
+        # - true: Request successful
+        # - false: Request failed
         self.success = success
 
     def validate(self):
@@ -22332,10 +23473,22 @@ class UpdateWorkspaceUsersRoleRequest(TeaModel):
         user_ids: str = None,
         workspace_id: str = None,
     ):
+        # Preset space role ID, existing roles will be overwritten. Value range:
+        # - 25: Space Administrator
+        # - 26: Space Developer
+        # - 27: Space Analyst
+        # - 30: Space Viewer
+        # 
         # This parameter is required.
         self.role_id = role_id
+        # User ID. This is the UserID for Quick BI, not the UID for Alibaba Cloud.
+        # 
+        # - Supports batch parameters, separate user IDs with a comma (,).
+        # 
         # This parameter is required.
         self.user_ids = user_ids
+        # Workspace ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -22375,9 +23528,13 @@ class UpdateWorkspaceUsersRoleResponseBodyResult(TeaModel):
         success: int = None,
         total: int = None,
     ):
+        # Number of users that failed to update.
         self.failure = failure
+        # Reasons for the update failures.
         self.failure_detail = failure_detail
+        # Number of users that were updated successfully.
         self.success = success
+        # Modify the total number of users.
         self.total = total
 
     def validate(self):
@@ -22419,8 +23576,14 @@ class UpdateWorkspaceUsersRoleResponseBody(TeaModel):
         result: UpdateWorkspaceUsersRoleResponseBodyResult = None,
         success: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returns the result of the interface execution.
         self.result = result
+        # Indicates whether the request was successful. Value range:
+        # 
+        # - true: The request was successful, some members may have been updated successfully while others failed, refer to FailureDetail in the response for reasons of failure
+        # - false: The request failed, no data will be persisted
         self.success = success
 
     def validate(self):
