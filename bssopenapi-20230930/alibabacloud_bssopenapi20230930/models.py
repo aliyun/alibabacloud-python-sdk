@@ -562,6 +562,520 @@ class CancelFundAccountLowAvailableAmountAlarmResponse(TeaModel):
         return self
 
 
+class CreateCostCenterRequestCostCenterEntityList(TeaModel):
+    def __init__(
+        self,
+        cost_center_name: str = None,
+        owner_account_id: int = None,
+        parent_cost_center_id: int = None,
+    ):
+        # This parameter is required.
+        self.cost_center_name = cost_center_name
+        # This parameter is required.
+        self.owner_account_id = owner_account_id
+        # This parameter is required.
+        self.parent_cost_center_id = parent_cost_center_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost_center_name is not None:
+            result['CostCenterName'] = self.cost_center_name
+        if self.owner_account_id is not None:
+            result['OwnerAccountId'] = self.owner_account_id
+        if self.parent_cost_center_id is not None:
+            result['ParentCostCenterId'] = self.parent_cost_center_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CostCenterName') is not None:
+            self.cost_center_name = m.get('CostCenterName')
+        if m.get('OwnerAccountId') is not None:
+            self.owner_account_id = m.get('OwnerAccountId')
+        if m.get('ParentCostCenterId') is not None:
+            self.parent_cost_center_id = m.get('ParentCostCenterId')
+        return self
+
+
+class CreateCostCenterRequest(TeaModel):
+    def __init__(
+        self,
+        cost_center_entity_list: List[CreateCostCenterRequestCostCenterEntityList] = None,
+        nbid: str = None,
+    ):
+        # This parameter is required.
+        self.cost_center_entity_list = cost_center_entity_list
+        self.nbid = nbid
+
+    def validate(self):
+        if self.cost_center_entity_list:
+            for k in self.cost_center_entity_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CostCenterEntityList'] = []
+        if self.cost_center_entity_list is not None:
+            for k in self.cost_center_entity_list:
+                result['CostCenterEntityList'].append(k.to_map() if k else None)
+        if self.nbid is not None:
+            result['Nbid'] = self.nbid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.cost_center_entity_list = []
+        if m.get('CostCenterEntityList') is not None:
+            for k in m.get('CostCenterEntityList'):
+                temp_model = CreateCostCenterRequestCostCenterEntityList()
+                self.cost_center_entity_list.append(temp_model.from_map(k))
+        if m.get('Nbid') is not None:
+            self.nbid = m.get('Nbid')
+        return self
+
+
+class CreateCostCenterShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        cost_center_entity_list_shrink: str = None,
+        nbid: str = None,
+    ):
+        # This parameter is required.
+        self.cost_center_entity_list_shrink = cost_center_entity_list_shrink
+        self.nbid = nbid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost_center_entity_list_shrink is not None:
+            result['CostCenterEntityList'] = self.cost_center_entity_list_shrink
+        if self.nbid is not None:
+            result['Nbid'] = self.nbid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CostCenterEntityList') is not None:
+            self.cost_center_entity_list_shrink = m.get('CostCenterEntityList')
+        if m.get('Nbid') is not None:
+            self.nbid = m.get('Nbid')
+        return self
+
+
+class CreateCostCenterResponseBodyCostCenterDtoList(TeaModel):
+    def __init__(
+        self,
+        cost_center_id: int = None,
+        cost_center_name: str = None,
+        owner_account_id: int = None,
+        parent_cost_center_id: int = None,
+    ):
+        self.cost_center_id = cost_center_id
+        self.cost_center_name = cost_center_name
+        self.owner_account_id = owner_account_id
+        self.parent_cost_center_id = parent_cost_center_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost_center_id is not None:
+            result['CostCenterId'] = self.cost_center_id
+        if self.cost_center_name is not None:
+            result['CostCenterName'] = self.cost_center_name
+        if self.owner_account_id is not None:
+            result['OwnerAccountId'] = self.owner_account_id
+        if self.parent_cost_center_id is not None:
+            result['ParentCostCenterId'] = self.parent_cost_center_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CostCenterId') is not None:
+            self.cost_center_id = m.get('CostCenterId')
+        if m.get('CostCenterName') is not None:
+            self.cost_center_name = m.get('CostCenterName')
+        if m.get('OwnerAccountId') is not None:
+            self.owner_account_id = m.get('OwnerAccountId')
+        if m.get('ParentCostCenterId') is not None:
+            self.parent_cost_center_id = m.get('ParentCostCenterId')
+        return self
+
+
+class CreateCostCenterResponseBody(TeaModel):
+    def __init__(
+        self,
+        cost_center_dto_list: List[CreateCostCenterResponseBodyCostCenterDtoList] = None,
+        metadata: Any = None,
+        request_id: str = None,
+    ):
+        self.cost_center_dto_list = cost_center_dto_list
+        self.metadata = metadata
+        self.request_id = request_id
+
+    def validate(self):
+        if self.cost_center_dto_list:
+            for k in self.cost_center_dto_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CostCenterDtoList'] = []
+        if self.cost_center_dto_list is not None:
+            for k in self.cost_center_dto_list:
+                result['CostCenterDtoList'].append(k.to_map() if k else None)
+        if self.metadata is not None:
+            result['Metadata'] = self.metadata
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.cost_center_dto_list = []
+        if m.get('CostCenterDtoList') is not None:
+            for k in m.get('CostCenterDtoList'):
+                temp_model = CreateCostCenterResponseBodyCostCenterDtoList()
+                self.cost_center_dto_list.append(temp_model.from_map(k))
+        if m.get('Metadata') is not None:
+            self.metadata = m.get('Metadata')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateCostCenterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateCostCenterResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateCostCenterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateFundAccountPayRelationRequestEcIdAccountIds(TeaModel):
+    def __init__(
+        self,
+        account_ids: List[int] = None,
+        ec_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_ids = account_ids
+        self.ec_id = ec_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_ids is not None:
+            result['AccountIds'] = self.account_ids
+        if self.ec_id is not None:
+            result['EcId'] = self.ec_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountIds') is not None:
+            self.account_ids = m.get('AccountIds')
+        if m.get('EcId') is not None:
+            self.ec_id = m.get('EcId')
+        return self
+
+
+class CreateFundAccountPayRelationRequest(TeaModel):
+    def __init__(
+        self,
+        ec_id_account_ids: List[CreateFundAccountPayRelationRequestEcIdAccountIds] = None,
+        fund_account_id: str = None,
+        nbid: str = None,
+    ):
+        # This parameter is required.
+        self.ec_id_account_ids = ec_id_account_ids
+        # This parameter is required.
+        self.fund_account_id = fund_account_id
+        self.nbid = nbid
+
+    def validate(self):
+        if self.ec_id_account_ids:
+            for k in self.ec_id_account_ids:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['EcIdAccountIds'] = []
+        if self.ec_id_account_ids is not None:
+            for k in self.ec_id_account_ids:
+                result['EcIdAccountIds'].append(k.to_map() if k else None)
+        if self.fund_account_id is not None:
+            result['FundAccountId'] = self.fund_account_id
+        if self.nbid is not None:
+            result['Nbid'] = self.nbid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ec_id_account_ids = []
+        if m.get('EcIdAccountIds') is not None:
+            for k in m.get('EcIdAccountIds'):
+                temp_model = CreateFundAccountPayRelationRequestEcIdAccountIds()
+                self.ec_id_account_ids.append(temp_model.from_map(k))
+        if m.get('FundAccountId') is not None:
+            self.fund_account_id = m.get('FundAccountId')
+        if m.get('Nbid') is not None:
+            self.nbid = m.get('Nbid')
+        return self
+
+
+class CreateFundAccountPayRelationShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        ec_id_account_ids_shrink: str = None,
+        fund_account_id: str = None,
+        nbid: str = None,
+    ):
+        # This parameter is required.
+        self.ec_id_account_ids_shrink = ec_id_account_ids_shrink
+        # This parameter is required.
+        self.fund_account_id = fund_account_id
+        self.nbid = nbid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ec_id_account_ids_shrink is not None:
+            result['EcIdAccountIds'] = self.ec_id_account_ids_shrink
+        if self.fund_account_id is not None:
+            result['FundAccountId'] = self.fund_account_id
+        if self.nbid is not None:
+            result['Nbid'] = self.nbid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EcIdAccountIds') is not None:
+            self.ec_id_account_ids_shrink = m.get('EcIdAccountIds')
+        if m.get('FundAccountId') is not None:
+            self.fund_account_id = m.get('FundAccountId')
+        if m.get('Nbid') is not None:
+            self.nbid = m.get('Nbid')
+        return self
+
+
+class CreateFundAccountPayRelationResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+        account_name: str = None,
+        fund_account_id: str = None,
+        result_code: str = None,
+        result_message: str = None,
+    ):
+        self.account_id = account_id
+        self.account_name = account_name
+        self.fund_account_id = fund_account_id
+        self.result_code = result_code
+        self.result_message = result_message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        if self.account_name is not None:
+            result['AccountName'] = self.account_name
+        if self.fund_account_id is not None:
+            result['FundAccountId'] = self.fund_account_id
+        if self.result_code is not None:
+            result['ResultCode'] = self.result_code
+        if self.result_message is not None:
+            result['ResultMessage'] = self.result_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        if m.get('AccountName') is not None:
+            self.account_name = m.get('AccountName')
+        if m.get('FundAccountId') is not None:
+            self.fund_account_id = m.get('FundAccountId')
+        if m.get('ResultCode') is not None:
+            self.result_code = m.get('ResultCode')
+        if m.get('ResultMessage') is not None:
+            self.result_message = m.get('ResultMessage')
+        return self
+
+
+class CreateFundAccountPayRelationResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[CreateFundAccountPayRelationResponseBodyData] = None,
+        metadata: Any = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.metadata = metadata
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.metadata is not None:
+            result['Metadata'] = self.metadata
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = CreateFundAccountPayRelationResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Metadata') is not None:
+            self.metadata = m.get('Metadata')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateFundAccountPayRelationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateFundAccountPayRelationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateFundAccountPayRelationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateFundAccountTransferRequest(TeaModel):
     def __init__(
         self,
@@ -702,6 +1216,343 @@ class CreateFundAccountTransferResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateFundAccountTransferResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateReportDefinitionRequest(TeaModel):
+    def __init__(
+        self,
+        begin_billing_cycle: str = None,
+        mc_project: str = None,
+        mc_table_name: str = None,
+        nbid: str = None,
+        oss_bucket_name: str = None,
+        oss_bucket_owner_account_id: int = None,
+        oss_bucket_path: str = None,
+        report_source_type: str = None,
+        report_type: str = None,
+    ):
+        self.begin_billing_cycle = begin_billing_cycle
+        self.mc_project = mc_project
+        self.mc_table_name = mc_table_name
+        self.nbid = nbid
+        self.oss_bucket_name = oss_bucket_name
+        self.oss_bucket_owner_account_id = oss_bucket_owner_account_id
+        self.oss_bucket_path = oss_bucket_path
+        self.report_source_type = report_source_type
+        # This parameter is required.
+        self.report_type = report_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.begin_billing_cycle is not None:
+            result['BeginBillingCycle'] = self.begin_billing_cycle
+        if self.mc_project is not None:
+            result['McProject'] = self.mc_project
+        if self.mc_table_name is not None:
+            result['McTableName'] = self.mc_table_name
+        if self.nbid is not None:
+            result['Nbid'] = self.nbid
+        if self.oss_bucket_name is not None:
+            result['OssBucketName'] = self.oss_bucket_name
+        if self.oss_bucket_owner_account_id is not None:
+            result['OssBucketOwnerAccountId'] = self.oss_bucket_owner_account_id
+        if self.oss_bucket_path is not None:
+            result['OssBucketPath'] = self.oss_bucket_path
+        if self.report_source_type is not None:
+            result['ReportSourceType'] = self.report_source_type
+        if self.report_type is not None:
+            result['ReportType'] = self.report_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BeginBillingCycle') is not None:
+            self.begin_billing_cycle = m.get('BeginBillingCycle')
+        if m.get('McProject') is not None:
+            self.mc_project = m.get('McProject')
+        if m.get('McTableName') is not None:
+            self.mc_table_name = m.get('McTableName')
+        if m.get('Nbid') is not None:
+            self.nbid = m.get('Nbid')
+        if m.get('OssBucketName') is not None:
+            self.oss_bucket_name = m.get('OssBucketName')
+        if m.get('OssBucketOwnerAccountId') is not None:
+            self.oss_bucket_owner_account_id = m.get('OssBucketOwnerAccountId')
+        if m.get('OssBucketPath') is not None:
+            self.oss_bucket_path = m.get('OssBucketPath')
+        if m.get('ReportSourceType') is not None:
+            self.report_source_type = m.get('ReportSourceType')
+        if m.get('ReportType') is not None:
+            self.report_type = m.get('ReportType')
+        return self
+
+
+class CreateReportDefinitionResponseBody(TeaModel):
+    def __init__(
+        self,
+        begin_billing_cycle: str = None,
+        metadata: Any = None,
+        oss_bucket_name: str = None,
+        oss_bucket_owner_account_id: int = None,
+        oss_bucket_path: str = None,
+        report_source_name: str = None,
+        report_source_type: str = None,
+        report_task_id: int = None,
+        report_type: str = None,
+        request_id: str = None,
+        subscribe_create_time: str = None,
+    ):
+        self.begin_billing_cycle = begin_billing_cycle
+        self.metadata = metadata
+        self.oss_bucket_name = oss_bucket_name
+        self.oss_bucket_owner_account_id = oss_bucket_owner_account_id
+        self.oss_bucket_path = oss_bucket_path
+        self.report_source_name = report_source_name
+        self.report_source_type = report_source_type
+        self.report_task_id = report_task_id
+        self.report_type = report_type
+        self.request_id = request_id
+        self.subscribe_create_time = subscribe_create_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.begin_billing_cycle is not None:
+            result['BeginBillingCycle'] = self.begin_billing_cycle
+        if self.metadata is not None:
+            result['Metadata'] = self.metadata
+        if self.oss_bucket_name is not None:
+            result['OssBucketName'] = self.oss_bucket_name
+        if self.oss_bucket_owner_account_id is not None:
+            result['OssBucketOwnerAccountId'] = self.oss_bucket_owner_account_id
+        if self.oss_bucket_path is not None:
+            result['OssBucketPath'] = self.oss_bucket_path
+        if self.report_source_name is not None:
+            result['ReportSourceName'] = self.report_source_name
+        if self.report_source_type is not None:
+            result['ReportSourceType'] = self.report_source_type
+        if self.report_task_id is not None:
+            result['ReportTaskId'] = self.report_task_id
+        if self.report_type is not None:
+            result['ReportType'] = self.report_type
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.subscribe_create_time is not None:
+            result['SubscribeCreateTime'] = self.subscribe_create_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BeginBillingCycle') is not None:
+            self.begin_billing_cycle = m.get('BeginBillingCycle')
+        if m.get('Metadata') is not None:
+            self.metadata = m.get('Metadata')
+        if m.get('OssBucketName') is not None:
+            self.oss_bucket_name = m.get('OssBucketName')
+        if m.get('OssBucketOwnerAccountId') is not None:
+            self.oss_bucket_owner_account_id = m.get('OssBucketOwnerAccountId')
+        if m.get('OssBucketPath') is not None:
+            self.oss_bucket_path = m.get('OssBucketPath')
+        if m.get('ReportSourceName') is not None:
+            self.report_source_name = m.get('ReportSourceName')
+        if m.get('ReportSourceType') is not None:
+            self.report_source_type = m.get('ReportSourceType')
+        if m.get('ReportTaskId') is not None:
+            self.report_task_id = m.get('ReportTaskId')
+        if m.get('ReportType') is not None:
+            self.report_type = m.get('ReportType')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SubscribeCreateTime') is not None:
+            self.subscribe_create_time = m.get('SubscribeCreateTime')
+        return self
+
+
+class CreateReportDefinitionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateReportDefinitionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateReportDefinitionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteCostCenterRequest(TeaModel):
+    def __init__(
+        self,
+        cost_center_id: int = None,
+        nbid: str = None,
+        owner_account_id: int = None,
+    ):
+        # This parameter is required.
+        self.cost_center_id = cost_center_id
+        self.nbid = nbid
+        # This parameter is required.
+        self.owner_account_id = owner_account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost_center_id is not None:
+            result['CostCenterId'] = self.cost_center_id
+        if self.nbid is not None:
+            result['Nbid'] = self.nbid
+        if self.owner_account_id is not None:
+            result['OwnerAccountId'] = self.owner_account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CostCenterId') is not None:
+            self.cost_center_id = m.get('CostCenterId')
+        if m.get('Nbid') is not None:
+            self.nbid = m.get('Nbid')
+        if m.get('OwnerAccountId') is not None:
+            self.owner_account_id = m.get('OwnerAccountId')
+        return self
+
+
+class DeleteCostCenterResponseBody(TeaModel):
+    def __init__(
+        self,
+        cost_center_id: int = None,
+        is_success: bool = None,
+        metadata: Any = None,
+        owner_account_id: int = None,
+        request_id: str = None,
+    ):
+        self.cost_center_id = cost_center_id
+        self.is_success = is_success
+        self.metadata = metadata
+        self.owner_account_id = owner_account_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost_center_id is not None:
+            result['CostCenterId'] = self.cost_center_id
+        if self.is_success is not None:
+            result['IsSuccess'] = self.is_success
+        if self.metadata is not None:
+            result['Metadata'] = self.metadata
+        if self.owner_account_id is not None:
+            result['OwnerAccountId'] = self.owner_account_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CostCenterId') is not None:
+            self.cost_center_id = m.get('CostCenterId')
+        if m.get('IsSuccess') is not None:
+            self.is_success = m.get('IsSuccess')
+        if m.get('Metadata') is not None:
+            self.metadata = m.get('Metadata')
+        if m.get('OwnerAccountId') is not None:
+            self.owner_account_id = m.get('OwnerAccountId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteCostCenterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteCostCenterResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteCostCenterResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -908,6 +1759,120 @@ class DeleteCouponDeductTagResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteCouponDeductTagResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteReportDefinitionRequest(TeaModel):
+    def __init__(
+        self,
+        nbid: str = None,
+        report_task_id: int = None,
+    ):
+        self.nbid = nbid
+        # This parameter is required.
+        self.report_task_id = report_task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.nbid is not None:
+            result['Nbid'] = self.nbid
+        if self.report_task_id is not None:
+            result['ReportTaskId'] = self.report_task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Nbid') is not None:
+            self.nbid = m.get('Nbid')
+        if m.get('ReportTaskId') is not None:
+            self.report_task_id = m.get('ReportTaskId')
+        return self
+
+
+class DeleteReportDefinitionResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        metadata: Any = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.metadata = metadata
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.metadata is not None:
+            result['Metadata'] = self.metadata
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Metadata') is not None:
+            self.metadata = m.get('Metadata')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteReportDefinitionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteReportDefinitionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteReportDefinitionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5590,6 +6555,1146 @@ class ListFundAccountPayRelationResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListFundAccountPayRelationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListReportDefinitionsRequest(TeaModel):
+    def __init__(
+        self,
+        nbid: str = None,
+    ):
+        self.nbid = nbid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.nbid is not None:
+            result['Nbid'] = self.nbid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Nbid') is not None:
+            self.nbid = m.get('Nbid')
+        return self
+
+
+class ListReportDefinitionsResponseBodyReportDefinitions(TeaModel):
+    def __init__(
+        self,
+        begin_billing_cycle: str = None,
+        oss_bucket_name: str = None,
+        oss_bucket_owner_account_id: int = None,
+        oss_bucket_path: str = None,
+        report_source_name: str = None,
+        report_source_type: str = None,
+        report_task_id: int = None,
+        report_type: str = None,
+        subscribe_create_time: str = None,
+    ):
+        self.begin_billing_cycle = begin_billing_cycle
+        self.oss_bucket_name = oss_bucket_name
+        self.oss_bucket_owner_account_id = oss_bucket_owner_account_id
+        self.oss_bucket_path = oss_bucket_path
+        self.report_source_name = report_source_name
+        self.report_source_type = report_source_type
+        self.report_task_id = report_task_id
+        self.report_type = report_type
+        self.subscribe_create_time = subscribe_create_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.begin_billing_cycle is not None:
+            result['BeginBillingCycle'] = self.begin_billing_cycle
+        if self.oss_bucket_name is not None:
+            result['OssBucketName'] = self.oss_bucket_name
+        if self.oss_bucket_owner_account_id is not None:
+            result['OssBucketOwnerAccountId'] = self.oss_bucket_owner_account_id
+        if self.oss_bucket_path is not None:
+            result['OssBucketPath'] = self.oss_bucket_path
+        if self.report_source_name is not None:
+            result['ReportSourceName'] = self.report_source_name
+        if self.report_source_type is not None:
+            result['ReportSourceType'] = self.report_source_type
+        if self.report_task_id is not None:
+            result['ReportTaskId'] = self.report_task_id
+        if self.report_type is not None:
+            result['ReportType'] = self.report_type
+        if self.subscribe_create_time is not None:
+            result['SubscribeCreateTime'] = self.subscribe_create_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BeginBillingCycle') is not None:
+            self.begin_billing_cycle = m.get('BeginBillingCycle')
+        if m.get('OssBucketName') is not None:
+            self.oss_bucket_name = m.get('OssBucketName')
+        if m.get('OssBucketOwnerAccountId') is not None:
+            self.oss_bucket_owner_account_id = m.get('OssBucketOwnerAccountId')
+        if m.get('OssBucketPath') is not None:
+            self.oss_bucket_path = m.get('OssBucketPath')
+        if m.get('ReportSourceName') is not None:
+            self.report_source_name = m.get('ReportSourceName')
+        if m.get('ReportSourceType') is not None:
+            self.report_source_type = m.get('ReportSourceType')
+        if m.get('ReportTaskId') is not None:
+            self.report_task_id = m.get('ReportTaskId')
+        if m.get('ReportType') is not None:
+            self.report_type = m.get('ReportType')
+        if m.get('SubscribeCreateTime') is not None:
+            self.subscribe_create_time = m.get('SubscribeCreateTime')
+        return self
+
+
+class ListReportDefinitionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        metadata: Any = None,
+        report_definitions: List[ListReportDefinitionsResponseBodyReportDefinitions] = None,
+        request_id: str = None,
+    ):
+        self.metadata = metadata
+        self.report_definitions = report_definitions
+        self.request_id = request_id
+
+    def validate(self):
+        if self.report_definitions:
+            for k in self.report_definitions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.metadata is not None:
+            result['Metadata'] = self.metadata
+        result['ReportDefinitions'] = []
+        if self.report_definitions is not None:
+            for k in self.report_definitions:
+                result['ReportDefinitions'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Metadata') is not None:
+            self.metadata = m.get('Metadata')
+        self.report_definitions = []
+        if m.get('ReportDefinitions') is not None:
+            for k in m.get('ReportDefinitions'):
+                temp_model = ListReportDefinitionsResponseBodyReportDefinitions()
+                self.report_definitions.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListReportDefinitionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListReportDefinitionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListReportDefinitionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyCostCenterRequestCostCenterEntityList(TeaModel):
+    def __init__(
+        self,
+        cost_center_id: int = None,
+        cost_center_name: str = None,
+        owner_account_id: int = None,
+    ):
+        # This parameter is required.
+        self.cost_center_id = cost_center_id
+        # This parameter is required.
+        self.cost_center_name = cost_center_name
+        # This parameter is required.
+        self.owner_account_id = owner_account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost_center_id is not None:
+            result['CostCenterId'] = self.cost_center_id
+        if self.cost_center_name is not None:
+            result['CostCenterName'] = self.cost_center_name
+        if self.owner_account_id is not None:
+            result['OwnerAccountId'] = self.owner_account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CostCenterId') is not None:
+            self.cost_center_id = m.get('CostCenterId')
+        if m.get('CostCenterName') is not None:
+            self.cost_center_name = m.get('CostCenterName')
+        if m.get('OwnerAccountId') is not None:
+            self.owner_account_id = m.get('OwnerAccountId')
+        return self
+
+
+class ModifyCostCenterRequest(TeaModel):
+    def __init__(
+        self,
+        cost_center_entity_list: List[ModifyCostCenterRequestCostCenterEntityList] = None,
+        nbid: str = None,
+    ):
+        # This parameter is required.
+        self.cost_center_entity_list = cost_center_entity_list
+        self.nbid = nbid
+
+    def validate(self):
+        if self.cost_center_entity_list:
+            for k in self.cost_center_entity_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CostCenterEntityList'] = []
+        if self.cost_center_entity_list is not None:
+            for k in self.cost_center_entity_list:
+                result['CostCenterEntityList'].append(k.to_map() if k else None)
+        if self.nbid is not None:
+            result['Nbid'] = self.nbid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.cost_center_entity_list = []
+        if m.get('CostCenterEntityList') is not None:
+            for k in m.get('CostCenterEntityList'):
+                temp_model = ModifyCostCenterRequestCostCenterEntityList()
+                self.cost_center_entity_list.append(temp_model.from_map(k))
+        if m.get('Nbid') is not None:
+            self.nbid = m.get('Nbid')
+        return self
+
+
+class ModifyCostCenterShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        cost_center_entity_list_shrink: str = None,
+        nbid: str = None,
+    ):
+        # This parameter is required.
+        self.cost_center_entity_list_shrink = cost_center_entity_list_shrink
+        self.nbid = nbid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost_center_entity_list_shrink is not None:
+            result['CostCenterEntityList'] = self.cost_center_entity_list_shrink
+        if self.nbid is not None:
+            result['Nbid'] = self.nbid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CostCenterEntityList') is not None:
+            self.cost_center_entity_list_shrink = m.get('CostCenterEntityList')
+        if m.get('Nbid') is not None:
+            self.nbid = m.get('Nbid')
+        return self
+
+
+class ModifyCostCenterResponseBodyCostCenterOperateDto(TeaModel):
+    def __init__(
+        self,
+        cost_center_id: int = None,
+        is_success: bool = None,
+        owner_account_id: int = None,
+    ):
+        self.cost_center_id = cost_center_id
+        self.is_success = is_success
+        self.owner_account_id = owner_account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost_center_id is not None:
+            result['CostCenterId'] = self.cost_center_id
+        if self.is_success is not None:
+            result['IsSuccess'] = self.is_success
+        if self.owner_account_id is not None:
+            result['OwnerAccountId'] = self.owner_account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CostCenterId') is not None:
+            self.cost_center_id = m.get('CostCenterId')
+        if m.get('IsSuccess') is not None:
+            self.is_success = m.get('IsSuccess')
+        if m.get('OwnerAccountId') is not None:
+            self.owner_account_id = m.get('OwnerAccountId')
+        return self
+
+
+class ModifyCostCenterResponseBody(TeaModel):
+    def __init__(
+        self,
+        cost_center_operate_dto: List[ModifyCostCenterResponseBodyCostCenterOperateDto] = None,
+        metadata: Any = None,
+        request_id: str = None,
+    ):
+        self.cost_center_operate_dto = cost_center_operate_dto
+        self.metadata = metadata
+        self.request_id = request_id
+
+    def validate(self):
+        if self.cost_center_operate_dto:
+            for k in self.cost_center_operate_dto:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CostCenterOperateDto'] = []
+        if self.cost_center_operate_dto is not None:
+            for k in self.cost_center_operate_dto:
+                result['CostCenterOperateDto'].append(k.to_map() if k else None)
+        if self.metadata is not None:
+            result['Metadata'] = self.metadata
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.cost_center_operate_dto = []
+        if m.get('CostCenterOperateDto') is not None:
+            for k in m.get('CostCenterOperateDto'):
+                temp_model = ModifyCostCenterResponseBodyCostCenterOperateDto()
+                self.cost_center_operate_dto.append(temp_model.from_map(k))
+        if m.get('Metadata') is not None:
+            self.metadata = m.get('Metadata')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyCostCenterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyCostCenterResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyCostCenterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryCostCenterRequestEcIdAccountIds(TeaModel):
+    def __init__(
+        self,
+        account_ids: List[int] = None,
+        ec_id: str = None,
+    ):
+        self.account_ids = account_ids
+        # This parameter is required.
+        self.ec_id = ec_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_ids is not None:
+            result['AccountIds'] = self.account_ids
+        if self.ec_id is not None:
+            result['EcId'] = self.ec_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountIds') is not None:
+            self.account_ids = m.get('AccountIds')
+        if m.get('EcId') is not None:
+            self.ec_id = m.get('EcId')
+        return self
+
+
+class QueryCostCenterRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        ec_id_account_ids: List[QueryCostCenterRequestEcIdAccountIds] = None,
+        nbid: str = None,
+        owner_account_id: int = None,
+        page_size: int = None,
+        parent_cost_center_id: int = None,
+    ):
+        # This parameter is required.
+        self.current_page = current_page
+        self.ec_id_account_ids = ec_id_account_ids
+        self.nbid = nbid
+        # This parameter is required.
+        self.owner_account_id = owner_account_id
+        # This parameter is required.
+        self.page_size = page_size
+        # This parameter is required.
+        self.parent_cost_center_id = parent_cost_center_id
+
+    def validate(self):
+        if self.ec_id_account_ids:
+            for k in self.ec_id_account_ids:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        result['EcIdAccountIds'] = []
+        if self.ec_id_account_ids is not None:
+            for k in self.ec_id_account_ids:
+                result['EcIdAccountIds'].append(k.to_map() if k else None)
+        if self.nbid is not None:
+            result['Nbid'] = self.nbid
+        if self.owner_account_id is not None:
+            result['OwnerAccountId'] = self.owner_account_id
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.parent_cost_center_id is not None:
+            result['ParentCostCenterId'] = self.parent_cost_center_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        self.ec_id_account_ids = []
+        if m.get('EcIdAccountIds') is not None:
+            for k in m.get('EcIdAccountIds'):
+                temp_model = QueryCostCenterRequestEcIdAccountIds()
+                self.ec_id_account_ids.append(temp_model.from_map(k))
+        if m.get('Nbid') is not None:
+            self.nbid = m.get('Nbid')
+        if m.get('OwnerAccountId') is not None:
+            self.owner_account_id = m.get('OwnerAccountId')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ParentCostCenterId') is not None:
+            self.parent_cost_center_id = m.get('ParentCostCenterId')
+        return self
+
+
+class QueryCostCenterShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        ec_id_account_ids_shrink: str = None,
+        nbid: str = None,
+        owner_account_id: int = None,
+        page_size: int = None,
+        parent_cost_center_id: int = None,
+    ):
+        # This parameter is required.
+        self.current_page = current_page
+        self.ec_id_account_ids_shrink = ec_id_account_ids_shrink
+        self.nbid = nbid
+        # This parameter is required.
+        self.owner_account_id = owner_account_id
+        # This parameter is required.
+        self.page_size = page_size
+        # This parameter is required.
+        self.parent_cost_center_id = parent_cost_center_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.ec_id_account_ids_shrink is not None:
+            result['EcIdAccountIds'] = self.ec_id_account_ids_shrink
+        if self.nbid is not None:
+            result['Nbid'] = self.nbid
+        if self.owner_account_id is not None:
+            result['OwnerAccountId'] = self.owner_account_id
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.parent_cost_center_id is not None:
+            result['ParentCostCenterId'] = self.parent_cost_center_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('EcIdAccountIds') is not None:
+            self.ec_id_account_ids_shrink = m.get('EcIdAccountIds')
+        if m.get('Nbid') is not None:
+            self.nbid = m.get('Nbid')
+        if m.get('OwnerAccountId') is not None:
+            self.owner_account_id = m.get('OwnerAccountId')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ParentCostCenterId') is not None:
+            self.parent_cost_center_id = m.get('ParentCostCenterId')
+        return self
+
+
+class QueryCostCenterResponseBodyCostCenterDtoList(TeaModel):
+    def __init__(
+        self,
+        cost_center_code: str = None,
+        cost_center_id: int = None,
+        cost_center_name: str = None,
+        level: int = None,
+        owner_account_id: int = None,
+        parent_cost_center_id: int = None,
+        prev_cost_center_id: int = None,
+    ):
+        self.cost_center_code = cost_center_code
+        self.cost_center_id = cost_center_id
+        self.cost_center_name = cost_center_name
+        self.level = level
+        self.owner_account_id = owner_account_id
+        self.parent_cost_center_id = parent_cost_center_id
+        self.prev_cost_center_id = prev_cost_center_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost_center_code is not None:
+            result['CostCenterCode'] = self.cost_center_code
+        if self.cost_center_id is not None:
+            result['CostCenterId'] = self.cost_center_id
+        if self.cost_center_name is not None:
+            result['CostCenterName'] = self.cost_center_name
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.owner_account_id is not None:
+            result['OwnerAccountId'] = self.owner_account_id
+        if self.parent_cost_center_id is not None:
+            result['ParentCostCenterId'] = self.parent_cost_center_id
+        if self.prev_cost_center_id is not None:
+            result['PrevCostCenterId'] = self.prev_cost_center_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CostCenterCode') is not None:
+            self.cost_center_code = m.get('CostCenterCode')
+        if m.get('CostCenterId') is not None:
+            self.cost_center_id = m.get('CostCenterId')
+        if m.get('CostCenterName') is not None:
+            self.cost_center_name = m.get('CostCenterName')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('OwnerAccountId') is not None:
+            self.owner_account_id = m.get('OwnerAccountId')
+        if m.get('ParentCostCenterId') is not None:
+            self.parent_cost_center_id = m.get('ParentCostCenterId')
+        if m.get('PrevCostCenterId') is not None:
+            self.prev_cost_center_id = m.get('PrevCostCenterId')
+        return self
+
+
+class QueryCostCenterResponseBody(TeaModel):
+    def __init__(
+        self,
+        cost_center_dto_list: List[QueryCostCenterResponseBodyCostCenterDtoList] = None,
+        current_page: int = None,
+        metadata: Any = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.cost_center_dto_list = cost_center_dto_list
+        self.current_page = current_page
+        self.metadata = metadata
+        self.page_size = page_size
+        # Id of the request
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.cost_center_dto_list:
+            for k in self.cost_center_dto_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CostCenterDtoList'] = []
+        if self.cost_center_dto_list is not None:
+            for k in self.cost_center_dto_list:
+                result['CostCenterDtoList'].append(k.to_map() if k else None)
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.metadata is not None:
+            result['Metadata'] = self.metadata
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.cost_center_dto_list = []
+        if m.get('CostCenterDtoList') is not None:
+            for k in m.get('CostCenterDtoList'):
+                temp_model = QueryCostCenterResponseBodyCostCenterDtoList()
+                self.cost_center_dto_list.append(temp_model.from_map(k))
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('Metadata') is not None:
+            self.metadata = m.get('Metadata')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class QueryCostCenterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryCostCenterResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryCostCenterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryCostCenterResourceRequestEcIdAccountIds(TeaModel):
+    def __init__(
+        self,
+        account_ids: List[int] = None,
+        ec_id: str = None,
+    ):
+        self.account_ids = account_ids
+        # This parameter is required.
+        self.ec_id = ec_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_ids is not None:
+            result['AccountIds'] = self.account_ids
+        if self.ec_id is not None:
+            result['EcId'] = self.ec_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountIds') is not None:
+            self.account_ids = m.get('AccountIds')
+        if m.get('EcId') is not None:
+            self.ec_id = m.get('EcId')
+        return self
+
+
+class QueryCostCenterResourceRequest(TeaModel):
+    def __init__(
+        self,
+        cost_center_id: int = None,
+        ec_id_account_ids: List[QueryCostCenterResourceRequestEcIdAccountIds] = None,
+        max_results: int = None,
+        nbid: str = None,
+        next_token: str = None,
+        owner_account_id: int = None,
+    ):
+        self.cost_center_id = cost_center_id
+        self.ec_id_account_ids = ec_id_account_ids
+        self.max_results = max_results
+        self.nbid = nbid
+        self.next_token = next_token
+        self.owner_account_id = owner_account_id
+
+    def validate(self):
+        if self.ec_id_account_ids:
+            for k in self.ec_id_account_ids:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost_center_id is not None:
+            result['CostCenterId'] = self.cost_center_id
+        result['EcIdAccountIds'] = []
+        if self.ec_id_account_ids is not None:
+            for k in self.ec_id_account_ids:
+                result['EcIdAccountIds'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.nbid is not None:
+            result['Nbid'] = self.nbid
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.owner_account_id is not None:
+            result['OwnerAccountId'] = self.owner_account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CostCenterId') is not None:
+            self.cost_center_id = m.get('CostCenterId')
+        self.ec_id_account_ids = []
+        if m.get('EcIdAccountIds') is not None:
+            for k in m.get('EcIdAccountIds'):
+                temp_model = QueryCostCenterResourceRequestEcIdAccountIds()
+                self.ec_id_account_ids.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('Nbid') is not None:
+            self.nbid = m.get('Nbid')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('OwnerAccountId') is not None:
+            self.owner_account_id = m.get('OwnerAccountId')
+        return self
+
+
+class QueryCostCenterResourceResponseBodyCostCenterResourceDtoList(TeaModel):
+    def __init__(
+        self,
+        apportion_item_code: str = None,
+        apportion_item_name: str = None,
+        commodity_code: str = None,
+        commodity_name: str = None,
+        cost_center_code: str = None,
+        cost_center_create_time: str = None,
+        cost_center_id: int = None,
+        cost_center_name: str = None,
+        cost_center_update_time: str = None,
+        owner_account_id: int = None,
+        owner_account_name: str = None,
+        parent_cost_center_id: int = None,
+        pip_code: str = None,
+        pip_name: str = None,
+        resource_group: str = None,
+        resource_id: str = None,
+        resource_nick: str = None,
+        resource_source: str = None,
+        resource_tag: str = None,
+        resource_type: str = None,
+        resource_update_time: str = None,
+        resource_user_id: int = None,
+        resource_user_name: str = None,
+        root_cost_center_id: int = None,
+    ):
+        self.apportion_item_code = apportion_item_code
+        self.apportion_item_name = apportion_item_name
+        self.commodity_code = commodity_code
+        self.commodity_name = commodity_name
+        self.cost_center_code = cost_center_code
+        self.cost_center_create_time = cost_center_create_time
+        self.cost_center_id = cost_center_id
+        self.cost_center_name = cost_center_name
+        self.cost_center_update_time = cost_center_update_time
+        self.owner_account_id = owner_account_id
+        self.owner_account_name = owner_account_name
+        self.parent_cost_center_id = parent_cost_center_id
+        self.pip_code = pip_code
+        self.pip_name = pip_name
+        self.resource_group = resource_group
+        self.resource_id = resource_id
+        self.resource_nick = resource_nick
+        self.resource_source = resource_source
+        self.resource_tag = resource_tag
+        self.resource_type = resource_type
+        self.resource_update_time = resource_update_time
+        self.resource_user_id = resource_user_id
+        self.resource_user_name = resource_user_name
+        self.root_cost_center_id = root_cost_center_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.apportion_item_code is not None:
+            result['ApportionItemCode'] = self.apportion_item_code
+        if self.apportion_item_name is not None:
+            result['ApportionItemName'] = self.apportion_item_name
+        if self.commodity_code is not None:
+            result['CommodityCode'] = self.commodity_code
+        if self.commodity_name is not None:
+            result['CommodityName'] = self.commodity_name
+        if self.cost_center_code is not None:
+            result['CostCenterCode'] = self.cost_center_code
+        if self.cost_center_create_time is not None:
+            result['CostCenterCreateTime'] = self.cost_center_create_time
+        if self.cost_center_id is not None:
+            result['CostCenterId'] = self.cost_center_id
+        if self.cost_center_name is not None:
+            result['CostCenterName'] = self.cost_center_name
+        if self.cost_center_update_time is not None:
+            result['CostCenterUpdateTime'] = self.cost_center_update_time
+        if self.owner_account_id is not None:
+            result['OwnerAccountId'] = self.owner_account_id
+        if self.owner_account_name is not None:
+            result['OwnerAccountName'] = self.owner_account_name
+        if self.parent_cost_center_id is not None:
+            result['ParentCostCenterId'] = self.parent_cost_center_id
+        if self.pip_code is not None:
+            result['PipCode'] = self.pip_code
+        if self.pip_name is not None:
+            result['PipName'] = self.pip_name
+        if self.resource_group is not None:
+            result['ResourceGroup'] = self.resource_group
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_nick is not None:
+            result['ResourceNick'] = self.resource_nick
+        if self.resource_source is not None:
+            result['ResourceSource'] = self.resource_source
+        if self.resource_tag is not None:
+            result['ResourceTag'] = self.resource_tag
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.resource_update_time is not None:
+            result['ResourceUpdateTime'] = self.resource_update_time
+        if self.resource_user_id is not None:
+            result['ResourceUserId'] = self.resource_user_id
+        if self.resource_user_name is not None:
+            result['ResourceUserName'] = self.resource_user_name
+        if self.root_cost_center_id is not None:
+            result['RootCostCenterId'] = self.root_cost_center_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApportionItemCode') is not None:
+            self.apportion_item_code = m.get('ApportionItemCode')
+        if m.get('ApportionItemName') is not None:
+            self.apportion_item_name = m.get('ApportionItemName')
+        if m.get('CommodityCode') is not None:
+            self.commodity_code = m.get('CommodityCode')
+        if m.get('CommodityName') is not None:
+            self.commodity_name = m.get('CommodityName')
+        if m.get('CostCenterCode') is not None:
+            self.cost_center_code = m.get('CostCenterCode')
+        if m.get('CostCenterCreateTime') is not None:
+            self.cost_center_create_time = m.get('CostCenterCreateTime')
+        if m.get('CostCenterId') is not None:
+            self.cost_center_id = m.get('CostCenterId')
+        if m.get('CostCenterName') is not None:
+            self.cost_center_name = m.get('CostCenterName')
+        if m.get('CostCenterUpdateTime') is not None:
+            self.cost_center_update_time = m.get('CostCenterUpdateTime')
+        if m.get('OwnerAccountId') is not None:
+            self.owner_account_id = m.get('OwnerAccountId')
+        if m.get('OwnerAccountName') is not None:
+            self.owner_account_name = m.get('OwnerAccountName')
+        if m.get('ParentCostCenterId') is not None:
+            self.parent_cost_center_id = m.get('ParentCostCenterId')
+        if m.get('PipCode') is not None:
+            self.pip_code = m.get('PipCode')
+        if m.get('PipName') is not None:
+            self.pip_name = m.get('PipName')
+        if m.get('ResourceGroup') is not None:
+            self.resource_group = m.get('ResourceGroup')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceNick') is not None:
+            self.resource_nick = m.get('ResourceNick')
+        if m.get('ResourceSource') is not None:
+            self.resource_source = m.get('ResourceSource')
+        if m.get('ResourceTag') is not None:
+            self.resource_tag = m.get('ResourceTag')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('ResourceUpdateTime') is not None:
+            self.resource_update_time = m.get('ResourceUpdateTime')
+        if m.get('ResourceUserId') is not None:
+            self.resource_user_id = m.get('ResourceUserId')
+        if m.get('ResourceUserName') is not None:
+            self.resource_user_name = m.get('ResourceUserName')
+        if m.get('RootCostCenterId') is not None:
+            self.root_cost_center_id = m.get('RootCostCenterId')
+        return self
+
+
+class QueryCostCenterResourceResponseBody(TeaModel):
+    def __init__(
+        self,
+        cost_center_resource_dto_list: List[QueryCostCenterResourceResponseBodyCostCenterResourceDtoList] = None,
+        max_results: int = None,
+        metadata: Any = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.cost_center_resource_dto_list = cost_center_resource_dto_list
+        self.max_results = max_results
+        self.metadata = metadata
+        # This parameter is required.
+        self.next_token = next_token
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.cost_center_resource_dto_list:
+            for k in self.cost_center_resource_dto_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CostCenterResourceDtoList'] = []
+        if self.cost_center_resource_dto_list is not None:
+            for k in self.cost_center_resource_dto_list:
+                result['CostCenterResourceDtoList'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.metadata is not None:
+            result['Metadata'] = self.metadata
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.cost_center_resource_dto_list = []
+        if m.get('CostCenterResourceDtoList') is not None:
+            for k in m.get('CostCenterResourceDtoList'):
+                temp_model = QueryCostCenterResourceResponseBodyCostCenterResourceDtoList()
+                self.cost_center_resource_dto_list.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('Metadata') is not None:
+            self.metadata = m.get('Metadata')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class QueryCostCenterResourceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryCostCenterResourceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryCostCenterResourceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

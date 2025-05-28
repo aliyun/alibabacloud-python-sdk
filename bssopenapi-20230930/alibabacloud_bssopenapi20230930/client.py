@@ -317,6 +317,230 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.cancel_fund_account_low_available_amount_alarm_with_options_async(request, runtime)
 
+    def create_cost_center_with_options(
+        self,
+        tmp_req: bss_open_api_20230930_models.CreateCostCenterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.CreateCostCenterResponse:
+        """
+        @summary 创建财务单元
+        
+        @param tmp_req: CreateCostCenterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCostCenterResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bss_open_api_20230930_models.CreateCostCenterShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cost_center_entity_list):
+            request.cost_center_entity_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cost_center_entity_list, 'CostCenterEntityList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.cost_center_entity_list_shrink):
+            query['CostCenterEntityList'] = request.cost_center_entity_list_shrink
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCostCenter',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.CreateCostCenterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_cost_center_with_options_async(
+        self,
+        tmp_req: bss_open_api_20230930_models.CreateCostCenterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.CreateCostCenterResponse:
+        """
+        @summary 创建财务单元
+        
+        @param tmp_req: CreateCostCenterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCostCenterResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bss_open_api_20230930_models.CreateCostCenterShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cost_center_entity_list):
+            request.cost_center_entity_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cost_center_entity_list, 'CostCenterEntityList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.cost_center_entity_list_shrink):
+            query['CostCenterEntityList'] = request.cost_center_entity_list_shrink
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCostCenter',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.CreateCostCenterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_cost_center(
+        self,
+        request: bss_open_api_20230930_models.CreateCostCenterRequest,
+    ) -> bss_open_api_20230930_models.CreateCostCenterResponse:
+        """
+        @summary 创建财务单元
+        
+        @param request: CreateCostCenterRequest
+        @return: CreateCostCenterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_cost_center_with_options(request, runtime)
+
+    async def create_cost_center_async(
+        self,
+        request: bss_open_api_20230930_models.CreateCostCenterRequest,
+    ) -> bss_open_api_20230930_models.CreateCostCenterResponse:
+        """
+        @summary 创建财务单元
+        
+        @param request: CreateCostCenterRequest
+        @return: CreateCostCenterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_cost_center_with_options_async(request, runtime)
+
+    def create_fund_account_pay_relation_with_options(
+        self,
+        tmp_req: bss_open_api_20230930_models.CreateFundAccountPayRelationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.CreateFundAccountPayRelationResponse:
+        """
+        @summary 创建资金账户付款关系
+        
+        @param tmp_req: CreateFundAccountPayRelationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFundAccountPayRelationResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bss_open_api_20230930_models.CreateFundAccountPayRelationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        body = {}
+        if not UtilClient.is_unset(request.fund_account_id):
+            body['FundAccountId'] = request.fund_account_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateFundAccountPayRelation',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.CreateFundAccountPayRelationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_fund_account_pay_relation_with_options_async(
+        self,
+        tmp_req: bss_open_api_20230930_models.CreateFundAccountPayRelationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.CreateFundAccountPayRelationResponse:
+        """
+        @summary 创建资金账户付款关系
+        
+        @param tmp_req: CreateFundAccountPayRelationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFundAccountPayRelationResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bss_open_api_20230930_models.CreateFundAccountPayRelationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        body = {}
+        if not UtilClient.is_unset(request.fund_account_id):
+            body['FundAccountId'] = request.fund_account_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateFundAccountPayRelation',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.CreateFundAccountPayRelationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_fund_account_pay_relation(
+        self,
+        request: bss_open_api_20230930_models.CreateFundAccountPayRelationRequest,
+    ) -> bss_open_api_20230930_models.CreateFundAccountPayRelationResponse:
+        """
+        @summary 创建资金账户付款关系
+        
+        @param request: CreateFundAccountPayRelationRequest
+        @return: CreateFundAccountPayRelationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_fund_account_pay_relation_with_options(request, runtime)
+
+    async def create_fund_account_pay_relation_async(
+        self,
+        request: bss_open_api_20230930_models.CreateFundAccountPayRelationRequest,
+    ) -> bss_open_api_20230930_models.CreateFundAccountPayRelationResponse:
+        """
+        @summary 创建资金账户付款关系
+        
+        @param request: CreateFundAccountPayRelationRequest
+        @return: CreateFundAccountPayRelationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_fund_account_pay_relation_with_options_async(request, runtime)
+
     def create_fund_account_transfer_with_options(
         self,
         request: bss_open_api_20230930_models.CreateFundAccountTransferRequest,
@@ -437,6 +661,242 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_fund_account_transfer_with_options_async(request, runtime)
 
+    def create_report_definition_with_options(
+        self,
+        request: bss_open_api_20230930_models.CreateReportDefinitionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.CreateReportDefinitionResponse:
+        """
+        @summary 创建账单订阅
+        
+        @param request: CreateReportDefinitionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateReportDefinitionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.begin_billing_cycle):
+            query['BeginBillingCycle'] = request.begin_billing_cycle
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        if not UtilClient.is_unset(request.oss_bucket_name):
+            query['OssBucketName'] = request.oss_bucket_name
+        if not UtilClient.is_unset(request.oss_bucket_owner_account_id):
+            query['OssBucketOwnerAccountId'] = request.oss_bucket_owner_account_id
+        if not UtilClient.is_unset(request.oss_bucket_path):
+            query['OssBucketPath'] = request.oss_bucket_path
+        if not UtilClient.is_unset(request.report_type):
+            query['ReportType'] = request.report_type
+        body = {}
+        if not UtilClient.is_unset(request.mc_project):
+            body['McProject'] = request.mc_project
+        if not UtilClient.is_unset(request.mc_table_name):
+            body['McTableName'] = request.mc_table_name
+        if not UtilClient.is_unset(request.report_source_type):
+            body['ReportSourceType'] = request.report_source_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateReportDefinition',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.CreateReportDefinitionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_report_definition_with_options_async(
+        self,
+        request: bss_open_api_20230930_models.CreateReportDefinitionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.CreateReportDefinitionResponse:
+        """
+        @summary 创建账单订阅
+        
+        @param request: CreateReportDefinitionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateReportDefinitionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.begin_billing_cycle):
+            query['BeginBillingCycle'] = request.begin_billing_cycle
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        if not UtilClient.is_unset(request.oss_bucket_name):
+            query['OssBucketName'] = request.oss_bucket_name
+        if not UtilClient.is_unset(request.oss_bucket_owner_account_id):
+            query['OssBucketOwnerAccountId'] = request.oss_bucket_owner_account_id
+        if not UtilClient.is_unset(request.oss_bucket_path):
+            query['OssBucketPath'] = request.oss_bucket_path
+        if not UtilClient.is_unset(request.report_type):
+            query['ReportType'] = request.report_type
+        body = {}
+        if not UtilClient.is_unset(request.mc_project):
+            body['McProject'] = request.mc_project
+        if not UtilClient.is_unset(request.mc_table_name):
+            body['McTableName'] = request.mc_table_name
+        if not UtilClient.is_unset(request.report_source_type):
+            body['ReportSourceType'] = request.report_source_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateReportDefinition',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.CreateReportDefinitionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_report_definition(
+        self,
+        request: bss_open_api_20230930_models.CreateReportDefinitionRequest,
+    ) -> bss_open_api_20230930_models.CreateReportDefinitionResponse:
+        """
+        @summary 创建账单订阅
+        
+        @param request: CreateReportDefinitionRequest
+        @return: CreateReportDefinitionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_report_definition_with_options(request, runtime)
+
+    async def create_report_definition_async(
+        self,
+        request: bss_open_api_20230930_models.CreateReportDefinitionRequest,
+    ) -> bss_open_api_20230930_models.CreateReportDefinitionResponse:
+        """
+        @summary 创建账单订阅
+        
+        @param request: CreateReportDefinitionRequest
+        @return: CreateReportDefinitionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_report_definition_with_options_async(request, runtime)
+
+    def delete_cost_center_with_options(
+        self,
+        request: bss_open_api_20230930_models.DeleteCostCenterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.DeleteCostCenterResponse:
+        """
+        @summary 删除财务单元
+        
+        @param request: DeleteCostCenterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCostCenterResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cost_center_id):
+            query['CostCenterId'] = request.cost_center_id
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        if not UtilClient.is_unset(request.owner_account_id):
+            query['OwnerAccountId'] = request.owner_account_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCostCenter',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.DeleteCostCenterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_cost_center_with_options_async(
+        self,
+        request: bss_open_api_20230930_models.DeleteCostCenterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.DeleteCostCenterResponse:
+        """
+        @summary 删除财务单元
+        
+        @param request: DeleteCostCenterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCostCenterResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cost_center_id):
+            query['CostCenterId'] = request.cost_center_id
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        if not UtilClient.is_unset(request.owner_account_id):
+            query['OwnerAccountId'] = request.owner_account_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCostCenter',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.DeleteCostCenterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_cost_center(
+        self,
+        request: bss_open_api_20230930_models.DeleteCostCenterRequest,
+    ) -> bss_open_api_20230930_models.DeleteCostCenterResponse:
+        """
+        @summary 删除财务单元
+        
+        @param request: DeleteCostCenterRequest
+        @return: DeleteCostCenterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_cost_center_with_options(request, runtime)
+
+    async def delete_cost_center_async(
+        self,
+        request: bss_open_api_20230930_models.DeleteCostCenterRequest,
+    ) -> bss_open_api_20230930_models.DeleteCostCenterResponse:
+        """
+        @summary 删除财务单元
+        
+        @param request: DeleteCostCenterRequest
+        @return: DeleteCostCenterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_cost_center_with_options_async(request, runtime)
+
     def delete_coupon_deduct_tag_with_options(
         self,
         tmp_req: bss_open_api_20230930_models.DeleteCouponDeductTagRequest,
@@ -556,6 +1016,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_coupon_deduct_tag_with_options_async(request, runtime)
+
+    def delete_report_definition_with_options(
+        self,
+        request: bss_open_api_20230930_models.DeleteReportDefinitionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.DeleteReportDefinitionResponse:
+        """
+        @summary 取消账单订阅
+        
+        @param request: DeleteReportDefinitionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteReportDefinitionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        if not UtilClient.is_unset(request.report_task_id):
+            query['ReportTaskId'] = request.report_task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteReportDefinition',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.DeleteReportDefinitionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_report_definition_with_options_async(
+        self,
+        request: bss_open_api_20230930_models.DeleteReportDefinitionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.DeleteReportDefinitionResponse:
+        """
+        @summary 取消账单订阅
+        
+        @param request: DeleteReportDefinitionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteReportDefinitionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        if not UtilClient.is_unset(request.report_task_id):
+            query['ReportTaskId'] = request.report_task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteReportDefinition',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.DeleteReportDefinitionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_report_definition(
+        self,
+        request: bss_open_api_20230930_models.DeleteReportDefinitionRequest,
+    ) -> bss_open_api_20230930_models.DeleteReportDefinitionResponse:
+        """
+        @summary 取消账单订阅
+        
+        @param request: DeleteReportDefinitionRequest
+        @return: DeleteReportDefinitionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_report_definition_with_options(request, runtime)
+
+    async def delete_report_definition_async(
+        self,
+        request: bss_open_api_20230930_models.DeleteReportDefinitionRequest,
+    ) -> bss_open_api_20230930_models.DeleteReportDefinitionResponse:
+        """
+        @summary 取消账单订阅
+        
+        @param request: DeleteReportDefinitionRequest
+        @return: DeleteReportDefinitionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_report_definition_with_options_async(request, runtime)
 
     def describe_coupon_with_options(
         self,
@@ -2288,6 +2848,454 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_fund_account_pay_relation_with_options_async(request, runtime)
+
+    def list_report_definitions_with_options(
+        self,
+        request: bss_open_api_20230930_models.ListReportDefinitionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.ListReportDefinitionsResponse:
+        """
+        @summary 查看已订阅的报告列表
+        
+        @param request: ListReportDefinitionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListReportDefinitionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListReportDefinitions',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.ListReportDefinitionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_report_definitions_with_options_async(
+        self,
+        request: bss_open_api_20230930_models.ListReportDefinitionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.ListReportDefinitionsResponse:
+        """
+        @summary 查看已订阅的报告列表
+        
+        @param request: ListReportDefinitionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListReportDefinitionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListReportDefinitions',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.ListReportDefinitionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_report_definitions(
+        self,
+        request: bss_open_api_20230930_models.ListReportDefinitionsRequest,
+    ) -> bss_open_api_20230930_models.ListReportDefinitionsResponse:
+        """
+        @summary 查看已订阅的报告列表
+        
+        @param request: ListReportDefinitionsRequest
+        @return: ListReportDefinitionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_report_definitions_with_options(request, runtime)
+
+    async def list_report_definitions_async(
+        self,
+        request: bss_open_api_20230930_models.ListReportDefinitionsRequest,
+    ) -> bss_open_api_20230930_models.ListReportDefinitionsResponse:
+        """
+        @summary 查看已订阅的报告列表
+        
+        @param request: ListReportDefinitionsRequest
+        @return: ListReportDefinitionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_report_definitions_with_options_async(request, runtime)
+
+    def modify_cost_center_with_options(
+        self,
+        tmp_req: bss_open_api_20230930_models.ModifyCostCenterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.ModifyCostCenterResponse:
+        """
+        @summary 修改财务单元
+        
+        @param tmp_req: ModifyCostCenterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCostCenterResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bss_open_api_20230930_models.ModifyCostCenterShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cost_center_entity_list):
+            request.cost_center_entity_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cost_center_entity_list, 'CostCenterEntityList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.cost_center_entity_list_shrink):
+            query['CostCenterEntityList'] = request.cost_center_entity_list_shrink
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyCostCenter',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.ModifyCostCenterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_cost_center_with_options_async(
+        self,
+        tmp_req: bss_open_api_20230930_models.ModifyCostCenterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.ModifyCostCenterResponse:
+        """
+        @summary 修改财务单元
+        
+        @param tmp_req: ModifyCostCenterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCostCenterResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bss_open_api_20230930_models.ModifyCostCenterShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cost_center_entity_list):
+            request.cost_center_entity_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cost_center_entity_list, 'CostCenterEntityList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.cost_center_entity_list_shrink):
+            query['CostCenterEntityList'] = request.cost_center_entity_list_shrink
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyCostCenter',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.ModifyCostCenterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_cost_center(
+        self,
+        request: bss_open_api_20230930_models.ModifyCostCenterRequest,
+    ) -> bss_open_api_20230930_models.ModifyCostCenterResponse:
+        """
+        @summary 修改财务单元
+        
+        @param request: ModifyCostCenterRequest
+        @return: ModifyCostCenterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_cost_center_with_options(request, runtime)
+
+    async def modify_cost_center_async(
+        self,
+        request: bss_open_api_20230930_models.ModifyCostCenterRequest,
+    ) -> bss_open_api_20230930_models.ModifyCostCenterResponse:
+        """
+        @summary 修改财务单元
+        
+        @param request: ModifyCostCenterRequest
+        @return: ModifyCostCenterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_cost_center_with_options_async(request, runtime)
+
+    def query_cost_center_with_options(
+        self,
+        tmp_req: bss_open_api_20230930_models.QueryCostCenterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.QueryCostCenterResponse:
+        """
+        @summary 查询财务单元
+        
+        @param tmp_req: QueryCostCenterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCostCenterResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bss_open_api_20230930_models.QueryCostCenterShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        if not UtilClient.is_unset(request.owner_account_id):
+            query['OwnerAccountId'] = request.owner_account_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.parent_cost_center_id):
+            query['ParentCostCenterId'] = request.parent_cost_center_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryCostCenter',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.QueryCostCenterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_cost_center_with_options_async(
+        self,
+        tmp_req: bss_open_api_20230930_models.QueryCostCenterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.QueryCostCenterResponse:
+        """
+        @summary 查询财务单元
+        
+        @param tmp_req: QueryCostCenterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCostCenterResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bss_open_api_20230930_models.QueryCostCenterShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        if not UtilClient.is_unset(request.owner_account_id):
+            query['OwnerAccountId'] = request.owner_account_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.parent_cost_center_id):
+            query['ParentCostCenterId'] = request.parent_cost_center_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryCostCenter',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.QueryCostCenterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_cost_center(
+        self,
+        request: bss_open_api_20230930_models.QueryCostCenterRequest,
+    ) -> bss_open_api_20230930_models.QueryCostCenterResponse:
+        """
+        @summary 查询财务单元
+        
+        @param request: QueryCostCenterRequest
+        @return: QueryCostCenterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_cost_center_with_options(request, runtime)
+
+    async def query_cost_center_async(
+        self,
+        request: bss_open_api_20230930_models.QueryCostCenterRequest,
+    ) -> bss_open_api_20230930_models.QueryCostCenterResponse:
+        """
+        @summary 查询财务单元
+        
+        @param request: QueryCostCenterRequest
+        @return: QueryCostCenterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_cost_center_with_options_async(request, runtime)
+
+    def query_cost_center_resource_with_options(
+        self,
+        request: bss_open_api_20230930_models.QueryCostCenterResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.QueryCostCenterResourceResponse:
+        """
+        @summary 查询财务单元下资源信息
+        
+        @param request: QueryCostCenterResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCostCenterResourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ec_id_account_ids):
+            query['EcIdAccountIds'] = request.ec_id_account_ids
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        body = {}
+        if not UtilClient.is_unset(request.cost_center_id):
+            body['CostCenterId'] = request.cost_center_id
+        if not UtilClient.is_unset(request.owner_account_id):
+            body['OwnerAccountId'] = request.owner_account_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryCostCenterResource',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.QueryCostCenterResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_cost_center_resource_with_options_async(
+        self,
+        request: bss_open_api_20230930_models.QueryCostCenterResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.QueryCostCenterResourceResponse:
+        """
+        @summary 查询财务单元下资源信息
+        
+        @param request: QueryCostCenterResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCostCenterResourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ec_id_account_ids):
+            query['EcIdAccountIds'] = request.ec_id_account_ids
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        body = {}
+        if not UtilClient.is_unset(request.cost_center_id):
+            body['CostCenterId'] = request.cost_center_id
+        if not UtilClient.is_unset(request.owner_account_id):
+            body['OwnerAccountId'] = request.owner_account_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryCostCenterResource',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.QueryCostCenterResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_cost_center_resource(
+        self,
+        request: bss_open_api_20230930_models.QueryCostCenterResourceRequest,
+    ) -> bss_open_api_20230930_models.QueryCostCenterResourceResponse:
+        """
+        @summary 查询财务单元下资源信息
+        
+        @param request: QueryCostCenterResourceRequest
+        @return: QueryCostCenterResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_cost_center_resource_with_options(request, runtime)
+
+    async def query_cost_center_resource_async(
+        self,
+        request: bss_open_api_20230930_models.QueryCostCenterResourceRequest,
+    ) -> bss_open_api_20230930_models.QueryCostCenterResourceResponse:
+        """
+        @summary 查询财务单元下资源信息
+        
+        @param request: QueryCostCenterResourceRequest
+        @return: QueryCostCenterResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_cost_center_resource_with_options_async(request, runtime)
 
     def set_fund_account_credit_amount_with_options(
         self,

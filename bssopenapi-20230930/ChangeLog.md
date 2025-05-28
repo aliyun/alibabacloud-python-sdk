@@ -1,3 +1,15 @@
+2025-05-28 Version: 1.3.0
+- Support API CreateCostCenter.
+- Support API CreateFundAccountPayRelation.
+- Support API CreateReportDefinition.
+- Support API DeleteCostCenter.
+- Support API DeleteReportDefinition.
+- Support API ListReportDefinitions.
+- Support API ModifyCostCenter.
+- Support API QueryCostCenter.
+- Support API QueryCostCenterResource.
+
+
 2025-04-25 Version: 1.2.0
 - Support API DescribeUserSpnSummaryInfo.
 - Support API GetSavingPlanDeductableCommodity.
