@@ -145,6 +145,251 @@ class AddVsPullStreamInfoConfigResponse(TeaModel):
         return self
 
 
+class AssociateRenderingProjectInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        project_id: str = None,
+        rendering_instance_ids: List[str] = None,
+    ):
+        # This parameter is required.
+        self.project_id = project_id
+        # This parameter is required.
+        self.rendering_instance_ids = rendering_instance_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.rendering_instance_ids is not None:
+            result['RenderingInstanceIds'] = self.rendering_instance_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RenderingInstanceIds') is not None:
+            self.rendering_instance_ids = m.get('RenderingInstanceIds')
+        return self
+
+
+class AssociateRenderingProjectInstancesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        project_id: str = None,
+        rendering_instance_ids_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.project_id = project_id
+        # This parameter is required.
+        self.rendering_instance_ids_shrink = rendering_instance_ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.rendering_instance_ids_shrink is not None:
+            result['RenderingInstanceIds'] = self.rendering_instance_ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RenderingInstanceIds') is not None:
+            self.rendering_instance_ids_shrink = m.get('RenderingInstanceIds')
+        return self
+
+
+class AssociateRenderingProjectInstancesResponseBodyFailedInstances(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        rendering_instance_id: str = None,
+    ):
+        self.message = message
+        self.rendering_instance_id = rendering_instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.rendering_instance_id is not None:
+            result['RenderingInstanceId'] = self.rendering_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RenderingInstanceId') is not None:
+            self.rendering_instance_id = m.get('RenderingInstanceId')
+        return self
+
+
+class AssociateRenderingProjectInstancesResponseBodySuccessInstances(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        rendering_instance_id: str = None,
+    ):
+        self.message = message
+        self.rendering_instance_id = rendering_instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.rendering_instance_id is not None:
+            result['RenderingInstanceId'] = self.rendering_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RenderingInstanceId') is not None:
+            self.rendering_instance_id = m.get('RenderingInstanceId')
+        return self
+
+
+class AssociateRenderingProjectInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        failed_instance_count: str = None,
+        failed_instances: List[AssociateRenderingProjectInstancesResponseBodyFailedInstances] = None,
+        request_id: str = None,
+        success_instance_count: str = None,
+        success_instances: List[AssociateRenderingProjectInstancesResponseBodySuccessInstances] = None,
+    ):
+        self.failed_instance_count = failed_instance_count
+        self.failed_instances = failed_instances
+        self.request_id = request_id
+        self.success_instance_count = success_instance_count
+        self.success_instances = success_instances
+
+    def validate(self):
+        if self.failed_instances:
+            for k in self.failed_instances:
+                if k:
+                    k.validate()
+        if self.success_instances:
+            for k in self.success_instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed_instance_count is not None:
+            result['FailedInstanceCount'] = self.failed_instance_count
+        result['FailedInstances'] = []
+        if self.failed_instances is not None:
+            for k in self.failed_instances:
+                result['FailedInstances'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success_instance_count is not None:
+            result['SuccessInstanceCount'] = self.success_instance_count
+        result['SuccessInstances'] = []
+        if self.success_instances is not None:
+            for k in self.success_instances:
+                result['SuccessInstances'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FailedInstanceCount') is not None:
+            self.failed_instance_count = m.get('FailedInstanceCount')
+        self.failed_instances = []
+        if m.get('FailedInstances') is not None:
+            for k in m.get('FailedInstances'):
+                temp_model = AssociateRenderingProjectInstancesResponseBodyFailedInstances()
+                self.failed_instances.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SuccessInstanceCount') is not None:
+            self.success_instance_count = m.get('SuccessInstanceCount')
+        self.success_instances = []
+        if m.get('SuccessInstances') is not None:
+            for k in m.get('SuccessInstances'):
+                temp_model = AssociateRenderingProjectInstancesResponseBodySuccessInstances()
+                self.success_instances.append(temp_model.from_map(k))
+        return self
+
+
+class AssociateRenderingProjectInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AssociateRenderingProjectInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AssociateRenderingProjectInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class BatchBindDirectoriesRequest(TeaModel):
     def __init__(
         self,
@@ -5522,6 +5767,190 @@ class CreateRenderingInstanceGatewayResponse(TeaModel):
         return self
 
 
+class CreateRenderingProjectRequestSessionAttribs(TeaModel):
+    def __init__(
+        self,
+        start_mode: str = None,
+    ):
+        self.start_mode = start_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.start_mode is not None:
+            result['StartMode'] = self.start_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('StartMode') is not None:
+            self.start_mode = m.get('StartMode')
+        return self
+
+
+class CreateRenderingProjectRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        project_name: str = None,
+        session_attribs: CreateRenderingProjectRequestSessionAttribs = None,
+    ):
+        self.description = description
+        # This parameter is required.
+        self.project_name = project_name
+        self.session_attribs = session_attribs
+
+    def validate(self):
+        if self.session_attribs:
+            self.session_attribs.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.session_attribs is not None:
+            result['SessionAttribs'] = self.session_attribs.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('SessionAttribs') is not None:
+            temp_model = CreateRenderingProjectRequestSessionAttribs()
+            self.session_attribs = temp_model.from_map(m['SessionAttribs'])
+        return self
+
+
+class CreateRenderingProjectShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        project_name: str = None,
+        session_attribs_shrink: str = None,
+    ):
+        self.description = description
+        # This parameter is required.
+        self.project_name = project_name
+        self.session_attribs_shrink = session_attribs_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.session_attribs_shrink is not None:
+            result['SessionAttribs'] = self.session_attribs_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('SessionAttribs') is not None:
+            self.session_attribs_shrink = m.get('SessionAttribs')
+        return self
+
+
+class CreateRenderingProjectResponseBody(TeaModel):
+    def __init__(
+        self,
+        project_id: str = None,
+        request_id: str = None,
+    ):
+        self.project_id = project_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateRenderingProjectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateRenderingProjectResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateRenderingProjectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateStreamSnapshotRequest(TeaModel):
     def __init__(
         self,
@@ -7123,6 +7552,103 @@ class DeleteRenderingInstanceSettingsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteRenderingInstanceSettingsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteRenderingProjectRequest(TeaModel):
+    def __init__(
+        self,
+        project_id: str = None,
+    ):
+        # This parameter is required.
+        self.project_id = project_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class DeleteRenderingProjectResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteRenderingProjectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteRenderingProjectResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteRenderingProjectResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12116,6 +12642,7 @@ class DescribeRenderingInstanceResponseBody(TeaModel):
         self,
         config_info: DescribeRenderingInstanceResponseBodyConfigInfo = None,
         creation_time: str = None,
+        egress_ip: str = None,
         hostname: str = None,
         port_mappings: List[DescribeRenderingInstanceResponseBodyPortMappings] = None,
         rendering_instance_id: str = None,
@@ -12127,6 +12654,7 @@ class DescribeRenderingInstanceResponseBody(TeaModel):
     ):
         self.config_info = config_info
         self.creation_time = creation_time
+        self.egress_ip = egress_ip
         self.hostname = hostname
         self.port_mappings = port_mappings
         self.rendering_instance_id = rendering_instance_id
@@ -12158,6 +12686,8 @@ class DescribeRenderingInstanceResponseBody(TeaModel):
             result['ConfigInfo'] = self.config_info.to_map()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
+        if self.egress_ip is not None:
+            result['EgressIp'] = self.egress_ip
         if self.hostname is not None:
             result['Hostname'] = self.hostname
         result['PortMappings'] = []
@@ -12185,6 +12715,8 @@ class DescribeRenderingInstanceResponseBody(TeaModel):
             self.config_info = temp_model.from_map(m['ConfigInfo'])
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')
+        if m.get('EgressIp') is not None:
+            self.egress_ip = m.get('EgressIp')
         if m.get('Hostname') is not None:
             self.hostname = m.get('Hostname')
         self.port_mappings = []
@@ -12694,6 +13226,275 @@ class DescribeRenderingInstanceSettingsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeRenderingInstanceSettingsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeRenderingSessionRequest(TeaModel):
+    def __init__(
+        self,
+        client_id: str = None,
+        project_id: str = None,
+        session_id: str = None,
+    ):
+        self.client_id = client_id
+        # This parameter is required.
+        self.project_id = project_id
+        self.session_id = session_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        return self
+
+
+class DescribeRenderingSessionResponseBodyLocation(TeaModel):
+    def __init__(
+        self,
+        province_code: str = None,
+    ):
+        self.province_code = province_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.province_code is not None:
+            result['ProvinceCode'] = self.province_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProvinceCode') is not None:
+            self.province_code = m.get('ProvinceCode')
+        return self
+
+
+class DescribeRenderingSessionResponseBodyPortMappings(TeaModel):
+    def __init__(
+        self,
+        external_port: str = None,
+        internal_port: str = None,
+    ):
+        self.external_port = external_port
+        self.internal_port = internal_port
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.external_port is not None:
+            result['ExternalPort'] = self.external_port
+        if self.internal_port is not None:
+            result['InternalPort'] = self.internal_port
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExternalPort') is not None:
+            self.external_port = m.get('ExternalPort')
+        if m.get('InternalPort') is not None:
+            self.internal_port = m.get('InternalPort')
+        return self
+
+
+class DescribeRenderingSessionResponseBodyStateInfo(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        state: str = None,
+        update_time: str = None,
+    ):
+        self.comment = comment
+        self.state = state
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.state is not None:
+            result['State'] = self.state
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class DescribeRenderingSessionResponseBody(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        client_id: str = None,
+        hostname: str = None,
+        location: DescribeRenderingSessionResponseBodyLocation = None,
+        port_mappings: List[DescribeRenderingSessionResponseBodyPortMappings] = None,
+        request_id: str = None,
+        session_id: str = None,
+        start_time: str = None,
+        state_info: DescribeRenderingSessionResponseBodyStateInfo = None,
+    ):
+        self.app_id = app_id
+        self.client_id = client_id
+        self.hostname = hostname
+        self.location = location
+        self.port_mappings = port_mappings
+        self.request_id = request_id
+        self.session_id = session_id
+        self.start_time = start_time
+        self.state_info = state_info
+
+    def validate(self):
+        if self.location:
+            self.location.validate()
+        if self.port_mappings:
+            for k in self.port_mappings:
+                if k:
+                    k.validate()
+        if self.state_info:
+            self.state_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.hostname is not None:
+            result['Hostname'] = self.hostname
+        if self.location is not None:
+            result['Location'] = self.location.to_map()
+        result['PortMappings'] = []
+        if self.port_mappings is not None:
+            for k in self.port_mappings:
+                result['PortMappings'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.state_info is not None:
+            result['StateInfo'] = self.state_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('Hostname') is not None:
+            self.hostname = m.get('Hostname')
+        if m.get('Location') is not None:
+            temp_model = DescribeRenderingSessionResponseBodyLocation()
+            self.location = temp_model.from_map(m['Location'])
+        self.port_mappings = []
+        if m.get('PortMappings') is not None:
+            for k in m.get('PortMappings'):
+                temp_model = DescribeRenderingSessionResponseBodyPortMappings()
+                self.port_mappings.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('StateInfo') is not None:
+            temp_model = DescribeRenderingSessionResponseBodyStateInfo()
+            self.state_info = temp_model.from_map(m['StateInfo'])
+        return self
+
+
+class DescribeRenderingSessionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeRenderingSessionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeRenderingSessionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -19467,6 +20268,252 @@ class DescribeVsVerifyContentResponse(TeaModel):
         return self
 
 
+class DisassociateRenderingProjectInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        project_id: str = None,
+        rendering_instance_ids: List[str] = None,
+    ):
+        # This parameter is required.
+        self.project_id = project_id
+        # This parameter is required.
+        self.rendering_instance_ids = rendering_instance_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.rendering_instance_ids is not None:
+            result['RenderingInstanceIds'] = self.rendering_instance_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RenderingInstanceIds') is not None:
+            self.rendering_instance_ids = m.get('RenderingInstanceIds')
+        return self
+
+
+class DisassociateRenderingProjectInstancesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        project_id: str = None,
+        rendering_instance_ids_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.project_id = project_id
+        # This parameter is required.
+        self.rendering_instance_ids_shrink = rendering_instance_ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.rendering_instance_ids_shrink is not None:
+            result['RenderingInstanceIds'] = self.rendering_instance_ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RenderingInstanceIds') is not None:
+            self.rendering_instance_ids_shrink = m.get('RenderingInstanceIds')
+        return self
+
+
+class DisassociateRenderingProjectInstancesResponseBodyFailedInstances(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        rendering_instance_id: str = None,
+    ):
+        self.message = message
+        self.rendering_instance_id = rendering_instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.rendering_instance_id is not None:
+            result['RenderingInstanceId'] = self.rendering_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RenderingInstanceId') is not None:
+            self.rendering_instance_id = m.get('RenderingInstanceId')
+        return self
+
+
+class DisassociateRenderingProjectInstancesResponseBodySuccessInstances(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        rendering_instance_id: str = None,
+    ):
+        self.message = message
+        self.rendering_instance_id = rendering_instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.rendering_instance_id is not None:
+            result['RenderingInstanceId'] = self.rendering_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RenderingInstanceId') is not None:
+            self.rendering_instance_id = m.get('RenderingInstanceId')
+        return self
+
+
+class DisassociateRenderingProjectInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        failed_instance_count: str = None,
+        failed_instances: List[DisassociateRenderingProjectInstancesResponseBodyFailedInstances] = None,
+        request_id: str = None,
+        success_instance_count: str = None,
+        success_instances: List[DisassociateRenderingProjectInstancesResponseBodySuccessInstances] = None,
+    ):
+        self.failed_instance_count = failed_instance_count
+        self.failed_instances = failed_instances
+        # Id of the request
+        self.request_id = request_id
+        self.success_instance_count = success_instance_count
+        self.success_instances = success_instances
+
+    def validate(self):
+        if self.failed_instances:
+            for k in self.failed_instances:
+                if k:
+                    k.validate()
+        if self.success_instances:
+            for k in self.success_instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed_instance_count is not None:
+            result['FailedInstanceCount'] = self.failed_instance_count
+        result['FailedInstances'] = []
+        if self.failed_instances is not None:
+            for k in self.failed_instances:
+                result['FailedInstances'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success_instance_count is not None:
+            result['SuccessInstanceCount'] = self.success_instance_count
+        result['SuccessInstances'] = []
+        if self.success_instances is not None:
+            for k in self.success_instances:
+                result['SuccessInstances'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FailedInstanceCount') is not None:
+            self.failed_instance_count = m.get('FailedInstanceCount')
+        self.failed_instances = []
+        if m.get('FailedInstances') is not None:
+            for k in m.get('FailedInstances'):
+                temp_model = DisassociateRenderingProjectInstancesResponseBodyFailedInstances()
+                self.failed_instances.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SuccessInstanceCount') is not None:
+            self.success_instance_count = m.get('SuccessInstanceCount')
+        self.success_instances = []
+        if m.get('SuccessInstances') is not None:
+            for k in m.get('SuccessInstances'):
+                temp_model = DisassociateRenderingProjectInstancesResponseBodySuccessInstances()
+                self.success_instances.append(temp_model.from_map(k))
+        return self
+
+
+class DisassociateRenderingProjectInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DisassociateRenderingProjectInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DisassociateRenderingProjectInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ForbidVsStreamRequest(TeaModel):
     def __init__(
         self,
@@ -19730,6 +20777,150 @@ class GetRenderingInstanceStreamingInfoResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetRenderingInstanceStreamingInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetRenderingProjectInstanceStateMetricsRequest(TeaModel):
+    def __init__(
+        self,
+        project_id: str = None,
+    ):
+        # This parameter is required.
+        self.project_id = project_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class GetRenderingProjectInstanceStateMetricsResponseBodyStateMetrics(TeaModel):
+    def __init__(
+        self,
+        count: str = None,
+        state: str = None,
+    ):
+        self.count = count
+        self.state = state
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.state is not None:
+            result['State'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        return self
+
+
+class GetRenderingProjectInstanceStateMetricsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        state_metrics: List[GetRenderingProjectInstanceStateMetricsResponseBodyStateMetrics] = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.state_metrics = state_metrics
+
+    def validate(self):
+        if self.state_metrics:
+            for k in self.state_metrics:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['StateMetrics'] = []
+        if self.state_metrics is not None:
+            for k in self.state_metrics:
+                result['StateMetrics'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.state_metrics = []
+        if m.get('StateMetrics') is not None:
+            for k in m.get('StateMetrics'):
+                temp_model = GetRenderingProjectInstanceStateMetricsResponseBodyStateMetrics()
+                self.state_metrics.append(temp_model.from_map(k))
+        return self
+
+
+class GetRenderingProjectInstanceStateMetricsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetRenderingProjectInstanceStateMetricsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetRenderingProjectInstanceStateMetricsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -21625,6 +22816,642 @@ class ListRenderingInstancesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListRenderingInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListRenderingProjectInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        project_id: str = None,
+        rendering_instance_id: str = None,
+        state: str = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        # This parameter is required.
+        self.project_id = project_id
+        self.rendering_instance_id = rendering_instance_id
+        self.state = state
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.rendering_instance_id is not None:
+            result['RenderingInstanceId'] = self.rendering_instance_id
+        if self.state is not None:
+            result['State'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RenderingInstanceId') is not None:
+            self.rendering_instance_id = m.get('RenderingInstanceId')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        return self
+
+
+class ListRenderingProjectInstancesResponseBodyRenderingInstancesStateInfo(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        state: str = None,
+        update_time: str = None,
+    ):
+        self.comment = comment
+        self.state = state
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.state is not None:
+            result['State'] = self.state
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class ListRenderingProjectInstancesResponseBodyRenderingInstances(TeaModel):
+    def __init__(
+        self,
+        association_time: str = None,
+        rendering_instance_id: str = None,
+        state_info: ListRenderingProjectInstancesResponseBodyRenderingInstancesStateInfo = None,
+    ):
+        self.association_time = association_time
+        self.rendering_instance_id = rendering_instance_id
+        self.state_info = state_info
+
+    def validate(self):
+        if self.state_info:
+            self.state_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.association_time is not None:
+            result['AssociationTime'] = self.association_time
+        if self.rendering_instance_id is not None:
+            result['RenderingInstanceId'] = self.rendering_instance_id
+        if self.state_info is not None:
+            result['StateInfo'] = self.state_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssociationTime') is not None:
+            self.association_time = m.get('AssociationTime')
+        if m.get('RenderingInstanceId') is not None:
+            self.rendering_instance_id = m.get('RenderingInstanceId')
+        if m.get('StateInfo') is not None:
+            temp_model = ListRenderingProjectInstancesResponseBodyRenderingInstancesStateInfo()
+            self.state_info = temp_model.from_map(m['StateInfo'])
+        return self
+
+
+class ListRenderingProjectInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        rendering_instances: List[ListRenderingProjectInstancesResponseBodyRenderingInstances] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.rendering_instances = rendering_instances
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.rendering_instances:
+            for k in self.rendering_instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['RenderingInstances'] = []
+        if self.rendering_instances is not None:
+            for k in self.rendering_instances:
+                result['RenderingInstances'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.rendering_instances = []
+        if m.get('RenderingInstances') is not None:
+            for k in m.get('RenderingInstances'):
+                temp_model = ListRenderingProjectInstancesResponseBodyRenderingInstances()
+                self.rendering_instances.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListRenderingProjectInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListRenderingProjectInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListRenderingProjectInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListRenderingProjectsRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        project_id: str = None,
+        project_name: str = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.project_id = project_id
+        self.project_name = project_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        return self
+
+
+class ListRenderingProjectsResponseBodyProjectsSessionAttribs(TeaModel):
+    def __init__(
+        self,
+        start_mode: str = None,
+    ):
+        self.start_mode = start_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.start_mode is not None:
+            result['StartMode'] = self.start_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('StartMode') is not None:
+            self.start_mode = m.get('StartMode')
+        return self
+
+
+class ListRenderingProjectsResponseBodyProjects(TeaModel):
+    def __init__(
+        self,
+        creation_time: str = None,
+        description: str = None,
+        project_id: str = None,
+        project_name: str = None,
+        session_attribs: ListRenderingProjectsResponseBodyProjectsSessionAttribs = None,
+        update_time: str = None,
+    ):
+        self.creation_time = creation_time
+        self.description = description
+        self.project_id = project_id
+        self.project_name = project_name
+        self.session_attribs = session_attribs
+        self.update_time = update_time
+
+    def validate(self):
+        if self.session_attribs:
+            self.session_attribs.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.session_attribs is not None:
+            result['SessionAttribs'] = self.session_attribs.to_map()
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('SessionAttribs') is not None:
+            temp_model = ListRenderingProjectsResponseBodyProjectsSessionAttribs()
+            self.session_attribs = temp_model.from_map(m['SessionAttribs'])
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class ListRenderingProjectsResponseBody(TeaModel):
+    def __init__(
+        self,
+        projects: List[ListRenderingProjectsResponseBodyProjects] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.projects = projects
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.projects:
+            for k in self.projects:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Projects'] = []
+        if self.projects is not None:
+            for k in self.projects:
+                result['Projects'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.projects = []
+        if m.get('Projects') is not None:
+            for k in m.get('Projects'):
+                temp_model = ListRenderingProjectsResponseBodyProjects()
+                self.projects.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListRenderingProjectsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListRenderingProjectsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListRenderingProjectsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListRenderingSessionsRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        client_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        project_id: str = None,
+        session_id: str = None,
+        state: str = None,
+    ):
+        self.app_id = app_id
+        self.client_id = client_id
+        self.page_number = page_number
+        self.page_size = page_size
+        # This parameter is required.
+        self.project_id = project_id
+        self.session_id = session_id
+        self.state = state
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.state is not None:
+            result['State'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        return self
+
+
+class ListRenderingSessionsResponseBodySessions(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        client_id: str = None,
+        session_id: str = None,
+        start_time: str = None,
+    ):
+        self.app_id = app_id
+        self.client_id = client_id
+        self.session_id = session_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class ListRenderingSessionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        sessions: List[ListRenderingSessionsResponseBodySessions] = None,
+        total_count: int = None,
+    ):
+        self.request_id = request_id
+        self.sessions = sessions
+        self.total_count = total_count
+
+    def validate(self):
+        if self.sessions:
+            for k in self.sessions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Sessions'] = []
+        if self.sessions is not None:
+            for k in self.sessions:
+                result['Sessions'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.sessions = []
+        if m.get('Sessions') is not None:
+            for k in m.get('Sessions'):
+                temp_model = ListRenderingSessionsResponseBodySessions()
+                self.sessions.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListRenderingSessionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListRenderingSessionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListRenderingSessionsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -25342,6 +27169,346 @@ class StartRecordStreamResponse(TeaModel):
         return self
 
 
+class StartRenderingSessionRequestClientParams(TeaModel):
+    def __init__(
+        self,
+        client_ip: str = None,
+    ):
+        self.client_ip = client_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_ip is not None:
+            result['ClientIp'] = self.client_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientIp') is not None:
+            self.client_ip = m.get('ClientIp')
+        return self
+
+
+class StartRenderingSessionRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        client_id: str = None,
+        client_params: StartRenderingSessionRequestClientParams = None,
+        project_id: str = None,
+    ):
+        self.app_id = app_id
+        # This parameter is required.
+        self.client_id = client_id
+        self.client_params = client_params
+        # This parameter is required.
+        self.project_id = project_id
+
+    def validate(self):
+        if self.client_params:
+            self.client_params.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.client_params is not None:
+            result['ClientParams'] = self.client_params.to_map()
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('ClientParams') is not None:
+            temp_model = StartRenderingSessionRequestClientParams()
+            self.client_params = temp_model.from_map(m['ClientParams'])
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class StartRenderingSessionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        client_id: str = None,
+        client_params_shrink: str = None,
+        project_id: str = None,
+    ):
+        self.app_id = app_id
+        # This parameter is required.
+        self.client_id = client_id
+        self.client_params_shrink = client_params_shrink
+        # This parameter is required.
+        self.project_id = project_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.client_params_shrink is not None:
+            result['ClientParams'] = self.client_params_shrink
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('ClientParams') is not None:
+            self.client_params_shrink = m.get('ClientParams')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class StartRenderingSessionResponseBodyLocation(TeaModel):
+    def __init__(
+        self,
+        province_code: str = None,
+    ):
+        self.province_code = province_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.province_code is not None:
+            result['ProvinceCode'] = self.province_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProvinceCode') is not None:
+            self.province_code = m.get('ProvinceCode')
+        return self
+
+
+class StartRenderingSessionResponseBodyPortMappings(TeaModel):
+    def __init__(
+        self,
+        external_port: str = None,
+        internal_port: str = None,
+    ):
+        self.external_port = external_port
+        self.internal_port = internal_port
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.external_port is not None:
+            result['ExternalPort'] = self.external_port
+        if self.internal_port is not None:
+            result['InternalPort'] = self.internal_port
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExternalPort') is not None:
+            self.external_port = m.get('ExternalPort')
+        if m.get('InternalPort') is not None:
+            self.internal_port = m.get('InternalPort')
+        return self
+
+
+class StartRenderingSessionResponseBodyStateInfo(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        state: str = None,
+        update_time: str = None,
+    ):
+        self.comment = comment
+        self.state = state
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.state is not None:
+            result['State'] = self.state
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class StartRenderingSessionResponseBody(TeaModel):
+    def __init__(
+        self,
+        hostname: str = None,
+        is_repeated_request: bool = None,
+        location: StartRenderingSessionResponseBodyLocation = None,
+        port_mappings: List[StartRenderingSessionResponseBodyPortMappings] = None,
+        request_id: str = None,
+        session_id: str = None,
+        state_info: StartRenderingSessionResponseBodyStateInfo = None,
+    ):
+        self.hostname = hostname
+        self.is_repeated_request = is_repeated_request
+        self.location = location
+        self.port_mappings = port_mappings
+        self.request_id = request_id
+        self.session_id = session_id
+        self.state_info = state_info
+
+    def validate(self):
+        if self.location:
+            self.location.validate()
+        if self.port_mappings:
+            for k in self.port_mappings:
+                if k:
+                    k.validate()
+        if self.state_info:
+            self.state_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hostname is not None:
+            result['Hostname'] = self.hostname
+        if self.is_repeated_request is not None:
+            result['IsRepeatedRequest'] = self.is_repeated_request
+        if self.location is not None:
+            result['Location'] = self.location.to_map()
+        result['PortMappings'] = []
+        if self.port_mappings is not None:
+            for k in self.port_mappings:
+                result['PortMappings'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.state_info is not None:
+            result['StateInfo'] = self.state_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Hostname') is not None:
+            self.hostname = m.get('Hostname')
+        if m.get('IsRepeatedRequest') is not None:
+            self.is_repeated_request = m.get('IsRepeatedRequest')
+        if m.get('Location') is not None:
+            temp_model = StartRenderingSessionResponseBodyLocation()
+            self.location = temp_model.from_map(m['Location'])
+        self.port_mappings = []
+        if m.get('PortMappings') is not None:
+            for k in m.get('PortMappings'):
+                temp_model = StartRenderingSessionResponseBodyPortMappings()
+                self.port_mappings.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('StateInfo') is not None:
+            temp_model = StartRenderingSessionResponseBodyStateInfo()
+            self.state_info = temp_model.from_map(m['StateInfo'])
+        return self
+
+
+class StartRenderingSessionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StartRenderingSessionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StartRenderingSessionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StartStreamRequest(TeaModel):
     def __init__(
         self,
@@ -26172,6 +28339,114 @@ class StopRecordStreamResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StopRecordStreamResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StopRenderingSessionRequest(TeaModel):
+    def __init__(
+        self,
+        client_id: str = None,
+        project_id: str = None,
+        session_id: str = None,
+    ):
+        self.client_id = client_id
+        # This parameter is required.
+        self.project_id = project_id
+        self.session_id = session_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        return self
+
+
+class StopRenderingSessionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StopRenderingSessionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StopRenderingSessionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StopRenderingSessionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -27790,6 +30065,196 @@ class UpdateRenderingInstanceSettingsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateRenderingInstanceSettingsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateRenderingProjectRequestSessionAttribs(TeaModel):
+    def __init__(
+        self,
+        start_mode: str = None,
+    ):
+        self.start_mode = start_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.start_mode is not None:
+            result['StartMode'] = self.start_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('StartMode') is not None:
+            self.start_mode = m.get('StartMode')
+        return self
+
+
+class UpdateRenderingProjectRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        project_id: str = None,
+        project_name: str = None,
+        session_attribs: UpdateRenderingProjectRequestSessionAttribs = None,
+    ):
+        self.description = description
+        # This parameter is required.
+        self.project_id = project_id
+        self.project_name = project_name
+        self.session_attribs = session_attribs
+
+    def validate(self):
+        if self.session_attribs:
+            self.session_attribs.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.session_attribs is not None:
+            result['SessionAttribs'] = self.session_attribs.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('SessionAttribs') is not None:
+            temp_model = UpdateRenderingProjectRequestSessionAttribs()
+            self.session_attribs = temp_model.from_map(m['SessionAttribs'])
+        return self
+
+
+class UpdateRenderingProjectShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        project_id: str = None,
+        project_name: str = None,
+        session_attribs_shrink: str = None,
+    ):
+        self.description = description
+        # This parameter is required.
+        self.project_id = project_id
+        self.project_name = project_name
+        self.session_attribs_shrink = session_attribs_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.session_attribs_shrink is not None:
+            result['SessionAttribs'] = self.session_attribs_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('SessionAttribs') is not None:
+            self.session_attribs_shrink = m.get('SessionAttribs')
+        return self
+
+
+class UpdateRenderingProjectResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateRenderingProjectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateRenderingProjectResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateRenderingProjectResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
