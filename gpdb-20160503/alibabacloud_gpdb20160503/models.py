@@ -2604,6 +2604,7 @@ class CreateDBInstanceRequest(TeaModel):
         self,
         ainode_spec_infos: List[CreateDBInstanceRequestAINodeSpecInfos] = None,
         backup_id: str = None,
+        cache_storage_size: str = None,
         client_token: str = None,
         create_sample_data: bool = None,
         dbinstance_category: str = None,
@@ -2653,6 +2654,7 @@ class CreateDBInstanceRequest(TeaModel):
         # 
         # > You can call the [DescribeDataBackups](https://help.aliyun.com/document_detail/210093.html) interface to view the backup set IDs of all backup sets under the target instance.
         self.backup_id = backup_id
+        self.cache_storage_size = cache_storage_size
         # Idempotence check. For more information, see [How to Ensure Idempotence](https://help.aliyun.com/document_detail/327176.html).
         self.client_token = client_token
         # Whether to load sample datasets after the instance is created. The values are as follows:
@@ -2918,6 +2920,8 @@ class CreateDBInstanceRequest(TeaModel):
                 result['AINodeSpecInfos'].append(k.to_map() if k else None)
         if self.backup_id is not None:
             result['BackupId'] = self.backup_id
+        if self.cache_storage_size is not None:
+            result['CacheStorageSize'] = self.cache_storage_size
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.create_sample_data is not None:
@@ -3017,6 +3021,8 @@ class CreateDBInstanceRequest(TeaModel):
                 self.ainode_spec_infos.append(temp_model.from_map(k))
         if m.get('BackupId') is not None:
             self.backup_id = m.get('BackupId')
+        if m.get('CacheStorageSize') is not None:
+            self.cache_storage_size = m.get('CacheStorageSize')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('CreateSampleData') is not None:
@@ -11751,6 +11757,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
     def __init__(
         self,
         availability_value: str = None,
+        cache_storage_size: str = None,
         connection_mode: str = None,
         connection_string: str = None,
         core_version: str = None,
@@ -11822,6 +11829,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         # 
         # > This parameter is only applicable to instances in the storage reserved mode.
         self.availability_value = availability_value
+        self.cache_storage_size = cache_storage_size
         # Access mode, with the following values:
         # 
         # - **Performance**: Standard access mode.
@@ -12056,6 +12064,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         result = dict()
         if self.availability_value is not None:
             result['AvailabilityValue'] = self.availability_value
+        if self.cache_storage_size is not None:
+            result['CacheStorageSize'] = self.cache_storage_size
         if self.connection_mode is not None:
             result['ConnectionMode'] = self.connection_mode
         if self.connection_string is not None:
@@ -12194,6 +12204,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         m = m or dict()
         if m.get('AvailabilityValue') is not None:
             self.availability_value = m.get('AvailabilityValue')
+        if m.get('CacheStorageSize') is not None:
+            self.cache_storage_size = m.get('CacheStorageSize')
         if m.get('ConnectionMode') is not None:
             self.connection_mode = m.get('ConnectionMode')
         if m.get('ConnectionString') is not None:
@@ -38802,6 +38814,7 @@ class QueryContentRequest(TeaModel):
         region_id: str = None,
         rerank_factor: float = None,
         top_k: int = None,
+        url_expiration: str = None,
         use_full_text_retrieval: bool = None,
     ):
         # Document collection name.
@@ -38900,6 +38913,7 @@ class QueryContentRequest(TeaModel):
         self.rerank_factor = rerank_factor
         # Set the number of top results to return.
         self.top_k = top_k
+        self.url_expiration = url_expiration
         # Whether to use full-text retrieval (dual recall). Default is false, which means only vector retrieval is used.
         self.use_full_text_retrieval = use_full_text_retrieval
 
@@ -38950,6 +38964,8 @@ class QueryContentRequest(TeaModel):
             result['RerankFactor'] = self.rerank_factor
         if self.top_k is not None:
             result['TopK'] = self.top_k
+        if self.url_expiration is not None:
+            result['UrlExpiration'] = self.url_expiration
         if self.use_full_text_retrieval is not None:
             result['UseFullTextRetrieval'] = self.use_full_text_retrieval
         return result
@@ -38994,6 +39010,8 @@ class QueryContentRequest(TeaModel):
             self.rerank_factor = m.get('RerankFactor')
         if m.get('TopK') is not None:
             self.top_k = m.get('TopK')
+        if m.get('UrlExpiration') is not None:
+            self.url_expiration = m.get('UrlExpiration')
         if m.get('UseFullTextRetrieval') is not None:
             self.use_full_text_retrieval = m.get('UseFullTextRetrieval')
         return self
@@ -39021,6 +39039,7 @@ class QueryContentAdvanceRequest(TeaModel):
         region_id: str = None,
         rerank_factor: float = None,
         top_k: int = None,
+        url_expiration: str = None,
         use_full_text_retrieval: bool = None,
     ):
         # Document collection name.
@@ -39119,6 +39138,7 @@ class QueryContentAdvanceRequest(TeaModel):
         self.rerank_factor = rerank_factor
         # Set the number of top results to return.
         self.top_k = top_k
+        self.url_expiration = url_expiration
         # Whether to use full-text retrieval (dual recall). Default is false, which means only vector retrieval is used.
         self.use_full_text_retrieval = use_full_text_retrieval
 
@@ -39169,6 +39189,8 @@ class QueryContentAdvanceRequest(TeaModel):
             result['RerankFactor'] = self.rerank_factor
         if self.top_k is not None:
             result['TopK'] = self.top_k
+        if self.url_expiration is not None:
+            result['UrlExpiration'] = self.url_expiration
         if self.use_full_text_retrieval is not None:
             result['UseFullTextRetrieval'] = self.use_full_text_retrieval
         return result
@@ -39213,6 +39235,8 @@ class QueryContentAdvanceRequest(TeaModel):
             self.rerank_factor = m.get('RerankFactor')
         if m.get('TopK') is not None:
             self.top_k = m.get('TopK')
+        if m.get('UrlExpiration') is not None:
+            self.url_expiration = m.get('UrlExpiration')
         if m.get('UseFullTextRetrieval') is not None:
             self.use_full_text_retrieval = m.get('UseFullTextRetrieval')
         return self
@@ -39240,6 +39264,7 @@ class QueryContentShrinkRequest(TeaModel):
         region_id: str = None,
         rerank_factor: float = None,
         top_k: int = None,
+        url_expiration: str = None,
         use_full_text_retrieval: bool = None,
     ):
         # Document collection name.
@@ -39338,6 +39363,7 @@ class QueryContentShrinkRequest(TeaModel):
         self.rerank_factor = rerank_factor
         # Set the number of top results to return.
         self.top_k = top_k
+        self.url_expiration = url_expiration
         # Whether to use full-text retrieval (dual recall). Default is false, which means only vector retrieval is used.
         self.use_full_text_retrieval = use_full_text_retrieval
 
@@ -39388,6 +39414,8 @@ class QueryContentShrinkRequest(TeaModel):
             result['RerankFactor'] = self.rerank_factor
         if self.top_k is not None:
             result['TopK'] = self.top_k
+        if self.url_expiration is not None:
+            result['UrlExpiration'] = self.url_expiration
         if self.use_full_text_retrieval is not None:
             result['UseFullTextRetrieval'] = self.use_full_text_retrieval
         return result
@@ -39432,6 +39460,8 @@ class QueryContentShrinkRequest(TeaModel):
             self.rerank_factor = m.get('RerankFactor')
         if m.get('TopK') is not None:
             self.top_k = m.get('TopK')
+        if m.get('UrlExpiration') is not None:
+            self.url_expiration = m.get('UrlExpiration')
         if m.get('UseFullTextRetrieval') is not None:
             self.use_full_text_retrieval = m.get('UseFullTextRetrieval')
         return self
@@ -41799,6 +41829,7 @@ class TextEmbeddingRequest(TeaModel):
     def __init__(
         self,
         dbinstance_id: str = None,
+        dimension: int = None,
         input: List[str] = None,
         model: str = None,
         owner_id: int = None,
@@ -41806,6 +41837,7 @@ class TextEmbeddingRequest(TeaModel):
     ):
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        self.dimension = dimension
         self.input = input
         self.model = model
         self.owner_id = owner_id
@@ -41823,6 +41855,8 @@ class TextEmbeddingRequest(TeaModel):
         result = dict()
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
+        if self.dimension is not None:
+            result['Dimension'] = self.dimension
         if self.input is not None:
             result['Input'] = self.input
         if self.model is not None:
@@ -41837,6 +41871,8 @@ class TextEmbeddingRequest(TeaModel):
         m = m or dict()
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('Dimension') is not None:
+            self.dimension = m.get('Dimension')
         if m.get('Input') is not None:
             self.input = m.get('Input')
         if m.get('Model') is not None:
@@ -41852,6 +41888,7 @@ class TextEmbeddingShrinkRequest(TeaModel):
     def __init__(
         self,
         dbinstance_id: str = None,
+        dimension: int = None,
         input_shrink: str = None,
         model: str = None,
         owner_id: int = None,
@@ -41859,6 +41896,7 @@ class TextEmbeddingShrinkRequest(TeaModel):
     ):
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        self.dimension = dimension
         self.input_shrink = input_shrink
         self.model = model
         self.owner_id = owner_id
@@ -41876,6 +41914,8 @@ class TextEmbeddingShrinkRequest(TeaModel):
         result = dict()
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
+        if self.dimension is not None:
+            result['Dimension'] = self.dimension
         if self.input_shrink is not None:
             result['Input'] = self.input_shrink
         if self.model is not None:
@@ -41890,6 +41930,8 @@ class TextEmbeddingShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('Dimension') is not None:
+            self.dimension = m.get('Dimension')
         if m.get('Input') is not None:
             self.input_shrink = m.get('Input')
         if m.get('Model') is not None:
@@ -43067,6 +43109,7 @@ class UpdateDBInstancePlanResponse(TeaModel):
 class UpgradeDBInstanceRequest(TeaModel):
     def __init__(
         self,
+        cache_storage_size: str = None,
         dbinstance_class: str = None,
         dbinstance_group_count: str = None,
         dbinstance_id: str = None,
@@ -43079,9 +43122,11 @@ class UpgradeDBInstanceRequest(TeaModel):
         seg_disk_performance_level: str = None,
         seg_node_num: str = None,
         seg_storage_type: str = None,
+        serverless_resource: str = None,
         storage_size: str = None,
         upgrade_type: int = None,
     ):
+        self.cache_storage_size = cache_storage_size
         # This parameter is no longer used.
         self.dbinstance_class = dbinstance_class
         # This parameter is no longer used.
@@ -43121,6 +43166,7 @@ class UpgradeDBInstanceRequest(TeaModel):
         self.seg_node_num = seg_node_num
         # The disk storage type of the instance after the change. The disk storage type can be changed only to ESSD. Set the value to **cloud_essd**.
         self.seg_storage_type = seg_storage_type
+        self.serverless_resource = serverless_resource
         # The storage capacity of each compute node. Unit: GB. Valid values: 50 to 6000, in 50 increments.
         # 
         # >  This parameter is available only for instances in elastic storage mode.
@@ -43150,6 +43196,8 @@ class UpgradeDBInstanceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.cache_storage_size is not None:
+            result['CacheStorageSize'] = self.cache_storage_size
         if self.dbinstance_class is not None:
             result['DBInstanceClass'] = self.dbinstance_class
         if self.dbinstance_group_count is not None:
@@ -43174,6 +43222,8 @@ class UpgradeDBInstanceRequest(TeaModel):
             result['SegNodeNum'] = self.seg_node_num
         if self.seg_storage_type is not None:
             result['SegStorageType'] = self.seg_storage_type
+        if self.serverless_resource is not None:
+            result['ServerlessResource'] = self.serverless_resource
         if self.storage_size is not None:
             result['StorageSize'] = self.storage_size
         if self.upgrade_type is not None:
@@ -43182,6 +43232,8 @@ class UpgradeDBInstanceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CacheStorageSize') is not None:
+            self.cache_storage_size = m.get('CacheStorageSize')
         if m.get('DBInstanceClass') is not None:
             self.dbinstance_class = m.get('DBInstanceClass')
         if m.get('DBInstanceGroupCount') is not None:
@@ -43206,6 +43258,8 @@ class UpgradeDBInstanceRequest(TeaModel):
             self.seg_node_num = m.get('SegNodeNum')
         if m.get('SegStorageType') is not None:
             self.seg_storage_type = m.get('SegStorageType')
+        if m.get('ServerlessResource') is not None:
+            self.serverless_resource = m.get('ServerlessResource')
         if m.get('StorageSize') is not None:
             self.storage_size = m.get('StorageSize')
         if m.get('UpgradeType') is not None:
@@ -44223,12 +44277,16 @@ class UpsertChunksRequestTextChunks(TeaModel):
     def __init__(
         self,
         content: str = None,
+        filter: str = None,
+        id: str = None,
         metadata: Dict[str, Any] = None,
     ):
         # Document content.
         # 
         # This parameter is required.
         self.content = content
+        self.filter = filter
+        self.id = id
         # Metadata.
         self.metadata = metadata
 
@@ -44243,6 +44301,10 @@ class UpsertChunksRequestTextChunks(TeaModel):
         result = dict()
         if self.content is not None:
             result['Content'] = self.content
+        if self.filter is not None:
+            result['Filter'] = self.filter
+        if self.id is not None:
+            result['Id'] = self.id
         if self.metadata is not None:
             result['Metadata'] = self.metadata
         return result
@@ -44251,6 +44313,10 @@ class UpsertChunksRequestTextChunks(TeaModel):
         m = m or dict()
         if m.get('Content') is not None:
             self.content = m.get('Content')
+        if m.get('Filter') is not None:
+            self.filter = m.get('Filter')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
         if m.get('Metadata') is not None:
             self.metadata = m.get('Metadata')
         return self
@@ -44266,6 +44332,7 @@ class UpsertChunksRequest(TeaModel):
         namespace_password: str = None,
         owner_id: int = None,
         region_id: str = None,
+        should_replace_file: bool = None,
         text_chunks: List[UpsertChunksRequestTextChunks] = None,
     ):
         # Document collection name.
@@ -44299,6 +44366,7 @@ class UpsertChunksRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.should_replace_file = should_replace_file
         # List of split documents.
         self.text_chunks = text_chunks
 
@@ -44328,6 +44396,8 @@ class UpsertChunksRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.should_replace_file is not None:
+            result['ShouldReplaceFile'] = self.should_replace_file
         result['TextChunks'] = []
         if self.text_chunks is not None:
             for k in self.text_chunks:
@@ -44350,6 +44420,8 @@ class UpsertChunksRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ShouldReplaceFile') is not None:
+            self.should_replace_file = m.get('ShouldReplaceFile')
         self.text_chunks = []
         if m.get('TextChunks') is not None:
             for k in m.get('TextChunks'):
@@ -44368,6 +44440,7 @@ class UpsertChunksShrinkRequest(TeaModel):
         namespace_password: str = None,
         owner_id: int = None,
         region_id: str = None,
+        should_replace_file: bool = None,
         text_chunks_shrink: str = None,
     ):
         # Document collection name.
@@ -44401,6 +44474,7 @@ class UpsertChunksShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.should_replace_file = should_replace_file
         # List of split documents.
         self.text_chunks_shrink = text_chunks_shrink
 
@@ -44427,6 +44501,8 @@ class UpsertChunksShrinkRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.should_replace_file is not None:
+            result['ShouldReplaceFile'] = self.should_replace_file
         if self.text_chunks_shrink is not None:
             result['TextChunks'] = self.text_chunks_shrink
         return result
@@ -44447,6 +44523,8 @@ class UpsertChunksShrinkRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ShouldReplaceFile') is not None:
+            self.should_replace_file = m.get('ShouldReplaceFile')
         if m.get('TextChunks') is not None:
             self.text_chunks_shrink = m.get('TextChunks')
         return self

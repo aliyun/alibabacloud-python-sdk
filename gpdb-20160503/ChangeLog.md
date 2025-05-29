@@ -1,3 +1,15 @@
+2025-05-29 Version: 4.8.5
+- Update API CreateDBInstance: add request parameters CacheStorageSize.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.Items.$.CacheStorageSize.
+- Update API QueryContent: add request parameters UrlExpiration.
+- Update API TextEmbedding: add request parameters Dimension.
+- Update API UpgradeDBInstance: add request parameters CacheStorageSize.
+- Update API UpgradeDBInstance: add request parameters ServerlessResource.
+- Update API UpsertChunks: add request parameters ShouldReplaceFile.
+- Update API UpsertChunks: add request parameters TextChunks.$.Filter.
+- Update API UpsertChunks: add request parameters TextChunks.$.Id.
+
+
 2025-04-27 Version: 4.8.4
 - Generated python 2016-05-03 for gpdb.
 

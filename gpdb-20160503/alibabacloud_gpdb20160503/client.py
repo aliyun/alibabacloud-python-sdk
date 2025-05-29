@@ -1674,6 +1674,8 @@ class Client(OpenApiClient):
             query['AINodeSpecInfos'] = request.ainode_spec_infos
         if not UtilClient.is_unset(request.backup_id):
             query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.cache_storage_size):
+            query['CacheStorageSize'] = request.cache_storage_size
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.create_sample_data):
@@ -1799,6 +1801,8 @@ class Client(OpenApiClient):
             query['AINodeSpecInfos'] = request.ainode_spec_infos
         if not UtilClient.is_unset(request.backup_id):
             query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.cache_storage_size):
+            query['CacheStorageSize'] = request.cache_storage_size
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.create_sample_data):
@@ -21342,6 +21346,8 @@ class Client(OpenApiClient):
             query['RerankFactor'] = request.rerank_factor
         if not UtilClient.is_unset(request.top_k):
             query['TopK'] = request.top_k
+        if not UtilClient.is_unset(request.url_expiration):
+            query['UrlExpiration'] = request.url_expiration
         if not UtilClient.is_unset(request.use_full_text_retrieval):
             query['UseFullTextRetrieval'] = request.use_full_text_retrieval
         body = {}
@@ -21423,6 +21429,8 @@ class Client(OpenApiClient):
             query['RerankFactor'] = request.rerank_factor
         if not UtilClient.is_unset(request.top_k):
             query['TopK'] = request.top_k
+        if not UtilClient.is_unset(request.url_expiration):
+            query['UrlExpiration'] = request.url_expiration
         if not UtilClient.is_unset(request.use_full_text_retrieval):
             query['UseFullTextRetrieval'] = request.use_full_text_retrieval
         body = {}
@@ -23018,6 +23026,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dimension):
+            query['Dimension'] = request.dimension
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
@@ -23067,6 +23077,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dimension):
+            query['Dimension'] = request.dimension
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
@@ -23783,6 +23795,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cache_storage_size):
+            query['CacheStorageSize'] = request.cache_storage_size
         if not UtilClient.is_unset(request.dbinstance_class):
             query['DBInstanceClass'] = request.dbinstance_class
         if not UtilClient.is_unset(request.dbinstance_group_count):
@@ -23807,6 +23821,8 @@ class Client(OpenApiClient):
             query['SegNodeNum'] = request.seg_node_num
         if not UtilClient.is_unset(request.seg_storage_type):
             query['SegStorageType'] = request.seg_storage_type
+        if not UtilClient.is_unset(request.serverless_resource):
+            query['ServerlessResource'] = request.serverless_resource
         if not UtilClient.is_unset(request.storage_size):
             query['StorageSize'] = request.storage_size
         if not UtilClient.is_unset(request.upgrade_type):
@@ -23847,6 +23863,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cache_storage_size):
+            query['CacheStorageSize'] = request.cache_storage_size
         if not UtilClient.is_unset(request.dbinstance_class):
             query['DBInstanceClass'] = request.dbinstance_class
         if not UtilClient.is_unset(request.dbinstance_group_count):
@@ -23871,6 +23889,8 @@ class Client(OpenApiClient):
             query['SegNodeNum'] = request.seg_node_num
         if not UtilClient.is_unset(request.seg_storage_type):
             query['SegStorageType'] = request.seg_storage_type
+        if not UtilClient.is_unset(request.serverless_resource):
+            query['ServerlessResource'] = request.serverless_resource
         if not UtilClient.is_unset(request.storage_size):
             query['StorageSize'] = request.storage_size
         if not UtilClient.is_unset(request.upgrade_type):
@@ -24540,6 +24560,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.should_replace_file):
+            query['ShouldReplaceFile'] = request.should_replace_file
         body = {}
         if not UtilClient.is_unset(request.text_chunks_shrink):
             body['TextChunks'] = request.text_chunks_shrink
@@ -24597,6 +24619,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.should_replace_file):
+            query['ShouldReplaceFile'] = request.should_replace_file
         body = {}
         if not UtilClient.is_unset(request.text_chunks_shrink):
             body['TextChunks'] = request.text_chunks_shrink
