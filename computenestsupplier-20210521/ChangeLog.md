@@ -1,3 +1,7 @@
+2025-05-29 Version: 7.1.3
+- Update API ListArtifacts: add response parameters Body.Artifacts.$.PermissionType.
+
+
 2025-05-27 Version: 7.1.2
 - Update API GetServiceProvisions: add response parameters Body.ServiceProvisions.$.CommodityProvisions.
 

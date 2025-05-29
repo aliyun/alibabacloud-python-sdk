@@ -11147,6 +11147,7 @@ class ListArtifactsResponseBodyArtifacts(TeaModel):
         gmt_modified: str = None,
         max_version: str = None,
         name: str = None,
+        permission_type: str = None,
         resource_group_id: str = None,
         status: str = None,
         tags: List[ListArtifactsResponseBodyArtifactsTags] = None,
@@ -11165,6 +11166,10 @@ class ListArtifactsResponseBodyArtifacts(TeaModel):
         self.max_version = max_version
         # The name of the deployment package.
         self.name = name
+        # Permission fields are applicable to container image artifact and Helm Chart artifact They can only change from Automatic to Public. Options:
+        # - Public
+        # - Automatic
+        self.permission_type = permission_type
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The status of the deployment package. Valid values:
@@ -11205,6 +11210,8 @@ class ListArtifactsResponseBodyArtifacts(TeaModel):
             result['MaxVersion'] = self.max_version
         if self.name is not None:
             result['Name'] = self.name
+        if self.permission_type is not None:
+            result['PermissionType'] = self.permission_type
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.status is not None:
@@ -11231,6 +11238,8 @@ class ListArtifactsResponseBodyArtifacts(TeaModel):
             self.max_version = m.get('MaxVersion')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('PermissionType') is not None:
+            self.permission_type = m.get('PermissionType')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Status') is not None:
@@ -21068,8 +21077,11 @@ class UpdateServiceInstanceAttributeRequestLicenseDataResponseInfo(TeaModel):
         error_message: str = None,
         update_response: bool = None,
     ):
+        # Mock error code.
         self.error_code = error_code
+        # Mock error message.
         self.error_message = error_message
+        # if you want mock response, please open this option.
         self.update_response = update_response
 
     def validate(self):
@@ -21108,6 +21120,7 @@ class UpdateServiceInstanceAttributeRequestLicenseData(TeaModel):
     ):
         # The Custom Data
         self.custom_data = custom_data
+        # Mock response info.
         self.response_info = response_info
 
     def validate(self):
