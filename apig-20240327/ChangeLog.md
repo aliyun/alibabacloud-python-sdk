@@ -1,3 +1,7 @@
+2025-05-29 Version: 4.0.2
+- Update API CreateHttpApiRoute: add request parameters body.mcpRouteConfig.
+
+
 2025-05-21 Version: 4.0.1
 - Update API UpdateHttpApi: add request parameters body.onlyChangeConfig.
 

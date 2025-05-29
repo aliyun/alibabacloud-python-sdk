@@ -6680,6 +6680,39 @@ class CreateHttpApiRouteRequestBackendConfig(TeaModel):
         return self
 
 
+class CreateHttpApiRouteRequestMcpRouteConfig(TeaModel):
+    def __init__(
+        self,
+        exposed_uri_path: str = None,
+        protocol: str = None,
+    ):
+        self.exposed_uri_path = exposed_uri_path
+        self.protocol = protocol
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exposed_uri_path is not None:
+            result['exposedUriPath'] = self.exposed_uri_path
+        if self.protocol is not None:
+            result['protocol'] = self.protocol
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('exposedUriPath') is not None:
+            self.exposed_uri_path = m.get('exposedUriPath')
+        if m.get('protocol') is not None:
+            self.protocol = m.get('protocol')
+        return self
+
+
 class CreateHttpApiRouteRequest(TeaModel):
     def __init__(
         self,
@@ -6689,6 +6722,7 @@ class CreateHttpApiRouteRequest(TeaModel):
         domain_ids: List[str] = None,
         environment_id: str = None,
         match: HttpRouteMatch = None,
+        mcp_route_config: CreateHttpApiRouteRequestMcpRouteConfig = None,
         name: str = None,
     ):
         # The backend service configurations of the route.
@@ -6702,6 +6736,7 @@ class CreateHttpApiRouteRequest(TeaModel):
         self.environment_id = environment_id
         # The rule for matching the route.
         self.match = match
+        self.mcp_route_config = mcp_route_config
         # The route name.
         self.name = name
 
@@ -6714,6 +6749,8 @@ class CreateHttpApiRouteRequest(TeaModel):
                     k.validate()
         if self.match:
             self.match.validate()
+        if self.mcp_route_config:
+            self.mcp_route_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6735,6 +6772,8 @@ class CreateHttpApiRouteRequest(TeaModel):
             result['environmentId'] = self.environment_id
         if self.match is not None:
             result['match'] = self.match.to_map()
+        if self.mcp_route_config is not None:
+            result['mcpRouteConfig'] = self.mcp_route_config.to_map()
         if self.name is not None:
             result['name'] = self.name
         return result
@@ -6758,6 +6797,9 @@ class CreateHttpApiRouteRequest(TeaModel):
         if m.get('match') is not None:
             temp_model = HttpRouteMatch()
             self.match = temp_model.from_map(m['match'])
+        if m.get('mcpRouteConfig') is not None:
+            temp_model = CreateHttpApiRouteRequestMcpRouteConfig()
+            self.mcp_route_config = temp_model.from_map(m['mcpRouteConfig'])
         if m.get('name') is not None:
             self.name = m.get('name')
         return self
@@ -12007,11 +12049,13 @@ class ImportHttpApiRequest(TeaModel):
         target_http_api_id: str = None,
         version_config: HttpApiVersionConfig = None,
     ):
+        # The deployment configuration.
         self.deploy_configs = deploy_configs
         # The API description, which cannot exceed 255 bytes in length. If you do not specify a description, a description is extracted from the definition file.
         self.description = description
         # Specifies whether to perform a dry run. If this parameter is set to true, a dry run is performed without importing the file.
         self.dry_run = dry_run
+        # The MCP route ID.
         self.mcp_route_id = mcp_route_id
         # The API name. If you do not specify a name, a name is extracted from the definition file. If a name and a versioning configuration already exist, the existing API definition is updated based on the strategy field.
         self.name = name
@@ -12019,7 +12063,7 @@ class ImportHttpApiRequest(TeaModel):
         self.resource_group_id = resource_group_id
         # The Base64-encoded API definition. OAS 2.0 and OAS 3.0 specifications are supported. YAML and JSON formats are supported. This parameter precedes over the specFileUrl parameter. However, if the file size exceeds 10 MB, use the specFileUrl parameter to pass the definition.
         self.spec_content_base_64 = spec_content_base_64
-        # The download URL of the API definition file. You can download the file over the Internet or by using an Object Storage Service (OSS) internal download URL that belongs to the current region. You must obtain the required permissions to download the file. For OSS URLs that are not publicly readable, refer to https://help.aliyun.com/zh/oss/user-guide/how-to-obtain-the-url-of-a-single-object-or-the-urls-of-multiple-objects to specify URLs that provide download permissions. Currently, only OSS URLs are supported.
+        # The download URL of the API definition file. You can download the file over the Internet or by using an Object Storage Service (OSS) internal download URL that belongs to the current region. You must obtain the required permissions to download the file. For OSS URLs that are not publicly readable, refer to [Download objects using presigned URLs](https://help.aliyun.com/document_detail/39607.html) to specify URLs that provide download permissions. Currently, only OSS URLs are supported.
         self.spec_file_url = spec_file_url
         # The OSS information.
         self.spec_oss_config = spec_oss_config
@@ -12027,11 +12071,11 @@ class ImportHttpApiRequest(TeaModel):
         # 
         # *   SpectOnly: All configurations in the file take effect.
         # *   SpecFirst: The file takes precedence. New APIs are created and existing ones are updated. APIs not included in the file remain unchanged.
-        # *   ExistFirst (default): The existing APIs take precedence. New APIs are created but existing ones remain unchanged.
+        # *   ExistFirst (default): The existing APIs take precedence. New APIs are created but existing ones remain unchanged. If this parameter is not specified, the ExistFirst policy takes effect.
         self.strategy = strategy
         # The API to be updated. If this parameter is specified, this import updates only the specified API. New APIs are not created and unspecified existing APIs are not updated. Only REST APIs can be specified.
         self.target_http_api_id = target_http_api_id
-        # Version configuration.
+        # The API versioning configuration. If versioning is enabled for an API and the version and name of an API to be imported are the same as those of the existing API, the existing API is updated by this import. If versioning is not enabled for an API and the name of an API to be imported are the same as that of the existing API, the existing API is updated by this import.
         self.version_config = version_config
 
     def validate(self):

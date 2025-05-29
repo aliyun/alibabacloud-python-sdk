@@ -858,6 +858,8 @@ class Client(OpenApiClient):
             body['environmentId'] = request.environment_id
         if not UtilClient.is_unset(request.match):
             body['match'] = request.match
+        if not UtilClient.is_unset(request.mcp_route_config):
+            body['mcpRouteConfig'] = request.mcp_route_config
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
         req = open_api_models.OpenApiRequest(
@@ -909,6 +911,8 @@ class Client(OpenApiClient):
             body['environmentId'] = request.environment_id
         if not UtilClient.is_unset(request.match):
             body['match'] = request.match
+        if not UtilClient.is_unset(request.mcp_route_config):
+            body['mcpRouteConfig'] = request.mcp_route_config
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
         req = open_api_models.OpenApiRequest(
