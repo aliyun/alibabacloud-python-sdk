@@ -1,3 +1,11 @@
+2025-05-29 Version: 2.9.2
+- Update API RunHotTopicChat: add response parameters Body.payload.output.category.
+- Update API RunHotTopicChat: add response parameters Body.payload.output.keyword.
+- Update API RunHotTopicChat: add response parameters Body.payload.output.location.
+- Update API RunHotTopicChat: add response parameters Body.payload.output.hotTopicSummaries.$.pubTime.
+- Update API RunHotTopicChat: add response parameters Body.payload.output.hotTopicSummaries.$.url.
+
+
 2025-05-27 Version: 2.9.1
 - Update API ListAnalysisTagDetailByTaskId: add response parameters Body.data.$.sourceList.
 - Update API RunEnterpriseVocAnalysis: add request parameters sourceTrace.

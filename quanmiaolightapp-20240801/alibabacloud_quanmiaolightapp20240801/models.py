@@ -4964,7 +4964,9 @@ class RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries(TeaModel):
         hot_value: float = None,
         images: List[RunHotTopicChatResponseBodyPayloadOutputHotTopicSummariesImages] = None,
         news: List[RunHotTopicChatResponseBodyPayloadOutputHotTopicSummariesNews] = None,
+        pub_time: str = None,
         text_summary: str = None,
+        url: str = None,
     ):
         self.custom_hot_value = custom_hot_value
         self.custom_text_summary = custom_text_summary
@@ -4973,7 +4975,9 @@ class RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries(TeaModel):
         self.hot_value = hot_value
         self.images = images
         self.news = news
+        self.pub_time = pub_time
         self.text_summary = text_summary
+        self.url = url
 
     def validate(self):
         if self.images:
@@ -5009,8 +5013,12 @@ class RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries(TeaModel):
         if self.news is not None:
             for k in self.news:
                 result['news'].append(k.to_map() if k else None)
+        if self.pub_time is not None:
+            result['pubTime'] = self.pub_time
         if self.text_summary is not None:
             result['textSummary'] = self.text_summary
+        if self.url is not None:
+            result['url'] = self.url
         return result
 
     def from_map(self, m: dict = None):
@@ -5035,8 +5043,12 @@ class RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries(TeaModel):
             for k in m.get('news'):
                 temp_model = RunHotTopicChatResponseBodyPayloadOutputHotTopicSummariesNews()
                 self.news.append(temp_model.from_map(k))
+        if m.get('pubTime') is not None:
+            self.pub_time = m.get('pubTime')
         if m.get('textSummary') is not None:
             self.text_summary = m.get('textSummary')
+        if m.get('url') is not None:
+            self.url = m.get('url')
         return self
 
 
@@ -5083,14 +5095,20 @@ class RunHotTopicChatResponseBodyPayloadOutput(TeaModel):
     def __init__(
         self,
         articles: List[RunHotTopicChatResponseBodyPayloadOutputArticles] = None,
+        category: str = None,
         hot_topic_summaries: List[RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries] = None,
+        keyword: str = None,
+        location: str = None,
         multimodal_medias: List[RunHotTopicChatResponseBodyPayloadOutputMultimodalMedias] = None,
         recommend_queries: List[str] = None,
         search_query: str = None,
         text: str = None,
     ):
         self.articles = articles
+        self.category = category
         self.hot_topic_summaries = hot_topic_summaries
+        self.keyword = keyword
+        self.location = location
         self.multimodal_medias = multimodal_medias
         self.recommend_queries = recommend_queries
         self.search_query = search_query
@@ -5120,10 +5138,16 @@ class RunHotTopicChatResponseBodyPayloadOutput(TeaModel):
         if self.articles is not None:
             for k in self.articles:
                 result['articles'].append(k.to_map() if k else None)
+        if self.category is not None:
+            result['category'] = self.category
         result['hotTopicSummaries'] = []
         if self.hot_topic_summaries is not None:
             for k in self.hot_topic_summaries:
                 result['hotTopicSummaries'].append(k.to_map() if k else None)
+        if self.keyword is not None:
+            result['keyword'] = self.keyword
+        if self.location is not None:
+            result['location'] = self.location
         result['multimodalMedias'] = []
         if self.multimodal_medias is not None:
             for k in self.multimodal_medias:
@@ -5143,11 +5167,17 @@ class RunHotTopicChatResponseBodyPayloadOutput(TeaModel):
             for k in m.get('articles'):
                 temp_model = RunHotTopicChatResponseBodyPayloadOutputArticles()
                 self.articles.append(temp_model.from_map(k))
+        if m.get('category') is not None:
+            self.category = m.get('category')
         self.hot_topic_summaries = []
         if m.get('hotTopicSummaries') is not None:
             for k in m.get('hotTopicSummaries'):
                 temp_model = RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries()
                 self.hot_topic_summaries.append(temp_model.from_map(k))
+        if m.get('keyword') is not None:
+            self.keyword = m.get('keyword')
+        if m.get('location') is not None:
+            self.location = m.get('location')
         self.multimodal_medias = []
         if m.get('multimodalMedias') is not None:
             for k in m.get('multimodalMedias'):
