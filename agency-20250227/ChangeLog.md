@@ -1,3 +1,7 @@
+2025-05-29 Version: 1.0.5
+- Update API GetSubPartnerOrderList: add response parameters Body.Data.$.CustomerClassification.
+
+
 2025-04-23 Version: 1.0.4
 - Update API GetCommissionDetailFileList: add request parameters OssAccessKeyId.
 - Update API GetCommissionDetailFileList: add request parameters OssAccessKeySecret.

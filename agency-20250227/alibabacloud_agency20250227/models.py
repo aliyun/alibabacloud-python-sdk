@@ -1819,6 +1819,7 @@ class GetSubPartnerOrderListResponseBodyData(TeaModel):
         amount_discount: float = None,
         amount_due: float = None,
         created_at: str = None,
+        customer_classification: str = None,
         deducted_amount_by_coupons: float = None,
         discounted_price: float = None,
         order_id: int = None,
@@ -1836,6 +1837,7 @@ class GetSubPartnerOrderListResponseBodyData(TeaModel):
         self.amount_discount = amount_discount
         self.amount_due = amount_due
         self.created_at = created_at
+        self.customer_classification = customer_classification
         self.deducted_amount_by_coupons = deducted_amount_by_coupons
         self.discounted_price = discounted_price
         self.order_id = order_id
@@ -1865,6 +1867,8 @@ class GetSubPartnerOrderListResponseBodyData(TeaModel):
             result['AmountDue'] = self.amount_due
         if self.created_at is not None:
             result['CreatedAt'] = self.created_at
+        if self.customer_classification is not None:
+            result['CustomerClassification'] = self.customer_classification
         if self.deducted_amount_by_coupons is not None:
             result['DeductedAmountByCoupons'] = self.deducted_amount_by_coupons
         if self.discounted_price is not None:
@@ -1901,6 +1905,8 @@ class GetSubPartnerOrderListResponseBodyData(TeaModel):
             self.amount_due = m.get('AmountDue')
         if m.get('CreatedAt') is not None:
             self.created_at = m.get('CreatedAt')
+        if m.get('CustomerClassification') is not None:
+            self.customer_classification = m.get('CustomerClassification')
         if m.get('DeductedAmountByCoupons') is not None:
             self.deducted_amount_by_coupons = m.get('DeductedAmountByCoupons')
         if m.get('DiscountedPrice') is not None:
