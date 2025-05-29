@@ -6,6 +6,10 @@
 - Update API DescribeInstanceAttribute: add response parameters Body.NetworkOptions.
 
 
+2025-05-29 Version: 7.0.8
+- Update API DescribeInstanceAttribute: add response parameters Body.NetworkOptions.
+
+
 2025-05-27 Version: 7.0.7
 - Update API CreateLaunchTemplate: add request parameters SystemDisk.KMSKeyId.
 - Update API CreateLaunchTemplate: add request parameters DataDisk.$.KMSKeyId.
