@@ -9314,6 +9314,10 @@ class DeleteTrafficMarkingPolicyRequest(TeaModel):
         # *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
         # *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # Whether to force delete the traffic marking policy. Valid values:
+        # 
+        # *   **false** (default): checks whether there is a traffic classification rule before deleting the traffic marking policy. If there is, the traffic marking policy cannot be deleted and an error is returned.
+        # *   **true**: When you delete a traffic marking policy, all traffic classification rules are deleted by default.
         self.force = force
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -11912,6 +11916,7 @@ class DescribeCenAttachedChildInstanceAttributeResponseBody(TeaModel):
         child_instance_owner_id: int = None,
         child_instance_region_id: str = None,
         child_instance_type: str = None,
+        managed_service: str = None,
         request_id: str = None,
         status: str = None,
     ):
@@ -11937,6 +11942,7 @@ class DescribeCenAttachedChildInstanceAttributeResponseBody(TeaModel):
         # *   **VBR**: VBR
         # *   **CCN**: CCN instance
         self.child_instance_type = child_instance_type
+        self.managed_service = managed_service
         # The ID of the request.
         self.request_id = request_id
         # Indicates whether the network instance is attached to the CEN instance.
@@ -11972,6 +11978,8 @@ class DescribeCenAttachedChildInstanceAttributeResponseBody(TeaModel):
             result['ChildInstanceRegionId'] = self.child_instance_region_id
         if self.child_instance_type is not None:
             result['ChildInstanceType'] = self.child_instance_type
+        if self.managed_service is not None:
+            result['ManagedService'] = self.managed_service
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.status is not None:
@@ -11997,6 +12005,8 @@ class DescribeCenAttachedChildInstanceAttributeResponseBody(TeaModel):
             self.child_instance_region_id = m.get('ChildInstanceRegionId')
         if m.get('ChildInstanceType') is not None:
             self.child_instance_type = m.get('ChildInstanceType')
+        if m.get('ManagedService') is not None:
+            self.managed_service = m.get('ManagedService')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Status') is not None:
@@ -12142,6 +12152,7 @@ class DescribeCenAttachedChildInstancesResponseBodyChildInstancesChildInstance(T
         child_instance_owner_id: int = None,
         child_instance_region_id: str = None,
         child_instance_type: str = None,
+        managed_service: str = None,
         status: str = None,
     ):
         # The ID of the CEN instance.
@@ -12162,6 +12173,7 @@ class DescribeCenAttachedChildInstancesResponseBodyChildInstancesChildInstance(T
         # *   **VBR**: VBR
         # *   **CCN**: CCN instance
         self.child_instance_type = child_instance_type
+        self.managed_service = managed_service
         # The status of the network instance. Valid values:
         # 
         # *   **Attaching**: The network instance is being created on the transit router.
@@ -12190,6 +12202,8 @@ class DescribeCenAttachedChildInstancesResponseBodyChildInstancesChildInstance(T
             result['ChildInstanceRegionId'] = self.child_instance_region_id
         if self.child_instance_type is not None:
             result['ChildInstanceType'] = self.child_instance_type
+        if self.managed_service is not None:
+            result['ManagedService'] = self.managed_service
         if self.status is not None:
             result['Status'] = self.status
         return result
@@ -12208,6 +12222,8 @@ class DescribeCenAttachedChildInstancesResponseBodyChildInstancesChildInstance(T
             self.child_instance_region_id = m.get('ChildInstanceRegionId')
         if m.get('ChildInstanceType') is not None:
             self.child_instance_type = m.get('ChildInstanceType')
+        if m.get('ManagedService') is not None:
+            self.managed_service = m.get('ManagedService')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self
@@ -29620,6 +29636,7 @@ class ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments(TeaMod
         cen_id: str = None,
         charge_type: str = None,
         creation_time: str = None,
+        managed_service: str = None,
         order_type: str = None,
         resource_type: str = None,
         status: str = None,
@@ -29649,6 +29666,7 @@ class ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments(TeaMod
         # 
         # The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
+        self.managed_service = managed_service
         # The entity that pays the fees of the network instance. Valid values:
         # 
         # *   **PayByCenOwner**: the Alibaba Cloud account that owns the CEN instance.
@@ -29709,6 +29727,8 @@ class ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments(TeaMod
             result['ChargeType'] = self.charge_type
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
+        if self.managed_service is not None:
+            result['ManagedService'] = self.managed_service
         if self.order_type is not None:
             result['OrderType'] = self.order_type
         if self.resource_type is not None:
@@ -29751,6 +29771,8 @@ class ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments(TeaMod
             self.charge_type = m.get('ChargeType')
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')
+        if m.get('ManagedService') is not None:
+            self.managed_service = m.get('ManagedService')
         if m.get('OrderType') is not None:
             self.order_type = m.get('OrderType')
         if m.get('ResourceType') is not None:

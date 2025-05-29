@@ -90,16 +90,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ActiveFlowLogResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ActiveFlowLogResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ActiveFlowLogResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def active_flow_log_with_options_async(
         self,
@@ -150,16 +144,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ActiveFlowLogResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ActiveFlowLogResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ActiveFlowLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def active_flow_log(
         self,
@@ -245,16 +233,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.AddTrafficMatchRuleToTrafficMarkingPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.AddTrafficMatchRuleToTrafficMarkingPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.AddTrafficMatchRuleToTrafficMarkingPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def add_traffic_match_rule_to_traffic_marking_policy_with_options_async(
         self,
@@ -304,16 +286,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.AddTrafficMatchRuleToTrafficMarkingPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.AddTrafficMatchRuleToTrafficMarkingPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.AddTrafficMatchRuleToTrafficMarkingPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def add_traffic_match_rule_to_traffic_marking_policy(
         self,
@@ -399,16 +375,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.AddTraficMatchRuleToTrafficMarkingPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.AddTraficMatchRuleToTrafficMarkingPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.AddTraficMatchRuleToTrafficMarkingPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def add_trafic_match_rule_to_traffic_marking_policy_with_options_async(
         self,
@@ -460,16 +430,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.AddTraficMatchRuleToTrafficMarkingPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.AddTraficMatchRuleToTrafficMarkingPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.AddTraficMatchRuleToTrafficMarkingPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def add_trafic_match_rule_to_traffic_marking_policy(
         self,
@@ -552,16 +516,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.AssociateCenBandwidthPackageResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.AssociateCenBandwidthPackageResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.AssociateCenBandwidthPackageResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def associate_cen_bandwidth_package_with_options_async(
         self,
@@ -606,16 +564,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.AssociateCenBandwidthPackageResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.AssociateCenBandwidthPackageResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.AssociateCenBandwidthPackageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def associate_cen_bandwidth_package(
         self,
@@ -700,16 +652,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.AssociateTransitRouterAttachmentWithRouteTableResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.AssociateTransitRouterAttachmentWithRouteTableResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.AssociateTransitRouterAttachmentWithRouteTableResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def associate_transit_router_attachment_with_route_table_with_options_async(
         self,
@@ -762,16 +708,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.AssociateTransitRouterAttachmentWithRouteTableResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.AssociateTransitRouterAttachmentWithRouteTableResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.AssociateTransitRouterAttachmentWithRouteTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def associate_transit_router_attachment_with_route_table(
         self,
@@ -865,16 +805,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.AssociateTransitRouterMulticastDomainResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.AssociateTransitRouterMulticastDomainResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.AssociateTransitRouterMulticastDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def associate_transit_router_multicast_domain_with_options_async(
         self,
@@ -928,16 +862,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.AssociateTransitRouterMulticastDomainResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.AssociateTransitRouterMulticastDomainResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.AssociateTransitRouterMulticastDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def associate_transit_router_multicast_domain(
         self,
@@ -1028,16 +956,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.AttachCenChildInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.AttachCenChildInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.AttachCenChildInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def attach_cen_child_instance_with_options_async(
         self,
@@ -1090,16 +1012,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.AttachCenChildInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.AttachCenChildInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.AttachCenChildInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def attach_cen_child_instance(
         self,
@@ -1175,16 +1091,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CheckTransitRouterServiceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CheckTransitRouterServiceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CheckTransitRouterServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def check_transit_router_service_with_options_async(
         self,
@@ -1224,16 +1134,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CheckTransitRouterServiceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CheckTransitRouterServiceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CheckTransitRouterServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def check_transit_router_service(
         self,
@@ -1311,16 +1215,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateCenResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateCenResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateCenResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_cen_with_options_async(
         self,
@@ -1372,16 +1270,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateCenResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateCenResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateCenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_cen(
         self,
@@ -1483,16 +1375,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateCenBandwidthPackageResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateCenBandwidthPackageResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateCenBandwidthPackageResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_cen_bandwidth_package_with_options_async(
         self,
@@ -1560,16 +1446,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateCenBandwidthPackageResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateCenBandwidthPackageResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateCenBandwidthPackageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_cen_bandwidth_package(
         self,
@@ -1659,16 +1539,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateCenChildInstanceRouteEntryToAttachmentResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateCenChildInstanceRouteEntryToAttachmentResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateCenChildInstanceRouteEntryToAttachmentResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_cen_child_instance_route_entry_to_attachment_with_options_async(
         self,
@@ -1724,16 +1598,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateCenChildInstanceRouteEntryToAttachmentResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateCenChildInstanceRouteEntryToAttachmentResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateCenChildInstanceRouteEntryToAttachmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_cen_child_instance_route_entry_to_attachment(
         self,
@@ -1828,16 +1696,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateCenChildInstanceRouteEntryToCenResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateCenChildInstanceRouteEntryToCenResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateCenChildInstanceRouteEntryToCenResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_cen_child_instance_route_entry_to_cen_with_options_async(
         self,
@@ -1894,16 +1756,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateCenChildInstanceRouteEntryToCenResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateCenChildInstanceRouteEntryToCenResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateCenChildInstanceRouteEntryToCenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_cen_child_instance_route_entry_to_cen(
         self,
@@ -2004,16 +1860,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateCenInterRegionTrafficQosPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateCenInterRegionTrafficQosPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateCenInterRegionTrafficQosPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_cen_inter_region_traffic_qos_policy_with_options_async(
         self,
@@ -2078,16 +1928,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateCenInterRegionTrafficQosPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateCenInterRegionTrafficQosPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateCenInterRegionTrafficQosPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_cen_inter_region_traffic_qos_policy(
         self,
@@ -2193,16 +2037,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateCenInterRegionTrafficQosQueueResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateCenInterRegionTrafficQosQueueResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateCenInterRegionTrafficQosQueueResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_cen_inter_region_traffic_qos_queue_with_options_async(
         self,
@@ -2260,16 +2098,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateCenInterRegionTrafficQosQueueResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateCenInterRegionTrafficQosQueueResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateCenInterRegionTrafficQosQueueResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_cen_inter_region_traffic_qos_queue(
         self,
@@ -2406,16 +2238,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateCenRouteMapResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateCenRouteMapResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateCenRouteMapResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_cen_route_map_with_options_async(
         self,
@@ -2518,16 +2344,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateCenRouteMapResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateCenRouteMapResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateCenRouteMapResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_cen_route_map(
         self,
@@ -2642,16 +2462,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateFlowlogResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateFlowlogResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateFlowlogResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_flowlog_with_options_async(
         self,
@@ -2730,16 +2544,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateFlowlogResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateFlowlogResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateFlowlogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_flowlog(
         self,
@@ -2858,16 +2666,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTrafficMarkingPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTrafficMarkingPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateTrafficMarkingPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_traffic_marking_policy_with_options_async(
         self,
@@ -2926,16 +2728,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTrafficMarkingPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTrafficMarkingPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateTrafficMarkingPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_traffic_marking_policy(
         self,
@@ -3034,16 +2830,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouteTableAggregationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouteTableAggregationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateTransitRouteTableAggregationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_transit_route_table_aggregation_with_options_async(
         self,
@@ -3106,16 +2896,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouteTableAggregationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouteTableAggregationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateTransitRouteTableAggregationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_transit_route_table_aggregation(
         self,
@@ -3216,16 +3000,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateTransitRouterResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_transit_router_with_options_async(
         self,
@@ -3290,16 +3068,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateTransitRouterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_transit_router(
         self,
@@ -3401,16 +3173,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterCidrResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterCidrResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateTransitRouterCidrResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_transit_router_cidr_with_options_async(
         self,
@@ -3476,16 +3242,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterCidrResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterCidrResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateTransitRouterCidrResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_transit_router_cidr(
         self,
@@ -3609,16 +3369,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterEcrAttachmentResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterEcrAttachmentResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateTransitRouterEcrAttachmentResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_transit_router_ecr_attachment_with_options_async(
         self,
@@ -3692,16 +3446,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterEcrAttachmentResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterEcrAttachmentResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateTransitRouterEcrAttachmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_transit_router_ecr_attachment(
         self,
@@ -3820,16 +3568,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterMulticastDomainResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterMulticastDomainResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateTransitRouterMulticastDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_transit_router_multicast_domain_with_options_async(
         self,
@@ -3890,16 +3632,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterMulticastDomainResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterMulticastDomainResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateTransitRouterMulticastDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_transit_router_multicast_domain(
         self,
@@ -4012,16 +3748,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterPeerAttachmentResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterPeerAttachmentResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateTransitRouterPeerAttachmentResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_transit_router_peer_attachment_with_options_async(
         self,
@@ -4098,16 +3828,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterPeerAttachmentResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterPeerAttachmentResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateTransitRouterPeerAttachmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_transit_router_peer_attachment(
         self,
@@ -4212,16 +3936,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterPrefixListAssociationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterPrefixListAssociationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateTransitRouterPrefixListAssociationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_transit_router_prefix_list_association_with_options_async(
         self,
@@ -4282,16 +4000,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterPrefixListAssociationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterPrefixListAssociationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateTransitRouterPrefixListAssociationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_transit_router_prefix_list_association(
         self,
@@ -4385,16 +4097,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterRouteEntryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterRouteEntryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateTransitRouterRouteEntryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_transit_router_route_entry_with_options_async(
         self,
@@ -4452,16 +4158,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterRouteEntryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterRouteEntryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateTransitRouterRouteEntryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_transit_router_route_entry(
         self,
@@ -4552,16 +4252,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterRouteTableResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterRouteTableResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateTransitRouterRouteTableResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_transit_router_route_table_with_options_async(
         self,
@@ -4618,16 +4312,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterRouteTableResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterRouteTableResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateTransitRouterRouteTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_transit_router_route_table(
         self,
@@ -4734,16 +4422,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterVbrAttachmentResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterVbrAttachmentResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateTransitRouterVbrAttachmentResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_transit_router_vbr_attachment_with_options_async(
         self,
@@ -4814,16 +4496,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterVbrAttachmentResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterVbrAttachmentResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateTransitRouterVbrAttachmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_transit_router_vbr_attachment(
         self,
@@ -4954,16 +4630,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterVpcAttachmentResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterVpcAttachmentResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateTransitRouterVpcAttachmentResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_transit_router_vpc_attachment_with_options_async(
         self,
@@ -5046,16 +4716,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterVpcAttachmentResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterVpcAttachmentResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateTransitRouterVpcAttachmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_transit_router_vpc_attachment(
         self,
@@ -5177,16 +4841,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterVpnAttachmentResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterVpnAttachmentResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateTransitRouterVpnAttachmentResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_transit_router_vpn_attachment_with_options_async(
         self,
@@ -5256,16 +4914,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterVpnAttachmentResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.CreateTransitRouterVpnAttachmentResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateTransitRouterVpnAttachmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_transit_router_vpn_attachment(
         self,
@@ -5353,16 +5005,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeactiveFlowLogResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeactiveFlowLogResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeactiveFlowLogResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def deactive_flow_log_with_options_async(
         self,
@@ -5412,16 +5058,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeactiveFlowLogResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeactiveFlowLogResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeactiveFlowLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def deactive_flow_log(
         self,
@@ -5509,16 +5149,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteCenResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteCenResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteCenResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_cen_with_options_async(
         self,
@@ -5572,16 +5206,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteCenResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteCenResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteCenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_cen(
         self,
@@ -5673,16 +5301,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteCenBandwidthPackageResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteCenBandwidthPackageResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteCenBandwidthPackageResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_cen_bandwidth_package_with_options_async(
         self,
@@ -5720,16 +5342,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteCenBandwidthPackageResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteCenBandwidthPackageResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteCenBandwidthPackageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_cen_bandwidth_package(
         self,
@@ -5806,16 +5422,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteCenChildInstanceRouteEntryToAttachmentResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteCenChildInstanceRouteEntryToAttachmentResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteCenChildInstanceRouteEntryToAttachmentResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_cen_child_instance_route_entry_to_attachment_with_options_async(
         self,
@@ -5870,16 +5480,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteCenChildInstanceRouteEntryToAttachmentResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteCenChildInstanceRouteEntryToAttachmentResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteCenChildInstanceRouteEntryToAttachmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_cen_child_instance_route_entry_to_attachment(
         self,
@@ -5971,16 +5575,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteCenChildInstanceRouteEntryToCenResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteCenChildInstanceRouteEntryToCenResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteCenChildInstanceRouteEntryToCenResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_cen_child_instance_route_entry_to_cen_with_options_async(
         self,
@@ -6036,16 +5634,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteCenChildInstanceRouteEntryToCenResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteCenChildInstanceRouteEntryToCenResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteCenChildInstanceRouteEntryToCenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_cen_child_instance_route_entry_to_cen(
         self,
@@ -6128,16 +5720,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteCenInterRegionTrafficQosPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteCenInterRegionTrafficQosPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteCenInterRegionTrafficQosPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_cen_inter_region_traffic_qos_policy_with_options_async(
         self,
@@ -6186,16 +5772,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteCenInterRegionTrafficQosPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteCenInterRegionTrafficQosPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteCenInterRegionTrafficQosPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_cen_inter_region_traffic_qos_policy(
         self,
@@ -6278,16 +5858,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteCenInterRegionTrafficQosQueueResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteCenInterRegionTrafficQosQueueResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteCenInterRegionTrafficQosQueueResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_cen_inter_region_traffic_qos_queue_with_options_async(
         self,
@@ -6334,16 +5908,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteCenInterRegionTrafficQosQueueResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteCenInterRegionTrafficQosQueueResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteCenInterRegionTrafficQosQueueResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_cen_inter_region_traffic_qos_queue(
         self,
@@ -6423,16 +5991,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteCenRouteMapResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteCenRouteMapResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteCenRouteMapResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_cen_route_map_with_options_async(
         self,
@@ -6480,16 +6042,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteCenRouteMapResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteCenRouteMapResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteCenRouteMapResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_cen_route_map(
         self,
@@ -6573,16 +6129,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteFlowlogResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteFlowlogResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteFlowlogResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_flowlog_with_options_async(
         self,
@@ -6632,16 +6182,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteFlowlogResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteFlowlogResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteFlowlogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_flowlog(
         self,
@@ -6727,16 +6271,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteRouteServiceInCenResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteRouteServiceInCenResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteRouteServiceInCenResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_route_service_in_cen_with_options_async(
         self,
@@ -6788,16 +6326,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteRouteServiceInCenResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteRouteServiceInCenResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteRouteServiceInCenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_route_service_in_cen(
         self,
@@ -6882,16 +6414,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTrafficMarkingPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTrafficMarkingPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteTrafficMarkingPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_traffic_marking_policy_with_options_async(
         self,
@@ -6942,16 +6468,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTrafficMarkingPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTrafficMarkingPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteTrafficMarkingPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_traffic_marking_policy(
         self,
@@ -7036,16 +6556,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouteTableAggregationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouteTableAggregationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteTransitRouteTableAggregationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_transit_route_table_aggregation_with_options_async(
         self,
@@ -7094,16 +6608,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouteTableAggregationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouteTableAggregationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteTransitRouteTableAggregationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_transit_route_table_aggregation(
         self,
@@ -7193,16 +6701,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteTransitRouterResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_transit_router_with_options_async(
         self,
@@ -7260,16 +6762,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteTransitRouterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_transit_router(
         self,
@@ -7373,16 +6869,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterCidrResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterCidrResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteTransitRouterCidrResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_transit_router_cidr_with_options_async(
         self,
@@ -7432,16 +6922,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterCidrResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterCidrResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteTransitRouterCidrResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_transit_router_cidr(
         self,
@@ -7520,16 +7004,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterEcrAttachmentResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterEcrAttachmentResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteTransitRouterEcrAttachmentResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_transit_router_ecr_attachment_with_options_async(
         self,
@@ -7578,16 +7056,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterEcrAttachmentResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterEcrAttachmentResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteTransitRouterEcrAttachmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_transit_router_ecr_attachment(
         self,
@@ -7669,16 +7141,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterMulticastDomainResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterMulticastDomainResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteTransitRouterMulticastDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_transit_router_multicast_domain_with_options_async(
         self,
@@ -7728,16 +7194,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterMulticastDomainResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterMulticastDomainResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteTransitRouterMulticastDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_transit_router_multicast_domain(
         self,
@@ -7832,16 +7292,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterPeerAttachmentResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterPeerAttachmentResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteTransitRouterPeerAttachmentResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_transit_router_peer_attachment_with_options_async(
         self,
@@ -7898,16 +7352,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterPeerAttachmentResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterPeerAttachmentResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteTransitRouterPeerAttachmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_transit_router_peer_attachment(
         self,
@@ -8011,16 +7459,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterPrefixListAssociationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterPrefixListAssociationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteTransitRouterPrefixListAssociationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_transit_router_prefix_list_association_with_options_async(
         self,
@@ -8076,16 +7518,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterPrefixListAssociationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterPrefixListAssociationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteTransitRouterPrefixListAssociationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_transit_router_prefix_list_association(
         self,
@@ -8178,16 +7614,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterRouteEntryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterRouteEntryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteTransitRouterRouteEntryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_transit_router_route_entry_with_options_async(
         self,
@@ -8250,16 +7680,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterRouteEntryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterRouteEntryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteTransitRouterRouteEntryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_transit_router_route_entry(
         self,
@@ -8356,16 +7780,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterRouteTableResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterRouteTableResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteTransitRouterRouteTableResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_transit_router_route_table_with_options_async(
         self,
@@ -8414,16 +7832,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterRouteTableResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterRouteTableResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteTransitRouterRouteTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_transit_router_route_table(
         self,
@@ -8515,16 +7927,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterVbrAttachmentResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterVbrAttachmentResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteTransitRouterVbrAttachmentResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_transit_router_vbr_attachment_with_options_async(
         self,
@@ -8580,16 +7986,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterVbrAttachmentResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterVbrAttachmentResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteTransitRouterVbrAttachmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_transit_router_vbr_attachment(
         self,
@@ -8692,16 +8092,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterVpcAttachmentResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterVpcAttachmentResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteTransitRouterVpcAttachmentResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_transit_router_vpc_attachment_with_options_async(
         self,
@@ -8758,16 +8152,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterVpcAttachmentResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterVpcAttachmentResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteTransitRouterVpcAttachmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_transit_router_vpc_attachment(
         self,
@@ -8863,16 +8251,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterVpnAttachmentResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterVpnAttachmentResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteTransitRouterVpnAttachmentResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_transit_router_vpn_attachment_with_options_async(
         self,
@@ -8920,16 +8302,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterVpnAttachmentResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeleteTransitRouterVpnAttachmentResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteTransitRouterVpnAttachmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_transit_router_vpn_attachment(
         self,
@@ -9014,16 +8390,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeregisterTransitRouterMulticastGroupMembersResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeregisterTransitRouterMulticastGroupMembersResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeregisterTransitRouterMulticastGroupMembersResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def deregister_transit_router_multicast_group_members_with_options_async(
         self,
@@ -9078,16 +8448,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeregisterTransitRouterMulticastGroupMembersResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeregisterTransitRouterMulticastGroupMembersResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeregisterTransitRouterMulticastGroupMembersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def deregister_transit_router_multicast_group_members(
         self,
@@ -9176,16 +8540,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeregisterTransitRouterMulticastGroupSourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeregisterTransitRouterMulticastGroupSourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeregisterTransitRouterMulticastGroupSourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def deregister_transit_router_multicast_group_sources_with_options_async(
         self,
@@ -9238,16 +8596,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DeregisterTransitRouterMulticastGroupSourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DeregisterTransitRouterMulticastGroupSourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeregisterTransitRouterMulticastGroupSourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def deregister_transit_router_multicast_group_sources(
         self,
@@ -9329,16 +8681,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenAttachedChildInstanceAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenAttachedChildInstanceAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenAttachedChildInstanceAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_cen_attached_child_instance_attribute_with_options_async(
         self,
@@ -9384,16 +8730,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenAttachedChildInstanceAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenAttachedChildInstanceAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenAttachedChildInstanceAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_cen_attached_child_instance_attribute(
         self,
@@ -9472,16 +8812,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenAttachedChildInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenAttachedChildInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenAttachedChildInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_cen_attached_child_instances_with_options_async(
         self,
@@ -9534,16 +8868,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenAttachedChildInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenAttachedChildInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenAttachedChildInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_cen_attached_child_instances(
         self,
@@ -9631,16 +8959,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenBandwidthPackagesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenBandwidthPackagesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenBandwidthPackagesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_cen_bandwidth_packages_with_options_async(
         self,
@@ -9692,16 +9014,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenBandwidthPackagesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenBandwidthPackagesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenBandwidthPackagesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_cen_bandwidth_packages(
         self,
@@ -9781,16 +9097,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenChildInstanceRouteEntriesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenChildInstanceRouteEntriesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenChildInstanceRouteEntriesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_cen_child_instance_route_entries_with_options_async(
         self,
@@ -9844,16 +9154,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenChildInstanceRouteEntriesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenChildInstanceRouteEntriesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenChildInstanceRouteEntriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_cen_child_instance_route_entries(
         self,
@@ -9927,16 +9231,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenGeographicSpanRemainingBandwidthResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenGeographicSpanRemainingBandwidthResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenGeographicSpanRemainingBandwidthResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_cen_geographic_span_remaining_bandwidth_with_options_async(
         self,
@@ -9984,16 +9282,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenGeographicSpanRemainingBandwidthResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenGeographicSpanRemainingBandwidthResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenGeographicSpanRemainingBandwidthResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_cen_geographic_span_remaining_bandwidth(
         self,
@@ -10063,16 +9355,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenGeographicSpansResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenGeographicSpansResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenGeographicSpansResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_cen_geographic_spans_with_options_async(
         self,
@@ -10116,16 +9402,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenGeographicSpansResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenGeographicSpansResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenGeographicSpansResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_cen_geographic_spans(
         self,
@@ -10197,16 +9477,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenInterRegionBandwidthLimitsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenInterRegionBandwidthLimitsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenInterRegionBandwidthLimitsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_cen_inter_region_bandwidth_limits_with_options_async(
         self,
@@ -10252,16 +9526,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenInterRegionBandwidthLimitsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenInterRegionBandwidthLimitsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenInterRegionBandwidthLimitsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_cen_inter_region_bandwidth_limits(
         self,
@@ -10331,16 +9599,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenPrivateZoneRoutesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenPrivateZoneRoutesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenPrivateZoneRoutesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_cen_private_zone_routes_with_options_async(
         self,
@@ -10384,16 +9646,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenPrivateZoneRoutesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenPrivateZoneRoutesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenPrivateZoneRoutesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_cen_private_zone_routes(
         self,
@@ -10467,16 +9723,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenRegionDomainRouteEntriesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenRegionDomainRouteEntriesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenRegionDomainRouteEntriesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_cen_region_domain_route_entries_with_options_async(
         self,
@@ -10524,16 +9774,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenRegionDomainRouteEntriesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenRegionDomainRouteEntriesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenRegionDomainRouteEntriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_cen_region_domain_route_entries(
         self,
@@ -10611,16 +9855,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenRouteMapsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenRouteMapsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenRouteMapsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_cen_route_maps_with_options_async(
         self,
@@ -10672,16 +9910,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenRouteMapsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenRouteMapsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenRouteMapsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_cen_route_maps(
         self,
@@ -10757,16 +9989,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenVbrHealthCheckResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenVbrHealthCheckResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenVbrHealthCheckResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_cen_vbr_health_check_with_options_async(
         self,
@@ -10816,16 +10042,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenVbrHealthCheckResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCenVbrHealthCheckResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenVbrHealthCheckResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_cen_vbr_health_check(
         self,
@@ -10899,16 +10119,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCensResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCensResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCensResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_cens_with_options_async(
         self,
@@ -10956,16 +10170,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCensResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeCensResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCensResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_cens(
         self,
@@ -11035,16 +10243,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeChildInstanceRegionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeChildInstanceRegionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeChildInstanceRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_child_instance_regions_with_options_async(
         self,
@@ -11088,16 +10290,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeChildInstanceRegionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeChildInstanceRegionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeChildInstanceRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_child_instance_regions(
         self,
@@ -11197,16 +10393,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeFlowlogsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeFlowlogsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeFlowlogsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_flowlogs_with_options_async(
         self,
@@ -11276,16 +10466,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeFlowlogsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeFlowlogsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeFlowlogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_flowlogs(
         self,
@@ -11355,16 +10539,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeGeographicRegionMembershipResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeGeographicRegionMembershipResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeGeographicRegionMembershipResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_geographic_region_membership_with_options_async(
         self,
@@ -11408,16 +10586,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeGeographicRegionMembershipResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeGeographicRegionMembershipResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeGeographicRegionMembershipResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_geographic_region_membership(
         self,
@@ -11499,16 +10671,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeGrantRulesToCenResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeGrantRulesToCenResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeGrantRulesToCenResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_grant_rules_to_cen_with_options_async(
         self,
@@ -11564,16 +10730,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeGrantRulesToCenResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeGrantRulesToCenResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeGrantRulesToCenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_grant_rules_to_cen(
         self,
@@ -11651,16 +10811,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeGrantRulesToResourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeGrantRulesToResourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeGrantRulesToResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_grant_rules_to_resource_with_options_async(
         self,
@@ -11708,16 +10862,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeGrantRulesToResourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeGrantRulesToResourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeGrantRulesToResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_grant_rules_to_resource(
         self,
@@ -11793,16 +10941,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribePublishedRouteEntriesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribePublishedRouteEntriesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribePublishedRouteEntriesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_published_route_entries_with_options_async(
         self,
@@ -11852,16 +10994,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribePublishedRouteEntriesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribePublishedRouteEntriesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribePublishedRouteEntriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_published_route_entries(
         self,
@@ -11939,16 +11075,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeRouteConflictResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeRouteConflictResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeRouteConflictResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_route_conflict_with_options_async(
         self,
@@ -12000,16 +11130,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeRouteConflictResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeRouteConflictResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeRouteConflictResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_route_conflict(
         self,
@@ -12087,16 +11211,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeRouteServicesInCenResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeRouteServicesInCenResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeRouteServicesInCenResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_route_services_in_cen_with_options_async(
         self,
@@ -12148,16 +11266,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeRouteServicesInCenResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeRouteServicesInCenResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeRouteServicesInCenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_route_services_in_cen(
         self,
@@ -12233,16 +11345,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeTransitRouteTableAggregationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeTransitRouteTableAggregationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeTransitRouteTableAggregationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_transit_route_table_aggregation_with_options_async(
         self,
@@ -12292,16 +11398,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeTransitRouteTableAggregationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeTransitRouteTableAggregationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeTransitRouteTableAggregationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_transit_route_table_aggregation(
         self,
@@ -12375,16 +11475,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeTransitRouteTableAggregationDetailResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeTransitRouteTableAggregationDetailResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeTransitRouteTableAggregationDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_transit_route_table_aggregation_detail_with_options_async(
         self,
@@ -12428,16 +11522,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeTransitRouteTableAggregationDetailResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DescribeTransitRouteTableAggregationDetailResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeTransitRouteTableAggregationDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_transit_route_table_aggregation_detail(
         self,
@@ -12513,16 +11601,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DetachCenChildInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DetachCenChildInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DetachCenChildInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def detach_cen_child_instance_with_options_async(
         self,
@@ -12572,16 +11654,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DetachCenChildInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DetachCenChildInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DetachCenChildInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def detach_cen_child_instance(
         self,
@@ -12655,16 +11731,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DisableCenVbrHealthCheckResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DisableCenVbrHealthCheckResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DisableCenVbrHealthCheckResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def disable_cen_vbr_health_check_with_options_async(
         self,
@@ -12712,16 +11782,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DisableCenVbrHealthCheckResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DisableCenVbrHealthCheckResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DisableCenVbrHealthCheckResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def disable_cen_vbr_health_check(
         self,
@@ -12801,16 +11865,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DisableTransitRouterRouteTablePropagationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DisableTransitRouterRouteTablePropagationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DisableTransitRouterRouteTablePropagationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def disable_transit_router_route_table_propagation_with_options_async(
         self,
@@ -12860,16 +11918,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DisableTransitRouterRouteTablePropagationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DisableTransitRouterRouteTablePropagationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DisableTransitRouterRouteTablePropagationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def disable_transit_router_route_table_propagation(
         self,
@@ -12957,16 +12009,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DisassociateTransitRouterMulticastDomainResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DisassociateTransitRouterMulticastDomainResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DisassociateTransitRouterMulticastDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def disassociate_transit_router_multicast_domain_with_options_async(
         self,
@@ -13020,16 +12066,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DisassociateTransitRouterMulticastDomainResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DisassociateTransitRouterMulticastDomainResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DisassociateTransitRouterMulticastDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def disassociate_transit_router_multicast_domain(
         self,
@@ -13117,16 +12157,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DissociateTransitRouterAttachmentFromRouteTableResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DissociateTransitRouterAttachmentFromRouteTableResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DissociateTransitRouterAttachmentFromRouteTableResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def dissociate_transit_router_attachment_from_route_table_with_options_async(
         self,
@@ -13176,16 +12210,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.DissociateTransitRouterAttachmentFromRouteTableResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.DissociateTransitRouterAttachmentFromRouteTableResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.DissociateTransitRouterAttachmentFromRouteTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def dissociate_transit_router_attachment_from_route_table(
         self,
@@ -13283,16 +12311,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.EnableCenVbrHealthCheckResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.EnableCenVbrHealthCheckResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.EnableCenVbrHealthCheckResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def enable_cen_vbr_health_check_with_options_async(
         self,
@@ -13356,16 +12378,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.EnableCenVbrHealthCheckResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.EnableCenVbrHealthCheckResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.EnableCenVbrHealthCheckResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def enable_cen_vbr_health_check(
         self,
@@ -13455,16 +12471,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.EnableTransitRouterRouteTablePropagationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.EnableTransitRouterRouteTablePropagationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.EnableTransitRouterRouteTablePropagationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def enable_transit_router_route_table_propagation_with_options_async(
         self,
@@ -13516,16 +12526,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.EnableTransitRouterRouteTablePropagationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.EnableTransitRouterRouteTablePropagationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.EnableTransitRouterRouteTablePropagationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def enable_transit_router_route_table_propagation(
         self,
@@ -13625,16 +12629,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.GrantInstanceToTransitRouterResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.GrantInstanceToTransitRouterResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.GrantInstanceToTransitRouterResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def grant_instance_to_transit_router_with_options_async(
         self,
@@ -13696,16 +12694,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.GrantInstanceToTransitRouterResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.GrantInstanceToTransitRouterResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.GrantInstanceToTransitRouterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def grant_instance_to_transit_router(
         self,
@@ -13809,16 +12801,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListCenChildInstanceRouteEntriesToAttachmentResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListCenChildInstanceRouteEntriesToAttachmentResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListCenChildInstanceRouteEntriesToAttachmentResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_cen_child_instance_route_entries_to_attachment_with_options_async(
         self,
@@ -13872,16 +12858,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListCenChildInstanceRouteEntriesToAttachmentResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListCenChildInstanceRouteEntriesToAttachmentResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListCenChildInstanceRouteEntriesToAttachmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_cen_child_instance_route_entries_to_attachment(
         self,
@@ -13969,16 +12949,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListCenInterRegionTrafficQosPoliciesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListCenInterRegionTrafficQosPoliciesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListCenInterRegionTrafficQosPoliciesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_cen_inter_region_traffic_qos_policies_with_options_async(
         self,
@@ -14036,16 +13010,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListCenInterRegionTrafficQosPoliciesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListCenInterRegionTrafficQosPoliciesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListCenInterRegionTrafficQosPoliciesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_cen_inter_region_traffic_qos_policies(
         self,
@@ -14142,16 +13110,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListCenInterRegionTrafficQosQueuesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListCenInterRegionTrafficQosQueuesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListCenInterRegionTrafficQosQueuesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_cen_inter_region_traffic_qos_queues_with_options_async(
         self,
@@ -14210,16 +13172,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListCenInterRegionTrafficQosQueuesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListCenInterRegionTrafficQosQueuesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListCenInterRegionTrafficQosQueuesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_cen_inter_region_traffic_qos_queues(
         self,
@@ -14307,16 +13263,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListGrantVSwitchEnisResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListGrantVSwitchEnisResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListGrantVSwitchEnisResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_grant_vswitch_enis_with_options_async(
         self,
@@ -14372,16 +13322,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListGrantVSwitchEnisResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListGrantVSwitchEnisResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListGrantVSwitchEnisResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_grant_vswitch_enis(
         self,
@@ -14469,16 +13413,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListGrantVSwitchesToCenResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListGrantVSwitchesToCenResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListGrantVSwitchesToCenResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_grant_vswitches_to_cen_with_options_async(
         self,
@@ -14536,16 +13474,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListGrantVSwitchesToCenResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListGrantVSwitchesToCenResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListGrantVSwitchesToCenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_grant_vswitches_to_cen(
         self,
@@ -14640,16 +13572,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_tag_resources_with_options_async(
         self,
@@ -14706,16 +13632,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_tag_resources(
         self,
@@ -14810,16 +13730,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTrafficMarkingPoliciesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTrafficMarkingPoliciesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTrafficMarkingPoliciesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_traffic_marking_policies_with_options_async(
         self,
@@ -14874,16 +13788,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTrafficMarkingPoliciesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTrafficMarkingPoliciesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTrafficMarkingPoliciesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_traffic_marking_policies(
         self,
@@ -14969,16 +13877,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterAvailableResourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterAvailableResourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterAvailableResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_transit_router_available_resource_with_options_async(
         self,
@@ -15028,16 +13930,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterAvailableResourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterAvailableResourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterAvailableResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_transit_router_available_resource(
         self,
@@ -15127,16 +14023,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterCidrResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterCidrResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterCidrResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_transit_router_cidr_with_options_async(
         self,
@@ -15184,16 +14074,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterCidrResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterCidrResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterCidrResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_transit_router_cidr(
         self,
@@ -15281,16 +14165,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterCidrAllocationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterCidrAllocationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterCidrAllocationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_transit_router_cidr_allocation_with_options_async(
         self,
@@ -15352,16 +14230,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterCidrAllocationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterCidrAllocationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterCidrAllocationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_transit_router_cidr_allocation(
         self,
@@ -15444,16 +14316,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterEcrAttachmentsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterEcrAttachmentsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterEcrAttachmentsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_transit_router_ecr_attachments_with_options_async(
         self,
@@ -15510,16 +14376,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterEcrAttachmentsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterEcrAttachmentsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterEcrAttachmentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_transit_router_ecr_attachments(
         self,
@@ -15612,16 +14472,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterMulticastDomainAssociationsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterMulticastDomainAssociationsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterMulticastDomainAssociationsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_transit_router_multicast_domain_associations_with_options_async(
         self,
@@ -15678,16 +14532,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterMulticastDomainAssociationsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterMulticastDomainAssociationsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterMulticastDomainAssociationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_transit_router_multicast_domain_associations(
         self,
@@ -15765,16 +14613,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterMulticastDomainVSwitchesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterMulticastDomainVSwitchesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterMulticastDomainVSwitchesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_transit_router_multicast_domain_vswitches_with_options_async(
         self,
@@ -15820,16 +14662,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterMulticastDomainVSwitchesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterMulticastDomainVSwitchesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterMulticastDomainVSwitchesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_transit_router_multicast_domain_vswitches(
         self,
@@ -15908,16 +14744,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterMulticastDomainsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterMulticastDomainsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterMulticastDomainsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_transit_router_multicast_domains_with_options_async(
         self,
@@ -15974,16 +14804,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterMulticastDomainsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterMulticastDomainsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterMulticastDomainsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_transit_router_multicast_domains(
         self,
@@ -16087,16 +14911,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterMulticastGroupsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterMulticastGroupsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterMulticastGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_transit_router_multicast_groups_with_options_async(
         self,
@@ -16168,16 +14986,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterMulticastGroupsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterMulticastGroupsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterMulticastGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_transit_router_multicast_groups(
         self,
@@ -16275,16 +15087,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterPeerAttachmentsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterPeerAttachmentsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterPeerAttachmentsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_transit_router_peer_attachments_with_options_async(
         self,
@@ -16340,16 +15146,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterPeerAttachmentsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterPeerAttachmentsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterPeerAttachmentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_transit_router_peer_attachments(
         self,
@@ -16443,16 +15243,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterPrefixListAssociationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterPrefixListAssociationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterPrefixListAssociationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_transit_router_prefix_list_association_with_options_async(
         self,
@@ -16512,16 +15306,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterPrefixListAssociationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterPrefixListAssociationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterPrefixListAssociationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_transit_router_prefix_list_association(
         self,
@@ -16617,16 +15405,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterRouteEntriesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterRouteEntriesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterRouteEntriesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_transit_router_route_entries_with_options_async(
         self,
@@ -16696,16 +15478,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterRouteEntriesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterRouteEntriesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterRouteEntriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_transit_router_route_entries(
         self,
@@ -16790,16 +15566,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterRouteTableAssociationsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterRouteTableAssociationsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterRouteTableAssociationsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_transit_router_route_table_associations_with_options_async(
         self,
@@ -16858,16 +15628,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterRouteTableAssociationsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterRouteTableAssociationsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterRouteTableAssociationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_transit_router_route_table_associations(
         self,
@@ -16959,16 +15723,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterRouteTablePropagationsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterRouteTablePropagationsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterRouteTablePropagationsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_transit_router_route_table_propagations_with_options_async(
         self,
@@ -17020,16 +15778,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterRouteTablePropagationsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterRouteTablePropagationsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterRouteTablePropagationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_transit_router_route_table_propagations(
         self,
@@ -17111,16 +15863,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterRouteTablesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterRouteTablesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterRouteTablesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_transit_router_route_tables_with_options_async(
         self,
@@ -17176,16 +15922,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterRouteTablesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterRouteTablesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterRouteTablesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_transit_router_route_tables(
         self,
@@ -17267,16 +16007,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterVbrAttachmentsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterVbrAttachmentsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterVbrAttachmentsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_transit_router_vbr_attachments_with_options_async(
         self,
@@ -17332,16 +16066,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterVbrAttachmentsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterVbrAttachmentsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterVbrAttachmentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_transit_router_vbr_attachments(
         self,
@@ -17438,16 +16166,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterVpcAttachmentsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterVpcAttachmentsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterVpcAttachmentsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_transit_router_vpc_attachments_with_options_async(
         self,
@@ -17510,16 +16232,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterVpcAttachmentsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterVpcAttachmentsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterVpcAttachmentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_transit_router_vpc_attachments(
         self,
@@ -17613,16 +16329,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterVpnAttachmentsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterVpnAttachmentsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterVpnAttachmentsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_transit_router_vpn_attachments_with_options_async(
         self,
@@ -17680,16 +16390,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterVpnAttachmentsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRouterVpnAttachmentsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterVpnAttachmentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_transit_router_vpn_attachments(
         self,
@@ -17791,16 +16495,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRoutersResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRoutersResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRoutersResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_transit_routers_with_options_async(
         self,
@@ -17864,16 +16562,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRoutersResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ListTransitRoutersResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRoutersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_transit_routers(
         self,
@@ -17961,16 +16653,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ModifyCenAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ModifyCenAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ModifyCenAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_cen_attribute_with_options_async(
         self,
@@ -18020,16 +16706,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ModifyCenAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ModifyCenAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ModifyCenAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_cen_attribute(
         self,
@@ -18107,16 +16787,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ModifyCenBandwidthPackageAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ModifyCenBandwidthPackageAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ModifyCenBandwidthPackageAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_cen_bandwidth_package_attribute_with_options_async(
         self,
@@ -18160,16 +16834,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ModifyCenBandwidthPackageAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ModifyCenBandwidthPackageAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ModifyCenBandwidthPackageAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_cen_bandwidth_package_attribute(
         self,
@@ -18237,16 +16905,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ModifyCenBandwidthPackageSpecResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ModifyCenBandwidthPackageSpecResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ModifyCenBandwidthPackageSpecResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_cen_bandwidth_package_spec_with_options_async(
         self,
@@ -18288,16 +16950,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ModifyCenBandwidthPackageSpecResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ModifyCenBandwidthPackageSpecResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ModifyCenBandwidthPackageSpecResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_cen_bandwidth_package_spec(
         self,
@@ -18423,16 +17079,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ModifyCenRouteMapResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ModifyCenRouteMapResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ModifyCenRouteMapResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_cen_route_map_with_options_async(
         self,
@@ -18532,16 +17182,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ModifyCenRouteMapResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ModifyCenRouteMapResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ModifyCenRouteMapResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_cen_route_map(
         self,
@@ -18631,16 +17275,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ModifyFlowLogAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ModifyFlowLogAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ModifyFlowLogAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_flow_log_attribute_with_options_async(
         self,
@@ -18696,16 +17334,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ModifyFlowLogAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ModifyFlowLogAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ModifyFlowLogAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_flow_log_attribute(
         self,
@@ -18789,16 +17421,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_traffic_match_rule_to_traffic_marking_policy_with_options_async(
         self,
@@ -18848,16 +17474,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_traffic_match_rule_to_traffic_marking_policy(
         self,
@@ -18941,16 +17561,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ModifyTransitRouteTableAggregationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ModifyTransitRouteTableAggregationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ModifyTransitRouteTableAggregationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_transit_route_table_aggregation_with_options_async(
         self,
@@ -19008,16 +17622,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ModifyTransitRouteTableAggregationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ModifyTransitRouteTableAggregationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ModifyTransitRouteTableAggregationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_transit_route_table_aggregation(
         self,
@@ -19106,16 +17714,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ModifyTransitRouterCidrResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ModifyTransitRouterCidrResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ModifyTransitRouterCidrResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_transit_router_cidr_with_options_async(
         self,
@@ -19178,16 +17780,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ModifyTransitRouterCidrResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ModifyTransitRouterCidrResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ModifyTransitRouterCidrResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_transit_router_cidr(
         self,
@@ -19277,16 +17873,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ModifyTransitRouterMulticastDomainResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ModifyTransitRouterMulticastDomainResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ModifyTransitRouterMulticastDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_transit_router_multicast_domain_with_options_async(
         self,
@@ -19336,16 +17926,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ModifyTransitRouterMulticastDomainResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ModifyTransitRouterMulticastDomainResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ModifyTransitRouterMulticastDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_transit_router_multicast_domain(
         self,
@@ -19421,16 +18005,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.MoveResourceGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.MoveResourceGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.MoveResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def move_resource_group_with_options_async(
         self,
@@ -19480,16 +18058,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.MoveResourceGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.MoveResourceGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.MoveResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def move_resource_group(
         self,
@@ -19561,16 +18133,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.OpenTransitRouterServiceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.OpenTransitRouterServiceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.OpenTransitRouterServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def open_transit_router_service_with_options_async(
         self,
@@ -19612,16 +18178,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.OpenTransitRouterServiceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.OpenTransitRouterServiceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.OpenTransitRouterServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def open_transit_router_service(
         self,
@@ -19711,16 +18271,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.PublishRouteEntriesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.PublishRouteEntriesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.PublishRouteEntriesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def publish_route_entries_with_options_async(
         self,
@@ -19780,16 +18334,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.PublishRouteEntriesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.PublishRouteEntriesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.PublishRouteEntriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def publish_route_entries(
         self,
@@ -19887,16 +18435,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.RefreshTransitRouteTableAggregationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.RefreshTransitRouteTableAggregationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.RefreshTransitRouteTableAggregationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def refresh_transit_route_table_aggregation_with_options_async(
         self,
@@ -19940,16 +18482,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.RefreshTransitRouteTableAggregationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.RefreshTransitRouteTableAggregationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.RefreshTransitRouteTableAggregationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def refresh_transit_route_table_aggregation(
         self,
@@ -20035,16 +18571,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.RegisterTransitRouterMulticastGroupMembersResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.RegisterTransitRouterMulticastGroupMembersResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.RegisterTransitRouterMulticastGroupMembersResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def register_transit_router_multicast_group_members_with_options_async(
         self,
@@ -20104,16 +18634,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.RegisterTransitRouterMulticastGroupMembersResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.RegisterTransitRouterMulticastGroupMembersResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.RegisterTransitRouterMulticastGroupMembersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def register_transit_router_multicast_group_members(
         self,
@@ -20212,16 +18736,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.RegisterTransitRouterMulticastGroupSourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.RegisterTransitRouterMulticastGroupSourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.RegisterTransitRouterMulticastGroupSourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def register_transit_router_multicast_group_sources_with_options_async(
         self,
@@ -20278,16 +18796,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.RegisterTransitRouterMulticastGroupSourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.RegisterTransitRouterMulticastGroupSourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.RegisterTransitRouterMulticastGroupSourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def register_transit_router_multicast_group_sources(
         self,
@@ -20381,16 +18893,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def remove_traffic_match_rule_from_traffic_marking_policy_with_options_async(
         self,
@@ -20444,16 +18950,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def remove_traffic_match_rule_from_traffic_marking_policy(
         self,
@@ -20547,16 +19047,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.RemoveTraficMatchRuleFromTrafficMarkingPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.RemoveTraficMatchRuleFromTrafficMarkingPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.RemoveTraficMatchRuleFromTrafficMarkingPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def remove_trafic_match_rule_from_traffic_marking_policy_with_options_async(
         self,
@@ -20608,16 +19102,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.RemoveTraficMatchRuleFromTrafficMarkingPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.RemoveTraficMatchRuleFromTrafficMarkingPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.RemoveTraficMatchRuleFromTrafficMarkingPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def remove_trafic_match_rule_from_traffic_marking_policy(
         self,
@@ -20701,16 +19189,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ReplaceTransitRouterRouteTableAssociationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ReplaceTransitRouterRouteTableAssociationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ReplaceTransitRouterRouteTableAssociationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def replace_transit_router_route_table_association_with_options_async(
         self,
@@ -20756,16 +19238,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ReplaceTransitRouterRouteTableAssociationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ReplaceTransitRouterRouteTableAssociationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ReplaceTransitRouterRouteTableAssociationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def replace_transit_router_route_table_association(
         self,
@@ -20855,16 +19331,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ResolveAndRouteServiceInCenResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ResolveAndRouteServiceInCenResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ResolveAndRouteServiceInCenResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def resolve_and_route_service_in_cen_with_options_async(
         self,
@@ -20928,16 +19398,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.ResolveAndRouteServiceInCenResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.ResolveAndRouteServiceInCenResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.ResolveAndRouteServiceInCenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def resolve_and_route_service_in_cen(
         self,
@@ -21045,16 +19509,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.RevokeInstanceFromTransitRouterResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.RevokeInstanceFromTransitRouterResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.RevokeInstanceFromTransitRouterResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def revoke_instance_from_transit_router_with_options_async(
         self,
@@ -21112,16 +19570,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.RevokeInstanceFromTransitRouterResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.RevokeInstanceFromTransitRouterResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.RevokeInstanceFromTransitRouterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def revoke_instance_from_transit_router(
         self,
@@ -21226,16 +19678,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.RoutePrivateZoneInCenToVpcResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.RoutePrivateZoneInCenToVpcResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.RoutePrivateZoneInCenToVpcResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def route_private_zone_in_cen_to_vpc_with_options_async(
         self,
@@ -21294,16 +19740,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.RoutePrivateZoneInCenToVpcResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.RoutePrivateZoneInCenToVpcResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.RoutePrivateZoneInCenToVpcResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def route_private_zone_in_cen_to_vpc(
         self,
@@ -21416,16 +19856,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.SetCenInterRegionBandwidthLimitResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.SetCenInterRegionBandwidthLimitResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.SetCenInterRegionBandwidthLimitResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def set_cen_inter_region_bandwidth_limit_with_options_async(
         self,
@@ -21486,16 +19920,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.SetCenInterRegionBandwidthLimitResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.SetCenInterRegionBandwidthLimitResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.SetCenInterRegionBandwidthLimitResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def set_cen_inter_region_bandwidth_limit(
         self,
@@ -21597,16 +20025,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.TagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.TagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def tag_resources_with_options_async(
         self,
@@ -21656,16 +20078,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.TagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.TagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def tag_resources(
         self,
@@ -21743,16 +20159,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.TempUpgradeCenBandwidthPackageSpecResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.TempUpgradeCenBandwidthPackageSpecResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.TempUpgradeCenBandwidthPackageSpecResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def temp_upgrade_cen_bandwidth_package_spec_with_options_async(
         self,
@@ -21796,16 +20206,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.TempUpgradeCenBandwidthPackageSpecResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.TempUpgradeCenBandwidthPackageSpecResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.TempUpgradeCenBandwidthPackageSpecResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def temp_upgrade_cen_bandwidth_package_spec(
         self,
@@ -21875,16 +20279,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.UnassociateCenBandwidthPackageResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.UnassociateCenBandwidthPackageResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.UnassociateCenBandwidthPackageResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def unassociate_cen_bandwidth_package_with_options_async(
         self,
@@ -21928,16 +20326,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.UnassociateCenBandwidthPackageResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.UnassociateCenBandwidthPackageResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.UnassociateCenBandwidthPackageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def unassociate_cen_bandwidth_package(
         self,
@@ -22007,16 +20399,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.UnroutePrivateZoneInCenToVpcResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.UnroutePrivateZoneInCenToVpcResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.UnroutePrivateZoneInCenToVpcResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def unroute_private_zone_in_cen_to_vpc_with_options_async(
         self,
@@ -22056,16 +20442,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.UnroutePrivateZoneInCenToVpcResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.UnroutePrivateZoneInCenToVpcResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.UnroutePrivateZoneInCenToVpcResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def unroute_private_zone_in_cen_to_vpc(
         self,
@@ -22135,16 +20515,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.UntagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.UntagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def untag_resources_with_options_async(
         self,
@@ -22192,16 +20566,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.UntagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.UntagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.UntagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def untag_resources(
         self,
@@ -22275,16 +20643,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateCenInterRegionTrafficQosPolicyAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateCenInterRegionTrafficQosPolicyAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.UpdateCenInterRegionTrafficQosPolicyAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_cen_inter_region_traffic_qos_policy_attribute_with_options_async(
         self,
@@ -22332,16 +20694,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateCenInterRegionTrafficQosPolicyAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateCenInterRegionTrafficQosPolicyAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.UpdateCenInterRegionTrafficQosPolicyAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_cen_inter_region_traffic_qos_policy_attribute(
         self,
@@ -22421,16 +20777,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateCenInterRegionTrafficQosQueueAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateCenInterRegionTrafficQosQueueAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.UpdateCenInterRegionTrafficQosQueueAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_cen_inter_region_traffic_qos_queue_attribute_with_options_async(
         self,
@@ -22484,16 +20834,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateCenInterRegionTrafficQosQueueAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateCenInterRegionTrafficQosQueueAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.UpdateCenInterRegionTrafficQosQueueAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_cen_inter_region_traffic_qos_queue_attribute(
         self,
@@ -22571,16 +20915,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTrafficMarkingPolicyAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTrafficMarkingPolicyAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.UpdateTrafficMarkingPolicyAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_traffic_marking_policy_attribute_with_options_async(
         self,
@@ -22632,16 +20970,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTrafficMarkingPolicyAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTrafficMarkingPolicyAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.UpdateTrafficMarkingPolicyAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_traffic_marking_policy_attribute(
         self,
@@ -22721,16 +21053,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTransitRouterResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTransitRouterResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.UpdateTransitRouterResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_transit_router_with_options_async(
         self,
@@ -22784,16 +21110,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTransitRouterResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTransitRouterResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.UpdateTransitRouterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_transit_router(
         self,
@@ -22878,16 +21198,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTransitRouterEcrAttachmentAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTransitRouterEcrAttachmentAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.UpdateTransitRouterEcrAttachmentAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_transit_router_ecr_attachment_attribute_with_options_async(
         self,
@@ -22938,16 +21252,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTransitRouterEcrAttachmentAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTransitRouterEcrAttachmentAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.UpdateTransitRouterEcrAttachmentAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_transit_router_ecr_attachment_attribute(
         self,
@@ -23041,16 +21349,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTransitRouterPeerAttachmentAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTransitRouterPeerAttachmentAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.UpdateTransitRouterPeerAttachmentAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_transit_router_peer_attachment_attribute_with_options_async(
         self,
@@ -23112,16 +21414,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTransitRouterPeerAttachmentAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTransitRouterPeerAttachmentAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.UpdateTransitRouterPeerAttachmentAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_transit_router_peer_attachment_attribute(
         self,
@@ -23203,16 +21499,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTransitRouterRouteEntryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTransitRouterRouteEntryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.UpdateTransitRouterRouteEntryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_transit_router_route_entry_with_options_async(
         self,
@@ -23260,16 +21550,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTransitRouterRouteEntryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTransitRouterRouteEntryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.UpdateTransitRouterRouteEntryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_transit_router_route_entry(
         self,
@@ -23345,16 +21629,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTransitRouterRouteTableResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTransitRouterRouteTableResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.UpdateTransitRouterRouteTableResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_transit_router_route_table_with_options_async(
         self,
@@ -23404,16 +21682,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTransitRouterRouteTableResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTransitRouterRouteTableResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.UpdateTransitRouterRouteTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_transit_router_route_table(
         self,
@@ -23493,16 +21765,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTransitRouterVbrAttachmentAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTransitRouterVbrAttachmentAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.UpdateTransitRouterVbrAttachmentAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_transit_router_vbr_attachment_attribute_with_options_async(
         self,
@@ -23556,16 +21822,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTransitRouterVbrAttachmentAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTransitRouterVbrAttachmentAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.UpdateTransitRouterVbrAttachmentAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_transit_router_vbr_attachment_attribute(
         self,
@@ -23659,16 +21919,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTransitRouterVpcAttachmentAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTransitRouterVpcAttachmentAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.UpdateTransitRouterVpcAttachmentAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_transit_router_vpc_attachment_attribute_with_options_async(
         self,
@@ -23728,16 +21982,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTransitRouterVpcAttachmentAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTransitRouterVpcAttachmentAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.UpdateTransitRouterVpcAttachmentAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_transit_router_vpc_attachment_attribute(
         self,
@@ -23824,16 +22072,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTransitRouterVpcAttachmentZonesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTransitRouterVpcAttachmentZonesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.UpdateTransitRouterVpcAttachmentZonesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_transit_router_vpc_attachment_zones_with_options_async(
         self,
@@ -23886,16 +22128,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTransitRouterVpcAttachmentZonesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTransitRouterVpcAttachmentZonesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.UpdateTransitRouterVpcAttachmentZonesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_transit_router_vpc_attachment_zones(
         self,
@@ -23981,16 +22217,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTransitRouterVpnAttachmentAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTransitRouterVpnAttachmentAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.UpdateTransitRouterVpnAttachmentAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_transit_router_vpn_attachment_attribute_with_options_async(
         self,
@@ -24040,16 +22270,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTransitRouterVpnAttachmentAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.UpdateTransitRouterVpnAttachmentAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.UpdateTransitRouterVpnAttachmentAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_transit_router_vpn_attachment_attribute(
         self,
@@ -24121,16 +22345,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.WithdrawPublishedRouteEntriesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.WithdrawPublishedRouteEntriesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.WithdrawPublishedRouteEntriesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def withdraw_published_route_entries_with_options_async(
         self,
@@ -24176,16 +22394,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                cbn_20170912_models.WithdrawPublishedRouteEntriesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                cbn_20170912_models.WithdrawPublishedRouteEntriesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            cbn_20170912_models.WithdrawPublishedRouteEntriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def withdraw_published_route_entries(
         self,
