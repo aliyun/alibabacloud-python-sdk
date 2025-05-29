@@ -8575,6 +8575,7 @@ class PolicyItem(TeaModel):
 class PriceEstimateFeature(TeaModel):
     def __init__(
         self,
+        app_count: int = None,
         app_type: str = None,
         cpu_core: float = None,
         cpu_strategy: str = None,
@@ -8600,6 +8601,7 @@ class PriceEstimateFeature(TeaModel):
         region_id: str = None,
         resource_type: str = None,
     ):
+        self.app_count = app_count
         # This parameter is required.
         self.app_type = app_type
         # This parameter is required.
@@ -8640,6 +8642,8 @@ class PriceEstimateFeature(TeaModel):
             return _map
 
         result = dict()
+        if self.app_count is not None:
+            result['AppCount'] = self.app_count
         if self.app_type is not None:
             result['AppType'] = self.app_type
         if self.cpu_core is not None:
@@ -8692,6 +8696,8 @@ class PriceEstimateFeature(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppCount') is not None:
+            self.app_count = m.get('AppCount')
         if m.get('AppType') is not None:
             self.app_type = m.get('AppType')
         if m.get('CpuCore') is not None:
@@ -21263,6 +21269,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         enable_idle: bool = None,
         enable_new_arms: bool = None,
         envs: str = None,
+        gpu_count: str = None,
+        gpu_type: str = None,
         image_pull_secrets: str = None,
         image_url: str = None,
         init_containers_config: List[DescribeApplicationConfigResponseBodyDataInitContainersConfig] = None,
@@ -21407,6 +21415,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         # *   **name**: the name of the environment variable.
         # *   **value**: the value or reference of the environment variable.
         self.envs = envs
+        self.gpu_count = gpu_count
+        self.gpu_type = gpu_type
         self.image_pull_secrets = image_pull_secrets
         # The URL of the image. This parameter is returned only if the **PackageType** parameter is set to **Image**.
         self.image_url = image_url
@@ -21731,6 +21741,10 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             result['EnableNewArms'] = self.enable_new_arms
         if self.envs is not None:
             result['Envs'] = self.envs
+        if self.gpu_count is not None:
+            result['GpuCount'] = self.gpu_count
+        if self.gpu_type is not None:
+            result['GpuType'] = self.gpu_type
         if self.image_pull_secrets is not None:
             result['ImagePullSecrets'] = self.image_pull_secrets
         if self.image_url is not None:
@@ -21918,6 +21932,10 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             self.enable_new_arms = m.get('EnableNewArms')
         if m.get('Envs') is not None:
             self.envs = m.get('Envs')
+        if m.get('GpuCount') is not None:
+            self.gpu_count = m.get('GpuCount')
+        if m.get('GpuType') is not None:
+            self.gpu_type = m.get('GpuType')
         if m.get('ImagePullSecrets') is not None:
             self.image_pull_secrets = m.get('ImagePullSecrets')
         if m.get('ImageUrl') is not None:

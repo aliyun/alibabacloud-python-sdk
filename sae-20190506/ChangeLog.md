@@ -1,3 +1,8 @@
+2025-05-29 Version: 2.3.2
+- Update API DescribeApplicationConfig: add response parameters Body.Data.GpuCount.
+- Update API DescribeApplicationConfig: add response parameters Body.Data.GpuType.
+
+
 2025-05-26 Version: 2.3.1
 - Update API CreateApplication: add request parameters StartupProbe.
 - Update API DeployApplication: add request parameters StartupProbe.
