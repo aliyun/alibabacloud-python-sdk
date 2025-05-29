@@ -1,3 +1,23 @@
+2025-05-29 Version: 6.1.0
+- Support API ListAIAgentPhoneNumber.
+- Support API StartAIAgentOutboundCall.
+- Support API SubmitAIAgentVideoAuditTask.
+- Update API AddAdInsertion: add response parameters Body.Config.ManifestEndpointConfig.DashPrefix.
+- Update API CreateLivePackageOriginEndpoint: add request parameters LivePackagingConfig.
+- Update API CreateLivePackageOriginEndpoint: add response parameters Body.LivePackageOriginEndpoint.LivePackagingConfig.
+- Update API DescribeAIAgentInstance: add response parameters Body.Instance.AgentConfig.
+- Update API GenerateAIAgentCall: add request parameters AgentConfig.
+- Update API GetAdInsertion: add response parameters Body.Config.ManifestEndpointConfig.DashPrefix.
+- Update API GetLivePackageOriginEndpoint: add response parameters Body.LivePackageOriginEndpoint.LivePackagingConfig.
+- Update API ListAIAgentInstance: add response parameters Body.Instances.$.AgentConfig.
+- Update API ListAdInsertions: add response parameters Body.Configs.$.ManifestEndpointConfig.DashPrefix.
+- Update API StartAIAgentInstance: add request parameters AgentConfig.
+- Update API UpdateAIAgentInstance: add request parameters AgentConfig.
+- Update API UpdateAdInsertion: add response parameters Body.Config.ManifestEndpointConfig.DashPrefix.
+- Update API UpdateLivePackageOriginEndpoint: add request parameters LivePackagingConfig.
+- Update API UpdateLivePackageOriginEndpoint: add response parameters Body.LivePackageOriginEndpoint.LivePackagingConfig.
+
+
 2025-05-14 Version: 6.0.1
 - Update API CreateMediaLiveChannel: add request parameters VideoSettings.$.VideoCodecType.
 - Update API GetMediaLiveChannel: add response parameters Body.Channel.VideoSettings.$.VideoCodecType.

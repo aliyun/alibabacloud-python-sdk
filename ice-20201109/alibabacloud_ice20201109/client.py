@@ -2774,7 +2774,7 @@ class Client(OpenApiClient):
 
     def create_live_package_origin_endpoint_with_options(
         self,
-        request: ice20201109_models.CreateLivePackageOriginEndpointRequest,
+        tmp_req: ice20201109_models.CreateLivePackageOriginEndpointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateLivePackageOriginEndpointResponse:
         """
@@ -2783,11 +2783,15 @@ class Client(OpenApiClient):
         @description ## [](#)Usage notes
         This API operation is mainly used to configure origin settings, security policies including the IP address blacklist and whitelist and authorization code, and time shifting settings for channels. Before you create an origin endpoint, you must create a live package channel group and channel. After you create the endpoint, the endpoint URL and other configuration details are returned.
         
-        @param request: CreateLivePackageOriginEndpointRequest
+        @param tmp_req: CreateLivePackageOriginEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateLivePackageOriginEndpointResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.CreateLivePackageOriginEndpointShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.live_packaging_config):
+            request.live_packaging_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.live_packaging_config, 'LivePackagingConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -2806,6 +2810,8 @@ class Client(OpenApiClient):
             body['IpBlacklist'] = request.ip_blacklist
         if not UtilClient.is_unset(request.ip_whitelist):
             body['IpWhitelist'] = request.ip_whitelist
+        if not UtilClient.is_unset(request.live_packaging_config_shrink):
+            body['LivePackagingConfig'] = request.live_packaging_config_shrink
         if not UtilClient.is_unset(request.manifest_name):
             body['ManifestName'] = request.manifest_name
         if not UtilClient.is_unset(request.protocol):
@@ -2834,7 +2840,7 @@ class Client(OpenApiClient):
 
     async def create_live_package_origin_endpoint_with_options_async(
         self,
-        request: ice20201109_models.CreateLivePackageOriginEndpointRequest,
+        tmp_req: ice20201109_models.CreateLivePackageOriginEndpointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateLivePackageOriginEndpointResponse:
         """
@@ -2843,11 +2849,15 @@ class Client(OpenApiClient):
         @description ## [](#)Usage notes
         This API operation is mainly used to configure origin settings, security policies including the IP address blacklist and whitelist and authorization code, and time shifting settings for channels. Before you create an origin endpoint, you must create a live package channel group and channel. After you create the endpoint, the endpoint URL and other configuration details are returned.
         
-        @param request: CreateLivePackageOriginEndpointRequest
+        @param tmp_req: CreateLivePackageOriginEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateLivePackageOriginEndpointResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.CreateLivePackageOriginEndpointShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.live_packaging_config):
+            request.live_packaging_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.live_packaging_config, 'LivePackagingConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -2866,6 +2876,8 @@ class Client(OpenApiClient):
             body['IpBlacklist'] = request.ip_blacklist
         if not UtilClient.is_unset(request.ip_whitelist):
             body['IpWhitelist'] = request.ip_whitelist
+        if not UtilClient.is_unset(request.live_packaging_config_shrink):
+            body['LivePackagingConfig'] = request.live_packaging_config_shrink
         if not UtilClient.is_unset(request.manifest_name):
             body['ManifestName'] = request.manifest_name
         if not UtilClient.is_unset(request.protocol):
@@ -10467,6 +10479,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.GenerateAIAgentCallShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.agent_config):
+            request.agent_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.agent_config, 'AgentConfig', 'json')
         if not UtilClient.is_unset(tmp_req.chat_sync_config):
             request.chat_sync_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.chat_sync_config, 'ChatSyncConfig', 'json')
         if not UtilClient.is_unset(tmp_req.template_config):
@@ -10474,6 +10488,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.aiagent_id):
             query['AIAgentId'] = request.aiagent_id
+        if not UtilClient.is_unset(request.agent_config_shrink):
+            query['AgentConfig'] = request.agent_config_shrink
         if not UtilClient.is_unset(request.chat_sync_config_shrink):
             query['ChatSyncConfig'] = request.chat_sync_config_shrink
         if not UtilClient.is_unset(request.expire):
@@ -10524,6 +10540,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.GenerateAIAgentCallShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.agent_config):
+            request.agent_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.agent_config, 'AgentConfig', 'json')
         if not UtilClient.is_unset(tmp_req.chat_sync_config):
             request.chat_sync_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.chat_sync_config, 'ChatSyncConfig', 'json')
         if not UtilClient.is_unset(tmp_req.template_config):
@@ -10531,6 +10549,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.aiagent_id):
             query['AIAgentId'] = request.aiagent_id
+        if not UtilClient.is_unset(request.agent_config_shrink):
+            query['AgentConfig'] = request.agent_config_shrink
         if not UtilClient.is_unset(request.chat_sync_config_shrink):
             query['ChatSyncConfig'] = request.chat_sync_config_shrink
         if not UtilClient.is_unset(request.expire):
@@ -17327,6 +17347,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_aiagent_instance_with_options_async(request, runtime)
+
+    def list_aiagent_phone_number_with_options(
+        self,
+        request: ice20201109_models.ListAIAgentPhoneNumberRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListAIAgentPhoneNumberResponse:
+        """
+        @summary 罗列用户电话资源接口
+        
+        @param request: ListAIAgentPhoneNumberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAIAgentPhoneNumberResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAIAgentPhoneNumber',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListAIAgentPhoneNumberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_aiagent_phone_number_with_options_async(
+        self,
+        request: ice20201109_models.ListAIAgentPhoneNumberRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListAIAgentPhoneNumberResponse:
+        """
+        @summary 罗列用户电话资源接口
+        
+        @param request: ListAIAgentPhoneNumberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAIAgentPhoneNumberResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAIAgentPhoneNumber',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListAIAgentPhoneNumberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_aiagent_phone_number(
+        self,
+        request: ice20201109_models.ListAIAgentPhoneNumberRequest,
+    ) -> ice20201109_models.ListAIAgentPhoneNumberResponse:
+        """
+        @summary 罗列用户电话资源接口
+        
+        @param request: ListAIAgentPhoneNumberRequest
+        @return: ListAIAgentPhoneNumberResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_aiagent_phone_number_with_options(request, runtime)
+
+    async def list_aiagent_phone_number_async(
+        self,
+        request: ice20201109_models.ListAIAgentPhoneNumberRequest,
+    ) -> ice20201109_models.ListAIAgentPhoneNumberResponse:
+        """
+        @summary 罗列用户电话资源接口
+        
+        @param request: ListAIAgentPhoneNumberRequest
+        @return: ListAIAgentPhoneNumberResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_aiagent_phone_number_with_options_async(request, runtime)
 
     def list_ad_insertions_with_options(
         self,
@@ -27365,6 +27485,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.StartAIAgentInstanceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.agent_config):
+            request.agent_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.agent_config, 'AgentConfig', 'json')
         if not UtilClient.is_unset(tmp_req.chat_sync_config):
             request.chat_sync_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.chat_sync_config, 'ChatSyncConfig', 'json')
         if not UtilClient.is_unset(tmp_req.runtime_config):
@@ -27374,6 +27496,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.aiagent_id):
             query['AIAgentId'] = request.aiagent_id
+        if not UtilClient.is_unset(request.agent_config_shrink):
+            query['AgentConfig'] = request.agent_config_shrink
         if not UtilClient.is_unset(request.chat_sync_config_shrink):
             query['ChatSyncConfig'] = request.chat_sync_config_shrink
         if not UtilClient.is_unset(request.runtime_config_shrink):
@@ -27420,6 +27544,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.StartAIAgentInstanceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.agent_config):
+            request.agent_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.agent_config, 'AgentConfig', 'json')
         if not UtilClient.is_unset(tmp_req.chat_sync_config):
             request.chat_sync_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.chat_sync_config, 'ChatSyncConfig', 'json')
         if not UtilClient.is_unset(tmp_req.runtime_config):
@@ -27429,6 +27555,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.aiagent_id):
             query['AIAgentId'] = request.aiagent_id
+        if not UtilClient.is_unset(request.agent_config_shrink):
+            query['AgentConfig'] = request.agent_config_shrink
         if not UtilClient.is_unset(request.chat_sync_config_shrink):
             query['ChatSyncConfig'] = request.chat_sync_config_shrink
         if not UtilClient.is_unset(request.runtime_config_shrink):
@@ -27487,6 +27615,130 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.start_aiagent_instance_with_options_async(request, runtime)
+
+    def start_aiagent_outbound_call_with_options(
+        self,
+        tmp_req: ice20201109_models.StartAIAgentOutboundCallRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.StartAIAgentOutboundCallResponse:
+        """
+        @summary 创建一个智能体实例，返回智能体所在的频道、频道内名称以及进入频道所需的token。
+        
+        @param tmp_req: StartAIAgentOutboundCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartAIAgentOutboundCallResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.StartAIAgentOutboundCallShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.config):
+            request.config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.config, 'Config', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.aiagent_id):
+            query['AIAgentId'] = request.aiagent_id
+        if not UtilClient.is_unset(request.called_number):
+            query['CalledNumber'] = request.called_number
+        if not UtilClient.is_unset(request.caller_number):
+            query['CallerNumber'] = request.caller_number
+        if not UtilClient.is_unset(request.config_shrink):
+            query['Config'] = request.config_shrink
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartAIAgentOutboundCall',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.StartAIAgentOutboundCallResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_aiagent_outbound_call_with_options_async(
+        self,
+        tmp_req: ice20201109_models.StartAIAgentOutboundCallRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.StartAIAgentOutboundCallResponse:
+        """
+        @summary 创建一个智能体实例，返回智能体所在的频道、频道内名称以及进入频道所需的token。
+        
+        @param tmp_req: StartAIAgentOutboundCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartAIAgentOutboundCallResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.StartAIAgentOutboundCallShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.config):
+            request.config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.config, 'Config', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.aiagent_id):
+            query['AIAgentId'] = request.aiagent_id
+        if not UtilClient.is_unset(request.called_number):
+            query['CalledNumber'] = request.called_number
+        if not UtilClient.is_unset(request.caller_number):
+            query['CallerNumber'] = request.caller_number
+        if not UtilClient.is_unset(request.config_shrink):
+            query['Config'] = request.config_shrink
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartAIAgentOutboundCall',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.StartAIAgentOutboundCallResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_aiagent_outbound_call(
+        self,
+        request: ice20201109_models.StartAIAgentOutboundCallRequest,
+    ) -> ice20201109_models.StartAIAgentOutboundCallResponse:
+        """
+        @summary 创建一个智能体实例，返回智能体所在的频道、频道内名称以及进入频道所需的token。
+        
+        @param request: StartAIAgentOutboundCallRequest
+        @return: StartAIAgentOutboundCallResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.start_aiagent_outbound_call_with_options(request, runtime)
+
+    async def start_aiagent_outbound_call_async(
+        self,
+        request: ice20201109_models.StartAIAgentOutboundCallRequest,
+    ) -> ice20201109_models.StartAIAgentOutboundCallResponse:
+        """
+        @summary 创建一个智能体实例，返回智能体所在的频道、频道内名称以及进入频道所需的token。
+        
+        @param request: StartAIAgentOutboundCallRequest
+        @return: StartAIAgentOutboundCallResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.start_aiagent_outbound_call_with_options_async(request, runtime)
 
     def start_channel_with_options(
         self,
@@ -28347,6 +28599,138 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.stop_rtc_robot_instance_with_options_async(request, runtime)
+
+    def submit_aiagent_video_audit_task_with_options(
+        self,
+        tmp_req: ice20201109_models.SubmitAIAgentVideoAuditTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitAIAgentVideoAuditTaskResponse:
+        """
+        @summary 提交视频送审任务
+        
+        @param tmp_req: SubmitAIAgentVideoAuditTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitAIAgentVideoAuditTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.SubmitAIAgentVideoAuditTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.callback_config):
+            request.callback_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.callback_config, 'CallbackConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.capture_policies):
+            request.capture_policies_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.capture_policies, 'CapturePolicies', 'json')
+        if not UtilClient.is_unset(tmp_req.input):
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.aiagent_id):
+            query['AIAgentId'] = request.aiagent_id
+        if not UtilClient.is_unset(request.audit_interval):
+            query['AuditInterval'] = request.audit_interval
+        if not UtilClient.is_unset(request.callback_config_shrink):
+            query['CallbackConfig'] = request.callback_config_shrink
+        if not UtilClient.is_unset(request.capture_policies_shrink):
+            query['CapturePolicies'] = request.capture_policies_shrink
+        if not UtilClient.is_unset(request.input_shrink):
+            query['Input'] = request.input_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitAIAgentVideoAuditTask',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitAIAgentVideoAuditTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_aiagent_video_audit_task_with_options_async(
+        self,
+        tmp_req: ice20201109_models.SubmitAIAgentVideoAuditTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitAIAgentVideoAuditTaskResponse:
+        """
+        @summary 提交视频送审任务
+        
+        @param tmp_req: SubmitAIAgentVideoAuditTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitAIAgentVideoAuditTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.SubmitAIAgentVideoAuditTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.callback_config):
+            request.callback_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.callback_config, 'CallbackConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.capture_policies):
+            request.capture_policies_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.capture_policies, 'CapturePolicies', 'json')
+        if not UtilClient.is_unset(tmp_req.input):
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.aiagent_id):
+            query['AIAgentId'] = request.aiagent_id
+        if not UtilClient.is_unset(request.audit_interval):
+            query['AuditInterval'] = request.audit_interval
+        if not UtilClient.is_unset(request.callback_config_shrink):
+            query['CallbackConfig'] = request.callback_config_shrink
+        if not UtilClient.is_unset(request.capture_policies_shrink):
+            query['CapturePolicies'] = request.capture_policies_shrink
+        if not UtilClient.is_unset(request.input_shrink):
+            query['Input'] = request.input_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitAIAgentVideoAuditTask',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitAIAgentVideoAuditTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_aiagent_video_audit_task(
+        self,
+        request: ice20201109_models.SubmitAIAgentVideoAuditTaskRequest,
+    ) -> ice20201109_models.SubmitAIAgentVideoAuditTaskResponse:
+        """
+        @summary 提交视频送审任务
+        
+        @param request: SubmitAIAgentVideoAuditTaskRequest
+        @return: SubmitAIAgentVideoAuditTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_aiagent_video_audit_task_with_options(request, runtime)
+
+    async def submit_aiagent_video_audit_task_async(
+        self,
+        request: ice20201109_models.SubmitAIAgentVideoAuditTaskRequest,
+    ) -> ice20201109_models.SubmitAIAgentVideoAuditTaskResponse:
+        """
+        @summary 提交视频送审任务
+        
+        @param request: SubmitAIAgentVideoAuditTaskRequest
+        @return: SubmitAIAgentVideoAuditTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_aiagent_video_audit_task_with_options_async(request, runtime)
 
     def submit_asrjob_with_options(
         self,
@@ -33250,9 +33634,13 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.UpdateAIAgentInstanceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.agent_config):
+            request.agent_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.agent_config, 'AgentConfig', 'json')
         if not UtilClient.is_unset(tmp_req.template_config):
             request.template_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.template_config, 'TemplateConfig', 'json')
         query = {}
+        if not UtilClient.is_unset(request.agent_config_shrink):
+            query['AgentConfig'] = request.agent_config_shrink
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.template_config_shrink):
@@ -33296,9 +33684,13 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.UpdateAIAgentInstanceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.agent_config):
+            request.agent_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.agent_config, 'AgentConfig', 'json')
         if not UtilClient.is_unset(tmp_req.template_config):
             request.template_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.template_config, 'TemplateConfig', 'json')
         query = {}
+        if not UtilClient.is_unset(request.agent_config_shrink):
+            query['AgentConfig'] = request.agent_config_shrink
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.template_config_shrink):
@@ -34518,7 +34910,7 @@ class Client(OpenApiClient):
 
     def update_live_package_origin_endpoint_with_options(
         self,
-        request: ice20201109_models.UpdateLivePackageOriginEndpointRequest,
+        tmp_req: ice20201109_models.UpdateLivePackageOriginEndpointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateLivePackageOriginEndpointResponse:
         """
@@ -34527,11 +34919,15 @@ class Client(OpenApiClient):
         @description ## [](#)Usage notes
         You can call this operation to modify the origin protocol, set the number of days that time-shifted content is available, define playlist names, and configure the IP address blacklist and whitelist, allowing for fine-grained control over streaming media distribution. Some parameters are required. You must configure IpWhitelist, AuthorizationCode, or both.
         
-        @param request: UpdateLivePackageOriginEndpointRequest
+        @param tmp_req: UpdateLivePackageOriginEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateLivePackageOriginEndpointResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.UpdateLivePackageOriginEndpointShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.live_packaging_config):
+            request.live_packaging_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.live_packaging_config, 'LivePackagingConfig', 'json')
         body = {}
         if not UtilClient.is_unset(request.authorization_code):
             body['AuthorizationCode'] = request.authorization_code
@@ -34547,6 +34943,8 @@ class Client(OpenApiClient):
             body['IpBlacklist'] = request.ip_blacklist
         if not UtilClient.is_unset(request.ip_whitelist):
             body['IpWhitelist'] = request.ip_whitelist
+        if not UtilClient.is_unset(request.live_packaging_config_shrink):
+            body['LivePackagingConfig'] = request.live_packaging_config_shrink
         if not UtilClient.is_unset(request.manifest_name):
             body['ManifestName'] = request.manifest_name
         if not UtilClient.is_unset(request.protocol):
@@ -34574,7 +34972,7 @@ class Client(OpenApiClient):
 
     async def update_live_package_origin_endpoint_with_options_async(
         self,
-        request: ice20201109_models.UpdateLivePackageOriginEndpointRequest,
+        tmp_req: ice20201109_models.UpdateLivePackageOriginEndpointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateLivePackageOriginEndpointResponse:
         """
@@ -34583,11 +34981,15 @@ class Client(OpenApiClient):
         @description ## [](#)Usage notes
         You can call this operation to modify the origin protocol, set the number of days that time-shifted content is available, define playlist names, and configure the IP address blacklist and whitelist, allowing for fine-grained control over streaming media distribution. Some parameters are required. You must configure IpWhitelist, AuthorizationCode, or both.
         
-        @param request: UpdateLivePackageOriginEndpointRequest
+        @param tmp_req: UpdateLivePackageOriginEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateLivePackageOriginEndpointResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.UpdateLivePackageOriginEndpointShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.live_packaging_config):
+            request.live_packaging_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.live_packaging_config, 'LivePackagingConfig', 'json')
         body = {}
         if not UtilClient.is_unset(request.authorization_code):
             body['AuthorizationCode'] = request.authorization_code
@@ -34603,6 +35005,8 @@ class Client(OpenApiClient):
             body['IpBlacklist'] = request.ip_blacklist
         if not UtilClient.is_unset(request.ip_whitelist):
             body['IpWhitelist'] = request.ip_whitelist
+        if not UtilClient.is_unset(request.live_packaging_config_shrink):
+            body['LivePackagingConfig'] = request.live_packaging_config_shrink
         if not UtilClient.is_unset(request.manifest_name):
             body['ManifestName'] = request.manifest_name
         if not UtilClient.is_unset(request.protocol):

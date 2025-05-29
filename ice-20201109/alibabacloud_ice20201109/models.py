@@ -4,6 +4,752 @@ from Tea.model import TeaModel
 from typing import List, Any, Dict
 
 
+class AIAgentConfigAsrConfig(TeaModel):
+    def __init__(
+        self,
+        asr_hot_words: List[str] = None,
+        asr_language_id: str = None,
+        asr_max_silence: int = None,
+        vad_level: int = None,
+    ):
+        self.asr_hot_words = asr_hot_words
+        self.asr_language_id = asr_language_id
+        self.asr_max_silence = asr_max_silence
+        self.vad_level = vad_level
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asr_hot_words is not None:
+            result['AsrHotWords'] = self.asr_hot_words
+        if self.asr_language_id is not None:
+            result['AsrLanguageId'] = self.asr_language_id
+        if self.asr_max_silence is not None:
+            result['AsrMaxSilence'] = self.asr_max_silence
+        if self.vad_level is not None:
+            result['VadLevel'] = self.vad_level
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AsrHotWords') is not None:
+            self.asr_hot_words = m.get('AsrHotWords')
+        if m.get('AsrLanguageId') is not None:
+            self.asr_language_id = m.get('AsrLanguageId')
+        if m.get('AsrMaxSilence') is not None:
+            self.asr_max_silence = m.get('AsrMaxSilence')
+        if m.get('VadLevel') is not None:
+            self.vad_level = m.get('VadLevel')
+        return self
+
+
+class AIAgentConfigAvatarConfig(TeaModel):
+    def __init__(
+        self,
+        avatar_id: str = None,
+    ):
+        self.avatar_id = avatar_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avatar_id is not None:
+            result['AvatarId'] = self.avatar_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AvatarId') is not None:
+            self.avatar_id = m.get('AvatarId')
+        return self
+
+
+class AIAgentConfigInterruptConfig(TeaModel):
+    def __init__(
+        self,
+        enable_voice_interrupt: bool = None,
+        interrupt_words: List[str] = None,
+    ):
+        self.enable_voice_interrupt = enable_voice_interrupt
+        self.interrupt_words = interrupt_words
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_voice_interrupt is not None:
+            result['EnableVoiceInterrupt'] = self.enable_voice_interrupt
+        if self.interrupt_words is not None:
+            result['InterruptWords'] = self.interrupt_words
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableVoiceInterrupt') is not None:
+            self.enable_voice_interrupt = m.get('EnableVoiceInterrupt')
+        if m.get('InterruptWords') is not None:
+            self.interrupt_words = m.get('InterruptWords')
+        return self
+
+
+class AIAgentConfigLlmConfigLlmHistory(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        role: str = None,
+    ):
+        self.content = content
+        self.role = role
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.role is not None:
+            result['Role'] = self.role
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
+        return self
+
+
+class AIAgentConfigLlmConfig(TeaModel):
+    def __init__(
+        self,
+        bailian_app_params: str = None,
+        llm_history: List[AIAgentConfigLlmConfigLlmHistory] = None,
+        llm_history_limit: int = None,
+        llm_system_prompt: str = None,
+    ):
+        self.bailian_app_params = bailian_app_params
+        self.llm_history = llm_history
+        self.llm_history_limit = llm_history_limit
+        self.llm_system_prompt = llm_system_prompt
+
+    def validate(self):
+        if self.llm_history:
+            for k in self.llm_history:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bailian_app_params is not None:
+            result['BailianAppParams'] = self.bailian_app_params
+        result['LlmHistory'] = []
+        if self.llm_history is not None:
+            for k in self.llm_history:
+                result['LlmHistory'].append(k.to_map() if k else None)
+        if self.llm_history_limit is not None:
+            result['LlmHistoryLimit'] = self.llm_history_limit
+        if self.llm_system_prompt is not None:
+            result['LlmSystemPrompt'] = self.llm_system_prompt
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BailianAppParams') is not None:
+            self.bailian_app_params = m.get('BailianAppParams')
+        self.llm_history = []
+        if m.get('LlmHistory') is not None:
+            for k in m.get('LlmHistory'):
+                temp_model = AIAgentConfigLlmConfigLlmHistory()
+                self.llm_history.append(temp_model.from_map(k))
+        if m.get('LlmHistoryLimit') is not None:
+            self.llm_history_limit = m.get('LlmHistoryLimit')
+        if m.get('LlmSystemPrompt') is not None:
+            self.llm_system_prompt = m.get('LlmSystemPrompt')
+        return self
+
+
+class AIAgentConfigTtsConfig(TeaModel):
+    def __init__(
+        self,
+        voice_id: str = None,
+        voice_id_list: List[str] = None,
+    ):
+        self.voice_id = voice_id
+        self.voice_id_list = voice_id_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.voice_id is not None:
+            result['VoiceId'] = self.voice_id
+        if self.voice_id_list is not None:
+            result['VoiceIdList'] = self.voice_id_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VoiceId') is not None:
+            self.voice_id = m.get('VoiceId')
+        if m.get('VoiceIdList') is not None:
+            self.voice_id_list = m.get('VoiceIdList')
+        return self
+
+
+class AIAgentConfigTurnDetectionConfig(TeaModel):
+    def __init__(
+        self,
+        turn_end_words: List[str] = None,
+    ):
+        self.turn_end_words = turn_end_words
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.turn_end_words is not None:
+            result['TurnEndWords'] = self.turn_end_words
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TurnEndWords') is not None:
+            self.turn_end_words = m.get('TurnEndWords')
+        return self
+
+
+class AIAgentConfigVoiceprintConfig(TeaModel):
+    def __init__(
+        self,
+        use_voiceprint: bool = None,
+        voiceprint_id: str = None,
+    ):
+        self.use_voiceprint = use_voiceprint
+        self.voiceprint_id = voiceprint_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.use_voiceprint is not None:
+            result['UseVoiceprint'] = self.use_voiceprint
+        if self.voiceprint_id is not None:
+            result['VoiceprintId'] = self.voiceprint_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UseVoiceprint') is not None:
+            self.use_voiceprint = m.get('UseVoiceprint')
+        if m.get('VoiceprintId') is not None:
+            self.voiceprint_id = m.get('VoiceprintId')
+        return self
+
+
+class AIAgentConfig(TeaModel):
+    def __init__(
+        self,
+        asr_config: AIAgentConfigAsrConfig = None,
+        avatar_config: AIAgentConfigAvatarConfig = None,
+        avatar_url: str = None,
+        avatar_url_type: str = None,
+        enable_intelligent_segment: bool = None,
+        enable_push_to_talk: bool = None,
+        experimental_config: str = None,
+        graceful_shutdown: bool = None,
+        greeting: str = None,
+        interrupt_config: AIAgentConfigInterruptConfig = None,
+        llm_config: AIAgentConfigLlmConfig = None,
+        max_idle_time: int = None,
+        tts_config: AIAgentConfigTtsConfig = None,
+        turn_detection_config: AIAgentConfigTurnDetectionConfig = None,
+        user_offline_timeout: int = None,
+        user_online_timeout: int = None,
+        voiceprint_config: AIAgentConfigVoiceprintConfig = None,
+        volume: int = None,
+        wake_up_query: str = None,
+        workflow_override_params: str = None,
+    ):
+        self.asr_config = asr_config
+        self.avatar_config = avatar_config
+        self.avatar_url = avatar_url
+        self.avatar_url_type = avatar_url_type
+        self.enable_intelligent_segment = enable_intelligent_segment
+        self.enable_push_to_talk = enable_push_to_talk
+        self.experimental_config = experimental_config
+        self.graceful_shutdown = graceful_shutdown
+        self.greeting = greeting
+        self.interrupt_config = interrupt_config
+        self.llm_config = llm_config
+        self.max_idle_time = max_idle_time
+        self.tts_config = tts_config
+        self.turn_detection_config = turn_detection_config
+        self.user_offline_timeout = user_offline_timeout
+        self.user_online_timeout = user_online_timeout
+        self.voiceprint_config = voiceprint_config
+        self.volume = volume
+        self.wake_up_query = wake_up_query
+        self.workflow_override_params = workflow_override_params
+
+    def validate(self):
+        if self.asr_config:
+            self.asr_config.validate()
+        if self.avatar_config:
+            self.avatar_config.validate()
+        if self.interrupt_config:
+            self.interrupt_config.validate()
+        if self.llm_config:
+            self.llm_config.validate()
+        if self.tts_config:
+            self.tts_config.validate()
+        if self.turn_detection_config:
+            self.turn_detection_config.validate()
+        if self.voiceprint_config:
+            self.voiceprint_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asr_config is not None:
+            result['AsrConfig'] = self.asr_config.to_map()
+        if self.avatar_config is not None:
+            result['AvatarConfig'] = self.avatar_config.to_map()
+        if self.avatar_url is not None:
+            result['AvatarUrl'] = self.avatar_url
+        if self.avatar_url_type is not None:
+            result['AvatarUrlType'] = self.avatar_url_type
+        if self.enable_intelligent_segment is not None:
+            result['EnableIntelligentSegment'] = self.enable_intelligent_segment
+        if self.enable_push_to_talk is not None:
+            result['EnablePushToTalk'] = self.enable_push_to_talk
+        if self.experimental_config is not None:
+            result['ExperimentalConfig'] = self.experimental_config
+        if self.graceful_shutdown is not None:
+            result['GracefulShutdown'] = self.graceful_shutdown
+        if self.greeting is not None:
+            result['Greeting'] = self.greeting
+        if self.interrupt_config is not None:
+            result['InterruptConfig'] = self.interrupt_config.to_map()
+        if self.llm_config is not None:
+            result['LlmConfig'] = self.llm_config.to_map()
+        if self.max_idle_time is not None:
+            result['MaxIdleTime'] = self.max_idle_time
+        if self.tts_config is not None:
+            result['TtsConfig'] = self.tts_config.to_map()
+        if self.turn_detection_config is not None:
+            result['TurnDetectionConfig'] = self.turn_detection_config.to_map()
+        if self.user_offline_timeout is not None:
+            result['UserOfflineTimeout'] = self.user_offline_timeout
+        if self.user_online_timeout is not None:
+            result['UserOnlineTimeout'] = self.user_online_timeout
+        if self.voiceprint_config is not None:
+            result['VoiceprintConfig'] = self.voiceprint_config.to_map()
+        if self.volume is not None:
+            result['Volume'] = self.volume
+        if self.wake_up_query is not None:
+            result['WakeUpQuery'] = self.wake_up_query
+        if self.workflow_override_params is not None:
+            result['WorkflowOverrideParams'] = self.workflow_override_params
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AsrConfig') is not None:
+            temp_model = AIAgentConfigAsrConfig()
+            self.asr_config = temp_model.from_map(m['AsrConfig'])
+        if m.get('AvatarConfig') is not None:
+            temp_model = AIAgentConfigAvatarConfig()
+            self.avatar_config = temp_model.from_map(m['AvatarConfig'])
+        if m.get('AvatarUrl') is not None:
+            self.avatar_url = m.get('AvatarUrl')
+        if m.get('AvatarUrlType') is not None:
+            self.avatar_url_type = m.get('AvatarUrlType')
+        if m.get('EnableIntelligentSegment') is not None:
+            self.enable_intelligent_segment = m.get('EnableIntelligentSegment')
+        if m.get('EnablePushToTalk') is not None:
+            self.enable_push_to_talk = m.get('EnablePushToTalk')
+        if m.get('ExperimentalConfig') is not None:
+            self.experimental_config = m.get('ExperimentalConfig')
+        if m.get('GracefulShutdown') is not None:
+            self.graceful_shutdown = m.get('GracefulShutdown')
+        if m.get('Greeting') is not None:
+            self.greeting = m.get('Greeting')
+        if m.get('InterruptConfig') is not None:
+            temp_model = AIAgentConfigInterruptConfig()
+            self.interrupt_config = temp_model.from_map(m['InterruptConfig'])
+        if m.get('LlmConfig') is not None:
+            temp_model = AIAgentConfigLlmConfig()
+            self.llm_config = temp_model.from_map(m['LlmConfig'])
+        if m.get('MaxIdleTime') is not None:
+            self.max_idle_time = m.get('MaxIdleTime')
+        if m.get('TtsConfig') is not None:
+            temp_model = AIAgentConfigTtsConfig()
+            self.tts_config = temp_model.from_map(m['TtsConfig'])
+        if m.get('TurnDetectionConfig') is not None:
+            temp_model = AIAgentConfigTurnDetectionConfig()
+            self.turn_detection_config = temp_model.from_map(m['TurnDetectionConfig'])
+        if m.get('UserOfflineTimeout') is not None:
+            self.user_offline_timeout = m.get('UserOfflineTimeout')
+        if m.get('UserOnlineTimeout') is not None:
+            self.user_online_timeout = m.get('UserOnlineTimeout')
+        if m.get('VoiceprintConfig') is not None:
+            temp_model = AIAgentConfigVoiceprintConfig()
+            self.voiceprint_config = temp_model.from_map(m['VoiceprintConfig'])
+        if m.get('Volume') is not None:
+            self.volume = m.get('Volume')
+        if m.get('WakeUpQuery') is not None:
+            self.wake_up_query = m.get('WakeUpQuery')
+        if m.get('WorkflowOverrideParams') is not None:
+            self.workflow_override_params = m.get('WorkflowOverrideParams')
+        return self
+
+
+class AIAgentOutboundCallConfigAsrConfig(TeaModel):
+    def __init__(
+        self,
+        asr_hot_words: List[str] = None,
+        asr_language_id: str = None,
+        asr_max_silence: int = None,
+        vad_level: int = None,
+    ):
+        self.asr_hot_words = asr_hot_words
+        self.asr_language_id = asr_language_id
+        self.asr_max_silence = asr_max_silence
+        self.vad_level = vad_level
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asr_hot_words is not None:
+            result['AsrHotWords'] = self.asr_hot_words
+        if self.asr_language_id is not None:
+            result['AsrLanguageId'] = self.asr_language_id
+        if self.asr_max_silence is not None:
+            result['AsrMaxSilence'] = self.asr_max_silence
+        if self.vad_level is not None:
+            result['VadLevel'] = self.vad_level
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AsrHotWords') is not None:
+            self.asr_hot_words = m.get('AsrHotWords')
+        if m.get('AsrLanguageId') is not None:
+            self.asr_language_id = m.get('AsrLanguageId')
+        if m.get('AsrMaxSilence') is not None:
+            self.asr_max_silence = m.get('AsrMaxSilence')
+        if m.get('VadLevel') is not None:
+            self.vad_level = m.get('VadLevel')
+        return self
+
+
+class AIAgentOutboundCallConfigInterruptConfig(TeaModel):
+    def __init__(
+        self,
+        enable_voice_interrupt: bool = None,
+        interrupt_words: List[str] = None,
+    ):
+        self.enable_voice_interrupt = enable_voice_interrupt
+        self.interrupt_words = interrupt_words
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_voice_interrupt is not None:
+            result['EnableVoiceInterrupt'] = self.enable_voice_interrupt
+        if self.interrupt_words is not None:
+            result['InterruptWords'] = self.interrupt_words
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableVoiceInterrupt') is not None:
+            self.enable_voice_interrupt = m.get('EnableVoiceInterrupt')
+        if m.get('InterruptWords') is not None:
+            self.interrupt_words = m.get('InterruptWords')
+        return self
+
+
+class AIAgentOutboundCallConfigLlmConfigLlmHistory(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        role: str = None,
+    ):
+        self.content = content
+        self.role = role
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.role is not None:
+            result['Role'] = self.role
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
+        return self
+
+
+class AIAgentOutboundCallConfigLlmConfig(TeaModel):
+    def __init__(
+        self,
+        bailian_app_params: str = None,
+        llm_history: List[AIAgentOutboundCallConfigLlmConfigLlmHistory] = None,
+        llm_history_limit: int = None,
+        llm_system_prompt: str = None,
+    ):
+        self.bailian_app_params = bailian_app_params
+        self.llm_history = llm_history
+        self.llm_history_limit = llm_history_limit
+        self.llm_system_prompt = llm_system_prompt
+
+    def validate(self):
+        if self.llm_history:
+            for k in self.llm_history:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bailian_app_params is not None:
+            result['BailianAppParams'] = self.bailian_app_params
+        result['LlmHistory'] = []
+        if self.llm_history is not None:
+            for k in self.llm_history:
+                result['LlmHistory'].append(k.to_map() if k else None)
+        if self.llm_history_limit is not None:
+            result['LlmHistoryLimit'] = self.llm_history_limit
+        if self.llm_system_prompt is not None:
+            result['LlmSystemPrompt'] = self.llm_system_prompt
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BailianAppParams') is not None:
+            self.bailian_app_params = m.get('BailianAppParams')
+        self.llm_history = []
+        if m.get('LlmHistory') is not None:
+            for k in m.get('LlmHistory'):
+                temp_model = AIAgentOutboundCallConfigLlmConfigLlmHistory()
+                self.llm_history.append(temp_model.from_map(k))
+        if m.get('LlmHistoryLimit') is not None:
+            self.llm_history_limit = m.get('LlmHistoryLimit')
+        if m.get('LlmSystemPrompt') is not None:
+            self.llm_system_prompt = m.get('LlmSystemPrompt')
+        return self
+
+
+class AIAgentOutboundCallConfigTtsConfig(TeaModel):
+    def __init__(
+        self,
+        voice_id: str = None,
+        voice_id_list: List[str] = None,
+    ):
+        self.voice_id = voice_id
+        self.voice_id_list = voice_id_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.voice_id is not None:
+            result['VoiceId'] = self.voice_id
+        if self.voice_id_list is not None:
+            result['VoiceIdList'] = self.voice_id_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VoiceId') is not None:
+            self.voice_id = m.get('VoiceId')
+        if m.get('VoiceIdList') is not None:
+            self.voice_id_list = m.get('VoiceIdList')
+        return self
+
+
+class AIAgentOutboundCallConfigTurnDetectionConfig(TeaModel):
+    def __init__(
+        self,
+        turn_end_words: List[str] = None,
+    ):
+        self.turn_end_words = turn_end_words
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.turn_end_words is not None:
+            result['TurnEndWords'] = self.turn_end_words
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TurnEndWords') is not None:
+            self.turn_end_words = m.get('TurnEndWords')
+        return self
+
+
+class AIAgentOutboundCallConfig(TeaModel):
+    def __init__(
+        self,
+        asr_config: AIAgentOutboundCallConfigAsrConfig = None,
+        enable_intelligent_segment: bool = None,
+        greeting: str = None,
+        interrupt_config: AIAgentOutboundCallConfigInterruptConfig = None,
+        llm_config: AIAgentOutboundCallConfigLlmConfig = None,
+        tts_config: AIAgentOutboundCallConfigTtsConfig = None,
+        turn_detection_config: AIAgentOutboundCallConfigTurnDetectionConfig = None,
+    ):
+        self.asr_config = asr_config
+        self.enable_intelligent_segment = enable_intelligent_segment
+        self.greeting = greeting
+        self.interrupt_config = interrupt_config
+        self.llm_config = llm_config
+        self.tts_config = tts_config
+        self.turn_detection_config = turn_detection_config
+
+    def validate(self):
+        if self.asr_config:
+            self.asr_config.validate()
+        if self.interrupt_config:
+            self.interrupt_config.validate()
+        if self.llm_config:
+            self.llm_config.validate()
+        if self.tts_config:
+            self.tts_config.validate()
+        if self.turn_detection_config:
+            self.turn_detection_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asr_config is not None:
+            result['AsrConfig'] = self.asr_config.to_map()
+        if self.enable_intelligent_segment is not None:
+            result['EnableIntelligentSegment'] = self.enable_intelligent_segment
+        if self.greeting is not None:
+            result['Greeting'] = self.greeting
+        if self.interrupt_config is not None:
+            result['InterruptConfig'] = self.interrupt_config.to_map()
+        if self.llm_config is not None:
+            result['LlmConfig'] = self.llm_config.to_map()
+        if self.tts_config is not None:
+            result['TtsConfig'] = self.tts_config.to_map()
+        if self.turn_detection_config is not None:
+            result['TurnDetectionConfig'] = self.turn_detection_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AsrConfig') is not None:
+            temp_model = AIAgentOutboundCallConfigAsrConfig()
+            self.asr_config = temp_model.from_map(m['AsrConfig'])
+        if m.get('EnableIntelligentSegment') is not None:
+            self.enable_intelligent_segment = m.get('EnableIntelligentSegment')
+        if m.get('Greeting') is not None:
+            self.greeting = m.get('Greeting')
+        if m.get('InterruptConfig') is not None:
+            temp_model = AIAgentOutboundCallConfigInterruptConfig()
+            self.interrupt_config = temp_model.from_map(m['InterruptConfig'])
+        if m.get('LlmConfig') is not None:
+            temp_model = AIAgentOutboundCallConfigLlmConfig()
+            self.llm_config = temp_model.from_map(m['LlmConfig'])
+        if m.get('TtsConfig') is not None:
+            temp_model = AIAgentOutboundCallConfigTtsConfig()
+            self.tts_config = temp_model.from_map(m['TtsConfig'])
+        if m.get('TurnDetectionConfig') is not None:
+            temp_model = AIAgentOutboundCallConfigTurnDetectionConfig()
+            self.turn_detection_config = temp_model.from_map(m['TurnDetectionConfig'])
+        return self
+
+
 class AIAgentRuntimeConfigAvatarChat3D(TeaModel):
     def __init__(
         self,
@@ -124,11 +870,17 @@ class AIAgentRuntimeConfigVoiceChat(TeaModel):
 class AIAgentRuntimeConfig(TeaModel):
     def __init__(
         self,
+        agent_user_id: str = None,
+        auth_token: str = None,
         avatar_chat_3d: AIAgentRuntimeConfigAvatarChat3D = None,
+        channel_id: str = None,
         vision_chat: AIAgentRuntimeConfigVisionChat = None,
         voice_chat: AIAgentRuntimeConfigVoiceChat = None,
     ):
+        self.agent_user_id = agent_user_id
+        self.auth_token = auth_token
         self.avatar_chat_3d = avatar_chat_3d
+        self.channel_id = channel_id
         self.vision_chat = vision_chat
         self.voice_chat = voice_chat
 
@@ -146,8 +898,14 @@ class AIAgentRuntimeConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_user_id is not None:
+            result['AgentUserId'] = self.agent_user_id
+        if self.auth_token is not None:
+            result['AuthToken'] = self.auth_token
         if self.avatar_chat_3d is not None:
             result['AvatarChat3D'] = self.avatar_chat_3d.to_map()
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
         if self.vision_chat is not None:
             result['VisionChat'] = self.vision_chat.to_map()
         if self.voice_chat is not None:
@@ -156,9 +914,15 @@ class AIAgentRuntimeConfig(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentUserId') is not None:
+            self.agent_user_id = m.get('AgentUserId')
+        if m.get('AuthToken') is not None:
+            self.auth_token = m.get('AuthToken')
         if m.get('AvatarChat3D') is not None:
             temp_model = AIAgentRuntimeConfigAvatarChat3D()
             self.avatar_chat_3d = temp_model.from_map(m['AvatarChat3D'])
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
         if m.get('VisionChat') is not None:
             temp_model = AIAgentRuntimeConfigVisionChat()
             self.vision_chat = temp_model.from_map(m['VisionChat'])
@@ -204,10 +968,12 @@ class AIAgentTemplateConfigAvatarChat3DLlmHistory(TeaModel):
 class AIAgentTemplateConfigAvatarChat3D(TeaModel):
     def __init__(
         self,
+        asr_hot_words: List[str] = None,
         asr_language_id: str = None,
         asr_max_silence: int = None,
         avatar_id: str = None,
         bailian_app_params: str = None,
+        char_break: bool = None,
         enable_intelligent_segment: bool = None,
         enable_push_to_talk: bool = None,
         enable_voice_interrupt: bool = None,
@@ -229,10 +995,12 @@ class AIAgentTemplateConfigAvatarChat3D(TeaModel):
         wake_up_query: str = None,
         workflow_override_params: str = None,
     ):
+        self.asr_hot_words = asr_hot_words
         self.asr_language_id = asr_language_id
         self.asr_max_silence = asr_max_silence
         self.avatar_id = avatar_id
         self.bailian_app_params = bailian_app_params
+        self.char_break = char_break
         self.enable_intelligent_segment = enable_intelligent_segment
         self.enable_push_to_talk = enable_push_to_talk
         self.enable_voice_interrupt = enable_voice_interrupt
@@ -266,6 +1034,8 @@ class AIAgentTemplateConfigAvatarChat3D(TeaModel):
             return _map
 
         result = dict()
+        if self.asr_hot_words is not None:
+            result['AsrHotWords'] = self.asr_hot_words
         if self.asr_language_id is not None:
             result['AsrLanguageId'] = self.asr_language_id
         if self.asr_max_silence is not None:
@@ -274,6 +1044,8 @@ class AIAgentTemplateConfigAvatarChat3D(TeaModel):
             result['AvatarId'] = self.avatar_id
         if self.bailian_app_params is not None:
             result['BailianAppParams'] = self.bailian_app_params
+        if self.char_break is not None:
+            result['CharBreak'] = self.char_break
         if self.enable_intelligent_segment is not None:
             result['EnableIntelligentSegment'] = self.enable_intelligent_segment
         if self.enable_push_to_talk is not None:
@@ -320,6 +1092,8 @@ class AIAgentTemplateConfigAvatarChat3D(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AsrHotWords') is not None:
+            self.asr_hot_words = m.get('AsrHotWords')
         if m.get('AsrLanguageId') is not None:
             self.asr_language_id = m.get('AsrLanguageId')
         if m.get('AsrMaxSilence') is not None:
@@ -328,6 +1102,8 @@ class AIAgentTemplateConfigAvatarChat3D(TeaModel):
             self.avatar_id = m.get('AvatarId')
         if m.get('BailianAppParams') is not None:
             self.bailian_app_params = m.get('BailianAppParams')
+        if m.get('CharBreak') is not None:
+            self.char_break = m.get('CharBreak')
         if m.get('EnableIntelligentSegment') is not None:
             self.enable_intelligent_segment = m.get('EnableIntelligentSegment')
         if m.get('EnablePushToTalk') is not None:
@@ -410,9 +1186,11 @@ class AIAgentTemplateConfigVisionChatLlmHistory(TeaModel):
 class AIAgentTemplateConfigVisionChat(TeaModel):
     def __init__(
         self,
+        asr_hot_words: List[str] = None,
         asr_language_id: str = None,
         asr_max_silence: int = None,
         bailian_app_params: str = None,
+        char_break: bool = None,
         enable_intelligent_segment: bool = None,
         enable_push_to_talk: bool = None,
         enable_voice_interrupt: bool = None,
@@ -434,9 +1212,11 @@ class AIAgentTemplateConfigVisionChat(TeaModel):
         wake_up_query: str = None,
         workflow_override_params: str = None,
     ):
+        self.asr_hot_words = asr_hot_words
         self.asr_language_id = asr_language_id
         self.asr_max_silence = asr_max_silence
         self.bailian_app_params = bailian_app_params
+        self.char_break = char_break
         self.enable_intelligent_segment = enable_intelligent_segment
         self.enable_push_to_talk = enable_push_to_talk
         self.enable_voice_interrupt = enable_voice_interrupt
@@ -470,12 +1250,16 @@ class AIAgentTemplateConfigVisionChat(TeaModel):
             return _map
 
         result = dict()
+        if self.asr_hot_words is not None:
+            result['AsrHotWords'] = self.asr_hot_words
         if self.asr_language_id is not None:
             result['AsrLanguageId'] = self.asr_language_id
         if self.asr_max_silence is not None:
             result['AsrMaxSilence'] = self.asr_max_silence
         if self.bailian_app_params is not None:
             result['BailianAppParams'] = self.bailian_app_params
+        if self.char_break is not None:
+            result['CharBreak'] = self.char_break
         if self.enable_intelligent_segment is not None:
             result['EnableIntelligentSegment'] = self.enable_intelligent_segment
         if self.enable_push_to_talk is not None:
@@ -522,12 +1306,16 @@ class AIAgentTemplateConfigVisionChat(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AsrHotWords') is not None:
+            self.asr_hot_words = m.get('AsrHotWords')
         if m.get('AsrLanguageId') is not None:
             self.asr_language_id = m.get('AsrLanguageId')
         if m.get('AsrMaxSilence') is not None:
             self.asr_max_silence = m.get('AsrMaxSilence')
         if m.get('BailianAppParams') is not None:
             self.bailian_app_params = m.get('BailianAppParams')
+        if m.get('CharBreak') is not None:
+            self.char_break = m.get('CharBreak')
         if m.get('EnableIntelligentSegment') is not None:
             self.enable_intelligent_segment = m.get('EnableIntelligentSegment')
         if m.get('EnablePushToTalk') is not None:
@@ -610,11 +1398,13 @@ class AIAgentTemplateConfigVoiceChatLlmHistory(TeaModel):
 class AIAgentTemplateConfigVoiceChat(TeaModel):
     def __init__(
         self,
+        asr_hot_words: List[str] = None,
         asr_language_id: str = None,
         asr_max_silence: int = None,
         avatar_url: str = None,
         avatar_url_type: str = None,
         bailian_app_params: str = None,
+        char_break: bool = None,
         enable_intelligent_segment: bool = None,
         enable_push_to_talk: bool = None,
         enable_voice_interrupt: bool = None,
@@ -636,11 +1426,13 @@ class AIAgentTemplateConfigVoiceChat(TeaModel):
         wake_up_query: str = None,
         workflow_override_params: str = None,
     ):
+        self.asr_hot_words = asr_hot_words
         self.asr_language_id = asr_language_id
         self.asr_max_silence = asr_max_silence
         self.avatar_url = avatar_url
         self.avatar_url_type = avatar_url_type
         self.bailian_app_params = bailian_app_params
+        self.char_break = char_break
         self.enable_intelligent_segment = enable_intelligent_segment
         self.enable_push_to_talk = enable_push_to_talk
         self.enable_voice_interrupt = enable_voice_interrupt
@@ -674,6 +1466,8 @@ class AIAgentTemplateConfigVoiceChat(TeaModel):
             return _map
 
         result = dict()
+        if self.asr_hot_words is not None:
+            result['AsrHotWords'] = self.asr_hot_words
         if self.asr_language_id is not None:
             result['AsrLanguageId'] = self.asr_language_id
         if self.asr_max_silence is not None:
@@ -684,6 +1478,8 @@ class AIAgentTemplateConfigVoiceChat(TeaModel):
             result['AvatarUrlType'] = self.avatar_url_type
         if self.bailian_app_params is not None:
             result['BailianAppParams'] = self.bailian_app_params
+        if self.char_break is not None:
+            result['CharBreak'] = self.char_break
         if self.enable_intelligent_segment is not None:
             result['EnableIntelligentSegment'] = self.enable_intelligent_segment
         if self.enable_push_to_talk is not None:
@@ -730,6 +1526,8 @@ class AIAgentTemplateConfigVoiceChat(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AsrHotWords') is not None:
+            self.asr_hot_words = m.get('AsrHotWords')
         if m.get('AsrLanguageId') is not None:
             self.asr_language_id = m.get('AsrLanguageId')
         if m.get('AsrMaxSilence') is not None:
@@ -740,6 +1538,8 @@ class AIAgentTemplateConfigVoiceChat(TeaModel):
             self.avatar_url_type = m.get('AvatarUrlType')
         if m.get('BailianAppParams') is not None:
             self.bailian_app_params = m.get('BailianAppParams')
+        if m.get('CharBreak') is not None:
+            self.char_break = m.get('CharBreak')
         if m.get('EnableIntelligentSegment') is not None:
             self.enable_intelligent_segment = m.get('EnableIntelligentSegment')
         if m.get('EnablePushToTalk') is not None:
@@ -3730,8 +4530,11 @@ class AddAdInsertionResponseBodyConfigCdnConfig(TeaModel):
 class AddAdInsertionResponseBodyConfigManifestEndpointConfig(TeaModel):
     def __init__(
         self,
+        dash_prefix: str = None,
         hls_prefix: str = None,
     ):
+        # DASH清单播放端点前缀
+        self.dash_prefix = dash_prefix
         # The prefix of the playback endpoint for HLS manifests.
         self.hls_prefix = hls_prefix
 
@@ -3744,12 +4547,16 @@ class AddAdInsertionResponseBodyConfigManifestEndpointConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.dash_prefix is not None:
+            result['DashPrefix'] = self.dash_prefix
         if self.hls_prefix is not None:
             result['HlsPrefix'] = self.hls_prefix
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DashPrefix') is not None:
+            self.dash_prefix = m.get('DashPrefix')
         if m.get('HlsPrefix') is not None:
             self.hls_prefix = m.get('HlsPrefix')
         return self
@@ -8786,6 +9593,7 @@ class CreateLivePackageOriginEndpointRequest(TeaModel):
         group_name: str = None,
         ip_blacklist: str = None,
         ip_whitelist: str = None,
+        live_packaging_config: LivePackagingConfig = None,
         manifest_name: str = None,
         protocol: str = None,
         timeshift_vision: int = None,
@@ -8812,6 +9620,121 @@ class CreateLivePackageOriginEndpointRequest(TeaModel):
         self.ip_blacklist = ip_blacklist
         # The IP address whitelist. It supports subnet masks. 0.0.0.0/0 is not allowed. It can be up to 1,000 characters in length. Separate multiple IP addresses with commas (,). You must configure AuthorizationCode, IpWhitelist, or both.
         self.ip_whitelist = ip_whitelist
+        self.live_packaging_config = live_packaging_config
+        # The playlist name. Default value: manifest.
+        self.manifest_name = manifest_name
+        # The distribution protocol.
+        # 
+        # This parameter is required.
+        self.protocol = protocol
+        # The number of days that time-shifted content is available. Maximum value: 30. Default value: 0, which indicates that time shifting is not supported.
+        self.timeshift_vision = timeshift_vision
+
+    def validate(self):
+        if self.live_packaging_config:
+            self.live_packaging_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authorization_code is not None:
+            result['AuthorizationCode'] = self.authorization_code
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.endpoint_name is not None:
+            result['EndpointName'] = self.endpoint_name
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.ip_blacklist is not None:
+            result['IpBlacklist'] = self.ip_blacklist
+        if self.ip_whitelist is not None:
+            result['IpWhitelist'] = self.ip_whitelist
+        if self.live_packaging_config is not None:
+            result['LivePackagingConfig'] = self.live_packaging_config.to_map()
+        if self.manifest_name is not None:
+            result['ManifestName'] = self.manifest_name
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.timeshift_vision is not None:
+            result['TimeshiftVision'] = self.timeshift_vision
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthorizationCode') is not None:
+            self.authorization_code = m.get('AuthorizationCode')
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EndpointName') is not None:
+            self.endpoint_name = m.get('EndpointName')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('IpBlacklist') is not None:
+            self.ip_blacklist = m.get('IpBlacklist')
+        if m.get('IpWhitelist') is not None:
+            self.ip_whitelist = m.get('IpWhitelist')
+        if m.get('LivePackagingConfig') is not None:
+            temp_model = LivePackagingConfig()
+            self.live_packaging_config = temp_model.from_map(m['LivePackagingConfig'])
+        if m.get('ManifestName') is not None:
+            self.manifest_name = m.get('ManifestName')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('TimeshiftVision') is not None:
+            self.timeshift_vision = m.get('TimeshiftVision')
+        return self
+
+
+class CreateLivePackageOriginEndpointShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        authorization_code: str = None,
+        channel_name: str = None,
+        client_token: str = None,
+        description: str = None,
+        endpoint_name: str = None,
+        group_name: str = None,
+        ip_blacklist: str = None,
+        ip_whitelist: str = None,
+        live_packaging_config_shrink: str = None,
+        manifest_name: str = None,
+        protocol: str = None,
+        timeshift_vision: int = None,
+    ):
+        # The authorization code. It can be up to 200 characters in length. You must configure AuthorizationCode, IpWhitelist, or both. Format: [A-Za-z0-9-_.]+\
+        self.authorization_code = authorization_code
+        # The channel name.
+        # 
+        # This parameter is required.
+        self.channel_name = channel_name
+        # The client token that is used to ensure the idempotence of the request.
+        self.client_token = client_token
+        # The endpoint description.
+        self.description = description
+        # The origin endpoint name. It can contain letters, digits, hyphens (-), and underscores (_). The name must be 1 to 200 characters in length. Format: [A-Za-z0-9_-]+\
+        # 
+        # This parameter is required.
+        self.endpoint_name = endpoint_name
+        # The channel group name.
+        # 
+        # This parameter is required.
+        self.group_name = group_name
+        # The IP address blacklist. It supports subnet masks. 0.0.0.0/0 is not allowed. It can be up to 1,000 characters in length. Separate multiple IP addresses with commas (,).
+        self.ip_blacklist = ip_blacklist
+        # The IP address whitelist. It supports subnet masks. 0.0.0.0/0 is not allowed. It can be up to 1,000 characters in length. Separate multiple IP addresses with commas (,). You must configure AuthorizationCode, IpWhitelist, or both.
+        self.ip_whitelist = ip_whitelist
+        self.live_packaging_config_shrink = live_packaging_config_shrink
         # The playlist name. Default value: manifest.
         self.manifest_name = manifest_name
         # The distribution protocol.
@@ -8846,6 +9769,8 @@ class CreateLivePackageOriginEndpointRequest(TeaModel):
             result['IpBlacklist'] = self.ip_blacklist
         if self.ip_whitelist is not None:
             result['IpWhitelist'] = self.ip_whitelist
+        if self.live_packaging_config_shrink is not None:
+            result['LivePackagingConfig'] = self.live_packaging_config_shrink
         if self.manifest_name is not None:
             result['ManifestName'] = self.manifest_name
         if self.protocol is not None:
@@ -8872,6 +9797,8 @@ class CreateLivePackageOriginEndpointRequest(TeaModel):
             self.ip_blacklist = m.get('IpBlacklist')
         if m.get('IpWhitelist') is not None:
             self.ip_whitelist = m.get('IpWhitelist')
+        if m.get('LivePackagingConfig') is not None:
+            self.live_packaging_config_shrink = m.get('LivePackagingConfig')
         if m.get('ManifestName') is not None:
             self.manifest_name = m.get('ManifestName')
         if m.get('Protocol') is not None:
@@ -8894,6 +9821,7 @@ class CreateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint(TeaMo
         ip_blacklist: str = None,
         ip_whitelist: str = None,
         last_modified: str = None,
+        live_packaging_config: LivePackagingConfig = None,
         manifest_name: str = None,
         protocol: str = None,
         timeshift_vision: int = None,
@@ -8918,6 +9846,7 @@ class CreateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint(TeaMo
         self.ip_whitelist = ip_whitelist
         # The time when the endpoint was last modified.
         self.last_modified = last_modified
+        self.live_packaging_config = live_packaging_config
         # The playlist name.
         self.manifest_name = manifest_name
         # The protocol. Only HLS is supported.
@@ -8926,7 +9855,8 @@ class CreateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint(TeaMo
         self.timeshift_vision = timeshift_vision
 
     def validate(self):
-        pass
+        if self.live_packaging_config:
+            self.live_packaging_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -8954,6 +9884,8 @@ class CreateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint(TeaMo
             result['IpWhitelist'] = self.ip_whitelist
         if self.last_modified is not None:
             result['LastModified'] = self.last_modified
+        if self.live_packaging_config is not None:
+            result['LivePackagingConfig'] = self.live_packaging_config.to_map()
         if self.manifest_name is not None:
             result['ManifestName'] = self.manifest_name
         if self.protocol is not None:
@@ -8984,6 +9916,9 @@ class CreateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint(TeaMo
             self.ip_whitelist = m.get('IpWhitelist')
         if m.get('LastModified') is not None:
             self.last_modified = m.get('LastModified')
+        if m.get('LivePackagingConfig') is not None:
+            temp_model = LivePackagingConfig()
+            self.live_packaging_config = temp_model.from_map(m['LivePackagingConfig'])
         if m.get('ManifestName') is not None:
             self.manifest_name = m.get('ManifestName')
         if m.get('Protocol') is not None:
@@ -18121,6 +19056,7 @@ class DescribeAIAgentInstanceRequest(TeaModel):
 class DescribeAIAgentInstanceResponseBodyInstance(TeaModel):
     def __init__(
         self,
+        agent_config: AIAgentConfig = None,
         call_log_url: str = None,
         runtime_config: AIAgentRuntimeConfig = None,
         session_id: str = None,
@@ -18128,6 +19064,7 @@ class DescribeAIAgentInstanceResponseBodyInstance(TeaModel):
         template_config: AIAgentTemplateConfig = None,
         user_data: str = None,
     ):
+        self.agent_config = agent_config
         # The URL of the call log file.
         self.call_log_url = call_log_url
         # The runtime configurations of the AI agent.
@@ -18141,6 +19078,8 @@ class DescribeAIAgentInstanceResponseBodyInstance(TeaModel):
         self.user_data = user_data
 
     def validate(self):
+        if self.agent_config:
+            self.agent_config.validate()
         if self.runtime_config:
             self.runtime_config.validate()
         if self.template_config:
@@ -18152,6 +19091,8 @@ class DescribeAIAgentInstanceResponseBodyInstance(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_config is not None:
+            result['AgentConfig'] = self.agent_config.to_map()
         if self.call_log_url is not None:
             result['CallLogUrl'] = self.call_log_url
         if self.runtime_config is not None:
@@ -18168,6 +19109,9 @@ class DescribeAIAgentInstanceResponseBodyInstance(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentConfig') is not None:
+            temp_model = AIAgentConfig()
+            self.agent_config = temp_model.from_map(m['AgentConfig'])
         if m.get('CallLogUrl') is not None:
             self.call_log_url = m.get('CallLogUrl')
         if m.get('RuntimeConfig') is not None:
@@ -20223,6 +21167,7 @@ class GenerateAIAgentCallRequest(TeaModel):
     def __init__(
         self,
         aiagent_id: str = None,
+        agent_config: AIAgentConfig = None,
         chat_sync_config: GenerateAIAgentCallRequestChatSyncConfig = None,
         expire: int = None,
         session_id: str = None,
@@ -20234,6 +21179,7 @@ class GenerateAIAgentCallRequest(TeaModel):
         # 
         # This parameter is required.
         self.aiagent_id = aiagent_id
+        self.agent_config = agent_config
         self.chat_sync_config = chat_sync_config
         # The time when the token expires. Unit: seconds. Default value: 3600. Valid values: 0 to 604800.
         self.expire = expire
@@ -20245,6 +21191,8 @@ class GenerateAIAgentCallRequest(TeaModel):
         self.user_id = user_id
 
     def validate(self):
+        if self.agent_config:
+            self.agent_config.validate()
         if self.chat_sync_config:
             self.chat_sync_config.validate()
         if self.template_config:
@@ -20258,6 +21206,8 @@ class GenerateAIAgentCallRequest(TeaModel):
         result = dict()
         if self.aiagent_id is not None:
             result['AIAgentId'] = self.aiagent_id
+        if self.agent_config is not None:
+            result['AgentConfig'] = self.agent_config.to_map()
         if self.chat_sync_config is not None:
             result['ChatSyncConfig'] = self.chat_sync_config.to_map()
         if self.expire is not None:
@@ -20276,6 +21226,9 @@ class GenerateAIAgentCallRequest(TeaModel):
         m = m or dict()
         if m.get('AIAgentId') is not None:
             self.aiagent_id = m.get('AIAgentId')
+        if m.get('AgentConfig') is not None:
+            temp_model = AIAgentConfig()
+            self.agent_config = temp_model.from_map(m['AgentConfig'])
         if m.get('ChatSyncConfig') is not None:
             temp_model = GenerateAIAgentCallRequestChatSyncConfig()
             self.chat_sync_config = temp_model.from_map(m['ChatSyncConfig'])
@@ -20297,6 +21250,7 @@ class GenerateAIAgentCallShrinkRequest(TeaModel):
     def __init__(
         self,
         aiagent_id: str = None,
+        agent_config_shrink: str = None,
         chat_sync_config_shrink: str = None,
         expire: int = None,
         session_id: str = None,
@@ -20308,6 +21262,7 @@ class GenerateAIAgentCallShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.aiagent_id = aiagent_id
+        self.agent_config_shrink = agent_config_shrink
         self.chat_sync_config_shrink = chat_sync_config_shrink
         # The time when the token expires. Unit: seconds. Default value: 3600. Valid values: 0 to 604800.
         self.expire = expire
@@ -20329,6 +21284,8 @@ class GenerateAIAgentCallShrinkRequest(TeaModel):
         result = dict()
         if self.aiagent_id is not None:
             result['AIAgentId'] = self.aiagent_id
+        if self.agent_config_shrink is not None:
+            result['AgentConfig'] = self.agent_config_shrink
         if self.chat_sync_config_shrink is not None:
             result['ChatSyncConfig'] = self.chat_sync_config_shrink
         if self.expire is not None:
@@ -20347,6 +21304,8 @@ class GenerateAIAgentCallShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('AIAgentId') is not None:
             self.aiagent_id = m.get('AIAgentId')
+        if m.get('AgentConfig') is not None:
+            self.agent_config_shrink = m.get('AgentConfig')
         if m.get('ChatSyncConfig') is not None:
             self.chat_sync_config_shrink = m.get('ChatSyncConfig')
         if m.get('Expire') is not None:
@@ -20811,8 +21770,11 @@ class GetAdInsertionResponseBodyConfigCdnConfig(TeaModel):
 class GetAdInsertionResponseBodyConfigManifestEndpointConfig(TeaModel):
     def __init__(
         self,
+        dash_prefix: str = None,
         hls_prefix: str = None,
     ):
+        # DASH清单播放端点前缀
+        self.dash_prefix = dash_prefix
         # The playback endpoint prefix for accessing HLS manifests.
         self.hls_prefix = hls_prefix
 
@@ -20825,12 +21787,16 @@ class GetAdInsertionResponseBodyConfigManifestEndpointConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.dash_prefix is not None:
+            result['DashPrefix'] = self.dash_prefix
         if self.hls_prefix is not None:
             result['HlsPrefix'] = self.hls_prefix
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DashPrefix') is not None:
+            self.dash_prefix = m.get('DashPrefix')
         if m.get('HlsPrefix') is not None:
             self.hls_prefix = m.get('HlsPrefix')
         return self
@@ -25836,6 +26802,7 @@ class GetLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint(TeaModel
         ip_blacklist: str = None,
         ip_whitelist: str = None,
         last_modified: str = None,
+        live_packaging_config: LivePackagingConfig = None,
         manifest_name: str = None,
         protocol: str = None,
         timeshift_vision: int = None,
@@ -25860,6 +26827,7 @@ class GetLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint(TeaModel
         self.ip_whitelist = ip_whitelist
         # The time when the endpoint was last modified.
         self.last_modified = last_modified
+        self.live_packaging_config = live_packaging_config
         # The playlist name.
         self.manifest_name = manifest_name
         # The distribution protocol.
@@ -25868,7 +26836,8 @@ class GetLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint(TeaModel
         self.timeshift_vision = timeshift_vision
 
     def validate(self):
-        pass
+        if self.live_packaging_config:
+            self.live_packaging_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -25896,6 +26865,8 @@ class GetLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint(TeaModel
             result['IpWhitelist'] = self.ip_whitelist
         if self.last_modified is not None:
             result['LastModified'] = self.last_modified
+        if self.live_packaging_config is not None:
+            result['LivePackagingConfig'] = self.live_packaging_config.to_map()
         if self.manifest_name is not None:
             result['ManifestName'] = self.manifest_name
         if self.protocol is not None:
@@ -25926,6 +26897,9 @@ class GetLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint(TeaModel
             self.ip_whitelist = m.get('IpWhitelist')
         if m.get('LastModified') is not None:
             self.last_modified = m.get('LastModified')
+        if m.get('LivePackagingConfig') is not None:
+            temp_model = LivePackagingConfig()
+            self.live_packaging_config = temp_model.from_map(m['LivePackagingConfig'])
         if m.get('ManifestName') is not None:
             self.manifest_name = m.get('ManifestName')
         if m.get('Protocol') is not None:
@@ -42392,12 +43366,14 @@ class ListAIAgentInstanceRequest(TeaModel):
 class ListAIAgentInstanceResponseBodyInstances(TeaModel):
     def __init__(
         self,
+        agent_config: AIAgentConfig = None,
         call_log_url: str = None,
         runtime_config: AIAgentRuntimeConfig = None,
         status: str = None,
         template_config: AIAgentTemplateConfig = None,
         user_data: str = None,
     ):
+        self.agent_config = agent_config
         # The URL of the call log file for the AI agent. The structure of the file is CallLog in the JSON format.
         self.call_log_url = call_log_url
         # The runtime configurations of the AI agent.
@@ -42413,6 +43389,8 @@ class ListAIAgentInstanceResponseBodyInstances(TeaModel):
         self.user_data = user_data
 
     def validate(self):
+        if self.agent_config:
+            self.agent_config.validate()
         if self.runtime_config:
             self.runtime_config.validate()
         if self.template_config:
@@ -42424,6 +43402,8 @@ class ListAIAgentInstanceResponseBodyInstances(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_config is not None:
+            result['AgentConfig'] = self.agent_config.to_map()
         if self.call_log_url is not None:
             result['CallLogUrl'] = self.call_log_url
         if self.runtime_config is not None:
@@ -42438,6 +43418,9 @@ class ListAIAgentInstanceResponseBodyInstances(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentConfig') is not None:
+            temp_model = AIAgentConfig()
+            self.agent_config = temp_model.from_map(m['AgentConfig'])
         if m.get('CallLogUrl') is not None:
             self.call_log_url = m.get('CallLogUrl')
         if m.get('RuntimeConfig') is not None:
@@ -42533,6 +43516,172 @@ class ListAIAgentInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListAIAgentInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListAIAgentPhoneNumberRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListAIAgentPhoneNumberResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        phone_number: str = None,
+        status: int = None,
+    ):
+        self.phone_number = phone_number
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.phone_number is not None:
+            result['PhoneNumber'] = self.phone_number
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PhoneNumber') is not None:
+            self.phone_number = m.get('PhoneNumber')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListAIAgentPhoneNumberResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[ListAIAgentPhoneNumberResponseBodyData] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_number: int = None,
+    ):
+        self.data = data
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_number = total_number
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_number is not None:
+            result['TotalNumber'] = self.total_number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListAIAgentPhoneNumberResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalNumber') is not None:
+            self.total_number = m.get('TotalNumber')
+        return self
+
+
+class ListAIAgentPhoneNumberResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAIAgentPhoneNumberResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAIAgentPhoneNumberResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -42638,8 +43787,11 @@ class ListAdInsertionsResponseBodyConfigsCdnConfig(TeaModel):
 class ListAdInsertionsResponseBodyConfigsManifestEndpointConfig(TeaModel):
     def __init__(
         self,
+        dash_prefix: str = None,
         hls_prefix: str = None,
     ):
+        # DASH清单播放端点前缀
+        self.dash_prefix = dash_prefix
         # The prefix of the playback endpoint for HLS manifests.
         self.hls_prefix = hls_prefix
 
@@ -42652,12 +43804,16 @@ class ListAdInsertionsResponseBodyConfigsManifestEndpointConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.dash_prefix is not None:
+            result['DashPrefix'] = self.dash_prefix
         if self.hls_prefix is not None:
             result['HlsPrefix'] = self.hls_prefix
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DashPrefix') is not None:
+            self.dash_prefix = m.get('DashPrefix')
         if m.get('HlsPrefix') is not None:
             self.hls_prefix = m.get('HlsPrefix')
         return self
@@ -70787,6 +71943,7 @@ class StartAIAgentInstanceRequest(TeaModel):
     def __init__(
         self,
         aiagent_id: str = None,
+        agent_config: AIAgentConfig = None,
         chat_sync_config: StartAIAgentInstanceRequestChatSyncConfig = None,
         runtime_config: AIAgentRuntimeConfig = None,
         session_id: str = None,
@@ -70797,6 +71954,7 @@ class StartAIAgentInstanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.aiagent_id = aiagent_id
+        self.agent_config = agent_config
         # 同步聊天记录配置。
         self.chat_sync_config = chat_sync_config
         # This parameter is required.
@@ -70806,6 +71964,8 @@ class StartAIAgentInstanceRequest(TeaModel):
         self.user_data = user_data
 
     def validate(self):
+        if self.agent_config:
+            self.agent_config.validate()
         if self.chat_sync_config:
             self.chat_sync_config.validate()
         if self.runtime_config:
@@ -70821,6 +71981,8 @@ class StartAIAgentInstanceRequest(TeaModel):
         result = dict()
         if self.aiagent_id is not None:
             result['AIAgentId'] = self.aiagent_id
+        if self.agent_config is not None:
+            result['AgentConfig'] = self.agent_config.to_map()
         if self.chat_sync_config is not None:
             result['ChatSyncConfig'] = self.chat_sync_config.to_map()
         if self.runtime_config is not None:
@@ -70837,6 +71999,9 @@ class StartAIAgentInstanceRequest(TeaModel):
         m = m or dict()
         if m.get('AIAgentId') is not None:
             self.aiagent_id = m.get('AIAgentId')
+        if m.get('AgentConfig') is not None:
+            temp_model = AIAgentConfig()
+            self.agent_config = temp_model.from_map(m['AgentConfig'])
         if m.get('ChatSyncConfig') is not None:
             temp_model = StartAIAgentInstanceRequestChatSyncConfig()
             self.chat_sync_config = temp_model.from_map(m['ChatSyncConfig'])
@@ -70857,6 +72022,7 @@ class StartAIAgentInstanceShrinkRequest(TeaModel):
     def __init__(
         self,
         aiagent_id: str = None,
+        agent_config_shrink: str = None,
         chat_sync_config_shrink: str = None,
         runtime_config_shrink: str = None,
         session_id: str = None,
@@ -70867,6 +72033,7 @@ class StartAIAgentInstanceShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.aiagent_id = aiagent_id
+        self.agent_config_shrink = agent_config_shrink
         # 同步聊天记录配置。
         self.chat_sync_config_shrink = chat_sync_config_shrink
         # This parameter is required.
@@ -70886,6 +72053,8 @@ class StartAIAgentInstanceShrinkRequest(TeaModel):
         result = dict()
         if self.aiagent_id is not None:
             result['AIAgentId'] = self.aiagent_id
+        if self.agent_config_shrink is not None:
+            result['AgentConfig'] = self.agent_config_shrink
         if self.chat_sync_config_shrink is not None:
             result['ChatSyncConfig'] = self.chat_sync_config_shrink
         if self.runtime_config_shrink is not None:
@@ -70902,6 +72071,8 @@ class StartAIAgentInstanceShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('AIAgentId') is not None:
             self.aiagent_id = m.get('AIAgentId')
+        if m.get('AgentConfig') is not None:
+            self.agent_config_shrink = m.get('AgentConfig')
         if m.get('ChatSyncConfig') is not None:
             self.chat_sync_config_shrink = m.get('ChatSyncConfig')
         if m.get('RuntimeConfig') is not None:
@@ -70985,6 +72156,202 @@ class StartAIAgentInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StartAIAgentInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StartAIAgentOutboundCallRequest(TeaModel):
+    def __init__(
+        self,
+        aiagent_id: str = None,
+        called_number: str = None,
+        caller_number: str = None,
+        config: AIAgentOutboundCallConfig = None,
+        session_id: str = None,
+        user_data: str = None,
+    ):
+        # This parameter is required.
+        self.aiagent_id = aiagent_id
+        # This parameter is required.
+        self.called_number = called_number
+        # This parameter is required.
+        self.caller_number = caller_number
+        self.config = config
+        self.session_id = session_id
+        self.user_data = user_data
+
+    def validate(self):
+        if self.config:
+            self.config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aiagent_id is not None:
+            result['AIAgentId'] = self.aiagent_id
+        if self.called_number is not None:
+            result['CalledNumber'] = self.called_number
+        if self.caller_number is not None:
+            result['CallerNumber'] = self.caller_number
+        if self.config is not None:
+            result['Config'] = self.config.to_map()
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AIAgentId') is not None:
+            self.aiagent_id = m.get('AIAgentId')
+        if m.get('CalledNumber') is not None:
+            self.called_number = m.get('CalledNumber')
+        if m.get('CallerNumber') is not None:
+            self.caller_number = m.get('CallerNumber')
+        if m.get('Config') is not None:
+            temp_model = AIAgentOutboundCallConfig()
+            self.config = temp_model.from_map(m['Config'])
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class StartAIAgentOutboundCallShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        aiagent_id: str = None,
+        called_number: str = None,
+        caller_number: str = None,
+        config_shrink: str = None,
+        session_id: str = None,
+        user_data: str = None,
+    ):
+        # This parameter is required.
+        self.aiagent_id = aiagent_id
+        # This parameter is required.
+        self.called_number = called_number
+        # This parameter is required.
+        self.caller_number = caller_number
+        self.config_shrink = config_shrink
+        self.session_id = session_id
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aiagent_id is not None:
+            result['AIAgentId'] = self.aiagent_id
+        if self.called_number is not None:
+            result['CalledNumber'] = self.called_number
+        if self.caller_number is not None:
+            result['CallerNumber'] = self.caller_number
+        if self.config_shrink is not None:
+            result['Config'] = self.config_shrink
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AIAgentId') is not None:
+            self.aiagent_id = m.get('AIAgentId')
+        if m.get('CalledNumber') is not None:
+            self.called_number = m.get('CalledNumber')
+        if m.get('CallerNumber') is not None:
+            self.caller_number = m.get('CallerNumber')
+        if m.get('Config') is not None:
+            self.config_shrink = m.get('Config')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class StartAIAgentOutboundCallResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        request_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StartAIAgentOutboundCallResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StartAIAgentOutboundCallResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StartAIAgentOutboundCallResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -71983,6 +73350,325 @@ class StopRtcRobotInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StopRtcRobotInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SubmitAIAgentVideoAuditTaskRequestCallbackConfig(TeaModel):
+    def __init__(
+        self,
+        token: str = None,
+        url: str = None,
+    ):
+        self.token = token
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.token is not None:
+            result['Token'] = self.token
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class SubmitAIAgentVideoAuditTaskRequestCapturePolicies(TeaModel):
+    def __init__(
+        self,
+        duration: int = None,
+        frame_count: int = None,
+        prompt: str = None,
+        start_time: int = None,
+    ):
+        self.duration = duration
+        self.frame_count = frame_count
+        self.prompt = prompt
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.frame_count is not None:
+            result['FrameCount'] = self.frame_count
+        if self.prompt is not None:
+            result['Prompt'] = self.prompt
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('FrameCount') is not None:
+            self.frame_count = m.get('FrameCount')
+        if m.get('Prompt') is not None:
+            self.prompt = m.get('Prompt')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class SubmitAIAgentVideoAuditTaskRequestInput(TeaModel):
+    def __init__(
+        self,
+        media: str = None,
+        type: str = None,
+    ):
+        self.media = media
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.media is not None:
+            result['Media'] = self.media
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Media') is not None:
+            self.media = m.get('Media')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class SubmitAIAgentVideoAuditTaskRequest(TeaModel):
+    def __init__(
+        self,
+        aiagent_id: str = None,
+        audit_interval: int = None,
+        callback_config: SubmitAIAgentVideoAuditTaskRequestCallbackConfig = None,
+        capture_policies: List[SubmitAIAgentVideoAuditTaskRequestCapturePolicies] = None,
+        input: SubmitAIAgentVideoAuditTaskRequestInput = None,
+        user_data: str = None,
+    ):
+        # This parameter is required.
+        self.aiagent_id = aiagent_id
+        self.audit_interval = audit_interval
+        self.callback_config = callback_config
+        # This parameter is required.
+        self.capture_policies = capture_policies
+        # This parameter is required.
+        self.input = input
+        self.user_data = user_data
+
+    def validate(self):
+        if self.callback_config:
+            self.callback_config.validate()
+        if self.capture_policies:
+            for k in self.capture_policies:
+                if k:
+                    k.validate()
+        if self.input:
+            self.input.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aiagent_id is not None:
+            result['AIAgentId'] = self.aiagent_id
+        if self.audit_interval is not None:
+            result['AuditInterval'] = self.audit_interval
+        if self.callback_config is not None:
+            result['CallbackConfig'] = self.callback_config.to_map()
+        result['CapturePolicies'] = []
+        if self.capture_policies is not None:
+            for k in self.capture_policies:
+                result['CapturePolicies'].append(k.to_map() if k else None)
+        if self.input is not None:
+            result['Input'] = self.input.to_map()
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AIAgentId') is not None:
+            self.aiagent_id = m.get('AIAgentId')
+        if m.get('AuditInterval') is not None:
+            self.audit_interval = m.get('AuditInterval')
+        if m.get('CallbackConfig') is not None:
+            temp_model = SubmitAIAgentVideoAuditTaskRequestCallbackConfig()
+            self.callback_config = temp_model.from_map(m['CallbackConfig'])
+        self.capture_policies = []
+        if m.get('CapturePolicies') is not None:
+            for k in m.get('CapturePolicies'):
+                temp_model = SubmitAIAgentVideoAuditTaskRequestCapturePolicies()
+                self.capture_policies.append(temp_model.from_map(k))
+        if m.get('Input') is not None:
+            temp_model = SubmitAIAgentVideoAuditTaskRequestInput()
+            self.input = temp_model.from_map(m['Input'])
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class SubmitAIAgentVideoAuditTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        aiagent_id: str = None,
+        audit_interval: int = None,
+        callback_config_shrink: str = None,
+        capture_policies_shrink: str = None,
+        input_shrink: str = None,
+        user_data: str = None,
+    ):
+        # This parameter is required.
+        self.aiagent_id = aiagent_id
+        self.audit_interval = audit_interval
+        self.callback_config_shrink = callback_config_shrink
+        # This parameter is required.
+        self.capture_policies_shrink = capture_policies_shrink
+        # This parameter is required.
+        self.input_shrink = input_shrink
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aiagent_id is not None:
+            result['AIAgentId'] = self.aiagent_id
+        if self.audit_interval is not None:
+            result['AuditInterval'] = self.audit_interval
+        if self.callback_config_shrink is not None:
+            result['CallbackConfig'] = self.callback_config_shrink
+        if self.capture_policies_shrink is not None:
+            result['CapturePolicies'] = self.capture_policies_shrink
+        if self.input_shrink is not None:
+            result['Input'] = self.input_shrink
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AIAgentId') is not None:
+            self.aiagent_id = m.get('AIAgentId')
+        if m.get('AuditInterval') is not None:
+            self.audit_interval = m.get('AuditInterval')
+        if m.get('CallbackConfig') is not None:
+            self.callback_config_shrink = m.get('CallbackConfig')
+        if m.get('CapturePolicies') is not None:
+            self.capture_policies_shrink = m.get('CapturePolicies')
+        if m.get('Input') is not None:
+            self.input_shrink = m.get('Input')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class SubmitAIAgentVideoAuditTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+        request_id: str = None,
+    ):
+        self.job_id = job_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SubmitAIAgentVideoAuditTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitAIAgentVideoAuditTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitAIAgentVideoAuditTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -87972,10 +89658,12 @@ class TakeoverAIAgentCallResponse(TeaModel):
 class UpdateAIAgentInstanceRequest(TeaModel):
     def __init__(
         self,
+        agent_config: AIAgentConfig = None,
         instance_id: str = None,
         template_config: AIAgentTemplateConfig = None,
         user_data: str = None,
     ):
+        self.agent_config = agent_config
         # The ID of the AI agent that you want to update.
         # 
         # This parameter is required.
@@ -87985,6 +89673,8 @@ class UpdateAIAgentInstanceRequest(TeaModel):
         self.user_data = user_data
 
     def validate(self):
+        if self.agent_config:
+            self.agent_config.validate()
         if self.template_config:
             self.template_config.validate()
 
@@ -87994,6 +89684,8 @@ class UpdateAIAgentInstanceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_config is not None:
+            result['AgentConfig'] = self.agent_config.to_map()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.template_config is not None:
@@ -88004,6 +89696,9 @@ class UpdateAIAgentInstanceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentConfig') is not None:
+            temp_model = AIAgentConfig()
+            self.agent_config = temp_model.from_map(m['AgentConfig'])
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('TemplateConfig') is not None:
@@ -88017,10 +89712,12 @@ class UpdateAIAgentInstanceRequest(TeaModel):
 class UpdateAIAgentInstanceShrinkRequest(TeaModel):
     def __init__(
         self,
+        agent_config_shrink: str = None,
         instance_id: str = None,
         template_config_shrink: str = None,
         user_data: str = None,
     ):
+        self.agent_config_shrink = agent_config_shrink
         # The ID of the AI agent that you want to update.
         # 
         # This parameter is required.
@@ -88038,6 +89735,8 @@ class UpdateAIAgentInstanceShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_config_shrink is not None:
+            result['AgentConfig'] = self.agent_config_shrink
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.template_config_shrink is not None:
@@ -88048,6 +89747,8 @@ class UpdateAIAgentInstanceShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentConfig') is not None:
+            self.agent_config_shrink = m.get('AgentConfig')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('TemplateConfig') is not None:
@@ -88259,8 +89960,11 @@ class UpdateAdInsertionResponseBodyConfigCdnConfig(TeaModel):
 class UpdateAdInsertionResponseBodyConfigManifestEndpointConfig(TeaModel):
     def __init__(
         self,
+        dash_prefix: str = None,
         hls_prefix: str = None,
     ):
+        # DASH清单播放端点前缀
+        self.dash_prefix = dash_prefix
         # The prefix of the playback endpoint for HLS manifests.
         self.hls_prefix = hls_prefix
 
@@ -88273,12 +89977,16 @@ class UpdateAdInsertionResponseBodyConfigManifestEndpointConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.dash_prefix is not None:
+            result['DashPrefix'] = self.dash_prefix
         if self.hls_prefix is not None:
             result['HlsPrefix'] = self.hls_prefix
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DashPrefix') is not None:
+            self.dash_prefix = m.get('DashPrefix')
         if m.get('HlsPrefix') is not None:
             self.hls_prefix = m.get('HlsPrefix')
         return self
@@ -89967,6 +91675,7 @@ class UpdateLivePackageOriginEndpointRequest(TeaModel):
         group_name: str = None,
         ip_blacklist: str = None,
         ip_whitelist: str = None,
+        live_packaging_config: LivePackagingConfig = None,
         manifest_name: str = None,
         protocol: str = None,
         timeshift_vision: int = None,
@@ -89991,6 +91700,114 @@ class UpdateLivePackageOriginEndpointRequest(TeaModel):
         self.ip_blacklist = ip_blacklist
         # The IP address whitelist. It supports subnet masks. 0.0.0.0/0 is not allowed. It can be up to 1,000 characters in length. Separate multiple IP addresses with commas (,). You must configure AuthorizationCode, IpWhitelist, or both.
         self.ip_whitelist = ip_whitelist
+        self.live_packaging_config = live_packaging_config
+        # The playlist name. Default value: manifest.
+        self.manifest_name = manifest_name
+        # The protocol. Only HLS is supported.
+        # 
+        # This parameter is required.
+        self.protocol = protocol
+        # The number of days that time-shifted content is available. Maximum value: 30.
+        self.timeshift_vision = timeshift_vision
+
+    def validate(self):
+        if self.live_packaging_config:
+            self.live_packaging_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authorization_code is not None:
+            result['AuthorizationCode'] = self.authorization_code
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.endpoint_name is not None:
+            result['EndpointName'] = self.endpoint_name
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.ip_blacklist is not None:
+            result['IpBlacklist'] = self.ip_blacklist
+        if self.ip_whitelist is not None:
+            result['IpWhitelist'] = self.ip_whitelist
+        if self.live_packaging_config is not None:
+            result['LivePackagingConfig'] = self.live_packaging_config.to_map()
+        if self.manifest_name is not None:
+            result['ManifestName'] = self.manifest_name
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.timeshift_vision is not None:
+            result['TimeshiftVision'] = self.timeshift_vision
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthorizationCode') is not None:
+            self.authorization_code = m.get('AuthorizationCode')
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EndpointName') is not None:
+            self.endpoint_name = m.get('EndpointName')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('IpBlacklist') is not None:
+            self.ip_blacklist = m.get('IpBlacklist')
+        if m.get('IpWhitelist') is not None:
+            self.ip_whitelist = m.get('IpWhitelist')
+        if m.get('LivePackagingConfig') is not None:
+            temp_model = LivePackagingConfig()
+            self.live_packaging_config = temp_model.from_map(m['LivePackagingConfig'])
+        if m.get('ManifestName') is not None:
+            self.manifest_name = m.get('ManifestName')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('TimeshiftVision') is not None:
+            self.timeshift_vision = m.get('TimeshiftVision')
+        return self
+
+
+class UpdateLivePackageOriginEndpointShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        authorization_code: str = None,
+        channel_name: str = None,
+        description: str = None,
+        endpoint_name: str = None,
+        group_name: str = None,
+        ip_blacklist: str = None,
+        ip_whitelist: str = None,
+        live_packaging_config_shrink: str = None,
+        manifest_name: str = None,
+        protocol: str = None,
+        timeshift_vision: int = None,
+    ):
+        # The authorization code. It can be up to 200 characters in length. You must configure AuthorizationCode, IpWhitelist, or both. Format: [A-Za-z0-9-_.]+\
+        self.authorization_code = authorization_code
+        # The channel name.
+        # 
+        # This parameter is required.
+        self.channel_name = channel_name
+        # The endpoint description.
+        self.description = description
+        # The origin endpoint name. It can contain letters, digits, hyphens (-), and underscores (_). The name must be 1 to 200 characters in length. Format: [A-Za-z0-9_-]+\
+        # 
+        # This parameter is required.
+        self.endpoint_name = endpoint_name
+        # The channel group name.
+        # 
+        # This parameter is required.
+        self.group_name = group_name
+        # The IP address blacklist. It supports subnet masks. Separate multiple IP addresses with commas (,).
+        self.ip_blacklist = ip_blacklist
+        # The IP address whitelist. It supports subnet masks. 0.0.0.0/0 is not allowed. It can be up to 1,000 characters in length. Separate multiple IP addresses with commas (,). You must configure AuthorizationCode, IpWhitelist, or both.
+        self.ip_whitelist = ip_whitelist
+        self.live_packaging_config_shrink = live_packaging_config_shrink
         # The playlist name. Default value: manifest.
         self.manifest_name = manifest_name
         # The protocol. Only HLS is supported.
@@ -90023,6 +91840,8 @@ class UpdateLivePackageOriginEndpointRequest(TeaModel):
             result['IpBlacklist'] = self.ip_blacklist
         if self.ip_whitelist is not None:
             result['IpWhitelist'] = self.ip_whitelist
+        if self.live_packaging_config_shrink is not None:
+            result['LivePackagingConfig'] = self.live_packaging_config_shrink
         if self.manifest_name is not None:
             result['ManifestName'] = self.manifest_name
         if self.protocol is not None:
@@ -90047,6 +91866,8 @@ class UpdateLivePackageOriginEndpointRequest(TeaModel):
             self.ip_blacklist = m.get('IpBlacklist')
         if m.get('IpWhitelist') is not None:
             self.ip_whitelist = m.get('IpWhitelist')
+        if m.get('LivePackagingConfig') is not None:
+            self.live_packaging_config_shrink = m.get('LivePackagingConfig')
         if m.get('ManifestName') is not None:
             self.manifest_name = m.get('ManifestName')
         if m.get('Protocol') is not None:
@@ -90069,6 +91890,7 @@ class UpdateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint(TeaMo
         ip_blacklist: str = None,
         ip_whitelist: str = None,
         last_modified: str = None,
+        live_packaging_config: LivePackagingConfig = None,
         manifest_name: str = None,
         protocol: str = None,
         timeshift_vision: int = None,
@@ -90093,6 +91915,7 @@ class UpdateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint(TeaMo
         self.ip_whitelist = ip_whitelist
         # The time when the endpoint was last modified.
         self.last_modified = last_modified
+        self.live_packaging_config = live_packaging_config
         # The playlist name. Default value: manifest.
         self.manifest_name = manifest_name
         # The protocol. Only HLS is supported.
@@ -90101,7 +91924,8 @@ class UpdateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint(TeaMo
         self.timeshift_vision = timeshift_vision
 
     def validate(self):
-        pass
+        if self.live_packaging_config:
+            self.live_packaging_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -90129,6 +91953,8 @@ class UpdateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint(TeaMo
             result['IpWhitelist'] = self.ip_whitelist
         if self.last_modified is not None:
             result['LastModified'] = self.last_modified
+        if self.live_packaging_config is not None:
+            result['LivePackagingConfig'] = self.live_packaging_config.to_map()
         if self.manifest_name is not None:
             result['ManifestName'] = self.manifest_name
         if self.protocol is not None:
@@ -90159,6 +91985,9 @@ class UpdateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint(TeaMo
             self.ip_whitelist = m.get('IpWhitelist')
         if m.get('LastModified') is not None:
             self.last_modified = m.get('LastModified')
+        if m.get('LivePackagingConfig') is not None:
+            temp_model = LivePackagingConfig()
+            self.live_packaging_config = temp_model.from_map(m['LivePackagingConfig'])
         if m.get('ManifestName') is not None:
             self.manifest_name = m.get('ManifestName')
         if m.get('Protocol') is not None:
