@@ -11309,6 +11309,7 @@ class GetMemberRequest(TeaModel):
 class GetMemberResponseBody(TeaModel):
     def __init__(
         self,
+        account_type: str = None,
         display_name: str = None,
         gmt_create_time: str = None,
         member_id: str = None,
@@ -11317,6 +11318,7 @@ class GetMemberResponseBody(TeaModel):
         roles: List[str] = None,
         user_id: str = None,
     ):
+        self.account_type = account_type
         # The display name of the member.
         self.display_name = display_name
         # The time when the workspace is created, in UTC. The time follows the ISO 8601 standard.
@@ -11341,6 +11343,8 @@ class GetMemberResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.account_type is not None:
+            result['AccountType'] = self.account_type
         if self.display_name is not None:
             result['DisplayName'] = self.display_name
         if self.gmt_create_time is not None:
@@ -11359,6 +11363,8 @@ class GetMemberResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccountType') is not None:
+            self.account_type = m.get('AccountType')
         if m.get('DisplayName') is not None:
             self.display_name = m.get('DisplayName')
         if m.get('GmtCreateTime') is not None:
@@ -15446,6 +15452,7 @@ class ListMembersResponseBodyMembers(TeaModel):
     def __init__(
         self,
         account_name: str = None,
+        account_type: str = None,
         display_name: str = None,
         gmt_create_time: str = None,
         member_id: str = None,
@@ -15454,6 +15461,7 @@ class ListMembersResponseBodyMembers(TeaModel):
         user_id: str = None,
     ):
         self.account_name = account_name
+        self.account_type = account_type
         # The display name of the member.
         self.display_name = display_name
         # The time when the user is created, in UTC. The time follows the ISO 8601 standard.
@@ -15478,6 +15486,8 @@ class ListMembersResponseBodyMembers(TeaModel):
         result = dict()
         if self.account_name is not None:
             result['AccountName'] = self.account_name
+        if self.account_type is not None:
+            result['AccountType'] = self.account_type
         if self.display_name is not None:
             result['DisplayName'] = self.display_name
         if self.gmt_create_time is not None:
@@ -15496,6 +15506,8 @@ class ListMembersResponseBodyMembers(TeaModel):
         m = m or dict()
         if m.get('AccountName') is not None:
             self.account_name = m.get('AccountName')
+        if m.get('AccountType') is not None:
+            self.account_type = m.get('AccountType')
         if m.get('DisplayName') is not None:
             self.display_name = m.get('DisplayName')
         if m.get('GmtCreateTime') is not None:

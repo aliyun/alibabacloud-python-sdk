@@ -1,3 +1,8 @@
+2025-05-29 Version: 6.4.1
+- Update API GetMember: add response parameters Body.AccountType.
+- Update API ListMembers: add response parameters Body.Members.$.AccountType.
+
+
 2025-05-16 Version: 6.4.0
 - Support API CreateConnection.
 - Support API DeleteConnection.
