@@ -5013,11 +5013,6 @@ class GetTemplateRequest(TeaModel):
         self.region_id = region_id
         self.template_biz_id = template_biz_id
         # The template type.
-        # 
-        # Valid values:
-        # 
-        # *   TASK
-        # *   SESSION
         self.template_type = template_type
 
     def validate(self):
@@ -5058,7 +5053,7 @@ class GetTemplateResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The data returned.
+        # The returned data.
         self.data = data
         # *   If the value of success was false, an error code was returned.
         # *   If the value of success was true, a null value was returned.
