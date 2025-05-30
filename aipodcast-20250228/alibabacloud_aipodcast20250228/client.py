@@ -175,6 +175,8 @@ class Client(OpenApiClient):
             body['counts'] = request.counts
         if not UtilClient.is_unset(request.file_urls_shrink):
             body['fileUrls'] = request.file_urls_shrink
+        if not UtilClient.is_unset(request.source_lang):
+            body['sourceLang'] = request.source_lang
         if not UtilClient.is_unset(request.text):
             body['text'] = request.text
         if not UtilClient.is_unset(request.topic):
@@ -229,6 +231,8 @@ class Client(OpenApiClient):
             body['counts'] = request.counts
         if not UtilClient.is_unset(request.file_urls_shrink):
             body['fileUrls'] = request.file_urls_shrink
+        if not UtilClient.is_unset(request.source_lang):
+            body['sourceLang'] = request.source_lang
         if not UtilClient.is_unset(request.text):
             body['text'] = request.text
         if not UtilClient.is_unset(request.topic):

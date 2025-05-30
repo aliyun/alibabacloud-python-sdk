@@ -195,6 +195,7 @@ class PodcastTaskSubmitRequest(TeaModel):
         self,
         counts: int = None,
         file_urls: List[str] = None,
+        source_lang: str = None,
         text: str = None,
         topic: str = None,
         voices: List[str] = None,
@@ -202,6 +203,7 @@ class PodcastTaskSubmitRequest(TeaModel):
     ):
         self.counts = counts
         self.file_urls = file_urls
+        self.source_lang = source_lang
         self.text = text
         self.topic = topic
         self.voices = voices
@@ -221,6 +223,8 @@ class PodcastTaskSubmitRequest(TeaModel):
             result['counts'] = self.counts
         if self.file_urls is not None:
             result['fileUrls'] = self.file_urls
+        if self.source_lang is not None:
+            result['sourceLang'] = self.source_lang
         if self.text is not None:
             result['text'] = self.text
         if self.topic is not None:
@@ -237,6 +241,8 @@ class PodcastTaskSubmitRequest(TeaModel):
             self.counts = m.get('counts')
         if m.get('fileUrls') is not None:
             self.file_urls = m.get('fileUrls')
+        if m.get('sourceLang') is not None:
+            self.source_lang = m.get('sourceLang')
         if m.get('text') is not None:
             self.text = m.get('text')
         if m.get('topic') is not None:
@@ -253,6 +259,7 @@ class PodcastTaskSubmitShrinkRequest(TeaModel):
         self,
         counts: int = None,
         file_urls_shrink: str = None,
+        source_lang: str = None,
         text: str = None,
         topic: str = None,
         voices_shrink: str = None,
@@ -260,6 +267,7 @@ class PodcastTaskSubmitShrinkRequest(TeaModel):
     ):
         self.counts = counts
         self.file_urls_shrink = file_urls_shrink
+        self.source_lang = source_lang
         self.text = text
         self.topic = topic
         self.voices_shrink = voices_shrink
@@ -279,6 +287,8 @@ class PodcastTaskSubmitShrinkRequest(TeaModel):
             result['counts'] = self.counts
         if self.file_urls_shrink is not None:
             result['fileUrls'] = self.file_urls_shrink
+        if self.source_lang is not None:
+            result['sourceLang'] = self.source_lang
         if self.text is not None:
             result['text'] = self.text
         if self.topic is not None:
@@ -295,6 +305,8 @@ class PodcastTaskSubmitShrinkRequest(TeaModel):
             self.counts = m.get('counts')
         if m.get('fileUrls') is not None:
             self.file_urls_shrink = m.get('fileUrls')
+        if m.get('sourceLang') is not None:
+            self.source_lang = m.get('sourceLang')
         if m.get('text') is not None:
             self.text = m.get('text')
         if m.get('topic') is not None:
