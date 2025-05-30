@@ -2501,6 +2501,92 @@ class ChannelAssemblySourceLocation(TeaModel):
         return self
 
 
+class TranspositionResult(TeaModel):
+    def __init__(
+        self,
+        target_language: str = None,
+        translated_text: str = None,
+    ):
+        self.target_language = target_language
+        self.translated_text = translated_text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.target_language is not None:
+            result['TargetLanguage'] = self.target_language
+        if self.translated_text is not None:
+            result['TranslatedText'] = self.translated_text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TargetLanguage') is not None:
+            self.target_language = m.get('TargetLanguage')
+        if m.get('TranslatedText') is not None:
+            self.translated_text = m.get('TranslatedText')
+        return self
+
+
+class Hotword(TeaModel):
+    def __init__(
+        self,
+        language: str = None,
+        text: str = None,
+        transposition_result_list: List[TranspositionResult] = None,
+        weight: int = None,
+    ):
+        self.language = language
+        self.text = text
+        self.transposition_result_list = transposition_result_list
+        self.weight = weight
+
+    def validate(self):
+        if self.transposition_result_list:
+            for k in self.transposition_result_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.text is not None:
+            result['Text'] = self.text
+        result['TranspositionResultList'] = []
+        if self.transposition_result_list is not None:
+            for k in self.transposition_result_list:
+                result['TranspositionResultList'].append(k.to_map() if k else None)
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        self.transposition_result_list = []
+        if m.get('TranspositionResultList') is not None:
+            for k in m.get('TranspositionResultList'):
+                temp_model = TranspositionResult()
+                self.transposition_result_list.append(temp_model.from_map(k))
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        return self
+
+
 class LicenseInstanceAppDTOLicenseConfigs(TeaModel):
     def __init__(
         self,
@@ -9101,6 +9187,185 @@ class CreateEditingProjectResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateEditingProjectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateHotwordLibraryRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        hotwords: List[Hotword] = None,
+        name: str = None,
+        usage_scenario: str = None,
+    ):
+        self.description = description
+        # This parameter is required.
+        self.hotwords = hotwords
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.usage_scenario = usage_scenario
+
+    def validate(self):
+        if self.hotwords:
+            for k in self.hotwords:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        result['Hotwords'] = []
+        if self.hotwords is not None:
+            for k in self.hotwords:
+                result['Hotwords'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.usage_scenario is not None:
+            result['UsageScenario'] = self.usage_scenario
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        self.hotwords = []
+        if m.get('Hotwords') is not None:
+            for k in m.get('Hotwords'):
+                temp_model = Hotword()
+                self.hotwords.append(temp_model.from_map(k))
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('UsageScenario') is not None:
+            self.usage_scenario = m.get('UsageScenario')
+        return self
+
+
+class CreateHotwordLibraryShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        hotwords_shrink: str = None,
+        name: str = None,
+        usage_scenario: str = None,
+    ):
+        self.description = description
+        # This parameter is required.
+        self.hotwords_shrink = hotwords_shrink
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.usage_scenario = usage_scenario
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.hotwords_shrink is not None:
+            result['Hotwords'] = self.hotwords_shrink
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.usage_scenario is not None:
+            result['UsageScenario'] = self.usage_scenario
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Hotwords') is not None:
+            self.hotwords_shrink = m.get('Hotwords')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('UsageScenario') is not None:
+            self.usage_scenario = m.get('UsageScenario')
+        return self
+
+
+class CreateHotwordLibraryResponseBody(TeaModel):
+    def __init__(
+        self,
+        hotword_library_id: str = None,
+        request_id: str = None,
+    ):
+        self.hotword_library_id = hotword_library_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hotword_library_id is not None:
+            result['HotwordLibraryId'] = self.hotword_library_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HotwordLibraryId') is not None:
+            self.hotword_library_id = m.get('HotwordLibraryId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateHotwordLibraryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateHotwordLibraryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateHotwordLibraryResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -15764,6 +16029,108 @@ class DeleteEditingProjectsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteEditingProjectsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteHotwordLibraryRequest(TeaModel):
+    def __init__(
+        self,
+        hotword_library_id: str = None,
+    ):
+        self.hotword_library_id = hotword_library_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hotword_library_id is not None:
+            result['HotwordLibraryId'] = self.hotword_library_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HotwordLibraryId') is not None:
+            self.hotword_library_id = m.get('HotwordLibraryId')
+        return self
+
+
+class DeleteHotwordLibraryResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteHotwordLibraryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteHotwordLibraryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteHotwordLibraryResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -25810,6 +26177,147 @@ class GetEventCallbackResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetEventCallbackResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetHotwordLibraryRequest(TeaModel):
+    def __init__(
+        self,
+        hotword_library_id: str = None,
+    ):
+        # This parameter is required.
+        self.hotword_library_id = hotword_library_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hotword_library_id is not None:
+            result['HotwordLibraryId'] = self.hotword_library_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HotwordLibraryId') is not None:
+            self.hotword_library_id = m.get('HotwordLibraryId')
+        return self
+
+
+class GetHotwordLibraryResponseBody(TeaModel):
+    def __init__(
+        self,
+        creation_time: str = None,
+        description: str = None,
+        hotword_library_id: str = None,
+        hotwords: List[Hotword] = None,
+        name: str = None,
+        request_id: str = None,
+        usage_scenario: str = None,
+    ):
+        self.creation_time = creation_time
+        self.description = description
+        self.hotword_library_id = hotword_library_id
+        self.hotwords = hotwords
+        self.name = name
+        # Id of the request
+        self.request_id = request_id
+        self.usage_scenario = usage_scenario
+
+    def validate(self):
+        if self.hotwords:
+            for k in self.hotwords:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.hotword_library_id is not None:
+            result['HotwordLibraryId'] = self.hotword_library_id
+        result['Hotwords'] = []
+        if self.hotwords is not None:
+            for k in self.hotwords:
+                result['Hotwords'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.usage_scenario is not None:
+            result['UsageScenario'] = self.usage_scenario
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('HotwordLibraryId') is not None:
+            self.hotword_library_id = m.get('HotwordLibraryId')
+        self.hotwords = []
+        if m.get('Hotwords') is not None:
+            for k in m.get('Hotwords'):
+                temp_model = Hotword()
+                self.hotwords.append(temp_model.from_map(k))
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('UsageScenario') is not None:
+            self.usage_scenario = m.get('UsageScenario')
+        return self
+
+
+class GetHotwordLibraryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetHotwordLibraryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetHotwordLibraryResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -47865,6 +48373,238 @@ class ListEditingProjectsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListEditingProjectsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListHotwordLibrariesRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        max_results: int = None,
+        name: str = None,
+        next_token: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        sort_by: str = None,
+        start_time: str = None,
+        usage_scenario: str = None,
+    ):
+        self.end_time = end_time
+        self.max_results = max_results
+        self.name = name
+        self.next_token = next_token
+        self.page_no = page_no
+        self.page_size = page_size
+        self.sort_by = sort_by
+        self.start_time = start_time
+        self.usage_scenario = usage_scenario
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.usage_scenario is not None:
+            result['UsageScenario'] = self.usage_scenario
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('UsageScenario') is not None:
+            self.usage_scenario = m.get('UsageScenario')
+        return self
+
+
+class ListHotwordLibrariesResponseBodyHotwordLibraryList(TeaModel):
+    def __init__(
+        self,
+        creation_time: str = None,
+        description: str = None,
+        hotword_library_id: str = None,
+        modified_time: str = None,
+        name: str = None,
+        usage_scenario: str = None,
+    ):
+        self.creation_time = creation_time
+        self.description = description
+        self.hotword_library_id = hotword_library_id
+        self.modified_time = modified_time
+        self.name = name
+        self.usage_scenario = usage_scenario
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.hotword_library_id is not None:
+            result['HotwordLibraryId'] = self.hotword_library_id
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.usage_scenario is not None:
+            result['UsageScenario'] = self.usage_scenario
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('HotwordLibraryId') is not None:
+            self.hotword_library_id = m.get('HotwordLibraryId')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('UsageScenario') is not None:
+            self.usage_scenario = m.get('UsageScenario')
+        return self
+
+
+class ListHotwordLibrariesResponseBody(TeaModel):
+    def __init__(
+        self,
+        hotword_library_list: List[ListHotwordLibrariesResponseBodyHotwordLibraryList] = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.hotword_library_list = hotword_library_list
+        self.max_results = max_results
+        self.next_token = next_token
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.hotword_library_list:
+            for k in self.hotword_library_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['HotwordLibraryList'] = []
+        if self.hotword_library_list is not None:
+            for k in self.hotword_library_list:
+                result['HotwordLibraryList'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.hotword_library_list = []
+        if m.get('HotwordLibraryList') is not None:
+            for k in m.get('HotwordLibraryList'):
+                temp_model = ListHotwordLibrariesResponseBodyHotwordLibraryList()
+                self.hotword_library_list.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListHotwordLibrariesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListHotwordLibrariesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListHotwordLibrariesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -91017,6 +91757,180 @@ class UpdateEditingProjectResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateEditingProjectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateHotwordLibraryRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        hotword_library_id: str = None,
+        hotwords: List[Hotword] = None,
+        name: str = None,
+    ):
+        self.description = description
+        # This parameter is required.
+        self.hotword_library_id = hotword_library_id
+        self.hotwords = hotwords
+        self.name = name
+
+    def validate(self):
+        if self.hotwords:
+            for k in self.hotwords:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.hotword_library_id is not None:
+            result['HotwordLibraryId'] = self.hotword_library_id
+        result['Hotwords'] = []
+        if self.hotwords is not None:
+            for k in self.hotwords:
+                result['Hotwords'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('HotwordLibraryId') is not None:
+            self.hotword_library_id = m.get('HotwordLibraryId')
+        self.hotwords = []
+        if m.get('Hotwords') is not None:
+            for k in m.get('Hotwords'):
+                temp_model = Hotword()
+                self.hotwords.append(temp_model.from_map(k))
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class UpdateHotwordLibraryShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        hotword_library_id: str = None,
+        hotwords_shrink: str = None,
+        name: str = None,
+    ):
+        self.description = description
+        # This parameter is required.
+        self.hotword_library_id = hotword_library_id
+        self.hotwords_shrink = hotwords_shrink
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.hotword_library_id is not None:
+            result['HotwordLibraryId'] = self.hotword_library_id
+        if self.hotwords_shrink is not None:
+            result['Hotwords'] = self.hotwords_shrink
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('HotwordLibraryId') is not None:
+            self.hotword_library_id = m.get('HotwordLibraryId')
+        if m.get('Hotwords') is not None:
+            self.hotwords_shrink = m.get('Hotwords')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class UpdateHotwordLibraryResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateHotwordLibraryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateHotwordLibraryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateHotwordLibraryResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

@@ -1,3 +1,11 @@
+2025-05-30 Version: 6.2.0
+- Support API CreateHotwordLibrary.
+- Support API DeleteHotwordLibrary.
+- Support API GetHotwordLibrary.
+- Support API ListHotwordLibraries.
+- Support API UpdateHotwordLibrary.
+
+
 2025-05-29 Version: 6.1.0
 - Support API ListAIAgentPhoneNumber.
 - Support API StartAIAgentOutboundCall.

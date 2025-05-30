@@ -2496,6 +2496,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_editing_project_with_options_async(request, runtime)
 
+    def create_hotword_library_with_options(
+        self,
+        tmp_req: ice20201109_models.CreateHotwordLibraryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.CreateHotwordLibraryResponse:
+        """
+        @summary 创建热词库
+        
+        @param tmp_req: CreateHotwordLibraryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHotwordLibraryResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.CreateHotwordLibraryShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.hotwords):
+            request.hotwords_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.hotwords, 'Hotwords', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.hotwords_shrink):
+            query['Hotwords'] = request.hotwords_shrink
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.usage_scenario):
+            query['UsageScenario'] = request.usage_scenario
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateHotwordLibrary',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.CreateHotwordLibraryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_hotword_library_with_options_async(
+        self,
+        tmp_req: ice20201109_models.CreateHotwordLibraryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.CreateHotwordLibraryResponse:
+        """
+        @summary 创建热词库
+        
+        @param tmp_req: CreateHotwordLibraryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHotwordLibraryResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.CreateHotwordLibraryShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.hotwords):
+            request.hotwords_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.hotwords, 'Hotwords', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.hotwords_shrink):
+            query['Hotwords'] = request.hotwords_shrink
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.usage_scenario):
+            query['UsageScenario'] = request.usage_scenario
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateHotwordLibrary',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.CreateHotwordLibraryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_hotword_library(
+        self,
+        request: ice20201109_models.CreateHotwordLibraryRequest,
+    ) -> ice20201109_models.CreateHotwordLibraryResponse:
+        """
+        @summary 创建热词库
+        
+        @param request: CreateHotwordLibraryRequest
+        @return: CreateHotwordLibraryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_hotword_library_with_options(request, runtime)
+
+    async def create_hotword_library_async(
+        self,
+        request: ice20201109_models.CreateHotwordLibraryRequest,
+    ) -> ice20201109_models.CreateHotwordLibraryResponse:
+        """
+        @summary 创建热词库
+        
+        @param request: CreateHotwordLibraryRequest
+        @return: CreateHotwordLibraryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_hotword_library_with_options_async(request, runtime)
+
     def create_live_package_channel_with_options(
         self,
         request: ice20201109_models.CreateLivePackageChannelRequest,
@@ -6267,6 +6383,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_editing_projects_with_options_async(request, runtime)
+
+    def delete_hotword_library_with_options(
+        self,
+        request: ice20201109_models.DeleteHotwordLibraryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DeleteHotwordLibraryResponse:
+        """
+        @summary 删除热词词库
+        
+        @param request: DeleteHotwordLibraryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHotwordLibraryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.hotword_library_id):
+            query['HotwordLibraryId'] = request.hotword_library_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteHotwordLibrary',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DeleteHotwordLibraryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_hotword_library_with_options_async(
+        self,
+        request: ice20201109_models.DeleteHotwordLibraryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DeleteHotwordLibraryResponse:
+        """
+        @summary 删除热词词库
+        
+        @param request: DeleteHotwordLibraryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHotwordLibraryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.hotword_library_id):
+            query['HotwordLibraryId'] = request.hotword_library_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteHotwordLibrary',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DeleteHotwordLibraryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_hotword_library(
+        self,
+        request: ice20201109_models.DeleteHotwordLibraryRequest,
+    ) -> ice20201109_models.DeleteHotwordLibraryResponse:
+        """
+        @summary 删除热词词库
+        
+        @param request: DeleteHotwordLibraryRequest
+        @return: DeleteHotwordLibraryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_hotword_library_with_options(request, runtime)
+
+    async def delete_hotword_library_async(
+        self,
+        request: ice20201109_models.DeleteHotwordLibraryRequest,
+    ) -> ice20201109_models.DeleteHotwordLibraryResponse:
+        """
+        @summary 删除热词词库
+        
+        @param request: DeleteHotwordLibraryRequest
+        @return: DeleteHotwordLibraryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_hotword_library_with_options_async(request, runtime)
 
     def delete_live_package_channel_with_options(
         self,
@@ -12419,6 +12631,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_event_callback_with_options_async(runtime)
+
+    def get_hotword_library_with_options(
+        self,
+        request: ice20201109_models.GetHotwordLibraryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetHotwordLibraryResponse:
+        """
+        @summary 查询热词词库
+        
+        @param request: GetHotwordLibraryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHotwordLibraryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.hotword_library_id):
+            query['HotwordLibraryId'] = request.hotword_library_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetHotwordLibrary',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetHotwordLibraryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_hotword_library_with_options_async(
+        self,
+        request: ice20201109_models.GetHotwordLibraryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetHotwordLibraryResponse:
+        """
+        @summary 查询热词词库
+        
+        @param request: GetHotwordLibraryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHotwordLibraryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.hotword_library_id):
+            query['HotwordLibraryId'] = request.hotword_library_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetHotwordLibrary',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetHotwordLibraryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_hotword_library(
+        self,
+        request: ice20201109_models.GetHotwordLibraryRequest,
+    ) -> ice20201109_models.GetHotwordLibraryResponse:
+        """
+        @summary 查询热词词库
+        
+        @param request: GetHotwordLibraryRequest
+        @return: GetHotwordLibraryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_hotword_library_with_options(request, runtime)
+
+    async def get_hotword_library_async(
+        self,
+        request: ice20201109_models.GetHotwordLibraryRequest,
+    ) -> ice20201109_models.GetHotwordLibraryResponse:
+        """
+        @summary 查询热词词库
+        
+        @param request: GetHotwordLibraryRequest
+        @return: GetHotwordLibraryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_hotword_library_with_options_async(request, runtime)
 
     def get_live_editing_index_file_with_options(
         self,
@@ -19183,6 +19491,134 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_editing_projects_with_options_async(request, runtime)
+
+    def list_hotword_libraries_with_options(
+        self,
+        request: ice20201109_models.ListHotwordLibrariesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListHotwordLibrariesResponse:
+        """
+        @summary 查询所有热词库的列表
+        
+        @param request: ListHotwordLibrariesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHotwordLibrariesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.usage_scenario):
+            query['UsageScenario'] = request.usage_scenario
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListHotwordLibraries',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListHotwordLibrariesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_hotword_libraries_with_options_async(
+        self,
+        request: ice20201109_models.ListHotwordLibrariesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListHotwordLibrariesResponse:
+        """
+        @summary 查询所有热词库的列表
+        
+        @param request: ListHotwordLibrariesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHotwordLibrariesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.usage_scenario):
+            query['UsageScenario'] = request.usage_scenario
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListHotwordLibraries',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListHotwordLibrariesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_hotword_libraries(
+        self,
+        request: ice20201109_models.ListHotwordLibrariesRequest,
+    ) -> ice20201109_models.ListHotwordLibrariesResponse:
+        """
+        @summary 查询所有热词库的列表
+        
+        @param request: ListHotwordLibrariesRequest
+        @return: ListHotwordLibrariesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_hotword_libraries_with_options(request, runtime)
+
+    async def list_hotword_libraries_async(
+        self,
+        request: ice20201109_models.ListHotwordLibrariesRequest,
+    ) -> ice20201109_models.ListHotwordLibrariesResponse:
+        """
+        @summary 查询所有热词库的列表
+        
+        @param request: ListHotwordLibrariesRequest
+        @return: ListHotwordLibrariesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_hotword_libraries_with_options_async(request, runtime)
 
     def list_live_package_channel_groups_with_options(
         self,
@@ -34551,6 +34987,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_editing_project_with_options_async(request, runtime)
+
+    def update_hotword_library_with_options(
+        self,
+        tmp_req: ice20201109_models.UpdateHotwordLibraryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.UpdateHotwordLibraryResponse:
+        """
+        @summary 更新热词库
+        
+        @param tmp_req: UpdateHotwordLibraryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateHotwordLibraryResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.UpdateHotwordLibraryShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.hotwords):
+            request.hotwords_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.hotwords, 'Hotwords', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.hotword_library_id):
+            query['HotwordLibraryId'] = request.hotword_library_id
+        if not UtilClient.is_unset(request.hotwords_shrink):
+            query['Hotwords'] = request.hotwords_shrink
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateHotwordLibrary',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.UpdateHotwordLibraryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_hotword_library_with_options_async(
+        self,
+        tmp_req: ice20201109_models.UpdateHotwordLibraryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.UpdateHotwordLibraryResponse:
+        """
+        @summary 更新热词库
+        
+        @param tmp_req: UpdateHotwordLibraryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateHotwordLibraryResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.UpdateHotwordLibraryShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.hotwords):
+            request.hotwords_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.hotwords, 'Hotwords', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.hotword_library_id):
+            query['HotwordLibraryId'] = request.hotword_library_id
+        if not UtilClient.is_unset(request.hotwords_shrink):
+            query['Hotwords'] = request.hotwords_shrink
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateHotwordLibrary',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.UpdateHotwordLibraryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_hotword_library(
+        self,
+        request: ice20201109_models.UpdateHotwordLibraryRequest,
+    ) -> ice20201109_models.UpdateHotwordLibraryResponse:
+        """
+        @summary 更新热词库
+        
+        @param request: UpdateHotwordLibraryRequest
+        @return: UpdateHotwordLibraryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_hotword_library_with_options(request, runtime)
+
+    async def update_hotword_library_async(
+        self,
+        request: ice20201109_models.UpdateHotwordLibraryRequest,
+    ) -> ice20201109_models.UpdateHotwordLibraryResponse:
+        """
+        @summary 更新热词库
+        
+        @param request: UpdateHotwordLibraryRequest
+        @return: UpdateHotwordLibraryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_hotword_library_with_options_async(request, runtime)
 
     def update_live_package_channel_with_options(
         self,
