@@ -4474,6 +4474,7 @@ class GetServiceInstanceResponseBodyService(TeaModel):
         self,
         deploy_metadata: str = None,
         deploy_type: str = None,
+        operation_metadata: str = None,
         publish_time: str = None,
         service_doc_url: str = None,
         service_id: str = None,
@@ -4499,6 +4500,7 @@ class GetServiceInstanceResponseBodyService(TeaModel):
         # *   spi: The service is deployed by calling a service provider interface (SPI).
         # *   operation: The service is deployed by using a hosted O\\&M service.
         self.deploy_type = deploy_type
+        self.operation_metadata = operation_metadata
         # The time when the service version was published.
         self.publish_time = publish_time
         # The URL of the service documentation.
@@ -4561,6 +4563,8 @@ class GetServiceInstanceResponseBodyService(TeaModel):
             result['DeployMetadata'] = self.deploy_metadata
         if self.deploy_type is not None:
             result['DeployType'] = self.deploy_type
+        if self.operation_metadata is not None:
+            result['OperationMetadata'] = self.operation_metadata
         if self.publish_time is not None:
             result['PublishTime'] = self.publish_time
         if self.service_doc_url is not None:
@@ -4601,6 +4605,8 @@ class GetServiceInstanceResponseBodyService(TeaModel):
             self.deploy_metadata = m.get('DeployMetadata')
         if m.get('DeployType') is not None:
             self.deploy_type = m.get('DeployType')
+        if m.get('OperationMetadata') is not None:
+            self.operation_metadata = m.get('OperationMetadata')
         if m.get('PublishTime') is not None:
             self.publish_time = m.get('PublishTime')
         if m.get('ServiceDocUrl') is not None:

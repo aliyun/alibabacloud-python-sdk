@@ -1,3 +1,7 @@
+2025-05-30 Version: 4.1.3
+- Update API GetServiceInstance: add response parameters Body.Service.OperationMetadata.
+
+
 2025-05-28 Version: 4.1.2
 - Update API GetService: add response parameters Body.ComplianceMetadata.
 
