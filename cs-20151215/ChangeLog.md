@@ -1,3 +1,10 @@
+2025-05-30 Version: 4.9.2
+- Update API CreateClusterNodePool: add request parameters body.management.auto_repair_policy.approval_required.
+- Update API DescribeClusterNodePoolDetail: add response parameters Body.management.auto_repair_policy.approval_required.
+- Update API DescribeClusterNodePools: add response parameters Body.nodepools.$.management.auto_repair_policy.approval_required.
+- Update API ModifyClusterNodePool: add request parameters body.management.auto_repair_policy.approval_required.
+
+
 2025-05-23 Version: 4.9.1
 - Update API CreateCluster: add request parameters body.audit_log_config.
 

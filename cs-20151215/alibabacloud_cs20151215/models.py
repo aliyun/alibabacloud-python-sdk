@@ -5453,8 +5453,10 @@ class CreateClusterNodePoolRequestKubernetesConfig(TeaModel):
 class CreateClusterNodePoolRequestManagementAutoRepairPolicy(TeaModel):
     def __init__(
         self,
+        approval_required: bool = None,
         restart_node: bool = None,
     ):
+        self.approval_required = approval_required
         # Specifies whether to allow node restart. This parameter takes effect only when `auto_repair` is set to true. Valid values:
         # 
         # *   `true`: allows node restart.
@@ -5472,12 +5474,16 @@ class CreateClusterNodePoolRequestManagementAutoRepairPolicy(TeaModel):
             return _map
 
         result = dict()
+        if self.approval_required is not None:
+            result['approval_required'] = self.approval_required
         if self.restart_node is not None:
             result['restart_node'] = self.restart_node
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('approval_required') is not None:
+            self.approval_required = m.get('approval_required')
         if m.get('restart_node') is not None:
             self.restart_node = m.get('restart_node')
         return self
@@ -10934,8 +10940,10 @@ class DescribeClusterNodePoolDetailResponseBodyKubernetesConfig(TeaModel):
 class DescribeClusterNodePoolDetailResponseBodyManagementAutoRepairPolicy(TeaModel):
     def __init__(
         self,
+        approval_required: bool = None,
         restart_node: bool = None,
     ):
+        self.approval_required = approval_required
         # Whether to allow restarting nodes.
         self.restart_node = restart_node
 
@@ -10948,12 +10956,16 @@ class DescribeClusterNodePoolDetailResponseBodyManagementAutoRepairPolicy(TeaMod
             return _map
 
         result = dict()
+        if self.approval_required is not None:
+            result['approval_required'] = self.approval_required
         if self.restart_node is not None:
             result['restart_node'] = self.restart_node
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('approval_required') is not None:
+            self.approval_required = m.get('approval_required')
         if m.get('restart_node') is not None:
             self.restart_node = m.get('restart_node')
         return self
@@ -12488,8 +12500,10 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig(TeaModel):
 class DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoRepairPolicy(TeaModel):
     def __init__(
         self,
+        approval_required: bool = None,
         restart_node: bool = None,
     ):
+        self.approval_required = approval_required
         # Specifies whether to allow node restart. This parameter takes effect only when `auto_repair=true` is specified.
         # 
         # *   `true`: allows node restart.
@@ -12505,12 +12519,16 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoRepairPolicy(Te
             return _map
 
         result = dict()
+        if self.approval_required is not None:
+            result['approval_required'] = self.approval_required
         if self.restart_node is not None:
             result['restart_node'] = self.restart_node
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('approval_required') is not None:
+            self.approval_required = m.get('approval_required')
         if m.get('restart_node') is not None:
             self.restart_node = m.get('restart_node')
         return self
@@ -26322,8 +26340,10 @@ class ModifyClusterNodePoolRequestKubernetesConfig(TeaModel):
 class ModifyClusterNodePoolRequestManagementAutoRepairPolicy(TeaModel):
     def __init__(
         self,
+        approval_required: bool = None,
         restart_node: bool = None,
     ):
+        self.approval_required = approval_required
         # Specifies whether ACK is allowed to automatically restart nodes after repairing the nodes. Valid values:
         # 
         # *   `true`: yes.
@@ -26339,12 +26359,16 @@ class ModifyClusterNodePoolRequestManagementAutoRepairPolicy(TeaModel):
             return _map
 
         result = dict()
+        if self.approval_required is not None:
+            result['approval_required'] = self.approval_required
         if self.restart_node is not None:
             result['restart_node'] = self.restart_node
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('approval_required') is not None:
+            self.approval_required = m.get('approval_required')
         if m.get('restart_node') is not None:
             self.restart_node = m.get('restart_node')
         return self
