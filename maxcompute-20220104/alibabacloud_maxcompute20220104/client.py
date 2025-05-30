@@ -334,6 +334,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.CreateMmsDataSourceResponse:
         """
+        @summary CreateMmsDataSource
+        
         @param request: CreateMmsDataSourceRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -376,6 +378,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.CreateMmsDataSourceResponse:
         """
+        @summary CreateMmsDataSource
+        
         @param request: CreateMmsDataSourceRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -416,6 +420,8 @@ class Client(OpenApiClient):
         request: max_compute_20220104_models.CreateMmsDataSourceRequest,
     ) -> max_compute_20220104_models.CreateMmsDataSourceResponse:
         """
+        @summary CreateMmsDataSource
+        
         @param request: CreateMmsDataSourceRequest
         @return: CreateMmsDataSourceResponse
         """
@@ -428,6 +434,8 @@ class Client(OpenApiClient):
         request: max_compute_20220104_models.CreateMmsDataSourceRequest,
     ) -> max_compute_20220104_models.CreateMmsDataSourceResponse:
         """
+        @summary CreateMmsDataSource
+        
         @param request: CreateMmsDataSourceRequest
         @return: CreateMmsDataSourceResponse
         """
@@ -1325,6 +1333,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.DeleteMmsJobResponse:
         """
+        @summary 删除迁移计划
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteMmsJobResponse
@@ -1356,6 +1366,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.DeleteMmsJobResponse:
         """
+        @summary 删除迁移计划
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteMmsJobResponse
@@ -1385,6 +1397,8 @@ class Client(OpenApiClient):
         job_id: str,
     ) -> max_compute_20220104_models.DeleteMmsJobResponse:
         """
+        @summary 删除迁移计划
+        
         @return: DeleteMmsJobResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -1397,6 +1411,8 @@ class Client(OpenApiClient):
         job_id: str,
     ) -> max_compute_20220104_models.DeleteMmsJobResponse:
         """
+        @summary 删除迁移计划
+        
         @return: DeleteMmsJobResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -1818,7 +1834,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetJobInfoResponse:
         """
-        @summary Get basic information about a single job.
+        @summary Queries the basic information about a job.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1850,7 +1866,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetJobInfoResponse:
         """
-        @summary Get basic information about a single job.
+        @summary Queries the basic information about a job.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1880,7 +1896,7 @@ class Client(OpenApiClient):
         instance_id: str,
     ) -> max_compute_20220104_models.GetJobInfoResponse:
         """
-        @summary Get basic information about a single job.
+        @summary Queries the basic information about a job.
         
         @return: GetJobInfoResponse
         """
@@ -1893,7 +1909,7 @@ class Client(OpenApiClient):
         instance_id: str,
     ) -> max_compute_20220104_models.GetJobInfoResponse:
         """
-        @summary Get basic information about a single job.
+        @summary Queries the basic information about a job.
         
         @return: GetJobInfoResponse
         """
@@ -2041,6 +2057,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetMmsAsyncTaskResponse:
         """
+        @summary GetMmsAsyncTask
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetMmsAsyncTaskResponse
@@ -2072,6 +2090,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetMmsAsyncTaskResponse:
         """
+        @summary GetMmsAsyncTask
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetMmsAsyncTaskResponse
@@ -2101,6 +2121,8 @@ class Client(OpenApiClient):
         async_task_id: str,
     ) -> max_compute_20220104_models.GetMmsAsyncTaskResponse:
         """
+        @summary GetMmsAsyncTask
+        
         @return: GetMmsAsyncTaskResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -2113,6 +2135,8 @@ class Client(OpenApiClient):
         async_task_id: str,
     ) -> max_compute_20220104_models.GetMmsAsyncTaskResponse:
         """
+        @summary GetMmsAsyncTask
+        
         @return: GetMmsAsyncTaskResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -2127,6 +2151,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetMmsDataSourceResponse:
         """
+        @summary 获取数据源
+        
         @param request: GetMmsDataSourceRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2166,6 +2192,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetMmsDataSourceResponse:
         """
+        @summary 获取数据源
+        
         @param request: GetMmsDataSourceRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2203,6 +2231,8 @@ class Client(OpenApiClient):
         request: max_compute_20220104_models.GetMmsDataSourceRequest,
     ) -> max_compute_20220104_models.GetMmsDataSourceResponse:
         """
+        @summary 获取数据源
+        
         @param request: GetMmsDataSourceRequest
         @return: GetMmsDataSourceResponse
         """
@@ -2216,6 +2246,8 @@ class Client(OpenApiClient):
         request: max_compute_20220104_models.GetMmsDataSourceRequest,
     ) -> max_compute_20220104_models.GetMmsDataSourceResponse:
         """
+        @summary 获取数据源
+        
         @param request: GetMmsDataSourceRequest
         @return: GetMmsDataSourceResponse
         """
@@ -2231,6 +2263,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetMmsDbResponse:
         """
+        @summary GetMmsDb
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetMmsDbResponse
@@ -2262,6 +2296,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetMmsDbResponse:
         """
+        @summary GetMmsDb
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetMmsDbResponse
@@ -2291,6 +2327,8 @@ class Client(OpenApiClient):
         db_id: str,
     ) -> max_compute_20220104_models.GetMmsDbResponse:
         """
+        @summary GetMmsDb
+        
         @return: GetMmsDbResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -2303,6 +2341,8 @@ class Client(OpenApiClient):
         db_id: str,
     ) -> max_compute_20220104_models.GetMmsDbResponse:
         """
+        @summary GetMmsDb
+        
         @return: GetMmsDbResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -2317,6 +2357,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetMmsFetchMetadataJobResponse:
         """
+        @summary GetMmsFetchMetadataJob
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetMmsFetchMetadataJobResponse
@@ -2348,6 +2390,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetMmsFetchMetadataJobResponse:
         """
+        @summary GetMmsFetchMetadataJob
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetMmsFetchMetadataJobResponse
@@ -2377,6 +2421,8 @@ class Client(OpenApiClient):
         scan_id: str,
     ) -> max_compute_20220104_models.GetMmsFetchMetadataJobResponse:
         """
+        @summary GetMmsFetchMetadataJob
+        
         @return: GetMmsFetchMetadataJobResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -2389,6 +2435,8 @@ class Client(OpenApiClient):
         scan_id: str,
     ) -> max_compute_20220104_models.GetMmsFetchMetadataJobResponse:
         """
+        @summary GetMmsFetchMetadataJob
+        
         @return: GetMmsFetchMetadataJobResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -2403,6 +2451,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetMmsJobResponse:
         """
+        @summary 获取迁移计划
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetMmsJobResponse
@@ -2434,6 +2484,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetMmsJobResponse:
         """
+        @summary 获取迁移计划
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetMmsJobResponse
@@ -2463,6 +2515,8 @@ class Client(OpenApiClient):
         job_id: str,
     ) -> max_compute_20220104_models.GetMmsJobResponse:
         """
+        @summary 获取迁移计划
+        
         @return: GetMmsJobResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -2475,6 +2529,8 @@ class Client(OpenApiClient):
         job_id: str,
     ) -> max_compute_20220104_models.GetMmsJobResponse:
         """
+        @summary 获取迁移计划
+        
         @return: GetMmsJobResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -2489,6 +2545,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetMmsPartitionResponse:
         """
+        @summary GetMmsPartition
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetMmsPartitionResponse
@@ -2520,6 +2578,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetMmsPartitionResponse:
         """
+        @summary GetMmsPartition
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetMmsPartitionResponse
@@ -2549,6 +2609,8 @@ class Client(OpenApiClient):
         partition_id: str,
     ) -> max_compute_20220104_models.GetMmsPartitionResponse:
         """
+        @summary GetMmsPartition
+        
         @return: GetMmsPartitionResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -2561,6 +2623,8 @@ class Client(OpenApiClient):
         partition_id: str,
     ) -> max_compute_20220104_models.GetMmsPartitionResponse:
         """
+        @summary GetMmsPartition
+        
         @return: GetMmsPartitionResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -2575,6 +2639,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetMmsTableResponse:
         """
+        @summary GetMmsTable
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetMmsTableResponse
@@ -2606,6 +2672,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetMmsTableResponse:
         """
+        @summary GetMmsTable
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetMmsTableResponse
@@ -2635,6 +2703,8 @@ class Client(OpenApiClient):
         table_id: str,
     ) -> max_compute_20220104_models.GetMmsTableResponse:
         """
+        @summary GetMmsTable
+        
         @return: GetMmsTableResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -2647,6 +2717,8 @@ class Client(OpenApiClient):
         table_id: str,
     ) -> max_compute_20220104_models.GetMmsTableResponse:
         """
+        @summary GetMmsTable
+        
         @return: GetMmsTableResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -2661,6 +2733,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetMmsTaskResponse:
         """
+        @summary GetMmsTask
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetMmsTaskResponse
@@ -2692,6 +2766,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetMmsTaskResponse:
         """
+        @summary GetMmsTask
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetMmsTaskResponse
@@ -2721,6 +2797,8 @@ class Client(OpenApiClient):
         task_id: str,
     ) -> max_compute_20220104_models.GetMmsTaskResponse:
         """
+        @summary GetMmsTask
+        
         @return: GetMmsTaskResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -2733,6 +2811,8 @@ class Client(OpenApiClient):
         task_id: str,
     ) -> max_compute_20220104_models.GetMmsTaskResponse:
         """
+        @summary GetMmsTask
+        
         @return: GetMmsTaskResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -5080,6 +5160,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.ListMmsDataSourcesResponse:
         """
+        @summary ListMmsDataSources
+        
         @param request: ListMmsDataSourcesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5124,6 +5206,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.ListMmsDataSourcesResponse:
         """
+        @summary ListMmsDataSources
+        
         @param request: ListMmsDataSourcesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5166,6 +5250,8 @@ class Client(OpenApiClient):
         request: max_compute_20220104_models.ListMmsDataSourcesRequest,
     ) -> max_compute_20220104_models.ListMmsDataSourcesResponse:
         """
+        @summary ListMmsDataSources
+        
         @param request: ListMmsDataSourcesRequest
         @return: ListMmsDataSourcesResponse
         """
@@ -5178,6 +5264,8 @@ class Client(OpenApiClient):
         request: max_compute_20220104_models.ListMmsDataSourcesRequest,
     ) -> max_compute_20220104_models.ListMmsDataSourcesResponse:
         """
+        @summary ListMmsDataSources
+        
         @param request: ListMmsDataSourcesRequest
         @return: ListMmsDataSourcesResponse
         """
@@ -5325,6 +5413,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.ListMmsJobsResponse:
         """
+        @summary ListMmsJobs
+        
         @param request: ListMmsJobsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5380,6 +5470,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.ListMmsJobsResponse:
         """
+        @summary ListMmsJobs
+        
         @param request: ListMmsJobsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5433,6 +5525,8 @@ class Client(OpenApiClient):
         request: max_compute_20220104_models.ListMmsJobsRequest,
     ) -> max_compute_20220104_models.ListMmsJobsResponse:
         """
+        @summary ListMmsJobs
+        
         @param request: ListMmsJobsRequest
         @return: ListMmsJobsResponse
         """
@@ -5446,6 +5540,8 @@ class Client(OpenApiClient):
         request: max_compute_20220104_models.ListMmsJobsRequest,
     ) -> max_compute_20220104_models.ListMmsJobsResponse:
         """
+        @summary ListMmsJobs
+        
         @param request: ListMmsJobsRequest
         @return: ListMmsJobsResponse
         """
@@ -5461,6 +5557,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.ListMmsPartitionsResponse:
         """
+        @summary 获取元数据-分区
+        
         @param tmp_req: ListMmsPartitionsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5522,6 +5620,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.ListMmsPartitionsResponse:
         """
+        @summary 获取元数据-分区
+        
         @param tmp_req: ListMmsPartitionsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5581,6 +5681,8 @@ class Client(OpenApiClient):
         request: max_compute_20220104_models.ListMmsPartitionsRequest,
     ) -> max_compute_20220104_models.ListMmsPartitionsResponse:
         """
+        @summary 获取元数据-分区
+        
         @param request: ListMmsPartitionsRequest
         @return: ListMmsPartitionsResponse
         """
@@ -5594,6 +5696,8 @@ class Client(OpenApiClient):
         request: max_compute_20220104_models.ListMmsPartitionsRequest,
     ) -> max_compute_20220104_models.ListMmsPartitionsResponse:
         """
+        @summary 获取元数据-分区
+        
         @param request: ListMmsPartitionsRequest
         @return: ListMmsPartitionsResponse
         """
@@ -5609,6 +5713,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.ListMmsTablesResponse:
         """
+        @summary ListMmsTables
+        
         @param tmp_req: ListMmsTablesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5672,6 +5778,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.ListMmsTablesResponse:
         """
+        @summary ListMmsTables
+        
         @param tmp_req: ListMmsTablesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5733,6 +5841,8 @@ class Client(OpenApiClient):
         request: max_compute_20220104_models.ListMmsTablesRequest,
     ) -> max_compute_20220104_models.ListMmsTablesResponse:
         """
+        @summary ListMmsTables
+        
         @param request: ListMmsTablesRequest
         @return: ListMmsTablesResponse
         """
@@ -5746,6 +5856,8 @@ class Client(OpenApiClient):
         request: max_compute_20220104_models.ListMmsTablesRequest,
     ) -> max_compute_20220104_models.ListMmsTablesResponse:
         """
+        @summary ListMmsTables
+        
         @param request: ListMmsTablesRequest
         @return: ListMmsTablesResponse
         """
@@ -5761,6 +5873,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.ListMmsTaskLogsResponse:
         """
+        @summary ListMmsTaskLogs
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListMmsTaskLogsResponse
@@ -5792,6 +5906,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.ListMmsTaskLogsResponse:
         """
+        @summary ListMmsTaskLogs
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListMmsTaskLogsResponse
@@ -5821,6 +5937,8 @@ class Client(OpenApiClient):
         task_id: str,
     ) -> max_compute_20220104_models.ListMmsTaskLogsResponse:
         """
+        @summary ListMmsTaskLogs
+        
         @return: ListMmsTaskLogsResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -5833,6 +5951,8 @@ class Client(OpenApiClient):
         task_id: str,
     ) -> max_compute_20220104_models.ListMmsTaskLogsResponse:
         """
+        @summary ListMmsTaskLogs
+        
         @return: ListMmsTaskLogsResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -5847,6 +5967,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.ListMmsTasksResponse:
         """
+        @summary ListMmsTasks
+        
         @param request: ListMmsTasksRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5904,6 +6026,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.ListMmsTasksResponse:
         """
+        @summary ListMmsTasks
+        
         @param request: ListMmsTasksRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5959,6 +6083,8 @@ class Client(OpenApiClient):
         request: max_compute_20220104_models.ListMmsTasksRequest,
     ) -> max_compute_20220104_models.ListMmsTasksResponse:
         """
+        @summary ListMmsTasks
+        
         @param request: ListMmsTasksRequest
         @return: ListMmsTasksResponse
         """
@@ -5972,6 +6098,8 @@ class Client(OpenApiClient):
         request: max_compute_20220104_models.ListMmsTasksRequest,
     ) -> max_compute_20220104_models.ListMmsTasksResponse:
         """
+        @summary ListMmsTasks
+        
         @param request: ListMmsTasksRequest
         @return: ListMmsTasksResponse
         """
@@ -7901,6 +8029,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.RetryMmsJobResponse:
         """
+        @summary RetryMmsJob
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: RetryMmsJobResponse
@@ -7932,6 +8062,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.RetryMmsJobResponse:
         """
+        @summary RetryMmsJob
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: RetryMmsJobResponse
@@ -7961,6 +8093,8 @@ class Client(OpenApiClient):
         job_id: str,
     ) -> max_compute_20220104_models.RetryMmsJobResponse:
         """
+        @summary RetryMmsJob
+        
         @return: RetryMmsJobResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -7973,6 +8107,8 @@ class Client(OpenApiClient):
         job_id: str,
     ) -> max_compute_20220104_models.RetryMmsJobResponse:
         """
+        @summary RetryMmsJob
+        
         @return: RetryMmsJobResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -7987,6 +8123,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.StartMmsJobResponse:
         """
+        @summary StartMmsJob
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: StartMmsJobResponse
@@ -8018,6 +8156,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.StartMmsJobResponse:
         """
+        @summary StartMmsJob
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: StartMmsJobResponse
@@ -8047,6 +8187,8 @@ class Client(OpenApiClient):
         job_id: str,
     ) -> max_compute_20220104_models.StartMmsJobResponse:
         """
+        @summary StartMmsJob
+        
         @return: StartMmsJobResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -8059,6 +8201,8 @@ class Client(OpenApiClient):
         job_id: str,
     ) -> max_compute_20220104_models.StartMmsJobResponse:
         """
+        @summary StartMmsJob
+        
         @return: StartMmsJobResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -8073,6 +8217,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.StopMmsJobResponse:
         """
+        @summary StopMmsJob
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: StopMmsJobResponse
@@ -8104,6 +8250,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.StopMmsJobResponse:
         """
+        @summary StopMmsJob
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: StopMmsJobResponse
@@ -8133,6 +8281,8 @@ class Client(OpenApiClient):
         job_id: str,
     ) -> max_compute_20220104_models.StopMmsJobResponse:
         """
+        @summary StopMmsJob
+        
         @return: StopMmsJobResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -8145,6 +8295,8 @@ class Client(OpenApiClient):
         job_id: str,
     ) -> max_compute_20220104_models.StopMmsJobResponse:
         """
+        @summary StopMmsJob
+        
         @return: StopMmsJobResponse
         """
         runtime = util_models.RuntimeOptions()

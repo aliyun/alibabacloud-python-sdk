@@ -1,3 +1,6 @@
+2025-05-30 Version: 4.2.1
+- Generated python 2022-01-04 for MaxCompute.
+
 2025-04-23 Version: 4.2.0
 - Support API QueryTunnelMetric.
 - Support API QueryTunnelMetricDetail.

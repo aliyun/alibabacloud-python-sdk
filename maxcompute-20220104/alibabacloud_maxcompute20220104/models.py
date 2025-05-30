@@ -2827,11 +2827,11 @@ class GetJobInfoResponseBodyDataJobSubStatusList(TeaModel):
         description: str = None,
         start_time: str = None,
     ):
-        # The code of the sub-status.
+        # The encoding of the substatus.
         self.code = code
-        # The description of the sub-status.
+        # The description of the substatus.
         self.description = description
-        # The start time of the sub-status.
+        # The start time of the substatus.
         self.start_time = start_time
 
     def validate(self):
@@ -2954,56 +2954,55 @@ class GetJobInfoResponseBodyData(TeaModel):
         total_time: int = None,
         waiting_time: int = None,
     ):
-        # CPU usage of the job at the snapshot time. Unit: Core.
+        # The amount of resources consumed by the job. This parameter is returned only for jobs that are complete.Unit: 100\\*Core\\*s.
         self.cu_usage = cu_usage
-        # The time when the job was finished.
+        # The end time of the job.
         self.end_at_time = end_at_time
-        # The ID of the upstream node.
+        # The ID of the ancestor node.
         self.ext_node_id = ext_node_id
-        # The account ID of the task owner.
+        # The Alibaba Cloud account ID of the task owner.
         self.ext_node_on_duty = ext_node_on_duty
         # The upstream platform.
         self.ext_plant_from = ext_plant_from
-        # The amount of scanned data for the job. Unit: byte.
+        # The amount of data scanned by the job.
         self.input_bytes = input_bytes
-        # The instance ID.
+        # The job ID.
         self.instance_id = instance_id
-        # The account that commits the job.
+        # The owner of the job.
         self.job_owner = job_owner
-        # The list of sub-status of the job.
+        # The substatuses of the job lifecycle.
         self.job_sub_status_list = job_sub_status_list
         # The type of the job.
         self.job_type = job_type
-        # Memory usage of the job at the snapshot time. Unit: MB.
+        # The number of memory consumed by the job. This parameter is returned only for jobs that are complete.Unit: MB\\*s.
         self.memory_usage = memory_usage
         # The priority of the job.
         self.priority = priority
-        # The name of the project.
+        # The project name.
         self.project = project
-        # The nickname of the computing Quota used by the job.
+        # The nickname of the computing quota that is used by the job.
         self.quota_nickname = quota_nickname
-        # The type of the quota.
+        # The quota type.
         self.quota_type = quota_type
         # The region ID.
         self.region = region
-        # The start time of the job.
-        # > The time when the job received the first batch of computing resources.
+        # The start time, which is the time when the job received the first batch of computing resources. For jobs that run for a short period of time or do not consume computing resources, such as the jobs that involve DDL statements, the job submission time is used instead.
         self.running_at_time = running_at_time
-        # The running duration, which is the duration from the runningAtTime to the snapshotTime of the job. Unit: seconds (s).
+        # The execution duration, which is the duration from the start time to the end time of the job.
         self.running_time = running_time
-        # The intelligent diagnostics results.
+        # The intelligent diagnostics result.
         self.scene_results = scene_results
-        # The signature of the SQL job.
+        # The signature of the SQL job. You can use the signature to find the instances on which each time an SQL statement is executed.
         self.signature = signature
-        # The status of the job.
+        # The job status.
         self.status = status
-        # The time when the job was committed.
+        # The time when the job was submitted.
         self.submitted_at_time = submitted_at_time
         # The tenant ID.
         self.tenant_id = tenant_id
-        # The interval from the time when the job was submitted to the snapshotTime .Unit: seconds (s).
+        # The total duration from the time a job is submitted to the time the job is terminated.
         self.total_time = total_time
-        # The duration from the time the job is submitted to the time the job starts to run. Unit: seconds (s).
+        # The wait time, which is the duration from the time the job is submitted to the time the job starts to run.
         self.waiting_time = waiting_time
 
     def validate(self):
@@ -3148,7 +3147,7 @@ class GetJobInfoResponseBody(TeaModel):
         http_code: int = None,
         request_id: str = None,
     ):
-        # The returned data.
+        # The returned result.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -13006,7 +13005,7 @@ class ListJobInfosResponseBodyDataJobInfoList(TeaModel):
         self.cluster = cluster
         # The CU snapshot proportion of the job.
         self.cu_snapshot = cu_snapshot
-        # The total number of used compute units (CUs).
+        # The amount of resources consumed by the job. This parameter is returned only for jobs that are complete.Unit: 100\\*Core\\*s.
         self.cu_usage = cu_usage
         # The time when the job stops running.
         self.end_at_time = end_at_time
@@ -13026,7 +13025,7 @@ class ListJobInfosResponseBodyDataJobInfoList(TeaModel):
         self.job_type = job_type
         # The memory snapshot proportion of the job.
         self.memory_snapshot = memory_snapshot
-        # The total memory usage.
+        # The number of memory consumed by the job. This parameter is returned only for jobs that are complete.Unit: MB\\*s.
         self.memory_usage = memory_usage
         # The priority of the job.
         self.priority = priority
