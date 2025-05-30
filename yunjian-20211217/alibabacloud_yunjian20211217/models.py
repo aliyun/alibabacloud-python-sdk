@@ -11,6 +11,7 @@ class CreateDemandPlanHeaders(TeaModel):
         yun_user_id: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.yun_user_id = yun_user_id
 
     def validate(self):
@@ -45,15 +46,22 @@ class CreateDemandPlanRequest(TeaModel):
         name: str = None,
         period: str = None,
         source: str = None,
+        target_cid: int = None,
         type: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
         self.description = description
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.period = period
         self.source = source
+        self.target_cid = target_cid
+        # This parameter is required.
         self.type = type
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -75,6 +83,8 @@ class CreateDemandPlanRequest(TeaModel):
             result['period'] = self.period
         if self.source is not None:
             result['source'] = self.source
+        if self.target_cid is not None:
+            result['targetCid'] = self.target_cid
         if self.type is not None:
             result['type'] = self.type
         if self.user_id is not None:
@@ -93,6 +103,8 @@ class CreateDemandPlanRequest(TeaModel):
             self.period = m.get('period')
         if m.get('source') is not None:
             self.source = m.get('source')
+        if m.get('targetCid') is not None:
+            self.target_cid = m.get('targetCid')
         if m.get('type') is not None:
             self.type = m.get('type')
         if m.get('userId') is not None:
@@ -166,9 +178,6 @@ class CreateDemandPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -205,6 +214,7 @@ class CreateDemandPlanV2Headers(TeaModel):
         yun_user_id: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.yun_user_id = yun_user_id
 
     def validate(self):
@@ -238,14 +248,20 @@ class CreateDemandPlanV2Request(TeaModel):
         description: str = None,
         name: str = None,
         product_type: str = None,
+        target_cid: int = None,
         type: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
         self.description = description
+        # This parameter is required.
         self.name = name
         self.product_type = product_type
+        self.target_cid = target_cid
+        # This parameter is required.
         self.type = type
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -265,6 +281,8 @@ class CreateDemandPlanV2Request(TeaModel):
             result['name'] = self.name
         if self.product_type is not None:
             result['productType'] = self.product_type
+        if self.target_cid is not None:
+            result['targetCid'] = self.target_cid
         if self.type is not None:
             result['type'] = self.type
         if self.user_id is not None:
@@ -281,6 +299,8 @@ class CreateDemandPlanV2Request(TeaModel):
             self.name = m.get('name')
         if m.get('productType') is not None:
             self.product_type = m.get('productType')
+        if m.get('targetCid') is not None:
+            self.target_cid = m.get('targetCid')
         if m.get('type') is not None:
             self.type = m.get('type')
         if m.get('userId') is not None:
@@ -351,9 +371,6 @@ class CreateDemandPlanV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -390,6 +407,7 @@ class DeleteUrgentDemandItemHeaders(TeaModel):
         yun_user_id: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.yun_user_id = yun_user_id
 
     def validate(self):
@@ -422,7 +440,9 @@ class DeleteUrgentDemandItemRequest(TeaModel):
         id: int = None,
         modifier: str = None,
     ):
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.modifier = modifier
 
     def validate(self):
@@ -512,9 +532,6 @@ class DeleteUrgentDemandItemResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -551,6 +568,7 @@ class DeleteUrgentDemandPlanHeaders(TeaModel):
         yun_user_id: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.yun_user_id = yun_user_id
 
     def validate(self):
@@ -583,7 +601,9 @@ class DeleteUrgentDemandPlanRequest(TeaModel):
         id: int = None,
         modifier: str = None,
     ):
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.modifier = modifier
 
     def validate(self):
@@ -673,9 +693,6 @@ class DeleteUrgentDemandPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -712,6 +729,7 @@ class DeliveryItemDetailSynHeaders(TeaModel):
         yun_user_id: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.yun_user_id = yun_user_id
 
     def validate(self):
@@ -965,9 +983,6 @@ class DeliveryItemDetailSynResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1004,6 +1019,7 @@ class GetUrgentDemandItemListHeaders(TeaModel):
         yun_user_id: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.yun_user_id = yun_user_id
 
     def validate(self):
@@ -1471,9 +1487,6 @@ class GetUrgentDemandItemListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1510,6 +1523,7 @@ class GetUrgentDemandPlanDetailHeaders(TeaModel):
         yun_user_id: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.yun_user_id = yun_user_id
 
     def validate(self):
@@ -1541,6 +1555,7 @@ class GetUrgentDemandPlanDetailRequest(TeaModel):
         self,
         plan_id: str = None,
     ):
+        # This parameter is required.
         self.plan_id = plan_id
 
     def validate(self):
@@ -1761,9 +1776,6 @@ class GetUrgentDemandPlanDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1800,6 +1812,7 @@ class GetUrgentDemandPlanListHeaders(TeaModel):
         yun_user_id: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.yun_user_id = yun_user_id
 
     def validate(self):
@@ -1835,10 +1848,15 @@ class GetUrgentDemandPlanListRequest(TeaModel):
         size: int = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.current = current
+        # This parameter is required.
         self.period = period
+        # This parameter is required.
         self.plan_type = plan_type
+        # This parameter is required.
         self.size = size
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -2106,9 +2124,6 @@ class GetUrgentDemandPlanListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2145,6 +2160,7 @@ class PushResourcePlanHeaders(TeaModel):
         yun_user_id: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.yun_user_id = yun_user_id
 
     def validate(self):
@@ -2185,6 +2201,7 @@ class PushResourcePlanRequestMethodListDataList(TeaModel):
         supply_amount: int = None,
         supply_date: str = None,
         supply_type: int = None,
+        supply_vm_amount: int = None,
     ):
         self.class_zone = class_zone
         self.convert_host_type = convert_host_type
@@ -2195,8 +2212,10 @@ class PushResourcePlanRequestMethodListDataList(TeaModel):
         self.safe_zone = safe_zone
         self.scenario = scenario
         self.supply_amount = supply_amount
+        # This parameter is required.
         self.supply_date = supply_date
         self.supply_type = supply_type
+        self.supply_vm_amount = supply_vm_amount
 
     def validate(self):
         pass
@@ -2229,6 +2248,8 @@ class PushResourcePlanRequestMethodListDataList(TeaModel):
             result['supplyDate'] = self.supply_date
         if self.supply_type is not None:
             result['supplyType'] = self.supply_type
+        if self.supply_vm_amount is not None:
+            result['supplyVmAmount'] = self.supply_vm_amount
         return result
 
     def from_map(self, m: dict = None):
@@ -2255,6 +2276,8 @@ class PushResourcePlanRequestMethodListDataList(TeaModel):
             self.supply_date = m.get('supplyDate')
         if m.get('supplyType') is not None:
             self.supply_type = m.get('supplyType')
+        if m.get('supplyVmAmount') is not None:
+            self.supply_vm_amount = m.get('supplyVmAmount')
         return self
 
 
@@ -2270,6 +2293,7 @@ class PushResourcePlanRequestMethodList(TeaModel):
         data_list: List[PushResourcePlanRequestMethodListDataList] = None,
         denamd_count: int = None,
         gap_cnt: int = None,
+        promise_date: str = None,
         region: str = None,
         resource_method_id: int = None,
         room_code: str = None,
@@ -2283,6 +2307,7 @@ class PushResourcePlanRequestMethodList(TeaModel):
         self.data_list = data_list
         self.denamd_count = denamd_count
         self.gap_cnt = gap_cnt
+        self.promise_date = promise_date
         self.region = region
         self.resource_method_id = resource_method_id
         self.room_code = room_code
@@ -2319,6 +2344,8 @@ class PushResourcePlanRequestMethodList(TeaModel):
             result['denamdCount'] = self.denamd_count
         if self.gap_cnt is not None:
             result['gapCnt'] = self.gap_cnt
+        if self.promise_date is not None:
+            result['promiseDate'] = self.promise_date
         if self.region is not None:
             result['region'] = self.region
         if self.resource_method_id is not None:
@@ -2350,6 +2377,8 @@ class PushResourcePlanRequestMethodList(TeaModel):
             self.denamd_count = m.get('denamdCount')
         if m.get('gapCnt') is not None:
             self.gap_cnt = m.get('gapCnt')
+        if m.get('promiseDate') is not None:
+            self.promise_date = m.get('promiseDate')
         if m.get('region') is not None:
             self.region = m.get('region')
         if m.get('resourceMethodId') is not None:
@@ -2493,9 +2522,6 @@ class PushResourcePlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2651,9 +2677,6 @@ class QueryDeliveredSupplyItemsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             for k in self.body:
                 if k:
@@ -2820,9 +2843,6 @@ class QueryPeriodBudgetBillResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2859,6 +2879,7 @@ class SaveUrgentDemandItemHeaders(TeaModel):
         yun_user_id: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.yun_user_id = yun_user_id
 
     def validate(self):
@@ -3154,9 +3175,6 @@ class SaveUrgentDemandItemResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3193,6 +3211,7 @@ class SubmitUrgentDemandPlanHeaders(TeaModel):
         yun_user_id: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.yun_user_id = yun_user_id
 
     def validate(self):
@@ -3225,7 +3244,9 @@ class SubmitUrgentDemandPlanRequest(TeaModel):
         plan_id: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.plan_id = plan_id
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -3318,9 +3339,6 @@ class SubmitUrgentDemandPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3346,6 +3364,131 @@ class SubmitUrgentDemandPlanResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SubmitUrgentDemandPlanResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class AcceptFulfillmentDecisionRequest(TeaModel):
+    def __init__(
+        self,
+        decision_conclusion: str = None,
+        decision_type: str = None,
+        order_id: str = None,
+    ):
+        self.decision_conclusion = decision_conclusion
+        self.decision_type = decision_type
+        self.order_id = order_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.decision_conclusion is not None:
+            result['DecisionConclusion'] = self.decision_conclusion
+        if self.decision_type is not None:
+            result['DecisionType'] = self.decision_type
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DecisionConclusion') is not None:
+            self.decision_conclusion = m.get('DecisionConclusion')
+        if m.get('DecisionType') is not None:
+            self.decision_type = m.get('DecisionType')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        return self
+
+
+class AcceptFulfillmentDecisionResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        error_code: str = None,
+        error_message: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class AcceptFulfillmentDecisionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AcceptFulfillmentDecisionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AcceptFulfillmentDecisionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
