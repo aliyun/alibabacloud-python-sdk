@@ -1,3 +1,9 @@
+2025-05-30 Version: 2.5.2
+- Update API CreateCluster: add request parameters NodeGroups.$.LoginPassword.
+- Update API CreateNodeGroup: add request parameters NodeGroup.LoginPassword.
+- Update API UpdateNodeGroup: add request parameters LoginPassword.
+
+
 2025-05-20 Version: 2.5.1
 - Update API UpdateNodeGroup: add request parameters ImageId.
 

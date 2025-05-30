@@ -1083,6 +1083,7 @@ class CreateClusterRequestNodeGroups(TeaModel):
         file_system_mount_enabled: bool = None,
         image_id: str = None,
         key_pair_name: str = None,
+        login_password: str = None,
         machine_type: str = None,
         node_group_description: str = None,
         node_group_name: str = None,
@@ -1097,6 +1098,7 @@ class CreateClusterRequestNodeGroups(TeaModel):
         self.image_id = image_id
         # The name of the key pair.
         self.key_pair_name = key_pair_name
+        self.login_password = login_password
         # Machine type
         self.machine_type = machine_type
         # Node group description
@@ -1132,6 +1134,8 @@ class CreateClusterRequestNodeGroups(TeaModel):
             result['ImageId'] = self.image_id
         if self.key_pair_name is not None:
             result['KeyPairName'] = self.key_pair_name
+        if self.login_password is not None:
+            result['LoginPassword'] = self.login_password
         if self.machine_type is not None:
             result['MachineType'] = self.machine_type
         if self.node_group_description is not None:
@@ -1158,6 +1162,8 @@ class CreateClusterRequestNodeGroups(TeaModel):
             self.image_id = m.get('ImageId')
         if m.get('KeyPairName') is not None:
             self.key_pair_name = m.get('KeyPairName')
+        if m.get('LoginPassword') is not None:
+            self.login_password = m.get('LoginPassword')
         if m.get('MachineType') is not None:
             self.machine_type = m.get('MachineType')
         if m.get('NodeGroupDescription') is not None:
@@ -2587,6 +2593,7 @@ class CreateNodeGroupRequestNodeGroup(TeaModel):
         file_system_mount_enabled: bool = None,
         image_id: str = None,
         key_pair_name: str = None,
+        login_password: str = None,
         machine_type: str = None,
         node_group_description: str = None,
         node_group_name: str = None,
@@ -2605,6 +2612,7 @@ class CreateNodeGroupRequestNodeGroup(TeaModel):
         self.image_id = image_id
         # The name of the key pair.
         self.key_pair_name = key_pair_name
+        self.login_password = login_password
         # Machine type
         # 
         # This parameter is required.
@@ -2638,6 +2646,8 @@ class CreateNodeGroupRequestNodeGroup(TeaModel):
             result['ImageId'] = self.image_id
         if self.key_pair_name is not None:
             result['KeyPairName'] = self.key_pair_name
+        if self.login_password is not None:
+            result['LoginPassword'] = self.login_password
         if self.machine_type is not None:
             result['MachineType'] = self.machine_type
         if self.node_group_description is not None:
@@ -2660,6 +2670,8 @@ class CreateNodeGroupRequestNodeGroup(TeaModel):
             self.image_id = m.get('ImageId')
         if m.get('KeyPairName') is not None:
             self.key_pair_name = m.get('KeyPairName')
+        if m.get('LoginPassword') is not None:
+            self.login_password = m.get('LoginPassword')
         if m.get('MachineType') is not None:
             self.machine_type = m.get('MachineType')
         if m.get('NodeGroupDescription') is not None:
@@ -3488,7 +3500,7 @@ class DescribeClusterRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
-        # Cluster ID.
+        # 集群id。
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
@@ -3519,9 +3531,9 @@ class DescribeClusterResponseBodyComponents(TeaModel):
         component_id: str = None,
         component_type: str = None,
     ):
-        # Component ID
+        # 组件id
         self.component_id = component_id
-        # Component Type
+        # 组件类型
         self.component_type = component_type
 
     def validate(self):
@@ -3553,6 +3565,7 @@ class DescribeClusterResponseBodyNetworks(TeaModel):
         self,
         vpd_id: str = None,
     ):
+        # 集群网段id
         self.vpd_id = vpd_id
 
     def validate(self):
@@ -3597,41 +3610,41 @@ class DescribeClusterResponseBody(TeaModel):
         update_time: str = None,
         vpc_id: str = None,
     ):
-        # Cluster Description
+        # 集群描述
         self.cluster_description = cluster_description
-        # Cluster ID
+        # 集群id
         self.cluster_id = cluster_id
-        # Cluster Name
+        # 集群名称
         self.cluster_name = cluster_name
-        # Cluster Type
+        # 集群类型
         self.cluster_type = cluster_type
-        # Component Information
+        # 组件信息
         self.components = components
-        # Type of IP in the compute network
+        # 计算网络的IP类型
         self.computing_ip_version = computing_ip_version
-        # Creation Time
+        # 创建时间
         self.create_time = create_time
-        # Cluster Number
+        # 集群编号
         self.hpn_zone = hpn_zone
-        # Network Information
+        # 网络信息
         self.networks = networks
-        # Number of Nodes
+        # 节点数
         self.node_count = node_count
-        # Number of Node Groups
+        # 节点组数量
         self.node_group_count = node_group_count
-        # Open Eni Jumbo Frame
+        # 网络接口巨帧
         self.open_eni_jumbo_frame = open_eni_jumbo_frame
-        # Cluster State
+        # 集群状态
         self.operating_state = operating_state
-        # Request ID.
+        # 请求id。
         self.request_id = request_id
-        # Resource Group ID
+        # 资源组id
         self.resource_group_id = resource_group_id
-        # Task ID
+        # 任务id
         self.task_id = task_id
-        # Update Time
+        # 更新时间
         self.update_time = update_time
-        # VPC ID
+        # 专有网络ID
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -13239,16 +13252,19 @@ class UpdateNodeGroupRequest(TeaModel):
         file_system_mount_enabled: bool = None,
         image_id: str = None,
         key_pair_name: str = None,
+        login_password: str = None,
         new_node_group_name: str = None,
         node_group_id: str = None,
         user_data: str = None,
     ):
         # Whether file storage mounting is supported
         self.file_system_mount_enabled = file_system_mount_enabled
-        # 节点组的默认镜像id，如果不设置，那么就不会改变。
+        # The default image ID of a node group remains unchanged if not explicitly set.
         self.image_id = image_id
         # The name of the key pair.
         self.key_pair_name = key_pair_name
+        # 节点组内机器的登录密码
+        self.login_password = login_password
         # Node group name
         self.new_node_group_name = new_node_group_name
         # Node group ID
@@ -13271,6 +13287,8 @@ class UpdateNodeGroupRequest(TeaModel):
             result['ImageId'] = self.image_id
         if self.key_pair_name is not None:
             result['KeyPairName'] = self.key_pair_name
+        if self.login_password is not None:
+            result['LoginPassword'] = self.login_password
         if self.new_node_group_name is not None:
             result['NewNodeGroupName'] = self.new_node_group_name
         if self.node_group_id is not None:
@@ -13287,6 +13305,8 @@ class UpdateNodeGroupRequest(TeaModel):
             self.image_id = m.get('ImageId')
         if m.get('KeyPairName') is not None:
             self.key_pair_name = m.get('KeyPairName')
+        if m.get('LoginPassword') is not None:
+            self.login_password = m.get('LoginPassword')
         if m.get('NewNodeGroupName') is not None:
             self.new_node_group_name = m.get('NewNodeGroupName')
         if m.get('NodeGroupId') is not None:

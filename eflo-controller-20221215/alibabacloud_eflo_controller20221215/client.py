@@ -1459,7 +1459,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeClusterResponse:
         """
-        @summary Cluster Details
+        @summary 查询灵骏集群详情。
         
         @param request: DescribeClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1494,7 +1494,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeClusterResponse:
         """
-        @summary Cluster Details
+        @summary 查询灵骏集群详情。
         
         @param request: DescribeClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1528,7 +1528,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeClusterRequest,
     ) -> eflo_controller_20221215_models.DescribeClusterResponse:
         """
-        @summary Cluster Details
+        @summary 查询灵骏集群详情。
         
         @param request: DescribeClusterRequest
         @return: DescribeClusterResponse
@@ -1541,7 +1541,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeClusterRequest,
     ) -> eflo_controller_20221215_models.DescribeClusterResponse:
         """
-        @summary Cluster Details
+        @summary 查询灵骏集群详情。
         
         @param request: DescribeClusterRequest
         @return: DescribeClusterResponse
@@ -5017,6 +5017,8 @@ class Client(OpenApiClient):
             body['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.key_pair_name):
             body['KeyPairName'] = request.key_pair_name
+        if not UtilClient.is_unset(request.login_password):
+            body['LoginPassword'] = request.login_password
         if not UtilClient.is_unset(request.new_node_group_name):
             body['NewNodeGroupName'] = request.new_node_group_name
         if not UtilClient.is_unset(request.node_group_id):
@@ -5064,6 +5066,8 @@ class Client(OpenApiClient):
             body['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.key_pair_name):
             body['KeyPairName'] = request.key_pair_name
+        if not UtilClient.is_unset(request.login_password):
+            body['LoginPassword'] = request.login_password
         if not UtilClient.is_unset(request.new_node_group_name):
             body['NewNodeGroupName'] = request.new_node_group_name
         if not UtilClient.is_unset(request.node_group_id):
