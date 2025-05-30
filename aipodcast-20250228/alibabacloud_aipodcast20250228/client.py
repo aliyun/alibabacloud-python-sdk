@@ -76,16 +76,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                aipodcast_20250228_models.PodcastTaskResultQueryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                aipodcast_20250228_models.PodcastTaskResultQueryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            aipodcast_20250228_models.PodcastTaskResultQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def podcast_task_result_query_with_options_async(
         self,
@@ -122,16 +116,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                aipodcast_20250228_models.PodcastTaskResultQueryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                aipodcast_20250228_models.PodcastTaskResultQueryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            aipodcast_20250228_models.PodcastTaskResultQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def podcast_task_result_query(
         self,
@@ -210,16 +198,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                aipodcast_20250228_models.PodcastTaskSubmitResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                aipodcast_20250228_models.PodcastTaskSubmitResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            aipodcast_20250228_models.PodcastTaskSubmitResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def podcast_task_submit_with_options_async(
         self,
@@ -270,16 +252,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                aipodcast_20250228_models.PodcastTaskSubmitResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                aipodcast_20250228_models.PodcastTaskSubmitResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            aipodcast_20250228_models.PodcastTaskSubmitResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def podcast_task_submit(
         self,

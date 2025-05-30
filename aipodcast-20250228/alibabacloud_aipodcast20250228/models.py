@@ -42,11 +42,13 @@ class PodcastTaskResultQueryRequest(TeaModel):
 class PodcastTaskResultQueryResponseBodyData(TeaModel):
     def __init__(
         self,
+        extra_result: Any = None,
         result_url: Any = None,
         script: str = None,
         task_id: str = None,
         task_status: str = None,
     ):
+        self.extra_result = extra_result
         self.result_url = result_url
         self.script = script
         self.task_id = task_id
@@ -61,6 +63,8 @@ class PodcastTaskResultQueryResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.extra_result is not None:
+            result['extraResult'] = self.extra_result
         if self.result_url is not None:
             result['resultUrl'] = self.result_url
         if self.script is not None:
@@ -73,6 +77,8 @@ class PodcastTaskResultQueryResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('extraResult') is not None:
+            self.extra_result = m.get('extraResult')
         if m.get('resultUrl') is not None:
             self.result_url = m.get('resultUrl')
         if m.get('script') is not None:
