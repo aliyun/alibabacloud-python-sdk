@@ -6203,8 +6203,10 @@ class RunMarketingInformationWritingResponseBodyHeader(TeaModel):
 class RunMarketingInformationWritingResponseBodyPayloadOutput(TeaModel):
     def __init__(
         self,
+        reason_content: str = None,
         text: str = None,
     ):
+        self.reason_content = reason_content
         self.text = text
 
     def validate(self):
@@ -6216,12 +6218,16 @@ class RunMarketingInformationWritingResponseBodyPayloadOutput(TeaModel):
             return _map
 
         result = dict()
+        if self.reason_content is not None:
+            result['reasonContent'] = self.reason_content
         if self.text is not None:
             result['text'] = self.text
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('reasonContent') is not None:
+            self.reason_content = m.get('reasonContent')
         if m.get('text') is not None:
             self.text = m.get('text')
         return self

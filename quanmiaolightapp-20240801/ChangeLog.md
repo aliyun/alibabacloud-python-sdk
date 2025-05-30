@@ -1,3 +1,7 @@
+2025-05-30 Version: 2.9.3
+- Update API RunMarketingInformationWriting: add response parameters Body.payload.output.reasonContent.
+
+
 2025-05-29 Version: 2.9.2
 - Update API RunHotTopicChat: add response parameters Body.payload.output.category.
 - Update API RunHotTopicChat: add response parameters Body.payload.output.keyword.
