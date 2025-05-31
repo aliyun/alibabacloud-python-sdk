@@ -661,15 +661,21 @@ class BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels(TeaModel):
     def __init__(
         self,
         app_instance_group_id: str = None,
+        app_instance_id: str = None,
+        error_code: str = None,
         instance_id: str = None,
+        persistent_app_instance_id: str = None,
         task_id: str = None,
         task_status: str = None,
         ticket: str = None,
     ):
         # The ID of the delivery group.
         self.app_instance_group_id = app_instance_group_id
+        self.app_instance_id = app_instance_id
+        self.error_code = error_code
         # The ID of the cloud phone instance.
         self.instance_id = instance_id
+        self.persistent_app_instance_id = persistent_app_instance_id
         # The ID of the task.
         self.task_id = task_id
         # The state of the task.
@@ -688,8 +694,14 @@ class BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels(TeaModel):
         result = dict()
         if self.app_instance_group_id is not None:
             result['AppInstanceGroupId'] = self.app_instance_group_id
+        if self.app_instance_id is not None:
+            result['AppInstanceId'] = self.app_instance_id
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.persistent_app_instance_id is not None:
+            result['PersistentAppInstanceId'] = self.persistent_app_instance_id
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         if self.task_status is not None:
@@ -702,8 +714,14 @@ class BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels(TeaModel):
         m = m or dict()
         if m.get('AppInstanceGroupId') is not None:
             self.app_instance_group_id = m.get('AppInstanceGroupId')
+        if m.get('AppInstanceId') is not None:
+            self.app_instance_id = m.get('AppInstanceId')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('PersistentAppInstanceId') is not None:
+            self.persistent_app_instance_id = m.get('PersistentAppInstanceId')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         if m.get('TaskStatus') is not None:
@@ -5093,6 +5111,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         rendering_type: str = None,
         session_status: str = None,
         tags: List[DescribeAndroidInstancesResponseBodyInstanceModelTags] = None,
+        v_switch_id: str = None,
+        zone_id: str = None,
     ):
         # The ID of the instance group.
         self.android_instance_group_id = android_instance_group_id
@@ -5167,6 +5187,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         self.session_status = session_status
         # The tags.
         self.tags = tags
+        self.v_switch_id = v_switch_id
+        self.zone_id = zone_id
 
     def validate(self):
         if self.app_manage_policy:
@@ -5264,6 +5286,10 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         if self.tags is not None:
             for k in self.tags:
                 result['Tags'].append(k.to_map() if k else None)
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
         return result
 
     def from_map(self, m: dict = None):
@@ -5348,6 +5374,10 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             for k in m.get('Tags'):
                 temp_model = DescribeAndroidInstancesResponseBodyInstanceModelTags()
                 self.tags.append(temp_model.from_map(k))
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
         return self
 
 
@@ -6260,6 +6290,39 @@ class DescribeCloudPhoneNodesRequest(TeaModel):
         return self
 
 
+class DescribeCloudPhoneNodesResponseBodyNodeModelNetworkInfos(TeaModel):
+    def __init__(
+        self,
+        network_id: str = None,
+        v_switch_id: str = None,
+    ):
+        self.network_id = network_id
+        self.v_switch_id = v_switch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.network_id is not None:
+            result['NetworkId'] = self.network_id
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NetworkId') is not None:
+            self.network_id = m.get('NetworkId')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        return self
+
+
 class DescribeCloudPhoneNodesResponseBodyNodeModel(TeaModel):
     def __init__(
         self,
@@ -6271,6 +6334,7 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(TeaModel):
         instance_type: str = None,
         memory: int = None,
         network_id: str = None,
+        network_infos: List[DescribeCloudPhoneNodesResponseBodyNodeModelNetworkInfos] = None,
         node_id: str = None,
         node_name: str = None,
         phone_count: int = None,
@@ -6297,6 +6361,7 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(TeaModel):
         self.memory = memory
         # The network ID.
         self.network_id = network_id
+        self.network_infos = network_infos
         # The matrix ID.
         self.node_id = node_id
         # The matrix name.
@@ -6319,7 +6384,10 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(TeaModel):
         self.v_switch_id = v_switch_id
 
     def validate(self):
-        pass
+        if self.network_infos:
+            for k in self.network_infos:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6343,6 +6411,10 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(TeaModel):
             result['Memory'] = self.memory
         if self.network_id is not None:
             result['NetworkId'] = self.network_id
+        result['NetworkInfos'] = []
+        if self.network_infos is not None:
+            for k in self.network_infos:
+                result['NetworkInfos'].append(k.to_map() if k else None)
         if self.node_id is not None:
             result['NodeId'] = self.node_id
         if self.node_name is not None:
@@ -6383,6 +6455,11 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(TeaModel):
             self.memory = m.get('Memory')
         if m.get('NetworkId') is not None:
             self.network_id = m.get('NetworkId')
+        self.network_infos = []
+        if m.get('NetworkInfos') is not None:
+            for k in m.get('NetworkInfos'):
+                temp_model = DescribeCloudPhoneNodesResponseBodyNodeModelNetworkInfos()
+                self.network_infos.append(temp_model.from_map(k))
         if m.get('NodeId') is not None:
             self.node_id = m.get('NodeId')
         if m.get('NodeName') is not None:
@@ -12227,10 +12304,12 @@ class ResetAndroidInstancesInGroupRequest(TeaModel):
         self,
         android_instance_ids: List[str] = None,
         sale_mode: str = None,
+        setting_reset_type: int = None,
     ):
         # The IDs of the cloud phone instances.
         self.android_instance_ids = android_instance_ids
         self.sale_mode = sale_mode
+        self.setting_reset_type = setting_reset_type
 
     def validate(self):
         pass
@@ -12245,6 +12324,8 @@ class ResetAndroidInstancesInGroupRequest(TeaModel):
             result['AndroidInstanceIds'] = self.android_instance_ids
         if self.sale_mode is not None:
             result['SaleMode'] = self.sale_mode
+        if self.setting_reset_type is not None:
+            result['SettingResetType'] = self.setting_reset_type
         return result
 
     def from_map(self, m: dict = None):
@@ -12253,6 +12334,8 @@ class ResetAndroidInstancesInGroupRequest(TeaModel):
             self.android_instance_ids = m.get('AndroidInstanceIds')
         if m.get('SaleMode') is not None:
             self.sale_mode = m.get('SaleMode')
+        if m.get('SettingResetType') is not None:
+            self.setting_reset_type = m.get('SettingResetType')
         return self
 
 

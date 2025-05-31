@@ -6578,6 +6578,8 @@ class Client(OpenApiClient):
             query['AndroidInstanceIds'] = request.android_instance_ids
         if not UtilClient.is_unset(request.sale_mode):
             query['SaleMode'] = request.sale_mode
+        if not UtilClient.is_unset(request.setting_reset_type):
+            query['SettingResetType'] = request.setting_reset_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6617,6 +6619,8 @@ class Client(OpenApiClient):
             query['AndroidInstanceIds'] = request.android_instance_ids
         if not UtilClient.is_unset(request.sale_mode):
             query['SaleMode'] = request.sale_mode
+        if not UtilClient.is_unset(request.setting_reset_type):
+            query['SettingResetType'] = request.setting_reset_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

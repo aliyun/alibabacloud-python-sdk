@@ -1,3 +1,13 @@
+2025-05-31 Version: 4.7.2
+- Update API BatchGetAcpConnectionTicket: add response parameters Body.InstanceConnectionModels.$.AppInstanceId.
+- Update API BatchGetAcpConnectionTicket: add response parameters Body.InstanceConnectionModels.$.ErrorCode.
+- Update API BatchGetAcpConnectionTicket: add response parameters Body.InstanceConnectionModels.$.PersistentAppInstanceId.
+- Update API DescribeAndroidInstances: add response parameters Body.InstanceModel.$.VSwitchId.
+- Update API DescribeAndroidInstances: add response parameters Body.InstanceModel.$.ZoneId.
+- Update API DescribeCloudPhoneNodes: add response parameters Body.NodeModel.$.NetworkInfos.
+- Update API ResetAndroidInstancesInGroup: add request parameters SettingResetType.
+
+
 2025-05-23 Version: 4.7.1
 - Update API DescribeAndroidInstances: add request parameters AppManagePolicyId.
 - Update API DescribeAndroidInstances: add response parameters Body.InstanceModel.$.AppManagePolicy.
