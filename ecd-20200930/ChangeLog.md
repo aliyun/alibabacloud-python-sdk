@@ -1,3 +1,8 @@
+2025-06-03 Version: 4.8.1
+- Update API DescribeDesktopGroups: add response parameters Body.DesktopGroups.$.PolicyGroupIdList.
+- Update API DescribeDesktopGroups: add response parameters Body.DesktopGroups.$.PolicyGroupNameList.
+
+
 2025-05-26 Version: 4.8.0
 - Support API CreateTemplate.
 - Support API DeleteTemplates.

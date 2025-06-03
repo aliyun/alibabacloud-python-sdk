@@ -22846,7 +22846,9 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         own_type: int = None,
         pay_type: str = None,
         policy_group_id: str = None,
+        policy_group_id_list: List[str] = None,
         policy_group_name: str = None,
+        policy_group_name_list: List[str] = None,
         protocol_type: str = None,
         ratio_threshold: float = None,
         reset_type: int = None,
@@ -22983,8 +22985,10 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         self.pay_type = pay_type
         # The ID of the applied policy.
         self.policy_group_id = policy_group_id
+        self.policy_group_id_list = policy_group_id_list
         # The name of the applied policy.
         self.policy_group_name = policy_group_name
+        self.policy_group_name_list = policy_group_name_list
         # The protocol type.
         # 
         # Valid values:
@@ -23144,8 +23148,12 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
             result['PayType'] = self.pay_type
         if self.policy_group_id is not None:
             result['PolicyGroupId'] = self.policy_group_id
+        if self.policy_group_id_list is not None:
+            result['PolicyGroupIdList'] = self.policy_group_id_list
         if self.policy_group_name is not None:
             result['PolicyGroupName'] = self.policy_group_name
+        if self.policy_group_name_list is not None:
+            result['PolicyGroupNameList'] = self.policy_group_name_list
         if self.protocol_type is not None:
             result['ProtocolType'] = self.protocol_type
         if self.ratio_threshold is not None:
@@ -23255,8 +23263,12 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
             self.pay_type = m.get('PayType')
         if m.get('PolicyGroupId') is not None:
             self.policy_group_id = m.get('PolicyGroupId')
+        if m.get('PolicyGroupIdList') is not None:
+            self.policy_group_id_list = m.get('PolicyGroupIdList')
         if m.get('PolicyGroupName') is not None:
             self.policy_group_name = m.get('PolicyGroupName')
+        if m.get('PolicyGroupNameList') is not None:
+            self.policy_group_name_list = m.get('PolicyGroupNameList')
         if m.get('ProtocolType') is not None:
             self.protocol_type = m.get('ProtocolType')
         if m.get('RatioThreshold') is not None:
