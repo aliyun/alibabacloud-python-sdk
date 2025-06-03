@@ -1,3 +1,6 @@
+2025-06-03 Version: 7.1.1
+- Generated python 2024-05-18 for dataworks-public.
+
 2025-05-23 Version: 7.1.0
 - Support API CreateBusiness.
 - Support API CreateFile.

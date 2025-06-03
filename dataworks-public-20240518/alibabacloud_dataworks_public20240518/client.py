@@ -3675,7 +3675,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateResourceFileResponse:
         """
-        @summary 支持用户指定自己的文件（比如jar，py，arhive，file等）创建数据开发资源文件
+        @summary Creates a resource file in DataStudio. The following types are supported: JAR, Archive, File, and Python.
         
         @param request: CreateResourceFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3732,7 +3732,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateResourceFileResponse:
         """
-        @summary 支持用户指定自己的文件（比如jar，py，arhive，file等）创建数据开发资源文件
+        @summary Creates a resource file in DataStudio. The following types are supported: JAR, Archive, File, and Python.
         
         @param request: CreateResourceFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3788,7 +3788,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateResourceFileRequest,
     ) -> dataworks_public_20240518_models.CreateResourceFileResponse:
         """
-        @summary 支持用户指定自己的文件（比如jar，py，arhive，file等）创建数据开发资源文件
+        @summary Creates a resource file in DataStudio. The following types are supported: JAR, Archive, File, and Python.
         
         @param request: CreateResourceFileRequest
         @return: CreateResourceFileResponse
@@ -3801,7 +3801,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateResourceFileRequest,
     ) -> dataworks_public_20240518_models.CreateResourceFileResponse:
         """
-        @summary 支持用户指定自己的文件（比如jar，py，arhive，file等）创建数据开发资源文件
+        @summary Creates a resource file in DataStudio. The following types are supported: JAR, Archive, File, and Python.
         
         @param request: CreateResourceFileRequest
         @return: CreateResourceFileResponse
@@ -9459,6 +9459,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetFileResponse:
         """
+        @summary Queries the information about a file.
+        
         @param request: GetFileRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetFileResponse
@@ -9498,6 +9500,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetFileResponse:
         """
+        @summary Queries the information about a file.
+        
         @param request: GetFileRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetFileResponse
@@ -9536,6 +9540,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetFileRequest,
     ) -> dataworks_public_20240518_models.GetFileResponse:
         """
+        @summary Queries the information about a file.
+        
         @param request: GetFileRequest
         @return: GetFileResponse
         """
@@ -9547,6 +9553,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetFileRequest,
     ) -> dataworks_public_20240518_models.GetFileResponse:
         """
+        @summary Queries the information about a file.
+        
         @param request: GetFileRequest
         @return: GetFileResponse
         """
@@ -9559,6 +9567,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetFileVersionResponse:
         """
+        @summary Queries the information about a file version.
+        
         @param request: GetFileVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetFileVersionResponse
@@ -9598,6 +9608,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetFileVersionResponse:
         """
+        @summary Queries the information about a file version.
+        
         @param request: GetFileVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetFileVersionResponse
@@ -9636,6 +9648,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetFileVersionRequest,
     ) -> dataworks_public_20240518_models.GetFileVersionResponse:
         """
+        @summary Queries the information about a file version.
+        
         @param request: GetFileVersionRequest
         @return: GetFileVersionResponse
         """
@@ -9647,6 +9661,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetFileVersionRequest,
     ) -> dataworks_public_20240518_models.GetFileVersionResponse:
         """
+        @summary Queries the information about a file version.
+        
         @param request: GetFileVersionRequest
         @return: GetFileVersionResponse
         """
@@ -9851,7 +9867,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetIDEEventDetailResponse:
         """
-        @summary 获取扩展点触发时的数据快照
+        @summary Queries the data snapshot of an extension point based on the ID of a message in DataWorks OpenEvent when the related extension point event is triggered.
         
         @param request: GetIDEEventDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9888,7 +9904,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetIDEEventDetailResponse:
         """
-        @summary 获取扩展点触发时的数据快照
+        @summary Queries the data snapshot of an extension point based on the ID of a message in DataWorks OpenEvent when the related extension point event is triggered.
         
         @param request: GetIDEEventDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9924,7 +9940,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetIDEEventDetailRequest,
     ) -> dataworks_public_20240518_models.GetIDEEventDetailResponse:
         """
-        @summary 获取扩展点触发时的数据快照
+        @summary Queries the data snapshot of an extension point based on the ID of a message in DataWorks OpenEvent when the related extension point event is triggered.
         
         @param request: GetIDEEventDetailRequest
         @return: GetIDEEventDetailResponse
@@ -9937,7 +9953,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetIDEEventDetailRequest,
     ) -> dataworks_public_20240518_models.GetIDEEventDetailResponse:
         """
-        @summary 获取扩展点触发时的数据快照
+        @summary Queries the data snapshot of an extension point based on the ID of a message in DataWorks OpenEvent when the related extension point event is triggered.
         
         @param request: GetIDEEventDetailRequest
         @return: GetIDEEventDetailResponse
@@ -14585,7 +14601,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDeploymentPackageFilesResponse:
         """
-        @summary 获取待发布的文件版本列表
+        @summary Queries a list of versions of files to be deployed.
         
         @param tmp_req: ListDeploymentPackageFilesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14646,7 +14662,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDeploymentPackageFilesResponse:
         """
-        @summary 获取待发布的文件版本列表
+        @summary Queries a list of versions of files to be deployed.
         
         @param tmp_req: ListDeploymentPackageFilesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14706,7 +14722,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDeploymentPackageFilesRequest,
     ) -> dataworks_public_20240518_models.ListDeploymentPackageFilesResponse:
         """
-        @summary 获取待发布的文件版本列表
+        @summary Queries a list of versions of files to be deployed.
         
         @param request: ListDeploymentPackageFilesRequest
         @return: ListDeploymentPackageFilesResponse
@@ -14719,7 +14735,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDeploymentPackageFilesRequest,
     ) -> dataworks_public_20240518_models.ListDeploymentPackageFilesResponse:
         """
-        @summary 获取待发布的文件版本列表
+        @summary Queries a list of versions of files to be deployed.
         
         @param request: ListDeploymentPackageFilesRequest
         @return: ListDeploymentPackageFilesResponse
