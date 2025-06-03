@@ -1,3 +1,19 @@
+2025-06-03 Version: 5.1.0
+- Support API CreateCloudNotePhrases.
+- Support API DeleteCloudNotePhrases.
+- Support API DescribeCloudNotePhrases.
+- Support API DescribeCloudRecordStatus.
+- Support API ModifyCloudNotePhrases.
+- Update API StartCloudNote: add request parameters Transcription.PhraseId.
+- Update API StartCloudRecord: add request parameters BgColor.
+- Update API StartCloudRecord: add request parameters SubHighResolutionStream.
+- Update API StartStreamingOut: add request parameters BgColor.
+- Update API StartStreamingOut: add request parameters SubHighResolutionStream.
+- Update API UpdateStreamingOut: add request parameters BgColor.
+- Update API UpdateStreamingOut: add request parameters CropMode.
+- Update API UpdateStreamingOut: add request parameters RegionColor.
+
+
 2025-04-29 Version: 5.0.5
 - Generated python 2018-01-11 for rtc.
 

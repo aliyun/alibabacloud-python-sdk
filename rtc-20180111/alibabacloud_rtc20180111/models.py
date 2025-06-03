@@ -1257,6 +1257,237 @@ class CreateAutoLiveStreamRuleResponse(TeaModel):
         return self
 
 
+class CreateCloudNotePhrasesRequestPhraseWordWeights(TeaModel):
+    def __init__(
+        self,
+        weight: int = None,
+        word: str = None,
+    ):
+        # This parameter is required.
+        self.weight = weight
+        # This parameter is required.
+        self.word = word
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        if self.word is not None:
+            result['Word'] = self.word
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        if m.get('Word') is not None:
+            self.word = m.get('Word')
+        return self
+
+
+class CreateCloudNotePhrasesRequestPhrase(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        name: str = None,
+        word_weights: List[CreateCloudNotePhrasesRequestPhraseWordWeights] = None,
+    ):
+        self.description = description
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.word_weights = word_weights
+
+    def validate(self):
+        if self.word_weights:
+            for k in self.word_weights:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        result['WordWeights'] = []
+        if self.word_weights is not None:
+            for k in self.word_weights:
+                result['WordWeights'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.word_weights = []
+        if m.get('WordWeights') is not None:
+            for k in m.get('WordWeights'):
+                temp_model = CreateCloudNotePhrasesRequestPhraseWordWeights()
+                self.word_weights.append(temp_model.from_map(k))
+        return self
+
+
+class CreateCloudNotePhrasesRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        phrase: CreateCloudNotePhrasesRequestPhrase = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.phrase = phrase
+
+    def validate(self):
+        if self.phrase:
+            self.phrase.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.phrase is not None:
+            result['Phrase'] = self.phrase.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Phrase') is not None:
+            temp_model = CreateCloudNotePhrasesRequestPhrase()
+            self.phrase = temp_model.from_map(m['Phrase'])
+        return self
+
+
+class CreateCloudNotePhrasesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        phrase_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.phrase_shrink = phrase_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.phrase_shrink is not None:
+            result['Phrase'] = self.phrase_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Phrase') is not None:
+            self.phrase_shrink = m.get('Phrase')
+        return self
+
+
+class CreateCloudNotePhrasesResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        request_id: str = None,
+    ):
+        self.id = id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateCloudNotePhrasesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateCloudNotePhrasesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateCloudNotePhrasesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateEventSubscribeRequest(TeaModel):
     def __init__(
         self,
@@ -2352,6 +2583,181 @@ class DeleteChannelResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteChannelResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteCloudNotePhrasesRequestPhrase(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+    ):
+        # This parameter is required.
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class DeleteCloudNotePhrasesRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        phrase: DeleteCloudNotePhrasesRequestPhrase = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.phrase = phrase
+
+    def validate(self):
+        if self.phrase:
+            self.phrase.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.phrase is not None:
+            result['Phrase'] = self.phrase.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Phrase') is not None:
+            temp_model = DeleteCloudNotePhrasesRequestPhrase()
+            self.phrase = temp_model.from_map(m['Phrase'])
+        return self
+
+
+class DeleteCloudNotePhrasesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        phrase_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.phrase_shrink = phrase_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.phrase_shrink is not None:
+            result['Phrase'] = self.phrase_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Phrase') is not None:
+            self.phrase_shrink = m.get('Phrase')
+        return self
+
+
+class DeleteCloudNotePhrasesResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        request_id: str = None,
+    ):
+        self.id = id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteCloudNotePhrasesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteCloudNotePhrasesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteCloudNotePhrasesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8131,6 +8537,321 @@ class DescribeChannelsResponse(TeaModel):
         return self
 
 
+class DescribeCloudNotePhrasesRequestCondition(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        name: str = None,
+    ):
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class DescribeCloudNotePhrasesRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        condition: DescribeCloudNotePhrasesRequestCondition = None,
+        page_num: int = None,
+        page_size: int = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.condition = condition
+        self.page_num = page_num
+        self.page_size = page_size
+
+    def validate(self):
+        if self.condition:
+            self.condition.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.condition is not None:
+            result['Condition'] = self.condition.to_map()
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Condition') is not None:
+            temp_model = DescribeCloudNotePhrasesRequestCondition()
+            self.condition = temp_model.from_map(m['Condition'])
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class DescribeCloudNotePhrasesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        condition_shrink: str = None,
+        page_num: int = None,
+        page_size: int = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.condition_shrink = condition_shrink
+        self.page_num = page_num
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.condition_shrink is not None:
+            result['Condition'] = self.condition_shrink
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Condition') is not None:
+            self.condition_shrink = m.get('Condition')
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class DescribeCloudNotePhrasesResponseBodyPhrasesWordWeights(TeaModel):
+    def __init__(
+        self,
+        weight: int = None,
+        word: str = None,
+    ):
+        self.weight = weight
+        self.word = word
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        if self.word is not None:
+            result['Word'] = self.word
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        if m.get('Word') is not None:
+            self.word = m.get('Word')
+        return self
+
+
+class DescribeCloudNotePhrasesResponseBodyPhrases(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        description: str = None,
+        id: str = None,
+        name: str = None,
+        word_weights: List[DescribeCloudNotePhrasesResponseBodyPhrasesWordWeights] = None,
+    ):
+        self.create_time = create_time
+        self.description = description
+        self.id = id
+        self.name = name
+        # This parameter is required.
+        self.word_weights = word_weights
+
+    def validate(self):
+        if self.word_weights:
+            for k in self.word_weights:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        result['WordWeights'] = []
+        if self.word_weights is not None:
+            for k in self.word_weights:
+                result['WordWeights'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.word_weights = []
+        if m.get('WordWeights') is not None:
+            for k in m.get('WordWeights'):
+                temp_model = DescribeCloudNotePhrasesResponseBodyPhrasesWordWeights()
+                self.word_weights.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeCloudNotePhrasesResponseBody(TeaModel):
+    def __init__(
+        self,
+        phrases: List[DescribeCloudNotePhrasesResponseBodyPhrases] = None,
+        request_id: str = None,
+        total_num: int = None,
+        total_page: int = None,
+    ):
+        self.phrases = phrases
+        # Id of the request。
+        self.request_id = request_id
+        self.total_num = total_num
+        self.total_page = total_page
+
+    def validate(self):
+        if self.phrases:
+            for k in self.phrases:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Phrases'] = []
+        if self.phrases is not None:
+            for k in self.phrases:
+                result['Phrases'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_num is not None:
+            result['TotalNum'] = self.total_num
+        if self.total_page is not None:
+            result['TotalPage'] = self.total_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.phrases = []
+        if m.get('Phrases') is not None:
+            for k in m.get('Phrases'):
+                temp_model = DescribeCloudNotePhrasesResponseBodyPhrases()
+                self.phrases.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalNum') is not None:
+            self.total_num = m.get('TotalNum')
+        if m.get('TotalPage') is not None:
+            self.total_page = m.get('TotalPage')
+        return self
+
+
+class DescribeCloudNotePhrasesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCloudNotePhrasesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCloudNotePhrasesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeCloudNotesRequest(TeaModel):
     def __init__(
         self,
@@ -8459,6 +9180,123 @@ class DescribeCloudNotesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeCloudNotesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeCloudRecordStatusRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        channel_id: str = None,
+        task_id: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.channel_id = channel_id
+        # This parameter is required.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class DescribeCloudRecordStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        status: int = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeCloudRecordStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCloudRecordStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCloudRecordStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -17480,6 +18318,244 @@ class ModifyCallbackMetaResponse(TeaModel):
         return self
 
 
+class ModifyCloudNotePhrasesRequestPhraseWordWeights(TeaModel):
+    def __init__(
+        self,
+        weight: int = None,
+        word: str = None,
+    ):
+        # This parameter is required.
+        self.weight = weight
+        # This parameter is required.
+        self.word = word
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        if self.word is not None:
+            result['Word'] = self.word
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        if m.get('Word') is not None:
+            self.word = m.get('Word')
+        return self
+
+
+class ModifyCloudNotePhrasesRequestPhrase(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        id: str = None,
+        name: str = None,
+        word_weights: List[ModifyCloudNotePhrasesRequestPhraseWordWeights] = None,
+    ):
+        self.description = description
+        # This parameter is required.
+        self.id = id
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.word_weights = word_weights
+
+    def validate(self):
+        if self.word_weights:
+            for k in self.word_weights:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        result['WordWeights'] = []
+        if self.word_weights is not None:
+            for k in self.word_weights:
+                result['WordWeights'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.word_weights = []
+        if m.get('WordWeights') is not None:
+            for k in m.get('WordWeights'):
+                temp_model = ModifyCloudNotePhrasesRequestPhraseWordWeights()
+                self.word_weights.append(temp_model.from_map(k))
+        return self
+
+
+class ModifyCloudNotePhrasesRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        phrase: ModifyCloudNotePhrasesRequestPhrase = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.phrase = phrase
+
+    def validate(self):
+        if self.phrase:
+            self.phrase.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.phrase is not None:
+            result['Phrase'] = self.phrase.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Phrase') is not None:
+            temp_model = ModifyCloudNotePhrasesRequestPhrase()
+            self.phrase = temp_model.from_map(m['Phrase'])
+        return self
+
+
+class ModifyCloudNotePhrasesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        phrase_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.phrase_shrink = phrase_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.phrase_shrink is not None:
+            result['Phrase'] = self.phrase_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Phrase') is not None:
+            self.phrase_shrink = m.get('Phrase')
+        return self
+
+
+class ModifyCloudNotePhrasesResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        request_id: str = None,
+    ):
+        self.id = id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyCloudNotePhrasesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyCloudNotePhrasesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyCloudNotePhrasesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyMPULayoutRequestPanes(TeaModel):
     def __init__(
         self,
@@ -18672,10 +19748,12 @@ class StartCloudNoteRequestTranscription(TeaModel):
     def __init__(
         self,
         diarization_enabled: bool = None,
+        phrase_id: str = None,
         speaker_count: int = None,
         transcription_level: int = None,
     ):
         self.diarization_enabled = diarization_enabled
+        self.phrase_id = phrase_id
         self.speaker_count = speaker_count
         self.transcription_level = transcription_level
 
@@ -18690,6 +19768,8 @@ class StartCloudNoteRequestTranscription(TeaModel):
         result = dict()
         if self.diarization_enabled is not None:
             result['DiarizationEnabled'] = self.diarization_enabled
+        if self.phrase_id is not None:
+            result['PhraseId'] = self.phrase_id
         if self.speaker_count is not None:
             result['SpeakerCount'] = self.speaker_count
         if self.transcription_level is not None:
@@ -18700,6 +19780,8 @@ class StartCloudNoteRequestTranscription(TeaModel):
         m = m or dict()
         if m.get('DiarizationEnabled') is not None:
             self.diarization_enabled = m.get('DiarizationEnabled')
+        if m.get('PhraseId') is not None:
+            self.phrase_id = m.get('PhraseId')
         if m.get('SpeakerCount') is not None:
             self.speaker_count = m.get('SpeakerCount')
         if m.get('TranscriptionLevel') is not None:
@@ -19158,6 +20240,45 @@ class StartCloudRecordRequestBackgrounds(TeaModel):
             self.x = m.get('X')
         if m.get('Y') is not None:
             self.y = m.get('Y')
+        return self
+
+
+class StartCloudRecordRequestBgColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        self.b = b
+        self.g = g
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
         return self
 
 
@@ -20230,6 +21351,7 @@ class StartCloudRecordRequest(TeaModel):
         self,
         app_id: str = None,
         backgrounds: List[StartCloudRecordRequestBackgrounds] = None,
+        bg_color: StartCloudRecordRequestBgColor = None,
         channel_id: str = None,
         clock_widgets: List[StartCloudRecordRequestClockWidgets] = None,
         crop_mode: int = None,
@@ -20240,6 +21362,7 @@ class StartCloudRecordRequest(TeaModel):
         reserve_pane_for_no_camera_user: bool = None,
         show_default_background_on_mute: bool = None,
         storage_config: StartCloudRecordRequestStorageConfig = None,
+        sub_high_resolution_stream: bool = None,
         task_id: str = None,
         template_id: str = None,
         texts: List[StartCloudRecordRequestTexts] = None,
@@ -20249,6 +21372,7 @@ class StartCloudRecordRequest(TeaModel):
         # This parameter is required.
         self.app_id = app_id
         self.backgrounds = backgrounds
+        self.bg_color = bg_color
         # channelName
         # 
         # This parameter is required.
@@ -20266,6 +21390,7 @@ class StartCloudRecordRequest(TeaModel):
         # 
         # This parameter is required.
         self.storage_config = storage_config
+        self.sub_high_resolution_stream = sub_high_resolution_stream
         # taskId
         self.task_id = task_id
         # templateId
@@ -20279,6 +21404,8 @@ class StartCloudRecordRequest(TeaModel):
             for k in self.backgrounds:
                 if k:
                     k.validate()
+        if self.bg_color:
+            self.bg_color.validate()
         if self.clock_widgets:
             for k in self.clock_widgets:
                 if k:
@@ -20314,6 +21441,8 @@ class StartCloudRecordRequest(TeaModel):
         if self.backgrounds is not None:
             for k in self.backgrounds:
                 result['Backgrounds'].append(k.to_map() if k else None)
+        if self.bg_color is not None:
+            result['BgColor'] = self.bg_color.to_map()
         if self.channel_id is not None:
             result['ChannelId'] = self.channel_id
         result['ClockWidgets'] = []
@@ -20340,6 +21469,8 @@ class StartCloudRecordRequest(TeaModel):
             result['ShowDefaultBackgroundOnMute'] = self.show_default_background_on_mute
         if self.storage_config is not None:
             result['StorageConfig'] = self.storage_config.to_map()
+        if self.sub_high_resolution_stream is not None:
+            result['SubHighResolutionStream'] = self.sub_high_resolution_stream
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         if self.template_id is not None:
@@ -20359,6 +21490,9 @@ class StartCloudRecordRequest(TeaModel):
             for k in m.get('Backgrounds'):
                 temp_model = StartCloudRecordRequestBackgrounds()
                 self.backgrounds.append(temp_model.from_map(k))
+        if m.get('BgColor') is not None:
+            temp_model = StartCloudRecordRequestBgColor()
+            self.bg_color = temp_model.from_map(m['BgColor'])
         if m.get('ChannelId') is not None:
             self.channel_id = m.get('ChannelId')
         self.clock_widgets = []
@@ -20391,6 +21525,8 @@ class StartCloudRecordRequest(TeaModel):
         if m.get('StorageConfig') is not None:
             temp_model = StartCloudRecordRequestStorageConfig()
             self.storage_config = temp_model.from_map(m['StorageConfig'])
+        if m.get('SubHighResolutionStream') is not None:
+            self.sub_high_resolution_stream = m.get('SubHighResolutionStream')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         if m.get('TemplateId') is not None:
@@ -20474,6 +21610,45 @@ class StartCloudRecordShrinkRequestBackgrounds(TeaModel):
             self.x = m.get('X')
         if m.get('Y') is not None:
             self.y = m.get('Y')
+        return self
+
+
+class StartCloudRecordShrinkRequestBgColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        self.b = b
+        self.g = g
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
         return self
 
 
@@ -21511,6 +22686,7 @@ class StartCloudRecordShrinkRequest(TeaModel):
         self,
         app_id: str = None,
         backgrounds: List[StartCloudRecordShrinkRequestBackgrounds] = None,
+        bg_color: StartCloudRecordShrinkRequestBgColor = None,
         channel_id: str = None,
         clock_widgets: List[StartCloudRecordShrinkRequestClockWidgets] = None,
         crop_mode: int = None,
@@ -21521,6 +22697,7 @@ class StartCloudRecordShrinkRequest(TeaModel):
         reserve_pane_for_no_camera_user: bool = None,
         show_default_background_on_mute: bool = None,
         storage_config: StartCloudRecordShrinkRequestStorageConfig = None,
+        sub_high_resolution_stream: bool = None,
         task_id: str = None,
         template_id: str = None,
         texts: List[StartCloudRecordShrinkRequestTexts] = None,
@@ -21530,6 +22707,7 @@ class StartCloudRecordShrinkRequest(TeaModel):
         # This parameter is required.
         self.app_id = app_id
         self.backgrounds = backgrounds
+        self.bg_color = bg_color
         # channelName
         # 
         # This parameter is required.
@@ -21547,6 +22725,7 @@ class StartCloudRecordShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.storage_config = storage_config
+        self.sub_high_resolution_stream = sub_high_resolution_stream
         # taskId
         self.task_id = task_id
         # templateId
@@ -21560,6 +22739,8 @@ class StartCloudRecordShrinkRequest(TeaModel):
             for k in self.backgrounds:
                 if k:
                     k.validate()
+        if self.bg_color:
+            self.bg_color.validate()
         if self.clock_widgets:
             for k in self.clock_widgets:
                 if k:
@@ -21593,6 +22774,8 @@ class StartCloudRecordShrinkRequest(TeaModel):
         if self.backgrounds is not None:
             for k in self.backgrounds:
                 result['Backgrounds'].append(k.to_map() if k else None)
+        if self.bg_color is not None:
+            result['BgColor'] = self.bg_color.to_map()
         if self.channel_id is not None:
             result['ChannelId'] = self.channel_id
         result['ClockWidgets'] = []
@@ -21619,6 +22802,8 @@ class StartCloudRecordShrinkRequest(TeaModel):
             result['ShowDefaultBackgroundOnMute'] = self.show_default_background_on_mute
         if self.storage_config is not None:
             result['StorageConfig'] = self.storage_config.to_map()
+        if self.sub_high_resolution_stream is not None:
+            result['SubHighResolutionStream'] = self.sub_high_resolution_stream
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         if self.template_id is not None:
@@ -21638,6 +22823,9 @@ class StartCloudRecordShrinkRequest(TeaModel):
             for k in m.get('Backgrounds'):
                 temp_model = StartCloudRecordShrinkRequestBackgrounds()
                 self.backgrounds.append(temp_model.from_map(k))
+        if m.get('BgColor') is not None:
+            temp_model = StartCloudRecordShrinkRequestBgColor()
+            self.bg_color = temp_model.from_map(m['BgColor'])
         if m.get('ChannelId') is not None:
             self.channel_id = m.get('ChannelId')
         self.clock_widgets = []
@@ -21669,6 +22857,8 @@ class StartCloudRecordShrinkRequest(TeaModel):
         if m.get('StorageConfig') is not None:
             temp_model = StartCloudRecordShrinkRequestStorageConfig()
             self.storage_config = temp_model.from_map(m['StorageConfig'])
+        if m.get('SubHighResolutionStream') is not None:
+            self.sub_high_resolution_stream = m.get('SubHighResolutionStream')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         if m.get('TemplateId') is not None:
@@ -23044,6 +24234,45 @@ class StartStreamingOutRequestBackgrounds(TeaModel):
         return self
 
 
+class StartStreamingOutRequestBgColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        self.b = b
+        self.g = g
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
 class StartStreamingOutRequestClockWidgetsBoxColor(TeaModel):
     def __init__(
         self,
@@ -24037,6 +25266,7 @@ class StartStreamingOutRequest(TeaModel):
         self,
         app_id: str = None,
         backgrounds: List[StartStreamingOutRequestBackgrounds] = None,
+        bg_color: StartStreamingOutRequestBgColor = None,
         channel_id: str = None,
         clock_widgets: List[StartStreamingOutRequestClockWidgets] = None,
         crop_mode: int = None,
@@ -24048,6 +25278,7 @@ class StartStreamingOutRequest(TeaModel):
         show_default_background_on_mute: bool = None,
         start_without_channel: bool = None,
         start_without_channel_wait_time: int = None,
+        sub_high_resolution_stream: bool = None,
         task_id: str = None,
         template_id: str = None,
         texts: List[StartStreamingOutRequestTexts] = None,
@@ -24056,6 +25287,7 @@ class StartStreamingOutRequest(TeaModel):
         # This parameter is required.
         self.app_id = app_id
         self.backgrounds = backgrounds
+        self.bg_color = bg_color
         # This parameter is required.
         self.channel_id = channel_id
         self.clock_widgets = clock_widgets
@@ -24068,6 +25300,7 @@ class StartStreamingOutRequest(TeaModel):
         self.show_default_background_on_mute = show_default_background_on_mute
         self.start_without_channel = start_without_channel
         self.start_without_channel_wait_time = start_without_channel_wait_time
+        self.sub_high_resolution_stream = sub_high_resolution_stream
         self.task_id = task_id
         # This parameter is required.
         self.template_id = template_id
@@ -24080,6 +25313,8 @@ class StartStreamingOutRequest(TeaModel):
             for k in self.backgrounds:
                 if k:
                     k.validate()
+        if self.bg_color:
+            self.bg_color.validate()
         if self.clock_widgets:
             for k in self.clock_widgets:
                 if k:
@@ -24113,6 +25348,8 @@ class StartStreamingOutRequest(TeaModel):
         if self.backgrounds is not None:
             for k in self.backgrounds:
                 result['Backgrounds'].append(k.to_map() if k else None)
+        if self.bg_color is not None:
+            result['BgColor'] = self.bg_color.to_map()
         if self.channel_id is not None:
             result['ChannelId'] = self.channel_id
         result['ClockWidgets'] = []
@@ -24141,6 +25378,8 @@ class StartStreamingOutRequest(TeaModel):
             result['StartWithoutChannel'] = self.start_without_channel
         if self.start_without_channel_wait_time is not None:
             result['StartWithoutChannelWaitTime'] = self.start_without_channel_wait_time
+        if self.sub_high_resolution_stream is not None:
+            result['SubHighResolutionStream'] = self.sub_high_resolution_stream
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         if self.template_id is not None:
@@ -24162,6 +25401,9 @@ class StartStreamingOutRequest(TeaModel):
             for k in m.get('Backgrounds'):
                 temp_model = StartStreamingOutRequestBackgrounds()
                 self.backgrounds.append(temp_model.from_map(k))
+        if m.get('BgColor') is not None:
+            temp_model = StartStreamingOutRequestBgColor()
+            self.bg_color = temp_model.from_map(m['BgColor'])
         if m.get('ChannelId') is not None:
             self.channel_id = m.get('ChannelId')
         self.clock_widgets = []
@@ -24195,6 +25437,8 @@ class StartStreamingOutRequest(TeaModel):
             self.start_without_channel = m.get('StartWithoutChannel')
         if m.get('StartWithoutChannelWaitTime') is not None:
             self.start_without_channel_wait_time = m.get('StartWithoutChannelWaitTime')
+        if m.get('SubHighResolutionStream') is not None:
+            self.sub_high_resolution_stream = m.get('SubHighResolutionStream')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         if m.get('TemplateId') is not None:
@@ -24280,6 +25524,45 @@ class StartStreamingOutShrinkRequestBackgrounds(TeaModel):
             self.x = m.get('X')
         if m.get('Y') is not None:
             self.y = m.get('Y')
+        return self
+
+
+class StartStreamingOutShrinkRequestBgColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        self.b = b
+        self.g = g
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
         return self
 
 
@@ -25241,6 +26524,7 @@ class StartStreamingOutShrinkRequest(TeaModel):
         self,
         app_id: str = None,
         backgrounds: List[StartStreamingOutShrinkRequestBackgrounds] = None,
+        bg_color: StartStreamingOutShrinkRequestBgColor = None,
         channel_id: str = None,
         clock_widgets: List[StartStreamingOutShrinkRequestClockWidgets] = None,
         crop_mode: int = None,
@@ -25252,6 +26536,7 @@ class StartStreamingOutShrinkRequest(TeaModel):
         show_default_background_on_mute: bool = None,
         start_without_channel: bool = None,
         start_without_channel_wait_time: int = None,
+        sub_high_resolution_stream: bool = None,
         task_id: str = None,
         template_id: str = None,
         texts: List[StartStreamingOutShrinkRequestTexts] = None,
@@ -25260,6 +26545,7 @@ class StartStreamingOutShrinkRequest(TeaModel):
         # This parameter is required.
         self.app_id = app_id
         self.backgrounds = backgrounds
+        self.bg_color = bg_color
         # This parameter is required.
         self.channel_id = channel_id
         self.clock_widgets = clock_widgets
@@ -25272,6 +26558,7 @@ class StartStreamingOutShrinkRequest(TeaModel):
         self.show_default_background_on_mute = show_default_background_on_mute
         self.start_without_channel = start_without_channel
         self.start_without_channel_wait_time = start_without_channel_wait_time
+        self.sub_high_resolution_stream = sub_high_resolution_stream
         self.task_id = task_id
         # This parameter is required.
         self.template_id = template_id
@@ -25284,6 +26571,8 @@ class StartStreamingOutShrinkRequest(TeaModel):
             for k in self.backgrounds:
                 if k:
                     k.validate()
+        if self.bg_color:
+            self.bg_color.validate()
         if self.clock_widgets:
             for k in self.clock_widgets:
                 if k:
@@ -25315,6 +26604,8 @@ class StartStreamingOutShrinkRequest(TeaModel):
         if self.backgrounds is not None:
             for k in self.backgrounds:
                 result['Backgrounds'].append(k.to_map() if k else None)
+        if self.bg_color is not None:
+            result['BgColor'] = self.bg_color.to_map()
         if self.channel_id is not None:
             result['ChannelId'] = self.channel_id
         result['ClockWidgets'] = []
@@ -25343,6 +26634,8 @@ class StartStreamingOutShrinkRequest(TeaModel):
             result['StartWithoutChannel'] = self.start_without_channel
         if self.start_without_channel_wait_time is not None:
             result['StartWithoutChannelWaitTime'] = self.start_without_channel_wait_time
+        if self.sub_high_resolution_stream is not None:
+            result['SubHighResolutionStream'] = self.sub_high_resolution_stream
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         if self.template_id is not None:
@@ -25364,6 +26657,9 @@ class StartStreamingOutShrinkRequest(TeaModel):
             for k in m.get('Backgrounds'):
                 temp_model = StartStreamingOutShrinkRequestBackgrounds()
                 self.backgrounds.append(temp_model.from_map(k))
+        if m.get('BgColor') is not None:
+            temp_model = StartStreamingOutShrinkRequestBgColor()
+            self.bg_color = temp_model.from_map(m['BgColor'])
         if m.get('ChannelId') is not None:
             self.channel_id = m.get('ChannelId')
         self.clock_widgets = []
@@ -25396,6 +26692,8 @@ class StartStreamingOutShrinkRequest(TeaModel):
             self.start_without_channel = m.get('StartWithoutChannel')
         if m.get('StartWithoutChannelWaitTime') is not None:
             self.start_without_channel_wait_time = m.get('StartWithoutChannelWaitTime')
+        if m.get('SubHighResolutionStream') is not None:
+            self.sub_high_resolution_stream = m.get('SubHighResolutionStream')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         if m.get('TemplateId') is not None:
@@ -30444,6 +31742,45 @@ class UpdateStreamingOutRequestBackgrounds(TeaModel):
         return self
 
 
+class UpdateStreamingOutRequestBgColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        self.b = b
+        self.g = g
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
 class UpdateStreamingOutRequestClockWidgetsBoxColor(TeaModel):
     def __init__(
         self,
@@ -31213,6 +32550,45 @@ class UpdateStreamingOutRequestPanes(TeaModel):
         return self
 
 
+class UpdateStreamingOutRequestRegionColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        self.b = b
+        self.g = g
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
 class UpdateStreamingOutRequestTextsBoxColor(TeaModel):
     def __init__(
         self,
@@ -31397,11 +32773,14 @@ class UpdateStreamingOutRequest(TeaModel):
         self,
         app_id: str = None,
         backgrounds: List[UpdateStreamingOutRequestBackgrounds] = None,
+        bg_color: UpdateStreamingOutRequestBgColor = None,
         channel_id: str = None,
         clock_widgets: List[UpdateStreamingOutRequestClockWidgets] = None,
+        crop_mode: int = None,
         images: List[UpdateStreamingOutRequestImages] = None,
         layout_specified_users: UpdateStreamingOutRequestLayoutSpecifiedUsers = None,
         panes: List[UpdateStreamingOutRequestPanes] = None,
+        region_color: UpdateStreamingOutRequestRegionColor = None,
         task_id: str = None,
         template_id: str = None,
         texts: List[UpdateStreamingOutRequestTexts] = None,
@@ -31409,12 +32788,15 @@ class UpdateStreamingOutRequest(TeaModel):
         # This parameter is required.
         self.app_id = app_id
         self.backgrounds = backgrounds
+        self.bg_color = bg_color
         # This parameter is required.
         self.channel_id = channel_id
         self.clock_widgets = clock_widgets
+        self.crop_mode = crop_mode
         self.images = images
         self.layout_specified_users = layout_specified_users
         self.panes = panes
+        self.region_color = region_color
         # This parameter is required.
         self.task_id = task_id
         # This parameter is required.
@@ -31426,6 +32808,8 @@ class UpdateStreamingOutRequest(TeaModel):
             for k in self.backgrounds:
                 if k:
                     k.validate()
+        if self.bg_color:
+            self.bg_color.validate()
         if self.clock_widgets:
             for k in self.clock_widgets:
                 if k:
@@ -31440,6 +32824,8 @@ class UpdateStreamingOutRequest(TeaModel):
             for k in self.panes:
                 if k:
                     k.validate()
+        if self.region_color:
+            self.region_color.validate()
         if self.texts:
             for k in self.texts:
                 if k:
@@ -31457,12 +32843,16 @@ class UpdateStreamingOutRequest(TeaModel):
         if self.backgrounds is not None:
             for k in self.backgrounds:
                 result['Backgrounds'].append(k.to_map() if k else None)
+        if self.bg_color is not None:
+            result['BgColor'] = self.bg_color.to_map()
         if self.channel_id is not None:
             result['ChannelId'] = self.channel_id
         result['ClockWidgets'] = []
         if self.clock_widgets is not None:
             for k in self.clock_widgets:
                 result['ClockWidgets'].append(k.to_map() if k else None)
+        if self.crop_mode is not None:
+            result['CropMode'] = self.crop_mode
         result['Images'] = []
         if self.images is not None:
             for k in self.images:
@@ -31473,6 +32863,8 @@ class UpdateStreamingOutRequest(TeaModel):
         if self.panes is not None:
             for k in self.panes:
                 result['Panes'].append(k.to_map() if k else None)
+        if self.region_color is not None:
+            result['RegionColor'] = self.region_color.to_map()
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         if self.template_id is not None:
@@ -31492,6 +32884,9 @@ class UpdateStreamingOutRequest(TeaModel):
             for k in m.get('Backgrounds'):
                 temp_model = UpdateStreamingOutRequestBackgrounds()
                 self.backgrounds.append(temp_model.from_map(k))
+        if m.get('BgColor') is not None:
+            temp_model = UpdateStreamingOutRequestBgColor()
+            self.bg_color = temp_model.from_map(m['BgColor'])
         if m.get('ChannelId') is not None:
             self.channel_id = m.get('ChannelId')
         self.clock_widgets = []
@@ -31499,6 +32894,8 @@ class UpdateStreamingOutRequest(TeaModel):
             for k in m.get('ClockWidgets'):
                 temp_model = UpdateStreamingOutRequestClockWidgets()
                 self.clock_widgets.append(temp_model.from_map(k))
+        if m.get('CropMode') is not None:
+            self.crop_mode = m.get('CropMode')
         self.images = []
         if m.get('Images') is not None:
             for k in m.get('Images'):
@@ -31512,6 +32909,9 @@ class UpdateStreamingOutRequest(TeaModel):
             for k in m.get('Panes'):
                 temp_model = UpdateStreamingOutRequestPanes()
                 self.panes.append(temp_model.from_map(k))
+        if m.get('RegionColor') is not None:
+            temp_model = UpdateStreamingOutRequestRegionColor()
+            self.region_color = temp_model.from_map(m['RegionColor'])
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         if m.get('TemplateId') is not None:
@@ -31595,6 +32995,45 @@ class UpdateStreamingOutShrinkRequestBackgrounds(TeaModel):
             self.x = m.get('X')
         if m.get('Y') is not None:
             self.y = m.get('Y')
+        return self
+
+
+class UpdateStreamingOutShrinkRequestBgColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        self.b = b
+        self.g = g
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
         return self
 
 
@@ -32332,6 +33771,45 @@ class UpdateStreamingOutShrinkRequestPanes(TeaModel):
         return self
 
 
+class UpdateStreamingOutShrinkRequestRegionColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        self.b = b
+        self.g = g
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
 class UpdateStreamingOutShrinkRequestTextsBoxColor(TeaModel):
     def __init__(
         self,
@@ -32516,11 +33994,14 @@ class UpdateStreamingOutShrinkRequest(TeaModel):
         self,
         app_id: str = None,
         backgrounds: List[UpdateStreamingOutShrinkRequestBackgrounds] = None,
+        bg_color: UpdateStreamingOutShrinkRequestBgColor = None,
         channel_id: str = None,
         clock_widgets: List[UpdateStreamingOutShrinkRequestClockWidgets] = None,
+        crop_mode: int = None,
         images: List[UpdateStreamingOutShrinkRequestImages] = None,
         layout_specified_users_shrink: str = None,
         panes: List[UpdateStreamingOutShrinkRequestPanes] = None,
+        region_color: UpdateStreamingOutShrinkRequestRegionColor = None,
         task_id: str = None,
         template_id: str = None,
         texts: List[UpdateStreamingOutShrinkRequestTexts] = None,
@@ -32528,12 +34009,15 @@ class UpdateStreamingOutShrinkRequest(TeaModel):
         # This parameter is required.
         self.app_id = app_id
         self.backgrounds = backgrounds
+        self.bg_color = bg_color
         # This parameter is required.
         self.channel_id = channel_id
         self.clock_widgets = clock_widgets
+        self.crop_mode = crop_mode
         self.images = images
         self.layout_specified_users_shrink = layout_specified_users_shrink
         self.panes = panes
+        self.region_color = region_color
         # This parameter is required.
         self.task_id = task_id
         # This parameter is required.
@@ -32545,6 +34029,8 @@ class UpdateStreamingOutShrinkRequest(TeaModel):
             for k in self.backgrounds:
                 if k:
                     k.validate()
+        if self.bg_color:
+            self.bg_color.validate()
         if self.clock_widgets:
             for k in self.clock_widgets:
                 if k:
@@ -32557,6 +34043,8 @@ class UpdateStreamingOutShrinkRequest(TeaModel):
             for k in self.panes:
                 if k:
                     k.validate()
+        if self.region_color:
+            self.region_color.validate()
         if self.texts:
             for k in self.texts:
                 if k:
@@ -32574,12 +34062,16 @@ class UpdateStreamingOutShrinkRequest(TeaModel):
         if self.backgrounds is not None:
             for k in self.backgrounds:
                 result['Backgrounds'].append(k.to_map() if k else None)
+        if self.bg_color is not None:
+            result['BgColor'] = self.bg_color.to_map()
         if self.channel_id is not None:
             result['ChannelId'] = self.channel_id
         result['ClockWidgets'] = []
         if self.clock_widgets is not None:
             for k in self.clock_widgets:
                 result['ClockWidgets'].append(k.to_map() if k else None)
+        if self.crop_mode is not None:
+            result['CropMode'] = self.crop_mode
         result['Images'] = []
         if self.images is not None:
             for k in self.images:
@@ -32590,6 +34082,8 @@ class UpdateStreamingOutShrinkRequest(TeaModel):
         if self.panes is not None:
             for k in self.panes:
                 result['Panes'].append(k.to_map() if k else None)
+        if self.region_color is not None:
+            result['RegionColor'] = self.region_color.to_map()
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         if self.template_id is not None:
@@ -32609,6 +34103,9 @@ class UpdateStreamingOutShrinkRequest(TeaModel):
             for k in m.get('Backgrounds'):
                 temp_model = UpdateStreamingOutShrinkRequestBackgrounds()
                 self.backgrounds.append(temp_model.from_map(k))
+        if m.get('BgColor') is not None:
+            temp_model = UpdateStreamingOutShrinkRequestBgColor()
+            self.bg_color = temp_model.from_map(m['BgColor'])
         if m.get('ChannelId') is not None:
             self.channel_id = m.get('ChannelId')
         self.clock_widgets = []
@@ -32616,6 +34113,8 @@ class UpdateStreamingOutShrinkRequest(TeaModel):
             for k in m.get('ClockWidgets'):
                 temp_model = UpdateStreamingOutShrinkRequestClockWidgets()
                 self.clock_widgets.append(temp_model.from_map(k))
+        if m.get('CropMode') is not None:
+            self.crop_mode = m.get('CropMode')
         self.images = []
         if m.get('Images') is not None:
             for k in m.get('Images'):
@@ -32628,6 +34127,9 @@ class UpdateStreamingOutShrinkRequest(TeaModel):
             for k in m.get('Panes'):
                 temp_model = UpdateStreamingOutShrinkRequestPanes()
                 self.panes.append(temp_model.from_map(k))
+        if m.get('RegionColor') is not None:
+            temp_model = UpdateStreamingOutShrinkRequestRegionColor()
+            self.region_color = temp_model.from_map(m['RegionColor'])
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         if m.get('TemplateId') is not None:

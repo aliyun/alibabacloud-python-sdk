@@ -649,6 +649,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_auto_live_stream_rule_with_options_async(request, runtime)
 
+    def create_cloud_note_phrases_with_options(
+        self,
+        tmp_req: rtc_20180111_models.CreateCloudNotePhrasesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.CreateCloudNotePhrasesResponse:
+        """
+        @summary 增加纪要热词表
+        
+        @param tmp_req: CreateCloudNotePhrasesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCloudNotePhrasesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.CreateCloudNotePhrasesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.phrase):
+            request.phrase_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.phrase, 'Phrase', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.phrase_shrink):
+            query['Phrase'] = request.phrase_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCloudNotePhrases',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.CreateCloudNotePhrasesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_cloud_note_phrases_with_options_async(
+        self,
+        tmp_req: rtc_20180111_models.CreateCloudNotePhrasesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.CreateCloudNotePhrasesResponse:
+        """
+        @summary 增加纪要热词表
+        
+        @param tmp_req: CreateCloudNotePhrasesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCloudNotePhrasesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.CreateCloudNotePhrasesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.phrase):
+            request.phrase_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.phrase, 'Phrase', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.phrase_shrink):
+            query['Phrase'] = request.phrase_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCloudNotePhrases',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.CreateCloudNotePhrasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_cloud_note_phrases(
+        self,
+        request: rtc_20180111_models.CreateCloudNotePhrasesRequest,
+    ) -> rtc_20180111_models.CreateCloudNotePhrasesResponse:
+        """
+        @summary 增加纪要热词表
+        
+        @param request: CreateCloudNotePhrasesRequest
+        @return: CreateCloudNotePhrasesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_cloud_note_phrases_with_options(request, runtime)
+
+    async def create_cloud_note_phrases_async(
+        self,
+        request: rtc_20180111_models.CreateCloudNotePhrasesRequest,
+    ) -> rtc_20180111_models.CreateCloudNotePhrasesResponse:
+        """
+        @summary 增加纪要热词表
+        
+        @param request: CreateCloudNotePhrasesRequest
+        @return: CreateCloudNotePhrasesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_cloud_note_phrases_with_options_async(request, runtime)
+
     def create_event_subscribe_with_options(
         self,
         request: rtc_20180111_models.CreateEventSubscribeRequest,
@@ -1396,6 +1504,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_channel_with_options_async(request, runtime)
+
+    def delete_cloud_note_phrases_with_options(
+        self,
+        tmp_req: rtc_20180111_models.DeleteCloudNotePhrasesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DeleteCloudNotePhrasesResponse:
+        """
+        @summary 删除纪要热词表
+        
+        @param tmp_req: DeleteCloudNotePhrasesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCloudNotePhrasesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.DeleteCloudNotePhrasesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.phrase):
+            request.phrase_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.phrase, 'Phrase', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.phrase_shrink):
+            query['Phrase'] = request.phrase_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCloudNotePhrases',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DeleteCloudNotePhrasesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_cloud_note_phrases_with_options_async(
+        self,
+        tmp_req: rtc_20180111_models.DeleteCloudNotePhrasesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DeleteCloudNotePhrasesResponse:
+        """
+        @summary 删除纪要热词表
+        
+        @param tmp_req: DeleteCloudNotePhrasesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCloudNotePhrasesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.DeleteCloudNotePhrasesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.phrase):
+            request.phrase_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.phrase, 'Phrase', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.phrase_shrink):
+            query['Phrase'] = request.phrase_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCloudNotePhrases',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DeleteCloudNotePhrasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_cloud_note_phrases(
+        self,
+        request: rtc_20180111_models.DeleteCloudNotePhrasesRequest,
+    ) -> rtc_20180111_models.DeleteCloudNotePhrasesResponse:
+        """
+        @summary 删除纪要热词表
+        
+        @param request: DeleteCloudNotePhrasesRequest
+        @return: DeleteCloudNotePhrasesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_cloud_note_phrases_with_options(request, runtime)
+
+    async def delete_cloud_note_phrases_async(
+        self,
+        request: rtc_20180111_models.DeleteCloudNotePhrasesRequest,
+    ) -> rtc_20180111_models.DeleteCloudNotePhrasesResponse:
+        """
+        @summary 删除纪要热词表
+        
+        @param request: DeleteCloudNotePhrasesRequest
+        @return: DeleteCloudNotePhrasesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_cloud_note_phrases_with_options_async(request, runtime)
 
     def delete_event_subscribe_with_options(
         self,
@@ -4355,6 +4571,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_channels_with_options_async(request, runtime)
 
+    def describe_cloud_note_phrases_with_options(
+        self,
+        tmp_req: rtc_20180111_models.DescribeCloudNotePhrasesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeCloudNotePhrasesResponse:
+        """
+        @summary 纪要热词列表
+        
+        @param tmp_req: DescribeCloudNotePhrasesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudNotePhrasesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.DescribeCloudNotePhrasesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.condition):
+            request.condition_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.condition, 'Condition', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.condition_shrink):
+            query['Condition'] = request.condition_shrink
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudNotePhrases',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeCloudNotePhrasesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cloud_note_phrases_with_options_async(
+        self,
+        tmp_req: rtc_20180111_models.DescribeCloudNotePhrasesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeCloudNotePhrasesResponse:
+        """
+        @summary 纪要热词列表
+        
+        @param tmp_req: DescribeCloudNotePhrasesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudNotePhrasesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.DescribeCloudNotePhrasesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.condition):
+            request.condition_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.condition, 'Condition', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.condition_shrink):
+            query['Condition'] = request.condition_shrink
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudNotePhrases',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeCloudNotePhrasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cloud_note_phrases(
+        self,
+        request: rtc_20180111_models.DescribeCloudNotePhrasesRequest,
+    ) -> rtc_20180111_models.DescribeCloudNotePhrasesResponse:
+        """
+        @summary 纪要热词列表
+        
+        @param request: DescribeCloudNotePhrasesRequest
+        @return: DescribeCloudNotePhrasesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cloud_note_phrases_with_options(request, runtime)
+
+    async def describe_cloud_note_phrases_async(
+        self,
+        request: rtc_20180111_models.DescribeCloudNotePhrasesRequest,
+    ) -> rtc_20180111_models.DescribeCloudNotePhrasesResponse:
+        """
+        @summary 纪要热词列表
+        
+        @param request: DescribeCloudNotePhrasesRequest
+        @return: DescribeCloudNotePhrasesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cloud_note_phrases_with_options_async(request, runtime)
+
     def describe_cloud_notes_with_options(
         self,
         tmp_req: rtc_20180111_models.DescribeCloudNotesRequest,
@@ -4454,6 +4786,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cloud_notes_with_options_async(request, runtime)
+
+    def describe_cloud_record_status_with_options(
+        self,
+        request: rtc_20180111_models.DescribeCloudRecordStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeCloudRecordStatusResponse:
+        """
+        @summary 查询录制任务状态
+        
+        @param request: DescribeCloudRecordStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudRecordStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudRecordStatus',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeCloudRecordStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cloud_record_status_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeCloudRecordStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeCloudRecordStatusResponse:
+        """
+        @summary 查询录制任务状态
+        
+        @param request: DescribeCloudRecordStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudRecordStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudRecordStatus',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeCloudRecordStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cloud_record_status(
+        self,
+        request: rtc_20180111_models.DescribeCloudRecordStatusRequest,
+    ) -> rtc_20180111_models.DescribeCloudRecordStatusResponse:
+        """
+        @summary 查询录制任务状态
+        
+        @param request: DescribeCloudRecordStatusRequest
+        @return: DescribeCloudRecordStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cloud_record_status_with_options(request, runtime)
+
+    async def describe_cloud_record_status_async(
+        self,
+        request: rtc_20180111_models.DescribeCloudRecordStatusRequest,
+    ) -> rtc_20180111_models.DescribeCloudRecordStatusResponse:
+        """
+        @summary 查询录制任务状态
+        
+        @param request: DescribeCloudRecordStatusRequest
+        @return: DescribeCloudRecordStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cloud_record_status_with_options_async(request, runtime)
 
     def describe_end_point_event_list_with_options(
         self,
@@ -8535,6 +8971,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_callback_meta_with_options_async(request, runtime)
 
+    def modify_cloud_note_phrases_with_options(
+        self,
+        tmp_req: rtc_20180111_models.ModifyCloudNotePhrasesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.ModifyCloudNotePhrasesResponse:
+        """
+        @summary 更新纪要热词表
+        
+        @param tmp_req: ModifyCloudNotePhrasesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCloudNotePhrasesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.ModifyCloudNotePhrasesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.phrase):
+            request.phrase_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.phrase, 'Phrase', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.phrase_shrink):
+            query['Phrase'] = request.phrase_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyCloudNotePhrases',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.ModifyCloudNotePhrasesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_cloud_note_phrases_with_options_async(
+        self,
+        tmp_req: rtc_20180111_models.ModifyCloudNotePhrasesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.ModifyCloudNotePhrasesResponse:
+        """
+        @summary 更新纪要热词表
+        
+        @param tmp_req: ModifyCloudNotePhrasesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCloudNotePhrasesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.ModifyCloudNotePhrasesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.phrase):
+            request.phrase_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.phrase, 'Phrase', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.phrase_shrink):
+            query['Phrase'] = request.phrase_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyCloudNotePhrases',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.ModifyCloudNotePhrasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_cloud_note_phrases(
+        self,
+        request: rtc_20180111_models.ModifyCloudNotePhrasesRequest,
+    ) -> rtc_20180111_models.ModifyCloudNotePhrasesResponse:
+        """
+        @summary 更新纪要热词表
+        
+        @param request: ModifyCloudNotePhrasesRequest
+        @return: ModifyCloudNotePhrasesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_cloud_note_phrases_with_options(request, runtime)
+
+    async def modify_cloud_note_phrases_async(
+        self,
+        request: rtc_20180111_models.ModifyCloudNotePhrasesRequest,
+    ) -> rtc_20180111_models.ModifyCloudNotePhrasesResponse:
+        """
+        @summary 更新纪要热词表
+        
+        @param request: ModifyCloudNotePhrasesRequest
+        @return: ModifyCloudNotePhrasesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_cloud_note_phrases_with_options_async(request, runtime)
+
     def modify_mpulayout_with_options(
         self,
         request: rtc_20180111_models.ModifyMPULayoutRequest,
@@ -9161,6 +9705,8 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.backgrounds):
             query['Backgrounds'] = request.backgrounds
+        if not UtilClient.is_unset(request.bg_color):
+            query['BgColor'] = request.bg_color
         if not UtilClient.is_unset(request.channel_id):
             query['ChannelId'] = request.channel_id
         if not UtilClient.is_unset(request.clock_widgets):
@@ -9181,6 +9727,8 @@ class Client(OpenApiClient):
             query['ShowDefaultBackgroundOnMute'] = request.show_default_background_on_mute
         if not UtilClient.is_unset(request.storage_config):
             query['StorageConfig'] = request.storage_config
+        if not UtilClient.is_unset(request.sub_high_resolution_stream):
+            query['SubHighResolutionStream'] = request.sub_high_resolution_stream
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.template_id):
@@ -9228,6 +9776,8 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.backgrounds):
             query['Backgrounds'] = request.backgrounds
+        if not UtilClient.is_unset(request.bg_color):
+            query['BgColor'] = request.bg_color
         if not UtilClient.is_unset(request.channel_id):
             query['ChannelId'] = request.channel_id
         if not UtilClient.is_unset(request.clock_widgets):
@@ -9248,6 +9798,8 @@ class Client(OpenApiClient):
             query['ShowDefaultBackgroundOnMute'] = request.show_default_background_on_mute
         if not UtilClient.is_unset(request.storage_config):
             query['StorageConfig'] = request.storage_config
+        if not UtilClient.is_unset(request.sub_high_resolution_stream):
+            query['SubHighResolutionStream'] = request.sub_high_resolution_stream
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.template_id):
@@ -9699,6 +10251,8 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.backgrounds):
             query['Backgrounds'] = request.backgrounds
+        if not UtilClient.is_unset(request.bg_color):
+            query['BgColor'] = request.bg_color
         if not UtilClient.is_unset(request.channel_id):
             query['ChannelId'] = request.channel_id
         if not UtilClient.is_unset(request.clock_widgets):
@@ -9721,6 +10275,8 @@ class Client(OpenApiClient):
             query['StartWithoutChannel'] = request.start_without_channel
         if not UtilClient.is_unset(request.start_without_channel_wait_time):
             query['StartWithoutChannelWaitTime'] = request.start_without_channel_wait_time
+        if not UtilClient.is_unset(request.sub_high_resolution_stream):
+            query['SubHighResolutionStream'] = request.sub_high_resolution_stream
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.template_id):
@@ -9770,6 +10326,8 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.backgrounds):
             query['Backgrounds'] = request.backgrounds
+        if not UtilClient.is_unset(request.bg_color):
+            query['BgColor'] = request.bg_color
         if not UtilClient.is_unset(request.channel_id):
             query['ChannelId'] = request.channel_id
         if not UtilClient.is_unset(request.clock_widgets):
@@ -9792,6 +10350,8 @@ class Client(OpenApiClient):
             query['StartWithoutChannel'] = request.start_without_channel
         if not UtilClient.is_unset(request.start_without_channel_wait_time):
             query['StartWithoutChannelWaitTime'] = request.start_without_channel_wait_time
+        if not UtilClient.is_unset(request.sub_high_resolution_stream):
+            query['SubHighResolutionStream'] = request.sub_high_resolution_stream
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.template_id):
@@ -11327,16 +11887,22 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.backgrounds):
             query['Backgrounds'] = request.backgrounds
+        if not UtilClient.is_unset(request.bg_color):
+            query['BgColor'] = request.bg_color
         if not UtilClient.is_unset(request.channel_id):
             query['ChannelId'] = request.channel_id
         if not UtilClient.is_unset(request.clock_widgets):
             query['ClockWidgets'] = request.clock_widgets
+        if not UtilClient.is_unset(request.crop_mode):
+            query['CropMode'] = request.crop_mode
         if not UtilClient.is_unset(request.images):
             query['Images'] = request.images
         if not UtilClient.is_unset(request.layout_specified_users_shrink):
             query['LayoutSpecifiedUsers'] = request.layout_specified_users_shrink
         if not UtilClient.is_unset(request.panes):
             query['Panes'] = request.panes
+        if not UtilClient.is_unset(request.region_color):
+            query['RegionColor'] = request.region_color
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.template_id):
@@ -11384,16 +11950,22 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.backgrounds):
             query['Backgrounds'] = request.backgrounds
+        if not UtilClient.is_unset(request.bg_color):
+            query['BgColor'] = request.bg_color
         if not UtilClient.is_unset(request.channel_id):
             query['ChannelId'] = request.channel_id
         if not UtilClient.is_unset(request.clock_widgets):
             query['ClockWidgets'] = request.clock_widgets
+        if not UtilClient.is_unset(request.crop_mode):
+            query['CropMode'] = request.crop_mode
         if not UtilClient.is_unset(request.images):
             query['Images'] = request.images
         if not UtilClient.is_unset(request.layout_specified_users_shrink):
             query['LayoutSpecifiedUsers'] = request.layout_specified_users_shrink
         if not UtilClient.is_unset(request.panes):
             query['Panes'] = request.panes
+        if not UtilClient.is_unset(request.region_color):
+            query['RegionColor'] = request.region_color
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.template_id):
