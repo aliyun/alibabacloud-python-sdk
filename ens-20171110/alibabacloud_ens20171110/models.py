@@ -1997,20 +1997,18 @@ class AttachEnsInstancesResponse(TeaModel):
         return self
 
 
-class AttachInstanceSDGRequest(TeaModel):
+class AttachInstanceSDGRequestLoadOpt(TeaModel):
     def __init__(
         self,
-        instance_ids: List[str] = None,
-        sdgid: str = None,
+        block_rw_split: bool = None,
+        block_rw_split_size: int = None,
+        cache: bool = None,
+        cache_size: int = None,
     ):
-        # The IDs of the instances.
-        # 
-        # This parameter is required.
-        self.instance_ids = instance_ids
-        # The ID of the SDG.
-        # 
-        # This parameter is required.
-        self.sdgid = sdgid
+        self.block_rw_split = block_rw_split
+        self.block_rw_split_size = block_rw_split_size
+        self.cache = cache
+        self.cache_size = cache_size
 
     def validate(self):
         pass
@@ -2021,8 +2019,60 @@ class AttachInstanceSDGRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.block_rw_split is not None:
+            result['BlockRwSplit'] = self.block_rw_split
+        if self.block_rw_split_size is not None:
+            result['BlockRwSplitSize'] = self.block_rw_split_size
+        if self.cache is not None:
+            result['Cache'] = self.cache
+        if self.cache_size is not None:
+            result['CacheSize'] = self.cache_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BlockRwSplit') is not None:
+            self.block_rw_split = m.get('BlockRwSplit')
+        if m.get('BlockRwSplitSize') is not None:
+            self.block_rw_split_size = m.get('BlockRwSplitSize')
+        if m.get('Cache') is not None:
+            self.cache = m.get('Cache')
+        if m.get('CacheSize') is not None:
+            self.cache_size = m.get('CacheSize')
+        return self
+
+
+class AttachInstanceSDGRequest(TeaModel):
+    def __init__(
+        self,
+        instance_ids: List[str] = None,
+        load_opt: AttachInstanceSDGRequestLoadOpt = None,
+        sdgid: str = None,
+    ):
+        # The IDs of the instances.
+        # 
+        # This parameter is required.
+        self.instance_ids = instance_ids
+        self.load_opt = load_opt
+        # The ID of the SDG.
+        # 
+        # This parameter is required.
+        self.sdgid = sdgid
+
+    def validate(self):
+        if self.load_opt:
+            self.load_opt.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.instance_ids is not None:
             result['InstanceIds'] = self.instance_ids
+        if self.load_opt is not None:
+            result['LoadOpt'] = self.load_opt.to_map()
         if self.sdgid is not None:
             result['SDGId'] = self.sdgid
         return result
@@ -2031,6 +2081,9 @@ class AttachInstanceSDGRequest(TeaModel):
         m = m or dict()
         if m.get('InstanceIds') is not None:
             self.instance_ids = m.get('InstanceIds')
+        if m.get('LoadOpt') is not None:
+            temp_model = AttachInstanceSDGRequestLoadOpt()
+            self.load_opt = temp_model.from_map(m['LoadOpt'])
         if m.get('SDGId') is not None:
             self.sdgid = m.get('SDGId')
         return self
@@ -2040,12 +2093,14 @@ class AttachInstanceSDGShrinkRequest(TeaModel):
     def __init__(
         self,
         instance_ids_shrink: str = None,
+        load_opt_shrink: str = None,
         sdgid: str = None,
     ):
         # The IDs of the instances.
         # 
         # This parameter is required.
         self.instance_ids_shrink = instance_ids_shrink
+        self.load_opt_shrink = load_opt_shrink
         # The ID of the SDG.
         # 
         # This parameter is required.
@@ -2062,6 +2117,8 @@ class AttachInstanceSDGShrinkRequest(TeaModel):
         result = dict()
         if self.instance_ids_shrink is not None:
             result['InstanceIds'] = self.instance_ids_shrink
+        if self.load_opt_shrink is not None:
+            result['LoadOpt'] = self.load_opt_shrink
         if self.sdgid is not None:
             result['SDGId'] = self.sdgid
         return result
@@ -2070,6 +2127,8 @@ class AttachInstanceSDGShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('InstanceIds') is not None:
             self.instance_ids_shrink = m.get('InstanceIds')
+        if m.get('LoadOpt') is not None:
+            self.load_opt_shrink = m.get('LoadOpt')
         if m.get('SDGId') is not None:
             self.sdgid = m.get('SDGId')
         return self
@@ -29506,6 +29565,8 @@ class DescribeInstanceSDGStatusShrinkRequest(TeaModel):
 class DescribeInstanceSDGStatusResponseBodyDeploymentStatus(TeaModel):
     def __init__(
         self,
+        block_rw_split_size: int = None,
+        cache_size: int = None,
         ens_region_id: str = None,
         instance_id: str = None,
         mount_type: str = None,
@@ -29514,6 +29575,8 @@ class DescribeInstanceSDGStatusResponseBodyDeploymentStatus(TeaModel):
         status: str = None,
         update_time: str = None,
     ):
+        self.block_rw_split_size = block_rw_split_size
+        self.cache_size = cache_size
         # The ID of the edge node.
         self.ens_region_id = ens_region_id
         # The ID of the AIC instance.
@@ -29538,6 +29601,10 @@ class DescribeInstanceSDGStatusResponseBodyDeploymentStatus(TeaModel):
             return _map
 
         result = dict()
+        if self.block_rw_split_size is not None:
+            result['BlockRwSplitSize'] = self.block_rw_split_size
+        if self.cache_size is not None:
+            result['CacheSize'] = self.cache_size
         if self.ens_region_id is not None:
             result['EnsRegionId'] = self.ens_region_id
         if self.instance_id is not None:
@@ -29556,6 +29623,10 @@ class DescribeInstanceSDGStatusResponseBodyDeploymentStatus(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BlockRwSplitSize') is not None:
+            self.block_rw_split_size = m.get('BlockRwSplitSize')
+        if m.get('CacheSize') is not None:
+            self.cache_size = m.get('CacheSize')
         if m.get('EnsRegionId') is not None:
             self.ens_region_id = m.get('EnsRegionId')
         if m.get('InstanceId') is not None:
@@ -42664,6 +42735,8 @@ class DescribeSDGDeploymentStatusShrinkRequest(TeaModel):
 class DescribeSDGDeploymentStatusResponseBodyDeploymentStatus(TeaModel):
     def __init__(
         self,
+        block_rw_split_size: int = None,
+        cache_size: int = None,
         instance_id: str = None,
         mount_type: str = None,
         phase: str = None,
@@ -42671,6 +42744,8 @@ class DescribeSDGDeploymentStatusResponseBodyDeploymentStatus(TeaModel):
         status: str = None,
         update_time: str = None,
     ):
+        self.block_rw_split_size = block_rw_split_size
+        self.cache_size = cache_size
         # The ID of the AIC instance.
         self.instance_id = instance_id
         # The deployment type.
@@ -42704,6 +42779,10 @@ class DescribeSDGDeploymentStatusResponseBodyDeploymentStatus(TeaModel):
             return _map
 
         result = dict()
+        if self.block_rw_split_size is not None:
+            result['BlockRwSplitSize'] = self.block_rw_split_size
+        if self.cache_size is not None:
+            result['CacheSize'] = self.cache_size
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.mount_type is not None:
@@ -42720,6 +42799,10 @@ class DescribeSDGDeploymentStatusResponseBodyDeploymentStatus(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BlockRwSplitSize') is not None:
+            self.block_rw_split_size = m.get('BlockRwSplitSize')
+        if m.get('CacheSize') is not None:
+            self.cache_size = m.get('CacheSize')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('MountType') is not None:

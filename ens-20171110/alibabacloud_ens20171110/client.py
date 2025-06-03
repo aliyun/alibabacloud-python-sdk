@@ -1074,9 +1074,13 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.instance_ids):
             request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        if not UtilClient.is_unset(tmp_req.load_opt):
+            request.load_opt_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.load_opt, 'LoadOpt', 'json')
         query = {}
         if not UtilClient.is_unset(request.instance_ids_shrink):
             query['InstanceIds'] = request.instance_ids_shrink
+        if not UtilClient.is_unset(request.load_opt_shrink):
+            query['LoadOpt'] = request.load_opt_shrink
         if not UtilClient.is_unset(request.sdgid):
             query['SDGId'] = request.sdgid
         req = open_api_models.OpenApiRequest(
@@ -1115,9 +1119,13 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.instance_ids):
             request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        if not UtilClient.is_unset(tmp_req.load_opt):
+            request.load_opt_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.load_opt, 'LoadOpt', 'json')
         query = {}
         if not UtilClient.is_unset(request.instance_ids_shrink):
             query['InstanceIds'] = request.instance_ids_shrink
+        if not UtilClient.is_unset(request.load_opt_shrink):
+            query['LoadOpt'] = request.load_opt_shrink
         if not UtilClient.is_unset(request.sdgid):
             query['SDGId'] = request.sdgid
         req = open_api_models.OpenApiRequest(

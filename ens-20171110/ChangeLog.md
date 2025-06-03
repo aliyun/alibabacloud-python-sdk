@@ -1,3 +1,11 @@
+2025-06-03 Version: 9.0.9
+- Update API AttachInstanceSDG: add request parameters LoadOpt.
+- Update API DescribeInstanceSDGStatus: add response parameters Body.DeploymentStatus.$.BlockRwSplitSize.
+- Update API DescribeInstanceSDGStatus: add response parameters Body.DeploymentStatus.$.CacheSize.
+- Update API DescribeSDGDeploymentStatus: add response parameters Body.DeploymentStatus.$.BlockRwSplitSize.
+- Update API DescribeSDGDeploymentStatus: add response parameters Body.DeploymentStatus.$.CacheSize.
+
+
 2025-05-21 Version: 9.0.8
 - Update API DescribeDisks: add response parameters Body.Disks.$.Tags.
 
