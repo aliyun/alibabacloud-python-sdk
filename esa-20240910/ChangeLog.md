@@ -1,3 +1,23 @@
+2025-06-03 Version: 2.25.1
+- Update API CreateCustomScenePolicy: add request parameters SiteIds.
+- Update API CreateCustomScenePolicy: add response parameters Body.SiteIds.
+- Update API CreateHttpsApplicationConfiguration: add request parameters HttpsNoSniDeny.
+- Update API CreateHttpsApplicationConfiguration: add request parameters HttpsSniVerify.
+- Update API CreateHttpsApplicationConfiguration: add request parameters HttpsSniWhitelist.
+- Update API DescribeCustomScenePolicies: add response parameters Body.DataModule.$.SiteIds.
+- Update API GetHttpsApplicationConfiguration: add response parameters Body.HttpsNoSniDeny.
+- Update API GetHttpsApplicationConfiguration: add response parameters Body.HttpsSniVerify.
+- Update API GetHttpsApplicationConfiguration: add response parameters Body.HttpsSniWhitelist.
+- Update API ListHttpsApplicationConfigurations: add response parameters Body.Configs.$.HttpsNoSniDeny.
+- Update API ListHttpsApplicationConfigurations: add response parameters Body.Configs.$.HttpsSniVerify.
+- Update API ListHttpsApplicationConfigurations: add response parameters Body.Configs.$.HttpsSniWhitelist.
+- Update API UpdateCustomScenePolicy: add request parameters SiteIds.
+- Update API UpdateCustomScenePolicy: add response parameters Body.SiteIds.
+- Update API UpdateHttpsApplicationConfiguration: add request parameters HttpsNoSniDeny.
+- Update API UpdateHttpsApplicationConfiguration: add request parameters HttpsSniVerify.
+- Update API UpdateHttpsApplicationConfiguration: add request parameters HttpsSniWhitelist.
+
+
 2025-05-21 Version: 2.25.0
 - Support API DescribeSiteLogs.
 - Support API OpenErService.

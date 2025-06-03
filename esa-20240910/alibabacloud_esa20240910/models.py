@@ -6314,6 +6314,7 @@ class CreateCustomScenePolicyRequest(TeaModel):
         end_time: str = None,
         name: str = None,
         objects: str = None,
+        site_ids: str = None,
         start_time: str = None,
         template: str = None,
     ):
@@ -6329,6 +6330,7 @@ class CreateCustomScenePolicyRequest(TeaModel):
         self.name = name
         # The IDs of the websites that you want to associate with the policy. Separate multiple IDs with commas (,).
         self.objects = objects
+        self.site_ids = site_ids
         # The time when the policy takes effect.
         # 
         # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
@@ -6357,6 +6359,8 @@ class CreateCustomScenePolicyRequest(TeaModel):
             result['Name'] = self.name
         if self.objects is not None:
             result['Objects'] = self.objects
+        if self.site_ids is not None:
+            result['SiteIds'] = self.site_ids
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.template is not None:
@@ -6371,6 +6375,8 @@ class CreateCustomScenePolicyRequest(TeaModel):
             self.name = m.get('Name')
         if m.get('Objects') is not None:
             self.objects = m.get('Objects')
+        if m.get('SiteIds') is not None:
+            self.site_ids = m.get('SiteIds')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('Template') is not None:
@@ -6386,6 +6392,7 @@ class CreateCustomScenePolicyResponseBody(TeaModel):
         objects: List[str] = None,
         policy_id: int = None,
         request_id: str = None,
+        site_ids: str = None,
         start_time: str = None,
         template: str = None,
     ):
@@ -6401,6 +6408,7 @@ class CreateCustomScenePolicyResponseBody(TeaModel):
         self.policy_id = policy_id
         # The request ID.
         self.request_id = request_id
+        self.site_ids = site_ids
         # The time when the policy takes effect.
         # 
         # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
@@ -6427,6 +6435,8 @@ class CreateCustomScenePolicyResponseBody(TeaModel):
             result['PolicyId'] = self.policy_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.site_ids is not None:
+            result['SiteIds'] = self.site_ids
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.template is not None:
@@ -6445,6 +6455,8 @@ class CreateCustomScenePolicyResponseBody(TeaModel):
             self.policy_id = m.get('PolicyId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('SiteIds') is not None:
+            self.site_ids = m.get('SiteIds')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('Template') is not None:
@@ -7936,6 +7948,9 @@ class CreateHttpsApplicationConfigurationRequest(TeaModel):
         hsts_preload: str = None,
         https_force: str = None,
         https_force_code: str = None,
+        https_no_sni_deny: str = None,
+        https_sni_verify: str = None,
+        https_sni_whitelist: str = None,
         rule: str = None,
         rule_enable: str = None,
         rule_name: str = None,
@@ -7981,6 +7996,9 @@ class CreateHttpsApplicationConfigurationRequest(TeaModel):
         # - 307
         # - 308
         self.https_force_code = https_force_code
+        self.https_no_sni_deny = https_no_sni_deny
+        self.https_sni_verify = https_sni_verify
+        self.https_sni_whitelist = https_sni_whitelist
         # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
         # - Match all incoming requests: Set the value to true
         # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
@@ -8028,6 +8046,12 @@ class CreateHttpsApplicationConfigurationRequest(TeaModel):
             result['HttpsForce'] = self.https_force
         if self.https_force_code is not None:
             result['HttpsForceCode'] = self.https_force_code
+        if self.https_no_sni_deny is not None:
+            result['HttpsNoSniDeny'] = self.https_no_sni_deny
+        if self.https_sni_verify is not None:
+            result['HttpsSniVerify'] = self.https_sni_verify
+        if self.https_sni_whitelist is not None:
+            result['HttpsSniWhitelist'] = self.https_sni_whitelist
         if self.rule is not None:
             result['Rule'] = self.rule
         if self.rule_enable is not None:
@@ -8064,6 +8088,12 @@ class CreateHttpsApplicationConfigurationRequest(TeaModel):
             self.https_force = m.get('HttpsForce')
         if m.get('HttpsForceCode') is not None:
             self.https_force_code = m.get('HttpsForceCode')
+        if m.get('HttpsNoSniDeny') is not None:
+            self.https_no_sni_deny = m.get('HttpsNoSniDeny')
+        if m.get('HttpsSniVerify') is not None:
+            self.https_sni_verify = m.get('HttpsSniVerify')
+        if m.get('HttpsSniWhitelist') is not None:
+            self.https_sni_whitelist = m.get('HttpsSniWhitelist')
         if m.get('Rule') is not None:
             self.rule = m.get('Rule')
         if m.get('RuleEnable') is not None:
@@ -20689,6 +20719,7 @@ class DescribeCustomScenePoliciesResponseBodyDataModule(TeaModel):
         name: str = None,
         objects: List[str] = None,
         policy_id: int = None,
+        site_ids: str = None,
         start_time: str = None,
         status: str = None,
         template: str = None,
@@ -20703,6 +20734,7 @@ class DescribeCustomScenePoliciesResponseBodyDataModule(TeaModel):
         self.objects = objects
         # The policy ID.
         self.policy_id = policy_id
+        self.site_ids = site_ids
         # The time when the policy takes effect.
         # 
         # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
@@ -20736,6 +20768,8 @@ class DescribeCustomScenePoliciesResponseBodyDataModule(TeaModel):
             result['Objects'] = self.objects
         if self.policy_id is not None:
             result['PolicyId'] = self.policy_id
+        if self.site_ids is not None:
+            result['SiteIds'] = self.site_ids
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.status is not None:
@@ -20754,6 +20788,8 @@ class DescribeCustomScenePoliciesResponseBodyDataModule(TeaModel):
             self.objects = m.get('Objects')
         if m.get('PolicyId') is not None:
             self.policy_id = m.get('PolicyId')
+        if m.get('SiteIds') is not None:
+            self.site_ids = m.get('SiteIds')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('Status') is not None:
@@ -29464,6 +29500,9 @@ class GetHttpsApplicationConfigurationResponseBody(TeaModel):
         hsts_preload: str = None,
         https_force: str = None,
         https_force_code: str = None,
+        https_no_sni_deny: str = None,
+        https_sni_verify: str = None,
+        https_sni_whitelist: str = None,
         request_id: str = None,
         rule: str = None,
         rule_enable: str = None,
@@ -29523,6 +29562,9 @@ class GetHttpsApplicationConfigurationResponseBody(TeaModel):
         # - 307
         # - 308
         self.https_force_code = https_force_code
+        self.https_no_sni_deny = https_no_sni_deny
+        self.https_sni_verify = https_sni_verify
+        self.https_sni_whitelist = https_sni_whitelist
         # Request ID.
         self.request_id = request_id
         # Rule content, using conditional expressions to match user requests. This parameter does not need to be set when adding a global configuration. There are two usage scenarios:
@@ -29573,6 +29615,12 @@ class GetHttpsApplicationConfigurationResponseBody(TeaModel):
             result['HttpsForce'] = self.https_force
         if self.https_force_code is not None:
             result['HttpsForceCode'] = self.https_force_code
+        if self.https_no_sni_deny is not None:
+            result['HttpsNoSniDeny'] = self.https_no_sni_deny
+        if self.https_sni_verify is not None:
+            result['HttpsSniVerify'] = self.https_sni_verify
+        if self.https_sni_whitelist is not None:
+            result['HttpsSniWhitelist'] = self.https_sni_whitelist
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.rule is not None:
@@ -29613,6 +29661,12 @@ class GetHttpsApplicationConfigurationResponseBody(TeaModel):
             self.https_force = m.get('HttpsForce')
         if m.get('HttpsForceCode') is not None:
             self.https_force_code = m.get('HttpsForceCode')
+        if m.get('HttpsNoSniDeny') is not None:
+            self.https_no_sni_deny = m.get('HttpsNoSniDeny')
+        if m.get('HttpsSniVerify') is not None:
+            self.https_sni_verify = m.get('HttpsSniVerify')
+        if m.get('HttpsSniWhitelist') is not None:
+            self.https_sni_whitelist = m.get('HttpsSniWhitelist')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Rule') is not None:
@@ -44123,6 +44177,9 @@ class ListHttpsApplicationConfigurationsResponseBodyConfigs(TeaModel):
         hsts_preload: str = None,
         https_force: str = None,
         https_force_code: str = None,
+        https_no_sni_deny: str = None,
+        https_sni_verify: str = None,
+        https_sni_whitelist: str = None,
         rule: str = None,
         rule_enable: str = None,
         rule_name: str = None,
@@ -44173,6 +44230,9 @@ class ListHttpsApplicationConfigurationsResponseBodyConfigs(TeaModel):
         # - 307
         # - 308
         self.https_force_code = https_force_code
+        self.https_no_sni_deny = https_no_sni_deny
+        self.https_sni_verify = https_sni_verify
+        self.https_sni_whitelist = https_sni_whitelist
         # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
         # - Match all incoming requests: Set the value to true.
         # - Match specific requests: Set the value to a custom expression, e.g., (http.host eq \\"video.example.com\\")
@@ -44221,6 +44281,12 @@ class ListHttpsApplicationConfigurationsResponseBodyConfigs(TeaModel):
             result['HttpsForce'] = self.https_force
         if self.https_force_code is not None:
             result['HttpsForceCode'] = self.https_force_code
+        if self.https_no_sni_deny is not None:
+            result['HttpsNoSniDeny'] = self.https_no_sni_deny
+        if self.https_sni_verify is not None:
+            result['HttpsSniVerify'] = self.https_sni_verify
+        if self.https_sni_whitelist is not None:
+            result['HttpsSniWhitelist'] = self.https_sni_whitelist
         if self.rule is not None:
             result['Rule'] = self.rule
         if self.rule_enable is not None:
@@ -44259,6 +44325,12 @@ class ListHttpsApplicationConfigurationsResponseBodyConfigs(TeaModel):
             self.https_force = m.get('HttpsForce')
         if m.get('HttpsForceCode') is not None:
             self.https_force_code = m.get('HttpsForceCode')
+        if m.get('HttpsNoSniDeny') is not None:
+            self.https_no_sni_deny = m.get('HttpsNoSniDeny')
+        if m.get('HttpsSniVerify') is not None:
+            self.https_sni_verify = m.get('HttpsSniVerify')
+        if m.get('HttpsSniWhitelist') is not None:
+            self.https_sni_whitelist = m.get('HttpsSniWhitelist')
         if m.get('Rule') is not None:
             self.rule = m.get('Rule')
         if m.get('RuleEnable') is not None:
@@ -61396,6 +61468,7 @@ class UpdateCustomScenePolicyRequest(TeaModel):
         name: str = None,
         objects: str = None,
         policy_id: int = None,
+        site_ids: str = None,
         start_time: str = None,
         template: str = None,
     ):
@@ -61410,13 +61483,12 @@ class UpdateCustomScenePolicyRequest(TeaModel):
         # This parameter is required.
         self.name = name
         # The IDs of the websites that you want to associate with the policy. Separate multiple IDs with commas (,).
-        # 
-        # This parameter is required.
         self.objects = objects
         # The policy ID, which can be obtained by calling the [DescribeCustomScenePolicies](https://help.aliyun.com/document_detail/2850508.html) operation.
         # 
         # This parameter is required.
         self.policy_id = policy_id
+        self.site_ids = site_ids
         # The time when the policy takes effect.
         # 
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -61447,6 +61519,8 @@ class UpdateCustomScenePolicyRequest(TeaModel):
             result['Objects'] = self.objects
         if self.policy_id is not None:
             result['PolicyId'] = self.policy_id
+        if self.site_ids is not None:
+            result['SiteIds'] = self.site_ids
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.template is not None:
@@ -61463,6 +61537,8 @@ class UpdateCustomScenePolicyRequest(TeaModel):
             self.objects = m.get('Objects')
         if m.get('PolicyId') is not None:
             self.policy_id = m.get('PolicyId')
+        if m.get('SiteIds') is not None:
+            self.site_ids = m.get('SiteIds')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('Template') is not None:
@@ -61478,6 +61554,7 @@ class UpdateCustomScenePolicyResponseBody(TeaModel):
         objects: List[str] = None,
         policy_id: int = None,
         request_id: str = None,
+        site_ids: str = None,
         start_time: str = None,
         template: str = None,
     ):
@@ -61493,6 +61570,7 @@ class UpdateCustomScenePolicyResponseBody(TeaModel):
         self.policy_id = policy_id
         # The request ID.
         self.request_id = request_id
+        self.site_ids = site_ids
         # The time when the policy takes effect.
         # 
         # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
@@ -61521,6 +61599,8 @@ class UpdateCustomScenePolicyResponseBody(TeaModel):
             result['PolicyId'] = self.policy_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.site_ids is not None:
+            result['SiteIds'] = self.site_ids
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.template is not None:
@@ -61539,6 +61619,8 @@ class UpdateCustomScenePolicyResponseBody(TeaModel):
             self.policy_id = m.get('PolicyId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('SiteIds') is not None:
+            self.site_ids = m.get('SiteIds')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('Template') is not None:
@@ -62698,6 +62780,9 @@ class UpdateHttpsApplicationConfigurationRequest(TeaModel):
         hsts_preload: str = None,
         https_force: str = None,
         https_force_code: str = None,
+        https_no_sni_deny: str = None,
+        https_sni_verify: str = None,
+        https_sni_whitelist: str = None,
         rule: str = None,
         rule_enable: str = None,
         rule_name: str = None,
@@ -62746,6 +62831,9 @@ class UpdateHttpsApplicationConfigurationRequest(TeaModel):
         # - 307
         # - 308
         self.https_force_code = https_force_code
+        self.https_no_sni_deny = https_no_sni_deny
+        self.https_sni_verify = https_sni_verify
+        self.https_sni_whitelist = https_sni_whitelist
         # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
         # - Match all incoming requests: Set the value to true
         # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
@@ -62793,6 +62881,12 @@ class UpdateHttpsApplicationConfigurationRequest(TeaModel):
             result['HttpsForce'] = self.https_force
         if self.https_force_code is not None:
             result['HttpsForceCode'] = self.https_force_code
+        if self.https_no_sni_deny is not None:
+            result['HttpsNoSniDeny'] = self.https_no_sni_deny
+        if self.https_sni_verify is not None:
+            result['HttpsSniVerify'] = self.https_sni_verify
+        if self.https_sni_whitelist is not None:
+            result['HttpsSniWhitelist'] = self.https_sni_whitelist
         if self.rule is not None:
             result['Rule'] = self.rule
         if self.rule_enable is not None:
@@ -62829,6 +62923,12 @@ class UpdateHttpsApplicationConfigurationRequest(TeaModel):
             self.https_force = m.get('HttpsForce')
         if m.get('HttpsForceCode') is not None:
             self.https_force_code = m.get('HttpsForceCode')
+        if m.get('HttpsNoSniDeny') is not None:
+            self.https_no_sni_deny = m.get('HttpsNoSniDeny')
+        if m.get('HttpsSniVerify') is not None:
+            self.https_sni_verify = m.get('HttpsSniVerify')
+        if m.get('HttpsSniWhitelist') is not None:
+            self.https_sni_whitelist = m.get('HttpsSniWhitelist')
         if m.get('Rule') is not None:
             self.rule = m.get('Rule')
         if m.get('RuleEnable') is not None:

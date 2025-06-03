@@ -2889,6 +2889,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.objects):
             query['Objects'] = request.objects
+        if not UtilClient.is_unset(request.site_ids):
+            query['SiteIds'] = request.site_ids
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.template):
@@ -2932,6 +2934,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.objects):
             query['Objects'] = request.objects
+        if not UtilClient.is_unset(request.site_ids):
+            query['SiteIds'] = request.site_ids
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.template):
@@ -3639,6 +3643,12 @@ class Client(OpenApiClient):
             query['HttpsForce'] = request.https_force
         if not UtilClient.is_unset(request.https_force_code):
             query['HttpsForceCode'] = request.https_force_code
+        if not UtilClient.is_unset(request.https_no_sni_deny):
+            query['HttpsNoSniDeny'] = request.https_no_sni_deny
+        if not UtilClient.is_unset(request.https_sni_verify):
+            query['HttpsSniVerify'] = request.https_sni_verify
+        if not UtilClient.is_unset(request.https_sni_whitelist):
+            query['HttpsSniWhitelist'] = request.https_sni_whitelist
         if not UtilClient.is_unset(request.rule):
             query['Rule'] = request.rule
         if not UtilClient.is_unset(request.rule_enable):
@@ -3704,6 +3714,12 @@ class Client(OpenApiClient):
             query['HttpsForce'] = request.https_force
         if not UtilClient.is_unset(request.https_force_code):
             query['HttpsForceCode'] = request.https_force_code
+        if not UtilClient.is_unset(request.https_no_sni_deny):
+            query['HttpsNoSniDeny'] = request.https_no_sni_deny
+        if not UtilClient.is_unset(request.https_sni_verify):
+            query['HttpsSniVerify'] = request.https_sni_verify
+        if not UtilClient.is_unset(request.https_sni_whitelist):
+            query['HttpsSniWhitelist'] = request.https_sni_whitelist
         if not UtilClient.is_unset(request.rule):
             query['Rule'] = request.rule
         if not UtilClient.is_unset(request.rule_enable):
@@ -29645,6 +29661,8 @@ class Client(OpenApiClient):
             query['Objects'] = request.objects
         if not UtilClient.is_unset(request.policy_id):
             query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.site_ids):
+            query['SiteIds'] = request.site_ids
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.template):
@@ -29690,6 +29708,8 @@ class Client(OpenApiClient):
             query['Objects'] = request.objects
         if not UtilClient.is_unset(request.policy_id):
             query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.site_ids):
+            query['SiteIds'] = request.site_ids
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.template):
@@ -30355,6 +30375,12 @@ class Client(OpenApiClient):
             query['HttpsForce'] = request.https_force
         if not UtilClient.is_unset(request.https_force_code):
             query['HttpsForceCode'] = request.https_force_code
+        if not UtilClient.is_unset(request.https_no_sni_deny):
+            query['HttpsNoSniDeny'] = request.https_no_sni_deny
+        if not UtilClient.is_unset(request.https_sni_verify):
+            query['HttpsSniVerify'] = request.https_sni_verify
+        if not UtilClient.is_unset(request.https_sni_whitelist):
+            query['HttpsSniWhitelist'] = request.https_sni_whitelist
         if not UtilClient.is_unset(request.rule):
             query['Rule'] = request.rule
         if not UtilClient.is_unset(request.rule_enable):
@@ -30420,6 +30446,12 @@ class Client(OpenApiClient):
             query['HttpsForce'] = request.https_force
         if not UtilClient.is_unset(request.https_force_code):
             query['HttpsForceCode'] = request.https_force_code
+        if not UtilClient.is_unset(request.https_no_sni_deny):
+            query['HttpsNoSniDeny'] = request.https_no_sni_deny
+        if not UtilClient.is_unset(request.https_sni_verify):
+            query['HttpsSniVerify'] = request.https_sni_verify
+        if not UtilClient.is_unset(request.https_sni_whitelist):
+            query['HttpsSniWhitelist'] = request.https_sni_whitelist
         if not UtilClient.is_unset(request.rule):
             query['Rule'] = request.rule
         if not UtilClient.is_unset(request.rule_enable):
