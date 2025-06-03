@@ -4977,6 +4977,8 @@ class Client(OpenApiClient):
             query['gatewayId'] = request.gateway_id
         if not UtilClient.is_unset(request.gateway_type):
             query['gatewayType'] = request.gateway_type
+        if not UtilClient.is_unset(request.include_builtin_ai_gateway):
+            query['includeBuiltinAiGateway'] = request.include_builtin_ai_gateway
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -5031,6 +5033,8 @@ class Client(OpenApiClient):
             query['gatewayId'] = request.gateway_id
         if not UtilClient.is_unset(request.gateway_type):
             query['gatewayType'] = request.gateway_type
+        if not UtilClient.is_unset(request.include_builtin_ai_gateway):
+            query['includeBuiltinAiGateway'] = request.include_builtin_ai_gateway
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):

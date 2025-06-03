@@ -1,3 +1,7 @@
+2025-06-03 Version: 4.0.3
+- Update API ListPlugins: add request parameters includeBuiltinAiGateway.
+
+
 2025-05-29 Version: 4.0.2
 - Update API CreateHttpApiRoute: add request parameters body.mcpRouteConfig.
 

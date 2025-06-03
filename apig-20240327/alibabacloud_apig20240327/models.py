@@ -14730,6 +14730,7 @@ class ListPluginsRequest(TeaModel):
         attach_resource_type: str = None,
         gateway_id: str = None,
         gateway_type: str = None,
+        include_builtin_ai_gateway: bool = None,
         page_number: int = None,
         page_size: int = None,
         plugin_class_id: str = None,
@@ -14740,6 +14741,7 @@ class ListPluginsRequest(TeaModel):
         self.attach_resource_type = attach_resource_type
         self.gateway_id = gateway_id
         self.gateway_type = gateway_type
+        self.include_builtin_ai_gateway = include_builtin_ai_gateway
         self.page_number = page_number
         self.page_size = page_size
         self.plugin_class_id = plugin_class_id
@@ -14763,6 +14765,8 @@ class ListPluginsRequest(TeaModel):
             result['gatewayId'] = self.gateway_id
         if self.gateway_type is not None:
             result['gatewayType'] = self.gateway_type
+        if self.include_builtin_ai_gateway is not None:
+            result['includeBuiltinAiGateway'] = self.include_builtin_ai_gateway
         if self.page_number is not None:
             result['pageNumber'] = self.page_number
         if self.page_size is not None:
@@ -14785,6 +14789,8 @@ class ListPluginsRequest(TeaModel):
             self.gateway_id = m.get('gatewayId')
         if m.get('gatewayType') is not None:
             self.gateway_type = m.get('gatewayType')
+        if m.get('includeBuiltinAiGateway') is not None:
+            self.include_builtin_ai_gateway = m.get('includeBuiltinAiGateway')
         if m.get('pageNumber') is not None:
             self.page_number = m.get('pageNumber')
         if m.get('pageSize') is not None:
