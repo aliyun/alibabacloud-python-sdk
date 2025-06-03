@@ -4989,14 +4989,14 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.assistant_id):
             body['assistantId'] = request.assistant_id
-        if not UtilClient.is_unset(request.content):
-            body['content'] = request.content
-        if not UtilClient.is_unset(request.metadata):
-            body['metadata'] = request.metadata
+        if not UtilClient.is_unset(request.messages):
+            body['messages'] = request.messages
         if not UtilClient.is_unset(request.original_assistant_id):
             body['originalAssistantId'] = request.original_assistant_id
-        if not UtilClient.is_unset(request.role):
-            body['role'] = request.role
+        if not UtilClient.is_unset(request.source_id_of_original_assistant_id):
+            body['sourceIdOfOriginalAssistantId'] = request.source_id_of_original_assistant_id
+        if not UtilClient.is_unset(request.source_type_of_original_assistant_id):
+            body['sourceTypeOfOriginalAssistantId'] = request.source_type_of_original_assistant_id
         if not UtilClient.is_unset(request.thread_id):
             body['threadId'] = request.thread_id
         real_headers = {}
@@ -5042,14 +5042,14 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.assistant_id):
             body['assistantId'] = request.assistant_id
-        if not UtilClient.is_unset(request.content):
-            body['content'] = request.content
-        if not UtilClient.is_unset(request.metadata):
-            body['metadata'] = request.metadata
+        if not UtilClient.is_unset(request.messages):
+            body['messages'] = request.messages
         if not UtilClient.is_unset(request.original_assistant_id):
             body['originalAssistantId'] = request.original_assistant_id
-        if not UtilClient.is_unset(request.role):
-            body['role'] = request.role
+        if not UtilClient.is_unset(request.source_id_of_original_assistant_id):
+            body['sourceIdOfOriginalAssistantId'] = request.source_id_of_original_assistant_id
+        if not UtilClient.is_unset(request.source_type_of_original_assistant_id):
+            body['sourceTypeOfOriginalAssistantId'] = request.source_type_of_original_assistant_id
         if not UtilClient.is_unset(request.thread_id):
             body['threadId'] = request.thread_id
         real_headers = {}
@@ -5917,12 +5917,12 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.assistant_id):
             body['assistantId'] = request.assistant_id
-        if not UtilClient.is_unset(request.instructions):
-            body['instructions'] = request.instructions
-        if not UtilClient.is_unset(request.metadata):
-            body['metadata'] = request.metadata
         if not UtilClient.is_unset(request.original_assistant_id):
             body['originalAssistantId'] = request.original_assistant_id
+        if not UtilClient.is_unset(request.source_id_of_original_assistant_id):
+            body['sourceIdOfOriginalAssistantId'] = request.source_id_of_original_assistant_id
+        if not UtilClient.is_unset(request.source_type_of_original_assistant_id):
+            body['sourceTypeOfOriginalAssistantId'] = request.source_type_of_original_assistant_id
         if not UtilClient.is_unset(request.stream):
             body['stream'] = request.stream
         if not UtilClient.is_unset(request.thread_id):
@@ -5970,12 +5970,12 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.assistant_id):
             body['assistantId'] = request.assistant_id
-        if not UtilClient.is_unset(request.instructions):
-            body['instructions'] = request.instructions
-        if not UtilClient.is_unset(request.metadata):
-            body['metadata'] = request.metadata
         if not UtilClient.is_unset(request.original_assistant_id):
             body['originalAssistantId'] = request.original_assistant_id
+        if not UtilClient.is_unset(request.source_id_of_original_assistant_id):
+            body['sourceIdOfOriginalAssistantId'] = request.source_id_of_original_assistant_id
+        if not UtilClient.is_unset(request.source_type_of_original_assistant_id):
+            body['sourceTypeOfOriginalAssistantId'] = request.source_type_of_original_assistant_id
         if not UtilClient.is_unset(request.stream):
             body['stream'] = request.stream
         if not UtilClient.is_unset(request.thread_id):
@@ -6991,10 +6991,12 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.assistant_id):
             body['assistantId'] = request.assistant_id
-        if not UtilClient.is_unset(request.metadata):
-            body['metadata'] = request.metadata
         if not UtilClient.is_unset(request.original_assistant_id):
             body['originalAssistantId'] = request.original_assistant_id
+        if not UtilClient.is_unset(request.source_id_of_original_assistant_id):
+            body['sourceIdOfOriginalAssistantId'] = request.source_id_of_original_assistant_id
+        if not UtilClient.is_unset(request.source_type_of_original_assistant_id):
+            body['sourceTypeOfOriginalAssistantId'] = request.source_type_of_original_assistant_id
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -7038,10 +7040,12 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.assistant_id):
             body['assistantId'] = request.assistant_id
-        if not UtilClient.is_unset(request.metadata):
-            body['metadata'] = request.metadata
         if not UtilClient.is_unset(request.original_assistant_id):
             body['originalAssistantId'] = request.original_assistant_id
+        if not UtilClient.is_unset(request.source_id_of_original_assistant_id):
+            body['sourceIdOfOriginalAssistantId'] = request.source_id_of_original_assistant_id
+        if not UtilClient.is_unset(request.source_type_of_original_assistant_id):
+            body['sourceTypeOfOriginalAssistantId'] = request.source_type_of_original_assistant_id
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -11827,16 +11831,16 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.assistant_id):
             body['assistantId'] = request.assistant_id
-        if not UtilClient.is_unset(request.content):
-            body['content'] = request.content
-        if not UtilClient.is_unset(request.id):
-            body['id'] = request.id
-        if not UtilClient.is_unset(request.metadata):
-            body['metadata'] = request.metadata
+        if not UtilClient.is_unset(request.messages):
+            body['messages'] = request.messages
         if not UtilClient.is_unset(request.original_assistant_id):
             body['originalAssistantId'] = request.original_assistant_id
         if not UtilClient.is_unset(request.protocol):
             body['protocol'] = request.protocol
+        if not UtilClient.is_unset(request.source_id_of_original_assistant_id):
+            body['sourceIdOfOriginalAssistantId'] = request.source_id_of_original_assistant_id
+        if not UtilClient.is_unset(request.source_type_of_original_assistant_id):
+            body['sourceTypeOfOriginalAssistantId'] = request.source_type_of_original_assistant_id
         if not UtilClient.is_unset(request.thread_id):
             body['threadId'] = request.thread_id
         if not UtilClient.is_unset(request.timeout):
@@ -11884,16 +11888,16 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.assistant_id):
             body['assistantId'] = request.assistant_id
-        if not UtilClient.is_unset(request.content):
-            body['content'] = request.content
-        if not UtilClient.is_unset(request.id):
-            body['id'] = request.id
-        if not UtilClient.is_unset(request.metadata):
-            body['metadata'] = request.metadata
+        if not UtilClient.is_unset(request.messages):
+            body['messages'] = request.messages
         if not UtilClient.is_unset(request.original_assistant_id):
             body['originalAssistantId'] = request.original_assistant_id
         if not UtilClient.is_unset(request.protocol):
             body['protocol'] = request.protocol
+        if not UtilClient.is_unset(request.source_id_of_original_assistant_id):
+            body['sourceIdOfOriginalAssistantId'] = request.source_id_of_original_assistant_id
+        if not UtilClient.is_unset(request.source_type_of_original_assistant_id):
+            body['sourceTypeOfOriginalAssistantId'] = request.source_type_of_original_assistant_id
         if not UtilClient.is_unset(request.thread_id):
             body['threadId'] = request.thread_id
         if not UtilClient.is_unset(request.timeout):
@@ -21231,12 +21235,16 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.assistant_id):
             body['assistantId'] = request.assistant_id
-        if not UtilClient.is_unset(request.content):
-            body['content'] = request.content
-        if not UtilClient.is_unset(request.history):
-            body['history'] = request.history
+        if not UtilClient.is_unset(request.messages):
+            body['messages'] = request.messages
+        if not UtilClient.is_unset(request.original_assistant_id):
+            body['originalAssistantId'] = request.original_assistant_id
         if not UtilClient.is_unset(request.session_id):
             body['sessionId'] = request.session_id
+        if not UtilClient.is_unset(request.source_id_of_original_assistant_id):
+            body['sourceIdOfOriginalAssistantId'] = request.source_id_of_original_assistant_id
+        if not UtilClient.is_unset(request.source_type_of_original_assistant_id):
+            body['sourceTypeOfOriginalAssistantId'] = request.source_type_of_original_assistant_id
         if not UtilClient.is_unset(request.stream):
             body['stream'] = request.stream
         real_headers = {}
@@ -21282,12 +21290,16 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.assistant_id):
             body['assistantId'] = request.assistant_id
-        if not UtilClient.is_unset(request.content):
-            body['content'] = request.content
-        if not UtilClient.is_unset(request.history):
-            body['history'] = request.history
+        if not UtilClient.is_unset(request.messages):
+            body['messages'] = request.messages
+        if not UtilClient.is_unset(request.original_assistant_id):
+            body['originalAssistantId'] = request.original_assistant_id
         if not UtilClient.is_unset(request.session_id):
             body['sessionId'] = request.session_id
+        if not UtilClient.is_unset(request.source_id_of_original_assistant_id):
+            body['sourceIdOfOriginalAssistantId'] = request.source_id_of_original_assistant_id
+        if not UtilClient.is_unset(request.source_type_of_original_assistant_id):
+            body['sourceTypeOfOriginalAssistantId'] = request.source_type_of_original_assistant_id
         if not UtilClient.is_unset(request.stream):
             body['stream'] = request.stream
         real_headers = {}
@@ -22509,10 +22521,14 @@ class Client(OpenApiClient):
             body['limit'] = request.limit
         if not UtilClient.is_unset(request.order):
             body['order'] = request.order
-        if not UtilClient.is_unset(request.original_assistantid):
-            body['originalAssistantid'] = request.original_assistantid
+        if not UtilClient.is_unset(request.original_assistant_id):
+            body['originalAssistantId'] = request.original_assistant_id
         if not UtilClient.is_unset(request.run_id):
             body['runId'] = request.run_id
+        if not UtilClient.is_unset(request.source_id_of_original_assistant_id):
+            body['sourceIdOfOriginalAssistantId'] = request.source_id_of_original_assistant_id
+        if not UtilClient.is_unset(request.source_type_of_original_assistant_id):
+            body['sourceTypeOfOriginalAssistantId'] = request.source_type_of_original_assistant_id
         if not UtilClient.is_unset(request.thread_id):
             body['threadId'] = request.thread_id
         real_headers = {}
@@ -22562,10 +22578,14 @@ class Client(OpenApiClient):
             body['limit'] = request.limit
         if not UtilClient.is_unset(request.order):
             body['order'] = request.order
-        if not UtilClient.is_unset(request.original_assistantid):
-            body['originalAssistantid'] = request.original_assistantid
+        if not UtilClient.is_unset(request.original_assistant_id):
+            body['originalAssistantId'] = request.original_assistant_id
         if not UtilClient.is_unset(request.run_id):
             body['runId'] = request.run_id
+        if not UtilClient.is_unset(request.source_id_of_original_assistant_id):
+            body['sourceIdOfOriginalAssistantId'] = request.source_id_of_original_assistant_id
+        if not UtilClient.is_unset(request.source_type_of_original_assistant_id):
+            body['sourceTypeOfOriginalAssistantId'] = request.source_type_of_original_assistant_id
         if not UtilClient.is_unset(request.thread_id):
             body['threadId'] = request.thread_id
         real_headers = {}
@@ -28769,8 +28789,10 @@ class Client(OpenApiClient):
             body['originalAssistantId'] = request.original_assistant_id
         if not UtilClient.is_unset(request.run_id):
             body['runId'] = request.run_id
-        if not UtilClient.is_unset(request.thread_id):
-            body['threadId'] = request.thread_id
+        if not UtilClient.is_unset(request.source_id_of_original_assistant_id):
+            body['sourceIdOfOriginalAssistantId'] = request.source_id_of_original_assistant_id
+        if not UtilClient.is_unset(request.source_type_of_original_assistant_id):
+            body['sourceTypeOfOriginalAssistantId'] = request.source_type_of_original_assistant_id
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -28818,8 +28840,10 @@ class Client(OpenApiClient):
             body['originalAssistantId'] = request.original_assistant_id
         if not UtilClient.is_unset(request.run_id):
             body['runId'] = request.run_id
-        if not UtilClient.is_unset(request.thread_id):
-            body['threadId'] = request.thread_id
+        if not UtilClient.is_unset(request.source_id_of_original_assistant_id):
+            body['sourceIdOfOriginalAssistantId'] = request.source_id_of_original_assistant_id
+        if not UtilClient.is_unset(request.source_type_of_original_assistant_id):
+            body['sourceTypeOfOriginalAssistantId'] = request.source_type_of_original_assistant_id
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers

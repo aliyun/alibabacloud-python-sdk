@@ -1,3 +1,32 @@
+2025-06-03 Version: 2.38.1
+- Update API CreateMessage: add request parameters body.messages.
+- Update API CreateMessage: add request parameters body.sourceIdOfOriginalAssistantId.
+- Update API CreateMessage: add request parameters body.sourceTypeOfOriginalAssistantId.
+- Update API CreateMessage: add response parameters Body.messages.
+- Update API CreateRun: add request parameters body.sourceIdOfOriginalAssistantId.
+- Update API CreateRun: add request parameters body.sourceTypeOfOriginalAssistantId.
+- Update API CreateRun: add response parameters Body.messages.
+- Update API CreateRun: add response parameters Body.run.
+- Update API CreateThread: add request parameters body.sourceIdOfOriginalAssistantId.
+- Update API CreateThread: add request parameters body.sourceTypeOfOriginalAssistantId.
+- Update API CreateThread: add response parameters Body.thread.
+- Update API GetAssistantCapability: add request parameters body.messages.
+- Update API GetAssistantCapability: add request parameters body.sourceIdOfOriginalAssistantId.
+- Update API GetAssistantCapability: add request parameters body.sourceTypeOfOriginalAssistantId.
+- Update API InvokeAssistant: add request parameters body.messages.
+- Update API InvokeAssistant: add request parameters body.originalAssistantId.
+- Update API InvokeAssistant: add request parameters body.sourceIdOfOriginalAssistantId.
+- Update API InvokeAssistant: add request parameters body.sourceTypeOfOriginalAssistantId.
+- Update API InvokeAssistant: add response parameters Body.messages.
+- Update API ListMessage: add request parameters body.originalAssistantId.
+- Update API ListMessage: add request parameters body.sourceIdOfOriginalAssistantId.
+- Update API ListMessage: add request parameters body.sourceTypeOfOriginalAssistantId.
+- Update API ListMessage: add response parameters Body.messages.
+- Update API RetrieveRun: add request parameters body.sourceIdOfOriginalAssistantId.
+- Update API RetrieveRun: add request parameters body.sourceTypeOfOriginalAssistantId.
+- Update API RetrieveRun: add response parameters Body.run.
+
+
 2025-05-20 Version: 2.38.0
 - Support API InsertContentWithOptions.
 - Support API QueryDentriesInfo.

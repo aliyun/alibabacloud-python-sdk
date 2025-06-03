@@ -13824,16 +13824,16 @@ class CreateMessageHeaders(TeaModel):
         return self
 
 
-class CreateMessageRequestContentCardCallback(TeaModel):
+class CreateMessageRequestMessagesContentCardCallback(TeaModel):
     def __init__(
         self,
         content: str = None,
-        template_id: str = None,
-        user_id: str = None,
+        related_message_id: str = None,
     ):
+        # This parameter is required.
         self.content = content
-        self.template_id = template_id
-        self.user_id = user_id
+        # This parameter is required.
+        self.related_message_id = related_message_id
 
     def validate(self):
         pass
@@ -13846,33 +13846,27 @@ class CreateMessageRequestContentCardCallback(TeaModel):
         result = dict()
         if self.content is not None:
             result['content'] = self.content
-        if self.template_id is not None:
-            result['templateId'] = self.template_id
-        if self.user_id is not None:
-            result['userId'] = self.user_id
+        if self.related_message_id is not None:
+            result['relatedMessageId'] = self.related_message_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('content') is not None:
             self.content = m.get('content')
-        if m.get('templateId') is not None:
-            self.template_id = m.get('templateId')
-        if m.get('userId') is not None:
-            self.user_id = m.get('userId')
+        if m.get('relatedMessageId') is not None:
+            self.related_message_id = m.get('relatedMessageId')
         return self
 
 
-class CreateMessageRequestContentDingCard(TeaModel):
+class CreateMessageRequestMessagesContentDingCard(TeaModel):
     def __init__(
         self,
-        card_desc: str = None,
         content: str = None,
         content_type: str = None,
         finished: bool = None,
         template_id: str = None,
     ):
-        self.card_desc = card_desc
         self.content = content
         # This parameter is required.
         self.content_type = content_type
@@ -13888,8 +13882,6 @@ class CreateMessageRequestContentDingCard(TeaModel):
             return _map
 
         result = dict()
-        if self.card_desc is not None:
-            result['cardDesc'] = self.card_desc
         if self.content is not None:
             result['content'] = self.content
         if self.content_type is not None:
@@ -13902,8 +13894,6 @@ class CreateMessageRequestContentDingCard(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('cardDesc') is not None:
-            self.card_desc = m.get('cardDesc')
         if m.get('content') is not None:
             self.content = m.get('content')
         if m.get('contentType') is not None:
@@ -13915,15 +13905,301 @@ class CreateMessageRequestContentDingCard(TeaModel):
         return self
 
 
-class CreateMessageRequestContentImageUrl(TeaModel):
+class CreateMessageRequestMessagesContentDingNormalCardCardData(TeaModel):
     def __init__(
         self,
-        detail: str = None,
-        image_desc: str = None,
+        card_param_map: Dict[str, Any] = None,
+    ):
+        self.card_param_map = card_param_map
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.card_param_map is not None:
+            result['cardParamMap'] = self.card_param_map
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cardParamMap') is not None:
+            self.card_param_map = m.get('cardParamMap')
+        return self
+
+
+class CreateMessageRequestMessagesContentDingNormalCardCardUpdateOptions(TeaModel):
+    def __init__(
+        self,
+        update_card_data_by_key: bool = None,
+        update_private_data_by_key: bool = None,
+    ):
+        self.update_card_data_by_key = update_card_data_by_key
+        self.update_private_data_by_key = update_private_data_by_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.update_card_data_by_key is not None:
+            result['updateCardDataByKey'] = self.update_card_data_by_key
+        if self.update_private_data_by_key is not None:
+            result['updatePrivateDataByKey'] = self.update_private_data_by_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('updateCardDataByKey') is not None:
+            self.update_card_data_by_key = m.get('updateCardDataByKey')
+        if m.get('updatePrivateDataByKey') is not None:
+            self.update_private_data_by_key = m.get('updatePrivateDataByKey')
+        return self
+
+
+class CreateMessageRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig(TeaModel):
+    def __init__(
+        self,
+        interval: int = None,
+        pull_strategy: str = None,
+        time_unit: str = None,
+    ):
+        self.interval = interval
+        self.pull_strategy = pull_strategy
+        self.time_unit = time_unit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.interval is not None:
+            result['interval'] = self.interval
+        if self.pull_strategy is not None:
+            result['pullStrategy'] = self.pull_strategy
+        if self.time_unit is not None:
+            result['timeUnit'] = self.time_unit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('interval') is not None:
+            self.interval = m.get('interval')
+        if m.get('pullStrategy') is not None:
+            self.pull_strategy = m.get('pullStrategy')
+        if m.get('timeUnit') is not None:
+            self.time_unit = m.get('timeUnit')
+        return self
+
+
+class CreateMessageRequestMessagesContentDingNormalCardDynamicDataSourceConfigs(TeaModel):
+    def __init__(
+        self,
+        const_params: Dict[str, Any] = None,
+        dynamic_data_source_id: str = None,
+        pull_config: CreateMessageRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig = None,
+    ):
+        self.const_params = const_params
+        self.dynamic_data_source_id = dynamic_data_source_id
+        self.pull_config = pull_config
+
+    def validate(self):
+        if self.pull_config:
+            self.pull_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.const_params is not None:
+            result['constParams'] = self.const_params
+        if self.dynamic_data_source_id is not None:
+            result['dynamicDataSourceId'] = self.dynamic_data_source_id
+        if self.pull_config is not None:
+            result['pullConfig'] = self.pull_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('constParams') is not None:
+            self.const_params = m.get('constParams')
+        if m.get('dynamicDataSourceId') is not None:
+            self.dynamic_data_source_id = m.get('dynamicDataSourceId')
+        if m.get('pullConfig') is not None:
+            temp_model = CreateMessageRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig()
+            self.pull_config = temp_model.from_map(m['pullConfig'])
+        return self
+
+
+class CreateMessageRequestMessagesContentDingNormalCard(TeaModel):
+    def __init__(
+        self,
+        card_data: CreateMessageRequestMessagesContentDingNormalCardCardData = None,
+        card_template_id: str = None,
+        card_update_options: CreateMessageRequestMessagesContentDingNormalCardCardUpdateOptions = None,
+        dynamic_data_source_configs: List[CreateMessageRequestMessagesContentDingNormalCardDynamicDataSourceConfigs] = None,
+        private_data: Dict[str, dict] = None,
+    ):
+        self.card_data = card_data
+        self.card_template_id = card_template_id
+        self.card_update_options = card_update_options
+        self.dynamic_data_source_configs = dynamic_data_source_configs
+        self.private_data = private_data
+
+    def validate(self):
+        if self.card_data:
+            self.card_data.validate()
+        if self.card_update_options:
+            self.card_update_options.validate()
+        if self.dynamic_data_source_configs:
+            for k in self.dynamic_data_source_configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.card_data is not None:
+            result['cardData'] = self.card_data.to_map()
+        if self.card_template_id is not None:
+            result['cardTemplateId'] = self.card_template_id
+        if self.card_update_options is not None:
+            result['cardUpdateOptions'] = self.card_update_options.to_map()
+        result['dynamicDataSourceConfigs'] = []
+        if self.dynamic_data_source_configs is not None:
+            for k in self.dynamic_data_source_configs:
+                result['dynamicDataSourceConfigs'].append(k.to_map() if k else None)
+        if self.private_data is not None:
+            result['privateData'] = self.private_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cardData') is not None:
+            temp_model = CreateMessageRequestMessagesContentDingNormalCardCardData()
+            self.card_data = temp_model.from_map(m['cardData'])
+        if m.get('cardTemplateId') is not None:
+            self.card_template_id = m.get('cardTemplateId')
+        if m.get('cardUpdateOptions') is not None:
+            temp_model = CreateMessageRequestMessagesContentDingNormalCardCardUpdateOptions()
+            self.card_update_options = temp_model.from_map(m['cardUpdateOptions'])
+        self.dynamic_data_source_configs = []
+        if m.get('dynamicDataSourceConfigs') is not None:
+            for k in m.get('dynamicDataSourceConfigs'):
+                temp_model = CreateMessageRequestMessagesContentDingNormalCardDynamicDataSourceConfigs()
+                self.dynamic_data_source_configs.append(temp_model.from_map(k))
+        if m.get('privateData') is not None:
+            self.private_data = m.get('privateData')
+        return self
+
+
+class CreateMessageRequestMessagesContentMarkdown(TeaModel):
+    def __init__(
+        self,
+        value: str = None,
+    ):
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class CreateMessageRequestMessagesContentStructViewPartsDataPart(TeaModel):
+    def __init__(
+        self,
+        data: Any = None,
+    ):
+        self.data = data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        return self
+
+
+class CreateMessageRequestMessagesContentStructViewPartsReasonPart(TeaModel):
+    def __init__(
+        self,
+        reason: str = None,
+    ):
+        self.reason = reason
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.reason is not None:
+            result['reason'] = self.reason
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('reason') is not None:
+            self.reason = m.get('reason')
+        return self
+
+
+class CreateMessageRequestMessagesContentStructViewPartsRecommendPartRecommends(TeaModel):
+    def __init__(
+        self,
+        mobile_url: str = None,
+        text: str = None,
         url: str = None,
     ):
-        self.detail = detail
-        self.image_desc = image_desc
+        self.mobile_url = mobile_url
+        self.text = text
         self.url = url
 
     def validate(self):
@@ -13935,26 +14211,317 @@ class CreateMessageRequestContentImageUrl(TeaModel):
             return _map
 
         result = dict()
-        if self.detail is not None:
-            result['detail'] = self.detail
-        if self.image_desc is not None:
-            result['imageDesc'] = self.image_desc
+        if self.mobile_url is not None:
+            result['mobileUrl'] = self.mobile_url
+        if self.text is not None:
+            result['text'] = self.text
         if self.url is not None:
             result['url'] = self.url
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('detail') is not None:
-            self.detail = m.get('detail')
-        if m.get('imageDesc') is not None:
-            self.image_desc = m.get('imageDesc')
+        if m.get('mobileUrl') is not None:
+            self.mobile_url = m.get('mobileUrl')
+        if m.get('text') is not None:
+            self.text = m.get('text')
         if m.get('url') is not None:
             self.url = m.get('url')
         return self
 
 
-class CreateMessageRequestContentMarkdown(TeaModel):
+class CreateMessageRequestMessagesContentStructViewPartsRecommendPart(TeaModel):
+    def __init__(
+        self,
+        recommends: List[CreateMessageRequestMessagesContentStructViewPartsRecommendPartRecommends] = None,
+    ):
+        self.recommends = recommends
+
+    def validate(self):
+        if self.recommends:
+            for k in self.recommends:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['recommends'] = []
+        if self.recommends is not None:
+            for k in self.recommends:
+                result['recommends'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.recommends = []
+        if m.get('recommends') is not None:
+            for k in m.get('recommends'):
+                temp_model = CreateMessageRequestMessagesContentStructViewPartsRecommendPartRecommends()
+                self.recommends.append(temp_model.from_map(k))
+        return self
+
+
+class CreateMessageRequestMessagesContentStructViewPartsReferencePartReferences(TeaModel):
+    def __init__(
+        self,
+        index: str = None,
+        name: str = None,
+        source_code: str = None,
+        source_icon: str = None,
+        summary: str = None,
+        title: str = None,
+        url: str = None,
+    ):
+        self.index = index
+        self.name = name
+        self.source_code = source_code
+        self.source_icon = source_icon
+        self.summary = summary
+        self.title = title
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.index is not None:
+            result['index'] = self.index
+        if self.name is not None:
+            result['name'] = self.name
+        if self.source_code is not None:
+            result['sourceCode'] = self.source_code
+        if self.source_icon is not None:
+            result['sourceIcon'] = self.source_icon
+        if self.summary is not None:
+            result['summary'] = self.summary
+        if self.title is not None:
+            result['title'] = self.title
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('index') is not None:
+            self.index = m.get('index')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('sourceCode') is not None:
+            self.source_code = m.get('sourceCode')
+        if m.get('sourceIcon') is not None:
+            self.source_icon = m.get('sourceIcon')
+        if m.get('summary') is not None:
+            self.summary = m.get('summary')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class CreateMessageRequestMessagesContentStructViewPartsReferencePart(TeaModel):
+    def __init__(
+        self,
+        references: List[CreateMessageRequestMessagesContentStructViewPartsReferencePartReferences] = None,
+    ):
+        self.references = references
+
+    def validate(self):
+        if self.references:
+            for k in self.references:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['references'] = []
+        if self.references is not None:
+            for k in self.references:
+                result['references'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.references = []
+        if m.get('references') is not None:
+            for k in m.get('references'):
+                temp_model = CreateMessageRequestMessagesContentStructViewPartsReferencePartReferences()
+                self.references.append(temp_model.from_map(k))
+        return self
+
+
+class CreateMessageRequestMessagesContentStructViewPartsTextPart(TeaModel):
+    def __init__(
+        self,
+        text: str = None,
+    ):
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.text is not None:
+            result['text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        return self
+
+
+class CreateMessageRequestMessagesContentStructViewParts(TeaModel):
+    def __init__(
+        self,
+        append: bool = None,
+        data_part: CreateMessageRequestMessagesContentStructViewPartsDataPart = None,
+        finish: bool = None,
+        part_desc: str = None,
+        part_id: str = None,
+        reason_part: CreateMessageRequestMessagesContentStructViewPartsReasonPart = None,
+        recommend_part: CreateMessageRequestMessagesContentStructViewPartsRecommendPart = None,
+        reference_part: CreateMessageRequestMessagesContentStructViewPartsReferencePart = None,
+        text_part: CreateMessageRequestMessagesContentStructViewPartsTextPart = None,
+        type: str = None,
+    ):
+        self.append = append
+        self.data_part = data_part
+        self.finish = finish
+        self.part_desc = part_desc
+        self.part_id = part_id
+        self.reason_part = reason_part
+        self.recommend_part = recommend_part
+        self.reference_part = reference_part
+        self.text_part = text_part
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        if self.data_part:
+            self.data_part.validate()
+        if self.reason_part:
+            self.reason_part.validate()
+        if self.recommend_part:
+            self.recommend_part.validate()
+        if self.reference_part:
+            self.reference_part.validate()
+        if self.text_part:
+            self.text_part.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.append is not None:
+            result['append'] = self.append
+        if self.data_part is not None:
+            result['dataPart'] = self.data_part.to_map()
+        if self.finish is not None:
+            result['finish'] = self.finish
+        if self.part_desc is not None:
+            result['partDesc'] = self.part_desc
+        if self.part_id is not None:
+            result['partId'] = self.part_id
+        if self.reason_part is not None:
+            result['reasonPart'] = self.reason_part.to_map()
+        if self.recommend_part is not None:
+            result['recommendPart'] = self.recommend_part.to_map()
+        if self.reference_part is not None:
+            result['referencePart'] = self.reference_part.to_map()
+        if self.text_part is not None:
+            result['textPart'] = self.text_part.to_map()
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('append') is not None:
+            self.append = m.get('append')
+        if m.get('dataPart') is not None:
+            temp_model = CreateMessageRequestMessagesContentStructViewPartsDataPart()
+            self.data_part = temp_model.from_map(m['dataPart'])
+        if m.get('finish') is not None:
+            self.finish = m.get('finish')
+        if m.get('partDesc') is not None:
+            self.part_desc = m.get('partDesc')
+        if m.get('partId') is not None:
+            self.part_id = m.get('partId')
+        if m.get('reasonPart') is not None:
+            temp_model = CreateMessageRequestMessagesContentStructViewPartsReasonPart()
+            self.reason_part = temp_model.from_map(m['reasonPart'])
+        if m.get('recommendPart') is not None:
+            temp_model = CreateMessageRequestMessagesContentStructViewPartsRecommendPart()
+            self.recommend_part = temp_model.from_map(m['recommendPart'])
+        if m.get('referencePart') is not None:
+            temp_model = CreateMessageRequestMessagesContentStructViewPartsReferencePart()
+            self.reference_part = temp_model.from_map(m['referencePart'])
+        if m.get('textPart') is not None:
+            temp_model = CreateMessageRequestMessagesContentStructViewPartsTextPart()
+            self.text_part = temp_model.from_map(m['textPart'])
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class CreateMessageRequestMessagesContentStructView(TeaModel):
+    def __init__(
+        self,
+        parts: List[CreateMessageRequestMessagesContentStructViewParts] = None,
+    ):
+        self.parts = parts
+
+    def validate(self):
+        if self.parts:
+            for k in self.parts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['parts'] = []
+        if self.parts is not None:
+            for k in self.parts:
+                result['parts'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.parts = []
+        if m.get('parts') is not None:
+            for k in m.get('parts'):
+                temp_model = CreateMessageRequestMessagesContentStructViewParts()
+                self.parts.append(temp_model.from_map(k))
+        return self
+
+
+class CreateMessageRequestMessagesContentText(TeaModel):
     def __init__(
         self,
         value: str = None,
@@ -13981,47 +14548,22 @@ class CreateMessageRequestContentMarkdown(TeaModel):
         return self
 
 
-class CreateMessageRequestContentText(TeaModel):
+class CreateMessageRequestMessagesContent(TeaModel):
     def __init__(
         self,
-        value: str = None,
-    ):
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.value is not None:
-            result['value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('value') is not None:
-            self.value = m.get('value')
-        return self
-
-
-class CreateMessageRequestContent(TeaModel):
-    def __init__(
-        self,
-        card_callback: CreateMessageRequestContentCardCallback = None,
-        ding_card: CreateMessageRequestContentDingCard = None,
-        image_url: CreateMessageRequestContentImageUrl = None,
-        markdown: CreateMessageRequestContentMarkdown = None,
-        text: CreateMessageRequestContentText = None,
+        card_callback: CreateMessageRequestMessagesContentCardCallback = None,
+        ding_card: CreateMessageRequestMessagesContentDingCard = None,
+        ding_normal_card: CreateMessageRequestMessagesContentDingNormalCard = None,
+        markdown: CreateMessageRequestMessagesContentMarkdown = None,
+        struct_view: CreateMessageRequestMessagesContentStructView = None,
+        text: CreateMessageRequestMessagesContentText = None,
         type: str = None,
     ):
         self.card_callback = card_callback
         self.ding_card = ding_card
-        self.image_url = image_url
+        self.ding_normal_card = ding_normal_card
         self.markdown = markdown
+        self.struct_view = struct_view
         self.text = text
         # This parameter is required.
         self.type = type
@@ -14031,10 +14573,12 @@ class CreateMessageRequestContent(TeaModel):
             self.card_callback.validate()
         if self.ding_card:
             self.ding_card.validate()
-        if self.image_url:
-            self.image_url.validate()
+        if self.ding_normal_card:
+            self.ding_normal_card.validate()
         if self.markdown:
             self.markdown.validate()
+        if self.struct_view:
+            self.struct_view.validate()
         if self.text:
             self.text.validate()
 
@@ -14048,10 +14592,12 @@ class CreateMessageRequestContent(TeaModel):
             result['cardCallback'] = self.card_callback.to_map()
         if self.ding_card is not None:
             result['dingCard'] = self.ding_card.to_map()
-        if self.image_url is not None:
-            result['imageUrl'] = self.image_url.to_map()
+        if self.ding_normal_card is not None:
+            result['dingNormalCard'] = self.ding_normal_card.to_map()
         if self.markdown is not None:
             result['markdown'] = self.markdown.to_map()
+        if self.struct_view is not None:
+            result['structView'] = self.struct_view.to_map()
         if self.text is not None:
             result['text'] = self.text.to_map()
         if self.type is not None:
@@ -14061,22 +14607,72 @@ class CreateMessageRequestContent(TeaModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('cardCallback') is not None:
-            temp_model = CreateMessageRequestContentCardCallback()
+            temp_model = CreateMessageRequestMessagesContentCardCallback()
             self.card_callback = temp_model.from_map(m['cardCallback'])
         if m.get('dingCard') is not None:
-            temp_model = CreateMessageRequestContentDingCard()
+            temp_model = CreateMessageRequestMessagesContentDingCard()
             self.ding_card = temp_model.from_map(m['dingCard'])
-        if m.get('imageUrl') is not None:
-            temp_model = CreateMessageRequestContentImageUrl()
-            self.image_url = temp_model.from_map(m['imageUrl'])
+        if m.get('dingNormalCard') is not None:
+            temp_model = CreateMessageRequestMessagesContentDingNormalCard()
+            self.ding_normal_card = temp_model.from_map(m['dingNormalCard'])
         if m.get('markdown') is not None:
-            temp_model = CreateMessageRequestContentMarkdown()
+            temp_model = CreateMessageRequestMessagesContentMarkdown()
             self.markdown = temp_model.from_map(m['markdown'])
+        if m.get('structView') is not None:
+            temp_model = CreateMessageRequestMessagesContentStructView()
+            self.struct_view = temp_model.from_map(m['structView'])
         if m.get('text') is not None:
-            temp_model = CreateMessageRequestContentText()
+            temp_model = CreateMessageRequestMessagesContentText()
             self.text = temp_model.from_map(m['text'])
         if m.get('type') is not None:
             self.type = m.get('type')
+        return self
+
+
+class CreateMessageRequestMessages(TeaModel):
+    def __init__(
+        self,
+        content: CreateMessageRequestMessagesContent = None,
+        content_desc: str = None,
+        create_at: int = None,
+        role: str = None,
+    ):
+        self.content = content
+        self.content_desc = content_desc
+        self.create_at = create_at
+        self.role = role
+
+    def validate(self):
+        if self.content:
+            self.content.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content.to_map()
+        if self.content_desc is not None:
+            result['contentDesc'] = self.content_desc
+        if self.create_at is not None:
+            result['createAt'] = self.create_at
+        if self.role is not None:
+            result['role'] = self.role
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            temp_model = CreateMessageRequestMessagesContent()
+            self.content = temp_model.from_map(m['content'])
+        if m.get('contentDesc') is not None:
+            self.content_desc = m.get('contentDesc')
+        if m.get('createAt') is not None:
+            self.create_at = m.get('createAt')
+        if m.get('role') is not None:
+            self.role = m.get('role')
         return self
 
 
@@ -14084,26 +14680,25 @@ class CreateMessageRequest(TeaModel):
     def __init__(
         self,
         assistant_id: str = None,
-        content: List[CreateMessageRequestContent] = None,
-        metadata: Dict[str, Any] = None,
+        messages: List[CreateMessageRequestMessages] = None,
         original_assistant_id: str = None,
-        role: str = None,
+        source_id_of_original_assistant_id: str = None,
+        source_type_of_original_assistant_id: str = None,
         thread_id: str = None,
     ):
         # This parameter is required.
         self.assistant_id = assistant_id
         # This parameter is required.
-        self.content = content
-        self.metadata = metadata
+        self.messages = messages
         self.original_assistant_id = original_assistant_id
-        # This parameter is required.
-        self.role = role
+        self.source_id_of_original_assistant_id = source_id_of_original_assistant_id
+        self.source_type_of_original_assistant_id = source_type_of_original_assistant_id
         # This parameter is required.
         self.thread_id = thread_id
 
     def validate(self):
-        if self.content:
-            for k in self.content:
+        if self.messages:
+            for k in self.messages:
                 if k:
                     k.validate()
 
@@ -14115,16 +14710,16 @@ class CreateMessageRequest(TeaModel):
         result = dict()
         if self.assistant_id is not None:
             result['assistantId'] = self.assistant_id
-        result['content'] = []
-        if self.content is not None:
-            for k in self.content:
-                result['content'].append(k.to_map() if k else None)
-        if self.metadata is not None:
-            result['metadata'] = self.metadata
+        result['messages'] = []
+        if self.messages is not None:
+            for k in self.messages:
+                result['messages'].append(k.to_map() if k else None)
         if self.original_assistant_id is not None:
             result['originalAssistantId'] = self.original_assistant_id
-        if self.role is not None:
-            result['role'] = self.role
+        if self.source_id_of_original_assistant_id is not None:
+            result['sourceIdOfOriginalAssistantId'] = self.source_id_of_original_assistant_id
+        if self.source_type_of_original_assistant_id is not None:
+            result['sourceTypeOfOriginalAssistantId'] = self.source_type_of_original_assistant_id
         if self.thread_id is not None:
             result['threadId'] = self.thread_id
         return result
@@ -14133,32 +14728,30 @@ class CreateMessageRequest(TeaModel):
         m = m or dict()
         if m.get('assistantId') is not None:
             self.assistant_id = m.get('assistantId')
-        self.content = []
-        if m.get('content') is not None:
-            for k in m.get('content'):
-                temp_model = CreateMessageRequestContent()
-                self.content.append(temp_model.from_map(k))
-        if m.get('metadata') is not None:
-            self.metadata = m.get('metadata')
+        self.messages = []
+        if m.get('messages') is not None:
+            for k in m.get('messages'):
+                temp_model = CreateMessageRequestMessages()
+                self.messages.append(temp_model.from_map(k))
         if m.get('originalAssistantId') is not None:
             self.original_assistant_id = m.get('originalAssistantId')
-        if m.get('role') is not None:
-            self.role = m.get('role')
+        if m.get('sourceIdOfOriginalAssistantId') is not None:
+            self.source_id_of_original_assistant_id = m.get('sourceIdOfOriginalAssistantId')
+        if m.get('sourceTypeOfOriginalAssistantId') is not None:
+            self.source_type_of_original_assistant_id = m.get('sourceTypeOfOriginalAssistantId')
         if m.get('threadId') is not None:
             self.thread_id = m.get('threadId')
         return self
 
 
-class CreateMessageResponseBodyContentCardCallback(TeaModel):
+class CreateMessageResponseBodyMessagesContentCardCallback(TeaModel):
     def __init__(
         self,
         content: str = None,
-        template_id: str = None,
-        user_id: str = None,
+        related_message_id: str = None,
     ):
         self.content = content
-        self.template_id = template_id
-        self.user_id = user_id
+        self.related_message_id = related_message_id
 
     def validate(self):
         pass
@@ -14171,34 +14764,29 @@ class CreateMessageResponseBodyContentCardCallback(TeaModel):
         result = dict()
         if self.content is not None:
             result['content'] = self.content
-        if self.template_id is not None:
-            result['templateId'] = self.template_id
-        if self.user_id is not None:
-            result['userId'] = self.user_id
+        if self.related_message_id is not None:
+            result['relatedMessageId'] = self.related_message_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('content') is not None:
             self.content = m.get('content')
-        if m.get('templateId') is not None:
-            self.template_id = m.get('templateId')
-        if m.get('userId') is not None:
-            self.user_id = m.get('userId')
+        if m.get('relatedMessageId') is not None:
+            self.related_message_id = m.get('relatedMessageId')
         return self
 
 
-class CreateMessageResponseBodyContentDingCard(TeaModel):
+class CreateMessageResponseBodyMessagesContentDingCard(TeaModel):
     def __init__(
         self,
-        card_desc: str = None,
         content: str = None,
         content_type: str = None,
         finished: bool = None,
         template_id: str = None,
     ):
-        self.card_desc = card_desc
         self.content = content
+        # This parameter is required.
         self.content_type = content_type
         self.finished = finished
         self.template_id = template_id
@@ -14212,8 +14800,6 @@ class CreateMessageResponseBodyContentDingCard(TeaModel):
             return _map
 
         result = dict()
-        if self.card_desc is not None:
-            result['cardDesc'] = self.card_desc
         if self.content is not None:
             result['content'] = self.content
         if self.content_type is not None:
@@ -14226,8 +14812,6 @@ class CreateMessageResponseBodyContentDingCard(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('cardDesc') is not None:
-            self.card_desc = m.get('cardDesc')
         if m.get('content') is not None:
             self.content = m.get('content')
         if m.get('contentType') is not None:
@@ -14239,15 +14823,301 @@ class CreateMessageResponseBodyContentDingCard(TeaModel):
         return self
 
 
-class CreateMessageResponseBodyContentImageUrl(TeaModel):
+class CreateMessageResponseBodyMessagesContentDingNormalCardCardData(TeaModel):
     def __init__(
         self,
-        detail: str = None,
-        image_desc: str = None,
+        card_param_map: Dict[str, Any] = None,
+    ):
+        self.card_param_map = card_param_map
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.card_param_map is not None:
+            result['cardParamMap'] = self.card_param_map
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cardParamMap') is not None:
+            self.card_param_map = m.get('cardParamMap')
+        return self
+
+
+class CreateMessageResponseBodyMessagesContentDingNormalCardCardUpdateOptions(TeaModel):
+    def __init__(
+        self,
+        update_card_data_by_key: bool = None,
+        update_private_data_by_key: bool = None,
+    ):
+        self.update_card_data_by_key = update_card_data_by_key
+        self.update_private_data_by_key = update_private_data_by_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.update_card_data_by_key is not None:
+            result['updateCardDataByKey'] = self.update_card_data_by_key
+        if self.update_private_data_by_key is not None:
+            result['updatePrivateDataByKey'] = self.update_private_data_by_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('updateCardDataByKey') is not None:
+            self.update_card_data_by_key = m.get('updateCardDataByKey')
+        if m.get('updatePrivateDataByKey') is not None:
+            self.update_private_data_by_key = m.get('updatePrivateDataByKey')
+        return self
+
+
+class CreateMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig(TeaModel):
+    def __init__(
+        self,
+        interval: int = None,
+        pull_strategy: str = None,
+        time_unit: str = None,
+    ):
+        self.interval = interval
+        self.pull_strategy = pull_strategy
+        self.time_unit = time_unit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.interval is not None:
+            result['interval'] = self.interval
+        if self.pull_strategy is not None:
+            result['pullStrategy'] = self.pull_strategy
+        if self.time_unit is not None:
+            result['timeUnit'] = self.time_unit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('interval') is not None:
+            self.interval = m.get('interval')
+        if m.get('pullStrategy') is not None:
+            self.pull_strategy = m.get('pullStrategy')
+        if m.get('timeUnit') is not None:
+            self.time_unit = m.get('timeUnit')
+        return self
+
+
+class CreateMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs(TeaModel):
+    def __init__(
+        self,
+        const_params: Dict[str, Any] = None,
+        dynamic_data_source_id: str = None,
+        pull_config: CreateMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig = None,
+    ):
+        self.const_params = const_params
+        self.dynamic_data_source_id = dynamic_data_source_id
+        self.pull_config = pull_config
+
+    def validate(self):
+        if self.pull_config:
+            self.pull_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.const_params is not None:
+            result['constParams'] = self.const_params
+        if self.dynamic_data_source_id is not None:
+            result['dynamicDataSourceId'] = self.dynamic_data_source_id
+        if self.pull_config is not None:
+            result['pullConfig'] = self.pull_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('constParams') is not None:
+            self.const_params = m.get('constParams')
+        if m.get('dynamicDataSourceId') is not None:
+            self.dynamic_data_source_id = m.get('dynamicDataSourceId')
+        if m.get('pullConfig') is not None:
+            temp_model = CreateMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig()
+            self.pull_config = temp_model.from_map(m['pullConfig'])
+        return self
+
+
+class CreateMessageResponseBodyMessagesContentDingNormalCard(TeaModel):
+    def __init__(
+        self,
+        card_data: CreateMessageResponseBodyMessagesContentDingNormalCardCardData = None,
+        card_template_id: str = None,
+        card_update_options: CreateMessageResponseBodyMessagesContentDingNormalCardCardUpdateOptions = None,
+        dynamic_data_source_configs: List[CreateMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs] = None,
+        private_data: Dict[str, dict] = None,
+    ):
+        self.card_data = card_data
+        self.card_template_id = card_template_id
+        self.card_update_options = card_update_options
+        self.dynamic_data_source_configs = dynamic_data_source_configs
+        self.private_data = private_data
+
+    def validate(self):
+        if self.card_data:
+            self.card_data.validate()
+        if self.card_update_options:
+            self.card_update_options.validate()
+        if self.dynamic_data_source_configs:
+            for k in self.dynamic_data_source_configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.card_data is not None:
+            result['cardData'] = self.card_data.to_map()
+        if self.card_template_id is not None:
+            result['cardTemplateId'] = self.card_template_id
+        if self.card_update_options is not None:
+            result['cardUpdateOptions'] = self.card_update_options.to_map()
+        result['dynamicDataSourceConfigs'] = []
+        if self.dynamic_data_source_configs is not None:
+            for k in self.dynamic_data_source_configs:
+                result['dynamicDataSourceConfigs'].append(k.to_map() if k else None)
+        if self.private_data is not None:
+            result['privateData'] = self.private_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cardData') is not None:
+            temp_model = CreateMessageResponseBodyMessagesContentDingNormalCardCardData()
+            self.card_data = temp_model.from_map(m['cardData'])
+        if m.get('cardTemplateId') is not None:
+            self.card_template_id = m.get('cardTemplateId')
+        if m.get('cardUpdateOptions') is not None:
+            temp_model = CreateMessageResponseBodyMessagesContentDingNormalCardCardUpdateOptions()
+            self.card_update_options = temp_model.from_map(m['cardUpdateOptions'])
+        self.dynamic_data_source_configs = []
+        if m.get('dynamicDataSourceConfigs') is not None:
+            for k in m.get('dynamicDataSourceConfigs'):
+                temp_model = CreateMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs()
+                self.dynamic_data_source_configs.append(temp_model.from_map(k))
+        if m.get('privateData') is not None:
+            self.private_data = m.get('privateData')
+        return self
+
+
+class CreateMessageResponseBodyMessagesContentMarkdown(TeaModel):
+    def __init__(
+        self,
+        value: str = None,
+    ):
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class CreateMessageResponseBodyMessagesContentStructViewPartsDataPart(TeaModel):
+    def __init__(
+        self,
+        data: Any = None,
+    ):
+        self.data = data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        return self
+
+
+class CreateMessageResponseBodyMessagesContentStructViewPartsReasonPart(TeaModel):
+    def __init__(
+        self,
+        reason: str = None,
+    ):
+        self.reason = reason
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.reason is not None:
+            result['reason'] = self.reason
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('reason') is not None:
+            self.reason = m.get('reason')
+        return self
+
+
+class CreateMessageResponseBodyMessagesContentStructViewPartsRecommendPartRecommends(TeaModel):
+    def __init__(
+        self,
+        mobile_url: str = None,
+        text: str = None,
         url: str = None,
     ):
-        self.detail = detail
-        self.image_desc = image_desc
+        self.mobile_url = mobile_url
+        self.text = text
         self.url = url
 
     def validate(self):
@@ -14259,26 +15129,317 @@ class CreateMessageResponseBodyContentImageUrl(TeaModel):
             return _map
 
         result = dict()
-        if self.detail is not None:
-            result['detail'] = self.detail
-        if self.image_desc is not None:
-            result['imageDesc'] = self.image_desc
+        if self.mobile_url is not None:
+            result['mobileUrl'] = self.mobile_url
+        if self.text is not None:
+            result['text'] = self.text
         if self.url is not None:
             result['url'] = self.url
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('detail') is not None:
-            self.detail = m.get('detail')
-        if m.get('imageDesc') is not None:
-            self.image_desc = m.get('imageDesc')
+        if m.get('mobileUrl') is not None:
+            self.mobile_url = m.get('mobileUrl')
+        if m.get('text') is not None:
+            self.text = m.get('text')
         if m.get('url') is not None:
             self.url = m.get('url')
         return self
 
 
-class CreateMessageResponseBodyContentMarkdown(TeaModel):
+class CreateMessageResponseBodyMessagesContentStructViewPartsRecommendPart(TeaModel):
+    def __init__(
+        self,
+        recommends: List[CreateMessageResponseBodyMessagesContentStructViewPartsRecommendPartRecommends] = None,
+    ):
+        self.recommends = recommends
+
+    def validate(self):
+        if self.recommends:
+            for k in self.recommends:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['recommends'] = []
+        if self.recommends is not None:
+            for k in self.recommends:
+                result['recommends'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.recommends = []
+        if m.get('recommends') is not None:
+            for k in m.get('recommends'):
+                temp_model = CreateMessageResponseBodyMessagesContentStructViewPartsRecommendPartRecommends()
+                self.recommends.append(temp_model.from_map(k))
+        return self
+
+
+class CreateMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences(TeaModel):
+    def __init__(
+        self,
+        index: str = None,
+        name: str = None,
+        source_code: str = None,
+        source_icon: str = None,
+        summary: str = None,
+        title: str = None,
+        url: str = None,
+    ):
+        self.index = index
+        self.name = name
+        self.source_code = source_code
+        self.source_icon = source_icon
+        self.summary = summary
+        self.title = title
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.index is not None:
+            result['index'] = self.index
+        if self.name is not None:
+            result['name'] = self.name
+        if self.source_code is not None:
+            result['sourceCode'] = self.source_code
+        if self.source_icon is not None:
+            result['sourceIcon'] = self.source_icon
+        if self.summary is not None:
+            result['summary'] = self.summary
+        if self.title is not None:
+            result['title'] = self.title
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('index') is not None:
+            self.index = m.get('index')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('sourceCode') is not None:
+            self.source_code = m.get('sourceCode')
+        if m.get('sourceIcon') is not None:
+            self.source_icon = m.get('sourceIcon')
+        if m.get('summary') is not None:
+            self.summary = m.get('summary')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class CreateMessageResponseBodyMessagesContentStructViewPartsReferencePart(TeaModel):
+    def __init__(
+        self,
+        references: List[CreateMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences] = None,
+    ):
+        self.references = references
+
+    def validate(self):
+        if self.references:
+            for k in self.references:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['references'] = []
+        if self.references is not None:
+            for k in self.references:
+                result['references'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.references = []
+        if m.get('references') is not None:
+            for k in m.get('references'):
+                temp_model = CreateMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences()
+                self.references.append(temp_model.from_map(k))
+        return self
+
+
+class CreateMessageResponseBodyMessagesContentStructViewPartsTextPart(TeaModel):
+    def __init__(
+        self,
+        text: str = None,
+    ):
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.text is not None:
+            result['text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        return self
+
+
+class CreateMessageResponseBodyMessagesContentStructViewParts(TeaModel):
+    def __init__(
+        self,
+        append: bool = None,
+        data_part: CreateMessageResponseBodyMessagesContentStructViewPartsDataPart = None,
+        finish: bool = None,
+        part_desc: str = None,
+        part_id: str = None,
+        reason_part: CreateMessageResponseBodyMessagesContentStructViewPartsReasonPart = None,
+        recommend_part: CreateMessageResponseBodyMessagesContentStructViewPartsRecommendPart = None,
+        reference_part: CreateMessageResponseBodyMessagesContentStructViewPartsReferencePart = None,
+        text_part: CreateMessageResponseBodyMessagesContentStructViewPartsTextPart = None,
+        type: str = None,
+    ):
+        self.append = append
+        self.data_part = data_part
+        self.finish = finish
+        self.part_desc = part_desc
+        self.part_id = part_id
+        self.reason_part = reason_part
+        self.recommend_part = recommend_part
+        self.reference_part = reference_part
+        self.text_part = text_part
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        if self.data_part:
+            self.data_part.validate()
+        if self.reason_part:
+            self.reason_part.validate()
+        if self.recommend_part:
+            self.recommend_part.validate()
+        if self.reference_part:
+            self.reference_part.validate()
+        if self.text_part:
+            self.text_part.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.append is not None:
+            result['append'] = self.append
+        if self.data_part is not None:
+            result['dataPart'] = self.data_part.to_map()
+        if self.finish is not None:
+            result['finish'] = self.finish
+        if self.part_desc is not None:
+            result['partDesc'] = self.part_desc
+        if self.part_id is not None:
+            result['partId'] = self.part_id
+        if self.reason_part is not None:
+            result['reasonPart'] = self.reason_part.to_map()
+        if self.recommend_part is not None:
+            result['recommendPart'] = self.recommend_part.to_map()
+        if self.reference_part is not None:
+            result['referencePart'] = self.reference_part.to_map()
+        if self.text_part is not None:
+            result['textPart'] = self.text_part.to_map()
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('append') is not None:
+            self.append = m.get('append')
+        if m.get('dataPart') is not None:
+            temp_model = CreateMessageResponseBodyMessagesContentStructViewPartsDataPart()
+            self.data_part = temp_model.from_map(m['dataPart'])
+        if m.get('finish') is not None:
+            self.finish = m.get('finish')
+        if m.get('partDesc') is not None:
+            self.part_desc = m.get('partDesc')
+        if m.get('partId') is not None:
+            self.part_id = m.get('partId')
+        if m.get('reasonPart') is not None:
+            temp_model = CreateMessageResponseBodyMessagesContentStructViewPartsReasonPart()
+            self.reason_part = temp_model.from_map(m['reasonPart'])
+        if m.get('recommendPart') is not None:
+            temp_model = CreateMessageResponseBodyMessagesContentStructViewPartsRecommendPart()
+            self.recommend_part = temp_model.from_map(m['recommendPart'])
+        if m.get('referencePart') is not None:
+            temp_model = CreateMessageResponseBodyMessagesContentStructViewPartsReferencePart()
+            self.reference_part = temp_model.from_map(m['referencePart'])
+        if m.get('textPart') is not None:
+            temp_model = CreateMessageResponseBodyMessagesContentStructViewPartsTextPart()
+            self.text_part = temp_model.from_map(m['textPart'])
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class CreateMessageResponseBodyMessagesContentStructView(TeaModel):
+    def __init__(
+        self,
+        parts: List[CreateMessageResponseBodyMessagesContentStructViewParts] = None,
+    ):
+        self.parts = parts
+
+    def validate(self):
+        if self.parts:
+            for k in self.parts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['parts'] = []
+        if self.parts is not None:
+            for k in self.parts:
+                result['parts'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.parts = []
+        if m.get('parts') is not None:
+            for k in m.get('parts'):
+                temp_model = CreateMessageResponseBodyMessagesContentStructViewParts()
+                self.parts.append(temp_model.from_map(k))
+        return self
+
+
+class CreateMessageResponseBodyMessagesContentText(TeaModel):
     def __init__(
         self,
         value: str = None,
@@ -14305,48 +15466,24 @@ class CreateMessageResponseBodyContentMarkdown(TeaModel):
         return self
 
 
-class CreateMessageResponseBodyContentText(TeaModel):
+class CreateMessageResponseBodyMessagesContent(TeaModel):
     def __init__(
         self,
-        value: str = None,
-    ):
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.value is not None:
-            result['value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('value') is not None:
-            self.value = m.get('value')
-        return self
-
-
-class CreateMessageResponseBodyContent(TeaModel):
-    def __init__(
-        self,
-        card_callback: CreateMessageResponseBodyContentCardCallback = None,
-        ding_card: CreateMessageResponseBodyContentDingCard = None,
-        image_url: CreateMessageResponseBodyContentImageUrl = None,
-        markdown: CreateMessageResponseBodyContentMarkdown = None,
-        text: CreateMessageResponseBodyContentText = None,
+        card_callback: CreateMessageResponseBodyMessagesContentCardCallback = None,
+        ding_card: CreateMessageResponseBodyMessagesContentDingCard = None,
+        ding_normal_card: CreateMessageResponseBodyMessagesContentDingNormalCard = None,
+        markdown: CreateMessageResponseBodyMessagesContentMarkdown = None,
+        struct_view: CreateMessageResponseBodyMessagesContentStructView = None,
+        text: CreateMessageResponseBodyMessagesContentText = None,
         type: str = None,
     ):
         self.card_callback = card_callback
         self.ding_card = ding_card
-        self.image_url = image_url
+        self.ding_normal_card = ding_normal_card
         self.markdown = markdown
+        self.struct_view = struct_view
         self.text = text
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -14354,10 +15491,12 @@ class CreateMessageResponseBodyContent(TeaModel):
             self.card_callback.validate()
         if self.ding_card:
             self.ding_card.validate()
-        if self.image_url:
-            self.image_url.validate()
+        if self.ding_normal_card:
+            self.ding_normal_card.validate()
         if self.markdown:
             self.markdown.validate()
+        if self.struct_view:
+            self.struct_view.validate()
         if self.text:
             self.text.validate()
 
@@ -14371,10 +15510,12 @@ class CreateMessageResponseBodyContent(TeaModel):
             result['cardCallback'] = self.card_callback.to_map()
         if self.ding_card is not None:
             result['dingCard'] = self.ding_card.to_map()
-        if self.image_url is not None:
-            result['imageUrl'] = self.image_url.to_map()
+        if self.ding_normal_card is not None:
+            result['dingNormalCard'] = self.ding_normal_card.to_map()
         if self.markdown is not None:
             result['markdown'] = self.markdown.to_map()
+        if self.struct_view is not None:
+            result['structView'] = self.struct_view.to_map()
         if self.text is not None:
             result['text'] = self.text.to_map()
         if self.type is not None:
@@ -14384,49 +15525,105 @@ class CreateMessageResponseBodyContent(TeaModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('cardCallback') is not None:
-            temp_model = CreateMessageResponseBodyContentCardCallback()
+            temp_model = CreateMessageResponseBodyMessagesContentCardCallback()
             self.card_callback = temp_model.from_map(m['cardCallback'])
         if m.get('dingCard') is not None:
-            temp_model = CreateMessageResponseBodyContentDingCard()
+            temp_model = CreateMessageResponseBodyMessagesContentDingCard()
             self.ding_card = temp_model.from_map(m['dingCard'])
-        if m.get('imageUrl') is not None:
-            temp_model = CreateMessageResponseBodyContentImageUrl()
-            self.image_url = temp_model.from_map(m['imageUrl'])
+        if m.get('dingNormalCard') is not None:
+            temp_model = CreateMessageResponseBodyMessagesContentDingNormalCard()
+            self.ding_normal_card = temp_model.from_map(m['dingNormalCard'])
         if m.get('markdown') is not None:
-            temp_model = CreateMessageResponseBodyContentMarkdown()
+            temp_model = CreateMessageResponseBodyMessagesContentMarkdown()
             self.markdown = temp_model.from_map(m['markdown'])
+        if m.get('structView') is not None:
+            temp_model = CreateMessageResponseBodyMessagesContentStructView()
+            self.struct_view = temp_model.from_map(m['structView'])
         if m.get('text') is not None:
-            temp_model = CreateMessageResponseBodyContentText()
+            temp_model = CreateMessageResponseBodyMessagesContentText()
             self.text = temp_model.from_map(m['text'])
         if m.get('type') is not None:
             self.type = m.get('type')
         return self
 
 
-class CreateMessageResponseBody(TeaModel):
+class CreateMessageResponseBodyMessages(TeaModel):
     def __init__(
         self,
-        content: List[CreateMessageResponseBodyContent] = None,
+        content: CreateMessageResponseBodyMessagesContent = None,
+        content_desc: str = None,
         create_at: int = None,
         id: str = None,
-        metadata: Dict[str, Any] = None,
-        object: str = None,
-        request_id: str = None,
         role: str = None,
+        run_id: str = None,
         thread_id: str = None,
     ):
         self.content = content
+        self.content_desc = content_desc
         self.create_at = create_at
         self.id = id
-        self.metadata = metadata
-        self.object = object
-        self.request_id = request_id
         self.role = role
+        self.run_id = run_id
         self.thread_id = thread_id
 
     def validate(self):
         if self.content:
-            for k in self.content:
+            self.content.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content.to_map()
+        if self.content_desc is not None:
+            result['contentDesc'] = self.content_desc
+        if self.create_at is not None:
+            result['createAt'] = self.create_at
+        if self.id is not None:
+            result['id'] = self.id
+        if self.role is not None:
+            result['role'] = self.role
+        if self.run_id is not None:
+            result['runId'] = self.run_id
+        if self.thread_id is not None:
+            result['threadId'] = self.thread_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            temp_model = CreateMessageResponseBodyMessagesContent()
+            self.content = temp_model.from_map(m['content'])
+        if m.get('contentDesc') is not None:
+            self.content_desc = m.get('contentDesc')
+        if m.get('createAt') is not None:
+            self.create_at = m.get('createAt')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('role') is not None:
+            self.role = m.get('role')
+        if m.get('runId') is not None:
+            self.run_id = m.get('runId')
+        if m.get('threadId') is not None:
+            self.thread_id = m.get('threadId')
+        return self
+
+
+class CreateMessageResponseBody(TeaModel):
+    def __init__(
+        self,
+        messages: List[CreateMessageResponseBodyMessages] = None,
+        request_id: str = None,
+    ):
+        self.messages = messages
+        self.request_id = request_id
+
+    def validate(self):
+        if self.messages:
+            for k in self.messages:
                 if k:
                     k.validate()
 
@@ -14436,47 +15633,23 @@ class CreateMessageResponseBody(TeaModel):
             return _map
 
         result = dict()
-        result['content'] = []
-        if self.content is not None:
-            for k in self.content:
-                result['content'].append(k.to_map() if k else None)
-        if self.create_at is not None:
-            result['createAt'] = self.create_at
-        if self.id is not None:
-            result['id'] = self.id
-        if self.metadata is not None:
-            result['metadata'] = self.metadata
-        if self.object is not None:
-            result['object'] = self.object
+        result['messages'] = []
+        if self.messages is not None:
+            for k in self.messages:
+                result['messages'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['requestId'] = self.request_id
-        if self.role is not None:
-            result['role'] = self.role
-        if self.thread_id is not None:
-            result['threadId'] = self.thread_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.content = []
-        if m.get('content') is not None:
-            for k in m.get('content'):
-                temp_model = CreateMessageResponseBodyContent()
-                self.content.append(temp_model.from_map(k))
-        if m.get('createAt') is not None:
-            self.create_at = m.get('createAt')
-        if m.get('id') is not None:
-            self.id = m.get('id')
-        if m.get('metadata') is not None:
-            self.metadata = m.get('metadata')
-        if m.get('object') is not None:
-            self.object = m.get('object')
+        self.messages = []
+        if m.get('messages') is not None:
+            for k in m.get('messages'):
+                temp_model = CreateMessageResponseBodyMessages()
+                self.messages.append(temp_model.from_map(k))
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
-        if m.get('role') is not None:
-            self.role = m.get('role')
-        if m.get('threadId') is not None:
-            self.thread_id = m.get('threadId')
         return self
 
 
@@ -16293,17 +17466,17 @@ class CreateRunRequest(TeaModel):
     def __init__(
         self,
         assistant_id: str = None,
-        instructions: str = None,
-        metadata: Dict[str, Any] = None,
         original_assistant_id: str = None,
+        source_id_of_original_assistant_id: str = None,
+        source_type_of_original_assistant_id: str = None,
         stream: bool = None,
         thread_id: str = None,
     ):
         # This parameter is required.
         self.assistant_id = assistant_id
-        self.instructions = instructions
-        self.metadata = metadata
         self.original_assistant_id = original_assistant_id
+        self.source_id_of_original_assistant_id = source_id_of_original_assistant_id
+        self.source_type_of_original_assistant_id = source_type_of_original_assistant_id
         self.stream = stream
         # This parameter is required.
         self.thread_id = thread_id
@@ -16319,12 +17492,12 @@ class CreateRunRequest(TeaModel):
         result = dict()
         if self.assistant_id is not None:
             result['assistantId'] = self.assistant_id
-        if self.instructions is not None:
-            result['instructions'] = self.instructions
-        if self.metadata is not None:
-            result['metadata'] = self.metadata
         if self.original_assistant_id is not None:
             result['originalAssistantId'] = self.original_assistant_id
+        if self.source_id_of_original_assistant_id is not None:
+            result['sourceIdOfOriginalAssistantId'] = self.source_id_of_original_assistant_id
+        if self.source_type_of_original_assistant_id is not None:
+            result['sourceTypeOfOriginalAssistantId'] = self.source_type_of_original_assistant_id
         if self.stream is not None:
             result['stream'] = self.stream
         if self.thread_id is not None:
@@ -16335,12 +17508,12 @@ class CreateRunRequest(TeaModel):
         m = m or dict()
         if m.get('assistantId') is not None:
             self.assistant_id = m.get('assistantId')
-        if m.get('instructions') is not None:
-            self.instructions = m.get('instructions')
-        if m.get('metadata') is not None:
-            self.metadata = m.get('metadata')
         if m.get('originalAssistantId') is not None:
             self.original_assistant_id = m.get('originalAssistantId')
+        if m.get('sourceIdOfOriginalAssistantId') is not None:
+            self.source_id_of_original_assistant_id = m.get('sourceIdOfOriginalAssistantId')
+        if m.get('sourceTypeOfOriginalAssistantId') is not None:
+            self.source_type_of_original_assistant_id = m.get('sourceTypeOfOriginalAssistantId')
         if m.get('stream') is not None:
             self.stream = m.get('stream')
         if m.get('threadId') is not None:
@@ -16348,16 +17521,14 @@ class CreateRunRequest(TeaModel):
         return self
 
 
-class CreateRunResponseBodyContentCardCallback(TeaModel):
+class CreateRunResponseBodyMessagesContentCardCallback(TeaModel):
     def __init__(
         self,
         content: str = None,
-        template_id: str = None,
-        user_id: str = None,
+        related_message_id: str = None,
     ):
         self.content = content
-        self.template_id = template_id
-        self.user_id = user_id
+        self.related_message_id = related_message_id
 
     def validate(self):
         pass
@@ -16370,34 +17541,29 @@ class CreateRunResponseBodyContentCardCallback(TeaModel):
         result = dict()
         if self.content is not None:
             result['content'] = self.content
-        if self.template_id is not None:
-            result['templateId'] = self.template_id
-        if self.user_id is not None:
-            result['userId'] = self.user_id
+        if self.related_message_id is not None:
+            result['relatedMessageId'] = self.related_message_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('content') is not None:
             self.content = m.get('content')
-        if m.get('templateId') is not None:
-            self.template_id = m.get('templateId')
-        if m.get('userId') is not None:
-            self.user_id = m.get('userId')
+        if m.get('relatedMessageId') is not None:
+            self.related_message_id = m.get('relatedMessageId')
         return self
 
 
-class CreateRunResponseBodyContentDingCard(TeaModel):
+class CreateRunResponseBodyMessagesContentDingCard(TeaModel):
     def __init__(
         self,
-        card_desc: str = None,
         content: str = None,
         content_type: str = None,
         finished: bool = None,
         template_id: str = None,
     ):
-        self.card_desc = card_desc
         self.content = content
+        # This parameter is required.
         self.content_type = content_type
         self.finished = finished
         self.template_id = template_id
@@ -16411,8 +17577,6 @@ class CreateRunResponseBodyContentDingCard(TeaModel):
             return _map
 
         result = dict()
-        if self.card_desc is not None:
-            result['cardDesc'] = self.card_desc
         if self.content is not None:
             result['content'] = self.content
         if self.content_type is not None:
@@ -16425,8 +17589,6 @@ class CreateRunResponseBodyContentDingCard(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('cardDesc') is not None:
-            self.card_desc = m.get('cardDesc')
         if m.get('content') is not None:
             self.content = m.get('content')
         if m.get('contentType') is not None:
@@ -16438,16 +17600,12 @@ class CreateRunResponseBodyContentDingCard(TeaModel):
         return self
 
 
-class CreateRunResponseBodyContentImageUrl(TeaModel):
+class CreateRunResponseBodyMessagesContentDingNormalCardCardData(TeaModel):
     def __init__(
         self,
-        detail: str = None,
-        image_desc: str = None,
-        url: str = None,
+        card_param_map: Any = None,
     ):
-        self.detail = detail
-        self.image_desc = image_desc
-        self.url = url
+        self.card_param_map = card_param_map
 
     def validate(self):
         pass
@@ -16458,31 +17616,25 @@ class CreateRunResponseBodyContentImageUrl(TeaModel):
             return _map
 
         result = dict()
-        if self.detail is not None:
-            result['detail'] = self.detail
-        if self.image_desc is not None:
-            result['imageDesc'] = self.image_desc
-        if self.url is not None:
-            result['url'] = self.url
+        if self.card_param_map is not None:
+            result['cardParamMap'] = self.card_param_map
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('detail') is not None:
-            self.detail = m.get('detail')
-        if m.get('imageDesc') is not None:
-            self.image_desc = m.get('imageDesc')
-        if m.get('url') is not None:
-            self.url = m.get('url')
+        if m.get('cardParamMap') is not None:
+            self.card_param_map = m.get('cardParamMap')
         return self
 
 
-class CreateRunResponseBodyContentMarkdown(TeaModel):
+class CreateRunResponseBodyMessagesContentDingNormalCardCardUpdateOptions(TeaModel):
     def __init__(
         self,
-        value: str = None,
+        update_card_data_by_key: bool = None,
+        update_private_data_by_key: bool = None,
     ):
-        self.value = value
+        self.update_card_data_by_key = update_card_data_by_key
+        self.update_private_data_by_key = update_private_data_by_key
 
     def validate(self):
         pass
@@ -16493,23 +17645,31 @@ class CreateRunResponseBodyContentMarkdown(TeaModel):
             return _map
 
         result = dict()
-        if self.value is not None:
-            result['value'] = self.value
+        if self.update_card_data_by_key is not None:
+            result['updateCardDataByKey'] = self.update_card_data_by_key
+        if self.update_private_data_by_key is not None:
+            result['updatePrivateDataByKey'] = self.update_private_data_by_key
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('value') is not None:
-            self.value = m.get('value')
+        if m.get('updateCardDataByKey') is not None:
+            self.update_card_data_by_key = m.get('updateCardDataByKey')
+        if m.get('updatePrivateDataByKey') is not None:
+            self.update_private_data_by_key = m.get('updatePrivateDataByKey')
         return self
 
 
-class CreateRunResponseBodyContentText(TeaModel):
+class CreateRunResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig(TeaModel):
     def __init__(
         self,
-        value: str = None,
+        interval: int = None,
+        pull_strategy: str = None,
+        time_unit: str = None,
     ):
-        self.value = value
+        self.interval = interval
+        self.pull_strategy = pull_strategy
+        self.time_unit = time_unit
 
     def validate(self):
         pass
@@ -16520,45 +17680,39 @@ class CreateRunResponseBodyContentText(TeaModel):
             return _map
 
         result = dict()
-        if self.value is not None:
-            result['value'] = self.value
+        if self.interval is not None:
+            result['interval'] = self.interval
+        if self.pull_strategy is not None:
+            result['pullStrategy'] = self.pull_strategy
+        if self.time_unit is not None:
+            result['timeUnit'] = self.time_unit
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('value') is not None:
-            self.value = m.get('value')
+        if m.get('interval') is not None:
+            self.interval = m.get('interval')
+        if m.get('pullStrategy') is not None:
+            self.pull_strategy = m.get('pullStrategy')
+        if m.get('timeUnit') is not None:
+            self.time_unit = m.get('timeUnit')
         return self
 
 
-class CreateRunResponseBodyContent(TeaModel):
+class CreateRunResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs(TeaModel):
     def __init__(
         self,
-        card_callback: CreateRunResponseBodyContentCardCallback = None,
-        ding_card: CreateRunResponseBodyContentDingCard = None,
-        image_url: CreateRunResponseBodyContentImageUrl = None,
-        markdown: CreateRunResponseBodyContentMarkdown = None,
-        text: CreateRunResponseBodyContentText = None,
-        type: str = None,
+        const_params: Dict[str, Any] = None,
+        dynamic_data_source_id: str = None,
+        pull_config: CreateRunResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig = None,
     ):
-        self.card_callback = card_callback
-        self.ding_card = ding_card
-        self.image_url = image_url
-        self.markdown = markdown
-        self.text = text
-        self.type = type
+        self.const_params = const_params
+        self.dynamic_data_source_id = dynamic_data_source_id
+        self.pull_config = pull_config
 
     def validate(self):
-        if self.card_callback:
-            self.card_callback.validate()
-        if self.ding_card:
-            self.ding_card.validate()
-        if self.image_url:
-            self.image_url.validate()
-        if self.markdown:
-            self.markdown.validate()
-        if self.text:
-            self.text.validate()
+        if self.pull_config:
+            self.pull_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -16566,320 +17720,48 @@ class CreateRunResponseBodyContent(TeaModel):
             return _map
 
         result = dict()
-        if self.card_callback is not None:
-            result['cardCallback'] = self.card_callback.to_map()
-        if self.ding_card is not None:
-            result['dingCard'] = self.ding_card.to_map()
-        if self.image_url is not None:
-            result['imageUrl'] = self.image_url.to_map()
-        if self.markdown is not None:
-            result['markdown'] = self.markdown.to_map()
-        if self.text is not None:
-            result['text'] = self.text.to_map()
-        if self.type is not None:
-            result['type'] = self.type
+        if self.const_params is not None:
+            result['constParams'] = self.const_params
+        if self.dynamic_data_source_id is not None:
+            result['dynamicDataSourceId'] = self.dynamic_data_source_id
+        if self.pull_config is not None:
+            result['pullConfig'] = self.pull_config.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('cardCallback') is not None:
-            temp_model = CreateRunResponseBodyContentCardCallback()
-            self.card_callback = temp_model.from_map(m['cardCallback'])
-        if m.get('dingCard') is not None:
-            temp_model = CreateRunResponseBodyContentDingCard()
-            self.ding_card = temp_model.from_map(m['dingCard'])
-        if m.get('imageUrl') is not None:
-            temp_model = CreateRunResponseBodyContentImageUrl()
-            self.image_url = temp_model.from_map(m['imageUrl'])
-        if m.get('markdown') is not None:
-            temp_model = CreateRunResponseBodyContentMarkdown()
-            self.markdown = temp_model.from_map(m['markdown'])
-        if m.get('text') is not None:
-            temp_model = CreateRunResponseBodyContentText()
-            self.text = temp_model.from_map(m['text'])
-        if m.get('type') is not None:
-            self.type = m.get('type')
+        if m.get('constParams') is not None:
+            self.const_params = m.get('constParams')
+        if m.get('dynamicDataSourceId') is not None:
+            self.dynamic_data_source_id = m.get('dynamicDataSourceId')
+        if m.get('pullConfig') is not None:
+            temp_model = CreateRunResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig()
+            self.pull_config = temp_model.from_map(m['pullConfig'])
         return self
 
 
-class CreateRunResponseBodyDataContentCardCallback(TeaModel):
+class CreateRunResponseBodyMessagesContentDingNormalCard(TeaModel):
     def __init__(
         self,
-        content: str = None,
-        template_id: str = None,
-        user_id: str = None,
+        card_data: CreateRunResponseBodyMessagesContentDingNormalCardCardData = None,
+        card_template_id: str = None,
+        card_update_options: CreateRunResponseBodyMessagesContentDingNormalCardCardUpdateOptions = None,
+        dynamic_data_source_configs: List[CreateRunResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs] = None,
+        private_data: Dict[str, dict] = None,
     ):
-        self.content = content
-        self.template_id = template_id
-        self.user_id = user_id
+        self.card_data = card_data
+        self.card_template_id = card_template_id
+        self.card_update_options = card_update_options
+        self.dynamic_data_source_configs = dynamic_data_source_configs
+        self.private_data = private_data
 
     def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.content is not None:
-            result['content'] = self.content
-        if self.template_id is not None:
-            result['templateId'] = self.template_id
-        if self.user_id is not None:
-            result['userId'] = self.user_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('content') is not None:
-            self.content = m.get('content')
-        if m.get('templateId') is not None:
-            self.template_id = m.get('templateId')
-        if m.get('userId') is not None:
-            self.user_id = m.get('userId')
-        return self
-
-
-class CreateRunResponseBodyDataContentDingCard(TeaModel):
-    def __init__(
-        self,
-        card_desc: str = None,
-        content: str = None,
-        content_type: str = None,
-        finished: bool = None,
-        template_id: str = None,
-    ):
-        self.card_desc = card_desc
-        self.content = content
-        self.content_type = content_type
-        self.finished = finished
-        self.template_id = template_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.card_desc is not None:
-            result['cardDesc'] = self.card_desc
-        if self.content is not None:
-            result['content'] = self.content
-        if self.content_type is not None:
-            result['contentType'] = self.content_type
-        if self.finished is not None:
-            result['finished'] = self.finished
-        if self.template_id is not None:
-            result['templateId'] = self.template_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('cardDesc') is not None:
-            self.card_desc = m.get('cardDesc')
-        if m.get('content') is not None:
-            self.content = m.get('content')
-        if m.get('contentType') is not None:
-            self.content_type = m.get('contentType')
-        if m.get('finished') is not None:
-            self.finished = m.get('finished')
-        if m.get('templateId') is not None:
-            self.template_id = m.get('templateId')
-        return self
-
-
-class CreateRunResponseBodyDataContentImageUrl(TeaModel):
-    def __init__(
-        self,
-        detail: str = None,
-        image_desc: str = None,
-        url: str = None,
-    ):
-        self.detail = detail
-        self.image_desc = image_desc
-        self.url = url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.detail is not None:
-            result['detail'] = self.detail
-        if self.image_desc is not None:
-            result['imageDesc'] = self.image_desc
-        if self.url is not None:
-            result['url'] = self.url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('detail') is not None:
-            self.detail = m.get('detail')
-        if m.get('imageDesc') is not None:
-            self.image_desc = m.get('imageDesc')
-        if m.get('url') is not None:
-            self.url = m.get('url')
-        return self
-
-
-class CreateRunResponseBodyDataContentMarkdown(TeaModel):
-    def __init__(
-        self,
-        value: str = None,
-    ):
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.value is not None:
-            result['value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('value') is not None:
-            self.value = m.get('value')
-        return self
-
-
-class CreateRunResponseBodyDataContentText(TeaModel):
-    def __init__(
-        self,
-        value: str = None,
-    ):
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.value is not None:
-            result['value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('value') is not None:
-            self.value = m.get('value')
-        return self
-
-
-class CreateRunResponseBodyDataContent(TeaModel):
-    def __init__(
-        self,
-        card_callback: CreateRunResponseBodyDataContentCardCallback = None,
-        ding_card: CreateRunResponseBodyDataContentDingCard = None,
-        image_url: CreateRunResponseBodyDataContentImageUrl = None,
-        markdown: CreateRunResponseBodyDataContentMarkdown = None,
-        text: CreateRunResponseBodyDataContentText = None,
-        type: str = None,
-    ):
-        self.card_callback = card_callback
-        self.ding_card = ding_card
-        self.image_url = image_url
-        self.markdown = markdown
-        self.text = text
-        self.type = type
-
-    def validate(self):
-        if self.card_callback:
-            self.card_callback.validate()
-        if self.ding_card:
-            self.ding_card.validate()
-        if self.image_url:
-            self.image_url.validate()
-        if self.markdown:
-            self.markdown.validate()
-        if self.text:
-            self.text.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.card_callback is not None:
-            result['cardCallback'] = self.card_callback.to_map()
-        if self.ding_card is not None:
-            result['dingCard'] = self.ding_card.to_map()
-        if self.image_url is not None:
-            result['imageUrl'] = self.image_url.to_map()
-        if self.markdown is not None:
-            result['markdown'] = self.markdown.to_map()
-        if self.text is not None:
-            result['text'] = self.text.to_map()
-        if self.type is not None:
-            result['type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('cardCallback') is not None:
-            temp_model = CreateRunResponseBodyDataContentCardCallback()
-            self.card_callback = temp_model.from_map(m['cardCallback'])
-        if m.get('dingCard') is not None:
-            temp_model = CreateRunResponseBodyDataContentDingCard()
-            self.ding_card = temp_model.from_map(m['dingCard'])
-        if m.get('imageUrl') is not None:
-            temp_model = CreateRunResponseBodyDataContentImageUrl()
-            self.image_url = temp_model.from_map(m['imageUrl'])
-        if m.get('markdown') is not None:
-            temp_model = CreateRunResponseBodyDataContentMarkdown()
-            self.markdown = temp_model.from_map(m['markdown'])
-        if m.get('text') is not None:
-            temp_model = CreateRunResponseBodyDataContentText()
-            self.text = temp_model.from_map(m['text'])
-        if m.get('type') is not None:
-            self.type = m.get('type')
-        return self
-
-
-class CreateRunResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        content: List[CreateRunResponseBodyDataContent] = None,
-        create_at: int = None,
-        id: str = None,
-        metadata: Dict[str, Any] = None,
-        object: str = None,
-        role: str = None,
-        run_id: str = None,
-        thread_id: str = None,
-    ):
-        self.content = content
-        self.create_at = create_at
-        self.id = id
-        self.metadata = metadata
-        self.object = object
-        self.role = role
-        self.run_id = run_id
-        self.thread_id = thread_id
-
-    def validate(self):
-        if self.content:
-            for k in self.content:
+        if self.card_data:
+            self.card_data.validate()
+        if self.card_update_options:
+            self.card_update_options.validate()
+        if self.dynamic_data_source_configs:
+            for k in self.dynamic_data_source_configs:
                 if k:
                     k.validate()
 
@@ -16889,60 +17771,46 @@ class CreateRunResponseBodyData(TeaModel):
             return _map
 
         result = dict()
-        result['content'] = []
-        if self.content is not None:
-            for k in self.content:
-                result['content'].append(k.to_map() if k else None)
-        if self.create_at is not None:
-            result['createAt'] = self.create_at
-        if self.id is not None:
-            result['id'] = self.id
-        if self.metadata is not None:
-            result['metadata'] = self.metadata
-        if self.object is not None:
-            result['object'] = self.object
-        if self.role is not None:
-            result['role'] = self.role
-        if self.run_id is not None:
-            result['runId'] = self.run_id
-        if self.thread_id is not None:
-            result['threadId'] = self.thread_id
+        if self.card_data is not None:
+            result['cardData'] = self.card_data.to_map()
+        if self.card_template_id is not None:
+            result['cardTemplateId'] = self.card_template_id
+        if self.card_update_options is not None:
+            result['cardUpdateOptions'] = self.card_update_options.to_map()
+        result['dynamicDataSourceConfigs'] = []
+        if self.dynamic_data_source_configs is not None:
+            for k in self.dynamic_data_source_configs:
+                result['dynamicDataSourceConfigs'].append(k.to_map() if k else None)
+        if self.private_data is not None:
+            result['privateData'] = self.private_data
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.content = []
-        if m.get('content') is not None:
-            for k in m.get('content'):
-                temp_model = CreateRunResponseBodyDataContent()
-                self.content.append(temp_model.from_map(k))
-        if m.get('createAt') is not None:
-            self.create_at = m.get('createAt')
-        if m.get('id') is not None:
-            self.id = m.get('id')
-        if m.get('metadata') is not None:
-            self.metadata = m.get('metadata')
-        if m.get('object') is not None:
-            self.object = m.get('object')
-        if m.get('role') is not None:
-            self.role = m.get('role')
-        if m.get('runId') is not None:
-            self.run_id = m.get('runId')
-        if m.get('threadId') is not None:
-            self.thread_id = m.get('threadId')
+        if m.get('cardData') is not None:
+            temp_model = CreateRunResponseBodyMessagesContentDingNormalCardCardData()
+            self.card_data = temp_model.from_map(m['cardData'])
+        if m.get('cardTemplateId') is not None:
+            self.card_template_id = m.get('cardTemplateId')
+        if m.get('cardUpdateOptions') is not None:
+            temp_model = CreateRunResponseBodyMessagesContentDingNormalCardCardUpdateOptions()
+            self.card_update_options = temp_model.from_map(m['cardUpdateOptions'])
+        self.dynamic_data_source_configs = []
+        if m.get('dynamicDataSourceConfigs') is not None:
+            for k in m.get('dynamicDataSourceConfigs'):
+                temp_model = CreateRunResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs()
+                self.dynamic_data_source_configs.append(temp_model.from_map(k))
+        if m.get('privateData') is not None:
+            self.private_data = m.get('privateData')
         return self
 
 
-class CreateRunResponseBodyDeltaContentCardCallback(TeaModel):
+class CreateRunResponseBodyMessagesContentMarkdown(TeaModel):
     def __init__(
         self,
-        content: str = None,
-        template_id: str = None,
-        user_id: str = None,
+        value: str = None,
     ):
-        self.content = content
-        self.template_id = template_id
-        self.user_id = user_id
+        self.value = value
 
     def validate(self):
         pass
@@ -16953,39 +17821,23 @@ class CreateRunResponseBodyDeltaContentCardCallback(TeaModel):
             return _map
 
         result = dict()
-        if self.content is not None:
-            result['content'] = self.content
-        if self.template_id is not None:
-            result['templateId'] = self.template_id
-        if self.user_id is not None:
-            result['userId'] = self.user_id
+        if self.value is not None:
+            result['value'] = self.value
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('content') is not None:
-            self.content = m.get('content')
-        if m.get('templateId') is not None:
-            self.template_id = m.get('templateId')
-        if m.get('userId') is not None:
-            self.user_id = m.get('userId')
+        if m.get('value') is not None:
+            self.value = m.get('value')
         return self
 
 
-class CreateRunResponseBodyDeltaContentDingCard(TeaModel):
+class CreateRunResponseBodyMessagesContentStructViewPartsDataPart(TeaModel):
     def __init__(
         self,
-        card_desc: str = None,
-        content: str = None,
-        content_type: str = None,
-        finished: bool = None,
-        template_id: str = None,
+        data: Any = None,
     ):
-        self.card_desc = card_desc
-        self.content = content
-        self.content_type = content_type
-        self.finished = finished
-        self.template_id = template_id
+        self.data = data
 
     def validate(self):
         pass
@@ -16996,42 +17848,53 @@ class CreateRunResponseBodyDeltaContentDingCard(TeaModel):
             return _map
 
         result = dict()
-        if self.card_desc is not None:
-            result['cardDesc'] = self.card_desc
-        if self.content is not None:
-            result['content'] = self.content
-        if self.content_type is not None:
-            result['contentType'] = self.content_type
-        if self.finished is not None:
-            result['finished'] = self.finished
-        if self.template_id is not None:
-            result['templateId'] = self.template_id
+        if self.data is not None:
+            result['data'] = self.data
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('cardDesc') is not None:
-            self.card_desc = m.get('cardDesc')
-        if m.get('content') is not None:
-            self.content = m.get('content')
-        if m.get('contentType') is not None:
-            self.content_type = m.get('contentType')
-        if m.get('finished') is not None:
-            self.finished = m.get('finished')
-        if m.get('templateId') is not None:
-            self.template_id = m.get('templateId')
+        if m.get('data') is not None:
+            self.data = m.get('data')
         return self
 
 
-class CreateRunResponseBodyDeltaContentImageUrl(TeaModel):
+class CreateRunResponseBodyMessagesContentStructViewPartsReasonPart(TeaModel):
     def __init__(
         self,
-        detail: str = None,
-        image_desc: str = None,
+        reason: str = None,
+    ):
+        self.reason = reason
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.reason is not None:
+            result['reason'] = self.reason
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('reason') is not None:
+            self.reason = m.get('reason')
+        return self
+
+
+class CreateRunResponseBodyMessagesContentStructViewPartsRecommendPartRecommends(TeaModel):
+    def __init__(
+        self,
+        mobile_url: str = None,
+        text: str = None,
         url: str = None,
     ):
-        self.detail = detail
-        self.image_desc = image_desc
+        self.mobile_url = mobile_url
+        self.text = text
         self.url = url
 
     def validate(self):
@@ -17043,26 +17906,317 @@ class CreateRunResponseBodyDeltaContentImageUrl(TeaModel):
             return _map
 
         result = dict()
-        if self.detail is not None:
-            result['detail'] = self.detail
-        if self.image_desc is not None:
-            result['imageDesc'] = self.image_desc
+        if self.mobile_url is not None:
+            result['mobileUrl'] = self.mobile_url
+        if self.text is not None:
+            result['text'] = self.text
         if self.url is not None:
             result['url'] = self.url
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('detail') is not None:
-            self.detail = m.get('detail')
-        if m.get('imageDesc') is not None:
-            self.image_desc = m.get('imageDesc')
+        if m.get('mobileUrl') is not None:
+            self.mobile_url = m.get('mobileUrl')
+        if m.get('text') is not None:
+            self.text = m.get('text')
         if m.get('url') is not None:
             self.url = m.get('url')
         return self
 
 
-class CreateRunResponseBodyDeltaContentMarkdown(TeaModel):
+class CreateRunResponseBodyMessagesContentStructViewPartsRecommendPart(TeaModel):
+    def __init__(
+        self,
+        recommends: List[CreateRunResponseBodyMessagesContentStructViewPartsRecommendPartRecommends] = None,
+    ):
+        self.recommends = recommends
+
+    def validate(self):
+        if self.recommends:
+            for k in self.recommends:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['recommends'] = []
+        if self.recommends is not None:
+            for k in self.recommends:
+                result['recommends'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.recommends = []
+        if m.get('recommends') is not None:
+            for k in m.get('recommends'):
+                temp_model = CreateRunResponseBodyMessagesContentStructViewPartsRecommendPartRecommends()
+                self.recommends.append(temp_model.from_map(k))
+        return self
+
+
+class CreateRunResponseBodyMessagesContentStructViewPartsReferencePartReferences(TeaModel):
+    def __init__(
+        self,
+        index: str = None,
+        name: str = None,
+        source_code: str = None,
+        source_icon: str = None,
+        summary: str = None,
+        title: str = None,
+        url: str = None,
+    ):
+        self.index = index
+        self.name = name
+        self.source_code = source_code
+        self.source_icon = source_icon
+        self.summary = summary
+        self.title = title
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.index is not None:
+            result['index'] = self.index
+        if self.name is not None:
+            result['name'] = self.name
+        if self.source_code is not None:
+            result['sourceCode'] = self.source_code
+        if self.source_icon is not None:
+            result['sourceIcon'] = self.source_icon
+        if self.summary is not None:
+            result['summary'] = self.summary
+        if self.title is not None:
+            result['title'] = self.title
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('index') is not None:
+            self.index = m.get('index')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('sourceCode') is not None:
+            self.source_code = m.get('sourceCode')
+        if m.get('sourceIcon') is not None:
+            self.source_icon = m.get('sourceIcon')
+        if m.get('summary') is not None:
+            self.summary = m.get('summary')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class CreateRunResponseBodyMessagesContentStructViewPartsReferencePart(TeaModel):
+    def __init__(
+        self,
+        references: List[CreateRunResponseBodyMessagesContentStructViewPartsReferencePartReferences] = None,
+    ):
+        self.references = references
+
+    def validate(self):
+        if self.references:
+            for k in self.references:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['references'] = []
+        if self.references is not None:
+            for k in self.references:
+                result['references'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.references = []
+        if m.get('references') is not None:
+            for k in m.get('references'):
+                temp_model = CreateRunResponseBodyMessagesContentStructViewPartsReferencePartReferences()
+                self.references.append(temp_model.from_map(k))
+        return self
+
+
+class CreateRunResponseBodyMessagesContentStructViewPartsTextPart(TeaModel):
+    def __init__(
+        self,
+        text: str = None,
+    ):
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.text is not None:
+            result['text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        return self
+
+
+class CreateRunResponseBodyMessagesContentStructViewParts(TeaModel):
+    def __init__(
+        self,
+        append: bool = None,
+        data_part: CreateRunResponseBodyMessagesContentStructViewPartsDataPart = None,
+        finish: bool = None,
+        part_desc: str = None,
+        part_id: str = None,
+        reason_part: CreateRunResponseBodyMessagesContentStructViewPartsReasonPart = None,
+        recommend_part: CreateRunResponseBodyMessagesContentStructViewPartsRecommendPart = None,
+        reference_part: CreateRunResponseBodyMessagesContentStructViewPartsReferencePart = None,
+        text_part: CreateRunResponseBodyMessagesContentStructViewPartsTextPart = None,
+        type: str = None,
+    ):
+        self.append = append
+        self.data_part = data_part
+        self.finish = finish
+        self.part_desc = part_desc
+        self.part_id = part_id
+        self.reason_part = reason_part
+        self.recommend_part = recommend_part
+        self.reference_part = reference_part
+        self.text_part = text_part
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        if self.data_part:
+            self.data_part.validate()
+        if self.reason_part:
+            self.reason_part.validate()
+        if self.recommend_part:
+            self.recommend_part.validate()
+        if self.reference_part:
+            self.reference_part.validate()
+        if self.text_part:
+            self.text_part.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.append is not None:
+            result['append'] = self.append
+        if self.data_part is not None:
+            result['dataPart'] = self.data_part.to_map()
+        if self.finish is not None:
+            result['finish'] = self.finish
+        if self.part_desc is not None:
+            result['partDesc'] = self.part_desc
+        if self.part_id is not None:
+            result['partId'] = self.part_id
+        if self.reason_part is not None:
+            result['reasonPart'] = self.reason_part.to_map()
+        if self.recommend_part is not None:
+            result['recommendPart'] = self.recommend_part.to_map()
+        if self.reference_part is not None:
+            result['referencePart'] = self.reference_part.to_map()
+        if self.text_part is not None:
+            result['textPart'] = self.text_part.to_map()
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('append') is not None:
+            self.append = m.get('append')
+        if m.get('dataPart') is not None:
+            temp_model = CreateRunResponseBodyMessagesContentStructViewPartsDataPart()
+            self.data_part = temp_model.from_map(m['dataPart'])
+        if m.get('finish') is not None:
+            self.finish = m.get('finish')
+        if m.get('partDesc') is not None:
+            self.part_desc = m.get('partDesc')
+        if m.get('partId') is not None:
+            self.part_id = m.get('partId')
+        if m.get('reasonPart') is not None:
+            temp_model = CreateRunResponseBodyMessagesContentStructViewPartsReasonPart()
+            self.reason_part = temp_model.from_map(m['reasonPart'])
+        if m.get('recommendPart') is not None:
+            temp_model = CreateRunResponseBodyMessagesContentStructViewPartsRecommendPart()
+            self.recommend_part = temp_model.from_map(m['recommendPart'])
+        if m.get('referencePart') is not None:
+            temp_model = CreateRunResponseBodyMessagesContentStructViewPartsReferencePart()
+            self.reference_part = temp_model.from_map(m['referencePart'])
+        if m.get('textPart') is not None:
+            temp_model = CreateRunResponseBodyMessagesContentStructViewPartsTextPart()
+            self.text_part = temp_model.from_map(m['textPart'])
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class CreateRunResponseBodyMessagesContentStructView(TeaModel):
+    def __init__(
+        self,
+        parts: List[CreateRunResponseBodyMessagesContentStructViewParts] = None,
+    ):
+        self.parts = parts
+
+    def validate(self):
+        if self.parts:
+            for k in self.parts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['parts'] = []
+        if self.parts is not None:
+            for k in self.parts:
+                result['parts'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.parts = []
+        if m.get('parts') is not None:
+            for k in m.get('parts'):
+                temp_model = CreateRunResponseBodyMessagesContentStructViewParts()
+                self.parts.append(temp_model.from_map(k))
+        return self
+
+
+class CreateRunResponseBodyMessagesContentText(TeaModel):
     def __init__(
         self,
         value: str = None,
@@ -17089,48 +18243,24 @@ class CreateRunResponseBodyDeltaContentMarkdown(TeaModel):
         return self
 
 
-class CreateRunResponseBodyDeltaContentText(TeaModel):
+class CreateRunResponseBodyMessagesContent(TeaModel):
     def __init__(
         self,
-        value: str = None,
-    ):
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.value is not None:
-            result['value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('value') is not None:
-            self.value = m.get('value')
-        return self
-
-
-class CreateRunResponseBodyDeltaContent(TeaModel):
-    def __init__(
-        self,
-        card_callback: CreateRunResponseBodyDeltaContentCardCallback = None,
-        ding_card: CreateRunResponseBodyDeltaContentDingCard = None,
-        image_url: CreateRunResponseBodyDeltaContentImageUrl = None,
-        markdown: CreateRunResponseBodyDeltaContentMarkdown = None,
-        text: CreateRunResponseBodyDeltaContentText = None,
+        card_callback: CreateRunResponseBodyMessagesContentCardCallback = None,
+        ding_card: CreateRunResponseBodyMessagesContentDingCard = None,
+        ding_normal_card: CreateRunResponseBodyMessagesContentDingNormalCard = None,
+        markdown: CreateRunResponseBodyMessagesContentMarkdown = None,
+        struct_view: CreateRunResponseBodyMessagesContentStructView = None,
+        text: CreateRunResponseBodyMessagesContentText = None,
         type: str = None,
     ):
         self.card_callback = card_callback
         self.ding_card = ding_card
-        self.image_url = image_url
+        self.ding_normal_card = ding_normal_card
         self.markdown = markdown
+        self.struct_view = struct_view
         self.text = text
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -17138,10 +18268,12 @@ class CreateRunResponseBodyDeltaContent(TeaModel):
             self.card_callback.validate()
         if self.ding_card:
             self.ding_card.validate()
-        if self.image_url:
-            self.image_url.validate()
+        if self.ding_normal_card:
+            self.ding_normal_card.validate()
         if self.markdown:
             self.markdown.validate()
+        if self.struct_view:
+            self.struct_view.validate()
         if self.text:
             self.text.validate()
 
@@ -17155,10 +18287,12 @@ class CreateRunResponseBodyDeltaContent(TeaModel):
             result['cardCallback'] = self.card_callback.to_map()
         if self.ding_card is not None:
             result['dingCard'] = self.ding_card.to_map()
-        if self.image_url is not None:
-            result['imageUrl'] = self.image_url.to_map()
+        if self.ding_normal_card is not None:
+            result['dingNormalCard'] = self.ding_normal_card.to_map()
         if self.markdown is not None:
             result['markdown'] = self.markdown.to_map()
+        if self.struct_view is not None:
+            result['structView'] = self.struct_view.to_map()
         if self.text is not None:
             result['text'] = self.text.to_map()
         if self.type is not None:
@@ -17168,31 +18302,46 @@ class CreateRunResponseBodyDeltaContent(TeaModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('cardCallback') is not None:
-            temp_model = CreateRunResponseBodyDeltaContentCardCallback()
+            temp_model = CreateRunResponseBodyMessagesContentCardCallback()
             self.card_callback = temp_model.from_map(m['cardCallback'])
         if m.get('dingCard') is not None:
-            temp_model = CreateRunResponseBodyDeltaContentDingCard()
+            temp_model = CreateRunResponseBodyMessagesContentDingCard()
             self.ding_card = temp_model.from_map(m['dingCard'])
-        if m.get('imageUrl') is not None:
-            temp_model = CreateRunResponseBodyDeltaContentImageUrl()
-            self.image_url = temp_model.from_map(m['imageUrl'])
+        if m.get('dingNormalCard') is not None:
+            temp_model = CreateRunResponseBodyMessagesContentDingNormalCard()
+            self.ding_normal_card = temp_model.from_map(m['dingNormalCard'])
         if m.get('markdown') is not None:
-            temp_model = CreateRunResponseBodyDeltaContentMarkdown()
+            temp_model = CreateRunResponseBodyMessagesContentMarkdown()
             self.markdown = temp_model.from_map(m['markdown'])
+        if m.get('structView') is not None:
+            temp_model = CreateRunResponseBodyMessagesContentStructView()
+            self.struct_view = temp_model.from_map(m['structView'])
         if m.get('text') is not None:
-            temp_model = CreateRunResponseBodyDeltaContentText()
+            temp_model = CreateRunResponseBodyMessagesContentText()
             self.text = temp_model.from_map(m['text'])
         if m.get('type') is not None:
             self.type = m.get('type')
         return self
 
 
-class CreateRunResponseBodyDelta(TeaModel):
+class CreateRunResponseBodyMessages(TeaModel):
     def __init__(
         self,
-        content: CreateRunResponseBodyDeltaContent = None,
+        content: CreateRunResponseBodyMessagesContent = None,
+        content_desc: str = None,
+        create_at: int = None,
+        id: str = None,
+        role: str = None,
+        run_id: str = None,
+        thread_id: str = None,
     ):
         self.content = content
+        self.content_desc = content_desc
+        self.create_at = create_at
+        self.id = id
+        self.role = role
+        self.run_id = run_id
+        self.thread_id = thread_id
 
     def validate(self):
         if self.content:
@@ -17206,60 +18355,67 @@ class CreateRunResponseBodyDelta(TeaModel):
         result = dict()
         if self.content is not None:
             result['content'] = self.content.to_map()
+        if self.content_desc is not None:
+            result['contentDesc'] = self.content_desc
+        if self.create_at is not None:
+            result['createAt'] = self.create_at
+        if self.id is not None:
+            result['id'] = self.id
+        if self.role is not None:
+            result['role'] = self.role
+        if self.run_id is not None:
+            result['runId'] = self.run_id
+        if self.thread_id is not None:
+            result['threadId'] = self.thread_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('content') is not None:
-            temp_model = CreateRunResponseBodyDeltaContent()
+            temp_model = CreateRunResponseBodyMessagesContent()
             self.content = temp_model.from_map(m['content'])
+        if m.get('contentDesc') is not None:
+            self.content_desc = m.get('contentDesc')
+        if m.get('createAt') is not None:
+            self.create_at = m.get('createAt')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('role') is not None:
+            self.role = m.get('role')
+        if m.get('runId') is not None:
+            self.run_id = m.get('runId')
+        if m.get('threadId') is not None:
+            self.thread_id = m.get('threadId')
         return self
 
 
-class CreateRunResponseBody(TeaModel):
+class CreateRunResponseBodyRun(TeaModel):
     def __init__(
         self,
         cancelled_at: int = None,
         completed_at: int = None,
-        content: CreateRunResponseBodyContent = None,
         create_at: int = None,
-        data: CreateRunResponseBodyData = None,
-        delta: CreateRunResponseBodyDelta = None,
         expires_at: int = None,
         failed_at: int = None,
         id: str = None,
         last_error_msg: str = None,
-        metadata: Dict[str, Any] = None,
-        object: str = None,
-        request_id: str = None,
         started_at: int = None,
         status: str = None,
         thread_id: str = None,
     ):
         self.cancelled_at = cancelled_at
         self.completed_at = completed_at
-        self.content = content
         self.create_at = create_at
-        self.data = data
-        self.delta = delta
         self.expires_at = expires_at
         self.failed_at = failed_at
         self.id = id
         self.last_error_msg = last_error_msg
-        self.metadata = metadata
-        self.object = object
-        self.request_id = request_id
         self.started_at = started_at
         self.status = status
         self.thread_id = thread_id
 
     def validate(self):
-        if self.content:
-            self.content.validate()
-        if self.data:
-            self.data.validate()
-        if self.delta:
-            self.delta.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -17271,14 +18427,8 @@ class CreateRunResponseBody(TeaModel):
             result['cancelledAt'] = self.cancelled_at
         if self.completed_at is not None:
             result['completedAt'] = self.completed_at
-        if self.content is not None:
-            result['content'] = self.content.to_map()
         if self.create_at is not None:
             result['createAt'] = self.create_at
-        if self.data is not None:
-            result['data'] = self.data.to_map()
-        if self.delta is not None:
-            result['delta'] = self.delta.to_map()
         if self.expires_at is not None:
             result['expiresAt'] = self.expires_at
         if self.failed_at is not None:
@@ -17287,12 +18437,6 @@ class CreateRunResponseBody(TeaModel):
             result['id'] = self.id
         if self.last_error_msg is not None:
             result['lastErrorMsg'] = self.last_error_msg
-        if self.metadata is not None:
-            result['metadata'] = self.metadata
-        if self.object is not None:
-            result['object'] = self.object
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
         if self.started_at is not None:
             result['startedAt'] = self.started_at
         if self.status is not None:
@@ -17307,17 +18451,8 @@ class CreateRunResponseBody(TeaModel):
             self.cancelled_at = m.get('cancelledAt')
         if m.get('completedAt') is not None:
             self.completed_at = m.get('completedAt')
-        if m.get('content') is not None:
-            temp_model = CreateRunResponseBodyContent()
-            self.content = temp_model.from_map(m['content'])
         if m.get('createAt') is not None:
             self.create_at = m.get('createAt')
-        if m.get('data') is not None:
-            temp_model = CreateRunResponseBodyData()
-            self.data = temp_model.from_map(m['data'])
-        if m.get('delta') is not None:
-            temp_model = CreateRunResponseBodyDelta()
-            self.delta = temp_model.from_map(m['delta'])
         if m.get('expiresAt') is not None:
             self.expires_at = m.get('expiresAt')
         if m.get('failedAt') is not None:
@@ -17326,18 +18461,62 @@ class CreateRunResponseBody(TeaModel):
             self.id = m.get('id')
         if m.get('lastErrorMsg') is not None:
             self.last_error_msg = m.get('lastErrorMsg')
-        if m.get('metadata') is not None:
-            self.metadata = m.get('metadata')
-        if m.get('object') is not None:
-            self.object = m.get('object')
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
         if m.get('startedAt') is not None:
             self.started_at = m.get('startedAt')
         if m.get('status') is not None:
             self.status = m.get('status')
         if m.get('threadId') is not None:
             self.thread_id = m.get('threadId')
+        return self
+
+
+class CreateRunResponseBody(TeaModel):
+    def __init__(
+        self,
+        messages: List[CreateRunResponseBodyMessages] = None,
+        request_id: str = None,
+        run: CreateRunResponseBodyRun = None,
+    ):
+        self.messages = messages
+        self.request_id = request_id
+        self.run = run
+
+    def validate(self):
+        if self.messages:
+            for k in self.messages:
+                if k:
+                    k.validate()
+        if self.run:
+            self.run.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['messages'] = []
+        if self.messages is not None:
+            for k in self.messages:
+                result['messages'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.run is not None:
+            result['run'] = self.run.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.messages = []
+        if m.get('messages') is not None:
+            for k in m.get('messages'):
+                temp_model = CreateRunResponseBodyMessages()
+                self.messages.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('run') is not None:
+            temp_model = CreateRunResponseBodyRun()
+            self.run = temp_model.from_map(m['run'])
         return self
 
 
@@ -19579,13 +20758,15 @@ class CreateThreadRequest(TeaModel):
     def __init__(
         self,
         assistant_id: str = None,
-        metadata: Dict[str, Any] = None,
         original_assistant_id: str = None,
+        source_id_of_original_assistant_id: str = None,
+        source_type_of_original_assistant_id: int = None,
     ):
         # This parameter is required.
         self.assistant_id = assistant_id
-        self.metadata = metadata
         self.original_assistant_id = original_assistant_id
+        self.source_id_of_original_assistant_id = source_id_of_original_assistant_id
+        self.source_type_of_original_assistant_id = source_type_of_original_assistant_id
 
     def validate(self):
         pass
@@ -19598,37 +20779,35 @@ class CreateThreadRequest(TeaModel):
         result = dict()
         if self.assistant_id is not None:
             result['assistantId'] = self.assistant_id
-        if self.metadata is not None:
-            result['metadata'] = self.metadata
         if self.original_assistant_id is not None:
             result['originalAssistantId'] = self.original_assistant_id
+        if self.source_id_of_original_assistant_id is not None:
+            result['sourceIdOfOriginalAssistantId'] = self.source_id_of_original_assistant_id
+        if self.source_type_of_original_assistant_id is not None:
+            result['sourceTypeOfOriginalAssistantId'] = self.source_type_of_original_assistant_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('assistantId') is not None:
             self.assistant_id = m.get('assistantId')
-        if m.get('metadata') is not None:
-            self.metadata = m.get('metadata')
         if m.get('originalAssistantId') is not None:
             self.original_assistant_id = m.get('originalAssistantId')
+        if m.get('sourceIdOfOriginalAssistantId') is not None:
+            self.source_id_of_original_assistant_id = m.get('sourceIdOfOriginalAssistantId')
+        if m.get('sourceTypeOfOriginalAssistantId') is not None:
+            self.source_type_of_original_assistant_id = m.get('sourceTypeOfOriginalAssistantId')
         return self
 
 
-class CreateThreadResponseBody(TeaModel):
+class CreateThreadResponseBodyThread(TeaModel):
     def __init__(
         self,
         create_at: int = None,
         id: str = None,
-        metadata: Dict[str, Any] = None,
-        object: str = None,
-        request_id: str = None,
     ):
         self.create_at = create_at
         self.id = id
-        self.metadata = metadata
-        self.object = object
-        self.request_id = request_id
 
     def validate(self):
         pass
@@ -19643,12 +20822,6 @@ class CreateThreadResponseBody(TeaModel):
             result['createAt'] = self.create_at
         if self.id is not None:
             result['id'] = self.id
-        if self.metadata is not None:
-            result['metadata'] = self.metadata
-        if self.object is not None:
-            result['object'] = self.object
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
@@ -19657,12 +20830,41 @@ class CreateThreadResponseBody(TeaModel):
             self.create_at = m.get('createAt')
         if m.get('id') is not None:
             self.id = m.get('id')
-        if m.get('metadata') is not None:
-            self.metadata = m.get('metadata')
-        if m.get('object') is not None:
-            self.object = m.get('object')
+        return self
+
+
+class CreateThreadResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        thread: CreateThreadResponseBodyThread = None,
+    ):
+        self.request_id = request_id
+        self.thread = thread
+
+    def validate(self):
+        if self.thread:
+            self.thread.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.thread is not None:
+            result['thread'] = self.thread.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
+        if m.get('thread') is not None:
+            temp_model = CreateThreadResponseBodyThread()
+            self.thread = temp_model.from_map(m['thread'])
         return self
 
 
@@ -30067,16 +31269,16 @@ class GetAssistantCapabilityHeaders(TeaModel):
         return self
 
 
-class GetAssistantCapabilityRequestContentCardCallback(TeaModel):
+class GetAssistantCapabilityRequestMessagesContentCardCallback(TeaModel):
     def __init__(
         self,
         content: str = None,
-        template_id: str = None,
-        user_id: str = None,
+        related_message_id: str = None,
     ):
+        # This parameter is required.
         self.content = content
-        self.template_id = template_id
-        self.user_id = user_id
+        # This parameter is required.
+        self.related_message_id = related_message_id
 
     def validate(self):
         pass
@@ -30089,33 +31291,27 @@ class GetAssistantCapabilityRequestContentCardCallback(TeaModel):
         result = dict()
         if self.content is not None:
             result['content'] = self.content
-        if self.template_id is not None:
-            result['templateId'] = self.template_id
-        if self.user_id is not None:
-            result['userId'] = self.user_id
+        if self.related_message_id is not None:
+            result['relatedMessageId'] = self.related_message_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('content') is not None:
             self.content = m.get('content')
-        if m.get('templateId') is not None:
-            self.template_id = m.get('templateId')
-        if m.get('userId') is not None:
-            self.user_id = m.get('userId')
+        if m.get('relatedMessageId') is not None:
+            self.related_message_id = m.get('relatedMessageId')
         return self
 
 
-class GetAssistantCapabilityRequestContentDingCard(TeaModel):
+class GetAssistantCapabilityRequestMessagesContentDingCard(TeaModel):
     def __init__(
         self,
-        card_desc: str = None,
         content: str = None,
         content_type: str = None,
         finished: bool = None,
         template_id: str = None,
     ):
-        self.card_desc = card_desc
         self.content = content
         # This parameter is required.
         self.content_type = content_type
@@ -30131,8 +31327,6 @@ class GetAssistantCapabilityRequestContentDingCard(TeaModel):
             return _map
 
         result = dict()
-        if self.card_desc is not None:
-            result['cardDesc'] = self.card_desc
         if self.content is not None:
             result['content'] = self.content
         if self.content_type is not None:
@@ -30145,8 +31339,6 @@ class GetAssistantCapabilityRequestContentDingCard(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('cardDesc') is not None:
-            self.card_desc = m.get('cardDesc')
         if m.get('content') is not None:
             self.content = m.get('content')
         if m.get('contentType') is not None:
@@ -30158,15 +31350,301 @@ class GetAssistantCapabilityRequestContentDingCard(TeaModel):
         return self
 
 
-class GetAssistantCapabilityRequestContentImageUrl(TeaModel):
+class GetAssistantCapabilityRequestMessagesContentDingNormalCardCardData(TeaModel):
     def __init__(
         self,
-        detail: str = None,
-        image_desc: str = None,
+        card_param_map: Any = None,
+    ):
+        self.card_param_map = card_param_map
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.card_param_map is not None:
+            result['cardParamMap'] = self.card_param_map
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cardParamMap') is not None:
+            self.card_param_map = m.get('cardParamMap')
+        return self
+
+
+class GetAssistantCapabilityRequestMessagesContentDingNormalCardCardUpdateOptions(TeaModel):
+    def __init__(
+        self,
+        update_card_data_by_key: bool = None,
+        update_private_data_by_key: bool = None,
+    ):
+        self.update_card_data_by_key = update_card_data_by_key
+        self.update_private_data_by_key = update_private_data_by_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.update_card_data_by_key is not None:
+            result['updateCardDataByKey'] = self.update_card_data_by_key
+        if self.update_private_data_by_key is not None:
+            result['updatePrivateDataByKey'] = self.update_private_data_by_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('updateCardDataByKey') is not None:
+            self.update_card_data_by_key = m.get('updateCardDataByKey')
+        if m.get('updatePrivateDataByKey') is not None:
+            self.update_private_data_by_key = m.get('updatePrivateDataByKey')
+        return self
+
+
+class GetAssistantCapabilityRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig(TeaModel):
+    def __init__(
+        self,
+        interval: int = None,
+        pull_strategy: str = None,
+        time_unit: str = None,
+    ):
+        self.interval = interval
+        self.pull_strategy = pull_strategy
+        self.time_unit = time_unit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.interval is not None:
+            result['interval'] = self.interval
+        if self.pull_strategy is not None:
+            result['pullStrategy'] = self.pull_strategy
+        if self.time_unit is not None:
+            result['timeUnit'] = self.time_unit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('interval') is not None:
+            self.interval = m.get('interval')
+        if m.get('pullStrategy') is not None:
+            self.pull_strategy = m.get('pullStrategy')
+        if m.get('timeUnit') is not None:
+            self.time_unit = m.get('timeUnit')
+        return self
+
+
+class GetAssistantCapabilityRequestMessagesContentDingNormalCardDynamicDataSourceConfigs(TeaModel):
+    def __init__(
+        self,
+        const_params: Dict[str, Any] = None,
+        dynamic_data_source_id: str = None,
+        pull_config: GetAssistantCapabilityRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig = None,
+    ):
+        self.const_params = const_params
+        self.dynamic_data_source_id = dynamic_data_source_id
+        self.pull_config = pull_config
+
+    def validate(self):
+        if self.pull_config:
+            self.pull_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.const_params is not None:
+            result['constParams'] = self.const_params
+        if self.dynamic_data_source_id is not None:
+            result['dynamicDataSourceId'] = self.dynamic_data_source_id
+        if self.pull_config is not None:
+            result['pullConfig'] = self.pull_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('constParams') is not None:
+            self.const_params = m.get('constParams')
+        if m.get('dynamicDataSourceId') is not None:
+            self.dynamic_data_source_id = m.get('dynamicDataSourceId')
+        if m.get('pullConfig') is not None:
+            temp_model = GetAssistantCapabilityRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig()
+            self.pull_config = temp_model.from_map(m['pullConfig'])
+        return self
+
+
+class GetAssistantCapabilityRequestMessagesContentDingNormalCard(TeaModel):
+    def __init__(
+        self,
+        card_data: GetAssistantCapabilityRequestMessagesContentDingNormalCardCardData = None,
+        card_template_id: str = None,
+        card_update_options: GetAssistantCapabilityRequestMessagesContentDingNormalCardCardUpdateOptions = None,
+        dynamic_data_source_configs: List[GetAssistantCapabilityRequestMessagesContentDingNormalCardDynamicDataSourceConfigs] = None,
+        private_data: Dict[str, Any] = None,
+    ):
+        self.card_data = card_data
+        self.card_template_id = card_template_id
+        self.card_update_options = card_update_options
+        self.dynamic_data_source_configs = dynamic_data_source_configs
+        self.private_data = private_data
+
+    def validate(self):
+        if self.card_data:
+            self.card_data.validate()
+        if self.card_update_options:
+            self.card_update_options.validate()
+        if self.dynamic_data_source_configs:
+            for k in self.dynamic_data_source_configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.card_data is not None:
+            result['cardData'] = self.card_data.to_map()
+        if self.card_template_id is not None:
+            result['cardTemplateId'] = self.card_template_id
+        if self.card_update_options is not None:
+            result['cardUpdateOptions'] = self.card_update_options.to_map()
+        result['dynamicDataSourceConfigs'] = []
+        if self.dynamic_data_source_configs is not None:
+            for k in self.dynamic_data_source_configs:
+                result['dynamicDataSourceConfigs'].append(k.to_map() if k else None)
+        if self.private_data is not None:
+            result['privateData'] = self.private_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cardData') is not None:
+            temp_model = GetAssistantCapabilityRequestMessagesContentDingNormalCardCardData()
+            self.card_data = temp_model.from_map(m['cardData'])
+        if m.get('cardTemplateId') is not None:
+            self.card_template_id = m.get('cardTemplateId')
+        if m.get('cardUpdateOptions') is not None:
+            temp_model = GetAssistantCapabilityRequestMessagesContentDingNormalCardCardUpdateOptions()
+            self.card_update_options = temp_model.from_map(m['cardUpdateOptions'])
+        self.dynamic_data_source_configs = []
+        if m.get('dynamicDataSourceConfigs') is not None:
+            for k in m.get('dynamicDataSourceConfigs'):
+                temp_model = GetAssistantCapabilityRequestMessagesContentDingNormalCardDynamicDataSourceConfigs()
+                self.dynamic_data_source_configs.append(temp_model.from_map(k))
+        if m.get('privateData') is not None:
+            self.private_data = m.get('privateData')
+        return self
+
+
+class GetAssistantCapabilityRequestMessagesContentMarkdown(TeaModel):
+    def __init__(
+        self,
+        value: str = None,
+    ):
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class GetAssistantCapabilityRequestMessagesContentStructViewPartsDataPart(TeaModel):
+    def __init__(
+        self,
+        data: Any = None,
+    ):
+        self.data = data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        return self
+
+
+class GetAssistantCapabilityRequestMessagesContentStructViewPartsReasonPart(TeaModel):
+    def __init__(
+        self,
+        reason: str = None,
+    ):
+        self.reason = reason
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.reason is not None:
+            result['reason'] = self.reason
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('reason') is not None:
+            self.reason = m.get('reason')
+        return self
+
+
+class GetAssistantCapabilityRequestMessagesContentStructViewPartsRecommendPartRecommends(TeaModel):
+    def __init__(
+        self,
+        mobile_url: str = None,
+        text: str = None,
         url: str = None,
     ):
-        self.detail = detail
-        self.image_desc = image_desc
+        self.mobile_url = mobile_url
+        self.text = text
         self.url = url
 
     def validate(self):
@@ -30178,26 +31656,317 @@ class GetAssistantCapabilityRequestContentImageUrl(TeaModel):
             return _map
 
         result = dict()
-        if self.detail is not None:
-            result['detail'] = self.detail
-        if self.image_desc is not None:
-            result['imageDesc'] = self.image_desc
+        if self.mobile_url is not None:
+            result['mobileUrl'] = self.mobile_url
+        if self.text is not None:
+            result['text'] = self.text
         if self.url is not None:
             result['url'] = self.url
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('detail') is not None:
-            self.detail = m.get('detail')
-        if m.get('imageDesc') is not None:
-            self.image_desc = m.get('imageDesc')
+        if m.get('mobileUrl') is not None:
+            self.mobile_url = m.get('mobileUrl')
+        if m.get('text') is not None:
+            self.text = m.get('text')
         if m.get('url') is not None:
             self.url = m.get('url')
         return self
 
 
-class GetAssistantCapabilityRequestContentMarkdown(TeaModel):
+class GetAssistantCapabilityRequestMessagesContentStructViewPartsRecommendPart(TeaModel):
+    def __init__(
+        self,
+        recommends: List[GetAssistantCapabilityRequestMessagesContentStructViewPartsRecommendPartRecommends] = None,
+    ):
+        self.recommends = recommends
+
+    def validate(self):
+        if self.recommends:
+            for k in self.recommends:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['recommends'] = []
+        if self.recommends is not None:
+            for k in self.recommends:
+                result['recommends'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.recommends = []
+        if m.get('recommends') is not None:
+            for k in m.get('recommends'):
+                temp_model = GetAssistantCapabilityRequestMessagesContentStructViewPartsRecommendPartRecommends()
+                self.recommends.append(temp_model.from_map(k))
+        return self
+
+
+class GetAssistantCapabilityRequestMessagesContentStructViewPartsReferencePartReferences(TeaModel):
+    def __init__(
+        self,
+        index: str = None,
+        name: str = None,
+        source_code: str = None,
+        source_icon: str = None,
+        summary: str = None,
+        title: str = None,
+        url: str = None,
+    ):
+        self.index = index
+        self.name = name
+        self.source_code = source_code
+        self.source_icon = source_icon
+        self.summary = summary
+        self.title = title
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.index is not None:
+            result['index'] = self.index
+        if self.name is not None:
+            result['name'] = self.name
+        if self.source_code is not None:
+            result['sourceCode'] = self.source_code
+        if self.source_icon is not None:
+            result['sourceIcon'] = self.source_icon
+        if self.summary is not None:
+            result['summary'] = self.summary
+        if self.title is not None:
+            result['title'] = self.title
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('index') is not None:
+            self.index = m.get('index')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('sourceCode') is not None:
+            self.source_code = m.get('sourceCode')
+        if m.get('sourceIcon') is not None:
+            self.source_icon = m.get('sourceIcon')
+        if m.get('summary') is not None:
+            self.summary = m.get('summary')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class GetAssistantCapabilityRequestMessagesContentStructViewPartsReferencePart(TeaModel):
+    def __init__(
+        self,
+        references: List[GetAssistantCapabilityRequestMessagesContentStructViewPartsReferencePartReferences] = None,
+    ):
+        self.references = references
+
+    def validate(self):
+        if self.references:
+            for k in self.references:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['references'] = []
+        if self.references is not None:
+            for k in self.references:
+                result['references'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.references = []
+        if m.get('references') is not None:
+            for k in m.get('references'):
+                temp_model = GetAssistantCapabilityRequestMessagesContentStructViewPartsReferencePartReferences()
+                self.references.append(temp_model.from_map(k))
+        return self
+
+
+class GetAssistantCapabilityRequestMessagesContentStructViewPartsTextPart(TeaModel):
+    def __init__(
+        self,
+        text: str = None,
+    ):
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.text is not None:
+            result['text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        return self
+
+
+class GetAssistantCapabilityRequestMessagesContentStructViewParts(TeaModel):
+    def __init__(
+        self,
+        append: bool = None,
+        data_part: GetAssistantCapabilityRequestMessagesContentStructViewPartsDataPart = None,
+        finish: bool = None,
+        part_desc: str = None,
+        part_id: str = None,
+        reason_part: GetAssistantCapabilityRequestMessagesContentStructViewPartsReasonPart = None,
+        recommend_part: GetAssistantCapabilityRequestMessagesContentStructViewPartsRecommendPart = None,
+        reference_part: GetAssistantCapabilityRequestMessagesContentStructViewPartsReferencePart = None,
+        text_part: GetAssistantCapabilityRequestMessagesContentStructViewPartsTextPart = None,
+        type: str = None,
+    ):
+        self.append = append
+        self.data_part = data_part
+        self.finish = finish
+        self.part_desc = part_desc
+        self.part_id = part_id
+        self.reason_part = reason_part
+        self.recommend_part = recommend_part
+        self.reference_part = reference_part
+        self.text_part = text_part
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        if self.data_part:
+            self.data_part.validate()
+        if self.reason_part:
+            self.reason_part.validate()
+        if self.recommend_part:
+            self.recommend_part.validate()
+        if self.reference_part:
+            self.reference_part.validate()
+        if self.text_part:
+            self.text_part.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.append is not None:
+            result['append'] = self.append
+        if self.data_part is not None:
+            result['dataPart'] = self.data_part.to_map()
+        if self.finish is not None:
+            result['finish'] = self.finish
+        if self.part_desc is not None:
+            result['partDesc'] = self.part_desc
+        if self.part_id is not None:
+            result['partId'] = self.part_id
+        if self.reason_part is not None:
+            result['reasonPart'] = self.reason_part.to_map()
+        if self.recommend_part is not None:
+            result['recommendPart'] = self.recommend_part.to_map()
+        if self.reference_part is not None:
+            result['referencePart'] = self.reference_part.to_map()
+        if self.text_part is not None:
+            result['textPart'] = self.text_part.to_map()
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('append') is not None:
+            self.append = m.get('append')
+        if m.get('dataPart') is not None:
+            temp_model = GetAssistantCapabilityRequestMessagesContentStructViewPartsDataPart()
+            self.data_part = temp_model.from_map(m['dataPart'])
+        if m.get('finish') is not None:
+            self.finish = m.get('finish')
+        if m.get('partDesc') is not None:
+            self.part_desc = m.get('partDesc')
+        if m.get('partId') is not None:
+            self.part_id = m.get('partId')
+        if m.get('reasonPart') is not None:
+            temp_model = GetAssistantCapabilityRequestMessagesContentStructViewPartsReasonPart()
+            self.reason_part = temp_model.from_map(m['reasonPart'])
+        if m.get('recommendPart') is not None:
+            temp_model = GetAssistantCapabilityRequestMessagesContentStructViewPartsRecommendPart()
+            self.recommend_part = temp_model.from_map(m['recommendPart'])
+        if m.get('referencePart') is not None:
+            temp_model = GetAssistantCapabilityRequestMessagesContentStructViewPartsReferencePart()
+            self.reference_part = temp_model.from_map(m['referencePart'])
+        if m.get('textPart') is not None:
+            temp_model = GetAssistantCapabilityRequestMessagesContentStructViewPartsTextPart()
+            self.text_part = temp_model.from_map(m['textPart'])
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class GetAssistantCapabilityRequestMessagesContentStructView(TeaModel):
+    def __init__(
+        self,
+        parts: List[GetAssistantCapabilityRequestMessagesContentStructViewParts] = None,
+    ):
+        self.parts = parts
+
+    def validate(self):
+        if self.parts:
+            for k in self.parts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['parts'] = []
+        if self.parts is not None:
+            for k in self.parts:
+                result['parts'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.parts = []
+        if m.get('parts') is not None:
+            for k in m.get('parts'):
+                temp_model = GetAssistantCapabilityRequestMessagesContentStructViewParts()
+                self.parts.append(temp_model.from_map(k))
+        return self
+
+
+class GetAssistantCapabilityRequestMessagesContentText(TeaModel):
     def __init__(
         self,
         value: str = None,
@@ -30224,47 +31993,22 @@ class GetAssistantCapabilityRequestContentMarkdown(TeaModel):
         return self
 
 
-class GetAssistantCapabilityRequestContentText(TeaModel):
+class GetAssistantCapabilityRequestMessagesContent(TeaModel):
     def __init__(
         self,
-        value: str = None,
-    ):
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.value is not None:
-            result['value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('value') is not None:
-            self.value = m.get('value')
-        return self
-
-
-class GetAssistantCapabilityRequestContent(TeaModel):
-    def __init__(
-        self,
-        card_callback: GetAssistantCapabilityRequestContentCardCallback = None,
-        ding_card: GetAssistantCapabilityRequestContentDingCard = None,
-        image_url: GetAssistantCapabilityRequestContentImageUrl = None,
-        markdown: GetAssistantCapabilityRequestContentMarkdown = None,
-        text: GetAssistantCapabilityRequestContentText = None,
+        card_callback: GetAssistantCapabilityRequestMessagesContentCardCallback = None,
+        ding_card: GetAssistantCapabilityRequestMessagesContentDingCard = None,
+        ding_normal_card: GetAssistantCapabilityRequestMessagesContentDingNormalCard = None,
+        markdown: GetAssistantCapabilityRequestMessagesContentMarkdown = None,
+        struct_view: GetAssistantCapabilityRequestMessagesContentStructView = None,
+        text: GetAssistantCapabilityRequestMessagesContentText = None,
         type: str = None,
     ):
         self.card_callback = card_callback
         self.ding_card = ding_card
-        self.image_url = image_url
+        self.ding_normal_card = ding_normal_card
         self.markdown = markdown
+        self.struct_view = struct_view
         self.text = text
         # This parameter is required.
         self.type = type
@@ -30274,10 +32018,12 @@ class GetAssistantCapabilityRequestContent(TeaModel):
             self.card_callback.validate()
         if self.ding_card:
             self.ding_card.validate()
-        if self.image_url:
-            self.image_url.validate()
+        if self.ding_normal_card:
+            self.ding_normal_card.validate()
         if self.markdown:
             self.markdown.validate()
+        if self.struct_view:
+            self.struct_view.validate()
         if self.text:
             self.text.validate()
 
@@ -30291,10 +32037,12 @@ class GetAssistantCapabilityRequestContent(TeaModel):
             result['cardCallback'] = self.card_callback.to_map()
         if self.ding_card is not None:
             result['dingCard'] = self.ding_card.to_map()
-        if self.image_url is not None:
-            result['imageUrl'] = self.image_url.to_map()
+        if self.ding_normal_card is not None:
+            result['dingNormalCard'] = self.ding_normal_card.to_map()
         if self.markdown is not None:
             result['markdown'] = self.markdown.to_map()
+        if self.struct_view is not None:
+            result['structView'] = self.struct_view.to_map()
         if self.text is not None:
             result['text'] = self.text.to_map()
         if self.type is not None:
@@ -30304,22 +32052,72 @@ class GetAssistantCapabilityRequestContent(TeaModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('cardCallback') is not None:
-            temp_model = GetAssistantCapabilityRequestContentCardCallback()
+            temp_model = GetAssistantCapabilityRequestMessagesContentCardCallback()
             self.card_callback = temp_model.from_map(m['cardCallback'])
         if m.get('dingCard') is not None:
-            temp_model = GetAssistantCapabilityRequestContentDingCard()
+            temp_model = GetAssistantCapabilityRequestMessagesContentDingCard()
             self.ding_card = temp_model.from_map(m['dingCard'])
-        if m.get('imageUrl') is not None:
-            temp_model = GetAssistantCapabilityRequestContentImageUrl()
-            self.image_url = temp_model.from_map(m['imageUrl'])
+        if m.get('dingNormalCard') is not None:
+            temp_model = GetAssistantCapabilityRequestMessagesContentDingNormalCard()
+            self.ding_normal_card = temp_model.from_map(m['dingNormalCard'])
         if m.get('markdown') is not None:
-            temp_model = GetAssistantCapabilityRequestContentMarkdown()
+            temp_model = GetAssistantCapabilityRequestMessagesContentMarkdown()
             self.markdown = temp_model.from_map(m['markdown'])
+        if m.get('structView') is not None:
+            temp_model = GetAssistantCapabilityRequestMessagesContentStructView()
+            self.struct_view = temp_model.from_map(m['structView'])
         if m.get('text') is not None:
-            temp_model = GetAssistantCapabilityRequestContentText()
+            temp_model = GetAssistantCapabilityRequestMessagesContentText()
             self.text = temp_model.from_map(m['text'])
         if m.get('type') is not None:
             self.type = m.get('type')
+        return self
+
+
+class GetAssistantCapabilityRequestMessages(TeaModel):
+    def __init__(
+        self,
+        content: GetAssistantCapabilityRequestMessagesContent = None,
+        content_desc: str = None,
+        create_at: int = None,
+        role: str = None,
+    ):
+        self.content = content
+        self.content_desc = content_desc
+        self.create_at = create_at
+        self.role = role
+
+    def validate(self):
+        if self.content:
+            self.content.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content.to_map()
+        if self.content_desc is not None:
+            result['contentDesc'] = self.content_desc
+        if self.create_at is not None:
+            result['createAt'] = self.create_at
+        if self.role is not None:
+            result['role'] = self.role
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            temp_model = GetAssistantCapabilityRequestMessagesContent()
+            self.content = temp_model.from_map(m['content'])
+        if m.get('contentDesc') is not None:
+            self.content_desc = m.get('contentDesc')
+        if m.get('createAt') is not None:
+            self.create_at = m.get('createAt')
+        if m.get('role') is not None:
+            self.role = m.get('role')
         return self
 
 
@@ -30327,28 +32125,28 @@ class GetAssistantCapabilityRequest(TeaModel):
     def __init__(
         self,
         assistant_id: str = None,
-        content: List[GetAssistantCapabilityRequestContent] = None,
-        id: str = None,
-        metadata: Dict[str, Any] = None,
+        messages: List[GetAssistantCapabilityRequestMessages] = None,
         original_assistant_id: str = None,
         protocol: str = None,
+        source_id_of_original_assistant_id: str = None,
+        source_type_of_original_assistant_id: str = None,
         thread_id: str = None,
         timeout: int = None,
     ):
         # This parameter is required.
         self.assistant_id = assistant_id
         # This parameter is required.
-        self.content = content
-        self.id = id
-        self.metadata = metadata
+        self.messages = messages
         self.original_assistant_id = original_assistant_id
         self.protocol = protocol
+        self.source_id_of_original_assistant_id = source_id_of_original_assistant_id
+        self.source_type_of_original_assistant_id = source_type_of_original_assistant_id
         self.thread_id = thread_id
         self.timeout = timeout
 
     def validate(self):
-        if self.content:
-            for k in self.content:
+        if self.messages:
+            for k in self.messages:
                 if k:
                     k.validate()
 
@@ -30360,18 +32158,18 @@ class GetAssistantCapabilityRequest(TeaModel):
         result = dict()
         if self.assistant_id is not None:
             result['assistantId'] = self.assistant_id
-        result['content'] = []
-        if self.content is not None:
-            for k in self.content:
-                result['content'].append(k.to_map() if k else None)
-        if self.id is not None:
-            result['id'] = self.id
-        if self.metadata is not None:
-            result['metadata'] = self.metadata
+        result['messages'] = []
+        if self.messages is not None:
+            for k in self.messages:
+                result['messages'].append(k.to_map() if k else None)
         if self.original_assistant_id is not None:
             result['originalAssistantId'] = self.original_assistant_id
         if self.protocol is not None:
             result['protocol'] = self.protocol
+        if self.source_id_of_original_assistant_id is not None:
+            result['sourceIdOfOriginalAssistantId'] = self.source_id_of_original_assistant_id
+        if self.source_type_of_original_assistant_id is not None:
+            result['sourceTypeOfOriginalAssistantId'] = self.source_type_of_original_assistant_id
         if self.thread_id is not None:
             result['threadId'] = self.thread_id
         if self.timeout is not None:
@@ -30382,19 +32180,19 @@ class GetAssistantCapabilityRequest(TeaModel):
         m = m or dict()
         if m.get('assistantId') is not None:
             self.assistant_id = m.get('assistantId')
-        self.content = []
-        if m.get('content') is not None:
-            for k in m.get('content'):
-                temp_model = GetAssistantCapabilityRequestContent()
-                self.content.append(temp_model.from_map(k))
-        if m.get('id') is not None:
-            self.id = m.get('id')
-        if m.get('metadata') is not None:
-            self.metadata = m.get('metadata')
+        self.messages = []
+        if m.get('messages') is not None:
+            for k in m.get('messages'):
+                temp_model = GetAssistantCapabilityRequestMessages()
+                self.messages.append(temp_model.from_map(k))
         if m.get('originalAssistantId') is not None:
             self.original_assistant_id = m.get('originalAssistantId')
         if m.get('protocol') is not None:
             self.protocol = m.get('protocol')
+        if m.get('sourceIdOfOriginalAssistantId') is not None:
+            self.source_id_of_original_assistant_id = m.get('sourceIdOfOriginalAssistantId')
+        if m.get('sourceTypeOfOriginalAssistantId') is not None:
+            self.source_type_of_original_assistant_id = m.get('sourceTypeOfOriginalAssistantId')
         if m.get('threadId') is not None:
             self.thread_id = m.get('threadId')
         if m.get('timeout') is not None:
@@ -30407,12 +32205,10 @@ class GetAssistantCapabilityResponseBodyCapabilityAssessmentCapabilityList(TeaMo
         self,
         capability_overview: str = None,
         description: str = None,
-        metadata: Dict[str, Any] = None,
         name: str = None,
     ):
         self.capability_overview = capability_overview
         self.description = description
-        self.metadata = metadata
         self.name = name
 
     def validate(self):
@@ -30428,8 +32224,6 @@ class GetAssistantCapabilityResponseBodyCapabilityAssessmentCapabilityList(TeaMo
             result['capabilityOverview'] = self.capability_overview
         if self.description is not None:
             result['description'] = self.description
-        if self.metadata is not None:
-            result['metadata'] = self.metadata
         if self.name is not None:
             result['name'] = self.name
         return result
@@ -30440,8 +32234,6 @@ class GetAssistantCapabilityResponseBodyCapabilityAssessmentCapabilityList(TeaMo
             self.capability_overview = m.get('capabilityOverview')
         if m.get('description') is not None:
             self.description = m.get('description')
-        if m.get('metadata') is not None:
-            self.metadata = m.get('metadata')
         if m.get('name') is not None:
             self.name = m.get('name')
         return self
@@ -30494,15 +32286,11 @@ class GetAssistantCapabilityResponseBody(TeaModel):
         assistant_description: str = None,
         can_handle: bool = None,
         capability_assessment: GetAssistantCapabilityResponseBodyCapabilityAssessment = None,
-        id: str = None,
-        metadata: Dict[str, Any] = None,
         request_id: str = None,
     ):
         self.assistant_description = assistant_description
         self.can_handle = can_handle
         self.capability_assessment = capability_assessment
-        self.id = id
-        self.metadata = metadata
         self.request_id = request_id
 
     def validate(self):
@@ -30521,10 +32309,6 @@ class GetAssistantCapabilityResponseBody(TeaModel):
             result['canHandle'] = self.can_handle
         if self.capability_assessment is not None:
             result['capabilityAssessment'] = self.capability_assessment.to_map()
-        if self.id is not None:
-            result['id'] = self.id
-        if self.metadata is not None:
-            result['metadata'] = self.metadata
         if self.request_id is not None:
             result['requestId'] = self.request_id
         return result
@@ -30538,10 +32322,6 @@ class GetAssistantCapabilityResponseBody(TeaModel):
         if m.get('capabilityAssessment') is not None:
             temp_model = GetAssistantCapabilityResponseBodyCapabilityAssessment()
             self.capability_assessment = temp_model.from_map(m['capabilityAssessment'])
-        if m.get('id') is not None:
-            self.id = m.get('id')
-        if m.get('metadata') is not None:
-            self.metadata = m.get('metadata')
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
         return self
@@ -57171,16 +58951,16 @@ class InvokeAssistantHeaders(TeaModel):
         return self
 
 
-class InvokeAssistantRequestContentCardCallback(TeaModel):
+class InvokeAssistantRequestMessagesContentCardCallback(TeaModel):
     def __init__(
         self,
         content: str = None,
-        template_id: str = None,
-        user_id: str = None,
+        related_message_id: str = None,
     ):
+        # This parameter is required.
         self.content = content
-        self.template_id = template_id
-        self.user_id = user_id
+        # This parameter is required.
+        self.related_message_id = related_message_id
 
     def validate(self):
         pass
@@ -57193,33 +58973,27 @@ class InvokeAssistantRequestContentCardCallback(TeaModel):
         result = dict()
         if self.content is not None:
             result['content'] = self.content
-        if self.template_id is not None:
-            result['templateId'] = self.template_id
-        if self.user_id is not None:
-            result['userId'] = self.user_id
+        if self.related_message_id is not None:
+            result['relatedMessageId'] = self.related_message_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('content') is not None:
             self.content = m.get('content')
-        if m.get('templateId') is not None:
-            self.template_id = m.get('templateId')
-        if m.get('userId') is not None:
-            self.user_id = m.get('userId')
+        if m.get('relatedMessageId') is not None:
+            self.related_message_id = m.get('relatedMessageId')
         return self
 
 
-class InvokeAssistantRequestContentDingCard(TeaModel):
+class InvokeAssistantRequestMessagesContentDingCard(TeaModel):
     def __init__(
         self,
-        card_desc: str = None,
         content: str = None,
         content_type: str = None,
         finished: bool = None,
         template_id: str = None,
     ):
-        self.card_desc = card_desc
         self.content = content
         # This parameter is required.
         self.content_type = content_type
@@ -57235,8 +59009,6 @@ class InvokeAssistantRequestContentDingCard(TeaModel):
             return _map
 
         result = dict()
-        if self.card_desc is not None:
-            result['cardDesc'] = self.card_desc
         if self.content is not None:
             result['content'] = self.content
         if self.content_type is not None:
@@ -57249,8 +59021,6 @@ class InvokeAssistantRequestContentDingCard(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('cardDesc') is not None:
-            self.card_desc = m.get('cardDesc')
         if m.get('content') is not None:
             self.content = m.get('content')
         if m.get('contentType') is not None:
@@ -57262,16 +59032,12 @@ class InvokeAssistantRequestContentDingCard(TeaModel):
         return self
 
 
-class InvokeAssistantRequestContentImageUrl(TeaModel):
+class InvokeAssistantRequestMessagesContentDingNormalCardCardData(TeaModel):
     def __init__(
         self,
-        detail: str = None,
-        image_desc: str = None,
-        url: str = None,
+        card_param_map: Dict[str, Any] = None,
     ):
-        self.detail = detail
-        self.image_desc = image_desc
-        self.url = url
+        self.card_param_map = card_param_map
 
     def validate(self):
         pass
@@ -57282,31 +59048,25 @@ class InvokeAssistantRequestContentImageUrl(TeaModel):
             return _map
 
         result = dict()
-        if self.detail is not None:
-            result['detail'] = self.detail
-        if self.image_desc is not None:
-            result['imageDesc'] = self.image_desc
-        if self.url is not None:
-            result['url'] = self.url
+        if self.card_param_map is not None:
+            result['cardParamMap'] = self.card_param_map
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('detail') is not None:
-            self.detail = m.get('detail')
-        if m.get('imageDesc') is not None:
-            self.image_desc = m.get('imageDesc')
-        if m.get('url') is not None:
-            self.url = m.get('url')
+        if m.get('cardParamMap') is not None:
+            self.card_param_map = m.get('cardParamMap')
         return self
 
 
-class InvokeAssistantRequestContentMarkdown(TeaModel):
+class InvokeAssistantRequestMessagesContentDingNormalCardCardUpdateOptions(TeaModel):
     def __init__(
         self,
-        value: str = None,
+        update_card_data_by_key: bool = None,
+        update_private_data_by_key: bool = None,
     ):
-        self.value = value
+        self.update_card_data_by_key = update_card_data_by_key
+        self.update_private_data_by_key = update_private_data_by_key
 
     def validate(self):
         pass
@@ -57317,23 +59077,31 @@ class InvokeAssistantRequestContentMarkdown(TeaModel):
             return _map
 
         result = dict()
-        if self.value is not None:
-            result['value'] = self.value
+        if self.update_card_data_by_key is not None:
+            result['updateCardDataByKey'] = self.update_card_data_by_key
+        if self.update_private_data_by_key is not None:
+            result['updatePrivateDataByKey'] = self.update_private_data_by_key
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('value') is not None:
-            self.value = m.get('value')
+        if m.get('updateCardDataByKey') is not None:
+            self.update_card_data_by_key = m.get('updateCardDataByKey')
+        if m.get('updatePrivateDataByKey') is not None:
+            self.update_private_data_by_key = m.get('updatePrivateDataByKey')
         return self
 
 
-class InvokeAssistantRequestContentText(TeaModel):
+class InvokeAssistantRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig(TeaModel):
     def __init__(
         self,
-        value: str = None,
+        interval: int = None,
+        pull_strategy: str = None,
+        time_unit: str = None,
     ):
-        self.value = value
+        self.interval = interval
+        self.pull_strategy = pull_strategy
+        self.time_unit = time_unit
 
     def validate(self):
         pass
@@ -57344,46 +59112,39 @@ class InvokeAssistantRequestContentText(TeaModel):
             return _map
 
         result = dict()
-        if self.value is not None:
-            result['value'] = self.value
+        if self.interval is not None:
+            result['interval'] = self.interval
+        if self.pull_strategy is not None:
+            result['pullStrategy'] = self.pull_strategy
+        if self.time_unit is not None:
+            result['timeUnit'] = self.time_unit
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('value') is not None:
-            self.value = m.get('value')
+        if m.get('interval') is not None:
+            self.interval = m.get('interval')
+        if m.get('pullStrategy') is not None:
+            self.pull_strategy = m.get('pullStrategy')
+        if m.get('timeUnit') is not None:
+            self.time_unit = m.get('timeUnit')
         return self
 
 
-class InvokeAssistantRequestContent(TeaModel):
+class InvokeAssistantRequestMessagesContentDingNormalCardDynamicDataSourceConfigs(TeaModel):
     def __init__(
         self,
-        card_callback: InvokeAssistantRequestContentCardCallback = None,
-        ding_card: InvokeAssistantRequestContentDingCard = None,
-        image_url: InvokeAssistantRequestContentImageUrl = None,
-        markdown: InvokeAssistantRequestContentMarkdown = None,
-        text: InvokeAssistantRequestContentText = None,
-        type: str = None,
+        const_params: Dict[str, Any] = None,
+        dynamic_data_source_id: str = None,
+        pull_config: InvokeAssistantRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig = None,
     ):
-        self.card_callback = card_callback
-        self.ding_card = ding_card
-        self.image_url = image_url
-        self.markdown = markdown
-        self.text = text
-        # This parameter is required.
-        self.type = type
+        self.const_params = const_params
+        self.dynamic_data_source_id = dynamic_data_source_id
+        self.pull_config = pull_config
 
     def validate(self):
-        if self.card_callback:
-            self.card_callback.validate()
-        if self.ding_card:
-            self.ding_card.validate()
-        if self.image_url:
-            self.image_url.validate()
-        if self.markdown:
-            self.markdown.validate()
-        if self.text:
-            self.text.validate()
+        if self.pull_config:
+            self.pull_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -57391,310 +59152,48 @@ class InvokeAssistantRequestContent(TeaModel):
             return _map
 
         result = dict()
-        if self.card_callback is not None:
-            result['cardCallback'] = self.card_callback.to_map()
-        if self.ding_card is not None:
-            result['dingCard'] = self.ding_card.to_map()
-        if self.image_url is not None:
-            result['imageUrl'] = self.image_url.to_map()
-        if self.markdown is not None:
-            result['markdown'] = self.markdown.to_map()
-        if self.text is not None:
-            result['text'] = self.text.to_map()
-        if self.type is not None:
-            result['type'] = self.type
+        if self.const_params is not None:
+            result['constParams'] = self.const_params
+        if self.dynamic_data_source_id is not None:
+            result['dynamicDataSourceId'] = self.dynamic_data_source_id
+        if self.pull_config is not None:
+            result['pullConfig'] = self.pull_config.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('cardCallback') is not None:
-            temp_model = InvokeAssistantRequestContentCardCallback()
-            self.card_callback = temp_model.from_map(m['cardCallback'])
-        if m.get('dingCard') is not None:
-            temp_model = InvokeAssistantRequestContentDingCard()
-            self.ding_card = temp_model.from_map(m['dingCard'])
-        if m.get('imageUrl') is not None:
-            temp_model = InvokeAssistantRequestContentImageUrl()
-            self.image_url = temp_model.from_map(m['imageUrl'])
-        if m.get('markdown') is not None:
-            temp_model = InvokeAssistantRequestContentMarkdown()
-            self.markdown = temp_model.from_map(m['markdown'])
-        if m.get('text') is not None:
-            temp_model = InvokeAssistantRequestContentText()
-            self.text = temp_model.from_map(m['text'])
-        if m.get('type') is not None:
-            self.type = m.get('type')
+        if m.get('constParams') is not None:
+            self.const_params = m.get('constParams')
+        if m.get('dynamicDataSourceId') is not None:
+            self.dynamic_data_source_id = m.get('dynamicDataSourceId')
+        if m.get('pullConfig') is not None:
+            temp_model = InvokeAssistantRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig()
+            self.pull_config = temp_model.from_map(m['pullConfig'])
         return self
 
 
-class InvokeAssistantRequestHistoryContentCardCallback(TeaModel):
+class InvokeAssistantRequestMessagesContentDingNormalCard(TeaModel):
     def __init__(
         self,
-        content: str = None,
-        template_id: str = None,
-        user_id: str = None,
+        card_data: InvokeAssistantRequestMessagesContentDingNormalCardCardData = None,
+        card_template_id: str = None,
+        card_update_options: InvokeAssistantRequestMessagesContentDingNormalCardCardUpdateOptions = None,
+        dynamic_data_source_configs: List[InvokeAssistantRequestMessagesContentDingNormalCardDynamicDataSourceConfigs] = None,
+        private_data: Dict[str, dict] = None,
     ):
-        self.content = content
-        self.template_id = template_id
-        self.user_id = user_id
+        self.card_data = card_data
+        self.card_template_id = card_template_id
+        self.card_update_options = card_update_options
+        self.dynamic_data_source_configs = dynamic_data_source_configs
+        self.private_data = private_data
 
     def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.content is not None:
-            result['content'] = self.content
-        if self.template_id is not None:
-            result['templateId'] = self.template_id
-        if self.user_id is not None:
-            result['userId'] = self.user_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('content') is not None:
-            self.content = m.get('content')
-        if m.get('templateId') is not None:
-            self.template_id = m.get('templateId')
-        if m.get('userId') is not None:
-            self.user_id = m.get('userId')
-        return self
-
-
-class InvokeAssistantRequestHistoryContentDingCard(TeaModel):
-    def __init__(
-        self,
-        card_desc: str = None,
-        content: str = None,
-        content_type: str = None,
-        finished: bool = None,
-        template_id: str = None,
-    ):
-        self.card_desc = card_desc
-        self.content = content
-        # This parameter is required.
-        self.content_type = content_type
-        self.finished = finished
-        self.template_id = template_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.card_desc is not None:
-            result['cardDesc'] = self.card_desc
-        if self.content is not None:
-            result['content'] = self.content
-        if self.content_type is not None:
-            result['contentType'] = self.content_type
-        if self.finished is not None:
-            result['finished'] = self.finished
-        if self.template_id is not None:
-            result['templateId'] = self.template_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('cardDesc') is not None:
-            self.card_desc = m.get('cardDesc')
-        if m.get('content') is not None:
-            self.content = m.get('content')
-        if m.get('contentType') is not None:
-            self.content_type = m.get('contentType')
-        if m.get('finished') is not None:
-            self.finished = m.get('finished')
-        if m.get('templateId') is not None:
-            self.template_id = m.get('templateId')
-        return self
-
-
-class InvokeAssistantRequestHistoryContentImageUrl(TeaModel):
-    def __init__(
-        self,
-        detail: str = None,
-        image_desc: str = None,
-        url: str = None,
-    ):
-        self.detail = detail
-        self.image_desc = image_desc
-        self.url = url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.detail is not None:
-            result['detail'] = self.detail
-        if self.image_desc is not None:
-            result['imageDesc'] = self.image_desc
-        if self.url is not None:
-            result['url'] = self.url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('detail') is not None:
-            self.detail = m.get('detail')
-        if m.get('imageDesc') is not None:
-            self.image_desc = m.get('imageDesc')
-        if m.get('url') is not None:
-            self.url = m.get('url')
-        return self
-
-
-class InvokeAssistantRequestHistoryContentMarkdown(TeaModel):
-    def __init__(
-        self,
-        value: str = None,
-    ):
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.value is not None:
-            result['value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('value') is not None:
-            self.value = m.get('value')
-        return self
-
-
-class InvokeAssistantRequestHistoryContentText(TeaModel):
-    def __init__(
-        self,
-        value: str = None,
-    ):
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.value is not None:
-            result['value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('value') is not None:
-            self.value = m.get('value')
-        return self
-
-
-class InvokeAssistantRequestHistoryContent(TeaModel):
-    def __init__(
-        self,
-        card_callback: InvokeAssistantRequestHistoryContentCardCallback = None,
-        ding_card: InvokeAssistantRequestHistoryContentDingCard = None,
-        image_url: InvokeAssistantRequestHistoryContentImageUrl = None,
-        markdown: InvokeAssistantRequestHistoryContentMarkdown = None,
-        text: InvokeAssistantRequestHistoryContentText = None,
-        type: str = None,
-    ):
-        self.card_callback = card_callback
-        self.ding_card = ding_card
-        self.image_url = image_url
-        self.markdown = markdown
-        self.text = text
-        # This parameter is required.
-        self.type = type
-
-    def validate(self):
-        if self.card_callback:
-            self.card_callback.validate()
-        if self.ding_card:
-            self.ding_card.validate()
-        if self.image_url:
-            self.image_url.validate()
-        if self.markdown:
-            self.markdown.validate()
-        if self.text:
-            self.text.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.card_callback is not None:
-            result['cardCallback'] = self.card_callback.to_map()
-        if self.ding_card is not None:
-            result['dingCard'] = self.ding_card.to_map()
-        if self.image_url is not None:
-            result['imageUrl'] = self.image_url.to_map()
-        if self.markdown is not None:
-            result['markdown'] = self.markdown.to_map()
-        if self.text is not None:
-            result['text'] = self.text.to_map()
-        if self.type is not None:
-            result['type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('cardCallback') is not None:
-            temp_model = InvokeAssistantRequestHistoryContentCardCallback()
-            self.card_callback = temp_model.from_map(m['cardCallback'])
-        if m.get('dingCard') is not None:
-            temp_model = InvokeAssistantRequestHistoryContentDingCard()
-            self.ding_card = temp_model.from_map(m['dingCard'])
-        if m.get('imageUrl') is not None:
-            temp_model = InvokeAssistantRequestHistoryContentImageUrl()
-            self.image_url = temp_model.from_map(m['imageUrl'])
-        if m.get('markdown') is not None:
-            temp_model = InvokeAssistantRequestHistoryContentMarkdown()
-            self.markdown = temp_model.from_map(m['markdown'])
-        if m.get('text') is not None:
-            temp_model = InvokeAssistantRequestHistoryContentText()
-            self.text = temp_model.from_map(m['text'])
-        if m.get('type') is not None:
-            self.type = m.get('type')
-        return self
-
-
-class InvokeAssistantRequestHistory(TeaModel):
-    def __init__(
-        self,
-        content: List[InvokeAssistantRequestHistoryContent] = None,
-        role: str = None,
-    ):
-        self.content = content
-        self.role = role
-
-    def validate(self):
-        if self.content:
-            for k in self.content:
+        if self.card_data:
+            self.card_data.validate()
+        if self.card_update_options:
+            self.card_update_options.validate()
+        if self.dynamic_data_source_configs:
+            for k in self.dynamic_data_source_configs:
                 if k:
                     k.validate()
 
@@ -57704,21 +59203,601 @@ class InvokeAssistantRequestHistory(TeaModel):
             return _map
 
         result = dict()
-        result['content'] = []
+        if self.card_data is not None:
+            result['cardData'] = self.card_data.to_map()
+        if self.card_template_id is not None:
+            result['cardTemplateId'] = self.card_template_id
+        if self.card_update_options is not None:
+            result['cardUpdateOptions'] = self.card_update_options.to_map()
+        result['dynamicDataSourceConfigs'] = []
+        if self.dynamic_data_source_configs is not None:
+            for k in self.dynamic_data_source_configs:
+                result['dynamicDataSourceConfigs'].append(k.to_map() if k else None)
+        if self.private_data is not None:
+            result['privateData'] = self.private_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cardData') is not None:
+            temp_model = InvokeAssistantRequestMessagesContentDingNormalCardCardData()
+            self.card_data = temp_model.from_map(m['cardData'])
+        if m.get('cardTemplateId') is not None:
+            self.card_template_id = m.get('cardTemplateId')
+        if m.get('cardUpdateOptions') is not None:
+            temp_model = InvokeAssistantRequestMessagesContentDingNormalCardCardUpdateOptions()
+            self.card_update_options = temp_model.from_map(m['cardUpdateOptions'])
+        self.dynamic_data_source_configs = []
+        if m.get('dynamicDataSourceConfigs') is not None:
+            for k in m.get('dynamicDataSourceConfigs'):
+                temp_model = InvokeAssistantRequestMessagesContentDingNormalCardDynamicDataSourceConfigs()
+                self.dynamic_data_source_configs.append(temp_model.from_map(k))
+        if m.get('privateData') is not None:
+            self.private_data = m.get('privateData')
+        return self
+
+
+class InvokeAssistantRequestMessagesContentMarkdown(TeaModel):
+    def __init__(
+        self,
+        value: str = None,
+    ):
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class InvokeAssistantRequestMessagesContentStructViewPartsDataPart(TeaModel):
+    def __init__(
+        self,
+        data: Any = None,
+    ):
+        self.data = data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        return self
+
+
+class InvokeAssistantRequestMessagesContentStructViewPartsReasonPart(TeaModel):
+    def __init__(
+        self,
+        reason: str = None,
+    ):
+        self.reason = reason
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.reason is not None:
+            result['reason'] = self.reason
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('reason') is not None:
+            self.reason = m.get('reason')
+        return self
+
+
+class InvokeAssistantRequestMessagesContentStructViewPartsRecommendPartRecommends(TeaModel):
+    def __init__(
+        self,
+        mobile_url: str = None,
+        text: str = None,
+        url: str = None,
+    ):
+        self.mobile_url = mobile_url
+        self.text = text
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mobile_url is not None:
+            result['mobileUrl'] = self.mobile_url
+        if self.text is not None:
+            result['text'] = self.text
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('mobileUrl') is not None:
+            self.mobile_url = m.get('mobileUrl')
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class InvokeAssistantRequestMessagesContentStructViewPartsRecommendPart(TeaModel):
+    def __init__(
+        self,
+        recommends: List[InvokeAssistantRequestMessagesContentStructViewPartsRecommendPartRecommends] = None,
+    ):
+        self.recommends = recommends
+
+    def validate(self):
+        if self.recommends:
+            for k in self.recommends:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['recommends'] = []
+        if self.recommends is not None:
+            for k in self.recommends:
+                result['recommends'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.recommends = []
+        if m.get('recommends') is not None:
+            for k in m.get('recommends'):
+                temp_model = InvokeAssistantRequestMessagesContentStructViewPartsRecommendPartRecommends()
+                self.recommends.append(temp_model.from_map(k))
+        return self
+
+
+class InvokeAssistantRequestMessagesContentStructViewPartsReferencePartReferences(TeaModel):
+    def __init__(
+        self,
+        index: str = None,
+        name: str = None,
+        source_code: str = None,
+        source_icon: str = None,
+        summary: str = None,
+        title: str = None,
+        url: str = None,
+    ):
+        self.index = index
+        self.name = name
+        self.source_code = source_code
+        self.source_icon = source_icon
+        self.summary = summary
+        self.title = title
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.index is not None:
+            result['index'] = self.index
+        if self.name is not None:
+            result['name'] = self.name
+        if self.source_code is not None:
+            result['sourceCode'] = self.source_code
+        if self.source_icon is not None:
+            result['sourceIcon'] = self.source_icon
+        if self.summary is not None:
+            result['summary'] = self.summary
+        if self.title is not None:
+            result['title'] = self.title
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('index') is not None:
+            self.index = m.get('index')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('sourceCode') is not None:
+            self.source_code = m.get('sourceCode')
+        if m.get('sourceIcon') is not None:
+            self.source_icon = m.get('sourceIcon')
+        if m.get('summary') is not None:
+            self.summary = m.get('summary')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class InvokeAssistantRequestMessagesContentStructViewPartsReferencePart(TeaModel):
+    def __init__(
+        self,
+        references: List[InvokeAssistantRequestMessagesContentStructViewPartsReferencePartReferences] = None,
+    ):
+        self.references = references
+
+    def validate(self):
+        if self.references:
+            for k in self.references:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['references'] = []
+        if self.references is not None:
+            for k in self.references:
+                result['references'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.references = []
+        if m.get('references') is not None:
+            for k in m.get('references'):
+                temp_model = InvokeAssistantRequestMessagesContentStructViewPartsReferencePartReferences()
+                self.references.append(temp_model.from_map(k))
+        return self
+
+
+class InvokeAssistantRequestMessagesContentStructViewPartsTextPart(TeaModel):
+    def __init__(
+        self,
+        text: str = None,
+    ):
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.text is not None:
+            result['text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        return self
+
+
+class InvokeAssistantRequestMessagesContentStructViewParts(TeaModel):
+    def __init__(
+        self,
+        append: bool = None,
+        data_part: InvokeAssistantRequestMessagesContentStructViewPartsDataPart = None,
+        finish: bool = None,
+        part_desc: str = None,
+        part_id: str = None,
+        reason_part: InvokeAssistantRequestMessagesContentStructViewPartsReasonPart = None,
+        recommend_part: InvokeAssistantRequestMessagesContentStructViewPartsRecommendPart = None,
+        reference_part: InvokeAssistantRequestMessagesContentStructViewPartsReferencePart = None,
+        text_part: InvokeAssistantRequestMessagesContentStructViewPartsTextPart = None,
+        type: str = None,
+    ):
+        self.append = append
+        self.data_part = data_part
+        self.finish = finish
+        self.part_desc = part_desc
+        self.part_id = part_id
+        self.reason_part = reason_part
+        self.recommend_part = recommend_part
+        self.reference_part = reference_part
+        self.text_part = text_part
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        if self.data_part:
+            self.data_part.validate()
+        if self.reason_part:
+            self.reason_part.validate()
+        if self.recommend_part:
+            self.recommend_part.validate()
+        if self.reference_part:
+            self.reference_part.validate()
+        if self.text_part:
+            self.text_part.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.append is not None:
+            result['append'] = self.append
+        if self.data_part is not None:
+            result['dataPart'] = self.data_part.to_map()
+        if self.finish is not None:
+            result['finish'] = self.finish
+        if self.part_desc is not None:
+            result['partDesc'] = self.part_desc
+        if self.part_id is not None:
+            result['partId'] = self.part_id
+        if self.reason_part is not None:
+            result['reasonPart'] = self.reason_part.to_map()
+        if self.recommend_part is not None:
+            result['recommendPart'] = self.recommend_part.to_map()
+        if self.reference_part is not None:
+            result['referencePart'] = self.reference_part.to_map()
+        if self.text_part is not None:
+            result['textPart'] = self.text_part.to_map()
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('append') is not None:
+            self.append = m.get('append')
+        if m.get('dataPart') is not None:
+            temp_model = InvokeAssistantRequestMessagesContentStructViewPartsDataPart()
+            self.data_part = temp_model.from_map(m['dataPart'])
+        if m.get('finish') is not None:
+            self.finish = m.get('finish')
+        if m.get('partDesc') is not None:
+            self.part_desc = m.get('partDesc')
+        if m.get('partId') is not None:
+            self.part_id = m.get('partId')
+        if m.get('reasonPart') is not None:
+            temp_model = InvokeAssistantRequestMessagesContentStructViewPartsReasonPart()
+            self.reason_part = temp_model.from_map(m['reasonPart'])
+        if m.get('recommendPart') is not None:
+            temp_model = InvokeAssistantRequestMessagesContentStructViewPartsRecommendPart()
+            self.recommend_part = temp_model.from_map(m['recommendPart'])
+        if m.get('referencePart') is not None:
+            temp_model = InvokeAssistantRequestMessagesContentStructViewPartsReferencePart()
+            self.reference_part = temp_model.from_map(m['referencePart'])
+        if m.get('textPart') is not None:
+            temp_model = InvokeAssistantRequestMessagesContentStructViewPartsTextPart()
+            self.text_part = temp_model.from_map(m['textPart'])
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class InvokeAssistantRequestMessagesContentStructView(TeaModel):
+    def __init__(
+        self,
+        parts: List[InvokeAssistantRequestMessagesContentStructViewParts] = None,
+    ):
+        self.parts = parts
+
+    def validate(self):
+        if self.parts:
+            for k in self.parts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['parts'] = []
+        if self.parts is not None:
+            for k in self.parts:
+                result['parts'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.parts = []
+        if m.get('parts') is not None:
+            for k in m.get('parts'):
+                temp_model = InvokeAssistantRequestMessagesContentStructViewParts()
+                self.parts.append(temp_model.from_map(k))
+        return self
+
+
+class InvokeAssistantRequestMessagesContentText(TeaModel):
+    def __init__(
+        self,
+        value: str = None,
+    ):
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class InvokeAssistantRequestMessagesContent(TeaModel):
+    def __init__(
+        self,
+        card_callback: InvokeAssistantRequestMessagesContentCardCallback = None,
+        ding_card: InvokeAssistantRequestMessagesContentDingCard = None,
+        ding_normal_card: InvokeAssistantRequestMessagesContentDingNormalCard = None,
+        markdown: InvokeAssistantRequestMessagesContentMarkdown = None,
+        struct_view: InvokeAssistantRequestMessagesContentStructView = None,
+        text: InvokeAssistantRequestMessagesContentText = None,
+        type: str = None,
+    ):
+        self.card_callback = card_callback
+        self.ding_card = ding_card
+        self.ding_normal_card = ding_normal_card
+        self.markdown = markdown
+        self.struct_view = struct_view
+        self.text = text
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        if self.card_callback:
+            self.card_callback.validate()
+        if self.ding_card:
+            self.ding_card.validate()
+        if self.ding_normal_card:
+            self.ding_normal_card.validate()
+        if self.markdown:
+            self.markdown.validate()
+        if self.struct_view:
+            self.struct_view.validate()
+        if self.text:
+            self.text.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.card_callback is not None:
+            result['cardCallback'] = self.card_callback.to_map()
+        if self.ding_card is not None:
+            result['dingCard'] = self.ding_card.to_map()
+        if self.ding_normal_card is not None:
+            result['dingNormalCard'] = self.ding_normal_card.to_map()
+        if self.markdown is not None:
+            result['markdown'] = self.markdown.to_map()
+        if self.struct_view is not None:
+            result['structView'] = self.struct_view.to_map()
+        if self.text is not None:
+            result['text'] = self.text.to_map()
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cardCallback') is not None:
+            temp_model = InvokeAssistantRequestMessagesContentCardCallback()
+            self.card_callback = temp_model.from_map(m['cardCallback'])
+        if m.get('dingCard') is not None:
+            temp_model = InvokeAssistantRequestMessagesContentDingCard()
+            self.ding_card = temp_model.from_map(m['dingCard'])
+        if m.get('dingNormalCard') is not None:
+            temp_model = InvokeAssistantRequestMessagesContentDingNormalCard()
+            self.ding_normal_card = temp_model.from_map(m['dingNormalCard'])
+        if m.get('markdown') is not None:
+            temp_model = InvokeAssistantRequestMessagesContentMarkdown()
+            self.markdown = temp_model.from_map(m['markdown'])
+        if m.get('structView') is not None:
+            temp_model = InvokeAssistantRequestMessagesContentStructView()
+            self.struct_view = temp_model.from_map(m['structView'])
+        if m.get('text') is not None:
+            temp_model = InvokeAssistantRequestMessagesContentText()
+            self.text = temp_model.from_map(m['text'])
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class InvokeAssistantRequestMessages(TeaModel):
+    def __init__(
+        self,
+        content: InvokeAssistantRequestMessagesContent = None,
+        content_desc: str = None,
+        create_at: int = None,
+        role: str = None,
+    ):
+        self.content = content
+        self.content_desc = content_desc
+        self.create_at = create_at
+        self.role = role
+
+    def validate(self):
+        if self.content:
+            self.content.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.content is not None:
-            for k in self.content:
-                result['content'].append(k.to_map() if k else None)
+            result['content'] = self.content.to_map()
+        if self.content_desc is not None:
+            result['contentDesc'] = self.content_desc
+        if self.create_at is not None:
+            result['createAt'] = self.create_at
         if self.role is not None:
             result['role'] = self.role
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.content = []
         if m.get('content') is not None:
-            for k in m.get('content'):
-                temp_model = InvokeAssistantRequestHistoryContent()
-                self.content.append(temp_model.from_map(k))
+            temp_model = InvokeAssistantRequestMessagesContent()
+            self.content = temp_model.from_map(m['content'])
+        if m.get('contentDesc') is not None:
+            self.content_desc = m.get('contentDesc')
+        if m.get('createAt') is not None:
+            self.create_at = m.get('createAt')
         if m.get('role') is not None:
             self.role = m.get('role')
         return self
@@ -57728,26 +59807,26 @@ class InvokeAssistantRequest(TeaModel):
     def __init__(
         self,
         assistant_id: str = None,
-        content: List[InvokeAssistantRequestContent] = None,
-        history: List[InvokeAssistantRequestHistory] = None,
+        messages: List[InvokeAssistantRequestMessages] = None,
+        original_assistant_id: str = None,
         session_id: str = None,
+        source_id_of_original_assistant_id: str = None,
+        source_type_of_original_assistant_id: str = None,
         stream: bool = None,
     ):
         # This parameter is required.
         self.assistant_id = assistant_id
         # This parameter is required.
-        self.content = content
-        self.history = history
+        self.messages = messages
+        self.original_assistant_id = original_assistant_id
         self.session_id = session_id
+        self.source_id_of_original_assistant_id = source_id_of_original_assistant_id
+        self.source_type_of_original_assistant_id = source_type_of_original_assistant_id
         self.stream = stream
 
     def validate(self):
-        if self.content:
-            for k in self.content:
-                if k:
-                    k.validate()
-        if self.history:
-            for k in self.history:
+        if self.messages:
+            for k in self.messages:
                 if k:
                     k.validate()
 
@@ -57759,16 +59838,18 @@ class InvokeAssistantRequest(TeaModel):
         result = dict()
         if self.assistant_id is not None:
             result['assistantId'] = self.assistant_id
-        result['content'] = []
-        if self.content is not None:
-            for k in self.content:
-                result['content'].append(k.to_map() if k else None)
-        result['history'] = []
-        if self.history is not None:
-            for k in self.history:
-                result['history'].append(k.to_map() if k else None)
+        result['messages'] = []
+        if self.messages is not None:
+            for k in self.messages:
+                result['messages'].append(k.to_map() if k else None)
+        if self.original_assistant_id is not None:
+            result['originalAssistantId'] = self.original_assistant_id
         if self.session_id is not None:
             result['sessionId'] = self.session_id
+        if self.source_id_of_original_assistant_id is not None:
+            result['sourceIdOfOriginalAssistantId'] = self.source_id_of_original_assistant_id
+        if self.source_type_of_original_assistant_id is not None:
+            result['sourceTypeOfOriginalAssistantId'] = self.source_type_of_original_assistant_id
         if self.stream is not None:
             result['stream'] = self.stream
         return result
@@ -57777,33 +59858,32 @@ class InvokeAssistantRequest(TeaModel):
         m = m or dict()
         if m.get('assistantId') is not None:
             self.assistant_id = m.get('assistantId')
-        self.content = []
-        if m.get('content') is not None:
-            for k in m.get('content'):
-                temp_model = InvokeAssistantRequestContent()
-                self.content.append(temp_model.from_map(k))
-        self.history = []
-        if m.get('history') is not None:
-            for k in m.get('history'):
-                temp_model = InvokeAssistantRequestHistory()
-                self.history.append(temp_model.from_map(k))
+        self.messages = []
+        if m.get('messages') is not None:
+            for k in m.get('messages'):
+                temp_model = InvokeAssistantRequestMessages()
+                self.messages.append(temp_model.from_map(k))
+        if m.get('originalAssistantId') is not None:
+            self.original_assistant_id = m.get('originalAssistantId')
         if m.get('sessionId') is not None:
             self.session_id = m.get('sessionId')
+        if m.get('sourceIdOfOriginalAssistantId') is not None:
+            self.source_id_of_original_assistant_id = m.get('sourceIdOfOriginalAssistantId')
+        if m.get('sourceTypeOfOriginalAssistantId') is not None:
+            self.source_type_of_original_assistant_id = m.get('sourceTypeOfOriginalAssistantId')
         if m.get('stream') is not None:
             self.stream = m.get('stream')
         return self
 
 
-class InvokeAssistantResponseBodyContentCardCallback(TeaModel):
+class InvokeAssistantResponseBodyMessagesContentCardCallback(TeaModel):
     def __init__(
         self,
         content: str = None,
-        template_id: str = None,
-        user_id: str = None,
+        related_message_id: str = None,
     ):
         self.content = content
-        self.template_id = template_id
-        self.user_id = user_id
+        self.related_message_id = related_message_id
 
     def validate(self):
         pass
@@ -57816,34 +59896,29 @@ class InvokeAssistantResponseBodyContentCardCallback(TeaModel):
         result = dict()
         if self.content is not None:
             result['content'] = self.content
-        if self.template_id is not None:
-            result['templateId'] = self.template_id
-        if self.user_id is not None:
-            result['userId'] = self.user_id
+        if self.related_message_id is not None:
+            result['relatedMessageId'] = self.related_message_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('content') is not None:
             self.content = m.get('content')
-        if m.get('templateId') is not None:
-            self.template_id = m.get('templateId')
-        if m.get('userId') is not None:
-            self.user_id = m.get('userId')
+        if m.get('relatedMessageId') is not None:
+            self.related_message_id = m.get('relatedMessageId')
         return self
 
 
-class InvokeAssistantResponseBodyContentDingCard(TeaModel):
+class InvokeAssistantResponseBodyMessagesContentDingCard(TeaModel):
     def __init__(
         self,
-        card_desc: str = None,
         content: str = None,
         content_type: str = None,
         finished: bool = None,
         template_id: str = None,
     ):
-        self.card_desc = card_desc
         self.content = content
+        # This parameter is required.
         self.content_type = content_type
         self.finished = finished
         self.template_id = template_id
@@ -57857,8 +59932,6 @@ class InvokeAssistantResponseBodyContentDingCard(TeaModel):
             return _map
 
         result = dict()
-        if self.card_desc is not None:
-            result['cardDesc'] = self.card_desc
         if self.content is not None:
             result['content'] = self.content
         if self.content_type is not None:
@@ -57871,8 +59944,6 @@ class InvokeAssistantResponseBodyContentDingCard(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('cardDesc') is not None:
-            self.card_desc = m.get('cardDesc')
         if m.get('content') is not None:
             self.content = m.get('content')
         if m.get('contentType') is not None:
@@ -57884,15 +59955,301 @@ class InvokeAssistantResponseBodyContentDingCard(TeaModel):
         return self
 
 
-class InvokeAssistantResponseBodyContentImageUrl(TeaModel):
+class InvokeAssistantResponseBodyMessagesContentDingNormalCardCardData(TeaModel):
     def __init__(
         self,
-        detail: str = None,
-        image_desc: str = None,
+        card_param_map: Dict[str, Any] = None,
+    ):
+        self.card_param_map = card_param_map
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.card_param_map is not None:
+            result['cardParamMap'] = self.card_param_map
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cardParamMap') is not None:
+            self.card_param_map = m.get('cardParamMap')
+        return self
+
+
+class InvokeAssistantResponseBodyMessagesContentDingNormalCardCardUpdateOptions(TeaModel):
+    def __init__(
+        self,
+        update_card_data_by_key: bool = None,
+        update_private_data_by_key: bool = None,
+    ):
+        self.update_card_data_by_key = update_card_data_by_key
+        self.update_private_data_by_key = update_private_data_by_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.update_card_data_by_key is not None:
+            result['updateCardDataByKey'] = self.update_card_data_by_key
+        if self.update_private_data_by_key is not None:
+            result['updatePrivateDataByKey'] = self.update_private_data_by_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('updateCardDataByKey') is not None:
+            self.update_card_data_by_key = m.get('updateCardDataByKey')
+        if m.get('updatePrivateDataByKey') is not None:
+            self.update_private_data_by_key = m.get('updatePrivateDataByKey')
+        return self
+
+
+class InvokeAssistantResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig(TeaModel):
+    def __init__(
+        self,
+        interval: int = None,
+        pull_strategy: str = None,
+        time_unit: str = None,
+    ):
+        self.interval = interval
+        self.pull_strategy = pull_strategy
+        self.time_unit = time_unit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.interval is not None:
+            result['interval'] = self.interval
+        if self.pull_strategy is not None:
+            result['pullStrategy'] = self.pull_strategy
+        if self.time_unit is not None:
+            result['timeUnit'] = self.time_unit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('interval') is not None:
+            self.interval = m.get('interval')
+        if m.get('pullStrategy') is not None:
+            self.pull_strategy = m.get('pullStrategy')
+        if m.get('timeUnit') is not None:
+            self.time_unit = m.get('timeUnit')
+        return self
+
+
+class InvokeAssistantResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs(TeaModel):
+    def __init__(
+        self,
+        const_params: Dict[str, Any] = None,
+        dynamic_data_source_id: str = None,
+        pull_config: InvokeAssistantResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig = None,
+    ):
+        self.const_params = const_params
+        self.dynamic_data_source_id = dynamic_data_source_id
+        self.pull_config = pull_config
+
+    def validate(self):
+        if self.pull_config:
+            self.pull_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.const_params is not None:
+            result['constParams'] = self.const_params
+        if self.dynamic_data_source_id is not None:
+            result['dynamicDataSourceId'] = self.dynamic_data_source_id
+        if self.pull_config is not None:
+            result['pullConfig'] = self.pull_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('constParams') is not None:
+            self.const_params = m.get('constParams')
+        if m.get('dynamicDataSourceId') is not None:
+            self.dynamic_data_source_id = m.get('dynamicDataSourceId')
+        if m.get('pullConfig') is not None:
+            temp_model = InvokeAssistantResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig()
+            self.pull_config = temp_model.from_map(m['pullConfig'])
+        return self
+
+
+class InvokeAssistantResponseBodyMessagesContentDingNormalCard(TeaModel):
+    def __init__(
+        self,
+        card_data: InvokeAssistantResponseBodyMessagesContentDingNormalCardCardData = None,
+        card_template_id: str = None,
+        card_update_options: InvokeAssistantResponseBodyMessagesContentDingNormalCardCardUpdateOptions = None,
+        dynamic_data_source_configs: List[InvokeAssistantResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs] = None,
+        private_data: Dict[str, dict] = None,
+    ):
+        self.card_data = card_data
+        self.card_template_id = card_template_id
+        self.card_update_options = card_update_options
+        self.dynamic_data_source_configs = dynamic_data_source_configs
+        self.private_data = private_data
+
+    def validate(self):
+        if self.card_data:
+            self.card_data.validate()
+        if self.card_update_options:
+            self.card_update_options.validate()
+        if self.dynamic_data_source_configs:
+            for k in self.dynamic_data_source_configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.card_data is not None:
+            result['cardData'] = self.card_data.to_map()
+        if self.card_template_id is not None:
+            result['cardTemplateId'] = self.card_template_id
+        if self.card_update_options is not None:
+            result['cardUpdateOptions'] = self.card_update_options.to_map()
+        result['dynamicDataSourceConfigs'] = []
+        if self.dynamic_data_source_configs is not None:
+            for k in self.dynamic_data_source_configs:
+                result['dynamicDataSourceConfigs'].append(k.to_map() if k else None)
+        if self.private_data is not None:
+            result['privateData'] = self.private_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cardData') is not None:
+            temp_model = InvokeAssistantResponseBodyMessagesContentDingNormalCardCardData()
+            self.card_data = temp_model.from_map(m['cardData'])
+        if m.get('cardTemplateId') is not None:
+            self.card_template_id = m.get('cardTemplateId')
+        if m.get('cardUpdateOptions') is not None:
+            temp_model = InvokeAssistantResponseBodyMessagesContentDingNormalCardCardUpdateOptions()
+            self.card_update_options = temp_model.from_map(m['cardUpdateOptions'])
+        self.dynamic_data_source_configs = []
+        if m.get('dynamicDataSourceConfigs') is not None:
+            for k in m.get('dynamicDataSourceConfigs'):
+                temp_model = InvokeAssistantResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs()
+                self.dynamic_data_source_configs.append(temp_model.from_map(k))
+        if m.get('privateData') is not None:
+            self.private_data = m.get('privateData')
+        return self
+
+
+class InvokeAssistantResponseBodyMessagesContentMarkdown(TeaModel):
+    def __init__(
+        self,
+        value: str = None,
+    ):
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class InvokeAssistantResponseBodyMessagesContentStructViewPartsDataPart(TeaModel):
+    def __init__(
+        self,
+        data: Any = None,
+    ):
+        self.data = data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        return self
+
+
+class InvokeAssistantResponseBodyMessagesContentStructViewPartsReasonPart(TeaModel):
+    def __init__(
+        self,
+        reason: str = None,
+    ):
+        self.reason = reason
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.reason is not None:
+            result['reason'] = self.reason
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('reason') is not None:
+            self.reason = m.get('reason')
+        return self
+
+
+class InvokeAssistantResponseBodyMessagesContentStructViewPartsRecommendPartRecommends(TeaModel):
+    def __init__(
+        self,
+        mobile_url: str = None,
+        text: str = None,
         url: str = None,
     ):
-        self.detail = detail
-        self.image_desc = image_desc
+        self.mobile_url = mobile_url
+        self.text = text
         self.url = url
 
     def validate(self):
@@ -57904,26 +60261,317 @@ class InvokeAssistantResponseBodyContentImageUrl(TeaModel):
             return _map
 
         result = dict()
-        if self.detail is not None:
-            result['detail'] = self.detail
-        if self.image_desc is not None:
-            result['imageDesc'] = self.image_desc
+        if self.mobile_url is not None:
+            result['mobileUrl'] = self.mobile_url
+        if self.text is not None:
+            result['text'] = self.text
         if self.url is not None:
             result['url'] = self.url
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('detail') is not None:
-            self.detail = m.get('detail')
-        if m.get('imageDesc') is not None:
-            self.image_desc = m.get('imageDesc')
+        if m.get('mobileUrl') is not None:
+            self.mobile_url = m.get('mobileUrl')
+        if m.get('text') is not None:
+            self.text = m.get('text')
         if m.get('url') is not None:
             self.url = m.get('url')
         return self
 
 
-class InvokeAssistantResponseBodyContentMarkdown(TeaModel):
+class InvokeAssistantResponseBodyMessagesContentStructViewPartsRecommendPart(TeaModel):
+    def __init__(
+        self,
+        recommends: List[InvokeAssistantResponseBodyMessagesContentStructViewPartsRecommendPartRecommends] = None,
+    ):
+        self.recommends = recommends
+
+    def validate(self):
+        if self.recommends:
+            for k in self.recommends:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['recommends'] = []
+        if self.recommends is not None:
+            for k in self.recommends:
+                result['recommends'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.recommends = []
+        if m.get('recommends') is not None:
+            for k in m.get('recommends'):
+                temp_model = InvokeAssistantResponseBodyMessagesContentStructViewPartsRecommendPartRecommends()
+                self.recommends.append(temp_model.from_map(k))
+        return self
+
+
+class InvokeAssistantResponseBodyMessagesContentStructViewPartsReferencePartReferences(TeaModel):
+    def __init__(
+        self,
+        index: str = None,
+        name: str = None,
+        source_code: str = None,
+        source_icon: str = None,
+        summary: str = None,
+        title: str = None,
+        url: str = None,
+    ):
+        self.index = index
+        self.name = name
+        self.source_code = source_code
+        self.source_icon = source_icon
+        self.summary = summary
+        self.title = title
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.index is not None:
+            result['index'] = self.index
+        if self.name is not None:
+            result['name'] = self.name
+        if self.source_code is not None:
+            result['sourceCode'] = self.source_code
+        if self.source_icon is not None:
+            result['sourceIcon'] = self.source_icon
+        if self.summary is not None:
+            result['summary'] = self.summary
+        if self.title is not None:
+            result['title'] = self.title
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('index') is not None:
+            self.index = m.get('index')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('sourceCode') is not None:
+            self.source_code = m.get('sourceCode')
+        if m.get('sourceIcon') is not None:
+            self.source_icon = m.get('sourceIcon')
+        if m.get('summary') is not None:
+            self.summary = m.get('summary')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class InvokeAssistantResponseBodyMessagesContentStructViewPartsReferencePart(TeaModel):
+    def __init__(
+        self,
+        references: List[InvokeAssistantResponseBodyMessagesContentStructViewPartsReferencePartReferences] = None,
+    ):
+        self.references = references
+
+    def validate(self):
+        if self.references:
+            for k in self.references:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['references'] = []
+        if self.references is not None:
+            for k in self.references:
+                result['references'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.references = []
+        if m.get('references') is not None:
+            for k in m.get('references'):
+                temp_model = InvokeAssistantResponseBodyMessagesContentStructViewPartsReferencePartReferences()
+                self.references.append(temp_model.from_map(k))
+        return self
+
+
+class InvokeAssistantResponseBodyMessagesContentStructViewPartsTextPart(TeaModel):
+    def __init__(
+        self,
+        text: str = None,
+    ):
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.text is not None:
+            result['text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        return self
+
+
+class InvokeAssistantResponseBodyMessagesContentStructViewParts(TeaModel):
+    def __init__(
+        self,
+        append: bool = None,
+        data_part: InvokeAssistantResponseBodyMessagesContentStructViewPartsDataPart = None,
+        finish: bool = None,
+        part_desc: str = None,
+        part_id: str = None,
+        reason_part: InvokeAssistantResponseBodyMessagesContentStructViewPartsReasonPart = None,
+        recommend_part: InvokeAssistantResponseBodyMessagesContentStructViewPartsRecommendPart = None,
+        reference_part: InvokeAssistantResponseBodyMessagesContentStructViewPartsReferencePart = None,
+        text_part: InvokeAssistantResponseBodyMessagesContentStructViewPartsTextPart = None,
+        type: str = None,
+    ):
+        self.append = append
+        self.data_part = data_part
+        self.finish = finish
+        self.part_desc = part_desc
+        self.part_id = part_id
+        self.reason_part = reason_part
+        self.recommend_part = recommend_part
+        self.reference_part = reference_part
+        self.text_part = text_part
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        if self.data_part:
+            self.data_part.validate()
+        if self.reason_part:
+            self.reason_part.validate()
+        if self.recommend_part:
+            self.recommend_part.validate()
+        if self.reference_part:
+            self.reference_part.validate()
+        if self.text_part:
+            self.text_part.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.append is not None:
+            result['append'] = self.append
+        if self.data_part is not None:
+            result['dataPart'] = self.data_part.to_map()
+        if self.finish is not None:
+            result['finish'] = self.finish
+        if self.part_desc is not None:
+            result['partDesc'] = self.part_desc
+        if self.part_id is not None:
+            result['partId'] = self.part_id
+        if self.reason_part is not None:
+            result['reasonPart'] = self.reason_part.to_map()
+        if self.recommend_part is not None:
+            result['recommendPart'] = self.recommend_part.to_map()
+        if self.reference_part is not None:
+            result['referencePart'] = self.reference_part.to_map()
+        if self.text_part is not None:
+            result['textPart'] = self.text_part.to_map()
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('append') is not None:
+            self.append = m.get('append')
+        if m.get('dataPart') is not None:
+            temp_model = InvokeAssistantResponseBodyMessagesContentStructViewPartsDataPart()
+            self.data_part = temp_model.from_map(m['dataPart'])
+        if m.get('finish') is not None:
+            self.finish = m.get('finish')
+        if m.get('partDesc') is not None:
+            self.part_desc = m.get('partDesc')
+        if m.get('partId') is not None:
+            self.part_id = m.get('partId')
+        if m.get('reasonPart') is not None:
+            temp_model = InvokeAssistantResponseBodyMessagesContentStructViewPartsReasonPart()
+            self.reason_part = temp_model.from_map(m['reasonPart'])
+        if m.get('recommendPart') is not None:
+            temp_model = InvokeAssistantResponseBodyMessagesContentStructViewPartsRecommendPart()
+            self.recommend_part = temp_model.from_map(m['recommendPart'])
+        if m.get('referencePart') is not None:
+            temp_model = InvokeAssistantResponseBodyMessagesContentStructViewPartsReferencePart()
+            self.reference_part = temp_model.from_map(m['referencePart'])
+        if m.get('textPart') is not None:
+            temp_model = InvokeAssistantResponseBodyMessagesContentStructViewPartsTextPart()
+            self.text_part = temp_model.from_map(m['textPart'])
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class InvokeAssistantResponseBodyMessagesContentStructView(TeaModel):
+    def __init__(
+        self,
+        parts: List[InvokeAssistantResponseBodyMessagesContentStructViewParts] = None,
+    ):
+        self.parts = parts
+
+    def validate(self):
+        if self.parts:
+            for k in self.parts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['parts'] = []
+        if self.parts is not None:
+            for k in self.parts:
+                result['parts'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.parts = []
+        if m.get('parts') is not None:
+            for k in m.get('parts'):
+                temp_model = InvokeAssistantResponseBodyMessagesContentStructViewParts()
+                self.parts.append(temp_model.from_map(k))
+        return self
+
+
+class InvokeAssistantResponseBodyMessagesContentText(TeaModel):
     def __init__(
         self,
         value: str = None,
@@ -57950,48 +60598,24 @@ class InvokeAssistantResponseBodyContentMarkdown(TeaModel):
         return self
 
 
-class InvokeAssistantResponseBodyContentText(TeaModel):
+class InvokeAssistantResponseBodyMessagesContent(TeaModel):
     def __init__(
         self,
-        value: str = None,
-    ):
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.value is not None:
-            result['value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('value') is not None:
-            self.value = m.get('value')
-        return self
-
-
-class InvokeAssistantResponseBodyContent(TeaModel):
-    def __init__(
-        self,
-        card_callback: InvokeAssistantResponseBodyContentCardCallback = None,
-        ding_card: InvokeAssistantResponseBodyContentDingCard = None,
-        image_url: InvokeAssistantResponseBodyContentImageUrl = None,
-        markdown: InvokeAssistantResponseBodyContentMarkdown = None,
-        text: InvokeAssistantResponseBodyContentText = None,
+        card_callback: InvokeAssistantResponseBodyMessagesContentCardCallback = None,
+        ding_card: InvokeAssistantResponseBodyMessagesContentDingCard = None,
+        ding_normal_card: InvokeAssistantResponseBodyMessagesContentDingNormalCard = None,
+        markdown: InvokeAssistantResponseBodyMessagesContentMarkdown = None,
+        struct_view: InvokeAssistantResponseBodyMessagesContentStructView = None,
+        text: InvokeAssistantResponseBodyMessagesContentText = None,
         type: str = None,
     ):
         self.card_callback = card_callback
         self.ding_card = ding_card
-        self.image_url = image_url
+        self.ding_normal_card = ding_normal_card
         self.markdown = markdown
+        self.struct_view = struct_view
         self.text = text
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -57999,10 +60623,12 @@ class InvokeAssistantResponseBodyContent(TeaModel):
             self.card_callback.validate()
         if self.ding_card:
             self.ding_card.validate()
-        if self.image_url:
-            self.image_url.validate()
+        if self.ding_normal_card:
+            self.ding_normal_card.validate()
         if self.markdown:
             self.markdown.validate()
+        if self.struct_view:
+            self.struct_view.validate()
         if self.text:
             self.text.validate()
 
@@ -58016,10 +60642,12 @@ class InvokeAssistantResponseBodyContent(TeaModel):
             result['cardCallback'] = self.card_callback.to_map()
         if self.ding_card is not None:
             result['dingCard'] = self.ding_card.to_map()
-        if self.image_url is not None:
-            result['imageUrl'] = self.image_url.to_map()
+        if self.ding_normal_card is not None:
+            result['dingNormalCard'] = self.ding_normal_card.to_map()
         if self.markdown is not None:
             result['markdown'] = self.markdown.to_map()
+        if self.struct_view is not None:
+            result['structView'] = self.struct_view.to_map()
         if self.text is not None:
             result['text'] = self.text.to_map()
         if self.type is not None:
@@ -58029,41 +60657,91 @@ class InvokeAssistantResponseBodyContent(TeaModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('cardCallback') is not None:
-            temp_model = InvokeAssistantResponseBodyContentCardCallback()
+            temp_model = InvokeAssistantResponseBodyMessagesContentCardCallback()
             self.card_callback = temp_model.from_map(m['cardCallback'])
         if m.get('dingCard') is not None:
-            temp_model = InvokeAssistantResponseBodyContentDingCard()
+            temp_model = InvokeAssistantResponseBodyMessagesContentDingCard()
             self.ding_card = temp_model.from_map(m['dingCard'])
-        if m.get('imageUrl') is not None:
-            temp_model = InvokeAssistantResponseBodyContentImageUrl()
-            self.image_url = temp_model.from_map(m['imageUrl'])
+        if m.get('dingNormalCard') is not None:
+            temp_model = InvokeAssistantResponseBodyMessagesContentDingNormalCard()
+            self.ding_normal_card = temp_model.from_map(m['dingNormalCard'])
         if m.get('markdown') is not None:
-            temp_model = InvokeAssistantResponseBodyContentMarkdown()
+            temp_model = InvokeAssistantResponseBodyMessagesContentMarkdown()
             self.markdown = temp_model.from_map(m['markdown'])
+        if m.get('structView') is not None:
+            temp_model = InvokeAssistantResponseBodyMessagesContentStructView()
+            self.struct_view = temp_model.from_map(m['structView'])
         if m.get('text') is not None:
-            temp_model = InvokeAssistantResponseBodyContentText()
+            temp_model = InvokeAssistantResponseBodyMessagesContentText()
             self.text = temp_model.from_map(m['text'])
         if m.get('type') is not None:
             self.type = m.get('type')
         return self
 
 
+class InvokeAssistantResponseBodyMessages(TeaModel):
+    def __init__(
+        self,
+        content: InvokeAssistantResponseBodyMessagesContent = None,
+        content_desc: str = None,
+        create_at: int = None,
+        role: str = None,
+    ):
+        self.content = content
+        self.content_desc = content_desc
+        self.create_at = create_at
+        self.role = role
+
+    def validate(self):
+        if self.content:
+            self.content.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content.to_map()
+        if self.content_desc is not None:
+            result['contentDesc'] = self.content_desc
+        if self.create_at is not None:
+            result['createAt'] = self.create_at
+        if self.role is not None:
+            result['role'] = self.role
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            temp_model = InvokeAssistantResponseBodyMessagesContent()
+            self.content = temp_model.from_map(m['content'])
+        if m.get('contentDesc') is not None:
+            self.content_desc = m.get('contentDesc')
+        if m.get('createAt') is not None:
+            self.create_at = m.get('createAt')
+        if m.get('role') is not None:
+            self.role = m.get('role')
+        return self
+
+
 class InvokeAssistantResponseBody(TeaModel):
     def __init__(
         self,
-        content: List[InvokeAssistantResponseBodyContent] = None,
+        messages: List[InvokeAssistantResponseBodyMessages] = None,
         request_id: str = None,
         session_id: str = None,
         stream_end: bool = None,
     ):
-        self.content = content
+        self.messages = messages
         self.request_id = request_id
         self.session_id = session_id
         self.stream_end = stream_end
 
     def validate(self):
-        if self.content:
-            for k in self.content:
+        if self.messages:
+            for k in self.messages:
                 if k:
                     k.validate()
 
@@ -58073,10 +60751,10 @@ class InvokeAssistantResponseBody(TeaModel):
             return _map
 
         result = dict()
-        result['content'] = []
-        if self.content is not None:
-            for k in self.content:
-                result['content'].append(k.to_map() if k else None)
+        result['messages'] = []
+        if self.messages is not None:
+            for k in self.messages:
+                result['messages'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['requestId'] = self.request_id
         if self.session_id is not None:
@@ -58087,11 +60765,11 @@ class InvokeAssistantResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.content = []
-        if m.get('content') is not None:
-            for k in m.get('content'):
-                temp_model = InvokeAssistantResponseBodyContent()
-                self.content.append(temp_model.from_map(k))
+        self.messages = []
+        if m.get('messages') is not None:
+            for k in m.get('messages'):
+                temp_model = InvokeAssistantResponseBodyMessages()
+                self.messages.append(temp_model.from_map(k))
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
         if m.get('sessionId') is not None:
@@ -62420,16 +65098,20 @@ class ListMessageRequest(TeaModel):
         assistant_id: str = None,
         limit: int = None,
         order: str = None,
-        original_assistantid: str = None,
+        original_assistant_id: str = None,
         run_id: str = None,
+        source_id_of_original_assistant_id: str = None,
+        source_type_of_original_assistant_id: str = None,
         thread_id: str = None,
     ):
         # This parameter is required.
         self.assistant_id = assistant_id
         self.limit = limit
         self.order = order
-        self.original_assistantid = original_assistantid
+        self.original_assistant_id = original_assistant_id
         self.run_id = run_id
+        self.source_id_of_original_assistant_id = source_id_of_original_assistant_id
+        self.source_type_of_original_assistant_id = source_type_of_original_assistant_id
         # This parameter is required.
         self.thread_id = thread_id
 
@@ -62448,10 +65130,14 @@ class ListMessageRequest(TeaModel):
             result['limit'] = self.limit
         if self.order is not None:
             result['order'] = self.order
-        if self.original_assistantid is not None:
-            result['originalAssistantid'] = self.original_assistantid
+        if self.original_assistant_id is not None:
+            result['originalAssistantId'] = self.original_assistant_id
         if self.run_id is not None:
             result['runId'] = self.run_id
+        if self.source_id_of_original_assistant_id is not None:
+            result['sourceIdOfOriginalAssistantId'] = self.source_id_of_original_assistant_id
+        if self.source_type_of_original_assistant_id is not None:
+            result['sourceTypeOfOriginalAssistantId'] = self.source_type_of_original_assistant_id
         if self.thread_id is not None:
             result['threadId'] = self.thread_id
         return result
@@ -62464,25 +65150,27 @@ class ListMessageRequest(TeaModel):
             self.limit = m.get('limit')
         if m.get('order') is not None:
             self.order = m.get('order')
-        if m.get('originalAssistantid') is not None:
-            self.original_assistantid = m.get('originalAssistantid')
+        if m.get('originalAssistantId') is not None:
+            self.original_assistant_id = m.get('originalAssistantId')
         if m.get('runId') is not None:
             self.run_id = m.get('runId')
+        if m.get('sourceIdOfOriginalAssistantId') is not None:
+            self.source_id_of_original_assistant_id = m.get('sourceIdOfOriginalAssistantId')
+        if m.get('sourceTypeOfOriginalAssistantId') is not None:
+            self.source_type_of_original_assistant_id = m.get('sourceTypeOfOriginalAssistantId')
         if m.get('threadId') is not None:
             self.thread_id = m.get('threadId')
         return self
 
 
-class ListMessageResponseBodyDataContentCardCallback(TeaModel):
+class ListMessageResponseBodyMessagesContentCardCallback(TeaModel):
     def __init__(
         self,
         content: str = None,
-        template_id: str = None,
-        user_id: str = None,
+        related_message_id: str = None,
     ):
         self.content = content
-        self.template_id = template_id
-        self.user_id = user_id
+        self.related_message_id = related_message_id
 
     def validate(self):
         pass
@@ -62495,34 +65183,29 @@ class ListMessageResponseBodyDataContentCardCallback(TeaModel):
         result = dict()
         if self.content is not None:
             result['content'] = self.content
-        if self.template_id is not None:
-            result['templateId'] = self.template_id
-        if self.user_id is not None:
-            result['userId'] = self.user_id
+        if self.related_message_id is not None:
+            result['relatedMessageId'] = self.related_message_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('content') is not None:
             self.content = m.get('content')
-        if m.get('templateId') is not None:
-            self.template_id = m.get('templateId')
-        if m.get('userId') is not None:
-            self.user_id = m.get('userId')
+        if m.get('relatedMessageId') is not None:
+            self.related_message_id = m.get('relatedMessageId')
         return self
 
 
-class ListMessageResponseBodyDataContentDingCard(TeaModel):
+class ListMessageResponseBodyMessagesContentDingCard(TeaModel):
     def __init__(
         self,
-        card_desc: str = None,
         content: str = None,
         content_type: str = None,
         finished: bool = None,
         template_id: str = None,
     ):
-        self.card_desc = card_desc
         self.content = content
+        # This parameter is required.
         self.content_type = content_type
         self.finished = finished
         self.template_id = template_id
@@ -62536,8 +65219,6 @@ class ListMessageResponseBodyDataContentDingCard(TeaModel):
             return _map
 
         result = dict()
-        if self.card_desc is not None:
-            result['cardDesc'] = self.card_desc
         if self.content is not None:
             result['content'] = self.content
         if self.content_type is not None:
@@ -62550,8 +65231,6 @@ class ListMessageResponseBodyDataContentDingCard(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('cardDesc') is not None:
-            self.card_desc = m.get('cardDesc')
         if m.get('content') is not None:
             self.content = m.get('content')
         if m.get('contentType') is not None:
@@ -62563,15 +65242,301 @@ class ListMessageResponseBodyDataContentDingCard(TeaModel):
         return self
 
 
-class ListMessageResponseBodyDataContentImageUrl(TeaModel):
+class ListMessageResponseBodyMessagesContentDingNormalCardCardData(TeaModel):
     def __init__(
         self,
-        detail: str = None,
-        image_desc: str = None,
+        card_param_map: Dict[str, Any] = None,
+    ):
+        self.card_param_map = card_param_map
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.card_param_map is not None:
+            result['cardParamMap'] = self.card_param_map
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cardParamMap') is not None:
+            self.card_param_map = m.get('cardParamMap')
+        return self
+
+
+class ListMessageResponseBodyMessagesContentDingNormalCardCardUpdateOptions(TeaModel):
+    def __init__(
+        self,
+        update_card_data_by_key: bool = None,
+        update_private_data_by_key: bool = None,
+    ):
+        self.update_card_data_by_key = update_card_data_by_key
+        self.update_private_data_by_key = update_private_data_by_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.update_card_data_by_key is not None:
+            result['updateCardDataByKey'] = self.update_card_data_by_key
+        if self.update_private_data_by_key is not None:
+            result['updatePrivateDataByKey'] = self.update_private_data_by_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('updateCardDataByKey') is not None:
+            self.update_card_data_by_key = m.get('updateCardDataByKey')
+        if m.get('updatePrivateDataByKey') is not None:
+            self.update_private_data_by_key = m.get('updatePrivateDataByKey')
+        return self
+
+
+class ListMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig(TeaModel):
+    def __init__(
+        self,
+        interval: int = None,
+        pull_strategy: str = None,
+        time_unit: str = None,
+    ):
+        self.interval = interval
+        self.pull_strategy = pull_strategy
+        self.time_unit = time_unit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.interval is not None:
+            result['interval'] = self.interval
+        if self.pull_strategy is not None:
+            result['pullStrategy'] = self.pull_strategy
+        if self.time_unit is not None:
+            result['timeUnit'] = self.time_unit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('interval') is not None:
+            self.interval = m.get('interval')
+        if m.get('pullStrategy') is not None:
+            self.pull_strategy = m.get('pullStrategy')
+        if m.get('timeUnit') is not None:
+            self.time_unit = m.get('timeUnit')
+        return self
+
+
+class ListMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs(TeaModel):
+    def __init__(
+        self,
+        const_params: Dict[str, Any] = None,
+        dynamic_data_source_id: str = None,
+        pull_config: ListMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig = None,
+    ):
+        self.const_params = const_params
+        self.dynamic_data_source_id = dynamic_data_source_id
+        self.pull_config = pull_config
+
+    def validate(self):
+        if self.pull_config:
+            self.pull_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.const_params is not None:
+            result['constParams'] = self.const_params
+        if self.dynamic_data_source_id is not None:
+            result['dynamicDataSourceId'] = self.dynamic_data_source_id
+        if self.pull_config is not None:
+            result['pullConfig'] = self.pull_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('constParams') is not None:
+            self.const_params = m.get('constParams')
+        if m.get('dynamicDataSourceId') is not None:
+            self.dynamic_data_source_id = m.get('dynamicDataSourceId')
+        if m.get('pullConfig') is not None:
+            temp_model = ListMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig()
+            self.pull_config = temp_model.from_map(m['pullConfig'])
+        return self
+
+
+class ListMessageResponseBodyMessagesContentDingNormalCard(TeaModel):
+    def __init__(
+        self,
+        card_data: ListMessageResponseBodyMessagesContentDingNormalCardCardData = None,
+        card_template_id: str = None,
+        card_update_options: ListMessageResponseBodyMessagesContentDingNormalCardCardUpdateOptions = None,
+        dynamic_data_source_configs: List[ListMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs] = None,
+        private_data: Dict[str, dict] = None,
+    ):
+        self.card_data = card_data
+        self.card_template_id = card_template_id
+        self.card_update_options = card_update_options
+        self.dynamic_data_source_configs = dynamic_data_source_configs
+        self.private_data = private_data
+
+    def validate(self):
+        if self.card_data:
+            self.card_data.validate()
+        if self.card_update_options:
+            self.card_update_options.validate()
+        if self.dynamic_data_source_configs:
+            for k in self.dynamic_data_source_configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.card_data is not None:
+            result['cardData'] = self.card_data.to_map()
+        if self.card_template_id is not None:
+            result['cardTemplateId'] = self.card_template_id
+        if self.card_update_options is not None:
+            result['cardUpdateOptions'] = self.card_update_options.to_map()
+        result['dynamicDataSourceConfigs'] = []
+        if self.dynamic_data_source_configs is not None:
+            for k in self.dynamic_data_source_configs:
+                result['dynamicDataSourceConfigs'].append(k.to_map() if k else None)
+        if self.private_data is not None:
+            result['privateData'] = self.private_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cardData') is not None:
+            temp_model = ListMessageResponseBodyMessagesContentDingNormalCardCardData()
+            self.card_data = temp_model.from_map(m['cardData'])
+        if m.get('cardTemplateId') is not None:
+            self.card_template_id = m.get('cardTemplateId')
+        if m.get('cardUpdateOptions') is not None:
+            temp_model = ListMessageResponseBodyMessagesContentDingNormalCardCardUpdateOptions()
+            self.card_update_options = temp_model.from_map(m['cardUpdateOptions'])
+        self.dynamic_data_source_configs = []
+        if m.get('dynamicDataSourceConfigs') is not None:
+            for k in m.get('dynamicDataSourceConfigs'):
+                temp_model = ListMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs()
+                self.dynamic_data_source_configs.append(temp_model.from_map(k))
+        if m.get('privateData') is not None:
+            self.private_data = m.get('privateData')
+        return self
+
+
+class ListMessageResponseBodyMessagesContentMarkdown(TeaModel):
+    def __init__(
+        self,
+        value: str = None,
+    ):
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class ListMessageResponseBodyMessagesContentStructViewPartsDataPart(TeaModel):
+    def __init__(
+        self,
+        data: Any = None,
+    ):
+        self.data = data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        return self
+
+
+class ListMessageResponseBodyMessagesContentStructViewPartsReasonPart(TeaModel):
+    def __init__(
+        self,
+        reason: str = None,
+    ):
+        self.reason = reason
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.reason is not None:
+            result['reason'] = self.reason
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('reason') is not None:
+            self.reason = m.get('reason')
+        return self
+
+
+class ListMessageResponseBodyMessagesContentStructViewPartsRecommendPartRecommends(TeaModel):
+    def __init__(
+        self,
+        mobile_url: str = None,
+        text: str = None,
         url: str = None,
     ):
-        self.detail = detail
-        self.image_desc = image_desc
+        self.mobile_url = mobile_url
+        self.text = text
         self.url = url
 
     def validate(self):
@@ -62583,26 +65548,317 @@ class ListMessageResponseBodyDataContentImageUrl(TeaModel):
             return _map
 
         result = dict()
-        if self.detail is not None:
-            result['detail'] = self.detail
-        if self.image_desc is not None:
-            result['imageDesc'] = self.image_desc
+        if self.mobile_url is not None:
+            result['mobileUrl'] = self.mobile_url
+        if self.text is not None:
+            result['text'] = self.text
         if self.url is not None:
             result['url'] = self.url
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('detail') is not None:
-            self.detail = m.get('detail')
-        if m.get('imageDesc') is not None:
-            self.image_desc = m.get('imageDesc')
+        if m.get('mobileUrl') is not None:
+            self.mobile_url = m.get('mobileUrl')
+        if m.get('text') is not None:
+            self.text = m.get('text')
         if m.get('url') is not None:
             self.url = m.get('url')
         return self
 
 
-class ListMessageResponseBodyDataContentMarkdown(TeaModel):
+class ListMessageResponseBodyMessagesContentStructViewPartsRecommendPart(TeaModel):
+    def __init__(
+        self,
+        recommends: List[ListMessageResponseBodyMessagesContentStructViewPartsRecommendPartRecommends] = None,
+    ):
+        self.recommends = recommends
+
+    def validate(self):
+        if self.recommends:
+            for k in self.recommends:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['recommends'] = []
+        if self.recommends is not None:
+            for k in self.recommends:
+                result['recommends'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.recommends = []
+        if m.get('recommends') is not None:
+            for k in m.get('recommends'):
+                temp_model = ListMessageResponseBodyMessagesContentStructViewPartsRecommendPartRecommends()
+                self.recommends.append(temp_model.from_map(k))
+        return self
+
+
+class ListMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences(TeaModel):
+    def __init__(
+        self,
+        index: str = None,
+        name: str = None,
+        source_code: str = None,
+        source_icon: str = None,
+        summary: str = None,
+        title: str = None,
+        url: str = None,
+    ):
+        self.index = index
+        self.name = name
+        self.source_code = source_code
+        self.source_icon = source_icon
+        self.summary = summary
+        self.title = title
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.index is not None:
+            result['index'] = self.index
+        if self.name is not None:
+            result['name'] = self.name
+        if self.source_code is not None:
+            result['sourceCode'] = self.source_code
+        if self.source_icon is not None:
+            result['sourceIcon'] = self.source_icon
+        if self.summary is not None:
+            result['summary'] = self.summary
+        if self.title is not None:
+            result['title'] = self.title
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('index') is not None:
+            self.index = m.get('index')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('sourceCode') is not None:
+            self.source_code = m.get('sourceCode')
+        if m.get('sourceIcon') is not None:
+            self.source_icon = m.get('sourceIcon')
+        if m.get('summary') is not None:
+            self.summary = m.get('summary')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class ListMessageResponseBodyMessagesContentStructViewPartsReferencePart(TeaModel):
+    def __init__(
+        self,
+        references: List[ListMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences] = None,
+    ):
+        self.references = references
+
+    def validate(self):
+        if self.references:
+            for k in self.references:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['references'] = []
+        if self.references is not None:
+            for k in self.references:
+                result['references'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.references = []
+        if m.get('references') is not None:
+            for k in m.get('references'):
+                temp_model = ListMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences()
+                self.references.append(temp_model.from_map(k))
+        return self
+
+
+class ListMessageResponseBodyMessagesContentStructViewPartsTextPart(TeaModel):
+    def __init__(
+        self,
+        text: str = None,
+    ):
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.text is not None:
+            result['text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        return self
+
+
+class ListMessageResponseBodyMessagesContentStructViewParts(TeaModel):
+    def __init__(
+        self,
+        append: bool = None,
+        data_part: ListMessageResponseBodyMessagesContentStructViewPartsDataPart = None,
+        finish: bool = None,
+        part_desc: str = None,
+        part_id: str = None,
+        reason_part: ListMessageResponseBodyMessagesContentStructViewPartsReasonPart = None,
+        recommend_part: ListMessageResponseBodyMessagesContentStructViewPartsRecommendPart = None,
+        reference_part: ListMessageResponseBodyMessagesContentStructViewPartsReferencePart = None,
+        text_part: ListMessageResponseBodyMessagesContentStructViewPartsTextPart = None,
+        type: str = None,
+    ):
+        self.append = append
+        self.data_part = data_part
+        self.finish = finish
+        self.part_desc = part_desc
+        self.part_id = part_id
+        self.reason_part = reason_part
+        self.recommend_part = recommend_part
+        self.reference_part = reference_part
+        self.text_part = text_part
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        if self.data_part:
+            self.data_part.validate()
+        if self.reason_part:
+            self.reason_part.validate()
+        if self.recommend_part:
+            self.recommend_part.validate()
+        if self.reference_part:
+            self.reference_part.validate()
+        if self.text_part:
+            self.text_part.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.append is not None:
+            result['append'] = self.append
+        if self.data_part is not None:
+            result['dataPart'] = self.data_part.to_map()
+        if self.finish is not None:
+            result['finish'] = self.finish
+        if self.part_desc is not None:
+            result['partDesc'] = self.part_desc
+        if self.part_id is not None:
+            result['partId'] = self.part_id
+        if self.reason_part is not None:
+            result['reasonPart'] = self.reason_part.to_map()
+        if self.recommend_part is not None:
+            result['recommendPart'] = self.recommend_part.to_map()
+        if self.reference_part is not None:
+            result['referencePart'] = self.reference_part.to_map()
+        if self.text_part is not None:
+            result['textPart'] = self.text_part.to_map()
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('append') is not None:
+            self.append = m.get('append')
+        if m.get('dataPart') is not None:
+            temp_model = ListMessageResponseBodyMessagesContentStructViewPartsDataPart()
+            self.data_part = temp_model.from_map(m['dataPart'])
+        if m.get('finish') is not None:
+            self.finish = m.get('finish')
+        if m.get('partDesc') is not None:
+            self.part_desc = m.get('partDesc')
+        if m.get('partId') is not None:
+            self.part_id = m.get('partId')
+        if m.get('reasonPart') is not None:
+            temp_model = ListMessageResponseBodyMessagesContentStructViewPartsReasonPart()
+            self.reason_part = temp_model.from_map(m['reasonPart'])
+        if m.get('recommendPart') is not None:
+            temp_model = ListMessageResponseBodyMessagesContentStructViewPartsRecommendPart()
+            self.recommend_part = temp_model.from_map(m['recommendPart'])
+        if m.get('referencePart') is not None:
+            temp_model = ListMessageResponseBodyMessagesContentStructViewPartsReferencePart()
+            self.reference_part = temp_model.from_map(m['referencePart'])
+        if m.get('textPart') is not None:
+            temp_model = ListMessageResponseBodyMessagesContentStructViewPartsTextPart()
+            self.text_part = temp_model.from_map(m['textPart'])
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class ListMessageResponseBodyMessagesContentStructView(TeaModel):
+    def __init__(
+        self,
+        parts: List[ListMessageResponseBodyMessagesContentStructViewParts] = None,
+    ):
+        self.parts = parts
+
+    def validate(self):
+        if self.parts:
+            for k in self.parts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['parts'] = []
+        if self.parts is not None:
+            for k in self.parts:
+                result['parts'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.parts = []
+        if m.get('parts') is not None:
+            for k in m.get('parts'):
+                temp_model = ListMessageResponseBodyMessagesContentStructViewParts()
+                self.parts.append(temp_model.from_map(k))
+        return self
+
+
+class ListMessageResponseBodyMessagesContentText(TeaModel):
     def __init__(
         self,
         value: str = None,
@@ -62629,48 +65885,24 @@ class ListMessageResponseBodyDataContentMarkdown(TeaModel):
         return self
 
 
-class ListMessageResponseBodyDataContentText(TeaModel):
+class ListMessageResponseBodyMessagesContent(TeaModel):
     def __init__(
         self,
-        value: str = None,
-    ):
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.value is not None:
-            result['value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('value') is not None:
-            self.value = m.get('value')
-        return self
-
-
-class ListMessageResponseBodyDataContent(TeaModel):
-    def __init__(
-        self,
-        card_callback: ListMessageResponseBodyDataContentCardCallback = None,
-        ding_card: ListMessageResponseBodyDataContentDingCard = None,
-        image_url: ListMessageResponseBodyDataContentImageUrl = None,
-        markdown: ListMessageResponseBodyDataContentMarkdown = None,
-        text: ListMessageResponseBodyDataContentText = None,
+        card_callback: ListMessageResponseBodyMessagesContentCardCallback = None,
+        ding_card: ListMessageResponseBodyMessagesContentDingCard = None,
+        ding_normal_card: ListMessageResponseBodyMessagesContentDingNormalCard = None,
+        markdown: ListMessageResponseBodyMessagesContentMarkdown = None,
+        struct_view: ListMessageResponseBodyMessagesContentStructView = None,
+        text: ListMessageResponseBodyMessagesContentText = None,
         type: str = None,
     ):
         self.card_callback = card_callback
         self.ding_card = ding_card
-        self.image_url = image_url
+        self.ding_normal_card = ding_normal_card
         self.markdown = markdown
+        self.struct_view = struct_view
         self.text = text
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -62678,10 +65910,12 @@ class ListMessageResponseBodyDataContent(TeaModel):
             self.card_callback.validate()
         if self.ding_card:
             self.ding_card.validate()
-        if self.image_url:
-            self.image_url.validate()
+        if self.ding_normal_card:
+            self.ding_normal_card.validate()
         if self.markdown:
             self.markdown.validate()
+        if self.struct_view:
+            self.struct_view.validate()
         if self.text:
             self.text.validate()
 
@@ -62695,10 +65929,12 @@ class ListMessageResponseBodyDataContent(TeaModel):
             result['cardCallback'] = self.card_callback.to_map()
         if self.ding_card is not None:
             result['dingCard'] = self.ding_card.to_map()
-        if self.image_url is not None:
-            result['imageUrl'] = self.image_url.to_map()
+        if self.ding_normal_card is not None:
+            result['dingNormalCard'] = self.ding_normal_card.to_map()
         if self.markdown is not None:
             result['markdown'] = self.markdown.to_map()
+        if self.struct_view is not None:
+            result['structView'] = self.struct_view.to_map()
         if self.text is not None:
             result['text'] = self.text.to_map()
         if self.type is not None:
@@ -62708,51 +65944,50 @@ class ListMessageResponseBodyDataContent(TeaModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('cardCallback') is not None:
-            temp_model = ListMessageResponseBodyDataContentCardCallback()
+            temp_model = ListMessageResponseBodyMessagesContentCardCallback()
             self.card_callback = temp_model.from_map(m['cardCallback'])
         if m.get('dingCard') is not None:
-            temp_model = ListMessageResponseBodyDataContentDingCard()
+            temp_model = ListMessageResponseBodyMessagesContentDingCard()
             self.ding_card = temp_model.from_map(m['dingCard'])
-        if m.get('imageUrl') is not None:
-            temp_model = ListMessageResponseBodyDataContentImageUrl()
-            self.image_url = temp_model.from_map(m['imageUrl'])
+        if m.get('dingNormalCard') is not None:
+            temp_model = ListMessageResponseBodyMessagesContentDingNormalCard()
+            self.ding_normal_card = temp_model.from_map(m['dingNormalCard'])
         if m.get('markdown') is not None:
-            temp_model = ListMessageResponseBodyDataContentMarkdown()
+            temp_model = ListMessageResponseBodyMessagesContentMarkdown()
             self.markdown = temp_model.from_map(m['markdown'])
+        if m.get('structView') is not None:
+            temp_model = ListMessageResponseBodyMessagesContentStructView()
+            self.struct_view = temp_model.from_map(m['structView'])
         if m.get('text') is not None:
-            temp_model = ListMessageResponseBodyDataContentText()
+            temp_model = ListMessageResponseBodyMessagesContentText()
             self.text = temp_model.from_map(m['text'])
         if m.get('type') is not None:
             self.type = m.get('type')
         return self
 
 
-class ListMessageResponseBodyData(TeaModel):
+class ListMessageResponseBodyMessages(TeaModel):
     def __init__(
         self,
-        content: List[ListMessageResponseBodyDataContent] = None,
+        content: ListMessageResponseBodyMessagesContent = None,
+        content_desc: str = None,
         create_at: int = None,
         id: str = None,
-        metadata: Dict[str, Any] = None,
-        object: str = None,
         role: str = None,
         run_id: str = None,
         thread_id: str = None,
     ):
         self.content = content
+        self.content_desc = content_desc
         self.create_at = create_at
         self.id = id
-        self.metadata = metadata
-        self.object = object
         self.role = role
         self.run_id = run_id
         self.thread_id = thread_id
 
     def validate(self):
         if self.content:
-            for k in self.content:
-                if k:
-                    k.validate()
+            self.content.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -62760,18 +65995,14 @@ class ListMessageResponseBodyData(TeaModel):
             return _map
 
         result = dict()
-        result['content'] = []
         if self.content is not None:
-            for k in self.content:
-                result['content'].append(k.to_map() if k else None)
+            result['content'] = self.content.to_map()
+        if self.content_desc is not None:
+            result['contentDesc'] = self.content_desc
         if self.create_at is not None:
             result['createAt'] = self.create_at
         if self.id is not None:
             result['id'] = self.id
-        if self.metadata is not None:
-            result['metadata'] = self.metadata
-        if self.object is not None:
-            result['object'] = self.object
         if self.role is not None:
             result['role'] = self.role
         if self.run_id is not None:
@@ -62782,19 +66013,15 @@ class ListMessageResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.content = []
         if m.get('content') is not None:
-            for k in m.get('content'):
-                temp_model = ListMessageResponseBodyDataContent()
-                self.content.append(temp_model.from_map(k))
+            temp_model = ListMessageResponseBodyMessagesContent()
+            self.content = temp_model.from_map(m['content'])
+        if m.get('contentDesc') is not None:
+            self.content_desc = m.get('contentDesc')
         if m.get('createAt') is not None:
             self.create_at = m.get('createAt')
         if m.get('id') is not None:
             self.id = m.get('id')
-        if m.get('metadata') is not None:
-            self.metadata = m.get('metadata')
-        if m.get('object') is not None:
-            self.object = m.get('object')
         if m.get('role') is not None:
             self.role = m.get('role')
         if m.get('runId') is not None:
@@ -62807,17 +66034,15 @@ class ListMessageResponseBodyData(TeaModel):
 class ListMessageResponseBody(TeaModel):
     def __init__(
         self,
-        data: List[ListMessageResponseBodyData] = None,
-        object: str = None,
+        messages: List[ListMessageResponseBodyMessages] = None,
         request_id: str = None,
     ):
-        self.data = data
-        self.object = object
+        self.messages = messages
         self.request_id = request_id
 
     def validate(self):
-        if self.data:
-            for k in self.data:
+        if self.messages:
+            for k in self.messages:
                 if k:
                     k.validate()
 
@@ -62827,25 +66052,21 @@ class ListMessageResponseBody(TeaModel):
             return _map
 
         result = dict()
-        result['data'] = []
-        if self.data is not None:
-            for k in self.data:
-                result['data'].append(k.to_map() if k else None)
-        if self.object is not None:
-            result['object'] = self.object
+        result['messages'] = []
+        if self.messages is not None:
+            for k in self.messages:
+                result['messages'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['requestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.data = []
-        if m.get('data') is not None:
-            for k in m.get('data'):
-                temp_model = ListMessageResponseBodyData()
-                self.data.append(temp_model.from_map(k))
-        if m.get('object') is not None:
-            self.object = m.get('object')
+        self.messages = []
+        if m.get('messages') is not None:
+            for k in m.get('messages'):
+                temp_model = ListMessageResponseBodyMessages()
+                self.messages.append(temp_model.from_map(k))
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
         return self
@@ -81588,14 +84809,15 @@ class RetrieveRunRequest(TeaModel):
         assistant_id: str = None,
         original_assistant_id: str = None,
         run_id: str = None,
-        thread_id: str = None,
+        source_id_of_original_assistant_id: str = None,
+        source_type_of_original_assistant_id: str = None,
     ):
         # This parameter is required.
         self.assistant_id = assistant_id
         self.original_assistant_id = original_assistant_id
         self.run_id = run_id
-        # This parameter is required.
-        self.thread_id = thread_id
+        self.source_id_of_original_assistant_id = source_id_of_original_assistant_id
+        self.source_type_of_original_assistant_id = source_type_of_original_assistant_id
 
     def validate(self):
         pass
@@ -81612,8 +84834,10 @@ class RetrieveRunRequest(TeaModel):
             result['originalAssistantId'] = self.original_assistant_id
         if self.run_id is not None:
             result['runId'] = self.run_id
-        if self.thread_id is not None:
-            result['threadId'] = self.thread_id
+        if self.source_id_of_original_assistant_id is not None:
+            result['sourceIdOfOriginalAssistantId'] = self.source_id_of_original_assistant_id
+        if self.source_type_of_original_assistant_id is not None:
+            result['sourceTypeOfOriginalAssistantId'] = self.source_type_of_original_assistant_id
         return result
 
     def from_map(self, m: dict = None):
@@ -81624,12 +84848,14 @@ class RetrieveRunRequest(TeaModel):
             self.original_assistant_id = m.get('originalAssistantId')
         if m.get('runId') is not None:
             self.run_id = m.get('runId')
-        if m.get('threadId') is not None:
-            self.thread_id = m.get('threadId')
+        if m.get('sourceIdOfOriginalAssistantId') is not None:
+            self.source_id_of_original_assistant_id = m.get('sourceIdOfOriginalAssistantId')
+        if m.get('sourceTypeOfOriginalAssistantId') is not None:
+            self.source_type_of_original_assistant_id = m.get('sourceTypeOfOriginalAssistantId')
         return self
 
 
-class RetrieveRunResponseBody(TeaModel):
+class RetrieveRunResponseBodyRun(TeaModel):
     def __init__(
         self,
         cancelled_at: int = None,
@@ -81639,9 +84865,6 @@ class RetrieveRunResponseBody(TeaModel):
         failed_at: int = None,
         id: str = None,
         last_error_msg: str = None,
-        metadata: Dict[str, Any] = None,
-        object: str = None,
-        request_id: str = None,
         started_at: int = None,
         status: str = None,
         thread_id: str = None,
@@ -81653,9 +84876,6 @@ class RetrieveRunResponseBody(TeaModel):
         self.failed_at = failed_at
         self.id = id
         self.last_error_msg = last_error_msg
-        self.metadata = metadata
-        self.object = object
-        self.request_id = request_id
         self.started_at = started_at
         self.status = status
         self.thread_id = thread_id
@@ -81683,12 +84903,6 @@ class RetrieveRunResponseBody(TeaModel):
             result['id'] = self.id
         if self.last_error_msg is not None:
             result['lastErrorMsg'] = self.last_error_msg
-        if self.metadata is not None:
-            result['metadata'] = self.metadata
-        if self.object is not None:
-            result['object'] = self.object
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
         if self.started_at is not None:
             result['startedAt'] = self.started_at
         if self.status is not None:
@@ -81713,18 +84927,47 @@ class RetrieveRunResponseBody(TeaModel):
             self.id = m.get('id')
         if m.get('lastErrorMsg') is not None:
             self.last_error_msg = m.get('lastErrorMsg')
-        if m.get('metadata') is not None:
-            self.metadata = m.get('metadata')
-        if m.get('object') is not None:
-            self.object = m.get('object')
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
         if m.get('startedAt') is not None:
             self.started_at = m.get('startedAt')
         if m.get('status') is not None:
             self.status = m.get('status')
         if m.get('threadId') is not None:
             self.thread_id = m.get('threadId')
+        return self
+
+
+class RetrieveRunResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        run: RetrieveRunResponseBodyRun = None,
+    ):
+        self.request_id = request_id
+        self.run = run
+
+    def validate(self):
+        if self.run:
+            self.run.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.run is not None:
+            result['run'] = self.run.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('run') is not None:
+            temp_model = RetrieveRunResponseBodyRun()
+            self.run = temp_model.from_map(m['run'])
         return self
 
 
