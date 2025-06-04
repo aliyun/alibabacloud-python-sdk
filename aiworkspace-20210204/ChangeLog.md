@@ -1,3 +1,9 @@
+2025-06-04 Version: 6.4.2
+- Update API CreateDataset: add request parameters body.Edition.
+- Update API GetDataset: add response parameters Body.Edition.
+- Update API UpdateDataset: add request parameters body.Edition.
+
+
 2025-05-29 Version: 6.4.1
 - Update API GetMember: add response parameters Body.AccountType.
 - Update API ListMembers: add response parameters Body.Members.$.AccountType.

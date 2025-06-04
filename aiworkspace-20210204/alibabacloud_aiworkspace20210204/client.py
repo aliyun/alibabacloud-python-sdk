@@ -762,7 +762,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.CreateConnectionResponse:
         """
-        @summary 创建连接
+        @summary Creates a connection. This API is used to connect Platform for AI (PAI) to customer models and databases in LangStudio and multimodal dataset search scenarios.
         
         @param request: CreateConnectionRequest
         @param headers: map
@@ -816,7 +816,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.CreateConnectionResponse:
         """
-        @summary 创建连接
+        @summary Creates a connection. This API is used to connect Platform for AI (PAI) to customer models and databases in LangStudio and multimodal dataset search scenarios.
         
         @param request: CreateConnectionRequest
         @param headers: map
@@ -868,7 +868,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.CreateConnectionRequest,
     ) -> aiwork_space_20210204_models.CreateConnectionResponse:
         """
-        @summary 创建连接
+        @summary Creates a connection. This API is used to connect Platform for AI (PAI) to customer models and databases in LangStudio and multimodal dataset search scenarios.
         
         @param request: CreateConnectionRequest
         @return: CreateConnectionResponse
@@ -882,7 +882,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.CreateConnectionRequest,
     ) -> aiwork_space_20210204_models.CreateConnectionResponse:
         """
-        @summary 创建连接
+        @summary Creates a connection. This API is used to connect Platform for AI (PAI) to customer models and databases in LangStudio and multimodal dataset search scenarios.
         
         @param request: CreateConnectionRequest
         @return: CreateConnectionResponse
@@ -919,6 +919,8 @@ class Client(OpenApiClient):
             body['DataType'] = request.data_type
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.edition):
+            body['Edition'] = request.edition
         if not UtilClient.is_unset(request.import_info):
             body['ImportInfo'] = request.import_info
         if not UtilClient.is_unset(request.labels):
@@ -1001,6 +1003,8 @@ class Client(OpenApiClient):
             body['DataType'] = request.data_type
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.edition):
+            body['Edition'] = request.edition
         if not UtilClient.is_unset(request.import_info):
             body['ImportInfo'] = request.import_info
         if not UtilClient.is_unset(request.labels):
@@ -5505,7 +5509,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetConnectionResponse:
         """
-        @summary 获取连接
+        @summary Obtains the connection details.
         
         @param request: GetConnectionRequest
         @param headers: map
@@ -5544,7 +5548,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetConnectionResponse:
         """
-        @summary 获取连接
+        @summary Obtains the connection details.
         
         @param request: GetConnectionRequest
         @param headers: map
@@ -5581,7 +5585,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.GetConnectionRequest,
     ) -> aiwork_space_20210204_models.GetConnectionResponse:
         """
-        @summary 获取连接
+        @summary Obtains the connection details.
         
         @param request: GetConnectionRequest
         @return: GetConnectionResponse
@@ -5596,7 +5600,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.GetConnectionRequest,
     ) -> aiwork_space_20210204_models.GetConnectionResponse:
         """
-        @summary 获取连接
+        @summary Obtains the connection details.
         
         @param request: GetConnectionRequest
         @return: GetConnectionResponse
@@ -11834,6 +11838,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.edition):
+            body['Edition'] = request.edition
         if not UtilClient.is_unset(request.mount_access_read_write_role_id_list):
             body['MountAccessReadWriteRoleIdList'] = request.mount_access_read_write_role_id_list
         if not UtilClient.is_unset(request.name):
@@ -11879,6 +11885,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.edition):
+            body['Edition'] = request.edition
         if not UtilClient.is_unset(request.mount_access_read_write_role_id_list):
             body['MountAccessReadWriteRoleIdList'] = request.mount_access_read_write_role_id_list
         if not UtilClient.is_unset(request.name):

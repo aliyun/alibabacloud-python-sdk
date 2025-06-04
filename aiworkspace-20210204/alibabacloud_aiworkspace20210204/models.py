@@ -508,6 +508,7 @@ class Dataset(TeaModel):
         data_type: str = None,
         dataset_id: str = None,
         description: str = None,
+        edition: str = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
         import_info: str = None,
@@ -534,6 +535,7 @@ class Dataset(TeaModel):
         self.data_type = data_type
         self.dataset_id = dataset_id
         self.description = description
+        self.edition = edition
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
         self.import_info = import_info
@@ -579,6 +581,8 @@ class Dataset(TeaModel):
             result['DatasetId'] = self.dataset_id
         if self.description is not None:
             result['Description'] = self.description
+        if self.edition is not None:
+            result['Edition'] = self.edition
         if self.gmt_create_time is not None:
             result['GmtCreateTime'] = self.gmt_create_time
         if self.gmt_modified_time is not None:
@@ -635,6 +639,8 @@ class Dataset(TeaModel):
             self.dataset_id = m.get('DatasetId')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('Edition') is not None:
+            self.edition = m.get('Edition')
         if m.get('GmtCreateTime') is not None:
             self.gmt_create_time = m.get('GmtCreateTime')
         if m.get('GmtModifiedTime') is not None:
@@ -3413,9 +3419,20 @@ class CreateConnectionRequestModels(TeaModel):
         model_type: str = None,
         tool_call: bool = None,
     ):
+        # The display name of the model.
         self.display_name = display_name
+        # The model identifier.
         self.model = model
+        # The model type. Valid values:
+        # 
+        # *   LLM
+        # *   Embedding
+        # *   ReRank
         self.model_type = model_type
+        # Specifies whether a tool can be called by using ToolCall. Valid values:
+        # 
+        # *   true
+        # *   false
         self.tool_call = tool_call
 
     def validate(self):
@@ -3456,7 +3473,9 @@ class CreateConnectionRequestResourceMeta(TeaModel):
         instance_id: str = None,
         instance_name: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The instance name.
         self.instance_name = instance_name
 
     def validate(self):
@@ -3496,16 +3515,40 @@ class CreateConnectionRequest(TeaModel):
         secrets: Dict[str, str] = None,
         workspace_id: str = None,
     ):
+        # The accessibility of the workspace. Valid values:
+        # 
+        # *   PRIVATE: The workspace is accessible only to you and the administrator of the workspace. This is the default value.
+        # *   PUBLIC: The workspace is accessible to all users in the workspace.
         self.accessibility = accessibility
+        # The connection configurations, in key-value pairs. The key varies based on the connection type. For more information, see the supplementary notes below the request parameters.
+        # 
         # This parameter is required.
         self.configs = configs
+        # The connection name.
+        # 
         # This parameter is required.
         self.connection_name = connection_name
+        # The connection type. Valid values:
+        # 
+        # *   DashScopeConnection: Alibaba Cloud Model Studio connection
+        # *   OpenLLMConnection: open source model connection
+        # *   MilvusConnection: Milvus connection
+        # *   OpenSearchConnection: OpenSearch connection
+        # *   LindormConnection: Lindorm connection
+        # *   ElasticsearchConnection: Elasticsearch connection
+        # *   HologresConnection: Hologres connection
+        # *   RDSConnection: RDS connection
+        # *   CustomConnection: custom connection
         self.connection_type = connection_type
+        # The connection description.
         self.description = description
+        # The models, which apply to model service connections.
         self.models = models
+        # The instance resource information of the connection, which applies to database connections.
         self.resource_meta = resource_meta
+        # The configuration to be encrypted. Examples: the database logon account and password and the key of the model service.
         self.secrets = secrets
+        # The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -3577,7 +3620,9 @@ class CreateConnectionResponseBody(TeaModel):
         connection_id: str = None,
         request_id: str = None,
     ):
+        # The connection ID.
         self.connection_id = connection_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3654,6 +3699,7 @@ class CreateDatasetRequest(TeaModel):
         data_source_type: str = None,
         data_type: str = None,
         description: str = None,
+        edition: str = None,
         import_info: str = None,
         labels: List[Label] = None,
         mount_access_read_write_role_id_list: List[str] = None,
@@ -3698,6 +3744,7 @@ class CreateDatasetRequest(TeaModel):
         self.data_type = data_type
         # The description of the dataset. Descriptions are used to differentiate datasets.
         self.description = description
+        self.edition = edition
         # The dataset configurations to be imported to a storage, such as OSS, NAS, or Cloud Parallel File Storage (CPFS).
         # 
         # **OSS**\
@@ -3834,6 +3881,8 @@ class CreateDatasetRequest(TeaModel):
             result['DataType'] = self.data_type
         if self.description is not None:
             result['Description'] = self.description
+        if self.edition is not None:
+            result['Edition'] = self.edition
         if self.import_info is not None:
             result['ImportInfo'] = self.import_info
         result['Labels'] = []
@@ -3888,6 +3937,8 @@ class CreateDatasetRequest(TeaModel):
             self.data_type = m.get('DataType')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('Edition') is not None:
+            self.edition = m.get('Edition')
         if m.get('ImportInfo') is not None:
             self.import_info = m.get('ImportInfo')
         self.labels = []
@@ -9240,6 +9291,10 @@ class GetConnectionRequest(TeaModel):
         self,
         encrypt_option: str = None,
     ):
+        # The encryption settings. Valid values:
+        # 
+        # *   PlainText
+        # *   Secret
         self.encrypt_option = encrypt_option
 
     def validate(self):
@@ -9270,9 +9325,20 @@ class GetConnectionResponseBodyModels(TeaModel):
         model_type: str = None,
         tool_call: bool = None,
     ):
+        # The display name of the model.
         self.display_name = display_name
+        # The model identifier.
         self.model = model
+        # The model type. Valid values:
+        # 
+        # *   LLM
+        # *   Embedding
+        # *   ReRank
         self.model_type = model_type
+        # Indicates whether a tool can be called by using ToolCall. Valid values:
+        # 
+        # *   true
+        # *   false
         self.tool_call = tool_call
 
     def validate(self):
@@ -9313,7 +9379,9 @@ class GetConnectionResponseBodyResourceMeta(TeaModel):
         instance_id: str = None,
         instance_name: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The instance name.
         self.instance_name = instance_name
 
     def validate(self):
@@ -9358,19 +9426,46 @@ class GetConnectionResponseBody(TeaModel):
         secrets: Dict[str, str] = None,
         workspace_id: str = None,
     ):
+        # The resource accessibility. Valid values:
+        # 
+        # *   PUBLIC: All members in the workspace can access the workspace.
+        # *   PRIVATE: Only the creator can access the workspace.
         self.accessibility = accessibility
+        # The connection configuration.
         self.configs = configs
+        # The connection ID.
         self.connection_id = connection_id
+        # The connection name.
         self.connection_name = connection_name
+        # The type of the connection. Valid values:
+        # 
+        # *   DashScopeConnection: Alibaba Cloud Model Studio connection.
+        # *   OpenLLMConnection: Open source model connection.
+        # *   MilvusConnection: Milvus connection.
+        # *   OpenSearchConnection: OpenSearch connection.
+        # *   LindormConnection: Lindorm connection.
+        # *   ElasticsearchConnection: Elasticsearch connection.
+        # *   HologresConnection: Hologres connection.
+        # *   RDSConnection: RDS connection.
+        # *   CustomConnection: Custom connection.
         self.connection_type = connection_type
+        # The creator of the connection.
         self.creator = creator
+        # The connection description.
         self.description = description
+        # The time when the connection is created, in UTC. The time follows the ISO 8601 standard.
         self.gmt_create_time = gmt_create_time
+        # The time when the connection is modified, in UTC. The time follows the ISO 8601 standard.
         self.gmt_modified_time = gmt_modified_time
+        # The models, which apply to model service connections.
         self.models = models
+        # The request ID.
         self.request_id = request_id
+        # The instance resource information of the connection, which applies to database connections.
         self.resource_meta = resource_meta
+        # The encrypted configuration, in key-value pairs. Examples: the database logon password and the key of the model connection.
         self.secrets = secrets
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -9505,6 +9600,7 @@ class GetDatasetResponseBody(TeaModel):
         data_type: str = None,
         dataset_id: str = None,
         description: str = None,
+        edition: str = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
         import_info: str = None,
@@ -9550,6 +9646,7 @@ class GetDatasetResponseBody(TeaModel):
         self.dataset_id = dataset_id
         # The description.
         self.description = description
+        self.edition = edition
         # The creation time.
         self.gmt_create_time = gmt_create_time
         # The update time.
@@ -9679,6 +9776,8 @@ class GetDatasetResponseBody(TeaModel):
             result['DatasetId'] = self.dataset_id
         if self.description is not None:
             result['Description'] = self.description
+        if self.edition is not None:
+            result['Edition'] = self.edition
         if self.gmt_create_time is not None:
             result['GmtCreateTime'] = self.gmt_create_time
         if self.gmt_modified_time is not None:
@@ -9739,6 +9838,8 @@ class GetDatasetResponseBody(TeaModel):
             self.dataset_id = m.get('DatasetId')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('Edition') is not None:
+            self.edition = m.get('Edition')
         if m.get('GmtCreateTime') is not None:
             self.gmt_create_time = m.get('GmtCreateTime')
         if m.get('GmtModifiedTime') is not None:
@@ -20170,13 +20271,15 @@ class UpdateDatasetRequest(TeaModel):
     def __init__(
         self,
         description: str = None,
+        edition: str = None,
         mount_access_read_write_role_id_list: List[str] = None,
         name: str = None,
         options: str = None,
     ):
         # The description of the dataset.
         self.description = description
-        # The list of role names in the workspace that have read and write permissions on the mounted database. The names start with PAI are basic role names and the names start with role- are custom role names. If the list contains asterisks (\\*), all roles have read and write permissions.
+        self.edition = edition
+        # The list of role names in the workspace that have read and write permissions on the mounted database. The names starting with PAI are basic role names, and the names starting with role- are custom role names. If the list contains asterisks (\\*), all roles have read and write permissions.
         # 
         # *   If you set the value to ["PAI.AlgoOperator", "role-hiuwpd01ncrokkgp21"], the account of the specified role is granted the read and write permissions.
         # *   If you set the value to ["\\*"], all accounts are granted the read and write permissions.
@@ -20184,7 +20287,7 @@ class UpdateDatasetRequest(TeaModel):
         self.mount_access_read_write_role_id_list = mount_access_read_write_role_id_list
         # The dataset name. You can call [ListDatasets](https://help.aliyun.com/document_detail/457222.html) to obtain the dataset name.
         self.name = name
-        # The extended field, which is a JSON string. When you use the dataset in Deep Learning Containers (DLC), you can configure the mountPath field to specify the default mount path of the dataset.
+        # The extended field, which is a JSON string. When you use the dataset in Deep Learning Containers (DLC), you can set mountPath to specify the default mount path of the dataset.
         self.options = options
 
     def validate(self):
@@ -20198,6 +20301,8 @@ class UpdateDatasetRequest(TeaModel):
         result = dict()
         if self.description is not None:
             result['Description'] = self.description
+        if self.edition is not None:
+            result['Edition'] = self.edition
         if self.mount_access_read_write_role_id_list is not None:
             result['MountAccessReadWriteRoleIdList'] = self.mount_access_read_write_role_id_list
         if self.name is not None:
@@ -20210,6 +20315,8 @@ class UpdateDatasetRequest(TeaModel):
         m = m or dict()
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('Edition') is not None:
+            self.edition = m.get('Edition')
         if m.get('MountAccessReadWriteRoleIdList') is not None:
             self.mount_access_read_write_role_id_list = m.get('MountAccessReadWriteRoleIdList')
         if m.get('Name') is not None:
