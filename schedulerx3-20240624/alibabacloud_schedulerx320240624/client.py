@@ -331,6 +331,8 @@ class Client(OpenApiClient):
             body['Priority'] = request.priority
         if not UtilClient.is_unset(request.route_strategy):
             body['RouteStrategy'] = request.route_strategy
+        if not UtilClient.is_unset(request.script):
+            body['Script'] = request.script
         if not UtilClient.is_unset(request.start_time):
             body['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.status):
@@ -414,6 +416,8 @@ class Client(OpenApiClient):
             body['Priority'] = request.priority
         if not UtilClient.is_unset(request.route_strategy):
             body['RouteStrategy'] = request.route_strategy
+        if not UtilClient.is_unset(request.script):
+            body['Script'] = request.script
         if not UtilClient.is_unset(request.start_time):
             body['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.status):
@@ -1076,6 +1080,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_desigate_info_with_options_async(request, runtime)
+
+    def get_job_execution_with_options(
+        self,
+        request: scheduler_x320240624_models.GetJobExecutionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> scheduler_x320240624_models.GetJobExecutionResponse:
+        """
+        @summary 获取任务执行的详细信息
+        
+        @param request: GetJobExecutionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobExecutionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.job_execution_id):
+            query['JobExecutionId'] = request.job_execution_id
+        if not UtilClient.is_unset(request.mse_session_id):
+            query['MseSessionId'] = request.mse_session_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetJobExecution',
+            version='2024-06-24',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            scheduler_x320240624_models.GetJobExecutionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_job_execution_with_options_async(
+        self,
+        request: scheduler_x320240624_models.GetJobExecutionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> scheduler_x320240624_models.GetJobExecutionResponse:
+        """
+        @summary 获取任务执行的详细信息
+        
+        @param request: GetJobExecutionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobExecutionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.job_execution_id):
+            query['JobExecutionId'] = request.job_execution_id
+        if not UtilClient.is_unset(request.mse_session_id):
+            query['MseSessionId'] = request.mse_session_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetJobExecution',
+            version='2024-06-24',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            scheduler_x320240624_models.GetJobExecutionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_job_execution(
+        self,
+        request: scheduler_x320240624_models.GetJobExecutionRequest,
+    ) -> scheduler_x320240624_models.GetJobExecutionResponse:
+        """
+        @summary 获取任务执行的详细信息
+        
+        @param request: GetJobExecutionRequest
+        @return: GetJobExecutionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_job_execution_with_options(request, runtime)
+
+    async def get_job_execution_async(
+        self,
+        request: scheduler_x320240624_models.GetJobExecutionRequest,
+    ) -> scheduler_x320240624_models.GetJobExecutionResponse:
+        """
+        @summary 获取任务执行的详细信息
+        
+        @param request: GetJobExecutionRequest
+        @return: GetJobExecutionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_job_execution_with_options_async(request, runtime)
 
     def get_job_execution_progress_with_options(
         self,
@@ -2119,6 +2231,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> scheduler_x320240624_models.ListJobsResponse:
         """
+        @summary 获取任务列表
+        
         @param request: ListJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListJobsResponse
@@ -2150,6 +2264,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> scheduler_x320240624_models.ListJobsResponse:
         """
+        @summary 获取任务列表
+        
         @param request: ListJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListJobsResponse
@@ -2180,6 +2296,8 @@ class Client(OpenApiClient):
         request: scheduler_x320240624_models.ListJobsRequest,
     ) -> scheduler_x320240624_models.ListJobsResponse:
         """
+        @summary 获取任务列表
+        
         @param request: ListJobsRequest
         @return: ListJobsResponse
         """
@@ -2191,6 +2309,8 @@ class Client(OpenApiClient):
         request: scheduler_x320240624_models.ListJobsRequest,
     ) -> scheduler_x320240624_models.ListJobsResponse:
         """
+        @summary 获取任务列表
+        
         @param request: ListJobsRequest
         @return: ListJobsResponse
         """
@@ -3703,6 +3823,8 @@ class Client(OpenApiClient):
             body['Priority'] = request.priority
         if not UtilClient.is_unset(request.route_strategy):
             body['RouteStrategy'] = request.route_strategy
+        if not UtilClient.is_unset(request.script):
+            body['Script'] = request.script
         if not UtilClient.is_unset(request.start_time):
             body['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.time_expression):
@@ -3784,6 +3906,8 @@ class Client(OpenApiClient):
             body['Priority'] = request.priority
         if not UtilClient.is_unset(request.route_strategy):
             body['RouteStrategy'] = request.route_strategy
+        if not UtilClient.is_unset(request.script):
+            body['Script'] = request.script
         if not UtilClient.is_unset(request.start_time):
             body['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.time_expression):
