@@ -1,3 +1,7 @@
+2025-06-04 Version: 9.0.10
+- Update API CopySnapshot: add request parameters InstanceBillingCycle.
+
+
 2025-06-03 Version: 9.0.9
 - Update API AttachInstanceSDG: add request parameters LoadOpt.
 - Update API DescribeInstanceSDGStatus: add response parameters Body.DeploymentStatus.$.BlockRwSplitSize.

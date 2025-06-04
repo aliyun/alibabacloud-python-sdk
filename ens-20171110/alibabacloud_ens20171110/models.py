@@ -3199,6 +3199,7 @@ class CopySnapshotRequest(TeaModel):
         destination_region_ids: List[str] = None,
         destination_snapshot_description: str = None,
         destination_snapshot_name: str = None,
+        instance_billing_cycle: str = None,
         snapshot_id: str = None,
     ):
         # The IDs of destination nodes.
@@ -3209,6 +3210,7 @@ class CopySnapshotRequest(TeaModel):
         self.destination_snapshot_description = destination_snapshot_description
         # The name of the snapshot. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         self.destination_snapshot_name = destination_snapshot_name
+        self.instance_billing_cycle = instance_billing_cycle
         # The ID of the source snapshot.
         # 
         # This parameter is required.
@@ -3229,6 +3231,8 @@ class CopySnapshotRequest(TeaModel):
             result['DestinationSnapshotDescription'] = self.destination_snapshot_description
         if self.destination_snapshot_name is not None:
             result['DestinationSnapshotName'] = self.destination_snapshot_name
+        if self.instance_billing_cycle is not None:
+            result['InstanceBillingCycle'] = self.instance_billing_cycle
         if self.snapshot_id is not None:
             result['SnapshotId'] = self.snapshot_id
         return result
@@ -3241,6 +3245,8 @@ class CopySnapshotRequest(TeaModel):
             self.destination_snapshot_description = m.get('DestinationSnapshotDescription')
         if m.get('DestinationSnapshotName') is not None:
             self.destination_snapshot_name = m.get('DestinationSnapshotName')
+        if m.get('InstanceBillingCycle') is not None:
+            self.instance_billing_cycle = m.get('InstanceBillingCycle')
         if m.get('SnapshotId') is not None:
             self.snapshot_id = m.get('SnapshotId')
         return self
@@ -3252,6 +3258,7 @@ class CopySnapshotShrinkRequest(TeaModel):
         destination_region_ids_shrink: str = None,
         destination_snapshot_description: str = None,
         destination_snapshot_name: str = None,
+        instance_billing_cycle: str = None,
         snapshot_id: str = None,
     ):
         # The IDs of destination nodes.
@@ -3262,6 +3269,7 @@ class CopySnapshotShrinkRequest(TeaModel):
         self.destination_snapshot_description = destination_snapshot_description
         # The name of the snapshot. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         self.destination_snapshot_name = destination_snapshot_name
+        self.instance_billing_cycle = instance_billing_cycle
         # The ID of the source snapshot.
         # 
         # This parameter is required.
@@ -3282,6 +3290,8 @@ class CopySnapshotShrinkRequest(TeaModel):
             result['DestinationSnapshotDescription'] = self.destination_snapshot_description
         if self.destination_snapshot_name is not None:
             result['DestinationSnapshotName'] = self.destination_snapshot_name
+        if self.instance_billing_cycle is not None:
+            result['InstanceBillingCycle'] = self.instance_billing_cycle
         if self.snapshot_id is not None:
             result['SnapshotId'] = self.snapshot_id
         return result
@@ -3294,6 +3304,8 @@ class CopySnapshotShrinkRequest(TeaModel):
             self.destination_snapshot_description = m.get('DestinationSnapshotDescription')
         if m.get('DestinationSnapshotName') is not None:
             self.destination_snapshot_name = m.get('DestinationSnapshotName')
+        if m.get('InstanceBillingCycle') is not None:
+            self.instance_billing_cycle = m.get('InstanceBillingCycle')
         if m.get('SnapshotId') is not None:
             self.snapshot_id = m.get('SnapshotId')
         return self

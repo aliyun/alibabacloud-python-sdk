@@ -1781,6 +1781,8 @@ class Client(OpenApiClient):
             query['DestinationSnapshotDescription'] = request.destination_snapshot_description
         if not UtilClient.is_unset(request.destination_snapshot_name):
             query['DestinationSnapshotName'] = request.destination_snapshot_name
+        if not UtilClient.is_unset(request.instance_billing_cycle):
+            query['InstanceBillingCycle'] = request.instance_billing_cycle
         if not UtilClient.is_unset(request.snapshot_id):
             query['SnapshotId'] = request.snapshot_id
         req = open_api_models.OpenApiRequest(
@@ -1826,6 +1828,8 @@ class Client(OpenApiClient):
             query['DestinationSnapshotDescription'] = request.destination_snapshot_description
         if not UtilClient.is_unset(request.destination_snapshot_name):
             query['DestinationSnapshotName'] = request.destination_snapshot_name
+        if not UtilClient.is_unset(request.instance_billing_cycle):
+            query['InstanceBillingCycle'] = request.instance_billing_cycle
         if not UtilClient.is_unset(request.snapshot_id):
             query['SnapshotId'] = request.snapshot_id
         req = open_api_models.OpenApiRequest(
