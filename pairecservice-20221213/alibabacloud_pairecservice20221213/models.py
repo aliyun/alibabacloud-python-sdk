@@ -2599,6 +2599,7 @@ class CreateFeatureConsistencyCheckJobConfigRequest(TeaModel):
         predict_worker_count: int = None,
         predict_worker_cpu: int = None,
         predict_worker_memory: int = None,
+        resource_config: str = None,
         sample_rate: float = None,
         scene_id: str = None,
         security_group_id: str = None,
@@ -2652,6 +2653,7 @@ class CreateFeatureConsistencyCheckJobConfigRequest(TeaModel):
         self.predict_worker_count = predict_worker_count
         self.predict_worker_cpu = predict_worker_cpu
         self.predict_worker_memory = predict_worker_memory
+        self.resource_config = resource_config
         # This parameter is required.
         self.sample_rate = sample_rate
         # This parameter is required.
@@ -2743,6 +2745,8 @@ class CreateFeatureConsistencyCheckJobConfigRequest(TeaModel):
             result['PredictWorkerCpu'] = self.predict_worker_cpu
         if self.predict_worker_memory is not None:
             result['PredictWorkerMemory'] = self.predict_worker_memory
+        if self.resource_config is not None:
+            result['ResourceConfig'] = self.resource_config
         if self.sample_rate is not None:
             result['SampleRate'] = self.sample_rate
         if self.scene_id is not None:
@@ -2837,6 +2841,8 @@ class CreateFeatureConsistencyCheckJobConfigRequest(TeaModel):
             self.predict_worker_cpu = m.get('PredictWorkerCpu')
         if m.get('PredictWorkerMemory') is not None:
             self.predict_worker_memory = m.get('PredictWorkerMemory')
+        if m.get('ResourceConfig') is not None:
+            self.resource_config = m.get('ResourceConfig')
         if m.get('SampleRate') is not None:
             self.sample_rate = m.get('SampleRate')
         if m.get('SceneId') is not None:
@@ -8339,6 +8345,7 @@ class GetFeatureConsistencyCheckJobConfigResponseBody(TeaModel):
         predict_worker_cpu: int = None,
         predict_worker_memory: int = None,
         request_id: str = None,
+        resource_config: str = None,
         sample_rate: str = None,
         scene_id: str = None,
         scene_name: str = None,
@@ -8395,6 +8402,7 @@ class GetFeatureConsistencyCheckJobConfigResponseBody(TeaModel):
         self.predict_worker_cpu = predict_worker_cpu
         self.predict_worker_memory = predict_worker_memory
         self.request_id = request_id
+        self.resource_config = resource_config
         self.sample_rate = sample_rate
         self.scene_id = scene_id
         self.scene_name = scene_name
@@ -8499,6 +8507,8 @@ class GetFeatureConsistencyCheckJobConfigResponseBody(TeaModel):
             result['PredictWorkerMemory'] = self.predict_worker_memory
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_config is not None:
+            result['ResourceConfig'] = self.resource_config
         if self.sample_rate is not None:
             result['SampleRate'] = self.sample_rate
         if self.scene_id is not None:
@@ -8613,6 +8623,8 @@ class GetFeatureConsistencyCheckJobConfigResponseBody(TeaModel):
             self.predict_worker_memory = m.get('PredictWorkerMemory')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceConfig') is not None:
+            self.resource_config = m.get('ResourceConfig')
         if m.get('SampleRate') is not None:
             self.sample_rate = m.get('SampleRate')
         if m.get('SceneId') is not None:
@@ -13330,6 +13342,7 @@ class ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckCo
         predict_worker_count: int = None,
         predict_worker_cpu: int = None,
         predict_worker_memory: int = None,
+        resource_config: str = None,
         sample_rate: str = None,
         scene_id: str = None,
         scene_name: str = None,
@@ -13386,6 +13399,7 @@ class ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckCo
         self.predict_worker_count = predict_worker_count
         self.predict_worker_cpu = predict_worker_cpu
         self.predict_worker_memory = predict_worker_memory
+        self.resource_config = resource_config
         self.sample_rate = sample_rate
         self.scene_id = scene_id
         self.scene_name = scene_name
@@ -13490,6 +13504,8 @@ class ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckCo
             result['PredictWorkerCpu'] = self.predict_worker_cpu
         if self.predict_worker_memory is not None:
             result['PredictWorkerMemory'] = self.predict_worker_memory
+        if self.resource_config is not None:
+            result['ResourceConfig'] = self.resource_config
         if self.sample_rate is not None:
             result['SampleRate'] = self.sample_rate
         if self.scene_id is not None:
@@ -13604,6 +13620,8 @@ class ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckCo
             self.predict_worker_cpu = m.get('PredictWorkerCpu')
         if m.get('PredictWorkerMemory') is not None:
             self.predict_worker_memory = m.get('PredictWorkerMemory')
+        if m.get('ResourceConfig') is not None:
+            self.resource_config = m.get('ResourceConfig')
         if m.get('SampleRate') is not None:
             self.sample_rate = m.get('SampleRate')
         if m.get('SceneId') is not None:
@@ -21359,6 +21377,7 @@ class UpdateFeatureConsistencyCheckJobConfigRequest(TeaModel):
         predict_worker_count: int = None,
         predict_worker_cpu: int = None,
         predict_worker_memory: int = None,
+        resource_config: str = None,
         sample_rate: float = None,
         scene_id: str = None,
         security_group_id: str = None,
@@ -21416,6 +21435,7 @@ class UpdateFeatureConsistencyCheckJobConfigRequest(TeaModel):
         self.predict_worker_count = predict_worker_count
         self.predict_worker_cpu = predict_worker_cpu
         self.predict_worker_memory = predict_worker_memory
+        self.resource_config = resource_config
         # This parameter is required.
         self.sample_rate = sample_rate
         # This parameter is required.
@@ -21510,6 +21530,8 @@ class UpdateFeatureConsistencyCheckJobConfigRequest(TeaModel):
             result['PredictWorkerCpu'] = self.predict_worker_cpu
         if self.predict_worker_memory is not None:
             result['PredictWorkerMemory'] = self.predict_worker_memory
+        if self.resource_config is not None:
+            result['ResourceConfig'] = self.resource_config
         if self.sample_rate is not None:
             result['SampleRate'] = self.sample_rate
         if self.scene_id is not None:
@@ -21604,6 +21626,8 @@ class UpdateFeatureConsistencyCheckJobConfigRequest(TeaModel):
             self.predict_worker_cpu = m.get('PredictWorkerCpu')
         if m.get('PredictWorkerMemory') is not None:
             self.predict_worker_memory = m.get('PredictWorkerMemory')
+        if m.get('ResourceConfig') is not None:
+            self.resource_config = m.get('ResourceConfig')
         if m.get('SampleRate') is not None:
             self.sample_rate = m.get('SampleRate')
         if m.get('SceneId') is not None:

@@ -1,3 +1,10 @@
+2025-06-04 Version: 3.1.1
+- Update API CreateFeatureConsistencyCheckJobConfig: add request parameters body.ResourceConfig.
+- Update API GetFeatureConsistencyCheckJobConfig: add response parameters Body.ResourceConfig.
+- Update API ListFeatureConsistencyCheckJobConfigs: add response parameters Body.FeatureConsistencyCheckConfigs.$.ResourceConfig.
+- Update API UpdateFeatureConsistencyCheckJobConfig: add request parameters body.ResourceConfig.
+
+
 2025-05-19 Version: 3.1.0
 - Support API CompareSampleConsistencyJob.
 - Support API CreateSampleConsistencyJob.

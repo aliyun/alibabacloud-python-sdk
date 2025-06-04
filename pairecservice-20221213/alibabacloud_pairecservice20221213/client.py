@@ -2433,6 +2433,8 @@ class Client(OpenApiClient):
             body['PredictWorkerCpu'] = request.predict_worker_cpu
         if not UtilClient.is_unset(request.predict_worker_memory):
             body['PredictWorkerMemory'] = request.predict_worker_memory
+        if not UtilClient.is_unset(request.resource_config):
+            body['ResourceConfig'] = request.resource_config
         if not UtilClient.is_unset(request.sample_rate):
             body['SampleRate'] = request.sample_rate
         if not UtilClient.is_unset(request.scene_id):
@@ -2559,6 +2561,8 @@ class Client(OpenApiClient):
             body['PredictWorkerCpu'] = request.predict_worker_cpu
         if not UtilClient.is_unset(request.predict_worker_memory):
             body['PredictWorkerMemory'] = request.predict_worker_memory
+        if not UtilClient.is_unset(request.resource_config):
+            body['ResourceConfig'] = request.resource_config
         if not UtilClient.is_unset(request.sample_rate):
             body['SampleRate'] = request.sample_rate
         if not UtilClient.is_unset(request.scene_id):
@@ -15024,6 +15028,8 @@ class Client(OpenApiClient):
             body['PredictWorkerCpu'] = request.predict_worker_cpu
         if not UtilClient.is_unset(request.predict_worker_memory):
             body['PredictWorkerMemory'] = request.predict_worker_memory
+        if not UtilClient.is_unset(request.resource_config):
+            body['ResourceConfig'] = request.resource_config
         if not UtilClient.is_unset(request.sample_rate):
             body['SampleRate'] = request.sample_rate
         if not UtilClient.is_unset(request.scene_id):
@@ -15151,6 +15157,8 @@ class Client(OpenApiClient):
             body['PredictWorkerCpu'] = request.predict_worker_cpu
         if not UtilClient.is_unset(request.predict_worker_memory):
             body['PredictWorkerMemory'] = request.predict_worker_memory
+        if not UtilClient.is_unset(request.resource_config):
+            body['ResourceConfig'] = request.resource_config
         if not UtilClient.is_unset(request.sample_rate):
             body['SampleRate'] = request.sample_rate
         if not UtilClient.is_unset(request.scene_id):
