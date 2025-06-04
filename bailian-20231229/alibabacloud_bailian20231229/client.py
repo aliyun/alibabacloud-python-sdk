@@ -3039,6 +3039,8 @@ class Client(OpenApiClient):
             query['DocumentName'] = request.document_name
         if not UtilClient.is_unset(request.document_status):
             query['DocumentStatus'] = request.document_status
+        if not UtilClient.is_unset(request.enable_name_like):
+            query['EnableNameLike'] = request.enable_name_like
         if not UtilClient.is_unset(request.index_id):
             query['IndexId'] = request.index_id
         if not UtilClient.is_unset(request.page_number):
@@ -3089,6 +3091,8 @@ class Client(OpenApiClient):
             query['DocumentName'] = request.document_name
         if not UtilClient.is_unset(request.document_status):
             query['DocumentStatus'] = request.document_status
+        if not UtilClient.is_unset(request.enable_name_like):
+            query['EnableNameLike'] = request.enable_name_like
         if not UtilClient.is_unset(request.index_id):
             query['IndexId'] = request.index_id
         if not UtilClient.is_unset(request.page_number):

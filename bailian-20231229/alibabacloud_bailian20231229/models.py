@@ -1656,8 +1656,6 @@ class CreateIndexRequest(TeaModel):
         # >  If this parameter is set to DATA_CENTER_CATEGORY, you must specify the `CategoryIds` parameter. If this parameter is set to DATA_CENTER_FILE, you must specify the `DocumentIds` parameter.
         # 
         # >  If you want to create an empty knowledge base, you can use an empty category. Set this parameter to DATA_CENTER_CATEGORY. And specify the ID of an empty category for the `CategoryIds` parameter.
-        # 
-        # This parameter is required.
         self.source_type = source_type
         # The data type of the knowledge base. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid value:
         # 
@@ -1890,8 +1888,6 @@ class CreateIndexShrinkRequest(TeaModel):
         # >  If this parameter is set to DATA_CENTER_CATEGORY, you must specify the `CategoryIds` parameter. If this parameter is set to DATA_CENTER_FILE, you must specify the `DocumentIds` parameter.
         # 
         # >  If you want to create an empty knowledge base, you can use an empty category. Set this parameter to DATA_CENTER_CATEGORY. And specify the ID of an empty category for the `CategoryIds` parameter.
-        # 
-        # This parameter is required.
         self.source_type = source_type
         # The data type of the knowledge base. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid value:
         # 
@@ -5421,6 +5417,7 @@ class ListIndexDocumentsRequest(TeaModel):
         self,
         document_name: str = None,
         document_status: str = None,
+        enable_name_like: str = None,
         index_id: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -5436,6 +5433,7 @@ class ListIndexDocumentsRequest(TeaModel):
         # 
         # The default value is null, which means the import status is not used to filter the results.
         self.document_status = document_status
+        self.enable_name_like = enable_name_like
         # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
         # 
         # This parameter is required.
@@ -5458,6 +5456,8 @@ class ListIndexDocumentsRequest(TeaModel):
             result['DocumentName'] = self.document_name
         if self.document_status is not None:
             result['DocumentStatus'] = self.document_status
+        if self.enable_name_like is not None:
+            result['EnableNameLike'] = self.enable_name_like
         if self.index_id is not None:
             result['IndexId'] = self.index_id
         if self.page_number is not None:
@@ -5472,6 +5472,8 @@ class ListIndexDocumentsRequest(TeaModel):
             self.document_name = m.get('DocumentName')
         if m.get('DocumentStatus') is not None:
             self.document_status = m.get('DocumentStatus')
+        if m.get('EnableNameLike') is not None:
+            self.enable_name_like = m.get('EnableNameLike')
         if m.get('IndexId') is not None:
             self.index_id = m.get('IndexId')
         if m.get('PageNumber') is not None:

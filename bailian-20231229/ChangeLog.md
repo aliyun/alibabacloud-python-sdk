@@ -1,3 +1,7 @@
+2025-06-04 Version: 2.0.8
+- Update API ListIndexDocuments: add request parameters EnableNameLike.
+
+
 2025-05-23 Version: 2.0.7
 - Update API ListCategory: add request parameters CategoryName.
 
