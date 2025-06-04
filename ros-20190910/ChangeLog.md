@@ -1,3 +1,9 @@
+2025-06-04 Version: 3.5.6
+- Update API CreateChangeSet: add request parameters TaintResources.
+- Update API PreviewStack: add request parameters TaintResources.
+- Update API UpdateStack: add request parameters TaintResources.
+
+
 2025-05-22 Version: 3.5.5
 - Update API GetServiceProvisions: add response parameters Body.ServiceProvisions.$.CommodityProvisions.
 

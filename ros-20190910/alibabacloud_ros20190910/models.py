@@ -915,6 +915,7 @@ class CreateChangeSetRequest(TeaModel):
         stack_policy_during_update_url: str = None,
         stack_policy_url: str = None,
         tags: List[CreateChangeSetRequestTags] = None,
+        taint_resources: List[str] = None,
         template_body: str = None,
         template_id: str = None,
         template_scratch_id: str = None,
@@ -1058,6 +1059,7 @@ class CreateChangeSetRequest(TeaModel):
         # *   StackPolicyDuringUpdateURL
         self.stack_policy_url = stack_policy_url
         self.tags = tags
+        self.taint_resources = taint_resources
         self.template_body = template_body
         # The template ID. This parameter applies to shared templates and private templates.
         # 
@@ -1166,6 +1168,8 @@ class CreateChangeSetRequest(TeaModel):
         if self.tags is not None:
             for k in self.tags:
                 result['Tags'].append(k.to_map() if k else None)
+        if self.taint_resources is not None:
+            result['TaintResources'] = self.taint_resources
         if self.template_body is not None:
             result['TemplateBody'] = self.template_body
         if self.template_id is not None:
@@ -1233,6 +1237,8 @@ class CreateChangeSetRequest(TeaModel):
             for k in m.get('Tags'):
                 temp_model = CreateChangeSetRequestTags()
                 self.tags.append(temp_model.from_map(k))
+        if m.get('TaintResources') is not None:
+            self.taint_resources = m.get('TaintResources')
         if m.get('TemplateBody') is not None:
             self.template_body = m.get('TemplateBody')
         if m.get('TemplateId') is not None:
@@ -21743,6 +21749,7 @@ class PreviewStackRequest(TeaModel):
         stack_name: str = None,
         stack_policy_body: str = None,
         stack_policy_url: str = None,
+        taint_resources: List[str] = None,
         template_body: str = None,
         template_id: str = None,
         template_scratch_id: str = None,
@@ -21800,6 +21807,7 @@ class PreviewStackRequest(TeaModel):
         # 
         # The URL can be up to 1,350 bytes in length.
         self.stack_policy_url = stack_policy_url
+        self.taint_resources = taint_resources
         self.template_body = template_body
         # The template ID. This parameter applies to shared and private templates.
         # 
@@ -21862,6 +21870,8 @@ class PreviewStackRequest(TeaModel):
             result['StackPolicyBody'] = self.stack_policy_body
         if self.stack_policy_url is not None:
             result['StackPolicyURL'] = self.stack_policy_url
+        if self.taint_resources is not None:
+            result['TaintResources'] = self.taint_resources
         if self.template_body is not None:
             result['TemplateBody'] = self.template_body
         if self.template_id is not None:
@@ -21903,6 +21913,8 @@ class PreviewStackRequest(TeaModel):
             self.stack_policy_body = m.get('StackPolicyBody')
         if m.get('StackPolicyURL') is not None:
             self.stack_policy_url = m.get('StackPolicyURL')
+        if m.get('TaintResources') is not None:
+            self.taint_resources = m.get('TaintResources')
         if m.get('TemplateBody') is not None:
             self.template_body = m.get('TemplateBody')
         if m.get('TemplateId') is not None:
@@ -23713,6 +23725,7 @@ class UpdateStackRequest(TeaModel):
         stack_policy_during_update_url: str = None,
         stack_policy_url: str = None,
         tags: List[UpdateStackRequestTags] = None,
+        taint_resources: List[str] = None,
         template_body: str = None,
         template_id: str = None,
         template_url: str = None,
@@ -23818,6 +23831,7 @@ class UpdateStackRequest(TeaModel):
         self.stack_policy_url = stack_policy_url
         # The value of tag N that you want to add to the template.
         self.tags = tags
+        self.taint_resources = taint_resources
         self.template_body = template_body
         # The ID of the template. This parameter applies to shared templates and private templates.
         # 
@@ -23894,6 +23908,8 @@ class UpdateStackRequest(TeaModel):
         if self.tags is not None:
             for k in self.tags:
                 result['Tags'].append(k.to_map() if k else None)
+        if self.taint_resources is not None:
+            result['TaintResources'] = self.taint_resources
         if self.template_body is not None:
             result['TemplateBody'] = self.template_body
         if self.template_id is not None:
@@ -23948,6 +23964,8 @@ class UpdateStackRequest(TeaModel):
             for k in m.get('Tags'):
                 temp_model = UpdateStackRequestTags()
                 self.tags.append(temp_model.from_map(k))
+        if m.get('TaintResources') is not None:
+            self.taint_resources = m.get('TaintResources')
         if m.get('TemplateBody') is not None:
             self.template_body = m.get('TemplateBody')
         if m.get('TemplateId') is not None:

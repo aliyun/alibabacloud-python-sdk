@@ -595,6 +595,8 @@ class Client(OpenApiClient):
             query['StackPolicyURL'] = request.stack_policy_url
         if not UtilClient.is_unset(request.tags):
             query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.taint_resources):
+            query['TaintResources'] = request.taint_resources
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.template_scratch_id):
@@ -700,6 +702,8 @@ class Client(OpenApiClient):
             query['StackPolicyURL'] = request.stack_policy_url
         if not UtilClient.is_unset(request.tags):
             query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.taint_resources):
+            query['TaintResources'] = request.taint_resources
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.template_scratch_id):
@@ -9057,6 +9061,8 @@ class Client(OpenApiClient):
             query['StackPolicyBody'] = request.stack_policy_body
         if not UtilClient.is_unset(request.stack_policy_url):
             query['StackPolicyURL'] = request.stack_policy_url
+        if not UtilClient.is_unset(request.taint_resources):
+            query['TaintResources'] = request.taint_resources
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.template_scratch_id):
@@ -9128,6 +9134,8 @@ class Client(OpenApiClient):
             query['StackPolicyBody'] = request.stack_policy_body
         if not UtilClient.is_unset(request.stack_policy_url):
             query['StackPolicyURL'] = request.stack_policy_url
+        if not UtilClient.is_unset(request.taint_resources):
+            query['TaintResources'] = request.taint_resources
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.template_scratch_id):
@@ -10288,6 +10296,8 @@ class Client(OpenApiClient):
             query['StackPolicyURL'] = request.stack_policy_url
         if not UtilClient.is_unset(request.tags):
             query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.taint_resources):
+            query['TaintResources'] = request.taint_resources
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.template_url):
@@ -10372,6 +10382,8 @@ class Client(OpenApiClient):
             query['StackPolicyURL'] = request.stack_policy_url
         if not UtilClient.is_unset(request.tags):
             query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.taint_resources):
+            query['TaintResources'] = request.taint_resources
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.template_url):
