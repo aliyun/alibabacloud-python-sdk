@@ -1,3 +1,6 @@
+2025-06-04 Version: 1.1.7
+- Generated python 2020-03-20 for cddc.
+
 2024-04-03 Version: 1.1.6
 - Update API CreateDedicatedHost: add param ClusterAlias.
 - Update API CreateDedicatedHost: add param ClusterServices.

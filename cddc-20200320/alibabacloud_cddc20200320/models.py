@@ -26,23 +26,49 @@ class CreateDedicatedHostRequestMyBaseEcsClass(TeaModel):
         system_disk_size: int = None,
         tags: List[str] = None,
     ):
+        # The number of hosts that you want to create.
         self.amount = amount
+        # Specifies whether to enable auto-renewal for the host. Default value: false.
         self.auto_renew = auto_renew
+        # The billing method. Valid values:
+        # 
+        # *   PrePaid: subscription.
+        # *   PostPaid: pay-as-you-go.
         self.charge_type = charge_type
+        # The type of the data disk.
         self.data_disk_category = data_disk_category
+        # The number of data disks.
         self.data_disk_count = data_disk_count
+        # The size of the data disk. Unit: GB.
         self.data_disk_size = data_disk_size
+        # The deployment set ID.
         self.depolyment_set_id = depolyment_set_id
+        # The instance type.
         self.ecs_class_code = ecs_class_code
+        # The metering method for network usage. Valid values:
+        # 
+        # *   PayByBandwidth
+        # *   PayByTraffic
         self.internet_charge_type = internet_charge_type
+        # The maximum outbound public bandwidth. Unit: Mbit/s.
+        # 
+        # Default value: 0. If you specify the parameter to a value greater than 0, a public IP address is automatically created.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
+        # The name of the key pair.
         self.key_pair_name = key_pair_name
+        # The password of the host.
         self.password = password
+        # The subscription duration of the host. The Period parameter must be specified when ChargeType is set to PrePaid.
         self.period = period
+        # The unit of the subscription duration. Default value: Month.
         self.period_type = period_type
+        # The IDs of the security groups to which the instance belongs.
         self.security_group_ids = security_group_ids
+        # The type of the system disk.
         self.system_disk_category = system_disk_category
+        # The size of the system disk. Unit: GB.
         self.system_disk_size = system_disk_size
+        # The tags that you want to add to the host.
         self.tags = tags
 
     def validate(self):
@@ -167,15 +193,24 @@ class CreateDedicatedHostRequest(TeaModel):
         # >  If you do not specify this parameter, the default value **false** is used.
         self.auto_renew = auto_renew
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # 
+        # This parameter is required.
         self.client_token = client_token
+        # The alias of the Self-managed MyBase cluster.
         self.cluster_alias = cluster_alias
+        # The services associated with the instances in the Self-managed MyBase on Elastic Compute Service (ECS) cluster.
         self.cluster_services = cluster_services
+        # The deployment type of the Self-managed MyBase cluster. Valid values: onACK and onECS.
         self.cluster_type = cluster_type
         # The dedicated cluster ID. You can log on to the ApsaraDB for MyBase console and go to the **Dedicated Clusters** page to view the dedicated cluster ID.
         # 
         # >  The database engine of the host is the same as the database engine of the cluster.
+        # 
+        # This parameter is required.
         self.dedicated_host_group_id = dedicated_host_group_id
-        # The instance type of the host. For information about the host instance types supported by different database engines, see [Instance types of hosts](~~206343~~).
+        # The instance type of the host. For information about the host instance types supported by different database engines, see [Instance types of hosts](https://help.aliyun.com/document_detail/206343.html).
+        # 
+        # This parameter is required.
         self.host_class = host_class
         # The disk storage of the host. This parameter takes effect only for dedicated clusters that run Tair. Unit: GB. Valid values:
         # 
@@ -203,22 +238,27 @@ class CreateDedicatedHostRequest(TeaModel):
         # 
         # >  When you create a host that runs SQL Server, you must specify a host image.
         self.image_category = image_category
+        # The parameters of the instances in the Self-managed MyBase on Elastic Compute Service (ECS) cluster.
         self.my_base_ecs_class = my_base_ecs_class
         # The password of the host. You can specify a password only when you create a host in a **Proprietary MyBase** dedicated cluster.
         # 
         # *   The password must be 8 to 30 characters in length.
         # *   The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
-        # *   The password can contain the following special characters: () \ \` ~ ! @ # $ % ^ & \* - \_ + = | { } \[ ] : ; \" < > , . ? /\
+        # *   The password can contain the following special characters: () \\ \\` ~ ! @ # $ % ^ & \\* - _ + = | { } [ ] : ; \\" < > , . ? /\
         self.os_password = os_password
         self.owner_id = owner_id
         # The billing method of the host. Set the value to **prepaid**.
+        # 
+        # This parameter is required.
         self.pay_type = pay_type
         # The unit of the subscription duration. Valid values:
         # 
         # *   **Year**\
         # *   **Month**\
         self.period = period
-        # The [region ID](~~198326~~) of the dedicated cluster.
+        # The [region ID](https://help.aliyun.com/document_detail/198326.html) of the dedicated cluster.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -227,10 +267,15 @@ class CreateDedicatedHostRequest(TeaModel):
         # *   Valid values when **Period** is set to **Year**: **1** to **5**.****\
         # *   Valid values when **Period** is set to **Month**: **1** to **9**.
         self.used_time = used_time
-        # The vSwitch ID. You can log on to the Virtual Private Cloud (VPC) console to view the vSwitch ID.
+        # The vSwitch ID. You can view the vSwitch ID in the Virtual Private Cloud (VPC) console.
+        # 
+        # This parameter is required.
         self.v_switch_id = v_switch_id
+        # The VPC ID of the Self-managed MyBase cluster.
         self.vpc_id = vpc_id
-        # The zone ID. You can call the [DescribeRegions](~~214103~~) operation to query the most recent zone list.
+        # The zone ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/214103.html) operation to query the most recent zone list.
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -373,15 +418,24 @@ class CreateDedicatedHostShrinkRequest(TeaModel):
         # >  If you do not specify this parameter, the default value **false** is used.
         self.auto_renew = auto_renew
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # 
+        # This parameter is required.
         self.client_token = client_token
+        # The alias of the Self-managed MyBase cluster.
         self.cluster_alias = cluster_alias
+        # The services associated with the instances in the Self-managed MyBase on Elastic Compute Service (ECS) cluster.
         self.cluster_services_shrink = cluster_services_shrink
+        # The deployment type of the Self-managed MyBase cluster. Valid values: onACK and onECS.
         self.cluster_type = cluster_type
         # The dedicated cluster ID. You can log on to the ApsaraDB for MyBase console and go to the **Dedicated Clusters** page to view the dedicated cluster ID.
         # 
         # >  The database engine of the host is the same as the database engine of the cluster.
+        # 
+        # This parameter is required.
         self.dedicated_host_group_id = dedicated_host_group_id
-        # The instance type of the host. For information about the host instance types supported by different database engines, see [Instance types of hosts](~~206343~~).
+        # The instance type of the host. For information about the host instance types supported by different database engines, see [Instance types of hosts](https://help.aliyun.com/document_detail/206343.html).
+        # 
+        # This parameter is required.
         self.host_class = host_class
         # The disk storage of the host. This parameter takes effect only for dedicated clusters that run Tair. Unit: GB. Valid values:
         # 
@@ -409,22 +463,27 @@ class CreateDedicatedHostShrinkRequest(TeaModel):
         # 
         # >  When you create a host that runs SQL Server, you must specify a host image.
         self.image_category = image_category
+        # The parameters of the instances in the Self-managed MyBase on Elastic Compute Service (ECS) cluster.
         self.my_base_ecs_class_shrink = my_base_ecs_class_shrink
         # The password of the host. You can specify a password only when you create a host in a **Proprietary MyBase** dedicated cluster.
         # 
         # *   The password must be 8 to 30 characters in length.
         # *   The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
-        # *   The password can contain the following special characters: () \ \` ~ ! @ # $ % ^ & \* - \_ + = | { } \[ ] : ; \" < > , . ? /\
+        # *   The password can contain the following special characters: () \\ \\` ~ ! @ # $ % ^ & \\* - _ + = | { } [ ] : ; \\" < > , . ? /\
         self.os_password = os_password
         self.owner_id = owner_id
         # The billing method of the host. Set the value to **prepaid**.
+        # 
+        # This parameter is required.
         self.pay_type = pay_type
         # The unit of the subscription duration. Valid values:
         # 
         # *   **Year**\
         # *   **Month**\
         self.period = period
-        # The [region ID](~~198326~~) of the dedicated cluster.
+        # The [region ID](https://help.aliyun.com/document_detail/198326.html) of the dedicated cluster.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -433,10 +492,15 @@ class CreateDedicatedHostShrinkRequest(TeaModel):
         # *   Valid values when **Period** is set to **Year**: **1** to **5**.****\
         # *   Valid values when **Period** is set to **Month**: **1** to **9**.
         self.used_time = used_time
-        # The vSwitch ID. You can log on to the Virtual Private Cloud (VPC) console to view the vSwitch ID.
+        # The vSwitch ID. You can view the vSwitch ID in the Virtual Private Cloud (VPC) console.
+        # 
+        # This parameter is required.
         self.v_switch_id = v_switch_id
+        # The VPC ID of the Self-managed MyBase cluster.
         self.vpc_id = vpc_id
-        # The zone ID. You can call the [DescribeRegions](~~214103~~) operation to query the most recent zone list.
+        # The zone ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/214103.html) operation to query the most recent zone list.
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -548,7 +612,7 @@ class CreateDedicatedHostResponseBodyDedicateHostListDedicateHostList(TeaModel):
         self,
         dedicated_host_id: str = None,
     ):
-        # The host ID.
+        # The ID of the created host.
         self.dedicated_host_id = dedicated_host_id
 
     def validate(self):
@@ -614,6 +678,7 @@ class CreateDedicatedHostResponseBody(TeaModel):
         order_id: int = None,
         request_id: str = None,
     ):
+        # The name of the cluster.
         self.cluster_name = cluster_name
         # The created hosts.
         self.dedicate_host_list = dedicate_host_list
@@ -715,7 +780,9 @@ class CreateDedicatedHostAccountRequest(TeaModel):
         # 
         # *   The name must be 2 to 16 characters in length.
         # *   The name must start with a lowercase letter and end with a lowercase letter or a digit.
-        # *   The name can contain lowercase letters, digits, and underscores (\_).
+        # *   The name can contain lowercase letters, digits, and underscores (_).
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The password of the host account.
         # 
@@ -724,22 +791,26 @@ class CreateDedicatedHostAccountRequest(TeaModel):
         # *   The password can contain the following special characters: `! @ # $ % ^ & * ( ) _ + - =`
         # 
         # >  If your host runs SQL Server, the password cannot contain the account name (case-insensitive).
+        # 
+        # This parameter is required.
         self.account_password = account_password
         # The type of the host account. Valid values:
         # 
         # *   **Normal**: standard account.
         # *   **Admin**: administrator account.
         # 
-        # For more information, see [Host permissions](~~176240~~).
+        # For more information, see [Host permissions](https://help.aliyun.com/document_detail/176240.html).
         self.account_type = account_type
         # The ID of the bastion host with which the host is associated. You can log on to the ApsaraDB for MyBase console and go to the **Bastion Hosts** page to view the bastion host ID.
         self.bastion_instance_id = bastion_instance_id
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The host ID. You can call the [DescribeDedicatedHosts](~~200944~~) operation to query the host ID.
+        # The host ID. You can call the [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/200944.html) operation to query the host ID.
+        # 
+        # This parameter is required.
         self.dedicated_host_id = dedicated_host_id
         self.owner_id = owner_id
-        # The region ID of the host. You can call the [DescribeDedicatedHostAttribute](~~213010~~) operation to query the region ID.
+        # The region ID of the host. You can call the [DescribeDedicatedHostAttribute](https://help.aliyun.com/document_detail/213010.html) operation to query the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -893,12 +964,14 @@ class CreateDedicatedHostGroupRequest(TeaModel):
         # *   **Intensively**: The system preferentially deploys database instances on the hosts that are created earlier and have more allocated resources. This maximizes resource utilization.
         self.allocation_policy = allocation_policy
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # 
+        # This parameter is required.
         self.client_token = client_token
         # The CPU overcommit ratio of the dedicated cluster.
         # 
         # >  Unit: %. Valid values: **100** to **300**. Default value: **200**, which specifies that the total amount of CPU resources allocated to all instances is twice the amount of actual CPU resources. This helps you maximize CPU utilization.
         self.cpu_allocation_ratio = cpu_allocation_ratio
-        # The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+        # The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
         self.dedicated_host_group_desc = dedicated_host_group_desc
         # The storage overcommit ratio of the dedicated cluster.
         # 
@@ -908,6 +981,8 @@ class CreateDedicatedHostGroupRequest(TeaModel):
         # 
         # *   **MySQL**\
         # *   **SQL Server**\
+        # 
+        # This parameter is required.
         self.engine = engine
         # The policy that is used to handle host failures. Valid values:
         # 
@@ -928,11 +1003,15 @@ class CreateDedicatedHostGroupRequest(TeaModel):
         # >  When you create a dedicated cluster that runs **MySQL or SQL Server**, you can grant the host OS permissions based on your business requirements. For dedicated clusters that run other database engines, the default value **0** is used. When you create an ApsaraDB MyBase for SQL Server dedicated cluster, you must set this parameter to 1.
         self.open_permission = open_permission
         self.owner_id = owner_id
-        # The region ID. For more information, see [Region IDs](~~198326~~).
+        # The region ID. For more information, see [Region IDs](https://help.aliyun.com/document_detail/198326.html).
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the virtual private cloud (VPC) where you want to create the dedicated cluster. You can log on to the VPC console and click **VPCs** in the left-side navigation pane to view the VPC ID.
+        # 
+        # This parameter is required.
         self.vpcid = vpcid
 
     def validate(self):
@@ -1109,12 +1188,16 @@ class CreateMyBaseRequestECSClassList(TeaModel):
         self.disk_capacity = disk_capacity
         self.disk_count = disk_count
         self.disk_type = disk_type
+        # This parameter is required.
         self.instance_type = instance_type
+        # This parameter is required.
         self.node_count = node_count
         self.sys_disk_auto_snapshot_policy_id = sys_disk_auto_snapshot_policy_id
+        # This parameter is required.
         self.sys_disk_capacity = sys_disk_capacity
         self.sys_disk_encrypted = sys_disk_encrypted
         self.sys_disk_kmskey_id = sys_disk_kmskey_id
+        # This parameter is required.
         self.sys_disk_type = sys_disk_type
         self.system_disk_performance_level = system_disk_performance_level
 
@@ -1268,11 +1351,13 @@ class CreateMyBaseRequest(TeaModel):
         self.client_token = client_token
         self.dedicated_host_group_description = dedicated_host_group_description
         self.dedicated_host_group_id = dedicated_host_group_id
+        # This parameter is required.
         self.ecsclass_list = ecsclass_list
         self.ecs_deployment_set_id = ecs_deployment_set_id
         self.ecs_host_name = ecs_host_name
         self.ecs_instance_name = ecs_instance_name
         self.ecs_unique_suffix = ecs_unique_suffix
+        # This parameter is required.
         self.engine = engine
         self.image_id = image_id
         self.internet_charge_type = internet_charge_type
@@ -1281,19 +1366,25 @@ class CreateMyBaseRequest(TeaModel):
         self.os_password = os_password
         self.owner_id = owner_id
         self.password_inherit = password_inherit
+        # This parameter is required.
         self.pay_type = pay_type
         self.period = period
         self.period_type = period_type
+        # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.security_group_id = security_group_id
         self.tags = tags
         self.user_data = user_data
         self.user_data_in_base_64 = user_data_in_base_64
+        # This parameter is required.
         self.v_switch_id = v_switch_id
+        # This parameter is required.
         self.vpc_id = vpc_id
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -1498,11 +1589,13 @@ class CreateMyBaseShrinkRequest(TeaModel):
         self.client_token = client_token
         self.dedicated_host_group_description = dedicated_host_group_description
         self.dedicated_host_group_id = dedicated_host_group_id
+        # This parameter is required.
         self.ecsclass_list_shrink = ecsclass_list_shrink
         self.ecs_deployment_set_id = ecs_deployment_set_id
         self.ecs_host_name = ecs_host_name
         self.ecs_instance_name = ecs_instance_name
         self.ecs_unique_suffix = ecs_unique_suffix
+        # This parameter is required.
         self.engine = engine
         self.image_id = image_id
         self.internet_charge_type = internet_charge_type
@@ -1511,19 +1604,25 @@ class CreateMyBaseShrinkRequest(TeaModel):
         self.os_password = os_password
         self.owner_id = owner_id
         self.password_inherit = password_inherit
+        # This parameter is required.
         self.pay_type = pay_type
         self.period = period
         self.period_type = period_type
+        # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.security_group_id = security_group_id
         self.tags_shrink = tags_shrink
         self.user_data = user_data
         self.user_data_in_base_64 = user_data_in_base_64
+        # This parameter is required.
         self.v_switch_id = v_switch_id
+        # This parameter is required.
         self.vpc_id = vpc_id
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -1838,15 +1937,19 @@ class DeleteDedicatedHostAccountRequest(TeaModel):
     ):
         # The name of the host account.
         # 
-        # *   The name can contain lowercase letters, digits, and underscores (\_).
+        # *   The name can contain lowercase letters, digits, and underscores (_).
         # *   The name must start with a lowercase letter and end with a lowercase letter or a digit.
         # *   The name must be 2 to 16 characters in length.
+        # 
+        # This parameter is required.
         self.account_name = account_name
-        # The host ID. You can call the [DescribeDedicatedHosts](~~200944~~) operation to query the host ID.
+        # The host ID. You can call the [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/200944.html) operation to query the host ID.
+        # 
+        # This parameter is required.
         self.dedicated_host_id = dedicated_host_id
         # The ID of the account to which the AccessKey pair belongs.
         self.owner_id = owner_id
-        # The region ID of the host. You can call the [DescribeDedicatedHostAttribute](~~213010~~) operation to query the region ID.
+        # The region ID of the host. You can call the [DescribeDedicatedHostAttribute](https://help.aliyun.com/document_detail/213010.html) operation to query the region ID.
         self.region_id = region_id
         # ResourceOwnerAccount
         self.resource_owner_account = resource_owner_account
@@ -1972,10 +2075,12 @@ class DeleteDedicatedHostGroupRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The dedicated cluster ID. You can log on to the ApsaraDB for MyBase console and go to the Dedicated Clusters page to view the dedicated cluster ID.
+        # 
+        # This parameter is required.
         self.dedicated_host_group_id = dedicated_host_group_id
         # 账号ID。
         self.owner_id = owner_id
-        # The region ID of the dedicated cluster. For more information, see [Region IDs](~~198326~~).
+        # The region ID of the dedicated cluster. For more information, see [Region IDs](https://help.aliyun.com/document_detail/198326.html).
         self.region_id = region_id
         # 资源主账号的账号名称。
         self.resource_owner_account = resource_owner_account
@@ -2098,11 +2203,15 @@ class DescribeDedicatedHostAttributeRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the dedicated cluster in which the host is created. You can log on to the ApsaraDB for MyBase console and go to the **Dedicated Clusters** page to view the dedicated cluster ID.
+        # 
+        # This parameter is required.
         self.dedicated_host_group_id = dedicated_host_group_id
         # The host ID. You can log on to the ApsaraDB for MyBase console and go to the **Hosts** page to view the host ID.
+        # 
+        # This parameter is required.
         self.dedicated_host_id = dedicated_host_id
         self.owner_id = owner_id
-        # [The region ID](~~198326~~).
+        # [The region ID](https://help.aliyun.com/document_detail/198326.html).
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -2189,7 +2298,7 @@ class DescribeDedicatedHostAttributeResponseBody(TeaModel):
     ):
         # The account name of the host.
         # 
-        # *   The name can contain lowercase letters, digits, and underscores (\_).
+        # *   The name can contain lowercase letters, digits, and underscores (_).
         # *   The name must start with a lowercase letter and end with a lowercase letter or a digit.
         # *   The name must be 2 to 16 characters in length.
         self.account_name = account_name
@@ -2282,7 +2391,7 @@ class DescribeDedicatedHostAttributeResponseBody(TeaModel):
         # *   **0**: no.
         # *   **1**: yes.
         self.open_permission = open_permission
-        # [The region ID](~~198326~~).
+        # [The region ID](https://help.aliyun.com/document_detail/198326.html).
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
@@ -2506,9 +2615,11 @@ class DescribeDedicatedHostDisksRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The host ID. You can log on to the ApsaraDB for MyBase console and go to the **Hosts** page to view the host ID.
+        # 
+        # This parameter is required.
         self.dedicated_host_id = dedicated_host_id
         self.owner_id = owner_id
-        # The region ID of the host. You can log on to the ApsaraDB for MyBase console to view the [region ID](~~198326~~).
+        # The region ID of the host. You can log on to the ApsaraDB for MyBase console to view the [region ID](https://help.aliyun.com/document_detail/198326.html).
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -2808,7 +2919,9 @@ class DescribeDedicatedHostGroupsRequest(TeaModel):
         # *   **AliLinux**: other images.
         self.image_category = image_category
         self.owner_id = owner_id
-        # The region ID. For more information, see [Region IDs](~~198326~~).
+        # The region ID. For more information, see [Region IDs](https://help.aliyun.com/document_detail/198326.html).
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -3284,7 +3397,9 @@ class DescribeDedicatedHostsRequest(TeaModel):
         self.page_numbers = page_numbers
         # The number of entries per page.
         self.page_size = page_size
-        # [The region ID](~~198326~~).
+        # [The region ID](https://help.aliyun.com/document_detail/198326.html).
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -3292,7 +3407,7 @@ class DescribeDedicatedHostsRequest(TeaModel):
         # 
         # >  If you want to filter hosts based on tags, do not specify the **DedicatedHostId** parameter. Otherwise, the **DedicatedHostId** parameter is used to filter hosts.
         self.tags = tags
-        # The zone ID. You can call the [DescribeRegions](~~214103~~) operation to query the most recent zone list.
+        # The zone ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/214103.html) operation to query the most recent zone list.
         self.zone_id = zone_id
 
     def validate(self):
@@ -3410,7 +3525,7 @@ class DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts(TeaModel):
     ):
         # The custom account name of the host.
         # 
-        # *   The name can contain lowercase letters, digits, and underscores (\_).
+        # *   The name can contain lowercase letters, digits, and underscores (_).
         # *   The name must start with a lowercase letter and end with a lowercase letter or a digit.
         # *   The name must be 2 to 16 characters in length.
         self.account_name = account_name
@@ -3458,7 +3573,7 @@ class DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts(TeaModel):
         self.distribution_symbol = distribution_symbol
         # The distribution tag of the host.
         self.distribution_tag = distribution_tag
-        # The instance type of the Elastic Compute Service (ECS) instance. For more information, see [Overview of instance families](~~25378~~).
+        # The instance type of the Elastic Compute Service (ECS) instance. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
         self.ecs_class_code = ecs_class_code
         # The ID of the ECS instance.
         # 
@@ -3849,6 +3964,8 @@ class DescribeHostEcsLevelInfoRequest(TeaModel):
         # *   **mssql**\
         # *   **pgsql**\
         # *   **redis**\
+        # 
+        # This parameter is required.
         self.db_type = db_type
         # The image of the host. Valid values:
         # 
@@ -3859,7 +3976,9 @@ class DescribeHostEcsLevelInfoRequest(TeaModel):
         # *   **AliLinux**: other images.
         self.image_category = image_category
         self.owner_id = owner_id
-        # The region ID. For more information, see [Region IDs](~~198326~~).
+        # The region ID. For more information, see [Region IDs](https://help.aliyun.com/document_detail/198326.html).
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -3869,8 +3988,12 @@ class DescribeHostEcsLevelInfoRequest(TeaModel):
         # *   **cloud_essd**: PL1 enhanced SSD (ESSD).
         # *   **cloud_essd2**: PL2 ESSD.
         # *   **cloud_essd3**: PL3 ESSD.
+        # 
+        # This parameter is required.
         self.storage_type = storage_type
         # The zone ID.
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -4182,17 +4305,23 @@ class DescribeHostWebShellRequest(TeaModel):
         resource_owner_id: int = None,
         zone_id: str = None,
     ):
-        # The host ID. You can call the [DescribeDedicatedHosts](~~200944~~) operation to query the host ID.
+        # The host ID. You can call the [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/200944.html) operation to query the host ID.
+        # 
+        # This parameter is required.
         self.dedicated_host_id = dedicated_host_id
         # The ID of the Alibaba Cloud account to which the VPC belongs.
         self.owner_id = owner_id
-        # The region ID of the host. You can call the [DescribeDedicatedHostAttribute](~~213010~~) operation to query the region ID.
+        # The region ID of the host. You can call the [DescribeDedicatedHostAttribute](https://help.aliyun.com/document_detail/213010.html) operation to query the region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # ResourceOwnerAccount
         self.resource_owner_account = resource_owner_account
         # The ID of the asset owner.
         self.resource_owner_id = resource_owner_id
-        # The zone ID of the host. You can call the [DescribeDedicatedHostAttribute](~~213010~~) operation to query the zone ID.
+        # The zone ID of the host. You can call the [DescribeDedicatedHostAttribute](https://help.aliyun.com/document_detail/213010.html) operation to query the zone ID.
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -4549,12 +4678,16 @@ class ListTagResourcesRequest(TeaModel):
     ):
         self.owner_id = owner_id
         # The region ID of the host.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of host N. You can specify multiple host IDs.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The resource type. Set the value to DEDICATEDHOST.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags.
         self.tag = tag
@@ -4758,14 +4891,20 @@ class ModifyDedicatedHostAccountRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The account name of the host.
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The new account password of the host.
+        # 
+        # This parameter is required.
         self.account_password = account_password
-        # The host ID. You can call the [DescribeDedicatedHosts](~~200944~~) operation to query the host ID.
+        # The host ID. You can call the [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/200944.html) operation to query the host ID.
+        # 
+        # This parameter is required.
         self.dedicated_host_id = dedicated_host_id
         # 账号ID。
         self.owner_id = owner_id
-        # The region ID of the host. You can call the [DescribeDedicatedHostAttribute](~~213010~~) operation to query the region ID.
+        # The region ID of the host. You can call the [DescribeDedicatedHostAttribute](https://help.aliyun.com/document_detail/213010.html) operation to query the region ID.
         self.region_id = region_id
         # 资源主账号的账号名称。
         self.resource_owner_account = resource_owner_account
@@ -4902,11 +5041,13 @@ class ModifyDedicatedHostAttributeRequest(TeaModel):
         # *   **0**: no.
         self.allocation_status = allocation_status
         # The host ID. You can log on to the ApsaraDB for MyBase console and go to the **Hosts** page to view the host ID.
+        # 
+        # This parameter is required.
         self.dedicated_host_id = dedicated_host_id
         # The name of the host.
         self.host_name = host_name
         self.owner_id = owner_id
-        # The [region ID](~~198326~~) of the host.
+        # The [region ID](https://help.aliyun.com/document_detail/198326.html) of the host.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -5037,9 +5178,13 @@ class ModifyDedicatedHostClassRequest(TeaModel):
         target_class_code: str = None,
     ):
         # The host ID. You can log on to the ApsaraDB for MyBase console and go to the **Hosts** page to view the host ID.
+        # 
+        # This parameter is required.
         self.dedicated_host_id = dedicated_host_id
         self.owner_id = owner_id
-        # The [region ID](~~198326~~).
+        # The [region ID](https://help.aliyun.com/document_detail/198326.html).
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -5054,7 +5199,9 @@ class ModifyDedicatedHostClassRequest(TeaModel):
         # 
         # >  If you set this parameter to **2**, you must specify **SwitchTime**.
         self.switch_time_mode = switch_time_mode
-        # The instance type to which you want the host to be upgraded. For more information, see [Host specification details](~~206343~~).
+        # The instance type to which you want the host to be upgraded. For more information, see [Host specification details](https://help.aliyun.com/document_detail/206343.html).
+        # 
+        # This parameter is required.
         self.target_class_code = target_class_code
 
     def validate(self):
@@ -5218,6 +5365,8 @@ class ModifyDedicatedHostGroupAttributeRequest(TeaModel):
         # The dedicated cluster ID.
         # 
         # >  You can log on to the ApsaraDB for MyBase console and go to the Dedicated Clusters page to view the dedicated cluster ID.
+        # 
+        # This parameter is required.
         self.dedicated_host_group_id = dedicated_host_group_id
         # The storage overcommit ratio of the dedicated cluster. Valid values: **100** to **200**.
         self.disk_allocation_ratio = disk_allocation_ratio
@@ -5238,7 +5387,7 @@ class ModifyDedicatedHostGroupAttributeRequest(TeaModel):
         # >  You can grant the host OS permissions based on your business requirements only when you create dedicated clusters that run **MySQL, SQL Server, or PostgreSQL**. For dedicated clusters that run other database engines, the default value 0 is used.
         self.open_permission = open_permission
         self.owner_id = owner_id
-        # The region ID of the dedicated cluster. For more information, see [Region IDs](~~198326~~).
+        # The region ID of the dedicated cluster. For more information, see [Region IDs](https://help.aliyun.com/document_detail/198326.html).
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -5386,7 +5535,9 @@ class ModifyDedicatedHostPasswordRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The host ID. You can call the [DescribeDedicatedHosts](~~200944~~) operation to query the host ID.
+        # The host ID. You can call the [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/200944.html) operation to query the host ID.
+        # 
+        # This parameter is required.
         self.dedicated_host_id = dedicated_host_id
         # The new password.
         # 
@@ -5395,9 +5546,11 @@ class ModifyDedicatedHostPasswordRequest(TeaModel):
         # *   The password can contain the following special characters: `! @ # $ % ^ & * ( ) _ + - =`
         # 
         # >  If your dedicated cluster runs SQL Server, the password cannot contain the account name (case-insensitive).
+        # 
+        # This parameter is required.
         self.new_password = new_password
         self.owner_id = owner_id
-        # The region ID of the host. You can call the [DescribeDedicatedHostAttribute](~~213010~~) operation to query the region ID.
+        # The region ID of the host. You can call the [DescribeDedicatedHostAttribute](https://help.aliyun.com/document_detail/213010.html) operation to query the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -5528,9 +5681,11 @@ class QueryHostBaseInfoByInstanceRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
-        # The region ID of the instance. For more information, see [Region IDs](~~198326~~).
+        # The region ID of the instance. For more information, see [Region IDs](https://help.aliyun.com/document_detail/198326.html).
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -5756,9 +5911,11 @@ class QueryHostInstanceConsoleInfoRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The host ID. You can log on to the ApsaraDB for MyBase console and go to the **Hosts** page to view the host ID.
+        # 
+        # This parameter is required.
         self.dedicated_host_id = dedicated_host_id
         self.owner_id = owner_id
-        # The region ID of the host. You can log on to the ApsaraDB for MyBase console to view the [region ID](~~198326~~).
+        # The region ID of the host. You can log on to the ApsaraDB for MyBase console to view the [region ID](https://help.aliyun.com/document_detail/198326.html).
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -6077,15 +6234,19 @@ class ReplaceDedicatedHostRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The host ID. You can call the [DescribeDedicatedHosts](~~200944~~) operation to query the host ID.
+        # The host ID. You can call the [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/200944.html) operation to query the host ID.
+        # 
+        # This parameter is required.
         self.dedicated_host_id = dedicated_host_id
         # The switchover method of the primary instance. Valid values:
         # 
         # *   **MaintainTime** (default): The system performs a switchover within a maintenance window. The system switches workloads from the primary instance on the host to the secondary instance on another host, and then restarts the current host. This prevents service interruptions.
         # *   **Immediate**: The system immediately restarts the host.
+        # 
+        # This parameter is required.
         self.failover_mode = failover_mode
         self.owner_id = owner_id
-        # The region ID of the host. You can call the [DescribeDedicatedHostAttribute](~~213010~~) operation to query the region ID.
+        # The region ID of the host. You can call the [DescribeDedicatedHostAttribute](https://help.aliyun.com/document_detail/213010.html) operation to query the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -6225,11 +6386,15 @@ class RestartDedicatedHostRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The host ID. You can log on to the ApsaraDB for MyBase console and go to the **Hosts** page to view the host ID.
+        # 
+        # This parameter is required.
         self.dedicated_host_id = dedicated_host_id
         # The switchover method of the primary instance. Valid values:
         # 
         # *   **MaintainTime** (default): The system performs a switchover within a maintenance window. The system switches workloads from the primary instance on the host to the secondary instance on another host, and then restarts the current host. This prevents service interruptions.
         # *   **Immediate**: The system immediately restarts the host.
+        # 
+        # This parameter is required.
         self.failover_mode = failover_mode
         # Specifies whether to forcefully restart the host. Valid values:
         # 
@@ -6239,7 +6404,7 @@ class RestartDedicatedHostRequest(TeaModel):
         # >  This parameter takes effect only for hosts that are created in ApsaraDB MyBase for Redis dedicated clusters of the Enhanced Edition (Tair). Hosts that are created in ApsaraDB MyBase dedicated clusters that run other database engines can be restarted normally.
         self.force_stop = force_stop
         self.owner_id = owner_id
-        # [The region ID](~~198326~~) of the host.
+        # [The region ID](https://help.aliyun.com/document_detail/198326.html) of the host.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -6385,6 +6550,8 @@ class TagResourcesRequestTag(TeaModel):
         #     *   **Tag.2.Key** specifies the key of the second tag.
         # 
         # *   If no tag key exists, a key is automatically created.
+        # 
+        # This parameter is required.
         self.key = key
         # The value of tag N.
         # 
@@ -6394,6 +6561,8 @@ class TagResourcesRequestTag(TeaModel):
         #     *   **Tag.2.Value** specifies the value of the second tag.
         # 
         # *   If no tag value exists, a value is automatically created.
+        # 
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -6433,14 +6602,22 @@ class TagResourcesRequest(TeaModel):
     ):
         self.owner_id = owner_id
         # The region ID of the host.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of host N. You can specify multiple host IDs.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The resource type. Set the value to DEDICATEDHOST.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags.
+        # 
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -6585,12 +6762,18 @@ class UntagResourcesRequest(TeaModel):
         self.all = all
         self.owner_id = owner_id
         # The region ID of the host.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of host N. You can specify multiple host IDs.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The resource type. Set the value to DEDICATEDHOST.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The key of tag N.
         self.tag_key = tag_key
