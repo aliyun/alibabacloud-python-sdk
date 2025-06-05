@@ -11513,6 +11513,7 @@ class DescribeSqlLogStatisticResponseBodyData(TeaModel):
         hot_sql_size: int = None,
         import_sql_size: int = None,
         timestamp: int = None,
+        total_sql_size: int = None,
     ):
         # The size of the SQL Explorer and Audit data that is stored in cold storage. Unit: bytes.
         self.cold_sql_size = cold_sql_size
@@ -11526,6 +11527,7 @@ class DescribeSqlLogStatisticResponseBodyData(TeaModel):
         self.import_sql_size = import_sql_size
         # The timestamp. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.timestamp = timestamp
+        self.total_sql_size = total_sql_size
 
     def validate(self):
         pass
@@ -11548,6 +11550,8 @@ class DescribeSqlLogStatisticResponseBodyData(TeaModel):
             result['ImportSqlSize'] = self.import_sql_size
         if self.timestamp is not None:
             result['Timestamp'] = self.timestamp
+        if self.total_sql_size is not None:
+            result['TotalSqlSize'] = self.total_sql_size
         return result
 
     def from_map(self, m: dict = None):
@@ -11564,6 +11568,8 @@ class DescribeSqlLogStatisticResponseBodyData(TeaModel):
             self.import_sql_size = m.get('ImportSqlSize')
         if m.get('Timestamp') is not None:
             self.timestamp = m.get('Timestamp')
+        if m.get('TotalSqlSize') is not None:
+            self.total_sql_size = m.get('TotalSqlSize')
         return self
 
 
@@ -12427,6 +12433,7 @@ class DescribeSqlLogTasksResponseBodyDataList(TeaModel):
         end: int = None,
         expire: bool = None,
         filters: List[DescribeSqlLogTasksResponseBodyDataListFilters] = None,
+        inner_result: str = None,
         instance_id: str = None,
         log_count: int = None,
         name: str = None,
@@ -12455,6 +12462,7 @@ class DescribeSqlLogTasksResponseBodyDataList(TeaModel):
         self.expire = expire
         # The filter parameters.
         self.filters = filters
+        self.inner_result = inner_result
         # The ID of the database instance.
         self.instance_id = instance_id
         # The number of log records.
@@ -12513,6 +12521,8 @@ class DescribeSqlLogTasksResponseBodyDataList(TeaModel):
         if self.filters is not None:
             for k in self.filters:
                 result['Filters'].append(k.to_map() if k else None)
+        if self.inner_result is not None:
+            result['InnerResult'] = self.inner_result
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.log_count is not None:
@@ -12552,6 +12562,8 @@ class DescribeSqlLogTasksResponseBodyDataList(TeaModel):
             for k in m.get('Filters'):
                 temp_model = DescribeSqlLogTasksResponseBodyDataListFilters()
                 self.filters.append(temp_model.from_map(k))
+        if m.get('InnerResult') is not None:
+            self.inner_result = m.get('InnerResult')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('LogCount') is not None:

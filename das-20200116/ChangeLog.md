@@ -1,3 +1,8 @@
+2025-06-05 Version: 2.7.1
+- Update API DescribeSqlLogStatistic: add response parameters Body.Data.TotalSqlSize.
+- Update API DescribeSqlLogTasks: add response parameters Body.Data.List.$.InnerResult.
+
+
 2025-05-20 Version: 2.7.0
 - Support API DescribeQueryExplain.
 - Support API DescribeSlowLogRecords.
