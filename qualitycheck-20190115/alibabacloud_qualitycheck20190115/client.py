@@ -1143,9 +1143,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.CreateSkillGroupConfigResponse:
         """
+        @deprecated OpenAPI CreateSkillGroupConfig is deprecated
+        
         @param request: CreateSkillGroupConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateSkillGroupConfigResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -1178,9 +1181,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.CreateSkillGroupConfigResponse:
         """
+        @deprecated OpenAPI CreateSkillGroupConfig is deprecated
+        
         @param request: CreateSkillGroupConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateSkillGroupConfigResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -1212,8 +1218,11 @@ class Client(OpenApiClient):
         request: qualitycheck_20190115_models.CreateSkillGroupConfigRequest,
     ) -> qualitycheck_20190115_models.CreateSkillGroupConfigResponse:
         """
+        @deprecated OpenAPI CreateSkillGroupConfig is deprecated
+        
         @param request: CreateSkillGroupConfigRequest
         @return: CreateSkillGroupConfigResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.create_skill_group_config_with_options(request, runtime)
@@ -1223,8 +1232,11 @@ class Client(OpenApiClient):
         request: qualitycheck_20190115_models.CreateSkillGroupConfigRequest,
     ) -> qualitycheck_20190115_models.CreateSkillGroupConfigResponse:
         """
+        @deprecated OpenAPI CreateSkillGroupConfig is deprecated
+        
         @param request: CreateSkillGroupConfigRequest
         @return: CreateSkillGroupConfigResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_skill_group_config_with_options_async(request, runtime)
@@ -2615,9 +2627,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.DeleteSkillGroupConfigResponse:
         """
+        @deprecated OpenAPI DeleteSkillGroupConfig is deprecated
+        
         @param request: DeleteSkillGroupConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteSkillGroupConfigResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -2650,9 +2665,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.DeleteSkillGroupConfigResponse:
         """
+        @deprecated OpenAPI DeleteSkillGroupConfig is deprecated
+        
         @param request: DeleteSkillGroupConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteSkillGroupConfigResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -2684,8 +2702,11 @@ class Client(OpenApiClient):
         request: qualitycheck_20190115_models.DeleteSkillGroupConfigRequest,
     ) -> qualitycheck_20190115_models.DeleteSkillGroupConfigResponse:
         """
+        @deprecated OpenAPI DeleteSkillGroupConfig is deprecated
+        
         @param request: DeleteSkillGroupConfigRequest
         @return: DeleteSkillGroupConfigResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.delete_skill_group_config_with_options(request, runtime)
@@ -2695,8 +2716,11 @@ class Client(OpenApiClient):
         request: qualitycheck_20190115_models.DeleteSkillGroupConfigRequest,
     ) -> qualitycheck_20190115_models.DeleteSkillGroupConfigResponse:
         """
+        @deprecated OpenAPI DeleteSkillGroupConfig is deprecated
+        
         @param request: DeleteSkillGroupConfigRequest
         @return: DeleteSkillGroupConfigResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_skill_group_config_with_options_async(request, runtime)
@@ -4449,6 +4473,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_rules_count_list_with_options_async(request, runtime)
 
+    def get_scheme_task_config_with_options(
+        self,
+        request: qualitycheck_20190115_models.GetSchemeTaskConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> qualitycheck_20190115_models.GetSchemeTaskConfigResponse:
+        """
+        @summary 获取质检任务配置详情
+        
+        @param request: GetSchemeTaskConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSchemeTaskConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
+        if not UtilClient.is_unset(request.json_str):
+            query['JsonStr'] = request.json_str
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSchemeTaskConfig',
+            version='2019-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            qualitycheck_20190115_models.GetSchemeTaskConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_scheme_task_config_with_options_async(
+        self,
+        request: qualitycheck_20190115_models.GetSchemeTaskConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> qualitycheck_20190115_models.GetSchemeTaskConfigResponse:
+        """
+        @summary 获取质检任务配置详情
+        
+        @param request: GetSchemeTaskConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSchemeTaskConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
+        if not UtilClient.is_unset(request.json_str):
+            query['JsonStr'] = request.json_str
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSchemeTaskConfig',
+            version='2019-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            qualitycheck_20190115_models.GetSchemeTaskConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_scheme_task_config(
+        self,
+        request: qualitycheck_20190115_models.GetSchemeTaskConfigRequest,
+    ) -> qualitycheck_20190115_models.GetSchemeTaskConfigResponse:
+        """
+        @summary 获取质检任务配置详情
+        
+        @param request: GetSchemeTaskConfigRequest
+        @return: GetSchemeTaskConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_scheme_task_config_with_options(request, runtime)
+
+    async def get_scheme_task_config_async(
+        self,
+        request: qualitycheck_20190115_models.GetSchemeTaskConfigRequest,
+    ) -> qualitycheck_20190115_models.GetSchemeTaskConfigResponse:
+        """
+        @summary 获取质检任务配置详情
+        
+        @param request: GetSchemeTaskConfigRequest
+        @return: GetSchemeTaskConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_scheme_task_config_with_options_async(request, runtime)
+
     def get_score_info_with_options(
         self,
         request: qualitycheck_20190115_models.GetScoreInfoRequest,
@@ -4559,9 +4683,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.GetSkillGroupConfigResponse:
         """
+        @deprecated OpenAPI GetSkillGroupConfig is deprecated
+        
         @param request: GetSkillGroupConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetSkillGroupConfigResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -4594,9 +4721,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.GetSkillGroupConfigResponse:
         """
+        @deprecated OpenAPI GetSkillGroupConfig is deprecated
+        
         @param request: GetSkillGroupConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetSkillGroupConfigResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -4628,8 +4758,11 @@ class Client(OpenApiClient):
         request: qualitycheck_20190115_models.GetSkillGroupConfigRequest,
     ) -> qualitycheck_20190115_models.GetSkillGroupConfigResponse:
         """
+        @deprecated OpenAPI GetSkillGroupConfig is deprecated
+        
         @param request: GetSkillGroupConfigRequest
         @return: GetSkillGroupConfigResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.get_skill_group_config_with_options(request, runtime)
@@ -4639,8 +4772,11 @@ class Client(OpenApiClient):
         request: qualitycheck_20190115_models.GetSkillGroupConfigRequest,
     ) -> qualitycheck_20190115_models.GetSkillGroupConfigResponse:
         """
+        @deprecated OpenAPI GetSkillGroupConfig is deprecated
+        
         @param request: GetSkillGroupConfigRequest
         @return: GetSkillGroupConfigResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_skill_group_config_with_options_async(request, runtime)
@@ -5971,9 +6107,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.ListSkillGroupConfigResponse:
         """
+        @deprecated OpenAPI ListSkillGroupConfig is deprecated
+        
         @param request: ListSkillGroupConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListSkillGroupConfigResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -6006,9 +6145,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.ListSkillGroupConfigResponse:
         """
+        @deprecated OpenAPI ListSkillGroupConfig is deprecated
+        
         @param request: ListSkillGroupConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListSkillGroupConfigResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -6040,8 +6182,11 @@ class Client(OpenApiClient):
         request: qualitycheck_20190115_models.ListSkillGroupConfigRequest,
     ) -> qualitycheck_20190115_models.ListSkillGroupConfigResponse:
         """
+        @deprecated OpenAPI ListSkillGroupConfig is deprecated
+        
         @param request: ListSkillGroupConfigRequest
         @return: ListSkillGroupConfigResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.list_skill_group_config_with_options(request, runtime)
@@ -6051,8 +6196,11 @@ class Client(OpenApiClient):
         request: qualitycheck_20190115_models.ListSkillGroupConfigRequest,
     ) -> qualitycheck_20190115_models.ListSkillGroupConfigResponse:
         """
+        @deprecated OpenAPI ListSkillGroupConfig is deprecated
+        
         @param request: ListSkillGroupConfigRequest
         @return: ListSkillGroupConfigResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_skill_group_config_with_options_async(request, runtime)
@@ -8247,9 +8395,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.UpdateSkillGroupConfigResponse:
         """
+        @deprecated OpenAPI UpdateSkillGroupConfig is deprecated
+        
         @param request: UpdateSkillGroupConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateSkillGroupConfigResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -8282,9 +8433,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.UpdateSkillGroupConfigResponse:
         """
+        @deprecated OpenAPI UpdateSkillGroupConfig is deprecated
+        
         @param request: UpdateSkillGroupConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateSkillGroupConfigResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -8316,8 +8470,11 @@ class Client(OpenApiClient):
         request: qualitycheck_20190115_models.UpdateSkillGroupConfigRequest,
     ) -> qualitycheck_20190115_models.UpdateSkillGroupConfigResponse:
         """
+        @deprecated OpenAPI UpdateSkillGroupConfig is deprecated
+        
         @param request: UpdateSkillGroupConfigRequest
         @return: UpdateSkillGroupConfigResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.update_skill_group_config_with_options(request, runtime)
@@ -8327,8 +8484,11 @@ class Client(OpenApiClient):
         request: qualitycheck_20190115_models.UpdateSkillGroupConfigRequest,
     ) -> qualitycheck_20190115_models.UpdateSkillGroupConfigResponse:
         """
+        @deprecated OpenAPI UpdateSkillGroupConfig is deprecated
+        
         @param request: UpdateSkillGroupConfigRequest
         @return: UpdateSkillGroupConfigResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_skill_group_config_with_options_async(request, runtime)

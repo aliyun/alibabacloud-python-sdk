@@ -1,3 +1,7 @@
+2025-06-05 Version: 8.3.0
+- Support API GetSchemeTaskConfig.
+
+
 2025-05-22 Version: 8.2.1
 - Update API GetResultToReview: add response parameters Body.Data.HitRuleReviewInfoList.$.MachineHitResult.
 - Update API GetResultToReview: add response parameters Body.Data.HitRuleReviewInfoList.$.ReviewHitResult.
