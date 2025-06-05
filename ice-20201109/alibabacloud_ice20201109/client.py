@@ -4124,6 +4124,378 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_program_with_options_async(request, runtime)
 
+    def create_recognition_entity_with_options(
+        self,
+        request: ice20201109_models.CreateRecognitionEntityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.CreateRecognitionEntityResponse:
+        """
+        @summary 创建自定义实体
+        
+        @param request: CreateRecognitionEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRecognitionEntityResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.entity_info):
+            query['EntityInfo'] = request.entity_info
+        if not UtilClient.is_unset(request.entity_name):
+            query['EntityName'] = request.entity_name
+        if not UtilClient.is_unset(request.lib_id):
+            query['LibId'] = request.lib_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRecognitionEntity',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.CreateRecognitionEntityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_recognition_entity_with_options_async(
+        self,
+        request: ice20201109_models.CreateRecognitionEntityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.CreateRecognitionEntityResponse:
+        """
+        @summary 创建自定义实体
+        
+        @param request: CreateRecognitionEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRecognitionEntityResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.entity_info):
+            query['EntityInfo'] = request.entity_info
+        if not UtilClient.is_unset(request.entity_name):
+            query['EntityName'] = request.entity_name
+        if not UtilClient.is_unset(request.lib_id):
+            query['LibId'] = request.lib_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRecognitionEntity',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.CreateRecognitionEntityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_recognition_entity(
+        self,
+        request: ice20201109_models.CreateRecognitionEntityRequest,
+    ) -> ice20201109_models.CreateRecognitionEntityResponse:
+        """
+        @summary 创建自定义实体
+        
+        @param request: CreateRecognitionEntityRequest
+        @return: CreateRecognitionEntityResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_recognition_entity_with_options(request, runtime)
+
+    async def create_recognition_entity_async(
+        self,
+        request: ice20201109_models.CreateRecognitionEntityRequest,
+    ) -> ice20201109_models.CreateRecognitionEntityResponse:
+        """
+        @summary 创建自定义实体
+        
+        @param request: CreateRecognitionEntityRequest
+        @return: CreateRecognitionEntityResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_recognition_entity_with_options_async(request, runtime)
+
+    def create_recognition_lib_with_options(
+        self,
+        request: ice20201109_models.CreateRecognitionLibRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.CreateRecognitionLibResponse:
+        """
+        @summary 创建自定义库。
+        
+        @param request: CreateRecognitionLibRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRecognitionLibResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.lib_description):
+            query['LibDescription'] = request.lib_description
+        if not UtilClient.is_unset(request.lib_name):
+            query['LibName'] = request.lib_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRecognitionLib',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.CreateRecognitionLibResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_recognition_lib_with_options_async(
+        self,
+        request: ice20201109_models.CreateRecognitionLibRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.CreateRecognitionLibResponse:
+        """
+        @summary 创建自定义库。
+        
+        @param request: CreateRecognitionLibRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRecognitionLibResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.lib_description):
+            query['LibDescription'] = request.lib_description
+        if not UtilClient.is_unset(request.lib_name):
+            query['LibName'] = request.lib_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRecognitionLib',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.CreateRecognitionLibResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_recognition_lib(
+        self,
+        request: ice20201109_models.CreateRecognitionLibRequest,
+    ) -> ice20201109_models.CreateRecognitionLibResponse:
+        """
+        @summary 创建自定义库。
+        
+        @param request: CreateRecognitionLibRequest
+        @return: CreateRecognitionLibResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_recognition_lib_with_options(request, runtime)
+
+    async def create_recognition_lib_async(
+        self,
+        request: ice20201109_models.CreateRecognitionLibRequest,
+    ) -> ice20201109_models.CreateRecognitionLibResponse:
+        """
+        @summary 创建自定义库。
+        
+        @param request: CreateRecognitionLibRequest
+        @return: CreateRecognitionLibResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_recognition_lib_with_options_async(request, runtime)
+
+    def create_recognition_sample_with_options(
+        self,
+        request: ice20201109_models.CreateRecognitionSampleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.CreateRecognitionSampleResponse:
+        """
+        @summary 注册自定义实体照片
+        
+        @param request: CreateRecognitionSampleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRecognitionSampleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.entity_id):
+            query['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.image_url):
+            query['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.label_prompt):
+            query['LabelPrompt'] = request.label_prompt
+        if not UtilClient.is_unset(request.lib_id):
+            query['LibId'] = request.lib_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRecognitionSample',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.CreateRecognitionSampleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_recognition_sample_with_options_async(
+        self,
+        request: ice20201109_models.CreateRecognitionSampleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.CreateRecognitionSampleResponse:
+        """
+        @summary 注册自定义实体照片
+        
+        @param request: CreateRecognitionSampleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRecognitionSampleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.entity_id):
+            query['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.image_url):
+            query['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.label_prompt):
+            query['LabelPrompt'] = request.label_prompt
+        if not UtilClient.is_unset(request.lib_id):
+            query['LibId'] = request.lib_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRecognitionSample',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.CreateRecognitionSampleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_recognition_sample(
+        self,
+        request: ice20201109_models.CreateRecognitionSampleRequest,
+    ) -> ice20201109_models.CreateRecognitionSampleResponse:
+        """
+        @summary 注册自定义实体照片
+        
+        @param request: CreateRecognitionSampleRequest
+        @return: CreateRecognitionSampleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_recognition_sample_with_options(request, runtime)
+
+    async def create_recognition_sample_async(
+        self,
+        request: ice20201109_models.CreateRecognitionSampleRequest,
+    ) -> ice20201109_models.CreateRecognitionSampleResponse:
+        """
+        @summary 注册自定义实体照片
+        
+        @param request: CreateRecognitionSampleRequest
+        @return: CreateRecognitionSampleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_recognition_sample_with_options_async(request, runtime)
+
     def create_search_index_with_options(
         self,
         request: ice20201109_models.CreateSearchIndexRequest,
@@ -8703,6 +9075,366 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_program_with_options_async(request, runtime)
+
+    def delete_recognition_entity_with_options(
+        self,
+        request: ice20201109_models.DeleteRecognitionEntityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DeleteRecognitionEntityResponse:
+        """
+        @summary 删除自定义库实体
+        
+        @param request: DeleteRecognitionEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRecognitionEntityResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.entity_id):
+            query['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.lib_id):
+            query['LibId'] = request.lib_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRecognitionEntity',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DeleteRecognitionEntityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_recognition_entity_with_options_async(
+        self,
+        request: ice20201109_models.DeleteRecognitionEntityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DeleteRecognitionEntityResponse:
+        """
+        @summary 删除自定义库实体
+        
+        @param request: DeleteRecognitionEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRecognitionEntityResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.entity_id):
+            query['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.lib_id):
+            query['LibId'] = request.lib_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRecognitionEntity',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DeleteRecognitionEntityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_recognition_entity(
+        self,
+        request: ice20201109_models.DeleteRecognitionEntityRequest,
+    ) -> ice20201109_models.DeleteRecognitionEntityResponse:
+        """
+        @summary 删除自定义库实体
+        
+        @param request: DeleteRecognitionEntityRequest
+        @return: DeleteRecognitionEntityResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_recognition_entity_with_options(request, runtime)
+
+    async def delete_recognition_entity_async(
+        self,
+        request: ice20201109_models.DeleteRecognitionEntityRequest,
+    ) -> ice20201109_models.DeleteRecognitionEntityResponse:
+        """
+        @summary 删除自定义库实体
+        
+        @param request: DeleteRecognitionEntityRequest
+        @return: DeleteRecognitionEntityResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_recognition_entity_with_options_async(request, runtime)
+
+    def delete_recognition_lib_with_options(
+        self,
+        request: ice20201109_models.DeleteRecognitionLibRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DeleteRecognitionLibResponse:
+        """
+        @summary 删除自定义库
+        
+        @param request: DeleteRecognitionLibRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRecognitionLibResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.lib_id):
+            query['LibId'] = request.lib_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRecognitionLib',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DeleteRecognitionLibResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_recognition_lib_with_options_async(
+        self,
+        request: ice20201109_models.DeleteRecognitionLibRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DeleteRecognitionLibResponse:
+        """
+        @summary 删除自定义库
+        
+        @param request: DeleteRecognitionLibRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRecognitionLibResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.lib_id):
+            query['LibId'] = request.lib_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRecognitionLib',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DeleteRecognitionLibResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_recognition_lib(
+        self,
+        request: ice20201109_models.DeleteRecognitionLibRequest,
+    ) -> ice20201109_models.DeleteRecognitionLibResponse:
+        """
+        @summary 删除自定义库
+        
+        @param request: DeleteRecognitionLibRequest
+        @return: DeleteRecognitionLibResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_recognition_lib_with_options(request, runtime)
+
+    async def delete_recognition_lib_async(
+        self,
+        request: ice20201109_models.DeleteRecognitionLibRequest,
+    ) -> ice20201109_models.DeleteRecognitionLibResponse:
+        """
+        @summary 删除自定义库
+        
+        @param request: DeleteRecognitionLibRequest
+        @return: DeleteRecognitionLibResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_recognition_lib_with_options_async(request, runtime)
+
+    def delete_recognition_sample_with_options(
+        self,
+        request: ice20201109_models.DeleteRecognitionSampleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DeleteRecognitionSampleResponse:
+        """
+        @summary 删除自定义实体照片
+        
+        @param request: DeleteRecognitionSampleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRecognitionSampleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.entity_id):
+            query['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.lib_id):
+            query['LibId'] = request.lib_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sample_id):
+            query['SampleId'] = request.sample_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRecognitionSample',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DeleteRecognitionSampleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_recognition_sample_with_options_async(
+        self,
+        request: ice20201109_models.DeleteRecognitionSampleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DeleteRecognitionSampleResponse:
+        """
+        @summary 删除自定义实体照片
+        
+        @param request: DeleteRecognitionSampleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRecognitionSampleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.entity_id):
+            query['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.lib_id):
+            query['LibId'] = request.lib_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sample_id):
+            query['SampleId'] = request.sample_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRecognitionSample',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DeleteRecognitionSampleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_recognition_sample(
+        self,
+        request: ice20201109_models.DeleteRecognitionSampleRequest,
+    ) -> ice20201109_models.DeleteRecognitionSampleResponse:
+        """
+        @summary 删除自定义实体照片
+        
+        @param request: DeleteRecognitionSampleRequest
+        @return: DeleteRecognitionSampleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_recognition_sample_with_options(request, runtime)
+
+    async def delete_recognition_sample_async(
+        self,
+        request: ice20201109_models.DeleteRecognitionSampleRequest,
+    ) -> ice20201109_models.DeleteRecognitionSampleResponse:
+        """
+        @summary 删除自定义实体照片
+        
+        @param request: DeleteRecognitionSampleRequest
+        @return: DeleteRecognitionSampleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_recognition_sample_with_options_async(request, runtime)
 
     def delete_smart_job_with_options(
         self,
@@ -22123,6 +22855,378 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_public_media_basic_infos_with_options_async(request, runtime)
+
+    def list_recognition_entities_with_options(
+        self,
+        request: ice20201109_models.ListRecognitionEntitiesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListRecognitionEntitiesResponse:
+        """
+        @summary 获取自定义库下实体列表
+        
+        @param request: ListRecognitionEntitiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRecognitionEntitiesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.lib_id):
+            query['LibId'] = request.lib_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRecognitionEntities',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListRecognitionEntitiesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_recognition_entities_with_options_async(
+        self,
+        request: ice20201109_models.ListRecognitionEntitiesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListRecognitionEntitiesResponse:
+        """
+        @summary 获取自定义库下实体列表
+        
+        @param request: ListRecognitionEntitiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRecognitionEntitiesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.lib_id):
+            query['LibId'] = request.lib_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRecognitionEntities',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListRecognitionEntitiesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_recognition_entities(
+        self,
+        request: ice20201109_models.ListRecognitionEntitiesRequest,
+    ) -> ice20201109_models.ListRecognitionEntitiesResponse:
+        """
+        @summary 获取自定义库下实体列表
+        
+        @param request: ListRecognitionEntitiesRequest
+        @return: ListRecognitionEntitiesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_recognition_entities_with_options(request, runtime)
+
+    async def list_recognition_entities_async(
+        self,
+        request: ice20201109_models.ListRecognitionEntitiesRequest,
+    ) -> ice20201109_models.ListRecognitionEntitiesResponse:
+        """
+        @summary 获取自定义库下实体列表
+        
+        @param request: ListRecognitionEntitiesRequest
+        @return: ListRecognitionEntitiesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_recognition_entities_with_options_async(request, runtime)
+
+    def list_recognition_libs_with_options(
+        self,
+        request: ice20201109_models.ListRecognitionLibsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListRecognitionLibsResponse:
+        """
+        @summary 获取自定义库列表
+        
+        @param request: ListRecognitionLibsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRecognitionLibsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRecognitionLibs',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListRecognitionLibsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_recognition_libs_with_options_async(
+        self,
+        request: ice20201109_models.ListRecognitionLibsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListRecognitionLibsResponse:
+        """
+        @summary 获取自定义库列表
+        
+        @param request: ListRecognitionLibsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRecognitionLibsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRecognitionLibs',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListRecognitionLibsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_recognition_libs(
+        self,
+        request: ice20201109_models.ListRecognitionLibsRequest,
+    ) -> ice20201109_models.ListRecognitionLibsResponse:
+        """
+        @summary 获取自定义库列表
+        
+        @param request: ListRecognitionLibsRequest
+        @return: ListRecognitionLibsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_recognition_libs_with_options(request, runtime)
+
+    async def list_recognition_libs_async(
+        self,
+        request: ice20201109_models.ListRecognitionLibsRequest,
+    ) -> ice20201109_models.ListRecognitionLibsResponse:
+        """
+        @summary 获取自定义库列表
+        
+        @param request: ListRecognitionLibsRequest
+        @return: ListRecognitionLibsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_recognition_libs_with_options_async(request, runtime)
+
+    def list_recognition_samples_with_options(
+        self,
+        request: ice20201109_models.ListRecognitionSamplesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListRecognitionSamplesResponse:
+        """
+        @summary 获取自定义库实体的图片列表
+        
+        @param request: ListRecognitionSamplesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRecognitionSamplesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.entity_id):
+            query['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.lib_id):
+            query['LibId'] = request.lib_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRecognitionSamples',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListRecognitionSamplesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_recognition_samples_with_options_async(
+        self,
+        request: ice20201109_models.ListRecognitionSamplesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListRecognitionSamplesResponse:
+        """
+        @summary 获取自定义库实体的图片列表
+        
+        @param request: ListRecognitionSamplesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRecognitionSamplesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.entity_id):
+            query['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.lib_id):
+            query['LibId'] = request.lib_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRecognitionSamples',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListRecognitionSamplesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_recognition_samples(
+        self,
+        request: ice20201109_models.ListRecognitionSamplesRequest,
+    ) -> ice20201109_models.ListRecognitionSamplesResponse:
+        """
+        @summary 获取自定义库实体的图片列表
+        
+        @param request: ListRecognitionSamplesRequest
+        @return: ListRecognitionSamplesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_recognition_samples_with_options(request, runtime)
+
+    async def list_recognition_samples_async(
+        self,
+        request: ice20201109_models.ListRecognitionSamplesRequest,
+    ) -> ice20201109_models.ListRecognitionSamplesResponse:
+        """
+        @summary 获取自定义库实体的图片列表
+        
+        @param request: ListRecognitionSamplesRequest
+        @return: ListRecognitionSamplesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_recognition_samples_with_options_async(request, runtime)
 
     def list_schedules_with_options(
         self,

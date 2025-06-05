@@ -1,3 +1,15 @@
+2025-06-05 Version: 6.3.0
+- Support API CreateRecognitionEntity.
+- Support API CreateRecognitionLib.
+- Support API CreateRecognitionSample.
+- Support API DeleteRecognitionEntity.
+- Support API DeleteRecognitionLib.
+- Support API DeleteRecognitionSample.
+- Support API ListRecognitionEntities.
+- Support API ListRecognitionLibs.
+- Support API ListRecognitionSamples.
+
+
 2025-05-30 Version: 6.2.0
 - Support API CreateHotwordLibrary.
 - Support API DeleteHotwordLibrary.
