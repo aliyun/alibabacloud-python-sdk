@@ -14851,6 +14851,7 @@ class ListAutomateResponseConfigsRequest(TeaModel):
         page_size: int = None,
         playbook_uuid: str = None,
         region_id: str = None,
+        response_rule_type: str = None,
         role_for: int = None,
         role_type: int = None,
         rule_name: str = None,
@@ -14885,6 +14886,7 @@ class ListAutomateResponseConfigsRequest(TeaModel):
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        self.response_rule_type = response_rule_type
         # The ID of the account that you switch from the management account.
         self.role_for = role_for
         # The type of the view. Valid values:
@@ -14924,6 +14926,8 @@ class ListAutomateResponseConfigsRequest(TeaModel):
             result['PlaybookUuid'] = self.playbook_uuid
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.response_rule_type is not None:
+            result['ResponseRuleType'] = self.response_rule_type
         if self.role_for is not None:
             result['RoleFor'] = self.role_for
         if self.role_type is not None:
@@ -14952,6 +14956,8 @@ class ListAutomateResponseConfigsRequest(TeaModel):
             self.playbook_uuid = m.get('PlaybookUuid')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResponseRuleType') is not None:
+            self.response_rule_type = m.get('ResponseRuleType')
         if m.get('RoleFor') is not None:
             self.role_for = m.get('RoleFor')
         if m.get('RoleType') is not None:
@@ -15019,6 +15025,7 @@ class ListAutomateResponseConfigsResponseBodyDataResponseData(TeaModel):
         gmt_create: str = None,
         gmt_modified: str = None,
         id: int = None,
+        response_rule_type: str = None,
         rule_name: str = None,
         status: int = None,
         sub_user_id: int = None,
@@ -15051,6 +15058,7 @@ class ListAutomateResponseConfigsResponseBodyDataResponseData(TeaModel):
         self.gmt_modified = gmt_modified
         # The ID of the automated response rule.
         self.id = id
+        self.response_rule_type = response_rule_type
         # The name of the automated response rule.
         self.rule_name = rule_name
         # The status of the rule. Valid values:
@@ -15088,6 +15096,8 @@ class ListAutomateResponseConfigsResponseBodyDataResponseData(TeaModel):
             result['GmtModified'] = self.gmt_modified
         if self.id is not None:
             result['Id'] = self.id
+        if self.response_rule_type is not None:
+            result['ResponseRuleType'] = self.response_rule_type
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
         if self.status is not None:
@@ -15116,6 +15126,8 @@ class ListAutomateResponseConfigsResponseBodyDataResponseData(TeaModel):
             self.gmt_modified = m.get('GmtModified')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('ResponseRuleType') is not None:
+            self.response_rule_type = m.get('ResponseRuleType')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
         if m.get('Status') is not None:

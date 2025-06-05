@@ -1,3 +1,8 @@
+2025-06-05 Version: 5.0.1
+- Update API ListAutomateResponseConfigs: add request parameters ResponseRuleType.
+- Update API ListAutomateResponseConfigs: add response parameters Body.Data.ResponseData.$.ResponseRuleType.
+
+
 2025-05-27 Version: 5.0.0
 - Support API ListEntities.
 - Delete API AddUser.
