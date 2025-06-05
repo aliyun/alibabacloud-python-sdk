@@ -1,3 +1,7 @@
+2025-06-05 Version: 4.9.0
+- Support API ModifyCollection.
+
+
 2025-05-29 Version: 4.8.5
 - Update API CreateDBInstance: add request parameters CacheStorageSize.
 - Update API DescribeDBInstanceAttribute: add response parameters Body.Items.$.CacheStorageSize.

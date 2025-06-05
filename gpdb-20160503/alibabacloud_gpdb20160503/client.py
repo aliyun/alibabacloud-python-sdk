@@ -18206,6 +18206,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_backup_policy_with_options_async(request, runtime)
 
+    def modify_collection_with_options(
+        self,
+        request: gpdb_20160503_models.ModifyCollectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ModifyCollectionResponse:
+        """
+        @summary 更新Collection
+        
+        @param request: ModifyCollectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCollectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.collection):
+            query['Collection'] = request.collection
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.metadata):
+            query['Metadata'] = request.metadata
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_password):
+            query['NamespacePassword'] = request.namespace_password
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyCollection',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ModifyCollectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_collection_with_options_async(
+        self,
+        request: gpdb_20160503_models.ModifyCollectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ModifyCollectionResponse:
+        """
+        @summary 更新Collection
+        
+        @param request: ModifyCollectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCollectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.collection):
+            query['Collection'] = request.collection
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.metadata):
+            query['Metadata'] = request.metadata
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_password):
+            query['NamespacePassword'] = request.namespace_password
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyCollection',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ModifyCollectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_collection(
+        self,
+        request: gpdb_20160503_models.ModifyCollectionRequest,
+    ) -> gpdb_20160503_models.ModifyCollectionResponse:
+        """
+        @summary 更新Collection
+        
+        @param request: ModifyCollectionRequest
+        @return: ModifyCollectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_collection_with_options(request, runtime)
+
+    async def modify_collection_async(
+        self,
+        request: gpdb_20160503_models.ModifyCollectionRequest,
+    ) -> gpdb_20160503_models.ModifyCollectionResponse:
+        """
+        @summary 更新Collection
+        
+        @param request: ModifyCollectionRequest
+        @return: ModifyCollectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_collection_with_options_async(request, runtime)
+
     def modify_dbinstance_config_with_options(
         self,
         request: gpdb_20160503_models.ModifyDBInstanceConfigRequest,

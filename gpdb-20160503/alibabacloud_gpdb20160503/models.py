@@ -34267,6 +34267,165 @@ class ModifyBackupPolicyResponse(TeaModel):
         return self
 
 
+class ModifyCollectionRequest(TeaModel):
+    def __init__(
+        self,
+        collection: str = None,
+        dbinstance_id: str = None,
+        metadata: str = None,
+        namespace: str = None,
+        namespace_password: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        workspace_id: str = None,
+    ):
+        # This parameter is required.
+        self.collection = collection
+        self.dbinstance_id = dbinstance_id
+        # This parameter is required.
+        self.metadata = metadata
+        self.namespace = namespace
+        # This parameter is required.
+        self.namespace_password = namespace_password
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.collection is not None:
+            result['Collection'] = self.collection
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.metadata is not None:
+            result['Metadata'] = self.metadata
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.namespace_password is not None:
+            result['NamespacePassword'] = self.namespace_password
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Collection') is not None:
+            self.collection = m.get('Collection')
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('Metadata') is not None:
+            self.metadata = m.get('Metadata')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('NamespacePassword') is not None:
+            self.namespace_password = m.get('NamespacePassword')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class ModifyCollectionResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        metadata: str = None,
+        request_id: str = None,
+        status: str = None,
+    ):
+        self.message = message
+        self.metadata = metadata
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.metadata is not None:
+            result['Metadata'] = self.metadata
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Metadata') is not None:
+            self.metadata = m.get('Metadata')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ModifyCollectionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyCollectionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyCollectionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyDBInstanceConfigRequest(TeaModel):
     def __init__(
         self,
