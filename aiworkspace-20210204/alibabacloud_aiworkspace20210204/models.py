@@ -9167,6 +9167,8 @@ class GetConfigResponseBody(TeaModel):
         category_name: str = None,
         config_key: str = None,
         config_value: str = None,
+        gmt_create_time: str = None,
+        gmt_modified_time: str = None,
         labels: List[GetConfigResponseBodyLabels] = None,
         request_id: str = None,
         workspace_id: str = None,
@@ -9190,6 +9192,8 @@ class GetConfigResponseBody(TeaModel):
         self.config_key = config_key
         # The value of the configuration item.
         self.config_value = config_value
+        self.gmt_create_time = gmt_create_time
+        self.gmt_modified_time = gmt_modified_time
         # The tags of the configuration item.
         self.labels = labels
         # The request ID.
@@ -9215,6 +9219,10 @@ class GetConfigResponseBody(TeaModel):
             result['ConfigKey'] = self.config_key
         if self.config_value is not None:
             result['ConfigValue'] = self.config_value
+        if self.gmt_create_time is not None:
+            result['GmtCreateTime'] = self.gmt_create_time
+        if self.gmt_modified_time is not None:
+            result['GmtModifiedTime'] = self.gmt_modified_time
         result['Labels'] = []
         if self.labels is not None:
             for k in self.labels:
@@ -9233,6 +9241,10 @@ class GetConfigResponseBody(TeaModel):
             self.config_key = m.get('ConfigKey')
         if m.get('ConfigValue') is not None:
             self.config_value = m.get('ConfigValue')
+        if m.get('GmtCreateTime') is not None:
+            self.gmt_create_time = m.get('GmtCreateTime')
+        if m.get('GmtModifiedTime') is not None:
+            self.gmt_modified_time = m.get('GmtModifiedTime')
         self.labels = []
         if m.get('Labels') is not None:
             for k in m.get('Labels'):
@@ -12853,6 +12865,8 @@ class ListConfigsResponseBodyConfigs(TeaModel):
         self,
         config_key: str = None,
         config_value: str = None,
+        gmt_create_time: str = None,
+        gmt_modified_time: str = None,
         labels: List[ListConfigsResponseBodyConfigsLabels] = None,
     ):
         # The key of the configuration item. Supported keys:
@@ -12865,6 +12879,8 @@ class ListConfigsResponseBodyConfigs(TeaModel):
         self.config_key = config_key
         # The value of the configuration item.
         self.config_value = config_value
+        self.gmt_create_time = gmt_create_time
+        self.gmt_modified_time = gmt_modified_time
         # The tags of the configuration item.
         self.labels = labels
 
@@ -12884,6 +12900,10 @@ class ListConfigsResponseBodyConfigs(TeaModel):
             result['ConfigKey'] = self.config_key
         if self.config_value is not None:
             result['ConfigValue'] = self.config_value
+        if self.gmt_create_time is not None:
+            result['GmtCreateTime'] = self.gmt_create_time
+        if self.gmt_modified_time is not None:
+            result['GmtModifiedTime'] = self.gmt_modified_time
         result['Labels'] = []
         if self.labels is not None:
             for k in self.labels:
@@ -12896,6 +12916,10 @@ class ListConfigsResponseBodyConfigs(TeaModel):
             self.config_key = m.get('ConfigKey')
         if m.get('ConfigValue') is not None:
             self.config_value = m.get('ConfigValue')
+        if m.get('GmtCreateTime') is not None:
+            self.gmt_create_time = m.get('GmtCreateTime')
+        if m.get('GmtModifiedTime') is not None:
+            self.gmt_modified_time = m.get('GmtModifiedTime')
         self.labels = []
         if m.get('Labels') is not None:
             for k in m.get('Labels'):

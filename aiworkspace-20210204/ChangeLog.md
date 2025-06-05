@@ -1,3 +1,10 @@
+2025-06-05 Version: 6.4.3
+- Update API GetConfig: add response parameters Body.GmtCreateTime.
+- Update API GetConfig: add response parameters Body.GmtModifiedTime.
+- Update API ListConfigs: add response parameters Body.Configs.$.GmtCreateTime.
+- Update API ListConfigs: add response parameters Body.Configs.$.GmtModifiedTime.
+
+
 2025-06-04 Version: 6.4.2
 - Update API CreateDataset: add request parameters body.Edition.
 - Update API GetDataset: add response parameters Body.Edition.
