@@ -1,3 +1,10 @@
+2025-06-05 Version: 2.0.8
+- Update API CreateContainerGroup: add request parameters MaxPendingMinute.
+- Update API CreateImageCache: add request parameters OsType.
+- Update API DescribeContainerGroups: add response parameters Body.ContainerGroups.$.DnsPolicy.
+- Update API DescribeRegions: add response parameters Body.Regions.$.UnavailableZones.
+
+
 2024-06-28 Version: 2.0.7
 - Update API DeleteContainerGroup: add param Force.
 

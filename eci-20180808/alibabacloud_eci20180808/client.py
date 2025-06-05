@@ -493,14 +493,14 @@ class Client(OpenApiClient):
             query['Ipv6GatewayBandwidth'] = request.ipv_6gateway_bandwidth
         if not UtilClient.is_unset(request.ipv_6gateway_bandwidth_enable):
             query['Ipv6GatewayBandwidthEnable'] = request.ipv_6gateway_bandwidth_enable
+        if not UtilClient.is_unset(request.max_pending_minute):
+            query['MaxPendingMinute'] = request.max_pending_minute
         if not UtilClient.is_unset(request.memory):
             query['Memory'] = request.memory
         if not UtilClient.is_unset(request.ntp_server):
             query['NtpServer'] = request.ntp_server
         if not UtilClient.is_unset(request.os_type):
             query['OsType'] = request.os_type
-        if not UtilClient.is_unset(request.overhead_reservation_option):
-            query['OverheadReservationOption'] = request.overhead_reservation_option
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -708,14 +708,14 @@ class Client(OpenApiClient):
             query['Ipv6GatewayBandwidth'] = request.ipv_6gateway_bandwidth
         if not UtilClient.is_unset(request.ipv_6gateway_bandwidth_enable):
             query['Ipv6GatewayBandwidthEnable'] = request.ipv_6gateway_bandwidth_enable
+        if not UtilClient.is_unset(request.max_pending_minute):
+            query['MaxPendingMinute'] = request.max_pending_minute
         if not UtilClient.is_unset(request.memory):
             query['Memory'] = request.memory
         if not UtilClient.is_unset(request.ntp_server):
             query['NtpServer'] = request.ntp_server
         if not UtilClient.is_unset(request.os_type):
             query['OsType'] = request.os_type
-        if not UtilClient.is_unset(request.overhead_reservation_option):
-            query['OverheadReservationOption'] = request.overhead_reservation_option
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -1128,6 +1128,8 @@ class Client(OpenApiClient):
             query['ImageRegistryCredential'] = request.image_registry_credential
         if not UtilClient.is_unset(request.insecure_registry):
             query['InsecureRegistry'] = request.insecure_registry
+        if not UtilClient.is_unset(request.os_type):
+            query['OsType'] = request.os_type
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -1226,6 +1228,8 @@ class Client(OpenApiClient):
             query['ImageRegistryCredential'] = request.image_registry_credential
         if not UtilClient.is_unset(request.insecure_registry):
             query['InsecureRegistry'] = request.insecure_registry
+        if not UtilClient.is_unset(request.os_type):
+            query['OsType'] = request.os_type
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -4327,7 +4331,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eci_20180808_models.ListTagResourcesResponse:
         """
-        @summary 查询用户tag
+        @summary Queries the tags that are added to an Elastic Container Instance resource.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4382,7 +4386,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eci_20180808_models.ListTagResourcesResponse:
         """
-        @summary 查询用户tag
+        @summary Queries the tags that are added to an Elastic Container Instance resource.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4436,7 +4440,7 @@ class Client(OpenApiClient):
         request: eci_20180808_models.ListTagResourcesRequest,
     ) -> eci_20180808_models.ListTagResourcesResponse:
         """
-        @summary 查询用户tag
+        @summary Queries the tags that are added to an Elastic Container Instance resource.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -4449,7 +4453,7 @@ class Client(OpenApiClient):
         request: eci_20180808_models.ListTagResourcesRequest,
     ) -> eci_20180808_models.ListTagResourcesResponse:
         """
-        @summary 查询用户tag
+        @summary Queries the tags that are added to an Elastic Container Instance resource.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -4587,9 +4591,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eci_20180808_models.ResizeContainerGroupVolumeResponse:
         """
-        @summary Scales out volumes on an elastic container instance.
+        @summary Scales up a disk volume that is mounted to an elastic container instance.
         
-        @description You can scale up volumes by calling this operation. You cannot scale down volumes by calling this operation. Only volumes of Alibaba Cloud disks can be scaled up.
+        @description ## [](#)Usage notes
+        You can scale up volumes by calling this operation. You cannot scale down volumes by calling this operation.
+        Only volumes of the disk type can be scaled up. Volumes of other types cannot be scaled up.
         
         @param request: ResizeContainerGroupVolumeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4642,9 +4648,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eci_20180808_models.ResizeContainerGroupVolumeResponse:
         """
-        @summary Scales out volumes on an elastic container instance.
+        @summary Scales up a disk volume that is mounted to an elastic container instance.
         
-        @description You can scale up volumes by calling this operation. You cannot scale down volumes by calling this operation. Only volumes of Alibaba Cloud disks can be scaled up.
+        @description ## [](#)Usage notes
+        You can scale up volumes by calling this operation. You cannot scale down volumes by calling this operation.
+        Only volumes of the disk type can be scaled up. Volumes of other types cannot be scaled up.
         
         @param request: ResizeContainerGroupVolumeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4696,9 +4704,11 @@ class Client(OpenApiClient):
         request: eci_20180808_models.ResizeContainerGroupVolumeRequest,
     ) -> eci_20180808_models.ResizeContainerGroupVolumeResponse:
         """
-        @summary Scales out volumes on an elastic container instance.
+        @summary Scales up a disk volume that is mounted to an elastic container instance.
         
-        @description You can scale up volumes by calling this operation. You cannot scale down volumes by calling this operation. Only volumes of Alibaba Cloud disks can be scaled up.
+        @description ## [](#)Usage notes
+        You can scale up volumes by calling this operation. You cannot scale down volumes by calling this operation.
+        Only volumes of the disk type can be scaled up. Volumes of other types cannot be scaled up.
         
         @param request: ResizeContainerGroupVolumeRequest
         @return: ResizeContainerGroupVolumeResponse
@@ -4711,9 +4721,11 @@ class Client(OpenApiClient):
         request: eci_20180808_models.ResizeContainerGroupVolumeRequest,
     ) -> eci_20180808_models.ResizeContainerGroupVolumeResponse:
         """
-        @summary Scales out volumes on an elastic container instance.
+        @summary Scales up a disk volume that is mounted to an elastic container instance.
         
-        @description You can scale up volumes by calling this operation. You cannot scale down volumes by calling this operation. Only volumes of Alibaba Cloud disks can be scaled up.
+        @description ## [](#)Usage notes
+        You can scale up volumes by calling this operation. You cannot scale down volumes by calling this operation.
+        Only volumes of the disk type can be scaled up. Volumes of other types cannot be scaled up.
         
         @param request: ResizeContainerGroupVolumeRequest
         @return: ResizeContainerGroupVolumeResponse
@@ -4867,7 +4879,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eci_20180808_models.TagResourcesResponse:
         """
-        @summary 打用户tag
+        @summary Adds tags to an Elastic Container Instance resource.
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4918,7 +4930,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eci_20180808_models.TagResourcesResponse:
         """
-        @summary 打用户tag
+        @summary Adds tags to an Elastic Container Instance resource.
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4968,7 +4980,7 @@ class Client(OpenApiClient):
         request: eci_20180808_models.TagResourcesRequest,
     ) -> eci_20180808_models.TagResourcesResponse:
         """
-        @summary 打用户tag
+        @summary Adds tags to an Elastic Container Instance resource.
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -4981,7 +4993,7 @@ class Client(OpenApiClient):
         request: eci_20180808_models.TagResourcesRequest,
     ) -> eci_20180808_models.TagResourcesResponse:
         """
-        @summary 打用户tag
+        @summary Adds tags to an Elastic Container Instance resource.
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -4995,7 +5007,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eci_20180808_models.UntagResourcesResponse:
         """
-        @summary 去除用户tag
+        @summary Removes tags from an Elastic Container Instance resource.
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5050,7 +5062,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eci_20180808_models.UntagResourcesResponse:
         """
-        @summary 去除用户tag
+        @summary Removes tags from an Elastic Container Instance resource.
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5104,7 +5116,7 @@ class Client(OpenApiClient):
         request: eci_20180808_models.UntagResourcesRequest,
     ) -> eci_20180808_models.UntagResourcesResponse:
         """
-        @summary 去除用户tag
+        @summary Removes tags from an Elastic Container Instance resource.
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
@@ -5117,7 +5129,7 @@ class Client(OpenApiClient):
         request: eci_20180808_models.UntagResourcesRequest,
     ) -> eci_20180808_models.UntagResourcesResponse:
         """
-        @summary 去除用户tag
+        @summary Removes tags from an Elastic Container Instance resource.
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse

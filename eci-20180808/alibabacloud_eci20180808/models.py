@@ -1302,7 +1302,7 @@ class CreateContainerGroupRequestContainerEnvironmentVar(TeaModel):
         value: str = None,
     ):
         self.field_ref = field_ref
-        # The name of the environment variable. The name must be 1 to 128 bits in length and can contain letters, digits, and underscores (_). It cannot start with a digit.``
+        # The name of the environment variable. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.``
         self.key = key
         # The value of the environment variable. The value can be up to 256 characters in length.
         self.value = value
@@ -1466,7 +1466,7 @@ class CreateContainerGroupRequestContainerVolumeMount(TeaModel):
         # 
         # Default value: None.
         self.mount_propagation = mount_propagation
-        # The name of the volume. The value of this parameter is the same as the value of Volume.N.Name.
+        # The name of the volume. The value of this parameter is the same as the name of the volume that is mounted to containers.
         self.name = name
         # Specifies whether the volume is read-only. Default value: false.
         self.read_only = read_only
@@ -1558,15 +1558,15 @@ class CreateContainerGroupRequestContainer(TeaModel):
         self.security_context = security_context
         # The arguments that are passed to the startup command of the container. You can specify up to 10 arguments.
         self.arg = arg
-        # The commands to be executed in containers when you use a CLI to perform health checks.
+        # The commands to be executed in the container when you use a CLI to perform health checks.
         # 
         # >  When you configure ReadinessProbe-related parameters, you can select only one of the HttpGet, Exec, and TcpSocket check methods.
         self.command = command
-        # The number of vCPUs that are allocated to the container.
+        # The number of vCPUs that you want to allocate to the container.
         self.cpu = cpu
         # The environment variables of the container.
         self.environment_var = environment_var
-        # Specifies whether to hide the information about environment variables when you query the details of an elastic container instance. Valid values:
+        # Specifies whether to hide the information about environment variables when you query the details of an elastic container instance. Default value: false. Valid values:
         # 
         # *   false
         # *   true If environment variables contain sensitive information, you can set this parameter to true to improve security of the information.
@@ -1621,7 +1621,7 @@ class CreateContainerGroupRequestContainer(TeaModel):
         self.lifecycle_pre_stop_handler_tcp_socket_host = lifecycle_pre_stop_handler_tcp_socket_host
         # The port to which the system sends a TCP socket request for a health check when you use TCP sockets to specify a preStop hook.
         self.lifecycle_pre_stop_handler_tcp_socket_port = lifecycle_pre_stop_handler_tcp_socket_port
-        # The memory size of the container. Unit: GiB.
+        # The memory size of the container. Unit: GiB
         self.memory = memory
         # The name of the container.
         # 
@@ -1631,10 +1631,17 @@ class CreateContainerGroupRequestContainer(TeaModel):
         # 
         # >  When you configure LivenessProbe-related parameters, you can select only one of the HttpGet, Exec, and TcpSocket check methods.
         self.port = port
+        # Specifies whether to enable privileged mode for the container. That is, whether to run the container in privileged mode. Default value: false. Valid values:
+        # 
+        # *   true
+        # *   false
         self.security_context_privileged = security_context_privileged
         # The user group that runs the container.
         self.security_context_run_as_group = security_context_run_as_group
-        # Specifies whether to run the container as a non-root user.
+        # Specifies whether to run the container as a non-root user. Valid values:
+        # 
+        # *   true
+        # *   false
         self.security_context_run_as_non_root = security_context_run_as_non_root
         # Specifies whether the container allocates buffer resources to standard input streams when the container is running. If you do not specify this parameter, an end-of-file (EOF) error may occur when standard input streams in the container are read. Default value: false.
         self.stdin = stdin
@@ -2356,34 +2363,6 @@ class CreateContainerGroupRequestInitContainer(TeaModel):
         return self
 
 
-class CreateContainerGroupRequestOverheadReservationOption(TeaModel):
-    def __init__(
-        self,
-        enable_overhead_reservation: bool = None,
-    ):
-        # Specify whether to enable the overhead reservation feature. Default: false. Valid values: true and false. After you enable the overhead reservation feature, the system automatically adds the overhead to the specification of the elastic container instance, and then adjusts the specification of the instance upward to the most approximate specification. You are charged based on the new specification after the adjustment.
-        self.enable_overhead_reservation = enable_overhead_reservation
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.enable_overhead_reservation is not None:
-            result['EnableOverheadReservation'] = self.enable_overhead_reservation
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('EnableOverheadReservation') is not None:
-            self.enable_overhead_reservation = m.get('EnableOverheadReservation')
-        return self
-
-
 class CreateContainerGroupRequestTag(TeaModel):
     def __init__(
         self,
@@ -2823,10 +2802,10 @@ class CreateContainerGroupRequest(TeaModel):
         ipv_6address_count: int = None,
         ipv_6gateway_bandwidth: str = None,
         ipv_6gateway_bandwidth_enable: bool = None,
+        max_pending_minute: int = None,
         memory: float = None,
         ntp_server: List[str] = None,
         os_type: str = None,
-        overhead_reservation_option: CreateContainerGroupRequestOverheadReservationOption = None,
         owner_account: str = None,
         owner_id: int = None,
         plain_http_registry: str = None,
@@ -2863,7 +2842,7 @@ class CreateContainerGroupRequest(TeaModel):
         self.auto_match_image_cache = auto_match_image_cache
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotency](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The computing power type of the instance. For more information, see [Set the computing power type to economy when you create an elastic container instance](https://help.aliyun.com/document_detail/2638061.html).
+        # The compute category of the instance. For more information, see [Specify a compute category to create an elastic container instance](https://help.aliyun.com/document_detail/2638061.html).
         self.compute_category = compute_category
         # The information about the container.
         # 
@@ -2983,6 +2962,7 @@ class CreateContainerGroupRequest(TeaModel):
         self.ipv_6gateway_bandwidth = ipv_6gateway_bandwidth
         # Specifies whether to enable Internet access to the elastic container instance over IPv6 addresses.
         self.ipv_6gateway_bandwidth_enable = ipv_6gateway_bandwidth_enable
+        self.max_pending_minute = max_pending_minute
         # The memory size that you want to allocate to the instance. Unit: GiB.
         self.memory = memory
         # The endpoints of the Network Time Protocol (NTP) servers.
@@ -2994,8 +2974,6 @@ class CreateContainerGroupRequest(TeaModel):
         # 
         # >  Windows instances are in invitational preview. To use the operating system, submit a ticket.
         self.os_type = os_type
-        # The options that you can configure when you enable the overhead reservation feature.
-        self.overhead_reservation_option = overhead_reservation_option
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The address of the self-managed image repository. When you create an elastic container instance by using an image in a self-managed image repository that uses the HTTP protocol, you must specify this parameter. This way, Elastic Container Instance pulls the image over the HTTP protocol instead of the default HTTPS protocol. This prevents image pull failures caused by different protocols.
@@ -3096,8 +3074,6 @@ class CreateContainerGroupRequest(TeaModel):
             for k in self.init_container:
                 if k:
                     k.validate()
-        if self.overhead_reservation_option:
-            self.overhead_reservation_option.validate()
         if self.tag:
             for k in self.tag:
                 if k:
@@ -3213,14 +3189,14 @@ class CreateContainerGroupRequest(TeaModel):
             result['Ipv6GatewayBandwidth'] = self.ipv_6gateway_bandwidth
         if self.ipv_6gateway_bandwidth_enable is not None:
             result['Ipv6GatewayBandwidthEnable'] = self.ipv_6gateway_bandwidth_enable
+        if self.max_pending_minute is not None:
+            result['MaxPendingMinute'] = self.max_pending_minute
         if self.memory is not None:
             result['Memory'] = self.memory
         if self.ntp_server is not None:
             result['NtpServer'] = self.ntp_server
         if self.os_type is not None:
             result['OsType'] = self.os_type
-        if self.overhead_reservation_option is not None:
-            result['OverheadReservationOption'] = self.overhead_reservation_option.to_map()
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -3381,15 +3357,14 @@ class CreateContainerGroupRequest(TeaModel):
             self.ipv_6gateway_bandwidth = m.get('Ipv6GatewayBandwidth')
         if m.get('Ipv6GatewayBandwidthEnable') is not None:
             self.ipv_6gateway_bandwidth_enable = m.get('Ipv6GatewayBandwidthEnable')
+        if m.get('MaxPendingMinute') is not None:
+            self.max_pending_minute = m.get('MaxPendingMinute')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
         if m.get('NtpServer') is not None:
             self.ntp_server = m.get('NtpServer')
         if m.get('OsType') is not None:
             self.os_type = m.get('OsType')
-        if m.get('OverheadReservationOption') is not None:
-            temp_model = CreateContainerGroupRequestOverheadReservationOption()
-            self.overhead_reservation_option = temp_model.from_map(m['OverheadReservationOption'])
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -4049,6 +4024,7 @@ class CreateImageCacheRequest(TeaModel):
         image_cache_size: int = None,
         image_registry_credential: List[CreateImageCacheRequestImageRegistryCredential] = None,
         insecure_registry: str = None,
+        os_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
         plain_http_registry: str = None,
@@ -4109,6 +4085,13 @@ class CreateImageCacheRequest(TeaModel):
         # 
         # When you create an image cache by using an image in a self-managed image repository that uses a self-signed certificate, you must specify this parameter to skip the certificate authentication. This can prevent the image from failing to pull due to certificate authentication failures.
         self.insecure_registry = insecure_registry
+        # The operating system of the image. Default value: Linux. Valid values:
+        # 
+        # - Linux
+        # - Windows
+        # 
+        # > Windows instances are in invitational preview. To use the operating system, submit a ticket.
+        self.os_type = os_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The address of the self-managed image repository. When you create an image cache by using an image in a self-managed image repository that uses the HTTP protocol, you must specify this parameter. This way, Elastic Container Instance uses the HTTP protocol instead of the default HTTPS protocol to pull the image. This can prevent the image from failing to pull due to different protocols.
@@ -4188,6 +4171,8 @@ class CreateImageCacheRequest(TeaModel):
                 result['ImageRegistryCredential'].append(k.to_map() if k else None)
         if self.insecure_registry is not None:
             result['InsecureRegistry'] = self.insecure_registry
+        if self.os_type is not None:
+            result['OsType'] = self.os_type
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -4252,6 +4237,8 @@ class CreateImageCacheRequest(TeaModel):
                 self.image_registry_credential.append(temp_model.from_map(k))
         if m.get('InsecureRegistry') is not None:
             self.insecure_registry = m.get('InsecureRegistry')
+        if m.get('OsType') is not None:
+            self.os_type = m.get('OsType')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -4554,9 +4541,9 @@ class CreateVirtualNodeRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of tag.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -4590,15 +4577,15 @@ class CreateVirtualNodeRequestTaint(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The effect of taint N. Valid values of N: 1 to 20. Valid values:
+        # The effect of the taint. Valid values:
         # 
-        # - NoSchedule: No pods are scheduled to the nodes that have the taint.
-        # - NoExecute: Existing pods in the node are evicted while no pods are scheduled to the nodes that have the taint.
-        # - PreferNoSchedule: Pods are preferentially not scheduled to the nodes that have the taint.
+        # *   NoSchedule: does not schedule pods to run on the VNodes that have the taint.
+        # *   NoExecute: evicts existing pods on the VNodes that have the taint while not scheduling pods to run on the VNodes.
+        # *   PreferNoSchedule: avoids scheduling pods to run on the VNodes that have the taint.
         self.effect = effect
-        # The key of taint.
+        # The key of the taint.
         self.key = key
-        # The value of taint.
+        # The value of the taint.
         self.value = value
 
     def validate(self):
@@ -4667,7 +4654,7 @@ class CreateVirtualNodeRequest(TeaModel):
         # 
         # If the value of this parameter is true, the VNode exposes a public IP address to external services.
         self.enable_public_network = enable_public_network
-        # KubeConfig of the Kubernetes cluster to which the VNode is to be connected. The value must be Base64-encoded.
+        # The KubeConfig of the Kubernetes cluster with which the VNode is connected. The value must be Base64-encoded.
         self.kube_config = kube_config
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -4683,9 +4670,9 @@ class CreateVirtualNodeRequest(TeaModel):
         # 
         # This parameter is required.
         self.security_group_id = security_group_id
-        # Tag.
+        # The tags to add to the VNode. You can add up to 20 tags.
         self.tag = tag
-        # Taint.
+        # The taints of the VNode. You can configure up to 20 taints.
         self.taint = taint
         # Specifies whether to enable TLS bootstrapping. If you set this parameter to true, use the KubeConfig certificate for TLS bootstrapping. Valid values:
         # 
@@ -4912,6 +4899,10 @@ class DeleteContainerGroupRequest(TeaModel):
         # 
         # This parameter is required.
         self.container_group_id = container_group_id
+        # Specifies whether to forcibly delete resources. Default value: false. Valid values:
+        # 
+        # *   true: forcibly deletes resources without waiting for the timeout period for graceful terminations.
+        # *   false: waits for the timeout period for graceful terminations to delete resources.
         self.force = force
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -9270,7 +9261,10 @@ class DescribeContainerGroupsRequest(TeaModel):
         with_event: bool = None,
         zone_id: str = None,
     ):
-        # The computing power type of the elastic container instance. A value of economy specifies economic elastic container instances.
+        # The compute category of the instance. Valid values:
+        # 
+        # *   economy
+        # *   general
         self.compute_category = compute_category
         # The IDs of the elastic container instances in JSON format. You can specify up to 20 IDs.
         self.container_group_ids = container_group_ids
@@ -11453,6 +11447,7 @@ class DescribeContainerGroupsResponseBodyContainerGroups(TeaModel):
         creation_time: str = None,
         discount: int = None,
         dns_config: DescribeContainerGroupsResponseBodyContainerGroupsDnsConfig = None,
+        dns_policy: str = None,
         eci_security_context: DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContext = None,
         eni_instance_id: str = None,
         ephemeral_storage: int = None,
@@ -11504,6 +11499,11 @@ class DescribeContainerGroupsResponseBodyContainerGroups(TeaModel):
         self.discount = discount
         # The Domain Name System (DNS) settings.
         self.dns_config = dns_config
+        # The Domain Name System (DNS) policy. Valid values:
+        # 
+        # - None: uses the DNS that is specified by DnsConfig.
+        # - Default: uses the DNS that is specified for the runtime environment.
+        self.dns_policy = dns_policy
         # The security context of the elastic container instance.
         self.eci_security_context = eci_security_context
         # The ID of the elastic network interface (ENI).
@@ -11642,6 +11642,8 @@ class DescribeContainerGroupsResponseBodyContainerGroups(TeaModel):
             result['Discount'] = self.discount
         if self.dns_config is not None:
             result['DnsConfig'] = self.dns_config.to_map()
+        if self.dns_policy is not None:
+            result['DnsPolicy'] = self.dns_policy
         if self.eci_security_context is not None:
             result['EciSecurityContext'] = self.eci_security_context.to_map()
         if self.eni_instance_id is not None:
@@ -11738,6 +11740,8 @@ class DescribeContainerGroupsResponseBodyContainerGroups(TeaModel):
         if m.get('DnsConfig') is not None:
             temp_model = DescribeContainerGroupsResponseBodyContainerGroupsDnsConfig()
             self.dns_config = temp_model.from_map(m['DnsConfig'])
+        if m.get('DnsPolicy') is not None:
+            self.dns_policy = m.get('DnsPolicy')
         if m.get('EciSecurityContext') is not None:
             temp_model = DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContext()
             self.eci_security_context = temp_model.from_map(m['EciSecurityContext'])
@@ -13338,9 +13342,10 @@ class DescribeInstanceOpsRecordsResponseBodyRecords(TeaModel):
         self.ops_status = ops_status
         # The type of the O\\&M task.
         self.ops_type = ops_type
-        # The content of the O\\&M result. The content is the download URL of the files that are generated for the O\\&M task.
+        # The content of the O\\&M result. The value is the download URL of the files that are generated for the O\\&M task. This parameter is returned only when the value of the OpsStatus parameter is Success.
         self.result_content = result_content
-        # The type of the O\\&M result. Valid value: OSS. This value indicates that the files generated for the O\\&M task are saved to Object Storage Service (OSS) buckets.
+        # The type of the O\\&M result. This parameter is returned only when the value of the OpsStatus parameter is Success.\\
+        # The only value of the parameter is Oss. The value indicates that the files generated for the O\\&M task are saved to Object Storage Service (OSS) buckets.
         self.result_type = result_type
 
     def validate(self):
@@ -13389,7 +13394,7 @@ class DescribeInstanceOpsRecordsResponseBody(TeaModel):
         records: List[DescribeInstanceOpsRecordsResponseBodyRecords] = None,
         request_id: str = None,
     ):
-        # The details of the O\\&M tasks.
+        # The details of the queried O\\&M tasks.
         self.records = records
         # The request ID.
         self.request_id = request_id
@@ -14316,14 +14321,17 @@ class DescribeRegionsResponseBodyRegions(TeaModel):
         recommend_zones: List[str] = None,
         region_endpoint: str = None,
         region_id: str = None,
+        unavailable_zones: List[str] = None,
         zones: List[str] = None,
     ):
-        # The recommended zones. Recommended zones are zones that have relatively sufficient resources in the current region.
+        # The list of recommended zones.
         self.recommend_zones = recommend_zones
         # The endpoint for the region.
         self.region_endpoint = region_endpoint
         # The region ID.
         self.region_id = region_id
+        # The list of unavailable zones.
+        self.unavailable_zones = unavailable_zones
         # The queried zones.
         self.zones = zones
 
@@ -14342,6 +14350,8 @@ class DescribeRegionsResponseBodyRegions(TeaModel):
             result['RegionEndpoint'] = self.region_endpoint
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.unavailable_zones is not None:
+            result['UnavailableZones'] = self.unavailable_zones
         if self.zones is not None:
             result['Zones'] = self.zones
         return result
@@ -14354,6 +14364,8 @@ class DescribeRegionsResponseBodyRegions(TeaModel):
             self.region_endpoint = m.get('RegionEndpoint')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('UnavailableZones') is not None:
+            self.unavailable_zones = m.get('UnavailableZones')
         if m.get('Zones') is not None:
             self.zones = m.get('Zones')
         return self
@@ -14365,7 +14377,7 @@ class DescribeRegionsResponseBody(TeaModel):
         regions: List[DescribeRegionsResponseBodyRegions] = None,
         request_id: str = None,
     ):
-        # The queried regions.
+        # The list of regions.
         self.regions = regions
         # The request ID.
         self.request_id = request_id
@@ -15144,7 +15156,9 @@ class ListTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -15185,17 +15199,30 @@ class ListTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[ListTagResourcesRequestTag] = None,
     ):
+        # The maximum number of entries to return.
         self.limit = limit
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID of the resource.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The IDs of the resources.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The type of the resource. Valid values:
+        # 
+        # *   ContainerGroup: elastic container instance
+        # *   ImageCache: image cache
+        # *   DataCache: data cache
+        # *   VirtualNode: virtual node
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The tags that are added to the resource.
         self.tag = tag
 
     def validate(self):
@@ -15270,9 +15297,18 @@ class ListTagResourcesResponseBodyTagResources(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The resource ID.
         self.resource_id = resource_id
+        # The type of the resource. Valid values:
+        # 
+        # *   ContainerGroup: elastic container instance
+        # *   ImageCache: image cache
+        # *   DataCache: data cache
+        # *   VirtualNode: virtual node
         self.resource_type = resource_type
+        # The key of the tag that is added to the resource.
         self.tag_key = tag_key
+        # The value of the tag that is added to the resource.
         self.tag_value = tag_value
 
     def validate(self):
@@ -15314,8 +15350,11 @@ class ListTagResourcesResponseBody(TeaModel):
         request_id: str = None,
         tag_resources: List[ListTagResourcesResponseBodyTagResources] = None,
     ):
+        # The returned pagination token which can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The queried resources.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -15572,7 +15611,7 @@ class ResizeContainerGroupVolumeRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The name of the volume that you want to scale up. The volume must be an Alibaba Cloud disk.
+        # The name of the volume that is mounted to the elastic container instance. Only disk volumes can be scaled up.
         # 
         # This parameter is required.
         self.volume_name = volume_name
@@ -15843,7 +15882,9 @@ class TagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
         self.key = key
+        # The tag value. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `acs:` or `aliyun`.
         self.value = value
 
     def validate(self):
@@ -15884,14 +15925,27 @@ class TagResourcesRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID of the resource.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The IDs of the resources.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The type of the resource. Valid values:
+        # 
+        # *   ContainerGroup: elastic container instance
+        # *   ImageCache: image cache
+        # *   DataCache: data cache
+        # *   VirtualNode: virtual node
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The tags that you want to add to the resource. A maximum of 20 tags can be added to a resource.
+        # 
         # This parameter is required.
         self.tag = tag
 
@@ -15956,6 +16010,7 @@ class TagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -16033,18 +16088,37 @@ class UntagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
+        # Specifies whether to remove all tags from the resource. This parameter is valid only when the `TagKey` parameter is not specified in the request. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # Default value: false.
         self.all = all
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID of the resource.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The IDs of the resources.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The type of the resource. Valid values:
+        # 
+        # *   ContainerGroup: elastic container instance
+        # *   ImageCache: image cache
+        # *   DataCache: data cache
+        # *   VirtualNode: virtual node
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The keys of the tags that you want to remove from the resource. You can enter up to 20 tag keys.
         self.tag_key = tag_key
 
     def validate(self):
@@ -16108,6 +16182,7 @@ class UntagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
