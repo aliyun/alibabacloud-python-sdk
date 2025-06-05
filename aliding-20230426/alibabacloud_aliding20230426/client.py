@@ -1915,6 +1915,136 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.AssignTicketHeaders()
         return await self.assign_ticket_with_options_async(request, headers, runtime)
 
+    def authorize_skill_with_options(
+        self,
+        tmp_req: aliding_20230426_models.AuthorizeSkillRequest,
+        tmp_header: aliding_20230426_models.AuthorizeSkillHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.AuthorizeSkillResponse:
+        """
+        @summary 校验AI技能调用权限
+        
+        @param tmp_req: AuthorizeSkillRequest
+        @param tmp_header: AuthorizeSkillHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AuthorizeSkillResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.AuthorizeSkillShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.AuthorizeSkillShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.permission_codes):
+            request.permission_codes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.permission_codes, 'PermissionCodes', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.permission_codes_shrink):
+            body['PermissionCodes'] = request.permission_codes_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AuthorizeSkill',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/ai/v1/skill/authorizeSkill',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.AuthorizeSkillResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def authorize_skill_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.AuthorizeSkillRequest,
+        tmp_header: aliding_20230426_models.AuthorizeSkillHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.AuthorizeSkillResponse:
+        """
+        @summary 校验AI技能调用权限
+        
+        @param tmp_req: AuthorizeSkillRequest
+        @param tmp_header: AuthorizeSkillHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AuthorizeSkillResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.AuthorizeSkillShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.AuthorizeSkillShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.permission_codes):
+            request.permission_codes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.permission_codes, 'PermissionCodes', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.permission_codes_shrink):
+            body['PermissionCodes'] = request.permission_codes_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AuthorizeSkill',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/ai/v1/skill/authorizeSkill',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.AuthorizeSkillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def authorize_skill(
+        self,
+        request: aliding_20230426_models.AuthorizeSkillRequest,
+    ) -> aliding_20230426_models.AuthorizeSkillResponse:
+        """
+        @summary 校验AI技能调用权限
+        
+        @param request: AuthorizeSkillRequest
+        @return: AuthorizeSkillResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.AuthorizeSkillHeaders()
+        return self.authorize_skill_with_options(request, headers, runtime)
+
+    async def authorize_skill_async(
+        self,
+        request: aliding_20230426_models.AuthorizeSkillRequest,
+    ) -> aliding_20230426_models.AuthorizeSkillResponse:
+        """
+        @summary 校验AI技能调用权限
+        
+        @param request: AuthorizeSkillRequest
+        @return: AuthorizeSkillResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.AuthorizeSkillHeaders()
+        return await self.authorize_skill_with_options_async(request, headers, runtime)
+
     def batch_get_form_data_by_id_list_with_options(
         self,
         tmp_req: aliding_20230426_models.BatchGetFormDataByIdListRequest,
@@ -21383,6 +21513,8 @@ class Client(OpenApiClient):
             body['Params'] = request.params_shrink
         if not UtilClient.is_unset(request.skill_id):
             body['SkillId'] = request.skill_id
+        if not UtilClient.is_unset(request.stream):
+            body['Stream'] = request.stream
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -21436,6 +21568,8 @@ class Client(OpenApiClient):
             body['Params'] = request.params_shrink
         if not UtilClient.is_unset(request.skill_id):
             body['SkillId'] = request.skill_id
+        if not UtilClient.is_unset(request.stream):
+            body['Stream'] = request.stream
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -23374,6 +23508,128 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ListReportHeaders()
         return await self.list_report_with_options_async(request, headers, runtime)
+
+    def list_skill_with_options(
+        self,
+        request: aliding_20230426_models.ListSkillRequest,
+        tmp_header: aliding_20230426_models.ListSkillHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.ListSkillResponse:
+        """
+        @summary 列出AI技能
+        
+        @param request: ListSkillRequest
+        @param tmp_header: ListSkillHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSkillResponse
+        """
+        UtilClient.validate_model(request)
+        headers = aliding_20230426_models.ListSkillShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.group_id):
+            body['groupId'] = request.group_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListSkill',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/ai/v1/skill/listSkill',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.ListSkillResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_skill_with_options_async(
+        self,
+        request: aliding_20230426_models.ListSkillRequest,
+        tmp_header: aliding_20230426_models.ListSkillHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.ListSkillResponse:
+        """
+        @summary 列出AI技能
+        
+        @param request: ListSkillRequest
+        @param tmp_header: ListSkillHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSkillResponse
+        """
+        UtilClient.validate_model(request)
+        headers = aliding_20230426_models.ListSkillShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.group_id):
+            body['groupId'] = request.group_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListSkill',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/ai/v1/skill/listSkill',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.ListSkillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_skill(
+        self,
+        request: aliding_20230426_models.ListSkillRequest,
+    ) -> aliding_20230426_models.ListSkillResponse:
+        """
+        @summary 列出AI技能
+        
+        @param request: ListSkillRequest
+        @return: ListSkillResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.ListSkillHeaders()
+        return self.list_skill_with_options(request, headers, runtime)
+
+    async def list_skill_async(
+        self,
+        request: aliding_20230426_models.ListSkillRequest,
+    ) -> aliding_20230426_models.ListSkillResponse:
+        """
+        @summary 列出AI技能
+        
+        @param request: ListSkillRequest
+        @return: ListSkillResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.ListSkillHeaders()
+        return await self.list_skill_with_options_async(request, headers, runtime)
 
     def list_table_data_by_form_instance_id_table_id_with_options(
         self,

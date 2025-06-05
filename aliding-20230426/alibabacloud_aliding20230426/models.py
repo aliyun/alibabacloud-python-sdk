@@ -4879,6 +4879,230 @@ class AssignTicketResponse(TeaModel):
         return self
 
 
+class AuthorizeSkillHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class AuthorizeSkillHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: AuthorizeSkillHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = AuthorizeSkillHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class AuthorizeSkillShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class AuthorizeSkillRequest(TeaModel):
+    def __init__(
+        self,
+        permission_codes: List[str] = None,
+    ):
+        self.permission_codes = permission_codes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.permission_codes is not None:
+            result['PermissionCodes'] = self.permission_codes
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PermissionCodes') is not None:
+            self.permission_codes = m.get('PermissionCodes')
+        return self
+
+
+class AuthorizeSkillShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        permission_codes_shrink: str = None,
+    ):
+        self.permission_codes_shrink = permission_codes_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.permission_codes_shrink is not None:
+            result['PermissionCodes'] = self.permission_codes_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PermissionCodes') is not None:
+            self.permission_codes_shrink = m.get('PermissionCodes')
+        return self
+
+
+class AuthorizeSkillResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: Any = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AuthorizeSkillResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AuthorizeSkillResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AuthorizeSkillResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class BatchGetFormDataByIdListHeadersAccountContext(TeaModel):
     def __init__(
         self,
@@ -60921,9 +61145,12 @@ class InvokeSkillRequest(TeaModel):
         self,
         params: Dict[str, Any] = None,
         skill_id: str = None,
+        stream: bool = None,
     ):
         self.params = params
+        # This parameter is required.
         self.skill_id = skill_id
+        self.stream = stream
 
     def validate(self):
         pass
@@ -60938,6 +61165,8 @@ class InvokeSkillRequest(TeaModel):
             result['Params'] = self.params
         if self.skill_id is not None:
             result['SkillId'] = self.skill_id
+        if self.stream is not None:
+            result['Stream'] = self.stream
         return result
 
     def from_map(self, m: dict = None):
@@ -60946,6 +61175,8 @@ class InvokeSkillRequest(TeaModel):
             self.params = m.get('Params')
         if m.get('SkillId') is not None:
             self.skill_id = m.get('SkillId')
+        if m.get('Stream') is not None:
+            self.stream = m.get('Stream')
         return self
 
 
@@ -60954,9 +61185,12 @@ class InvokeSkillShrinkRequest(TeaModel):
         self,
         params_shrink: str = None,
         skill_id: str = None,
+        stream: bool = None,
     ):
         self.params_shrink = params_shrink
+        # This parameter is required.
         self.skill_id = skill_id
+        self.stream = stream
 
     def validate(self):
         pass
@@ -60971,6 +61205,8 @@ class InvokeSkillShrinkRequest(TeaModel):
             result['Params'] = self.params_shrink
         if self.skill_id is not None:
             result['SkillId'] = self.skill_id
+        if self.stream is not None:
+            result['Stream'] = self.stream
         return result
 
     def from_map(self, m: dict = None):
@@ -60979,18 +61215,30 @@ class InvokeSkillShrinkRequest(TeaModel):
             self.params_shrink = m.get('Params')
         if m.get('SkillId') is not None:
             self.skill_id = m.get('SkillId')
+        if m.get('Stream') is not None:
+            self.stream = m.get('Stream')
         return self
 
 
 class InvokeSkillResponseBody(TeaModel):
     def __init__(
         self,
+        data: Any = None,
+        error_code: str = None,
+        error_msg: str = None,
+        finished: bool = None,
+        metadata: Any = None,
         request_id: str = None,
-        data: Dict[str, Any] = None,
+        success: bool = None,
     ):
+        self.data = data
+        self.error_code = error_code
+        self.error_msg = error_msg
+        self.finished = finished
+        self.metadata = metadata
         # RequestId
         self.request_id = request_id
-        self.data = data
+        self.success = success
 
     def validate(self):
         pass
@@ -61001,18 +61249,38 @@ class InvokeSkillResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.finished is not None:
+            result['Finished'] = self.finished
+        if self.metadata is not None:
+            result['Metadata'] = self.metadata
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['data'] = self.data
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('Finished') is not None:
+            self.finished = m.get('Finished')
+        if m.get('Metadata') is not None:
+            self.metadata = m.get('Metadata')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('data') is not None:
-            self.data = m.get('data')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -68419,6 +68687,203 @@ class ListReportResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListReportResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListSkillHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class ListSkillHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: ListSkillHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = ListSkillHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class ListSkillShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class ListSkillRequest(TeaModel):
+    def __init__(
+        self,
+        group_id: str = None,
+    ):
+        self.group_id = group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_id is not None:
+            result['groupId'] = self.group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('groupId') is not None:
+            self.group_id = m.get('groupId')
+        return self
+
+
+class ListSkillResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: Any = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListSkillResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListSkillResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListSkillResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

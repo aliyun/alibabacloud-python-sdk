@@ -1,3 +1,15 @@
+2025-06-05 Version: 2.39.0
+- Support API AuthorizeSkill.
+- Support API ListSkill.
+- Update API InvokeSkill: add request parameters Stream.
+- Update API InvokeSkill: add response parameters Body.Data.
+- Update API InvokeSkill: add response parameters Body.ErrorCode.
+- Update API InvokeSkill: add response parameters Body.ErrorMsg.
+- Update API InvokeSkill: add response parameters Body.Finished.
+- Update API InvokeSkill: add response parameters Body.Metadata.
+- Update API InvokeSkill: add response parameters Body.Success.
+
+
 2025-06-03 Version: 2.38.1
 - Update API CreateMessage: add request parameters body.messages.
 - Update API CreateMessage: add request parameters body.sourceIdOfOriginalAssistantId.
