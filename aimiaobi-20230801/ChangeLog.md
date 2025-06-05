@@ -1,3 +1,8 @@
+2025-06-05 Version: 1.26.4
+- Update API GetProperties: add response parameters Body.Data.MiaosouConfig.
+- Update API RunSearchGeneration: add request parameters ChatConfig.EnableThinking.
+
+
 2025-05-27 Version: 1.26.3
 - Update API RunDocSummary: add request parameters ModelName.
 

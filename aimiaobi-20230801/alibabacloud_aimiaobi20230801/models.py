@@ -11905,6 +11905,86 @@ class GetPropertiesResponseBodyDataIntelligentSearchConfig(TeaModel):
         return self
 
 
+class GetPropertiesResponseBodyDataMiaosouConfigModelInfos(TeaModel):
+    def __init__(
+        self,
+        model_id: str = None,
+        model_name: str = None,
+    ):
+        self.model_id = model_id
+        self.model_name = model_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.model_id is not None:
+            result['ModelId'] = self.model_id
+        if self.model_name is not None:
+            result['ModelName'] = self.model_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ModelId') is not None:
+            self.model_id = m.get('ModelId')
+        if m.get('ModelName') is not None:
+            self.model_name = m.get('ModelName')
+        return self
+
+
+class GetPropertiesResponseBodyDataMiaosouConfig(TeaModel):
+    def __init__(
+        self,
+        max_doc_size: int = None,
+        model_infos: List[GetPropertiesResponseBodyDataMiaosouConfigModelInfos] = None,
+        use_doc_size: int = None,
+    ):
+        self.max_doc_size = max_doc_size
+        self.model_infos = model_infos
+        self.use_doc_size = use_doc_size
+
+    def validate(self):
+        if self.model_infos:
+            for k in self.model_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_doc_size is not None:
+            result['MaxDocSize'] = self.max_doc_size
+        result['ModelInfos'] = []
+        if self.model_infos is not None:
+            for k in self.model_infos:
+                result['ModelInfos'].append(k.to_map() if k else None)
+        if self.use_doc_size is not None:
+            result['UseDocSize'] = self.use_doc_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxDocSize') is not None:
+            self.max_doc_size = m.get('MaxDocSize')
+        self.model_infos = []
+        if m.get('ModelInfos') is not None:
+            for k in m.get('ModelInfos'):
+                temp_model = GetPropertiesResponseBodyDataMiaosouConfigModelInfos()
+                self.model_infos.append(temp_model.from_map(k))
+        if m.get('UseDocSize') is not None:
+            self.use_doc_size = m.get('UseDocSize')
+        return self
+
+
 class GetPropertiesResponseBodyDataSearchSourceList(TeaModel):
     def __init__(
         self,
@@ -12101,6 +12181,7 @@ class GetPropertiesResponseBodyData(TeaModel):
         console_config: GetPropertiesResponseBodyDataConsoleConfig = None,
         general_config_map: Dict[str, Any] = None,
         intelligent_search_config: GetPropertiesResponseBodyDataIntelligentSearchConfig = None,
+        miaosou_config: GetPropertiesResponseBodyDataMiaosouConfig = None,
         search_source_list: List[GetPropertiesResponseBodyDataSearchSourceList] = None,
         search_sources: List[GetPropertiesResponseBodyDataSearchSources] = None,
         slr_authorized: bool = None,
@@ -12112,6 +12193,7 @@ class GetPropertiesResponseBodyData(TeaModel):
         self.console_config = console_config
         self.general_config_map = general_config_map
         self.intelligent_search_config = intelligent_search_config
+        self.miaosou_config = miaosou_config
         self.search_source_list = search_source_list
         self.search_sources = search_sources
         self.slr_authorized = slr_authorized
@@ -12124,6 +12206,8 @@ class GetPropertiesResponseBodyData(TeaModel):
             self.console_config.validate()
         if self.intelligent_search_config:
             self.intelligent_search_config.validate()
+        if self.miaosou_config:
+            self.miaosou_config.validate()
         if self.search_source_list:
             for k in self.search_source_list:
                 if k:
@@ -12157,6 +12241,8 @@ class GetPropertiesResponseBodyData(TeaModel):
             result['GeneralConfigMap'] = self.general_config_map
         if self.intelligent_search_config is not None:
             result['IntelligentSearchConfig'] = self.intelligent_search_config.to_map()
+        if self.miaosou_config is not None:
+            result['MiaosouConfig'] = self.miaosou_config.to_map()
         result['SearchSourceList'] = []
         if self.search_source_list is not None:
             for k in self.search_source_list:
@@ -12191,6 +12277,9 @@ class GetPropertiesResponseBodyData(TeaModel):
         if m.get('IntelligentSearchConfig') is not None:
             temp_model = GetPropertiesResponseBodyDataIntelligentSearchConfig()
             self.intelligent_search_config = temp_model.from_map(m['IntelligentSearchConfig'])
+        if m.get('MiaosouConfig') is not None:
+            temp_model = GetPropertiesResponseBodyDataMiaosouConfig()
+            self.miaosou_config = temp_model.from_map(m['MiaosouConfig'])
         self.search_source_list = []
         if m.get('SearchSourceList') is not None:
             for k in m.get('SearchSourceList'):
@@ -33905,11 +33994,13 @@ class RunSearchGenerationRequestChatConfigSearchParam(TeaModel):
 class RunSearchGenerationRequestChatConfig(TeaModel):
     def __init__(
         self,
+        enable_thinking: bool = None,
         generate_level: str = None,
         generate_technology: str = None,
         search_models: List[str] = None,
         search_param: RunSearchGenerationRequestChatConfigSearchParam = None,
     ):
+        self.enable_thinking = enable_thinking
         self.generate_level = generate_level
         self.generate_technology = generate_technology
         self.search_models = search_models
@@ -33925,6 +34016,8 @@ class RunSearchGenerationRequestChatConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.enable_thinking is not None:
+            result['EnableThinking'] = self.enable_thinking
         if self.generate_level is not None:
             result['GenerateLevel'] = self.generate_level
         if self.generate_technology is not None:
@@ -33937,6 +34030,8 @@ class RunSearchGenerationRequestChatConfig(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EnableThinking') is not None:
+            self.enable_thinking = m.get('EnableThinking')
         if m.get('GenerateLevel') is not None:
             self.generate_level = m.get('GenerateLevel')
         if m.get('GenerateTechnology') is not None:
