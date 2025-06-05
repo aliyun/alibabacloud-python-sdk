@@ -201,6 +201,8 @@ class Client(OpenApiClient):
             body['InstanceName'] = request.instance_name
         if not UtilClient.is_unset(request.labels):
             body['Labels'] = request.labels
+        if not UtilClient.is_unset(request.oversold_type):
+            body['OversoldType'] = request.oversold_type
         if not UtilClient.is_unset(request.priority):
             body['Priority'] = request.priority
         if not UtilClient.is_unset(request.requested_resource):
@@ -281,6 +283,8 @@ class Client(OpenApiClient):
             body['InstanceName'] = request.instance_name
         if not UtilClient.is_unset(request.labels):
             body['Labels'] = request.labels
+        if not UtilClient.is_unset(request.oversold_type):
+            body['OversoldType'] = request.oversold_type
         if not UtilClient.is_unset(request.priority):
             body['Priority'] = request.priority
         if not UtilClient.is_unset(request.requested_resource):
@@ -2273,6 +2277,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
         req = open_api_models.OpenApiRequest(
@@ -2319,6 +2325,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
         req = open_api_models.OpenApiRequest(
@@ -3062,6 +3070,8 @@ class Client(OpenApiClient):
             body['ImageUrl'] = request.image_url
         if not UtilClient.is_unset(request.instance_name):
             body['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.oversold_type):
+            body['OversoldType'] = request.oversold_type
         if not UtilClient.is_unset(request.priority):
             body['Priority'] = request.priority
         if not UtilClient.is_unset(request.requested_resource):
@@ -3143,6 +3153,8 @@ class Client(OpenApiClient):
             body['ImageUrl'] = request.image_url
         if not UtilClient.is_unset(request.instance_name):
             body['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.oversold_type):
+            body['OversoldType'] = request.oversold_type
         if not UtilClient.is_unset(request.priority):
             body['Priority'] = request.priority
         if not UtilClient.is_unset(request.requested_resource):

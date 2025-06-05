@@ -1296,6 +1296,7 @@ class CreateInstanceRequest(TeaModel):
         image_url: str = None,
         instance_name: str = None,
         labels: List[CreateInstanceRequestLabels] = None,
+        oversold_type: str = None,
         priority: int = None,
         requested_resource: CreateInstanceRequestRequestedResource = None,
         resource_id: str = None,
@@ -1341,6 +1342,7 @@ class CreateInstanceRequest(TeaModel):
         self.instance_name = instance_name
         # The custom labels.
         self.labels = labels
+        self.oversold_type = oversold_type
         # The priority based on which resources are allocated to instances. Valid values: 1 to 9.
         # 
         # *   1: the lowest priority.
@@ -1441,6 +1443,8 @@ class CreateInstanceRequest(TeaModel):
         if self.labels is not None:
             for k in self.labels:
                 result['Labels'].append(k.to_map() if k else None)
+        if self.oversold_type is not None:
+            result['OversoldType'] = self.oversold_type
         if self.priority is not None:
             result['Priority'] = self.priority
         if self.requested_resource is not None:
@@ -1503,6 +1507,8 @@ class CreateInstanceRequest(TeaModel):
             for k in m.get('Labels'):
                 temp_model = CreateInstanceRequestLabels()
                 self.labels.append(temp_model.from_map(k))
+        if m.get('OversoldType') is not None:
+            self.oversold_type = m.get('OversoldType')
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
         if m.get('RequestedResource') is not None:
@@ -5643,6 +5649,7 @@ class ListEcsSpecsRequest(TeaModel):
         order: str = None,
         page_number: int = None,
         page_size: int = None,
+        resource_type: str = None,
         sort_by: str = None,
     ):
         # The accelerator type.
@@ -5661,6 +5668,7 @@ class ListEcsSpecsRequest(TeaModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
+        self.resource_type = resource_type
         # The field by which the query results are sorted. Set the value to gmtCreate.
         self.sort_by = sort_by
 
@@ -5681,6 +5689,8 @@ class ListEcsSpecsRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
         return result
@@ -5695,6 +5705,8 @@ class ListEcsSpecsRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
         return self
@@ -8753,6 +8765,7 @@ class UpdateInstanceRequest(TeaModel):
         image_id: str = None,
         image_url: str = None,
         instance_name: str = None,
+        oversold_type: str = None,
         priority: int = None,
         requested_resource: UpdateInstanceRequestRequestedResource = None,
         user_id: str = None,
@@ -8804,6 +8817,7 @@ class UpdateInstanceRequest(TeaModel):
         # *   The name can contain only letters, digits, and underscores (_).
         # *   The name can be up to 27 characters in length.
         self.instance_name = instance_name
+        self.oversold_type = oversold_type
         # The priority based on which resources are allocated to instances. Valid values: 1 to 9.
         # 
         # *   1: the lowest priority.
@@ -8894,6 +8908,8 @@ class UpdateInstanceRequest(TeaModel):
             result['ImageUrl'] = self.image_url
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
+        if self.oversold_type is not None:
+            result['OversoldType'] = self.oversold_type
         if self.priority is not None:
             result['Priority'] = self.priority
         if self.requested_resource is not None:
@@ -8951,6 +8967,8 @@ class UpdateInstanceRequest(TeaModel):
             self.image_url = m.get('ImageUrl')
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
+        if m.get('OversoldType') is not None:
+            self.oversold_type = m.get('OversoldType')
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
         if m.get('RequestedResource') is not None:

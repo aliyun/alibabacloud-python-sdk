@@ -1,3 +1,9 @@
+2025-06-05 Version: 1.5.14
+- Update API CreateInstance: add request parameters body.OversoldType.
+- Update API ListEcsSpecs: add request parameters ResourceType.
+- Update API UpdateInstance: add request parameters body.OversoldType.
+
+
 2025-05-14 Version: 1.5.13
 - Generated python 2022-01-01 for pai-dsw.
 
