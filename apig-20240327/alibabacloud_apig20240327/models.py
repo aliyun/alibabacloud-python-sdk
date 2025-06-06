@@ -4148,6 +4148,98 @@ class HttpRouteEnvironmentInfo(TeaModel):
         return self
 
 
+class HttpRouteMcpServerInfoMcpRouteConfig(TeaModel):
+    def __init__(
+        self,
+        exposed_uri_path: str = None,
+        protocol: str = None,
+    ):
+        self.exposed_uri_path = exposed_uri_path
+        self.protocol = protocol
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exposed_uri_path is not None:
+            result['exposedUriPath'] = self.exposed_uri_path
+        if self.protocol is not None:
+            result['protocol'] = self.protocol
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('exposedUriPath') is not None:
+            self.exposed_uri_path = m.get('exposedUriPath')
+        if m.get('protocol') is not None:
+            self.protocol = m.get('protocol')
+        return self
+
+
+class HttpRouteMcpServerInfo(TeaModel):
+    def __init__(
+        self,
+        create_from_type: str = None,
+        import_instance_id: str = None,
+        import_mcp_server_id: str = None,
+        import_namespace: str = None,
+        mcp_route_config: HttpRouteMcpServerInfoMcpRouteConfig = None,
+        mcp_server_config: str = None,
+    ):
+        self.create_from_type = create_from_type
+        self.import_instance_id = import_instance_id
+        self.import_mcp_server_id = import_mcp_server_id
+        self.import_namespace = import_namespace
+        self.mcp_route_config = mcp_route_config
+        self.mcp_server_config = mcp_server_config
+
+    def validate(self):
+        if self.mcp_route_config:
+            self.mcp_route_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_from_type is not None:
+            result['createFromType'] = self.create_from_type
+        if self.import_instance_id is not None:
+            result['importInstanceId'] = self.import_instance_id
+        if self.import_mcp_server_id is not None:
+            result['importMcpServerId'] = self.import_mcp_server_id
+        if self.import_namespace is not None:
+            result['importNamespace'] = self.import_namespace
+        if self.mcp_route_config is not None:
+            result['mcpRouteConfig'] = self.mcp_route_config.to_map()
+        if self.mcp_server_config is not None:
+            result['mcpServerConfig'] = self.mcp_server_config
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createFromType') is not None:
+            self.create_from_type = m.get('createFromType')
+        if m.get('importInstanceId') is not None:
+            self.import_instance_id = m.get('importInstanceId')
+        if m.get('importMcpServerId') is not None:
+            self.import_mcp_server_id = m.get('importMcpServerId')
+        if m.get('importNamespace') is not None:
+            self.import_namespace = m.get('importNamespace')
+        if m.get('mcpRouteConfig') is not None:
+            temp_model = HttpRouteMcpServerInfoMcpRouteConfig()
+            self.mcp_route_config = temp_model.from_map(m['mcpRouteConfig'])
+        if m.get('mcpServerConfig') is not None:
+            self.mcp_server_config = m.get('mcpServerConfig')
+        return self
+
+
 class HttpRoute(TeaModel):
     def __init__(
         self,
@@ -4159,6 +4251,7 @@ class HttpRoute(TeaModel):
         environment_info: HttpRouteEnvironmentInfo = None,
         gateway_status: Dict[str, str] = None,
         match: HttpRouteMatch = None,
+        mcp_server_info: HttpRouteMcpServerInfo = None,
         name: str = None,
         route_id: str = None,
         update_timestamp: int = None,
@@ -4171,6 +4264,7 @@ class HttpRoute(TeaModel):
         self.environment_info = environment_info
         self.gateway_status = gateway_status
         self.match = match
+        self.mcp_server_info = mcp_server_info
         self.name = name
         self.route_id = route_id
         self.update_timestamp = update_timestamp
@@ -4186,6 +4280,8 @@ class HttpRoute(TeaModel):
             self.environment_info.validate()
         if self.match:
             self.match.validate()
+        if self.mcp_server_info:
+            self.mcp_server_info.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4211,6 +4307,8 @@ class HttpRoute(TeaModel):
             result['gatewayStatus'] = self.gateway_status
         if self.match is not None:
             result['match'] = self.match.to_map()
+        if self.mcp_server_info is not None:
+            result['mcpServerInfo'] = self.mcp_server_info.to_map()
         if self.name is not None:
             result['name'] = self.name
         if self.route_id is not None:
@@ -4243,6 +4341,9 @@ class HttpRoute(TeaModel):
         if m.get('match') is not None:
             temp_model = HttpRouteMatch()
             self.match = temp_model.from_map(m['match'])
+        if m.get('mcpServerInfo') is not None:
+            temp_model = HttpRouteMcpServerInfo()
+            self.mcp_server_info = temp_model.from_map(m['mcpServerInfo'])
         if m.get('name') is not None:
             self.name = m.get('name')
         if m.get('routeId') is not None:

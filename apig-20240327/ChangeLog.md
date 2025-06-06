@@ -1,3 +1,6 @@
+2025-06-06 Version: 4.0.4
+- Generated python 2024-03-27 for APIG.
+
 2025-06-03 Version: 4.0.3
 - Update API ListPlugins: add request parameters includeBuiltinAiGateway.
 
