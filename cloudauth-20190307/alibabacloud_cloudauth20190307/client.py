@@ -3865,6 +3865,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.liveness_face_verify_with_options_async(request, runtime)
 
+    def mobile_2meta_verify_with_options(
+        self,
+        request: cloudauth_20190307_models.Mobile2MetaVerifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.Mobile2MetaVerifyResponse:
+        """
+        @summary 手机二要素核验
+        
+        @param request: Mobile2MetaVerifyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: Mobile2MetaVerifyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.mobile):
+            body['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.param_type):
+            body['ParamType'] = request.param_type
+        if not UtilClient.is_unset(request.user_name):
+            body['UserName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='Mobile2MetaVerify',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.Mobile2MetaVerifyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def mobile_2meta_verify_with_options_async(
+        self,
+        request: cloudauth_20190307_models.Mobile2MetaVerifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.Mobile2MetaVerifyResponse:
+        """
+        @summary 手机二要素核验
+        
+        @param request: Mobile2MetaVerifyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: Mobile2MetaVerifyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.mobile):
+            body['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.param_type):
+            body['ParamType'] = request.param_type
+        if not UtilClient.is_unset(request.user_name):
+            body['UserName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='Mobile2MetaVerify',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.Mobile2MetaVerifyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def mobile_2meta_verify(
+        self,
+        request: cloudauth_20190307_models.Mobile2MetaVerifyRequest,
+    ) -> cloudauth_20190307_models.Mobile2MetaVerifyResponse:
+        """
+        @summary 手机二要素核验
+        
+        @param request: Mobile2MetaVerifyRequest
+        @return: Mobile2MetaVerifyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.mobile_2meta_verify_with_options(request, runtime)
+
+    async def mobile_2meta_verify_async(
+        self,
+        request: cloudauth_20190307_models.Mobile2MetaVerifyRequest,
+    ) -> cloudauth_20190307_models.Mobile2MetaVerifyResponse:
+        """
+        @summary 手机二要素核验
+        
+        @param request: Mobile2MetaVerifyRequest
+        @return: Mobile2MetaVerifyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.mobile_2meta_verify_with_options_async(request, runtime)
+
     def mobile_3meta_detail_standard_verify_with_options(
         self,
         request: cloudauth_20190307_models.Mobile3MetaDetailStandardVerifyRequest,

@@ -1,3 +1,7 @@
+2025-06-06 Version: 3.7.0
+- Support API Mobile2MetaVerify.
+
+
 2025-04-27 Version: 3.6.0
 - Support API Id2MetaVerifyWithOCR.
 
