@@ -395,10 +395,12 @@ class DefaultBuilderConfig(TeaModel):
         self,
         cache: BuildCacheConfig = None,
         languages: List[str] = None,
+        root_path: str = None,
         steps: List[Any] = None,
     ):
         self.cache = cache
         self.languages = languages
+        self.root_path = root_path
         self.steps = steps
 
     def validate(self):
@@ -415,6 +417,8 @@ class DefaultBuilderConfig(TeaModel):
             result['cache'] = self.cache.to_map()
         if self.languages is not None:
             result['languages'] = self.languages
+        if self.root_path is not None:
+            result['rootPath'] = self.root_path
         if self.steps is not None:
             result['steps'] = self.steps
         return result
@@ -426,6 +430,8 @@ class DefaultBuilderConfig(TeaModel):
             self.cache = temp_model.from_map(m['cache'])
         if m.get('languages') is not None:
             self.languages = m.get('languages')
+        if m.get('rootPath') is not None:
+            self.root_path = m.get('rootPath')
         if m.get('steps') is not None:
             self.steps = m.get('steps')
         return self
@@ -1001,6 +1007,145 @@ class DeployCustomContainerAsyncOutput(TeaModel):
         return self
 
 
+class DeployCustomContainerInputAsyncInvokeConfigDestinationConfigOnFailure(TeaModel):
+    def __init__(
+        self,
+        destination: str = None,
+    ):
+        self.destination = destination
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.destination is not None:
+            result['destination'] = self.destination
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('destination') is not None:
+            self.destination = m.get('destination')
+        return self
+
+
+class DeployCustomContainerInputAsyncInvokeConfigDestinationConfigOnSuccess(TeaModel):
+    def __init__(
+        self,
+        destination: str = None,
+    ):
+        self.destination = destination
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.destination is not None:
+            result['destination'] = self.destination
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('destination') is not None:
+            self.destination = m.get('destination')
+        return self
+
+
+class DeployCustomContainerInputAsyncInvokeConfigDestinationConfig(TeaModel):
+    def __init__(
+        self,
+        on_failure: DeployCustomContainerInputAsyncInvokeConfigDestinationConfigOnFailure = None,
+        on_success: DeployCustomContainerInputAsyncInvokeConfigDestinationConfigOnSuccess = None,
+    ):
+        self.on_failure = on_failure
+        self.on_success = on_success
+
+    def validate(self):
+        if self.on_failure:
+            self.on_failure.validate()
+        if self.on_success:
+            self.on_success.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.on_failure is not None:
+            result['onFailure'] = self.on_failure.to_map()
+        if self.on_success is not None:
+            result['onSuccess'] = self.on_success.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('onFailure') is not None:
+            temp_model = DeployCustomContainerInputAsyncInvokeConfigDestinationConfigOnFailure()
+            self.on_failure = temp_model.from_map(m['onFailure'])
+        if m.get('onSuccess') is not None:
+            temp_model = DeployCustomContainerInputAsyncInvokeConfigDestinationConfigOnSuccess()
+            self.on_success = temp_model.from_map(m['onSuccess'])
+        return self
+
+
+class DeployCustomContainerInputAsyncInvokeConfig(TeaModel):
+    def __init__(
+        self,
+        async_task: bool = None,
+        destination_config: DeployCustomContainerInputAsyncInvokeConfigDestinationConfig = None,
+        max_async_event_age_in_seconds: int = None,
+        max_async_retry_attempts: int = None,
+    ):
+        self.async_task = async_task
+        self.destination_config = destination_config
+        self.max_async_event_age_in_seconds = max_async_event_age_in_seconds
+        self.max_async_retry_attempts = max_async_retry_attempts
+
+    def validate(self):
+        if self.destination_config:
+            self.destination_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.async_task is not None:
+            result['asyncTask'] = self.async_task
+        if self.destination_config is not None:
+            result['destinationConfig'] = self.destination_config.to_map()
+        if self.max_async_event_age_in_seconds is not None:
+            result['maxAsyncEventAgeInSeconds'] = self.max_async_event_age_in_seconds
+        if self.max_async_retry_attempts is not None:
+            result['maxAsyncRetryAttempts'] = self.max_async_retry_attempts
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('asyncTask') is not None:
+            self.async_task = m.get('asyncTask')
+        if m.get('destinationConfig') is not None:
+            temp_model = DeployCustomContainerInputAsyncInvokeConfigDestinationConfig()
+            self.destination_config = temp_model.from_map(m['destinationConfig'])
+        if m.get('maxAsyncEventAgeInSeconds') is not None:
+            self.max_async_event_age_in_seconds = m.get('maxAsyncEventAgeInSeconds')
+        if m.get('maxAsyncRetryAttempts') is not None:
+            self.max_async_retry_attempts = m.get('maxAsyncRetryAttempts')
+        return self
+
+
 class DeployCustomContainerInputConcurrencyConfig(TeaModel):
     def __init__(
         self,
@@ -1199,6 +1344,7 @@ class DeployCustomContainerInputCustomContainerConfig(TeaModel):
         instance_concurrency: int = None,
         instance_lifecycle_config: DeployCustomContainerInputCustomContainerConfigInstanceLifecycleConfig = None,
         port: int = None,
+        role: str = None,
     ):
         self.command = command
         self.entrypoint = entrypoint
@@ -1207,6 +1353,7 @@ class DeployCustomContainerInputCustomContainerConfig(TeaModel):
         self.instance_concurrency = instance_concurrency
         self.instance_lifecycle_config = instance_lifecycle_config
         self.port = port
+        self.role = role
 
     def validate(self):
         if self.health_check_config:
@@ -1234,6 +1381,8 @@ class DeployCustomContainerInputCustomContainerConfig(TeaModel):
             result['instanceLifecycleConfig'] = self.instance_lifecycle_config.to_map()
         if self.port is not None:
             result['port'] = self.port
+        if self.role is not None:
+            result['role'] = self.role
         return result
 
     def from_map(self, m: dict = None):
@@ -1254,6 +1403,8 @@ class DeployCustomContainerInputCustomContainerConfig(TeaModel):
             self.instance_lifecycle_config = temp_model.from_map(m['instanceLifecycleConfig'])
         if m.get('port') is not None:
             self.port = m.get('port')
+        if m.get('role') is not None:
+            self.role = m.get('role')
         return self
 
 
@@ -1294,10 +1445,12 @@ class DeployCustomContainerInputHttpTriggerTriggerConfig(TeaModel):
     def __init__(
         self,
         auth_type: str = None,
+        disable_urlinternet: bool = None,
         dsable_urlinternet: bool = None,
         methods: List[str] = None,
     ):
         self.auth_type = auth_type
+        self.disable_urlinternet = disable_urlinternet
         self.dsable_urlinternet = dsable_urlinternet
         self.methods = methods
 
@@ -1312,6 +1465,8 @@ class DeployCustomContainerInputHttpTriggerTriggerConfig(TeaModel):
         result = dict()
         if self.auth_type is not None:
             result['authType'] = self.auth_type
+        if self.disable_urlinternet is not None:
+            result['disableURLInternet'] = self.disable_urlinternet
         if self.dsable_urlinternet is not None:
             result['dsableURLInternet'] = self.dsable_urlinternet
         if self.methods is not None:
@@ -1322,6 +1477,8 @@ class DeployCustomContainerInputHttpTriggerTriggerConfig(TeaModel):
         m = m or dict()
         if m.get('authType') is not None:
             self.auth_type = m.get('authType')
+        if m.get('disableURLInternet') is not None:
+            self.disable_urlinternet = m.get('disableURLInternet')
         if m.get('dsableURLInternet') is not None:
             self.dsable_urlinternet = m.get('dsableURLInternet')
         if m.get('methods') is not None:
@@ -1518,6 +1675,7 @@ class DeployCustomContainerInputModelConfig(TeaModel):
         src_oss_bucket: str = None,
         src_oss_path: str = None,
         src_oss_region: str = None,
+        sync_strategy: str = None,
     ):
         self.framework = framework
         self.multi_model_config = multi_model_config
@@ -1529,6 +1687,7 @@ class DeployCustomContainerInputModelConfig(TeaModel):
         self.src_oss_bucket = src_oss_bucket
         self.src_oss_path = src_oss_path
         self.src_oss_region = src_oss_region
+        self.sync_strategy = sync_strategy
 
     def validate(self):
         if self.multi_model_config:
@@ -1564,6 +1723,8 @@ class DeployCustomContainerInputModelConfig(TeaModel):
             result['srcOssPath'] = self.src_oss_path
         if self.src_oss_region is not None:
             result['srcOssRegion'] = self.src_oss_region
+        if self.sync_strategy is not None:
+            result['syncStrategy'] = self.sync_strategy
         return result
 
     def from_map(self, m: dict = None):
@@ -1591,6 +1752,8 @@ class DeployCustomContainerInputModelConfig(TeaModel):
             self.src_oss_path = m.get('srcOssPath')
         if m.get('srcOssRegion') is not None:
             self.src_oss_region = m.get('srcOssRegion')
+        if m.get('syncStrategy') is not None:
+            self.sync_strategy = m.get('syncStrategy')
         return self
 
 
@@ -1630,6 +1793,92 @@ class DeployCustomContainerInputNasConfig(TeaModel):
             self.mount_points = m.get('mountPoints')
         if m.get('userId') is not None:
             self.user_id = m.get('userId')
+        return self
+
+
+class DeployCustomContainerInputOssMountConfigMountPoints(TeaModel):
+    def __init__(
+        self,
+        bucket_name: str = None,
+        bucket_path: str = None,
+        endpoint: str = None,
+        mount_dir: str = None,
+        read_only: bool = None,
+    ):
+        self.bucket_name = bucket_name
+        self.bucket_path = bucket_path
+        self.endpoint = endpoint
+        self.mount_dir = mount_dir
+        self.read_only = read_only
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bucket_name is not None:
+            result['bucketName'] = self.bucket_name
+        if self.bucket_path is not None:
+            result['bucketPath'] = self.bucket_path
+        if self.endpoint is not None:
+            result['endpoint'] = self.endpoint
+        if self.mount_dir is not None:
+            result['mountDir'] = self.mount_dir
+        if self.read_only is not None:
+            result['readOnly'] = self.read_only
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bucketName') is not None:
+            self.bucket_name = m.get('bucketName')
+        if m.get('bucketPath') is not None:
+            self.bucket_path = m.get('bucketPath')
+        if m.get('endpoint') is not None:
+            self.endpoint = m.get('endpoint')
+        if m.get('mountDir') is not None:
+            self.mount_dir = m.get('mountDir')
+        if m.get('readOnly') is not None:
+            self.read_only = m.get('readOnly')
+        return self
+
+
+class DeployCustomContainerInputOssMountConfig(TeaModel):
+    def __init__(
+        self,
+        mount_points: List[DeployCustomContainerInputOssMountConfigMountPoints] = None,
+    ):
+        self.mount_points = mount_points
+
+    def validate(self):
+        if self.mount_points:
+            for k in self.mount_points:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['mountPoints'] = []
+        if self.mount_points is not None:
+            for k in self.mount_points:
+                result['mountPoints'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.mount_points = []
+        if m.get('mountPoints') is not None:
+            for k in m.get('mountPoints'):
+                temp_model = DeployCustomContainerInputOssMountConfigMountPoints()
+                self.mount_points.append(temp_model.from_map(k))
         return self
 
 
@@ -1780,6 +2029,7 @@ class DeployCustomContainerInput(TeaModel):
     def __init__(
         self,
         account_id: str = None,
+        async_invoke_config: DeployCustomContainerInputAsyncInvokeConfig = None,
         concurrency_config: DeployCustomContainerInputConcurrencyConfig = None,
         cpu: float = None,
         custom_container_config: DeployCustomContainerInputCustomContainerConfig = None,
@@ -1795,6 +2045,7 @@ class DeployCustomContainerInput(TeaModel):
         name: str = None,
         nas_config: DeployCustomContainerInputNasConfig = None,
         original_name: str = None,
+        oss_mount_config: DeployCustomContainerInputOssMountConfig = None,
         project_name: str = None,
         provision_config: DeployCustomContainerInputProvisionConfig = None,
         region: str = None,
@@ -1805,6 +2056,7 @@ class DeployCustomContainerInput(TeaModel):
         vpc_config: DeployCustomContainerInputVpcConfig = None,
     ):
         self.account_id = account_id
+        self.async_invoke_config = async_invoke_config
         self.concurrency_config = concurrency_config
         self.cpu = cpu
         self.custom_container_config = custom_container_config
@@ -1821,6 +2073,7 @@ class DeployCustomContainerInput(TeaModel):
         self.name = name
         self.nas_config = nas_config
         self.original_name = original_name
+        self.oss_mount_config = oss_mount_config
         self.project_name = project_name
         self.provision_config = provision_config
         self.region = region
@@ -1832,6 +2085,8 @@ class DeployCustomContainerInput(TeaModel):
         self.vpc_config = vpc_config
 
     def validate(self):
+        if self.async_invoke_config:
+            self.async_invoke_config.validate()
         if self.concurrency_config:
             self.concurrency_config.validate()
         if self.custom_container_config:
@@ -1846,6 +2101,8 @@ class DeployCustomContainerInput(TeaModel):
             self.model_config.validate()
         if self.nas_config:
             self.nas_config.validate()
+        if self.oss_mount_config:
+            self.oss_mount_config.validate()
         if self.provision_config:
             self.provision_config.validate()
         if self.vpc_config:
@@ -1859,6 +2116,8 @@ class DeployCustomContainerInput(TeaModel):
         result = dict()
         if self.account_id is not None:
             result['accountID'] = self.account_id
+        if self.async_invoke_config is not None:
+            result['asyncInvokeConfig'] = self.async_invoke_config.to_map()
         if self.concurrency_config is not None:
             result['concurrencyConfig'] = self.concurrency_config.to_map()
         if self.cpu is not None:
@@ -1889,6 +2148,8 @@ class DeployCustomContainerInput(TeaModel):
             result['nasConfig'] = self.nas_config.to_map()
         if self.original_name is not None:
             result['originalName'] = self.original_name
+        if self.oss_mount_config is not None:
+            result['ossMountConfig'] = self.oss_mount_config.to_map()
         if self.project_name is not None:
             result['projectName'] = self.project_name
         if self.provision_config is not None:
@@ -1911,6 +2172,9 @@ class DeployCustomContainerInput(TeaModel):
         m = m or dict()
         if m.get('accountID') is not None:
             self.account_id = m.get('accountID')
+        if m.get('asyncInvokeConfig') is not None:
+            temp_model = DeployCustomContainerInputAsyncInvokeConfig()
+            self.async_invoke_config = temp_model.from_map(m['asyncInvokeConfig'])
         if m.get('concurrencyConfig') is not None:
             temp_model = DeployCustomContainerInputConcurrencyConfig()
             self.concurrency_config = temp_model.from_map(m['concurrencyConfig'])
@@ -1948,6 +2212,9 @@ class DeployCustomContainerInput(TeaModel):
             self.nas_config = temp_model.from_map(m['nasConfig'])
         if m.get('originalName') is not None:
             self.original_name = m.get('originalName')
+        if m.get('ossMountConfig') is not None:
+            temp_model = DeployCustomContainerInputOssMountConfig()
+            self.oss_mount_config = temp_model.from_map(m['ossMountConfig'])
         if m.get('projectName') is not None:
             self.project_name = m.get('projectName')
         if m.get('provisionConfig') is not None:
@@ -2241,10 +2508,12 @@ class DeployHuggingFaceModelInputHttpTriggerTriggerConfig(TeaModel):
     def __init__(
         self,
         auth_type: str = None,
+        disable_urlinternet: bool = None,
         dsable_urlinternet: bool = None,
         methods: List[str] = None,
     ):
         self.auth_type = auth_type
+        self.disable_urlinternet = disable_urlinternet
         self.dsable_urlinternet = dsable_urlinternet
         self.methods = methods
 
@@ -2259,6 +2528,8 @@ class DeployHuggingFaceModelInputHttpTriggerTriggerConfig(TeaModel):
         result = dict()
         if self.auth_type is not None:
             result['authType'] = self.auth_type
+        if self.disable_urlinternet is not None:
+            result['disableURLInternet'] = self.disable_urlinternet
         if self.dsable_urlinternet is not None:
             result['dsableURLInternet'] = self.dsable_urlinternet
         if self.methods is not None:
@@ -2269,6 +2540,8 @@ class DeployHuggingFaceModelInputHttpTriggerTriggerConfig(TeaModel):
         m = m or dict()
         if m.get('authType') is not None:
             self.auth_type = m.get('authType')
+        if m.get('disableURLInternet') is not None:
+            self.disable_urlinternet = m.get('disableURLInternet')
         if m.get('dsableURLInternet') is not None:
             self.dsable_urlinternet = m.get('dsableURLInternet')
         if m.get('methods') is not None:
@@ -2409,6 +2682,7 @@ class DeployHuggingFaceModelInputModelConfig(TeaModel):
         src_oss_bucket: str = None,
         src_oss_path: str = None,
         src_oss_region: str = None,
+        sync_strategy: str = None,
     ):
         self.fmk_hugging_face_config = fmk_hugging_face_config
         self.framework = framework
@@ -2421,6 +2695,7 @@ class DeployHuggingFaceModelInputModelConfig(TeaModel):
         self.src_oss_bucket = src_oss_bucket
         self.src_oss_path = src_oss_path
         self.src_oss_region = src_oss_region
+        self.sync_strategy = sync_strategy
 
     def validate(self):
         if self.fmk_hugging_face_config:
@@ -2460,6 +2735,8 @@ class DeployHuggingFaceModelInputModelConfig(TeaModel):
             result['srcOssPath'] = self.src_oss_path
         if self.src_oss_region is not None:
             result['srcOssRegion'] = self.src_oss_region
+        if self.sync_strategy is not None:
+            result['syncStrategy'] = self.sync_strategy
         return result
 
     def from_map(self, m: dict = None):
@@ -2490,6 +2767,8 @@ class DeployHuggingFaceModelInputModelConfig(TeaModel):
             self.src_oss_path = m.get('srcOssPath')
         if m.get('srcOssRegion') is not None:
             self.src_oss_region = m.get('srcOssRegion')
+        if m.get('syncStrategy') is not None:
+            self.sync_strategy = m.get('syncStrategy')
         return self
 
 
@@ -3110,10 +3389,12 @@ class DeployModelScopeModelInputHttpTriggerTriggerConfig(TeaModel):
     def __init__(
         self,
         auth_type: str = None,
+        disable_urlinternet: bool = None,
         dsable_urlinternet: bool = None,
         methods: List[str] = None,
     ):
         self.auth_type = auth_type
+        self.disable_urlinternet = disable_urlinternet
         self.dsable_urlinternet = dsable_urlinternet
         self.methods = methods
 
@@ -3128,6 +3409,8 @@ class DeployModelScopeModelInputHttpTriggerTriggerConfig(TeaModel):
         result = dict()
         if self.auth_type is not None:
             result['authType'] = self.auth_type
+        if self.disable_urlinternet is not None:
+            result['disableURLInternet'] = self.disable_urlinternet
         if self.dsable_urlinternet is not None:
             result['dsableURLInternet'] = self.dsable_urlinternet
         if self.methods is not None:
@@ -3138,6 +3421,8 @@ class DeployModelScopeModelInputHttpTriggerTriggerConfig(TeaModel):
         m = m or dict()
         if m.get('authType') is not None:
             self.auth_type = m.get('authType')
+        if m.get('disableURLInternet') is not None:
+            self.disable_urlinternet = m.get('disableURLInternet')
         if m.get('dsableURLInternet') is not None:
             self.dsable_urlinternet = m.get('dsableURLInternet')
         if m.get('methods') is not None:
@@ -3244,6 +3529,7 @@ class DeployModelScopeModelInputModelConfig(TeaModel):
         src_oss_bucket: str = None,
         src_oss_path: str = None,
         src_oss_region: str = None,
+        sync_strategy: str = None,
     ):
         self.framework = framework
         self.multi_model_config = multi_model_config
@@ -3255,6 +3541,7 @@ class DeployModelScopeModelInputModelConfig(TeaModel):
         self.src_oss_bucket = src_oss_bucket
         self.src_oss_path = src_oss_path
         self.src_oss_region = src_oss_region
+        self.sync_strategy = sync_strategy
 
     def validate(self):
         if self.multi_model_config:
@@ -3290,6 +3577,8 @@ class DeployModelScopeModelInputModelConfig(TeaModel):
             result['srcOssPath'] = self.src_oss_path
         if self.src_oss_region is not None:
             result['srcOssRegion'] = self.src_oss_region
+        if self.sync_strategy is not None:
+            result['syncStrategy'] = self.sync_strategy
         return result
 
     def from_map(self, m: dict = None):
@@ -3317,6 +3606,8 @@ class DeployModelScopeModelInputModelConfig(TeaModel):
             self.src_oss_path = m.get('srcOssPath')
         if m.get('srcOssRegion') is not None:
             self.src_oss_region = m.get('srcOssRegion')
+        if m.get('syncStrategy') is not None:
+            self.sync_strategy = m.get('syncStrategy')
         return self
 
 
@@ -3937,10 +4228,12 @@ class DeployOllamaModelInputHttpTriggerTriggerConfig(TeaModel):
     def __init__(
         self,
         auth_type: str = None,
+        disable_urlinternet: bool = None,
         dsable_urlinternet: bool = None,
         methods: List[str] = None,
     ):
         self.auth_type = auth_type
+        self.disable_urlinternet = disable_urlinternet
         self.dsable_urlinternet = dsable_urlinternet
         self.methods = methods
 
@@ -3955,6 +4248,8 @@ class DeployOllamaModelInputHttpTriggerTriggerConfig(TeaModel):
         result = dict()
         if self.auth_type is not None:
             result['authType'] = self.auth_type
+        if self.disable_urlinternet is not None:
+            result['disableURLInternet'] = self.disable_urlinternet
         if self.dsable_urlinternet is not None:
             result['dsableURLInternet'] = self.dsable_urlinternet
         if self.methods is not None:
@@ -3965,6 +4260,8 @@ class DeployOllamaModelInputHttpTriggerTriggerConfig(TeaModel):
         m = m or dict()
         if m.get('authType') is not None:
             self.auth_type = m.get('authType')
+        if m.get('disableURLInternet') is not None:
+            self.disable_urlinternet = m.get('disableURLInternet')
         if m.get('dsableURLInternet') is not None:
             self.dsable_urlinternet = m.get('dsableURLInternet')
         if m.get('methods') is not None:
@@ -4243,6 +4540,7 @@ class DeployOllamaModelInputModelConfig(TeaModel):
         src_oss_bucket: str = None,
         src_oss_path: str = None,
         src_oss_region: str = None,
+        sync_strategy: str = None,
     ):
         self.fmk_ollama_config = fmk_ollama_config
         self.framework = framework
@@ -4255,6 +4553,7 @@ class DeployOllamaModelInputModelConfig(TeaModel):
         self.src_oss_bucket = src_oss_bucket
         self.src_oss_path = src_oss_path
         self.src_oss_region = src_oss_region
+        self.sync_strategy = sync_strategy
 
     def validate(self):
         if self.fmk_ollama_config:
@@ -4294,6 +4593,8 @@ class DeployOllamaModelInputModelConfig(TeaModel):
             result['srcOssPath'] = self.src_oss_path
         if self.src_oss_region is not None:
             result['srcOssRegion'] = self.src_oss_region
+        if self.sync_strategy is not None:
+            result['syncStrategy'] = self.sync_strategy
         return result
 
     def from_map(self, m: dict = None):
@@ -4324,6 +4625,8 @@ class DeployOllamaModelInputModelConfig(TeaModel):
             self.src_oss_path = m.get('srcOssPath')
         if m.get('srcOssRegion') is not None:
             self.src_oss_region = m.get('srcOssRegion')
+        if m.get('syncStrategy') is not None:
+            self.sync_strategy = m.get('syncStrategy')
         return self
 
 
@@ -4828,6 +5131,982 @@ class DeployOllamaModelOutput(TeaModel):
         return self
 
 
+class DeploySGLangModelAsyncOutput(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+        err_code: str = None,
+        err_msg: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.err_code = err_code
+        self.err_msg = err_msg
+        # This parameter is required.
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.err_msg is not None:
+            result['errMsg'] = self.err_msg
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('errMsg') is not None:
+            self.err_msg = m.get('errMsg')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class DeploySGLangModelInputConcurrencyConfig(TeaModel):
+    def __init__(
+        self,
+        reserved_concurrency: int = None,
+    ):
+        self.reserved_concurrency = reserved_concurrency
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.reserved_concurrency is not None:
+            result['reservedConcurrency'] = self.reserved_concurrency
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('reservedConcurrency') is not None:
+            self.reserved_concurrency = m.get('reservedConcurrency')
+        return self
+
+
+class DeploySGLangModelInputGpuConfig(TeaModel):
+    def __init__(
+        self,
+        gpu_memory_size: int = None,
+        gpu_type: str = None,
+    ):
+        self.gpu_memory_size = gpu_memory_size
+        self.gpu_type = gpu_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gpu_memory_size is not None:
+            result['gpuMemorySize'] = self.gpu_memory_size
+        if self.gpu_type is not None:
+            result['gpuType'] = self.gpu_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('gpuMemorySize') is not None:
+            self.gpu_memory_size = m.get('gpuMemorySize')
+        if m.get('gpuType') is not None:
+            self.gpu_type = m.get('gpuType')
+        return self
+
+
+class DeploySGLangModelInputHttpTriggerTriggerConfig(TeaModel):
+    def __init__(
+        self,
+        auth_type: str = None,
+        disable_urlinternet: bool = None,
+        dsable_urlinternet: bool = None,
+        methods: List[str] = None,
+    ):
+        self.auth_type = auth_type
+        self.disable_urlinternet = disable_urlinternet
+        self.dsable_urlinternet = dsable_urlinternet
+        self.methods = methods
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_type is not None:
+            result['authType'] = self.auth_type
+        if self.disable_urlinternet is not None:
+            result['disableURLInternet'] = self.disable_urlinternet
+        if self.dsable_urlinternet is not None:
+            result['dsableURLInternet'] = self.dsable_urlinternet
+        if self.methods is not None:
+            result['methods'] = self.methods
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('authType') is not None:
+            self.auth_type = m.get('authType')
+        if m.get('disableURLInternet') is not None:
+            self.disable_urlinternet = m.get('disableURLInternet')
+        if m.get('dsableURLInternet') is not None:
+            self.dsable_urlinternet = m.get('dsableURLInternet')
+        if m.get('methods') is not None:
+            self.methods = m.get('methods')
+        return self
+
+
+class DeploySGLangModelInputHttpTrigger(TeaModel):
+    def __init__(
+        self,
+        qualifier: str = None,
+        trigger_config: DeploySGLangModelInputHttpTriggerTriggerConfig = None,
+    ):
+        self.qualifier = qualifier
+        self.trigger_config = trigger_config
+
+    def validate(self):
+        if self.trigger_config:
+            self.trigger_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.qualifier is not None:
+            result['qualifier'] = self.qualifier
+        if self.trigger_config is not None:
+            result['triggerConfig'] = self.trigger_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('qualifier') is not None:
+            self.qualifier = m.get('qualifier')
+        if m.get('triggerConfig') is not None:
+            temp_model = DeploySGLangModelInputHttpTriggerTriggerConfig()
+            self.trigger_config = temp_model.from_map(m['triggerConfig'])
+        return self
+
+
+class DeploySGLangModelInputLogConfig(TeaModel):
+    def __init__(
+        self,
+        enable_instance_metrics: bool = None,
+        enable_request_metrics: bool = None,
+        log_begin_rule: str = None,
+        logstore: str = None,
+        project: str = None,
+    ):
+        self.enable_instance_metrics = enable_instance_metrics
+        self.enable_request_metrics = enable_request_metrics
+        self.log_begin_rule = log_begin_rule
+        self.logstore = logstore
+        self.project = project
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_instance_metrics is not None:
+            result['enableInstanceMetrics'] = self.enable_instance_metrics
+        if self.enable_request_metrics is not None:
+            result['enableRequestMetrics'] = self.enable_request_metrics
+        if self.log_begin_rule is not None:
+            result['logBeginRule'] = self.log_begin_rule
+        if self.logstore is not None:
+            result['logstore'] = self.logstore
+        if self.project is not None:
+            result['project'] = self.project
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enableInstanceMetrics') is not None:
+            self.enable_instance_metrics = m.get('enableInstanceMetrics')
+        if m.get('enableRequestMetrics') is not None:
+            self.enable_request_metrics = m.get('enableRequestMetrics')
+        if m.get('logBeginRule') is not None:
+            self.log_begin_rule = m.get('logBeginRule')
+        if m.get('logstore') is not None:
+            self.logstore = m.get('logstore')
+        if m.get('project') is not None:
+            self.project = m.get('project')
+        return self
+
+
+class DeploySGLangModelInputModelConfigFmkSGLangConfig(TeaModel):
+    def __init__(
+        self,
+        api_key: str = None,
+        chat_template: str = None,
+        dtype: str = None,
+        full_text_postfix: str = None,
+        load_format: str = None,
+        max_running_requests: int = None,
+        max_total_tokens: int = None,
+        mem_fraction_static: float = None,
+        quantization: str = None,
+        served_model_name: str = None,
+    ):
+        self.api_key = api_key
+        self.chat_template = chat_template
+        self.dtype = dtype
+        self.full_text_postfix = full_text_postfix
+        self.load_format = load_format
+        self.max_running_requests = max_running_requests
+        self.max_total_tokens = max_total_tokens
+        self.mem_fraction_static = mem_fraction_static
+        self.quantization = quantization
+        self.served_model_name = served_model_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_key is not None:
+            result['apiKey'] = self.api_key
+        if self.chat_template is not None:
+            result['chatTemplate'] = self.chat_template
+        if self.dtype is not None:
+            result['dtype'] = self.dtype
+        if self.full_text_postfix is not None:
+            result['fullTextPostfix'] = self.full_text_postfix
+        if self.load_format is not None:
+            result['loadFormat'] = self.load_format
+        if self.max_running_requests is not None:
+            result['maxRunningRequests'] = self.max_running_requests
+        if self.max_total_tokens is not None:
+            result['maxTotalTokens'] = self.max_total_tokens
+        if self.mem_fraction_static is not None:
+            result['memFractionStatic'] = self.mem_fraction_static
+        if self.quantization is not None:
+            result['quantization'] = self.quantization
+        if self.served_model_name is not None:
+            result['servedModelName'] = self.served_model_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('apiKey') is not None:
+            self.api_key = m.get('apiKey')
+        if m.get('chatTemplate') is not None:
+            self.chat_template = m.get('chatTemplate')
+        if m.get('dtype') is not None:
+            self.dtype = m.get('dtype')
+        if m.get('fullTextPostfix') is not None:
+            self.full_text_postfix = m.get('fullTextPostfix')
+        if m.get('loadFormat') is not None:
+            self.load_format = m.get('loadFormat')
+        if m.get('maxRunningRequests') is not None:
+            self.max_running_requests = m.get('maxRunningRequests')
+        if m.get('maxTotalTokens') is not None:
+            self.max_total_tokens = m.get('maxTotalTokens')
+        if m.get('memFractionStatic') is not None:
+            self.mem_fraction_static = m.get('memFractionStatic')
+        if m.get('quantization') is not None:
+            self.quantization = m.get('quantization')
+        if m.get('servedModelName') is not None:
+            self.served_model_name = m.get('servedModelName')
+        return self
+
+
+class DeploySGLangModelInputModelConfig(TeaModel):
+    def __init__(
+        self,
+        fmk_sglang_config: DeploySGLangModelInputModelConfigFmkSGLangConfig = None,
+        framework: str = None,
+        multi_model_config: List[ModelConfig] = None,
+        prefix: str = None,
+        source_type: str = None,
+        src_model_scope_model_id: str = None,
+        src_model_scope_model_revision: str = None,
+        src_model_scope_token: str = None,
+        src_oss_bucket: str = None,
+        src_oss_path: str = None,
+        src_oss_region: str = None,
+        sync_strategy: str = None,
+    ):
+        self.fmk_sglang_config = fmk_sglang_config
+        self.framework = framework
+        self.multi_model_config = multi_model_config
+        self.prefix = prefix
+        self.source_type = source_type
+        self.src_model_scope_model_id = src_model_scope_model_id
+        self.src_model_scope_model_revision = src_model_scope_model_revision
+        self.src_model_scope_token = src_model_scope_token
+        self.src_oss_bucket = src_oss_bucket
+        self.src_oss_path = src_oss_path
+        self.src_oss_region = src_oss_region
+        self.sync_strategy = sync_strategy
+
+    def validate(self):
+        if self.fmk_sglang_config:
+            self.fmk_sglang_config.validate()
+        if self.multi_model_config:
+            for k in self.multi_model_config:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.fmk_sglang_config is not None:
+            result['fmkSGLangConfig'] = self.fmk_sglang_config.to_map()
+        if self.framework is not None:
+            result['framework'] = self.framework
+        result['multiModelConfig'] = []
+        if self.multi_model_config is not None:
+            for k in self.multi_model_config:
+                result['multiModelConfig'].append(k.to_map() if k else None)
+        if self.prefix is not None:
+            result['prefix'] = self.prefix
+        if self.source_type is not None:
+            result['sourceType'] = self.source_type
+        if self.src_model_scope_model_id is not None:
+            result['srcModelScopeModelID'] = self.src_model_scope_model_id
+        if self.src_model_scope_model_revision is not None:
+            result['srcModelScopeModelRevision'] = self.src_model_scope_model_revision
+        if self.src_model_scope_token is not None:
+            result['srcModelScopeToken'] = self.src_model_scope_token
+        if self.src_oss_bucket is not None:
+            result['srcOssBucket'] = self.src_oss_bucket
+        if self.src_oss_path is not None:
+            result['srcOssPath'] = self.src_oss_path
+        if self.src_oss_region is not None:
+            result['srcOssRegion'] = self.src_oss_region
+        if self.sync_strategy is not None:
+            result['syncStrategy'] = self.sync_strategy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fmkSGLangConfig') is not None:
+            temp_model = DeploySGLangModelInputModelConfigFmkSGLangConfig()
+            self.fmk_sglang_config = temp_model.from_map(m['fmkSGLangConfig'])
+        if m.get('framework') is not None:
+            self.framework = m.get('framework')
+        self.multi_model_config = []
+        if m.get('multiModelConfig') is not None:
+            for k in m.get('multiModelConfig'):
+                temp_model = ModelConfig()
+                self.multi_model_config.append(temp_model.from_map(k))
+        if m.get('prefix') is not None:
+            self.prefix = m.get('prefix')
+        if m.get('sourceType') is not None:
+            self.source_type = m.get('sourceType')
+        if m.get('srcModelScopeModelID') is not None:
+            self.src_model_scope_model_id = m.get('srcModelScopeModelID')
+        if m.get('srcModelScopeModelRevision') is not None:
+            self.src_model_scope_model_revision = m.get('srcModelScopeModelRevision')
+        if m.get('srcModelScopeToken') is not None:
+            self.src_model_scope_token = m.get('srcModelScopeToken')
+        if m.get('srcOssBucket') is not None:
+            self.src_oss_bucket = m.get('srcOssBucket')
+        if m.get('srcOssPath') is not None:
+            self.src_oss_path = m.get('srcOssPath')
+        if m.get('srcOssRegion') is not None:
+            self.src_oss_region = m.get('srcOssRegion')
+        if m.get('syncStrategy') is not None:
+            self.sync_strategy = m.get('syncStrategy')
+        return self
+
+
+class DeploySGLangModelInputNasConfigMountPoints(TeaModel):
+    def __init__(
+        self,
+        enable_tls: bool = None,
+        mount_dir: str = None,
+        server_addr: str = None,
+    ):
+        self.enable_tls = enable_tls
+        self.mount_dir = mount_dir
+        self.server_addr = server_addr
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_tls is not None:
+            result['enableTLS'] = self.enable_tls
+        if self.mount_dir is not None:
+            result['mountDir'] = self.mount_dir
+        if self.server_addr is not None:
+            result['serverAddr'] = self.server_addr
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enableTLS') is not None:
+            self.enable_tls = m.get('enableTLS')
+        if m.get('mountDir') is not None:
+            self.mount_dir = m.get('mountDir')
+        if m.get('serverAddr') is not None:
+            self.server_addr = m.get('serverAddr')
+        return self
+
+
+class DeploySGLangModelInputNasConfig(TeaModel):
+    def __init__(
+        self,
+        group_id: int = None,
+        mount_points: List[DeploySGLangModelInputNasConfigMountPoints] = None,
+        user_id: int = None,
+    ):
+        self.group_id = group_id
+        self.mount_points = mount_points
+        self.user_id = user_id
+
+    def validate(self):
+        if self.mount_points:
+            for k in self.mount_points:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_id is not None:
+            result['groupId'] = self.group_id
+        result['mountPoints'] = []
+        if self.mount_points is not None:
+            for k in self.mount_points:
+                result['mountPoints'].append(k.to_map() if k else None)
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('groupId') is not None:
+            self.group_id = m.get('groupId')
+        self.mount_points = []
+        if m.get('mountPoints') is not None:
+            for k in m.get('mountPoints'):
+                temp_model = DeploySGLangModelInputNasConfigMountPoints()
+                self.mount_points.append(temp_model.from_map(k))
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        return self
+
+
+class DeploySGLangModelInputProvisionConfigScheduledActions(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        name: str = None,
+        schedule_expression: str = None,
+        start_time: str = None,
+        target: int = None,
+        time_zone: str = None,
+    ):
+        self.end_time = end_time
+        self.name = name
+        self.schedule_expression = schedule_expression
+        self.start_time = start_time
+        self.target = target
+        self.time_zone = time_zone
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.name is not None:
+            result['name'] = self.name
+        if self.schedule_expression is not None:
+            result['scheduleExpression'] = self.schedule_expression
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        if self.target is not None:
+            result['target'] = self.target
+        if self.time_zone is not None:
+            result['timeZone'] = self.time_zone
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('scheduleExpression') is not None:
+            self.schedule_expression = m.get('scheduleExpression')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        if m.get('target') is not None:
+            self.target = m.get('target')
+        if m.get('timeZone') is not None:
+            self.time_zone = m.get('timeZone')
+        return self
+
+
+class DeploySGLangModelInputProvisionConfig(TeaModel):
+    def __init__(
+        self,
+        always_allocate_gpu: bool = None,
+        scheduled_actions: List[DeploySGLangModelInputProvisionConfigScheduledActions] = None,
+        target: int = None,
+    ):
+        self.always_allocate_gpu = always_allocate_gpu
+        self.scheduled_actions = scheduled_actions
+        self.target = target
+
+    def validate(self):
+        if self.scheduled_actions:
+            for k in self.scheduled_actions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.always_allocate_gpu is not None:
+            result['alwaysAllocateGPU'] = self.always_allocate_gpu
+        result['scheduledActions'] = []
+        if self.scheduled_actions is not None:
+            for k in self.scheduled_actions:
+                result['scheduledActions'].append(k.to_map() if k else None)
+        if self.target is not None:
+            result['target'] = self.target
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('alwaysAllocateGPU') is not None:
+            self.always_allocate_gpu = m.get('alwaysAllocateGPU')
+        self.scheduled_actions = []
+        if m.get('scheduledActions') is not None:
+            for k in m.get('scheduledActions'):
+                temp_model = DeploySGLangModelInputProvisionConfigScheduledActions()
+                self.scheduled_actions.append(temp_model.from_map(k))
+        if m.get('target') is not None:
+            self.target = m.get('target')
+        return self
+
+
+class DeploySGLangModelInputVpcConfig(TeaModel):
+    def __init__(
+        self,
+        security_group_id: str = None,
+        v_switch_ids: List[str] = None,
+        vpc_id: str = None,
+    ):
+        self.security_group_id = security_group_id
+        self.v_switch_ids = v_switch_ids
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.security_group_id is not None:
+            result['securityGroupId'] = self.security_group_id
+        if self.v_switch_ids is not None:
+            result['vSwitchIds'] = self.v_switch_ids
+        if self.vpc_id is not None:
+            result['vpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('securityGroupId') is not None:
+            self.security_group_id = m.get('securityGroupId')
+        if m.get('vSwitchIds') is not None:
+            self.v_switch_ids = m.get('vSwitchIds')
+        if m.get('vpcId') is not None:
+            self.vpc_id = m.get('vpcId')
+        return self
+
+
+class DeploySGLangModelInput(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+        concurrency_config: DeploySGLangModelInputConcurrencyConfig = None,
+        cpu: float = None,
+        description: str = None,
+        disk_size: int = None,
+        env_name: str = None,
+        environment_variables: Dict[str, Any] = None,
+        gpu_config: DeploySGLangModelInputGpuConfig = None,
+        http_trigger: DeploySGLangModelInputHttpTrigger = None,
+        image_name: str = None,
+        instance_concurrency: int = None,
+        log_config: DeploySGLangModelInputLogConfig = None,
+        memory_size: int = None,
+        model_config: DeploySGLangModelInputModelConfig = None,
+        name: str = None,
+        nas_config: DeploySGLangModelInputNasConfig = None,
+        original_name: str = None,
+        project_name: str = None,
+        provision_config: DeploySGLangModelInputProvisionConfig = None,
+        region: str = None,
+        report_status_url: str = None,
+        role: str = None,
+        timeout: int = None,
+        trace_id: str = None,
+        vpc_config: DeploySGLangModelInputVpcConfig = None,
+    ):
+        self.account_id = account_id
+        self.concurrency_config = concurrency_config
+        self.cpu = cpu
+        self.description = description
+        self.disk_size = disk_size
+        self.env_name = env_name
+        self.environment_variables = environment_variables
+        self.gpu_config = gpu_config
+        self.http_trigger = http_trigger
+        self.image_name = image_name
+        self.instance_concurrency = instance_concurrency
+        self.log_config = log_config
+        self.memory_size = memory_size
+        self.model_config = model_config
+        # This parameter is required.
+        self.name = name
+        self.nas_config = nas_config
+        self.original_name = original_name
+        self.project_name = project_name
+        self.provision_config = provision_config
+        self.region = region
+        self.report_status_url = report_status_url
+        # This parameter is required.
+        self.role = role
+        self.timeout = timeout
+        self.trace_id = trace_id
+        self.vpc_config = vpc_config
+
+    def validate(self):
+        if self.concurrency_config:
+            self.concurrency_config.validate()
+        if self.gpu_config:
+            self.gpu_config.validate()
+        if self.http_trigger:
+            self.http_trigger.validate()
+        if self.log_config:
+            self.log_config.validate()
+        if self.model_config:
+            self.model_config.validate()
+        if self.nas_config:
+            self.nas_config.validate()
+        if self.provision_config:
+            self.provision_config.validate()
+        if self.vpc_config:
+            self.vpc_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountID'] = self.account_id
+        if self.concurrency_config is not None:
+            result['concurrencyConfig'] = self.concurrency_config.to_map()
+        if self.cpu is not None:
+            result['cpu'] = self.cpu
+        if self.description is not None:
+            result['description'] = self.description
+        if self.disk_size is not None:
+            result['diskSize'] = self.disk_size
+        if self.env_name is not None:
+            result['envName'] = self.env_name
+        if self.environment_variables is not None:
+            result['environmentVariables'] = self.environment_variables
+        if self.gpu_config is not None:
+            result['gpuConfig'] = self.gpu_config.to_map()
+        if self.http_trigger is not None:
+            result['httpTrigger'] = self.http_trigger.to_map()
+        if self.image_name is not None:
+            result['imageName'] = self.image_name
+        if self.instance_concurrency is not None:
+            result['instanceConcurrency'] = self.instance_concurrency
+        if self.log_config is not None:
+            result['logConfig'] = self.log_config.to_map()
+        if self.memory_size is not None:
+            result['memorySize'] = self.memory_size
+        if self.model_config is not None:
+            result['modelConfig'] = self.model_config.to_map()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.nas_config is not None:
+            result['nasConfig'] = self.nas_config.to_map()
+        if self.original_name is not None:
+            result['originalName'] = self.original_name
+        if self.project_name is not None:
+            result['projectName'] = self.project_name
+        if self.provision_config is not None:
+            result['provisionConfig'] = self.provision_config.to_map()
+        if self.region is not None:
+            result['region'] = self.region
+        if self.report_status_url is not None:
+            result['reportStatusURL'] = self.report_status_url
+        if self.role is not None:
+            result['role'] = self.role
+        if self.timeout is not None:
+            result['timeout'] = self.timeout
+        if self.trace_id is not None:
+            result['traceId'] = self.trace_id
+        if self.vpc_config is not None:
+            result['vpcConfig'] = self.vpc_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountID') is not None:
+            self.account_id = m.get('accountID')
+        if m.get('concurrencyConfig') is not None:
+            temp_model = DeploySGLangModelInputConcurrencyConfig()
+            self.concurrency_config = temp_model.from_map(m['concurrencyConfig'])
+        if m.get('cpu') is not None:
+            self.cpu = m.get('cpu')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('diskSize') is not None:
+            self.disk_size = m.get('diskSize')
+        if m.get('envName') is not None:
+            self.env_name = m.get('envName')
+        if m.get('environmentVariables') is not None:
+            self.environment_variables = m.get('environmentVariables')
+        if m.get('gpuConfig') is not None:
+            temp_model = DeploySGLangModelInputGpuConfig()
+            self.gpu_config = temp_model.from_map(m['gpuConfig'])
+        if m.get('httpTrigger') is not None:
+            temp_model = DeploySGLangModelInputHttpTrigger()
+            self.http_trigger = temp_model.from_map(m['httpTrigger'])
+        if m.get('imageName') is not None:
+            self.image_name = m.get('imageName')
+        if m.get('instanceConcurrency') is not None:
+            self.instance_concurrency = m.get('instanceConcurrency')
+        if m.get('logConfig') is not None:
+            temp_model = DeploySGLangModelInputLogConfig()
+            self.log_config = temp_model.from_map(m['logConfig'])
+        if m.get('memorySize') is not None:
+            self.memory_size = m.get('memorySize')
+        if m.get('modelConfig') is not None:
+            temp_model = DeploySGLangModelInputModelConfig()
+            self.model_config = temp_model.from_map(m['modelConfig'])
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('nasConfig') is not None:
+            temp_model = DeploySGLangModelInputNasConfig()
+            self.nas_config = temp_model.from_map(m['nasConfig'])
+        if m.get('originalName') is not None:
+            self.original_name = m.get('originalName')
+        if m.get('projectName') is not None:
+            self.project_name = m.get('projectName')
+        if m.get('provisionConfig') is not None:
+            temp_model = DeploySGLangModelInputProvisionConfig()
+            self.provision_config = temp_model.from_map(m['provisionConfig'])
+        if m.get('region') is not None:
+            self.region = m.get('region')
+        if m.get('reportStatusURL') is not None:
+            self.report_status_url = m.get('reportStatusURL')
+        if m.get('role') is not None:
+            self.role = m.get('role')
+        if m.get('timeout') is not None:
+            self.timeout = m.get('timeout')
+        if m.get('traceId') is not None:
+            self.trace_id = m.get('traceId')
+        if m.get('vpcConfig') is not None:
+            temp_model = DeploySGLangModelInputVpcConfig()
+            self.vpc_config = temp_model.from_map(m['vpcConfig'])
+        return self
+
+
+class DeploySGLangModelOutputData(TeaModel):
+    def __init__(
+        self,
+        deployment_task_id: str = None,
+        error_message: str = None,
+        finished: bool = None,
+        model_name: str = None,
+        service_name: str = None,
+        trace_id: str = None,
+        url_internet: str = None,
+        url_intranet: str = None,
+    ):
+        self.deployment_task_id = deployment_task_id
+        self.error_message = error_message
+        self.finished = finished
+        self.model_name = model_name
+        self.service_name = service_name
+        self.trace_id = trace_id
+        self.url_internet = url_internet
+        self.url_intranet = url_intranet
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.deployment_task_id is not None:
+            result['deploymentTaskID'] = self.deployment_task_id
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.finished is not None:
+            result['finished'] = self.finished
+        if self.model_name is not None:
+            result['modelName'] = self.model_name
+        if self.service_name is not None:
+            result['serviceName'] = self.service_name
+        if self.trace_id is not None:
+            result['traceID'] = self.trace_id
+        if self.url_internet is not None:
+            result['urlInternet'] = self.url_internet
+        if self.url_intranet is not None:
+            result['urlIntranet'] = self.url_intranet
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('deploymentTaskID') is not None:
+            self.deployment_task_id = m.get('deploymentTaskID')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('finished') is not None:
+            self.finished = m.get('finished')
+        if m.get('modelName') is not None:
+            self.model_name = m.get('modelName')
+        if m.get('serviceName') is not None:
+            self.service_name = m.get('serviceName')
+        if m.get('traceID') is not None:
+            self.trace_id = m.get('traceID')
+        if m.get('urlInternet') is not None:
+            self.url_internet = m.get('urlInternet')
+        if m.get('urlIntranet') is not None:
+            self.url_intranet = m.get('urlIntranet')
+        return self
+
+
+class DeploySGLangModelOutput(TeaModel):
+    def __init__(
+        self,
+        data: DeploySGLangModelOutputData = None,
+        err_code: str = None,
+        err_msg: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.err_code = err_code
+        self.err_msg = err_msg
+        # This parameter is required.
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.err_msg is not None:
+            result['errMsg'] = self.err_msg
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = DeploySGLangModelOutputData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('errMsg') is not None:
+            self.err_msg = m.get('errMsg')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
 class DeployTensorRtModelAsyncOutput(TeaModel):
     def __init__(
         self,
@@ -4944,10 +6223,12 @@ class DeployTensorRtModelInputHttpTriggerTriggerConfig(TeaModel):
     def __init__(
         self,
         auth_type: str = None,
+        disable_urlinternet: bool = None,
         dsable_urlinternet: bool = None,
         methods: List[str] = None,
     ):
         self.auth_type = auth_type
+        self.disable_urlinternet = disable_urlinternet
         self.dsable_urlinternet = dsable_urlinternet
         self.methods = methods
 
@@ -4962,6 +6243,8 @@ class DeployTensorRtModelInputHttpTriggerTriggerConfig(TeaModel):
         result = dict()
         if self.auth_type is not None:
             result['authType'] = self.auth_type
+        if self.disable_urlinternet is not None:
+            result['disableURLInternet'] = self.disable_urlinternet
         if self.dsable_urlinternet is not None:
             result['dsableURLInternet'] = self.dsable_urlinternet
         if self.methods is not None:
@@ -4972,6 +6255,8 @@ class DeployTensorRtModelInputHttpTriggerTriggerConfig(TeaModel):
         m = m or dict()
         if m.get('authType') is not None:
             self.auth_type = m.get('authType')
+        if m.get('disableURLInternet') is not None:
+            self.disable_urlinternet = m.get('disableURLInternet')
         if m.get('dsableURLInternet') is not None:
             self.dsable_urlinternet = m.get('dsableURLInternet')
         if m.get('methods') is not None:
@@ -5078,6 +6363,7 @@ class DeployTensorRtModelInputModelConfig(TeaModel):
         src_oss_bucket: str = None,
         src_oss_path: str = None,
         src_oss_region: str = None,
+        sync_strategy: str = None,
     ):
         self.framework = framework
         self.multi_model_config = multi_model_config
@@ -5089,6 +6375,7 @@ class DeployTensorRtModelInputModelConfig(TeaModel):
         self.src_oss_bucket = src_oss_bucket
         self.src_oss_path = src_oss_path
         self.src_oss_region = src_oss_region
+        self.sync_strategy = sync_strategy
 
     def validate(self):
         if self.multi_model_config:
@@ -5124,6 +6411,8 @@ class DeployTensorRtModelInputModelConfig(TeaModel):
             result['srcOssPath'] = self.src_oss_path
         if self.src_oss_region is not None:
             result['srcOssRegion'] = self.src_oss_region
+        if self.sync_strategy is not None:
+            result['syncStrategy'] = self.sync_strategy
         return result
 
     def from_map(self, m: dict = None):
@@ -5151,6 +6440,8 @@ class DeployTensorRtModelInputModelConfig(TeaModel):
             self.src_oss_path = m.get('srcOssPath')
         if m.get('srcOssRegion') is not None:
             self.src_oss_region = m.get('srcOssRegion')
+        if m.get('syncStrategy') is not None:
+            self.sync_strategy = m.get('syncStrategy')
         return self
 
 
@@ -5812,10 +7103,12 @@ class DeployVllmModelInputHttpTriggerTriggerConfig(TeaModel):
     def __init__(
         self,
         auth_type: str = None,
+        disable_urlinternet: bool = None,
         dsable_urlinternet: bool = None,
         methods: List[str] = None,
     ):
         self.auth_type = auth_type
+        self.disable_urlinternet = disable_urlinternet
         self.dsable_urlinternet = dsable_urlinternet
         self.methods = methods
 
@@ -5830,6 +7123,8 @@ class DeployVllmModelInputHttpTriggerTriggerConfig(TeaModel):
         result = dict()
         if self.auth_type is not None:
             result['authType'] = self.auth_type
+        if self.disable_urlinternet is not None:
+            result['disableURLInternet'] = self.disable_urlinternet
         if self.dsable_urlinternet is not None:
             result['dsableURLInternet'] = self.dsable_urlinternet
         if self.methods is not None:
@@ -5840,6 +7135,8 @@ class DeployVllmModelInputHttpTriggerTriggerConfig(TeaModel):
         m = m or dict()
         if m.get('authType') is not None:
             self.auth_type = m.get('authType')
+        if m.get('disableURLInternet') is not None:
+            self.disable_urlinternet = m.get('disableURLInternet')
         if m.get('dsableURLInternet') is not None:
             self.dsable_urlinternet = m.get('dsableURLInternet')
         if m.get('methods') is not None:
@@ -6040,6 +7337,7 @@ class DeployVllmModelInputModelConfig(TeaModel):
         src_oss_bucket: str = None,
         src_oss_path: str = None,
         src_oss_region: str = None,
+        sync_strategy: str = None,
     ):
         self.fmk_vllm_config = fmk_vllm_config
         self.framework = framework
@@ -6052,6 +7350,7 @@ class DeployVllmModelInputModelConfig(TeaModel):
         self.src_oss_bucket = src_oss_bucket
         self.src_oss_path = src_oss_path
         self.src_oss_region = src_oss_region
+        self.sync_strategy = sync_strategy
 
     def validate(self):
         if self.fmk_vllm_config:
@@ -6091,6 +7390,8 @@ class DeployVllmModelInputModelConfig(TeaModel):
             result['srcOssPath'] = self.src_oss_path
         if self.src_oss_region is not None:
             result['srcOssRegion'] = self.src_oss_region
+        if self.sync_strategy is not None:
+            result['syncStrategy'] = self.sync_strategy
         return result
 
     def from_map(self, m: dict = None):
@@ -6121,6 +7422,8 @@ class DeployVllmModelInputModelConfig(TeaModel):
             self.src_oss_path = m.get('srcOssPath')
         if m.get('srcOssRegion') is not None:
             self.src_oss_region = m.get('srcOssRegion')
+        if m.get('syncStrategy') is not None:
+            self.sync_strategy = m.get('syncStrategy')
         return self
 
 
@@ -8003,6 +9306,86 @@ class InitializeConfig(TeaModel):
         return self
 
 
+class MCPServerInstallationConfig(TeaModel):
+    def __init__(
+        self,
+        args: str = None,
+        command: str = None,
+        env: Dict[str, str] = None,
+        transport_type: str = None,
+        url: str = None,
+    ):
+        self.args = args
+        self.command = command
+        self.env = env
+        self.transport_type = transport_type
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.args is not None:
+            result['args'] = self.args
+        if self.command is not None:
+            result['command'] = self.command
+        if self.env is not None:
+            result['env'] = self.env
+        if self.transport_type is not None:
+            result['transportType'] = self.transport_type
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('args') is not None:
+            self.args = m.get('args')
+        if m.get('command') is not None:
+            self.command = m.get('command')
+        if m.get('env') is not None:
+            self.env = m.get('env')
+        if m.get('transportType') is not None:
+            self.transport_type = m.get('transportType')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class MCPInstallationConfig(TeaModel):
+    def __init__(
+        self,
+        mcp_servers: MCPServerInstallationConfig = None,
+    ):
+        self.mcp_servers = mcp_servers
+
+    def validate(self):
+        if self.mcp_servers:
+            self.mcp_servers.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mcp_servers is not None:
+            result['mcpServers'] = self.mcp_servers.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('mcpServers') is not None:
+            temp_model = MCPServerInstallationConfig()
+            self.mcp_servers = temp_model.from_map(m['mcpServers'])
+        return self
+
+
 class ModelAsyncTask(TeaModel):
     def __init__(
         self,
@@ -8357,23 +9740,45 @@ class ModelProviderSpec(TeaModel):
 class ModelTask(TeaModel):
     def __init__(
         self,
+        current_bytes: str = None,
+        err_code: str = None,
         err_msg: str = None,
+        extra: Any = None,
         file_size: float = None,
         finish_time: float = None,
         finished: bool = None,
+        finished_time: float = None,
+        id: str = None,
+        params: str = None,
+        result: Any = None,
+        speed: str = None,
         start_time: float = None,
         status: str = None,
         task_id: str = None,
+        task_type: str = None,
         total: float = None,
+        total_bytes: str = None,
+        update_time: float = None,
     ):
+        self.current_bytes = current_bytes
+        self.err_code = err_code
         self.err_msg = err_msg
+        self.extra = extra
         self.file_size = file_size
         self.finish_time = finish_time
         self.finished = finished
+        self.finished_time = finished_time
+        self.id = id
+        self.params = params
+        self.result = result
+        self.speed = speed
         self.start_time = start_time
         self.status = status
         self.task_id = task_id
+        self.task_type = task_type
         self.total = total
+        self.total_bytes = total_bytes
+        self.update_time = update_time
 
     def validate(self):
         pass
@@ -8384,42 +9789,86 @@ class ModelTask(TeaModel):
             return _map
 
         result = dict()
+        if self.current_bytes is not None:
+            result['currentBytes'] = self.current_bytes
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
         if self.err_msg is not None:
             result['errMsg'] = self.err_msg
+        if self.extra is not None:
+            result['extra'] = self.extra
         if self.file_size is not None:
             result['fileSize'] = self.file_size
         if self.finish_time is not None:
             result['finishTime'] = self.finish_time
         if self.finished is not None:
             result['finished'] = self.finished
+        if self.finished_time is not None:
+            result['finishedTime'] = self.finished_time
+        if self.id is not None:
+            result['id'] = self.id
+        if self.params is not None:
+            result['params'] = self.params
+        if self.result is not None:
+            result['result'] = self.result
+        if self.speed is not None:
+            result['speed'] = self.speed
         if self.start_time is not None:
             result['startTime'] = self.start_time
         if self.status is not None:
             result['status'] = self.status
         if self.task_id is not None:
             result['taskId'] = self.task_id
+        if self.task_type is not None:
+            result['taskType'] = self.task_type
         if self.total is not None:
             result['total'] = self.total
+        if self.total_bytes is not None:
+            result['totalBytes'] = self.total_bytes
+        if self.update_time is not None:
+            result['updateTime'] = self.update_time
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('currentBytes') is not None:
+            self.current_bytes = m.get('currentBytes')
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
         if m.get('errMsg') is not None:
             self.err_msg = m.get('errMsg')
+        if m.get('extra') is not None:
+            self.extra = m.get('extra')
         if m.get('fileSize') is not None:
             self.file_size = m.get('fileSize')
         if m.get('finishTime') is not None:
             self.finish_time = m.get('finishTime')
         if m.get('finished') is not None:
             self.finished = m.get('finished')
+        if m.get('finishedTime') is not None:
+            self.finished_time = m.get('finishedTime')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('params') is not None:
+            self.params = m.get('params')
+        if m.get('result') is not None:
+            self.result = m.get('result')
+        if m.get('speed') is not None:
+            self.speed = m.get('speed')
         if m.get('startTime') is not None:
             self.start_time = m.get('startTime')
         if m.get('status') is not None:
             self.status = m.get('status')
         if m.get('taskId') is not None:
             self.task_id = m.get('taskId')
+        if m.get('taskType') is not None:
+            self.task_type = m.get('taskType')
         if m.get('total') is not None:
             self.total = m.get('total')
+        if m.get('totalBytes') is not None:
+            self.total_bytes = m.get('totalBytes')
+        if m.get('updateTime') is not None:
+            self.update_time = m.get('updateTime')
         return self
 
 
@@ -10810,18 +12259,17 @@ class Tool(TeaModel):
         return self
 
 
-class ToolsetStatus(TeaModel):
+class ToolsetSchema(TeaModel):
     def __init__(
         self,
-        tools: Dict[str, Tool] = None,
+        detail: str = None,
+        type: str = None,
     ):
-        self.tools = tools
+        self.detail = detail
+        self.type = type
 
     def validate(self):
-        if self.tools:
-            for v in self.tools.values():
-                if v:
-                    v.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -10829,19 +12277,92 @@ class ToolsetStatus(TeaModel):
             return _map
 
         result = dict()
-        result['tools'] = {}
-        if self.tools is not None:
-            for k, v in self.tools.items():
-                result['tools'][k] = v.to_map()
+        if self.detail is not None:
+            result['detail'] = self.detail
+        if self.type is not None:
+            result['type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.tools = {}
-        if m.get('tools') is not None:
-            for k, v in m.get('tools').items():
-                temp_model = Tool()
-                self.tools[k] = temp_model.from_map(v)
+        if m.get('detail') is not None:
+            self.detail = m.get('detail')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class ToolsetSpec(TeaModel):
+    def __init__(
+        self,
+        schema: ToolsetSchema = None,
+    ):
+        self.schema = schema
+
+    def validate(self):
+        if self.schema:
+            self.schema.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.schema is not None:
+            result['schema'] = self.schema.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('schema') is not None:
+            temp_model = ToolsetSchema()
+            self.schema = temp_model.from_map(m['schema'])
+        return self
+
+
+class ToolsetStatus(TeaModel):
+    def __init__(
+        self,
+        observed_generation: int = None,
+        observed_time: str = None,
+        outputs: Dict[str, Any] = None,
+        phase: str = None,
+    ):
+        self.observed_generation = observed_generation
+        self.observed_time = observed_time
+        self.outputs = outputs
+        self.phase = phase
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.observed_generation is not None:
+            result['observedGeneration'] = self.observed_generation
+        if self.observed_time is not None:
+            result['observedTime'] = self.observed_time
+        if self.outputs is not None:
+            result['outputs'] = self.outputs
+        if self.phase is not None:
+            result['phase'] = self.phase
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('observedGeneration') is not None:
+            self.observed_generation = m.get('observedGeneration')
+        if m.get('observedTime') is not None:
+            self.observed_time = m.get('observedTime')
+        if m.get('outputs') is not None:
+            self.outputs = m.get('outputs')
+        if m.get('phase') is not None:
+            self.phase = m.get('phase')
         return self
 
 
@@ -10853,6 +12374,7 @@ class Toolset(TeaModel):
         kind: str = None,
         labels: Dict[str, str] = None,
         name: str = None,
+        spec: ToolsetSpec = None,
         status: ToolsetStatus = None,
         uid: str = None,
     ):
@@ -10862,10 +12384,13 @@ class Toolset(TeaModel):
         self.labels = labels
         # This parameter is required.
         self.name = name
+        self.spec = spec
         self.status = status
         self.uid = uid
 
     def validate(self):
+        if self.spec:
+            self.spec.validate()
         if self.status:
             self.status.validate()
 
@@ -10885,6 +12410,8 @@ class Toolset(TeaModel):
             result['labels'] = self.labels
         if self.name is not None:
             result['name'] = self.name
+        if self.spec is not None:
+            result['spec'] = self.spec.to_map()
         if self.status is not None:
             result['status'] = self.status.to_map()
         if self.uid is not None:
@@ -10903,6 +12430,9 @@ class Toolset(TeaModel):
             self.labels = m.get('labels')
         if m.get('name') is not None:
             self.name = m.get('name')
+        if m.get('spec') is not None:
+            temp_model = ToolsetSpec()
+            self.spec = temp_model.from_map(m['spec'])
         if m.get('status') is not None:
             temp_model = ToolsetStatus()
             self.status = temp_model.from_map(m['status'])
@@ -10941,77 +12471,6 @@ class ToolsetAuthorization(TeaModel):
             self.auth_config = m.get('authConfig')
         if m.get('type') is not None:
             self.type = m.get('type')
-        return self
-
-
-class ToolsetSchema(TeaModel):
-    def __init__(
-        self,
-        detail: str = None,
-        type: str = None,
-    ):
-        self.detail = detail
-        self.type = type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.detail is not None:
-            result['detail'] = self.detail
-        if self.type is not None:
-            result['type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('detail') is not None:
-            self.detail = m.get('detail')
-        if m.get('type') is not None:
-            self.type = m.get('type')
-        return self
-
-
-class ToolsetSpec(TeaModel):
-    def __init__(
-        self,
-        authorization: ToolsetAuthorization = None,
-        schema: ToolsetSchema = None,
-    ):
-        self.authorization = authorization
-        self.schema = schema
-
-    def validate(self):
-        if self.authorization:
-            self.authorization.validate()
-        if self.schema:
-            self.schema.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.authorization is not None:
-            result['authorization'] = self.authorization.to_map()
-        if self.schema is not None:
-            result['schema'] = self.schema.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('authorization') is not None:
-            temp_model = ToolsetAuthorization()
-            self.authorization = temp_model.from_map(m['authorization'])
-        if m.get('schema') is not None:
-            temp_model = ToolsetSchema()
-            self.schema = temp_model.from_map(m['schema'])
         return self
 
 
@@ -11559,6 +13018,76 @@ class CreateTaskResponse(TeaModel):
         return self
 
 
+class CreateToolsetRequest(TeaModel):
+    def __init__(
+        self,
+        body: Toolset = None,
+    ):
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = Toolset()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateToolsetResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: Toolset = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = Toolset()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteArtifactResponse(TeaModel):
     def __init__(
         self,
@@ -11748,6 +13277,39 @@ class DeleteProjectRequest(TeaModel):
 
 
 class DeleteProjectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
+class DeleteToolsetResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
@@ -12297,6 +13859,47 @@ class GetTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = Task()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetToolsetResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: Toolset = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = Toolset()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -13239,6 +14842,190 @@ class ListTasksResponse(TeaModel):
         return self
 
 
+class ListToolsetsRequest(TeaModel):
+    def __init__(
+        self,
+        keyword: str = None,
+        label_selector: List[str] = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.keyword = keyword
+        self.label_selector = label_selector
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.keyword is not None:
+            result['keyword'] = self.keyword
+        if self.label_selector is not None:
+            result['labelSelector'] = self.label_selector
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('keyword') is not None:
+            self.keyword = m.get('keyword')
+        if m.get('labelSelector') is not None:
+            self.label_selector = m.get('labelSelector')
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        return self
+
+
+class ListToolsetsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        keyword: str = None,
+        label_selector_shrink: str = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.keyword = keyword
+        self.label_selector_shrink = label_selector_shrink
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.keyword is not None:
+            result['keyword'] = self.keyword
+        if self.label_selector_shrink is not None:
+            result['labelSelector'] = self.label_selector_shrink
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('keyword') is not None:
+            self.keyword = m.get('keyword')
+        if m.get('labelSelector') is not None:
+            self.label_selector_shrink = m.get('labelSelector')
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        return self
+
+
+class ListToolsetsResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[Toolset] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.data = data
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = Toolset()
+                self.data.append(temp_model.from_map(k))
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ListToolsetsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListToolsetsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListToolsetsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class PreviewEnvironmentResponse(TeaModel):
     def __init__(
         self,
@@ -13959,6 +15746,76 @@ class UpdateProjectResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = Project()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateToolsetRequest(TeaModel):
+    def __init__(
+        self,
+        body: Toolset = None,
+    ):
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = Toolset()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateToolsetResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: Toolset = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = Toolset()
             self.body = temp_model.from_map(m['body'])
         return self
 
