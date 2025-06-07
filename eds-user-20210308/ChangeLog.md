@@ -1,3 +1,9 @@
+2025-06-07 Version: 1.5.2
+- Update API DescribeUsers: add request parameters Status.
+- Update API DescribeUsers: add response parameters Body.Users.$.Orgs.$.OrgNamePath.
+- Update API FilterUsers: add response parameters Body.Users.$.OrgList.$.OrgNamePath.
+
+
 2025-05-22 Version: 1.5.1
 - Update API DescribeResourceGroups: add response parameters Body.ResourceGroup.$.AppRules.
 - Update API DescribeResourceGroups: add response parameters Body.ResourceGroup.$.Timers.$.BindStatus.

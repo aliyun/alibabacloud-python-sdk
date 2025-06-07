@@ -2887,6 +2887,7 @@ class DescribeUsersRequest(TeaModel):
         org_id: str = None,
         show_extras: Dict[str, Any] = None,
         solution_id: str = None,
+        status: int = None,
     ):
         self.biz_type = biz_type
         # The usernames that must be exactly matched.
@@ -2912,6 +2913,7 @@ class DescribeUsersRequest(TeaModel):
         self.org_id = org_id
         self.show_extras = show_extras
         self.solution_id = solution_id
+        self.status = status
 
     def validate(self):
         pass
@@ -2948,6 +2950,8 @@ class DescribeUsersRequest(TeaModel):
             result['ShowExtras'] = self.show_extras
         if self.solution_id is not None:
             result['SolutionId'] = self.solution_id
+        if self.status is not None:
+            result['Status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
@@ -2978,6 +2982,8 @@ class DescribeUsersRequest(TeaModel):
             self.show_extras = m.get('ShowExtras')
         if m.get('SolutionId') is not None:
             self.solution_id = m.get('SolutionId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
@@ -2997,6 +3003,7 @@ class DescribeUsersShrinkRequest(TeaModel):
         org_id: str = None,
         show_extras_shrink: str = None,
         solution_id: str = None,
+        status: int = None,
     ):
         self.biz_type = biz_type
         # The usernames that must be exactly matched.
@@ -3022,6 +3029,7 @@ class DescribeUsersShrinkRequest(TeaModel):
         self.org_id = org_id
         self.show_extras_shrink = show_extras_shrink
         self.solution_id = solution_id
+        self.status = status
 
     def validate(self):
         pass
@@ -3058,6 +3066,8 @@ class DescribeUsersShrinkRequest(TeaModel):
             result['ShowExtras'] = self.show_extras_shrink
         if self.solution_id is not None:
             result['SolutionId'] = self.solution_id
+        if self.status is not None:
+            result['Status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
@@ -3088,6 +3098,8 @@ class DescribeUsersShrinkRequest(TeaModel):
             self.show_extras_shrink = m.get('ShowExtras')
         if m.get('SolutionId') is not None:
             self.solution_id = m.get('SolutionId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
@@ -3158,11 +3170,13 @@ class DescribeUsersResponseBodyUsersOrgs(TeaModel):
         self,
         org_id: str = None,
         org_name: str = None,
+        org_name_path: str = None,
     ):
         # The organization ID.
         self.org_id = org_id
         # The organization name.
         self.org_name = org_name
+        self.org_name_path = org_name_path
 
     def validate(self):
         pass
@@ -3177,6 +3191,8 @@ class DescribeUsersResponseBodyUsersOrgs(TeaModel):
             result['OrgId'] = self.org_id
         if self.org_name is not None:
             result['OrgName'] = self.org_name
+        if self.org_name_path is not None:
+            result['OrgNamePath'] = self.org_name_path
         return result
 
     def from_map(self, m: dict = None):
@@ -3185,6 +3201,8 @@ class DescribeUsersResponseBodyUsersOrgs(TeaModel):
             self.org_id = m.get('OrgId')
         if m.get('OrgName') is not None:
             self.org_name = m.get('OrgName')
+        if m.get('OrgNamePath') is not None:
+            self.org_name_path = m.get('OrgNamePath')
         return self
 
 
@@ -4136,9 +4154,11 @@ class FilterUsersResponseBodyUsersOrgList(TeaModel):
         self,
         org_id: str = None,
         org_name: str = None,
+        org_name_path: str = None,
     ):
         self.org_id = org_id
         self.org_name = org_name
+        self.org_name_path = org_name_path
 
     def validate(self):
         pass
@@ -4153,6 +4173,8 @@ class FilterUsersResponseBodyUsersOrgList(TeaModel):
             result['OrgId'] = self.org_id
         if self.org_name is not None:
             result['OrgName'] = self.org_name
+        if self.org_name_path is not None:
+            result['OrgNamePath'] = self.org_name_path
         return result
 
     def from_map(self, m: dict = None):
@@ -4161,6 +4183,8 @@ class FilterUsersResponseBodyUsersOrgList(TeaModel):
             self.org_id = m.get('OrgId')
         if m.get('OrgName') is not None:
             self.org_name = m.get('OrgName')
+        if m.get('OrgNamePath') is not None:
+            self.org_name_path = m.get('OrgNamePath')
         return self
 
 

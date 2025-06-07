@@ -1560,6 +1560,8 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         body = {}
         if not UtilClient.is_unset(request.biz_type):
             body['BizType'] = request.biz_type
@@ -1629,6 +1631,8 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         body = {}
         if not UtilClient.is_unset(request.biz_type):
             body['BizType'] = request.biz_type
