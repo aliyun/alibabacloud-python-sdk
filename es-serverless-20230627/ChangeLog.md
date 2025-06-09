@@ -1,3 +1,7 @@
+2025-06-09 Version: 2.0.5
+- Update API ListApps: add response parameters Body.result.$.tags.
+
+
 2025-04-10 Version: 2.0.4
 - Update API CreateApp: add request parameters clientToken.
 - Update API CreateApp: add request parameters body.tags.

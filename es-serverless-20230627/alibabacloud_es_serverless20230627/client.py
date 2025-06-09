@@ -69,16 +69,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.CancelSpecReviewTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.CancelSpecReviewTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.CancelSpecReviewTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def cancel_spec_review_task_with_options_async(
         self,
@@ -108,16 +102,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.CancelSpecReviewTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.CancelSpecReviewTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.CancelSpecReviewTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def cancel_spec_review_task(
         self,
@@ -206,16 +194,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.CreateAppResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.CreateAppResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.CreateAppResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_app_with_options_async(
         self,
@@ -276,16 +258,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.CreateAppResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.CreateAppResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.CreateAppResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_app(
         self,
@@ -356,16 +332,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.CreateEndpointResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.CreateEndpointResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.CreateEndpointResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_endpoint_with_options_async(
         self,
@@ -408,16 +378,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.CreateEndpointResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.CreateEndpointResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.CreateEndpointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_endpoint(
         self,
@@ -488,16 +452,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.CreateSnapshotResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.CreateSnapshotResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.CreateSnapshotResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_snapshot_with_options_async(
         self,
@@ -540,16 +498,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.CreateSnapshotResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.CreateSnapshotResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.CreateSnapshotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_snapshot(
         self,
@@ -610,16 +562,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.DeleteAppResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.DeleteAppResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.DeleteAppResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_app_with_options_async(
         self,
@@ -648,16 +594,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.DeleteAppResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.DeleteAppResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.DeleteAppResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_app(
         self,
@@ -721,16 +661,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.DeleteDictResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.DeleteDictResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.DeleteDictResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_dict_with_options_async(
         self,
@@ -768,16 +702,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.DeleteDictResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.DeleteDictResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.DeleteDictResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_dict(
         self,
@@ -836,16 +764,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.DeleteEndpointResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.DeleteEndpointResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.DeleteEndpointResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_endpoint_with_options_async(
         self,
@@ -874,16 +796,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.DeleteEndpointResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.DeleteEndpointResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.DeleteEndpointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_endpoint(
         self,
@@ -940,16 +856,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.DeleteSnapshotResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.DeleteSnapshotResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.DeleteSnapshotResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_snapshot_with_options_async(
         self,
@@ -980,16 +890,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.DeleteSnapshotResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.DeleteSnapshotResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.DeleteSnapshotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_snapshot(
         self,
@@ -1055,16 +959,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.GetAppResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.GetAppResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.GetAppResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_app_with_options_async(
         self,
@@ -1100,16 +998,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.GetAppResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.GetAppResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.GetAppResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_app(
         self,
@@ -1168,16 +1060,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.GetAppQuotaResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.GetAppQuotaResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.GetAppQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_app_quota_with_options_async(
         self,
@@ -1206,16 +1092,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.GetAppQuotaResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.GetAppQuotaResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.GetAppQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_app_quota(
         self,
@@ -1273,16 +1153,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.GetMonitorDataResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.GetMonitorDataResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.GetMonitorDataResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_monitor_data_with_options_async(
         self,
@@ -1314,16 +1188,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.GetMonitorDataResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.GetMonitorDataResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.GetMonitorDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_monitor_data(
         self,
@@ -1380,16 +1248,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.GetSnapshotSettingResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.GetSnapshotSettingResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.GetSnapshotSettingResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_snapshot_setting_with_options_async(
         self,
@@ -1418,16 +1280,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.GetSnapshotSettingResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.GetSnapshotSettingResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.GetSnapshotSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_snapshot_setting(
         self,
@@ -1483,16 +1339,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.GetSpecReviewTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.GetSpecReviewTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.GetSpecReviewTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_spec_review_task_with_options_async(
         self,
@@ -1522,16 +1372,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.GetSpecReviewTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.GetSpecReviewTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.GetSpecReviewTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_spec_review_task(
         self,
@@ -1608,16 +1452,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.ListAppsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.ListAppsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.ListAppsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_apps_with_options_async(
         self,
@@ -1666,16 +1504,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.ListAppsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.ListAppsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.ListAppsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_apps(
         self,
@@ -1741,16 +1573,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.ListDictsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.ListDictsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.ListDictsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_dicts_with_options_async(
         self,
@@ -1788,16 +1614,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.ListDictsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.ListDictsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.ListDictsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_dicts(
         self,
@@ -1870,16 +1690,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.ListEndpointsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.ListEndpointsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.ListEndpointsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_endpoints_with_options_async(
         self,
@@ -1922,16 +1736,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.ListEndpointsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.ListEndpointsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.ListEndpointsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_endpoints(
         self,
@@ -1988,16 +1796,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.ListIndicesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.ListIndicesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.ListIndicesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_indices_with_options_async(
         self,
@@ -2026,16 +1828,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.ListIndicesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.ListIndicesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.ListIndicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_indices(
         self,
@@ -2090,16 +1886,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.ListSnapshotRepositoriesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.ListSnapshotRepositoriesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.ListSnapshotRepositoriesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_snapshot_repositories_with_options_async(
         self,
@@ -2128,16 +1918,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.ListSnapshotRepositoriesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.ListSnapshotRepositoriesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.ListSnapshotRepositoriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_snapshot_repositories(
         self,
@@ -2205,16 +1989,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.ListSnapshotsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.ListSnapshotsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.ListSnapshotsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_snapshots_with_options_async(
         self,
@@ -2256,16 +2034,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.ListSnapshotsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.ListSnapshotsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.ListSnapshotsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_snapshots(
         self,
@@ -2341,16 +2113,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.ListSpecReviewTasksResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.ListSpecReviewTasksResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.ListSpecReviewTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_spec_review_tasks_with_options_async(
         self,
@@ -2396,16 +2162,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.ListSpecReviewTasksResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.ListSpecReviewTasksResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.ListSpecReviewTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_spec_review_tasks(
         self,
@@ -2483,16 +2243,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.UpdateAppResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.UpdateAppResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.UpdateAppResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_app_with_options_async(
         self,
@@ -2540,16 +2294,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.UpdateAppResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.UpdateAppResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.UpdateAppResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_app(
         self,
@@ -2625,16 +2373,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.UpdateDictResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.UpdateDictResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.UpdateDictResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_dict_with_options_async(
         self,
@@ -2680,16 +2422,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.UpdateDictResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.UpdateDictResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.UpdateDictResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_dict(
         self,
@@ -2757,16 +2493,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.UpdateEndpointResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.UpdateEndpointResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.UpdateEndpointResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_endpoint_with_options_async(
         self,
@@ -2804,16 +2534,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.UpdateEndpointResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.UpdateEndpointResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.UpdateEndpointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_endpoint(
         self,
@@ -2881,16 +2605,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.UpdateSnapshotSettingResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.UpdateSnapshotSettingResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.UpdateSnapshotSettingResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_snapshot_setting_with_options_async(
         self,
@@ -2928,16 +2646,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                es_serverless_20230627_models.UpdateSnapshotSettingResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                es_serverless_20230627_models.UpdateSnapshotSettingResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.UpdateSnapshotSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_snapshot_setting(
         self,

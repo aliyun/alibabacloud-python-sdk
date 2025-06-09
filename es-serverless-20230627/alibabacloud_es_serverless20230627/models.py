@@ -2525,6 +2525,39 @@ class ListAppsRequest(TeaModel):
         return self
 
 
+class ListAppsResponseBodyResultTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
 class ListAppsResponseBodyResult(TeaModel):
     def __init__(
         self,
@@ -2538,6 +2571,7 @@ class ListAppsResponseBodyResult(TeaModel):
         owner_id: str = None,
         region_id: str = None,
         status: str = None,
+        tags: List[ListAppsResponseBodyResultTags] = None,
         version: str = None,
     ):
         self.app_id = app_id
@@ -2556,10 +2590,14 @@ class ListAppsResponseBodyResult(TeaModel):
         self.region_id = region_id
         # 代表资源状态的资源属性字段
         self.status = status
+        self.tags = tags
         self.version = version
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2587,6 +2625,10 @@ class ListAppsResponseBodyResult(TeaModel):
             result['regionId'] = self.region_id
         if self.status is not None:
             result['status'] = self.status
+        result['tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['tags'].append(k.to_map() if k else None)
         if self.version is not None:
             result['version'] = self.version
         return result
@@ -2613,6 +2655,11 @@ class ListAppsResponseBodyResult(TeaModel):
             self.region_id = m.get('regionId')
         if m.get('status') is not None:
             self.status = m.get('status')
+        self.tags = []
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = ListAppsResponseBodyResultTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('version') is not None:
             self.version = m.get('version')
         return self
