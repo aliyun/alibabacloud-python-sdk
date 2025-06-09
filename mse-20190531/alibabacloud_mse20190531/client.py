@@ -22750,6 +22750,8 @@ class Client(OpenApiClient):
             query['AclEntryList'] = request.acl_entry_list
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_type):
+            query['NetworkType'] = request.network_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -22789,6 +22791,8 @@ class Client(OpenApiClient):
             query['AclEntryList'] = request.acl_entry_list
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_type):
+            query['NetworkType'] = request.network_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

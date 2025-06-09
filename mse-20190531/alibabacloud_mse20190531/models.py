@@ -60951,6 +60951,7 @@ class UpdateAclRequest(TeaModel):
         accept_language: str = None,
         acl_entry_list: str = None,
         instance_id: str = None,
+        network_type: str = None,
     ):
         # The language of the response. Valid values:
         # 
@@ -60961,6 +60962,7 @@ class UpdateAclRequest(TeaModel):
         self.acl_entry_list = acl_entry_list
         # The ID of the instance.
         self.instance_id = instance_id
+        self.network_type = network_type
 
     def validate(self):
         pass
@@ -60977,6 +60979,8 @@ class UpdateAclRequest(TeaModel):
             result['AclEntryList'] = self.acl_entry_list
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.network_type is not None:
+            result['NetworkType'] = self.network_type
         return result
 
     def from_map(self, m: dict = None):
@@ -60987,6 +60991,8 @@ class UpdateAclRequest(TeaModel):
             self.acl_entry_list = m.get('AclEntryList')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('NetworkType') is not None:
+            self.network_type = m.get('NetworkType')
         return self
 
 
