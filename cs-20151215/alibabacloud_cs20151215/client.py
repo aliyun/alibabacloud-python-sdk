@@ -2149,6 +2149,8 @@ class Client(OpenApiClient):
             body['auto_scaling'] = request.auto_scaling
         if not UtilClient.is_unset(request.count):
             body['count'] = request.count
+        if not UtilClient.is_unset(request.eflo_node_group):
+            body['eflo_node_group'] = request.eflo_node_group
         if not UtilClient.is_unset(request.host_network):
             body['host_network'] = request.host_network
         if not UtilClient.is_unset(request.interconnect_config):
@@ -2212,6 +2214,8 @@ class Client(OpenApiClient):
             body['auto_scaling'] = request.auto_scaling
         if not UtilClient.is_unset(request.count):
             body['count'] = request.count
+        if not UtilClient.is_unset(request.eflo_node_group):
+            body['eflo_node_group'] = request.eflo_node_group
         if not UtilClient.is_unset(request.host_network):
             body['host_network'] = request.host_network
         if not UtilClient.is_unset(request.interconnect_config):

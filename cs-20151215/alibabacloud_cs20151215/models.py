@@ -4,6 +4,33 @@ from Tea.model import TeaModel
 from typing import List, Dict, Any
 
 
+class InstanceMetadataOptions(TeaModel):
+    def __init__(
+        self,
+        http_tokens: str = None,
+    ):
+        self.http_tokens = http_tokens
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.http_tokens is not None:
+            result['http_tokens'] = self.http_tokens
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('http_tokens') is not None:
+            self.http_tokens = m.get('http_tokens')
+        return self
+
+
 class Addon(TeaModel):
     def __init__(
         self,
@@ -5255,6 +5282,39 @@ class CreateClusterNodePoolRequestAutoScaling(TeaModel):
         return self
 
 
+class CreateClusterNodePoolRequestEfloNodeGroup(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        group_id: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.group_id = group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['cluster_id'] = self.cluster_id
+        if self.group_id is not None:
+            result['group_id'] = self.group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
+        if m.get('group_id') is not None:
+            self.group_id = m.get('group_id')
+        return self
+
+
 class CreateClusterNodePoolRequestInterconnectConfig(TeaModel):
     def __init__(
         self,
@@ -6486,6 +6546,7 @@ class CreateClusterNodePoolRequest(TeaModel):
         self,
         auto_scaling: CreateClusterNodePoolRequestAutoScaling = None,
         count: int = None,
+        eflo_node_group: CreateClusterNodePoolRequestEfloNodeGroup = None,
         host_network: bool = None,
         interconnect_config: CreateClusterNodePoolRequestInterconnectConfig = None,
         interconnect_mode: str = None,
@@ -6504,6 +6565,7 @@ class CreateClusterNodePoolRequest(TeaModel):
         # 
         # The number of nodes in the node pool.
         self.count = count
+        self.eflo_node_group = eflo_node_group
         # Specifies whether to set the network type of the pod to host network.
         # 
         # *   `true`: sets to host network.
@@ -6543,6 +6605,8 @@ class CreateClusterNodePoolRequest(TeaModel):
     def validate(self):
         if self.auto_scaling:
             self.auto_scaling.validate()
+        if self.eflo_node_group:
+            self.eflo_node_group.validate()
         if self.interconnect_config:
             self.interconnect_config.validate()
         if self.kubernetes_config:
@@ -6568,6 +6632,8 @@ class CreateClusterNodePoolRequest(TeaModel):
             result['auto_scaling'] = self.auto_scaling.to_map()
         if self.count is not None:
             result['count'] = self.count
+        if self.eflo_node_group is not None:
+            result['eflo_node_group'] = self.eflo_node_group.to_map()
         if self.host_network is not None:
             result['host_network'] = self.host_network
         if self.interconnect_config is not None:
@@ -6599,6 +6665,9 @@ class CreateClusterNodePoolRequest(TeaModel):
             self.auto_scaling = temp_model.from_map(m['auto_scaling'])
         if m.get('count') is not None:
             self.count = m.get('count')
+        if m.get('eflo_node_group') is not None:
+            temp_model = CreateClusterNodePoolRequestEfloNodeGroup()
+            self.eflo_node_group = temp_model.from_map(m['eflo_node_group'])
         if m.get('host_network') is not None:
             self.host_network = m.get('host_network')
         if m.get('interconnect_config') is not None:

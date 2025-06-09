@@ -1,3 +1,7 @@
+2025-06-09 Version: 4.9.3
+- Update API CreateClusterNodePool: add request parameters body.eflo_node_group.
+
+
 2025-05-30 Version: 4.9.2
 - Update API CreateClusterNodePool: add request parameters body.management.auto_repair_policy.approval_required.
 - Update API DescribeClusterNodePoolDetail: add response parameters Body.management.auto_repair_policy.approval_required.
