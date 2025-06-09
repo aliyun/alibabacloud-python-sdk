@@ -1,3 +1,7 @@
+2025-06-09 Version: 4.8.5
+- Update API UpgradeLindormV2StreamEngine: add request parameters CustomConfig.
+
+
 2025-05-20 Version: 4.8.4
 - Update API GetLindormInstance: add response parameters Body.EngineList.$.ArbiterCoreCount.
 - Update API GetLindormInstance: add response parameters Body.EngineList.$.PrimaryCoreCount.

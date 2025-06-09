@@ -13115,6 +13115,7 @@ class UpgradeLindormInstanceResponse(TeaModel):
 class UpgradeLindormV2StreamEngineRequest(TeaModel):
     def __init__(
         self,
+        custom_config: str = None,
         instance_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -13127,6 +13128,7 @@ class UpgradeLindormV2StreamEngineRequest(TeaModel):
         spec_id: str = None,
         upgrade_type: str = None,
     ):
+        self.custom_config = custom_config
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
@@ -13153,6 +13155,8 @@ class UpgradeLindormV2StreamEngineRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.custom_config is not None:
+            result['CustomConfig'] = self.custom_config
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.owner_account is not None:
@@ -13179,6 +13183,8 @@ class UpgradeLindormV2StreamEngineRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CustomConfig') is not None:
+            self.custom_config = m.get('CustomConfig')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('OwnerAccount') is not None:
