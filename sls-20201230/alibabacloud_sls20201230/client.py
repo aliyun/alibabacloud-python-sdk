@@ -726,14 +726,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.attributes):
+            body['attributes'] = request.attributes
         if not UtilClient.is_unset(request.config):
             body['config'] = request.config
-        if not UtilClient.is_unset(request.config_matcher):
-            body['configMatcher'] = request.config_matcher
-        if not UtilClient.is_unset(request.config_name):
-            body['configName'] = request.config_name
-        if not UtilClient.is_unset(request.is_gray):
-            body['isGray'] = request.is_gray
+        if not UtilClient.is_unset(request.config_type):
+            body['configType'] = request.config_type
+        if not UtilClient.is_unset(request.gray_configs):
+            body['grayConfigs'] = request.gray_configs
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -770,14 +770,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.attributes):
+            body['attributes'] = request.attributes
         if not UtilClient.is_unset(request.config):
             body['config'] = request.config
-        if not UtilClient.is_unset(request.config_matcher):
-            body['configMatcher'] = request.config_matcher
-        if not UtilClient.is_unset(request.config_name):
-            body['configName'] = request.config_name
-        if not UtilClient.is_unset(request.is_gray):
-            body['isGray'] = request.is_gray
+        if not UtilClient.is_unset(request.config_type):
+            body['configType'] = request.config_type
+        if not UtilClient.is_unset(request.gray_configs):
+            body['grayConfigs'] = request.gray_configs
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1866,7 +1866,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.CreateETLResponse:
         """
-        @summary 创建数据加工任务
+        @summary Creates a data transformation job in a project.
         
         @param request: CreateETLRequest
         @param headers: map
@@ -1914,7 +1914,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.CreateETLResponse:
         """
-        @summary 创建数据加工任务
+        @summary Creates a data transformation job in a project.
         
         @param request: CreateETLRequest
         @param headers: map
@@ -1960,7 +1960,7 @@ class Client(OpenApiClient):
         request: sls_20201230_models.CreateETLRequest,
     ) -> sls_20201230_models.CreateETLResponse:
         """
-        @summary 创建数据加工任务
+        @summary Creates a data transformation job in a project.
         
         @param request: CreateETLRequest
         @return: CreateETLResponse
@@ -1975,7 +1975,7 @@ class Client(OpenApiClient):
         request: sls_20201230_models.CreateETLRequest,
     ) -> sls_20201230_models.CreateETLResponse:
         """
-        @summary 创建数据加工任务
+        @summary Creates a data transformation job in a project.
         
         @param request: CreateETLRequest
         @return: CreateETLResponse
@@ -3438,140 +3438,6 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_ossingestion_with_options_async(project, request, headers, runtime)
 
-    def create_oss_external_store_with_options(
-        self,
-        project: str,
-        request: sls_20201230_models.CreateOssExternalStoreRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sls_20201230_models.CreateOssExternalStoreResponse:
-        """
-        @summary Creates an Object Storage Service (OSS) external store.
-        
-        @description ### [](#)Usage notes
-        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @param request: CreateOssExternalStoreRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateOssExternalStoreResponse
-        """
-        UtilClient.validate_model(request)
-        host_map = {}
-        host_map['project'] = project
-        body = {}
-        if not UtilClient.is_unset(request.external_store_name):
-            body['externalStoreName'] = request.external_store_name
-        if not UtilClient.is_unset(request.parameter):
-            body['parameter'] = request.parameter
-        if not UtilClient.is_unset(request.store_type):
-            body['storeType'] = request.store_type
-        req = open_api_models.OpenApiRequest(
-            host_map=host_map,
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateOssExternalStore',
-            version='2020-12-30',
-            protocol='HTTPS',
-            pathname=f'/externalstores',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='none'
-        )
-        return TeaCore.from_map(
-            sls_20201230_models.CreateOssExternalStoreResponse(),
-            self.execute(params, req, runtime)
-        )
-
-    async def create_oss_external_store_with_options_async(
-        self,
-        project: str,
-        request: sls_20201230_models.CreateOssExternalStoreRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sls_20201230_models.CreateOssExternalStoreResponse:
-        """
-        @summary Creates an Object Storage Service (OSS) external store.
-        
-        @description ### [](#)Usage notes
-        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @param request: CreateOssExternalStoreRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateOssExternalStoreResponse
-        """
-        UtilClient.validate_model(request)
-        host_map = {}
-        host_map['project'] = project
-        body = {}
-        if not UtilClient.is_unset(request.external_store_name):
-            body['externalStoreName'] = request.external_store_name
-        if not UtilClient.is_unset(request.parameter):
-            body['parameter'] = request.parameter
-        if not UtilClient.is_unset(request.store_type):
-            body['storeType'] = request.store_type
-        req = open_api_models.OpenApiRequest(
-            host_map=host_map,
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateOssExternalStore',
-            version='2020-12-30',
-            protocol='HTTPS',
-            pathname=f'/externalstores',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='none'
-        )
-        return TeaCore.from_map(
-            sls_20201230_models.CreateOssExternalStoreResponse(),
-            await self.execute_async(params, req, runtime)
-        )
-
-    def create_oss_external_store(
-        self,
-        project: str,
-        request: sls_20201230_models.CreateOssExternalStoreRequest,
-    ) -> sls_20201230_models.CreateOssExternalStoreResponse:
-        """
-        @summary Creates an Object Storage Service (OSS) external store.
-        
-        @description ### [](#)Usage notes
-        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @param request: CreateOssExternalStoreRequest
-        @return: CreateOssExternalStoreResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.create_oss_external_store_with_options(project, request, headers, runtime)
-
-    async def create_oss_external_store_async(
-        self,
-        project: str,
-        request: sls_20201230_models.CreateOssExternalStoreRequest,
-    ) -> sls_20201230_models.CreateOssExternalStoreResponse:
-        """
-        @summary Creates an Object Storage Service (OSS) external store.
-        
-        @description ### [](#)Usage notes
-        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @param request: CreateOssExternalStoreRequest
-        @return: CreateOssExternalStoreResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.create_oss_external_store_with_options_async(project, request, headers, runtime)
-
     def create_project_with_options(
         self,
         request: sls_20201230_models.CreateProjectRequest,
@@ -3691,136 +3557,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_project_with_options_async(request, headers, runtime)
-
-    def create_rds_external_store_with_options(
-        self,
-        project: str,
-        request: sls_20201230_models.CreateRdsExternalStoreRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sls_20201230_models.CreateRdsExternalStoreResponse:
-        """
-        @summary Creates an ApsaraDB RDS external store.
-        
-        @description Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @param request: CreateRdsExternalStoreRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateRdsExternalStoreResponse
-        """
-        UtilClient.validate_model(request)
-        host_map = {}
-        host_map['project'] = project
-        body = {}
-        if not UtilClient.is_unset(request.external_store_name):
-            body['externalStoreName'] = request.external_store_name
-        if not UtilClient.is_unset(request.parameter):
-            body['parameter'] = request.parameter
-        if not UtilClient.is_unset(request.store_type):
-            body['storeType'] = request.store_type
-        req = open_api_models.OpenApiRequest(
-            host_map=host_map,
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateRdsExternalStore',
-            version='2020-12-30',
-            protocol='HTTPS',
-            pathname=f'/externalstores',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='none'
-        )
-        return TeaCore.from_map(
-            sls_20201230_models.CreateRdsExternalStoreResponse(),
-            self.execute(params, req, runtime)
-        )
-
-    async def create_rds_external_store_with_options_async(
-        self,
-        project: str,
-        request: sls_20201230_models.CreateRdsExternalStoreRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sls_20201230_models.CreateRdsExternalStoreResponse:
-        """
-        @summary Creates an ApsaraDB RDS external store.
-        
-        @description Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @param request: CreateRdsExternalStoreRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateRdsExternalStoreResponse
-        """
-        UtilClient.validate_model(request)
-        host_map = {}
-        host_map['project'] = project
-        body = {}
-        if not UtilClient.is_unset(request.external_store_name):
-            body['externalStoreName'] = request.external_store_name
-        if not UtilClient.is_unset(request.parameter):
-            body['parameter'] = request.parameter
-        if not UtilClient.is_unset(request.store_type):
-            body['storeType'] = request.store_type
-        req = open_api_models.OpenApiRequest(
-            host_map=host_map,
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateRdsExternalStore',
-            version='2020-12-30',
-            protocol='HTTPS',
-            pathname=f'/externalstores',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='none'
-        )
-        return TeaCore.from_map(
-            sls_20201230_models.CreateRdsExternalStoreResponse(),
-            await self.execute_async(params, req, runtime)
-        )
-
-    def create_rds_external_store(
-        self,
-        project: str,
-        request: sls_20201230_models.CreateRdsExternalStoreRequest,
-    ) -> sls_20201230_models.CreateRdsExternalStoreResponse:
-        """
-        @summary Creates an ApsaraDB RDS external store.
-        
-        @description Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @param request: CreateRdsExternalStoreRequest
-        @return: CreateRdsExternalStoreResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.create_rds_external_store_with_options(project, request, headers, runtime)
-
-    async def create_rds_external_store_async(
-        self,
-        project: str,
-        request: sls_20201230_models.CreateRdsExternalStoreRequest,
-    ) -> sls_20201230_models.CreateRdsExternalStoreResponse:
-        """
-        @summary Creates an ApsaraDB RDS external store.
-        
-        @description Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @param request: CreateRdsExternalStoreRequest
-        @return: CreateRdsExternalStoreResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.create_rds_external_store_with_options_async(project, request, headers, runtime)
 
     def create_saved_search_with_options(
         self,
@@ -4488,7 +4224,7 @@ class Client(OpenApiClient):
 
     def delete_agent_instance_config_with_options(
         self,
-        config_name: str,
+        config_type: str,
         request: sls_20201230_models.DeleteAgentInstanceConfigRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
@@ -4503,8 +4239,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.is_gray):
-            query['isGray'] = request.is_gray
+        if not UtilClient.is_unset(request.attributes):
+            query['attributes'] = request.attributes
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -4513,7 +4249,7 @@ class Client(OpenApiClient):
             action='DeleteAgentInstanceConfig',
             version='2020-12-30',
             protocol='HTTPS',
-            pathname=f'/agentinstanceconfigs/{config_name}',
+            pathname=f'/agentinstanceconfigs/{config_type}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -4527,7 +4263,7 @@ class Client(OpenApiClient):
 
     async def delete_agent_instance_config_with_options_async(
         self,
-        config_name: str,
+        config_type: str,
         request: sls_20201230_models.DeleteAgentInstanceConfigRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
@@ -4542,8 +4278,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.is_gray):
-            query['isGray'] = request.is_gray
+        if not UtilClient.is_unset(request.attributes):
+            query['attributes'] = request.attributes
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -4552,7 +4288,7 @@ class Client(OpenApiClient):
             action='DeleteAgentInstanceConfig',
             version='2020-12-30',
             protocol='HTTPS',
-            pathname=f'/agentinstanceconfigs/{config_name}',
+            pathname=f'/agentinstanceconfigs/{config_type}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -4566,7 +4302,7 @@ class Client(OpenApiClient):
 
     def delete_agent_instance_config(
         self,
-        config_name: str,
+        config_type: str,
         request: sls_20201230_models.DeleteAgentInstanceConfigRequest,
     ) -> sls_20201230_models.DeleteAgentInstanceConfigResponse:
         """
@@ -4577,11 +4313,11 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_agent_instance_config_with_options(config_name, request, headers, runtime)
+        return self.delete_agent_instance_config_with_options(config_type, request, headers, runtime)
 
     async def delete_agent_instance_config_async(
         self,
-        config_name: str,
+        config_type: str,
         request: sls_20201230_models.DeleteAgentInstanceConfigRequest,
     ) -> sls_20201230_models.DeleteAgentInstanceConfigResponse:
         """
@@ -4592,7 +4328,7 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_agent_instance_config_with_options_async(config_name, request, headers, runtime)
+        return await self.delete_agent_instance_config_with_options_async(config_type, request, headers, runtime)
 
     def delete_alert_with_options(
         self,
@@ -5728,7 +5464,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteETLResponse:
         """
-        @summary 删除数据加工任务
+        @summary Deletes a data transformation job.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5764,7 +5500,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteETLResponse:
         """
-        @summary 删除数据加工任务
+        @summary Deletes a data transformation job.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5798,7 +5534,7 @@ class Client(OpenApiClient):
         etl_name: str,
     ) -> sls_20201230_models.DeleteETLResponse:
         """
-        @summary 删除数据加工任务
+        @summary Deletes a data transformation job.
         
         @return: DeleteETLResponse
         """
@@ -5812,121 +5548,13 @@ class Client(OpenApiClient):
         etl_name: str,
     ) -> sls_20201230_models.DeleteETLResponse:
         """
-        @summary 删除数据加工任务
+        @summary Deletes a data transformation job.
         
         @return: DeleteETLResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_etlwith_options_async(project, etl_name, headers, runtime)
-
-    def delete_external_store_with_options(
-        self,
-        project: str,
-        external_store_name: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sls_20201230_models.DeleteExternalStoreResponse:
-        """
-        @summary Deletes an external storage configuration.
-        
-        @description Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteExternalStoreResponse
-        """
-        host_map = {}
-        host_map['project'] = project
-        req = open_api_models.OpenApiRequest(
-            host_map=host_map,
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='DeleteExternalStore',
-            version='2020-12-30',
-            protocol='HTTPS',
-            pathname=f'/externalstores/{external_store_name}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='none'
-        )
-        return TeaCore.from_map(
-            sls_20201230_models.DeleteExternalStoreResponse(),
-            self.execute(params, req, runtime)
-        )
-
-    async def delete_external_store_with_options_async(
-        self,
-        project: str,
-        external_store_name: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sls_20201230_models.DeleteExternalStoreResponse:
-        """
-        @summary Deletes an external storage configuration.
-        
-        @description Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteExternalStoreResponse
-        """
-        host_map = {}
-        host_map['project'] = project
-        req = open_api_models.OpenApiRequest(
-            host_map=host_map,
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='DeleteExternalStore',
-            version='2020-12-30',
-            protocol='HTTPS',
-            pathname=f'/externalstores/{external_store_name}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='none'
-        )
-        return TeaCore.from_map(
-            sls_20201230_models.DeleteExternalStoreResponse(),
-            await self.execute_async(params, req, runtime)
-        )
-
-    def delete_external_store(
-        self,
-        project: str,
-        external_store_name: str,
-    ) -> sls_20201230_models.DeleteExternalStoreResponse:
-        """
-        @summary Deletes an external storage configuration.
-        
-        @description Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @return: DeleteExternalStoreResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.delete_external_store_with_options(project, external_store_name, headers, runtime)
-
-    async def delete_external_store_async(
-        self,
-        project: str,
-        external_store_name: str,
-    ) -> sls_20201230_models.DeleteExternalStoreResponse:
-        """
-        @summary Deletes an external storage configuration.
-        
-        @description Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @return: DeleteExternalStoreResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.delete_external_store_with_options_async(project, external_store_name, headers, runtime)
 
     def delete_index_with_options(
         self,
@@ -8256,25 +7884,32 @@ class Client(OpenApiClient):
 
     def get_agent_instance_config_with_options(
         self,
-        config_name: str,
+        config_type: str,
+        request: sls_20201230_models.GetAgentInstanceConfigRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetAgentInstanceConfigResponse:
         """
         @summary GetAgentInstanceConfig
         
+        @param request: GetAgentInstanceConfigRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetAgentInstanceConfigResponse
         """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.attributes):
+            query['attributes'] = request.attributes
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetAgentInstanceConfig',
             version='2020-12-30',
             protocol='HTTPS',
-            pathname=f'/agentinstanceconfigs/{config_name}',
+            pathname=f'/agentinstanceconfigs/{config_type}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -8288,25 +7923,32 @@ class Client(OpenApiClient):
 
     async def get_agent_instance_config_with_options_async(
         self,
-        config_name: str,
+        config_type: str,
+        request: sls_20201230_models.GetAgentInstanceConfigRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetAgentInstanceConfigResponse:
         """
         @summary GetAgentInstanceConfig
         
+        @param request: GetAgentInstanceConfigRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetAgentInstanceConfigResponse
         """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.attributes):
+            query['attributes'] = request.attributes
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetAgentInstanceConfig',
             version='2020-12-30',
             protocol='HTTPS',
-            pathname=f'/agentinstanceconfigs/{config_name}',
+            pathname=f'/agentinstanceconfigs/{config_type}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -8320,29 +7962,33 @@ class Client(OpenApiClient):
 
     def get_agent_instance_config(
         self,
-        config_name: str,
+        config_type: str,
+        request: sls_20201230_models.GetAgentInstanceConfigRequest,
     ) -> sls_20201230_models.GetAgentInstanceConfigResponse:
         """
         @summary GetAgentInstanceConfig
         
+        @param request: GetAgentInstanceConfigRequest
         @return: GetAgentInstanceConfigResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_agent_instance_config_with_options(config_name, headers, runtime)
+        return self.get_agent_instance_config_with_options(config_type, request, headers, runtime)
 
     async def get_agent_instance_config_async(
         self,
-        config_name: str,
+        config_type: str,
+        request: sls_20201230_models.GetAgentInstanceConfigRequest,
     ) -> sls_20201230_models.GetAgentInstanceConfigResponse:
         """
         @summary GetAgentInstanceConfig
         
+        @param request: GetAgentInstanceConfigRequest
         @return: GetAgentInstanceConfigResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_agent_instance_config_with_options_async(config_name, headers, runtime)
+        return await self.get_agent_instance_config_with_options_async(config_type, request, headers, runtime)
 
     def get_alert_with_options(
         self,
@@ -10002,7 +9648,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetETLResponse:
         """
-        @summary 获取数据加工任务信息
+        @summary Queries the configurations of a data transformation job.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -10038,7 +9684,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetETLResponse:
         """
-        @summary 获取数据加工任务信息
+        @summary Queries the configurations of a data transformation job.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -10072,7 +9718,7 @@ class Client(OpenApiClient):
         etl_name: str,
     ) -> sls_20201230_models.GetETLResponse:
         """
-        @summary 获取数据加工任务信息
+        @summary Queries the configurations of a data transformation job.
         
         @return: GetETLResponse
         """
@@ -10086,125 +9732,13 @@ class Client(OpenApiClient):
         etl_name: str,
     ) -> sls_20201230_models.GetETLResponse:
         """
-        @summary 获取数据加工任务信息
+        @summary Queries the configurations of a data transformation job.
         
         @return: GetETLResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_etlwith_options_async(project, etl_name, headers, runtime)
-
-    def get_external_store_with_options(
-        self,
-        project: str,
-        external_store_name: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sls_20201230_models.GetExternalStoreResponse:
-        """
-        @summary Queries the details of an external store.
-        
-        @description    The supported data sources of external stores include Object Storage Service (OSS) buckets and ApsaraDB RDS for MySQL databases in a virtual private cloud (VPC).
-        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetExternalStoreResponse
-        """
-        host_map = {}
-        host_map['project'] = project
-        req = open_api_models.OpenApiRequest(
-            host_map=host_map,
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='GetExternalStore',
-            version='2020-12-30',
-            protocol='HTTPS',
-            pathname=f'/externalstores/{external_store_name}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sls_20201230_models.GetExternalStoreResponse(),
-            self.execute(params, req, runtime)
-        )
-
-    async def get_external_store_with_options_async(
-        self,
-        project: str,
-        external_store_name: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sls_20201230_models.GetExternalStoreResponse:
-        """
-        @summary Queries the details of an external store.
-        
-        @description    The supported data sources of external stores include Object Storage Service (OSS) buckets and ApsaraDB RDS for MySQL databases in a virtual private cloud (VPC).
-        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetExternalStoreResponse
-        """
-        host_map = {}
-        host_map['project'] = project
-        req = open_api_models.OpenApiRequest(
-            host_map=host_map,
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='GetExternalStore',
-            version='2020-12-30',
-            protocol='HTTPS',
-            pathname=f'/externalstores/{external_store_name}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sls_20201230_models.GetExternalStoreResponse(),
-            await self.execute_async(params, req, runtime)
-        )
-
-    def get_external_store(
-        self,
-        project: str,
-        external_store_name: str,
-    ) -> sls_20201230_models.GetExternalStoreResponse:
-        """
-        @summary Queries the details of an external store.
-        
-        @description    The supported data sources of external stores include Object Storage Service (OSS) buckets and ApsaraDB RDS for MySQL databases in a virtual private cloud (VPC).
-        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @return: GetExternalStoreResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.get_external_store_with_options(project, external_store_name, headers, runtime)
-
-    async def get_external_store_async(
-        self,
-        project: str,
-        external_store_name: str,
-    ) -> sls_20201230_models.GetExternalStoreResponse:
-        """
-        @summary Queries the details of an external store.
-        
-        @description    The supported data sources of external stores include Object Storage Service (OSS) buckets and ApsaraDB RDS for MySQL databases in a virtual private cloud (VPC).
-        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @return: GetExternalStoreResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.get_external_store_with_options_async(project, external_store_name, headers, runtime)
 
     def get_histograms_with_options(
         self,
@@ -13420,6 +12954,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.attributes):
+            query['attributes'] = request.attributes
+        if not UtilClient.is_unset(request.config_type):
+            query['configType'] = request.config_type
         if not UtilClient.is_unset(request.offset):
             query['offset'] = request.offset
         if not UtilClient.is_unset(request.size):
@@ -13460,6 +12998,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.attributes):
+            query['attributes'] = request.attributes
+        if not UtilClient.is_unset(request.config_type):
+            query['configType'] = request.config_type
         if not UtilClient.is_unset(request.offset):
             query['offset'] = request.offset
         if not UtilClient.is_unset(request.size):
@@ -14477,7 +14019,7 @@ class Client(OpenApiClient):
     def list_dashboard_with_options(
         self,
         project: str,
-        request: sls_20201230_models.ListDashboardRequest,
+        tmp_req: sls_20201230_models.ListDashboardRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListDashboardResponse:
@@ -14490,19 +14032,29 @@ class Client(OpenApiClient):
         The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
         The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
         
-        @param request: ListDashboardRequest
+        @param tmp_req: ListDashboardRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListDashboardResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
         host_map = {}
         host_map['project'] = project
+        request = sls_20201230_models.ListDashboardShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
         query = {}
+        if not UtilClient.is_unset(request.dashboard_name):
+            query['dashboardName'] = request.dashboard_name
+        if not UtilClient.is_unset(request.display_name):
+            query['displayName'] = request.display_name
         if not UtilClient.is_unset(request.offset):
             query['offset'] = request.offset
         if not UtilClient.is_unset(request.size):
             query['size'] = request.size
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['tags'] = request.tags_shrink
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
@@ -14527,7 +14079,7 @@ class Client(OpenApiClient):
     async def list_dashboard_with_options_async(
         self,
         project: str,
-        request: sls_20201230_models.ListDashboardRequest,
+        tmp_req: sls_20201230_models.ListDashboardRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListDashboardResponse:
@@ -14540,19 +14092,29 @@ class Client(OpenApiClient):
         The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
         The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
         
-        @param request: ListDashboardRequest
+        @param tmp_req: ListDashboardRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListDashboardResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
         host_map = {}
         host_map['project'] = project
+        request = sls_20201230_models.ListDashboardShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
         query = {}
+        if not UtilClient.is_unset(request.dashboard_name):
+            query['dashboardName'] = request.dashboard_name
+        if not UtilClient.is_unset(request.display_name):
+            query['displayName'] = request.display_name
         if not UtilClient.is_unset(request.offset):
             query['offset'] = request.offset
         if not UtilClient.is_unset(request.size):
             query['size'] = request.size
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['tags'] = request.tags_shrink
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
@@ -14880,7 +14442,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListETLsResponse:
         """
-        @summary 列出数据加工任务
+        @summary Queries a list of data transformation jobs in a project.
         
         @param request: ListETLsRequest
         @param headers: map
@@ -14926,7 +14488,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListETLsResponse:
         """
-        @summary 列出数据加工任务
+        @summary Queries a list of data transformation jobs in a project.
         
         @param request: ListETLsRequest
         @param headers: map
@@ -14970,7 +14532,7 @@ class Client(OpenApiClient):
         request: sls_20201230_models.ListETLsRequest,
     ) -> sls_20201230_models.ListETLsResponse:
         """
-        @summary 列出数据加工任务
+        @summary Queries a list of data transformation jobs in a project.
         
         @param request: ListETLsRequest
         @return: ListETLsResponse
@@ -14985,7 +14547,7 @@ class Client(OpenApiClient):
         request: sls_20201230_models.ListETLsRequest,
     ) -> sls_20201230_models.ListETLsResponse:
         """
-        @summary 列出数据加工任务
+        @summary Queries a list of data transformation jobs in a project.
         
         @param request: ListETLsRequest
         @return: ListETLsResponse
@@ -18666,7 +18228,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.StartETLResponse:
         """
-        @summary 启动数据加工任务
+        @summary Starts a data transformation job.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -18702,7 +18264,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.StartETLResponse:
         """
-        @summary 启动数据加工任务
+        @summary Starts a data transformation job.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -18736,7 +18298,7 @@ class Client(OpenApiClient):
         etl_name: str,
     ) -> sls_20201230_models.StartETLResponse:
         """
-        @summary 启动数据加工任务
+        @summary Starts a data transformation job.
         
         @return: StartETLResponse
         """
@@ -18750,7 +18312,7 @@ class Client(OpenApiClient):
         etl_name: str,
     ) -> sls_20201230_models.StartETLResponse:
         """
-        @summary 启动数据加工任务
+        @summary Starts a data transformation job.
         
         @return: StartETLResponse
         """
@@ -19186,7 +18748,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.StopETLResponse:
         """
-        @summary 停止数据加工任务
+        @summary Stops a data transformation job.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -19222,7 +18784,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.StopETLResponse:
         """
-        @summary 停止数据加工任务
+        @summary Stops a data transformation job.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -19256,7 +18818,7 @@ class Client(OpenApiClient):
         etl_name: str,
     ) -> sls_20201230_models.StopETLResponse:
         """
-        @summary 停止数据加工任务
+        @summary Stops a data transformation job.
         
         @return: StopETLResponse
         """
@@ -19270,7 +18832,7 @@ class Client(OpenApiClient):
         etl_name: str,
     ) -> sls_20201230_models.StopETLResponse:
         """
-        @summary 停止数据加工任务
+        @summary Stops a data transformation job.
         
         @return: StopETLResponse
         """
@@ -20020,7 +19582,7 @@ class Client(OpenApiClient):
 
     def update_agent_instance_config_with_options(
         self,
-        config_name: str,
+        config_type: str,
         request: sls_20201230_models.UpdateAgentInstanceConfigRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
@@ -20034,22 +19596,24 @@ class Client(OpenApiClient):
         @return: UpdateAgentInstanceConfigResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.attributes):
+            query['attributes'] = request.attributes
         body = {}
         if not UtilClient.is_unset(request.config):
             body['config'] = request.config
-        if not UtilClient.is_unset(request.config_matcher):
-            body['configMatcher'] = request.config_matcher
-        if not UtilClient.is_unset(request.is_gray):
-            body['isGray'] = request.is_gray
+        if not UtilClient.is_unset(request.gray_configs):
+            body['grayConfigs'] = request.gray_configs
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateAgentInstanceConfig',
             version='2020-12-30',
             protocol='HTTPS',
-            pathname=f'/agentinstanceconfigs/{config_name}',
+            pathname=f'/agentinstanceconfigs/{config_type}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -20063,7 +19627,7 @@ class Client(OpenApiClient):
 
     async def update_agent_instance_config_with_options_async(
         self,
-        config_name: str,
+        config_type: str,
         request: sls_20201230_models.UpdateAgentInstanceConfigRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
@@ -20077,22 +19641,24 @@ class Client(OpenApiClient):
         @return: UpdateAgentInstanceConfigResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.attributes):
+            query['attributes'] = request.attributes
         body = {}
         if not UtilClient.is_unset(request.config):
             body['config'] = request.config
-        if not UtilClient.is_unset(request.config_matcher):
-            body['configMatcher'] = request.config_matcher
-        if not UtilClient.is_unset(request.is_gray):
-            body['isGray'] = request.is_gray
+        if not UtilClient.is_unset(request.gray_configs):
+            body['grayConfigs'] = request.gray_configs
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateAgentInstanceConfig',
             version='2020-12-30',
             protocol='HTTPS',
-            pathname=f'/agentinstanceconfigs/{config_name}',
+            pathname=f'/agentinstanceconfigs/{config_type}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -20106,7 +19672,7 @@ class Client(OpenApiClient):
 
     def update_agent_instance_config(
         self,
-        config_name: str,
+        config_type: str,
         request: sls_20201230_models.UpdateAgentInstanceConfigRequest,
     ) -> sls_20201230_models.UpdateAgentInstanceConfigResponse:
         """
@@ -20117,11 +19683,11 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_agent_instance_config_with_options(config_name, request, headers, runtime)
+        return self.update_agent_instance_config_with_options(config_type, request, headers, runtime)
 
     async def update_agent_instance_config_async(
         self,
-        config_name: str,
+        config_type: str,
         request: sls_20201230_models.UpdateAgentInstanceConfigRequest,
     ) -> sls_20201230_models.UpdateAgentInstanceConfigResponse:
         """
@@ -20132,7 +19698,7 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_agent_instance_config_with_options_async(config_name, request, headers, runtime)
+        return await self.update_agent_instance_config_with_options_async(config_type, request, headers, runtime)
 
     def update_alert_with_options(
         self,
@@ -20941,7 +20507,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateETLResponse:
         """
-        @summary 更新数据加工任务
+        @summary Updates a data transformation job.
         
         @param request: UpdateETLRequest
         @param headers: map
@@ -20988,7 +20554,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateETLResponse:
         """
-        @summary 更新数据加工任务
+        @summary Updates a data transformation job.
         
         @param request: UpdateETLRequest
         @param headers: map
@@ -21033,7 +20599,7 @@ class Client(OpenApiClient):
         request: sls_20201230_models.UpdateETLRequest,
     ) -> sls_20201230_models.UpdateETLResponse:
         """
-        @summary 更新数据加工任务
+        @summary Updates a data transformation job.
         
         @param request: UpdateETLRequest
         @return: UpdateETLResponse
@@ -21049,7 +20615,7 @@ class Client(OpenApiClient):
         request: sls_20201230_models.UpdateETLRequest,
     ) -> sls_20201230_models.UpdateETLResponse:
         """
-        @summary 更新数据加工任务
+        @summary Updates a data transformation job.
         
         @param request: UpdateETLRequest
         @return: UpdateETLResponse
@@ -23246,144 +22812,6 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_ossingestion_with_options_async(project, oss_ingestion_name, request, headers, runtime)
 
-    def update_oss_external_store_with_options(
-        self,
-        project: str,
-        external_store_name: str,
-        request: sls_20201230_models.UpdateOssExternalStoreRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sls_20201230_models.UpdateOssExternalStoreResponse:
-        """
-        @summary Updates an Object Storage Service (OSS) external store.
-        
-        @description ### [](#)Usage notes
-        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @param request: UpdateOssExternalStoreRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateOssExternalStoreResponse
-        """
-        UtilClient.validate_model(request)
-        host_map = {}
-        host_map['project'] = project
-        body = {}
-        if not UtilClient.is_unset(request.external_store_name):
-            body['externalStoreName'] = request.external_store_name
-        if not UtilClient.is_unset(request.parameter):
-            body['parameter'] = request.parameter
-        if not UtilClient.is_unset(request.store_type):
-            body['storeType'] = request.store_type
-        req = open_api_models.OpenApiRequest(
-            host_map=host_map,
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdateOssExternalStore',
-            version='2020-12-30',
-            protocol='HTTPS',
-            pathname=f'/externalstores/{external_store_name}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='none'
-        )
-        return TeaCore.from_map(
-            sls_20201230_models.UpdateOssExternalStoreResponse(),
-            self.execute(params, req, runtime)
-        )
-
-    async def update_oss_external_store_with_options_async(
-        self,
-        project: str,
-        external_store_name: str,
-        request: sls_20201230_models.UpdateOssExternalStoreRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sls_20201230_models.UpdateOssExternalStoreResponse:
-        """
-        @summary Updates an Object Storage Service (OSS) external store.
-        
-        @description ### [](#)Usage notes
-        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @param request: UpdateOssExternalStoreRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateOssExternalStoreResponse
-        """
-        UtilClient.validate_model(request)
-        host_map = {}
-        host_map['project'] = project
-        body = {}
-        if not UtilClient.is_unset(request.external_store_name):
-            body['externalStoreName'] = request.external_store_name
-        if not UtilClient.is_unset(request.parameter):
-            body['parameter'] = request.parameter
-        if not UtilClient.is_unset(request.store_type):
-            body['storeType'] = request.store_type
-        req = open_api_models.OpenApiRequest(
-            host_map=host_map,
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdateOssExternalStore',
-            version='2020-12-30',
-            protocol='HTTPS',
-            pathname=f'/externalstores/{external_store_name}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='none'
-        )
-        return TeaCore.from_map(
-            sls_20201230_models.UpdateOssExternalStoreResponse(),
-            await self.execute_async(params, req, runtime)
-        )
-
-    def update_oss_external_store(
-        self,
-        project: str,
-        external_store_name: str,
-        request: sls_20201230_models.UpdateOssExternalStoreRequest,
-    ) -> sls_20201230_models.UpdateOssExternalStoreResponse:
-        """
-        @summary Updates an Object Storage Service (OSS) external store.
-        
-        @description ### [](#)Usage notes
-        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @param request: UpdateOssExternalStoreRequest
-        @return: UpdateOssExternalStoreResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.update_oss_external_store_with_options(project, external_store_name, request, headers, runtime)
-
-    async def update_oss_external_store_async(
-        self,
-        project: str,
-        external_store_name: str,
-        request: sls_20201230_models.UpdateOssExternalStoreRequest,
-    ) -> sls_20201230_models.UpdateOssExternalStoreResponse:
-        """
-        @summary Updates an Object Storage Service (OSS) external store.
-        
-        @description ### [](#)Usage notes
-        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @param request: UpdateOssExternalStoreRequest
-        @return: UpdateOssExternalStoreResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.update_oss_external_store_with_options_async(project, external_store_name, request, headers, runtime)
-
     def update_project_with_options(
         self,
         project: str,
@@ -23541,144 +22969,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_project_with_options_async(project, request, headers, runtime)
-
-    def update_rds_external_store_with_options(
-        self,
-        project: str,
-        external_store_name: str,
-        request: sls_20201230_models.UpdateRdsExternalStoreRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sls_20201230_models.UpdateRdsExternalStoreResponse:
-        """
-        @summary Updates an ApsaraDB RDS external store.
-        
-        @description ### [](#)Usage notes
-        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @param request: UpdateRdsExternalStoreRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateRdsExternalStoreResponse
-        """
-        UtilClient.validate_model(request)
-        host_map = {}
-        host_map['project'] = project
-        body = {}
-        if not UtilClient.is_unset(request.external_store_name):
-            body['externalStoreName'] = request.external_store_name
-        if not UtilClient.is_unset(request.parameter):
-            body['parameter'] = request.parameter
-        if not UtilClient.is_unset(request.store_type):
-            body['storeType'] = request.store_type
-        req = open_api_models.OpenApiRequest(
-            host_map=host_map,
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdateRdsExternalStore',
-            version='2020-12-30',
-            protocol='HTTPS',
-            pathname=f'/externalstores/{external_store_name}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='none'
-        )
-        return TeaCore.from_map(
-            sls_20201230_models.UpdateRdsExternalStoreResponse(),
-            self.execute(params, req, runtime)
-        )
-
-    async def update_rds_external_store_with_options_async(
-        self,
-        project: str,
-        external_store_name: str,
-        request: sls_20201230_models.UpdateRdsExternalStoreRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sls_20201230_models.UpdateRdsExternalStoreResponse:
-        """
-        @summary Updates an ApsaraDB RDS external store.
-        
-        @description ### [](#)Usage notes
-        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @param request: UpdateRdsExternalStoreRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateRdsExternalStoreResponse
-        """
-        UtilClient.validate_model(request)
-        host_map = {}
-        host_map['project'] = project
-        body = {}
-        if not UtilClient.is_unset(request.external_store_name):
-            body['externalStoreName'] = request.external_store_name
-        if not UtilClient.is_unset(request.parameter):
-            body['parameter'] = request.parameter
-        if not UtilClient.is_unset(request.store_type):
-            body['storeType'] = request.store_type
-        req = open_api_models.OpenApiRequest(
-            host_map=host_map,
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdateRdsExternalStore',
-            version='2020-12-30',
-            protocol='HTTPS',
-            pathname=f'/externalstores/{external_store_name}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='none'
-        )
-        return TeaCore.from_map(
-            sls_20201230_models.UpdateRdsExternalStoreResponse(),
-            await self.execute_async(params, req, runtime)
-        )
-
-    def update_rds_external_store(
-        self,
-        project: str,
-        external_store_name: str,
-        request: sls_20201230_models.UpdateRdsExternalStoreRequest,
-    ) -> sls_20201230_models.UpdateRdsExternalStoreResponse:
-        """
-        @summary Updates an ApsaraDB RDS external store.
-        
-        @description ### [](#)Usage notes
-        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @param request: UpdateRdsExternalStoreRequest
-        @return: UpdateRdsExternalStoreResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.update_rds_external_store_with_options(project, external_store_name, request, headers, runtime)
-
-    async def update_rds_external_store_async(
-        self,
-        project: str,
-        external_store_name: str,
-        request: sls_20201230_models.UpdateRdsExternalStoreRequest,
-    ) -> sls_20201230_models.UpdateRdsExternalStoreResponse:
-        """
-        @summary Updates an ApsaraDB RDS external store.
-        
-        @description ### [](#)Usage notes
-        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @param request: UpdateRdsExternalStoreRequest
-        @return: UpdateRdsExternalStoreResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.update_rds_external_store_with_options_async(project, external_store_name, request, headers, runtime)
 
     def update_saved_search_with_options(
         self,

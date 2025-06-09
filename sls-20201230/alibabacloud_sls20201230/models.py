@@ -1070,6 +1070,7 @@ class CopilotAction(TeaModel):
         description: str = None,
         name: str = None,
         parameters: List[CopilotActionParameters] = None,
+        query_max_length: int = None,
         query_template: str = None,
         query_template_parameters: List[CopilotActionQueryTemplateParameters] = None,
         scene: str = None,
@@ -1078,6 +1079,7 @@ class CopilotAction(TeaModel):
         self.description = description
         self.name = name
         self.parameters = parameters
+        self.query_max_length = query_max_length
         self.query_template = query_template
         self.query_template_parameters = query_template_parameters
         self.scene = scene
@@ -1108,6 +1110,8 @@ class CopilotAction(TeaModel):
         if self.parameters is not None:
             for k in self.parameters:
                 result['parameters'].append(k.to_map() if k else None)
+        if self.query_max_length is not None:
+            result['queryMaxLength'] = self.query_max_length
         if self.query_template is not None:
             result['queryTemplate'] = self.query_template
         result['queryTemplateParameters'] = []
@@ -1131,6 +1135,8 @@ class CopilotAction(TeaModel):
             for k in m.get('parameters'):
                 temp_model = CopilotActionParameters()
                 self.parameters.append(temp_model.from_map(k))
+        if m.get('queryMaxLength') is not None:
+            self.query_max_length = m.get('queryMaxLength')
         if m.get('queryTemplate') is not None:
             self.query_template = m.get('queryTemplate')
         self.query_template_parameters = []
@@ -5389,18 +5395,18 @@ class ConsumerGroupUpdateCheckPointResponse(TeaModel):
 class CreateAgentInstanceConfigRequest(TeaModel):
     def __init__(
         self,
+        attributes: str = None,
         config: str = None,
-        config_matcher: str = None,
-        config_name: str = None,
-        is_gray: bool = None,
+        config_type: str = None,
+        gray_configs: str = None,
     ):
+        # This parameter is required.
+        self.attributes = attributes
         # This parameter is required.
         self.config = config
         # This parameter is required.
-        self.config_matcher = config_matcher
-        # This parameter is required.
-        self.config_name = config_name
-        self.is_gray = is_gray
+        self.config_type = config_type
+        self.gray_configs = gray_configs
 
     def validate(self):
         pass
@@ -5411,26 +5417,26 @@ class CreateAgentInstanceConfigRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.attributes is not None:
+            result['attributes'] = self.attributes
         if self.config is not None:
             result['config'] = self.config
-        if self.config_matcher is not None:
-            result['configMatcher'] = self.config_matcher
-        if self.config_name is not None:
-            result['configName'] = self.config_name
-        if self.is_gray is not None:
-            result['isGray'] = self.is_gray
+        if self.config_type is not None:
+            result['configType'] = self.config_type
+        if self.gray_configs is not None:
+            result['grayConfigs'] = self.gray_configs
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('attributes') is not None:
+            self.attributes = m.get('attributes')
         if m.get('config') is not None:
             self.config = m.get('config')
-        if m.get('configMatcher') is not None:
-            self.config_matcher = m.get('configMatcher')
-        if m.get('configName') is not None:
-            self.config_name = m.get('configName')
-        if m.get('isGray') is not None:
-            self.is_gray = m.get('isGray')
+        if m.get('configType') is not None:
+            self.config_type = m.get('configType')
+        if m.get('grayConfigs') is not None:
+            self.gray_configs = m.get('grayConfigs')
         return self
 
 
@@ -6228,11 +6234,18 @@ class CreateETLRequest(TeaModel):
         display_name: str = None,
         name: str = None,
     ):
+        # The detailed configuration of the job.
+        # 
         # This parameter is required.
         self.configuration = configuration
+        # The description of the job.
         self.description = description
+        # The display name of the job.
+        # 
         # This parameter is required.
         self.display_name = display_name
+        # The name of the job (unique within a project).
+        # 
         # This parameter is required.
         self.name = name
 
@@ -7352,13 +7365,13 @@ class CreateOSSIngestionRequest(TeaModel):
         name: str = None,
         schedule: Schedule = None,
     ):
-        # The configurations of the OSS data import job.
+        # The configuration of the OSS data import job.
         # 
         # This parameter is required.
         self.configuration = configuration
         # The description of the job.
         self.description = description
-        # The display name.
+        # The display name of the job.
         # 
         # This parameter is required.
         self.display_name = display_name
@@ -7411,211 +7424,6 @@ class CreateOSSIngestionRequest(TeaModel):
 
 
 class CreateOSSIngestionResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        return self
-
-
-class CreateOssExternalStoreRequestParameterColumns(TeaModel):
-    def __init__(
-        self,
-        name: str = None,
-        type: str = None,
-    ):
-        # The name of the field.
-        # 
-        # This parameter is required.
-        self.name = name
-        # The data type of the field.
-        # 
-        # This parameter is required.
-        self.type = type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.name is not None:
-            result['name'] = self.name
-        if self.type is not None:
-            result['type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('name') is not None:
-            self.name = m.get('name')
-        if m.get('type') is not None:
-            self.type = m.get('type')
-        return self
-
-
-class CreateOssExternalStoreRequestParameter(TeaModel):
-    def __init__(
-        self,
-        accessid: str = None,
-        accesskey: str = None,
-        bucket: str = None,
-        columns: List[CreateOssExternalStoreRequestParameterColumns] = None,
-        endpoint: str = None,
-        objects: List[str] = None,
-    ):
-        # The AccessKey ID.
-        # 
-        # This parameter is required.
-        self.accessid = accessid
-        # The AccessKey secret.
-        # 
-        # This parameter is required.
-        self.accesskey = accesskey
-        # The name of the OSS bucket.
-        # 
-        # This parameter is required.
-        self.bucket = bucket
-        # The associated fields.
-        # 
-        # This parameter is required.
-        self.columns = columns
-        # The Object Storage Service (OSS) endpoint. For more information, see [Endpoints](https://help.aliyun.com/document_detail/31837.html).
-        # 
-        # This parameter is required.
-        self.endpoint = endpoint
-        # The names of the associated OSS objects. Valid values of n: 1 to 100.
-        # 
-        # This parameter is required.
-        self.objects = objects
-
-    def validate(self):
-        if self.columns:
-            for k in self.columns:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.accessid is not None:
-            result['accessid'] = self.accessid
-        if self.accesskey is not None:
-            result['accesskey'] = self.accesskey
-        if self.bucket is not None:
-            result['bucket'] = self.bucket
-        result['columns'] = []
-        if self.columns is not None:
-            for k in self.columns:
-                result['columns'].append(k.to_map() if k else None)
-        if self.endpoint is not None:
-            result['endpoint'] = self.endpoint
-        if self.objects is not None:
-            result['objects'] = self.objects
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('accessid') is not None:
-            self.accessid = m.get('accessid')
-        if m.get('accesskey') is not None:
-            self.accesskey = m.get('accesskey')
-        if m.get('bucket') is not None:
-            self.bucket = m.get('bucket')
-        self.columns = []
-        if m.get('columns') is not None:
-            for k in m.get('columns'):
-                temp_model = CreateOssExternalStoreRequestParameterColumns()
-                self.columns.append(temp_model.from_map(k))
-        if m.get('endpoint') is not None:
-            self.endpoint = m.get('endpoint')
-        if m.get('objects') is not None:
-            self.objects = m.get('objects')
-        return self
-
-
-class CreateOssExternalStoreRequest(TeaModel):
-    def __init__(
-        self,
-        external_store_name: str = None,
-        parameter: CreateOssExternalStoreRequestParameter = None,
-        store_type: str = None,
-    ):
-        # The name of the external store.
-        # 
-        # This parameter is required.
-        self.external_store_name = external_store_name
-        # The parameters that are configured for the external store.
-        # 
-        # This parameter is required.
-        self.parameter = parameter
-        # The type of the external store. Set the value to oss.
-        # 
-        # This parameter is required.
-        self.store_type = store_type
-
-    def validate(self):
-        if self.parameter:
-            self.parameter.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.external_store_name is not None:
-            result['externalStoreName'] = self.external_store_name
-        if self.parameter is not None:
-            result['parameter'] = self.parameter.to_map()
-        if self.store_type is not None:
-            result['storeType'] = self.store_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('externalStoreName') is not None:
-            self.external_store_name = m.get('externalStoreName')
-        if m.get('parameter') is not None:
-            temp_model = CreateOssExternalStoreRequestParameter()
-            self.parameter = temp_model.from_map(m['parameter'])
-        if m.get('storeType') is not None:
-            self.store_type = m.get('storeType')
-        return self
-
-
-class CreateOssExternalStoreResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
@@ -7722,185 +7530,6 @@ class CreateProjectRequest(TeaModel):
 
 
 class CreateProjectResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        return self
-
-
-class CreateRdsExternalStoreRequestParameter(TeaModel):
-    def __init__(
-        self,
-        db: str = None,
-        host: str = None,
-        instance_id: str = None,
-        password: str = None,
-        port: str = None,
-        region: str = None,
-        table: str = None,
-        username: str = None,
-        vpc_id: str = None,
-    ):
-        # The name of the database created on the ApsaraDB RDS for MySQL instance.
-        # 
-        # This parameter is required.
-        self.db = db
-        # The internal or public endpoint of the ApsaraDB RDS for MySQL instance.
-        self.host = host
-        # You do not need to specify this parameter.
-        self.instance_id = instance_id
-        # The password that is used to log on to the ApsaraDB RDS for MySQL instance.
-        # 
-        # This parameter is required.
-        self.password = password
-        # The internal or public port of the ApsaraDB RDS for MySQL instance.
-        # 
-        # This parameter is required.
-        self.port = port
-        # The region where the ApsaraDB RDS for MySQL instance resides. Valid values: cn-qingdao, cn-beijing, and cn-hangzhou.
-        # 
-        # This parameter is required.
-        self.region = region
-        # The name of the table in the database created on the ApsaraDB RDS for MySQL instance.
-        # 
-        # This parameter is required.
-        self.table = table
-        # The username that is used to log on to the ApsaraDB RDS for MySQL instance.
-        # 
-        # This parameter is required.
-        self.username = username
-        # The ID of the VPC to which the ApsaraDB RDS for MySQL instance belongs.
-        self.vpc_id = vpc_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.db is not None:
-            result['db'] = self.db
-        if self.host is not None:
-            result['host'] = self.host
-        if self.instance_id is not None:
-            result['instance-id'] = self.instance_id
-        if self.password is not None:
-            result['password'] = self.password
-        if self.port is not None:
-            result['port'] = self.port
-        if self.region is not None:
-            result['region'] = self.region
-        if self.table is not None:
-            result['table'] = self.table
-        if self.username is not None:
-            result['username'] = self.username
-        if self.vpc_id is not None:
-            result['vpc-id'] = self.vpc_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('db') is not None:
-            self.db = m.get('db')
-        if m.get('host') is not None:
-            self.host = m.get('host')
-        if m.get('instance-id') is not None:
-            self.instance_id = m.get('instance-id')
-        if m.get('password') is not None:
-            self.password = m.get('password')
-        if m.get('port') is not None:
-            self.port = m.get('port')
-        if m.get('region') is not None:
-            self.region = m.get('region')
-        if m.get('table') is not None:
-            self.table = m.get('table')
-        if m.get('username') is not None:
-            self.username = m.get('username')
-        if m.get('vpc-id') is not None:
-            self.vpc_id = m.get('vpc-id')
-        return self
-
-
-class CreateRdsExternalStoreRequest(TeaModel):
-    def __init__(
-        self,
-        external_store_name: str = None,
-        parameter: CreateRdsExternalStoreRequestParameter = None,
-        store_type: str = None,
-    ):
-        # The name of the external store. The name must be unique in a project and must be different from Logstore names.
-        # 
-        # This parameter is required.
-        self.external_store_name = external_store_name
-        # The parameter struct.
-        # 
-        # This parameter is required.
-        self.parameter = parameter
-        # The storage type. Set the value to rds-vpc, which indicates a database created on an ApsaraDB RDS for MySQL instance in a virtual private cloud (VPC).
-        # 
-        # This parameter is required.
-        self.store_type = store_type
-
-    def validate(self):
-        if self.parameter:
-            self.parameter.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.external_store_name is not None:
-            result['externalStoreName'] = self.external_store_name
-        if self.parameter is not None:
-            result['parameter'] = self.parameter.to_map()
-        if self.store_type is not None:
-            result['storeType'] = self.store_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('externalStoreName') is not None:
-            self.external_store_name = m.get('externalStoreName')
-        if m.get('parameter') is not None:
-            temp_model = CreateRdsExternalStoreRequestParameter()
-            self.parameter = temp_model.from_map(m['parameter'])
-        if m.get('storeType') is not None:
-            self.store_type = m.get('storeType')
-        return self
-
-
-class CreateRdsExternalStoreResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
@@ -8400,9 +8029,10 @@ class CreateTicketResponse(TeaModel):
 class DeleteAgentInstanceConfigRequest(TeaModel):
     def __init__(
         self,
-        is_gray: bool = None,
+        attributes: str = None,
     ):
-        self.is_gray = is_gray
+        # This parameter is required.
+        self.attributes = attributes
 
     def validate(self):
         pass
@@ -8413,14 +8043,14 @@ class DeleteAgentInstanceConfigRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.is_gray is not None:
-            result['isGray'] = self.is_gray
+        if self.attributes is not None:
+            result['attributes'] = self.attributes
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('isGray') is not None:
-            self.is_gray = m.get('isGray')
+        if m.get('attributes') is not None:
+            self.attributes = m.get('attributes')
         return self
 
 
@@ -8821,39 +8451,6 @@ class DeleteDownloadJobResponse(TeaModel):
 
 
 class DeleteETLResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        return self
-
-
-class DeleteExternalStoreResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
@@ -9732,21 +9329,49 @@ class EnableScheduledSQLResponse(TeaModel):
         return self
 
 
+class GetAgentInstanceConfigRequest(TeaModel):
+    def __init__(
+        self,
+        attributes: str = None,
+    ):
+        # This parameter is required.
+        self.attributes = attributes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attributes is not None:
+            result['attributes'] = self.attributes
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('attributes') is not None:
+            self.attributes = m.get('attributes')
+        return self
+
+
 class GetAgentInstanceConfigResponseBody(TeaModel):
     def __init__(
         self,
+        attributes: str = None,
         config: str = None,
-        config_matcher: str = None,
-        config_name: str = None,
+        config_type: str = None,
         create_time: int = None,
-        is_gray: bool = None,
+        gray_configs: List[Dict[str, str]] = None,
         last_modify_time: int = None,
     ):
+        self.attributes = attributes
         self.config = config
-        self.config_matcher = config_matcher
-        self.config_name = config_name
+        self.config_type = config_type
         self.create_time = create_time
-        self.is_gray = is_gray
+        self.gray_configs = gray_configs
         self.last_modify_time = last_modify_time
 
     def validate(self):
@@ -9758,32 +9383,32 @@ class GetAgentInstanceConfigResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.attributes is not None:
+            result['attributes'] = self.attributes
         if self.config is not None:
             result['config'] = self.config
-        if self.config_matcher is not None:
-            result['configMatcher'] = self.config_matcher
-        if self.config_name is not None:
-            result['configName'] = self.config_name
+        if self.config_type is not None:
+            result['configType'] = self.config_type
         if self.create_time is not None:
             result['createTime'] = self.create_time
-        if self.is_gray is not None:
-            result['isGray'] = self.is_gray
+        if self.gray_configs is not None:
+            result['grayConfigs'] = self.gray_configs
         if self.last_modify_time is not None:
             result['lastModifyTime'] = self.last_modify_time
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('attributes') is not None:
+            self.attributes = m.get('attributes')
         if m.get('config') is not None:
             self.config = m.get('config')
-        if m.get('configMatcher') is not None:
-            self.config_matcher = m.get('configMatcher')
-        if m.get('configName') is not None:
-            self.config_name = m.get('configName')
+        if m.get('configType') is not None:
+            self.config_type = m.get('configType')
         if m.get('createTime') is not None:
             self.create_time = m.get('createTime')
-        if m.get('isGray') is not None:
-            self.is_gray = m.get('isGray')
+        if m.get('grayConfigs') is not None:
+            self.gray_configs = m.get('grayConfigs')
         if m.get('lastModifyTime') is not None:
             self.last_modify_time = m.get('lastModifyTime')
         return self
@@ -11427,47 +11052,6 @@ class GetETLResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ETL()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class GetExternalStoreResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ExternalStore = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ExternalStore()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -13809,9 +13393,13 @@ class GetStoreViewIndexResponse(TeaModel):
 class ListAgentInstanceConfigsRequest(TeaModel):
     def __init__(
         self,
+        attributes: str = None,
+        config_type: str = None,
         offset: int = None,
         size: int = None,
     ):
+        self.attributes = attributes
+        self.config_type = config_type
         self.offset = offset
         self.size = size
 
@@ -13824,6 +13412,10 @@ class ListAgentInstanceConfigsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.attributes is not None:
+            result['attributes'] = self.attributes
+        if self.config_type is not None:
+            result['configType'] = self.config_type
         if self.offset is not None:
             result['offset'] = self.offset
         if self.size is not None:
@@ -13832,6 +13424,10 @@ class ListAgentInstanceConfigsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('attributes') is not None:
+            self.attributes = m.get('attributes')
+        if m.get('configType') is not None:
+            self.config_type = m.get('configType')
         if m.get('offset') is not None:
             self.offset = m.get('offset')
         if m.get('size') is not None:
@@ -13839,16 +13435,14 @@ class ListAgentInstanceConfigsRequest(TeaModel):
         return self
 
 
-class ListAgentInstanceConfigsResponseBody(TeaModel):
+class ListAgentInstanceConfigsResponseBodyConfigs(TeaModel):
     def __init__(
         self,
-        configs: List[str] = None,
-        size: int = None,
-        total: int = None,
+        attributes: str = None,
+        config_type: str = None,
     ):
-        self.configs = configs
-        self.size = size
-        self.total = total
+        self.attributes = attributes
+        self.config_type = config_type
 
     def validate(self):
         pass
@@ -13859,8 +13453,48 @@ class ListAgentInstanceConfigsResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.attributes is not None:
+            result['attributes'] = self.attributes
+        if self.config_type is not None:
+            result['configType'] = self.config_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('attributes') is not None:
+            self.attributes = m.get('attributes')
+        if m.get('configType') is not None:
+            self.config_type = m.get('configType')
+        return self
+
+
+class ListAgentInstanceConfigsResponseBody(TeaModel):
+    def __init__(
+        self,
+        configs: List[ListAgentInstanceConfigsResponseBodyConfigs] = None,
+        size: int = None,
+        total: int = None,
+    ):
+        self.configs = configs
+        self.size = size
+        self.total = total
+
+    def validate(self):
+        if self.configs:
+            for k in self.configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['configs'] = []
         if self.configs is not None:
-            result['configs'] = self.configs
+            for k in self.configs:
+                result['configs'].append(k.to_map() if k else None)
         if self.size is not None:
             result['size'] = self.size
         if self.total is not None:
@@ -13869,8 +13503,11 @@ class ListAgentInstanceConfigsResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.configs = []
         if m.get('configs') is not None:
-            self.configs = m.get('configs')
+            for k in m.get('configs'):
+                temp_model = ListAgentInstanceConfigsResponseBodyConfigs()
+                self.configs.append(temp_model.from_map(k))
         if m.get('size') is not None:
             self.size = m.get('size')
         if m.get('total') is not None:
@@ -15241,16 +14878,14 @@ class ListConsumerGroupResponse(TeaModel):
         return self
 
 
-class ListDashboardRequest(TeaModel):
+class ListDashboardRequestTags(TeaModel):
     def __init__(
         self,
-        offset: int = None,
-        size: int = None,
+        key: str = None,
+        value: str = None,
     ):
-        # The line from which the query starts. Default value: 0.
-        self.offset = offset
-        # The number of entries per page. Maximum value: 500. Default value: 500.
-        self.size = size
+        self.key = key
+        self.value = value
 
     def validate(self):
         pass
@@ -15261,31 +14896,98 @@ class ListDashboardRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.offset is not None:
-            result['offset'] = self.offset
-        if self.size is not None:
-            result['size'] = self.size
+        if self.key is not None:
+            result['key'] = self.key
+        if self.value is not None:
+            result['value'] = self.value
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('offset') is not None:
-            self.offset = m.get('offset')
-        if m.get('size') is not None:
-            self.size = m.get('size')
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
         return self
 
 
-class ListDashboardResponseBodyDashboardItems(TeaModel):
+class ListDashboardRequest(TeaModel):
     def __init__(
         self,
         dashboard_name: str = None,
         display_name: str = None,
+        offset: int = None,
+        size: int = None,
+        tags: List[ListDashboardRequestTags] = None,
     ):
-        # The dashboard ID. The ID must be unique in a project. Fuzzy search is supported. For example, if you enter da, all dashboards whose IDs start with da are queried.
         self.dashboard_name = dashboard_name
-        # The display name of the dashboard.
         self.display_name = display_name
+        # The line from which the query starts. Default value: 0.
+        self.offset = offset
+        # The number of entries per page. Maximum value: 500. Default value: 500.
+        self.size = size
+        self.tags = tags
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dashboard_name is not None:
+            result['dashboardName'] = self.dashboard_name
+        if self.display_name is not None:
+            result['displayName'] = self.display_name
+        if self.offset is not None:
+            result['offset'] = self.offset
+        if self.size is not None:
+            result['size'] = self.size
+        result['tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['tags'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('dashboardName') is not None:
+            self.dashboard_name = m.get('dashboardName')
+        if m.get('displayName') is not None:
+            self.display_name = m.get('displayName')
+        if m.get('offset') is not None:
+            self.offset = m.get('offset')
+        if m.get('size') is not None:
+            self.size = m.get('size')
+        self.tags = []
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = ListDashboardRequestTags()
+                self.tags.append(temp_model.from_map(k))
+        return self
+
+
+class ListDashboardShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dashboard_name: str = None,
+        display_name: str = None,
+        offset: int = None,
+        size: int = None,
+        tags_shrink: str = None,
+    ):
+        self.dashboard_name = dashboard_name
+        self.display_name = display_name
+        # The line from which the query starts. Default value: 0.
+        self.offset = offset
+        # The number of entries per page. Maximum value: 500. Default value: 500.
+        self.size = size
+        self.tags_shrink = tags_shrink
 
     def validate(self):
         pass
@@ -15300,12 +15002,65 @@ class ListDashboardResponseBodyDashboardItems(TeaModel):
             result['dashboardName'] = self.dashboard_name
         if self.display_name is not None:
             result['displayName'] = self.display_name
+        if self.offset is not None:
+            result['offset'] = self.offset
+        if self.size is not None:
+            result['size'] = self.size
+        if self.tags_shrink is not None:
+            result['tags'] = self.tags_shrink
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('dashboardName') is not None:
             self.dashboard_name = m.get('dashboardName')
+        if m.get('displayName') is not None:
+            self.display_name = m.get('displayName')
+        if m.get('offset') is not None:
+            self.offset = m.get('offset')
+        if m.get('size') is not None:
+            self.size = m.get('size')
+        if m.get('tags') is not None:
+            self.tags_shrink = m.get('tags')
+        return self
+
+
+class ListDashboardResponseBodyDashboardItems(TeaModel):
+    def __init__(
+        self,
+        dashboard_name: str = None,
+        description: str = None,
+        display_name: str = None,
+    ):
+        # The dashboard ID. The ID must be unique in a project. Fuzzy search is supported. For example, if you enter da, all dashboards whose IDs start with da are queried.
+        self.dashboard_name = dashboard_name
+        self.description = description
+        # The display name of the dashboard.
+        self.display_name = display_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dashboard_name is not None:
+            result['dashboardName'] = self.dashboard_name
+        if self.description is not None:
+            result['description'] = self.description
+        if self.display_name is not None:
+            result['displayName'] = self.display_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('dashboardName') is not None:
+            self.dashboard_name = m.get('dashboardName')
+        if m.get('description') is not None:
+            self.description = m.get('description')
         if m.get('displayName') is not None:
             self.display_name = m.get('displayName')
         return self
@@ -15975,8 +15730,10 @@ class ListETLsResponseBody(TeaModel):
         results: List[ETL] = None,
         total: int = None,
     ):
+        # The number of data transformation jobs that are returned.
         self.count = count
         self.results = results
+        # The total number of data transformation jobs in the project.
         self.total = total
 
     def validate(self):
@@ -19705,15 +19462,15 @@ class UntagResourcesResponse(TeaModel):
 class UpdateAgentInstanceConfigRequest(TeaModel):
     def __init__(
         self,
+        attributes: str = None,
         config: str = None,
-        config_matcher: str = None,
-        is_gray: bool = None,
+        gray_configs: str = None,
     ):
         # This parameter is required.
-        self.config = config
+        self.attributes = attributes
         # This parameter is required.
-        self.config_matcher = config_matcher
-        self.is_gray = is_gray
+        self.config = config
+        self.gray_configs = gray_configs
 
     def validate(self):
         pass
@@ -19724,22 +19481,22 @@ class UpdateAgentInstanceConfigRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.attributes is not None:
+            result['attributes'] = self.attributes
         if self.config is not None:
             result['config'] = self.config
-        if self.config_matcher is not None:
-            result['configMatcher'] = self.config_matcher
-        if self.is_gray is not None:
-            result['isGray'] = self.is_gray
+        if self.gray_configs is not None:
+            result['grayConfigs'] = self.gray_configs
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('attributes') is not None:
+            self.attributes = m.get('attributes')
         if m.get('config') is not None:
             self.config = m.get('config')
-        if m.get('configMatcher') is not None:
-            self.config_matcher = m.get('configMatcher')
-        if m.get('isGray') is not None:
-            self.is_gray = m.get('isGray')
+        if m.get('grayConfigs') is not None:
+            self.gray_configs = m.get('grayConfigs')
         return self
 
 
@@ -21427,6 +21184,8 @@ class UpdateMetricStoreMeteringModeRequest(TeaModel):
         self,
         metering_mode: str = None,
     ):
+        # The billing mode. Default value: ChargeByFunction. Valid values: ChargeByFunction and ChargeByDataIngest.
+        # 
         # This parameter is required.
         self.metering_mode = metering_mode
 
@@ -21712,11 +21471,11 @@ class UpdateOSSIngestionRequest(TeaModel):
         display_name: str = None,
         schedule: Schedule = None,
     ):
-        # The configurations of the OSS data import job.
+        # The configuration of the OSS data import job.
         # 
         # This parameter is required.
         self.configuration = configuration
-        # The description of the OSS data import job.
+        # The description of the Object Storage Service (OSS) data import job.
         self.description = description
         # The display name of the OSS data import job.
         # 
@@ -21795,211 +21554,6 @@ class UpdateOSSIngestionResponse(TeaModel):
         return self
 
 
-class UpdateOssExternalStoreRequestParameterColumns(TeaModel):
-    def __init__(
-        self,
-        name: str = None,
-        type: str = None,
-    ):
-        # The name of the field.
-        # 
-        # This parameter is required.
-        self.name = name
-        # The data type of the field.
-        # 
-        # This parameter is required.
-        self.type = type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.name is not None:
-            result['name'] = self.name
-        if self.type is not None:
-            result['type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('name') is not None:
-            self.name = m.get('name')
-        if m.get('type') is not None:
-            self.type = m.get('type')
-        return self
-
-
-class UpdateOssExternalStoreRequestParameter(TeaModel):
-    def __init__(
-        self,
-        accessid: str = None,
-        accesskey: str = None,
-        bucket: str = None,
-        columns: List[UpdateOssExternalStoreRequestParameterColumns] = None,
-        endpoint: str = None,
-        objects: List[str] = None,
-    ):
-        # The AccessKey ID.
-        # 
-        # This parameter is required.
-        self.accessid = accessid
-        # The AccessKey secret.
-        # 
-        # This parameter is required.
-        self.accesskey = accesskey
-        # The name of the OSS bucket.
-        # 
-        # This parameter is required.
-        self.bucket = bucket
-        # The associated fields.
-        # 
-        # This parameter is required.
-        self.columns = columns
-        # The Object Storage Service (OSS) endpoint.
-        # 
-        # This parameter is required.
-        self.endpoint = endpoint
-        # The names of the associated OSS objects.
-        # 
-        # This parameter is required.
-        self.objects = objects
-
-    def validate(self):
-        if self.columns:
-            for k in self.columns:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.accessid is not None:
-            result['accessid'] = self.accessid
-        if self.accesskey is not None:
-            result['accesskey'] = self.accesskey
-        if self.bucket is not None:
-            result['bucket'] = self.bucket
-        result['columns'] = []
-        if self.columns is not None:
-            for k in self.columns:
-                result['columns'].append(k.to_map() if k else None)
-        if self.endpoint is not None:
-            result['endpoint'] = self.endpoint
-        if self.objects is not None:
-            result['objects'] = self.objects
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('accessid') is not None:
-            self.accessid = m.get('accessid')
-        if m.get('accesskey') is not None:
-            self.accesskey = m.get('accesskey')
-        if m.get('bucket') is not None:
-            self.bucket = m.get('bucket')
-        self.columns = []
-        if m.get('columns') is not None:
-            for k in m.get('columns'):
-                temp_model = UpdateOssExternalStoreRequestParameterColumns()
-                self.columns.append(temp_model.from_map(k))
-        if m.get('endpoint') is not None:
-            self.endpoint = m.get('endpoint')
-        if m.get('objects') is not None:
-            self.objects = m.get('objects')
-        return self
-
-
-class UpdateOssExternalStoreRequest(TeaModel):
-    def __init__(
-        self,
-        external_store_name: str = None,
-        parameter: UpdateOssExternalStoreRequestParameter = None,
-        store_type: str = None,
-    ):
-        # The name of the external store.
-        # 
-        # This parameter is required.
-        self.external_store_name = external_store_name
-        # The parameters that are configured for the external store.
-        # 
-        # This parameter is required.
-        self.parameter = parameter
-        # The type of the external store. Set the value to oss.
-        # 
-        # This parameter is required.
-        self.store_type = store_type
-
-    def validate(self):
-        if self.parameter:
-            self.parameter.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.external_store_name is not None:
-            result['externalStoreName'] = self.external_store_name
-        if self.parameter is not None:
-            result['parameter'] = self.parameter.to_map()
-        if self.store_type is not None:
-            result['storeType'] = self.store_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('externalStoreName') is not None:
-            self.external_store_name = m.get('externalStoreName')
-        if m.get('parameter') is not None:
-            temp_model = UpdateOssExternalStoreRequestParameter()
-            self.parameter = temp_model.from_map(m['parameter'])
-        if m.get('storeType') is not None:
-            self.store_type = m.get('storeType')
-        return self
-
-
-class UpdateOssExternalStoreResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        return self
-
-
 class UpdateProjectRequest(TeaModel):
     def __init__(
         self,
@@ -22010,6 +21564,12 @@ class UpdateProjectRequest(TeaModel):
         # 
         # This parameter is required.
         self.description = description
+        # Specifies whether to enable the recycle bin feature.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.recycle_bin_enabled = recycle_bin_enabled
 
     def validate(self):
@@ -22037,185 +21597,6 @@ class UpdateProjectRequest(TeaModel):
 
 
 class UpdateProjectResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        return self
-
-
-class UpdateRdsExternalStoreRequestParameter(TeaModel):
-    def __init__(
-        self,
-        db: str = None,
-        host: str = None,
-        instance_id: str = None,
-        password: str = None,
-        port: str = None,
-        region: str = None,
-        table: str = None,
-        username: str = None,
-        vpc_id: str = None,
-    ):
-        # The name of the database in the ApsaraDB RDS for MySQL instance.
-        # 
-        # This parameter is required.
-        self.db = db
-        # The internal or public endpoint of the ApsaraDB RDS for MySQL instance.
-        self.host = host
-        # The ID of the ApsaraDB RDS for MySQL instance.
-        self.instance_id = instance_id
-        # The password that is used to log on to the ApsaraDB RDS for MySQL instance.
-        # 
-        # This parameter is required.
-        self.password = password
-        # The internal or public port of the ApsaraDB RDS for MySQL instance.
-        # 
-        # This parameter is required.
-        self.port = port
-        # The region where the ApsaraDB RDS for MySQL instance resides. Valid values: cn-qingdao, cn-beijing, and cn-hangzhou.
-        # 
-        # This parameter is required.
-        self.region = region
-        # The name of the database table in the ApsaraDB RDS for MySQL instance.
-        # 
-        # This parameter is required.
-        self.table = table
-        # The username that is used to log on to the ApsaraDB RDS for MySQL instance.
-        # 
-        # This parameter is required.
-        self.username = username
-        # The ID of the VPC to which the ApsaraDB RDS for MySQL instance belongs.
-        self.vpc_id = vpc_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.db is not None:
-            result['db'] = self.db
-        if self.host is not None:
-            result['host'] = self.host
-        if self.instance_id is not None:
-            result['instance-id'] = self.instance_id
-        if self.password is not None:
-            result['password'] = self.password
-        if self.port is not None:
-            result['port'] = self.port
-        if self.region is not None:
-            result['region'] = self.region
-        if self.table is not None:
-            result['table'] = self.table
-        if self.username is not None:
-            result['username'] = self.username
-        if self.vpc_id is not None:
-            result['vpc-id'] = self.vpc_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('db') is not None:
-            self.db = m.get('db')
-        if m.get('host') is not None:
-            self.host = m.get('host')
-        if m.get('instance-id') is not None:
-            self.instance_id = m.get('instance-id')
-        if m.get('password') is not None:
-            self.password = m.get('password')
-        if m.get('port') is not None:
-            self.port = m.get('port')
-        if m.get('region') is not None:
-            self.region = m.get('region')
-        if m.get('table') is not None:
-            self.table = m.get('table')
-        if m.get('username') is not None:
-            self.username = m.get('username')
-        if m.get('vpc-id') is not None:
-            self.vpc_id = m.get('vpc-id')
-        return self
-
-
-class UpdateRdsExternalStoreRequest(TeaModel):
-    def __init__(
-        self,
-        external_store_name: str = None,
-        parameter: UpdateRdsExternalStoreRequestParameter = None,
-        store_type: str = None,
-    ):
-        # The name of the ExternalStore.
-        # 
-        # This parameter is required.
-        self.external_store_name = external_store_name
-        # The parameter struct.
-        # 
-        # This parameter is required.
-        self.parameter = parameter
-        # The storage type. Set the value to rds-vpc, which indicates an ApsaraDB RDS for MySQL database in a virtual private cloud (VPC).
-        # 
-        # This parameter is required.
-        self.store_type = store_type
-
-    def validate(self):
-        if self.parameter:
-            self.parameter.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.external_store_name is not None:
-            result['externalStoreName'] = self.external_store_name
-        if self.parameter is not None:
-            result['parameter'] = self.parameter.to_map()
-        if self.store_type is not None:
-            result['storeType'] = self.store_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('externalStoreName') is not None:
-            self.external_store_name = m.get('externalStoreName')
-        if m.get('parameter') is not None:
-            temp_model = UpdateRdsExternalStoreRequestParameter()
-            self.parameter = temp_model.from_map(m['parameter'])
-        if m.get('storeType') is not None:
-            self.store_type = m.get('storeType')
-        return self
-
-
-class UpdateRdsExternalStoreResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,

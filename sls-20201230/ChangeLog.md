@@ -1,3 +1,25 @@
+2025-06-09 Version: 5.7.2
+- Update API CreateAgentInstanceConfig: add request parameters body.attributes.
+- Update API CreateAgentInstanceConfig: add request parameters body.configType.
+- Update API CreateAgentInstanceConfig: add request parameters body.grayConfigs.
+- Update API DeleteAgentInstanceConfig: add request parameters configType.
+- Update API DeleteAgentInstanceConfig: add request parameters attributes.
+- Update API GetAgentInstanceConfig: add request parameters configType.
+- Update API GetAgentInstanceConfig: add request parameters attributes.
+- Update API GetAgentInstanceConfig: add response parameters Body.attributes.
+- Update API GetAgentInstanceConfig: add response parameters Body.configType.
+- Update API GetAgentInstanceConfig: add response parameters Body.grayConfigs.
+- Update API ListAgentInstanceConfigs: add request parameters attributes.
+- Update API ListAgentInstanceConfigs: add request parameters configType.
+- Update API ListDashboard: add request parameters dashboardName.
+- Update API ListDashboard: add request parameters displayName.
+- Update API ListDashboard: add request parameters tags.
+- Update API ListDashboard: add response parameters Body.dashboardItems.$.description.
+- Update API UpdateAgentInstanceConfig: add request parameters configType.
+- Update API UpdateAgentInstanceConfig: add request parameters attributes.
+- Update API UpdateAgentInstanceConfig: add request parameters body.grayConfigs.
+
+
 2025-04-14 Version: 5.7.1
 - Generated python 2020-12-30 for Sls.
 
