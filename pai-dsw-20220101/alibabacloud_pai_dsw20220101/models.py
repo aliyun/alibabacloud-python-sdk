@@ -1193,6 +1193,62 @@ class CreateInstanceRequestTag(TeaModel):
         return self
 
 
+class CreateInstanceRequestUserCommandOnStart(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+    ):
+        self.content = content
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        return self
+
+
+class CreateInstanceRequestUserCommand(TeaModel):
+    def __init__(
+        self,
+        on_start: CreateInstanceRequestUserCommandOnStart = None,
+    ):
+        self.on_start = on_start
+
+    def validate(self):
+        if self.on_start:
+            self.on_start.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.on_start is not None:
+            result['OnStart'] = self.on_start.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OnStart') is not None:
+            temp_model = CreateInstanceRequestUserCommandOnStart()
+            self.on_start = temp_model.from_map(m['OnStart'])
+        return self
+
+
 class CreateInstanceRequestUserVpc(TeaModel):
     def __init__(
         self,
@@ -1301,6 +1357,7 @@ class CreateInstanceRequest(TeaModel):
         requested_resource: CreateInstanceRequestRequestedResource = None,
         resource_id: str = None,
         tag: List[CreateInstanceRequestTag] = None,
+        user_command: CreateInstanceRequestUserCommand = None,
         user_id: str = None,
         user_vpc: CreateInstanceRequestUserVpc = None,
         workspace_id: str = None,
@@ -1354,6 +1411,7 @@ class CreateInstanceRequest(TeaModel):
         self.resource_id = resource_id
         # The tags.
         self.tag = tag
+        self.user_command = user_command
         # The ID of the instance owner. Valid values: Alibaba Cloud account and RAM user.
         self.user_id = user_id
         # The virtual private cloud (VPC) configurations.
@@ -1400,6 +1458,8 @@ class CreateInstanceRequest(TeaModel):
             for k in self.tag:
                 if k:
                     k.validate()
+        if self.user_command:
+            self.user_command.validate()
         if self.user_vpc:
             self.user_vpc.validate()
 
@@ -1455,6 +1515,8 @@ class CreateInstanceRequest(TeaModel):
         if self.tag is not None:
             for k in self.tag:
                 result['Tag'].append(k.to_map() if k else None)
+        if self.user_command is not None:
+            result['UserCommand'] = self.user_command.to_map()
         if self.user_id is not None:
             result['UserId'] = self.user_id
         if self.user_vpc is not None:
@@ -1521,6 +1583,9 @@ class CreateInstanceRequest(TeaModel):
             for k in m.get('Tag'):
                 temp_model = CreateInstanceRequestTag()
                 self.tag.append(temp_model.from_map(k))
+        if m.get('UserCommand') is not None:
+            temp_model = CreateInstanceRequestUserCommand()
+            self.user_command = temp_model.from_map(m['UserCommand'])
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
         if m.get('UserVpc') is not None:
@@ -3470,6 +3535,7 @@ class GetInstanceResponseBody(TeaModel):
         success: bool = None,
         tags: List[GetInstanceResponseBodyTags] = None,
         terminal_url: str = None,
+        user_command_id: str = None,
         user_id: str = None,
         user_name: str = None,
         user_vpc: GetInstanceResponseBodyUserVpc = None,
@@ -3608,6 +3674,7 @@ class GetInstanceResponseBody(TeaModel):
         self.tags = tags
         # The terminal URL.
         self.terminal_url = terminal_url
+        self.user_command_id = user_command_id
         # The user ID.
         self.user_id = user_id
         # The username.
@@ -3765,6 +3832,8 @@ class GetInstanceResponseBody(TeaModel):
                 result['Tags'].append(k.to_map() if k else None)
         if self.terminal_url is not None:
             result['TerminalUrl'] = self.terminal_url
+        if self.user_command_id is not None:
+            result['UserCommandId'] = self.user_command_id
         if self.user_id is not None:
             result['UserId'] = self.user_id
         if self.user_name is not None:
@@ -3892,6 +3961,8 @@ class GetInstanceResponseBody(TeaModel):
                 self.tags.append(temp_model.from_map(k))
         if m.get('TerminalUrl') is not None:
             self.terminal_url = m.get('TerminalUrl')
+        if m.get('UserCommandId') is not None:
+            self.user_command_id = m.get('UserCommandId')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
         if m.get('UserName') is not None:
@@ -8659,6 +8730,62 @@ class UpdateInstanceRequestRequestedResource(TeaModel):
         return self
 
 
+class UpdateInstanceRequestUserCommandOnStart(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+    ):
+        self.content = content
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        return self
+
+
+class UpdateInstanceRequestUserCommand(TeaModel):
+    def __init__(
+        self,
+        on_start: UpdateInstanceRequestUserCommandOnStart = None,
+    ):
+        self.on_start = on_start
+
+    def validate(self):
+        if self.on_start:
+            self.on_start.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.on_start is not None:
+            result['OnStart'] = self.on_start.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OnStart') is not None:
+            temp_model = UpdateInstanceRequestUserCommandOnStart()
+            self.on_start = temp_model.from_map(m['OnStart'])
+        return self
+
+
 class UpdateInstanceRequestUserVpc(TeaModel):
     def __init__(
         self,
@@ -8756,11 +8883,14 @@ class UpdateInstanceRequest(TeaModel):
         disassociate_credential: bool = None,
         disassociate_datasets: bool = None,
         disassociate_driver: bool = None,
+        disassociate_environment_variables: bool = None,
         disassociate_forward_infos: bool = None,
+        disassociate_user_command: bool = None,
         disassociate_vpc: bool = None,
         driver: str = None,
         dynamic_mount: DynamicMount = None,
         ecs_spec: str = None,
+        environment_variables: Dict[str, Any] = None,
         image_auth: str = None,
         image_id: str = None,
         image_url: str = None,
@@ -8768,6 +8898,7 @@ class UpdateInstanceRequest(TeaModel):
         oversold_type: str = None,
         priority: int = None,
         requested_resource: UpdateInstanceRequestRequestedResource = None,
+        user_command: UpdateInstanceRequestUserCommand = None,
         user_id: str = None,
         user_vpc: UpdateInstanceRequestUserVpc = None,
         workspace_source: str = None,
@@ -8796,8 +8927,10 @@ class UpdateInstanceRequest(TeaModel):
         self.disassociate_datasets = disassociate_datasets
         # Specifies whether to delete the NVIDIA driver configuration.
         self.disassociate_driver = disassociate_driver
+        self.disassociate_environment_variables = disassociate_environment_variables
         # Specifies whether to delete the associated forward information.
         self.disassociate_forward_infos = disassociate_forward_infos
+        self.disassociate_user_command = disassociate_user_command
         # Specifies whether to delete the associated user VPC.
         self.disassociate_vpc = disassociate_vpc
         # The NVIDIA driver configuration.
@@ -8806,6 +8939,7 @@ class UpdateInstanceRequest(TeaModel):
         self.dynamic_mount = dynamic_mount
         # The ECS instance type of the instance. You can call [ListEcsSpecs](https://help.aliyun.com/document_detail/470423.html) to obtain the ECS instance type.
         self.ecs_spec = ecs_spec
+        self.environment_variables = environment_variables
         # The Base64-encoded account and password for the user‘s private image. The password will be hidden.
         self.image_auth = image_auth
         # The image ID. You can call [ListImages](https://help.aliyun.com/document_detail/449118.html) to obtain the image ID.
@@ -8825,6 +8959,7 @@ class UpdateInstanceRequest(TeaModel):
         self.priority = priority
         # The resource configurations.
         self.requested_resource = requested_resource
+        self.user_command = user_command
         # the User ID of the instance.
         self.user_id = user_id
         # The virtual private cloud (VPC) configurations.
@@ -8861,6 +8996,8 @@ class UpdateInstanceRequest(TeaModel):
             self.dynamic_mount.validate()
         if self.requested_resource:
             self.requested_resource.validate()
+        if self.user_command:
+            self.user_command.validate()
         if self.user_vpc:
             self.user_vpc.validate()
 
@@ -8890,8 +9027,12 @@ class UpdateInstanceRequest(TeaModel):
             result['DisassociateDatasets'] = self.disassociate_datasets
         if self.disassociate_driver is not None:
             result['DisassociateDriver'] = self.disassociate_driver
+        if self.disassociate_environment_variables is not None:
+            result['DisassociateEnvironmentVariables'] = self.disassociate_environment_variables
         if self.disassociate_forward_infos is not None:
             result['DisassociateForwardInfos'] = self.disassociate_forward_infos
+        if self.disassociate_user_command is not None:
+            result['DisassociateUserCommand'] = self.disassociate_user_command
         if self.disassociate_vpc is not None:
             result['DisassociateVpc'] = self.disassociate_vpc
         if self.driver is not None:
@@ -8900,6 +9041,8 @@ class UpdateInstanceRequest(TeaModel):
             result['DynamicMount'] = self.dynamic_mount.to_map()
         if self.ecs_spec is not None:
             result['EcsSpec'] = self.ecs_spec
+        if self.environment_variables is not None:
+            result['EnvironmentVariables'] = self.environment_variables
         if self.image_auth is not None:
             result['ImageAuth'] = self.image_auth
         if self.image_id is not None:
@@ -8914,6 +9057,8 @@ class UpdateInstanceRequest(TeaModel):
             result['Priority'] = self.priority
         if self.requested_resource is not None:
             result['RequestedResource'] = self.requested_resource.to_map()
+        if self.user_command is not None:
+            result['UserCommand'] = self.user_command.to_map()
         if self.user_id is not None:
             result['UserId'] = self.user_id
         if self.user_vpc is not None:
@@ -8948,8 +9093,12 @@ class UpdateInstanceRequest(TeaModel):
             self.disassociate_datasets = m.get('DisassociateDatasets')
         if m.get('DisassociateDriver') is not None:
             self.disassociate_driver = m.get('DisassociateDriver')
+        if m.get('DisassociateEnvironmentVariables') is not None:
+            self.disassociate_environment_variables = m.get('DisassociateEnvironmentVariables')
         if m.get('DisassociateForwardInfos') is not None:
             self.disassociate_forward_infos = m.get('DisassociateForwardInfos')
+        if m.get('DisassociateUserCommand') is not None:
+            self.disassociate_user_command = m.get('DisassociateUserCommand')
         if m.get('DisassociateVpc') is not None:
             self.disassociate_vpc = m.get('DisassociateVpc')
         if m.get('Driver') is not None:
@@ -8959,6 +9108,8 @@ class UpdateInstanceRequest(TeaModel):
             self.dynamic_mount = temp_model.from_map(m['DynamicMount'])
         if m.get('EcsSpec') is not None:
             self.ecs_spec = m.get('EcsSpec')
+        if m.get('EnvironmentVariables') is not None:
+            self.environment_variables = m.get('EnvironmentVariables')
         if m.get('ImageAuth') is not None:
             self.image_auth = m.get('ImageAuth')
         if m.get('ImageId') is not None:
@@ -8974,6 +9125,9 @@ class UpdateInstanceRequest(TeaModel):
         if m.get('RequestedResource') is not None:
             temp_model = UpdateInstanceRequestRequestedResource()
             self.requested_resource = temp_model.from_map(m['RequestedResource'])
+        if m.get('UserCommand') is not None:
+            temp_model = UpdateInstanceRequestUserCommand()
+            self.user_command = temp_model.from_map(m['UserCommand'])
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
         if m.get('UserVpc') is not None:

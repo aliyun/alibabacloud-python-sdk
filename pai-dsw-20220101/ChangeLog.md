@@ -1,3 +1,12 @@
+2025-06-09 Version: 1.5.15
+- Update API CreateInstance: add request parameters body.UserCommand.
+- Update API GetInstance: add response parameters Body.UserCommandId.
+- Update API UpdateInstance: add request parameters body.DisassociateEnvironmentVariables.
+- Update API UpdateInstance: add request parameters body.DisassociateUserCommand.
+- Update API UpdateInstance: add request parameters body.EnvironmentVariables.
+- Update API UpdateInstance: add request parameters body.UserCommand.
+
+
 2025-06-05 Version: 1.5.14
 - Update API CreateInstance: add request parameters body.OversoldType.
 - Update API ListEcsSpecs: add request parameters ResourceType.

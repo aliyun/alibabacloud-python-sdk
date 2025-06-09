@@ -211,6 +211,8 @@ class Client(OpenApiClient):
             body['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.tag):
             body['Tag'] = request.tag
+        if not UtilClient.is_unset(request.user_command):
+            body['UserCommand'] = request.user_command
         if not UtilClient.is_unset(request.user_id):
             body['UserId'] = request.user_id
         if not UtilClient.is_unset(request.user_vpc):
@@ -293,6 +295,8 @@ class Client(OpenApiClient):
             body['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.tag):
             body['Tag'] = request.tag
+        if not UtilClient.is_unset(request.user_command):
+            body['UserCommand'] = request.user_command
         if not UtilClient.is_unset(request.user_id):
             body['UserId'] = request.user_id
         if not UtilClient.is_unset(request.user_vpc):
@@ -3052,8 +3056,12 @@ class Client(OpenApiClient):
             body['DisassociateDatasets'] = request.disassociate_datasets
         if not UtilClient.is_unset(request.disassociate_driver):
             body['DisassociateDriver'] = request.disassociate_driver
+        if not UtilClient.is_unset(request.disassociate_environment_variables):
+            body['DisassociateEnvironmentVariables'] = request.disassociate_environment_variables
         if not UtilClient.is_unset(request.disassociate_forward_infos):
             body['DisassociateForwardInfos'] = request.disassociate_forward_infos
+        if not UtilClient.is_unset(request.disassociate_user_command):
+            body['DisassociateUserCommand'] = request.disassociate_user_command
         if not UtilClient.is_unset(request.disassociate_vpc):
             body['DisassociateVpc'] = request.disassociate_vpc
         if not UtilClient.is_unset(request.driver):
@@ -3062,6 +3070,8 @@ class Client(OpenApiClient):
             body['DynamicMount'] = request.dynamic_mount
         if not UtilClient.is_unset(request.ecs_spec):
             body['EcsSpec'] = request.ecs_spec
+        if not UtilClient.is_unset(request.environment_variables):
+            body['EnvironmentVariables'] = request.environment_variables
         if not UtilClient.is_unset(request.image_auth):
             body['ImageAuth'] = request.image_auth
         if not UtilClient.is_unset(request.image_id):
@@ -3076,6 +3086,8 @@ class Client(OpenApiClient):
             body['Priority'] = request.priority
         if not UtilClient.is_unset(request.requested_resource):
             body['RequestedResource'] = request.requested_resource
+        if not UtilClient.is_unset(request.user_command):
+            body['UserCommand'] = request.user_command
         if not UtilClient.is_unset(request.user_id):
             body['UserId'] = request.user_id
         if not UtilClient.is_unset(request.user_vpc):
@@ -3135,8 +3147,12 @@ class Client(OpenApiClient):
             body['DisassociateDatasets'] = request.disassociate_datasets
         if not UtilClient.is_unset(request.disassociate_driver):
             body['DisassociateDriver'] = request.disassociate_driver
+        if not UtilClient.is_unset(request.disassociate_environment_variables):
+            body['DisassociateEnvironmentVariables'] = request.disassociate_environment_variables
         if not UtilClient.is_unset(request.disassociate_forward_infos):
             body['DisassociateForwardInfos'] = request.disassociate_forward_infos
+        if not UtilClient.is_unset(request.disassociate_user_command):
+            body['DisassociateUserCommand'] = request.disassociate_user_command
         if not UtilClient.is_unset(request.disassociate_vpc):
             body['DisassociateVpc'] = request.disassociate_vpc
         if not UtilClient.is_unset(request.driver):
@@ -3145,6 +3161,8 @@ class Client(OpenApiClient):
             body['DynamicMount'] = request.dynamic_mount
         if not UtilClient.is_unset(request.ecs_spec):
             body['EcsSpec'] = request.ecs_spec
+        if not UtilClient.is_unset(request.environment_variables):
+            body['EnvironmentVariables'] = request.environment_variables
         if not UtilClient.is_unset(request.image_auth):
             body['ImageAuth'] = request.image_auth
         if not UtilClient.is_unset(request.image_id):
@@ -3159,6 +3177,8 @@ class Client(OpenApiClient):
             body['Priority'] = request.priority
         if not UtilClient.is_unset(request.requested_resource):
             body['RequestedResource'] = request.requested_resource
+        if not UtilClient.is_unset(request.user_command):
+            body['UserCommand'] = request.user_command
         if not UtilClient.is_unset(request.user_id):
             body['UserId'] = request.user_id
         if not UtilClient.is_unset(request.user_vpc):
