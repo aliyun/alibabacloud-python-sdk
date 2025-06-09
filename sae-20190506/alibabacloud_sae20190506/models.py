@@ -10842,6 +10842,121 @@ class WebCustomDomainBody(TeaModel):
         return self
 
 
+class DataInstancesValueListenersValue(TeaModel):
+    def __init__(
+        self,
+        protocol: str = None,
+        port: int = None,
+        status: str = None,
+        target_port: int = None,
+        cert_ids: str = None,
+    ):
+        # The listener protocol.
+        self.protocol = protocol
+        # The listener port of the NLB instance.
+        self.port = port
+        # The status of the NLB listener.
+        # 
+        # *   **Creating**: The listener is being created.
+        # *   **Configuring**: The listener is being configured.
+        # *   **Bounded**: The listener runs as expected.
+        # *   **Unbinding**: The listener is being deleted.
+        # *   **Failed**: The listener is unavailable.
+        self.status = status
+        # The open ports of the NLB instance.
+        self.target_port = target_port
+        # The server certificates.
+        self.cert_ids = cert_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.target_port is not None:
+            result['TargetPort'] = self.target_port
+        if self.cert_ids is not None:
+            result['CertIds'] = self.cert_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TargetPort') is not None:
+            self.target_port = m.get('TargetPort')
+        if m.get('CertIds') is not None:
+            self.cert_ids = m.get('CertIds')
+        return self
+
+
+class DataInstancesValue(TeaModel):
+    def __init__(
+        self,
+        dns_name: str = None,
+        listeners: Dict[str, DataInstancesValueListenersValue] = None,
+        created_by_sae: bool = None,
+    ):
+        # The domain name.
+        self.dns_name = dns_name
+        # The listeners.
+        self.listeners = listeners
+        # Indicates whether the instance is created by SAE.
+        # 
+        # *   **true**: The instance is created by SAE.
+        # *   **false**: The existing instance is reused.
+        self.created_by_sae = created_by_sae
+
+    def validate(self):
+        if self.listeners:
+            for v in self.listeners.values():
+                if v:
+                    v.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dns_name is not None:
+            result['DnsName'] = self.dns_name
+        result['Listeners'] = {}
+        if self.listeners is not None:
+            for k, v in self.listeners.items():
+                result['Listeners'][k] = v.to_map()
+        if self.created_by_sae is not None:
+            result['CreatedBySae'] = self.created_by_sae
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DnsName') is not None:
+            self.dns_name = m.get('DnsName')
+        self.listeners = {}
+        if m.get('Listeners') is not None:
+            for k, v in m.get('Listeners').items():
+                temp_model = DataInstancesValueListenersValue()
+                self.listeners[k] = temp_model.from_map(v)
+        if m.get('CreatedBySae') is not None:
+            self.created_by_sae = m.get('CreatedBySae')
+        return self
+
+
 class AbortAndRollbackChangeOrderRequest(TeaModel):
     def __init__(
         self,
@@ -11617,6 +11732,228 @@ class BatchStopApplicationsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = BatchStopApplicationsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class BindNlbRequest(TeaModel):
+    def __init__(
+        self,
+        address_type: str = None,
+        app_id: str = None,
+        listeners: str = None,
+        nlb_id: str = None,
+        zone_mappings: str = None,
+    ):
+        # The type of the IP addresses. Valid values:
+        # 
+        # *   Internet: public endpoint.
+        # *   Intranet: private endpoint.
+        self.address_type = address_type
+        # The ID of the application to which the NLB instance is bound.
+        self.app_id = app_id
+        # The listener that you want to manage. The value is a string that consists of JSON arrays. Each listener contains the following fields:
+        # 
+        # *   **port**: the port number of the NLB listener. This field is required. Data type: integer. Valid values: 0 to 65535.
+        # *   **TargetPort**: the port number of the container listener. This field is required. Data type: integer. Valid values: 0 to 65535.
+        # *   **Protocol**: the listener protocol. This field is required. Data type: string. Valid values: TCP, UDP, and TCPSSL.
+        # *   **CertIds**: the IDs of the server certificates. This field is optional. Data type: string. This field is supported only by TCPSSL listeners.
+        self.listeners = listeners
+        # The ID of the NLB instance.
+        self.nlb_id = nlb_id
+        # The mappings between zones and vSwitches. The value is a JSON string. You can specify at most 10 zones. If the region supports two or more zones, specify at least two zones. A ZoneMapping contains the following fields:
+        # 
+        # *   The ID of the vSwitch in the zone. Each zone can contain only one vSwitch and one subnet. Data type: string.
+        # *   The zone ID of the NLB instance. Data type: string.
+        self.zone_mappings = zone_mappings
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_type is not None:
+            result['AddressType'] = self.address_type
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.listeners is not None:
+            result['Listeners'] = self.listeners
+        if self.nlb_id is not None:
+            result['NlbId'] = self.nlb_id
+        if self.zone_mappings is not None:
+            result['ZoneMappings'] = self.zone_mappings
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddressType') is not None:
+            self.address_type = m.get('AddressType')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Listeners') is not None:
+            self.listeners = m.get('Listeners')
+        if m.get('NlbId') is not None:
+            self.nlb_id = m.get('NlbId')
+        if m.get('ZoneMappings') is not None:
+            self.zone_mappings = m.get('ZoneMappings')
+        return self
+
+
+class BindNlbResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        change_order_id: str = None,
+    ):
+        # The ID of the change order. The ID can be used to query the status of the change task.
+        self.change_order_id = change_order_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.change_order_id is not None:
+            result['ChangeOrderId'] = self.change_order_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChangeOrderId') is not None:
+            self.change_order_id = m.get('ChangeOrderId')
+        return self
+
+
+class BindNlbResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: BindNlbResponseBodyData = None,
+        error_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: The request was successful.
+        # *   **3xx**: The request was redirected.
+        # *   **4xx**: The request failed.
+        # *   **5xx**: A server error occurred.
+        self.code = code
+        # The returned data.
+        self.data = data
+        # The status code. Value values:
+        # 
+        # *   If the request was successful, **ErrorCode** is not returned.
+        # *   If the request failed, **ErrorCode** is returned. For more information, see **Error codes** in this topic.
+        self.error_code = error_code
+        # The message returned. Valid values:
+        # 
+        # *   If the request was successful, **success** is returned.
+        # *   If the request failed, an error code is returned.
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        # Indicates whether the applications were stopped. Valid values:
+        # 
+        # *   **true**: The applications were stopped.
+        # *   **false**: The applications failed to be stopped.
+        self.success = success
+        # The ID of the trace. The ID is used to query the details of a request.
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = BindNlbResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class BindNlbResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BindNlbResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BindNlbResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -23205,6 +23542,194 @@ class DescribeApplicationInstancesResponse(TeaModel):
         return self
 
 
+class DescribeApplicationNlbsRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+    ):
+        # The ID of the application.
+        self.app_id = app_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        return self
+
+
+class DescribeApplicationNlbsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        instances: Dict[str, DataInstancesValue] = None,
+    ):
+        # The details of the instance.
+        self.instances = instances
+
+    def validate(self):
+        if self.instances:
+            for v in self.instances.values():
+                if v:
+                    v.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Instances'] = {}
+        if self.instances is not None:
+            for k, v in self.instances.items():
+                result['Instances'][k] = v.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.instances = {}
+        if m.get('Instances') is not None:
+            for k, v in m.get('Instances').items():
+                temp_model = DataInstancesValue()
+                self.instances[k] = temp_model.from_map(v)
+        return self
+
+
+class DescribeApplicationNlbsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: DescribeApplicationNlbsResponseBodyData = None,
+        error_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+        trace_id: str = None,
+    ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: The request was successful.
+        # *   **3xx**: The request was redirected.
+        # *   **4xx**: The request failed.
+        # *   **5xx**: A server error occurred.
+        self.code = code
+        # The returned data.
+        self.data = data
+        # The status code. Value values:
+        # 
+        # *   If the request was successful, **ErrorCode** is not returned.
+        # *   If the request failed, **ErrorCode** is returned. For more information, see **Error codes** section in this topic.
+        self.error_code = error_code
+        # The message returned. Valid values:If the request was successful, success is returned. If the request failed, an error code is returned.
+        self.message = message
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether the NLB instance was successfully associated with the application. Valid values:
+        # 
+        # *   **true**: The application was associated.
+        # *   **false**: The application failed to be associated.
+        self.success = success
+        # The ID of the trace. The ID is used to query the details of a request.
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = DescribeApplicationNlbsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class DescribeApplicationNlbsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeApplicationNlbsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeApplicationNlbsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeApplicationScalingRuleRequest(TeaModel):
     def __init__(
         self,
@@ -24535,6 +25060,7 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesTime
         end_date: str = None,
         period: str = None,
         schedules: List[DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesTimerSchedules] = None,
+        time_zone: str = None,
     ):
         # The start date of the validity period of the scheduled auto scaling policy. Valid values:
         # 
@@ -24564,6 +25090,7 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesTime
         self.period = period
         # The points in time when the auto scaling policy is triggered within one day.
         self.schedules = schedules
+        self.time_zone = time_zone
 
     def validate(self):
         if self.schedules:
@@ -24587,6 +25114,8 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesTime
         if self.schedules is not None:
             for k in self.schedules:
                 result['Schedules'].append(k.to_map() if k else None)
+        if self.time_zone is not None:
+            result['TimeZone'] = self.time_zone
         return result
 
     def from_map(self, m: dict = None):
@@ -24602,6 +25131,8 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesTime
             for k in m.get('Schedules'):
                 temp_model = DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesTimerSchedules()
                 self.schedules.append(temp_model.from_map(k))
+        if m.get('TimeZone') is not None:
+            self.time_zone = m.get('TimeZone')
         return self
 
 

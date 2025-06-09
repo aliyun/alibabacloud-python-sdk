@@ -1,3 +1,9 @@
+2025-06-09 Version: 2.4.0
+- Support API BindNlb.
+- Support API DescribeApplicationNlbs.
+- Update API DescribeApplicationScalingRules: add response parameters Body.Data.ApplicationScalingRules.$.Timer.TimeZone.
+
+
 2025-05-29 Version: 2.3.2
 - Update API DescribeApplicationConfig: add response parameters Body.Data.GpuCount.
 - Update API DescribeApplicationConfig: add response parameters Body.Data.GpuType.

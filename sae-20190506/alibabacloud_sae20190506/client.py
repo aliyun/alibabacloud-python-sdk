@@ -477,6 +477,126 @@ class Client(OpenApiClient):
         headers = {}
         return await self.batch_stop_applications_with_options_async(request, headers, runtime)
 
+    def bind_nlb_with_options(
+        self,
+        request: sae_20190506_models.BindNlbRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.BindNlbResponse:
+        """
+        @summary Associates a Network Load Balancer (NLB) instance with an application.
+        
+        @param request: BindNlbRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindNlbResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.listeners):
+            query['Listeners'] = request.listeners
+        if not UtilClient.is_unset(request.nlb_id):
+            query['NlbId'] = request.nlb_id
+        if not UtilClient.is_unset(request.zone_mappings):
+            query['ZoneMappings'] = request.zone_mappings
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindNlb',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/app/nlb',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.BindNlbResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def bind_nlb_with_options_async(
+        self,
+        request: sae_20190506_models.BindNlbRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.BindNlbResponse:
+        """
+        @summary Associates a Network Load Balancer (NLB) instance with an application.
+        
+        @param request: BindNlbRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindNlbResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.listeners):
+            query['Listeners'] = request.listeners
+        if not UtilClient.is_unset(request.nlb_id):
+            query['NlbId'] = request.nlb_id
+        if not UtilClient.is_unset(request.zone_mappings):
+            query['ZoneMappings'] = request.zone_mappings
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindNlb',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/app/nlb',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.BindNlbResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def bind_nlb(
+        self,
+        request: sae_20190506_models.BindNlbRequest,
+    ) -> sae_20190506_models.BindNlbResponse:
+        """
+        @summary Associates a Network Load Balancer (NLB) instance with an application.
+        
+        @param request: BindNlbRequest
+        @return: BindNlbResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.bind_nlb_with_options(request, headers, runtime)
+
+    async def bind_nlb_async(
+        self,
+        request: sae_20190506_models.BindNlbRequest,
+    ) -> sae_20190506_models.BindNlbResponse:
+        """
+        @summary Associates a Network Load Balancer (NLB) instance with an application.
+        
+        @param request: BindNlbRequest
+        @return: BindNlbResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.bind_nlb_with_options_async(request, headers, runtime)
+
     def bind_slb_with_options(
         self,
         request: sae_20190506_models.BindSlbRequest,
@@ -5296,6 +5416,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_application_instances_with_options_async(request, headers, runtime)
+
+    def describe_application_nlbs_with_options(
+        self,
+        request: sae_20190506_models.DescribeApplicationNlbsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DescribeApplicationNlbsResponse:
+        """
+        @summary Queries the Network Load Balancer (NLB) instances bound to an application and their listeners.
+        
+        @param request: DescribeApplicationNlbsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApplicationNlbsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApplicationNlbs',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/app/nlb',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DescribeApplicationNlbsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_application_nlbs_with_options_async(
+        self,
+        request: sae_20190506_models.DescribeApplicationNlbsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DescribeApplicationNlbsResponse:
+        """
+        @summary Queries the Network Load Balancer (NLB) instances bound to an application and their listeners.
+        
+        @param request: DescribeApplicationNlbsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApplicationNlbsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApplicationNlbs',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/app/nlb',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DescribeApplicationNlbsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_application_nlbs(
+        self,
+        request: sae_20190506_models.DescribeApplicationNlbsRequest,
+    ) -> sae_20190506_models.DescribeApplicationNlbsResponse:
+        """
+        @summary Queries the Network Load Balancer (NLB) instances bound to an application and their listeners.
+        
+        @param request: DescribeApplicationNlbsRequest
+        @return: DescribeApplicationNlbsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_application_nlbs_with_options(request, headers, runtime)
+
+    async def describe_application_nlbs_async(
+        self,
+        request: sae_20190506_models.DescribeApplicationNlbsRequest,
+    ) -> sae_20190506_models.DescribeApplicationNlbsResponse:
+        """
+        @summary Queries the Network Load Balancer (NLB) instances bound to an application and their listeners.
+        
+        @param request: DescribeApplicationNlbsRequest
+        @return: DescribeApplicationNlbsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_application_nlbs_with_options_async(request, headers, runtime)
 
     def describe_application_scaling_rule_with_options(
         self,
