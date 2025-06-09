@@ -10125,8 +10125,10 @@ class GetHotTopicBroadcastResponseBodyDataData(TeaModel):
         locations: List[str] = None,
         news: List[GetHotTopicBroadcastResponseBodyDataDataNews] = None,
         output_token: int = None,
+        pub_time: str = None,
         summary: GetHotTopicBroadcastResponseBodyDataDataSummary = None,
         text_summary: str = None,
+        url: str = None,
     ):
         self.category = category
         self.create_time = create_time
@@ -10141,8 +10143,10 @@ class GetHotTopicBroadcastResponseBodyDataData(TeaModel):
         self.locations = locations
         self.news = news
         self.output_token = output_token
+        self.pub_time = pub_time
         self.summary = summary
         self.text_summary = text_summary
+        self.url = url
 
     def validate(self):
         if self.images:
@@ -10192,10 +10196,14 @@ class GetHotTopicBroadcastResponseBodyDataData(TeaModel):
                 result['News'].append(k.to_map() if k else None)
         if self.output_token is not None:
             result['OutputToken'] = self.output_token
+        if self.pub_time is not None:
+            result['PubTime'] = self.pub_time
         if self.summary is not None:
             result['Summary'] = self.summary.to_map()
         if self.text_summary is not None:
             result['TextSummary'] = self.text_summary
+        if self.url is not None:
+            result['Url'] = self.url
         return result
 
     def from_map(self, m: dict = None):
@@ -10232,11 +10240,15 @@ class GetHotTopicBroadcastResponseBodyDataData(TeaModel):
                 self.news.append(temp_model.from_map(k))
         if m.get('OutputToken') is not None:
             self.output_token = m.get('OutputToken')
+        if m.get('PubTime') is not None:
+            self.pub_time = m.get('PubTime')
         if m.get('Summary') is not None:
             temp_model = GetHotTopicBroadcastResponseBodyDataDataSummary()
             self.summary = temp_model.from_map(m['Summary'])
         if m.get('TextSummary') is not None:
             self.text_summary = m.get('TextSummary')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
         return self
 
 
