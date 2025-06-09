@@ -2834,6 +2834,167 @@ class DeleteFaceVerifyResultResponse(TeaModel):
         return self
 
 
+class DescribeCardVerifyRequest(TeaModel):
+    def __init__(
+        self,
+        certify_id: str = None,
+    ):
+        # This parameter is required.
+        self.certify_id = certify_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.certify_id is not None:
+            result['CertifyId'] = self.certify_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertifyId') is not None:
+            self.certify_id = m.get('CertifyId')
+        return self
+
+
+class DescribeCardVerifyResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        card_info: str = None,
+        ocr_card_info: str = None,
+        picture_info: str = None,
+    ):
+        self.biz_code = biz_code
+        self.card_info = card_info
+        self.ocr_card_info = ocr_card_info
+        self.picture_info = picture_info
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.card_info is not None:
+            result['CardInfo'] = self.card_info
+        if self.ocr_card_info is not None:
+            result['OcrCardInfo'] = self.ocr_card_info
+        if self.picture_info is not None:
+            result['PictureInfo'] = self.picture_info
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('CardInfo') is not None:
+            self.card_info = m.get('CardInfo')
+        if m.get('OcrCardInfo') is not None:
+            self.ocr_card_info = m.get('OcrCardInfo')
+        if m.get('PictureInfo') is not None:
+            self.picture_info = m.get('PictureInfo')
+        return self
+
+
+class DescribeCardVerifyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result_object: DescribeCardVerifyResponseBodyResultObject = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.result_object = result_object
+
+    def validate(self):
+        if self.result_object:
+            self.result_object.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            temp_model = DescribeCardVerifyResponseBodyResultObject()
+            self.result_object = temp_model.from_map(m['ResultObject'])
+        return self
+
+
+class DescribeCardVerifyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCardVerifyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCardVerifyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeDeviceInfoRequest(TeaModel):
     def __init__(
         self,
@@ -5823,6 +5984,209 @@ class Id2MetaVerifyWithOCRResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = Id2MetaVerifyWithOCRResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class InitCardVerifyRequest(TeaModel):
+    def __init__(
+        self,
+        callback_token: str = None,
+        callback_url: str = None,
+        card_page_number: str = None,
+        card_type: str = None,
+        doc_scan_mode: str = None,
+        merchant_biz_id: str = None,
+        meta_info: str = None,
+        model: str = None,
+        picture_save: str = None,
+        verify_meta: str = None,
+    ):
+        self.callback_token = callback_token
+        self.callback_url = callback_url
+        # This parameter is required.
+        self.card_page_number = card_page_number
+        # This parameter is required.
+        self.card_type = card_type
+        self.doc_scan_mode = doc_scan_mode
+        # This parameter is required.
+        self.merchant_biz_id = merchant_biz_id
+        # This parameter is required.
+        self.meta_info = meta_info
+        # This parameter is required.
+        self.model = model
+        # This parameter is required.
+        self.picture_save = picture_save
+        # This parameter is required.
+        self.verify_meta = verify_meta
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.callback_token is not None:
+            result['CallbackToken'] = self.callback_token
+        if self.callback_url is not None:
+            result['CallbackUrl'] = self.callback_url
+        if self.card_page_number is not None:
+            result['CardPageNumber'] = self.card_page_number
+        if self.card_type is not None:
+            result['CardType'] = self.card_type
+        if self.doc_scan_mode is not None:
+            result['DocScanMode'] = self.doc_scan_mode
+        if self.merchant_biz_id is not None:
+            result['MerchantBizId'] = self.merchant_biz_id
+        if self.meta_info is not None:
+            result['MetaInfo'] = self.meta_info
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.picture_save is not None:
+            result['PictureSave'] = self.picture_save
+        if self.verify_meta is not None:
+            result['VerifyMeta'] = self.verify_meta
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CallbackToken') is not None:
+            self.callback_token = m.get('CallbackToken')
+        if m.get('CallbackUrl') is not None:
+            self.callback_url = m.get('CallbackUrl')
+        if m.get('CardPageNumber') is not None:
+            self.card_page_number = m.get('CardPageNumber')
+        if m.get('CardType') is not None:
+            self.card_type = m.get('CardType')
+        if m.get('DocScanMode') is not None:
+            self.doc_scan_mode = m.get('DocScanMode')
+        if m.get('MerchantBizId') is not None:
+            self.merchant_biz_id = m.get('MerchantBizId')
+        if m.get('MetaInfo') is not None:
+            self.meta_info = m.get('MetaInfo')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('PictureSave') is not None:
+            self.picture_save = m.get('PictureSave')
+        if m.get('VerifyMeta') is not None:
+            self.verify_meta = m.get('VerifyMeta')
+        return self
+
+
+class InitCardVerifyResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        certify_id: str = None,
+    ):
+        self.certify_id = certify_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.certify_id is not None:
+            result['CertifyId'] = self.certify_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertifyId') is not None:
+            self.certify_id = m.get('CertifyId')
+        return self
+
+
+class InitCardVerifyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result_object: InitCardVerifyResponseBodyResultObject = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.result_object = result_object
+
+    def validate(self):
+        if self.result_object:
+            self.result_object.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            temp_model = InitCardVerifyResponseBodyResultObject()
+            self.result_object = temp_model.from_map(m['ResultObject'])
+        return self
+
+
+class InitCardVerifyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: InitCardVerifyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = InitCardVerifyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

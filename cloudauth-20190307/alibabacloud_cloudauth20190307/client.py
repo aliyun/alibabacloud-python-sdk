@@ -1727,6 +1727,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_face_verify_result_with_options_async(request, runtime)
 
+    def describe_card_verify_with_options(
+        self,
+        request: cloudauth_20190307_models.DescribeCardVerifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeCardVerifyResponse:
+        """
+        @summary 图片要素核验获取认证结果
+        
+        @param request: DescribeCardVerifyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCardVerifyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.certify_id):
+            query['CertifyId'] = request.certify_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCardVerify',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeCardVerifyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_card_verify_with_options_async(
+        self,
+        request: cloudauth_20190307_models.DescribeCardVerifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeCardVerifyResponse:
+        """
+        @summary 图片要素核验获取认证结果
+        
+        @param request: DescribeCardVerifyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCardVerifyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.certify_id):
+            query['CertifyId'] = request.certify_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCardVerify',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeCardVerifyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_card_verify(
+        self,
+        request: cloudauth_20190307_models.DescribeCardVerifyRequest,
+    ) -> cloudauth_20190307_models.DescribeCardVerifyResponse:
+        """
+        @summary 图片要素核验获取认证结果
+        
+        @param request: DescribeCardVerifyRequest
+        @return: DescribeCardVerifyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_card_verify_with_options(request, runtime)
+
+    async def describe_card_verify_async(
+        self,
+        request: cloudauth_20190307_models.DescribeCardVerifyRequest,
+    ) -> cloudauth_20190307_models.DescribeCardVerifyResponse:
+        """
+        @summary 图片要素核验获取认证结果
+        
+        @param request: DescribeCardVerifyRequest
+        @return: DescribeCardVerifyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_card_verify_with_options_async(request, runtime)
+
     def describe_device_info_with_options(
         self,
         request: cloudauth_20190307_models.DescribeDeviceInfoRequest,
@@ -3368,6 +3464,138 @@ class Client(OpenApiClient):
             id_2meta_verify_with_ocrreq.cert_national_file = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
         id_2meta_verify_with_ocrresp = await self.id_2meta_verify_with_ocrwith_options_async(id_2meta_verify_with_ocrreq, runtime)
         return id_2meta_verify_with_ocrresp
+
+    def init_card_verify_with_options(
+        self,
+        request: cloudauth_20190307_models.InitCardVerifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.InitCardVerifyResponse:
+        """
+        @summary 图片核验发起认证请求
+        
+        @param request: InitCardVerifyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InitCardVerifyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.callback_token):
+            query['CallbackToken'] = request.callback_token
+        if not UtilClient.is_unset(request.callback_url):
+            query['CallbackUrl'] = request.callback_url
+        if not UtilClient.is_unset(request.card_page_number):
+            query['CardPageNumber'] = request.card_page_number
+        if not UtilClient.is_unset(request.card_type):
+            query['CardType'] = request.card_type
+        if not UtilClient.is_unset(request.doc_scan_mode):
+            query['DocScanMode'] = request.doc_scan_mode
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        if not UtilClient.is_unset(request.meta_info):
+            query['MetaInfo'] = request.meta_info
+        if not UtilClient.is_unset(request.model):
+            query['Model'] = request.model
+        if not UtilClient.is_unset(request.picture_save):
+            query['PictureSave'] = request.picture_save
+        if not UtilClient.is_unset(request.verify_meta):
+            query['VerifyMeta'] = request.verify_meta
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='InitCardVerify',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.InitCardVerifyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def init_card_verify_with_options_async(
+        self,
+        request: cloudauth_20190307_models.InitCardVerifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.InitCardVerifyResponse:
+        """
+        @summary 图片核验发起认证请求
+        
+        @param request: InitCardVerifyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InitCardVerifyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.callback_token):
+            query['CallbackToken'] = request.callback_token
+        if not UtilClient.is_unset(request.callback_url):
+            query['CallbackUrl'] = request.callback_url
+        if not UtilClient.is_unset(request.card_page_number):
+            query['CardPageNumber'] = request.card_page_number
+        if not UtilClient.is_unset(request.card_type):
+            query['CardType'] = request.card_type
+        if not UtilClient.is_unset(request.doc_scan_mode):
+            query['DocScanMode'] = request.doc_scan_mode
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        if not UtilClient.is_unset(request.meta_info):
+            query['MetaInfo'] = request.meta_info
+        if not UtilClient.is_unset(request.model):
+            query['Model'] = request.model
+        if not UtilClient.is_unset(request.picture_save):
+            query['PictureSave'] = request.picture_save
+        if not UtilClient.is_unset(request.verify_meta):
+            query['VerifyMeta'] = request.verify_meta
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='InitCardVerify',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.InitCardVerifyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def init_card_verify(
+        self,
+        request: cloudauth_20190307_models.InitCardVerifyRequest,
+    ) -> cloudauth_20190307_models.InitCardVerifyResponse:
+        """
+        @summary 图片核验发起认证请求
+        
+        @param request: InitCardVerifyRequest
+        @return: InitCardVerifyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.init_card_verify_with_options(request, runtime)
+
+    async def init_card_verify_async(
+        self,
+        request: cloudauth_20190307_models.InitCardVerifyRequest,
+    ) -> cloudauth_20190307_models.InitCardVerifyResponse:
+        """
+        @summary 图片核验发起认证请求
+        
+        @param request: InitCardVerifyRequest
+        @return: InitCardVerifyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.init_card_verify_with_options_async(request, runtime)
 
     def init_face_verify_with_options(
         self,

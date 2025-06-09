@@ -1,3 +1,8 @@
+2025-06-09 Version: 3.8.0
+- Support API DescribeCardVerify.
+- Support API InitCardVerify.
+
+
 2025-06-06 Version: 3.7.0
 - Support API Mobile2MetaVerify.
 
