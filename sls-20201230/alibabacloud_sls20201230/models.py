@@ -4,6 +4,39 @@ from Tea.model import TeaModel
 from typing import List, Dict, Any
 
 
+class AgentInstanceConfigGrayConfigs(TeaModel):
+    def __init__(
+        self,
+        condition: str = None,
+        content: str = None,
+    ):
+        self.condition = condition
+        self.content = content
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition is not None:
+            result['condition'] = self.condition
+        if self.content is not None:
+            result['content'] = self.content
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('condition') is not None:
+            self.condition = m.get('condition')
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        return self
+
+
 class AlertTag(TeaModel):
     def __init__(
         self,
@@ -5395,12 +5428,11 @@ class ConsumerGroupUpdateCheckPointResponse(TeaModel):
 class CreateAgentInstanceConfigRequest(TeaModel):
     def __init__(
         self,
-        attributes: str = None,
+        attributes: Dict[str, str] = None,
         config: str = None,
         config_type: str = None,
-        gray_configs: str = None,
+        gray_configs: List[AgentInstanceConfigGrayConfigs] = None,
     ):
-        # This parameter is required.
         self.attributes = attributes
         # This parameter is required.
         self.config = config
@@ -5409,7 +5441,10 @@ class CreateAgentInstanceConfigRequest(TeaModel):
         self.gray_configs = gray_configs
 
     def validate(self):
-        pass
+        if self.gray_configs:
+            for k in self.gray_configs:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5423,8 +5458,10 @@ class CreateAgentInstanceConfigRequest(TeaModel):
             result['config'] = self.config
         if self.config_type is not None:
             result['configType'] = self.config_type
+        result['grayConfigs'] = []
         if self.gray_configs is not None:
-            result['grayConfigs'] = self.gray_configs
+            for k in self.gray_configs:
+                result['grayConfigs'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -5435,8 +5472,11 @@ class CreateAgentInstanceConfigRequest(TeaModel):
             self.config = m.get('config')
         if m.get('configType') is not None:
             self.config_type = m.get('configType')
+        self.gray_configs = []
         if m.get('grayConfigs') is not None:
-            self.gray_configs = m.get('grayConfigs')
+            for k in m.get('grayConfigs'):
+                temp_model = AgentInstanceConfigGrayConfigs()
+                self.gray_configs.append(temp_model.from_map(k))
         return self
 
 
@@ -7930,7 +7970,7 @@ class CreateTicketRequest(TeaModel):
         # *   If you use a Security Token Service (STS) token to call this operation, the validity period of the access token is the smallest value among accessTokenExpirationTime, expirationTime, and the validity period of the STS token.
         self.access_token_expiration_time = access_token_expiration_time
         # *   You must use the Simple Log Service endpoint for the China (Shanghai) or Singapore region to call the CreateTicket operation. After you obtain the ticket, you can use the ticket regardless of the region.
-        # *   The validity period for the URL of the console page that you want to embed. Unit: seconds. Default value: 86400, which specifies one day. Valid values: 0 to 2592000. The value 2592000 specifies 30 days.
+        # *   The validity period for the URL of the console page that you want to embed. Unit: seconds. Default value: 86400 (one day). Valid values: 0 to 2592000 (30 days).
         self.expiration_time = expiration_time
 
     def validate(self):
@@ -8029,9 +8069,8 @@ class CreateTicketResponse(TeaModel):
 class DeleteAgentInstanceConfigRequest(TeaModel):
     def __init__(
         self,
-        attributes: str = None,
+        attributes: Dict[str, str] = None,
     ):
-        # This parameter is required.
         self.attributes = attributes
 
     def validate(self):
@@ -8051,6 +8090,33 @@ class DeleteAgentInstanceConfigRequest(TeaModel):
         m = m or dict()
         if m.get('attributes') is not None:
             self.attributes = m.get('attributes')
+        return self
+
+
+class DeleteAgentInstanceConfigShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        attributes_shrink: str = None,
+    ):
+        self.attributes_shrink = attributes_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attributes_shrink is not None:
+            result['attributes'] = self.attributes_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('attributes') is not None:
+            self.attributes_shrink = m.get('attributes')
         return self
 
 
@@ -9332,9 +9398,8 @@ class EnableScheduledSQLResponse(TeaModel):
 class GetAgentInstanceConfigRequest(TeaModel):
     def __init__(
         self,
-        attributes: str = None,
+        attributes: Dict[str, str] = None,
     ):
-        # This parameter is required.
         self.attributes = attributes
 
     def validate(self):
@@ -9357,14 +9422,41 @@ class GetAgentInstanceConfigRequest(TeaModel):
         return self
 
 
+class GetAgentInstanceConfigShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        attributes_shrink: str = None,
+    ):
+        self.attributes_shrink = attributes_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attributes_shrink is not None:
+            result['attributes'] = self.attributes_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('attributes') is not None:
+            self.attributes_shrink = m.get('attributes')
+        return self
+
+
 class GetAgentInstanceConfigResponseBody(TeaModel):
     def __init__(
         self,
-        attributes: str = None,
+        attributes: Dict[str, str] = None,
         config: str = None,
         config_type: str = None,
         create_time: int = None,
-        gray_configs: List[Dict[str, str]] = None,
+        gray_configs: List[AgentInstanceConfigGrayConfigs] = None,
         last_modify_time: int = None,
     ):
         self.attributes = attributes
@@ -9375,7 +9467,10 @@ class GetAgentInstanceConfigResponseBody(TeaModel):
         self.last_modify_time = last_modify_time
 
     def validate(self):
-        pass
+        if self.gray_configs:
+            for k in self.gray_configs:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -9391,8 +9486,10 @@ class GetAgentInstanceConfigResponseBody(TeaModel):
             result['configType'] = self.config_type
         if self.create_time is not None:
             result['createTime'] = self.create_time
+        result['grayConfigs'] = []
         if self.gray_configs is not None:
-            result['grayConfigs'] = self.gray_configs
+            for k in self.gray_configs:
+                result['grayConfigs'].append(k.to_map() if k else None)
         if self.last_modify_time is not None:
             result['lastModifyTime'] = self.last_modify_time
         return result
@@ -9407,8 +9504,11 @@ class GetAgentInstanceConfigResponseBody(TeaModel):
             self.config_type = m.get('configType')
         if m.get('createTime') is not None:
             self.create_time = m.get('createTime')
+        self.gray_configs = []
         if m.get('grayConfigs') is not None:
-            self.gray_configs = m.get('grayConfigs')
+            for k in m.get('grayConfigs'):
+                temp_model = AgentInstanceConfigGrayConfigs()
+                self.gray_configs.append(temp_model.from_map(k))
         if m.get('lastModifyTime') is not None:
             self.last_modify_time = m.get('lastModifyTime')
         return self
@@ -13393,12 +13493,10 @@ class GetStoreViewIndexResponse(TeaModel):
 class ListAgentInstanceConfigsRequest(TeaModel):
     def __init__(
         self,
-        attributes: str = None,
         config_type: str = None,
         offset: int = None,
         size: int = None,
     ):
-        self.attributes = attributes
         self.config_type = config_type
         self.offset = offset
         self.size = size
@@ -13412,8 +13510,6 @@ class ListAgentInstanceConfigsRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.attributes is not None:
-            result['attributes'] = self.attributes
         if self.config_type is not None:
             result['configType'] = self.config_type
         if self.offset is not None:
@@ -13424,8 +13520,6 @@ class ListAgentInstanceConfigsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('attributes') is not None:
-            self.attributes = m.get('attributes')
         if m.get('configType') is not None:
             self.config_type = m.get('configType')
         if m.get('offset') is not None:
@@ -15539,7 +15633,7 @@ class ListDownloadJobsResponseBodyResults(TeaModel):
         self.description = description
         # 任务显示名称
         self.display_name = display_name
-        # 任务执行细节
+        # The execution details.
         self.execution_details = execution_details
         # 代表资源名称的资源属性字段
         self.name = name
@@ -15603,7 +15697,7 @@ class ListDownloadJobsResponseBody(TeaModel):
         total: int = None,
     ):
         self.count = count
-        # The log download tasks.
+        # Array, to return a list of log download tasks.
         self.results = results
         self.total = total
 
@@ -19462,18 +19556,20 @@ class UntagResourcesResponse(TeaModel):
 class UpdateAgentInstanceConfigRequest(TeaModel):
     def __init__(
         self,
-        attributes: str = None,
+        attributes: Dict[str, str] = None,
         config: str = None,
-        gray_configs: str = None,
+        gray_configs: List[AgentInstanceConfigGrayConfigs] = None,
     ):
-        # This parameter is required.
         self.attributes = attributes
         # This parameter is required.
         self.config = config
         self.gray_configs = gray_configs
 
     def validate(self):
-        pass
+        if self.gray_configs:
+            for k in self.gray_configs:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -19485,8 +19581,10 @@ class UpdateAgentInstanceConfigRequest(TeaModel):
             result['attributes'] = self.attributes
         if self.config is not None:
             result['config'] = self.config
+        result['grayConfigs'] = []
         if self.gray_configs is not None:
-            result['grayConfigs'] = self.gray_configs
+            for k in self.gray_configs:
+                result['grayConfigs'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -19495,8 +19593,59 @@ class UpdateAgentInstanceConfigRequest(TeaModel):
             self.attributes = m.get('attributes')
         if m.get('config') is not None:
             self.config = m.get('config')
+        self.gray_configs = []
         if m.get('grayConfigs') is not None:
-            self.gray_configs = m.get('grayConfigs')
+            for k in m.get('grayConfigs'):
+                temp_model = AgentInstanceConfigGrayConfigs()
+                self.gray_configs.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateAgentInstanceConfigShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        attributes_shrink: str = None,
+        config: str = None,
+        gray_configs: List[AgentInstanceConfigGrayConfigs] = None,
+    ):
+        self.attributes_shrink = attributes_shrink
+        # This parameter is required.
+        self.config = config
+        self.gray_configs = gray_configs
+
+    def validate(self):
+        if self.gray_configs:
+            for k in self.gray_configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attributes_shrink is not None:
+            result['attributes'] = self.attributes_shrink
+        if self.config is not None:
+            result['config'] = self.config
+        result['grayConfigs'] = []
+        if self.gray_configs is not None:
+            for k in self.gray_configs:
+                result['grayConfigs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('attributes') is not None:
+            self.attributes_shrink = m.get('attributes')
+        if m.get('config') is not None:
+            self.config = m.get('config')
+        self.gray_configs = []
+        if m.get('grayConfigs') is not None:
+            for k in m.get('grayConfigs'):
+                temp_model = AgentInstanceConfigGrayConfigs()
+                self.gray_configs.append(temp_model.from_map(k))
         return self
 
 

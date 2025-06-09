@@ -1,3 +1,6 @@
+2025-06-09 Version: 5.7.3
+- Generated python 2020-12-30 for Sls.
+
 2025-06-09 Version: 5.7.2
 - Update API CreateAgentInstanceConfig: add request parameters body.attributes.
 - Update API CreateAgentInstanceConfig: add request parameters body.configType.

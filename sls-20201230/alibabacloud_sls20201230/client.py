@@ -4225,22 +4225,26 @@ class Client(OpenApiClient):
     def delete_agent_instance_config_with_options(
         self,
         config_type: str,
-        request: sls_20201230_models.DeleteAgentInstanceConfigRequest,
+        tmp_req: sls_20201230_models.DeleteAgentInstanceConfigRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteAgentInstanceConfigResponse:
         """
         @summary DeleteAgentInstanceConfig
         
-        @param request: DeleteAgentInstanceConfigRequest
+        @param tmp_req: DeleteAgentInstanceConfigRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteAgentInstanceConfigResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = sls_20201230_models.DeleteAgentInstanceConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.attributes):
+            request.attributes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.attributes, 'attributes', 'json')
         query = {}
-        if not UtilClient.is_unset(request.attributes):
-            query['attributes'] = request.attributes
+        if not UtilClient.is_unset(request.attributes_shrink):
+            query['attributes'] = request.attributes_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -4264,22 +4268,26 @@ class Client(OpenApiClient):
     async def delete_agent_instance_config_with_options_async(
         self,
         config_type: str,
-        request: sls_20201230_models.DeleteAgentInstanceConfigRequest,
+        tmp_req: sls_20201230_models.DeleteAgentInstanceConfigRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteAgentInstanceConfigResponse:
         """
         @summary DeleteAgentInstanceConfig
         
-        @param request: DeleteAgentInstanceConfigRequest
+        @param tmp_req: DeleteAgentInstanceConfigRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteAgentInstanceConfigResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = sls_20201230_models.DeleteAgentInstanceConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.attributes):
+            request.attributes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.attributes, 'attributes', 'json')
         query = {}
-        if not UtilClient.is_unset(request.attributes):
-            query['attributes'] = request.attributes
+        if not UtilClient.is_unset(request.attributes_shrink):
+            query['attributes'] = request.attributes_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -7885,22 +7893,26 @@ class Client(OpenApiClient):
     def get_agent_instance_config_with_options(
         self,
         config_type: str,
-        request: sls_20201230_models.GetAgentInstanceConfigRequest,
+        tmp_req: sls_20201230_models.GetAgentInstanceConfigRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetAgentInstanceConfigResponse:
         """
         @summary GetAgentInstanceConfig
         
-        @param request: GetAgentInstanceConfigRequest
+        @param tmp_req: GetAgentInstanceConfigRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetAgentInstanceConfigResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = sls_20201230_models.GetAgentInstanceConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.attributes):
+            request.attributes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.attributes, 'attributes', 'json')
         query = {}
-        if not UtilClient.is_unset(request.attributes):
-            query['attributes'] = request.attributes
+        if not UtilClient.is_unset(request.attributes_shrink):
+            query['attributes'] = request.attributes_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -7924,22 +7936,26 @@ class Client(OpenApiClient):
     async def get_agent_instance_config_with_options_async(
         self,
         config_type: str,
-        request: sls_20201230_models.GetAgentInstanceConfigRequest,
+        tmp_req: sls_20201230_models.GetAgentInstanceConfigRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetAgentInstanceConfigResponse:
         """
         @summary GetAgentInstanceConfig
         
-        @param request: GetAgentInstanceConfigRequest
+        @param tmp_req: GetAgentInstanceConfigRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetAgentInstanceConfigResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = sls_20201230_models.GetAgentInstanceConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.attributes):
+            request.attributes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.attributes, 'attributes', 'json')
         query = {}
-        if not UtilClient.is_unset(request.attributes):
-            query['attributes'] = request.attributes
+        if not UtilClient.is_unset(request.attributes_shrink):
+            query['attributes'] = request.attributes_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -12954,8 +12970,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.attributes):
-            query['attributes'] = request.attributes
         if not UtilClient.is_unset(request.config_type):
             query['configType'] = request.config_type
         if not UtilClient.is_unset(request.offset):
@@ -12998,8 +13012,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.attributes):
-            query['attributes'] = request.attributes
         if not UtilClient.is_unset(request.config_type):
             query['configType'] = request.config_type
         if not UtilClient.is_unset(request.offset):
@@ -14320,7 +14332,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListDownloadJobsResponse:
         """
-        @summary 列举下载任务
+        @summary Queries a list of log download tasks in a project.
         
         @param request: ListDownloadJobsRequest
         @param headers: map
@@ -14366,7 +14378,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListDownloadJobsResponse:
         """
-        @summary 列举下载任务
+        @summary Queries a list of log download tasks in a project.
         
         @param request: ListDownloadJobsRequest
         @param headers: map
@@ -14410,7 +14422,7 @@ class Client(OpenApiClient):
         request: sls_20201230_models.ListDownloadJobsRequest,
     ) -> sls_20201230_models.ListDownloadJobsResponse:
         """
-        @summary 列举下载任务
+        @summary Queries a list of log download tasks in a project.
         
         @param request: ListDownloadJobsRequest
         @return: ListDownloadJobsResponse
@@ -14425,7 +14437,7 @@ class Client(OpenApiClient):
         request: sls_20201230_models.ListDownloadJobsRequest,
     ) -> sls_20201230_models.ListDownloadJobsResponse:
         """
-        @summary 列举下载任务
+        @summary Queries a list of log download tasks in a project.
         
         @param request: ListDownloadJobsRequest
         @return: ListDownloadJobsResponse
@@ -19583,22 +19595,26 @@ class Client(OpenApiClient):
     def update_agent_instance_config_with_options(
         self,
         config_type: str,
-        request: sls_20201230_models.UpdateAgentInstanceConfigRequest,
+        tmp_req: sls_20201230_models.UpdateAgentInstanceConfigRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateAgentInstanceConfigResponse:
         """
         @summary UpdateAgentInstanceConfig
         
-        @param request: UpdateAgentInstanceConfigRequest
+        @param tmp_req: UpdateAgentInstanceConfigRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateAgentInstanceConfigResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = sls_20201230_models.UpdateAgentInstanceConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.attributes):
+            request.attributes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.attributes, 'attributes', 'json')
         query = {}
-        if not UtilClient.is_unset(request.attributes):
-            query['attributes'] = request.attributes
+        if not UtilClient.is_unset(request.attributes_shrink):
+            query['attributes'] = request.attributes_shrink
         body = {}
         if not UtilClient.is_unset(request.config):
             body['config'] = request.config
@@ -19628,22 +19644,26 @@ class Client(OpenApiClient):
     async def update_agent_instance_config_with_options_async(
         self,
         config_type: str,
-        request: sls_20201230_models.UpdateAgentInstanceConfigRequest,
+        tmp_req: sls_20201230_models.UpdateAgentInstanceConfigRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateAgentInstanceConfigResponse:
         """
         @summary UpdateAgentInstanceConfig
         
-        @param request: UpdateAgentInstanceConfigRequest
+        @param tmp_req: UpdateAgentInstanceConfigRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateAgentInstanceConfigResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = sls_20201230_models.UpdateAgentInstanceConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.attributes):
+            request.attributes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.attributes, 'attributes', 'json')
         query = {}
-        if not UtilClient.is_unset(request.attributes):
-            query['attributes'] = request.attributes
+        if not UtilClient.is_unset(request.attributes_shrink):
+            query['attributes'] = request.attributes_shrink
         body = {}
         if not UtilClient.is_unset(request.config):
             body['config'] = request.config
