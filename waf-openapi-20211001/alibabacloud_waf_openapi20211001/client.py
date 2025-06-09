@@ -791,6 +791,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
         if not UtilClient.is_unset(request.resource_manager_resource_group_id):
             query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
         if not UtilClient.is_unset(request.template_id):
@@ -838,6 +840,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
         if not UtilClient.is_unset(request.resource_manager_resource_group_id):
             query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
         if not UtilClient.is_unset(request.template_id):
@@ -2221,6 +2225,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
         if not UtilClient.is_unset(request.resource_manager_resource_group_id):
             query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
         if not UtilClient.is_unset(request.rule_ids):
@@ -2264,6 +2270,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
         if not UtilClient.is_unset(request.resource_manager_resource_group_id):
             query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
         if not UtilClient.is_unset(request.rule_ids):
@@ -2762,6 +2770,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_member_account_with_options_async(request, runtime)
+
+    def describe_abnormal_cloud_resources_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeAbnormalCloudResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeAbnormalCloudResourcesResponse:
+        """
+        @summary 查询异常的云产品接入资源
+        
+        @param request: DescribeAbnormalCloudResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAbnormalCloudResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAbnormalCloudResources',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeAbnormalCloudResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_abnormal_cloud_resources_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeAbnormalCloudResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeAbnormalCloudResourcesResponse:
+        """
+        @summary 查询异常的云产品接入资源
+        
+        @param request: DescribeAbnormalCloudResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAbnormalCloudResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAbnormalCloudResources',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeAbnormalCloudResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_abnormal_cloud_resources(
+        self,
+        request: waf_openapi_20211001_models.DescribeAbnormalCloudResourcesRequest,
+    ) -> waf_openapi_20211001_models.DescribeAbnormalCloudResourcesResponse:
+        """
+        @summary 查询异常的云产品接入资源
+        
+        @param request: DescribeAbnormalCloudResourcesRequest
+        @return: DescribeAbnormalCloudResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_abnormal_cloud_resources_with_options(request, runtime)
+
+    async def describe_abnormal_cloud_resources_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeAbnormalCloudResourcesRequest,
+    ) -> waf_openapi_20211001_models.DescribeAbnormalCloudResourcesResponse:
+        """
+        @summary 查询异常的云产品接入资源
+        
+        @param request: DescribeAbnormalCloudResourcesRequest
+        @return: DescribeAbnormalCloudResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_abnormal_cloud_resources_with_options_async(request, runtime)
 
     def describe_account_delegated_status_with_options(
         self,
@@ -6929,6 +7041,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
         if not UtilClient.is_unset(request.resource_manager_resource_group_id):
             query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
         if not UtilClient.is_unset(request.rule_id):
@@ -6972,6 +7086,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
         if not UtilClient.is_unset(request.resource_manager_resource_group_id):
             query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
         if not UtilClient.is_unset(request.rule_id):
@@ -16879,6 +16995,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
         if not UtilClient.is_unset(request.resource_manager_resource_group_id):
             query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
         if not UtilClient.is_unset(request.template_id):
@@ -16926,6 +17044,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
         if not UtilClient.is_unset(request.resource_manager_resource_group_id):
             query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
         if not UtilClient.is_unset(request.template_id):
@@ -19066,6 +19186,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_template_resources_with_options_async(request, runtime)
+
+    def re_create_cloud_resource_with_options(
+        self,
+        request: waf_openapi_20211001_models.ReCreateCloudResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.ReCreateCloudResourceResponse:
+        """
+        @summary 重新接入云产品
+        
+        @param request: ReCreateCloudResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReCreateCloudResourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_instance_id):
+            query['ResourceInstanceId'] = request.resource_instance_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.resource_product):
+            query['ResourceProduct'] = request.resource_product
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReCreateCloudResource',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ReCreateCloudResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def re_create_cloud_resource_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.ReCreateCloudResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.ReCreateCloudResourceResponse:
+        """
+        @summary 重新接入云产品
+        
+        @param request: ReCreateCloudResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReCreateCloudResourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_instance_id):
+            query['ResourceInstanceId'] = request.resource_instance_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.resource_product):
+            query['ResourceProduct'] = request.resource_product
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReCreateCloudResource',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ReCreateCloudResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def re_create_cloud_resource(
+        self,
+        request: waf_openapi_20211001_models.ReCreateCloudResourceRequest,
+    ) -> waf_openapi_20211001_models.ReCreateCloudResourceResponse:
+        """
+        @summary 重新接入云产品
+        
+        @param request: ReCreateCloudResourceRequest
+        @return: ReCreateCloudResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.re_create_cloud_resource_with_options(request, runtime)
+
+    async def re_create_cloud_resource_async(
+        self,
+        request: waf_openapi_20211001_models.ReCreateCloudResourceRequest,
+    ) -> waf_openapi_20211001_models.ReCreateCloudResourceResponse:
+        """
+        @summary 重新接入云产品
+        
+        @param request: ReCreateCloudResourceRequest
+        @return: ReCreateCloudResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.re_create_cloud_resource_with_options_async(request, runtime)
 
     def release_instance_with_options(
         self,

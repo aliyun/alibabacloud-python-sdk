@@ -1364,6 +1364,7 @@ class CreateDefenseRuleRequest(TeaModel):
         defense_scene: str = None,
         instance_id: str = None,
         region_id: str = None,
+        resource: str = None,
         resource_manager_resource_group_id: str = None,
         rules: str = None,
         template_id: int = None,
@@ -1394,6 +1395,7 @@ class CreateDefenseRuleRequest(TeaModel):
         # *   **cn-hangzhou:** the Chinese mainland.
         # *   **ap-southeast-1:** outside the Chinese mainland.
         self.region_id = region_id
+        self.resource = resource
         # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # This parameter is required.
@@ -1416,6 +1418,8 @@ class CreateDefenseRuleRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource is not None:
+            result['Resource'] = self.resource
         if self.resource_manager_resource_group_id is not None:
             result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
         if self.rules is not None:
@@ -1432,6 +1436,8 @@ class CreateDefenseRuleRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('Resource') is not None:
+            self.resource = m.get('Resource')
         if m.get('ResourceManagerResourceGroupId') is not None:
             self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
         if m.get('Rules') is not None:
@@ -3803,6 +3809,7 @@ class DeleteDefenseRuleRequest(TeaModel):
         self,
         instance_id: str = None,
         region_id: str = None,
+        resource: str = None,
         resource_manager_resource_group_id: str = None,
         rule_ids: str = None,
         template_id: int = None,
@@ -3818,6 +3825,7 @@ class DeleteDefenseRuleRequest(TeaModel):
         # *   **cn-hangzhou:** the Chinese mainland.
         # *   **ap-southeast-1:** outside the Chinese mainland.
         self.region_id = region_id
+        self.resource = resource
         # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The IDs of the protection rules that you want to delete. Separate the IDs with commas (,).
@@ -3840,6 +3848,8 @@ class DeleteDefenseRuleRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource is not None:
+            result['Resource'] = self.resource
         if self.resource_manager_resource_group_id is not None:
             result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
         if self.rule_ids is not None:
@@ -3854,6 +3864,8 @@ class DeleteDefenseRuleRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('Resource') is not None:
+            self.resource = m.get('Resource')
         if m.get('ResourceManagerResourceGroupId') is not None:
             self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
         if m.get('RuleIds') is not None:
@@ -4473,6 +4485,263 @@ class DeleteMemberAccountResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteMemberAccountResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeAbnormalCloudResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.region_id = region_id
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResourcesDetails(TeaModel):
+    def __init__(
+        self,
+        applied_type: str = None,
+        cert_name: str = None,
+        code: str = None,
+        common_name: str = None,
+        expire_time: int = None,
+        product_cert_id: str = None,
+        product_cert_name: str = None,
+        product_domain_extension: str = None,
+    ):
+        self.applied_type = applied_type
+        self.cert_name = cert_name
+        self.code = code
+        self.common_name = common_name
+        self.expire_time = expire_time
+        self.product_cert_id = product_cert_id
+        self.product_cert_name = product_cert_name
+        self.product_domain_extension = product_domain_extension
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.applied_type is not None:
+            result['AppliedType'] = self.applied_type
+        if self.cert_name is not None:
+            result['CertName'] = self.cert_name
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.common_name is not None:
+            result['CommonName'] = self.common_name
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.product_cert_id is not None:
+            result['ProductCertId'] = self.product_cert_id
+        if self.product_cert_name is not None:
+            result['ProductCertName'] = self.product_cert_name
+        if self.product_domain_extension is not None:
+            result['ProductDomainExtension'] = self.product_domain_extension
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppliedType') is not None:
+            self.applied_type = m.get('AppliedType')
+        if m.get('CertName') is not None:
+            self.cert_name = m.get('CertName')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('CommonName') is not None:
+            self.common_name = m.get('CommonName')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('ProductCertId') is not None:
+            self.product_cert_id = m.get('ProductCertId')
+        if m.get('ProductCertName') is not None:
+            self.product_cert_name = m.get('ProductCertName')
+        if m.get('ProductDomainExtension') is not None:
+            self.product_domain_extension = m.get('ProductDomainExtension')
+        return self
+
+
+class DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources(TeaModel):
+    def __init__(
+        self,
+        details: List[DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResourcesDetails] = None,
+        reason: str = None,
+        resource_instance_id: str = None,
+        resource_instance_name: str = None,
+        resource_instance_port: int = None,
+        resource_product: str = None,
+    ):
+        self.details = details
+        self.reason = reason
+        self.resource_instance_id = resource_instance_id
+        self.resource_instance_name = resource_instance_name
+        self.resource_instance_port = resource_instance_port
+        self.resource_product = resource_product
+
+    def validate(self):
+        if self.details:
+            for k in self.details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Details'] = []
+        if self.details is not None:
+            for k in self.details:
+                result['Details'].append(k.to_map() if k else None)
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.resource_instance_id is not None:
+            result['ResourceInstanceId'] = self.resource_instance_id
+        if self.resource_instance_name is not None:
+            result['ResourceInstanceName'] = self.resource_instance_name
+        if self.resource_instance_port is not None:
+            result['ResourceInstancePort'] = self.resource_instance_port
+        if self.resource_product is not None:
+            result['ResourceProduct'] = self.resource_product
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.details = []
+        if m.get('Details') is not None:
+            for k in m.get('Details'):
+                temp_model = DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResourcesDetails()
+                self.details.append(temp_model.from_map(k))
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('ResourceInstanceId') is not None:
+            self.resource_instance_id = m.get('ResourceInstanceId')
+        if m.get('ResourceInstanceName') is not None:
+            self.resource_instance_name = m.get('ResourceInstanceName')
+        if m.get('ResourceInstancePort') is not None:
+            self.resource_instance_port = m.get('ResourceInstancePort')
+        if m.get('ResourceProduct') is not None:
+            self.resource_product = m.get('ResourceProduct')
+        return self
+
+
+class DescribeAbnormalCloudResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        abnormal_cloud_resources: List[DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources] = None,
+        request_id: str = None,
+    ):
+        self.abnormal_cloud_resources = abnormal_cloud_resources
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.abnormal_cloud_resources:
+            for k in self.abnormal_cloud_resources:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AbnormalCloudResources'] = []
+        if self.abnormal_cloud_resources is not None:
+            for k in self.abnormal_cloud_resources:
+                result['AbnormalCloudResources'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.abnormal_cloud_resources = []
+        if m.get('AbnormalCloudResources') is not None:
+            for k in m.get('AbnormalCloudResources'):
+                temp_model = DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources()
+                self.abnormal_cloud_resources.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeAbnormalCloudResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAbnormalCloudResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAbnormalCloudResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -13319,6 +13588,7 @@ class DescribeDefenseRuleRequest(TeaModel):
         self,
         instance_id: str = None,
         region_id: str = None,
+        resource: str = None,
         resource_manager_resource_group_id: str = None,
         rule_id: int = None,
         template_id: int = None,
@@ -13334,6 +13604,7 @@ class DescribeDefenseRuleRequest(TeaModel):
         # *   **cn-hangzhou**: Chinese mainland.
         # *   **ap-southeast-1**: Outside the Chinese mainland.
         self.region_id = region_id
+        self.resource = resource
         # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The ID of the protection rule that you want to query.
@@ -13356,6 +13627,8 @@ class DescribeDefenseRuleRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource is not None:
+            result['Resource'] = self.resource
         if self.resource_manager_resource_group_id is not None:
             result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
         if self.rule_id is not None:
@@ -13370,6 +13643,8 @@ class DescribeDefenseRuleRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('Resource') is not None:
+            self.resource = m.get('Resource')
         if m.get('ResourceManagerResourceGroupId') is not None:
             self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
         if m.get('RuleId') is not None:
@@ -13386,6 +13661,7 @@ class DescribeDefenseRuleResponseBodyRule(TeaModel):
         defense_origin: str = None,
         defense_scene: str = None,
         gmt_modified: int = None,
+        resource: str = None,
         rule_id: int = None,
         rule_name: str = None,
         status: int = None,
@@ -13402,6 +13678,7 @@ class DescribeDefenseRuleResponseBodyRule(TeaModel):
         self.defense_scene = defense_scene
         # The most recent time when the protection rule was modified.
         self.gmt_modified = gmt_modified
+        self.resource = resource
         # The ID of the protection rule.
         self.rule_id = rule_id
         # The name of the protection rule.
@@ -13431,6 +13708,8 @@ class DescribeDefenseRuleResponseBodyRule(TeaModel):
             result['DefenseScene'] = self.defense_scene
         if self.gmt_modified is not None:
             result['GmtModified'] = self.gmt_modified
+        if self.resource is not None:
+            result['Resource'] = self.resource
         if self.rule_id is not None:
             result['RuleId'] = self.rule_id
         if self.rule_name is not None:
@@ -13451,6 +13730,8 @@ class DescribeDefenseRuleResponseBodyRule(TeaModel):
             self.defense_scene = m.get('DefenseScene')
         if m.get('GmtModified') is not None:
             self.gmt_modified = m.get('GmtModified')
+        if m.get('Resource') is not None:
+            self.resource = m.get('Resource')
         if m.get('RuleId') is not None:
             self.rule_id = m.get('RuleId')
         if m.get('RuleName') is not None:
@@ -13634,6 +13915,7 @@ class DescribeDefenseRulesResponseBodyRules(TeaModel):
         external_info: str = None,
         gmt_create: int = None,
         gmt_modified: int = None,
+        resource: str = None,
         rule_id: int = None,
         rule_name: str = None,
         rule_type: str = None,
@@ -13670,6 +13952,7 @@ class DescribeDefenseRulesResponseBodyRules(TeaModel):
         self.gmt_create = gmt_create
         # The most recent time when the protection rule was modified.
         self.gmt_modified = gmt_modified
+        self.resource = resource
         # The ID of the protection rule.
         self.rule_id = rule_id
         # The name of the protection rule.
@@ -13710,6 +13993,8 @@ class DescribeDefenseRulesResponseBodyRules(TeaModel):
             result['GmtCreate'] = self.gmt_create
         if self.gmt_modified is not None:
             result['GmtModified'] = self.gmt_modified
+        if self.resource is not None:
+            result['Resource'] = self.resource
         if self.rule_id is not None:
             result['RuleId'] = self.rule_id
         if self.rule_name is not None:
@@ -13742,6 +14027,8 @@ class DescribeDefenseRulesResponseBodyRules(TeaModel):
             self.gmt_create = m.get('GmtCreate')
         if m.get('GmtModified') is not None:
             self.gmt_modified = m.get('GmtModified')
+        if m.get('Resource') is not None:
+            self.resource = m.get('Resource')
         if m.get('RuleId') is not None:
             self.rule_id = m.get('RuleId')
         if m.get('RuleName') is not None:
@@ -34211,6 +34498,7 @@ class ModifyDefenseRuleRequest(TeaModel):
         defense_scene: str = None,
         instance_id: str = None,
         region_id: str = None,
+        resource: str = None,
         resource_manager_resource_group_id: str = None,
         rules: str = None,
         template_id: int = None,
@@ -34230,6 +34518,7 @@ class ModifyDefenseRuleRequest(TeaModel):
         # *   **cn-hangzhou:** the Chinese mainland.
         # *   **ap-southeast-1:** outside the Chinese mainland.
         self.region_id = region_id
+        self.resource = resource
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # This parameter is required.
@@ -34252,6 +34541,8 @@ class ModifyDefenseRuleRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource is not None:
+            result['Resource'] = self.resource
         if self.resource_manager_resource_group_id is not None:
             result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
         if self.rules is not None:
@@ -34268,6 +34559,8 @@ class ModifyDefenseRuleRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('Resource') is not None:
+            self.resource = m.get('Resource')
         if m.get('ResourceManagerResourceGroupId') is not None:
             self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
         if m.get('Rules') is not None:
@@ -37482,6 +37775,136 @@ class ModifyTemplateResourcesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyTemplateResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ReCreateCloudResourceRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        port: int = None,
+        region_id: str = None,
+        resource_instance_id: str = None,
+        resource_manager_resource_group_id: str = None,
+        resource_product: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.port = port
+        self.region_id = region_id
+        # This parameter is required.
+        self.resource_instance_id = resource_instance_id
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        # This parameter is required.
+        self.resource_product = resource_product
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_instance_id is not None:
+            result['ResourceInstanceId'] = self.resource_instance_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        if self.resource_product is not None:
+            result['ResourceProduct'] = self.resource_product
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceInstanceId') is not None:
+            self.resource_instance_id = m.get('ResourceInstanceId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        if m.get('ResourceProduct') is not None:
+            self.resource_product = m.get('ResourceProduct')
+        return self
+
+
+class ReCreateCloudResourceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ReCreateCloudResourceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ReCreateCloudResourceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ReCreateCloudResourceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

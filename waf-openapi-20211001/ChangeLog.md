@@ -1,3 +1,14 @@
+2025-06-09 Version: 5.2.0
+- Support API DescribeAbnormalCloudResources.
+- Support API ReCreateCloudResource.
+- Update API CreateDefenseRule: add request parameters Resource.
+- Update API DeleteDefenseRule: add request parameters Resource.
+- Update API DescribeDefenseRule: add request parameters Resource.
+- Update API DescribeDefenseRule: add response parameters Body.Rule.Resource.
+- Update API DescribeDefenseRules: add response parameters Body.Rules.$.Resource.
+- Update API ModifyDefenseRule: add request parameters Resource.
+
+
 2025-05-22 Version: 5.1.3
 - Update API DescribeCloudResourceAccessPortDetails: add response parameters Body.AccessPortDetails.$.SubStatus.
 - Update API DescribeCloudResourceAccessPortDetails: add response parameters Body.AccessPortDetails.$.SubStatusDetails.
