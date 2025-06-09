@@ -1,3 +1,7 @@
+2025-06-09 Version: 7.1.3
+- Update API CreateWorkflowInstances: add request parameters DefaultRunProperties.Priority.
+
+
 2025-06-05 Version: 7.1.2
 - Update API ListFunctions: add request parameters Name.
 - Update API ListNodes: add request parameters Name.

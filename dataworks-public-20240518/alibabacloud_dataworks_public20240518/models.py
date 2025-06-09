@@ -12857,6 +12857,7 @@ class CreateWorkflowInstancesRequestDefaultRunProperties(TeaModel):
         mode: str = None,
         order: str = None,
         parallelism: int = None,
+        priority: int = None,
         root_task_ids: List[int] = None,
         run_policy: CreateWorkflowInstancesRequestDefaultRunPropertiesRunPolicy = None,
         runtime_resource: str = None,
@@ -12887,6 +12888,7 @@ class CreateWorkflowInstancesRequestDefaultRunProperties(TeaModel):
         self.order = order
         # The number of tasks that can be run in parallel. If you specify the value to 2 to 10, the value indicates the number of tasks that can be run in parallel. If you specify the value to 1, the tasks are run one by one.
         self.parallelism = parallelism
+        self.priority = priority
         # The root task IDs.
         self.root_task_ids = root_task_ids
         # The data backfill policy. If you leave this parameter empty, the runtime configuration is used.
@@ -12926,6 +12928,8 @@ class CreateWorkflowInstancesRequestDefaultRunProperties(TeaModel):
             result['Order'] = self.order
         if self.parallelism is not None:
             result['Parallelism'] = self.parallelism
+        if self.priority is not None:
+            result['Priority'] = self.priority
         if self.root_task_ids is not None:
             result['RootTaskIds'] = self.root_task_ids
         if self.run_policy is not None:
@@ -12956,6 +12960,8 @@ class CreateWorkflowInstancesRequestDefaultRunProperties(TeaModel):
             self.order = m.get('Order')
         if m.get('Parallelism') is not None:
             self.parallelism = m.get('Parallelism')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
         if m.get('RootTaskIds') is not None:
             self.root_task_ids = m.get('RootTaskIds')
         if m.get('RunPolicy') is not None:
@@ -63875,12 +63881,19 @@ class UpdateBusinessRequest(TeaModel):
         project_id: int = None,
         project_identifier: str = None,
     ):
+        # The workflow ID. You can call the [ListBusiness](https://help.aliyun.com/document_detail/173945.html) operation to query the ID.
+        # 
         # This parameter is required.
         self.business_id = business_id
+        # The name of the workflow. You can call the [ListBusiness](https://help.aliyun.com/document_detail/173945.html) operation to query the name.
         self.business_name = business_name
+        # The description of the workflow.
         self.description = description
+        # The owner of the workflow. You can call the [ListBusiness](https://help.aliyun.com/document_detail/173945.html) operation to query the owner.
         self.owner = owner
+        # The DataWorks workspace ID. You can log on to the DataWorks console and go to the Workspace page to query the ID. You must configure either this parameter or the ProjectIdentifier parameter to determine the DataWorks workspace to which the operation is applied.
         self.project_id = project_id
+        # The name of the DataWorks workspace. You can log on to the DataWorks console and go to the Workspace page to query the workspace name. You must configure either this parameter or the ProjectId parameter to determine the DataWorks workspace to which the operation is applied.
         self.project_identifier = project_identifier
 
     def validate(self):
@@ -63932,10 +63945,18 @@ class UpdateBusinessResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # true\\
+        # false
         self.success = success
 
     def validate(self):

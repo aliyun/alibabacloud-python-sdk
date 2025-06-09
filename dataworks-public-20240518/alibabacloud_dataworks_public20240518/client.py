@@ -4475,6 +4475,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateWorkflowInstancesResponse:
         """
+        @summary 创建工作流实例
+        
         @param tmp_req: CreateWorkflowInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateWorkflowInstancesResponse
@@ -4534,6 +4536,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateWorkflowInstancesResponse:
         """
+        @summary 创建工作流实例
+        
         @param tmp_req: CreateWorkflowInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateWorkflowInstancesResponse
@@ -4592,6 +4596,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateWorkflowInstancesRequest,
     ) -> dataworks_public_20240518_models.CreateWorkflowInstancesResponse:
         """
+        @summary 创建工作流实例
+        
         @param request: CreateWorkflowInstancesRequest
         @return: CreateWorkflowInstancesResponse
         """
@@ -4603,6 +4609,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateWorkflowInstancesRequest,
     ) -> dataworks_public_20240518_models.CreateWorkflowInstancesResponse:
         """
+        @summary 创建工作流实例
+        
         @param request: CreateWorkflowInstancesRequest
         @return: CreateWorkflowInstancesResponse
         """
@@ -21421,6 +21429,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateBusinessResponse:
         """
+        @summary Updates a workflow.
+        
         @param request: UpdateBusinessRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateBusinessResponse
@@ -21464,6 +21474,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateBusinessResponse:
         """
+        @summary Updates a workflow.
+        
         @param request: UpdateBusinessRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateBusinessResponse
@@ -21506,6 +21518,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateBusinessRequest,
     ) -> dataworks_public_20240518_models.UpdateBusinessResponse:
         """
+        @summary Updates a workflow.
+        
         @param request: UpdateBusinessRequest
         @return: UpdateBusinessResponse
         """
@@ -21517,6 +21531,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateBusinessRequest,
     ) -> dataworks_public_20240518_models.UpdateBusinessResponse:
         """
+        @summary Updates a workflow.
+        
         @param request: UpdateBusinessRequest
         @return: UpdateBusinessResponse
         """
