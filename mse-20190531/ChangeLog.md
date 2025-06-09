@@ -2,6 +2,10 @@
 - Update API UpdateAcl: add request parameters NetworkType.
 
 
+2025-06-09 Version: 6.19.1
+- Update API UpdateAcl: add request parameters NetworkType.
+
+
 2025-05-08 Version: 6.19.0
 - Support API CreateWebFlowRule.
 - Support API DeleteWebFlowRules.
