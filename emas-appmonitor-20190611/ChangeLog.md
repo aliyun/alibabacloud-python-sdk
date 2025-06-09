@@ -1,3 +1,7 @@
+2025-06-09 Version: 1.2.1
+- Update API GetSymbolicFiles: add request parameters BuildId.
+
+
 2025-04-02 Version: 1.2.0
 - Support API GetSymbolicFiles.
 - Support API RequestUploadToken.

@@ -83,16 +83,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emas_appmonitor_20190611_models.GetErrorResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emas_appmonitor_20190611_models.GetErrorResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emas_appmonitor_20190611_models.GetErrorResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_error_with_options_async(
         self,
@@ -136,16 +130,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emas_appmonitor_20190611_models.GetErrorResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emas_appmonitor_20190611_models.GetErrorResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emas_appmonitor_20190611_models.GetErrorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_error(
         self,
@@ -226,16 +214,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emas_appmonitor_20190611_models.GetErrorsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emas_appmonitor_20190611_models.GetErrorsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emas_appmonitor_20190611_models.GetErrorsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_errors_with_options_async(
         self,
@@ -290,16 +272,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emas_appmonitor_20190611_models.GetErrorsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emas_appmonitor_20190611_models.GetErrorsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emas_appmonitor_20190611_models.GetErrorsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_errors(
         self,
@@ -374,16 +350,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emas_appmonitor_20190611_models.GetIssueResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emas_appmonitor_20190611_models.GetIssueResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emas_appmonitor_20190611_models.GetIssueResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_issue_with_options_async(
         self,
@@ -432,16 +402,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emas_appmonitor_20190611_models.GetIssueResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emas_appmonitor_20190611_models.GetIssueResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emas_appmonitor_20190611_models.GetIssueResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_issue(
         self,
@@ -526,16 +490,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emas_appmonitor_20190611_models.GetIssuesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emas_appmonitor_20190611_models.GetIssuesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emas_appmonitor_20190611_models.GetIssuesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_issues_with_options_async(
         self,
@@ -594,16 +552,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emas_appmonitor_20190611_models.GetIssuesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emas_appmonitor_20190611_models.GetIssuesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emas_appmonitor_20190611_models.GetIssuesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_issues(
         self,
@@ -637,6 +589,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emas_appmonitor_20190611_models.GetSymbolicFilesResponse:
         """
+        @summary 获取符号表文件列表
+        
         @param request: GetSymbolicFilesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetSymbolicFilesResponse
@@ -647,6 +601,8 @@ class Client(OpenApiClient):
             body['AppKey'] = request.app_key
         if not UtilClient.is_unset(request.app_version):
             body['AppVersion'] = request.app_version
+        if not UtilClient.is_unset(request.build_id):
+            body['BuildId'] = request.build_id
         if not UtilClient.is_unset(request.end_time):
             body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.export_status):
@@ -679,16 +635,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emas_appmonitor_20190611_models.GetSymbolicFilesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emas_appmonitor_20190611_models.GetSymbolicFilesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emas_appmonitor_20190611_models.GetSymbolicFilesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_symbolic_files_with_options_async(
         self,
@@ -696,6 +646,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emas_appmonitor_20190611_models.GetSymbolicFilesResponse:
         """
+        @summary 获取符号表文件列表
+        
         @param request: GetSymbolicFilesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetSymbolicFilesResponse
@@ -706,6 +658,8 @@ class Client(OpenApiClient):
             body['AppKey'] = request.app_key
         if not UtilClient.is_unset(request.app_version):
             body['AppVersion'] = request.app_version
+        if not UtilClient.is_unset(request.build_id):
+            body['BuildId'] = request.build_id
         if not UtilClient.is_unset(request.end_time):
             body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.export_status):
@@ -738,22 +692,18 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emas_appmonitor_20190611_models.GetSymbolicFilesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emas_appmonitor_20190611_models.GetSymbolicFilesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emas_appmonitor_20190611_models.GetSymbolicFilesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_symbolic_files(
         self,
         request: emas_appmonitor_20190611_models.GetSymbolicFilesRequest,
     ) -> emas_appmonitor_20190611_models.GetSymbolicFilesResponse:
         """
+        @summary 获取符号表文件列表
+        
         @param request: GetSymbolicFilesRequest
         @return: GetSymbolicFilesResponse
         """
@@ -765,6 +715,8 @@ class Client(OpenApiClient):
         request: emas_appmonitor_20190611_models.GetSymbolicFilesRequest,
     ) -> emas_appmonitor_20190611_models.GetSymbolicFilesResponse:
         """
+        @summary 获取符号表文件列表
+        
         @param request: GetSymbolicFilesRequest
         @return: GetSymbolicFilesResponse
         """
@@ -801,16 +753,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emas_appmonitor_20190611_models.RequestUploadTokenResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emas_appmonitor_20190611_models.RequestUploadTokenResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emas_appmonitor_20190611_models.RequestUploadTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def request_upload_token_with_options_async(
         self,
@@ -842,16 +788,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emas_appmonitor_20190611_models.RequestUploadTokenResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emas_appmonitor_20190611_models.RequestUploadTokenResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emas_appmonitor_20190611_models.RequestUploadTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def request_upload_token(
         self,
@@ -917,16 +857,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emas_appmonitor_20190611_models.SubmitSymbolicResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emas_appmonitor_20190611_models.SubmitSymbolicResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emas_appmonitor_20190611_models.SubmitSymbolicResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def submit_symbolic_with_options_async(
         self,
@@ -970,16 +904,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emas_appmonitor_20190611_models.SubmitSymbolicResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emas_appmonitor_20190611_models.SubmitSymbolicResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emas_appmonitor_20190611_models.SubmitSymbolicResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def submit_symbolic(
         self,

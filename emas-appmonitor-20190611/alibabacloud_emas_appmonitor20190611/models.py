@@ -3028,6 +3028,7 @@ class GetSymbolicFilesRequest(TeaModel):
         self,
         app_key: int = None,
         app_version: str = None,
+        build_id: str = None,
         end_time: int = None,
         export_status: str = None,
         file_name: str = None,
@@ -3043,6 +3044,7 @@ class GetSymbolicFilesRequest(TeaModel):
         # This parameter is required.
         self.app_key = app_key
         self.app_version = app_version
+        self.build_id = build_id
         self.end_time = end_time
         self.export_status = export_status
         self.file_name = file_name
@@ -3071,6 +3073,8 @@ class GetSymbolicFilesRequest(TeaModel):
             result['AppKey'] = self.app_key
         if self.app_version is not None:
             result['AppVersion'] = self.app_version
+        if self.build_id is not None:
+            result['BuildId'] = self.build_id
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.export_status is not None:
@@ -3097,6 +3101,8 @@ class GetSymbolicFilesRequest(TeaModel):
             self.app_key = m.get('AppKey')
         if m.get('AppVersion') is not None:
             self.app_version = m.get('AppVersion')
+        if m.get('BuildId') is not None:
+            self.build_id = m.get('BuildId')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('ExportStatus') is not None:
