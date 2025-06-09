@@ -3,6 +3,11 @@
 - Update API GetHotTopicBroadcast: add response parameters Body.Data.Data.$.Url.
 
 
+2025-06-09 Version: 1.26.5
+- Update API GetHotTopicBroadcast: add response parameters Body.Data.Data.$.PubTime.
+- Update API GetHotTopicBroadcast: add response parameters Body.Data.Data.$.Url.
+
+
 2025-06-05 Version: 1.26.4
 - Update API GetProperties: add response parameters Body.Data.MiaosouConfig.
 - Update API RunSearchGeneration: add request parameters ChatConfig.EnableThinking.
