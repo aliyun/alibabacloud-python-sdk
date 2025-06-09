@@ -959,6 +959,392 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_catalog_with_options_async(catalog, headers, runtime)
 
+    def get_catalog_summary_with_options(
+        self,
+        catalog_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.GetCatalogSummaryResponse:
+        """
+        @summary 查看表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCatalogSummaryResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetCatalogSummary',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/dlf/v1/storage-summary/{OpenApiUtilClient.get_encode_param(catalog_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.GetCatalogSummaryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_catalog_summary_with_options_async(
+        self,
+        catalog_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.GetCatalogSummaryResponse:
+        """
+        @summary 查看表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCatalogSummaryResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetCatalogSummary',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/dlf/v1/storage-summary/{OpenApiUtilClient.get_encode_param(catalog_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.GetCatalogSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_catalog_summary(
+        self,
+        catalog_id: str,
+    ) -> dlf_next_20250310_models.GetCatalogSummaryResponse:
+        """
+        @summary 查看表
+        
+        @return: GetCatalogSummaryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_catalog_summary_with_options(catalog_id, headers, runtime)
+
+    async def get_catalog_summary_async(
+        self,
+        catalog_id: str,
+    ) -> dlf_next_20250310_models.GetCatalogSummaryResponse:
+        """
+        @summary 查看表
+        
+        @return: GetCatalogSummaryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_catalog_summary_with_options_async(catalog_id, headers, runtime)
+
+    def get_catalog_summary_trend_with_options(
+        self,
+        catalog_id: str,
+        request: dlf_next_20250310_models.GetCatalogSummaryTrendRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.GetCatalogSummaryTrendResponse:
+        """
+        @summary 查看表
+        
+        @param request: GetCatalogSummaryTrendRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCatalogSummaryTrendResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_date):
+            query['endDate'] = request.end_date
+        if not UtilClient.is_unset(request.start_date):
+            query['startDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCatalogSummaryTrend',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/dlf/v1/storage-summary/{OpenApiUtilClient.get_encode_param(catalog_id)}/trend',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.GetCatalogSummaryTrendResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_catalog_summary_trend_with_options_async(
+        self,
+        catalog_id: str,
+        request: dlf_next_20250310_models.GetCatalogSummaryTrendRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.GetCatalogSummaryTrendResponse:
+        """
+        @summary 查看表
+        
+        @param request: GetCatalogSummaryTrendRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCatalogSummaryTrendResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_date):
+            query['endDate'] = request.end_date
+        if not UtilClient.is_unset(request.start_date):
+            query['startDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCatalogSummaryTrend',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/dlf/v1/storage-summary/{OpenApiUtilClient.get_encode_param(catalog_id)}/trend',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.GetCatalogSummaryTrendResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_catalog_summary_trend(
+        self,
+        catalog_id: str,
+        request: dlf_next_20250310_models.GetCatalogSummaryTrendRequest,
+    ) -> dlf_next_20250310_models.GetCatalogSummaryTrendResponse:
+        """
+        @summary 查看表
+        
+        @param request: GetCatalogSummaryTrendRequest
+        @return: GetCatalogSummaryTrendResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_catalog_summary_trend_with_options(catalog_id, request, headers, runtime)
+
+    async def get_catalog_summary_trend_async(
+        self,
+        catalog_id: str,
+        request: dlf_next_20250310_models.GetCatalogSummaryTrendRequest,
+    ) -> dlf_next_20250310_models.GetCatalogSummaryTrendResponse:
+        """
+        @summary 查看表
+        
+        @param request: GetCatalogSummaryTrendRequest
+        @return: GetCatalogSummaryTrendResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_catalog_summary_trend_with_options_async(catalog_id, request, headers, runtime)
+
+    def get_catalog_token_with_options(
+        self,
+        catalog: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.GetCatalogTokenResponse:
+        """
+        @summary 获取数据湖Catalog的临时访问凭证
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCatalogTokenResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetCatalogToken',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/dlf/v1/catalogs/{OpenApiUtilClient.get_encode_param(catalog)}/token',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.GetCatalogTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_catalog_token_with_options_async(
+        self,
+        catalog: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.GetCatalogTokenResponse:
+        """
+        @summary 获取数据湖Catalog的临时访问凭证
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCatalogTokenResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetCatalogToken',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/dlf/v1/catalogs/{OpenApiUtilClient.get_encode_param(catalog)}/token',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.GetCatalogTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_catalog_token(
+        self,
+        catalog: str,
+    ) -> dlf_next_20250310_models.GetCatalogTokenResponse:
+        """
+        @summary 获取数据湖Catalog的临时访问凭证
+        
+        @return: GetCatalogTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_catalog_token_with_options(catalog, headers, runtime)
+
+    async def get_catalog_token_async(
+        self,
+        catalog: str,
+    ) -> dlf_next_20250310_models.GetCatalogTokenResponse:
+        """
+        @summary 获取数据湖Catalog的临时访问凭证
+        
+        @return: GetCatalogTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_catalog_token_with_options_async(catalog, headers, runtime)
+
+    def get_database_summary_with_options(
+        self,
+        catalog_id: str,
+        database: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.GetDatabaseSummaryResponse:
+        """
+        @summary 查看表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatabaseSummaryResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetDatabaseSummary',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/dlf/v1/storage-summary/{OpenApiUtilClient.get_encode_param(catalog_id)}/databases/{OpenApiUtilClient.get_encode_param(database)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.GetDatabaseSummaryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_database_summary_with_options_async(
+        self,
+        catalog_id: str,
+        database: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.GetDatabaseSummaryResponse:
+        """
+        @summary 查看表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatabaseSummaryResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetDatabaseSummary',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/dlf/v1/storage-summary/{OpenApiUtilClient.get_encode_param(catalog_id)}/databases/{OpenApiUtilClient.get_encode_param(database)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.GetDatabaseSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_database_summary(
+        self,
+        catalog_id: str,
+        database: str,
+    ) -> dlf_next_20250310_models.GetDatabaseSummaryResponse:
+        """
+        @summary 查看表
+        
+        @return: GetDatabaseSummaryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_database_summary_with_options(catalog_id, database, headers, runtime)
+
+    async def get_database_summary_async(
+        self,
+        catalog_id: str,
+        database: str,
+    ) -> dlf_next_20250310_models.GetDatabaseSummaryResponse:
+        """
+        @summary 查看表
+        
+        @return: GetDatabaseSummaryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_database_summary_with_options_async(catalog_id, database, headers, runtime)
+
     def get_region_status_with_options(
         self,
         headers: Dict[str, str],
@@ -1144,6 +1530,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_role_with_options_async(request, headers, runtime)
+
+    def get_table_summary_with_options(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.GetTableSummaryResponse:
+        """
+        @summary 查看表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTableSummaryResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetTableSummary',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/dlf/v1/storage-summary/{OpenApiUtilClient.get_encode_param(catalog_id)}/databases/{OpenApiUtilClient.get_encode_param(database)}/tables/{OpenApiUtilClient.get_encode_param(table)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.GetTableSummaryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_table_summary_with_options_async(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.GetTableSummaryResponse:
+        """
+        @summary 查看表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTableSummaryResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetTableSummary',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/dlf/v1/storage-summary/{OpenApiUtilClient.get_encode_param(catalog_id)}/databases/{OpenApiUtilClient.get_encode_param(database)}/tables/{OpenApiUtilClient.get_encode_param(table)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.GetTableSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_table_summary(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+    ) -> dlf_next_20250310_models.GetTableSummaryResponse:
+        """
+        @summary 查看表
+        
+        @return: GetTableSummaryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_table_summary_with_options(catalog_id, database, table, headers, runtime)
+
+    async def get_table_summary_async(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+    ) -> dlf_next_20250310_models.GetTableSummaryResponse:
+        """
+        @summary 查看表
+        
+        @return: GetTableSummaryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_table_summary_with_options_async(catalog_id, database, table, headers, runtime)
 
     def get_user_with_options(
         self,
@@ -1468,6 +1952,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_catalogs_with_options_async(request, headers, runtime)
+
+    def list_partition_summaries_with_options(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+        request: dlf_next_20250310_models.ListPartitionSummariesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.ListPartitionSummariesResponse:
+        """
+        @summary 查看表
+        
+        @param request: ListPartitionSummariesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPartitionSummariesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.page_token):
+            query['pageToken'] = request.page_token
+        if not UtilClient.is_unset(request.partition_name_pattern):
+            query['partitionNamePattern'] = request.partition_name_pattern
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPartitionSummaries',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/dlf/v1/storage-summary/{OpenApiUtilClient.get_encode_param(catalog_id)}/databases/{OpenApiUtilClient.get_encode_param(database)}/tables/{OpenApiUtilClient.get_encode_param(table)}/partitions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.ListPartitionSummariesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_partition_summaries_with_options_async(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+        request: dlf_next_20250310_models.ListPartitionSummariesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.ListPartitionSummariesResponse:
+        """
+        @summary 查看表
+        
+        @param request: ListPartitionSummariesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPartitionSummariesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.page_token):
+            query['pageToken'] = request.page_token
+        if not UtilClient.is_unset(request.partition_name_pattern):
+            query['partitionNamePattern'] = request.partition_name_pattern
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPartitionSummaries',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/dlf/v1/storage-summary/{OpenApiUtilClient.get_encode_param(catalog_id)}/databases/{OpenApiUtilClient.get_encode_param(database)}/tables/{OpenApiUtilClient.get_encode_param(table)}/partitions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.ListPartitionSummariesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_partition_summaries(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+        request: dlf_next_20250310_models.ListPartitionSummariesRequest,
+    ) -> dlf_next_20250310_models.ListPartitionSummariesResponse:
+        """
+        @summary 查看表
+        
+        @param request: ListPartitionSummariesRequest
+        @return: ListPartitionSummariesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_partition_summaries_with_options(catalog_id, database, table, request, headers, runtime)
+
+    async def list_partition_summaries_async(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+        request: dlf_next_20250310_models.ListPartitionSummariesRequest,
+    ) -> dlf_next_20250310_models.ListPartitionSummariesResponse:
+        """
+        @summary 查看表
+        
+        @param request: ListPartitionSummariesRequest
+        @return: ListPartitionSummariesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_partition_summaries_with_options_async(catalog_id, database, table, request, headers, runtime)
 
     def list_permissions_with_options(
         self,

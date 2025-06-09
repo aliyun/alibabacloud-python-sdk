@@ -79,6 +79,266 @@ class Catalog(TeaModel):
         return self
 
 
+class MoMValues(TeaModel):
+    def __init__(
+        self,
+        current_value: int = None,
+        last_day_value: int = None,
+        last_month_value: int = None,
+    ):
+        # total
+        self.current_value = current_value
+        # daily addition
+        self.last_day_value = last_day_value
+        # monthly addition
+        self.last_month_value = last_month_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_value is not None:
+            result['currentValue'] = self.current_value
+        if self.last_day_value is not None:
+            result['lastDayValue'] = self.last_day_value
+        if self.last_month_value is not None:
+            result['lastMonthValue'] = self.last_month_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('currentValue') is not None:
+            self.current_value = m.get('currentValue')
+        if m.get('lastDayValue') is not None:
+            self.last_day_value = m.get('lastDayValue')
+        if m.get('lastMonthValue') is not None:
+            self.last_month_value = m.get('lastMonthValue')
+        return self
+
+
+class CatalogSummary(TeaModel):
+    def __init__(
+        self,
+        api_visit_count_monthly: int = None,
+        database_count: MoMValues = None,
+        generated_date: str = None,
+        partition_count: MoMValues = None,
+        table_count: MoMValues = None,
+        throughput_monthly: int = None,
+        total_file_count: MoMValues = None,
+        total_file_size_in_bytes: MoMValues = None,
+    ):
+        self.api_visit_count_monthly = api_visit_count_monthly
+        self.database_count = database_count
+        # Update date of the statistics
+        self.generated_date = generated_date
+        self.partition_count = partition_count
+        self.table_count = table_count
+        self.throughput_monthly = throughput_monthly
+        self.total_file_count = total_file_count
+        self.total_file_size_in_bytes = total_file_size_in_bytes
+
+    def validate(self):
+        if self.database_count:
+            self.database_count.validate()
+        if self.partition_count:
+            self.partition_count.validate()
+        if self.table_count:
+            self.table_count.validate()
+        if self.total_file_count:
+            self.total_file_count.validate()
+        if self.total_file_size_in_bytes:
+            self.total_file_size_in_bytes.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_visit_count_monthly is not None:
+            result['apiVisitCountMonthly'] = self.api_visit_count_monthly
+        if self.database_count is not None:
+            result['databaseCount'] = self.database_count.to_map()
+        if self.generated_date is not None:
+            result['generatedDate'] = self.generated_date
+        if self.partition_count is not None:
+            result['partitionCount'] = self.partition_count.to_map()
+        if self.table_count is not None:
+            result['tableCount'] = self.table_count.to_map()
+        if self.throughput_monthly is not None:
+            result['throughputMonthly'] = self.throughput_monthly
+        if self.total_file_count is not None:
+            result['totalFileCount'] = self.total_file_count.to_map()
+        if self.total_file_size_in_bytes is not None:
+            result['totalFileSizeInBytes'] = self.total_file_size_in_bytes.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('apiVisitCountMonthly') is not None:
+            self.api_visit_count_monthly = m.get('apiVisitCountMonthly')
+        if m.get('databaseCount') is not None:
+            temp_model = MoMValues()
+            self.database_count = temp_model.from_map(m['databaseCount'])
+        if m.get('generatedDate') is not None:
+            self.generated_date = m.get('generatedDate')
+        if m.get('partitionCount') is not None:
+            temp_model = MoMValues()
+            self.partition_count = temp_model.from_map(m['partitionCount'])
+        if m.get('tableCount') is not None:
+            temp_model = MoMValues()
+            self.table_count = temp_model.from_map(m['tableCount'])
+        if m.get('throughputMonthly') is not None:
+            self.throughput_monthly = m.get('throughputMonthly')
+        if m.get('totalFileCount') is not None:
+            temp_model = MoMValues()
+            self.total_file_count = temp_model.from_map(m['totalFileCount'])
+        if m.get('totalFileSizeInBytes') is not None:
+            temp_model = MoMValues()
+            self.total_file_size_in_bytes = temp_model.from_map(m['totalFileSizeInBytes'])
+        return self
+
+
+class DateSummary(TeaModel):
+    def __init__(
+        self,
+        date: str = None,
+        value: int = None,
+    ):
+        self.date = date
+        # Metric value at corresponding date
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.date is not None:
+            result['date'] = self.date
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('date') is not None:
+            self.date = m.get('date')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class CatalogSummaryTrend(TeaModel):
+    def __init__(
+        self,
+        api_visit_count: List[DateSummary] = None,
+        throughput: List[DateSummary] = None,
+        total_file_count: List[DateSummary] = None,
+        total_file_size_in_bytes: List[DateSummary] = None,
+        total_meta_count: List[DateSummary] = None,
+    ):
+        # API visit count trends
+        self.api_visit_count = api_visit_count
+        # Table count trends
+        self.throughput = throughput
+        # Historical total file count
+        self.total_file_count = total_file_count
+        # Database count trends
+        self.total_file_size_in_bytes = total_file_size_in_bytes
+        # Latest snapshot file count
+        self.total_meta_count = total_meta_count
+
+    def validate(self):
+        if self.api_visit_count:
+            for k in self.api_visit_count:
+                if k:
+                    k.validate()
+        if self.throughput:
+            for k in self.throughput:
+                if k:
+                    k.validate()
+        if self.total_file_count:
+            for k in self.total_file_count:
+                if k:
+                    k.validate()
+        if self.total_file_size_in_bytes:
+            for k in self.total_file_size_in_bytes:
+                if k:
+                    k.validate()
+        if self.total_meta_count:
+            for k in self.total_meta_count:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['apiVisitCount'] = []
+        if self.api_visit_count is not None:
+            for k in self.api_visit_count:
+                result['apiVisitCount'].append(k.to_map() if k else None)
+        result['throughput'] = []
+        if self.throughput is not None:
+            for k in self.throughput:
+                result['throughput'].append(k.to_map() if k else None)
+        result['totalFileCount'] = []
+        if self.total_file_count is not None:
+            for k in self.total_file_count:
+                result['totalFileCount'].append(k.to_map() if k else None)
+        result['totalFileSizeInBytes'] = []
+        if self.total_file_size_in_bytes is not None:
+            for k in self.total_file_size_in_bytes:
+                result['totalFileSizeInBytes'].append(k.to_map() if k else None)
+        result['totalMetaCount'] = []
+        if self.total_meta_count is not None:
+            for k in self.total_meta_count:
+                result['totalMetaCount'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.api_visit_count = []
+        if m.get('apiVisitCount') is not None:
+            for k in m.get('apiVisitCount'):
+                temp_model = DateSummary()
+                self.api_visit_count.append(temp_model.from_map(k))
+        self.throughput = []
+        if m.get('throughput') is not None:
+            for k in m.get('throughput'):
+                temp_model = DateSummary()
+                self.throughput.append(temp_model.from_map(k))
+        self.total_file_count = []
+        if m.get('totalFileCount') is not None:
+            for k in m.get('totalFileCount'):
+                temp_model = DateSummary()
+                self.total_file_count.append(temp_model.from_map(k))
+        self.total_file_size_in_bytes = []
+        if m.get('totalFileSizeInBytes') is not None:
+            for k in m.get('totalFileSizeInBytes'):
+                temp_model = DateSummary()
+                self.total_file_size_in_bytes.append(temp_model.from_map(k))
+        self.total_meta_count = []
+        if m.get('totalMetaCount') is not None:
+            for k in m.get('totalMetaCount'):
+                temp_model = DateSummary()
+                self.total_meta_count.append(temp_model.from_map(k))
+        return self
+
+
 class FullDataType(TeaModel):
     def __init__(
         self,
@@ -266,6 +526,81 @@ class Database(TeaModel):
             self.updated_at = m.get('updatedAt')
         if m.get('updatedBy') is not None:
             self.updated_by = m.get('updatedBy')
+        return self
+
+
+class DatabaseSummary(TeaModel):
+    def __init__(
+        self,
+        created_at: int = None,
+        database_name: str = None,
+        generated_date: str = None,
+        location: str = None,
+        partition_count: int = None,
+        table_count: int = None,
+        total_file_count: int = None,
+        total_file_size_in_bytes: int = None,
+    ):
+        # Creation timestamp in milliseconds
+        self.created_at = created_at
+        # 库名 - Database name
+        self.database_name = database_name
+        # Last profile update date in format yyyyMMdd
+        self.generated_date = generated_date
+        # Storage location URI
+        self.location = location
+        self.partition_count = partition_count
+        # Total storage in bytes
+        self.table_count = table_count
+        self.total_file_count = total_file_count
+        # Total file count
+        self.total_file_size_in_bytes = total_file_size_in_bytes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_at is not None:
+            result['createdAt'] = self.created_at
+        if self.database_name is not None:
+            result['databaseName'] = self.database_name
+        if self.generated_date is not None:
+            result['generatedDate'] = self.generated_date
+        if self.location is not None:
+            result['location'] = self.location
+        if self.partition_count is not None:
+            result['partitionCount'] = self.partition_count
+        if self.table_count is not None:
+            result['tableCount'] = self.table_count
+        if self.total_file_count is not None:
+            result['totalFileCount'] = self.total_file_count
+        if self.total_file_size_in_bytes is not None:
+            result['totalFileSizeInBytes'] = self.total_file_size_in_bytes
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createdAt') is not None:
+            self.created_at = m.get('createdAt')
+        if m.get('databaseName') is not None:
+            self.database_name = m.get('databaseName')
+        if m.get('generatedDate') is not None:
+            self.generated_date = m.get('generatedDate')
+        if m.get('location') is not None:
+            self.location = m.get('location')
+        if m.get('partitionCount') is not None:
+            self.partition_count = m.get('partitionCount')
+        if m.get('tableCount') is not None:
+            self.table_count = m.get('tableCount')
+        if m.get('totalFileCount') is not None:
+            self.total_file_count = m.get('totalFileCount')
+        if m.get('totalFileSizeInBytes') is not None:
+            self.total_file_size_in_bytes = m.get('totalFileSizeInBytes')
         return self
 
 
@@ -665,6 +1000,124 @@ class Partition(TeaModel):
             self.updated_at = m.get('updatedAt')
         if m.get('updatedBy') is not None:
             self.updated_by = m.get('updatedBy')
+        return self
+
+
+class PartitionSummary(TeaModel):
+    def __init__(
+        self,
+        created_at: int = None,
+        database_name: str = None,
+        last_access_time: int = None,
+        partition_name: str = None,
+        table_name: str = None,
+        total_file_count: int = None,
+        total_file_size_in_bytes: int = None,
+        updated_at: int = None,
+    ):
+        # Partition creation timestamp in milliseconds
+        self.created_at = created_at
+        # Database name
+        self.database_name = database_name
+        # Total files in partition
+        self.last_access_time = last_access_time
+        # Partition identifier
+        self.partition_name = partition_name
+        # Table name
+        self.table_name = table_name
+        # 24h access count
+        self.total_file_count = total_file_count
+        # Last data access timestamp in milliseconds
+        self.total_file_size_in_bytes = total_file_size_in_bytes
+        self.updated_at = updated_at
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_at is not None:
+            result['createdAt'] = self.created_at
+        if self.database_name is not None:
+            result['databaseName'] = self.database_name
+        if self.last_access_time is not None:
+            result['lastAccessTime'] = self.last_access_time
+        if self.partition_name is not None:
+            result['partitionName'] = self.partition_name
+        if self.table_name is not None:
+            result['tableName'] = self.table_name
+        if self.total_file_count is not None:
+            result['totalFileCount'] = self.total_file_count
+        if self.total_file_size_in_bytes is not None:
+            result['totalFileSizeInBytes'] = self.total_file_size_in_bytes
+        if self.updated_at is not None:
+            result['updatedAt'] = self.updated_at
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createdAt') is not None:
+            self.created_at = m.get('createdAt')
+        if m.get('databaseName') is not None:
+            self.database_name = m.get('databaseName')
+        if m.get('lastAccessTime') is not None:
+            self.last_access_time = m.get('lastAccessTime')
+        if m.get('partitionName') is not None:
+            self.partition_name = m.get('partitionName')
+        if m.get('tableName') is not None:
+            self.table_name = m.get('tableName')
+        if m.get('totalFileCount') is not None:
+            self.total_file_count = m.get('totalFileCount')
+        if m.get('totalFileSizeInBytes') is not None:
+            self.total_file_size_in_bytes = m.get('totalFileSizeInBytes')
+        if m.get('updatedAt') is not None:
+            self.updated_at = m.get('updatedAt')
+        return self
+
+
+class PartitionSummaries(TeaModel):
+    def __init__(
+        self,
+        next_page_token: str = None,
+        partitions: List[PartitionSummary] = None,
+    ):
+        self.next_page_token = next_page_token
+        # Current page of partition profiles
+        self.partitions = partitions
+
+    def validate(self):
+        if self.partitions:
+            for k in self.partitions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_page_token is not None:
+            result['nextPageToken'] = self.next_page_token
+        result['partitions'] = []
+        if self.partitions is not None:
+            for k in self.partitions:
+                result['partitions'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('nextPageToken') is not None:
+            self.next_page_token = m.get('nextPageToken')
+        self.partitions = []
+        if m.get('partitions') is not None:
+            for k in m.get('partitions'):
+                temp_model = PartitionSummary()
+                self.partitions.append(temp_model.from_map(k))
         return self
 
 
@@ -1153,6 +1606,86 @@ class TableSnapshot(TeaModel):
         if m.get('snapshot') is not None:
             temp_model = Snapshot()
             self.snapshot = temp_model.from_map(m['snapshot'])
+        return self
+
+
+class TableSummary(TeaModel):
+    def __init__(
+        self,
+        created_at: int = None,
+        database_name: str = None,
+        generated_date: str = None,
+        last_access_time: int = None,
+        partition_count: int = None,
+        path: str = None,
+        table_name: str = None,
+        total_file_count: int = None,
+        total_file_size_in_bytes: int = None,
+    ):
+        # Latest snapshot storage size
+        self.created_at = created_at
+        # Database name
+        self.database_name = database_name
+        self.generated_date = generated_date
+        self.last_access_time = last_access_time
+        # Creation timestamp in milliseconds
+        self.partition_count = partition_count
+        self.path = path
+        # Table name
+        self.table_name = table_name
+        # 30-day access count
+        self.total_file_count = total_file_count
+        self.total_file_size_in_bytes = total_file_size_in_bytes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_at is not None:
+            result['createdAt'] = self.created_at
+        if self.database_name is not None:
+            result['databaseName'] = self.database_name
+        if self.generated_date is not None:
+            result['generatedDate'] = self.generated_date
+        if self.last_access_time is not None:
+            result['lastAccessTime'] = self.last_access_time
+        if self.partition_count is not None:
+            result['partitionCount'] = self.partition_count
+        if self.path is not None:
+            result['path'] = self.path
+        if self.table_name is not None:
+            result['tableName'] = self.table_name
+        if self.total_file_count is not None:
+            result['totalFileCount'] = self.total_file_count
+        if self.total_file_size_in_bytes is not None:
+            result['totalFileSizeInBytes'] = self.total_file_size_in_bytes
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createdAt') is not None:
+            self.created_at = m.get('createdAt')
+        if m.get('databaseName') is not None:
+            self.database_name = m.get('databaseName')
+        if m.get('generatedDate') is not None:
+            self.generated_date = m.get('generatedDate')
+        if m.get('lastAccessTime') is not None:
+            self.last_access_time = m.get('lastAccessTime')
+        if m.get('partitionCount') is not None:
+            self.partition_count = m.get('partitionCount')
+        if m.get('path') is not None:
+            self.path = m.get('path')
+        if m.get('tableName') is not None:
+            self.table_name = m.get('tableName')
+        if m.get('totalFileCount') is not None:
+            self.total_file_count = m.get('totalFileCount')
+        if m.get('totalFileSizeInBytes') is not None:
+            self.total_file_size_in_bytes = m.get('totalFileSizeInBytes')
         return self
 
 
@@ -1918,6 +2451,238 @@ class GetCatalogResponse(TeaModel):
         return self
 
 
+class GetCatalogSummaryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CatalogSummary = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CatalogSummary()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetCatalogSummaryTrendRequest(TeaModel):
+    def __init__(
+        self,
+        end_date: str = None,
+        start_date: str = None,
+    ):
+        # This parameter is required.
+        self.end_date = end_date
+        # This parameter is required.
+        self.start_date = start_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_date is not None:
+            result['endDate'] = self.end_date
+        if self.start_date is not None:
+            result['startDate'] = self.start_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endDate') is not None:
+            self.end_date = m.get('endDate')
+        if m.get('startDate') is not None:
+            self.start_date = m.get('startDate')
+        return self
+
+
+class GetCatalogSummaryTrendResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CatalogSummaryTrend = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CatalogSummaryTrend()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetCatalogTokenResponseBody(TeaModel):
+    def __init__(
+        self,
+        expires_at_millis: int = None,
+        token: Dict[str, str] = None,
+    ):
+        self.expires_at_millis = expires_at_millis
+        self.token = token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expires_at_millis is not None:
+            result['expiresAtMillis'] = self.expires_at_millis
+        if self.token is not None:
+            result['token'] = self.token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('expiresAtMillis') is not None:
+            self.expires_at_millis = m.get('expiresAtMillis')
+        if m.get('token') is not None:
+            self.token = m.get('token')
+        return self
+
+
+class GetCatalogTokenResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetCatalogTokenResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetCatalogTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDatabaseSummaryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DatabaseSummary = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DatabaseSummary()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetRegionStatusResponseBody(TeaModel):
     def __init__(
         self,
@@ -2056,6 +2821,47 @@ class GetRoleResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = Role()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetTableSummaryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TableSummary = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TableSummary()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2311,6 +3117,86 @@ class ListCatalogsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListCatalogsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListPartitionSummariesRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        page_token: str = None,
+        partition_name_pattern: str = None,
+    ):
+        self.max_results = max_results
+        self.page_token = page_token
+        self.partition_name_pattern = partition_name_pattern
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.page_token is not None:
+            result['pageToken'] = self.page_token
+        if self.partition_name_pattern is not None:
+            result['partitionNamePattern'] = self.partition_name_pattern
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('pageToken') is not None:
+            self.page_token = m.get('pageToken')
+        if m.get('partitionNamePattern') is not None:
+            self.partition_name_pattern = m.get('partitionNamePattern')
+        return self
+
+
+class ListPartitionSummariesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PartitionSummaries = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PartitionSummaries()
             self.body = temp_model.from_map(m['body'])
         return self
 
