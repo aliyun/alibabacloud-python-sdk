@@ -41,6 +41,150 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_prins_instance_with_options(
+        self,
+        tmp_req: cddc_20200320_models.AddPrinsInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cddc_20200320_models.AddPrinsInstanceResponse:
+        """
+        @summary 纳管实例
+        
+        @param tmp_req: AddPrinsInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddPrinsInstanceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cddc_20200320_models.AddPrinsInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.disk):
+            request.disk_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.disk, 'Disk', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.alias):
+            query['Alias'] = request.alias
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.disk_shrink):
+            query['Disk'] = request.disk_shrink
+        if not UtilClient.is_unset(request.ecs_instance_id):
+            query['EcsInstanceId'] = request.ecs_instance_id
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.ip):
+            query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
+        if not UtilClient.is_unset(request.username):
+            query['Username'] = request.username
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddPrinsInstance',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cddc_20200320_models.AddPrinsInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_prins_instance_with_options_async(
+        self,
+        tmp_req: cddc_20200320_models.AddPrinsInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cddc_20200320_models.AddPrinsInstanceResponse:
+        """
+        @summary 纳管实例
+        
+        @param tmp_req: AddPrinsInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddPrinsInstanceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cddc_20200320_models.AddPrinsInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.disk):
+            request.disk_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.disk, 'Disk', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.alias):
+            query['Alias'] = request.alias
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.disk_shrink):
+            query['Disk'] = request.disk_shrink
+        if not UtilClient.is_unset(request.ecs_instance_id):
+            query['EcsInstanceId'] = request.ecs_instance_id
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.ip):
+            query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
+        if not UtilClient.is_unset(request.username):
+            query['Username'] = request.username
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddPrinsInstance',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cddc_20200320_models.AddPrinsInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_prins_instance(
+        self,
+        request: cddc_20200320_models.AddPrinsInstanceRequest,
+    ) -> cddc_20200320_models.AddPrinsInstanceResponse:
+        """
+        @summary 纳管实例
+        
+        @param request: AddPrinsInstanceRequest
+        @return: AddPrinsInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.add_prins_instance_with_options(request, runtime)
+
+    async def add_prins_instance_async(
+        self,
+        request: cddc_20200320_models.AddPrinsInstanceRequest,
+    ) -> cddc_20200320_models.AddPrinsInstanceResponse:
+        """
+        @summary 纳管实例
+        
+        @param request: AddPrinsInstanceRequest
+        @return: AddPrinsInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.add_prins_instance_with_options_async(request, runtime)
+
     def create_dedicated_host_with_options(
         self,
         tmp_req: cddc_20200320_models.CreateDedicatedHostRequest,
@@ -752,6 +896,134 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_my_base_with_options_async(request, runtime)
+
+    def create_prins_backup_plan_with_options(
+        self,
+        request: cddc_20200320_models.CreatePrinsBackupPlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cddc_20200320_models.CreatePrinsBackupPlanResponse:
+        """
+        @summary 创建备份计划
+        
+        @param request: CreatePrinsBackupPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePrinsBackupPlanResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_period):
+            query['BackupPeriod'] = request.backup_period
+        if not UtilClient.is_unset(request.backup_plan_name):
+            query['BackupPlanName'] = request.backup_plan_name
+        if not UtilClient.is_unset(request.backup_start_time):
+            query['BackupStartTime'] = request.backup_start_time
+        if not UtilClient.is_unset(request.ecs_instance_id):
+            query['EcsInstanceId'] = request.ecs_instance_id
+        if not UtilClient.is_unset(request.instance_class):
+            query['InstanceClass'] = request.instance_class
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.used_time):
+            query['UsedTime'] = request.used_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreatePrinsBackupPlan',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cddc_20200320_models.CreatePrinsBackupPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_prins_backup_plan_with_options_async(
+        self,
+        request: cddc_20200320_models.CreatePrinsBackupPlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cddc_20200320_models.CreatePrinsBackupPlanResponse:
+        """
+        @summary 创建备份计划
+        
+        @param request: CreatePrinsBackupPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePrinsBackupPlanResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_period):
+            query['BackupPeriod'] = request.backup_period
+        if not UtilClient.is_unset(request.backup_plan_name):
+            query['BackupPlanName'] = request.backup_plan_name
+        if not UtilClient.is_unset(request.backup_start_time):
+            query['BackupStartTime'] = request.backup_start_time
+        if not UtilClient.is_unset(request.ecs_instance_id):
+            query['EcsInstanceId'] = request.ecs_instance_id
+        if not UtilClient.is_unset(request.instance_class):
+            query['InstanceClass'] = request.instance_class
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.used_time):
+            query['UsedTime'] = request.used_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreatePrinsBackupPlan',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cddc_20200320_models.CreatePrinsBackupPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_prins_backup_plan(
+        self,
+        request: cddc_20200320_models.CreatePrinsBackupPlanRequest,
+    ) -> cddc_20200320_models.CreatePrinsBackupPlanResponse:
+        """
+        @summary 创建备份计划
+        
+        @param request: CreatePrinsBackupPlanRequest
+        @return: CreatePrinsBackupPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_prins_backup_plan_with_options(request, runtime)
+
+    async def create_prins_backup_plan_async(
+        self,
+        request: cddc_20200320_models.CreatePrinsBackupPlanRequest,
+    ) -> cddc_20200320_models.CreatePrinsBackupPlanResponse:
+        """
+        @summary 创建备份计划
+        
+        @param request: CreatePrinsBackupPlanRequest
+        @return: CreatePrinsBackupPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_prins_backup_plan_with_options_async(request, runtime)
 
     def delete_dedicated_host_account_with_options(
         self,
@@ -1749,6 +2021,338 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_host_web_shell_with_options_async(request, runtime)
 
+    def describe_prins_backup_plan_with_options(
+        self,
+        request: cddc_20200320_models.DescribePrinsBackupPlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cddc_20200320_models.DescribePrinsBackupPlanResponse:
+        """
+        @summary 查询备份计划详情
+        
+        @param request: DescribePrinsBackupPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePrinsBackupPlanResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePrinsBackupPlan',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cddc_20200320_models.DescribePrinsBackupPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_prins_backup_plan_with_options_async(
+        self,
+        request: cddc_20200320_models.DescribePrinsBackupPlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cddc_20200320_models.DescribePrinsBackupPlanResponse:
+        """
+        @summary 查询备份计划详情
+        
+        @param request: DescribePrinsBackupPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePrinsBackupPlanResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePrinsBackupPlan',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cddc_20200320_models.DescribePrinsBackupPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_prins_backup_plan(
+        self,
+        request: cddc_20200320_models.DescribePrinsBackupPlanRequest,
+    ) -> cddc_20200320_models.DescribePrinsBackupPlanResponse:
+        """
+        @summary 查询备份计划详情
+        
+        @param request: DescribePrinsBackupPlanRequest
+        @return: DescribePrinsBackupPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_prins_backup_plan_with_options(request, runtime)
+
+    async def describe_prins_backup_plan_async(
+        self,
+        request: cddc_20200320_models.DescribePrinsBackupPlanRequest,
+    ) -> cddc_20200320_models.DescribePrinsBackupPlanResponse:
+        """
+        @summary 查询备份计划详情
+        
+        @param request: DescribePrinsBackupPlanRequest
+        @return: DescribePrinsBackupPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_prins_backup_plan_with_options_async(request, runtime)
+
+    def describe_prins_ecs_instances_with_options(
+        self,
+        request: cddc_20200320_models.DescribePrinsEcsInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cddc_20200320_models.DescribePrinsEcsInstancesResponse:
+        """
+        @summary 查询ecs实例信息列表
+        
+        @param request: DescribePrinsEcsInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePrinsEcsInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ecs_instance_id):
+            query['EcsInstanceId'] = request.ecs_instance_id
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePrinsEcsInstances',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cddc_20200320_models.DescribePrinsEcsInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_prins_ecs_instances_with_options_async(
+        self,
+        request: cddc_20200320_models.DescribePrinsEcsInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cddc_20200320_models.DescribePrinsEcsInstancesResponse:
+        """
+        @summary 查询ecs实例信息列表
+        
+        @param request: DescribePrinsEcsInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePrinsEcsInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ecs_instance_id):
+            query['EcsInstanceId'] = request.ecs_instance_id
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePrinsEcsInstances',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cddc_20200320_models.DescribePrinsEcsInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_prins_ecs_instances(
+        self,
+        request: cddc_20200320_models.DescribePrinsEcsInstancesRequest,
+    ) -> cddc_20200320_models.DescribePrinsEcsInstancesResponse:
+        """
+        @summary 查询ecs实例信息列表
+        
+        @param request: DescribePrinsEcsInstancesRequest
+        @return: DescribePrinsEcsInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_prins_ecs_instances_with_options(request, runtime)
+
+    async def describe_prins_ecs_instances_async(
+        self,
+        request: cddc_20200320_models.DescribePrinsEcsInstancesRequest,
+    ) -> cddc_20200320_models.DescribePrinsEcsInstancesResponse:
+        """
+        @summary 查询ecs实例信息列表
+        
+        @param request: DescribePrinsEcsInstancesRequest
+        @return: DescribePrinsEcsInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_prins_ecs_instances_with_options_async(request, runtime)
+
+    def describe_prins_instance_with_options(
+        self,
+        request: cddc_20200320_models.DescribePrinsInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cddc_20200320_models.DescribePrinsInstanceResponse:
+        """
+        @summary 获取纳管实例详情
+        
+        @param request: DescribePrinsInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePrinsInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.discover):
+            query['Discover'] = request.discover
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePrinsInstance',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cddc_20200320_models.DescribePrinsInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_prins_instance_with_options_async(
+        self,
+        request: cddc_20200320_models.DescribePrinsInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cddc_20200320_models.DescribePrinsInstanceResponse:
+        """
+        @summary 获取纳管实例详情
+        
+        @param request: DescribePrinsInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePrinsInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.discover):
+            query['Discover'] = request.discover
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePrinsInstance',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cddc_20200320_models.DescribePrinsInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_prins_instance(
+        self,
+        request: cddc_20200320_models.DescribePrinsInstanceRequest,
+    ) -> cddc_20200320_models.DescribePrinsInstanceResponse:
+        """
+        @summary 获取纳管实例详情
+        
+        @param request: DescribePrinsInstanceRequest
+        @return: DescribePrinsInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_prins_instance_with_options(request, runtime)
+
+    async def describe_prins_instance_async(
+        self,
+        request: cddc_20200320_models.DescribePrinsInstanceRequest,
+    ) -> cddc_20200320_models.DescribePrinsInstanceResponse:
+        """
+        @summary 获取纳管实例详情
+        
+        @param request: DescribePrinsInstanceRequest
+        @return: DescribePrinsInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_prins_instance_with_options_async(request, runtime)
+
     def describe_regions_with_options(
         self,
         request: cddc_20200320_models.DescribeRegionsRequest,
@@ -1852,6 +2456,594 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
+
+    def get_prins_event_list_with_options(
+        self,
+        request: cddc_20200320_models.GetPrinsEventListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cddc_20200320_models.GetPrinsEventListResponse:
+        """
+        @summary 获取事件列表
+        
+        @param request: GetPrinsEventListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPrinsEventListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPrinsEventList',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cddc_20200320_models.GetPrinsEventListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_prins_event_list_with_options_async(
+        self,
+        request: cddc_20200320_models.GetPrinsEventListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cddc_20200320_models.GetPrinsEventListResponse:
+        """
+        @summary 获取事件列表
+        
+        @param request: GetPrinsEventListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPrinsEventListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPrinsEventList',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cddc_20200320_models.GetPrinsEventListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_prins_event_list(
+        self,
+        request: cddc_20200320_models.GetPrinsEventListRequest,
+    ) -> cddc_20200320_models.GetPrinsEventListResponse:
+        """
+        @summary 获取事件列表
+        
+        @param request: GetPrinsEventListRequest
+        @return: GetPrinsEventListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_prins_event_list_with_options(request, runtime)
+
+    async def get_prins_event_list_async(
+        self,
+        request: cddc_20200320_models.GetPrinsEventListRequest,
+    ) -> cddc_20200320_models.GetPrinsEventListResponse:
+        """
+        @summary 获取事件列表
+        
+        @param request: GetPrinsEventListRequest
+        @return: GetPrinsEventListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_prins_event_list_with_options_async(request, runtime)
+
+    def get_prins_metrics_list_with_options(
+        self,
+        request: cddc_20200320_models.GetPrinsMetricsListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cddc_20200320_models.GetPrinsMetricsListResponse:
+        """
+        @summary 获取纳管实例性能指标数据
+        
+        @param request: GetPrinsMetricsListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPrinsMetricsListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.metrics):
+            query['Metrics'] = request.metrics
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPrinsMetricsList',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cddc_20200320_models.GetPrinsMetricsListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_prins_metrics_list_with_options_async(
+        self,
+        request: cddc_20200320_models.GetPrinsMetricsListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cddc_20200320_models.GetPrinsMetricsListResponse:
+        """
+        @summary 获取纳管实例性能指标数据
+        
+        @param request: GetPrinsMetricsListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPrinsMetricsListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.metrics):
+            query['Metrics'] = request.metrics
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPrinsMetricsList',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cddc_20200320_models.GetPrinsMetricsListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_prins_metrics_list(
+        self,
+        request: cddc_20200320_models.GetPrinsMetricsListRequest,
+    ) -> cddc_20200320_models.GetPrinsMetricsListResponse:
+        """
+        @summary 获取纳管实例性能指标数据
+        
+        @param request: GetPrinsMetricsListRequest
+        @return: GetPrinsMetricsListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_prins_metrics_list_with_options(request, runtime)
+
+    async def get_prins_metrics_list_async(
+        self,
+        request: cddc_20200320_models.GetPrinsMetricsListRequest,
+    ) -> cddc_20200320_models.GetPrinsMetricsListResponse:
+        """
+        @summary 获取纳管实例性能指标数据
+        
+        @param request: GetPrinsMetricsListRequest
+        @return: GetPrinsMetricsListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_prins_metrics_list_with_options_async(request, runtime)
+
+    def list_prins_instances_with_options(
+        self,
+        tmp_req: cddc_20200320_models.ListPrinsInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cddc_20200320_models.ListPrinsInstancesResponse:
+        """
+        @summary 列举纳管实例列表
+        
+        @param tmp_req: ListPrinsInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPrinsInstancesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cddc_20200320_models.ListPrinsInstancesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.engine_type):
+            query['EngineType'] = request.engine_type
+        if not UtilClient.is_unset(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPrinsInstances',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cddc_20200320_models.ListPrinsInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_prins_instances_with_options_async(
+        self,
+        tmp_req: cddc_20200320_models.ListPrinsInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cddc_20200320_models.ListPrinsInstancesResponse:
+        """
+        @summary 列举纳管实例列表
+        
+        @param tmp_req: ListPrinsInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPrinsInstancesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cddc_20200320_models.ListPrinsInstancesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.engine_type):
+            query['EngineType'] = request.engine_type
+        if not UtilClient.is_unset(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPrinsInstances',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cddc_20200320_models.ListPrinsInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_prins_instances(
+        self,
+        request: cddc_20200320_models.ListPrinsInstancesRequest,
+    ) -> cddc_20200320_models.ListPrinsInstancesResponse:
+        """
+        @summary 列举纳管实例列表
+        
+        @param request: ListPrinsInstancesRequest
+        @return: ListPrinsInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_prins_instances_with_options(request, runtime)
+
+    async def list_prins_instances_async(
+        self,
+        request: cddc_20200320_models.ListPrinsInstancesRequest,
+    ) -> cddc_20200320_models.ListPrinsInstancesResponse:
+        """
+        @summary 列举纳管实例列表
+        
+        @param request: ListPrinsInstancesRequest
+        @return: ListPrinsInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_prins_instances_with_options_async(request, runtime)
+
+    def list_prins_params_with_options(
+        self,
+        request: cddc_20200320_models.ListPrinsParamsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cddc_20200320_models.ListPrinsParamsResponse:
+        """
+        @summary 查询数据库纳管实例参数列表
+        
+        @param request: ListPrinsParamsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPrinsParamsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_name):
+            query['ConfigName'] = request.config_name
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPrinsParams',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cddc_20200320_models.ListPrinsParamsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_prins_params_with_options_async(
+        self,
+        request: cddc_20200320_models.ListPrinsParamsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cddc_20200320_models.ListPrinsParamsResponse:
+        """
+        @summary 查询数据库纳管实例参数列表
+        
+        @param request: ListPrinsParamsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPrinsParamsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_name):
+            query['ConfigName'] = request.config_name
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPrinsParams',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cddc_20200320_models.ListPrinsParamsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_prins_params(
+        self,
+        request: cddc_20200320_models.ListPrinsParamsRequest,
+    ) -> cddc_20200320_models.ListPrinsParamsResponse:
+        """
+        @summary 查询数据库纳管实例参数列表
+        
+        @param request: ListPrinsParamsRequest
+        @return: ListPrinsParamsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_prins_params_with_options(request, runtime)
+
+    async def list_prins_params_async(
+        self,
+        request: cddc_20200320_models.ListPrinsParamsRequest,
+    ) -> cddc_20200320_models.ListPrinsParamsResponse:
+        """
+        @summary 查询数据库纳管实例参数列表
+        
+        @param request: ListPrinsParamsRequest
+        @return: ListPrinsParamsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_prins_params_with_options_async(request, runtime)
+
+    def list_prins_sqlerror_log_with_options(
+        self,
+        request: cddc_20200320_models.ListPrinsSQLErrorLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cddc_20200320_models.ListPrinsSQLErrorLogResponse:
+        """
+        @summary 查询数据库错误日志
+        
+        @param request: ListPrinsSQLErrorLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPrinsSQLErrorLogResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.log_path):
+            query['LogPath'] = request.log_path
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reverse):
+            query['Reverse'] = request.reverse
+        if not UtilClient.is_unset(request.size):
+            query['Size'] = request.size
+        if not UtilClient.is_unset(request.start_linenum):
+            query['StartLinenum'] = request.start_linenum
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPrinsSQLErrorLog',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cddc_20200320_models.ListPrinsSQLErrorLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_prins_sqlerror_log_with_options_async(
+        self,
+        request: cddc_20200320_models.ListPrinsSQLErrorLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cddc_20200320_models.ListPrinsSQLErrorLogResponse:
+        """
+        @summary 查询数据库错误日志
+        
+        @param request: ListPrinsSQLErrorLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPrinsSQLErrorLogResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.log_path):
+            query['LogPath'] = request.log_path
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reverse):
+            query['Reverse'] = request.reverse
+        if not UtilClient.is_unset(request.size):
+            query['Size'] = request.size
+        if not UtilClient.is_unset(request.start_linenum):
+            query['StartLinenum'] = request.start_linenum
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPrinsSQLErrorLog',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cddc_20200320_models.ListPrinsSQLErrorLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_prins_sqlerror_log(
+        self,
+        request: cddc_20200320_models.ListPrinsSQLErrorLogRequest,
+    ) -> cddc_20200320_models.ListPrinsSQLErrorLogResponse:
+        """
+        @summary 查询数据库错误日志
+        
+        @param request: ListPrinsSQLErrorLogRequest
+        @return: ListPrinsSQLErrorLogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_prins_sqlerror_log_with_options(request, runtime)
+
+    async def list_prins_sqlerror_log_async(
+        self,
+        request: cddc_20200320_models.ListPrinsSQLErrorLogRequest,
+    ) -> cddc_20200320_models.ListPrinsSQLErrorLogResponse:
+        """
+        @summary 查询数据库错误日志
+        
+        @param request: ListPrinsSQLErrorLogRequest
+        @return: ListPrinsSQLErrorLogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_prins_sqlerror_log_with_options_async(request, runtime)
 
     def list_tag_resources_with_options(
         self,

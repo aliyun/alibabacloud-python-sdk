@@ -1,3 +1,16 @@
+2025-06-09 Version: 1.2.0
+- Support API AddPrinsInstance.
+- Support API CreatePrinsBackupPlan.
+- Support API DescribePrinsBackupPlan.
+- Support API DescribePrinsEcsInstances.
+- Support API DescribePrinsInstance.
+- Support API GetPrinsEventList.
+- Support API GetPrinsMetricsList.
+- Support API ListPrinsInstances.
+- Support API ListPrinsParams.
+- Support API ListPrinsSQLErrorLog.
+
+
 2025-06-04 Version: 1.1.7
 - Generated python 2020-03-20 for cddc.
 

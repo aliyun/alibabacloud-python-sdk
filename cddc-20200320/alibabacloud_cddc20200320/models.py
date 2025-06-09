@@ -4,6 +4,319 @@ from Tea.model import TeaModel
 from typing import List, Dict, Any
 
 
+class AddPrinsInstanceRequestDisk(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        device: str = None,
+        disk_id: str = None,
+        mount: str = None,
+        type: str = None,
+    ):
+        self.category = category
+        self.device = device
+        self.disk_id = disk_id
+        self.mount = mount
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.device is not None:
+            result['Device'] = self.device
+        if self.disk_id is not None:
+            result['DiskId'] = self.disk_id
+        if self.mount is not None:
+            result['Mount'] = self.mount
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('Device') is not None:
+            self.device = m.get('Device')
+        if m.get('DiskId') is not None:
+            self.disk_id = m.get('DiskId')
+        if m.get('Mount') is not None:
+            self.mount = m.get('Mount')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class AddPrinsInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        alias: str = None,
+        description: str = None,
+        disk: List[AddPrinsInstanceRequestDisk] = None,
+        ecs_instance_id: str = None,
+        engine: str = None,
+        ip: str = None,
+        password: str = None,
+        port: str = None,
+        region_id: str = None,
+        security_group_id: str = None,
+        username: str = None,
+    ):
+        self.alias = alias
+        self.description = description
+        self.disk = disk
+        self.ecs_instance_id = ecs_instance_id
+        self.engine = engine
+        self.ip = ip
+        self.password = password
+        self.port = port
+        self.region_id = region_id
+        self.security_group_id = security_group_id
+        self.username = username
+
+    def validate(self):
+        if self.disk:
+            for k in self.disk:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias is not None:
+            result['Alias'] = self.alias
+        if self.description is not None:
+            result['Description'] = self.description
+        result['Disk'] = []
+        if self.disk is not None:
+            for k in self.disk:
+                result['Disk'].append(k.to_map() if k else None)
+        if self.ecs_instance_id is not None:
+            result['EcsInstanceId'] = self.ecs_instance_id
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alias') is not None:
+            self.alias = m.get('Alias')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        self.disk = []
+        if m.get('Disk') is not None:
+            for k in m.get('Disk'):
+                temp_model = AddPrinsInstanceRequestDisk()
+                self.disk.append(temp_model.from_map(k))
+        if m.get('EcsInstanceId') is not None:
+            self.ecs_instance_id = m.get('EcsInstanceId')
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        return self
+
+
+class AddPrinsInstanceShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        alias: str = None,
+        description: str = None,
+        disk_shrink: str = None,
+        ecs_instance_id: str = None,
+        engine: str = None,
+        ip: str = None,
+        password: str = None,
+        port: str = None,
+        region_id: str = None,
+        security_group_id: str = None,
+        username: str = None,
+    ):
+        self.alias = alias
+        self.description = description
+        self.disk_shrink = disk_shrink
+        self.ecs_instance_id = ecs_instance_id
+        self.engine = engine
+        self.ip = ip
+        self.password = password
+        self.port = port
+        self.region_id = region_id
+        self.security_group_id = security_group_id
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias is not None:
+            result['Alias'] = self.alias
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.disk_shrink is not None:
+            result['Disk'] = self.disk_shrink
+        if self.ecs_instance_id is not None:
+            result['EcsInstanceId'] = self.ecs_instance_id
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alias') is not None:
+            self.alias = m.get('Alias')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Disk') is not None:
+            self.disk_shrink = m.get('Disk')
+        if m.get('EcsInstanceId') is not None:
+            self.ecs_instance_id = m.get('EcsInstanceId')
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        return self
+
+
+class AddPrinsInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        cust_instance_id: str = None,
+        cust_instance_name: str = None,
+        request_id: str = None,
+    ):
+        self.cust_instance_id = cust_instance_id
+        self.cust_instance_name = cust_instance_name
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cust_instance_id is not None:
+            result['CustInstanceId'] = self.cust_instance_id
+        if self.cust_instance_name is not None:
+            result['CustInstanceName'] = self.cust_instance_name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustInstanceId') is not None:
+            self.cust_instance_id = m.get('CustInstanceId')
+        if m.get('CustInstanceName') is not None:
+            self.cust_instance_name = m.get('CustInstanceName')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AddPrinsInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddPrinsInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddPrinsInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateDedicatedHostRequestMyBaseEcsClass(TeaModel):
     def __init__(
         self,
@@ -1921,6 +2234,164 @@ class CreateMyBaseResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateMyBaseResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreatePrinsBackupPlanRequest(TeaModel):
+    def __init__(
+        self,
+        backup_period: str = None,
+        backup_plan_name: str = None,
+        backup_start_time: str = None,
+        ecs_instance_id: str = None,
+        instance_class: str = None,
+        instance_name: str = None,
+        period: str = None,
+        region_id: str = None,
+        used_time: int = None,
+    ):
+        # This parameter is required.
+        self.backup_period = backup_period
+        self.backup_plan_name = backup_plan_name
+        # This parameter is required.
+        self.backup_start_time = backup_start_time
+        # This parameter is required.
+        self.ecs_instance_id = ecs_instance_id
+        # This parameter is required.
+        self.instance_class = instance_class
+        # This parameter is required.
+        self.instance_name = instance_name
+        # This parameter is required.
+        self.period = period
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.used_time = used_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backup_period is not None:
+            result['BackupPeriod'] = self.backup_period
+        if self.backup_plan_name is not None:
+            result['BackupPlanName'] = self.backup_plan_name
+        if self.backup_start_time is not None:
+            result['BackupStartTime'] = self.backup_start_time
+        if self.ecs_instance_id is not None:
+            result['EcsInstanceId'] = self.ecs_instance_id
+        if self.instance_class is not None:
+            result['InstanceClass'] = self.instance_class
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.used_time is not None:
+            result['UsedTime'] = self.used_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackupPeriod') is not None:
+            self.backup_period = m.get('BackupPeriod')
+        if m.get('BackupPlanName') is not None:
+            self.backup_plan_name = m.get('BackupPlanName')
+        if m.get('BackupStartTime') is not None:
+            self.backup_start_time = m.get('BackupStartTime')
+        if m.get('EcsInstanceId') is not None:
+            self.ecs_instance_id = m.get('EcsInstanceId')
+        if m.get('InstanceClass') is not None:
+            self.instance_class = m.get('InstanceClass')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('UsedTime') is not None:
+            self.used_time = m.get('UsedTime')
+        return self
+
+
+class CreatePrinsBackupPlanResponseBody(TeaModel):
+    def __init__(
+        self,
+        backup_plan_id: str = None,
+        request_id: str = None,
+    ):
+        self.backup_plan_id = backup_plan_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backup_plan_id is not None:
+            result['BackupPlanId'] = self.backup_plan_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackupPlanId') is not None:
+            self.backup_plan_id = m.get('BackupPlanId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreatePrinsBackupPlanResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreatePrinsBackupPlanResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreatePrinsBackupPlanResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4440,6 +4911,1091 @@ class DescribeHostWebShellResponse(TeaModel):
         return self
 
 
+class DescribePrinsBackupPlanRequest(TeaModel):
+    def __init__(
+        self,
+        instance_name: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_name = instance_name
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribePrinsBackupPlanResponseBodyBackupPlan(TeaModel):
+    def __init__(
+        self,
+        backup_period: str = None,
+        backup_plan_create_time: str = None,
+        backup_plan_id: str = None,
+        backup_plan_name: str = None,
+        backup_plan_status: str = None,
+        backup_start_time: str = None,
+        database_type: str = None,
+        ecs_instance_id: str = None,
+        instance_class: str = None,
+        resource_group_id: str = None,
+        user_name: str = None,
+    ):
+        self.backup_period = backup_period
+        self.backup_plan_create_time = backup_plan_create_time
+        self.backup_plan_id = backup_plan_id
+        self.backup_plan_name = backup_plan_name
+        self.backup_plan_status = backup_plan_status
+        self.backup_start_time = backup_start_time
+        self.database_type = database_type
+        self.ecs_instance_id = ecs_instance_id
+        self.instance_class = instance_class
+        self.resource_group_id = resource_group_id
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backup_period is not None:
+            result['BackupPeriod'] = self.backup_period
+        if self.backup_plan_create_time is not None:
+            result['BackupPlanCreateTime'] = self.backup_plan_create_time
+        if self.backup_plan_id is not None:
+            result['BackupPlanId'] = self.backup_plan_id
+        if self.backup_plan_name is not None:
+            result['BackupPlanName'] = self.backup_plan_name
+        if self.backup_plan_status is not None:
+            result['BackupPlanStatus'] = self.backup_plan_status
+        if self.backup_start_time is not None:
+            result['BackupStartTime'] = self.backup_start_time
+        if self.database_type is not None:
+            result['DatabaseType'] = self.database_type
+        if self.ecs_instance_id is not None:
+            result['EcsInstanceId'] = self.ecs_instance_id
+        if self.instance_class is not None:
+            result['InstanceClass'] = self.instance_class
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackupPeriod') is not None:
+            self.backup_period = m.get('BackupPeriod')
+        if m.get('BackupPlanCreateTime') is not None:
+            self.backup_plan_create_time = m.get('BackupPlanCreateTime')
+        if m.get('BackupPlanId') is not None:
+            self.backup_plan_id = m.get('BackupPlanId')
+        if m.get('BackupPlanName') is not None:
+            self.backup_plan_name = m.get('BackupPlanName')
+        if m.get('BackupPlanStatus') is not None:
+            self.backup_plan_status = m.get('BackupPlanStatus')
+        if m.get('BackupStartTime') is not None:
+            self.backup_start_time = m.get('BackupStartTime')
+        if m.get('DatabaseType') is not None:
+            self.database_type = m.get('DatabaseType')
+        if m.get('EcsInstanceId') is not None:
+            self.ecs_instance_id = m.get('EcsInstanceId')
+        if m.get('InstanceClass') is not None:
+            self.instance_class = m.get('InstanceClass')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        return self
+
+
+class DescribePrinsBackupPlanResponseBody(TeaModel):
+    def __init__(
+        self,
+        backup_plan: DescribePrinsBackupPlanResponseBodyBackupPlan = None,
+        oss_hint: bool = None,
+        request_id: str = None,
+    ):
+        self.backup_plan = backup_plan
+        self.oss_hint = oss_hint
+        self.request_id = request_id
+
+    def validate(self):
+        if self.backup_plan:
+            self.backup_plan.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backup_plan is not None:
+            result['BackupPlan'] = self.backup_plan.to_map()
+        if self.oss_hint is not None:
+            result['OssHint'] = self.oss_hint
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackupPlan') is not None:
+            temp_model = DescribePrinsBackupPlanResponseBodyBackupPlan()
+            self.backup_plan = temp_model.from_map(m['BackupPlan'])
+        if m.get('OssHint') is not None:
+            self.oss_hint = m.get('OssHint')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribePrinsBackupPlanResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribePrinsBackupPlanResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribePrinsBackupPlanResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribePrinsEcsInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        ecs_instance_id: str = None,
+        keyword: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        vpc_id: str = None,
+        zone_id: str = None,
+    ):
+        self.ecs_instance_id = ecs_instance_id
+        self.keyword = keyword
+        self.max_results = max_results
+        self.next_token = next_token
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+        self.vpc_id = vpc_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ecs_instance_id is not None:
+            result['EcsInstanceId'] = self.ecs_instance_id
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EcsInstanceId') is not None:
+            self.ecs_instance_id = m.get('EcsInstanceId')
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribePrinsEcsInstancesResponseBodyInstanceListDisks(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        device: str = None,
+        disk_id: str = None,
+        mount: str = None,
+        type: str = None,
+    ):
+        self.category = category
+        self.device = device
+        self.disk_id = disk_id
+        self.mount = mount
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.device is not None:
+            result['Device'] = self.device
+        if self.disk_id is not None:
+            result['DiskId'] = self.disk_id
+        if self.mount is not None:
+            result['Mount'] = self.mount
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('Device') is not None:
+            self.device = m.get('Device')
+        if m.get('DiskId') is not None:
+            self.disk_id = m.get('DiskId')
+        if m.get('Mount') is not None:
+            self.mount = m.get('Mount')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribePrinsEcsInstancesResponseBodyInstanceListIpList(TeaModel):
+    def __init__(
+        self,
+        ip: str = None,
+        type: str = None,
+    ):
+        self.ip = ip
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribePrinsEcsInstancesResponseBodyInstanceList(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        disks: List[DescribePrinsEcsInstancesResponseBodyInstanceListDisks] = None,
+        instance_id: str = None,
+        instance_name: str = None,
+        ip_list: List[DescribePrinsEcsInstancesResponseBodyInstanceListIpList] = None,
+        security_groups: List[str] = None,
+        stauts: str = None,
+        vpc_id: str = None,
+        zone_id: str = None,
+    ):
+        self.description = description
+        self.disks = disks
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.ip_list = ip_list
+        self.security_groups = security_groups
+        self.stauts = stauts
+        self.vpc_id = vpc_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        if self.disks:
+            for k in self.disks:
+                if k:
+                    k.validate()
+        if self.ip_list:
+            for k in self.ip_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        result['Disks'] = []
+        if self.disks is not None:
+            for k in self.disks:
+                result['Disks'].append(k.to_map() if k else None)
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        result['IpList'] = []
+        if self.ip_list is not None:
+            for k in self.ip_list:
+                result['IpList'].append(k.to_map() if k else None)
+        if self.security_groups is not None:
+            result['SecurityGroups'] = self.security_groups
+        if self.stauts is not None:
+            result['Stauts'] = self.stauts
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        self.disks = []
+        if m.get('Disks') is not None:
+            for k in m.get('Disks'):
+                temp_model = DescribePrinsEcsInstancesResponseBodyInstanceListDisks()
+                self.disks.append(temp_model.from_map(k))
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        self.ip_list = []
+        if m.get('IpList') is not None:
+            for k in m.get('IpList'):
+                temp_model = DescribePrinsEcsInstancesResponseBodyInstanceListIpList()
+                self.ip_list.append(temp_model.from_map(k))
+        if m.get('SecurityGroups') is not None:
+            self.security_groups = m.get('SecurityGroups')
+        if m.get('Stauts') is not None:
+            self.stauts = m.get('Stauts')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribePrinsEcsInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_list: List[DescribePrinsEcsInstancesResponseBodyInstanceList] = None,
+        max_results: int = None,
+        next_token: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.instance_list = instance_list
+        self.max_results = max_results
+        self.next_token = next_token
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.instance_list:
+            for k in self.instance_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['InstanceList'] = []
+        if self.instance_list is not None:
+            for k in self.instance_list:
+                result['InstanceList'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.instance_list = []
+        if m.get('InstanceList') is not None:
+            for k in m.get('InstanceList'):
+                temp_model = DescribePrinsEcsInstancesResponseBodyInstanceList()
+                self.instance_list.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribePrinsEcsInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribePrinsEcsInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribePrinsEcsInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribePrinsInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        discover: bool = None,
+        instance_name: str = None,
+        region_id: str = None,
+    ):
+        self.discover = discover
+        self.instance_name = instance_name
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.discover is not None:
+            result['Discover'] = self.discover
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Discover') is not None:
+            self.discover = m.get('Discover')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribePrinsInstanceResponseBodyDbInstanceHostInstancesDiskInfo(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        device: str = None,
+        id: str = None,
+        size: int = None,
+        type: str = None,
+        usage: str = None,
+    ):
+        self.category = category
+        self.device = device
+        self.id = id
+        self.size = size
+        self.type = type
+        self.usage = usage
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.device is not None:
+            result['Device'] = self.device
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.usage is not None:
+            result['Usage'] = self.usage
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('Device') is not None:
+            self.device = m.get('Device')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Usage') is not None:
+            self.usage = m.get('Usage')
+        return self
+
+
+class DescribePrinsInstanceResponseBodyDbInstanceHostInstancesIpAddress(TeaModel):
+    def __init__(
+        self,
+        ip: str = None,
+        port: str = None,
+        type: str = None,
+    ):
+        self.ip = ip
+        self.port = port
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribePrinsInstanceResponseBodyDbInstanceHostInstances(TeaModel):
+    def __init__(
+        self,
+        cpu: str = None,
+        description: str = None,
+        disk_info: List[DescribePrinsInstanceResponseBodyDbInstanceHostInstancesDiskInfo] = None,
+        gmt_created: str = None,
+        instance_class: str = None,
+        instance_id: str = None,
+        instance_name: str = None,
+        instance_role: str = None,
+        ip: str = None,
+        ip_address: List[DescribePrinsInstanceResponseBodyDbInstanceHostInstancesIpAddress] = None,
+        mem: str = None,
+        port: str = None,
+        security_group_id: str = None,
+        status: str = None,
+        vpc_id: str = None,
+        zone_id: str = None,
+    ):
+        self.cpu = cpu
+        self.description = description
+        self.disk_info = disk_info
+        self.gmt_created = gmt_created
+        self.instance_class = instance_class
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.instance_role = instance_role
+        self.ip = ip
+        self.ip_address = ip_address
+        self.mem = mem
+        self.port = port
+        self.security_group_id = security_group_id
+        self.status = status
+        self.vpc_id = vpc_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        if self.disk_info:
+            for k in self.disk_info:
+                if k:
+                    k.validate()
+        if self.ip_address:
+            for k in self.ip_address:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
+        if self.description is not None:
+            result['Description'] = self.description
+        result['DiskInfo'] = []
+        if self.disk_info is not None:
+            for k in self.disk_info:
+                result['DiskInfo'].append(k.to_map() if k else None)
+        if self.gmt_created is not None:
+            result['GmtCreated'] = self.gmt_created
+        if self.instance_class is not None:
+            result['InstanceClass'] = self.instance_class
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.instance_role is not None:
+            result['InstanceRole'] = self.instance_role
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        result['IpAddress'] = []
+        if self.ip_address is not None:
+            for k in self.ip_address:
+                result['IpAddress'].append(k.to_map() if k else None)
+        if self.mem is not None:
+            result['Mem'] = self.mem
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        self.disk_info = []
+        if m.get('DiskInfo') is not None:
+            for k in m.get('DiskInfo'):
+                temp_model = DescribePrinsInstanceResponseBodyDbInstanceHostInstancesDiskInfo()
+                self.disk_info.append(temp_model.from_map(k))
+        if m.get('GmtCreated') is not None:
+            self.gmt_created = m.get('GmtCreated')
+        if m.get('InstanceClass') is not None:
+            self.instance_class = m.get('InstanceClass')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('InstanceRole') is not None:
+            self.instance_role = m.get('InstanceRole')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        self.ip_address = []
+        if m.get('IpAddress') is not None:
+            for k in m.get('IpAddress'):
+                temp_model = DescribePrinsInstanceResponseBodyDbInstanceHostInstancesIpAddress()
+                self.ip_address.append(temp_model.from_map(k))
+        if m.get('Mem') is not None:
+            self.mem = m.get('Mem')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribePrinsInstanceResponseBodyDbInstanceTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribePrinsInstanceResponseBodyDbInstance(TeaModel):
+    def __init__(
+        self,
+        alias: str = None,
+        das_id: str = None,
+        description: str = None,
+        dms_id: str = None,
+        engine_type: str = None,
+        engine_version: str = None,
+        gmt_created: str = None,
+        host_instances: List[DescribePrinsInstanceResponseBodyDbInstanceHostInstances] = None,
+        instance_class: str = None,
+        instance_name: str = None,
+        instance_storage_capacity: str = None,
+        instance_storage_type: str = None,
+        network_type: str = None,
+        region_id: str = None,
+        status: str = None,
+        tag: List[DescribePrinsInstanceResponseBodyDbInstanceTag] = None,
+        vpc_id: str = None,
+    ):
+        self.alias = alias
+        self.das_id = das_id
+        self.description = description
+        self.dms_id = dms_id
+        self.engine_type = engine_type
+        self.engine_version = engine_version
+        self.gmt_created = gmt_created
+        self.host_instances = host_instances
+        self.instance_class = instance_class
+        self.instance_name = instance_name
+        self.instance_storage_capacity = instance_storage_capacity
+        self.instance_storage_type = instance_storage_type
+        self.network_type = network_type
+        self.region_id = region_id
+        self.status = status
+        self.tag = tag
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        if self.host_instances:
+            for k in self.host_instances:
+                if k:
+                    k.validate()
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias is not None:
+            result['Alias'] = self.alias
+        if self.das_id is not None:
+            result['DasId'] = self.das_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.dms_id is not None:
+            result['DmsId'] = self.dms_id
+        if self.engine_type is not None:
+            result['EngineType'] = self.engine_type
+        if self.engine_version is not None:
+            result['EngineVersion'] = self.engine_version
+        if self.gmt_created is not None:
+            result['GmtCreated'] = self.gmt_created
+        result['HostInstances'] = []
+        if self.host_instances is not None:
+            for k in self.host_instances:
+                result['HostInstances'].append(k.to_map() if k else None)
+        if self.instance_class is not None:
+            result['InstanceClass'] = self.instance_class
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.instance_storage_capacity is not None:
+            result['InstanceStorageCapacity'] = self.instance_storage_capacity
+        if self.instance_storage_type is not None:
+            result['InstanceStorageType'] = self.instance_storage_type
+        if self.network_type is not None:
+            result['NetworkType'] = self.network_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.status is not None:
+            result['Status'] = self.status
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alias') is not None:
+            self.alias = m.get('Alias')
+        if m.get('DasId') is not None:
+            self.das_id = m.get('DasId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DmsId') is not None:
+            self.dms_id = m.get('DmsId')
+        if m.get('EngineType') is not None:
+            self.engine_type = m.get('EngineType')
+        if m.get('EngineVersion') is not None:
+            self.engine_version = m.get('EngineVersion')
+        if m.get('GmtCreated') is not None:
+            self.gmt_created = m.get('GmtCreated')
+        self.host_instances = []
+        if m.get('HostInstances') is not None:
+            for k in m.get('HostInstances'):
+                temp_model = DescribePrinsInstanceResponseBodyDbInstanceHostInstances()
+                self.host_instances.append(temp_model.from_map(k))
+        if m.get('InstanceClass') is not None:
+            self.instance_class = m.get('InstanceClass')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('InstanceStorageCapacity') is not None:
+            self.instance_storage_capacity = m.get('InstanceStorageCapacity')
+        if m.get('InstanceStorageType') is not None:
+            self.instance_storage_type = m.get('InstanceStorageType')
+        if m.get('NetworkType') is not None:
+            self.network_type = m.get('NetworkType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribePrinsInstanceResponseBodyDbInstanceTag()
+                self.tag.append(temp_model.from_map(k))
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class DescribePrinsInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        db_instance: DescribePrinsInstanceResponseBodyDbInstance = None,
+        request_id: str = None,
+    ):
+        self.db_instance = db_instance
+        self.request_id = request_id
+
+    def validate(self):
+        if self.db_instance:
+            self.db_instance.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.db_instance is not None:
+            result['DbInstance'] = self.db_instance.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbInstance') is not None:
+            temp_model = DescribePrinsInstanceResponseBodyDbInstance()
+            self.db_instance = temp_model.from_map(m['DbInstance'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribePrinsInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribePrinsInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribePrinsInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeRegionsRequest(TeaModel):
     def __init__(
         self,
@@ -4612,6 +6168,1194 @@ class DescribeRegionsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeRegionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetPrinsEventListRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        instance_name: str = None,
+        region_id: str = None,
+        start_time: str = None,
+    ):
+        self.end_time = end_time
+        self.instance_name = instance_name
+        self.region_id = region_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class GetPrinsEventListResponseBodyEventList(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        level: str = None,
+        name: str = None,
+        status: str = None,
+        time: str = None,
+    ):
+        self.content = content
+        self.level = level
+        self.name = name
+        self.status = status
+        self.time = time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.time is not None:
+            result['Time'] = self.time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Time') is not None:
+            self.time = m.get('Time')
+        return self
+
+
+class GetPrinsEventListResponseBody(TeaModel):
+    def __init__(
+        self,
+        event_list: List[GetPrinsEventListResponseBodyEventList] = None,
+        request_id: str = None,
+    ):
+        self.event_list = event_list
+        self.request_id = request_id
+
+    def validate(self):
+        if self.event_list:
+            for k in self.event_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['EventList'] = []
+        if self.event_list is not None:
+            for k in self.event_list:
+                result['EventList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.event_list = []
+        if m.get('EventList') is not None:
+            for k in m.get('EventList'):
+                temp_model = GetPrinsEventListResponseBodyEventList()
+                self.event_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetPrinsEventListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetPrinsEventListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetPrinsEventListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetPrinsMetricsListRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        instance_id: str = None,
+        metrics: str = None,
+        region_id: str = None,
+        start_time: str = None,
+    ):
+        self.end_time = end_time
+        self.instance_id = instance_id
+        self.metrics = metrics
+        self.region_id = region_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.metrics is not None:
+            result['Metrics'] = self.metrics
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Metrics') is not None:
+            self.metrics = m.get('Metrics')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class GetPrinsMetricsListResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        kpi: str = None,
+        timestamp: str = None,
+        value: str = None,
+    ):
+        self.category = category
+        self.kpi = kpi
+        self.timestamp = timestamp
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.kpi is not None:
+            result['Kpi'] = self.kpi
+        if self.timestamp is not None:
+            result['Timestamp'] = self.timestamp
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('Kpi') is not None:
+            self.kpi = m.get('Kpi')
+        if m.get('Timestamp') is not None:
+            self.timestamp = m.get('Timestamp')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetPrinsMetricsListResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[GetPrinsMetricsListResponseBodyData] = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = GetPrinsMetricsListResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetPrinsMetricsListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetPrinsMetricsListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetPrinsMetricsListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListPrinsInstancesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListPrinsInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        engine_type: str = None,
+        engine_version: str = None,
+        instance_name: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        tag: List[ListPrinsInstancesRequestTag] = None,
+    ):
+        self.engine_type = engine_type
+        self.engine_version = engine_version
+        self.instance_name = instance_name
+        self.max_results = max_results
+        self.next_token = next_token
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.engine_type is not None:
+            result['EngineType'] = self.engine_type
+        if self.engine_version is not None:
+            result['EngineVersion'] = self.engine_version
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EngineType') is not None:
+            self.engine_type = m.get('EngineType')
+        if m.get('EngineVersion') is not None:
+            self.engine_version = m.get('EngineVersion')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListPrinsInstancesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListPrinsInstancesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        engine_type: str = None,
+        engine_version: str = None,
+        instance_name: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        tag_shrink: str = None,
+    ):
+        self.engine_type = engine_type
+        self.engine_version = engine_version
+        self.instance_name = instance_name
+        self.max_results = max_results
+        self.next_token = next_token
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+        self.tag_shrink = tag_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.engine_type is not None:
+            result['EngineType'] = self.engine_type
+        if self.engine_version is not None:
+            result['EngineVersion'] = self.engine_version
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.tag_shrink is not None:
+            result['Tag'] = self.tag_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EngineType') is not None:
+            self.engine_type = m.get('EngineType')
+        if m.get('EngineVersion') is not None:
+            self.engine_version = m.get('EngineVersion')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Tag') is not None:
+            self.tag_shrink = m.get('Tag')
+        return self
+
+
+class ListPrinsInstancesResponseBodyInstancesTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListPrinsInstancesResponseBodyInstances(TeaModel):
+    def __init__(
+        self,
+        alias: str = None,
+        das_id: str = None,
+        description: str = None,
+        dms_id: str = None,
+        engine_type: str = None,
+        engine_version: str = None,
+        gmt_created: str = None,
+        instance_name: str = None,
+        region_id: str = None,
+        status: str = None,
+        tag: List[ListPrinsInstancesResponseBodyInstancesTag] = None,
+        vip: bool = None,
+    ):
+        self.alias = alias
+        self.das_id = das_id
+        self.description = description
+        self.dms_id = dms_id
+        self.engine_type = engine_type
+        self.engine_version = engine_version
+        self.gmt_created = gmt_created
+        self.instance_name = instance_name
+        self.region_id = region_id
+        self.status = status
+        self.tag = tag
+        self.vip = vip
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias is not None:
+            result['Alias'] = self.alias
+        if self.das_id is not None:
+            result['DasId'] = self.das_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.dms_id is not None:
+            result['DmsId'] = self.dms_id
+        if self.engine_type is not None:
+            result['EngineType'] = self.engine_type
+        if self.engine_version is not None:
+            result['EngineVersion'] = self.engine_version
+        if self.gmt_created is not None:
+            result['GmtCreated'] = self.gmt_created
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.status is not None:
+            result['Status'] = self.status
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        if self.vip is not None:
+            result['Vip'] = self.vip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alias') is not None:
+            self.alias = m.get('Alias')
+        if m.get('DasId') is not None:
+            self.das_id = m.get('DasId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DmsId') is not None:
+            self.dms_id = m.get('DmsId')
+        if m.get('EngineType') is not None:
+            self.engine_type = m.get('EngineType')
+        if m.get('EngineVersion') is not None:
+            self.engine_version = m.get('EngineVersion')
+        if m.get('GmtCreated') is not None:
+            self.gmt_created = m.get('GmtCreated')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListPrinsInstancesResponseBodyInstancesTag()
+                self.tag.append(temp_model.from_map(k))
+        if m.get('Vip') is not None:
+            self.vip = m.get('Vip')
+        return self
+
+
+class ListPrinsInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        instances: List[ListPrinsInstancesResponseBodyInstances] = None,
+        max_results: int = None,
+        next_token: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.instances = instances
+        self.max_results = max_results
+        self.next_token = next_token
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.instances:
+            for k in self.instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Instances'] = []
+        if self.instances is not None:
+            for k in self.instances:
+                result['Instances'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.instances = []
+        if m.get('Instances') is not None:
+            for k in m.get('Instances'):
+                temp_model = ListPrinsInstancesResponseBodyInstances()
+                self.instances.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListPrinsInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListPrinsInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListPrinsInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListPrinsParamsRequest(TeaModel):
+    def __init__(
+        self,
+        config_name: str = None,
+        instance_name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+    ):
+        self.config_name = config_name
+        # This parameter is required.
+        self.instance_name = instance_name
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_name is not None:
+            result['ConfigName'] = self.config_name
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigName') is not None:
+            self.config_name = m.get('ConfigName')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ListPrinsParamsResponseBodyConfigList(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        config_name: str = None,
+        cur_value: str = None,
+        default_value: str = None,
+        translation: str = None,
+    ):
+        self.comment = comment
+        self.config_name = config_name
+        self.cur_value = cur_value
+        self.default_value = default_value
+        self.translation = translation
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.config_name is not None:
+            result['ConfigName'] = self.config_name
+        if self.cur_value is not None:
+            result['CurValue'] = self.cur_value
+        if self.default_value is not None:
+            result['DefaultValue'] = self.default_value
+        if self.translation is not None:
+            result['Translation'] = self.translation
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('ConfigName') is not None:
+            self.config_name = m.get('ConfigName')
+        if m.get('CurValue') is not None:
+            self.cur_value = m.get('CurValue')
+        if m.get('DefaultValue') is not None:
+            self.default_value = m.get('DefaultValue')
+        if m.get('Translation') is not None:
+            self.translation = m.get('Translation')
+        return self
+
+
+class ListPrinsParamsResponseBody(TeaModel):
+    def __init__(
+        self,
+        config_list: List[ListPrinsParamsResponseBodyConfigList] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.config_list = config_list
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.config_list:
+            for k in self.config_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ConfigList'] = []
+        if self.config_list is not None:
+            for k in self.config_list:
+                result['ConfigList'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.config_list = []
+        if m.get('ConfigList') is not None:
+            for k in m.get('ConfigList'):
+                temp_model = ListPrinsParamsResponseBodyConfigList()
+                self.config_list.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListPrinsParamsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListPrinsParamsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListPrinsParamsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListPrinsSQLErrorLogRequest(TeaModel):
+    def __init__(
+        self,
+        instance_name: str = None,
+        keyword: str = None,
+        log_path: str = None,
+        region_id: str = None,
+        reverse: bool = None,
+        size: int = None,
+        start_linenum: int = None,
+    ):
+        # This parameter is required.
+        self.instance_name = instance_name
+        self.keyword = keyword
+        self.log_path = log_path
+        # This parameter is required.
+        self.region_id = region_id
+        self.reverse = reverse
+        self.size = size
+        self.start_linenum = start_linenum
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.log_path is not None:
+            result['LogPath'] = self.log_path
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.reverse is not None:
+            result['Reverse'] = self.reverse
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.start_linenum is not None:
+            result['StartLinenum'] = self.start_linenum
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('LogPath') is not None:
+            self.log_path = m.get('LogPath')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Reverse') is not None:
+            self.reverse = m.get('Reverse')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('StartLinenum') is not None:
+            self.start_linenum = m.get('StartLinenum')
+        return self
+
+
+class ListPrinsSQLErrorLogResponseBodyLogList(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        linenum: int = None,
+    ):
+        self.content = content
+        self.linenum = linenum
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.linenum is not None:
+            result['Linenum'] = self.linenum
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Linenum') is not None:
+            self.linenum = m.get('Linenum')
+        return self
+
+
+class ListPrinsSQLErrorLogResponseBody(TeaModel):
+    def __init__(
+        self,
+        log_list: List[ListPrinsSQLErrorLogResponseBodyLogList] = None,
+        log_path: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.log_list = log_list
+        self.log_path = log_path
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.log_list:
+            for k in self.log_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['LogList'] = []
+        if self.log_list is not None:
+            for k in self.log_list:
+                result['LogList'].append(k.to_map() if k else None)
+        if self.log_path is not None:
+            result['LogPath'] = self.log_path
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.log_list = []
+        if m.get('LogList') is not None:
+            for k in m.get('LogList'):
+                temp_model = ListPrinsSQLErrorLogResponseBodyLogList()
+                self.log_list.append(temp_model.from_map(k))
+        if m.get('LogPath') is not None:
+            self.log_path = m.get('LogPath')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListPrinsSQLErrorLogResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListPrinsSQLErrorLogResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListPrinsSQLErrorLogResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
