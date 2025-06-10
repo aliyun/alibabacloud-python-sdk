@@ -1404,6 +1404,8 @@ class Client(OpenApiClient):
             body['api_audiences'] = request.api_audiences
         if not UtilClient.is_unset(request.audit_log_config):
             body['audit_log_config'] = request.audit_log_config
+        if not UtilClient.is_unset(request.auto_mode):
+            body['auto_mode'] = request.auto_mode
         if not UtilClient.is_unset(request.auto_renew):
             body['auto_renew'] = request.auto_renew
         if not UtilClient.is_unset(request.auto_renew_period):
@@ -1646,6 +1648,8 @@ class Client(OpenApiClient):
             body['api_audiences'] = request.api_audiences
         if not UtilClient.is_unset(request.audit_log_config):
             body['audit_log_config'] = request.audit_log_config
+        if not UtilClient.is_unset(request.auto_mode):
+            body['auto_mode'] = request.auto_mode
         if not UtilClient.is_unset(request.auto_renew):
             body['auto_renew'] = request.auto_renew
         if not UtilClient.is_unset(request.auto_renew_period):
@@ -2145,6 +2149,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.auto_mode):
+            body['auto_mode'] = request.auto_mode
         if not UtilClient.is_unset(request.auto_scaling):
             body['auto_scaling'] = request.auto_scaling
         if not UtilClient.is_unset(request.count):
@@ -2210,6 +2216,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.auto_mode):
+            body['auto_mode'] = request.auto_mode
         if not UtilClient.is_unset(request.auto_scaling):
             body['auto_scaling'] = request.auto_scaling
         if not UtilClient.is_unset(request.count):

@@ -1,3 +1,9 @@
+2025-06-10 Version: 4.9.4
+- Update API CreateCluster: add request parameters body.auto_mode.
+- Update API CreateClusterNodePool: add request parameters body.auto_mode.
+- Update API DescribeClusterDetail: add response parameters Body.auto_mode.
+
+
 2025-06-09 Version: 4.9.3
 - Update API CreateClusterNodePool: add request parameters body.eflo_node_group.
 

@@ -3321,6 +3321,33 @@ class CreateClusterRequestAuditLogConfig(TeaModel):
         return self
 
 
+class CreateClusterRequestAutoMode(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+    ):
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        return self
+
+
 class CreateClusterRequestControlPlaneConfig(TeaModel):
     def __init__(
         self,
@@ -3644,6 +3671,7 @@ class CreateClusterRequest(TeaModel):
         addons: List[Addon] = None,
         api_audiences: str = None,
         audit_log_config: CreateClusterRequestAuditLogConfig = None,
+        auto_mode: CreateClusterRequestAutoMode = None,
         auto_renew: bool = None,
         auto_renew_period: int = None,
         charge_type: str = None,
@@ -3774,6 +3802,7 @@ class CreateClusterRequest(TeaModel):
         # For more information about `service accounts`, see [Enable service account token volume projection](https://help.aliyun.com/document_detail/160384.html).
         self.api_audiences = api_audiences
         self.audit_log_config = audit_log_config
+        self.auto_mode = auto_mode
         # [**Deprecated**]
         # 
         # Specifies whether to enable auto-renewal. This parameter takes effect only when `charge_type` is set to `PrePaid`. Valid values:
@@ -4356,6 +4385,8 @@ class CreateClusterRequest(TeaModel):
                     k.validate()
         if self.audit_log_config:
             self.audit_log_config.validate()
+        if self.auto_mode:
+            self.auto_mode.validate()
         if self.control_plane_config:
             self.control_plane_config.validate()
         if self.maintenance_window:
@@ -4397,6 +4428,8 @@ class CreateClusterRequest(TeaModel):
             result['api_audiences'] = self.api_audiences
         if self.audit_log_config is not None:
             result['audit_log_config'] = self.audit_log_config.to_map()
+        if self.auto_mode is not None:
+            result['auto_mode'] = self.auto_mode.to_map()
         if self.auto_renew is not None:
             result['auto_renew'] = self.auto_renew
         if self.auto_renew_period is not None:
@@ -4611,6 +4644,9 @@ class CreateClusterRequest(TeaModel):
         if m.get('audit_log_config') is not None:
             temp_model = CreateClusterRequestAuditLogConfig()
             self.audit_log_config = temp_model.from_map(m['audit_log_config'])
+        if m.get('auto_mode') is not None:
+            temp_model = CreateClusterRequestAutoMode()
+            self.auto_mode = temp_model.from_map(m['auto_mode'])
         if m.get('auto_renew') is not None:
             self.auto_renew = m.get('auto_renew')
         if m.get('auto_renew_period') is not None:
@@ -5167,6 +5203,33 @@ class CreateClusterInspectConfigResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = CreateClusterInspectConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateClusterNodePoolRequestAutoMode(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+    ):
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
         return self
 
 
@@ -6544,6 +6607,7 @@ class CreateClusterNodePoolRequestTeeConfig(TeaModel):
 class CreateClusterNodePoolRequest(TeaModel):
     def __init__(
         self,
+        auto_mode: CreateClusterNodePoolRequestAutoMode = None,
         auto_scaling: CreateClusterNodePoolRequestAutoScaling = None,
         count: int = None,
         eflo_node_group: CreateClusterNodePoolRequestEfloNodeGroup = None,
@@ -6559,6 +6623,7 @@ class CreateClusterNodePoolRequest(TeaModel):
         scaling_group: CreateClusterNodePoolRequestScalingGroup = None,
         tee_config: CreateClusterNodePoolRequestTeeConfig = None,
     ):
+        self.auto_mode = auto_mode
         # The configurations of auto scaling.
         self.auto_scaling = auto_scaling
         # This parameter is deprecated. Use the desired_size parameter instead.
@@ -6603,6 +6668,8 @@ class CreateClusterNodePoolRequest(TeaModel):
         self.tee_config = tee_config
 
     def validate(self):
+        if self.auto_mode:
+            self.auto_mode.validate()
         if self.auto_scaling:
             self.auto_scaling.validate()
         if self.eflo_node_group:
@@ -6628,6 +6695,8 @@ class CreateClusterNodePoolRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_mode is not None:
+            result['auto_mode'] = self.auto_mode.to_map()
         if self.auto_scaling is not None:
             result['auto_scaling'] = self.auto_scaling.to_map()
         if self.count is not None:
@@ -6660,6 +6729,9 @@ class CreateClusterNodePoolRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('auto_mode') is not None:
+            temp_model = CreateClusterNodePoolRequestAutoMode()
+            self.auto_mode = temp_model.from_map(m['auto_mode'])
         if m.get('auto_scaling') is not None:
             temp_model = CreateClusterNodePoolRequestAutoScaling()
             self.auto_scaling = temp_model.from_map(m['auto_scaling'])
@@ -9648,6 +9720,33 @@ class DescribeClusterAttachScriptsResponse(TeaModel):
         return self
 
 
+class DescribeClusterDetailResponseBodyAutoMode(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+    ):
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        return self
+
+
 class DescribeClusterDetailResponseBodyControlPlaneConfig(TeaModel):
     def __init__(
         self,
@@ -9904,6 +10003,7 @@ class DescribeClusterDetailResponseBodyOperationPolicy(TeaModel):
 class DescribeClusterDetailResponseBody(TeaModel):
     def __init__(
         self,
+        auto_mode: DescribeClusterDetailResponseBodyAutoMode = None,
         cluster_domain: str = None,
         cluster_id: str = None,
         cluster_spec: str = None,
@@ -9945,6 +10045,7 @@ class DescribeClusterDetailResponseBody(TeaModel):
         worker_ram_role_name: str = None,
         zone_id: str = None,
     ):
+        self.auto_mode = auto_mode
         # The domain name of the cluster.
         self.cluster_domain = cluster_domain
         # The cluster ID.
@@ -10070,6 +10171,8 @@ class DescribeClusterDetailResponseBody(TeaModel):
         self.zone_id = zone_id
 
     def validate(self):
+        if self.auto_mode:
+            self.auto_mode.validate()
         if self.control_plane_config:
             self.control_plane_config.validate()
         if self.maintenance_window:
@@ -10087,6 +10190,8 @@ class DescribeClusterDetailResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_mode is not None:
+            result['auto_mode'] = self.auto_mode.to_map()
         if self.cluster_domain is not None:
             result['cluster_domain'] = self.cluster_domain
         if self.cluster_id is not None:
@@ -10173,6 +10278,9 @@ class DescribeClusterDetailResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('auto_mode') is not None:
+            temp_model = DescribeClusterDetailResponseBodyAutoMode()
+            self.auto_mode = temp_model.from_map(m['auto_mode'])
         if m.get('cluster_domain') is not None:
             self.cluster_domain = m.get('cluster_domain')
         if m.get('cluster_id') is not None:
