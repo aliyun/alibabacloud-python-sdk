@@ -24693,6 +24693,7 @@ class DescribeDesktopTypesRequest(TeaModel):
         order_type: str = None,
         region_id: str = None,
         scope: str = None,
+        scope_set: List[str] = None,
         sort_type: str = None,
         support_min_session_count: int = None,
         zone_id: str = None,
@@ -24787,6 +24788,7 @@ class DescribeDesktopTypesRequest(TeaModel):
         # *   MonthPackage: the monthly subscription mode.
         # *   FastBuy: the quick purchase mode.
         self.scope = scope
+        self.scope_set = scope_set
         # The sorting order.
         # 
         # Valid values:
@@ -24838,6 +24840,8 @@ class DescribeDesktopTypesRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.scope is not None:
             result['Scope'] = self.scope
+        if self.scope_set is not None:
+            result['ScopeSet'] = self.scope_set
         if self.sort_type is not None:
             result['SortType'] = self.sort_type
         if self.support_min_session_count is not None:
@@ -24878,6 +24882,8 @@ class DescribeDesktopTypesRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('Scope') is not None:
             self.scope = m.get('Scope')
+        if m.get('ScopeSet') is not None:
+            self.scope_set = m.get('ScopeSet')
         if m.get('SortType') is not None:
             self.sort_type = m.get('SortType')
         if m.get('SupportMinSessionCount') is not None:

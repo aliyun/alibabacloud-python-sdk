@@ -11646,6 +11646,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.scope):
             query['Scope'] = request.scope
+        if not UtilClient.is_unset(request.scope_set):
+            query['ScopeSet'] = request.scope_set
         if not UtilClient.is_unset(request.sort_type):
             query['SortType'] = request.sort_type
         if not UtilClient.is_unset(request.support_min_session_count):
@@ -11717,6 +11719,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.scope):
             query['Scope'] = request.scope
+        if not UtilClient.is_unset(request.scope_set):
+            query['ScopeSet'] = request.scope_set
         if not UtilClient.is_unset(request.sort_type):
             query['SortType'] = request.sort_type
         if not UtilClient.is_unset(request.support_min_session_count):

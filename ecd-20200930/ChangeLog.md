@@ -1,3 +1,7 @@
+2025-06-10 Version: 4.8.2
+- Update API DescribeDesktopTypes: add request parameters ScopeSet.
+
+
 2025-06-03 Version: 4.8.1
 - Update API DescribeDesktopGroups: add response parameters Body.DesktopGroups.$.PolicyGroupIdList.
 - Update API DescribeDesktopGroups: add response parameters Body.DesktopGroups.$.PolicyGroupNameList.
