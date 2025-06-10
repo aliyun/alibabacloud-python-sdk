@@ -12369,6 +12369,86 @@ class DescribeRenderingInstanceRequest(TeaModel):
         return self
 
 
+class DescribeRenderingInstanceResponseBodyAdditionalIngressesPortMappings(TeaModel):
+    def __init__(
+        self,
+        external_port: str = None,
+        internal_port: str = None,
+    ):
+        self.external_port = external_port
+        self.internal_port = internal_port
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.external_port is not None:
+            result['ExternalPort'] = self.external_port
+        if self.internal_port is not None:
+            result['InternalPort'] = self.internal_port
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExternalPort') is not None:
+            self.external_port = m.get('ExternalPort')
+        if m.get('InternalPort') is not None:
+            self.internal_port = m.get('InternalPort')
+        return self
+
+
+class DescribeRenderingInstanceResponseBodyAdditionalIngresses(TeaModel):
+    def __init__(
+        self,
+        hostname: str = None,
+        isp: str = None,
+        port_mappings: List[DescribeRenderingInstanceResponseBodyAdditionalIngressesPortMappings] = None,
+    ):
+        self.hostname = hostname
+        self.isp = isp
+        self.port_mappings = port_mappings
+
+    def validate(self):
+        if self.port_mappings:
+            for k in self.port_mappings:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hostname is not None:
+            result['Hostname'] = self.hostname
+        if self.isp is not None:
+            result['Isp'] = self.isp
+        result['PortMappings'] = []
+        if self.port_mappings is not None:
+            for k in self.port_mappings:
+                result['PortMappings'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Hostname') is not None:
+            self.hostname = m.get('Hostname')
+        if m.get('Isp') is not None:
+            self.isp = m.get('Isp')
+        self.port_mappings = []
+        if m.get('PortMappings') is not None:
+            for k in m.get('PortMappings'):
+                temp_model = DescribeRenderingInstanceResponseBodyAdditionalIngressesPortMappings()
+                self.port_mappings.append(temp_model.from_map(k))
+        return self
+
+
 class DescribeRenderingInstanceResponseBodyConfigInfoConfigurationAttributes(TeaModel):
     def __init__(
         self,
@@ -12640,10 +12720,12 @@ class DescribeRenderingInstanceResponseBodySystemInfo(TeaModel):
 class DescribeRenderingInstanceResponseBody(TeaModel):
     def __init__(
         self,
+        additional_ingresses: List[DescribeRenderingInstanceResponseBodyAdditionalIngresses] = None,
         config_info: DescribeRenderingInstanceResponseBodyConfigInfo = None,
         creation_time: str = None,
         egress_ip: str = None,
         hostname: str = None,
+        isp: str = None,
         port_mappings: List[DescribeRenderingInstanceResponseBodyPortMappings] = None,
         rendering_instance_id: str = None,
         rendering_spec: str = None,
@@ -12652,10 +12734,12 @@ class DescribeRenderingInstanceResponseBody(TeaModel):
         storage_size: int = None,
         system_info: DescribeRenderingInstanceResponseBodySystemInfo = None,
     ):
+        self.additional_ingresses = additional_ingresses
         self.config_info = config_info
         self.creation_time = creation_time
         self.egress_ip = egress_ip
         self.hostname = hostname
+        self.isp = isp
         self.port_mappings = port_mappings
         self.rendering_instance_id = rendering_instance_id
         self.rendering_spec = rendering_spec
@@ -12665,6 +12749,10 @@ class DescribeRenderingInstanceResponseBody(TeaModel):
         self.system_info = system_info
 
     def validate(self):
+        if self.additional_ingresses:
+            for k in self.additional_ingresses:
+                if k:
+                    k.validate()
         if self.config_info:
             self.config_info.validate()
         if self.port_mappings:
@@ -12682,6 +12770,10 @@ class DescribeRenderingInstanceResponseBody(TeaModel):
             return _map
 
         result = dict()
+        result['AdditionalIngresses'] = []
+        if self.additional_ingresses is not None:
+            for k in self.additional_ingresses:
+                result['AdditionalIngresses'].append(k.to_map() if k else None)
         if self.config_info is not None:
             result['ConfigInfo'] = self.config_info.to_map()
         if self.creation_time is not None:
@@ -12690,6 +12782,8 @@ class DescribeRenderingInstanceResponseBody(TeaModel):
             result['EgressIp'] = self.egress_ip
         if self.hostname is not None:
             result['Hostname'] = self.hostname
+        if self.isp is not None:
+            result['Isp'] = self.isp
         result['PortMappings'] = []
         if self.port_mappings is not None:
             for k in self.port_mappings:
@@ -12710,6 +12804,11 @@ class DescribeRenderingInstanceResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.additional_ingresses = []
+        if m.get('AdditionalIngresses') is not None:
+            for k in m.get('AdditionalIngresses'):
+                temp_model = DescribeRenderingInstanceResponseBodyAdditionalIngresses()
+                self.additional_ingresses.append(temp_model.from_map(k))
         if m.get('ConfigInfo') is not None:
             temp_model = DescribeRenderingInstanceResponseBodyConfigInfo()
             self.config_info = temp_model.from_map(m['ConfigInfo'])
@@ -12719,6 +12818,8 @@ class DescribeRenderingInstanceResponseBody(TeaModel):
             self.egress_ip = m.get('EgressIp')
         if m.get('Hostname') is not None:
             self.hostname = m.get('Hostname')
+        if m.get('Isp') is not None:
+            self.isp = m.get('Isp')
         self.port_mappings = []
         if m.get('PortMappings') is not None:
             for k in m.get('PortMappings'):
@@ -13270,6 +13371,86 @@ class DescribeRenderingSessionRequest(TeaModel):
         return self
 
 
+class DescribeRenderingSessionResponseBodyAdditionalIngressesPortMappings(TeaModel):
+    def __init__(
+        self,
+        external_port: str = None,
+        internal_port: str = None,
+    ):
+        self.external_port = external_port
+        self.internal_port = internal_port
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.external_port is not None:
+            result['ExternalPort'] = self.external_port
+        if self.internal_port is not None:
+            result['InternalPort'] = self.internal_port
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExternalPort') is not None:
+            self.external_port = m.get('ExternalPort')
+        if m.get('InternalPort') is not None:
+            self.internal_port = m.get('InternalPort')
+        return self
+
+
+class DescribeRenderingSessionResponseBodyAdditionalIngresses(TeaModel):
+    def __init__(
+        self,
+        hostname: str = None,
+        isp: str = None,
+        port_mappings: List[DescribeRenderingSessionResponseBodyAdditionalIngressesPortMappings] = None,
+    ):
+        self.hostname = hostname
+        self.isp = isp
+        self.port_mappings = port_mappings
+
+    def validate(self):
+        if self.port_mappings:
+            for k in self.port_mappings:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hostname is not None:
+            result['Hostname'] = self.hostname
+        if self.isp is not None:
+            result['Isp'] = self.isp
+        result['PortMappings'] = []
+        if self.port_mappings is not None:
+            for k in self.port_mappings:
+                result['PortMappings'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Hostname') is not None:
+            self.hostname = m.get('Hostname')
+        if m.get('Isp') is not None:
+            self.isp = m.get('Isp')
+        self.port_mappings = []
+        if m.get('PortMappings') is not None:
+            for k in m.get('PortMappings'):
+                temp_model = DescribeRenderingSessionResponseBodyAdditionalIngressesPortMappings()
+                self.port_mappings.append(temp_model.from_map(k))
+        return self
+
+
 class DescribeRenderingSessionResponseBodyLocation(TeaModel):
     def __init__(
         self,
@@ -13372,9 +13553,11 @@ class DescribeRenderingSessionResponseBodyStateInfo(TeaModel):
 class DescribeRenderingSessionResponseBody(TeaModel):
     def __init__(
         self,
+        additional_ingresses: List[DescribeRenderingSessionResponseBodyAdditionalIngresses] = None,
         app_id: str = None,
         client_id: str = None,
         hostname: str = None,
+        isp: str = None,
         location: DescribeRenderingSessionResponseBodyLocation = None,
         port_mappings: List[DescribeRenderingSessionResponseBodyPortMappings] = None,
         request_id: str = None,
@@ -13382,9 +13565,11 @@ class DescribeRenderingSessionResponseBody(TeaModel):
         start_time: str = None,
         state_info: DescribeRenderingSessionResponseBodyStateInfo = None,
     ):
+        self.additional_ingresses = additional_ingresses
         self.app_id = app_id
         self.client_id = client_id
         self.hostname = hostname
+        self.isp = isp
         self.location = location
         self.port_mappings = port_mappings
         self.request_id = request_id
@@ -13393,6 +13578,10 @@ class DescribeRenderingSessionResponseBody(TeaModel):
         self.state_info = state_info
 
     def validate(self):
+        if self.additional_ingresses:
+            for k in self.additional_ingresses:
+                if k:
+                    k.validate()
         if self.location:
             self.location.validate()
         if self.port_mappings:
@@ -13408,12 +13597,18 @@ class DescribeRenderingSessionResponseBody(TeaModel):
             return _map
 
         result = dict()
+        result['AdditionalIngresses'] = []
+        if self.additional_ingresses is not None:
+            for k in self.additional_ingresses:
+                result['AdditionalIngresses'].append(k.to_map() if k else None)
         if self.app_id is not None:
             result['AppId'] = self.app_id
         if self.client_id is not None:
             result['ClientId'] = self.client_id
         if self.hostname is not None:
             result['Hostname'] = self.hostname
+        if self.isp is not None:
+            result['Isp'] = self.isp
         if self.location is not None:
             result['Location'] = self.location.to_map()
         result['PortMappings'] = []
@@ -13432,12 +13627,19 @@ class DescribeRenderingSessionResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.additional_ingresses = []
+        if m.get('AdditionalIngresses') is not None:
+            for k in m.get('AdditionalIngresses'):
+                temp_model = DescribeRenderingSessionResponseBodyAdditionalIngresses()
+                self.additional_ingresses.append(temp_model.from_map(k))
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         if m.get('ClientId') is not None:
             self.client_id = m.get('ClientId')
         if m.get('Hostname') is not None:
             self.hostname = m.get('Hostname')
+        if m.get('Isp') is not None:
+            self.isp = m.get('Isp')
         if m.get('Location') is not None:
             temp_model = DescribeRenderingSessionResponseBodyLocation()
             self.location = temp_model.from_map(m['Location'])

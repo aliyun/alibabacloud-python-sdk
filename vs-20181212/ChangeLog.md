@@ -1,3 +1,10 @@
+2025-06-10 Version: 3.3.1
+- Update API DescribeRenderingInstance: add response parameters Body.AdditionalIngresses.
+- Update API DescribeRenderingInstance: add response parameters Body.Isp.
+- Update API DescribeRenderingSession: add response parameters Body.AdditionalIngresses.
+- Update API DescribeRenderingSession: add response parameters Body.Isp.
+
+
 2025-05-29 Version: 3.3.0
 - Support API AssociateRenderingProjectInstances.
 - Support API CreateRenderingProject.
