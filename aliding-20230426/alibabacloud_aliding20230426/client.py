@@ -33643,6 +33643,148 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.UnsubscribeEventHeaders()
         return await self.unsubscribe_event_with_options_async(request, headers, runtime)
 
+    def update_conv_extension_with_options(
+        self,
+        tmp_req: aliding_20230426_models.UpdateConvExtensionRequest,
+        tmp_header: aliding_20230426_models.UpdateConvExtensionHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.UpdateConvExtensionResponse:
+        """
+        @param tmp_req: UpdateConvExtensionRequest
+        @param tmp_header: UpdateConvExtensionHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateConvExtensionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.UpdateConvExtensionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.UpdateConvExtensionShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.staff_id_list):
+            request.staff_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.staff_id_list, 'StaffIdList', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.mobile_url):
+            body['MobileUrl'] = request.mobile_url
+        if not UtilClient.is_unset(request.pc_url):
+            body['PcUrl'] = request.pc_url
+        if not UtilClient.is_unset(request.staff_id_list_shrink):
+            body['StaffIdList'] = request.staff_id_list_shrink
+        if not UtilClient.is_unset(request.system_uid):
+            body['SystemUid'] = request.system_uid
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateConvExtension',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/conversation/updateConvExtension',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.UpdateConvExtensionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_conv_extension_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.UpdateConvExtensionRequest,
+        tmp_header: aliding_20230426_models.UpdateConvExtensionHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.UpdateConvExtensionResponse:
+        """
+        @param tmp_req: UpdateConvExtensionRequest
+        @param tmp_header: UpdateConvExtensionHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateConvExtensionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.UpdateConvExtensionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.UpdateConvExtensionShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.staff_id_list):
+            request.staff_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.staff_id_list, 'StaffIdList', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.mobile_url):
+            body['MobileUrl'] = request.mobile_url
+        if not UtilClient.is_unset(request.pc_url):
+            body['PcUrl'] = request.pc_url
+        if not UtilClient.is_unset(request.staff_id_list_shrink):
+            body['StaffIdList'] = request.staff_id_list_shrink
+        if not UtilClient.is_unset(request.system_uid):
+            body['SystemUid'] = request.system_uid
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateConvExtension',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/conversation/updateConvExtension',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.UpdateConvExtensionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_conv_extension(
+        self,
+        request: aliding_20230426_models.UpdateConvExtensionRequest,
+    ) -> aliding_20230426_models.UpdateConvExtensionResponse:
+        """
+        @param request: UpdateConvExtensionRequest
+        @return: UpdateConvExtensionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.UpdateConvExtensionHeaders()
+        return self.update_conv_extension_with_options(request, headers, runtime)
+
+    async def update_conv_extension_async(
+        self,
+        request: aliding_20230426_models.UpdateConvExtensionRequest,
+    ) -> aliding_20230426_models.UpdateConvExtensionResponse:
+        """
+        @param request: UpdateConvExtensionRequest
+        @return: UpdateConvExtensionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.UpdateConvExtensionHeaders()
+        return await self.update_conv_extension_with_options_async(request, headers, runtime)
+
     def update_form_data_with_options(
         self,
         request: aliding_20230426_models.UpdateFormDataRequest,

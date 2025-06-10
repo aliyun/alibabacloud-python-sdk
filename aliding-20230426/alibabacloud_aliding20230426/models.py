@@ -95396,6 +95396,319 @@ class UnsubscribeEventResponse(TeaModel):
         return self
 
 
+class UpdateConvExtensionHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class UpdateConvExtensionHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: UpdateConvExtensionHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = UpdateConvExtensionHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class UpdateConvExtensionShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class UpdateConvExtensionRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class UpdateConvExtensionRequest(TeaModel):
+    def __init__(
+        self,
+        mobile_url: str = None,
+        pc_url: str = None,
+        staff_id_list: List[str] = None,
+        system_uid: str = None,
+        tenant_context: UpdateConvExtensionRequestTenantContext = None,
+    ):
+        self.mobile_url = mobile_url
+        self.pc_url = pc_url
+        self.staff_id_list = staff_id_list
+        self.system_uid = system_uid
+        self.tenant_context = tenant_context
+
+    def validate(self):
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mobile_url is not None:
+            result['MobileUrl'] = self.mobile_url
+        if self.pc_url is not None:
+            result['PcUrl'] = self.pc_url
+        if self.staff_id_list is not None:
+            result['StaffIdList'] = self.staff_id_list
+        if self.system_uid is not None:
+            result['SystemUid'] = self.system_uid
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MobileUrl') is not None:
+            self.mobile_url = m.get('MobileUrl')
+        if m.get('PcUrl') is not None:
+            self.pc_url = m.get('PcUrl')
+        if m.get('StaffIdList') is not None:
+            self.staff_id_list = m.get('StaffIdList')
+        if m.get('SystemUid') is not None:
+            self.system_uid = m.get('SystemUid')
+        if m.get('TenantContext') is not None:
+            temp_model = UpdateConvExtensionRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        return self
+
+
+class UpdateConvExtensionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        mobile_url: str = None,
+        pc_url: str = None,
+        staff_id_list_shrink: str = None,
+        system_uid: str = None,
+        tenant_context_shrink: str = None,
+    ):
+        self.mobile_url = mobile_url
+        self.pc_url = pc_url
+        self.staff_id_list_shrink = staff_id_list_shrink
+        self.system_uid = system_uid
+        self.tenant_context_shrink = tenant_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mobile_url is not None:
+            result['MobileUrl'] = self.mobile_url
+        if self.pc_url is not None:
+            result['PcUrl'] = self.pc_url
+        if self.staff_id_list_shrink is not None:
+            result['StaffIdList'] = self.staff_id_list_shrink
+        if self.system_uid is not None:
+            result['SystemUid'] = self.system_uid
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MobileUrl') is not None:
+            self.mobile_url = m.get('MobileUrl')
+        if m.get('PcUrl') is not None:
+            self.pc_url = m.get('PcUrl')
+        if m.get('StaffIdList') is not None:
+            self.staff_id_list_shrink = m.get('StaffIdList')
+        if m.get('SystemUid') is not None:
+            self.system_uid = m.get('SystemUid')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        return self
+
+
+class UpdateConvExtensionResponseBody(TeaModel):
+    def __init__(
+        self,
+        success: bool = None,
+        request_id: str = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.success = success
+        self.request_id = request_id
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class UpdateConvExtensionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateConvExtensionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateConvExtensionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateFormDataHeadersAccountContext(TeaModel):
     def __init__(
         self,

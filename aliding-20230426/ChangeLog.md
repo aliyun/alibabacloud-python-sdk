@@ -1,3 +1,7 @@
+2025-06-10 Version: 2.40.0
+- Support API UpdateConvExtension.
+
+
 2025-06-05 Version: 2.39.0
 - Support API AuthorizeSkill.
 - Support API ListSkill.
