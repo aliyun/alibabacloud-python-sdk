@@ -13532,7 +13532,7 @@ class ListAgentInstanceConfigsRequest(TeaModel):
 class ListAgentInstanceConfigsResponseBodyConfigs(TeaModel):
     def __init__(
         self,
-        attributes: str = None,
+        attributes: Dict[str, str] = None,
         config_type: str = None,
     ):
         self.attributes = attributes
