@@ -13,9 +13,9 @@ from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 from alibabacloud_openplatform20191219.client import Client as OpenPlatformClient
 from alibabacloud_openplatform20191219 import models as open_platform_models
 from alibabacloud_oss_sdk import models as oss_models
+from alibabacloud_oss_sdk.client import Client as OSSClient
 from alibabacloud_tea_fileform import models as file_form_models
 from alibabacloud_oss_util import models as ossutil_models
-from alibabacloud_oss_sdk.client import Client as OSSClient
 from alibabacloud_darabonba_number.client import Client as NumberClient
 
 
@@ -53,6 +53,13 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.AnalyzeChestVesselRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.AnalyzeChestVesselResponse:
+        """
+        @summary 主动脉瘤肺动脉高压检测
+        
+        @param request: AnalyzeChestVesselRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AnalyzeChestVesselResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data_format):
@@ -89,6 +96,13 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.AnalyzeChestVesselRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.AnalyzeChestVesselResponse:
+        """
+        @summary 主动脉瘤肺动脉高压检测
+        
+        @param request: AnalyzeChestVesselRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AnalyzeChestVesselResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data_format):
@@ -124,6 +138,12 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.AnalyzeChestVesselRequest,
     ) -> imageprocess_20200320_models.AnalyzeChestVesselResponse:
+        """
+        @summary 主动脉瘤肺动脉高压检测
+        
+        @param request: AnalyzeChestVesselRequest
+        @return: AnalyzeChestVesselResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.analyze_chest_vessel_with_options(request, runtime)
 
@@ -131,6 +151,12 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.AnalyzeChestVesselRequest,
     ) -> imageprocess_20200320_models.AnalyzeChestVesselResponse:
+        """
+        @summary 主动脉瘤肺动脉高压检测
+        
+        @param request: AnalyzeChestVesselRequest
+        @return: AnalyzeChestVesselResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.analyze_chest_vessel_with_options_async(request, runtime)
 
@@ -145,7 +171,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -165,12 +191,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -221,7 +248,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -241,12 +268,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -291,6 +319,13 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.CalcBMDRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.CalcBMDResponse:
+        """
+        @summary 骨密度估计
+        
+        @param request: CalcBMDRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CalcBMDResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data_format):
@@ -327,6 +362,13 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.CalcBMDRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.CalcBMDResponse:
+        """
+        @summary 骨密度估计
+        
+        @param request: CalcBMDRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CalcBMDResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data_format):
@@ -362,6 +404,12 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.CalcBMDRequest,
     ) -> imageprocess_20200320_models.CalcBMDResponse:
+        """
+        @summary 骨密度估计
+        
+        @param request: CalcBMDRequest
+        @return: CalcBMDResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.calc_bmdwith_options(request, runtime)
 
@@ -369,6 +417,12 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.CalcBMDRequest,
     ) -> imageprocess_20200320_models.CalcBMDResponse:
+        """
+        @summary 骨密度估计
+        
+        @param request: CalcBMDRequest
+        @return: CalcBMDResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.calc_bmdwith_options_async(request, runtime)
 
@@ -383,7 +437,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -403,12 +457,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -459,7 +514,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -479,12 +534,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -529,6 +585,11 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.CalcCACSRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.CalcCACSResponse:
+        """
+        @param request: CalcCACSRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CalcCACSResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data_format):
@@ -565,6 +626,11 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.CalcCACSRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.CalcCACSResponse:
+        """
+        @param request: CalcCACSRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CalcCACSResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data_format):
@@ -600,6 +666,10 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.CalcCACSRequest,
     ) -> imageprocess_20200320_models.CalcCACSResponse:
+        """
+        @param request: CalcCACSRequest
+        @return: CalcCACSResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.calc_cacswith_options(request, runtime)
 
@@ -607,6 +677,10 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.CalcCACSRequest,
     ) -> imageprocess_20200320_models.CalcCACSResponse:
+        """
+        @param request: CalcCACSRequest
+        @return: CalcCACSResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.calc_cacswith_options_async(request, runtime)
 
@@ -621,7 +695,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -641,12 +715,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -697,7 +772,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -717,12 +792,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -762,239 +838,16 @@ class Client(OpenApiClient):
         calc_cacsresp = await self.calc_cacswith_options_async(calc_cacsreq, runtime)
         return calc_cacsresp
 
-    def classify_fnfwith_options(
-        self,
-        request: imageprocess_20200320_models.ClassifyFNFRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.ClassifyFNFResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.data_format):
-            body['DataFormat'] = request.data_format
-        if not UtilClient.is_unset(request.image_url):
-            body['ImageUrl'] = request.image_url
-        if not UtilClient.is_unset(request.org_id):
-            body['OrgId'] = request.org_id
-        if not UtilClient.is_unset(request.org_name):
-            body['OrgName'] = request.org_name
-        if not UtilClient.is_unset(request.tracer_id):
-            body['TracerId'] = request.tracer_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ClassifyFNF',
-            version='2020-03-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.ClassifyFNFResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def classify_fnfwith_options_async(
-        self,
-        request: imageprocess_20200320_models.ClassifyFNFRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.ClassifyFNFResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.data_format):
-            body['DataFormat'] = request.data_format
-        if not UtilClient.is_unset(request.image_url):
-            body['ImageUrl'] = request.image_url
-        if not UtilClient.is_unset(request.org_id):
-            body['OrgId'] = request.org_id
-        if not UtilClient.is_unset(request.org_name):
-            body['OrgName'] = request.org_name
-        if not UtilClient.is_unset(request.tracer_id):
-            body['TracerId'] = request.tracer_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ClassifyFNF',
-            version='2020-03-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.ClassifyFNFResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def classify_fnf(
-        self,
-        request: imageprocess_20200320_models.ClassifyFNFRequest,
-    ) -> imageprocess_20200320_models.ClassifyFNFResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.classify_fnfwith_options(request, runtime)
-
-    async def classify_fnf_async(
-        self,
-        request: imageprocess_20200320_models.ClassifyFNFRequest,
-    ) -> imageprocess_20200320_models.ClassifyFNFResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.classify_fnfwith_options_async(request, runtime)
-
-    def classify_fnfadvance(
-        self,
-        request: imageprocess_20200320_models.ClassifyFNFAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.ClassifyFNFResponse:
-        # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        security_token = self._credential.get_security_token()
-        credential_type = self._credential.get_type()
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        if UtilClient.is_unset(credential_type):
-            credential_type = 'access_key'
-        auth_config = open_api_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            security_token=security_token,
-            type=credential_type,
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='imageprocess',
-            region_id=self._region_id
-        )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        oss_client = None
-        file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
-        classify_fnfreq = imageprocess_20200320_models.ClassifyFNFRequest()
-        OpenApiUtilClient.convert(request, classify_fnfreq)
-        if not UtilClient.is_unset(request.image_url_object):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
-            file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
-                content=request.image_url_object,
-                content_type=''
-            )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            classify_fnfreq.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
-        classify_fnfresp = self.classify_fnfwith_options(classify_fnfreq, runtime)
-        return classify_fnfresp
-
-    async def classify_fnfadvance_async(
-        self,
-        request: imageprocess_20200320_models.ClassifyFNFAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.ClassifyFNFResponse:
-        # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        security_token = await self._credential.get_security_token_async()
-        credential_type = self._credential.get_type()
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        if UtilClient.is_unset(credential_type):
-            credential_type = 'access_key'
-        auth_config = open_api_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            security_token=security_token,
-            type=credential_type,
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='imageprocess',
-            region_id=self._region_id
-        )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        oss_client = None
-        file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
-        classify_fnfreq = imageprocess_20200320_models.ClassifyFNFRequest()
-        OpenApiUtilClient.convert(request, classify_fnfreq)
-        if not UtilClient.is_unset(request.image_url_object):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
-            file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
-                content=request.image_url_object,
-                content_type=''
-            )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            classify_fnfreq.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
-        classify_fnfresp = await self.classify_fnfwith_options_async(classify_fnfreq, runtime)
-        return classify_fnfresp
-
     def detect_covid_19cad_with_options(
         self,
         request: imageprocess_20200320_models.DetectCovid19CadRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.DetectCovid19CadResponse:
+        """
+        @param request: DetectCovid19CadRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectCovid19CadResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data_format):
@@ -1029,6 +882,11 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.DetectCovid19CadRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.DetectCovid19CadResponse:
+        """
+        @param request: DetectCovid19CadRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectCovid19CadResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data_format):
@@ -1062,6 +920,10 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.DetectCovid19CadRequest,
     ) -> imageprocess_20200320_models.DetectCovid19CadResponse:
+        """
+        @param request: DetectCovid19CadRequest
+        @return: DetectCovid19CadResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.detect_covid_19cad_with_options(request, runtime)
 
@@ -1069,6 +931,10 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.DetectCovid19CadRequest,
     ) -> imageprocess_20200320_models.DetectCovid19CadResponse:
+        """
+        @param request: DetectCovid19CadRequest
+        @return: DetectCovid19CadResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.detect_covid_19cad_with_options_async(request, runtime)
 
@@ -1083,7 +949,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -1103,12 +969,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -1159,7 +1026,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -1179,12 +1046,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -1224,691 +1092,18 @@ class Client(OpenApiClient):
         detect_covid_19cad_resp = await self.detect_covid_19cad_with_options_async(detect_covid_19cad_req, runtime)
         return detect_covid_19cad_resp
 
-    def detect_hip_keypoint_xray_with_options(
-        self,
-        request: imageprocess_20200320_models.DetectHipKeypointXRayRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.DetectHipKeypointXRayResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.data_format):
-            body['DataFormat'] = request.data_format
-        if not UtilClient.is_unset(request.image_url):
-            body['ImageUrl'] = request.image_url
-        if not UtilClient.is_unset(request.org_id):
-            body['OrgId'] = request.org_id
-        if not UtilClient.is_unset(request.org_name):
-            body['OrgName'] = request.org_name
-        if not UtilClient.is_unset(request.tracer_id):
-            body['TracerId'] = request.tracer_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DetectHipKeypointXRay',
-            version='2020-03-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.DetectHipKeypointXRayResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def detect_hip_keypoint_xray_with_options_async(
-        self,
-        request: imageprocess_20200320_models.DetectHipKeypointXRayRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.DetectHipKeypointXRayResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.data_format):
-            body['DataFormat'] = request.data_format
-        if not UtilClient.is_unset(request.image_url):
-            body['ImageUrl'] = request.image_url
-        if not UtilClient.is_unset(request.org_id):
-            body['OrgId'] = request.org_id
-        if not UtilClient.is_unset(request.org_name):
-            body['OrgName'] = request.org_name
-        if not UtilClient.is_unset(request.tracer_id):
-            body['TracerId'] = request.tracer_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DetectHipKeypointXRay',
-            version='2020-03-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.DetectHipKeypointXRayResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def detect_hip_keypoint_xray(
-        self,
-        request: imageprocess_20200320_models.DetectHipKeypointXRayRequest,
-    ) -> imageprocess_20200320_models.DetectHipKeypointXRayResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.detect_hip_keypoint_xray_with_options(request, runtime)
-
-    async def detect_hip_keypoint_xray_async(
-        self,
-        request: imageprocess_20200320_models.DetectHipKeypointXRayRequest,
-    ) -> imageprocess_20200320_models.DetectHipKeypointXRayResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.detect_hip_keypoint_xray_with_options_async(request, runtime)
-
-    def detect_hip_keypoint_xray_advance(
-        self,
-        request: imageprocess_20200320_models.DetectHipKeypointXRayAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.DetectHipKeypointXRayResponse:
-        # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        security_token = self._credential.get_security_token()
-        credential_type = self._credential.get_type()
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        if UtilClient.is_unset(credential_type):
-            credential_type = 'access_key'
-        auth_config = open_api_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            security_token=security_token,
-            type=credential_type,
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='imageprocess',
-            region_id=self._region_id
-        )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        oss_client = None
-        file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
-        detect_hip_keypoint_xray_req = imageprocess_20200320_models.DetectHipKeypointXRayRequest()
-        OpenApiUtilClient.convert(request, detect_hip_keypoint_xray_req)
-        if not UtilClient.is_unset(request.image_url_object):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
-            file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
-                content=request.image_url_object,
-                content_type=''
-            )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            detect_hip_keypoint_xray_req.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
-        detect_hip_keypoint_xray_resp = self.detect_hip_keypoint_xray_with_options(detect_hip_keypoint_xray_req, runtime)
-        return detect_hip_keypoint_xray_resp
-
-    async def detect_hip_keypoint_xray_advance_async(
-        self,
-        request: imageprocess_20200320_models.DetectHipKeypointXRayAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.DetectHipKeypointXRayResponse:
-        # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        security_token = await self._credential.get_security_token_async()
-        credential_type = self._credential.get_type()
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        if UtilClient.is_unset(credential_type):
-            credential_type = 'access_key'
-        auth_config = open_api_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            security_token=security_token,
-            type=credential_type,
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='imageprocess',
-            region_id=self._region_id
-        )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        oss_client = None
-        file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
-        detect_hip_keypoint_xray_req = imageprocess_20200320_models.DetectHipKeypointXRayRequest()
-        OpenApiUtilClient.convert(request, detect_hip_keypoint_xray_req)
-        if not UtilClient.is_unset(request.image_url_object):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
-            file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
-                content=request.image_url_object,
-                content_type=''
-            )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            detect_hip_keypoint_xray_req.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
-        detect_hip_keypoint_xray_resp = await self.detect_hip_keypoint_xray_with_options_async(detect_hip_keypoint_xray_req, runtime)
-        return detect_hip_keypoint_xray_resp
-
-    def detect_knee_keypoint_xray_with_options(
-        self,
-        request: imageprocess_20200320_models.DetectKneeKeypointXRayRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.DetectKneeKeypointXRayResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.data_format):
-            body['DataFormat'] = request.data_format
-        if not UtilClient.is_unset(request.image_url):
-            body['ImageUrl'] = request.image_url
-        if not UtilClient.is_unset(request.org_id):
-            body['OrgId'] = request.org_id
-        if not UtilClient.is_unset(request.org_name):
-            body['OrgName'] = request.org_name
-        if not UtilClient.is_unset(request.tracer_id):
-            body['TracerId'] = request.tracer_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DetectKneeKeypointXRay',
-            version='2020-03-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.DetectKneeKeypointXRayResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def detect_knee_keypoint_xray_with_options_async(
-        self,
-        request: imageprocess_20200320_models.DetectKneeKeypointXRayRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.DetectKneeKeypointXRayResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.data_format):
-            body['DataFormat'] = request.data_format
-        if not UtilClient.is_unset(request.image_url):
-            body['ImageUrl'] = request.image_url
-        if not UtilClient.is_unset(request.org_id):
-            body['OrgId'] = request.org_id
-        if not UtilClient.is_unset(request.org_name):
-            body['OrgName'] = request.org_name
-        if not UtilClient.is_unset(request.tracer_id):
-            body['TracerId'] = request.tracer_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DetectKneeKeypointXRay',
-            version='2020-03-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.DetectKneeKeypointXRayResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def detect_knee_keypoint_xray(
-        self,
-        request: imageprocess_20200320_models.DetectKneeKeypointXRayRequest,
-    ) -> imageprocess_20200320_models.DetectKneeKeypointXRayResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.detect_knee_keypoint_xray_with_options(request, runtime)
-
-    async def detect_knee_keypoint_xray_async(
-        self,
-        request: imageprocess_20200320_models.DetectKneeKeypointXRayRequest,
-    ) -> imageprocess_20200320_models.DetectKneeKeypointXRayResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.detect_knee_keypoint_xray_with_options_async(request, runtime)
-
-    def detect_knee_keypoint_xray_advance(
-        self,
-        request: imageprocess_20200320_models.DetectKneeKeypointXRayAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.DetectKneeKeypointXRayResponse:
-        # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        security_token = self._credential.get_security_token()
-        credential_type = self._credential.get_type()
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        if UtilClient.is_unset(credential_type):
-            credential_type = 'access_key'
-        auth_config = open_api_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            security_token=security_token,
-            type=credential_type,
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='imageprocess',
-            region_id=self._region_id
-        )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        oss_client = None
-        file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
-        detect_knee_keypoint_xray_req = imageprocess_20200320_models.DetectKneeKeypointXRayRequest()
-        OpenApiUtilClient.convert(request, detect_knee_keypoint_xray_req)
-        if not UtilClient.is_unset(request.image_url_object):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
-            file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
-                content=request.image_url_object,
-                content_type=''
-            )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            detect_knee_keypoint_xray_req.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
-        detect_knee_keypoint_xray_resp = self.detect_knee_keypoint_xray_with_options(detect_knee_keypoint_xray_req, runtime)
-        return detect_knee_keypoint_xray_resp
-
-    async def detect_knee_keypoint_xray_advance_async(
-        self,
-        request: imageprocess_20200320_models.DetectKneeKeypointXRayAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.DetectKneeKeypointXRayResponse:
-        # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        security_token = await self._credential.get_security_token_async()
-        credential_type = self._credential.get_type()
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        if UtilClient.is_unset(credential_type):
-            credential_type = 'access_key'
-        auth_config = open_api_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            security_token=security_token,
-            type=credential_type,
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='imageprocess',
-            region_id=self._region_id
-        )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        oss_client = None
-        file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
-        detect_knee_keypoint_xray_req = imageprocess_20200320_models.DetectKneeKeypointXRayRequest()
-        OpenApiUtilClient.convert(request, detect_knee_keypoint_xray_req)
-        if not UtilClient.is_unset(request.image_url_object):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
-            file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
-                content=request.image_url_object,
-                content_type=''
-            )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            detect_knee_keypoint_xray_req.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
-        detect_knee_keypoint_xray_resp = await self.detect_knee_keypoint_xray_with_options_async(detect_knee_keypoint_xray_req, runtime)
-        return detect_knee_keypoint_xray_resp
-
-    def detect_knee_xray_with_options(
-        self,
-        request: imageprocess_20200320_models.DetectKneeXRayRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.DetectKneeXRayResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.data_format):
-            body['DataFormat'] = request.data_format
-        if not UtilClient.is_unset(request.org_id):
-            body['OrgId'] = request.org_id
-        if not UtilClient.is_unset(request.org_name):
-            body['OrgName'] = request.org_name
-        if not UtilClient.is_unset(request.url):
-            body['Url'] = request.url
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DetectKneeXRay',
-            version='2020-03-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.DetectKneeXRayResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def detect_knee_xray_with_options_async(
-        self,
-        request: imageprocess_20200320_models.DetectKneeXRayRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.DetectKneeXRayResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.data_format):
-            body['DataFormat'] = request.data_format
-        if not UtilClient.is_unset(request.org_id):
-            body['OrgId'] = request.org_id
-        if not UtilClient.is_unset(request.org_name):
-            body['OrgName'] = request.org_name
-        if not UtilClient.is_unset(request.url):
-            body['Url'] = request.url
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DetectKneeXRay',
-            version='2020-03-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.DetectKneeXRayResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def detect_knee_xray(
-        self,
-        request: imageprocess_20200320_models.DetectKneeXRayRequest,
-    ) -> imageprocess_20200320_models.DetectKneeXRayResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.detect_knee_xray_with_options(request, runtime)
-
-    async def detect_knee_xray_async(
-        self,
-        request: imageprocess_20200320_models.DetectKneeXRayRequest,
-    ) -> imageprocess_20200320_models.DetectKneeXRayResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.detect_knee_xray_with_options_async(request, runtime)
-
-    def detect_knee_xray_advance(
-        self,
-        request: imageprocess_20200320_models.DetectKneeXRayAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.DetectKneeXRayResponse:
-        # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        security_token = self._credential.get_security_token()
-        credential_type = self._credential.get_type()
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        if UtilClient.is_unset(credential_type):
-            credential_type = 'access_key'
-        auth_config = open_api_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            security_token=security_token,
-            type=credential_type,
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='imageprocess',
-            region_id=self._region_id
-        )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        oss_client = None
-        file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
-        detect_knee_xray_req = imageprocess_20200320_models.DetectKneeXRayRequest()
-        OpenApiUtilClient.convert(request, detect_knee_xray_req)
-        if not UtilClient.is_unset(request.url_object):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
-            file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
-                content=request.url_object,
-                content_type=''
-            )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            detect_knee_xray_req.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
-        detect_knee_xray_resp = self.detect_knee_xray_with_options(detect_knee_xray_req, runtime)
-        return detect_knee_xray_resp
-
-    async def detect_knee_xray_advance_async(
-        self,
-        request: imageprocess_20200320_models.DetectKneeXRayAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.DetectKneeXRayResponse:
-        # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        security_token = await self._credential.get_security_token_async()
-        credential_type = self._credential.get_type()
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        if UtilClient.is_unset(credential_type):
-            credential_type = 'access_key'
-        auth_config = open_api_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            security_token=security_token,
-            type=credential_type,
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='imageprocess',
-            region_id=self._region_id
-        )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        oss_client = None
-        file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
-        detect_knee_xray_req = imageprocess_20200320_models.DetectKneeXRayRequest()
-        OpenApiUtilClient.convert(request, detect_knee_xray_req)
-        if not UtilClient.is_unset(request.url_object):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
-            file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
-                content=request.url_object,
-                content_type=''
-            )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            detect_knee_xray_req.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
-        detect_knee_xray_resp = await self.detect_knee_xray_with_options_async(detect_knee_xray_req, runtime)
-        return detect_knee_xray_resp
-
     def detect_liver_steatosis_with_options(
         self,
         request: imageprocess_20200320_models.DetectLiverSteatosisRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.DetectLiverSteatosisResponse:
+        """
+        @summary 脂肪肝检测
+        
+        @param request: DetectLiverSteatosisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectLiverSteatosisResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data_format):
@@ -1945,6 +1140,13 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.DetectLiverSteatosisRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.DetectLiverSteatosisResponse:
+        """
+        @summary 脂肪肝检测
+        
+        @param request: DetectLiverSteatosisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectLiverSteatosisResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data_format):
@@ -1980,6 +1182,12 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.DetectLiverSteatosisRequest,
     ) -> imageprocess_20200320_models.DetectLiverSteatosisResponse:
+        """
+        @summary 脂肪肝检测
+        
+        @param request: DetectLiverSteatosisRequest
+        @return: DetectLiverSteatosisResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.detect_liver_steatosis_with_options(request, runtime)
 
@@ -1987,6 +1195,12 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.DetectLiverSteatosisRequest,
     ) -> imageprocess_20200320_models.DetectLiverSteatosisResponse:
+        """
+        @summary 脂肪肝检测
+        
+        @param request: DetectLiverSteatosisRequest
+        @return: DetectLiverSteatosisResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.detect_liver_steatosis_with_options_async(request, runtime)
 
@@ -2001,7 +1215,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -2021,12 +1235,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -2077,7 +1292,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -2097,12 +1312,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -2147,6 +1363,11 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.DetectLungNoduleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.DetectLungNoduleResponse:
+        """
+        @param request: DetectLungNoduleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectLungNoduleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data_format):
@@ -2183,6 +1404,11 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.DetectLungNoduleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.DetectLungNoduleResponse:
+        """
+        @param request: DetectLungNoduleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectLungNoduleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data_format):
@@ -2218,6 +1444,10 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.DetectLungNoduleRequest,
     ) -> imageprocess_20200320_models.DetectLungNoduleResponse:
+        """
+        @param request: DetectLungNoduleRequest
+        @return: DetectLungNoduleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.detect_lung_nodule_with_options(request, runtime)
 
@@ -2225,6 +1455,10 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.DetectLungNoduleRequest,
     ) -> imageprocess_20200320_models.DetectLungNoduleResponse:
+        """
+        @param request: DetectLungNoduleRequest
+        @return: DetectLungNoduleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.detect_lung_nodule_with_options_async(request, runtime)
 
@@ -2239,7 +1473,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -2259,12 +1493,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -2315,7 +1550,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -2335,12 +1570,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -2385,6 +1621,13 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.DetectLymphRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.DetectLymphResponse:
+        """
+        @summary 淋巴结检测
+        
+        @param request: DetectLymphRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectLymphResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data_source_type):
@@ -2415,6 +1658,13 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.DetectLymphRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.DetectLymphResponse:
+        """
+        @summary 淋巴结检测
+        
+        @param request: DetectLymphRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectLymphResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data_source_type):
@@ -2444,6 +1694,12 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.DetectLymphRequest,
     ) -> imageprocess_20200320_models.DetectLymphResponse:
+        """
+        @summary 淋巴结检测
+        
+        @param request: DetectLymphRequest
+        @return: DetectLymphResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.detect_lymph_with_options(request, runtime)
 
@@ -2451,6 +1707,12 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.DetectLymphRequest,
     ) -> imageprocess_20200320_models.DetectLymphResponse:
+        """
+        @summary 淋巴结检测
+        
+        @param request: DetectLymphRequest
+        @return: DetectLymphResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.detect_lymph_with_options_async(request, runtime)
 
@@ -2465,7 +1727,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -2485,12 +1747,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -2541,7 +1804,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -2561,12 +1824,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -2611,6 +1875,13 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.DetectPancRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.DetectPancResponse:
+        """
+        @summary 胰腺癌检测
+        
+        @param request: DetectPancRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectPancResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data_source_type):
@@ -2641,6 +1912,13 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.DetectPancRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.DetectPancResponse:
+        """
+        @summary 胰腺癌检测
+        
+        @param request: DetectPancRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectPancResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data_source_type):
@@ -2670,6 +1948,12 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.DetectPancRequest,
     ) -> imageprocess_20200320_models.DetectPancResponse:
+        """
+        @summary 胰腺癌检测
+        
+        @param request: DetectPancRequest
+        @return: DetectPancResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.detect_panc_with_options(request, runtime)
 
@@ -2677,6 +1961,12 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.DetectPancRequest,
     ) -> imageprocess_20200320_models.DetectPancResponse:
+        """
+        @summary 胰腺癌检测
+        
+        @param request: DetectPancRequest
+        @return: DetectPancResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.detect_panc_with_options_async(request, runtime)
 
@@ -2691,7 +1981,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -2711,12 +2001,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -2767,7 +2058,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -2787,12 +2078,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -2837,6 +2129,11 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.DetectRibFractureRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.DetectRibFractureResponse:
+        """
+        @param request: DetectRibFractureRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectRibFractureResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data_format):
@@ -2873,6 +2170,11 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.DetectRibFractureRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.DetectRibFractureResponse:
+        """
+        @param request: DetectRibFractureRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectRibFractureResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data_format):
@@ -2908,6 +2210,10 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.DetectRibFractureRequest,
     ) -> imageprocess_20200320_models.DetectRibFractureResponse:
+        """
+        @param request: DetectRibFractureRequest
+        @return: DetectRibFractureResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.detect_rib_fracture_with_options(request, runtime)
 
@@ -2915,6 +2221,10 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.DetectRibFractureRequest,
     ) -> imageprocess_20200320_models.DetectRibFractureResponse:
+        """
+        @param request: DetectRibFractureRequest
+        @return: DetectRibFractureResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.detect_rib_fracture_with_options_async(request, runtime)
 
@@ -2929,7 +2239,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -2949,12 +2259,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -3005,7 +2316,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -3025,12 +2336,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -3075,6 +2387,11 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.DetectSkinDiseaseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.DetectSkinDiseaseResponse:
+        """
+        @param request: DetectSkinDiseaseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectSkinDiseaseResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.org_id):
@@ -3107,6 +2424,11 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.DetectSkinDiseaseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.DetectSkinDiseaseResponse:
+        """
+        @param request: DetectSkinDiseaseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectSkinDiseaseResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.org_id):
@@ -3138,6 +2460,10 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.DetectSkinDiseaseRequest,
     ) -> imageprocess_20200320_models.DetectSkinDiseaseResponse:
+        """
+        @param request: DetectSkinDiseaseRequest
+        @return: DetectSkinDiseaseResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.detect_skin_disease_with_options(request, runtime)
 
@@ -3145,6 +2471,10 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.DetectSkinDiseaseRequest,
     ) -> imageprocess_20200320_models.DetectSkinDiseaseResponse:
+        """
+        @param request: DetectSkinDiseaseRequest
+        @return: DetectSkinDiseaseResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.detect_skin_disease_with_options_async(request, runtime)
 
@@ -3159,7 +2489,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -3179,12 +2509,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -3230,7 +2561,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -3250,12 +2581,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -3290,245 +2622,18 @@ class Client(OpenApiClient):
         detect_skin_disease_resp = await self.detect_skin_disease_with_options_async(detect_skin_disease_req, runtime)
         return detect_skin_disease_resp
 
-    def detect_spine_mriwith_options(
-        self,
-        request: imageprocess_20200320_models.DetectSpineMRIRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.DetectSpineMRIResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.data_format):
-            body['DataFormat'] = request.data_format
-        if not UtilClient.is_unset(request.org_id):
-            body['OrgId'] = request.org_id
-        if not UtilClient.is_unset(request.org_name):
-            body['OrgName'] = request.org_name
-        if not UtilClient.is_unset(request.urllist):
-            body['URLList'] = request.urllist
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DetectSpineMRI',
-            version='2020-03-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.DetectSpineMRIResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def detect_spine_mriwith_options_async(
-        self,
-        request: imageprocess_20200320_models.DetectSpineMRIRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.DetectSpineMRIResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.data_format):
-            body['DataFormat'] = request.data_format
-        if not UtilClient.is_unset(request.org_id):
-            body['OrgId'] = request.org_id
-        if not UtilClient.is_unset(request.org_name):
-            body['OrgName'] = request.org_name
-        if not UtilClient.is_unset(request.urllist):
-            body['URLList'] = request.urllist
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DetectSpineMRI',
-            version='2020-03-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.DetectSpineMRIResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def detect_spine_mri(
-        self,
-        request: imageprocess_20200320_models.DetectSpineMRIRequest,
-    ) -> imageprocess_20200320_models.DetectSpineMRIResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.detect_spine_mriwith_options(request, runtime)
-
-    async def detect_spine_mri_async(
-        self,
-        request: imageprocess_20200320_models.DetectSpineMRIRequest,
-    ) -> imageprocess_20200320_models.DetectSpineMRIResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.detect_spine_mriwith_options_async(request, runtime)
-
-    def detect_spine_mriadvance(
-        self,
-        request: imageprocess_20200320_models.DetectSpineMRIAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.DetectSpineMRIResponse:
-        # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        security_token = self._credential.get_security_token()
-        credential_type = self._credential.get_type()
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        if UtilClient.is_unset(credential_type):
-            credential_type = 'access_key'
-        auth_config = open_api_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            security_token=security_token,
-            type=credential_type,
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='imageprocess',
-            region_id=self._region_id
-        )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        oss_client = None
-        file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
-        detect_spine_mrireq = imageprocess_20200320_models.DetectSpineMRIRequest()
-        OpenApiUtilClient.convert(request, detect_spine_mrireq)
-        if not UtilClient.is_unset(request.urllist):
-            i_0 = 0
-            for item_0 in request.urllist:
-                if not UtilClient.is_unset(item_0.urlobject):
-                    auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-                    oss_config.access_key_id = auth_response.body.access_key_id
-                    oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-                    oss_client = OSSClient(oss_config)
-                    file_obj = file_form_models.FileField(
-                        filename=auth_response.body.object_key,
-                        content=item_0.urlobject,
-                        content_type=''
-                    )
-                    oss_header = oss_models.PostObjectRequestHeader(
-                        access_key_id=auth_response.body.access_key_id,
-                        policy=auth_response.body.encoded_policy,
-                        signature=auth_response.body.signature,
-                        key=auth_response.body.object_key,
-                        file=file_obj,
-                        success_action_status='201'
-                    )
-                    upload_request = oss_models.PostObjectRequest(
-                        bucket_name=auth_response.body.bucket,
-                        header=oss_header
-                    )
-                    oss_client.post_object(upload_request, oss_runtime)
-                    tmp = detect_spine_mrireq.urllist[i_0]
-                    tmp.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
-                    i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
-        detect_spine_mriresp = self.detect_spine_mriwith_options(detect_spine_mrireq, runtime)
-        return detect_spine_mriresp
-
-    async def detect_spine_mriadvance_async(
-        self,
-        request: imageprocess_20200320_models.DetectSpineMRIAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.DetectSpineMRIResponse:
-        # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        security_token = await self._credential.get_security_token_async()
-        credential_type = self._credential.get_type()
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        if UtilClient.is_unset(credential_type):
-            credential_type = 'access_key'
-        auth_config = open_api_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            security_token=security_token,
-            type=credential_type,
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='imageprocess',
-            region_id=self._region_id
-        )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        oss_client = None
-        file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
-        detect_spine_mrireq = imageprocess_20200320_models.DetectSpineMRIRequest()
-        OpenApiUtilClient.convert(request, detect_spine_mrireq)
-        if not UtilClient.is_unset(request.urllist):
-            i_0 = 0
-            for item_0 in request.urllist:
-                if not UtilClient.is_unset(item_0.urlobject):
-                    auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-                    oss_config.access_key_id = auth_response.body.access_key_id
-                    oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-                    oss_client = OSSClient(oss_config)
-                    file_obj = file_form_models.FileField(
-                        filename=auth_response.body.object_key,
-                        content=item_0.urlobject,
-                        content_type=''
-                    )
-                    oss_header = oss_models.PostObjectRequestHeader(
-                        access_key_id=auth_response.body.access_key_id,
-                        policy=auth_response.body.encoded_policy,
-                        signature=auth_response.body.signature,
-                        key=auth_response.body.object_key,
-                        file=file_obj,
-                        success_action_status='201'
-                    )
-                    upload_request = oss_models.PostObjectRequest(
-                        bucket_name=auth_response.body.bucket,
-                        header=oss_header
-                    )
-                    await oss_client.post_object_async(upload_request, oss_runtime)
-                    tmp = detect_spine_mrireq.urllist[i_0]
-                    tmp.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
-                    i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
-        detect_spine_mriresp = await self.detect_spine_mriwith_options_async(detect_spine_mrireq, runtime)
-        return detect_spine_mriresp
-
     def feedback_session_with_options(
         self,
         request: imageprocess_20200320_models.FeedbackSessionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.FeedbackSessionResponse:
+        """
+        @summary 会话反馈
+        
+        @param request: FeedbackSessionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FeedbackSessionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.feedback):
@@ -3559,6 +2664,13 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.FeedbackSessionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.FeedbackSessionResponse:
+        """
+        @summary 会话反馈
+        
+        @param request: FeedbackSessionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FeedbackSessionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.feedback):
@@ -3588,6 +2700,12 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.FeedbackSessionRequest,
     ) -> imageprocess_20200320_models.FeedbackSessionResponse:
+        """
+        @summary 会话反馈
+        
+        @param request: FeedbackSessionRequest
+        @return: FeedbackSessionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.feedback_session_with_options(request, runtime)
 
@@ -3595,14 +2713,129 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.FeedbackSessionRequest,
     ) -> imageprocess_20200320_models.FeedbackSessionResponse:
+        """
+        @summary 会话反馈
+        
+        @param request: FeedbackSessionRequest
+        @return: FeedbackSessionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.feedback_session_with_options_async(request, runtime)
+
+    def generate_report_with_options(
+        self,
+        tmp_req: imageprocess_20200320_models.GenerateReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.GenerateReportResponse:
+        """
+        @summary 胸部CT平扫筛查结果报告生成
+        
+        @param tmp_req: GenerateReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateReportResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = imageprocess_20200320_models.GenerateReportShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.report_configs):
+            request.report_configs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.report_configs, 'ReportConfigs', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.report_configs_shrink):
+            body['ReportConfigs'] = request.report_configs_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GenerateReport',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.GenerateReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def generate_report_with_options_async(
+        self,
+        tmp_req: imageprocess_20200320_models.GenerateReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.GenerateReportResponse:
+        """
+        @summary 胸部CT平扫筛查结果报告生成
+        
+        @param tmp_req: GenerateReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateReportResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = imageprocess_20200320_models.GenerateReportShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.report_configs):
+            request.report_configs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.report_configs, 'ReportConfigs', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.report_configs_shrink):
+            body['ReportConfigs'] = request.report_configs_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GenerateReport',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.GenerateReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def generate_report(
+        self,
+        request: imageprocess_20200320_models.GenerateReportRequest,
+    ) -> imageprocess_20200320_models.GenerateReportResponse:
+        """
+        @summary 胸部CT平扫筛查结果报告生成
+        
+        @param request: GenerateReportRequest
+        @return: GenerateReportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.generate_report_with_options(request, runtime)
+
+    async def generate_report_async(
+        self,
+        request: imageprocess_20200320_models.GenerateReportRequest,
+    ) -> imageprocess_20200320_models.GenerateReportResponse:
+        """
+        @summary 胸部CT平扫筛查结果报告生成
+        
+        @param request: GenerateReportRequest
+        @return: GenerateReportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.generate_report_with_options_async(request, runtime)
 
     def get_async_job_result_with_options(
         self,
         request: imageprocess_20200320_models.GetAsyncJobResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.GetAsyncJobResultResponse:
+        """
+        @param request: GetAsyncJobResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAsyncJobResultResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.job_id):
@@ -3631,6 +2864,11 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.GetAsyncJobResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.GetAsyncJobResultResponse:
+        """
+        @param request: GetAsyncJobResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAsyncJobResultResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.job_id):
@@ -3658,6 +2896,10 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.GetAsyncJobResultRequest,
     ) -> imageprocess_20200320_models.GetAsyncJobResultResponse:
+        """
+        @param request: GetAsyncJobResultRequest
+        @return: GetAsyncJobResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_async_job_result_with_options(request, runtime)
 
@@ -3665,6 +2907,10 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.GetAsyncJobResultRequest,
     ) -> imageprocess_20200320_models.GetAsyncJobResultResponse:
+        """
+        @param request: GetAsyncJobResultRequest
+        @return: GetAsyncJobResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_async_job_result_with_options_async(request, runtime)
 
@@ -3673,6 +2919,13 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.PredictCVDRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.PredictCVDResponse:
+        """
+        @summary CVD心血管不良事件预测
+        
+        @param request: PredictCVDRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PredictCVDResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data_format):
@@ -3709,6 +2962,13 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.PredictCVDRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.PredictCVDResponse:
+        """
+        @summary CVD心血管不良事件预测
+        
+        @param request: PredictCVDRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PredictCVDResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data_format):
@@ -3744,6 +3004,12 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.PredictCVDRequest,
     ) -> imageprocess_20200320_models.PredictCVDResponse:
+        """
+        @summary CVD心血管不良事件预测
+        
+        @param request: PredictCVDRequest
+        @return: PredictCVDResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.predict_cvdwith_options(request, runtime)
 
@@ -3751,6 +3017,12 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.PredictCVDRequest,
     ) -> imageprocess_20200320_models.PredictCVDResponse:
+        """
+        @summary CVD心血管不良事件预测
+        
+        @param request: PredictCVDRequest
+        @return: PredictCVDResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.predict_cvdwith_options_async(request, runtime)
 
@@ -3765,7 +3037,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -3785,12 +3057,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -3841,7 +3114,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -3861,12 +3134,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -3911,6 +3185,11 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.RunCTRegistrationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.RunCTRegistrationResponse:
+        """
+        @param request: RunCTRegistrationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunCTRegistrationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data_format):
@@ -3949,6 +3228,11 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.RunCTRegistrationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.RunCTRegistrationResponse:
+        """
+        @param request: RunCTRegistrationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunCTRegistrationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data_format):
@@ -3986,6 +3270,10 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.RunCTRegistrationRequest,
     ) -> imageprocess_20200320_models.RunCTRegistrationResponse:
+        """
+        @param request: RunCTRegistrationRequest
+        @return: RunCTRegistrationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.run_ctregistration_with_options(request, runtime)
 
@@ -3993,6 +3281,10 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.RunCTRegistrationRequest,
     ) -> imageprocess_20200320_models.RunCTRegistrationResponse:
+        """
+        @param request: RunCTRegistrationRequest
+        @return: RunCTRegistrationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.run_ctregistration_with_options_async(request, runtime)
 
@@ -4007,7 +3299,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -4027,12 +3319,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -4112,7 +3405,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -4132,12 +3425,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -4211,6 +3505,11 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.RunMedQARequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.RunMedQAResponse:
+        """
+        @param request: RunMedQARequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunMedQAResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.answer_image_data_list):
@@ -4253,6 +3552,11 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.RunMedQARequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.RunMedQAResponse:
+        """
+        @param request: RunMedQARequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunMedQAResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.answer_image_data_list):
@@ -4294,6 +3598,10 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.RunMedQARequest,
     ) -> imageprocess_20200320_models.RunMedQAResponse:
+        """
+        @param request: RunMedQARequest
+        @return: RunMedQAResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.run_med_qawith_options(request, runtime)
 
@@ -4301,6 +3609,10 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.RunMedQARequest,
     ) -> imageprocess_20200320_models.RunMedQAResponse:
+        """
+        @param request: RunMedQARequest
+        @return: RunMedQAResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.run_med_qawith_options_async(request, runtime)
 
@@ -4315,7 +3627,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -4335,12 +3647,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -4391,7 +3704,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -4411,12 +3724,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -4461,6 +3775,13 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.ScreenCRCRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.ScreenCRCResponse:
+        """
+        @summary 结直肠癌筛查
+        
+        @param request: ScreenCRCRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ScreenCRCResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data_format):
@@ -4497,6 +3818,13 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.ScreenCRCRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.ScreenCRCResponse:
+        """
+        @summary 结直肠癌筛查
+        
+        @param request: ScreenCRCRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ScreenCRCResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data_format):
@@ -4532,6 +3860,12 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.ScreenCRCRequest,
     ) -> imageprocess_20200320_models.ScreenCRCResponse:
+        """
+        @summary 结直肠癌筛查
+        
+        @param request: ScreenCRCRequest
+        @return: ScreenCRCResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.screen_crcwith_options(request, runtime)
 
@@ -4539,6 +3873,12 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.ScreenCRCRequest,
     ) -> imageprocess_20200320_models.ScreenCRCResponse:
+        """
+        @summary 结直肠癌筛查
+        
+        @param request: ScreenCRCRequest
+        @return: ScreenCRCResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.screen_crcwith_options_async(request, runtime)
 
@@ -4553,7 +3893,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -4573,12 +3913,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -4629,7 +3970,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -4649,12 +3990,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -4699,6 +4041,13 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.ScreenChestCTRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.ScreenChestCTResponse:
+        """
+        @summary 胸部CT平扫
+        
+        @param request: ScreenChestCTRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ScreenChestCTResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data_format):
@@ -4737,6 +4086,13 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.ScreenChestCTRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.ScreenChestCTResponse:
+        """
+        @summary 胸部CT平扫
+        
+        @param request: ScreenChestCTRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ScreenChestCTResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data_format):
@@ -4774,6 +4130,12 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.ScreenChestCTRequest,
     ) -> imageprocess_20200320_models.ScreenChestCTResponse:
+        """
+        @summary 胸部CT平扫
+        
+        @param request: ScreenChestCTRequest
+        @return: ScreenChestCTResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.screen_chest_ctwith_options(request, runtime)
 
@@ -4781,6 +4143,12 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.ScreenChestCTRequest,
     ) -> imageprocess_20200320_models.ScreenChestCTResponse:
+        """
+        @summary 胸部CT平扫
+        
+        @param request: ScreenChestCTRequest
+        @return: ScreenChestCTResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.screen_chest_ctwith_options_async(request, runtime)
 
@@ -4795,7 +4163,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -4815,12 +4183,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -4871,7 +4240,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -4891,12 +4260,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -4941,6 +4311,13 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.ScreenECRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.ScreenECResponse:
+        """
+        @summary 食管癌筛查
+        
+        @param request: ScreenECRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ScreenECResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data_source_type):
@@ -4971,6 +4348,13 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.ScreenECRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.ScreenECResponse:
+        """
+        @summary 食管癌筛查
+        
+        @param request: ScreenECRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ScreenECResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data_source_type):
@@ -5000,6 +4384,12 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.ScreenECRequest,
     ) -> imageprocess_20200320_models.ScreenECResponse:
+        """
+        @summary 食管癌筛查
+        
+        @param request: ScreenECRequest
+        @return: ScreenECResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.screen_ecwith_options(request, runtime)
 
@@ -5007,6 +4397,12 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.ScreenECRequest,
     ) -> imageprocess_20200320_models.ScreenECResponse:
+        """
+        @summary 食管癌筛查
+        
+        @param request: ScreenECRequest
+        @return: ScreenECResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.screen_ecwith_options_async(request, runtime)
 
@@ -5021,7 +4417,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -5041,12 +4437,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -5097,7 +4494,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -5117,12 +4514,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -5167,6 +4565,13 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.ScreenGCRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.ScreenGCResponse:
+        """
+        @summary 胃癌筛查
+        
+        @param request: ScreenGCRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ScreenGCResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data_format):
@@ -5203,6 +4608,13 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.ScreenGCRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.ScreenGCResponse:
+        """
+        @summary 胃癌筛查
+        
+        @param request: ScreenGCRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ScreenGCResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data_format):
@@ -5238,6 +4650,12 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.ScreenGCRequest,
     ) -> imageprocess_20200320_models.ScreenGCResponse:
+        """
+        @summary 胃癌筛查
+        
+        @param request: ScreenGCRequest
+        @return: ScreenGCResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.screen_gcwith_options(request, runtime)
 
@@ -5245,6 +4663,12 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.ScreenGCRequest,
     ) -> imageprocess_20200320_models.ScreenGCResponse:
+        """
+        @summary 胃癌筛查
+        
+        @param request: ScreenGCRequest
+        @return: ScreenGCResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.screen_gcwith_options_async(request, runtime)
 
@@ -5259,7 +4683,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -5279,12 +4703,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -5335,7 +4760,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -5355,12 +4780,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -5405,6 +4831,13 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.ScreenLCRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.ScreenLCResponse:
+        """
+        @summary 肝癌筛查
+        
+        @param request: ScreenLCRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ScreenLCResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data_format):
@@ -5441,6 +4874,13 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.ScreenLCRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.ScreenLCResponse:
+        """
+        @summary 肝癌筛查
+        
+        @param request: ScreenLCRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ScreenLCResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data_format):
@@ -5476,6 +4916,12 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.ScreenLCRequest,
     ) -> imageprocess_20200320_models.ScreenLCResponse:
+        """
+        @summary 肝癌筛查
+        
+        @param request: ScreenLCRequest
+        @return: ScreenLCResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.screen_lcwith_options(request, runtime)
 
@@ -5483,6 +4929,12 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.ScreenLCRequest,
     ) -> imageprocess_20200320_models.ScreenLCResponse:
+        """
+        @summary 肝癌筛查
+        
+        @param request: ScreenLCRequest
+        @return: ScreenLCResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.screen_lcwith_options_async(request, runtime)
 
@@ -5497,7 +4949,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -5517,12 +4969,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -5573,7 +5026,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -5593,12 +5046,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -5643,6 +5097,13 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.SegmentLymphNodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.SegmentLymphNodeResponse:
+        """
+        @summary 放疗淋巴站分割
+        
+        @param request: SegmentLymphNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SegmentLymphNodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.body_part):
@@ -5679,6 +5140,13 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.SegmentLymphNodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.SegmentLymphNodeResponse:
+        """
+        @summary 放疗淋巴站分割
+        
+        @param request: SegmentLymphNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SegmentLymphNodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.body_part):
@@ -5714,6 +5182,12 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.SegmentLymphNodeRequest,
     ) -> imageprocess_20200320_models.SegmentLymphNodeResponse:
+        """
+        @summary 放疗淋巴站分割
+        
+        @param request: SegmentLymphNodeRequest
+        @return: SegmentLymphNodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.segment_lymph_node_with_options(request, runtime)
 
@@ -5721,6 +5195,12 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.SegmentLymphNodeRequest,
     ) -> imageprocess_20200320_models.SegmentLymphNodeResponse:
+        """
+        @summary 放疗淋巴站分割
+        
+        @param request: SegmentLymphNodeRequest
+        @return: SegmentLymphNodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.segment_lymph_node_with_options_async(request, runtime)
 
@@ -5735,7 +5215,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -5755,12 +5235,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -5811,7 +5292,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -5831,12 +5312,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -5881,6 +5363,13 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.SegmentOARRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.SegmentOARResponse:
+        """
+        @summary 多器官分割
+        
+        @param request: SegmentOARRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SegmentOARResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.body_part):
@@ -5921,6 +5410,13 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.SegmentOARRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.SegmentOARResponse:
+        """
+        @summary 多器官分割
+        
+        @param request: SegmentOARRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SegmentOARResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.body_part):
@@ -5960,6 +5456,12 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.SegmentOARRequest,
     ) -> imageprocess_20200320_models.SegmentOARResponse:
+        """
+        @summary 多器官分割
+        
+        @param request: SegmentOARRequest
+        @return: SegmentOARResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.segment_oarwith_options(request, runtime)
 
@@ -5967,6 +5469,12 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.SegmentOARRequest,
     ) -> imageprocess_20200320_models.SegmentOARResponse:
+        """
+        @summary 多器官分割
+        
+        @param request: SegmentOARRequest
+        @return: SegmentOARResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.segment_oarwith_options_async(request, runtime)
 
@@ -5981,7 +5489,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -6001,12 +5509,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -6057,7 +5566,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -6077,12 +5586,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -6127,6 +5637,13 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.TargetVolumeSegmentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.TargetVolumeSegmentResponse:
+        """
+        @summary 放疗靶区勾画算法
+        
+        @param request: TargetVolumeSegmentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TargetVolumeSegmentResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cancer_type):
@@ -6165,6 +5682,13 @@ class Client(OpenApiClient):
         request: imageprocess_20200320_models.TargetVolumeSegmentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.TargetVolumeSegmentResponse:
+        """
+        @summary 放疗靶区勾画算法
+        
+        @param request: TargetVolumeSegmentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TargetVolumeSegmentResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cancer_type):
@@ -6202,6 +5726,12 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.TargetVolumeSegmentRequest,
     ) -> imageprocess_20200320_models.TargetVolumeSegmentResponse:
+        """
+        @summary 放疗靶区勾画算法
+        
+        @param request: TargetVolumeSegmentRequest
+        @return: TargetVolumeSegmentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.target_volume_segment_with_options(request, runtime)
 
@@ -6209,6 +5739,12 @@ class Client(OpenApiClient):
         self,
         request: imageprocess_20200320_models.TargetVolumeSegmentRequest,
     ) -> imageprocess_20200320_models.TargetVolumeSegmentResponse:
+        """
+        @summary 放疗靶区勾画算法
+        
+        @param request: TargetVolumeSegmentRequest
+        @return: TargetVolumeSegmentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.target_volume_segment_with_options_async(request, runtime)
 
@@ -6223,7 +5759,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -6243,12 +5779,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -6299,7 +5836,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -6319,12 +5856,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -6363,81 +5901,3 @@ class Client(OpenApiClient):
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         target_volume_segment_resp = await self.target_volume_segment_with_options_async(target_volume_segment_req, runtime)
         return target_volume_segment_resp
-
-    def translate_med_with_options(
-        self,
-        request: imageprocess_20200320_models.TranslateMedRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.TranslateMedResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.from_language):
-            body['FromLanguage'] = request.from_language
-        if not UtilClient.is_unset(request.text):
-            body['Text'] = request.text
-        if not UtilClient.is_unset(request.to_language):
-            body['ToLanguage'] = request.to_language
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='TranslateMed',
-            version='2020-03-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.TranslateMedResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def translate_med_with_options_async(
-        self,
-        request: imageprocess_20200320_models.TranslateMedRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.TranslateMedResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.from_language):
-            body['FromLanguage'] = request.from_language
-        if not UtilClient.is_unset(request.text):
-            body['Text'] = request.text
-        if not UtilClient.is_unset(request.to_language):
-            body['ToLanguage'] = request.to_language
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='TranslateMed',
-            version='2020-03-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.TranslateMedResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def translate_med(
-        self,
-        request: imageprocess_20200320_models.TranslateMedRequest,
-    ) -> imageprocess_20200320_models.TranslateMedResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.translate_med_with_options(request, runtime)
-
-    async def translate_med_async(
-        self,
-        request: imageprocess_20200320_models.TranslateMedRequest,
-    ) -> imageprocess_20200320_models.TranslateMedResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.translate_med_with_options_async(request, runtime)

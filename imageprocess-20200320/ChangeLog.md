@@ -1,3 +1,65 @@
+2025-06-10 Version: 2.3.0
+- Support API GenerateReport.
+- Delete API ClassifyFNF.
+- Delete API DetectHipKeypointXRay.
+- Delete API DetectKneeKeypointXRay.
+- Delete API DetectKneeXRay.
+- Delete API DetectSpineMRI.
+- Delete API TranslateMed.
+- Update API DetectLiverSteatosis: add response parameters Body.Data.ResultUrl.
+- Update API DetectLiverSteatosis: add response parameters Body.Data.Detections.$.FatFract.
+- Update API DetectLiverSteatosis: add response parameters Body.Data.Detections.$.MaossScore.
+- Update API PredictCVD: add response parameters Body.Data.Lesion.ImagesURL.
+- Update API PredictCVD: add response parameters Body.Data.Lesion.FeatureScore.AortaMaxDiam.
+- Update API PredictCVD: add response parameters Body.Data.Lesion.FeatureScore.AortaMaxDiamStd.
+- Update API PredictCVD: add response parameters Body.Data.Lesion.FeatureScore.AorticHeightIndex.
+- Update API PredictCVD: add response parameters Body.Data.Lesion.FeatureScore.AorticTortuosityIndex.
+- Update API PredictCVD: add response parameters Body.Data.Lesion.FeatureScore.ChestWidth.
+- Update API PredictCVD: add response parameters Body.Data.Lesion.FeatureScore.HeartLongDiam.
+- Update API PredictCVD: add response parameters Body.Data.Lesion.FeatureScore.HeartShortDiam.
+- Update API PredictCVD: add response parameters Body.Data.Lesion.FeatureScore.HeartWidth.
+- Update API PredictCVD: add response parameters Body.Data.Lesion.FeatureScore.LeftLungHighattRatio.
+- Update API PredictCVD: add response parameters Body.Data.Lesion.FeatureScore.RightLungHighattRatio.
+- Update API ScreenChestCT: add response parameters Body.Data.DetectAD.
+- Update API ScreenChestCT: add response parameters Body.Data.MuscleFat.
+- Update API ScreenChestCT: add response parameters Body.Data.ScreenBC.
+- Update API ScreenChestCT: add response parameters Body.Data.DetectLiverSteatosis.ResultUrl.
+- Update API ScreenChestCT: add response parameters Body.Data.DetectLiverSteatosis.Detections.$.FatFract.
+- Update API ScreenChestCT: add response parameters Body.Data.DetectLiverSteatosis.Detections.$.MaossScore.
+- Update API ScreenChestCT: add response parameters Body.Data.DetectPdac.Lesion.LesionList.
+- Update API ScreenChestCT: add response parameters Body.Data.DetectPdac.Lesion.OrganList.
+- Update API ScreenChestCT: add response parameters Body.Data.PredictCVD.Lesion.ImagesURL.
+- Update API ScreenChestCT: add response parameters Body.Data.PredictCVD.Lesion.FeatureScore.AortaMaxDiam.
+- Update API ScreenChestCT: add response parameters Body.Data.PredictCVD.Lesion.FeatureScore.AortaMaxDiamStd.
+- Update API ScreenChestCT: add response parameters Body.Data.PredictCVD.Lesion.FeatureScore.AorticHeightIndex.
+- Update API ScreenChestCT: add response parameters Body.Data.PredictCVD.Lesion.FeatureScore.AorticTortuosityIndex.
+- Update API ScreenChestCT: add response parameters Body.Data.PredictCVD.Lesion.FeatureScore.ChestWidth.
+- Update API ScreenChestCT: add response parameters Body.Data.PredictCVD.Lesion.FeatureScore.CoronaryCalciumScore.
+- Update API ScreenChestCT: add response parameters Body.Data.PredictCVD.Lesion.FeatureScore.HeartLongDiam.
+- Update API ScreenChestCT: add response parameters Body.Data.PredictCVD.Lesion.FeatureScore.HeartShortDiam.
+- Update API ScreenChestCT: add response parameters Body.Data.PredictCVD.Lesion.FeatureScore.HeartWidth.
+- Update API ScreenChestCT: add response parameters Body.Data.PredictCVD.Lesion.FeatureScore.LeftLungHighattRatio.
+- Update API ScreenChestCT: add response parameters Body.Data.PredictCVD.Lesion.FeatureScore.RightLungHighattRatio.
+- Update API ScreenChestCT: add response parameters Body.Data.ScreenCRC.Lesion.LesionList.
+- Update API ScreenChestCT: add response parameters Body.Data.ScreenCRC.Lesion.OrganList.
+- Update API ScreenChestCT: add response parameters Body.Data.ScreenEc.Lesion.EgjVolume.
+- Update API ScreenChestCT: add response parameters Body.Data.ScreenEc.Lesion.LesionList.
+- Update API ScreenChestCT: add response parameters Body.Data.ScreenEc.Lesion.OrganList.
+- Update API ScreenChestCT: add response parameters Body.Data.ScreenGC.Lesion.LesionList.
+- Update API ScreenChestCT: add response parameters Body.Data.ScreenGC.Lesion.OrganList.
+- Update API ScreenChestCT: add response parameters Body.Data.ScreenLC.Lesion.PatientLevelProb.
+- Update API ScreenChestCT: add response parameters Body.Data.ScreenLC.Lesion.LesionList.$.ScoreAllClasses.
+- Update API ScreenChestCT: add response parameters Body.Data.ScreenLC.Lesion.PatientLevelResult.BenignProb.
+- Update API ScreenChestCT: add response parameters Body.Data.ScreenLC.Lesion.PatientLevelResult.CalcProb.
+- Update API ScreenChestCT: add response parameters Body.Data.ScreenLC.Lesion.PatientLevelResult.MalignantProb.
+- Update API ScreenLC: add response parameters Body.Data.Lesion.PatientLevelProb.
+- Update API ScreenLC: add response parameters Body.Data.Lesion.LesionList.$.ScoreAllClassesProb.
+- Update API ScreenLC: add response parameters Body.Data.Lesion.PatientLevelResult.BenignProb.
+- Update API ScreenLC: add response parameters Body.Data.Lesion.PatientLevelResult.CalcProb.
+- Update API ScreenLC: add response parameters Body.Data.Lesion.PatientLevelResult.MalignantProb.
+- Update API SegmentOAR: add response parameters Body.Data.MaskList.
+
+
 2023-12-15 Version: 2.2.0
 - Generated python 2020-03-20 for imageprocess.
 
