@@ -1,3 +1,10 @@
+2025-06-10 Version: 2.0.2
+- Update API CreateNamespace: add request parameters DefaultRepoConfiguration.
+- Update API GetNamespace: add response parameters Body.DefaultRepoConfiguration.
+- Update API ListNamespace: add response parameters Body.Namespaces.$.DefaultRepoConfiguration.
+- Update API UpdateNamespace: add request parameters DefaultRepoConfiguration.
+
+
 2025-04-15 Version: 2.0.1
 - Update API CreateRepoTagScanTask: add request parameters ScanType.
 - Update API GetRepoTagScanStatus: add request parameters ScanType.

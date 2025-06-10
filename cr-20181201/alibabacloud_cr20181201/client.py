@@ -1727,20 +1727,26 @@ class Client(OpenApiClient):
 
     def create_namespace_with_options(
         self,
-        request: cr_20181201_models.CreateNamespaceRequest,
+        tmp_req: cr_20181201_models.CreateNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.CreateNamespaceResponse:
         """
         @summary Creates a namespace of image repositories.
         
-        @param request: CreateNamespaceRequest
+        @param tmp_req: CreateNamespaceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateNamespaceResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cr_20181201_models.CreateNamespaceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.default_repo_configuration):
+            request.default_repo_configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.default_repo_configuration, 'DefaultRepoConfiguration', 'json')
         query = {}
         if not UtilClient.is_unset(request.auto_create_repo):
             query['AutoCreateRepo'] = request.auto_create_repo
+        if not UtilClient.is_unset(request.default_repo_configuration_shrink):
+            query['DefaultRepoConfiguration'] = request.default_repo_configuration_shrink
         if not UtilClient.is_unset(request.default_repo_type):
             query['DefaultRepoType'] = request.default_repo_type
         if not UtilClient.is_unset(request.instance_id):
@@ -1768,20 +1774,26 @@ class Client(OpenApiClient):
 
     async def create_namespace_with_options_async(
         self,
-        request: cr_20181201_models.CreateNamespaceRequest,
+        tmp_req: cr_20181201_models.CreateNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.CreateNamespaceResponse:
         """
         @summary Creates a namespace of image repositories.
         
-        @param request: CreateNamespaceRequest
+        @param tmp_req: CreateNamespaceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateNamespaceResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cr_20181201_models.CreateNamespaceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.default_repo_configuration):
+            request.default_repo_configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.default_repo_configuration, 'DefaultRepoConfiguration', 'json')
         query = {}
         if not UtilClient.is_unset(request.auto_create_repo):
             query['AutoCreateRepo'] = request.auto_create_repo
+        if not UtilClient.is_unset(request.default_repo_configuration_shrink):
+            query['DefaultRepoConfiguration'] = request.default_repo_configuration_shrink
         if not UtilClient.is_unset(request.default_repo_type):
             query['DefaultRepoType'] = request.default_repo_type
         if not UtilClient.is_unset(request.instance_id):
@@ -2579,6 +2591,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.CreateRepoTagScanTaskResponse:
         """
+        @summary Creates an image scan task.
+        
         @param request: CreateRepoTagScanTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateRepoTagScanTaskResponse
@@ -2622,6 +2636,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.CreateRepoTagScanTaskResponse:
         """
+        @summary Creates an image scan task.
+        
         @param request: CreateRepoTagScanTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateRepoTagScanTaskResponse
@@ -2664,6 +2680,8 @@ class Client(OpenApiClient):
         request: cr_20181201_models.CreateRepoTagScanTaskRequest,
     ) -> cr_20181201_models.CreateRepoTagScanTaskResponse:
         """
+        @summary Creates an image scan task.
+        
         @param request: CreateRepoTagScanTaskRequest
         @return: CreateRepoTagScanTaskResponse
         """
@@ -2675,6 +2693,8 @@ class Client(OpenApiClient):
         request: cr_20181201_models.CreateRepoTagScanTaskRequest,
     ) -> cr_20181201_models.CreateRepoTagScanTaskResponse:
         """
+        @summary Creates an image scan task.
+        
         @param request: CreateRepoTagScanTaskRequest
         @return: CreateRepoTagScanTaskResponse
         """
@@ -6521,6 +6541,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetRepoTagScanStatusResponse:
         """
+        @summary Queries the scanning status of an image tag.
+        
         @param request: GetRepoTagScanStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetRepoTagScanStatusResponse
@@ -6564,6 +6586,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetRepoTagScanStatusResponse:
         """
+        @summary Queries the scanning status of an image tag.
+        
         @param request: GetRepoTagScanStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetRepoTagScanStatusResponse
@@ -6606,6 +6630,8 @@ class Client(OpenApiClient):
         request: cr_20181201_models.GetRepoTagScanStatusRequest,
     ) -> cr_20181201_models.GetRepoTagScanStatusResponse:
         """
+        @summary Queries the scanning status of an image tag.
+        
         @param request: GetRepoTagScanStatusRequest
         @return: GetRepoTagScanStatusResponse
         """
@@ -6617,6 +6643,8 @@ class Client(OpenApiClient):
         request: cr_20181201_models.GetRepoTagScanStatusRequest,
     ) -> cr_20181201_models.GetRepoTagScanStatusResponse:
         """
+        @summary Queries the scanning status of an image tag.
+        
         @param request: GetRepoTagScanStatusRequest
         @return: GetRepoTagScanStatusResponse
         """
@@ -8273,7 +8301,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.ListNamespaceResponse:
         """
-        @summary cri-94klsruryslx***\
+        @summary Queries namespaces in a Container Registry instance.
         
         @param request: ListNamespaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8316,7 +8344,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.ListNamespaceResponse:
         """
-        @summary cri-94klsruryslx***\
+        @summary Queries namespaces in a Container Registry instance.
         
         @param request: ListNamespaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8358,7 +8386,7 @@ class Client(OpenApiClient):
         request: cr_20181201_models.ListNamespaceRequest,
     ) -> cr_20181201_models.ListNamespaceResponse:
         """
-        @summary cri-94klsruryslx***\
+        @summary Queries namespaces in a Container Registry instance.
         
         @param request: ListNamespaceRequest
         @return: ListNamespaceResponse
@@ -8371,7 +8399,7 @@ class Client(OpenApiClient):
         request: cr_20181201_models.ListNamespaceRequest,
     ) -> cr_20181201_models.ListNamespaceResponse:
         """
-        @summary cri-94klsruryslx***\
+        @summary Queries namespaces in a Container Registry instance.
         
         @param request: ListNamespaceRequest
         @return: ListNamespaceResponse
@@ -8829,7 +8857,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.ListRepoSyncTaskResponse:
         """
-        @summary Indicates whether automatic link is used.
+        @summary Queries image synchronization tasks in an image repository.
         
         @param request: ListRepoSyncTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8876,7 +8904,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.ListRepoSyncTaskResponse:
         """
-        @summary Indicates whether automatic link is used.
+        @summary Queries image synchronization tasks in an image repository.
         
         @param request: ListRepoSyncTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8922,7 +8950,7 @@ class Client(OpenApiClient):
         request: cr_20181201_models.ListRepoSyncTaskRequest,
     ) -> cr_20181201_models.ListRepoSyncTaskResponse:
         """
-        @summary Indicates whether automatic link is used.
+        @summary Queries image synchronization tasks in an image repository.
         
         @param request: ListRepoSyncTaskRequest
         @return: ListRepoSyncTaskResponse
@@ -8935,7 +8963,7 @@ class Client(OpenApiClient):
         request: cr_20181201_models.ListRepoSyncTaskRequest,
     ) -> cr_20181201_models.ListRepoSyncTaskResponse:
         """
-        @summary Indicates whether automatic link is used.
+        @summary Queries image synchronization tasks in an image repository.
         
         @param request: ListRepoSyncTaskRequest
         @return: ListRepoSyncTaskResponse
@@ -10897,20 +10925,26 @@ class Client(OpenApiClient):
 
     def update_namespace_with_options(
         self,
-        request: cr_20181201_models.UpdateNamespaceRequest,
+        tmp_req: cr_20181201_models.UpdateNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.UpdateNamespaceResponse:
         """
         @summary Updates a namespace.
         
-        @param request: UpdateNamespaceRequest
+        @param tmp_req: UpdateNamespaceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateNamespaceResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cr_20181201_models.UpdateNamespaceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.default_repo_configuration):
+            request.default_repo_configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.default_repo_configuration, 'DefaultRepoConfiguration', 'json')
         query = {}
         if not UtilClient.is_unset(request.auto_create_repo):
             query['AutoCreateRepo'] = request.auto_create_repo
+        if not UtilClient.is_unset(request.default_repo_configuration_shrink):
+            query['DefaultRepoConfiguration'] = request.default_repo_configuration_shrink
         if not UtilClient.is_unset(request.default_repo_type):
             query['DefaultRepoType'] = request.default_repo_type
         if not UtilClient.is_unset(request.instance_id):
@@ -10938,20 +10972,26 @@ class Client(OpenApiClient):
 
     async def update_namespace_with_options_async(
         self,
-        request: cr_20181201_models.UpdateNamespaceRequest,
+        tmp_req: cr_20181201_models.UpdateNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.UpdateNamespaceResponse:
         """
         @summary Updates a namespace.
         
-        @param request: UpdateNamespaceRequest
+        @param tmp_req: UpdateNamespaceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateNamespaceResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cr_20181201_models.UpdateNamespaceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.default_repo_configuration):
+            request.default_repo_configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.default_repo_configuration, 'DefaultRepoConfiguration', 'json')
         query = {}
         if not UtilClient.is_unset(request.auto_create_repo):
             query['AutoCreateRepo'] = request.auto_create_repo
+        if not UtilClient.is_unset(request.default_repo_configuration_shrink):
+            query['DefaultRepoConfiguration'] = request.default_repo_configuration_shrink
         if not UtilClient.is_unset(request.default_repo_type):
             query['DefaultRepoType'] = request.default_repo_type
         if not UtilClient.is_unset(request.instance_id):

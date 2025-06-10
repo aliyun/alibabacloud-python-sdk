@@ -4,6 +4,83 @@ from Tea.model import TeaModel
 from typing import Dict, Any, List
 
 
+class RepoConfigurationArtifactBuildRuleParameters(TeaModel):
+    def __init__(
+        self,
+        image_index_only: bool = None,
+        priority_file: str = None,
+    ):
+        # This parameter is required.
+        self.image_index_only = image_index_only
+        self.priority_file = priority_file
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_index_only is not None:
+            result['ImageIndexOnly'] = self.image_index_only
+        if self.priority_file is not None:
+            result['PriorityFile'] = self.priority_file
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageIndexOnly') is not None:
+            self.image_index_only = m.get('ImageIndexOnly')
+        if m.get('PriorityFile') is not None:
+            self.priority_file = m.get('PriorityFile')
+        return self
+
+
+class RepoConfiguration(TeaModel):
+    def __init__(
+        self,
+        artifact_build_rule_parameters: RepoConfigurationArtifactBuildRuleParameters = None,
+        repo_type: str = None,
+        tag_immutability: bool = None,
+    ):
+        self.artifact_build_rule_parameters = artifact_build_rule_parameters
+        # This parameter is required.
+        self.repo_type = repo_type
+        # This parameter is required.
+        self.tag_immutability = tag_immutability
+
+    def validate(self):
+        if self.artifact_build_rule_parameters:
+            self.artifact_build_rule_parameters.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.artifact_build_rule_parameters is not None:
+            result['ArtifactBuildRuleParameters'] = self.artifact_build_rule_parameters.to_map()
+        if self.repo_type is not None:
+            result['RepoType'] = self.repo_type
+        if self.tag_immutability is not None:
+            result['TagImmutability'] = self.tag_immutability
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ArtifactBuildRuleParameters') is not None:
+            temp_model = RepoConfigurationArtifactBuildRuleParameters()
+            self.artifact_build_rule_parameters = temp_model.from_map(m['ArtifactBuildRuleParameters'])
+        if m.get('RepoType') is not None:
+            self.repo_type = m.get('RepoType')
+        if m.get('TagImmutability') is not None:
+            self.tag_immutability = m.get('TagImmutability')
+        return self
+
+
 class CancelArtifactBuildTaskRequest(TeaModel):
     def __init__(
         self,
@@ -1263,10 +1340,16 @@ class CreateBuildRecordByRecordRequest(TeaModel):
         instance_id: str = None,
         repo_id: str = None,
     ):
+        # The ID of the image building record.
+        # 
         # This parameter is required.
         self.build_record_id = build_record_id
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the image repository.
+        # 
         # This parameter is required.
         self.repo_id = repo_id
 
@@ -1306,9 +1389,17 @@ class CreateBuildRecordByRecordResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # The ID of the image building record.
         self.build_record_id = build_record_id
+        # The HTTP status code. The status code 200 indicates that the request is successful.\\
+        # Other status codes indicate that the request failed.
         self.code = code
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   `true`: The request is successful.
+        # *   `false`: The request fails.
         self.is_success = is_success
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2303,16 +2394,82 @@ class CreateNamespaceRequest(TeaModel):
     def __init__(
         self,
         auto_create_repo: bool = None,
+        default_repo_configuration: RepoConfiguration = None,
         default_repo_type: str = None,
         instance_id: str = None,
         namespace_name: str = None,
     ):
         # Specifies whether to automatically create an image repository in the namespace.
         self.auto_create_repo = auto_create_repo
-        # The default type of the repository that is automatically created. Valid values:
+        self.default_repo_configuration = default_repo_configuration
+        # The default type of the repositories that are automatically created in the namespace. Valid values:
         # 
-        # *   `PUBLIC`: a public repository
-        # *   `PRIVATE`: a private repository
+        # *   `PUBLIC`: public repositories
+        # *   `PRIVATE`: private repositories.
+        self.default_repo_type = default_repo_type
+        # The ID of the instance.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # The name of the namespace. The name must be 2 to 120 characters in length, and can contain lowercase letters, digits, and the following delimiters: underscores (_), hyphens (-), and periods (.). The name cannot start or end with a delimiter.
+        # 
+        # This parameter is required.
+        self.namespace_name = namespace_name
+
+    def validate(self):
+        if self.default_repo_configuration:
+            self.default_repo_configuration.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_create_repo is not None:
+            result['AutoCreateRepo'] = self.auto_create_repo
+        if self.default_repo_configuration is not None:
+            result['DefaultRepoConfiguration'] = self.default_repo_configuration.to_map()
+        if self.default_repo_type is not None:
+            result['DefaultRepoType'] = self.default_repo_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.namespace_name is not None:
+            result['NamespaceName'] = self.namespace_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoCreateRepo') is not None:
+            self.auto_create_repo = m.get('AutoCreateRepo')
+        if m.get('DefaultRepoConfiguration') is not None:
+            temp_model = RepoConfiguration()
+            self.default_repo_configuration = temp_model.from_map(m['DefaultRepoConfiguration'])
+        if m.get('DefaultRepoType') is not None:
+            self.default_repo_type = m.get('DefaultRepoType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NamespaceName') is not None:
+            self.namespace_name = m.get('NamespaceName')
+        return self
+
+
+class CreateNamespaceShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        auto_create_repo: bool = None,
+        default_repo_configuration_shrink: str = None,
+        default_repo_type: str = None,
+        instance_id: str = None,
+        namespace_name: str = None,
+    ):
+        # Specifies whether to automatically create an image repository in the namespace.
+        self.auto_create_repo = auto_create_repo
+        self.default_repo_configuration_shrink = default_repo_configuration_shrink
+        # The default type of the repositories that are automatically created in the namespace. Valid values:
+        # 
+        # *   `PUBLIC`: public repositories
+        # *   `PRIVATE`: private repositories.
         self.default_repo_type = default_repo_type
         # The ID of the instance.
         # 
@@ -2334,6 +2491,8 @@ class CreateNamespaceRequest(TeaModel):
         result = dict()
         if self.auto_create_repo is not None:
             result['AutoCreateRepo'] = self.auto_create_repo
+        if self.default_repo_configuration_shrink is not None:
+            result['DefaultRepoConfiguration'] = self.default_repo_configuration_shrink
         if self.default_repo_type is not None:
             result['DefaultRepoType'] = self.default_repo_type
         if self.instance_id is not None:
@@ -2346,6 +2505,8 @@ class CreateNamespaceRequest(TeaModel):
         m = m or dict()
         if m.get('AutoCreateRepo') is not None:
             self.auto_create_repo = m.get('AutoCreateRepo')
+        if m.get('DefaultRepoConfiguration') is not None:
+            self.default_repo_configuration_shrink = m.get('DefaultRepoConfiguration')
         if m.get('DefaultRepoType') is not None:
             self.default_repo_type = m.get('DefaultRepoType')
         if m.get('InstanceId') is not None:
@@ -2832,29 +2993,57 @@ class CreateRepoSyncRuleRequest(TeaModel):
         target_repo_name: str = None,
         target_user_id: str = None,
     ):
+        # The source instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The namespace name of the source instance.
+        # 
         # This parameter is required.
         self.namespace_name = namespace_name
+        # The name of the image repository in the source instance.
         self.repo_name = repo_name
-        # The rule that is used to filter repositories.
+        # The regular expression that is used to filter repositories.
         # 
         # >  This parameter is valid only when SyncScope is set to `NAMESPACE`.
         self.repo_name_filter = repo_name_filter
+        # The name of the image synchronization rule.
+        # 
         # This parameter is required.
         self.sync_rule_name = sync_rule_name
+        # The synchronization scope. Valid values:
+        # 
+        # *   `REPO`: synchronizes the image tags in an image repository that meet the synchronization rule.
+        # *   `NAMESPACE`: synchronizes the image tags in a namespace that meet the synchronization rule.
+        # 
         # This parameter is required.
         self.sync_scope = sync_scope
+        # The mode of triggering the synchronization rule. Valid values:
+        # 
+        # *   `INITIATIVE`: manually triggers the synchronization rule.
+        # *   `PASSIVE`: automatically triggers the synchronization rule.
         self.sync_trigger = sync_trigger
+        # The regular expression that is used to filter image tags.
+        # 
         # This parameter is required.
         self.tag_filter = tag_filter
+        # The destination instance ID.
+        # 
         # This parameter is required.
         self.target_instance_id = target_instance_id
+        # The namespace name of the destination instance.
+        # 
         # This parameter is required.
         self.target_namespace_name = target_namespace_name
+        # The region ID of the destination instance.
+        # 
         # This parameter is required.
         self.target_region_id = target_region_id
+        # The name of the image repository in the destination instance.
         self.target_repo_name = target_repo_name
+        # The user ID (UID) of the account to which the destination instance belongs.
+        # 
+        # >  If you synchronize images across accounts, you must use the UID.
         self.target_user_id = target_user_id
 
     def validate(self):
@@ -2933,9 +3122,13 @@ class CreateRepoSyncRuleResponseBody(TeaModel):
         request_id: str = None,
         sync_rule_id: str = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The request ID.
         self.request_id = request_id
+        # The ID of the synchronization rule.
         self.sync_rule_id = sync_rule_id
 
     def validate(self):
@@ -3497,7 +3690,7 @@ class CreateRepoTagScanTaskRequest(TeaModel):
     ):
         # The digest of the image.
         self.digest = digest
-        # The ID of the instance.
+        # The ID of the Container Registry instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -3511,7 +3704,7 @@ class CreateRepoTagScanTaskRequest(TeaModel):
         # *   `ACR_SCAN_SERVICE`: Container Registry scan engine
         self.scan_service = scan_service
         self.scan_type = scan_type
-        # The version of the image.
+        # The image version.
         # 
         # This parameter is required.
         self.tag = tag
@@ -3565,12 +3758,12 @@ class CreateRepoTagScanTaskResponseBody(TeaModel):
     ):
         # The return value.
         self.code = code
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the API request is successful. Valid values:
         # 
         # *   `true`: The request is successful.
         # *   `false`: The request fails.
         self.is_success = is_success
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8394,6 +8587,8 @@ class GetInstanceRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # The ID of the Container Registry instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 
@@ -8469,17 +8664,37 @@ class GetInstanceResponseBody(TeaModel):
         tags: List[GetInstanceResponseBodyTags] = None,
     ):
         self.code = code
+        # The time when the instance was created.
         self.create_time = create_time
+        # The ID of the Container Registry instance.
         self.instance_id = instance_id
         # The issue occurs on the instance.
         self.instance_issue = instance_issue
+        # The name of the instance.
         self.instance_name = instance_name
         # The edition of the instance. Valid values: Enterprise_Basic: Basic Edition instances Enterprise_Standard: Standard Edition instances Enterprise_Advanced: Advanced Edition instances
         self.instance_specification = instance_specification
+        # The status of the instance. Valid values:
+        # 
+        # *   `PENDING`: The instance is being initialized.
+        # *   `INIT_ERROR`: The instance failed to be initialized.
+        # *   `STARTING`: The instance is being started.
+        # *   `RUNNING`: The instance is running.
+        # *   `STOPPING`: The instance is being stopped.
+        # *   `STOPPED`: The instance is stopped.
+        # *   `DELETING`: The instance is being deleted.
+        # *   `DELETED`: The instance is deleted.
         self.instance_status = instance_status
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   `true`: The request is successful.
+        # *   `false`: The request fails.
         self.is_success = is_success
+        # The time when the instance was last modified.
         self.modified_time = modified_time
+        # The request ID.
         self.request_id = request_id
+        # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
         # The tags of the instance.
         self.tags = tags
@@ -9408,6 +9623,7 @@ class GetNamespaceResponseBody(TeaModel):
         self,
         auto_create_repo: bool = None,
         code: str = None,
+        default_repo_configuration: RepoConfiguration = None,
         default_repo_type: str = None,
         instance_id: str = None,
         is_success: bool = None,
@@ -9421,10 +9637,11 @@ class GetNamespaceResponseBody(TeaModel):
         self.auto_create_repo = auto_create_repo
         # The return value.
         self.code = code
-        # The default type of repositories. Valid values:
+        self.default_repo_configuration = default_repo_configuration
+        # The default type of repositories in the namespace. Valid values:
         # 
-        # *   PUBLIC: The repositories are public repositories.
-        # *   PRIVATE: The repositories are private repositories.
+        # *   PUBLIC: public repositories.
+        # *   PRIVATE: private repositories.
         self.default_repo_type = default_repo_type
         # The ID of the Container Registry instance.
         self.instance_id = instance_id
@@ -9445,7 +9662,8 @@ class GetNamespaceResponseBody(TeaModel):
         self.resource_group_id = resource_group_id
 
     def validate(self):
-        pass
+        if self.default_repo_configuration:
+            self.default_repo_configuration.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -9457,6 +9675,8 @@ class GetNamespaceResponseBody(TeaModel):
             result['AutoCreateRepo'] = self.auto_create_repo
         if self.code is not None:
             result['Code'] = self.code
+        if self.default_repo_configuration is not None:
+            result['DefaultRepoConfiguration'] = self.default_repo_configuration.to_map()
         if self.default_repo_type is not None:
             result['DefaultRepoType'] = self.default_repo_type
         if self.instance_id is not None:
@@ -9481,6 +9701,9 @@ class GetNamespaceResponseBody(TeaModel):
             self.auto_create_repo = m.get('AutoCreateRepo')
         if m.get('Code') is not None:
             self.code = m.get('Code')
+        if m.get('DefaultRepoConfiguration') is not None:
+            temp_model = RepoConfiguration()
+            self.default_repo_configuration = temp_model.from_map(m['DefaultRepoConfiguration'])
         if m.get('DefaultRepoType') is not None:
             self.default_repo_type = m.get('DefaultRepoType')
         if m.get('InstanceId') is not None:
@@ -10678,12 +10901,18 @@ class GetRepoTagScanStatusRequest(TeaModel):
         scan_type: str = None,
         tag: str = None,
     ):
+        # The image digest.
         self.digest = digest
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the image repository.
         self.repo_id = repo_id
+        # The ID of the image scan task.
         self.scan_task_id = scan_task_id
         self.scan_type = scan_type
+        # The image tag.
         self.tag = tag
 
     def validate(self):
@@ -10735,10 +10964,26 @@ class GetRepoTagScanStatusResponseBody(TeaModel):
         scan_service: str = None,
         status: str = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   `true`: The request is successful.
+        # *   `false`: The request fails.
         self.is_success = is_success
+        # The request ID.
         self.request_id = request_id
+        # The type of the scanning engine.
+        # 
+        # *   `ACR_SCAN_SERVICE`: Trivy scan engine provided by Container Registry
+        # *   `SAS_SCAN_SERVICE`: Security Center scan engine
         self.scan_service = scan_service
+        # The scanning status of the image tag. Valid values:
+        # 
+        # *   `SCANNING`: The image tag is being scanned.
+        # *   `COMPLETE`: The scanning of the image tag is complete.
+        # *   `FAILED`: The image tag failed to be scanned.
+        # *   `RETRYING`: The system is retrying to scan the image tag.
         self.status = status
 
     def validate(self):
@@ -11446,7 +11691,7 @@ class ListArtifactLifecycleRuleRequest(TeaModel):
         self.instance_id = instance_id
         # The page number.
         self.page_no = page_no
-        # The number of entries per page.
+        # The number of entries per page. Maximum value: 100. If you specify a value greater than 100 for this parameter, the system reports a parameter error or uses 100 as the maximum value.
         self.page_size = page_size
 
     def validate(self):
@@ -14989,17 +15234,20 @@ class ListNamespaceRequest(TeaModel):
         page_no: int = None,
         page_size: int = None,
     ):
-        # The number of the page to return.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of entries returned per page.
+        # The namespace name.
         self.namespace_name = namespace_name
-        # The ID of the namespace.
+        # The status of the namespace. Valid values:
+        # 
+        # *   `NORMAL`
+        # *   `DELETING`
         self.namespace_status = namespace_status
-        # The list of namespaces.
+        # The page number.
         self.page_no = page_no
-        # The ID of the request.
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):
@@ -15042,6 +15290,7 @@ class ListNamespaceResponseBodyNamespaces(TeaModel):
     def __init__(
         self,
         auto_create_repo: bool = None,
+        default_repo_configuration: RepoConfiguration = None,
         default_repo_type: str = None,
         instance_id: str = None,
         namespace_id: str = None,
@@ -15049,16 +15298,31 @@ class ListNamespaceResponseBodyNamespaces(TeaModel):
         namespace_status: str = None,
         resource_group_id: str = None,
     ):
+        # Indicates whether the automatically creating repositories feature is enabled for the namespace.
         self.auto_create_repo = auto_create_repo
+        self.default_repo_configuration = default_repo_configuration
+        # The default type of repositories in the namespace. Valid values:
+        # 
+        # *   `PUBLIC`: public repositories.
+        # *   `PRIVATE`: private repositories.
         self.default_repo_type = default_repo_type
+        # The instance ID.
         self.instance_id = instance_id
+        # The namespace ID.
         self.namespace_id = namespace_id
+        # The namespace name.
         self.namespace_name = namespace_name
+        # The status of the namespace. Valid values:
+        # 
+        # *   `NORMAL`: The namespace is normal.
+        # *   `DELETING`: The namespace is being deleted.
         self.namespace_status = namespace_status
+        # The resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):
-        pass
+        if self.default_repo_configuration:
+            self.default_repo_configuration.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -15068,6 +15332,8 @@ class ListNamespaceResponseBodyNamespaces(TeaModel):
         result = dict()
         if self.auto_create_repo is not None:
             result['AutoCreateRepo'] = self.auto_create_repo
+        if self.default_repo_configuration is not None:
+            result['DefaultRepoConfiguration'] = self.default_repo_configuration.to_map()
         if self.default_repo_type is not None:
             result['DefaultRepoType'] = self.default_repo_type
         if self.instance_id is not None:
@@ -15086,6 +15352,9 @@ class ListNamespaceResponseBodyNamespaces(TeaModel):
         m = m or dict()
         if m.get('AutoCreateRepo') is not None:
             self.auto_create_repo = m.get('AutoCreateRepo')
+        if m.get('DefaultRepoConfiguration') is not None:
+            temp_model = RepoConfiguration()
+            self.default_repo_configuration = temp_model.from_map(m['DefaultRepoConfiguration'])
         if m.get('DefaultRepoType') is not None:
             self.default_repo_type = m.get('DefaultRepoType')
         if m.get('InstanceId') is not None:
@@ -15112,13 +15381,22 @@ class ListNamespaceResponseBody(TeaModel):
         request_id: str = None,
         total_count: str = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   `true`: The request is successful.
+        # *   `false`: The request fails.
         self.is_success = is_success
+        # The queried namespaces.
         self.namespaces = namespaces
+        # The page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
+        # The total number of the queried namespaces.
         self.total_count = total_count
 
     def validate(self):
@@ -16328,16 +16606,23 @@ class ListRepoSyncTaskRequest(TeaModel):
         sync_record_id: str = None,
         tag: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The repository name.
         self.repo_name = repo_name
+        # The name of the namespace to which the repository belongs.
         self.repo_namespace_name = repo_namespace_name
         # The ID of the synchronization task record, which is the same as SyncBatchTaskId in the response.
         # 
         # >  If an image meets multiple synchronization rules and multiple synchronization tasks are generated for the image, these synchronization tasks use the same SyncBatchTaskId.
         self.sync_record_id = sync_record_id
+        # The image tag.
         self.tag = tag
 
     def validate(self):
@@ -16393,10 +16678,15 @@ class ListRepoSyncTaskResponseBodySyncTasksImageFrom(TeaModel):
         repo_name: str = None,
         repo_namespace_name: str = None,
     ):
+        # The image tag.
         self.image_tag = image_tag
+        # The instance ID.
         self.instance_id = instance_id
+        # The region ID.
         self.region_id = region_id
+        # The repository name.
         self.repo_name = repo_name
+        # The namespace to which the repository belongs.
         self.repo_namespace_name = repo_namespace_name
 
     def validate(self):
@@ -16444,10 +16734,15 @@ class ListRepoSyncTaskResponseBodySyncTasksImageTo(TeaModel):
         repo_name: str = None,
         repo_namespace_name: str = None,
     ):
+        # The image tag.
         self.image_tag = image_tag
+        # The instance ID.
         self.instance_id = instance_id
+        # The region ID.
         self.region_id = region_id
+        # The repository name.
         self.repo_name = repo_name
+        # The namespace to which the repository belongs.
         self.repo_namespace_name = repo_namespace_name
 
     def validate(self):
@@ -16503,31 +16798,54 @@ class ListRepoSyncTaskResponseBodySyncTasks(TeaModel):
         task_status: str = None,
         task_trigger: str = None,
     ):
+        # The time when the synchronization task was created.
         self.create_time = create_time
+        # Indicates whether the synchronization task is performed across Alibaba Cloud accounts. Valid values:
+        # 
+        # *   `true`: The image synchronization task is performed across accounts.
+        # *   `false`: The image synchronization task is performed within the same account.
+        # 
+        # Default value: `false`.
         self.cross_user = cross_user
+        # Indicates whether a custom synchronization link is used.
         self.custom_link = custom_link
+        # The information about the source image.
         self.image_from = image_from
+        # The information about the destination image.
         self.image_to = image_to
+        # The time when the synchronization task was last modified.
         self.modifed_time = modifed_time
+        # The ID of the image synchronization batch tasks, which is the same as the value of SyncRecordId in the request.
+        # 
+        # >  If an image meets multiple synchronization rules and multiple synchronization tasks are generated for the image, these synchronization tasks use the same SyncBatchTaskId.
         self.sync_batch_task_id = sync_batch_task_id
+        # The ID of the synchronization rule.
         self.sync_rule_id = sync_rule_id
+        # The ID of the synchronization task.
         self.sync_task_id = sync_task_id
+        # Indicates whether the synchronization transfer acceleration feature is enabled for the synchronization task.
         self.sync_trans_accelerate = sync_trans_accelerate
         # The error message that is returned if the synchronization task fails.
         # 
         # >  The system uses this parameter to return an error message if the synchronization task fails.
         # 
-        # Valid values:
+        # Valid value:
         # 
-        # *   OSS_POLICY_UNAUTHORIZED: Container Registry is not granted permissions to use Object Storage Service (OSS).
+        # *   OSS_POLICY_UNAUTHORIZED: Container Registry is not granted permissions to access Object Storage Service (OSS).
         # *   TAG_CONFLICT: The destination repository contains an image that has the same tag as the source image, and image tag immutability is enabled for the destination repository.
-        # *   UNSUPPORTED_FORMAT: The manifest and config formats of the image to be synchronized are not supported.
+        # *   UNSUPPORTED_FORMAT: The manifest or config format of the image to be synchronized is not supported.
         # *   INTERNAL_ERROR: The synchronization task failed due to internal issues on the server.
         # *   NETWORK_ERROR: The synchronization task failed due to unstable network connection.
         # *   DATA_LENGTH_EXCEEDED: The manifest or config of the image is oversized.
         self.task_issue = task_issue
         # The status of the synchronization task.
         self.task_status = task_status
+        # The policy that is configured to trigger the synchronization task. Valid values:
+        # 
+        # *   `PASSIVE`: automatically triggers the synchronization task.
+        # *   `INITIATIVE`: manually triggers the synchronization task.
+        # 
+        # Default value: `PASSIVE`.
         self.task_trigger = task_trigger
 
     def validate(self):
@@ -16614,13 +16932,19 @@ class ListRepoSyncTaskResponseBody(TeaModel):
         sync_tasks: List[ListRepoSyncTaskResponseBodySyncTasks] = None,
         total_count: str = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
-        # Details about synchronization tasks.
+        # The queried synchronization tasks.
         self.sync_tasks = sync_tasks
+        # The total number of the queried synchronization tasks.
         self.total_count = total_count
 
     def validate(self):
@@ -17593,17 +17917,35 @@ class ListRepositoryResponseBodyRepositories(TeaModel):
         summary: str = None,
         tag_immutability: bool = None,
     ):
+        # The time when the repository was created.
         self.create_time = create_time
+        # The ID of the Container Registry instance to which the repository belongs.
         self.instance_id = instance_id
+        # The time when the repository was last modified.
         self.modified_time = modified_time
+        # The type of the repository building. Valid values:
+        # 
+        # *   `AUTO`: The repository is automatically built.
+        # *   `MANUAL`: The repository is manually built.
         self.repo_build_type = repo_build_type
+        # The ID of the repository.
         self.repo_id = repo_id
+        # The name of the repository.
         self.repo_name = repo_name
+        # The name of the namespace to which the repository belongs.
         self.repo_namespace_name = repo_namespace_name
+        # The status of the repository.
         self.repo_status = repo_status
+        # The type of the repository. Valid values:
+        # 
+        # *   `PUBLIC`
+        # *   `PRIVATE`
         self.repo_type = repo_type
+        # The ID of the resource group to which the repository belongs.
         self.resource_group_id = resource_group_id
+        # The summary of the repository.
         self.summary = summary
+        # Indicates whether the feature of image tag immutability is enabled for the repository.
         self.tag_immutability = tag_immutability
 
     def validate(self):
@@ -17681,12 +18023,19 @@ class ListRepositoryResponseBody(TeaModel):
         request_id: str = None,
         total_count: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The information about the repositories.
         self.repositories = repositories
+        # The request ID.
         self.request_id = request_id
+        # The total number of the queried image repositories.
         self.total_count = total_count
 
     def validate(self):
@@ -17794,21 +18143,21 @@ class ListScanBaselineByTaskRequest(TeaModel):
         scan_task_id: str = None,
         tag: str = None,
     ):
-        # The image digest.
+        # The digest value of the image.
         self.digest = digest
-        # The instance ID.
+        # The ID of the Container Registry instance.
         self.instance_id = instance_id
-        # The severity of the risk.
+        # The level of the baseline risk.
         self.level = level
         # The page number.
         self.page_no = page_no
         # The number of entries per page.
         self.page_size = page_size
-        # The repository ID.
+        # The ID of the image repository.
         self.repo_id = repo_id
         # The ID of the image scan task.
         self.scan_task_id = scan_task_id
-        # The image tag.
+        # The image version.
         self.tag = tag
 
     def validate(self):
@@ -17878,9 +18227,9 @@ class ListScanBaselineByTaskResponseBodyScanBaselines(TeaModel):
         scan_task_id: str = None,
         update_time: int = None,
     ):
-        # The category of the baseline risk.
+        # The category to which the baseline risk belongs.
         self.baseline_class_alias = baseline_class_alias
-        # The suggestion on handling the baseline risk.
+        # Suggestions about how to fix the baseline risk.
         self.baseline_detail_advice = baseline_detail_advice
         # The description of the baseline risk.
         self.baseline_detail_description = baseline_detail_description
@@ -17890,23 +18239,23 @@ class ListScanBaselineByTaskResponseBodyScanBaselines(TeaModel):
         self.baseline_item_count = baseline_item_count
         # The name of the baseline risk.
         self.baseline_name_alias = baseline_name_alias
-        # The name of the baseline risk.
+        # The key of the baseline name.
         self.baseline_name_key = baseline_name_key
         # The severity of the baseline risk.
         self.baseline_name_level = baseline_name_level
-        # The time when the image was created.
+        # The creation time.
         self.create_time = create_time
-        # The time when the image was first scanned.
+        # The time of the first scan.
         self.first_scan_time = first_scan_time
-        # The quantity of baseline risks whose severity is high.
+        # High risk quantity.
         self.high_risk_item_count = high_risk_item_count
-        # The quantity of baseline risks whose severity is low.
+        # Low risk quantity.
         self.low_risk_item_count = low_risk_item_count
-        # The quantity of baseline risks whose severity is medium.
+        # Medium risk quantity.
         self.middle_risk_item_count = middle_risk_item_count
         # The ID of the image scan task.
         self.scan_task_id = scan_task_id
-        # The time when the image was updated.
+        # The update time.
         self.update_time = update_time
 
     def validate(self):
@@ -17998,7 +18347,7 @@ class ListScanBaselineByTaskResponseBody(TeaModel):
     ):
         # The return value.
         self.code = code
-        # Indicates whether the API request is successful. Valid values:
+        # Indicates whether the API request was successful. Valid values:
         # 
         # *   `true`: successful
         # *   `false`: failed
@@ -18009,7 +18358,7 @@ class ListScanBaselineByTaskResponseBody(TeaModel):
         self.page_size = page_size
         # Id of the request
         self.request_id = request_id
-        # The queried baseline risks.
+        # The scanned baseline risks.
         self.scan_baselines = scan_baselines
         # The total number of entries returned.
         self.total_count = total_count
@@ -20371,12 +20720,78 @@ class UpdateNamespaceRequest(TeaModel):
     def __init__(
         self,
         auto_create_repo: bool = None,
+        default_repo_configuration: RepoConfiguration = None,
         default_repo_type: str = None,
         instance_id: str = None,
         namespace_name: str = None,
     ):
         # Specifies whether to automatically create a repository when an image is pushed to the namespace.
         self.auto_create_repo = auto_create_repo
+        self.default_repo_configuration = default_repo_configuration
+        # The default type of the repository. Valid values:
+        # 
+        # *   `PUBLIC`: The repository is a public repository.
+        # *   `PRIVATE`: The repository is a private repository.
+        self.default_repo_type = default_repo_type
+        # The ID of the instance.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # The name of the namespace.
+        # 
+        # This parameter is required.
+        self.namespace_name = namespace_name
+
+    def validate(self):
+        if self.default_repo_configuration:
+            self.default_repo_configuration.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_create_repo is not None:
+            result['AutoCreateRepo'] = self.auto_create_repo
+        if self.default_repo_configuration is not None:
+            result['DefaultRepoConfiguration'] = self.default_repo_configuration.to_map()
+        if self.default_repo_type is not None:
+            result['DefaultRepoType'] = self.default_repo_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.namespace_name is not None:
+            result['NamespaceName'] = self.namespace_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoCreateRepo') is not None:
+            self.auto_create_repo = m.get('AutoCreateRepo')
+        if m.get('DefaultRepoConfiguration') is not None:
+            temp_model = RepoConfiguration()
+            self.default_repo_configuration = temp_model.from_map(m['DefaultRepoConfiguration'])
+        if m.get('DefaultRepoType') is not None:
+            self.default_repo_type = m.get('DefaultRepoType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NamespaceName') is not None:
+            self.namespace_name = m.get('NamespaceName')
+        return self
+
+
+class UpdateNamespaceShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        auto_create_repo: bool = None,
+        default_repo_configuration_shrink: str = None,
+        default_repo_type: str = None,
+        instance_id: str = None,
+        namespace_name: str = None,
+    ):
+        # Specifies whether to automatically create a repository when an image is pushed to the namespace.
+        self.auto_create_repo = auto_create_repo
+        self.default_repo_configuration_shrink = default_repo_configuration_shrink
         # The default type of the repository. Valid values:
         # 
         # *   `PUBLIC`: The repository is a public repository.
@@ -20402,6 +20817,8 @@ class UpdateNamespaceRequest(TeaModel):
         result = dict()
         if self.auto_create_repo is not None:
             result['AutoCreateRepo'] = self.auto_create_repo
+        if self.default_repo_configuration_shrink is not None:
+            result['DefaultRepoConfiguration'] = self.default_repo_configuration_shrink
         if self.default_repo_type is not None:
             result['DefaultRepoType'] = self.default_repo_type
         if self.instance_id is not None:
@@ -20414,6 +20831,8 @@ class UpdateNamespaceRequest(TeaModel):
         m = m or dict()
         if m.get('AutoCreateRepo') is not None:
             self.auto_create_repo = m.get('AutoCreateRepo')
+        if m.get('DefaultRepoConfiguration') is not None:
+            self.default_repo_configuration_shrink = m.get('DefaultRepoConfiguration')
         if m.get('DefaultRepoType') is not None:
             self.default_repo_type = m.get('DefaultRepoType')
         if m.get('InstanceId') is not None:
