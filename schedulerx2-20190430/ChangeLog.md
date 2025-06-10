@@ -1,3 +1,7 @@
+2025-06-10 Version: 2.2.0
+- Support API ReadSchedulerxDesignateInfo.
+
+
 2025-05-13 Version: 2.1.0
 - Support API DeleteNamespace.
 - Support API ListJobScriptHistory.

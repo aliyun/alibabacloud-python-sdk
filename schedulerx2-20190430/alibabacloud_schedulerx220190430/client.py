@@ -4271,6 +4271,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.read_schedulerx_designate_detail_with_options_async(request, runtime)
 
+    def read_schedulerx_designate_info_with_options(
+        self,
+        request: schedulerx_220190430_models.ReadSchedulerxDesignateInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.ReadSchedulerxDesignateInfoResponse:
+        """
+        @summary 获取指定机器基本信息
+        
+        @param request: ReadSchedulerxDesignateInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReadSchedulerxDesignateInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_source):
+            query['NamespaceSource'] = request.namespace_source
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReadSchedulerxDesignateInfo',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.ReadSchedulerxDesignateInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def read_schedulerx_designate_info_with_options_async(
+        self,
+        request: schedulerx_220190430_models.ReadSchedulerxDesignateInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.ReadSchedulerxDesignateInfoResponse:
+        """
+        @summary 获取指定机器基本信息
+        
+        @param request: ReadSchedulerxDesignateInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReadSchedulerxDesignateInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_source):
+            query['NamespaceSource'] = request.namespace_source
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReadSchedulerxDesignateInfo',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.ReadSchedulerxDesignateInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def read_schedulerx_designate_info(
+        self,
+        request: schedulerx_220190430_models.ReadSchedulerxDesignateInfoRequest,
+    ) -> schedulerx_220190430_models.ReadSchedulerxDesignateInfoResponse:
+        """
+        @summary 获取指定机器基本信息
+        
+        @param request: ReadSchedulerxDesignateInfoRequest
+        @return: ReadSchedulerxDesignateInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.read_schedulerx_designate_info_with_options(request, runtime)
+
+    async def read_schedulerx_designate_info_async(
+        self,
+        request: schedulerx_220190430_models.ReadSchedulerxDesignateInfoRequest,
+    ) -> schedulerx_220190430_models.ReadSchedulerxDesignateInfoResponse:
+        """
+        @summary 获取指定机器基本信息
+        
+        @param request: ReadSchedulerxDesignateInfoRequest
+        @return: ReadSchedulerxDesignateInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.read_schedulerx_designate_info_with_options_async(request, runtime)
+
     def rerun_job_with_options(
         self,
         request: schedulerx_220190430_models.RerunJobRequest,

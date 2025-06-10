@@ -9606,6 +9606,446 @@ class ReadSchedulerxDesignateDetailResponse(TeaModel):
         return self
 
 
+class ReadSchedulerxDesignateInfoRequest(TeaModel):
+    def __init__(
+        self,
+        group_id: str = None,
+        job_id: int = None,
+        namespace: str = None,
+        namespace_source: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.group_id = group_id
+        # This parameter is required.
+        self.job_id = job_id
+        # This parameter is required.
+        self.namespace = namespace
+        self.namespace_source = namespace_source
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.namespace_source is not None:
+            result['NamespaceSource'] = self.namespace_source
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('NamespaceSource') is not None:
+            self.namespace_source = m.get('NamespaceSource')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ReadSchedulerxDesignateInfoResponseBodyAccessDeniedDetail(TeaModel):
+    def __init__(
+        self,
+        auth_action: str = None,
+        auth_principal_display_name: str = None,
+        auth_principal_owner_id: str = None,
+        auth_principal_type: str = None,
+        encoded_diagnostic_message: str = None,
+        no_permission_type: str = None,
+        policy_type: str = None,
+    ):
+        self.auth_action = auth_action
+        self.auth_principal_display_name = auth_principal_display_name
+        self.auth_principal_owner_id = auth_principal_owner_id
+        self.auth_principal_type = auth_principal_type
+        self.encoded_diagnostic_message = encoded_diagnostic_message
+        self.no_permission_type = no_permission_type
+        self.policy_type = policy_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_action is not None:
+            result['AuthAction'] = self.auth_action
+        if self.auth_principal_display_name is not None:
+            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
+        if self.auth_principal_owner_id is not None:
+            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
+        if self.auth_principal_type is not None:
+            result['AuthPrincipalType'] = self.auth_principal_type
+        if self.encoded_diagnostic_message is not None:
+            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
+        if self.no_permission_type is not None:
+            result['NoPermissionType'] = self.no_permission_type
+        if self.policy_type is not None:
+            result['PolicyType'] = self.policy_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthAction') is not None:
+            self.auth_action = m.get('AuthAction')
+        if m.get('AuthPrincipalDisplayName') is not None:
+            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
+        if m.get('AuthPrincipalOwnerId') is not None:
+            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
+        if m.get('AuthPrincipalType') is not None:
+            self.auth_principal_type = m.get('AuthPrincipalType')
+        if m.get('EncodedDiagnosticMessage') is not None:
+            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
+        if m.get('NoPermissionType') is not None:
+            self.no_permission_type = m.get('NoPermissionType')
+        if m.get('PolicyType') is not None:
+            self.policy_type = m.get('PolicyType')
+        return self
+
+
+class ReadSchedulerxDesignateInfoResponseBodyDataDesignateDetailVosMetrics(TeaModel):
+    def __init__(
+        self,
+        cpu_load_1: float = None,
+        cpu_load_5: float = None,
+        cpu_processors: int = None,
+        disk_max: int = None,
+        disk_usage: float = None,
+        disk_used: int = None,
+        exec_count: int = None,
+        heap_1usage: float = None,
+        heap_1used: float = None,
+        heap_5usage: float = None,
+        heap_max: int = None,
+        share_pool_available_size: int = None,
+        share_pool_queue_size: int = None,
+    ):
+        self.cpu_load_1 = cpu_load_1
+        self.cpu_load_5 = cpu_load_5
+        self.cpu_processors = cpu_processors
+        self.disk_max = disk_max
+        self.disk_usage = disk_usage
+        self.disk_used = disk_used
+        self.exec_count = exec_count
+        self.heap_1usage = heap_1usage
+        self.heap_1used = heap_1used
+        self.heap_5usage = heap_5usage
+        self.heap_max = heap_max
+        self.share_pool_available_size = share_pool_available_size
+        self.share_pool_queue_size = share_pool_queue_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu_load_1 is not None:
+            result['CpuLoad1'] = self.cpu_load_1
+        if self.cpu_load_5 is not None:
+            result['CpuLoad5'] = self.cpu_load_5
+        if self.cpu_processors is not None:
+            result['CpuProcessors'] = self.cpu_processors
+        if self.disk_max is not None:
+            result['DiskMax'] = self.disk_max
+        if self.disk_usage is not None:
+            result['DiskUsage'] = self.disk_usage
+        if self.disk_used is not None:
+            result['DiskUsed'] = self.disk_used
+        if self.exec_count is not None:
+            result['ExecCount'] = self.exec_count
+        if self.heap_1usage is not None:
+            result['Heap1Usage'] = self.heap_1usage
+        if self.heap_1used is not None:
+            result['Heap1Used'] = self.heap_1used
+        if self.heap_5usage is not None:
+            result['Heap5Usage'] = self.heap_5usage
+        if self.heap_max is not None:
+            result['HeapMax'] = self.heap_max
+        if self.share_pool_available_size is not None:
+            result['SharePoolAvailableSize'] = self.share_pool_available_size
+        if self.share_pool_queue_size is not None:
+            result['SharePoolQueueSize'] = self.share_pool_queue_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CpuLoad1') is not None:
+            self.cpu_load_1 = m.get('CpuLoad1')
+        if m.get('CpuLoad5') is not None:
+            self.cpu_load_5 = m.get('CpuLoad5')
+        if m.get('CpuProcessors') is not None:
+            self.cpu_processors = m.get('CpuProcessors')
+        if m.get('DiskMax') is not None:
+            self.disk_max = m.get('DiskMax')
+        if m.get('DiskUsage') is not None:
+            self.disk_usage = m.get('DiskUsage')
+        if m.get('DiskUsed') is not None:
+            self.disk_used = m.get('DiskUsed')
+        if m.get('ExecCount') is not None:
+            self.exec_count = m.get('ExecCount')
+        if m.get('Heap1Usage') is not None:
+            self.heap_1usage = m.get('Heap1Usage')
+        if m.get('Heap1Used') is not None:
+            self.heap_1used = m.get('Heap1Used')
+        if m.get('Heap5Usage') is not None:
+            self.heap_5usage = m.get('Heap5Usage')
+        if m.get('HeapMax') is not None:
+            self.heap_max = m.get('HeapMax')
+        if m.get('SharePoolAvailableSize') is not None:
+            self.share_pool_available_size = m.get('SharePoolAvailableSize')
+        if m.get('SharePoolQueueSize') is not None:
+            self.share_pool_queue_size = m.get('SharePoolQueueSize')
+        return self
+
+
+class ReadSchedulerxDesignateInfoResponseBodyDataDesignateDetailVos(TeaModel):
+    def __init__(
+        self,
+        busy: str = None,
+        checked: bool = None,
+        key: str = None,
+        metrics: ReadSchedulerxDesignateInfoResponseBodyDataDesignateDetailVosMetrics = None,
+        offline: bool = None,
+        size: int = None,
+        starter: str = None,
+        version: str = None,
+    ):
+        self.busy = busy
+        self.checked = checked
+        self.key = key
+        self.metrics = metrics
+        self.offline = offline
+        self.size = size
+        self.starter = starter
+        self.version = version
+
+    def validate(self):
+        if self.metrics:
+            self.metrics.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.busy is not None:
+            result['Busy'] = self.busy
+        if self.checked is not None:
+            result['Checked'] = self.checked
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.metrics is not None:
+            result['Metrics'] = self.metrics.to_map()
+        if self.offline is not None:
+            result['Offline'] = self.offline
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.starter is not None:
+            result['Starter'] = self.starter
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Busy') is not None:
+            self.busy = m.get('Busy')
+        if m.get('Checked') is not None:
+            self.checked = m.get('Checked')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Metrics') is not None:
+            temp_model = ReadSchedulerxDesignateInfoResponseBodyDataDesignateDetailVosMetrics()
+            self.metrics = temp_model.from_map(m['Metrics'])
+        if m.get('Offline') is not None:
+            self.offline = m.get('Offline')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Starter') is not None:
+            self.starter = m.get('Starter')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class ReadSchedulerxDesignateInfoResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        designate_detail_vos: List[ReadSchedulerxDesignateInfoResponseBodyDataDesignateDetailVos] = None,
+        designate_type: int = None,
+        transferable: bool = None,
+    ):
+        # -\
+        self.designate_detail_vos = designate_detail_vos
+        self.designate_type = designate_type
+        self.transferable = transferable
+
+    def validate(self):
+        if self.designate_detail_vos:
+            for k in self.designate_detail_vos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DesignateDetailVos'] = []
+        if self.designate_detail_vos is not None:
+            for k in self.designate_detail_vos:
+                result['DesignateDetailVos'].append(k.to_map() if k else None)
+        if self.designate_type is not None:
+            result['DesignateType'] = self.designate_type
+        if self.transferable is not None:
+            result['Transferable'] = self.transferable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.designate_detail_vos = []
+        if m.get('DesignateDetailVos') is not None:
+            for k in m.get('DesignateDetailVos'):
+                temp_model = ReadSchedulerxDesignateInfoResponseBodyDataDesignateDetailVos()
+                self.designate_detail_vos.append(temp_model.from_map(k))
+        if m.get('DesignateType') is not None:
+            self.designate_type = m.get('DesignateType')
+        if m.get('Transferable') is not None:
+            self.transferable = m.get('Transferable')
+        return self
+
+
+class ReadSchedulerxDesignateInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: ReadSchedulerxDesignateInfoResponseBodyAccessDeniedDetail = None,
+        code: int = None,
+        data: ReadSchedulerxDesignateInfoResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        # -\
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.access_denied_detail:
+            self.access_denied_detail.validate()
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            temp_model = ReadSchedulerxDesignateInfoResponseBodyAccessDeniedDetail()
+            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ReadSchedulerxDesignateInfoResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ReadSchedulerxDesignateInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ReadSchedulerxDesignateInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ReadSchedulerxDesignateInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RerunJobRequest(TeaModel):
     def __init__(
         self,
