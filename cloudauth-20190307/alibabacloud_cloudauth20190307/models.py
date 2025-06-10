@@ -3120,11 +3120,13 @@ class DescribeCardVerifyResponseBodyResultObject(TeaModel):
         self,
         biz_code: str = None,
         card_info: str = None,
+        face_detail: str = None,
         ocr_card_info: str = None,
         picture_info: str = None,
     ):
         self.biz_code = biz_code
         self.card_info = card_info
+        self.face_detail = face_detail
         self.ocr_card_info = ocr_card_info
         self.picture_info = picture_info
 
@@ -3141,6 +3143,8 @@ class DescribeCardVerifyResponseBodyResultObject(TeaModel):
             result['BizCode'] = self.biz_code
         if self.card_info is not None:
             result['CardInfo'] = self.card_info
+        if self.face_detail is not None:
+            result['FaceDetail'] = self.face_detail
         if self.ocr_card_info is not None:
             result['OcrCardInfo'] = self.ocr_card_info
         if self.picture_info is not None:
@@ -3153,6 +3157,8 @@ class DescribeCardVerifyResponseBodyResultObject(TeaModel):
             self.biz_code = m.get('BizCode')
         if m.get('CardInfo') is not None:
             self.card_info = m.get('CardInfo')
+        if m.get('FaceDetail') is not None:
+            self.face_detail = m.get('FaceDetail')
         if m.get('OcrCardInfo') is not None:
             self.ocr_card_info = m.get('OcrCardInfo')
         if m.get('PictureInfo') is not None:

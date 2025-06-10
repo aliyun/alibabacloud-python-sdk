@@ -1,3 +1,7 @@
+2025-06-10 Version: 3.9.1
+- Update API DescribeCardVerify: add response parameters Body.ResultObject.FaceDetail.
+
+
 2025-06-10 Version: 3.9.0
 - Support API CredentialProductVerifyV2.
 
