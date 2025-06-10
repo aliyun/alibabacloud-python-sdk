@@ -14544,6 +14544,174 @@ class CreateUserDeliveryTaskResponse(TeaModel):
         return self
 
 
+class CreateVideoProcessingRequest(TeaModel):
+    def __init__(
+        self,
+        flv_seek_end: str = None,
+        flv_seek_start: str = None,
+        flv_video_seek_mode: str = None,
+        mp_4seek_end: str = None,
+        mp_4seek_start: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        sequence: int = None,
+        site_id: int = None,
+        site_version: int = None,
+        video_seek_enable: str = None,
+    ):
+        self.flv_seek_end = flv_seek_end
+        self.flv_seek_start = flv_seek_start
+        self.flv_video_seek_mode = flv_video_seek_mode
+        self.mp_4seek_end = mp_4seek_end
+        self.mp_4seek_start = mp_4seek_start
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.sequence = sequence
+        # This parameter is required.
+        self.site_id = site_id
+        self.site_version = site_version
+        self.video_seek_enable = video_seek_enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.flv_seek_end is not None:
+            result['FlvSeekEnd'] = self.flv_seek_end
+        if self.flv_seek_start is not None:
+            result['FlvSeekStart'] = self.flv_seek_start
+        if self.flv_video_seek_mode is not None:
+            result['FlvVideoSeekMode'] = self.flv_video_seek_mode
+        if self.mp_4seek_end is not None:
+            result['Mp4SeekEnd'] = self.mp_4seek_end
+        if self.mp_4seek_start is not None:
+            result['Mp4SeekStart'] = self.mp_4seek_start
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        if self.video_seek_enable is not None:
+            result['VideoSeekEnable'] = self.video_seek_enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FlvSeekEnd') is not None:
+            self.flv_seek_end = m.get('FlvSeekEnd')
+        if m.get('FlvSeekStart') is not None:
+            self.flv_seek_start = m.get('FlvSeekStart')
+        if m.get('FlvVideoSeekMode') is not None:
+            self.flv_video_seek_mode = m.get('FlvVideoSeekMode')
+        if m.get('Mp4SeekEnd') is not None:
+            self.mp_4seek_end = m.get('Mp4SeekEnd')
+        if m.get('Mp4SeekStart') is not None:
+            self.mp_4seek_start = m.get('Mp4SeekStart')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        if m.get('VideoSeekEnable') is not None:
+            self.video_seek_enable = m.get('VideoSeekEnable')
+        return self
+
+
+class CreateVideoProcessingResponseBody(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        request_id: str = None,
+    ):
+        self.config_id = config_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateVideoProcessingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateVideoProcessingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateVideoProcessingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateWafRuleRequest(TeaModel):
     def __init__(
         self,
@@ -20114,6 +20282,109 @@ class DeleteUserDeliveryTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteUserDeliveryTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteVideoProcessingRequest(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        site_id: int = None,
+    ):
+        # This parameter is required.
+        self.config_id = config_id
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class DeleteVideoProcessingResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteVideoProcessingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteVideoProcessingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteVideoProcessingResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -37909,6 +38180,187 @@ class GetUserLogDeliveryQuotaResponse(TeaModel):
         return self
 
 
+class GetVideoProcessingRequest(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        site_id: int = None,
+    ):
+        # This parameter is required.
+        self.config_id = config_id
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class GetVideoProcessingResponseBody(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        config_type: str = None,
+        flv_seek_end: str = None,
+        flv_seek_start: str = None,
+        flv_video_seek_mode: str = None,
+        mp_4seek_end: str = None,
+        mp_4seek_start: str = None,
+        request_id: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        sequence: int = None,
+        site_version: int = None,
+        video_seek_enable: str = None,
+    ):
+        self.config_id = config_id
+        self.config_type = config_type
+        self.flv_seek_end = flv_seek_end
+        self.flv_seek_start = flv_seek_start
+        self.flv_video_seek_mode = flv_video_seek_mode
+        self.mp_4seek_end = mp_4seek_end
+        self.mp_4seek_start = mp_4seek_start
+        self.request_id = request_id
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.sequence = sequence
+        self.site_version = site_version
+        self.video_seek_enable = video_seek_enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.config_type is not None:
+            result['ConfigType'] = self.config_type
+        if self.flv_seek_end is not None:
+            result['FlvSeekEnd'] = self.flv_seek_end
+        if self.flv_seek_start is not None:
+            result['FlvSeekStart'] = self.flv_seek_start
+        if self.flv_video_seek_mode is not None:
+            result['FlvVideoSeekMode'] = self.flv_video_seek_mode
+        if self.mp_4seek_end is not None:
+            result['Mp4SeekEnd'] = self.mp_4seek_end
+        if self.mp_4seek_start is not None:
+            result['Mp4SeekStart'] = self.mp_4seek_start
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        if self.video_seek_enable is not None:
+            result['VideoSeekEnable'] = self.video_seek_enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('ConfigType') is not None:
+            self.config_type = m.get('ConfigType')
+        if m.get('FlvSeekEnd') is not None:
+            self.flv_seek_end = m.get('FlvSeekEnd')
+        if m.get('FlvSeekStart') is not None:
+            self.flv_seek_start = m.get('FlvSeekStart')
+        if m.get('FlvVideoSeekMode') is not None:
+            self.flv_video_seek_mode = m.get('FlvVideoSeekMode')
+        if m.get('Mp4SeekEnd') is not None:
+            self.mp_4seek_end = m.get('Mp4SeekEnd')
+        if m.get('Mp4SeekStart') is not None:
+            self.mp_4seek_start = m.get('Mp4SeekStart')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        if m.get('VideoSeekEnable') is not None:
+            self.video_seek_enable = m.get('VideoSeekEnable')
+        return self
+
+
+class GetVideoProcessingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetVideoProcessingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetVideoProcessingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetWafBotAppKeyResponseBody(TeaModel):
     def __init__(
         self,
@@ -54263,6 +54715,275 @@ class ListUserRoutinesResponse(TeaModel):
         return self
 
 
+class ListVideoProcessingsRequest(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        config_type: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        rule_name: str = None,
+        site_id: int = None,
+        site_version: int = None,
+    ):
+        self.config_id = config_id
+        self.config_type = config_type
+        self.page_number = page_number
+        self.page_size = page_size
+        self.rule_name = rule_name
+        # This parameter is required.
+        self.site_id = site_id
+        self.site_version = site_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.config_type is not None:
+            result['ConfigType'] = self.config_type
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('ConfigType') is not None:
+            self.config_type = m.get('ConfigType')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        return self
+
+
+class ListVideoProcessingsResponseBodyConfigs(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        config_type: str = None,
+        flv_seek_end: str = None,
+        flv_seek_start: str = None,
+        flv_video_seek_mode: str = None,
+        mp_4seek_end: str = None,
+        mp_4seek_start: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        sequence: int = None,
+        site_version: int = None,
+        video_seek_enable: str = None,
+    ):
+        self.config_id = config_id
+        self.config_type = config_type
+        self.flv_seek_end = flv_seek_end
+        self.flv_seek_start = flv_seek_start
+        self.flv_video_seek_mode = flv_video_seek_mode
+        self.mp_4seek_end = mp_4seek_end
+        self.mp_4seek_start = mp_4seek_start
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.sequence = sequence
+        self.site_version = site_version
+        self.video_seek_enable = video_seek_enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.config_type is not None:
+            result['ConfigType'] = self.config_type
+        if self.flv_seek_end is not None:
+            result['FlvSeekEnd'] = self.flv_seek_end
+        if self.flv_seek_start is not None:
+            result['FlvSeekStart'] = self.flv_seek_start
+        if self.flv_video_seek_mode is not None:
+            result['FlvVideoSeekMode'] = self.flv_video_seek_mode
+        if self.mp_4seek_end is not None:
+            result['Mp4SeekEnd'] = self.mp_4seek_end
+        if self.mp_4seek_start is not None:
+            result['Mp4SeekStart'] = self.mp_4seek_start
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        if self.video_seek_enable is not None:
+            result['VideoSeekEnable'] = self.video_seek_enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('ConfigType') is not None:
+            self.config_type = m.get('ConfigType')
+        if m.get('FlvSeekEnd') is not None:
+            self.flv_seek_end = m.get('FlvSeekEnd')
+        if m.get('FlvSeekStart') is not None:
+            self.flv_seek_start = m.get('FlvSeekStart')
+        if m.get('FlvVideoSeekMode') is not None:
+            self.flv_video_seek_mode = m.get('FlvVideoSeekMode')
+        if m.get('Mp4SeekEnd') is not None:
+            self.mp_4seek_end = m.get('Mp4SeekEnd')
+        if m.get('Mp4SeekStart') is not None:
+            self.mp_4seek_start = m.get('Mp4SeekStart')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        if m.get('VideoSeekEnable') is not None:
+            self.video_seek_enable = m.get('VideoSeekEnable')
+        return self
+
+
+class ListVideoProcessingsResponseBody(TeaModel):
+    def __init__(
+        self,
+        configs: List[ListVideoProcessingsResponseBodyConfigs] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+        total_page: int = None,
+    ):
+        self.configs = configs
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+        self.total_page = total_page
+
+    def validate(self):
+        if self.configs:
+            for k in self.configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Configs'] = []
+        if self.configs is not None:
+            for k in self.configs:
+                result['Configs'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.total_page is not None:
+            result['TotalPage'] = self.total_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.configs = []
+        if m.get('Configs') is not None:
+            for k in m.get('Configs'):
+                temp_model = ListVideoProcessingsResponseBodyConfigs()
+                self.configs.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('TotalPage') is not None:
+            self.total_page = m.get('TotalPage')
+        return self
+
+
+class ListVideoProcessingsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListVideoProcessingsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListVideoProcessingsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListWafManagedRulesRequestQueryArgs(TeaModel):
     def __init__(
         self,
@@ -61088,13 +61809,14 @@ class UpdateCnameFlatteningRequest(TeaModel):
         flatten_mode: str = None,
         site_id: int = None,
     ):
-        # Flattening mode. Possible values:
-        # - flatten_all: Flatten all.
-        # - flatten_at_root: Flatten only the root domain. The default is to flatten the root domain.
+        # The CNAME flattening mode. Valid values:
+        # 
+        # *   flatten_all: flattens all CNAMEs.
+        # *   flatten_at_root: flattens only the root domain. Default: flatten_at_root
         # 
         # This parameter is required.
         self.flatten_mode = flatten_mode
-        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         # 
         # This parameter is required.
         self.site_id = site_id
@@ -61128,7 +61850,7 @@ class UpdateCnameFlatteningResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -65940,6 +66662,7 @@ class UpdateRecordRequest(TeaModel):
         record_id: int = None,
         source_type: str = None,
         ttl: int = None,
+        type: str = None,
     ):
         # The origin authentication information of the CNAME record.
         self.auth_conf = auth_conf
@@ -65981,6 +66704,7 @@ class UpdateRecordRequest(TeaModel):
         self.source_type = source_type
         # The TTL of the record. Unit: seconds. The range is 30 to 86,400, or 1. If the value is 1, the TTL of the record is determined by the system.
         self.ttl = ttl
+        self.type = type
 
     def validate(self):
         if self.auth_conf:
@@ -66012,6 +66736,8 @@ class UpdateRecordRequest(TeaModel):
             result['SourceType'] = self.source_type
         if self.ttl is not None:
             result['Ttl'] = self.ttl
+        if self.type is not None:
+            result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
@@ -66036,6 +66762,8 @@ class UpdateRecordRequest(TeaModel):
             self.source_type = m.get('SourceType')
         if m.get('Ttl') is not None:
             self.ttl = m.get('Ttl')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         return self
 
 
@@ -66051,6 +66779,7 @@ class UpdateRecordShrinkRequest(TeaModel):
         record_id: int = None,
         source_type: str = None,
         ttl: int = None,
+        type: str = None,
     ):
         # The origin authentication information of the CNAME record.
         self.auth_conf_shrink = auth_conf_shrink
@@ -66092,6 +66821,7 @@ class UpdateRecordShrinkRequest(TeaModel):
         self.source_type = source_type
         # The TTL of the record. Unit: seconds. The range is 30 to 86,400, or 1. If the value is 1, the TTL of the record is determined by the system.
         self.ttl = ttl
+        self.type = type
 
     def validate(self):
         pass
@@ -66120,6 +66850,8 @@ class UpdateRecordShrinkRequest(TeaModel):
             result['SourceType'] = self.source_type
         if self.ttl is not None:
             result['Ttl'] = self.ttl
+        if self.type is not None:
+            result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
@@ -66142,6 +66874,8 @@ class UpdateRecordShrinkRequest(TeaModel):
             self.source_type = m.get('SourceType')
         if m.get('Ttl') is not None:
             self.ttl = m.get('Ttl')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         return self
 
 
@@ -68342,6 +69076,169 @@ class UpdateUserDeliveryTaskStatusResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateUserDeliveryTaskStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateVideoProcessingRequest(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        flv_seek_end: str = None,
+        flv_seek_start: str = None,
+        flv_video_seek_mode: str = None,
+        mp_4seek_end: str = None,
+        mp_4seek_start: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        sequence: int = None,
+        site_id: int = None,
+        video_seek_enable: str = None,
+    ):
+        # This parameter is required.
+        self.config_id = config_id
+        self.flv_seek_end = flv_seek_end
+        self.flv_seek_start = flv_seek_start
+        self.flv_video_seek_mode = flv_video_seek_mode
+        self.mp_4seek_end = mp_4seek_end
+        self.mp_4seek_start = mp_4seek_start
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.sequence = sequence
+        # This parameter is required.
+        self.site_id = site_id
+        self.video_seek_enable = video_seek_enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.flv_seek_end is not None:
+            result['FlvSeekEnd'] = self.flv_seek_end
+        if self.flv_seek_start is not None:
+            result['FlvSeekStart'] = self.flv_seek_start
+        if self.flv_video_seek_mode is not None:
+            result['FlvVideoSeekMode'] = self.flv_video_seek_mode
+        if self.mp_4seek_end is not None:
+            result['Mp4SeekEnd'] = self.mp_4seek_end
+        if self.mp_4seek_start is not None:
+            result['Mp4SeekStart'] = self.mp_4seek_start
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.video_seek_enable is not None:
+            result['VideoSeekEnable'] = self.video_seek_enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('FlvSeekEnd') is not None:
+            self.flv_seek_end = m.get('FlvSeekEnd')
+        if m.get('FlvSeekStart') is not None:
+            self.flv_seek_start = m.get('FlvSeekStart')
+        if m.get('FlvVideoSeekMode') is not None:
+            self.flv_video_seek_mode = m.get('FlvVideoSeekMode')
+        if m.get('Mp4SeekEnd') is not None:
+            self.mp_4seek_end = m.get('Mp4SeekEnd')
+        if m.get('Mp4SeekStart') is not None:
+            self.mp_4seek_start = m.get('Mp4SeekStart')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('VideoSeekEnable') is not None:
+            self.video_seek_enable = m.get('VideoSeekEnable')
+        return self
+
+
+class UpdateVideoProcessingResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateVideoProcessingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateVideoProcessingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateVideoProcessingResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

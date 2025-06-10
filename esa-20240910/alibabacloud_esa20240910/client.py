@@ -6759,6 +6759,146 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_user_delivery_task_with_options_async(request, runtime)
 
+    def create_video_processing_with_options(
+        self,
+        request: esa20240910_models.CreateVideoProcessingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateVideoProcessingResponse:
+        """
+        @summary 新增站点视频处理配置
+        
+        @param request: CreateVideoProcessingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVideoProcessingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.flv_seek_end):
+            query['FlvSeekEnd'] = request.flv_seek_end
+        if not UtilClient.is_unset(request.flv_seek_start):
+            query['FlvSeekStart'] = request.flv_seek_start
+        if not UtilClient.is_unset(request.flv_video_seek_mode):
+            query['FlvVideoSeekMode'] = request.flv_video_seek_mode
+        if not UtilClient.is_unset(request.mp_4seek_end):
+            query['Mp4SeekEnd'] = request.mp_4seek_end
+        if not UtilClient.is_unset(request.mp_4seek_start):
+            query['Mp4SeekStart'] = request.mp_4seek_start
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        if not UtilClient.is_unset(request.video_seek_enable):
+            query['VideoSeekEnable'] = request.video_seek_enable
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateVideoProcessing',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.CreateVideoProcessingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_video_processing_with_options_async(
+        self,
+        request: esa20240910_models.CreateVideoProcessingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateVideoProcessingResponse:
+        """
+        @summary 新增站点视频处理配置
+        
+        @param request: CreateVideoProcessingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVideoProcessingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.flv_seek_end):
+            query['FlvSeekEnd'] = request.flv_seek_end
+        if not UtilClient.is_unset(request.flv_seek_start):
+            query['FlvSeekStart'] = request.flv_seek_start
+        if not UtilClient.is_unset(request.flv_video_seek_mode):
+            query['FlvVideoSeekMode'] = request.flv_video_seek_mode
+        if not UtilClient.is_unset(request.mp_4seek_end):
+            query['Mp4SeekEnd'] = request.mp_4seek_end
+        if not UtilClient.is_unset(request.mp_4seek_start):
+            query['Mp4SeekStart'] = request.mp_4seek_start
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        if not UtilClient.is_unset(request.video_seek_enable):
+            query['VideoSeekEnable'] = request.video_seek_enable
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateVideoProcessing',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.CreateVideoProcessingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_video_processing(
+        self,
+        request: esa20240910_models.CreateVideoProcessingRequest,
+    ) -> esa20240910_models.CreateVideoProcessingResponse:
+        """
+        @summary 新增站点视频处理配置
+        
+        @param request: CreateVideoProcessingRequest
+        @return: CreateVideoProcessingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_video_processing_with_options(request, runtime)
+
+    async def create_video_processing_async(
+        self,
+        request: esa20240910_models.CreateVideoProcessingRequest,
+    ) -> esa20240910_models.CreateVideoProcessingResponse:
+        """
+        @summary 新增站点视频处理配置
+        
+        @param request: CreateVideoProcessingRequest
+        @return: CreateVideoProcessingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_video_processing_with_options_async(request, runtime)
+
     def create_waf_rule_with_options(
         self,
         tmp_req: esa20240910_models.CreateWafRuleRequest,
@@ -11298,6 +11438,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_user_delivery_task_with_options_async(request, runtime)
+
+    def delete_video_processing_with_options(
+        self,
+        request: esa20240910_models.DeleteVideoProcessingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteVideoProcessingResponse:
+        """
+        @summary 删除站点视频处理配置
+        
+        @param request: DeleteVideoProcessingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVideoProcessingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteVideoProcessing',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteVideoProcessingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_video_processing_with_options_async(
+        self,
+        request: esa20240910_models.DeleteVideoProcessingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteVideoProcessingResponse:
+        """
+        @summary 删除站点视频处理配置
+        
+        @param request: DeleteVideoProcessingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVideoProcessingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteVideoProcessing',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteVideoProcessingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_video_processing(
+        self,
+        request: esa20240910_models.DeleteVideoProcessingRequest,
+    ) -> esa20240910_models.DeleteVideoProcessingResponse:
+        """
+        @summary 删除站点视频处理配置
+        
+        @param request: DeleteVideoProcessingRequest
+        @return: DeleteVideoProcessingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_video_processing_with_options(request, runtime)
+
+    async def delete_video_processing_async(
+        self,
+        request: esa20240910_models.DeleteVideoProcessingRequest,
+    ) -> esa20240910_models.DeleteVideoProcessingResponse:
+        """
+        @summary 删除站点视频处理配置
+        
+        @param request: DeleteVideoProcessingRequest
+        @return: DeleteVideoProcessingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_video_processing_with_options_async(request, runtime)
 
     def delete_waf_rule_with_options(
         self,
@@ -19981,6 +20221,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_user_log_delivery_quota_with_options_async(request, runtime)
 
+    def get_video_processing_with_options(
+        self,
+        request: esa20240910_models.GetVideoProcessingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetVideoProcessingResponse:
+        """
+        @summary 查询站点视频处理配置详情
+        
+        @param request: GetVideoProcessingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVideoProcessingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetVideoProcessing',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetVideoProcessingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_video_processing_with_options_async(
+        self,
+        request: esa20240910_models.GetVideoProcessingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetVideoProcessingResponse:
+        """
+        @summary 查询站点视频处理配置详情
+        
+        @param request: GetVideoProcessingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVideoProcessingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetVideoProcessing',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetVideoProcessingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_video_processing(
+        self,
+        request: esa20240910_models.GetVideoProcessingRequest,
+    ) -> esa20240910_models.GetVideoProcessingResponse:
+        """
+        @summary 查询站点视频处理配置详情
+        
+        @param request: GetVideoProcessingRequest
+        @return: GetVideoProcessingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_video_processing_with_options(request, runtime)
+
+    async def get_video_processing_async(
+        self,
+        request: esa20240910_models.GetVideoProcessingRequest,
+    ) -> esa20240910_models.GetVideoProcessingResponse:
+        """
+        @summary 查询站点视频处理配置详情
+        
+        @param request: GetVideoProcessingRequest
+        @return: GetVideoProcessingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_video_processing_with_options_async(request, runtime)
+
     def get_waf_bot_app_key_with_options(
         self,
         runtime: util_models.RuntimeOptions,
@@ -25267,6 +25607,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_user_routines_with_options_async(request, runtime)
 
+    def list_video_processings_with_options(
+        self,
+        request: esa20240910_models.ListVideoProcessingsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListVideoProcessingsResponse:
+        """
+        @summary 查询站点视频处理配置列表
+        
+        @param request: ListVideoProcessingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVideoProcessingsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.config_type):
+            query['ConfigType'] = request.config_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListVideoProcessings',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListVideoProcessingsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_video_processings_with_options_async(
+        self,
+        request: esa20240910_models.ListVideoProcessingsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListVideoProcessingsResponse:
+        """
+        @summary 查询站点视频处理配置列表
+        
+        @param request: ListVideoProcessingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVideoProcessingsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.config_type):
+            query['ConfigType'] = request.config_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListVideoProcessings',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListVideoProcessingsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_video_processings(
+        self,
+        request: esa20240910_models.ListVideoProcessingsRequest,
+    ) -> esa20240910_models.ListVideoProcessingsResponse:
+        """
+        @summary 查询站点视频处理配置列表
+        
+        @param request: ListVideoProcessingsRequest
+        @return: ListVideoProcessingsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_video_processings_with_options(request, runtime)
+
+    async def list_video_processings_async(
+        self,
+        request: esa20240910_models.ListVideoProcessingsRequest,
+    ) -> esa20240910_models.ListVideoProcessingsResponse:
+        """
+        @summary 查询站点视频处理配置列表
+        
+        @param request: ListVideoProcessingsRequest
+        @return: ListVideoProcessingsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_video_processings_with_options_async(request, runtime)
+
     def list_waf_managed_rules_with_options(
         self,
         tmp_req: esa20240910_models.ListWafManagedRulesRequest,
@@ -29317,7 +29777,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateCnameFlatteningResponse:
         """
-        @summary Modify site CNAME flattening configuration
+        @summary Modifies the CNAME flattening configuration of a website.
         
         @param request: UpdateCnameFlatteningRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29354,7 +29814,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateCnameFlatteningResponse:
         """
-        @summary Modify site CNAME flattening configuration
+        @summary Modifies the CNAME flattening configuration of a website.
         
         @param request: UpdateCnameFlatteningRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29390,7 +29850,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateCnameFlatteningRequest,
     ) -> esa20240910_models.UpdateCnameFlatteningResponse:
         """
-        @summary Modify site CNAME flattening configuration
+        @summary Modifies the CNAME flattening configuration of a website.
         
         @param request: UpdateCnameFlatteningRequest
         @return: UpdateCnameFlatteningResponse
@@ -29403,7 +29863,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateCnameFlatteningRequest,
     ) -> esa20240910_models.UpdateCnameFlatteningResponse:
         """
-        @summary Modify site CNAME flattening configuration
+        @summary Modifies the CNAME flattening configuration of a website.
         
         @param request: UpdateCnameFlatteningRequest
         @return: UpdateCnameFlatteningResponse
@@ -32201,6 +32661,8 @@ class Client(OpenApiClient):
             query['SourceType'] = request.source_type
         if not UtilClient.is_unset(request.ttl):
             query['Ttl'] = request.ttl
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -32266,6 +32728,8 @@ class Client(OpenApiClient):
             query['SourceType'] = request.source_type
         if not UtilClient.is_unset(request.ttl):
             query['Ttl'] = request.ttl
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -34090,6 +34554,146 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_user_delivery_task_status_with_options_async(request, runtime)
+
+    def update_video_processing_with_options(
+        self,
+        request: esa20240910_models.UpdateVideoProcessingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateVideoProcessingResponse:
+        """
+        @summary 修改站点视频处理配置
+        
+        @param request: UpdateVideoProcessingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateVideoProcessingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.flv_seek_end):
+            query['FlvSeekEnd'] = request.flv_seek_end
+        if not UtilClient.is_unset(request.flv_seek_start):
+            query['FlvSeekStart'] = request.flv_seek_start
+        if not UtilClient.is_unset(request.flv_video_seek_mode):
+            query['FlvVideoSeekMode'] = request.flv_video_seek_mode
+        if not UtilClient.is_unset(request.mp_4seek_end):
+            query['Mp4SeekEnd'] = request.mp_4seek_end
+        if not UtilClient.is_unset(request.mp_4seek_start):
+            query['Mp4SeekStart'] = request.mp_4seek_start
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.video_seek_enable):
+            query['VideoSeekEnable'] = request.video_seek_enable
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateVideoProcessing',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UpdateVideoProcessingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_video_processing_with_options_async(
+        self,
+        request: esa20240910_models.UpdateVideoProcessingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateVideoProcessingResponse:
+        """
+        @summary 修改站点视频处理配置
+        
+        @param request: UpdateVideoProcessingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateVideoProcessingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.flv_seek_end):
+            query['FlvSeekEnd'] = request.flv_seek_end
+        if not UtilClient.is_unset(request.flv_seek_start):
+            query['FlvSeekStart'] = request.flv_seek_start
+        if not UtilClient.is_unset(request.flv_video_seek_mode):
+            query['FlvVideoSeekMode'] = request.flv_video_seek_mode
+        if not UtilClient.is_unset(request.mp_4seek_end):
+            query['Mp4SeekEnd'] = request.mp_4seek_end
+        if not UtilClient.is_unset(request.mp_4seek_start):
+            query['Mp4SeekStart'] = request.mp_4seek_start
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.video_seek_enable):
+            query['VideoSeekEnable'] = request.video_seek_enable
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateVideoProcessing',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UpdateVideoProcessingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_video_processing(
+        self,
+        request: esa20240910_models.UpdateVideoProcessingRequest,
+    ) -> esa20240910_models.UpdateVideoProcessingResponse:
+        """
+        @summary 修改站点视频处理配置
+        
+        @param request: UpdateVideoProcessingRequest
+        @return: UpdateVideoProcessingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_video_processing_with_options(request, runtime)
+
+    async def update_video_processing_async(
+        self,
+        request: esa20240910_models.UpdateVideoProcessingRequest,
+    ) -> esa20240910_models.UpdateVideoProcessingResponse:
+        """
+        @summary 修改站点视频处理配置
+        
+        @param request: UpdateVideoProcessingRequest
+        @return: UpdateVideoProcessingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_video_processing_with_options_async(request, runtime)
 
     def update_waf_rule_with_options(
         self,

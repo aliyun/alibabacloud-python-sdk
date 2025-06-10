@@ -1,3 +1,12 @@
+2025-06-10 Version: 2.26.0
+- Support API CreateVideoProcessing.
+- Support API DeleteVideoProcessing.
+- Support API GetVideoProcessing.
+- Support API ListVideoProcessings.
+- Support API UpdateVideoProcessing.
+- Update API UpdateRecord: add request parameters Type.
+
+
 2025-06-03 Version: 2.25.1
 - Update API CreateCustomScenePolicy: add request parameters SiteIds.
 - Update API CreateCustomScenePolicy: add response parameters Body.SiteIds.
