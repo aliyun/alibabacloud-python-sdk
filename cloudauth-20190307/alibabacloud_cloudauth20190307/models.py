@@ -1468,6 +1468,259 @@ class CreateVerifySettingResponse(TeaModel):
         return self
 
 
+class CredentialProductVerifyV2Request(TeaModel):
+    def __init__(
+        self,
+        cred_name: str = None,
+        cred_type: str = None,
+        image_file: str = None,
+        image_url: str = None,
+        merchant_id: str = None,
+        product_code: str = None,
+    ):
+        # This parameter is required.
+        self.cred_name = cred_name
+        # This parameter is required.
+        self.cred_type = cred_type
+        self.image_file = image_file
+        self.image_url = image_url
+        self.merchant_id = merchant_id
+        # This parameter is required.
+        self.product_code = product_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cred_name is not None:
+            result['CredName'] = self.cred_name
+        if self.cred_type is not None:
+            result['CredType'] = self.cred_type
+        if self.image_file is not None:
+            result['ImageFile'] = self.image_file
+        if self.image_url is not None:
+            result['ImageUrl'] = self.image_url
+        if self.merchant_id is not None:
+            result['MerchantId'] = self.merchant_id
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CredName') is not None:
+            self.cred_name = m.get('CredName')
+        if m.get('CredType') is not None:
+            self.cred_type = m.get('CredType')
+        if m.get('ImageFile') is not None:
+            self.image_file = m.get('ImageFile')
+        if m.get('ImageUrl') is not None:
+            self.image_url = m.get('ImageUrl')
+        if m.get('MerchantId') is not None:
+            self.merchant_id = m.get('MerchantId')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        return self
+
+
+class CredentialProductVerifyV2AdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        cred_name: str = None,
+        cred_type: str = None,
+        image_file_object: BinaryIO = None,
+        image_url: str = None,
+        merchant_id: str = None,
+        product_code: str = None,
+    ):
+        # This parameter is required.
+        self.cred_name = cred_name
+        # This parameter is required.
+        self.cred_type = cred_type
+        self.image_file_object = image_file_object
+        self.image_url = image_url
+        self.merchant_id = merchant_id
+        # This parameter is required.
+        self.product_code = product_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cred_name is not None:
+            result['CredName'] = self.cred_name
+        if self.cred_type is not None:
+            result['CredType'] = self.cred_type
+        if self.image_file_object is not None:
+            result['ImageFile'] = self.image_file_object
+        if self.image_url is not None:
+            result['ImageUrl'] = self.image_url
+        if self.merchant_id is not None:
+            result['MerchantId'] = self.merchant_id
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CredName') is not None:
+            self.cred_name = m.get('CredName')
+        if m.get('CredType') is not None:
+            self.cred_type = m.get('CredType')
+        if m.get('ImageFile') is not None:
+            self.image_file_object = m.get('ImageFile')
+        if m.get('ImageUrl') is not None:
+            self.image_url = m.get('ImageUrl')
+        if m.get('MerchantId') is not None:
+            self.merchant_id = m.get('MerchantId')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        return self
+
+
+class CredentialProductVerifyV2ResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        material_info: str = None,
+        result: str = None,
+        risk_score: Dict[str, str] = None,
+        risk_tag: str = None,
+    ):
+        self.material_info = material_info
+        self.result = result
+        self.risk_score = risk_score
+        self.risk_tag = risk_tag
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.material_info is not None:
+            result['MaterialInfo'] = self.material_info
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.risk_score is not None:
+            result['RiskScore'] = self.risk_score
+        if self.risk_tag is not None:
+            result['RiskTag'] = self.risk_tag
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaterialInfo') is not None:
+            self.material_info = m.get('MaterialInfo')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('RiskScore') is not None:
+            self.risk_score = m.get('RiskScore')
+        if m.get('RiskTag') is not None:
+            self.risk_tag = m.get('RiskTag')
+        return self
+
+
+class CredentialProductVerifyV2ResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result_object: CredentialProductVerifyV2ResponseBodyResultObject = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.result_object = result_object
+
+    def validate(self):
+        if self.result_object:
+            self.result_object.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            temp_model = CredentialProductVerifyV2ResponseBodyResultObject()
+            self.result_object = temp_model.from_map(m['ResultObject'])
+        return self
+
+
+class CredentialProductVerifyV2Response(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CredentialProductVerifyV2ResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CredentialProductVerifyV2ResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CredentialVerifyRequestMerchantDetail(TeaModel):
     def __init__(
         self,

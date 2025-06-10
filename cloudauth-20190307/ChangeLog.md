@@ -1,3 +1,7 @@
+2025-06-10 Version: 3.9.0
+- Support API CredentialProductVerifyV2.
+
+
 2025-06-09 Version: 3.8.0
 - Support API DescribeCardVerify.
 - Support API InitCardVerify.
