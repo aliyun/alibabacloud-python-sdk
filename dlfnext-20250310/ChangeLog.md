@@ -1,3 +1,6 @@
+2025-06-11 Version: 1.1.1
+- Generated python 2025-03-10 for DlfNext.
+
 2025-06-09 Version: 1.1.0
 - Support API GetCatalogSummary.
 - Support API GetCatalogSummaryTrend.
