@@ -787,6 +787,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.defense_scene):
             query['DefenseScene'] = request.defense_scene
+        if not UtilClient.is_unset(request.defense_type):
+            query['DefenseType'] = request.defense_type
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.region_id):
@@ -836,6 +838,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.defense_scene):
             query['DefenseScene'] = request.defense_scene
+        if not UtilClient.is_unset(request.defense_type):
+            query['DefenseType'] = request.defense_type
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.region_id):
@@ -2221,6 +2225,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.defense_type):
+            query['DefenseType'] = request.defense_type
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.region_id):
@@ -2266,6 +2272,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.defense_type):
+            query['DefenseType'] = request.defense_type
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.region_id):
@@ -7037,6 +7045,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.defense_type):
+            query['DefenseType'] = request.defense_type
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.region_id):
@@ -7082,6 +7092,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.defense_type):
+            query['DefenseType'] = request.defense_type
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.region_id):
@@ -16991,6 +17003,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.defense_scene):
             query['DefenseScene'] = request.defense_scene
+        if not UtilClient.is_unset(request.defense_type):
+            query['DefenseType'] = request.defense_type
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.region_id):
@@ -17040,6 +17054,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.defense_scene):
             query['DefenseScene'] = request.defense_scene
+        if not UtilClient.is_unset(request.defense_type):
+            query['DefenseType'] = request.defense_type
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.region_id):

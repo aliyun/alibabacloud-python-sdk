@@ -1362,6 +1362,7 @@ class CreateDefenseRuleRequest(TeaModel):
     def __init__(
         self,
         defense_scene: str = None,
+        defense_type: str = None,
         instance_id: str = None,
         region_id: str = None,
         resource: str = None,
@@ -1384,6 +1385,7 @@ class CreateDefenseRuleRequest(TeaModel):
         # 
         # This parameter is required.
         self.defense_scene = defense_scene
+        self.defense_type = defense_type
         # The ID of the Web Application Firewall (WAF) instance.
         # 
         # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
@@ -1414,6 +1416,8 @@ class CreateDefenseRuleRequest(TeaModel):
         result = dict()
         if self.defense_scene is not None:
             result['DefenseScene'] = self.defense_scene
+        if self.defense_type is not None:
+            result['DefenseType'] = self.defense_type
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -1432,6 +1436,8 @@ class CreateDefenseRuleRequest(TeaModel):
         m = m or dict()
         if m.get('DefenseScene') is not None:
             self.defense_scene = m.get('DefenseScene')
+        if m.get('DefenseType') is not None:
+            self.defense_type = m.get('DefenseType')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -3807,6 +3813,7 @@ class DeleteDefenseResourceGroupResponse(TeaModel):
 class DeleteDefenseRuleRequest(TeaModel):
     def __init__(
         self,
+        defense_type: str = None,
         instance_id: str = None,
         region_id: str = None,
         resource: str = None,
@@ -3814,6 +3821,7 @@ class DeleteDefenseRuleRequest(TeaModel):
         rule_ids: str = None,
         template_id: int = None,
     ):
+        self.defense_type = defense_type
         # The ID of the Web Application Firewall (WAF) instance.
         # 
         # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
@@ -3844,6 +3852,8 @@ class DeleteDefenseRuleRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.defense_type is not None:
+            result['DefenseType'] = self.defense_type
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -3860,6 +3870,8 @@ class DeleteDefenseRuleRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DefenseType') is not None:
+            self.defense_type = m.get('DefenseType')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -13586,6 +13598,7 @@ class DescribeDefenseResourcesResponse(TeaModel):
 class DescribeDefenseRuleRequest(TeaModel):
     def __init__(
         self,
+        defense_type: str = None,
         instance_id: str = None,
         region_id: str = None,
         resource: str = None,
@@ -13593,6 +13606,7 @@ class DescribeDefenseRuleRequest(TeaModel):
         rule_id: int = None,
         template_id: int = None,
     ):
+        self.defense_type = defense_type
         # The ID of the Web Application Firewall (WAF) instance.
         # 
         # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
@@ -13623,6 +13637,8 @@ class DescribeDefenseRuleRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.defense_type is not None:
+            result['DefenseType'] = self.defense_type
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -13639,6 +13655,8 @@ class DescribeDefenseRuleRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DefenseType') is not None:
+            self.defense_type = m.get('DefenseType')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -34496,6 +34514,7 @@ class ModifyDefenseRuleRequest(TeaModel):
     def __init__(
         self,
         defense_scene: str = None,
+        defense_type: str = None,
         instance_id: str = None,
         region_id: str = None,
         resource: str = None,
@@ -34507,6 +34526,7 @@ class ModifyDefenseRuleRequest(TeaModel):
         # 
         # This parameter is required.
         self.defense_scene = defense_scene
+        self.defense_type = defense_type
         # The ID of the Web Application Firewall (WAF) instance.
         # 
         # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
@@ -34537,6 +34557,8 @@ class ModifyDefenseRuleRequest(TeaModel):
         result = dict()
         if self.defense_scene is not None:
             result['DefenseScene'] = self.defense_scene
+        if self.defense_type is not None:
+            result['DefenseType'] = self.defense_type
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -34555,6 +34577,8 @@ class ModifyDefenseRuleRequest(TeaModel):
         m = m or dict()
         if m.get('DefenseScene') is not None:
             self.defense_scene = m.get('DefenseScene')
+        if m.get('DefenseType') is not None:
+            self.defense_type = m.get('DefenseType')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
