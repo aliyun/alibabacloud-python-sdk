@@ -10563,6 +10563,7 @@ class GetGatewayResponseBodyData(TeaModel):
         environments: List[GetGatewayResponseBodyDataEnvironments] = None,
         expire_timestamp: int = None,
         gateway_id: str = None,
+        gateway_type: str = None,
         load_balancers: List[GetGatewayResponseBodyDataLoadBalancers] = None,
         name: str = None,
         replicas: str = None,
@@ -10593,6 +10594,7 @@ class GetGatewayResponseBodyData(TeaModel):
         self.expire_timestamp = expire_timestamp
         # Gateway ID.
         self.gateway_id = gateway_id
+        self.gateway_type = gateway_type
         # List of entry addresses for the gateway.
         self.load_balancers = load_balancers
         # Gateway name.
@@ -10676,6 +10678,8 @@ class GetGatewayResponseBodyData(TeaModel):
             result['expireTimestamp'] = self.expire_timestamp
         if self.gateway_id is not None:
             result['gatewayId'] = self.gateway_id
+        if self.gateway_type is not None:
+            result['gatewayType'] = self.gateway_type
         result['loadBalancers'] = []
         if self.load_balancers is not None:
             for k in self.load_balancers:
@@ -10729,6 +10733,8 @@ class GetGatewayResponseBodyData(TeaModel):
             self.expire_timestamp = m.get('expireTimestamp')
         if m.get('gatewayId') is not None:
             self.gateway_id = m.get('gatewayId')
+        if m.get('gatewayType') is not None:
+            self.gateway_type = m.get('gatewayType')
         self.load_balancers = []
         if m.get('loadBalancers') is not None:
             for k in m.get('loadBalancers'):
@@ -14820,6 +14826,315 @@ class ListHttpApisResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListHttpApisResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListPluginAttachmentsRequest(TeaModel):
+    def __init__(
+        self,
+        attach_resource_id: str = None,
+        attach_resource_type: str = None,
+        attach_resource_types: str = None,
+        environment_id: str = None,
+        gateway_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        plugin_id: str = None,
+        with_parent_resource: bool = None,
+    ):
+        self.attach_resource_id = attach_resource_id
+        self.attach_resource_type = attach_resource_type
+        self.attach_resource_types = attach_resource_types
+        self.environment_id = environment_id
+        self.gateway_id = gateway_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.plugin_id = plugin_id
+        self.with_parent_resource = with_parent_resource
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attach_resource_id is not None:
+            result['attachResourceId'] = self.attach_resource_id
+        if self.attach_resource_type is not None:
+            result['attachResourceType'] = self.attach_resource_type
+        if self.attach_resource_types is not None:
+            result['attachResourceTypes'] = self.attach_resource_types
+        if self.environment_id is not None:
+            result['environmentId'] = self.environment_id
+        if self.gateway_id is not None:
+            result['gatewayId'] = self.gateway_id
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.plugin_id is not None:
+            result['pluginId'] = self.plugin_id
+        if self.with_parent_resource is not None:
+            result['withParentResource'] = self.with_parent_resource
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('attachResourceId') is not None:
+            self.attach_resource_id = m.get('attachResourceId')
+        if m.get('attachResourceType') is not None:
+            self.attach_resource_type = m.get('attachResourceType')
+        if m.get('attachResourceTypes') is not None:
+            self.attach_resource_types = m.get('attachResourceTypes')
+        if m.get('environmentId') is not None:
+            self.environment_id = m.get('environmentId')
+        if m.get('gatewayId') is not None:
+            self.gateway_id = m.get('gatewayId')
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('pluginId') is not None:
+            self.plugin_id = m.get('pluginId')
+        if m.get('withParentResource') is not None:
+            self.with_parent_resource = m.get('withParentResource')
+        return self
+
+
+class ListPluginAttachmentsResponseBodyDataItems(TeaModel):
+    def __init__(
+        self,
+        attach_resource_type: str = None,
+        enable: bool = None,
+        environment_info: EnvironmentInfo = None,
+        parent_resource_info: ParentResourceInfo = None,
+        plugin_attachment_id: str = None,
+        plugin_class_info: PluginClassInfo = None,
+        plugin_config: str = None,
+        plugin_id: str = None,
+        resource_infos: List[ResourceInfo] = None,
+    ):
+        self.attach_resource_type = attach_resource_type
+        self.enable = enable
+        self.environment_info = environment_info
+        self.parent_resource_info = parent_resource_info
+        self.plugin_attachment_id = plugin_attachment_id
+        self.plugin_class_info = plugin_class_info
+        self.plugin_config = plugin_config
+        self.plugin_id = plugin_id
+        self.resource_infos = resource_infos
+
+    def validate(self):
+        if self.environment_info:
+            self.environment_info.validate()
+        if self.parent_resource_info:
+            self.parent_resource_info.validate()
+        if self.plugin_class_info:
+            self.plugin_class_info.validate()
+        if self.resource_infos:
+            for k in self.resource_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attach_resource_type is not None:
+            result['attachResourceType'] = self.attach_resource_type
+        if self.enable is not None:
+            result['enable'] = self.enable
+        if self.environment_info is not None:
+            result['environmentInfo'] = self.environment_info.to_map()
+        if self.parent_resource_info is not None:
+            result['parentResourceInfo'] = self.parent_resource_info.to_map()
+        if self.plugin_attachment_id is not None:
+            result['pluginAttachmentId'] = self.plugin_attachment_id
+        if self.plugin_class_info is not None:
+            result['pluginClassInfo'] = self.plugin_class_info.to_map()
+        if self.plugin_config is not None:
+            result['pluginConfig'] = self.plugin_config
+        if self.plugin_id is not None:
+            result['pluginId'] = self.plugin_id
+        result['resourceInfos'] = []
+        if self.resource_infos is not None:
+            for k in self.resource_infos:
+                result['resourceInfos'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('attachResourceType') is not None:
+            self.attach_resource_type = m.get('attachResourceType')
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('environmentInfo') is not None:
+            temp_model = EnvironmentInfo()
+            self.environment_info = temp_model.from_map(m['environmentInfo'])
+        if m.get('parentResourceInfo') is not None:
+            temp_model = ParentResourceInfo()
+            self.parent_resource_info = temp_model.from_map(m['parentResourceInfo'])
+        if m.get('pluginAttachmentId') is not None:
+            self.plugin_attachment_id = m.get('pluginAttachmentId')
+        if m.get('pluginClassInfo') is not None:
+            temp_model = PluginClassInfo()
+            self.plugin_class_info = temp_model.from_map(m['pluginClassInfo'])
+        if m.get('pluginConfig') is not None:
+            self.plugin_config = m.get('pluginConfig')
+        if m.get('pluginId') is not None:
+            self.plugin_id = m.get('pluginId')
+        self.resource_infos = []
+        if m.get('resourceInfos') is not None:
+            for k in m.get('resourceInfos'):
+                temp_model = ResourceInfo()
+                self.resource_infos.append(temp_model.from_map(k))
+        return self
+
+
+class ListPluginAttachmentsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        items: List[ListPluginAttachmentsResponseBodyDataItems] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_size: int = None,
+    ):
+        self.items = items
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_size = total_size
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['items'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.total_size is not None:
+            result['totalSize'] = self.total_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('items') is not None:
+            for k in m.get('items'):
+                temp_model = ListPluginAttachmentsResponseBodyDataItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('totalSize') is not None:
+            self.total_size = m.get('totalSize')
+        return self
+
+
+class ListPluginAttachmentsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ListPluginAttachmentsResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = ListPluginAttachmentsResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ListPluginAttachmentsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListPluginAttachmentsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListPluginAttachmentsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

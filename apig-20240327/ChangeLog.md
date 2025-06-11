@@ -1,3 +1,8 @@
+2025-06-11 Version: 4.1.0
+- Support API ListPluginAttachments.
+- Update API GetGateway: add response parameters Body.data.gatewayType.
+
+
 2025-06-06 Version: 4.0.4
 - Generated python 2024-03-27 for APIG.
 

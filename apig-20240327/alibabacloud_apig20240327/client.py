@@ -4953,6 +4953,142 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_http_apis_with_options_async(request, headers, runtime)
 
+    def list_plugin_attachments_with_options(
+        self,
+        request: apig20240327_models.ListPluginAttachmentsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.ListPluginAttachmentsResponse:
+        """
+        @summary 获取挂载列表
+        
+        @param request: ListPluginAttachmentsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPluginAttachmentsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.attach_resource_id):
+            query['attachResourceId'] = request.attach_resource_id
+        if not UtilClient.is_unset(request.attach_resource_type):
+            query['attachResourceType'] = request.attach_resource_type
+        if not UtilClient.is_unset(request.attach_resource_types):
+            query['attachResourceTypes'] = request.attach_resource_types
+        if not UtilClient.is_unset(request.environment_id):
+            query['environmentId'] = request.environment_id
+        if not UtilClient.is_unset(request.gateway_id):
+            query['gatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.plugin_id):
+            query['pluginId'] = request.plugin_id
+        if not UtilClient.is_unset(request.with_parent_resource):
+            query['withParentResource'] = request.with_parent_resource
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPluginAttachments',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/plugin-attachments',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.ListPluginAttachmentsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_plugin_attachments_with_options_async(
+        self,
+        request: apig20240327_models.ListPluginAttachmentsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.ListPluginAttachmentsResponse:
+        """
+        @summary 获取挂载列表
+        
+        @param request: ListPluginAttachmentsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPluginAttachmentsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.attach_resource_id):
+            query['attachResourceId'] = request.attach_resource_id
+        if not UtilClient.is_unset(request.attach_resource_type):
+            query['attachResourceType'] = request.attach_resource_type
+        if not UtilClient.is_unset(request.attach_resource_types):
+            query['attachResourceTypes'] = request.attach_resource_types
+        if not UtilClient.is_unset(request.environment_id):
+            query['environmentId'] = request.environment_id
+        if not UtilClient.is_unset(request.gateway_id):
+            query['gatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.plugin_id):
+            query['pluginId'] = request.plugin_id
+        if not UtilClient.is_unset(request.with_parent_resource):
+            query['withParentResource'] = request.with_parent_resource
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPluginAttachments',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/plugin-attachments',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.ListPluginAttachmentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_plugin_attachments(
+        self,
+        request: apig20240327_models.ListPluginAttachmentsRequest,
+    ) -> apig20240327_models.ListPluginAttachmentsResponse:
+        """
+        @summary 获取挂载列表
+        
+        @param request: ListPluginAttachmentsRequest
+        @return: ListPluginAttachmentsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_plugin_attachments_with_options(request, headers, runtime)
+
+    async def list_plugin_attachments_async(
+        self,
+        request: apig20240327_models.ListPluginAttachmentsRequest,
+    ) -> apig20240327_models.ListPluginAttachmentsResponse:
+        """
+        @summary 获取挂载列表
+        
+        @param request: ListPluginAttachmentsRequest
+        @return: ListPluginAttachmentsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_plugin_attachments_with_options_async(request, headers, runtime)
+
     def list_plugins_with_options(
         self,
         request: apig20240327_models.ListPluginsRequest,
